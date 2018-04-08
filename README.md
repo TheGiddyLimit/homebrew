@@ -1,9 +1,14 @@
 Homebrew JSONs compatible with 5etools. An editor will be created eventually.
 
-Getting brew:
-1. browse for the file you want
-2. click "Raw" (top-right) and save it as .json
-3. load into 5etools via the Brew Manager
+##### Getting brew (automatically):
+1. Hit the "Manage Homebrew" button (if available) on a 5etools page.
+2. "Get Homebrew 2.0"
+3. Click to add. Currently, the list only displays items from this repository. 
+
+##### Getting brew (manually):
+1. Browse for the file you want
+2. Click "Raw" (top-right) and save it as .json
+3. Load into 5etools via the Brew Manager
 
 Getting help:
 
