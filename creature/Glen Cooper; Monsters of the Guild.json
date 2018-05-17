@@ -1,364 +1,551 @@
 {
-	"_meta": {
-		"sources": [
-			{
-				"json": "MotG",
-				"abbreviation": "MotG",
-				"full": "Monsters of the Guild",
-				"authors": [
-					"Glen Cooper, JVC Parry, Phil Beckwith, James Introcaso, Cindy Moore, Tony Petrecca, Benoit de Bernardy, Jeff C. Stevens, Shawn Merwin, Travis Legge, Elven Tower, Scott Bean, Kelsey Dionne, Emmet Byrne, Marc Altfuldisch PLUS MANY MORE!"
-				],
-				"version": "1.4",
-				"url": "https://github.com/TheGiddyLimit/homebrew",
-				"targetSchema": "1.2.0"
-			}
-		]
-	},
-	"monster": [
+	"type": "section",
+	"name": "Renderer Demo",
+	"entries": [
+		"(This is a section heading. This is mainly used in Adventures, for the header of entire chapters. The root entry does {@b not} need have the 'section' type, 'entries' is generally used instead. The 'section' produces a {@bold level -1} header; the 'basement' level, if you will.)",
 		{
-			"name": "Aarakocra Necromancer",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"aarakocra"
-				]
-			},
-			"alignment": [
-				"N",
-				"E"
+			"type": "quote",
+			"entries": [
+				"Look, don't quote me on this, but"
 			],
-			"source": "MotG",
-			"ac": "12 (15 with mage armor)",
-			"hp": {
-				"average": 90,
-				"formula": "20d8"
-			},
-			"speed": {
-				"walk": 20
-			},
-			"str": 10,
-			"dex": 14,
-			"con": 10,
-			"int": 16,
-			"wis": 12,
-			"cha": 9,
-			"save": {
-				"dex": "+5",
-				"int": "+6"
-			},
-			"skill": {
-				"arcana": "+6",
-				"perception": "+8"
-			},
-			"passive": 14,
-			"languages": "Common, Auran",
-			"cr": "4",
-			"trait": [
+			"by": "Anon"
+		},
+		"This is a demo of the JSON format, and how it (usually) gets rendered. You can edit this text, and it will reset on refresh.",
+		"{@b If a JSON property is described as 'optional,' the property may be excluded, unless otherwise noted.}",
+		"The goal of this system is to emulate the look and feel of the books, while maintaining a convenient and consistent data structure that can be re-used.",
+		"The general format is to nest multiple levels of 'entries'-typed objects, with other specific types (described in detail below) used as needed.",
+		"String entries can contain tags, and these work when nested in most other structures. These will eventually all work with the hover-to-view feature. They are case-insensitive, unless otherwise noted. These are:",
+		{
+			"type": "list",
+			"items": [
+				"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand})",
+				"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7}.",
+				"Chance tags; similar to dice roller tags, but output success/failure. Similar syntax as dice tags: {@chance 50}, {@chance 50|display text}, and {@chance 50|display text|rolled by name}.",
+				"Skill and action tags; {@skill Perception} and {@action Dash} (case-sensitive) which provide tooltips on hover.",
+				"Content tags:",
 				{
-					"name": "Grim Harvest",
-					"entries": [
-						"When the necromancer kills a creature that is neither a construct or undead with a spell of 1st level or higher, the necromancer regains hit points equal to twice the spell’s level, or three times if it is a necromancy spell."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Talon",
-					"entries": [
-						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one creature. Hit: 4 ({@dice 1d4+2}) slashing damage."
+					"type": "list",
+					"items": [
+						"Spells: {@spell acid splash} assumes PHB by default, {@spell tiny servant|xge} can have sources added with a pipe, {@spell tiny servant|xge|and optional link text added with another pipe}.",
+						"Items: {@item alchemy jug} assumed DMG by default, {@item longsword|phb} can have sources added with a pipe, {@item longsword|phb|and optional link text added with another pipe}.",
+						"Creatures: {@creature goblin} assumes MM by default, {@creature cow|vgm} can have sources added with a pipe, {@creature cow|vgm|and optional link text added with another pipe}.",
+						"Backgrounds: {@background Charlatan} assumes PHB by default, {@background Anthropologist|toa} can have sources added with a pipe, {@background Anthropologist|ToA|and optional link text added with another pipe}.",
+						"Races: {@race Human} assumes PHB by default, {@race Aarakocra|eepc} can have sources added with a pipe, {@race Aarakocra|eepc|and optional link text added with another pipe}.",
+						"Invocations: {@invocation Agonizing Blast} assumes PHB by default, {@invocation Aspect of the Moon|xge} can have sources added with a pipe, {@invocation Aspect of the Moon|xge|and optional link text added with another pipe}.",
+						"Classes: {@class fighter} assumes PHB by default, {@class artificer|uaartificer} can have sources added with a pipe, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|subclasses added|Eldritch Knight} with another pipe, {@class fighter|phb|and class feature added|Eldritch Knight|phb|Martial Archetype 3} with another pipe (number denotes level, since names can be duplicate).",
+						"Conditions: {@condition stunned} assumes PHB by default, {@condition stunned|phb} can have sources added with a pipe (not that it's ever useful), {@condition stunned|phb|and optional link text added with another pipe}.",
+						"Other Rewards: {@reward Blessing of Health} assumes DMG by default, {@reward Blessing of Health|dmg} can have sources added with a pipe, {@reward Blessing of Health|dmg|and optional link text added with another pipe}.",
+						"Feats: {@feat Alert} assumes PHB by default, {@feat Elven Accuracy|xge} can have sources added with a pipe, {@feat Elven Accuracy|xge|and optional link text added with another pipe}.",
+						"Psionics: {@psionic Mastery of Force} assumes UATheMysticClass by default, {@psionic Mastery of Force|UATheMysticClass} can have sources added with a pipe, {@psionic Mastery of Force|UATheMysticClass|and optional link text added with another pipe}."
 					]
 				},
 				{
-					"name": "Withering Touch",
+					"type": "inset",
+					"name": "Filter Tag",
 					"entries": [
-						"Melee Spell Attack: {@hit +5} to hit, reach 5 ft., one creature. Hit: 5 ({@dice 2d4}) necrotic damage."
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"The necromancer is a 5th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). The necromancer has the following wizard spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell chill touch}",
-								"{@spell dancing lights}",
-								"{@spell mage hand}",
-								"{@spell mending}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell false life}*",
-								"{@spell mage armor}",
-								"{@spell ray of sickness}*"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell blindness/deafness}*",
-								"{@spell ray of enfeeblement}",
-								"{@spell web}*"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell animate dead}*",
-								"{@spell bestow curse}*",
-								"{@spell vampiric touch}*"
+						"Another tag that appears occasionally in the data is the @filter tag. This tag can be tricky to use, and generally relies on knowledge of the internals of each page. As such, use with caution, and if you're not sure about something, don't be afraid to drop by our {@link Discord|https://discord.gg/v3AXzcW} and ask questions.",
+						"The syntax for the @filter tag is as follows:",
+						"(open curly brace)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(close curly brace)",
+						"The purpose of this tag is to open the given page, pre-filtered with the specified filtering options. There's one major caveat that makes this tricky to use for aspiring JSONtranauts — the filter values use the {@i internal} version, as you'd find in the data. So, for example, ...|school=D|... would filter spells to Divination school spells, as 'D' is the Divination identifier in the data. Trying to do e.g. ...|school=Divination|... will not work.",
+						"The 'filter_name_X' here matches the literal text name of the filter, as displayed in the dropdown.",
+						"Some examples of the tag in action:",
+						"{@filter Races that have a bonus to Intelligence|races|Ability Bonus (Including Subrace)=Intelligence +2;Intelligence +1}",
+						"{@filter Bard cantrips and first-level spells|spells|level=0;1|class=bard}",
+						"{@filter Beast with challenge rating 1 or lower|bestiary|cr=0;1/8;1/4;1/2;1|type=beast}",
+						"{@filter Divination and Evocation spells|spells|school=D;V}",
+						"{@filter All uncommon magic items|items|source=null|type=null|tier=null|rarity=uncommon|property=null|attunement=null|category=null|miscellaneous=Magic}",
+						{
+							"type": "entries",
+							"name": "Note",
+							"entries": [
+								"Setting a filter to null, i.e. ...|school=null|... is equivalent to 'clear the  filter,' resetting it to all-white.",
+								"The pages that support this functionality are those with the 'magnet' button; the link this button exports will give clues as to what one could do with the filter tag."
 							]
 						}
-					},
-					"footerEntries": [
-						"*Necromancy spell of 1st level or higher."
 					]
 				}
-			],
-			"page": 7
+			]
+		},
+		"These tags may be {@b {@i {@spell fireball|phb|nested}}}, although there are often better ways to get the combination of bold and italic that you're probably going to use this for; consider using one of the properly typed objects below (such as level 2 headers).",
+		{
+			"type": "entries",
+			"name": "A Subclass Name, For Example",
+			"entries": [
+				"The above is a 'level 0' header.",
+				"The 'name' property is optional",
+				{
+					"type": "entries",
+					"name": "A Subclass Feature Name",
+					"entries": [
+						"The above is a 'level 1' header.",
+						{
+							"type": "entries",
+							"name": "A Subclass Feature Inline Header",
+							"entries": [
+								"This bold-italic inline header is a 'level 2' header, please use this as opposed to nesting tags. You can make a chain of empty entry objects with no names to get to this header level, if required.",
+								"Note that the period in the inline name is added automagically."
+							]
+						}
+					]
+				}
+			]
 		},
 		{
-			"name": "Abyssal Giant Lizard",
-			"size": "L",
-			"type": {
-				"type": "fiend",
-				"tags": [
-					"demon"
+			"type": "entries",
+			"entries": [
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "This is an example of a level 2 header with no real parents",
+							"entries": [
+								"This technique can be useful, sometimes."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "inline",
+			"entries": [
+				"Entries can be inlined, useful for e.g. links outwith the tags listed above, ",
+				{
+					"type": "link",
+					"href": {
+						"type": "internal",
+						"path": "5etools.html"
+					},
+					"text": "such as a link to the homepage"
+				},
+				" but you can see why the tags are preferable."
+			]
+		},
+		{
+			"type": "inlineBlock",
+			"entries": [
+				"Similar to the above, but keeps the paragraph/etc tags around the inlined children, ",
+				{
+					"type": "link",
+					"href": {
+						"type": "internal",
+						"path": "5etools.html"
+					},
+					"text": "such as a link to the homepage"
+				},
+				" so can easily be mixed with lines of text."
+			]
+		},
+		{
+			"type": "options",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Option B",
+					"entries": [
+						"Sometimes useful, e.g. for Fighting Styles on a class. (Note that this option is rendered second, when it's listed first in the data.)"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Option A",
+					"entries": [
+						"The 'options' type is very similar to a list of entries, but it alphabetically sorts the list of options by name, before displaying them."
+					]
+				}
+			]
+		},
+		{
+			"type": "table",
+			"caption": "Optional Caption",
+			"colLabels": [
+				"Col 1",
+				"Column the Second"
+			],
+			"colStyles": [
+				"col-xs-6 text-align-center",
+				"col-xs-5",
+				"col-xs-1 text-align-right bold"
+			],
+			"rows": [
+				[
+					"This is a table row",
+					"The number of entries should match the number of columns, naturally"
+				],
+				[
+					"The 'colStyles' list is literally used as CSS classes",
+					"And since we use bootstrap, that means col-xs-whatever. See the bootstrap docs for more info; we use bootstrap 3."
+				],
+				[
+					{
+						"type": "list",
+						"items": [
+							"Nested entries (generally) work, too.",
+							"Although why you would put a list in a table is beyond me."
+						]
+					},
+					"{@spell bless|phb|Spells, on the other hand, make sense.}"
+				],
+				{
+					"type": "row",
+					"style": "row-indent-first",
+					"row": [
+						"Rows may also be defined",
+						"As objects with additional properties"
+					]
+				}
+			]
+		},
+		"Rollable tables can be made like so (note the 'pad' to format single digit numbers e.g. '01' for tables with >10 rows):",
+		{
+			"type": "table",
+			"caption": "Rollable Table Caption",
+			"colLabels": [
+				"{@dice d6}",
+				"Item"
+			],
+			"colStyles": [
+				"col-xs-1 text-align-center",
+				"col-xs-11"
+			],
+			"rows": [
+				[
+					{
+						"type": "cell",
+						"roll": {
+							"exact": 1,
+							"pad": true
+						}
+					},
+					"First Item"
+				],
+				[
+					{
+						"type": "cell",
+						"roll": {
+							"exact": 2
+						}
+					},
+					"Item the Second"
+				],
+				[
+					{
+						"type": "cell",
+						"roll": {
+							"min": 3,
+							"max": 4
+						}
+					},
+					"Three of Four Items"
+				],
+				[
+					{
+						"type": "cell",
+						"roll": {
+							"exact": 5
+						}
+					},
+					"Item V: The Item Items Back"
+				],
+				[
+					{
+						"type": "cell",
+						"roll": {
+							"exact": 6
+						}
+					},
+					"Item for Lucky Winners"
 				]
+			]
+		},
+		{
+			"type": "list",
+			"items": [
+				"A basic list of items",
+				"As usual, nested entries work",
+				{
+					"type": "list",
+					"items": [
+						"Such as a nested list"
+					]
+				}
+			]
+		},
+		{
+			"type": "list",
+			"style": "list-hang",
+			"name": "Hanging List",
+			"items": [
+				"A hanging items list",
+				"Which has a 'name'/title, and will hang below that title"
+			]
+		},
+		{
+			"type": "list",
+			"style": "list-hang",
+			"name": "Hanging List",
+			"items": [
+				{
+					"type": "item",
+					"name": "An extension of the hanging list.",
+					"entry": "Which has bold inline titles -- note that this only allows {@i one} entry per item (it's 'entry' and not 'entries')"
+				},
+				"Can be mixed with regular strings"
+			]
+		},
+		{
+			"type": "list",
+			"style": "list-hang-notitle",
+			"items": [
+				{
+					"type": "item",
+					"name": "A similar story here",
+					"entry": "The 'item' is an entry as above, but there's no 'name' for the entire list, so this has no left inset. Some long text to show what happens when the lines wrap around, it should continue but be indented after the first line. Some example of this in the source books can be found in Metalic Dragon breath weapons in the Monster Manual."
+				},
+				"Can be mixed with regular strings"
+			]
+		},
+		"The 'bonus' type just sticks a + in front of things",
+		{
+			"type": "bonus",
+			"value": 3
+		},
+		"We don't use that one much. It's useful because it allows us to store the data as a number, and render it with a plus sign as required, but it's mostly just forgotten about.",
+		"Similar story with 'bonusSpeed' type (these 'bonus' flavours are mainly used in the class tables)",
+		{
+			"type": "bonusSpeed",
+			"value": 100
+		},
+		"The 'dice' type is rarely used, since the shorthand tag exists, but it looks like this:",
+		{
+			"type": "dice",
+			"toRoll": [
+				{
+					"number": 1,
+					"faces": 4
+				},
+				{
+					"number": 2,
+					"faces": 7,
+					"modifier": 0
+				},
+				{
+					"number": 3,
+					"faces": 10,
+					"modifier": 0,
+					"hideModifier": true
+				}
+			],
+			"rollable": true
+		},
+		"The 'abilityDc' type is more helpful:",
+		{
+			"type": "abilityDc",
+			"name": "Buggy Code",
+			"attributes": [
+				"wis",
+				"int"
+			]
+		},
+		"As is the 'abilityAttackMod' type:",
+		{
+			"type": "abilityAttackMod",
+			"name": "Killing Things",
+			"attributes": [
+				"str"
+			]
+		},
+		"There's also a generic version that allows more text customisation; 'abilityGeneric':",
+		{
+			"type": "abilityGeneric",
+			"name": "Initiative",
+			"text": "10 - your power level + somebody else's",
+			"attributes": [
+				"dex",
+				"str"
+			]
+		},
+		{
+			"type": "abilityGeneric",
+			"text": "leave out the 'name' and 'attributes' properties as required"
+		},
+		"External links using 'link':",
+		{
+			"type": "link",
+			"href": {
+				"type": "external",
+				"url": "https://raw.githubusercontent.com/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/entry.json"
 			},
-			"source": "MotG",
+			"text": "The full 'entry' schema."
+		},
+		"Internal links are also possible, but generally covered by @tags. Check out the schema linked above for the full usage; it's massive and horrible so I'm not going to go into detail here.",
+		"Invocations:",
+		{
+			"type": "invocation",
+			"name": "Invocation Name",
+			"prerequisite": "Optional stuff",
+			"entries": [
+				"Edgy invocation text."
+			]
+		},
+		"Patrons:",
+		{
+			"type": "patron",
+			"name": "Pact of the Blade",
+			"entries": [
+				"Edgy patron text.",
+				"These can have sources and subclasses, in case they ever make the horrible decision to include subclass-only patrons again."
+			],
+			"source": "PHB",
+			"subclass": {
+				"name": "The Great Old One",
+				"source": "PHB"
+			}
+		},
+		{
+			"type": "inset",
+			"name": "Inset Title (Optional)",
+			"entries": [
+				"This is a text inset/insert/sidebar/etc."
+			]
+		},
+		{
+			"type": "insetReadaloud",
+			"name": "Same As Above",
+			"entries": [
+				"But a different colour."
+			]
+		},
+		{
+			"type": "variant",
+			"name": "Better Monster",
+			"entries": [
+				"Some variant monster text",
+				{
+					"type": "entries",
+					"name": "Inline Header",
+					"entries": [
+						"Text text text",
+						{
+							"type": "variantSub",
+							"name": "These can have child items",
+							"entries": [
+								"And the header style for them is unique, so this exists to cope with that."
+							]
+						}
+					]
+				}
+			]
+		},
+		"Images (similar to the structure of the 'link' type):",
+		{
+			"type": "image",
+			"href": {
+				"type": "internal",
+				"path": "blank.png"
+			},
+			"title": "Optional Title"
+		},
+		"Creatures; format based on Bestiary data, with added type (note that a proper Bestiary entry and a link to the entry is the preferred method of adding creatures, this functionality exists primarily for homebrew data):",
+		{
+			"type": "dataCreature",
+			"dataCreature":
+					{
+			"name": "Aurochon",
+			"size": "L",
+			"type": "aberration",
 			"alignment": [
 				"C",
 				"E"
 			],
-			"ac": "11 (natural armor)",
+			"source": "MotG",
+			"ac": "16",
 			"hp": {
-				"average": 37,
-				"formula": "5d10+10"
+				"average": 58,
+				"formula": "6d10+18"
 			},
 			"speed": {
-				"walk": 30,
-				"climb": 30
+				"walk": 50
 			},
-			"str": 16,
-			"dex": 10,
-			"con": 15,
-			"int": 4,
-			"wis": 10,
-			"cha": 4,
+			"str": 20,
+			"dex": 12,
+			"con": 16,
+			"int": 10,
+			"wis": 12,
+			"cha": 5,
+			"save": {
+				"str": "+8",
+				"con": "+6",
+				"wis": "+4"
+			},
+			"skill": {
+				"athletics": "+10",
+				"perception": "+4"
+			},
 			"resist": [
 				"cold",
-				"fire",
-				"lightning"
-			],
-			"immune": [
-				"poison"
+				"piercing"
 			],
 			"conditionImmune": [
 				"charmed",
-				"frightened",
+				"exhaustion",
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
-			"passive": 10,
-			"languages": "understands Abyssal and Draconic but cannot speak",
-			"cr": "1",
+			"senses": "darkvision 120 ft.",
+			"passive": 12,
+			"cr": "5",
 			"trait": [
 				{
-					"name": "Rampage",
+					"name": "Legendary Resistance",
 					"entries": [
-						"When it reduces a creature to 0 hit points with a melee attack on its turn, the abyssal giant lizard can take a bonus action to make a bite attack against a different creature."
+						"Once per round, if the Aurochon fails a saving throw, it can use its reaction to succeed instead."
+					]
+				},
+				{
+					"name": "Enshrouded",
+					"entries": [
+						"Shadows cling to the Aurochon, increasing its Armor Class by two and providing resistance to piercing damage. In bright daylight, these bonuses are removed."
+					]
+				},
+				{
+					"name": "Born of the Void",
+					"entries": [
+						"Upon its death, the Aurochon’s form seeks to return to its cosmic home. The Aurochon’s corpse crystallizes and breaks apart into shards of dark ice which quickly melt away."
 					]
 				}
 			],
 			"action": [
 				{
-					"name": "Bite",
+					"name": "Tentacles",
 					"entries": [
-						"Melee Weapon Attack: {@hit +5} to hit, reach 10 ft., one target. Hit: 8 ({@dice 1d10+3}) piercing plus 5 ({@dice 2d4}) poison damage."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., two targets. Hit: 9 ({@dice 1d6+5}) piercing damage."
+					]
+				},
+				{
+					"name": "Frozen Breath",
+					"entries": [
+						"The Aurochon exhales in a 25-foot cone. Each creature in that area must make a DC 12 Constitution saving throw, taking 7 ({@dice 2d6}) cold damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
-			"page": 8
-		},
-		{
-			"name": "Arachtus",
-			"size": "L",
-			"type": "plant",
-			"alignment": [
-				"U"
-			],
-			"source": "MotG",
-			"ac": "12",
-			"hp": {
-				"average": 120,
-				"formula": "16d10+32"
-			},
-			"speed": {
-				"walk": 40,
-				"climb": 40
-			},
-			"str": 16,
-			"dex": 18,
-			"con": 15,
-			"int": 5,
-			"wis": 11,
-			"cha": 4,
-			"senses": "tremorsense 60 ft.",
-			"passive": 10,
-			"cr": "4",
-			"trait": [
+			"legendaryActions": 1,
+			"legendary": [
 				{
-					"name": "False Appearance",
+					"name": "Trample",
 					"entries": [
-						"While the arachtus remains motionless, it is indistinguishable from a group of cacti."
+						"The Aurochon stomps around the battlefield, knocking opponents to the ground. All opponents within 20 feet of the creature must succeed at a DC 12 Dexterity saving throw or else fall prone and take 8 ({@dice 1d8+4}) bludgeoning damage."
 					]
 				},
 				{
-					"name": "Ambusher",
+					"name": "Thrum of Fear",
 					"entries": [
-						"The arachtus has advantage against creatures it has surprised."
-					]
-				},
-				{
-					"name": "Aggressive",
-					"entries": [
-						"As a bonus action, the arachtus can move up to its speed towards a hostile creature that it can see or sense with its tremorsense."
-					]
-				},
-				{
-					"name": "Spiked Body",
-					"entries": [
-						"A creature that touches the arachtus or hits it with a melee attack while within 5 feet of it takes 3 ({@dice1d6}) piercing damage."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The arachtus makes one bite attack and one spine flick attack."
-					]
-				},
-				{
-					"name": "Bite",
-					"entries": [
-						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) slashing damage."
-					]
-				},
-				{
-					"name": "Spine Flick",
-					"entries": [
-						"The arachtus uses its hind legs to flick the spines on its back in a 15-foot cone. Each creature in that area must make a DC 14 Dexterity saving throw, taking 11 ({@dice2d10}) piercing damage on a failed save, or half as much damage on a successful one."
-					]
-				}
-			],
-			"page": 9
-		},
-		{
-			"name": "Arrow Demon",
-			"size": "M",
-			"type": {
-				"type": "fiend",
-				"tags": [
-					"demon"
-				]
-			},
-			"alignment": [
-				"C"
-				"E"
-			],
-			"source": "MotG",
-			"ac": "14 (natural armor)",
-			"hp": {
-				"average": 66,
-				"formula": "6d8+24"
-			},
-			"speed": {
-				"walk": 40
-			},
-			"str": 18,
-			"dex": 16,
-			"con": 18,
-			"int": 11,
-			"wis": 13,
-			"cha": 12,
-			"save": {
-				"dex": "+5",
-				"con": "+6"
-			},
-			"skill": {
-				"athletics": "+6",
-				"perception": "+3",
-				"stealth": "+5"
-			},
-			"resist": [
-				"cold",
-				"fire",
-				"lightning"
-			],
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"poisoned"
-			],
-			"senses": "blindsight 30 ft., darkvision 120 ft.",
-			"passive": 15,
-			"languages": "Abyssal, telepathy 120 ft.",
-			"cr": "4",
-			"trait": [
-				{
-					"name": "Point Blank Shot",
-					"entries": [
-						"The arrow demon can ignore disadvantage on an attack roll if they are within 5 feet of a hostile creature who they can see and isn’t incapacitated."
-					]
-				},
-				{
-					"name": "Large Weapon Wielder",
-					"entries": [
-						"The arrow demon can wield weapons up to one size larger than their size would allow."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The arrow demon makes two large longbow attacks or claw attacks."
-					]
-				},
-				{
-					"name": "Claw",
-					"entries": [
-						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d8+4}) piercing damage."
-					]
-				},
-				{
-					"name": "Light Crossbow",
-					"entries": [
-						"Ranged Weapon Attack: {@hit +5} to hit, range 150/600 ft., one target. Hit: 13 ({@dice 2d8+4}) piercing damage."
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The arrow demon’s spellcasting ability is Charisma (spell save DC 14). It can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell dimension door}"
+						"A burst of sound erupts from the Aurochon, affecting all opponents within earshot. Anyone affected must succeed at a DC 12 Charisma saving throw. Opponents who fail cannot move closer to the Aurochon next turn."
 					]
 				}
 			],
 			"page": 10
+		}
 		}
 	]
 }
