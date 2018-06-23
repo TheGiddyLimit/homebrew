@@ -33,6 +33,5 @@ There are a few conventions used which should be followed when creating homebrew
 
  - https://5etools.com/demo.html (a demo of the renderer and JSON format)
  - https://5etools.com/converter.html (a tool to convert text to stat blocks)
- - https://5e.tools/converter.html (a tool to convert text to stat blocks)
  - https://jsonlint.com/ (error-check your JSON)
  - https://www.sublimetext.com/ (top-notch text editor)
