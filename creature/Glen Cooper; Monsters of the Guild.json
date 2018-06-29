@@ -1,18 +1,21 @@
 {
 	"_meta": {
-		"sources": [{
-			"json": "MotG",
-			"abbreviation": "MotG",
-			"full": "Monsters of the Guild",
-			"authors": [
-				"Glen Cooper, JVC Parry, Phil Beckwith, James Introcaso, Cindy Moore, Tony Petrecca, Benoit de Bernardy, Jeff C. Stevens, Shawn Merwin, Travis Legge, Elven Tower, Scott Bean, Kelsey Dionne, Emmet Byrne, Marc Altfuldisch PLUS MANY MORE!"
-			],
-			"version": "1.4",
-			"url": "https://github.com/TheGiddyLimit/homebrew",
-			"targetSchema": "1.2.0"
-		}]
+		"sources": [
+			{
+				"json": "MotG",
+				"abbreviation": "MotG",
+				"full": "Monsters of the Guild",
+				"authors": [
+					"Glen Cooper, JVC Parry, Phil Beckwith, James Introcaso, Cindy Moore, Tony Petrecca, Benoit de Bernardy, Jeff C. Stevens, Shawn Merwin, Travis Legge, Elven Tower, Scott Bean, Kelsey Dionne, Emmet Byrne, Marc Altfuldisch PLUS MANY MORE!"
+				],
+				"version": "1.4",
+				"url": "https://github.com/TheGiddyLimit/homebrew",
+				"targetSchema": "1.2.0"
+			}
+		]
 	},
-	"monster": [{
+	"monster": [
+		{
 			"name": "Aarakocra Necromancer",
 			"size": "M",
 			"type": {
@@ -26,7 +29,14 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "12 (15 with mage armor)",
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
 			"hp": {
 				"average": 90,
 				"formula": "20d8"
@@ -51,13 +61,16 @@
 			"passive": 14,
 			"languages": "Common, Auran",
 			"cr": "4",
-			"trait": [{
-				"name": "Grim Harvest",
-				"entries": [
-					"When the necromancer kills a creature that is neither a construct or undead with a spell of 1st level or higher, the necromancer regains hit points equal to twice the spell’s level, or three times if it is a necromancy spell."
-				]
-			}],
-			"action": [{
+			"trait": [
+				{
+					"name": "Grim Harvest",
+					"entries": [
+						"When the necromancer kills a creature that is neither a construct or undead with a spell of 1st level or higher, the necromancer regains hit points equal to twice the spell’s level, or three times if it is a necromancy spell."
+					]
+				}
+			],
+			"action": [
+				{
 					"name": "Talon",
 					"entries": [
 						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one creature. Hit: 4 ({@dice 1d4+2}) slashing damage."
@@ -70,49 +83,51 @@
 					]
 				}
 			],
-			"spellcasting": [{
-				"name": "Spellcasting",
-				"headerEntries": [
-					"The necromancer is a 5th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). The necromancer has the following wizard spells prepared:"
-				],
-				"spells": {
-					"0": {
-						"spells": [
-							"{@spell chill touch}",
-							"{@spell dancing lights}",
-							"{@spell mage hand}",
-							"{@spell mending}"
-						]
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The necromancer is a 5th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). The necromancer has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell dancing lights}",
+								"{@spell mage hand}",
+								"{@spell mending}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell false life}*",
+								"{@spell mage armor}",
+								"{@spell ray of sickness}*"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell blindness/deafness}*",
+								"{@spell ray of enfeeblement}*",
+								"{@spell web}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell animate dead}*",
+								"{@spell bestow curse}*",
+								"{@spell vampiric touch}*"
+							]
+						}
 					},
-					"1": {
-						"slots": 4,
-						"spells": [
-							"{@spell false life}*",
-							"{@spell mage armor}",
-							"{@spell ray of sickness}*"
-						]
-					},
-					"2": {
-						"slots": 3,
-						"spells": [
-							"{@spell blindness/deafness}*",
-							"{@spell ray of enfeeblement}*",
-							"{@spell web}"
-						]
-					},
-					"3": {
-						"slots": 3,
-						"spells": [
-							"{@spell animate dead}*",
-							"{@spell bestow curse}*",
-							"{@spell vampiric touch}*"
-						]
-					}
-				},
-				"footerEntries": [
-					"*Necromancy spell of 1st level or higher."
-				]
-			}],
+					"footerEntries": [
+						"*Necromancy spell of 1st level or higher."
+					]
+				}
+			],
 			"fluff": {
 				"entries": {
 					"type": "entries",
@@ -144,7 +159,14 @@
 				"C",
 				"E"
 			],
-			"ac": "11 (natural armor)",
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 37,
 				"formula": "5d10+10"
@@ -176,18 +198,22 @@
 			"passive": 10,
 			"languages": "understands Abyssal and Draconic but cannot speak",
 			"cr": "1",
-			"trait": [{
-				"name": "Rampage",
-				"entries": [
-					"When it reduces a creature to 0 hit points with a melee attack on its turn, the abyssal giant lizard can take a bonus action to make a bite attack against a different creature."
-				]
-			}],
-			"action": [{
-				"name": "Bite",
-				"entries": [
-					"Melee Weapon Attack: {@hit +5} to hit, reach 10 ft., one target. Hit: 8 ({@dice 1d10+3}) piercing plus 5 ({@dice 2d4}) poison damage."
-				]
-			}],
+			"trait": [
+				{
+					"name": "Rampage",
+					"entries": [
+						"When it reduces a creature to 0 hit points with a melee attack on its turn, the abyssal giant lizard can take a bonus action to make a bite attack against a different creature."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: {@hit +5} to hit, reach 10 ft., one target. Hit: 8 ({@dice 1d10+3}) piercing plus 5 ({@dice 2d4}) poison damage."
+					]
+				}
+			],
 			"fluff": {
 				"entries": {
 					"type": "entries",
@@ -227,7 +253,9 @@
 				"U"
 			],
 			"source": "MotG",
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 120,
 				"formula": "16d10+32"
@@ -245,7 +273,8 @@
 			"senses": "tremorsense 60 ft.",
 			"passive": 10,
 			"cr": "4",
-			"trait": [{
+			"trait": [
+				{
 					"name": "False Appearance",
 					"entries": [
 						"While the arachtus remains motionless, it is indistinguishable from a group of cacti."
@@ -270,7 +299,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The arachtus makes one bite attack and one spine flick attack."
@@ -327,7 +357,14 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 66,
 				"formula": "6d8+24"
@@ -365,7 +402,8 @@
 			"passive": 15,
 			"languages": "Abyssal, telepathy 120 ft.",
 			"cr": "4",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Point Blank Shot",
 					"entries": [
 						"The arrow demon can ignore disadvantage on an attack roll if they are within 5 feet of a hostile creature who they can see and isn’t incapacitated."
@@ -378,7 +416,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The arrow demon makes two large longbow attacks or claw attacks."
@@ -397,15 +436,17 @@
 					]
 				}
 			],
-			"spellcasting": [{
-				"name": "Innate Spellcasting",
-				"headerEntries": [
-					"The arrow demon’s spellcasting ability is Charisma (spell save DC 14). It can innately cast the following spells, requiring no material components:"
-				],
-				"will": [
-					"{@spell dimension door}"
-				]
-			}],
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The arrow demon’s spellcasting ability is Charisma (spell save DC 14). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dimension door}"
+					]
+				}
+			],
 			"fluff": {
 				"entries": {
 					"type": "entries",
@@ -432,7 +473,9 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "16",
+			"ac": [
+				16
+			],
 			"hp": {
 				"average": 58,
 				"formula": "6d10+18"
@@ -467,7 +510,8 @@
 			"senses": "darkvision 120 ft.",
 			"passive": 12,
 			"cr": "5",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Legendary Resistance",
 					"entries": [
 						"Once per round, if the Aurochon fails a saving throw, it can use its reaction to succeed instead."
@@ -486,7 +530,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Tentacles",
 					"entries": [
 						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., two targets. Hit: 9 ({@dice 1d6+5}) piercing damage."
@@ -500,7 +545,8 @@
 				}
 			],
 			"legendaryActions": 1,
-			"legendary": [{
+			"legendary": [
+				{
 					"name": "Trample",
 					"entries": [
 						"The Aurochon stomps around the battlefield, knocking opponents to the ground. All opponents within 20 feet of the creature must succeed at a DC 12 Dexterity saving throw or else fall prone and take 8 ({@dice 1d8+4}) bludgeoning damage."
@@ -546,7 +592,15 @@
 				"N"
 			],
 			"source": "MotG",
-			"ac": "17 (natural armor, shield)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 46,
 				"formula": "7d8+14"
@@ -573,7 +627,8 @@
 			"passive": 12,
 			"languages": "Ignan",
 			"cr": "3",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Heated Body",
 					"entries": [
 						"A creature that touches the azer or hits it with a melee attack while within 5 feet of it takes 5 ({@dice 1d10}) fire damage."
@@ -592,35 +647,39 @@
 					]
 				}
 			],
-			"action": [{
-				"name": "Warhammer",
-				"entries": [
-					"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) bludgeoning damage, or 8 ({@dice 1d10+3}) bludgeoning damage if used with two hands to make a melee attack, plus 3 ({@dice 1d6}) fire damage."
-				]
-			}],
-			"spellcasting": [{
-				"name": "Spellcasting",
-				"headerEntries": [
-					"The Azer Acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). The Azer Acolyte has the following cleric spells prepared:"
-				],
-				"spells": {
-					"0": {
-						"spells": [
-							"{@spell mending}",
-							"{@spell sacred flame}",
-							"{@spell thaumaturgy}"
-						]
-					},
-					"1": {
-						"slots": 3,
-						"spells": [
-							"{@spell bless}",
-							"{@spell cure wounds}",
-							"{@spell sanctuary}"
-						]
+			"action": [
+				{
+					"name": "Warhammer",
+					"entries": [
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) bludgeoning damage, or 8 ({@dice 1d10+3}) bludgeoning damage if used with two hands to make a melee attack, plus 3 ({@dice 1d6}) fire damage."
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The Azer Acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). The Azer Acolyte has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mending}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								"{@spell bless}",
+								"{@spell cure wounds}",
+								"{@spell sanctuary}"
+							]
+						}
 					}
 				}
-			}],
+			],
 			"fluff": {
 				"entries": {
 					"type": "entries",
@@ -641,7 +700,15 @@
 				"N"
 			],
 			"source": "MotG",
-			"ac": "17 (natural armor, shield)",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 77,
 				"formula": "11d8+22"
@@ -668,7 +735,8 @@
 			"passive": 13,
 			"languages": "Ignan",
 			"cr": "4",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Heated Body",
 					"entries": [
 						"A creature that touches the azer or hits it with a melee attack while within 5 feet of it takes 5 ({@dice 1d10}) fire damage."
@@ -693,49 +761,53 @@
 					]
 				}
 			],
-			"action": [{
-				"name": "Warhammer",
-				"entries": [
-					"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) bludgeoning damage, or 8 ({@dice 1d10+3}) bludgeoning damage if used with two hands to make a melee attack, plus 3 ({@dice 1d6}) fire damage."
-				]
-			}],
-			"spellcasting": [{
-				"name": "Spellcasting",
-				"headerEntries": [
-					"The Azer Priest is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 13, {@hit 5} to hit with spell attacks). The Azer Priest has the following cleric spells prepared:"
-				],
-				"spells": {
-					"0": {
-						"spells": [
-							"{@spell mending}",
-							"{@spell sacred flame}",
-							"{@spell thaumaturgy}"
-						]
-					},
-					"1": {
-						"slots": 4,
-						"spells": [
-							"{@spell cure wounds}",
-							"{@spell guiding bolt}",
-							"{@spell sanctuary}"
-						]
-					},
-					"2": {
-						"slots": 3,
-						"spells": [
-							"{@spell lesser restoration}",
-							"{@spell spiritual weapon}"
-						]
-					},
-					"3": {
-						"slots": 2,
-						"spells": [
-							"{@spell dispel magic}",
-							"{@spell spirit guardians}"
-						]
+			"action": [
+				{
+					"name": "Warhammer",
+					"entries": [
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) bludgeoning damage, or 8 ({@dice 1d10+3}) bludgeoning damage if used with two hands to make a melee attack, plus 3 ({@dice 1d6}) fire damage."
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The Azer Priest is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 13, {@hit 5} to hit with spell attacks). The Azer Priest has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mending}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell cure wounds}",
+								"{@spell guiding bolt}",
+								"{@spell sanctuary}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell lesser restoration}",
+								"{@spell spiritual weapon}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell spirit guardians}"
+							]
+						}
 					}
 				}
-			}],
+			],
 			"fluff": {
 				"entries": {
 					"type": "entries",
@@ -761,7 +833,14 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 115,
 				"formula": "11d10+55"
@@ -799,7 +878,8 @@
 			"passive": 12,
 			"languages": "Abyssal",
 			"cr": "5",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Compact Body",
 					"entries": [
 						"As a bonus action on its turn, the ankashar can fold in its wings and retract its legs. Whilst in the form, it cannot fly or use attack actions, but counts as Medium size and gains advantage on Dexterity (Stealth) checks. It can end this form as a bonus action on subsequent turns."
@@ -812,7 +892,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The ankashar makes two attacks with its bite, or one with its bite and one with its tail."
@@ -831,7 +912,7 @@
 					]
 				},
 				{
-					"name": "Gaze of Madness (Recharge 5\u20146)",
+					"name": "Gaze of Madness (Recharge 5—6)",
 					"entries": [
 						"The ankashar targets one creature it can see within 30 feet of it. The target must succeed on a DC 13 Charisma saving throw against this magic or take 10 ({@dice 3d6}) psychic damage and suffer one level of short-term madness."
 					]
@@ -892,7 +973,14 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 115,
 				"formula": "11d10+55"
@@ -934,7 +1022,8 @@
 			"passive": 12,
 			"languages": "Abyssal, telepathy 120 ft.",
 			"cr": "9",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Charge",
 					"entries": [
 						"If the bulezau moves at least 10 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 9 ({@dice 2d8}) piercing damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be pushed up to 10 feet away and knocked prone."
@@ -959,7 +1048,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The bulezau makes three attacks: one gore attack and two with its longspear."
@@ -978,7 +1068,7 @@
 					]
 				},
 				{
-					"name": "Blood Cry (Recharge 5\u20146)",
+					"name": "Blood Cry (Recharge 5—6)",
 					"entries": [
 						"Each creature within 15 feet of the bulezau must make a DC 15 Constitution saving throw. On a failed save, a creature takes 22 ({@dice 5d8}) thunder damage and is pushed 10 feet away from the bulezau. On a successful save, a creature takes half as much damage and isn’t pushed."
 					]
@@ -1023,7 +1113,14 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 241,
 				"formula": "21d12+105"
@@ -1066,13 +1163,16 @@
 			"passive": 14,
 			"languages": "Abyssal, Giant",
 			"cr": "9",
-			"trait": [{
-				"name": "Magic Resistance",
-				"entries": [
-					"The ghour has advantage on saving throws against spells and other magical effects."
-				]
-			}],
-			"action": [{
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The ghour has advantage on saving throws against spells and other magical effects."
+					]
+				}
+			],
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The ghour uses its Noxious Gas Breath if it can. It then makes three attacks: one with its gore and two with its fists."
@@ -1127,24 +1227,26 @@
 				}
 			},
 			"page": 18,
-			"spellcasting": [{
-				"name": "Innate Spellcasting",
-				"headerEntries": [
-					"The ghour’s spellcasting ability is Intelligence (spell save DC 15). The ghour can innately cast the following spells, requiring no material components:"
-				],
-				"will": [
-					"{@spell darkness}",
-					"{@spell detect magic}",
-					"{@spell dispel magic}"
-				],
-				"daily": {
-					"1e": [
-						"{@spell confusion}",
-						"{@spell fear}",
-						"{@spell maze}"
-					]
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The ghour’s spellcasting ability is Intelligence (spell save DC 15). The ghour can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell detect magic}",
+						"{@spell dispel magic}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell confusion}",
+							"{@spell fear}",
+							"{@spell maze}"
+						]
+					}
 				}
-			}]
+			]
 		},
 		{
 			"name": "Beholder, Eye of the Deep",
@@ -1155,7 +1257,14 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "18 (natural armor)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 136,
 				"formula": "16d10+48"
@@ -1185,7 +1294,8 @@
 			"passive": 15,
 			"languages": "Aquan, Deep Speech",
 			"cr": "8",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Amphibious",
 					"entries": [
 						"The eye of the deep can breathe air and water."
@@ -1198,7 +1308,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The eye of the deep makes three melee attacks, one with its bite and two with its pincers."
@@ -1241,7 +1352,7 @@
 							"type": "entries",
 							"name": "Shiny Objects",
 							"entries": [
-								"If an eye of the deep has one weakness, it is for shiny objects. Their lairs are often decorated with the pilfered treasures of their past meals, but only if they reflect their blinding light. Mirrors are prized above all else – they are shiny and they let the eye of the deep admire their own perfect form."
+								"If an eye of the deep has one weakness, it is for shiny objects. Their lairs are often decorated with the pilfered treasures of their past meals, but only if they reflect their blinding light. Mirrors are prized above all else\u2014they are shiny and they let the eye of the deep admire their own perfect form."
 							]
 						}
 					]
@@ -1258,7 +1369,14 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "18 (natural armor)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 39,
 				"formula": "6d8+12"
@@ -1291,28 +1409,34 @@
 			"passive": 16,
 			"languages": "Deep Speech, Undercommon, telepathy 120 ft.",
 			"cr": "3",
-			"trait": [{
-				"name": "Blue Shield",
-				"entries": [
-					"A blue energy shield surrounds the eye representing its resistances. If the resistances are eliminated, the blue shield disappears."
-				]
-			}],
-			"action": [{
-				"name": "Eye Rays",
-				"entries": [
-					"The big green eye shoots one of the following magical eye rays at one or two creatures it can see within 90 ft. of it. It can use each ray only once on a turn.",
-					"1. Confusion Ray. The target must succeed on a DC 13 Wisdom saving throw, or it can’t take reactions until the end of its next turn. On its turn, the target can’t move, and it uses its action to make a melee or ranged attack against a randomly determined creature within range. If the target can’t attack, it does nothing on its turn.",
-					"2. Paralyzing Ray. The target must succeed on a DC 13 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
-					"3. Fear Ray. The target must succeed on a DC 13 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, with disadvantage if the big green eye is visible to the target, ending the effect on itself on a success.",
-					"4. Wounding Ray. The target must make a DC 13 Constitution saving throw, taking 5 ({@dice 1d10}) necrotic damage on a failed save, or half as much damage on a successful one."
-				]
-			}],
-			"reaction": [{
-				"name": "Spell Reflection",
-				"entries": [
-					"If the big green eye makes a successful saving throw against a spell, or a spell attack misses it, the big green eye can choose another creature (including the spellcaster) it can see within 30 ft. of it. The spell targets the chosen creature instead of the big green eye. If the spell forced a saving throw, the chosen creature makes its own save. If the spell was an attack, the attack roll is rerolled against the chosen creature."
-				]
-			}],
+			"trait": [
+				{
+					"name": "Blue Shield",
+					"entries": [
+						"A blue energy shield surrounds the eye representing its resistances. If the resistances are eliminated, the blue shield disappears."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Eye Rays",
+					"entries": [
+						"The big green eye shoots one of the following magical eye rays at one or two creatures it can see within 90 ft. of it. It can use each ray only once on a turn.",
+						"1. Confusion Ray. The target must succeed on a DC 13 Wisdom saving throw, or it can’t take reactions until the end of its next turn. On its turn, the target can’t move, and it uses its action to make a melee or ranged attack against a randomly determined creature within range. If the target can’t attack, it does nothing on its turn.",
+						"2. Paralyzing Ray. The target must succeed on a DC 13 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+						"3. Fear Ray. The target must succeed on a DC 13 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, with disadvantage if the big green eye is visible to the target, ending the effect on itself on a success.",
+						"4. Wounding Ray. The target must make a DC 13 Constitution saving throw, taking 5 ({@dice 1d10}) necrotic damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Spell Reflection",
+					"entries": [
+						"If the big green eye makes a successful saving throw against a spell, or a spell attack misses it, the big green eye can choose another creature (including the spellcaster) it can see within 30 ft. of it. The spell targets the chosen creature instead of the big green eye. If the spell forced a saving throw, the chosen creature makes its own save. If the spell was an attack, the attack roll is rerolled against the chosen creature."
+					]
+				}
+			],
 			"fluff": {
 				"entries": {
 					"type": "entries",
@@ -1349,7 +1473,14 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "13 (natural armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 44,
 				"formula": "8d8+8"
@@ -1386,7 +1517,8 @@
 			"passive": 9,
 			"languages": "Common",
 			"cr": "2",
-			"trait": [{
+			"trait": [
+				{
 					"name": "False Appearance",
 					"entries": [
 						"While the swarm remains motionless, it is indistinguishable from a mass of dead shrubs and vines."
@@ -1405,7 +1537,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The blight swarm makes 2 melee attacks or 2 ranged attacks."
@@ -1455,7 +1588,14 @@
 				"U"
 			],
 			"source": "MotG",
-			"ac": "18 (natural armor)",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 125,
 				"formula": "10d12+60"
@@ -1473,7 +1613,8 @@
 			"senses": "blindsight 60 ft., tremorsense 60 ft.",
 			"passive": 12,
 			"cr": "7",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Amphibious",
 					"entries": [
 						"The worm can breathe both air and water."
@@ -1504,7 +1645,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The worm makes two attacks; one with its bite and one with its stinger."
@@ -1556,7 +1698,9 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "12",
+			"ac": [
+				12
+			],
 			"hp": {
 				"average": 136,
 				"formula": "13d12+52"
@@ -1588,7 +1732,8 @@
 			"senses": "blindsight 50 ft.",
 			"passive": 9,
 			"cr": "6",
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The bone giant makes two bone club attacks."
@@ -1634,7 +1779,14 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "17 (natural armor",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 364,
 				"formula": "18d20+180"
@@ -1686,7 +1838,8 @@
 			"passive": 13,
 			"languages": "Terran",
 			"cr": "21",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Magic Resistance",
 					"entries": [
 						"The magnetic field surrounding the colossus slightly bends the weave of magic around it, granting it advantage on saving throws against spells and other magical effects."
@@ -1723,7 +1876,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The Bound Colossus makes as many slam or earthen grasp attacks as it has remaining arms."
@@ -1743,7 +1897,8 @@
 				}
 			],
 			"legendaryActions": 3,
-			"legendary": [{
+			"legendary": [
+				{
 					"name": "Attack",
 					"entries": [
 						"The colossus makes one slam attack."
@@ -1795,7 +1950,9 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "8",
+			"ac": [
+				8
+			],
 			"hp": {
 				"average": 22,
 				"formula": "3d8+9"
@@ -1825,7 +1982,8 @@
 			"passive": 8,
 			"languages": "understands all languages it spoke in life but can't speak",
 			"cr": "1/4",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Undead Fortitude",
 					"entries": [
 						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
@@ -1840,12 +1998,14 @@
 					]
 				}
 			],
-			"action": [{
-				"name": "Slam",
-				"entries": [
-					"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage."
-				]
-			}],
+			"action": [
+				{
+					"name": "Slam",
+					"entries": [
+						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage."
+					]
+				}
+			],
 			"fluff": {
 				"entries": {
 					"type": "entries",
@@ -1864,46 +2024,49 @@
 			"page": 27
 		},
 		{
-			"legendaryGroup": [{
-				"name": "Cairnlord_Legendary",
-				"lairActions": [
-					"On initiative count 20 (losing initiative ties), the cairnlord takes a lair action to cause one of the following effects; the cairnlord cannot use the same effect two rounds in a row.",
-					{
-						"type": "list",
-						"items": [{
-								"name": "Blessing of Rain",
-								"entries": [
-									"A bolstering rain descends on the area by the cairnlord’s command, granting plants in the region 5 temporary hit points."
-								]
-							},
-							{
-								"name": "Demand Servitude",
-								"entries": [
-									"Any fey creature within the cairnlords lair must make a DC 18 Constitution saving throw or have their type changed to plant. A fey can choose to fail this save."
-								]
-							},
-							{
-								"name": "Baleful Ball",
-								"entries": [
-									"Until initiative count 20 on the next round, any non-plant creature that tries to leave the lair must make a DC 18 Wisdom saving throw. On a failure, they take 10 (3d6) force damage and are pushed 10ft back into the lair."
-								]
-							}
-						]
-					}
-				],
-				"regionalEffects": [
-					"The region around the cairnlord’s cairn is effected by their strange magics in any of the following ways:",
-					{
-						"type": "list",
-						"items": [
-							"The area in which the cairnlord is located is under the effect of a perpetual druid grove spell. The grasping undergrowth and mist seemingly react instinctively to hamper intruders. Four awakened trees are present in the area at all times, but will only attack at the cairnlord’s command.",
-							"The local flora and fauna grow rapidly and in unique ways. Animals of all varieties can be found in both unusually large and small forms. Trees can become twisted or barren, flowers can become carnivorous or exhibit odd colors.",
-							"Recipients of restorative magic will find small flowers or stones growing from the affected areas. These wither, die and fall off within an hour of leaving the region.",
-							"Altar-like stones emerge from the ground with regularity. The older examples of these stones are adorned with carvings, decorations and littered with offerings. Anyone who leaves an appropriate offering at one of these stones will earn the favor of the cairnlord, similarly, if anyone takes any of the offerings or desecrates the stone in any way they will earn its ire."
-						]
-					}
-				]
-			}],
+			"legendaryGroup": [
+				{
+					"name": "Cairnlord_Legendary",
+					"lairActions": [
+						"On initiative count 20 (losing initiative ties), the cairnlord takes a lair action to cause one of the following effects; the cairnlord cannot use the same effect two rounds in a row.",
+						{
+							"type": "list",
+							"items": [
+								{
+									"name": "Blessing of Rain",
+									"entries": [
+										"A bolstering rain descends on the area by the cairnlord’s command, granting plants in the region 5 temporary hit points."
+									]
+								},
+								{
+									"name": "Demand Servitude",
+									"entries": [
+										"Any fey creature within the cairnlords lair must make a DC 18 Constitution saving throw or have their type changed to plant. A fey can choose to fail this save."
+									]
+								},
+								{
+									"name": "Baleful Ball",
+									"entries": [
+										"Until initiative count 20 on the next round, any non-plant creature that tries to leave the lair must make a DC 18 Wisdom saving throw. On a failure, they take 10 (3d6) force damage and are pushed 10ft back into the lair."
+									]
+								}
+							]
+						}
+					],
+					"regionalEffects": [
+						"The region around the cairnlord’s cairn is effected by their strange magics in any of the following ways:",
+						{
+							"type": "list",
+							"items": [
+								"The area in which the cairnlord is located is under the effect of a perpetual druid grove spell. The grasping undergrowth and mist seemingly react instinctively to hamper intruders. Four awakened trees are present in the area at all times, but will only attack at the cairnlord’s command.",
+								"The local flora and fauna grow rapidly and in unique ways. Animals of all varieties can be found in both unusually large and small forms. Trees can become twisted or barren, flowers can become carnivorous or exhibit odd colors.",
+								"Recipients of restorative magic will find small flowers or stones growing from the affected areas. These wither, die and fall off within an hour of leaving the region.",
+								"Altar-like stones emerge from the ground with regularity. The older examples of these stones are adorned with carvings, decorations and littered with offerings. Anyone who leaves an appropriate offering at one of these stones will earn the favor of the cairnlord, similarly, if anyone takes any of the offerings or desecrates the stone in any way they will earn its ire."
+							]
+						}
+					]
+				}
+			],
 			"name": "Cairnlord",
 			"size": "M",
 			"type": "fey",
@@ -1912,7 +2075,14 @@
 				"E"
 			],
 			"source": "MotG",
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 184,
 				"formula": "13d12+100"
@@ -1939,14 +2109,16 @@
 			"vulnerable": [
 				"necrotic"
 			],
-			"resist": [{
-				"resist": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
-				],
-				"note": "from nonmagical attacks"
-			}],
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"radiant",
 				"poison"
@@ -1959,7 +2131,8 @@
 			"passive": 19,
 			"languages": "Common, Elvish, Sylvan",
 			"cr": "13",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Rebirth",
 					"entries": [
 						"A destroyed cairnlord is regrown over a period of {@dice 1d12} months if its cairn is not completely destroyed. A remove curse spell must be cast upon the stones to destroy an inactive cairnlord completely."
@@ -1972,7 +2145,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The cairnlord can use its Sapping Aura and makes one attack with its Gnarled Fist."
@@ -1992,7 +2166,8 @@
 				}
 			],
 			"legendaryActions": 3,
-			"legendary": [{
+			"legendary": [
+				{
 					"name": "Attack",
 					"entries": [
 						"The cairnlord makes one attack with its Gnarled Fist or uses its Sapping Aura."
@@ -2063,63 +2238,65 @@
 				}
 			},
 			"page": 30,
-			"spellcasting": [{
-				"name": "Spellcasting",
-				"headerEntries": [
-					"The cairnlord is a 10th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 18, {@hit 10} to hit with spell attacks). The cairnlord has the following spells prepared:"
-				],
-				"spells": {
-					"0": {
-						"spells": [
-							"{@spell magic stone}",
-							"{@spell mold earth}"
-						]
-					},
-					"1": {
-						"slots": 4,
-						"spells": [
-							"{@spell catapult}",
-							"{@spell dissonant whispers}",
-							"{@spell entangle}"
-						]
-					},
-					"2": {
-						"slots": 3,
-						"spells": [
-							"{@spell flaming sphere}",
-							"{@spell moonbeam}",
-							"{@spell spike growth}"
-						]
-					},
-					"3": {
-						"slots": 3,
-						"spells": [
-							"{@spell conjure animals}",
-							"{@spell hypnotic pattern}"
-						]
-					},
-					"4": {
-						"slots": 3,
-						"spells": [
-							"{@spell contagion}",
-							"{@spell conjure woodland beings}"
-						]
-					},
-					"5": {
-						"slots": 2,
-						"spells": [
-							"{@spell insect plague}",
-							"{@spell wrath of nature}"
-						]
-					},
-					"6": {
-						"slots": 1,
-						"spells": [
-							"{@spell flesh to stone}"
-						]
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The cairnlord is a 10th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 18, {@hit 10} to hit with spell attacks). The cairnlord has the following spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell magic stone}",
+								"{@spell mold earth}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell catapult}",
+								"{@spell dissonant whispers}",
+								"{@spell entangle}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell flaming sphere}",
+								"{@spell moonbeam}",
+								"{@spell spike growth}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell conjure animals}",
+								"{@spell hypnotic pattern}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell contagion}",
+								"{@spell conjure woodland beings}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell insect plague}",
+								"{@spell wrath of nature}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell flesh to stone}"
+							]
+						}
 					}
 				}
-			}]
+			]
 		},
 		{
 			"source": "MotG",
@@ -2153,7 +2330,14 @@
 				"N",
 				"E"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 157,
 				"formula": "15d12+60"
@@ -2168,15 +2352,17 @@
 			"int": 14,
 			"wis": 12,
 			"cha": 14,
-			"resist": [{
-				"resist": [
-					"acid",
-					"bludgeoning",
-					"piercing",
-					"slashing"
-				],
-				"note": "from nonmagical weapons"
-			}],
+			"resist": [
+				{
+					"resist": [
+						"acid",
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -2192,13 +2378,16 @@
 			"passive": 11,
 			"languages": "Aquan",
 			"cr": "7",
-			"trait": [{
-				"name": "Water Breathing",
-				"entries": [
-					"The caller from the deep can breathe only underwater."
-				]
-			}],
-			"action": [{
+			"trait": [
+				{
+					"name": "Water Breathing",
+					"entries": [
+						"The caller from the deep can breathe only underwater."
+					]
+				}
+			],
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The caller from the deep makes two tentacleattacks."
@@ -2211,7 +2400,7 @@
 					]
 				},
 				{
-					"name": "Luring Song (Recharge 5\u20146)",
+					"name": "Luring Song (Recharge 5—6)",
 					"entries": [
 						"The caller from the deep emits a magical lure in the form of a powerful subsonic song. The luring song can be felt by creatures up to 120 feet, and all non-elementals in range must make a DC 15 Charisma saving throw. On a failure, they must move their full movement towards the caller from the deep on each of their turns for 1 minute. Each victim can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
@@ -2223,7 +2412,8 @@
 			"fluff": {
 				"entries": {
 					"type": "entries",
-					"entries": [{
+					"entries": [
+						{
 							"type": "entries",
 							"name": "Constructed Nature",
 							"entries": [
@@ -2247,7 +2437,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "16",
+			"ac": [
+				16
+			],
 			"hp": {
 				"average": 12,
 				"formula": "5d4"
@@ -2277,13 +2469,16 @@
 			"senses": "blindsight 60 ft. (blind beyond this range)",
 			"passive": 6,
 			"cr": "1/2",
-			"trait": [{
-				"name": "False Appearance",
-				"entries": [
-					"Before the chart attack strikes, it is indistinguishable from an ordinary map."
-				]
-			}],
-			"action": [{
+			"trait": [
+				{
+					"name": "False Appearance",
+					"entries": [
+						"Before the chart attack strikes, it is indistinguishable from an ordinary map."
+					]
+				}
+			],
+			"action": [
+				{
 					"name": "Bite",
 					"entries": [
 						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
@@ -2329,7 +2524,9 @@
 				"C",
 				"E"
 			],
-			"ac": "14",
+			"ac": [
+				14
+			],
 			"hp": {
 				"average": 78,
 				"formula": "12d8+24"
@@ -2354,13 +2551,15 @@
 				"perception": "+9",
 				"stealth": "+5"
 			},
-			"resist": [{
-				"resist": [
-					"piercing",
-					"slashing"
-				],
-				"note": "from nonmagical weapons"
-			}],
+			"resist": [
+				{
+					"resist": [
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"cold",
 				"necrotic",
@@ -2375,7 +2574,8 @@
 			"passive": 19,
 			"languages": "Common",
 			"cr": "6",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Turn Resistance",
 					"entries": [
 						"The chilling eyes has advantage on any roll against being turned."
@@ -2394,7 +2594,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The chilling eyes makes two claw attacks or a single claw attack and either an eye of fear or chilling attack."
@@ -2407,13 +2608,13 @@
 					]
 				},
 				{
-					"name": "Eye of Fear (Recharge 5\u20146)",
+					"name": "Eye of Fear (Recharge 5—6)",
 					"entries": [
 						"All creatures in a 60 ft. cone originating from the chilling eyes must succeed on a DC 15 Wisdom saving throw or be frightened for 1 minute. A frightened target can repeat the saving throw at the end of each of its turns, with disadvantage if the chilling eyes is visible to them, ending the effect on itself on a success."
 					]
 				},
 				{
-					"name": "Eye of Chilling (Recharge 5\u20146)",
+					"name": "Eye of Chilling (Recharge 5—6)",
 					"entries": [
 						"The chilling eyes shoots line of frigid air 5 ft. wide and 100 ft. long. Each creature in that line must make a DC 15 Dexterity saving throw, taking 14 ({@dice 4d6}) cold damage and 10 ({@dice 3d6}) necrotic damage on a failed save, or half as much damage on a successful one."
 					]
@@ -2451,7 +2652,9 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "14",
+			"ac": [
+				14
+			],
 			"hp": {
 				"average": 110,
 				"formula": "20d8+20"
@@ -2477,7 +2680,8 @@
 			"senses": "",
 			"passive": 16,
 			"cr": "4",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Keen Hearing and Smell",
 					"entries": [
 						"The Crocotta has advantage on Wisdom (Perception) checks that rely on hearing or smell."
@@ -2496,7 +2700,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The crocotta can make two bite attacks."
@@ -2548,7 +2753,14 @@
 				"N",
 				"E"
 			],
-			"ac": "14 (natural armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 114,
 				"formula": "12d10+48"
@@ -2577,7 +2789,8 @@
 			"senses": "darkvision 60 ft.",
 			"passive": 11,
 			"cr": "5",
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The dark rose makes three attacks: one with its bite and two with its tendrils."
@@ -2603,7 +2816,8 @@
 				}
 			],
 			"legendaryActions": 3,
-			"legendary": [{
+			"legendary": [
+				{
 					"name": "Uproot",
 					"entries": [
 						"The dark rose moves up to 30 feet."
@@ -2665,7 +2879,21 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "20 (natural armor) or 22 (natural armor, shield)",
+			"ac": [
+				{
+					"ac": 20,
+					"from": [
+						"natural armor"
+					]
+				},
+				{
+					"ac": 22,
+					"from": [
+						"natural armor",
+						"{@item shield|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 210,
 				"formula": "20d10+100"
@@ -2711,7 +2939,8 @@
 			"passive": 15,
 			"languages": "understands commands given in any language, but can't speak",
 			"cr": "15",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Necrotic Absorption",
 					"entries": [
 						"Whenever the golem is subjected to necrotic damage, it takes no damage and instead regains a number of hitpoints equal to the necrotic damage dealt."
@@ -2754,7 +2983,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The golem makes two melee attacks with it's sword, and one bonus attack with its shield or fist."
@@ -2779,7 +3009,7 @@
 					]
 				},
 				{
-					"name": "Necrotic Radiation (Recharge 5\u20146)",
+					"name": "Necrotic Radiation (Recharge 5—6)",
 					"entries": [
 						"Flame-like shadows wreath the golem's body, causing it to become heavily obscured to others. The shadows turn dim light within 10 feet of the golem into darkness, and bright light in the same area to dim light. Until the effect ends, the golem gains resistance to radiant damage. In addition, whenever a creature within 10 feet of the golem hits it with an attack, the shadows lash out at that creature, dealing it 9 ({@dice 2d8}) necrotic damage. The golems melee attacks also deal an extra 9 ({@dice 2d8}) necrotic damage while this ability is active. This effect lasts up to 1 minute and requires concentration by the golem."
 					]
@@ -2818,7 +3048,14 @@
 				"N",
 				"E"
 			],
-			"ac": "16 (natural barkskin)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural {@spell barkskin}"
+					]
+				}
+			],
 			"hp": {
 				"average": 72,
 				"formula": "9d10+27"
@@ -2840,8 +3077,9 @@
 			"passive": 12,
 			"languages": "Understands Common, Infernal (but doesn't speak)",
 			"cr": "3",
-			"trait": [{
-					"name": "Entangling Plants (Recharge 5\u20146)",
+			"trait": [
+				{
+					"name": "Entangling Plants (Recharge 5—6)",
 					"entries": [
 						"Grasping roots and vines sprout in a 15 ft. radius centered on the Demon Blight, withering away after one minute. For the duration, that area is difficult terrain for non-plant characters. In addition, when first invoked, each creature (as chosen by the Demon Blight) must succeed on a DC 12 Strength saving throw or become restrained. A creature restrained may take its action to free itself with a DC 12 Strength check, freeing itself or others entangled within reach on a success."
 					]
@@ -2853,7 +3091,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The Demon Blight can make 2 melee attacks per combat round or 1 ranged attack."
@@ -2912,7 +3151,14 @@
 				"L",
 				"E"
 			],
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 110,
 				"formula": "13d8+52"
@@ -2930,25 +3176,30 @@
 				"deception": "+10",
 				"insight": "+8"
 			},
-			"vulnerable": [{
-				"vulnerable": [
-					"piercing"
-				],
-				"note": "from magic weapons wielded by good creatures"
-			}],
-			"immune": [{
-				"immune": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
-				],
-				"note": "from nonmagical attacks"
-			}],
+			"vulnerable": [
+				{
+					"vulnerable": [
+						"piercing"
+					],
+					"note": "from magic weapons wielded by good creatures"
+				}
+			],
+			"immune": [
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"languages": "Common, Infernal",
 			"cr": "14",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Limited Magic Immunity",
 					"entries": [
 						"The dhanava can't be affected by spells of 4th level or lower unless it wishes to be. It has advantage on saving throws against all other spells and magical effects."
@@ -2967,37 +3218,40 @@
 					]
 				}
 			],
-			"spellcasting": [{
-				"name": "Innate Spellcasting",
-				"headerEntries": [
-					"The dhanava's innate spellcasting ability is Charisma (spell save DC 18, {@hit +10} to hit with spell attacks). The dhanava can innately cast the following spells, requiring no material components:"
-				],
-				"will": [
-					"{@spell detect thoughts}",
-					"{@spell mage hand}",
-					"{@spell message}",
-					"{@spell minor illusion}",
-					"{@spell vicious mockery}"
-				],
-				"daily": {
-					"3e": [
-						"{@spell charm person}",
-						"{@spell detect magic}",
-						"{@spell invisibility}",
-						"{@spell major image}",
-						"{@spell suggestion}"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dhanava's innate spellcasting ability is Charisma (spell save DC 18, {@hit +10} to hit with spell attacks). The dhanava can innately cast the following spells, requiring no material components:"
 					],
-					"1e": [
-						"{@spell charm person}",
-						"{@spell dominate person}",
-						"{@spell enthrall}",
-						"{@spell fly}",
-						"{@spell plane shift}",
-						"{@spell true seeing}"
-					]
+					"will": [
+						"{@spell detect thoughts}",
+						"{@spell mage hand}",
+						"{@spell message}",
+						"{@spell minor illusion}",
+						"{@spell vicious mockery}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell charm person}",
+							"{@spell detect magic}",
+							"{@spell invisibility}",
+							"{@spell major image}",
+							"{@spell suggestion}"
+						],
+						"1e": [
+							"{@spell charm person}",
+							"{@spell dominate person}",
+							"{@spell enthrall}",
+							"{@spell fly}",
+							"{@spell plane shift}",
+							"{@spell true seeing}"
+						]
+					}
 				}
-			}],
-			"action": [{
+			],
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The dhanava makes two claw attacks."
@@ -3012,44 +3266,47 @@
 			]
 		},
 		{
-			"legendaryGroup": [{
-				"name": "Dokufo_Legendary",
-				"lairActions": [
-					"On initiative count 20 (losing initiative ties), the dokufu takes a lair action to create one of the following effects, though it can’t use the same effect two rounds in a row:",
-					{
-						"type": "list",
-						"items": [
-							"A dokufu spiderling bursts forth from a humanoid host that’s wrapped in webbing, appearing in an empty space within 100 feet of the dokufu.",
-							"Each creature within the lair must succeed a Dexterity saving throw or be encased in webbing, as if the dokufu had used its Web action. The save DC is 14 for an adult dokufu and 17 for an ancient dokufu.",
-							"The dokufu conjures forth 1d4 ice spiders, which appear in empty spaces within 60 feet of the dokufu."
-						]
-					}
-				],
-				"regionalEffects": [
-					"The region containing the dokufu’s lair is warped by its powerful illusionary magic, though all of the effects feel real. Creatures with truesight can see through the illusions, however, all other elements of the illusion remain, so while the creature is aware of the illusion’s presence, the creature can still physically interact with the illusion. The dokufu itself is unaffected by all detrimental effects. The region contains the following effects:",
-					{
-						"type": "list",
-						"items": [{
-								"type": "entries",
-								"entries": [
-									"Every so often an ice sculpture of a horrible spider-like monstrosity appears. A creature that sees such a sculpture must succeed a DC 15 Wisdom saving throw or become frightened for 1 minute and gain the following flaw while in the region: {@italic {@bold “I’ll never leave this mountain alive”}}.",
-									"At the end of each of its turns while frightened, a creature must succeed another DC 15 Wisdom saving throw or take 9 ({@dice 2d8}) psychic damage. Randomly determine which creature a sculpture is visible to, as each sculpture is only visible to a single creature."
-								]
-							},
-							"Each creature must succeed a DC 10 Constitution saving throw at the end of each hour or gain one level of exhaustion. Creatures with resistance or immunity to cold damage automatically succeed on the saving throw, as do creatures wearing cold weather gear and creatures naturally adapted to cold climates.",
-							{
-								"type": "entries",
-								"entries": [
-									"The strong winds in the region carry with them snow and ice, thus imposing disadvantage on ranged weapon attack rolls and Wisdom (Perception) checks that rely on hearing or sight. A creature can see no further than 10 feet in front of it and all terrain is difficult terrain.",
-									"Additionally, all open flames are extinguished, fogs are dispersed, and flying by nonmagical means is nearly impossible. A flying creature in the region must land at the end of its turn or fall."
-								]
-							},
-							"Dokufu tracks can be found in the snow. If a creature follows the tracks, it will walk in circles. A creature with truesight isn’t fooled by this, and other creatures can discern the trickery with a successful DC 15 Wisdom (Survival) check after having completed the circle. At a regular pace, it takes between two and three hours to complete the circle once."
-						]
-					},
-					"If the dokufo dies, these effects end immediately."
-				]
-			}],
+			"legendaryGroup": [
+				{
+					"name": "Dokufo_Legendary",
+					"lairActions": [
+						"On initiative count 20 (losing initiative ties), the dokufu takes a lair action to create one of the following effects, though it can’t use the same effect two rounds in a row:",
+						{
+							"type": "list",
+							"items": [
+								"A dokufu spiderling bursts forth from a humanoid host that’s wrapped in webbing, appearing in an empty space within 100 feet of the dokufu.",
+								"Each creature within the lair must succeed a Dexterity saving throw or be encased in webbing, as if the dokufu had used its Web action. The save DC is 14 for an adult dokufu and 17 for an ancient dokufu.",
+								"The dokufu conjures forth 1d4 ice spiders, which appear in empty spaces within 60 feet of the dokufu."
+							]
+						}
+					],
+					"regionalEffects": [
+						"The region containing the dokufu’s lair is warped by its powerful illusionary magic, though all of the effects feel real. Creatures with truesight can see through the illusions, however, all other elements of the illusion remain, so while the creature is aware of the illusion’s presence, the creature can still physically interact with the illusion. The dokufu itself is unaffected by all detrimental effects. The region contains the following effects:",
+						{
+							"type": "list",
+							"items": [
+								{
+									"type": "entries",
+									"entries": [
+										"Every so often an ice sculpture of a horrible spider-like monstrosity appears. A creature that sees such a sculpture must succeed a DC 15 Wisdom saving throw or become frightened for 1 minute and gain the following flaw while in the region: {@italic {@bold “I’ll never leave this mountain alive”}}.",
+										"At the end of each of its turns while frightened, a creature must succeed another DC 15 Wisdom saving throw or take 9 ({@dice 2d8}) psychic damage. Randomly determine which creature a sculpture is visible to, as each sculpture is only visible to a single creature."
+									]
+								},
+								"Each creature must succeed a DC 10 Constitution saving throw at the end of each hour or gain one level of exhaustion. Creatures with resistance or immunity to cold damage automatically succeed on the saving throw, as do creatures wearing cold weather gear and creatures naturally adapted to cold climates.",
+								{
+									"type": "entries",
+									"entries": [
+										"The strong winds in the region carry with them snow and ice, thus imposing disadvantage on ranged weapon attack rolls and Wisdom (Perception) checks that rely on hearing or sight. A creature can see no further than 10 feet in front of it and all terrain is difficult terrain.",
+										"Additionally, all open flames are extinguished, fogs are dispersed, and flying by nonmagical means is nearly impossible. A flying creature in the region must land at the end of its turn or fall."
+									]
+								},
+								"Dokufu tracks can be found in the snow. If a creature follows the tracks, it will walk in circles. A creature with truesight isn’t fooled by this, and other creatures can discern the trickery with a successful DC 15 Wisdom (Survival) check after having completed the circle. At a regular pace, it takes between two and three hours to complete the circle once."
+							]
+						},
+						"If the dokufo dies, these effects end immediately."
+					]
+				}
+			],
 			"fluff": {
 				"entries": {
 					"type": "entries",
@@ -3111,7 +3368,8 @@
 								"The region containing the dokufu’s lair is warped by its powerful illusionary magic, though all of the effects feel real. Creatures with truesight can see through the illusions, however, all other elements of the illusion remain, so while the creature is aware of the illusion’s presence, the creature can still physically interact with the illusion. The dokufu itself is unaffected by all detrimental effects. The region contains the following effects:",
 								{
 									"type": "list",
-									"items": [{
+									"items": [
+										{
 											"type": "entries",
 											"entries": [
 												"Every so often an ice sculpture of a horrible spider-like monstrosity appears. A creature that sees such a sculpture must succeed a DC 15 Wisdom saving throw or become frightened for 1 minute and gain the following flaw while in the region: {@italic {@bold “I’ll never leave this mountain alive”}}.",
@@ -3144,7 +3402,14 @@
 				"N",
 				"E"
 			],
-			"ac": "19 (natural armor)",
+			"ac": [
+				{
+					"ac": 19,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 230,
 				"formula": "20d10+120"
@@ -3192,7 +3457,8 @@
 				"cr": "12",
 				"lair": "15"
 			},
-			"trait": [{
+			"trait": [
+				{
 					"name": "False Appearance",
 					"entries": [
 						"While the dokufu remains motionless in rocky or snowy terrain, it is indistinguishable from its surroundings."
@@ -3241,23 +3507,26 @@
 					]
 				}
 			],
-			"spellcasting": [{
-				"name": "Innate Spellcasting",
-				"headerEntries": [
-					"The dokufu's innate spellcasting ability is Wisdom (spell save DC 15). The dokufu can innately cast the following spells, requiring no material, somatic, or verbal components:"
-				],
-				"will": [
-					"{@spell major image}"
-				],
-				"daily": {
-					"1e": [
-						"{@spell dispel magic}",
-						"{@spell programmed illusion}",
-						"{@spell project image}"
-					]
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dokufu's innate spellcasting ability is Wisdom (spell save DC 15). The dokufu can innately cast the following spells, requiring no material, somatic, or verbal components:"
+					],
+					"will": [
+						"{@spell major image}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell dispel magic}",
+							"{@spell programmed illusion}",
+							"{@spell project image}"
+						]
+					}
 				}
-			}],
-			"action": [{
+			],
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The dokufu can use its Frightful Presence. It then makes three attacks: one with its bite and two with its pincers. It can use its Swallow, its Vomit Spawn, or its Web instead of its bite."
@@ -3290,13 +3559,13 @@
 					]
 				},
 				{
-					"name": "Vomit Spawn (Recharge 5\u20146)",
+					"name": "Vomit Spawn (Recharge 5—6)",
 					"entries": [
 						"The dokufu spits out a dokufu spiderling, which lands in an empty space of the dokufu's choice within 20 ft. Each creature within 10 ft. of the point of impact must make a DC 14 Dexterity saving throw, taking 21 ({@dice 6d6}) acid damage on a failed save, or half as much on a successful one. The spiderling acts on its own initiative."
 					]
 				},
 				{
-					"name": "Web (Recharge 4\u20146)",
+					"name": "Web (Recharge 4—6)",
 					"entries": [
 						"Ranged Weapon Attack: {@hit +8} to hit, range 30/60 ft., one creature. Hit: The target is restrained by webbing. As an action, the restrained target can make a DC 14 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 20; vulnerability to fire damage; immunity to bludgeoning, poison,and psychic damage)."
 					]
@@ -3313,7 +3582,7 @@
 							"type": "entries",
 							"name": "Kobold Air Cavalry",
 							"entries": [
-								"Kobold’s adoration of dragons is as ancient as the origin of Kurtulmak, and kobolds are known to provide service, and worship, to dragon kind. Occasionally a dragon may see fit to reward a tribe of kobolds with a momentous boon – a clutch of kobold/ dragon hybrid eggs. Strong and agile winged kobolds with breath weapons are the result."
+								"Kobold’s adoration of dragons is as ancient as the origin of Kurtulmak, and kobolds are known to provide service, and worship, to dragon kind. Occasionally a dragon may see fit to reward a tribe of kobolds with a momentous boon\u2014a clutch of kobold/ dragon hybrid eggs. Strong and agile winged kobolds with breath weapons are the result."
 							]
 						},
 						{
@@ -3374,7 +3643,14 @@
 				"L",
 				"E"
 			],
-			"ac": "16 (studded leather armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 44,
 				"formula": "8d6+16"
@@ -3396,7 +3672,8 @@
 			"passive": 12,
 			"languages": "Common, Draconic",
 			"cr": "2",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Pack Tactics",
 					"entries": [
 						"Kobold air cavalry have advantage on an attack roll against a creature if at least one of the kobold's allies is within 5 feet of the creature and the ally isn't incapacitated."
@@ -3415,7 +3692,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"Kobold air cavalry make two attacks with its light crossbow."
@@ -3471,7 +3749,14 @@
 				"L",
 				"E"
 			],
-			"ac": "14 (leather armor)",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 18,
 				"formula": "4d6+4"
@@ -3493,7 +3778,8 @@
 			"passive": 12,
 			"languages": "Common, Draconic",
 			"cr": "1",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
 						"While in sunlight, the kobold commando has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
@@ -3518,7 +3804,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The Kobold Commando makes two attacks with its light crossbow"
@@ -3562,7 +3849,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "16 (natural armor)",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 75,
 				"formula": "10d8+30"
@@ -3586,7 +3880,8 @@
 			"passive": 14,
 			"languages": "understands Draconic but can't speak",
 			"cr": "3",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Pack Tactics",
 					"entries": [
 						"The kobold hunting drake has advantage on an attack roll against a creature if at least one of the drake's allies is within 5 feet of the creature and the ally isn't incapacitated."
@@ -3605,7 +3900,8 @@
 					]
 				}
 			],
-			"action": [{
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The kobold hunting drake attacks twice; once with its claws and once with its bite."
@@ -3649,7 +3945,14 @@
 			"alignment": [
 				"U"
 			],
-			"ac": "15 (natural armor)",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
 			"hp": {
 				"average": 39,
 				"formula": "6d8+12"
@@ -3671,13 +3974,16 @@
 			"passive": 14,
 			"languages": "understands Draconic but can't speak",
 			"cr": "1",
-			"trait": [{
-				"name": "Pack Tactics",
-				"entries": [
-					"The kobold riding drake has advantage on an attack roll against a creature if at least one of the drake's allies is within 5 feet of the creature and the ally isn't incapacitated."
-				]
-			}],
-			"action": [{
+			"trait": [
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"The kobold riding drake has advantage on an attack roll against a creature if at least one of the drake's allies is within 5 feet of the creature and the ally isn't incapacitated."
+					]
+				}
+			],
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The kobold riding drake attacks twice, once with its claws and once with its bite."
@@ -3722,7 +4028,14 @@
 				"L",
 				"E"
 			],
-			"ac": "13 (leather armor)",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
 				"average": 33,
 				"formula": "6d8+6"
@@ -3751,7 +4064,8 @@
 			"passive": 10,
 			"languages": "Common, Draconic",
 			"cr": "1",
-			"trait": [{
+			"trait": [
+				{
 					"name": "Sunlight Sensitivity",
 					"entries": [
 						"While in sunlight, the kobold has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
@@ -3770,46 +4084,49 @@
 					]
 				}
 			],
-			"spellcasting": [{
-				"name": "Spellcasting",
-				"headerEntries": [
-					"The poison fanatic is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit +4} to hit with spell attacks). When given the option, the poison fanatic will use the poison damage type. The poison fanatic has the following spells prepared:"
-				],
-				"spells": {
-					"0": {
-						"spells": [
-							"{@spell infestation|XGE}*",
-							"{@spell poison spray}",
-							"{@spell thaumaturgy}"
-						]
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The poison fanatic is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit +4} to hit with spell attacks). When given the option, the poison fanatic will use the poison damage type. The poison fanatic has the following spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell infestation|XGE}*",
+								"{@spell poison spray}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell chromatic orb}",
+								"{@spell protection from poison}",
+								"{@spell ray of sickness}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell dragon's breath}*"
+							]
+						},
+						"3": {
+							"slots": 1,
+							"spells": [
+								"{@spell stinking cloud}"
+							]
+						}
 					},
-					"1": {
-						"slots": 4,
-						"spells": [
-							"{@spell chromatic orb}",
-							"{@spell protection from poison}",
-							"{@spell ray of sickness}"
-						]
-					},
-					"2": {
-						"slots": 3,
-						"spells": [
-							"{@spell hold person}",
-							"{@spell dragon's breath}*"
-						]
-					},
-					"3": {
-						"slots": 1,
-						"spells": [
-							"{@spell stinking cloud}"
-						]
-					}
-				},
-				"footerEntries": [
-					"*from Xanathar's Guide to Everything"
-				]
-			}],
-			"action": [{
+					"footerEntries": [
+						"*from Xanathar's Guide to Everything"
+					]
+				}
+			],
+			"action": [
+				{
 					"name": "Multiattack",
 					"entries": [
 						"The poison fanatic makes two melee attacks."
