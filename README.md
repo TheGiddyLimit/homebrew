@@ -12,9 +12,11 @@ Homebrew JSONs compatible with 5etools. An editor will be created eventually.
 
 ##### Getting help
 
-- Join the [5etools Discord Server](https://discord.gg/v3AXzcW) and ask in the #homebrew channel.
+- Join the [5etools Discord Server](https://discord.gg/AzyBjtQ) and ask in the #homebrew channel.
 
 ##### Creating and Contributing
+
+_**Note:** one large advantage of contributing to this repo, is that your files will be kept up-to-date as changes are made to the main site._
 
 - The easiest way to make your own is to copy one of the existing 'brews as a template and use the main [5etools data](https://github.com/TheGiddyLimit/TheGiddyLimit.github.io/tree/master/data) as a reference.
 - The schemata for the main site data can be found [here](https://github.com/TheGiddyLimit/TheGiddyLimit.github.io/tree/master/test/schema)
