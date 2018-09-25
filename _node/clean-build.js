@@ -18,6 +18,10 @@ const NO_META = {
 	"collection/index.json": 1
 };
 
+const TIMESTAMP_PATH = "_generated/index-timestamps.json";
+
+const timestampIndex = {};
+
 function isDirectory (path) {
 	return fs.lstatSync(path).isDirectory();
 }
@@ -55,12 +59,16 @@ function cleanFolder (folder) {
 			contents: readJSON(file)
 		}))
 		.map(file => {
-			if (!file.contents._meta && !NO_META[file.name]) {
+			const hasMeta = !NO_META[file.name];
+			if (!file.contents._meta && hasMeta) {
 				throw new Error(`File "${file.name}" did not have metadata!`);
 			}
-			if (!NO_META[file.name] && !file.contents._meta.dateAdded) {
+			if (hasMeta && !file.contents._meta.dateAdded) {
 				console.warn(`\tFile "${file.name}" did not have "dateAdded", adding one...`);
 				file.contents._meta.dateAdded = RUN_TIMESTAMP;
+			}
+			if (hasMeta) {
+				timestampIndex[file.name] = file.contents._meta.dateAdded;
 			}
 			file.contents = JSON.stringify(file.contents, null, "\t") + "\n";
 			return file;
@@ -84,3 +92,6 @@ fs.readdirSync(".", "utf8")
 		cleanFolder(it);
 	});
 console.log("Cleaning complete.");
+
+console.log(`Saving timestamp index to ${TIMESTAMP_PATH}`);
+fs.writeFileSync(`./${TIMESTAMP_PATH}`, JSON.stringify(timestampIndex), "utf-8");
