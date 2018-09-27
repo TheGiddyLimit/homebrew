@@ -1324,7 +1324,8 @@
 										"name": "Blasting Rod",
 										"entries": [
 											"At 1st level, you've mastered the arcane secrets and fine craftsmanship to forge a wand. The first wand you create is your Blasting Rod.",
-											"When you craft your Blasting Rod, select one {@filter Evocation Cantrip from the Wizard spell list that does not require concentration|spells|level=0|class=wizard|school=V|components&miscellaneous=!concentration}. Thereafter, as an action, you can use the Blasting rod to cast that spell. Once per turn, when you deal damage to a creature or object with your Blasting Rod or with a spell using a charge of a Wand, you can add your Intelligence modifier to damage dealt to that target.",
+											"When you craft your Blasting Rod, select one {@filter Evocation Cantrip from the Wizard spell list that does not require concentration|spells|level=0|class=wizard|school=V|components & miscellaneous=!concentration}. Thereafter, as an action, you can use the Blasting rod to cast that spell. Once per turn, when you deal damage to a creature or object with your Blasting Rod or with a spell using a charge of a Wand, you can add your Intelligence modifier to damage dealt to that target.",
+											"Starting at 5th level, you can add +1 to spell attack rolls or spell save DCs for spells cast by your Blasting Rod. This bonus increases to +2 at 14th level.",
 											{
 												"type": "inset",
 												"name": "Blasting Rod",
@@ -1404,7 +1405,8 @@
 										"name": "Masterwork Wands",
 										"entries": [
 											"Starting at 14th level, If you use a wand you made to cast a concentration spell, as long as you continue to hold the wand you have advantage on checks to maintain concentration on that spell.",
-											"Additionally, when you create a wand that causes spell damage of fire, cold, acid, thunder, or lightning damage, you can choose a different damage type from those types for the spell when cast by that Wand."
+											"Additionally, when you create a wand that causes spell damage of fire, cold, acid, thunder, or lightning damage, you can choose a different damage type from those types for the spell when cast by that Wand.",
+											"Spells you cast with a wand you craft gain +1 to any spell attack roll or spell save DC"
 										]
 									}
 								]
@@ -2134,7 +2136,7 @@
 			"featureType": "AS:G",
 			"name": "Lightning Baton",
 			"entries": [
-				"You combine incorporate elements of your shock generator design into a baton, creating a new weapon. You have proficiency in this weapon, and it has the Finesse and Light properties. It deals {@dice 1d4} bludgeoning damage and {@dice 1d4} lightning damage on hit. If you score a critical strike with this weapon, the target must succeed a Constitution saving throw against your Spell Save DC or become {@condition stunned} until the start of your next turn. At level 5, this weapon gains a +1 to attack and damage rolls; this increases to a +2 at level 14.",
+				"You combine incorporate elements of your {@optfeature Shock Generator|ArtificerRevised} design into a baton, creating a new weapon. You have proficiency in this weapon, and it has the Finesse and Light properties. It deals {@dice 1d4} bludgeoning damage and {@dice 1d4} lightning damage on hit. If you score a critical strike with this weapon, the target must succeed a Constitution saving throw against your Spell Save DC or become {@condition stunned} until the start of your next turn. At level 5, this weapon gains a +1 to attack and damage rolls; this increases to a +2 at level 14.",
 				"You can apply this upgrade up to 2 times, making a separate item each time."
 			]
 		},
@@ -2159,7 +2161,7 @@
 				}
 			],
 			"entries": [
-				"You upgrade your shock generator with additional lightning capabilities. You can cast {@spell lightning lure|scag} at-will using it, can overload it to cast {@spell lightning bolt}. Once you overload it, you cannot use it to cast {@spell lightning bolt} again until you complete a short or long rest."
+				"You upgrade your {@optfeature Shock Generator|ArtificerRevised} with additional lightning capabilities. You can cast {@spell lightning lure|scag} at-will using it, can overload it to cast {@spell lightning bolt}. Once you overload it, you cannot use it to cast {@spell lightning bolt} again until you complete a short or long rest."
 			]
 		},
 		{
@@ -2263,8 +2265,16 @@
 			"source": "ArtificerRevised",
 			"featureType": "AS:G",
 			"name": "Shocking Hook",
+			"prerequisite": [
+				{
+					"type": "prereqSpellOrFeature",
+					"entries": [
+						"Shock Generator"
+					]
+				}
+			],
 			"entries": [
-				"You can integrate your Shock Generator and your Grappling Hook. If the target of your Grappling Hook is a creature, you can cast {@spell shocking grasp} on that creature as a bonus action when pulling it to you or being pulled to it."
+				"You can integrate your {@optfeature Shock Generator|ArtificerRevised} and your Grappling Hook. If the target of your Grappling Hook is a creature, you can cast {@spell shocking grasp} on that creature as a bonus action when pulling it to you or being pulled to it."
 			]
 		},
 		{
@@ -2333,9 +2343,17 @@
 			"featureType": "AS:G",
 			"name": "Truesight Lenses",
 			"entries": [
-				"You upgrade and fine tune your sight lenses, granting you Truesight up to 15 feet."
+				"You upgrade and fine tune your {@optfeature Sight Lenses|ArtificerRevised}, granting you Truesight up to 30 feet."
 			],
 			"prerequisite": [
+				{
+					"type": "prereqLevel",
+					"level": 11,
+					"class": {
+						"name": "Artificer",
+						"source": "ArtificerRevised"
+					}
+				},
 				{
 					"type": "prereqSpellOrFeature",
 					"entries": [
@@ -2634,6 +2652,22 @@
 		{
 			"source": "ArtificerRevised",
 			"featureType": "AS:O",
+			"name": "Transforming Golem",
+			"entries": [
+				"Your warforged golem can collapse its size back down to medium. The process takes 1 minute to invoke or revert."
+			],
+			"prerequisite": [
+				{
+					"type": "prereqSpellOrFeature",
+					"entries": [
+						"Expanded"
+					]
+				}
+			]
+		},
+		{
+			"source": "ArtificerRevised",
+			"featureType": "AS:O",
 			"name": "Redundant Systems",
 			"entries": [
 				"You have reinforced your Warforged Golem with layers of protection and redundant systems. It gains additional hitpoints equal to twice your Artificer level. Additionally, it gains advantage on death saving throws."
@@ -2795,13 +2829,13 @@
 			"featureType": "AS:P",
 			"name": "Elixir of Life",
 			"entries": [
-				"You can brew a special potion using your Philosopher stone. Brewing this potion takes 8 hours and requires 1000 gold pieces of special ingredients. An Elixir of Life causes a creature that drinks it to cease aging, and be under the effects of {@spell death ward} for one year, or until the {@spell death ward} is triggered."
+				"You can brew a special potion using your {@optfeature Philosopher Stone|ArtificerRevised}. Brewing this potion takes 8 hours and requires 1000 gold pieces of special ingredients. An Elixir of Life causes a creature that drinks it to cease aging, and be under the effects of {@spell death ward} for one year, or until the {@spell death ward} is triggered."
 			],
 			"prerequisite": [
 				{
 					"type": "prereqSpellOrFeature",
 					"entries": [
-						"Philosopher's Stone"
+						"Philosopher Stone"
 					]
 				}
 			]
@@ -2838,7 +2872,7 @@
 			"featureType": "AS:P",
 			"name": "Greater Adrenaline Shot",
 			"entries": [
-				"You upgrade your adrenaline shot to produce even more extreme and magical effects in the creature it effects. The adrenaline shot also adds the effect of {@spell Tenser's Transformation|xge} when you consume it. This effect only takes place if you are the one consuming the serum. You do not suffer the effects of {@spell Tenser's Transformation|xge} wearing off when the serum effect ends."
+				"You upgrade your {@optfeature Adrenaline Serum|ArtificerRevised} to produce even more extreme and magical effects in the creature it effects. The adrenaline shot also adds the effect of {@spell Tenser's Transformation|xge} when you consume it. This effect only takes place if you are the one consuming the serum. You do not suffer the effects of {@spell Tenser's Transformation|xge} wearing off when the serum effect ends."
 			],
 			"prerequisite": [
 				{
@@ -3041,11 +3075,11 @@
 					"rows": [
 						[
 							"1st",
-							"{@spell armor of agathys}"
+							"{@spell armor of Agathys}"
 						],
 						[
 							"2nd",
-							"{@spell snilloc's snowball swarm|xge}"
+							"{@spell Snilloc's snowball swarm|xge}"
 						],
 						[
 							"3rd",
@@ -3314,7 +3348,7 @@
 				}
 			],
 			"entries": [
-				"When you activate your Integrated weapon, you can immediately make one attack with it. While it is active, you can make an attack with it using your bonus action."
+				"When you activate your {@optfeature Integrated Weapon|ArtificerRevised}, you can immediately make one attack with it. While it is active, you can make an attack with it using your bonus action."
 			]
 		},
 		{
@@ -3697,14 +3731,6 @@
 			],
 			"entries": [
 				"When you use your Infused Focus power, the spell lasts a number of rounds equal to your Intelligence modifier + proficiency modifier."
-			]
-		},
-		{
-			"source": "ArtificerRevised",
-			"featureType": "AS:I",
-			"name": "Healing Infusion",
-			"entries": [
-				"You master the intricate arts of healing energies interaction with creatures. When you restore health to another creature on your turn, you can add your Intelligence modifier to the health restored."
 			]
 		},
 		{
