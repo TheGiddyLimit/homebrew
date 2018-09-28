@@ -4,7 +4,7 @@
 
 const fs = require("fs");
 
-const RUN_TIMESTAMP = (new Date).getTime();
+const RUN_TIMESTAMP = Math.floor(Date.now() / 1000);
 const REPLACEMENTS = {
 	"—": "\\u2014",
 	"–": "\\u2013",
@@ -66,6 +66,8 @@ function cleanFolder (folder) {
 			if (hasMeta && !file.contents._meta.dateAdded) {
 				console.warn(`\tFile "${file.name}" did not have "dateAdded", adding one...`);
 				file.contents._meta.dateAdded = RUN_TIMESTAMP;
+			} else if (hasMeta) {
+				file.contents._meta.dateAdded = Math.floor(file.contents._meta.dateAdded / 1000);
 			}
 			if (hasMeta) {
 				timestampIndex[file.name] = file.contents._meta.dateAdded;
