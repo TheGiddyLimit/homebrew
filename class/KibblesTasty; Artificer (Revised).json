@@ -963,55 +963,56 @@
 											"Your Warforged Golem's Proficiency increases when yours does. Additionally, it gains 5 hit points for every level in Artificer you gain. If the golem is killed, it can be returned to life via normal means, such as with the revivify spell. In addition, over the course of a long rest, you can repair a slain servant if you have access to its body. It returns to life with 1 hit point at the end of the rest. If the servant is beyond recovery, you can reproduce the construct exactly as it was, with four days of work (eight hours each day) and 100 gp of raw materials.",
 											"Over the course of a short rest, you can restore hitpoints equal to your Intelligence modifier + your Artificer level to your golem, or repair it to full health during a long rest.",
 											{
-												"type": "inset",
-												"name": "Warforged Golem",
-												"entries": [
-													"{@i Medium Construct, unaligned}",
-													"{@b Armor Class:} 16 (Natural Armor)",
-													"{@b Hit Points:} 10 + ([Golem's Constitution Modifier +5] * Artificer Level)",
-													"{@b Speed:} 25ft",
-													{
-														"type": "table",
-														"colLabels": [
-															"STR",
-															"DEX",
-															"CON",
-															"INT",
-															"WIS",
-															"CHA"
-														],
-														"colStyles": [
-															"col-xs-2 text-align-center",
-															"col-xs-2 text-align-center",
-															"col-xs-2 text-align-center",
-															"col-xs-2 text-align-center",
-															"col-xs-2 text-align-center",
-															"col-xs-2 text-align-center"
-														],
-														"rows": [
-															[
-																"16 ({@hit +3})",
-																"12 ({@hit +1})",
-																"14 ({@hit +2})",
-																"4 ({@hit -3})",
-																"5 ({@hit -3})",
-																"1 ({@hit -5})"
+												"type": "dataCreature",
+												"dataCreature": {
+													"name": "Warforged Golem",
+													"source": "ArtificerRevised",
+													"size": "M",
+													"type": "construct",
+													"alignment": [
+														"U"
+													],
+													"ac": [
+														{
+															"ac": 16,
+															"from": [
+																"natural armor"
 															]
-														]
+														}
+													],
+													"hp": {
+														"special": "10 + ([Golem's Constitution Modifier +5] × Artificer Level)"
 													},
-													"{@b Damage Immunities:} poison, psychic",
-													"{@b Condition Immunities:} exhaustion, charmed, poisoned",
-													"{@b Senses:} passive Perception 7",
-													"{@b Languages:} Understands creator's languages, but cannot speak",
-													"{@b Actions:}",
-													{
-														"type": "entries",
-														"name": "Attack Protocol",
-														"entries": [
-															"{@i Slam:} {@hit +5} to hit, reach 5 ft., one target. {@i Hit} {@dice 1d4+3}"
-														]
-													}
-												]
+													"speed": {
+														"walk": 25
+													},
+													"str": 16,
+													"dex": 12,
+													"con": 14,
+													"int": 4,
+													"wis": 5,
+													"cha": 1,
+													"immune": [
+														"poison",
+														"psychic"
+													],
+													"conditionImmune": [
+														"exhaustion",
+														"charmed",
+														"poisoned"
+													],
+													"passive": 7,
+													"languages": "Understands creator's languages, but cannot speak",
+													"action": [
+														{
+															"type": "entries",
+															"name": "Slam",
+															"entries": [
+																"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@i Hit} {@damage 1d4 + 3}"
+															]
+														}
+													]
+												}
 											},
 											{
 												"type": "inset",
