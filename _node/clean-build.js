@@ -63,7 +63,7 @@ function cleanFolder (folder) {
 			if (!file.contents._meta && hasMeta) {
 				throw new Error(`File "${file.name}" did not have metadata!`);
 			}
-			if (hasMeta && !file.contents._meta.dateAdded) {
+			if (hasMeta && file.contents._meta.dateAdded == null) {
 				console.warn(`\tFile "${file.name}" did not have "dateAdded", adding one...`);
 				file.contents._meta.dateAdded = RUN_TIMESTAMP;
 			}
