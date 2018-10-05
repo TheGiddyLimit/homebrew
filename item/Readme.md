@@ -52,12 +52,24 @@ The name field should be a unique text lable for the item.
 
 	 "type": "<field>"
 	
-Types can be of the one of the [[types]]. which replaces the <code>field</code>
+Types can be of the one of the [[types]]. which replaces the `field`
 
-	 "rarity": 
+	 "rarity": "<field>"
 	
-	
-	
+THis corresponds with the DMG's categorization about what is actually power level, more than its relative scarcity.
+
+The fields values are <code> None, Common, Uncommon, Rare, Very Rare, Legendary,</code> and <code>Artifact</code>.
+as a general overview for custom content:
+
+Level | <Field> | Examples
+------|---------|--------
+| None | Trinkets, Trival items
+0+ | Common | Generally Availible
+3+ | Uncommon | 
+5+ | Rare | 
+8+ | Very Rare | 
+15+ | Legendary |
+18+ | Artifact | Unique Items of incredible power	
 	"weaponCategory": "<string>"
 	
 
@@ -68,44 +80,64 @@ None,
 Major 
 Minor
 	
-	 "property":
-	 
+	 "property": [
+	 	"<field(s)>"
+	]
 
+This field can be expanded upon via `itemProperties`	 
 
-	"reqAttune": 
+	"reqAttune": <boolean> or <"string">
 
+Simple attunement you place a `true` value
+If the attunement has requirements such as "Barbarian" or "Investing a 3rd level spell slot inot it."  
 
+	"category": <field>
 
-	Category:
-
-
+Type of weapon profiency it falls within. (if its a weapon)
 
 	"value": "<string>"
 
-
+The value, please make sure to end the value in the relevant coinage base, eg. gp, sp, cp.
+If you have no assigned value, don't include "value" in the item's description.
 
 	"weight": "<string>"
 	
-	
+The object's weight. 
+if it has no weight listed, don't include "weight" in the item's description.
 	
 	"dmgType": ""
-	
-	
+
+For Weapons mainly, the most common damage type associated with the weapon (item); case sensitive.
+
+Damage Type | Field Value
+---------|--------
+Bludgeoning | B 
+Piercing    | P 
+Slashing    | S 
+|
+Acid      | A
+Fire      | 
+Force     |
+Lightning | L
+Necrotic  | N
+Poison    | P
+Radiant   | R
+Thunder   |
+
 	
 	"dmg1": ""	
 
-
+Most common type of damage format the field like a roll command.
 
 	"dmg2": ""
 
-	
-	
+Variant damage or versitile damage feature's damage.
 	
 	"
-	
-	
-	
-	 "source":
+
+
+		
+	 "source": "<string>"
 	 "page": <#>
 	
 	
