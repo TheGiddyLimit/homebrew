@@ -1,8 +1,61 @@
 
+Walkthrough on schema formating for novices (like me)
 
-##Template
+## What is an "Item"
+For the purposes of the site an item falls within the following:
+ * Adventure Gear
+ * Ammunition
+ * Astisan Tool
+ * Eldritch Machine
+ * Explosive
+ * Firearm
+ * Futureist
+ * Gaming Set
+ * Generic Variant
+ * Heavy Armor
+ * Instrument
+ * Light Armor
+ * Martial Weapon
+ * * battleaxe; greataxe; greatsword; longbow; longsword; mace; maul; scimitar; shortsword; trident; war pick; warhammer
+ * Medium Armor
+ * Melee Weapon
+ * Modern
+ * Mount
+ * Other
+ * Poison
+ * Potion
+ * Ranged Weapon
+ * Renaissance
+ * Ring
+ * Rod
+ * Ring
+ * Rod
+ * Scroll
+ * Shield
+ * Simple Weapon
+ * * Club; Dagger; Dart; Javelin; Mace; Quarterstaff; Spear
+ * Spellcasting Focus
+ * Staff
+ * Tack and Harness
+ * Tool
+ * Trade Good
+ * Treasure
+ * Vehicle
+ * Wand
+ * Wondrous Item
 
-{
+## Field Definitions
+
+ "name": "<string>"
+	The name field should be a unique text lable for the item.
+
+ "type": "<field>"
+	Types can be of the one of the [[types]]. which replaces the <code>field</code>
+
+ "rarity": 
+
+
+ {
 	"_meta": {
 		"sources": [
 			{
