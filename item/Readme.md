@@ -46,13 +46,91 @@ For the purposes of the site an item falls within the following:
 
 ## Field Definitions
 
- "name": "<string>"
-	The name field should be a unique text lable for the item.
+ 	"name": "<string>"
+	
+The name field should be a unique text lable for the item.
 
- "type": "<field>"
-	Types can be of the one of the [[types]]. which replaces the <code>field</code>
+	 "type": "<field>"
+	
+Types can be of the one of the [[types]]. which replaces the <code>field</code>
 
- "rarity": 
+	 "rarity": 
+	
+	
+	
+	"weaponCategory": "<string>"
+	
+
+
+	 "tier":
+
+None, 
+Major 
+Minor
+	
+	 "property":
+	 
+
+
+	"reqAttune": 
+
+
+
+	Category:
+
+
+
+	"value": "<string>"
+
+
+
+	"weight": "<string>"
+	
+	
+	
+	"dmgType": ""
+	
+	
+	
+	"dmg1": ""	
+
+
+
+	"dmg2": ""
+
+	
+	
+	
+	"
+	
+	
+	
+	 "source":
+	 "page": <#>
+	
+	
+	
+	 "additionalSources": 
+	
+options for additional source's which contribute to the contents in the <code>entries</code>.	
+	
+	 "entries": <Long_String>
+	
+	
+	
+	"
+
+
+
+## Example
+
+
+
+## Templates
+
+
+
+### Treasure
 
 
  {
