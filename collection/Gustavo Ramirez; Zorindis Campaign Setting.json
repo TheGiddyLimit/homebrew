@@ -3024,7 +3024,7 @@
 					},
 					"Sacred Flame",
 					{
-						"name": "Aganazzar's Scorcher",
+						"name": "Pyrotechnics",
 						"source": "XGE"
 					},
 					"Scorching Ray",
@@ -3123,7 +3123,7 @@
 								"type": "entries",
 								"name": "Bonus Cantrip",
 								"entries": [
-									"At 2nd level, you learn one cantrips from your affinity element:",
+									"At 2nd level, you learn one cantrip from your affinity element:",
 									{
 										"type": "entries",
 										"entries": [
@@ -3194,7 +3194,7 @@
 												"3rd-level",
 												"{@spell Levitate} and {@spell Mirror Image}",
 												"{@spell Dust Devil|XGE} and {@spell Maximilian's Earthen Grasp|XGE}",
-												"{@spell Aganazzar's Scorcher|XGE} and {@spell Scorching Ray}",
+												"{@spell Pyrotechnics|XGE} and {@spell Scorching Ray}",
 												"{@spell Misty Step} and {@spell Snilloc's Snowball Swarm|XGE}",
 												"{@spell Dragon's Breath|XGE} and {@spell Locate Elementals|Zorindis Campain Setting}"
 											],
@@ -3279,18 +3279,23 @@
 													}
 												]
 											},
-											"At 6th level, you boost your cantrips spells. You add your Wisdom modifier to the damage of the cantrips spells that deals the type of damage from your affinity."
+											"At 6th level, you boost your spells. You add your Wisdom modifier to the damage of the spells that deals the type of damage from your affinity."
 										]
 									},
 									{
 										"type": "options",
 										"name": "Primordial Weapon",
 										"entries": [
-											"As an action you make a bond with one weapon making it your druid focus, while you are holding it you can use a spell action to cast damaging cantrip spells with it.",
-											"You cast your spells using the ability modifier of your bonded weapon as the spellcasting ability as you do with a weapon attack. You apply the weapon ability and bonus modifiers to the spell damage, and you can use the range of the weapon instead the spell range; for the dice and type of damage, and spell effects, you use what the spell says. You don't use the base weapon damage dice but you add any magic bonus from it.",
-											"Range and melee attacks rules apply, even for actions as the grapple or shove actions if the spell gives you more than one attack.",
-											"You can have this bond with one weapon at a time.",
-											"From 6th level you can use your primordial weapon with any damaging spell."
+											"You can use a bonus action to make a bond with one weapon making it your druid focus for one minute, while you are holding it you have the following benefits:",
+											{
+												"type": "list",
+												"items": [
+													"You can cast damaging spells using the ability modifier of your bonded weapon as your spellcasting ability.",
+													"You can use the weapon range instead of the spell range for the spells, and when you do so, you apply any bonus the weapon give to attack and/or damage to your spells cast through the weapon.",
+													"For spells that grant more than one attack, you can replace one of them to use actions that replace one weapon attack as the grapple or shove actions."
+												]
+											},
+											"You can have this bond with one weapon at a time. You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a short or long rest."
 										]
 									}
 								]
@@ -3332,14 +3337,14 @@
 														"type": "entries",
 														"name": "Fire",
 														"entries": [
-															"As a bonus action you can produce an aura of light around you providing bright light in a 20-foot radius and dim light for an additional 20 feet for one minute. While the aura is active, if an enemy hit you with an attack you can use your reaction to deal 1d8 plus your Wisdom modifier as fire damage to the attacker."
+															"As a bonus action you can produce an aura of light around you providing bright light in a 20-foot radius and dim light for an additional 20 feet for one minute. While the aura is active, if an enemy inside the bright light of the aura hit you with an attack you can use your reaction to deal 1d8 plus your Wisdom modifier as fire damage to the attacker."
 														]
 													},
 													{
 														"type": "entries",
 														"name": "Water",
 														"entries": [
-															"When you hit with a spell attack or a creature fails a saving throw against a spell you cast, that deals cold damage, you can use your bonus action to reduce the movement, of one creature affected by your spell, by 10 feet for one round."
+															"When you hit with a spell attack or a creature fails a saving throw against a spell you cast, and that spell deals cold damage, you can use your bonus action to reduce the movement of one creature affected by your spell, by 10 feet for one round."
 														]
 													}
 												]
@@ -3722,6 +3727,53 @@
 			]
 		},
 		{
+			"name": "Fire Flash",
+			"source": "Zorindis Campain Setting",
+			"level": 2,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "that you take when you get attack by an enemy that can see you."
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"A burst of bright light emanates from your body in response to being attacked. The attacker, must make a Constitution saving throw or be blinded, on a save it has disadvantage with attacks against you. Each creature in 10 feet from you, that can see you, must make a Constitution saving throw or have disadvantage with attacks against you as well. The effects last until the start of your next turn."
+			]
+		},
+		{
 			"name": "Elemental Mark",
 			"source": "Zorindis Campain Setting",
 			"level": 1,
@@ -3794,15 +3846,64 @@
 			]
 		},
 		{
-			"name": "Fire Flash",
+			"name": "Locate Elementals",
+			"source": "Zorindis Campain Setting",
+			"level": 2,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a bit of dust and water, in pressence of a small fire"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Primordialist",
+						"source": "Zorindis Campain Setting"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			},
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Describe or name a specific kind of elemental creature. Concentrating on the voice of nature in your surroundings, you learn the direction and distance to the closest elemental creature of that kind within 5 miles, if any are present."
+			]
+		},
+		{
+			"name": "Tornado",
 			"source": "Zorindis Campain Setting",
 			"level": 2,
 			"school": "V",
 			"time": [
 				{
 					"number": 1,
-					"unit": "reaction",
-					"condition": "that you take when you get attack by an enemy that can see you."
+					"unit": "action"
 				}
 			],
 			"range": {
@@ -3813,15 +3914,13 @@
 				}
 			},
 			"components": {
-				"v": true
+				"v": true,
+				"s": true,
+				"m": "a feather of an owl or an eagle"
 			},
 			"duration": [
 				{
-					"type": "timed",
-					"duration": {
-						"type": "round",
-						"amount": 1
-					}
+					"type": "instant"
 				}
 			],
 			"classes": {
@@ -3831,13 +3930,38 @@
 						"source": "PHB"
 					},
 					{
-						"name": "Cleric",
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Primordialist",
+						"source": "Zorindis Campain Setting"
+					},
+					{
+						"name": "Wizard",
 						"source": "PHB"
 					}
 				]
 			},
 			"entries": [
-				"A burst of bright light emanates from your body in response to being attacked. The attacker, must make a Constitution saving throw or blinded, on a save it has disadvantage with attacks against you. Each creature in 10 feet from you, that can see you, must make a Constitution saving throw or have disadvantage with attacks against you as well. The effect last until the start of your next turn."
+				"Choose a point you can see within the range to create a tornado. Winds howl in a 10-foot-radius and 20 ft. tall cylinder centered on that point. Each creature in the cylinder must succeed on a Strength saving throw or take {@dice 3d6} bludgeoning damage and be knocked prone, if the creature is large or smaller is pulled 5 feet away from the center of the cylinder, or half as much damage and not knocked prone or moved on a successful one",
+				"Any loose object object that weights no more than 100 pounds fly 10 feet away from the center."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by {@dice 1d6} for each slot level above 2nd."
+					]
+				}
+			],
+			"page": 9,
+			"damageInflict": [
+				"bludgeoning"
+			],
+			"savingThrow": [
+				"strength"
 			]
 		},
 		{
@@ -3892,7 +4016,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by {@scaledice 6d8|4-9|1d8} for each slot level above 4th."
+						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by {@dice 1d8} for each slot level above 4th."
 					]
 				}
 			],
@@ -3902,56 +4026,6 @@
 			],
 			"savingThrow": [
 				"constitution"
-			]
-		},
-		{
-			"name": "Locate Elementals",
-			"source": "Zorindis Campain Setting",
-			"level": 2,
-			"school": "D",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "self"
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true,
-				"m": "a bit of dust and water, in pressence of a small fire"
-			},
-			"duration": [
-				{
-					"type": "instant"
-				}
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Druid",
-						"source": "PHB"
-					},
-					{
-						"name": "Primordialist",
-						"source": "Zorindis Campain Setting"
-					},
-					{
-						"name": "Ranger",
-						"source": "PHB"
-					}
-				]
-			},
-			"meta": {
-				"ritual": true
-			},
-			"entries": [
-				"Describe or name a specific kind of elemental creature. Concentrating on the voice of nature in your surroundings, you learn the direction and distance to the closest elemental creature of that kind within 5 miles, if any are present."
 			]
 		},
 		{
@@ -4004,80 +4078,11 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher, the temporary hit points increase by {@scaledice 2d8|3-9|1d8} for each slot level above 3rd."
+						"When you cast this spell using a spell slot of 4th level or higher, the temporary hit points increase by {@dice 1d8} for each slot level above 3rd."
 					]
 				}
 			],
 			"page": 9
-		},
-		{
-			"name": "Tornado",
-			"source": "Zorindis Campain Setting",
-			"level": 2,
-			"school": "V",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true,
-				"m": "a feather of an owl or an eagle"
-			},
-			"duration": [
-				{
-					"type": "instant"
-				}
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Druid",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Primordialist",
-						"source": "Zorindis Campain Setting"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			},
-			"entries": [
-				"Choose a point you can see within the range to create a tornado. Winds howl in a 10-foot-radius and 20 feet tall cylinder centered on that point. Each creature in the cylinder must succeed on a Strength saving throw or take {@dice 4d6} bludgeoning damage and be moved to an unoccupied space of your choice in the pillar dimensions, or half as much damage and not moved on a successful one.",
-				"Any loose object in the sphere is moved to an unoccupied space of your choice within it if the object weighs no more than 100 pounds."
-			],
-			"entriesHigherLevel": [
-				{
-					"type": "entries",
-					"name": "At Higher Levels",
-					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by {@scaledice 4d6|2-9|1d6} for each slot level above 2nd."
-					]
-				}
-			],
-			"page": 9,
-			"damageInflict": [
-				"bludgeoning"
-			],
-			"savingThrow": [
-				"strength"
-			]
 		},
 		{
 			"name": "Wind Step",
