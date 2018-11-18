@@ -76,7 +76,8 @@ function buildDirIndex () {
 
 		const dirFiles = dirContent.map(it => ({
 			download_url: `https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/feat/${encodeURIComponent(it)}`,
-			path: `${dir}/${it}`
+			path: `${dir}/${it}`,
+			name: it
 		}));
 
 		fs.writeFileSync(`_generated/index-dir-${dir}.json`, JSON.stringify(dirFiles), "utf-8");
