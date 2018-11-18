@@ -72,11 +72,11 @@ function buildDirIndex () {
 	uf.runOnDirs((dir) => {
 		console.log(`[DIRECTORY] Indexing dir "${dir}"...`);
 		const dirContent = fs.readdirSync(dir, "utf8")
-			.filter(file => file.endsWith(".json"))
-			.map(file => `${dir}/${file}`);
+			.filter(file => file.endsWith(".json"));
 
 		const dirFiles = dirContent.map(it => ({
-			download_url: `https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/feat/${encodeURIComponent(it)}`
+			download_url: `https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/feat/${encodeURIComponent(it)}`,
+			path: `${dir}/${it}`
 		}));
 
 		fs.writeFileSync(`_generated/index-dir-${dir}.json`, JSON.stringify(dirFiles), "utf-8");
