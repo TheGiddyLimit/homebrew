@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"type": "object",
 	"description": "Homebrew for 5etools. Should include arrays titled similarly to the main site data, e.g. `spell` or `class`",
 
@@ -60,7 +60,15 @@
 				},
 				"actions": {
 					"type": "object",
-					"description": "Object keys are Action names, which can referenced using {@action <key>}"
+					"description": "Object keys are Action names, which can referenced using {@action <key>} (case sensitive)"
+				},
+				"skills": {
+					"type": "object",
+					"description": "Object keys are Skill names, which can referenced using {@skill <key>} (case sensitive)"
+				},
+				"senses": {
+					"type": "object",
+					"description": "Object keys are Sense names, which can referenced using {@sense <key>} (case insensitive)"
 				},
 				"spellSchools": {
 					"type": "object",
@@ -69,6 +77,14 @@
 				"spellDistanceUnits": {
 					"type": "object",
 					"description": "Object names are spell distance units; values should be objects with optional `\"singular\"`` (singular form of the unit, e.g. \"foot\" for the singular of \"feet\"--if unspecified, a trailing \"s\" is removed from the plural version, if it exists, and the result is used as the singular form) and `\"feetPerUnit\"` (e.g. for a \"yards\" custom unit, this would be `3`, as there are three feet in a yard) key/values."
+				},
+				"optionalFeatureTypes": {
+					"type": "object",
+					"description": "Object names are optional feature \"type\" shorthands (e.g. \"EI\" for \"Eldritch Invocation\" which will be displayed in the list view as a sortable column"
+				},
+				"dateAdded": {
+					"type": "integer",
+					"description": "The epoch timestamp (in seconds) when the homebrew was added to the repository. Not guaranteed to be anywhere near accurate."
 				}
 			}
 		},
