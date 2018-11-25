@@ -8,6 +8,47 @@ function _ascSort (a, b) {
 	return b === a ? 0 : b < a ? 1 : -1;
 }
 
+function checkFileContents () {
+	const DIR_TO_PRIMARY_PROP = {
+		"creature": [
+			"monster"
+		],
+		"book": [
+			"book",
+			"bookData"
+		],
+		"adventure": [
+			"adventure",
+			"adventureData"
+		]
+	};
+
+	um.info(`PROP_CHECK`, `Checking file contents...`);
+	const results = [];
+	uf.runOnDirs((dir) => {
+		if (dir === "collection") return;
+
+		um.info(`PROP_CHECK`, `Checking dir "${dir}"...`);
+		const dirFiles = fs.readdirSync(dir, "utf8")
+			.filter(file => file.endsWith(".json"));
+
+		dirFiles.forEach(file => {
+			const json = JSON.parse(fs.readFileSync(`${dir}/${file}`, "utf-8"));
+			const props = DIR_TO_PRIMARY_PROP[dir] || [dir];
+			props.forEach(prop => {
+				if (!json[prop]) results.push(`${dir}/${file} was missing a "${prop}" property!`);
+			});
+		})
+	});
+
+	if (results.length) {
+		results.forEach(r => um.error(`PROP_CHECK`, r));
+		throw new Error(`${results.length} file${results.length === 1 ? " was missing a primary prop!" : "s were missing primary props!"} See above for more info.`)
+	}
+
+	um.info(`PROP_CHECK`, `Complete.`);
+}
+
 function buildCollectionIndex () {
 	um.info(`COLLECTIONS`, `Indexing...`);
 	const DIR_COLLECTION = "collection";
@@ -70,7 +111,7 @@ function buildDirIndex () {
 	um.info(`DIRECTORY`, `Indexing...`);
 
 	uf.runOnDirs((dir) => {
-		console.log(`[DIRECTORY] Indexing dir "${dir}"...`);
+		um.info(`DIRECTORY`, `Indexing dir "${dir}"...`);
 		const dirContent = fs.readdirSync(dir, "utf8")
 			.filter(file => file.endsWith(".json"));
 
@@ -86,6 +127,7 @@ function buildDirIndex () {
 	um.info(`DIRECTORY`, `Complete.`);
 }
 
+checkFileContents();
 buildCollectionIndex();
 buildTimestampIndex();
 buildDirIndex();

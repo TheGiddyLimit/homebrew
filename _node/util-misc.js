@@ -11,7 +11,12 @@ function info (tag, ...args) {
 	_taggedConsole(console.info, tag, ...args);
 }
 
+function error (tag, ...args) {
+	_taggedConsole(console.error, tag, ...args);
+}
+
 module.exports = {
 	warn,
-	info
+	info,
+	error
 };
