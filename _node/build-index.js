@@ -20,6 +20,9 @@ function checkFileContents () {
 		"adventure": [
 			"adventure",
 			"adventureData"
+		],
+		"magicvariant": [
+			"variant"
 		]
 	};
 
