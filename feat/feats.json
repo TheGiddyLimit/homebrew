@@ -1,0 +1,177 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.1.2",
+	"type": "object",
+	"properties": {
+		"feat": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"prerequisite": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"race": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"subrace": {
+												"type": "string"
+											}
+										},
+										"required": ["name"],
+										"additionalProperties": false
+									}
+								},
+								"ability": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"str": {
+												"type": "integer"
+											},
+											"dex": {
+												"type": "integer"
+											},
+											"con": {
+												"type": "integer"
+											},
+											"int": {
+												"type": "integer"
+											},
+											"wis": {
+												"type": "integer"
+											},
+											"cha": {
+												"type": "integer"
+											}
+										},
+										"additionalProperties": false
+									}
+								},
+								"spellcasting": {
+									"type": "boolean"
+								},
+								"proficiency": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"armor": {
+												"type": "string",
+												"enum": ["light", "medium", "heavy"]
+											}
+										},
+										"required": ["armor"],
+										"additionalProperties": false
+									}
+								},
+								"special": {
+									"description": "Primarily for use in Homebrew",
+									"type": "string"
+								},
+								"level": {
+									"type": "integer"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"source": {
+						"type": "string"
+					},
+					"additionalSources": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"source",
+								"page"
+							],
+							"additionalProperties": false
+						}
+					},
+					"page": {
+						"type": "integer"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					},
+					"ability": {
+						"type": "object",
+						"properties": {
+							"choose": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"from": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"enum": ["str", "dex", "con", "int", "wis", "cha"]
+											}
+										},
+										"amount": {
+											"type": "integer"
+										},
+										"textreference": {
+											"type": "boolean"
+										}
+									},
+									"required": ["from"],
+									"additionalProperties": false
+								}
+							},
+							"str": {
+								"type": "integer"
+							},
+							"dex": {
+								"type": "integer"
+							},
+							"con": {
+								"type": "integer"
+							},
+							"int": {
+								"type": "integer"
+							},
+							"wis": {
+								"type": "integer"
+							},
+							"cha": {
+								"type": "integer"
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"required": ["name", "source", "entries"],
+				"additionalProperties": false
+			}
+		}
+	},
+	"required": ["feat"],
+	"additionalProperties": false
+}

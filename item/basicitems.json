@@ -1,0 +1,185 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.1",
+	"definitions": {
+		"itemLookup": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"abbreviation": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"name": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"anyOf" : [
+					{
+						"required": [
+							"abbreviation",
+							"source",
+							"page",
+							"name",
+							"entries"
+						]
+					},
+					{
+						"required": [
+							"abbreviation",
+							"source",
+							"page",
+							"entries"
+						]
+					},
+					{
+						"required": [
+							"abbreviation",
+							"source",
+							"page",
+							"name"
+						]
+					}
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"type": "object",
+	"properties": {
+		"basicitem": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"rarity": {
+						"type": "string",
+						"description": "\"None\" is for mundane items. \"Unknown (Magic)\" is for miscellaneous magical items. \"Unknown\" is for miscellaneous mundane items.",
+						"enum": [
+							"Rare",
+							"None",
+							"Uncommon",
+							"Very Rare",
+							"Legendary",
+							"Artifact",
+							"Unknown",
+							"Common",
+							"Unknown (Magic)"
+						]
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"ac": {
+						"type": "integer"
+					},
+					"age": {
+						"type": "string"
+					},
+					"ammunition": {
+						"type": "boolean"
+					},
+					"armor": {
+						"type": "boolean"
+					},
+					"axe": {
+						"type": "boolean"
+					},
+					"dmg1": {
+						"type": "string"
+					},
+					"dmg2": {
+						"type": "string"
+					},
+					"dmgType": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					},
+					"property": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": ["T", "V", "H", "2H", "F", "L", "R", "A", "LD", "S", "AF", "RLD", "BF"]
+						}
+					},
+					"range": {
+						"type": "string"
+					},
+					"reload": {
+						"type": "string"
+					},
+					"scfType": {
+						"type": "string"
+					},
+					"stealth": {
+						"type": "boolean"
+					},
+					"strength": {
+						"type": "string"
+					},
+					"sword": {
+						"type": "boolean"
+					},
+					"technology": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"weapon": {
+						"type": "boolean"
+					},
+					"weaponCategory": {
+						"type": "string"
+					},
+					"weight": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"type",
+					"rarity",
+					"source",
+					"page"
+				],
+				"additionalProperties": false
+			}
+		},
+		"itemProperty": {
+			"$ref": "#/definitions/itemLookup"
+		},
+		"itemType": {
+			"$ref": "#/definitions/itemLookup"
+		}
+	},
+	"additionalProperties": false
+}

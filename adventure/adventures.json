@@ -1,0 +1,119 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.1",
+	"type": "object",
+	"properties": {
+		"adventure": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					},
+					"contents": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"headers": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"ordinal": {
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"enum": ["chapter", "appendix", "part", "episode"]
+										},
+										"identifier": {
+											"type": ["integer", "string"]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"type",
+										"identifier"
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"name"
+							]
+						}
+					},
+					"level": {
+						"oneOf": [
+							{
+								"type": "object",
+								"properties": {
+									"start": {
+										"type": "integer"
+									},
+									"end": {
+										"type": "integer"
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"start",
+									"end"
+								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"custom": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"custom"
+								]
+							}
+						]
+					},
+					"published": {
+						"type": "string",
+						"format": "date"
+					},
+					"storyline": {
+						"type": "string",
+						"enum": [
+							"Starter Set",
+							"Tyranny of Dragons",
+							"Elemental Evil",
+							"Rage of Demons",
+							"Curse of Strahd",
+							"Storm King's Thunder",
+							"Tales from the Yawning Portal",
+							"Tomb of Annihilation",
+							"Waterdeep"
+						]
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"name",
+					"id",
+					"contents",
+					"level",
+					"published",
+					"storyline"
+				]
+			}
+		}
+	},
+	"additionalProperties": false
+}

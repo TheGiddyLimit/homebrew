@@ -1,0 +1,127 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.1",
+	"type": "object",
+	"properties": {
+		"deity": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"reprintAlias": {
+						"type": "string"
+					},
+					"alignment": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": ["C", "N", "G", "L", "E"]
+						}
+					},
+					"title": {
+						"type": "string"
+					},
+					"pantheon": {
+						"type": "string",
+						"enum": [
+							"Celtic",
+							"Dawn War",
+							"Dragonlance",
+							"Drow",
+							"Dwarven",
+							"Eberron",
+							"Egyptian",
+							"Elven",
+							"Faerûnian",
+							"Forgotten Realms",
+							"Gnomish",
+							"Greek",
+							"Greyhawk",
+							"Halfling",
+							"Nonhuman",
+							"Norse",
+							"Orc",
+							"Gnome",
+							"Duergar"
+						]
+					},
+					"category": {
+						"type": "string"
+					},
+					"domains": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": [
+								"Arcana", "Death", "Knowledge", "Life", "Light", "Nature", "Tempest", "Trickery", "War", "Forge", "Grave"
+							]
+						}
+					},
+					"province": {
+						"description": "The nouveau form of 'title,' first seen in MTF",
+						"type": "string"
+					},
+					"symbol": {
+						"type": "string"
+					},
+					"customProperties": {
+						"description": "For homebrew use only; a key-value dict of the form: `\"Typical Worshipers\": \"Half-elf Bards\"`",
+						"type": "object"
+					},
+					"source": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					},
+					"page": {
+						"type": "integer"
+					},
+					"additionalSources": {
+						"description": "Used to add XGE domains (e.g. Forge) to existing deities",
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"source",
+								"page"
+							],
+							"additionalProperties": false
+						}
+					},
+					"altNames": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"symbolImg": {
+						"$ref": "/Entry#/definitions/entryImage"
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"name",
+					"alignment",
+					"pantheon",
+					"symbol",
+					"source"
+				]
+			}
+		}
+	}
+}

@@ -1,0 +1,70 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.0",
+	"type": "object",
+	"properties": {
+		"reward": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"type": {
+						"type": "string"
+					},
+					"ability": {
+						"type": "object",
+						"properties": {
+							"entry": {
+								"$ref": "/Entry"
+							}
+						},
+						"required": [
+							"entry"
+						],
+						"additionalProperties": false
+					},
+					"signaturespells": {
+						"type": "object",
+						"properties": {
+							"entry": {
+								"$ref": "/Entry"
+							}
+						},
+						"required": [
+							"entry"
+						],
+						"additionalProperties": false
+					},
+					"entries": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"type",
+					"entries"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"required": [
+		"reward"
+	],
+	"additionalProperties": false
+}

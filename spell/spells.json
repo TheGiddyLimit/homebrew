@@ -1,0 +1,441 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.2.5",
+	"title": "SpellsArray",
+	"type": "object",
+
+	"definitions": {
+		"spell": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"level": {
+					"type": "integer"
+				},
+				"school": {
+					"type": "string",
+					"enum": [
+						"A",
+						"V",
+						"E",
+						"I",
+						"D",
+						"N",
+						"T",
+						"C",
+						"P"
+					]
+				},
+				"meta": {
+					"type": "object",
+					"properties": {
+						"ritual": {
+							"type": "boolean"
+						},
+						"technomagic": {
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				},
+				"time": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/time"
+					}
+				},
+				"range": {
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"enum": [
+								"special",
+								"point",
+								"line",
+								"cube",
+								"cone",
+								"radius",
+								"sphere",
+								"hemisphere"
+							]
+						},
+						"distance": {
+							"type": "object",
+							"properties": {
+								"type": {
+									"type": "string",
+									"enum": [
+										"feet",
+										"miles",
+										"self",
+										"touch",
+										"special",
+										"unlimited",
+										"plane",
+										"sight"
+									]
+								},
+								"amount": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"type"
+							],
+							"additionalProperties": false
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false
+				},
+				"components": {
+					"type": "object",
+					"properties": {
+						"v": {
+							"type": "boolean"
+						},
+						"s": {
+							"type": "boolean"
+						},
+						"m": {
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"text": {
+											"type": "string"
+										},
+										"cost": {
+											"type": "integer"
+										},
+										"consume": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"text"
+									],
+									"additionalProperties": false
+
+								},
+								{
+									"type": ["boolean", "string"]
+								}
+							]
+						}
+					},
+					"additionalProperties": false
+				},
+				"duration": {
+					"type": "array",
+					"items": {"$ref": "#/definitions/duration"}
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				},
+				"entriesHigherLevel": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				},
+				"classes": {
+					"type": "object",
+					"properties": {
+						"fromClassList": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/class"
+							}
+						},
+						"fromSubclass": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"class": {
+										"$ref": "#/definitions/class"
+									},
+									"subclass": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"type": "string"
+											},
+											"subSubclass": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"source"
+										],
+										"additionalProperties": false
+									}
+								},
+								"required": [
+									"class",
+									"subclass"
+								],
+								"additionalProperties": false
+							}
+						}
+					},
+					"required": [
+						"fromClassList"
+					],
+					"additionalProperties": false
+				},
+				"races": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"source": {
+								"type": "string"
+							},
+							"baseName": {
+								"type": "string"
+							},
+							"baseSource": {
+								"type": "string"
+							}
+						},
+						"required": ["name", "source"]
+					}
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"type": "integer"
+				},
+				"otherSources": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"source": {
+								"type": "string"
+							},
+							"page": {
+								"type": "integer"
+							}
+						},
+						"required": [
+							"source",
+							"page"
+						],
+						"additionalProperties": false
+					}
+				},
+				"damageInflict": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"
+						]
+					}
+				},
+				"damageResist": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"
+						]
+					}
+				},
+				"damageImmune": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"
+						]
+					}
+				},
+				"damageVulnerable": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"
+						]
+					}
+				},
+				"conditionInflict": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled", "incapacitated", "invisible", "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious"
+						]
+					}
+				},
+				"savingThrow": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"strength", "constitution", "dexterity", "intelligence", "wisdom", "charisma"
+						]
+					}
+				},
+				"opposedCheck": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"strength", "constitution", "dexterity", "intelligence", "wisdom", "charisma"
+						]
+					}
+				},
+				"permanentEffects": {
+					"description": "Used to flag spells that can/will have permanent effects, but are not listed as having permanent duration",
+					"type": "boolean"
+				},
+				"spellAttack": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"M", "R", "O"
+						]
+					}
+				},
+				"scalingEffects": {
+					"type": "boolean"
+				},
+				"isHeal": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"name",
+				"level",
+				"school",
+				"time",
+				"range",
+				"duration",
+				"classes",
+				"entries",
+				"source"
+			],
+			"additionalProperties": false
+		},
+
+		"time": {
+			"properties": {
+				"number": {
+					"type": "integer"
+				},
+				"unit": {
+					"type": "string"
+				},
+				"condition": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"unit"
+			],
+			"additionalProperties": false
+		},
+
+		"duration": {
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": [
+						"instant",
+						"timed",
+						"permanent",
+						"special"
+					]
+				},
+				"duration": {
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"enum": [
+								"hour",
+								"minute",
+								"turn",
+								"round",
+								"week",
+								"day",
+								"year"
+							]
+						},
+						"amount": {
+							"type": "integer"
+						},
+						"upTo": {
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false
+				},
+				"concentration": {
+					"type": "boolean"
+				},
+				"ends": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": ["dispel", "trigger", "discharge"]
+					}
+				},
+				"condition": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"type"
+			],
+			"additionalProperties": false
+		},
+
+		"class": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"source"
+			],
+			"additionalProperties": false
+		}
+	},
+
+	"properties": {
+		"spell": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/spell"}
+		}
+	}
+}

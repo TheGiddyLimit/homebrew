@@ -1,0 +1,150 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.0.0",
+	"type": "object",
+	"properties": {
+		"psionic": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"type": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"focus": {
+						"type": "string"
+					},
+					"order": {
+						"type": "string"
+					},
+					"modes": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"type": "object",
+							"properties": {
+								"cost": {
+									"type": "object",
+									"properties": {
+										"min": {
+											"type": "integer"
+										},
+										"max": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"min",
+										"max"
+									],
+									"additionalProperties": false
+								},
+								"concentration": {
+									"type": "object",
+									"properties": {
+										"duration": {
+											"type": "integer"
+										},
+										"unit": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"duration",
+										"unit"
+									],
+									"additionalProperties": false
+								},
+								"name": {
+									"type": "string"
+								},
+								"entries": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								},
+								"submodes": {
+									"type": "array",
+									"uniqueItems": true,
+									"items": {
+										"type": "object",
+										"properties": {
+											"cost": {
+												"type": "object",
+												"properties": {
+													"min": {
+														"type": "integer"
+													},
+													"max": {
+														"type": "integer"
+													}
+												},
+												"required": [
+													"min",
+													"max"
+												],
+												"additionalProperties": false
+											},
+											"name": {
+												"type": "string"
+											},
+											"entries": {
+												"type": "array",
+												"uniqueItems": true,
+												"items": {
+													"$ref": "/Entry"
+												}
+											}
+										},
+										"required": [
+											"cost",
+											"name",
+											"entries"
+										],
+										"additionalProperties": false
+									}
+								}
+							},
+							"required": [
+								"name",
+								"entries"
+							],
+							"additionalProperties": false
+						}
+					},
+					"entries": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"type"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"required": [
+		"psionic"
+	],
+	"additionalProperties": false
+}

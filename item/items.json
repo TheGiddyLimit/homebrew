@@ -1,0 +1,243 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.1.6",
+	"type": "object",
+	"definitions": {
+		"item": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"rarity": {
+					"type": "string",
+					"description": "\"None\" is for mundane items. \"Unknown (Magic)\" is for miscellaneous magical items. \"Unknown\" is for miscellaneous mundane items. \"Varies\" is for item groups.",
+					"enum": [
+						"Rare",
+						"None",
+						"Uncommon",
+						"Very Rare",
+						"Legendary",
+						"Artifact",
+						"Unknown",
+						"Common",
+						"Unknown (Magic)",
+						"Varies"
+					]
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"type": "integer"
+				},
+				"additionalSources": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"source": {
+								"type": "string"
+							},
+							"page": {
+								"type": "integer"
+							}
+						},
+						"required": [
+							"source",
+							"page"
+						],
+						"additionalProperties": false
+					}
+				},
+				"baseItem": {
+					"type": "string"
+				},
+				"ac": {
+					"type": "integer"
+				},
+				"age": {
+					"type": "string"
+				},
+				"ammunition": {
+					"type": "boolean"
+				},
+				"armor": {
+					"type": "boolean"
+				},
+				"axe": {
+					"type": "boolean"
+				},
+				"carryingcapacity": {
+					"type": "string"
+				},
+				"dmg1": {
+					"type": "string"
+				},
+				"dmg2": {
+					"type": "string"
+				},
+				"dmgType": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				},
+				"additionalEntries": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				},
+				"modifier": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"_category": {
+								"type": "string"
+							},
+							"__text": {
+								"type": "string"
+							},
+							"toString": {
+								"type": "array"
+							}
+						},
+						"required": [
+							"_category",
+							"__text",
+							"toString"
+						],
+						"additionalProperties": false
+					}
+				},
+				"property": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": ["T", "V", "H", "2H", "F", "L", "R", "A", "LD", "S", "AF", "RLD", "BF", "EM", "OTH"]
+					}
+				},
+				"range": {
+					"type": "string"
+				},
+				"reload": {
+					"type": "string"
+				},
+				"reqAttune": {
+					"oneOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "boolean"
+						}
+					]
+				},
+				"curse": {
+					"type": "boolean"
+				},
+				"resist": {
+					"type": "string"
+				},
+				"scfType": {
+					"type": "string"
+				},
+				"speed": {
+					"type": "string"
+				},
+				"stealth": {
+					"type": "boolean"
+				},
+				"strength": {
+					"type": "string"
+				},
+				"sword": {
+					"type": "boolean"
+				},
+				"technology": {
+					"type": "string"
+				},
+				"tier": {
+					"type": "string"
+				},
+				"value": {
+					"type": "string"
+				},
+				"weapon": {
+					"type": "boolean"
+				},
+				"weaponCategory": {
+					"type": "string"
+				},
+				"weight": {
+					"type": "string"
+				},
+				"weightNote": {
+					"type": "string"
+				},
+				"wondrous": {
+					"type": "boolean"
+				},
+				"sentient": {
+					"type": "boolean"
+				},
+				"poison": {
+					"type": "boolean"
+				},
+				"crew": {
+					"type": "integer"
+				},
+				"vehAc": {
+					"type": "integer"
+				},
+				"vehHp": {
+					"type": "integer"
+				},
+				"vehDmgThresh": {
+					"type": "integer"
+				},
+				"charges": {
+					"type": ["string", "integer"]
+				},
+				"attachedSpells": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"name",
+				"rarity",
+				"source"
+			],
+			"additionalProperties": false
+		}
+	},
+	"properties": {
+		"item": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/definitions/item"
+			}
+		},
+		"itemGroup": {
+			"description": "Used to create fake item entries for groups of related items, often referred to as a single item (e.g. arcane foci)",
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/definitions/item"
+			}
+		}
+	},
+	"additionalProperties": false
+}
