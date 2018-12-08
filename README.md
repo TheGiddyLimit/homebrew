@@ -20,7 +20,9 @@ _**Note:** one large advantage of contributing to this repo, is that your files 
 
 - The easiest way to make your own is to copy one of the existing 'brews as a template and use the main [5etools data](https://github.com/TheGiddyLimit/TheGiddyLimit.github.io/tree/master/data) as a reference.
     - The schemata for the main site data can be found [here](https://github.com/TheGiddyLimit/TheGiddyLimit.github.io/tree/master/test/schema)
-- Contributions are welcome. For the Git-literate, make a pull request. For everyone else, create an Issue and post a link to your file (PasteBin is fine), and I (or other maintainers, in future) can add it for you.
+- Contributions are welcome. For the GitHub-literate, make a pull request.* For everyone else, create an Issue and post a link to your file (PasteBin is fine), and I (or other maintainers, in future) can add it for you.
+
+\* _See the article [here](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) for a how-to._
 
 A schema is available (`json.schema`) describing the layout of the and usage of the `_meta` property found in the various data files.
 
