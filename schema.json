@@ -7,6 +7,21 @@
 		"entry": {
 			"$id": "/Entry",
 			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/entry.json"
+		},
+		"bookSource": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"id",
+				"source"
+			]
 		}
 	},
 	"properties": {
@@ -90,7 +105,79 @@
 				"dateAdded": {
 					"type": "integer",
 					"description": "The epoch timestamp (in seconds) when the homebrew was added to the repository. Not guaranteed to be anywhere near accurate."
+				},
+				"dependencies": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
 				}
+			}
+		},
+		"adventure": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/adventures.json#/properties/adventure/items"
+					},
+					{
+						"$ref": "#/definitions/bookSource"
+					}
+				]
+			}
+		},
+		"adventureData": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"$ref": "#/definitions/bookSource"
+					},
+					{
+						"properties": {
+							"data": {
+								"type": "array",
+								"items": {
+									"$ref": "#/definitions/entry"
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"book": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/adventures.json#/properties/adventure/items"
+					},
+					{
+						"$ref": "#/definitions/bookSource"
+					}
+				]
+			}
+		},
+		"bookData": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"$ref": "#/definitions/bookSource"
+					},
+					{
+						"properties": {
+							"data": {
+								"type": "array",
+								"items": {
+									"$ref": "#/definitions/entry"
+								}
+							}
+						}
+					}
+				]
 			}
 		},
 		"class": {
@@ -124,11 +211,75 @@
 		"variant": {
 			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/magicvariants.json#properties/variant"
 		},
+		"background": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/backgrounds.json#/properties/background"
+		},
+		"condition": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/conditionsdiseases.json#/properties/condition"
+		},
+		"disease": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/conditionsdiseases.json#/properties/disease"
+		},
+		"deity": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/deities.json#/properties/deity"
+		},
+		"cult": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/cultsboons.json#/properties/cult"
+		},
+		"boon": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/cultsboons.json#/properties/boon"
+		},
+		"encounter": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/encounters.json#/properties/encounter"
+		},
+		"feat": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/feats.json#/properties/feat"
+		},
+		"name": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/names.json#/properties/name"
+		},
+		"object": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/objects.json#/properties/object"
+		},
+		"psionic": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/psionics.json#/properties/psionic"
+		},
+		"race": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/races.json#/properties/race"
+		},
+		"reward": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/rewards.json#/properties/reward"
+		},
+		"ship": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/ships.json#/properties/ship"
+		},
+		"table": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/tables.json#/properties/table"
+		},
+		"trap": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/trapshazards.json#/properties/trap"
+		},
+		"hazard": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/trapshazards.json#/properties/hazard"
+		},
 		"optionalfeature": {
 			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/optionalfeatures.json#properties/optionalfeature"
 		},
 		"variantrule": {
 			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/variantrules.json#properties/variantrule"
+		},
+		"legendaryGroup": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/bestiary/meta.json#/properties/legendaryGroup"
+		},
+		"language": {
+			"$ref": "https://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/bestiary/meta.json#/properties/language"
+		},
+		"monster": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"description": "Creature Data"
+			}
 		}
 	}
 }
