@@ -236,6 +236,7 @@
 			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/feats.json#/properties/feat"
 		},
 		"name": {
+			"description": "Not supported in homebrew",
 			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/names.json#/properties/name"
 		},
 		"object": {
@@ -245,7 +246,21 @@
 			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/psionics.json#/properties/psionic"
 		},
 		"race": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/races.json#/properties/race"
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/races.json#/properties/race/items"
+					},
+					{
+						"properties": {
+							"fluff": {
+								"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/fluff-races.json#/properties/race/items"
+							}
+						}
+					}
+				]
+			}
 		},
 		"reward": {
 			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/rewards.json#/properties/reward"
