@@ -3,6 +3,7 @@
 const fs = require("fs");
 const uf = require("./util-fs");
 const um = require("./util-misc");
+const ub = require("./util-brew");
 
 function _ascSort (a, b) {
 	return b === a ? 0 : b < a ? 1 : -1;
@@ -71,10 +72,6 @@ function buildCollectionIndex () {
 
 function buildTimestampIndex () {
 	um.info(`TIMESTAMPS`, `Indexing...`);
-	const RUN_TIMESTAMP = Math.floor(Date.now() / 1000);
-	const NO_META = {
-		"collection/index.json": 1
-	};
 	const TIMESTAMP_PATH = "_generated/index-timestamps.json";
 
 	const timestampIndex = {};
@@ -87,13 +84,9 @@ function buildTimestampIndex () {
 				contents: uf.readJSON(file)
 			}))
 			.forEach(file => {
-				const hasMeta = !NO_META[file.name];
+				const hasMeta = !ub.FILES_NO_META[file.name];
 				if (!file.contents._meta && hasMeta) {
 					throw new Error(`File "${file.name}" did not have metadata!`);
-				}
-				if (hasMeta && file.contents._meta.dateAdded == null) {
-					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateAdded"!`);
-					file.contents._meta.dateAdded = RUN_TIMESTAMP;
 				}
 				if (hasMeta) {
 					timestampIndex[file.name] = file.contents._meta.dateAdded;

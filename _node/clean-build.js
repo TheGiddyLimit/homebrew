@@ -5,6 +5,7 @@
 const fs = require("fs");
 const uf = require("./util-fs");
 const um = require("./util-misc");
+const ub = require("./util-brew");
 
 const REPLACEMENTS = {
 	"—": "\\u2014",
@@ -18,6 +19,8 @@ const REPLACEMENTS = {
 
 const replacementRegex = new RegExp(Object.keys(REPLACEMENTS).join("|"), 'g');
 
+const RUN_TIMESTAMP = Math.floor(Date.now() / 1000);
+
 function cleanFolder (folder) {
 	const files = uf.listFiles(folder);
 	files
@@ -26,6 +29,10 @@ function cleanFolder (folder) {
 			contents: uf.readJSON(file)
 		}))
 		.map(file => {
+			if (!ub.FILES_NO_META[file.name] && file.contents._meta.dateAdded == null) {
+				um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateAdded"! Adding one...`);
+				file.contents._meta.dateAdded = RUN_TIMESTAMP;
+			}
 			file.contents = JSON.stringify(file.contents, null, "\t") + "\n";
 			return file;
 		})
