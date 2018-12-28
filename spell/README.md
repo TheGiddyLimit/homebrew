@@ -1,12 +1,19 @@
 ## Spells
 
+---
 
+Spells actually refer to both spells and psionic powers, the formating on this is bit more convoluted than some as much of it isn't required.
 
 
 
 #### Example / Schema
 
-Example (Sample file)[]
+---
+
+Example (Sample file)[Sample - Giddy; Assorted Marginalia.json]
+
+(Schema)[spells.json]
+
 
 
 "spell": [
