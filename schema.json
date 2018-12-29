@@ -768,6 +768,9 @@
 				"languages": {
 					"type": "string"
 				},
+				"languageSpeaks": {
+					"type": "boolean"
+				},
 				"cr": {
 					"oneOf": [
 						{
@@ -1427,7 +1430,21 @@
 			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/spells/spells.json#/properties/spell"
 		},
 		"item": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/items.json#/properties/item"
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/items.json#/properties/item/items"
+					},
+					{
+						"properties": {
+							"fluff": {
+								"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/fluff-items.json#/properties/item/items"
+							}
+						}
+					}
+				]
+			}
 		},
 		"itemGroup": {
 			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/items.json#properties/itemGroup"
@@ -1446,7 +1463,21 @@
 			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/magicvariants.json#properties/variant"
 		},
 		"background": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/backgrounds.json#/properties/background"
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/backgrounds.json#/properties/background/items"
+					},
+					{
+						"properties": {
+							"fluff": {
+								"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/fluff-backgrounds.json#/properties/background/items"
+							}
+						}
+					}
+				]
+			}
 		},
 		"condition": {
 			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/conditionsdiseases.json#/properties/condition"
@@ -1456,12 +1487,6 @@
 		},
 		"deity": {
 			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/deities.json#/properties/deity"
-		},
-		"cult": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/cultsboons.json#/properties/cult"
-		},
-		"boon": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/cultsboons.json#/properties/boon"
 		},
 		"encounter": {
 			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/encounters.json#/properties/encounter"
