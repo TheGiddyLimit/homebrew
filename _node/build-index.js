@@ -46,7 +46,6 @@ function checkFileContents () {
 	});
 
 	if (results.length) {
-		return
 		results.forEach(r => um.error(`PROP_CHECK`, r));
 		throw new Error(`${results.length} file${results.length === 1 ? " was missing a primary prop!" : "s were missing primary props!"} See above for more info.`)
 	}
@@ -110,8 +109,7 @@ function buildDirIndex () {
 	uf.runOnDirs((dir) => {
 		um.info(`DIRECTORY`, `Indexing dir "${dir}"...`);
 		const dirContent = fs.readdirSync(dir, "utf8")
-			.filter(file => file.endsWith(".json"))
-			.filter(file => !file.startsWith("SaF"));
+			.filter(file => file.endsWith(".json"));
 
 		const dirFiles = dirContent.map(it => ({
 			download_url: `https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/${dir}/${encodeURIComponent(it)}`,
