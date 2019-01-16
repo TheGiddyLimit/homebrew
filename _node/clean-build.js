@@ -20,6 +20,7 @@ const REPLACEMENTS = {
 const replacementRegex = new RegExp(Object.keys(REPLACEMENTS).join("|"), 'g');
 
 const RUN_TIMESTAMP = Math.floor(Date.now() / 1000);
+const MAX_TIMESTAMP = 9999999999;
 
 function cleanFolder (folder) {
 	const files = uf.listFiles(folder);
@@ -29,9 +30,14 @@ function cleanFolder (folder) {
 			contents: uf.readJSON(file)
 		}))
 		.map(file => {
-			if (!ub.FILES_NO_META[file.name] && file.contents._meta.dateAdded == null) {
-				um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateAdded"! Adding one...`);
-				file.contents._meta.dateAdded = RUN_TIMESTAMP;
+			if (!ub.FILES_NO_META[file.name]) {
+				if (file.contents._meta.dateAdded == null) {
+					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateAdded"! Adding one...`);
+					file.contents._meta.dateAdded = RUN_TIMESTAMP;
+				} else if (file.contents._meta.dateAdded > MAX_TIMESTAMP) {
+					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" had a "dateAdded" in milliseconds! Converting to seconds...`);
+					file.contents._meta.dateAdded = file.contents._meta.dateAdded / 1000;
+				}
 			}
 			file.contents = JSON.stringify(file.contents, null, "\t") + "\n";
 			return file;
