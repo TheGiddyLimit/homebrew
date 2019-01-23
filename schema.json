@@ -1352,9 +1352,14 @@
 					"description": "The epoch timestamp (in seconds) when the homebrew was added to the repository. Not guaranteed to be anywhere near accurate."
 				},
 				"dependencies": {
-					"type": "array",
-					"items": {
-						"type": "string"
+					"dependencies": {
+						"type": "object",
+						"properties": {
+							"monster": {
+								"type": "array",
+								"items": {"type": "string"}
+							}
+						}
 					}
 				}
 			}
@@ -1436,6 +1441,13 @@
 		},
 		"spell": {
 			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/spells/spells.json#/properties/spell"
+		},
+		"roll20Spell": {
+			"description": "Based on the Roll20 JSON data",
+			"type": "array",
+			"items": {
+				"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/spells/roll20.json#/definitions/spellMeta"
+			}
 		},
 		"item": {
 			"type": "array",
