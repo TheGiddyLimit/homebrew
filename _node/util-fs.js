@@ -17,13 +17,13 @@ function readJSON (path) {
 
 function listFiles (dir) {
 	const dirContent = fs.readdirSync(dir, "utf8")
-		.filter(file => file.endsWith(".json"))
+		.filter(file => file.toLowerCase().endsWith(".json"))
 		.map(file => `${dir}/${file}`);
 	return dirContent.reduce((acc, file) => {
 		if (isDirectory(file)) {
 			acc.push(...listFiles(file));
 		} else {
-			acc.push(file);
+			acc.push(file.replace(/\.json$/i, ".json"));
 		}
 		return acc;
 	}, [])
