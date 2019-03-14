@@ -8,7 +8,16 @@ function isDirectory (path) {
 
 function readJSON (path) {
 	try {
-		return JSON.parse(fs.readFileSync(path, "utf8"));
+		if (fs.existsSync(path)) return JSON.parse(fs.readFileSync(path, "utf8"));
+		else {
+			const parts = path.split(/[\\/]+/g);
+			const dir = parts.slice(0, -1).join("/");
+			const originalName = parts[parts.length - 1];
+			const filenames = fs.readdirSync(dir, "utf8");
+			const filename = filenames.find(it => it.toLowerCase() === originalName.toLowerCase());
+			if (filename) return JSON.parse(fs.readFileSync(`${dir}/${filename}`, "utf8"));
+			else throw new Error(`Could not find file "${path}"`);
+		}
 	} catch (e) {
 		e.message += ` (Path: ${path})`;
 		throw e;
@@ -20,11 +29,8 @@ function listFiles (dir) {
 		.filter(file => file.toLowerCase().endsWith(".json"))
 		.map(file => `${dir}/${file}`);
 	return dirContent.reduce((acc, file) => {
-		if (isDirectory(file)) {
-			acc.push(...listFiles(file));
-		} else {
-			acc.push(file.replace(/\.json$/i, ".json"));
-		}
+		if (isDirectory(file)) acc.push(...listFiles(file));
+		else acc.push(file.replace(/\.json$/i, ".json"));
 		return acc;
 	}, [])
 }
