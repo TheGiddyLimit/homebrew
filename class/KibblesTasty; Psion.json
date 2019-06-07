@@ -1,0 +1,2336 @@
+{
+	"_meta": {
+		"sources": [
+			{
+				"json": "ktp",
+				"abbreviation": "KT:P",
+				"full": "KibblesTasty: Psion",
+				"authors": [
+					"KibblesTasty"
+				],
+				"convertedBy": [
+					"wafflepotamus"
+				],
+				"version": "1.1",
+				"url": "https://drive.google.com/file/d/1kCg-0NuzoFUctnBjxjV8qIa19TEuAEGA/view",
+				"targetSchema": "1.0.0"
+			}
+		],
+		"optionalFeatureTypes": {
+			"PsiD": "Psionic Discipline",
+			"PsiT": "Psionic Talent"
+		},
+		"dateAdded": 1559943252
+	},
+	"class": [
+		{
+			"name": "Psion",
+			"source": "ktp",
+			"hd": {
+				"number": 1,
+				"faces": 6
+			},
+			"proficiency": [
+				"wis",
+				"int"
+			],
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"Psi Points",
+						"Per Use Limit",
+						"{@filter Psionic Talents|optionalfeatures|feature type=PsiT}"
+					],
+					"rows": [
+						[
+							1,
+							1,
+							0
+						],
+						[
+							2,
+							1,
+							1
+						],
+						[
+							3,
+							2,
+							1
+						],
+						[
+							4,
+							2,
+							1
+						],
+						[
+							5,
+							3,
+							2
+						],
+						[
+							6,
+							3,
+							2
+						],
+						[
+							7,
+							4,
+							2
+						],
+						[
+							8,
+							4,
+							3
+						],
+						[
+							9,
+							5,
+							3
+						],
+						[
+							10,
+							5,
+							3
+						],
+						[
+							11,
+							6,
+							4
+						],
+						[
+							12,
+							6,
+							4
+						],
+						[
+							13,
+							7,
+							4
+						],
+						[
+							14,
+							7,
+							5
+						],
+						[
+							15,
+							8,
+							5
+						],
+						[
+							16,
+							8,
+							5
+						],
+						[
+							17,
+							9,
+							6
+						],
+						[
+							18,
+							9,
+							6
+						],
+						[
+							19,
+							10,
+							6
+						],
+						[
+							20,
+							10,
+							7
+						]
+					]
+				}
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light"
+				],
+				"weapons": [
+					"simple"
+				],
+				"skills": {
+					"choose": 2,
+					"from": [
+						"Deception",
+						"History",
+						"Insight",
+						"Intimidation",
+						"Investigation",
+						"Medicine",
+						"Perception",
+						"Religion"
+					]
+				}
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item quarterstaff|phb} or (b) a {@item dagger|phb}",
+					"{@item leather armor|phb}",
+					"(a) a {@item scholar's pack|phb} or (b) an {@item explorer's pack|phb}"
+				],
+				"goldAlternative": "{@dice 3d4×10|3d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"int": 13
+				},
+				"proficienciesGained": {
+					"weapons": [
+						"simple"
+					]
+				}
+			},
+			"classFeatures": [
+				[
+					{
+						"name": "Psionic Archetype",
+						"entries": [
+							"At 1st level, you pick the archetype of Psion you embody, choosing from Awakened, Unleashed, or Transcended, each of which are detailed at the end of the class description. Your choice grants you features at 1st level, and again at 3rd, 6th, 10th, and 14th level."
+						],
+						"gainSubclassFeature": true
+					},
+					{
+						"name": "Psionics",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Psionic Disciplines",
+								"entries": [
+									"You are granted access a {@filter psionic discipline|optionalfeatures|feature type=PsiD} (such as {@optfeature Telepathy Discipline|ktp|telepathy} or {@optfeature Telekinesis Discipline|ktp|telekinesis}) by your chosen archetype. A psionic discipline comes with a passive feature that expands your character's capabilities and an active psionic power that can be modified and empowered with psi points. Additionally, you can use your discipline in more detailed applications to recreate the effect of certain spells, listed at the end of the disciple description. At 3rd level, you can select a second discipline, and at 18th level you can select a 3rd discipline.",
+									"Psionic powers are suppressed by {@spell antimagic field} and can be dispelled with {@spell dispel magic}, but are only affected by {@spell counterspell} if recreating the effect of a spell. Any check required to {@spell dispel magic}, {@spell counterspell}, or identify a spell being cast with Psionics is made at disadvantage unless the caster also has the Psionics feature. The spell {@spell detect magic} will detect the usage of psionics, but not their nature - it will show up as a mysterious untyped power, even if being used to generate the effect of a spell.",
+									"When recreating a spell through a Psionic effect (using a psionic discipline to cast the spell), the spell has no Material or Verbal components, but always requires Somatic components and causes the Psion to vibrantly glow with otherworldly psionic energies they are controlling."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Psi Points",
+								"entries": [
+									"Starting at 1st level, you gain access to psi points used to fuel {@filter psionic discipline|optionalfeatures|feature type=PsiD} powers and effects. You have a number of psi points equal to your Psion level, and regain all spent points after completing a short or long rest. You can spend a number of psi points equal to half your level (rounded up) at a time (for example, at level 5, you can spend 3 psi points on psionic power or cast a spell with a cost of 3 psi points)."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Psionic Power",
+								"entries": [
+									"Intelligence is your ability for your psionic disciplines and spells, since the source of your power comes from the strength of your mind. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a psionic discipline or a psion spell you recreate with your psionic discipline, and when making an attack roll with one.",
+									{
+										"type": "abilityDc",
+										"name": "Psionic Power",
+										"attributes": [
+											"int"
+										]
+									},
+									{
+										"type": "abilityAttackMod",
+										"name": "Psionic Power",
+										"attributes": [
+											"int"
+										]
+									}
+								]
+							}
+						]
+					}
+				],
+				[
+					{
+						"name": "Psionic Talents",
+						"entries": [
+							"Starting at 2nd level, you gain access to a Psionic Talent allowing you to further specialize. Pick a talent from the list of {@filter Psionic Talents|optionalfeatures|feature type=PsiT}.",
+							"You can pick a new Psionic Talent at 5th, 8th, 11th, 14th, 17th, and 20th level. When you level up, you can replace a Psionic Talent you have previously selected with a different option."
+						]
+					}
+				],
+				[
+					{
+						"name": "Second Discipline",
+						"entries": [
+							"When you reach 3rd level, you can select a second psionic discipline from the list of {@filter psionic disciplines|optionalfeatures|feature type=PsiD}. You cannot select a discipline you already know. You gain all features of a psionic discipline when selecting it."
+						]
+					},
+					{
+						"name": "Psionic Archetype Feature",
+						"entries": [
+							"At 3rd level, you gain a feature granted to you by your Psionic Archetype."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 4th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a {@5etools feat|feats.html}."
+						]
+					}
+				],
+				[
+					{
+						"name": "Psionic Mastery (1 point)",
+						"entries": [
+							"When you reach 5th level, you gain mastery of your psionic powers. At the start of your turn, you get 1 temporary psi point. This can be spent to empower psionic abilities, but not to recreate spells. If you have any unspent temporary psi points at the end of your turn, then they are lost.",
+							"At 11th level, this is increased to 2 temporary psi points, and at 17th level, this is increased to 3. Temporary psi points can be split between different abilities."
+						]
+					}
+				],
+				[
+					{
+						"name": "Psionic Archetype Feature",
+						"entries": [
+							"At 6th level, you gain a feature granted to you by your Psionic Archetype."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 8th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a {@5etools feat|feats.html}."
+						]
+					}
+				],
+				[],
+				[
+					{
+						"name": "Psionic Archetype Feature",
+						"entries": [
+							"At 10th level, you gain a feature granted to you by your Psionic Archetype."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Psionic Mastery (2 points)",
+						"entries": [
+							"When you reach 11th level, you gain mastery of your psionic powers. At the start of your turn, you now get 2 temporary psi points. This can be spent to empower psionic abilities, but not to recreate spells. If you have any unspent temporary psi points at the end of your turn, then they are lost.",
+							"At 17th level, this is increased to 3. Temporary psi points can be split between different abilities."
+						]
+					},
+					{
+						"name": "Innate Psionics (6th level spell)",
+						"entries": [
+							"At 11th level, you gain the discipline to exert great feats of psionic power. Choose one 6th-level spell from the Psion spell list as an innate ability. You can use this innate ability once. You must finish a long rest before you can do so again. At higher level, you gain more innate abilities of your choice that can be used in this way: one 7th level spell at 13th level, one 8th level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Innate Psionics when you finish a long rest.",
+							"Innate Psionics are well beyond the normal scope of your powers and are not restricted by what disciplines you have. Unlike psionic disciplines, they require any component the spell requires."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 12th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a {@5etools feat|feats.html}."
+						]
+					}
+				],
+				[
+					{
+						"name": "Innate Psionics (7th level spell)",
+						"entries": [
+							"At 13th level, you gain the discipline to exert great feats of psionic power. Choose one 7th-level spell from the Psion spell list as an innate ability. You can use this innate ability once. You must finish a long rest before you can do so again. At higher level, you gain more innate abilities of your choice that can be used in this way: one 8th level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Innate Psionics when you finish a long rest.",
+							"Innate Psionics are well beyond the normal scope of your powers and are not restricted by what disciplines you have. Unlike psionic disciplines, they require any component the spell requires."
+						]
+					}
+				],
+				[
+					{
+						"name": "Psionic Archetype Feature",
+						"entries": [
+							"At 14th level, you gain a feature granted to you by your Psionic Archetype."
+						],
+						"gainSubclassFeature": true
+					}
+				],
+				[
+					{
+						"name": "Innate Psionics (8th level spell)",
+						"entries": [
+							"At 15th level, you gain the discipline to exert great feats of psionic power. Choose one 8th-level spell from the Psion spell list as an innate ability. You can use this innate ability once. You must finish a long rest before you can do so again. At higher level, you gain more innate abilities of your choice that can be used in this way: one 9th-level spell at 17th level. You regain all uses of your Innate Psionics when you finish a long rest.",
+							"Innate Psionics are well beyond the normal scope of your powers and are not restricted by what disciplines you have. Unlike psionic disciplines, they require any component the spell requires."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 16th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a {@5etools feat|feats.html}."
+						]
+					}
+				],
+				[
+					{
+						"name": "Psionic Mastery (3 points)",
+						"entries": [
+							"When you reach 17th level, you gain mastery of your psionic powers. At the start of your turn, you now get 3 temporary psi points. This can be spent to empower psionic abilities, but not to recreate spells. If you have any unspent temporary psi points at the end of your turn, then they are lost.",
+							"Temporary psi points can be split between different abilities."
+						]
+					},
+					{
+						"name": "Innate Psionics (9th level spell)",
+						"entries": [
+							"At 17th level, you gain the discipline to exert great feats of psionic power. Choose one 8th-level spell from the Psion spell list as an innate ability. You can use this innate ability once. You regain all uses of your Innate Psionics when you finish a long rest.",
+							"Innate Psionics are well beyond the normal scope of your powers and are not restricted by what disciplines you have. Unlike psionic disciplines, they require any component the spell requires."
+						]
+					}
+				],
+				[
+					{
+						"name": "Third Discipline",
+						"entries": [
+							"When you reach 18th level, you can select a third psionic discipline from the list of {@filter psionic disciplines|optionalfeatures|feature type=PsiD}. You cannot select a discipline you already know. You gain all features of a psionic discipline when selecting it."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ability Score Improvement",
+						"entries": [
+							"When you reach 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+							"If your DM allows the use of feats, you may instead take a {@5etools feat|feats.html}."
+						]
+					}
+				],
+				[
+					{
+						"name": "Ascension",
+						"entries": [
+							"Starting at 20th level, if you die you can choose to become a incorporeal entity on the ethereal plane at the spot you died in the material plane at the start of your next turn. This entity has the physical ability scores (Strength, Dexterity, Constitution) and abilities of a {@creature ghost}, but has your mental ability scores (Intelligence, Wisdom, Charimsa) and your Psion class abilities.",
+							"When you take this form, your current and maximum health becomes that of the {@creature ghost}. If you have less than 10 psi points when you first take this form, you now have 10 psi points. While in this form, you cannot rest to regain spent abilities. If you exhaust all psi points or the {@creature ghost} is destroyed, you die as a normal creature would."
+						]
+					}
+				]
+			],
+			"subclassTitle": "Psionic Archetype",
+			"subclasses": [
+				{
+					"name": "Awakened",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Awakened",
+								"entries": [
+									"An Awakened is a Psion who had their psionic power awakened within them by an encounter, event, or circumstance. Perhaps their powers were latent, or perhaps their destiny had been that of a normal creature until powers were suddenly thrust on them. The nature of their circumstances varies widely - perhaps they brushed the Far Realm in a vivid dream, perhaps they wandered the Feywild and came back warped, or perhaps they merely glimpsed the eyes of a creature that did not belong walking down the street.",
+									"An awakening is often somewhat traumatic. Psions are not well understood, and the first power the manifest - telepathy - is one of the most feared and shunned abilities, often viewed for its rather creepy potential.",
+									"An Awakened can be either empathetic or cruel, good or evil. Knowing what is on the minds of others affects people in different ways, driving some away from society as they see its true face, while others feel drawn to help the problems only they can see.",
+									{
+										"type": "entries",
+										"name": "Opened Mind",
+										"entries": [
+											"At 1st level when you select this archetype, your mind awakens the ability to directly connect to the minds of other creatures, gaining the psionic discipline of {@optfeature Telepathy Discipline|ktp|telepathy}."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Mental Awareness",
+										"entries": [
+											"Additionally starting at 1st level, you can use Intelligence instead of Wisdom when making an Insight check against a creature with an Intelligence ability score of 6 or higher. Further, once you have telepathically communicated with an allied creature, you know their location for the next hour."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Exposed Plans",
+										"entries": [
+											"Starting at 3rd level, if a creature has failed a saving throw against your Telepathic Intrusion since the start of your last turn, you can take a bonus action to give it disadvantage on its next saving throw against a psionic power besides Telepathic Intrusion or give yourself advantage on your next attack roll against that target."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Empowered Psionics",
+										"entries": [
+											"Starting at 6th level, when you deal damage with a psionic discipline, you can add your Intelligence modifier to one damage roll of that power."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "All Seeing Eye",
+										"entries": [
+											"Starting at 10th level, you can see a creature by it's mind. You gain blindsight with a range of 30 feet, but it only sees creatures with an intelligence of 6 or higher. Additionally, you no longer need to be able to see a creature to use a psionic power on them, so long as you know where they are, and they are within range of your blindsight."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Full Awakening",
+										"entries": [
+											"Starting at 14th level, you can briefly fully awaken your expanded mind to true comprehension. As a bonus action, you can expend 3 psi points to gain the effect of {@spell foresight} until the start of your next turn."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "ktp",
+					"shortName": "Awakened"
+				},
+				{
+					"name": "Unleashed",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Unleashed",
+								"entries": [
+									"An Unleashed Psion's power is most often an innate force they struggle to understand or control, a reflection of their state of mind and mood projected onto the world around them, often to devastating results. The life of an Unleashed Psion is frequently their journey to control their unruly powers... or one of embracing the destructive powers they grant fully.",
+									"What the wellspring of their innate power is varies - they could be a psionic race, born under the influence of twisted powers, warped by fey blood, or a herald of something more sinister brushing against the material world. Sometimes their power will show itself in simple applications, but most often their power becomes known and feared when their temper flares.",
+									"Their alignment frequently depends on the approach to their powers they have taken. An Unleashed Psion who emphasizes control and restraint, keeping their emotions from running wild and their powers from running rampant will most often be lawful, following strict personal codes. On the other hand, an Unleashed Psion who lets their power run rampant will almost always be chaotic in nature, acting on impulse - with great emphasis.",
+									{
+										"type": "entries",
+										"name": "Unshackled Power",
+										"entries": [
+											"At 1st level when you select this archetype, you gain the ability to unleash your mind to physically interact with the world around you, granting you the psionic discipline {@optfeature Telekinesis Discipline|ktp|telekinesis}."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Mental Emphasis",
+										"entries": [
+											"Additionally at 1st level, you gain the ability to cast {@spell thaumaturgy} with your psionic powers. When you cast it in this way, you have an additional option:",
+											{
+												"type": "list",
+												"items": [
+													"You cause up to 10 pounds of loose objects within 10 feet of you to start floating for 1 minute."
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Rampaging Power",
+										"entries": [
+											"Starting at 3rd level, you gain a d4 rampage die. Once during your turn, when you make a damage roll, you can add this rampage die to the damage roll. If you dealt damage during your last turn, your rampage die becomes a d6, increasing each subsequent turn you deal damage by one step, up to a d12. If you did not deal damage during your last turn, it becomes a d4 once more."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Empowered Psionics",
+										"entries": [
+											"Starting at 6th level, when you deal damage with a psionic discipline, you can add your Intelligence modifier to one damage roll of that power."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Uncontrollable Mind",
+										"entries": [
+											"Starting at 10th level, the strength of your rampaging mind is such that others' attempts to control it are futile. You gain immunity to charm, fear, and effects that would control your mind while your rampage die is a d6 or greater."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Vengeful Wrath",
+										"entries": [
+											"Starting at 14th level, when you are hit by a creature with a melee attack, you can expend 2 psi points to cast Telekinetic Force as a reaction targeting the creature that attacked you. The only modifier you can add when you cast it in this way is \"Hurling.\""
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "ktp",
+					"shortName": "Unleashed"
+				},
+				{
+					"name": "Transcended",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Transcended",
+								"entries": [
+									"A Transcended Psion is most often one that has found their path to psionic powers through a mental epiphany, realizing the place of their mind within the multiverse and how it ties to everything else, seeing the keys and levers to the world laid out before them in their mind's eye.",
+									"Most often achieved either intentionally or accidentally through meditation and ritual, this can sometimes even be a passed on technique to reliably transcended the strictly material concerns, and explore the more cognitive realm and powers within.",
+									"Transcended Psions tend to have the best grasp on their powers in control and principle, having come to understanding of the greater cosmos, but lack the reckless abandon some other Psions may have. Unfortunately less transcendent minds frequently cannot understand the greater truths they have learned and may view a Transcended Psion as a bit... peculiar.",
+									{
+										"type": "entries",
+										"name": "Enlightened",
+										"entries": [
+											"At 1st level when you select this archetype, you gain the ability to empower your body with the power of your mind, granting you the psionic discipline of {@optfeature Enhancement Discipline|ktp|enhancement}."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "State of Mind",
+										"entries": [
+											"Additionally at 1st level, you can ignore the effects of extreme heat or cold, hold your breath twice as long as normal, and can go twice as long without eating or sleeping before suffering exhaustion."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Balance of Power",
+										"entries": [
+											"Starting at 3rd level, every time you grant a creature temporary hit points, you can add the hit points granted to a stored pool. The maximum value of the pool is your psion level. The next time you deal damage, you can expend the pool to add damage equal to the stored value. This stored damage is lost if not spent within 1 minute."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Perfected Enhancement",
+										"entries": [
+											"Starting at 6th level, when you grant temporary hit points with a psionic power, you can add your Intelligence modifier to the temporary hit point gained by one creature."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Mental Control",
+										"entries": [
+											"Starting at 10th level, when you have to make a Constitution saving throw to avoid losing concentration on an effect from a {@filter psionic discipline|optionalfeatures|feature type=PsiD}, you can add your Intelligence modifier to the saving throw."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Mind Over Matter",
+										"entries": [
+											"Starting at 14th level, when you roll a Strength, Dexterity, or Constitution saving throw, you can expend 2 psi points to roll an Intelligence saving throw instead.",
+											"Additionally, when you roll a death saving throw, you can expend 4 psi points to roll a 20."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "ktp",
+					"shortName": "Transcended"
+				}
+			],
+			"fluff": [
+				{
+					"entries": [
+						"A large orc is flung across the room, smashing through tables and chairs before hitting the wall in a thunderous crash, collapsing dazed. A human, her eyes glowing with unearthly power, tosses a few extra coins on the bar. \"Sorry for the mess. If he wakes up, tell him to try picking on someone his own size next time.\"",
+						"The prisoner's expression turns from defiant to puzzled as the interrogator asks no questions, merely states at him silenetly. His puzzled expression turns worried as he finds himself, unbidden, recalling where he stashed the loot. \"Under the stables behind the Rusty Hook Inn,\" the interrogator finally speaks, as the thief's expression becomes terrified.",
+						"\"Ain't you... cold or somethin'?\" the dwarf asks the elf as they trude through the snow, eying her simple robe and bare feet. \"I just think 'warm',\" the elf replies with a distracted air. The dwarf snorts, a puff of chilled air. Typical elf nonsense. Except... she hasn't frozen to death yet. \"Say, could you think some 'warm' this way?\" the dwarf asks hopefully. To the dwarf's surpsie, the chill of the snow fades away completely. \"That's downright creepy... hey don't stop now! Was jus' saying it was creepy.\"",
+						"Psions are those who have tapped into a special otherworldly force, with the ability to actualize the power of their mind to accomplish impossible feats. Reading minds, lifting vast weights, and transcending physical limitations, they tend to inspire awe and terror in equal weight.",
+						{
+							"type": "entries",
+							"name": "Powerful Minds",
+							"entries": [
+								"Since a psion's weapon is their mind, they are always a careless thought away from harming those around them. For a psion, the line between thinking and doing can be very thin, forcing them to keep their thoughts and emotions in check, least their powers run amok. This leads many of them developing odd behvaiors or mannerisms to help them control their state of mind, frequently seeming quite eccentric to an outside observer.",
+								"Consider how {@italic your} psion keeps their powers in check, and how much their power bleeds into their everyday life. How reading minds may affect their body language or habits. Do they add wood to the campfire from the comfort of their bedroll, or do they restrain themselves from using their power for trivial matters lest they slip up?"
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Misunderstood Power",
+							"entries": [
+								"In a world of widespread magic, many will assume a psion to be a type of sorcerer or wizard, mistaking their powers for the common applications of magic. The common villager keeps only one mental category for the supernatural people that bend reality to their will. But even among magic users, a psion's powers will frequently be found unnerving.",
+								"It is often those who {@italic do} understand magic that find a psion's abilities most aberrant. A force that intersects the magical weave rather than obeys it, the nature of the power that the psion wields one can only contemplate with unease."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Psion",
+							"entries": [
+								"When creating a psion, consider your character's background. How did you become a psion? Were you born with latent powers? Or did something happen to you granting your powers? Or did you intentionally train yourself through rigorous mental exercise to leverage them? Consider how developing a rare and mysterious power would have affected your interactions with people.",
+								"Consider what your purpose is with your new found powers, or how you plan to use your powers. Do you intend to be taken for a wizard casting magic, or are you freely open about being of a... different nature?",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make a psion quickly by following these suggestions. First, make Intelligence your highest ability score, followed by Dexterity or Constitution. Second, choose the {@background acolyte}, {@background hermit}, or {@background traveler} background."
+									]
+								}
+							]
+						}
+					],
+					"source": "ktp",
+					"page": 1
+				},
+				{
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"I didn't mean to kill him! He just made me angry, and I imagined shoving him."
+							],
+							"by": "Amelia, age 8"
+						},
+						"Psions have within them a deep well of raw, untamed power. Their fight to contain and focus their power is unending. A simple distraction from their focus can have catastrophic consequences.",
+						"A psion's constant internal struggle can lead psions to developing odd quirks or habits that they have unintentionally developed to keep their powers under control. Adventuring psions often seek out opportunity to train and hone their powers without causing undue harm to the people around them. A psion that doesn't find ways to expend some of their power finds themselves like a powder keg ready to explode.",
+						"Playing a psion character is an opportunity to play an odd or unusual personality. To distinguish your psion character, consider the options in the sections that follow.",
+						{
+							"type": "entries",
+							"name": "Social Quirk",
+							"entries": [
+								"What sort of quirk have you developed to prevent yourself from unintentionally harming others? How does this help you control your power?",
+								{
+									"type": "table",
+									"caption": "Social Quirk",
+									"colLabels": [
+										"{@dice d6}",
+										"Social Quirk"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Amused. You are quick to laugh, and find humor in circumstances that no one else finds funny. You are able to laugh off tense situations that might cause most people to snap."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Distant. Others might look over to you and see you staring off into the distance. You're not really looking at anything, but escaping inward, and getting mentally far away from the stimulus of the outside world."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Passionate. You have an unusual love that you will bring up frequently in conversation, and devote your spare time towards. It might be old copper coins, buttons, or jade figurines, but you find them far more fascinating than anyone else would."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Frightening. You enjoy startling and spooking others. You might start loudly barking like a dog right next to someone's ear, or briefly fly into a rage only to laugh it off a minute later. You tend to make anyone who doesn't know you uneasy."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Deluded. Your perception of reality differs from everyone else. Perhaps you think you are tree that has merely manifested itself as a elf as it became awakened, or maybe you think that all your friends are just psychic manifestations you have created."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Loving. You adore everyone you meet, and great them with big displays of affection. You act more like a puppy than anything else, and others can't help but be affected by your infectious joy."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Origins",
+							"entries": [
+								"Psionic powers are unsual and strange, side effects of the material plane interacting with the Far Realm.",
+								"Determine how your character gained their psionic powers, and think about how that origin would affect your character's backstory and growth.",
+								{
+									"type": "table",
+									"caption": "Origins",
+									"colLabels": [
+										"{@dice d6}",
+										"Origin"
+									],
+									"colStyles": [
+										"col-1 text-align-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"You were born with your powers, and no one knows why. No one else around you had any type of psionic power. Your powers were feared by your family, and you spent your childhood trying to keep your powers under control."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"You somehow drifted into the Astral Plane while dreaming, and when you woke up, you had these new powers."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"You studied and trained your mind until you were able to exert its power over the world around you. It was a long, difficult path but after many years your practice started paying off."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"You are a part of a special group or race that naturally develops psionic powers as they grow up, so you had a lot of help developing your powers."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"You encountered some being you shouldn't have, but your memory of it is distorted and vague. Your encounter gave you psionic powers but left you a little bit mad."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"You travelled to a far off place where psionic power is not unusual. There you studied with psionic masters who trained you and helped you hone your psionic talents."
+										]
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"classSpells": [
+				"Arcane Gate",
+				"Blade Barrier",
+				"Chain Lightning",
+				"Disintegrate",
+				"Find the Path",
+				"Eyebite",
+				"Harm",
+				"Mass Suggestion",
+				{
+					"name": "Mental Prison",
+					"source": "XGE"
+				},
+				{
+					"name": "Scatter",
+					"source": "XGE"
+				},
+				{
+					"name": "Crown of Stars",
+					"source": "XGE"
+				},
+				"Etherealness",
+				"Plane Shift",
+				{
+					"name": "Power Word Pain",
+					"source": "XGE"
+				},
+				"Regenerate",
+				"Reverse Gravity",
+				"Teleport",
+				{
+					"name": "Whirlwind",
+					"source": "XGE"
+				},
+				"Antimagic Field",
+				"Demiplane",
+				"Dominate Monster",
+				"Earthquake",
+				"Feeblemind",
+				{
+					"name": "Maddening Darkness",
+					"source": "XGE"
+				},
+				"Power Word Stun",
+				"Astral Projection",
+				"Foresight",
+				"Gate",
+				"Power Word Kill",
+				{
+					"name": "Psychic Scream",
+					"source": "XGE"
+				},
+				"Time Stop"
+			],
+			"page": 1
+		}
+	],
+	"spell": [
+		{
+			"name": "Divide Self",
+			"level": 6,
+			"school": "P",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psion",
+						"source": "ktp"
+					}
+				]
+			},
+			"source": "ktp",
+			"entries": [
+				"You you create an exact duplicate of yourself within 5 feet of you. It has all of your stats, abilities, and equipment, but does not have any of your magical items. It has its own hitpoints equal to your maximum health when you cast it, but you and it share any psi points or Spell Slots. It acts on your initiative. At the start of your next turn, its essence returns to you, and you gain all memories it gained as your own."
+			],
+			"page": 11,
+			"areaTags": [
+				"ST"
+			]
+		},
+		{
+			"name": "Mind Blast",
+			"level": 6,
+			"school": "P",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psion",
+						"source": "ktp"
+					}
+				]
+			},
+			"source": "ktp",
+			"entries": [
+				"You emit psychic energy in a 60-foot cone. Each creature in that area must succeed on an Intelligence saving throw or take 6d8 psychic damage and be stunned for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+			],
+			"page": 11,
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"conditionInflict": [
+				"stunned"
+			],
+			"areaTags": [
+				"N"
+			]
+		},
+		{
+			"name": "Geas <i>(Psionic)</i>",
+			"level": 7,
+			"school": "P",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "year",
+						"amount": 1
+					}
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psion",
+						"source": "ktp"
+					}
+				]
+			},
+			"source": "ktp",
+			"entries": [
+				"You place a magical command on a creature that you can see within range, forcing it to carry out some service or refrain from some action or course of activity as you decide. If the creature can understand you, it must succeed on a Wisdom saving throw or become {@condition charmed} by you for the duration. While the creature is {@condition charmed} by you, it takes {@dice 5d10} psychic damage each time it acts in a manner directly counter to your instructions, but no more than once each day. A creature that can't understand you is unaffected by the spell.",
+				"You can issue any command you choose, short of an activity that would result in certain death. Should you issue a suicidal command, the spell ends.",
+				"You can end the spell early by using an action to dismiss it. A remove curse, greater restoration, or wish spell also ends it."
+			],
+			"page": 11,
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"conditionInflict": [
+				"charmed"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"miscTags": [
+				"SGT"
+			]
+		},
+		{
+			"name": "Compelled Query",
+			"level": 1,
+			"school": "P",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psionic Disciplines Only",
+						"source": "PHB"
+					}
+				]
+			},
+			"source": "ktp",
+			"entries": [
+				"You focus your telepathic powers on a creature and ask it a question. It must make an Intelligence saving throw, or it conjures a mental thought of image that answers your question to the best of its ability that you can perceive telepathically."
+			],
+			"page": 11,
+			"savingThrow": [
+				"intelligence"
+			],
+			"areaTags": [
+				"ST"
+			]
+		},
+		{
+			"name": "Delve Mind",
+			"level": 3,
+			"school": "P",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psionic Disciplines Only",
+						"source": "PHB"
+					}
+				]
+			},
+			"source": "ktp",
+			"entries": [
+				"You delve into a creatures mind forcing it to make an Intelligence saving throw. On a failure, for the duration or until you end the spell, you gain access to its memories from the past 12 hours, able to recall things it remembers as if they are you own memories, but these memories contain only things the target creature remembers."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 4th level or higher, you can delve an additional 12 hours further back in the creatures memories for each slot level above 3rd."
+					]
+				}
+			],
+			"page": 11,
+			"savingThrow": [
+				"intelligence"
+			],
+			"areaTags": [
+				"ST"
+			]
+		},
+		{
+			"name": "Flicker",
+			"level": 1,
+			"school": "P",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psionic Disciplines Only",
+						"source": "PHB"
+					}
+				]
+			},
+			"source": "ktp",
+			"entries": [
+				"You flicker between the material and ethereal plane. Until the start of your next turn, each time you would take damage, including the triggering attack, roll 1d4. On a 4, you don't take any damage."
+			],
+			"page": 11,
+			"areaTags": [
+				"ST"
+			]
+		},
+		{
+			"name": "Psychic Drain",
+			"level": 2,
+			"school": "P",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psionic Disciplines Only",
+						"source": "PHB"
+					}
+				]
+			},
+			"source": "ktp",
+			"entries": [
+				"You draw on the psychic energy of another creature to sustain yourself. The target must make a Charisma saving throw or take 3d8 psychic damage, while the caster gains half the damage the creature took as temporary hit points and regains 1 expended psi point."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, the spell deals an additional 1d8 psychic damage for each slot level above 3rd."
+					]
+				}
+			],
+			"page": 12,
+			"savingThrow": [
+				"charisma"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"miscTags": [
+				"HL"
+			]
+		},
+		{
+			"name": "Unlocked Potential",
+			"level": 1,
+			"school": "P",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psionic Disciplines Only",
+						"source": "PHB"
+					}
+				]
+			},
+			"source": "ktp",
+			"entries": [
+				"You unlock the potential of a creature's mind, allowing it to push past its limits. For the duration, once per turn the creature can add 1d4 to any attack roll, damage roll, or saving throw it makes. Each time it adds the additional 1d4, it takes 1 damage as it pushes beyond its natural limitations."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, the spell deals an additional 1d8 psychic damage for each slot level above 3rd."
+					]
+				}
+			],
+			"page": 12,
+			"areaTags": [
+				"ST"
+			]
+		}
+	],
+	"feat": [
+		{
+			"name": "Expanded Psionic Powers",
+			"source": "ktp",
+			"page": 14,
+			"prerequisite": [
+				{
+					"special": "One or more psionic disciplines"
+				}
+			],
+			"entries": [
+				"You tap deeper into your psionic potential drawing out a new talent.",
+				{
+					"type": "list",
+					"items": [
+						"You can select a psionic talent from the psion class {@filter psionic talents|optionalfeatures|feature type=PsiT} list. You cannot select a talent you already know or one that requires a level restriction, even if you are already of that level."
+					]
+				}
+			],
+			"ability": {
+				"int": 1
+			}
+		},
+		{
+			"name": "Psionic Adept",
+			"source": "ktp",
+			"page": 14,
+			"prerequisite": [
+				{
+					"ability": [
+						{
+							"int": 13
+						}
+					]
+				}
+			],
+			"entries": [
+				"You develop a minor grasp of psionic power, either uncovering an innate potential within yourself, through contact with a psionic source, or through training. You gain one of the {@filter psionic disciplines|optionalfeatures|feature type=PsiD} of the psion class, gaining the attached psionic feature and psionic power, but you do not gain use of any associated spells when gain a discipline from this feat. You gain 1 psi point that you can use to empower the discipline. You regain use of this psi point when you complete a short or long rest."
+			]
+		}
+	],
+	"monster": [
+		{
+			"source": "ktp",
+			"name": "Psi Crystal",
+			"size": "T",
+			"type": "construct",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 20
+				}
+			],
+			"hp": {
+				"average": 2,
+				"formula": "1d4"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 20,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 1,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"skill": {
+				"perception": "+4"
+			},
+			"resist": [
+				"piercing",
+				"slashing"
+			],
+			"vulnerable": [
+				"bludgeoning"
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"stunned"
+			],
+			"passive": 14,
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"languages": [
+				"understands the languages of its creator but cannot speak"
+			],
+			"cr": "Unknown",
+			"trait": [
+				{
+					"name": "Psi Familiar",
+					"entries": [
+						"The psi crystal shares the same mental ability scores as its summoner."
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			],
+			"page": 10
+		}
+	],
+	"optionalfeature": [
+		{
+			"name": "Animated Projections",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Projection Discipline",
+					"entrySummary": "Requires Projection"
+				},
+				{
+					"type": "prereqLevel",
+					"level": 10,
+					"class": {
+						"name": "Psion"
+					}
+				}
+			],
+			"entries": [
+				"As an action, you can project a swarm of etheral objects. You can expend 5 psi points to cast {@spell animate object} but it creates new etheral objects rather than animating existing ones."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Aura Sight",
+			"entries": [
+				"You gain the ability to psionically see a creature's aura. By spending 1 psi point, you can determine if a creature is under the influence of magic and what school it is, or if a creature is under the influence of psionics.",
+				"A shapeshifter or disguised creatures makes a Charisma (Deception) check against your Psionics save. On a failure, you can see their true nature in their aura."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Awaken Mind",
+			"prerequisite": [
+				{
+					"type": "prereqLevel",
+					"level": 9,
+					"class": {
+						"name": "Psion"
+					}
+				}
+			],
+			"entries": [
+				"You gain the ability to cast {@spell awaken} without expending a spell slot. Once you cast this spell in this way, you cannot cast it again until you complete a short or long rest."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Body Control",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Enhancement Discipline",
+					"entrySummary": "Requires Enhancement"
+				}
+			],
+			"entries": [
+				"You gain the ability to use your {@spell alter self} ability at-will without expending psi points. Additionally, you can cast {@spell enlarge/reduce} on yourself for half the psi point cost it would normally cost."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Controlled Power",
+			"entries": [
+				"You gain the ability to suppress the glow and somatic component of a psionic power. You can expend 2 psi points to use a power without a visual sign or somatic component. Each time you do this, the cost of doing so doubles until you complete a short or long rest."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Divided Mind",
+			"prerequisite": [
+				{
+					"type": "prereqSpell",
+					"entries": [
+						"Divide Self|ktp"
+					],
+					"entrySummary": "Divide Self"
+				}
+			],
+			"entries": [
+				"You can sustain your {@spell divide self|ktp} spell by one additional round by expending 2 psi points at the start of your turn."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Hallucination",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Telepathy Discipline",
+					"entrySummary": "Requires Telepathy"
+				}
+			],
+			"entries": [
+				"If a target fails a saving throw against Telepathic Intrusion, you can use your bonus action to implant a false sensory input in their mind that lasts until the start of the next turn, with the effect of having cast {@spell minor illusion} and creating an illusion of your choice that affects only the creature."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Empathy",
+			"entries": [
+				"You can psionically link yourself to other creatures. As a reaction to a creature taking psychic, necrotic, or radiant damamge, you can grant them resistance to the damage taken, but take damage equal to the damage they take. If the damage would inflict any further negative status effect on the target, you may choose for that effect to affect you instead."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Kinetic Slam",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Telekinesis Discipline",
+					"entrySummary": "Requires Telekinesis"
+				}
+			],
+			"entries": [
+				"When you take the Telekinetic Force action, you can unleash it as a blast of psionic power. You make an attack roll using your psionic power attack modifier, and if it hits, the target automatically fails their saving throw against the power. You can only select the Hammering modifier when you use it in this way."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Matter Made Real",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Projection Discipline",
+					"entrySummary": "Requires Projection"
+				}
+			],
+			"entries": [
+				"You gain the ability to turn your mental projections into real objects. You can cast {@spell fabricate} and {@spell wall of stone} expending psi points equal to the spell level."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Mental Image",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Telepathy Discipline",
+					"entrySummary": "Requires Telepathy"
+				}
+			],
+			"entries": [
+				"You gain the ability to turn your {@optfeature Telepathy Discipline|ktp|telepathy} to project images into the minds of creatures with perfect clarity, interposing it over their reality. The spells {@spell silent image}, {@spell major image}, {@spell hallucinatory terrain}, and {@spell seeming} are added to your telepathic mastery alternate effects list."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Mental Might",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Telekinesis Discipline",
+					"entrySummary": "Requires Telekinesis"
+				},
+				{
+					"type": "prereqLevel",
+					"level": 10,
+					"class": {
+						"name": "Psion"
+					}
+				}
+			],
+			"entries": [
+				"You learn to focus your mental grip. You can make an Intelligence (Athletics) check when you make an Athletics check. Additionally, when you initiate a grapple in this method, you can attempt to grapple a creature within 30 feet. Maintaining a grapple like this requires concentration, as if concentrating on a spell, and the grapple ends if concentration is lost."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Mind Devourer",
+			"entries": [
+				"You gain the ability to cast {@spell psychic drain} for 2 psi points. Additionally, whenever a creature within 10 feet of you that had an Intelligence score of 6 or higher dies, you can expend your reaction to draw in its psionic power, regaining 1d4 hit points and 1 expended psi point."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Mind Rider",
+			"entries": [
+				"As an action, you can touch a willing creature to see through its eyes and hear what it hears for the next hour, gaining the benefits of any special senses the creature has. During this time, you are deaf and blind with regard to your own senses. You can end this effect at any time. While this is active, the creature has advantage against being charmed or frightened."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Perfect Focus",
+			"prerequisite": [
+				{
+					"type": "prereqLevel",
+					"level": 10,
+					"class": {
+						"name": "Psion"
+					}
+				}
+			],
+			"entries": [
+				"You can enter a near meditative trance of focus. Your concentration is no longer interrupted by using a second ability that requires concentration, but your movement speed is reduced to zero while concentrating on two effects, and you make any concentration checks at disadvantage. If you move or fail a concentration check, one of your concentration effects ends. If both of the dice of the concentration check would fail, you lose both concentration effects."
+			],
+			"source": "ktp",
+			"page": 9,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Phase Slash",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Transposition Discipline",
+					"entrySummary": "Requires Transposition"
+				}
+			],
+			"entries": [
+				"When you use your Phase Rift power, you can make one melee weapon attack as a bonus action against a target you pass through with your Phase Rift."
+			],
+			"source": "ktp",
+			"page": 10,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Phase Shot",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Transposition Discipline",
+					"entrySummary": "Requires Transposition"
+				}
+			],
+			"entries": [
+				"You can use your Phase Rift power on an object. The effects are the same, but you remain in place and the object you use the ability on is transported."
+			],
+			"source": "ktp",
+			"page": 10,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Physical Surge",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Enhancement Discipline",
+					"entrySummary": "Requires Enhancement"
+				}
+			],
+			"entries": [
+				"When you are under the effect of Enhancing Surge, you can choose to make your Strength or Dexterity ability score equal to your Intelligence ability score until the effect ends."
+			],
+			"source": "ktp",
+			"page": 10,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Potent Psionics",
+			"entries": [
+				"When a target passes the saving throw against a damaging psionic power, they still take half damage, but suffer no other effects."
+			],
+			"source": "ktp",
+			"page": 10,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Psi Crystal",
+			"entries": [
+				"You gain the ability to impart part of your mind into crystal. You can expend 2 psi points to cast the {@spell find familiar} spell, but your familiar takes on the statistics of a {@creature psi crystal|ktp} and the material component required is a crystal worth 10 gp instead of the normal material components.",
+				"The {@creature psi crystal|ktp} gains your mental stats. If the {@creature psi crystal|ktp} is destroyed, you gain its memories as your own. While you have a {@creature psi crystal|ktp} active, as a bonus action, you can decativate it to regain 2 expended psi points."
+			],
+			"source": "ktp",
+			"page": 10,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Psionic Defenses",
+			"entries": [
+				"You gain a way to defend yourself using your psionic powers. This can be done via {@optfeature Telepathy Discipline|ktp|telepathy} (affecting creatures that would try to attack you), {@optfeature Telekinesis Discipline|ktp|telekinesis} (redirecting attacks that would hit you), or {@optfeature Enhancement Discipline|ktp|enhancement} (increasing your durability and agility). Your AC becomes 10 + your Dexterity modifier + your Intelligence modifier."
+			],
+			"source": "ktp",
+			"page": 10,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Psionic Weapon",
+			"entries": [
+				"As a bonus action, you can expend 2 psi points to imbue a weapon you are holding with psionic energy. For the next minute, once per turn when you deal damage with that weapon, you deal an additional 1d6 psychic damage.",
+				"The damage increases by 1d6 when you reach 5th level in Psion (2d6), 11th level (3d6), and 17th level (4d6)."
+			],
+			"source": "ktp",
+			"page": 10,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Schism",
+			"prerequisite": [
+				{
+					"type": "prereqLevel",
+					"level": 5,
+					"class": {
+						"name": "Psion"
+					}
+				}
+			],
+			"entries": [
+				"You can spend a psi point to temporarily subdivide your mind to do two things at once. While you are dividing your mind, if you use your action on a psionic power or spell granted by a psionic discipline, you can use your bonus action to use a psionic power. The two powers share your per use psi point limit between them."
+			],
+			"source": "ktp",
+			"page": 10,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Surging Power",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Enhancement Discipline",
+					"entrySummary": "Requires Enhancement"
+				}
+			],
+			"entries": [
+				"Your power is at your fingertips. When you target only yourself with Enhancing Surge, you can use the power as a bonus action instead of an action."
+			],
+			"source": "ktp",
+			"page": 10,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Telepathic Link",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Telepathy Discipline",
+					"entrySummary": "Requires Telepathy"
+				}
+			],
+			"entries": [
+				"Your telepathic communication gains an unlimited range as long as you have communicated with the creature within the last day, and the target willingly maintains the link. However, it takes an action to focus to communicate over distance if you cannot see the target (or for the target to communicate with you if they cannot see you)."
+			],
+			"source": "ktp",
+			"page": 10,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Transcendent Focus",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Perfect Focus Talent",
+					"entrySummary": "Requires Perfect Focus"
+				}
+			],
+			"entries": [
+				"While in a state of perfect focus (concentrating on two effects), you gain a magical flying speed of 10 feet. Moving with this speed does not interrupt {@optfeature perfect focus|ktp}."
+			],
+			"source": "ktp",
+			"page": 10,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Quickened Mind",
+			"prerequisite": [
+				{
+					"type": "prereqSpecial",
+					"entry": "Requires Schism Talent",
+					"entrySummary": "Requires Schism"
+				}
+			],
+			"entries": [
+				"You can expend an additional psi point when using {@optfeature schism|ktp} to quicken your thoughts. When you do so, the action and the bonus action no longer share a per use psi point limit."
+			],
+			"source": "ktp",
+			"page": 10,
+			"featureType": "PsiT"
+		},
+		{
+			"name": "Enhancement Discipline",
+			"entries": [
+				"Enhancement is the ability to interact with a creature's nature and abilities with your psionic power.",
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Enhancing Skill",
+									"entries": [
+										"You can focus your psionics to enhance your abilities. Whenever you make a skill check using Strength or Dexterity, you can add 1d4 to the result."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Enhancing Surge",
+									"entries": [
+										"{@italic Psionic Power}",
+										"{@bold Casting Time:} 1 action<br />{@bold Range:} 60 feet<br />{@bold Components:} S<br />{@bold Duration:} 1 round",
+										"You empower the target's body with your psionics. The target gains 1d4 temporary hit points and the next time the target deals damage, it deals 1d4 additional damage to one application of the damage roll. Any remaining effects of this spell end at the start of your next turn.",
+										"You can spend psi points up to your per use limit to add the following modifiers to Enhancing Surge (you can add multiple modifiers). The points must be spent when choosing the target of the power.",
+										"{@bold Savage} {@italic (1+ psi point)} : The target's next weapon attack deals an additional +1d6 damage for each psi point spent.",
+										"{@bold Fortifying} {@italic (1+ psi point)} : The target gains an additional +1d6 temporary hit points for each point spent.",
+										"{@bold Swift} {@italic (2 psi points)} : The target gains +30 feet of movement speed.",
+										"{@bold Resilient} {@italic (3 psi points)} : The target gains resistance to all damage until the start of your next turn.",
+										"Additionally, when you learn the Enhancement psionic discipline, you can use your Psionics feature to cast the following spells as per the rules defined in the feature:",
+										{
+											"type": "table",
+											"colStyles": [
+												"col-2 text-align-center",
+												"col-10 text-align-center"
+											],
+											"colLabels": [
+												"Point Cost",
+												"Alternate Effects"
+											],
+											"rows": [
+												[
+													"1",
+													"{@spell heroism}, {@spell longstrider}, {@spell unlocked potential|ktp}"
+												],
+												[
+													"2",
+													"{@spell alter self}, {@spell darkvision}, {@spell enlarge/reduce}, {@spell lesser restoration}"
+												],
+												[
+													"3",
+													"{@spell catnap|xge}, {@spell haste}, {@spell life transference|xge}, {@spell water breathing}"
+												],
+												[
+													"4",
+													"{@spell freedom of movement}, {@spell stoneskin}"
+												],
+												[
+													"5",
+													"{@spell greater restoration}, {@spell skill empowerment|xge}"
+												]
+											]
+										},
+										"If a spell can be cast at a higher level, you can spend an additional psi point to cast it at that higher level."
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"source": "ktp",
+			"page": 6,
+			"featureType": "PsiD"
+		},
+		{
+			"name": "Projection Discipline",
+			"entries": [
+				"Projection is the ability to project what is in your mind to the outside world with your psionic power.",
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Project Item",
+									"entries": [
+										"When you gain this feature, as an action, you can use your powers to project an inanimate object you imagine into your hands. It cannot be larger than 3 feet on any side or weigh more than 10 pounds. The object is clearly etheral in nature, but behaves as a solid object.",
+										"Projected items fade after 1 minute, and you can have no more than 3 projected items at a time."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Ethereal Construct",
+									"entries": [
+										"{@italic Psionic Power}",
+										"{@bold Casting Time:} 1 action<br />{@bold Range:} 60 feet<br />{@bold Components:} S<br />{@bold Duration:} Concentration, up to 1 minute",
+										"You project an etheral creation from your mind taking the shape of a medium or smaller creature, weapon, or other object. This object is clearly etheral in nature. When you create it, and on subsequent turns, you can use your action to mentally control it. You can move it up to 30 feet in any direction and attack. To attack with it, make a melee spell attack, on a hit, the target takes 1d8 force damage.",
+										"While the etheral construct is active, you can spend psi points up to your per use limit to issue commands that affect and empower your construct. Commands require no action, but you cannot exceed your psi point limit in total commands issued.",
+										"{@bold Strike} {@italic (2 psi points)} : The construct makes an attack (even if it has already attacked)",
+										"{@bold Relocate} {@italic (1 psi point)} : The construct teleports anywhere within 60 feet of you.",
+										"{@bold Solidify} {@italic (1 psi point)} : Your construct becomes solid, blocking its space until the start of your next turn. You can only use this command if it is not in another creature's space. If something does damage to the construct equal to or greater than your psion level, it becomes ethereal again.",
+										"{@bold Grab} {@italic (1 psi point)} : [Construct must be Solidified] A target creature within 5 feet of your construct must make a Strength saving throw or be {@condition restrained} by your construct until the construct becomes ethereal again.",
+										"{@bold Quick Command} {@italic (2 psi points)} : You can command the construct with a bonus action.",
+										"{@bold Grow} {@italic (2 psi points)} : Your construct grows one size , and the damage of its attack becomes 2d8 force damage on hit. It returns to its normal size at the end of your turn unless you use Sustain.",
+										"{@bold Replicate} {@italic (3 psi points)} : You project an additional construct anywhere within 60 feet of you. Until the end of your turn, you have two constructs and command both with the same action. Pick one construct to fade at the end of your turn, or use Sustain.",
+										"{@bold Sustain} {@italic (1 psi point)} : You can sustain the effect of a Solidify, Grow, or Repilcate an additional round."
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"source": "ktp",
+			"page": 7,
+			"featureType": "PsiD"
+		},
+		{
+			"name": "Telekinesis Discipline",
+			"entries": [
+				"Telekinesis is the ability to interact with physical objects and energy with your psionic powers.",
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Telekinetic Hands",
+									"entries": [
+										"When you gain thsi feature, you can manipulate small objects within 30 feet of you with your mind as if using your hand to interact with it. You can use this power to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contants out of a vial. You cannot attack, activate magical items, or carry more than 10 pounds in this manner. You can move an item you are controlling in this way up to 30 feet during your turn.",
+										"You can spend 1 psi point to increase how much you can lift by 100 pounds for 1 turn."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Telekinetic Force",
+									"entries": [
+										"{@italic Psionic Power}",
+										"{@bold Casting Time:} 1 action<br />{@bold Range:} 60 feet<br />{@bold Components:} S<br />{@bold Duration:} Instantaneous",
+										"You smash a target creature or object with your mental power. The target must succeed on a Constitution saving throw, or take 1d10 bludgeoning damage and either be knocked 5 feet in a direction of your choosing or knocked prone, your choice.",
+										"You can spend psi points up to your per use limit to add the following modifiers to Telekinetic Force (you can add multiple modifiers). The points must be spent when choosing the target of the power.",
+										"{@bold Hammering} {@italic (1+ psi point)} : The target takes +1d10 bludgeoning damage for each point spent.",
+										"{@bold Hurling} {@italic (1-3 psi points)} : The target is knocked +10 feet in a direction of your choosing for each psi point spent.",
+										"{@bold Crushing} {@italic (2 psi points)} : The target is restrained until the end of its next turn.",
+										"{@bold Sweeping} {@italic (3 psi points)} : You can target all creatures in a 10 foot radius of a point within range.",
+										"Additionally, when you learn the Telekinesis psionic discipline, you can use your Psionics feature to cast the following spells as per the rules defined in the feature:",
+										{
+											"type": "table",
+											"colStyles": [
+												"col-2 text-align-center",
+												"col-10 text-align-center"
+											],
+											"colLabels": [
+												"Point Cost",
+												"Alternate Effects"
+											],
+											"rows": [
+												[
+													"1",
+													"{@spell jump}, {@spell catapult|xge}, {@spell thunderwave}"
+												],
+												[
+													"2",
+													"{@spell levitate}, {@spell dust devil|xge}, {@spell shatter}"
+												],
+												[
+													"3",
+													"{@spell fly}, {@spell erupting earth|xge}, {@spell water walk}"
+												],
+												[
+													"4",
+													"{@spell Otiluke's resilient sphere}"
+												],
+												[
+													"5",
+													"{@spell telekinesis}, {@spell animate objects}, {@spell wall of force}"
+												]
+											]
+										},
+										"If a spell can be cast at a higher level, you can spend an additional psi point to cast it at that higher level."
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"source": "ktp",
+			"page": 7,
+			"featureType": "PsiD"
+		},
+		{
+			"name": "Telepathy Discipline",
+			"entries": [
+				"Telepathy is the ability to interact with the minds of other creatures using your psionic abilities.",
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Telepathic Communication",
+									"entries": [
+										"When you gain this feature, you can communicate telepathically with any creature you can see within 30 feet of you. You don't need to share a language with the creature for it to understand your telepathic utterances, but the creature must be able to understand at least one language."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Telepathic Intrusion",
+									"entries": [
+										"{@italic Psionic Power}",
+										"{@bold Casting Time:} 1 action<br />{@bold Range:} 60 feet<br />{@bold Components:} S<br />{@bold Duration:} Instantaneous",
+										"You assault a creature's mind directly. The target must succeed on a Wisdom saving throw or take 1d8 psychic damage. If the target fails the saving throw, it has disadvantage on attacks made against you until the start of your next turn. You can choose to deal no damage to the creature when it fails its saving throw.",
+										"You can spend psi points up to your per use limit to add the following modifiers to Telepathic Intrusion (you can add multiple modifiers). The points must be spent when choosing the target of the power.",
+										"{@bold Rending} {@italic (1+ psi point)} : The target takes +1d8 psychic damage for each additional point spent.",
+										"{@bold Terrifying} {@italic (1 psi point)} : If the target fails its saving throw, it is {@condition frightened} of you until the end of its next turn.",
+										"{@bold Overwhelming} {@italic (2 psi points)} : If the target fails its saving throw, it is {@condition blinded} until the end of its next turn.",
+										"{@bold Double} {@italic (3 psi points)} : You can target a second creature.",
+										"Additionally, when you learn the Telepathy psionic discipline, you can use your Psionics feature to cast the following spells as per the rules defined in the feature:",
+										{
+											"type": "table",
+											"colStyles": [
+												"col-2 text-align-center",
+												"col-10 text-align-center"
+											],
+											"colLabels": [
+												"Point Cost",
+												"Alternate Effects"
+											],
+											"rows": [
+												[
+													"1",
+													"{@spell compelled query|ktp}, {@spell command}, {@spell cause fear|xge}"
+												],
+												[
+													"2",
+													"{@spell detect thoughts}, {@spell mind spike|xge}, {@spell suggestion}"
+												],
+												[
+													"3",
+													"{@spell delve mind|ktp}, {@spell fear}, {@spell enemies abound|xge}"
+												],
+												[
+													"4",
+													"{@spell dominate beast}, {@spell compulsion}, {@spell confusion}"
+												],
+												[
+													"5",
+													"{@spell dominate person}, {@spell dream}, {@spell mislead}, {@spell modify memory}, {@spell Rary's telepathic bond}, {@spell synaptic static|xge}"
+												]
+											]
+										},
+										"If a spell can be cast at a higher level, you can spend an additional psi point to cast it at that higher level."
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"source": "ktp",
+			"page": 8,
+			"featureType": "PsiD"
+		},
+		{
+			"name": "Transposition Discipline",
+			"entries": [
+				"Transposition is the ability to modify the properties of space and manipulate dimensional boundaries with your psionic powers.",
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Phasing Steps",
+									"entries": [
+										"When you gain this feature, you can pass through difficult terrain without expending additional movement, including the spaces of friendly creatures."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Phase Rift",
+									"entries": [
+										"{@italic Psionic Power}",
+										"{@bold Casting Time:} 1 action<br />{@bold Range:} 10 feet<br />{@bold Components:} S<br />{@bold Duration:} 1 round",
+										"You step through space traveling up to 10 feet in a straight line, leaving a spacial tear behind. You can pass through creatures, and solid objects that are less than a foot thick. Any creature in the path of this tear must make a Dexterity saving throw or take 1d8 force damage.",
+										"You can spend psi points up to your per use limit to add the following modifiers to Phase Rift (you can add multiple modifiers). The points must be spent when choosing the target of the power.",
+										"{@bold Disruptive} {@italic (1+ psi point)} : Each target that fails their saving throw takes an additional 1d8 force damage.",
+										"{@bold Long} {@italic (1-3 psi points)} : You can travel an additional 5 feet for each point spent.",
+										"{@bold Ethereal} {@italic (2 psi points)} : You can pass through any solid objects so long as you don't end your Phase Rift inside of one.",
+										"{@bold Exploding} {@italic (3 psi points)} : You send out a volatile rift of energy where you arrive. Any creature within 20 feet of where you arrive must also save against the ability.",
+										"Additionally, when you learn the Transposition psionic discipline, you can use your Psionics feature to cast the following spells as per the rules defined in the feature:",
+										{
+											"type": "table",
+											"colStyles": [
+												"col-2 text-align-center",
+												"col-10 text-align-center"
+											],
+											"colLabels": [
+												"Point Cost",
+												"Alternate Effects"
+											],
+											"rows": [
+												[
+													"1",
+													"{@spell expeditious retreat}, {@spell flicker|ktp}, {@spell zephyr strike|xge}"
+												],
+												[
+													"2",
+													"{@spell misty step}, {@spell blur}, {@spell pass without trace}"
+												],
+												[
+													"3",
+													"{@spell blink}, {@spell nondetection}, {@spell thunder step|xge}"
+												],
+												[
+													"4",
+													"{@spell banishment}, {@spell dimension door}, {@spell Mordenkainen's private sanctum}"
+												],
+												[
+													"5",
+													"{@spell far step|xge}, {@spell passwall}, {@spell mislead}, {@spell steel wind strike|xge}"
+												]
+											]
+										},
+										"If a spell can be cast at a higher level, you can spend an additional psi point to cast it at that higher level."
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"source": "ktp",
+			"page": 8,
+			"featureType": "PsiD"
+		}
+	],
+	"subclass": [
+		{
+			"class": "Monk",
+			"name": "Way of the Soul Knife",
+			"subclassFeatures": [
+				[
+					{
+						"name": "Way of the Soul Knife",
+						"entries": [
+							"",
+							{
+								"type": "entries",
+								"name": "Soul Knife",
+								"entries": [
+									"Starting when you choose this tradition at 3rd level, you've learned to focus your ki into a psionic blade. As a bonus action, you can create a blade of pure scintillating psionic energy. The blade you create in this way typically takes the form of a knife-like blade projecting from your fist, but you can shape it however you choose. You can choose to create multiple blades, but any blade you are not holding vanishes at the end of your turn and must be resummoned.",
+									"Regardless of the form it takes, the weapon is a monk weapon for you, deals 1d8 psychic damage, and has the light, finesse, and thrown (20/60 ft.) properties."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Psionic Ki",
+								"entries": [
+									"Additionally at 3rd level, you gain the ability to express your inner focus as psionic manifestations. You learn a psionic discipline of your choice from the {@filter psionic discipline|optionalfeatures|feature type=PsiD} list, and can expend ki points as psi points while using psionic abilities learned through this feature.",
+									{
+										"type": "inset",
+										"name": "Default Selection: Telekinesis",
+										"entries": [
+											"While a Way of a Soul Knife monk can select any psionic discipline, for building a Soul Knife quickly or simply, select {@optfeature Telekinesis Discipline|ktp|telekinesis} for the enhanced ranged abilities and mobility options it provides."
+										]
+									}
+								]
+							}
+						]
+					}
+				],
+				[
+					{
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Psion Talent",
+								"entries": [
+									"At 6th level, you can select a psionic talent from the psion's list of {@filter psionic talents|optionalfeatures|feature type=PsiT}.",
+									{
+										"type": "inset",
+										"name": "Default Selection: Mind Devourer",
+										"entries": [
+											"While many talents can provide a Soul Knife unique options, for building a Soul Knife quickly or simply, select {@optfeature Mind Devourer|ktp} for enhancing your durability and resources."
+										]
+									}
+								]
+							}
+						]
+					}
+				],
+				[
+					{
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Focused Blade",
+								"entries": [
+									"Starting at 11th level, you gain the ability to invest more psionic energy into your blade. When you create a psionic blade, you can expend ki points to increase its power.",
+									{
+										"type": "table",
+										"colStyles": [
+											"col-6 text-align-center",
+											"col-6 text-align-center"
+										],
+										"colLabels": [
+											"Ki Points",
+											"Attack and Damage"
+										],
+										"rows": [
+											[
+												"1",
+												"+1"
+											],
+											[
+												"2",
+												"+2"
+											],
+											[
+												"3",
+												"+3"
+											],
+											[
+												"5",
+												"+4"
+											]
+										]
+									}
+								]
+							}
+						]
+					}
+				],
+				[
+					{
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Rend the Soul",
+								"entries": [
+									"Starting at 17th level, your attacks can harm a creature beyond its physical form. When you strike a target with your Soul Knife, you can spend 2 ki points to make the strike ignore any resistance or immunity to damage the target has, and reduce its maximum health by the damage dealt by the attack. Additionally, the target must make a Charisma saving throw, or have its Charisma score reduced by 2. If the target's Charisma score is reduced to 0 by this ability, they die.",
+									"Any hit points lost or ability scores reduced by this strike are restored after 24 hours."
+								]
+							}
+						]
+					}
+				]
+			],
+			"source": "ktp",
+			"shortName": "Soul Knife"
+		}
+	]
+}
