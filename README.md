@@ -12,7 +12,7 @@ Homebrew JSONs compatible with 5etools. An editor will be created Eventually:tm:
 
 ##### Getting help
 
-- Join the [5etools Discord Server](https://discord.gg/AzyBjtQ) and ask in the #brew-conversion channel.
+- Join the [5etools Discord Server](https://discord.gg/nGvRCDs) and ask in the #brew-conversion channel.
 
 ##### Creating and Contributing
 
