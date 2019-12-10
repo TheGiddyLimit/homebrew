@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.2",
+	"version": "1.1.3",
 	"type": "object",
 	"description": "Homebrew for 5etools. Should include arrays titled similarly to the main site data, e.g. `spell` or `class`",
 	"definitions": {
@@ -1318,45 +1318,116 @@
 								"type": "string",
 								"description": "The target schema version in 5etools, e.g. \"1.2.3\"."
 							}
-						}
+						},
+						"required": ["json", "abbreviation", "full", "version"]
 					}
 				},
 				"skill": {
 					"type": "object",
-					"description": "Object keys are Skill names, which can referenced using {@skill <key>} (case sensitive)"
+					"description": "Object keys are Skill names, which can referenced using {@skill <key>} (case sensitive)",
+					"patternProperties": {
+						".*": {
+							"type": "string"
+						}
+					}
 				},
 				"senses": {
 					"type": "object",
-					"description": "Object keys are Sense names, which can referenced using {@sense <key>} (case insensitive)"
+					"description": "Object keys are Sense names, which can referenced using {@sense <key>} (case insensitive)",
+					"patternProperties": {
+						".*": {
+							"type": "string"
+						}
+					}
 				},
 				"spellSchools": {
 					"type": "object",
-					"description": "Object names are spell school abbreviations; values should be objects with `\"full\"`` (used in the main entry, e.g. \"Evocation\") and `\"short\"` (used in the list view, e.g. `\"Evoc.\"`) key/values."
+					"description": "Object names are spell school abbreviations (e.g. `\"X\"`); values should be objects with `\"full\"`` (used in the main entry, e.g. \"Evocation\") and `\"short\"` (used in the list view, e.g. `\"Evoc.\"`) key/values.",
+					"patternProperties": {
+						".*": {
+							"type": "object",
+							"properties": {
+								"full": {
+									"type": "string"
+								},
+								"short": {
+									"type": "string"
+								}
+							},
+							"required": ["full", "short"]
+						}
+					}
 				},
 				"spellDistanceUnits": {
 					"type": "object",
-					"description": "Object names are spell distance units; values should be objects with optional `\"singular\"`` (singular form of the unit, e.g. \"foot\" for the singular of \"feet\"--if unspecified, a trailing \"s\" is removed from the plural version, if it exists, and the result is used as the singular form) and `\"feetPerUnit\"` (e.g. for a \"yards\" custom unit, this would be `3`, as there are three feet in a yard) key/values."
+					"description": "Object names are spell distance units (e.g. `\"hectares\"`); values should be objects with optional `\"singular\"`` (singular form of the unit, e.g. \"foot\" for the singular of \"feet\"--if unspecified, a trailing \"s\" is removed from the plural version, if it exists, and the result is used as the singular form) and `\"feetPerUnit\"` (e.g. for a \"yards\" custom unit, this would be `3`, as there are three feet in a yard) key/values.",
+					"patternProperties": {
+						".*": {
+							"type": "object",
+							"properties": {
+								"feetPerUnit": {
+									"type": "number"
+								},
+								"singular": {
+									"type": "string"
+								}
+							},
+							"required": ["feetPerUnit"]
+						}
+					}
 				},
 				"optionalFeatureTypes": {
 					"type": "object",
-					"description": "Object names are optional feature \"type\" shorthands (e.g. \"EI\" for \"Eldritch Invocation\" which will be displayed in the list view as a sortable column"
+					"description": "Object names are optional feature \"type\" shorthands (e.g. \"EI\" for \"Eldritch Invocation\" which will be displayed in the list view as a sortable column",
+					"patternProperties": {
+						".*": {
+							"type": "string"
+						}
+					}
 				},
 				"dateAdded": {
 					"type": "integer",
 					"description": "The epoch timestamp (in seconds) when the homebrew was added to the repository. Not guaranteed to be anywhere near accurate."
 				},
-				"dependencies": {
-					"dependencies": {
-						"type": "object",
-						"properties": {
-							"monster": {
-								"type": "array",
-								"items": {"type": "string"}
+				"itemValueConversions": {
+					"type": "object",
+					"description": "Keys should be uniquely-named value conversion objects, and can be referenced from item entities as \"valueConversion\": \"<MyKey>\". The value conversion info will then be used when rendering the value of the item.",
+					"patternProperties": {
+						".*": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"coin": {
+										"type": "string",
+										"description": "Coin abbreviation, e.g. \"gp\""
+									},
+									"mult": {
+										"type": "number",
+										"description": "A multiplier for converting copper to this currency, e.g. \"0.01\" for standard gold pieces"
+									},
+									"isFallback": {
+										"type": "boolean",
+										"description": "If true, this currency will be used as a fallback when the copper value of the item is a fractional value (e.g. a single ball bearing is worth 0.1 cp; marking gold as the fallback currency would have this be converted to gold)."
+									}
+								},
+								"required": ["coin", "mult"]
 							}
 						}
 					}
+				},
+				"dependencies": {
+					"description": "(Currently unused.)",
+					"type": "object",
+					"properties": {
+						"monster": {
+							"type": "array",
+							"items": {"type": "string"}
+						}
+					}
 				}
-			}
+			},
+			"required": ["sources"]
 		},
 		"adventure": {
 			"type": "array",
