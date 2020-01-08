@@ -31,6 +31,13 @@ function cleanFolder (folder) {
 		}))
 		.map(file => {
 			if (!ub.FILES_NO_META[file.name]) {
+				// Ensure _meta is at the top of the file
+				const tmp = {$schema: file.contents.$schema, _meta: file.contents._meta};
+				delete file.contents.$schema;
+				delete file.contents._meta;
+				Object.assign(tmp, file.contents);
+				file.contents = tmp;
+
 				if (file.contents._meta.dateAdded == null) {
 					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateAdded"! Adding one...`);
 					file.contents._meta.dateAdded = RUN_TIMESTAMP;
