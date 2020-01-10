@@ -1,38 +1,206 @@
 {
-	"_meta": {
-		"sources": [
-			{
-				"json": "DM03",
-				"abbreviation": "DM03",
-				"full": "Deep Magic 03: Void Magic",
-				"authors": [
-					"Dan Dillon",
-					"Steve Winter",
-					"Marc Radle",
-					"Marcel Mercado",
-					"Guido Kuip",
-					"Bryan Syme",
-					"Wolfgang Bauer"
-				],
-				"version": "0.1.0",
-				"url": "https://koboldpress.com/kpstore/product/deep-magic-void-magic-pdf-5th-edition/",
-				"convertedBy": [
-					"hafdon"
-				],
-				"targetSchema": "1.0.0"
-			}
-		],
-		"dateAdded": 1578601678
-	},
-	"feat": [
-		{
-			"name": "Void Channeler",
-			"source": "DM03",
-			"page": 5,
-			"entries": [
-				"As an action, you can speak aloud a word or short phrase in void speech. One creature of your choice within 10 feet that can hear you must succeed on a Wisdom saving throw against this magic (DC 8 + your proficiency bonus + your Charisma modifier) or be {@condition frightened} of you for 1 minute. A {@condition frightened} creature can repeat the saving throw at the end of its turn, ending the effect on itself on a success.",
-				"Other creatures who can hear you suffer minor reactions to the void speech such as spontaneous nosebleeds, headaches, bits of hair falling out, and other unsettling effects. The first time you use this ability, you suffer no adverse effects. If you use it again before completing a short or long rest, you take {@damage 1d4} necrotic damage. Each additional time you use it before finishing a rest, the necrotic damage increases by {@dice 1d4}."
-			]
-		}
-	]
+    "_meta": {
+        "sources": [
+            {
+                "json": "DM03",
+                "abbreviation": "DM03",
+                "full": "Deep Magic 03: Void Magic",
+                "authors": [
+                    "Dan Dillon",
+                    "Steve Winter",
+                    "Marc Radle",
+                    "Marcel Mercado",
+                    "Guido Kuip",
+                    "Bryan Syme",
+                    "Wolfgang Bauer"
+                ],
+                "version": "0.1.0",
+                "url": "https://koboldpress.com/kpstore/product/deep-magic-void-magic-pdf-5th-edition/",
+                "convertedBy": ["hafdon"],
+                "targetSchema": "1.0.0"
+            }
+        ],
+        "spellSchools": { "VD": { "full": "Void", "short": "VD" } },
+        "dateAdded": 1578601678,
+        "dateUpdated": 1578677921
+    },
+    "feat": [
+        {
+            "name": "Void Channeler",
+            "source": "DM03",
+            "page": 5,
+            "entries": [
+                "As an action, you can speak aloud a word or short phrase in void speech. One creature of your choice within 10 feet that can hear you must succeed on a Wisdom saving throw against this magic (DC 8 + your proficiency bonus + your Charisma modifier) or be {@condition frightened} of you for 1 minute. A {@condition frightened} creature can repeat the saving throw at the end of its turn, ending the effect on itself on a success.",
+                "Other creatures who can hear you suffer minor reactions to the void speech such as spontaneous nosebleeds, headaches, bits of hair falling out, and other unsettling effects. The first time you use this ability, you suffer no adverse effects. If you use it again before completing a short or long rest, you take {@damage 1d4} necrotic damage. Each additional time you use it before finishing a rest, the necrotic damage increases by {@dice 1d4}."
+            ]
+        },
+        {
+            "name": "Void Scribe",
+            "source": "DM03",
+            "page": 5,
+            "entries": [
+                "As an action, you can use a writing medium to inscribe a magical void glyph on an unattended object within reach. As long as the glyph remains intact, the object is vulnerable to necrotic damage and it takes {@damage 1d6} necrotic damage at the end of your turn.",
+                "For the glyph to remain intact, you must concentrate on it as if concentrating on a spell. In addition to the normal demands of concentration, you must also make a successful {@dc 10} Constitution saving throw at the start of your turn or the glyph crumbles away and ceases to function."
+            ]
+        }
+    ],
+    "spell": [
+        {
+            "name": "Conjure Minor Voidborn",
+            "level": 5,
+            "school": "VD",
+            "source": "DM03",
+            "time": [{ "number": 1, "unit": "minute" }],
+            "range": { "distance": { "type": "feet", "amount": 90 } },
+            "components": { "v": true, "s": true },
+            "duration": [
+                {
+                    "type": "timed",
+                    "duration": { "type": "hour", "amount": 1, "upTo": true },
+                    "concentration": true
+                }
+            ],
+            "classes": {
+                "fromClassList": [{ "name": "Wizard", "source": "PHB" }]
+            },
+            "entries": [
+                "You summon fiends or aberrations that appear in unoccupied spaces you can see within range. You choose one of the following options for what appears:",
+                {
+                    "type": "list",
+                    "items": [
+                        "One creature of challenge rating 2 or lower",
+                        "Two creatures of challenge rating 1 or lower",
+                        "Four creatures of challenge rating 1/2 or lower",
+                        "Eight creatures of challenge rating 1/4 or lower"
+                    ]
+                },
+                "Summoned creatures disappear when they drop to 0 hit points or when the spell ends.",
+                "The summoned creatures do not directly attack you or your companions. Roll initiative for the summoned creatures as a group; they take their own turns on their initiative result. They attack your enemies and try to stay within 90 feet of you, but they control their own actions. The summoned creatures despise being bound, so they might harm or impede you and your companions with secondary effects (but not direct attacks) if the opportunity arises. At the beginning of the creatures’ turn, you can use your reaction to verbally command them. They obey your commands for that turn, and you take {@damage 1d6} psychic damage at the end of the turn.",
+                "If your concentration is broken, the creatures don’t disappear. Instead, you can no longer command them and they become hostile to you and your companions. They will attack you and your allies if they believe they have a chance to win the fight or to inflict meaningful harm, but they won’t fight if they fear it would mean their own death. The creatures can’t be dismissed by you, but they disappear 1 hour after being summoned."
+            ],
+            "entriesHigherLevel": [
+                {
+                    "type": "entries",
+                    "name": "At Higher Levels",
+                    "entries": [
+                        "When you cast this spell using a 7th- or 9th-level spell slot, you choose one of the summoning options above, and more creatures appear: twice as many with a 7th-level spell slot and three times as many with a 9th-level spell slot."
+                    ]
+                }
+            ],
+            "page": 7,
+            "srd": true
+        },
+        {
+            "name": "Crushing Curse",
+            "level": 0,
+            "school": "VD",
+            "source": "DM03",
+            "time": [{ "number": 1, "unit": "action" }],
+            "range": { "distance": { "type": "feet", "amount": 60 } },
+            "components": { "v": true, "s": true },
+            "duration": [{ "type": "instant" }],
+            "classes": {
+                "fromClassList": [{ "name": "Wizard", "source": "PHB" }]
+            },
+            "entries": [
+                "You speak a word of void speech. Choose a creature you can see within range. If the target can hear you, it must succeed on a Wisdom saving throw or take {@damage 1d6} psychic damage and be {@condition deafened|phb} for 1 minute. A deafened creature can repeat the saving throw at the end of each of its turns, ending the deafness on a success. A creature deafened in this way can still hear Void Speech."
+            ],
+            "entriesHigherLevel": [
+                {
+                    "type": "entries",
+                    "name": "At Higher Levels",
+                    "entries": [
+                        "This spell’s damage increases by {@dice 1d6} when you reach 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6})."
+                    ]
+                }
+            ],
+            "page": 7,
+            "damageInflict": ["psychic"],
+            "conditionInflict": ["deafened"],
+            "savingThrow": ["wisdom"],
+            "areaTags": ["ST"],
+            "srd": true
+        },
+        {
+            "name": "Maddening Whispers",
+            "level": 2,
+            "school": "VD",
+            "source": "DM03",
+            "time": [{ "number": 1, "unit": "action" }],
+            "range": { "distance": { "type": "feet", "amount": 30 } },
+            "components": { "v": true, "s": true },
+            "duration": [
+                {
+                    "type": "timed",
+                    "duration": { "type": "minute", "amount": 0 }
+                }
+            ],
+            "classes": {
+                "fromClassList": [{ "name": "Wizard", "source": "PHB" }]
+            },
+            "entries": [
+                "You whisper a string of Void Speech toward a target that can hear you. The target must succeed on a Charisma saving throw or be {@condition incapacitated}. While incapacitated by this spell, the target’s speed is 0 and it can’t benefit from increases to its speed. To maintain the effect, you must use your action on subsequent turns to continue whispering; otherwise, the spell ends. The spell also ends if the target takes damage."
+            ],
+            "page": 8,
+            "conditionInflict": ["incapacitated"],
+            "savingThrow": ["charisma"],
+            "areaTags": ["ST"],
+            "srd": true
+        }
+    ],
+    "subclass": [
+        {
+            "source": "DM03",
+            "page": 5,
+            "class": "Wizard",
+            "name": "Void Speaker",
+            "subclassFeatures": [
+                [
+                    {
+                        "name": "Void Speaker",
+                        "entries": [
+                            "Given the nature of void magic, it comes as no surprise that a tradition of wizards sprang up from the study of void speech. Void speakers are a standoffish and secretive lot, prone to delving into crumbling, monster-prowled ruins and the dark corners of moldering libraries with equal caution; carelessly reading a text that may be sprinkled with void glyphs can be just as deadly as stumbling into a den of trolls. As you focus your study on void speech, you learn to properly invoke the words and glyphs to empower your magic and to tap the vast potential of the void.",
+                            "Some void speakers risk the darkness for the sake of knowledge or defense against that which lies beyond. Others succumb to the madness and corruption that void magic touches and become living conduits for the horror seeking entry into the mortal world.",
+                            {
+                                "type": "entries",
+                                "name": "Void Savant",
+                                "entries": [
+                                    "Beginning when you select this tradition at 2nd level, the gold and time you must spend to copy a void spell into your spellbook is halved.",
+                                    "When you gain a level, one of the two spells you learn for gaining a level can be a void magic spell, even if you’ve never encountered the spell before. Similarly, when you learn a new cantrip, it can be a void magic cantrip, even if you’ve never previously encountered it."
+                                ]
+                            },
+                            {
+                                "type": "entries",
+                                "name": "Whispers of the Void",
+                                "entries": [
+                                    "Starting at 2nd level, as a bonus action immediately before you cast a spell of 1st level or higher, you can utter a few words of void speech and weave its dark magic into your spell. The tainted spell disorients one creature you can see that the spell affects when you cast it. The creature has disadvantage on the next attack roll or ability check it makes before the start of your next turn. You can't use this feature if you are unable to speak."
+                                ]
+                            },
+                            {
+                                "type": "entries",
+                                "name": "Rebuke from Beyond",
+                                "entries": [
+                                    "Beginning at 6th level, when you are damaged by a creature within 60 feet, you can use your reaction to bark a destructive word of void speech. If the creature can hear you, it takes necrotic damage equal to half your wizard level plus your Intelligence modifier. You can use this ability a number of times equal to your Intelligence modifier (minimum of 1), and you regain all expended uses when you finish a long rest. You can’t use this ability if you are unable to speak."
+                                ]
+                            },
+                            {
+                                "type": "entries",
+                                "name": "Powerful Echo",
+                                "entries": [
+                                    "Starting at 10th level, when you cast a void magic spell that targets only one creature, you can have it target a second creature. Additionally, you have advantage on Constitution saving throws made to maintain concentration on void spells."
+                                ]
+                            },
+                            {
+                                "type": "entries",
+                                "name": "Manifestation",
+                                "entries": [
+                                    "At 14th level, you can use your action to pronounce a complicated phrase in void speech. Choose a point you can see within 60 feet. The area within 20 feet of that point is shrouded in dim light for one minute. Any creature hostile to you within the area is vulnerable to necrotic damage and has disadvantage on Wisdom checks. An affected creature that starts its turn in the area or that enters the area for the first time on its turn takes 3d6 necrotic damage, or half damage with a successful Constitution saving throw (using your spell save DC). Once you use this ability, you can’t use it again until you finish a short or long rest. You can’t use this feature if you’re unable to speak."
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            ]
+        }
+    ]
 }
