@@ -13,8 +13,7 @@ function readJSON (path) {
 			// Strip BOM(s)
 			while (str.charCodeAt(0) === 0xFEFF) str = str.slice(1);
 			return JSON.parse(str);
-		}
-		else {
+		} else {
 			const parts = path.split(/[\\/]+/g);
 			const dir = parts.slice(0, -1).join("/");
 			const originalName = parts[parts.length - 1];
