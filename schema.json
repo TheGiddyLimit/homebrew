@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.3",
+	"version": "1.1.5",
 	"type": "object",
 	"description": "Homebrew for 5etools. Should include arrays titled similarly to the main site data, e.g. `spell` or `class`",
 	"definitions": {
@@ -1352,6 +1352,10 @@
 								},
 								"short": {
 									"type": "string"
+								},
+								"color": {
+									"type": "string",
+									"description": "HTML hex color code this source should use when displayed in lists, e.g. 'ff00ff'"
 								}
 							},
 							"required": ["full", "short"]
@@ -1385,9 +1389,39 @@
 						}
 					}
 				},
+				"psionicTypes": {
+					"type": "object",
+					"description": "Object names are psionic type abbreviations (e.g. `\"X\"`); values should be objects with `\"full\"`` (used in the main entry, e.g. \"Greater Discipline\") and `\"short\"` (used in the list view, e.g. `\"G. Discipline\"`) key/values.",
+					"patternProperties": {
+						".*": {
+							"type": "object",
+							"properties": {
+								"full": {
+									"type": "string"
+								},
+								"short": {
+									"type": "string"
+								},
+								"hasOrder": {
+									"description": "If this type has a psionic order.",
+									"type": "boolean"
+								},
+								"isAltDisplay": {
+									"description": "If this type should display its psionic type/order with the format \"Greater Discipline (Awakened)\" instead of the standard \"Awakened Greater Discipline\"",
+									"type": "boolean"
+								}
+							},
+							"required": ["full", "short"]
+						}
+					}
+				},
 				"dateAdded": {
 					"type": "integer",
 					"description": "The epoch timestamp (in seconds) when the homebrew was added to the repository. Not guaranteed to be anywhere near accurate."
+				},
+				"dateLastModified": {
+					"type": "integer",
+					"description": "The epoch timestamp (in seconds) when the homebrew was last modified. Not guaranteed to be anywhere near accurate."
 				},
 				"itemValueConversions": {
 					"type": "object",
