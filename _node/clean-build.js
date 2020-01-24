@@ -45,6 +45,11 @@ function cleanFolder (folder) {
 					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" had a "dateAdded" in milliseconds! Converting to seconds...`);
 					file.contents._meta.dateAdded = file.contents._meta.dateAdded / 1000;
 				}
+
+				if (file.contents._meta.dateLastModified == null) {
+					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateLastModified"! Adding one...`);
+					file.contents._meta.dateLastModified = file.contents._meta.dateAdded;
+				}
 			}
 			file.contents = JSON.stringify(file.contents, null, "\t") + "\n";
 			return file;
