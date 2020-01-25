@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.5",
+	"version": "1.1.6",
 	"type": "object",
 	"description": "Homebrew for 5etools. Should include arrays titled similarly to the main site data, e.g. `spell` or `class`",
 	"definitions": {
@@ -1546,6 +1546,46 @@
 			"type": "array",
 			"items": {
 				"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/spells/roll20.json#/definitions/spellMeta"
+			}
+		},
+		"foundrySpell": {
+			"description": "Based on the Roll20 JSON data",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"description": "Used to link spells in the homebrew to this extra Foundry data",
+						"type": "string"
+					},
+					"source": {
+						"description": "Used to link spells in the homebrew to this extra Foundry data",
+						"type": "string"
+					},
+					"targetValue": {"type": "integer"},
+					"targetUnits": {"type": "string"},
+					"targetType": {
+						"description": "From Foundry's `CONFIG.DND5E.targetTypes`",
+						"type": "string",
+						"enum": [
+							"none",
+							"self",
+							"creature",
+							"ally",
+							"enemy",
+							"object",
+							"space",
+							"radius",
+							"sphere",
+							"cylinder",
+							"cone",
+							"square",
+							"cube",
+							"line",
+							"wall"
+						]
+					}
+				}
 			}
 		},
 		"item": {
