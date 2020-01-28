@@ -48,7 +48,7 @@ function cleanFolder (folder) {
 
 				if (file.contents._meta.dateLastModified == null) {
 					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateLastModified"! Adding one...`);
-					file.contents._meta.dateLastModified = file.contents._meta.dateAdded;
+					file.contents._meta.dateLastModified = RUN_TIMESTAMP;
 				}
 			}
 			file.contents = JSON.stringify(file.contents, null, "\t") + "\n";
