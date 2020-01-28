@@ -22,7 +22,11 @@ const replacementRegex = new RegExp(Object.keys(REPLACEMENTS).join("|"), 'g');
 const RUN_TIMESTAMP = Math.floor(Date.now() / 1000);
 const MAX_TIMESTAMP = 9999999999;
 
+const CONTENT_KEY_BLACKLIST = new Set(["$schema", "_meta"]);
+
 function cleanFolder (folder) {
+	const ALL_ERRORS = [];
+
 	const files = uf.listFiles(folder);
 	files
 		.map(file => ({
@@ -31,6 +35,7 @@ function cleanFolder (folder) {
 		}))
 		.map(file => {
 			if (!ub.FILES_NO_META[file.name]) {
+				// region clean
 				// Ensure _meta is at the top of the file
 				const tmp = {$schema: file.contents.$schema, _meta: file.contents._meta};
 				delete file.contents.$schema;
@@ -50,7 +55,25 @@ function cleanFolder (folder) {
 					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateLastModified"! Adding one...`);
 					file.contents._meta.dateLastModified = RUN_TIMESTAMP;
 				}
+				// endregion
+
+				// region test
+				const validSources = new Set(file.contents._meta.sources.map(src => src.json));
+
+				Object.keys(file.contents)
+					.filter(k => !CONTENT_KEY_BLACKLIST.has(k))
+					.forEach(k => {
+						const data = file.contents[k];
+
+						data.forEach(it => {
+							const source = it.source || (it.inherits ? it.inherits.source : null);
+							if (!source) return ALL_ERRORS.push(`${file.name} :: ${k} :: "${it.name || it.id}" had no source!`);
+							if (!validSources.has(source)) return ALL_ERRORS.push(`${file.name} :: ${k} :: "${it.name || it.id}" source "${source}" was not in _meta`);
+						});
+					});
+				// endregion
 			}
+
 			file.contents = JSON.stringify(file.contents, null, "\t") + "\n";
 			return file;
 		})
@@ -62,6 +85,11 @@ function cleanFolder (folder) {
 		.forEach(file => {
 			fs.writeFileSync(file.name, file.contents);
 		});
+
+	if (ALL_ERRORS.length) {
+		ALL_ERRORS.forEach(e => console.error(e));
+		throw new Error(`Errors were found. See above.`);
+	}
 }
 
 uf.runOnDirs((dir) => {
