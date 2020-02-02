@@ -89,7 +89,7 @@ function buildTimestampIndex () {
 					throw new Error(`File "${file.name}" did not have metadata!`);
 				}
 				if (hasMeta) {
-					timestampIndex[file.name] = file.contents._meta.dateAdded;
+					timestampIndex[file.name] = {a: file.contents._meta.dateAdded, m: file.contents._meta.dateLastModified};
 				}
 			});
 	}
