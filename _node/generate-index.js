@@ -92,9 +92,8 @@ function buildTimestampIndex () {
 					throw new Error(`File "${file.name}" did not have metadata!`);
 				}
 
-				if (!file.contents._meta.unlisted) {
-					if (hasMeta) timestampIndex[file.name] = {a: file.contents._meta.dateAdded, m: file.contents._meta.dateLastModified};
-				} else unlistedFilenamesCache.add(`${folder}/${file.name}`);
+				if (hasMeta && !file.contents._meta.unlisted) timestampIndex[file.name] = {a: file.contents._meta.dateAdded, m: file.contents._meta.dateLastModified};
+				else unlistedFilenamesCache.add(`${folder}/${file.name}`);
 			});
 	}
 
