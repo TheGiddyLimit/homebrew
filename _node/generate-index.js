@@ -93,7 +93,7 @@ function buildTimestampIndex () {
 				}
 
 				if (hasMeta && !file.contents._meta.unlisted) timestampIndex[file.name] = {a: file.contents._meta.dateAdded, m: file.contents._meta.dateLastModified};
-				else unlistedFilenamesCache.add(`${folder}/${file.name}`);
+				else if (hasMeta) unlistedFilenamesCache.add(file.name);
 			});
 	}
 
