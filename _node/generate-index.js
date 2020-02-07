@@ -63,12 +63,15 @@ function buildCollectionIndex () {
 		.filter(file => file !== FILE_INDEX)
 		.forEach(file => {
 			const data = JSON.parse(fs.readFileSync(`${DIR_COLLECTION}/${file}`, "utf8"));
+			if (data._meta && data._meta.unlisted) return;
 			outIndex[file] = Object.keys(data).filter(it => !it.startsWith("_")).sort(_ascSort);
 		});
 
 	fs.writeFileSync(`${DIR_COLLECTION}/${FILE_INDEX}`, JSON.stringify(outIndex, null, "\t") + "\n");
 	um.info(`COLLECTIONS`, `Complete.`);
 }
+
+const unlistedFilenamesCache = new Set(); // cache these on initial read to avoid re-reading every file
 
 function buildTimestampIndex () {
 	um.info(`TIMESTAMPS`, `Indexing...`);
@@ -88,9 +91,10 @@ function buildTimestampIndex () {
 				if (!file.contents._meta && hasMeta) {
 					throw new Error(`File "${file.name}" did not have metadata!`);
 				}
-				if (hasMeta) {
-					timestampIndex[file.name] = {a: file.contents._meta.dateAdded, m: file.contents._meta.dateLastModified};
-				}
+
+				if (!file.contents._meta.unlisted) {
+					if (hasMeta) timestampIndex[file.name] = {a: file.contents._meta.dateAdded, m: file.contents._meta.dateLastModified};
+				} else unlistedFilenamesCache.add(`${folder}/${file.name}`);
 			});
 	}
 
@@ -115,7 +119,7 @@ function buildDirIndex () {
 			download_url: `https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/${dir}/${encodeURIComponent(it)}`,
 			path: `${dir}/${it}`,
 			name: it
-		}));
+		})).filter(it => !unlistedFilenamesCache.has(it.path));
 
 		fs.writeFileSync(`_generated/index-dir-${dir}.json`, JSON.stringify(dirFiles), "utf-8");
 	});
