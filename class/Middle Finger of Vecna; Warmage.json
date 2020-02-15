@@ -4,19 +4,24 @@
 		"sources": [
 			{
 				"json": "MFOV:WM",
-				"full": "Warmage (Redux)",
+				"full": "Warmage (Complete)",
 				"authors": [
 					"Middle Finger of Vecna"
 				],
 				"abbreviation": "MFoV",
-				"url": "http://mfov.magehandpress.com/2018/01/warmage-redux.html",
-				"version": "2018.06.29"
+				"url": "https://store.magehandpress.com/products/complete-warmage",
+				"version": "2018.06.29",
+				"convertedBy": [
+					"Jafner"
+				]
 			}
 		],
 		"optionalFeatureTypes": {
-			"T:WM": "Warmage Trick"
+			"T:WM": "Warmage Trick",
+			"M:WM": "Warmage Maneuver"
 		},
-		"dateAdded": 1545342498
+		"dateAdded": 1545342498,
+		"dateLastModified": 1545342498
 	},
 	"class": [
 		{
@@ -41,20 +46,24 @@
 					"One artisan's kit",
 					"One musical instrument"
 				],
-				"skills": {
-					"choose": 2,
-					"from": [
-						"Animal Handling",
-						"Arcana",
-						"Athletics",
-						"Acrobatics",
-						"History",
-						"Investigation",
-						"Medicine",
-						"Perception",
-						"Survival"
-					]
-				}
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"animal handling",
+								"arcana",
+								"athletics",
+								"acrobatics",
+								"history",
+								"investigation",
+								"medicine",
+								"perception",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
 			},
 			"startingEquipment": {
 				"additionalFromBackground": true,
@@ -249,7 +258,7 @@
 					{
 						"name": "Arcane Initiation",
 						"entries": [
-							"he College of Warmages takes in students from all walks of life, but only trains those that have some aptitude in magic. At 1st level, choose where you first encountered the spark of magic from the following:",
+							"The College of Warmages takes in students from all walks of life, but only trains those that have some aptitude in magic. At 1st level, choose where you first encountered the spark of magic from the following:",
 							{
 								"type": "options",
 								"entries": [
@@ -287,7 +296,7 @@
 									{
 										"name": "Blaster",
 										"entries": [
-											"Your spell save DC increases by 2."
+											"When you cast a warmage cantrip, you can increase its damage die by one step, to a maximum of d12. A cantrip that initially deals 1d12 damage instead deals an additional 1d4 damage per damage die. (Die progression is as follows: d4 → d6 → d8 → d10 → d12.)"
 										]
 									},
 									{
@@ -299,7 +308,7 @@
 									{
 										"name": "Resistive",
 										"entries": [
-											"While you are wearing light or medium armor or are under the effect of the mage armor spell, you gain a +1 bonus to AC."
+											"While you are wearing light or medium armor or are under the effect of the {spell mage armor} spell, you gain a +1 bonus to AC."
 										]
 									},
 									{
@@ -356,7 +365,8 @@
 					{
 						"name": "Warmage Tactics",
 						"entries": [
-							"At 6th level, you learn how to use ambient magical power to defend yourself from your foes' magical attacks. You can add your Intelligence modifier to saving throws you make against spells and magical effects that deal damage."
+							"At 6th level, whenever you or a friendly creature within 10 feet of you must make a saving throw, the creature can use your Intelligence modifer and saving throw proficiency bonus on the roll, instead of its own bonus to the roll.",
+							"At 18th level, the range of this effect increases to 30 feet."
 						]
 					}
 				],
@@ -383,10 +393,9 @@
 				],
 				[
 					{
-						"name": "Warmage Surge",
+						"name": "Commander's Mount",
 						"entries": [
-							"Starting at 11th level, you learn to, for a moment, tap into a vast reservoir of magical power, unleashing it upon your foes. On your turn, when you deal damage with a warmage cantrip, you can double cantrip's damage dice.",
-							"Once you use this ability, you can't use it again until you finish a short or long rest."
+							"Starting at 11th level, you are granted access to the warmages' mystical stable. You learn the spell {@spell find steed}, and can cast it without using a spell slot."
 						]
 					}
 				],
@@ -401,9 +410,9 @@
 				[],
 				[
 					{
-						"name": "Warmage Eye",
+						"name": "Warmage's Eye",
 						"entries": [
-							"At 14th level, you are granted a set of innate magical enchantments which greatly enhance your ability to assess the battlefield, determine potential threats, and neutralize them accordingly. You can add your Intelligence modifier to all Perception checks that rely on sight. Additionally, your ranged attacks ignore half and three-quarters cover."
+							"At 14th level, you can cast the spell {@spell detect magic} without expending a spell slot."
 						]
 					}
 				],
@@ -440,7 +449,7 @@
 					{
 						"name": "Master Warmage",
 						"entries": [
-							"At 20th level, you reach the pinnacle of your warmage prowess. You can use your Warmage Surge three times between rests."
+							"At 20th level, you reach the pinnacle of your warmage prowess. Whenever you cast a warmage cantrip, you can use your bonus action to immediately cast another one."
 						]
 					}
 				]
@@ -751,6 +760,91 @@
 					]
 				},
 				{
+					"name": "House of Kings",
+					"shortName": "King",
+					"source": "MFOV:WM",
+					"subclassFeatures": [
+						[
+							{
+								"name": "House of Kings",
+								"entries": [
+									"The House of Kings trains the lieutenants and generals of the Warmage army, specializing in tactics and strategy.",
+									{
+										"name": "Bonus Proficiencies",
+										"entries": [
+											"At 3rd level, you gain proficiency in medium armor, shields, and lances."
+										]
+									},
+									{
+										"name": "Arcane Mastery",
+										"entries": [
+											"When you choose this archetype at 3rd level, you learn maneuvers that are fueled by special dice called mastery dice.",
+											{
+												"name": "Maneuvers.",
+												"entries": [
+													"You learn three maneuvers of your choice, chosen from the Kings Maneuvers list. If a maneuver deals additional damage, that damage is your choice of acid, cold, fire, or lightning damage.",
+													"You learn two additional maneuvers of your choice at 7th, 10th, 15th, and 18th level. Each time you learn new maneuvers, you can also replace a maneuver you know with a different one."
+												]
+											},
+											{
+												"name": "Mastery Dice.",
+												"entries": [
+													"You have four mastery dice, which are d8s. A mastery die is expended when you use it. You regain all of your expended mastery dice when you finish a short or long rest.",
+													"You gain another mastery die at 7th level and one more at 15th level."
+												]
+											},
+											{
+												"name": "Saving Throws.",
+												"entries": [
+													"When a maneuver calls for a saving throw to resist the maneuver's effects, use your spell save DC."
+												]
+											}
+										]
+									},
+									{
+										"name": "Trusted Advisor",
+										"entries": [
+											"At 3rd level, you can use your Intelligence modifier in place of your Charisma modifier when you make Deception, Intimidation, and Persuasion checks."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"name": "Lead from the Front",
+								"entries": [
+									"Starting at 7th level, neither you nor any ally within 100 feet that can see you is affected by rough terrain."
+								]
+							}
+						],
+						[
+							{
+								"name": "Improved Arcane Mastery",
+								"entries": [
+									"At 10th level, your mastery dice turn into d10s. At 18th level, they turn into d12s."
+								]
+							}
+						],
+						[
+							{
+								"name": "Relentless",
+								"entries": [
+									"Starting at 15th level, when you roll initiative and have no mastery dice remaining, you regain 1 mastery die."
+								]
+							}
+						],
+						[
+							{
+								"name": "Improved Arcane Mastery",
+								"entries": [
+									"At 18th level, your mastery dice turn into d12s."
+								]
+							}
+						]
+					]
+				},
+				{
 					"name": "House of Knights",
 					"shortName": "Knight",
 					"source": "MFOV:WM",
@@ -845,6 +939,87 @@
 											"At 18th level, you learn to constantly flood your weapons with arcane energy. When you finish a short or long rest, choose either cold, fire, or lightning damage. Attacks you make with melee weapons deal an additional 1d6 damage of the chosen type. On your turn, when you use your action to cast a warmage cantrip, you can use a bonus action to change your bonus damage type to the same damage type as that cantrip."
 										]
 									}
+								]
+							}
+						]
+					]
+				},
+				{
+					"name": "House of Pawns",
+					"shortName": "Pawn",
+					"source": "MFOV:WM",
+					"subclassFeatures": [
+						[
+							{
+								"name": "House of Pawns",
+								"entries": [
+									"The House of Pawns trains the front line of troops and forms the defensive bulwark of the college's army.",
+									{
+										"name": "Bonus Proficiencies",
+										"entries": [
+											"At 3rd level, you gain proficiency in medium armor, heavy armor, and shields."
+										]
+									},
+									{
+										"name": "Fortress Defense",
+										"entries": [
+											"Starting at 3rd level, you can use an action on your turn to summon a defensive wall of force. Select a space within 15 feet of you. Starting from that point, a number of translucent panels of force equal to your Intelligence modifier appear, which connect to form one continuous wall. Each panel is 5 feet wide, 4 feet tall, 1/4-inch-thick, and is tall enough to provide half cover for any creature behind it. Creatures cannot move through the wall, though they can jump over it. The wall persists for 1 minute or until you dismiss it. Once you use this ability you must take a short or long rest before you can do so again.",
+											"Your wall improves as you gain levels, as shown below:",
+											{
+												"type": "list",
+												"items": [
+													"At 7th level, creatures taking cover behind your wall are immune to effects which would move them involuntarily.",
+													"At 10th level, your wall is large enough to provide three-quarters cover.",
+													"At 15th level, you can use this ability an additional time between rests.",
+													"At 18th level, the range and number of panels doubles (30 feet and twice your Intelligence modifier)."
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"name": "Defensive Casting",
+								"entries": [
+									"Beginning at 7th level, you can perform the somatic components of a spell even when you have weapons or a shield in one or both hands, and when a creature provokes an opportunity attack from you, you can use your reaction to cast a cantrip which targets only that creature."
+								]
+							}
+						],
+						[
+							{
+								"name": "Fighting Style",
+								"entries": [
+									"At 10th level, you adopt a style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.",
+									{
+										"name": "Defensive",
+										"entries": [
+											"While you are wearing armor, you gain a +1 bonus to your AC."
+										]
+									},
+									{
+										"name": "Protection",
+										"entries": [
+											"When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"name": "En Passant",
+								"entries": [
+									"Starting at 15th level, when you take the Attack action or use your action to cast a cantrip that requires a melee attack, you can use a bonus action to shove the target of your cantrip or attack. If you move at least 10 feet in a straight line immediately before making this attack, you gain advantage on the shove ability check."
+								]
+							}
+						],
+						[
+							{
+								"name": "Impenetrable Fortress Defense",
+								"entries": [
+									"At 18th level, you learn to summon stronger and more impressive walls. You learn the spells {@spell wall of fire}, {@spell wall of force}, {@spell wall of ice}, and {@spell wall of stone}, and can cast each once without using a spell slot. Once you cast one of these spells, you must finish a long rest before you can cast it again."
 								]
 							}
 						]
@@ -971,7 +1146,7 @@
 									{
 										"name": "Rook's Caw",
 										"entries": [
-											"At 10th level, you gain the message cantrip, if you did not have it before. When casting the spell, you can target a creature you know but cannot see, regardless of range, provided the creature is on the same plane as you and you have a personal item of theirs (such as a sigil, a token, or a letter.)"
+											"At 10th level, you gain the {@spell message} cantrip, if you did not have it before. When casting the spell, you can target a creature you know but cannot see, regardless of range, provided the creature is on the same plane as you and you have a personal item of theirs (such as a sigil, a token, or a letter.)"
 										]
 									}
 								]
@@ -1008,6 +1183,52 @@
 		}
 	],
 	"spell": [
+		{
+			"name": "Acidic Blade",
+			"source": "MFOV:WM",
+			"school": "E",
+			"level": 0,
+			"time": [
+				{
+					"amount": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"amount": 5,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": true,
+				"m": "a weapon"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"amount": 1,
+						"type": "round"
+					}
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warmage",
+						"source": "MFOV:WM"
+					}
+				]
+			},
+			"entries": [
+				"As part of the action used to cast this spell, you must make a melee attack with a weapon against one creature within the spell's range, otherwise the spell fails. On a hit, the attack deals damage as normal, except that the entire attack deals acid damage instead of its normal type. The creature must also make a Dexterity saving throw or take {@damage 1d8} acid damage at the start of its next turn."
+			],
+			"entriesHigherLevel": [
+				"At 5th level, the melee attack and secondary damage each deal an additional {@damage 1d8} acid damage to the target. Both damage rolls increase by {@dice 1d8} at 11th level ({@dice 2d8 / 3d8}), and 17th level ({@dice 3d8 / 4d8})."
+			]
+		},
 		{
 			"name": "Force Buckler",
 			"source": "MFOV:WM",
@@ -1052,6 +1273,94 @@
 			]
 		},
 		{
+			"name": "Force Dart",
+			"source": "MFOV:WM",
+			"school": "E",
+			"level": 0,
+			"time": [
+				{
+					"amount": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"amount": 60,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warmage",
+						"source": "MFOV:WM"
+					}
+				]
+			},
+			"entries": [
+				"You fling a dart of magical force at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes {@damage 1d10} force damage."
+			],
+			"entriesHigherLevel": [
+				"This spell's damage increases by {@dice 1d10} when you reach 5th level ({@dice 2d10}), 11th level ({@dice 3d10}), and 17th level ({@dice 4d10})."
+			]
+		},
+		{
+			"name": "Glacial Blade",
+			"source": "MFOV:WM",
+			"school": "E",
+			"level": 0,
+			"time": [
+				{
+					"amount": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"amount": 5,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": true,
+				"m": "a weapon"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"amount": 1,
+						"type": "round"
+					}
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warmage",
+						"source": "MFOV:WM"
+					}
+				]
+			},
+			"entries": [
+				"As part of the action used to cast this spell, you must make a melee attack with a weapon against one creature within the spell's range, otherwise the spell fails. On a hit, the attack does damage as normal, except that the entire attack deals cold damage instead of its normal type. Additionally, the target must make a Constitution saving throw or be covered in brittle frost. If the target is then hit again by an attack before the beginning of your next turn, the target takes an additional {@damage 1d8} cold damage."
+			],
+			"entriesHigherLevel": [
+				"At 5th level, the melee attack and secondary damage each deal an additional {@damage 1d8} cold damage to their targets. Both damage rolls increase by {@dice 1d8} at 11th level ({@dice 2d8 / 3d8}), and 17th level ({@dice 3d8 / 4d8})."
+			]
+		},
+		{
 			"name": "Magic Daggers",
 			"source": "MFOV:WM",
 			"school": "C",
@@ -1090,7 +1399,7 @@
 				]
 			},
 			"entries": [
-				"With a flourish, you summon a number of throwing weapons equal to twice your spellcasting modifier. These weapons can be of any type: daggers, handaxes, sling bullets, darts, etc. For the duration of the spell, the summoned weapons float within easy reach, allowing you to grab and throw them with ease. As an action, you can throw one weapon as a ranged spell attack with a range of 60 feet. On a hit, the weapon deals 1d6 magical piercing, slashing, or bludgeoning damage, as appropriate to the weapon thrown. After one attack, the weapon vanishes."
+				"With a flourish, you summon a number of throwing weapons equal to twice your spellcasting modifier. These weapons can be of any type: daggers, handaxes, sling bullets, darts, etc. For the duration of the spell, the summoned weapons float within easy reach, allowing you to grab and throw them with ease. As an action, you can throw one weapon as a ranged spell attack with a range of 60 feet. On a hit, the weapon deals {@dice 1d6} magical piercing, slashing, or bludgeoning damage, as appropriate to the weapon thrown. After one attack, the weapon vanishes."
 			],
 			"entriesHigherLevel": [
 				"At higher levels, you can make more attacks with your weapons. At 5th level, you can make two attacks, at 11th level, three attacks, and at 17th level, four attacks."
@@ -1136,10 +1445,10 @@
 				]
 			},
 			"entries": [
-				"As part of the action used to cast this spell, you must make a melee attack with a weapon against one creature within the spell's range, otherwise the spell fails. On a hit, the attack does damage as normal, except that the entire attack deals fire damage instead of its normal type. Additionally, flame fills the space around the target. Until the start of your next turn, any creature that enters the space or ends its turn there takes 1d8 fire damage."
+				"As part of the action used to cast this spell, you must make a melee attack with a weapon against one creature within the spell's range, otherwise the spell fails. On a hit, the attack does damage as normal, except that the entire attack deals fire damage instead of its normal type. Additionally, flame fills the space around the target. Until the start of your next turn, any creature that enters the space or ends its turn there takes {@damage 1d8} fire damage."
 			],
 			"entriesHigherLevel": [
-				"At 5th level, the melee attack and secondary damage each deal an additional 1d8 fire damage to their targets. Both damage rolls increase by 1d8 at 11th level (2d8/3d8), and 17th level (3d8/4d8)."
+				"At 5th level, the melee attack and secondary damage each deal an additional {@damage 1d8} fire damage to their targets. Both damage rolls increase by {@dice 1d8} at 11th level ({@dice 2d8 / 3d8}), and 17th level ({@dice 3d8 / 4d8})."
 			]
 		},
 		{
@@ -1183,10 +1492,50 @@
 				]
 			},
 			"entries": [
-				"You conjure a blade of magical force, channeled through a focusing handle, and lash out at your foes. Make a melee spell attack. On a hit, you deal 1d8 force damage. The blade remains in existence for a short time; until the beginning of your next turn, you can make a single strike with your mystical blade as an opportunity attack."
+				"You conjure a blade of magical force, channeled through a focusing handle, and lash out at your foes. Make a melee spell attack. On a hit, you deal {@damage 1d8} force damage. The blade remains in existence for a short time; until the beginning of your next turn, you can make a single strike with your mystical blade as an opportunity attack."
 			],
 			"entriesHigherLevel": [
 				"You can make 1 additional strike on your turn at 5th level (2 attacks), at 11th level (3 attacks), and at 17th level (4 attacks)."
+			]
+		},
+		{
+			"name": "Phantom Grapnel",
+			"source": "MFOV:WM",
+			"school": "E",
+			"level": 0,
+			"time": [
+				{
+					"amount": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"amount": 120,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warmage",
+						"source": "MFOV:WM"
+					}
+				]
+			},
+			"entries": [
+				"You conjure a chain and hook made of magical force, which you propel at a creature, object, or unoccupied space you can see within range. When you target a space, your grapnel pulls you to that spot in a straight line. You provoke opportunity attacks for this movement as normal.",
+				"When you target a creature or object, make a ranged spell attack. On a hit, you pull the creature or object up to 20 feet towards you. A creature can make a Strength saving throw to resist this movement. If the target is two or more size categories larger than you (a Huge creature to a Medium creature, for example), you are pulled to the target instead."
 			]
 		},
 		{
@@ -1272,6 +1621,52 @@
 			]
 		},
 		{
+			"name": "Storming Blade",
+			"source": "MFOV:WM",
+			"school": "E",
+			"level": 0,
+			"time": [
+				{
+					"amount": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"amount": 5,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": true,
+				"m": "a weapon"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"amount": 1,
+						"type": "round"
+					}
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warmage",
+						"source": "MFOV:WM"
+					}
+				]
+			},
+			"entries": [
+				"As part of the action used to cast this spell, you must make a melee attack with a weapon against one creature within the spell's range, otherwise the spell fails. On a hit, the attack does damage as normal, except that the entire attack deals lightning damage instead of its normal type. Additionally, you can cause your lightning to jump to a creature within 5 feet of your target, dealing lightning damage equal to your spellcasting modifier."
+			],
+			"entriesHigherLevel": [
+				"At 5th level, the melee attack and secondary damage each deal an additional {@damage 1d8} lightning damage to their targets. Both damage rolls increase by {@dice 1d8} at 11th level ({@dice 2d8 / 3d8}), and 17th level ({@dice 3d8 / 4d8})."
+			]
+		},
+		{
 			"name": "Thundering Blade",
 			"source": "MFOV:WM",
 			"school": "E",
@@ -1311,10 +1706,10 @@
 				]
 			},
 			"entries": [
-				"As part of the action used to cast this spell, you must make a melee attack with a weapon against one creature within the spell's range, otherwise the spell fails. On a hit, the attack does damage as normal, except that the entire attack deals thunder damage instead of its normal type. Additionally, a clap of thunder rings out from your strike, forcing all creatures except yourself and the target within 5 feet of the target to succeed on a Dexterity saving throw or take 1d8 thunder damage."
+				"As part of the action used to cast this spell, you must make a melee attack with a weapon against one creature within the spell's range, otherwise the spell fails. On a hit, the attack does damage as normal, except that the entire attack deals thunder damage instead of its normal type. Additionally, a clap of thunder rings out from your strike, forcing all creatures except yourself and the target within 5 feet of the target to succeed on a Dexterity saving throw or take {@damage 1d8} thunder damage."
 			],
 			"entriesHigherLevel": [
-				"At 5th level, the melee attack and secondary damage each deal an additional 1d8 thunder damage to their targets. Both damage rolls increase by 1d8 at 11th level (2d8/3d8), and 17th level (3d8/4d8)."
+				"At 5th level, the melee attack and secondary damage each deal an additional {@damage 1d8} thunder damage to their targets. Both damage rolls increase by {@dice 1d8} at 11th level ({@dice 2d8 / 3d8}), and 17th level ({@dice 3d8 / 4d8})."
 			]
 		}
 	],
@@ -1377,6 +1772,21 @@
 			],
 			"entries": [
 				"While not wearing armor or using a shield, your AC equals 10 + your Dexterity modifier + your Intelligence modifier."
+			]
+		},
+		{
+			"name": "Commander's Call",
+			"source": "MFOV:WM",
+			"featureType": "T:WM",
+			"prerequisite": [
+				{
+					"feature": [
+						"House of Kings"
+					]
+				}
+			],
+			"entries": [
+				"You can cast the spell {@spell command} without using a spell slot. You can use this ability a number of times equal to your Intelligence modifier. You regain all expended uses when you take a long rest."
 			]
 		},
 		{
@@ -1449,33 +1859,33 @@
 			]
 		},
 		{
-			"name": "Mystical Vision",
+			"name": "Pawn Storm",
 			"source": "MFOV:WM",
 			"featureType": "T:WM",
+			"prerequisite": [
+				{
+					"feature": [
+						"House of Pawns"
+					]
+				}
+			],
 			"entries": [
-				"You can cast the spell {@spell detect magic} at will without expending a spell slot."
+				"Your movement speed increases by 10 feet. Additionally, during the first round of combat, your movement speed is doubled."
 			]
 		},
 		{
-			"name": "Rapid Fortification",
+			"name": "Phantom Hookshot",
 			"source": "MFOV:WM",
 			"featureType": "T:WM",
 			"prerequisite": [
 				{
 					"spell": [
-						"mending"
+						"phantrom grpnel"
 					]
 				}
 			],
 			"entries": [
-				"You can cast the mending cantrip as a bonus action, or you can cast it as an action for one of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"You can restore a single object, such as a door, cart, wall, or window to pristine condition, even if all of the original parts are not present. This object can be no larger than 10 cubic feet, or 1 cubic foot if it is an exceptionally complex object (such as a clock).",
-						"You can create simple fortifications, such as sealing a door shut, adding wooden planks to a window, or building a short stone wall (no larger than 5 square feet). You must have the materials present to use this ability."
-					]
-				}
+				"You can cast {@spell phantom grapnel|MFOV:WM} as a bonus action. If you do so, its range is reduced to 60 feet. Additionally, creatures and objects hit by your phantom grapnel take 1d6 force damage."
 			]
 		},
 		{
@@ -1544,29 +1954,6 @@
 			],
 			"entries": [
 				"When you deal acid damage to a creature with a warmage cantrip, that creature must make a Dexterity saving throw or take half the damage dealt again at the start of its next turn. A creature can only be affected by this ability once per turn."
-			]
-		},
-		{
-			"name": "Commander's Steed",
-			"source": "MFOV:WM",
-			"featureType": "T:WM",
-			"prerequisite": [
-				{
-					"level": {
-						"class": {
-							"name": "Warmarge",
-							"source": "MFOV:WM"
-						},
-						"level": 5
-					},
-					"feature": [
-						"House of Kings",
-						"House of Knights"
-					]
-				}
-			],
-			"entries": [
-				"You learn the {@spell find steed} spell, and can cast it without using a spell slot. Your steed is more resilient than most, and has a number of additional hit points equal to your warmage level."
 			]
 		},
 		{
@@ -1705,6 +2092,28 @@
 			"entries": [
 				"When you use your action to throw a weapon summoned by the {@spell magic daggers|MFOV:WM} cantrip, you can use your bonus action to throw one additional dagger.",
 				"Additionally, the range for the {@spell mystical blade|MFOV:WM} cantrip increases to 10 feet."
+			]
+		},
+		{
+			"name": "Promotion",
+			"source": "MFOV:WM",
+			"featureType": "T:WM",
+			"prerequisite": [
+				{
+					"level": {
+						"class": {
+							"name": "Warmage",
+							"source": "MFOV:WM"
+						},
+						"level": 5
+					},
+					"feature": [
+						"House of Pawms"
+					]
+				}
+			],
+			"entries": [
+				"Select another Warmage House when you learn this trick. You can learn tricks available to that house."
 			]
 		},
 		{
@@ -1887,6 +2296,50 @@
 			]
 		},
 		{
+			"name": "Pawn's Sacrifice",
+			"source": "MFOV:WM",
+			"featureType": "T:WM",
+			"prerequisite": [
+				{
+					"level": {
+						"class": {
+							"name": "Warmage",
+							"source": "MFOV:WM"
+						},
+						"level": 10
+					},
+					"feature": [
+						"House of Pawns"
+					]
+				}
+			],
+			"entries": [
+				"When a friendly creature within 30 feet of you is hit by a melee or ranged attack, you can use your reaction to move next to that creature and become the target of the attack instead, potentially causing the attack to miss. Once you use this trick, you must finish a short or long rest before you can do so again."
+			]
+		},
+		{
+			"name": "Queen's Charge",
+			"source": "MFOV:WM",
+			"featureType": "T:WM",
+			"prerequisite": [
+				{
+					"level": {
+						"class": {
+							"name": "Warmage",
+							"source": "MFOV:MW"
+						},
+						"level": 10
+					},
+					"feature": [
+						"House of Kings"
+					]
+				}
+			],
+			"entries": [
+				"As an action, you can move up to three times your movement speed towards a creature you can see, and you can make  a single attack or cast a warmage cantrip requiring a melee attack against it. You can perform this action while mounted."
+			]
+		},
+		{
 			"name": "Unerring Strike",
 			"source": "MFOV:WM",
 			"featureType": "T:WM",
@@ -1906,6 +2359,118 @@
 			],
 			"entries": [
 				"When you cast {@spell true strike}, you can concentrate on it for a number of rounds equal to your Intelligence modifier. You gain advantage on the first attack roll you make against the target each round while maintaining concentration on {@i true strike}."
+			]
+		},
+		{
+			"name": "Arcane Ripose",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"When a creature misses you with a melee attack, you can use your reaction and expend one mastery die to cast a cantrip targeting that creature."
+			]
+		},
+		{
+			"name": "Check",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"When you hit a creature with a spell attack, you can spend one mastery die to force that creature to move away from you. You add the mastery die to the attack's damage roll, and the target must make a Charisma saving throw. On a failed save, the target must immediately use its reaction, if available, to move up to half its speed directly away from you. "
+			]
+		},
+		{
+			"name": "Checkmate",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"As a bonus action on your turn, you can direct one of your companions to strike. When you do so, choose a friendly creature who can see or hear you and expend one mastery die. That creature can immediately use its reaction to make one weapon attack or cast a cantrip requiring an attack roll, adding the mastery die to the attack's damage roll."
+			]
+		},
+		{
+			"name": "Decoy",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"When you hit with a weapon or spell attack, you can expend one mastery die and use a bonus action to teleport yourself (and your mount, if applicable) up to half your movement speed away from the creature you hit. "
+			]
+		},
+		{
+			"name": "Distracting Blast",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"When you hit a creature with a spell attack, you can expend one mastery die to distract the creature, giving your allies an opening. You add the mastery die to the attack's damage roll. The next attack roll against the target by an attacker other than you has advantage if the attack is made before the start of your next turn. "
+			]
+		},
+		{
+			"name": "Feinting Blast",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"You can expend one mastery die and use a bonus action on your turn to feint, choosing one creature within 5 feet of you as your target. You have advantage on your next attack roll against that creature. If that attack hits, add the mastery die to the attack's damage roll."
+			]
+		},
+		{
+			"name": "Impeccable Tactics",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"On your turn, you can use a bonus action and expend one mastery die to bolster the resolve of one of your companions. When you do so, choose a friendly creature who can see or hear you. That creature gains temporary hit points equal to the mastery die roll + your Intelligence modifier."
+			]
+		},
+		{
+			"name": "King's Order",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"When you hit a creature with a spell attack, you can expend one mastery die to maneuver one of your comrades into a more advantageous position. You add the mastery die to the attack's damage roll, and you choose a friendly creature who can see or hear you. That creature can use its reaction to move up to half its speed without provoking opportunity attacks from the target of your attack."
+			]
+		},
+		{
+			"name": "Opening Move",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"When you take the Attack action on your turn, you can spend a mastery die to double your movement speed until the start of your next turn.  "
+			]
+		},
+		{
+			"name": "Parry",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"When another creature damages you with a melee weapon or spell attack, you can use your reaction and expend one mastery die to reduce the damage by the number you roll on your mastery die + your Intelligence modifier. "
+			]
+		},
+		{
+			"name": "Precision Attack",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"When you make a spell attack roll against a creature, you can expend one mastery die to add it to the roll. You can use this maneuver before or after making the attack roll, but before any effects of the attack are applied."
+			]
+		},
+		{
+			"name": "Queen's Gambit",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"When another creature damages you with a melee or ranged attack, you can use your reaction and expend one mastery die to cast a cantrip targeting that creature."
+			]
+		},
+		{
+			"name": "Stalemate",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"When you hit a creature with a melee weapon or spell attack, you can expend a mastery die to attempt to grapple it with bands of arcane energy. Add the mastery die to your grapple check: if you are successful, both you and you  target are restrained until you end the grapple or the creature breaks free."
+			]
+		},
+		{
+			"name": "Stonewall Attack",
+			"source": "MFOV:WM",
+			"featureType": "M:WM",
+			"entries": [
+				"When you hit a creature with a spell attack, you can expend one mastery die to hold that creature in place. The target must succeed on a Strength saving throw or be restrained until the start of your next turn. "
 			]
 		}
 	]
