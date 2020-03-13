@@ -24,6 +24,9 @@ function checkFileContents () {
 		],
 		"magicvariant": [
 			"variant"
+		],
+		"makebrew": [
+			"makebrewCreatureTrait"
 		]
 	};
 
