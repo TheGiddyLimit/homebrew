@@ -48,12 +48,15 @@ function cleanFolder (folder) {
 					file.contents._meta.dateAdded = RUN_TIMESTAMP;
 				} else if (file.contents._meta.dateAdded > MAX_TIMESTAMP) {
 					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" had a "dateAdded" in milliseconds! Converting to seconds...`);
-					file.contents._meta.dateAdded = file.contents._meta.dateAdded / 1000;
+					file.contents._meta.dateAdded = Math.round(file.contents._meta.dateAdded / 1000);
 				}
 
 				if (file.contents._meta.dateLastModified == null) {
 					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateLastModified"! Adding one...`);
 					file.contents._meta.dateLastModified = RUN_TIMESTAMP;
+				} else if (file.contents._meta.dateLastModified > MAX_TIMESTAMP) {
+					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" had a "dateLastModified" in milliseconds! Converting to seconds...`);
+					file.contents._meta.dateLastModified = Math.round(file.contents._meta.dateLastModified / 1000);
 				}
 				// endregion
 
