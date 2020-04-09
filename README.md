@@ -3,7 +3,7 @@ Homebrew JSONs compatible with 5etools. An editor will be created Eventually:tm:
 #### Getting brew (automatically)
 1. Hit the "Manage Homebrew" button (if available) on a 5etools page.
 2. "Get Homebrew 2.0"
-3. Click to add. Currently, the list only displays items from this repository. 
+3. Click to add. Currently, the list only displays items from this repository.
 
 #### Getting brew (manually)
 1. Browse for the file you want
