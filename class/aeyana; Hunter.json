@@ -8,12 +8,13 @@
 				"authors": [
 					"/u/aeyana"
 				],
-				"version": "2019.08",
+				"version": "1.2.6",
 				"url": "https://www.gmbinder.com/share/-LW8NwDOWv6U_41xQnsb",
-				"targetSchema": "1.0.0"
+				"targetSchema": "1.2.6"
 			}
 		],
-		"dateAdded": 1565857116
+		"dateAdded": 1565857116,
+		"dateLastModified": 1585713702
 	},
 	"class": [
 		{
@@ -193,19 +194,23 @@
 					"simple",
 					"martial"
 				],
-				"skills": {
-					"choose": 3,
-					"from": [
-						"Animal Handling",
-						"Athletics",
-						"Insight",
-						"Investigation",
-						"Nature",
-						"Perception",
-						"Stealth",
-						"Survival"
-					]
-				}
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"animal handling",
+								"athletics",
+								"insight",
+								"investigation",
+								"nature",
+								"perception",
+								"stealth",
+								"survival"
+							],
+							"count": 3
+						}
+					}
+				]
 			},
 			"startingEquipment": {
 				"additionalFromBackground": true,
@@ -228,19 +233,23 @@
 						"medium",
 						"shields"
 					],
-					"skills": {
-						"choose": 1,
-						"from": [
-							"Animal Handling",
-							"Athletics",
-							"Insight",
-							"Investigation",
-							"Nature",
-							"Perception",
-							"Stealth",
-							"Survival"
-						]
-					},
+					"skills": [
+						{
+							"choose": {
+								"from": [
+									"animal handling",
+									"athletics",
+									"insight",
+									"investigation",
+									"nature",
+									"perception",
+									"stealth",
+									"survival"
+								],
+								"count": 1
+							}
+						}
+					],
 					"weapons": [
 						"simple",
 						"martial"
@@ -309,9 +318,25 @@
 									},
 									{
 										"type": "entries",
+										"name": "Thrown-Weapon Fighting",
+										"entries": [
+											"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
+											"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
+										]
+									},
+									{
+										"type": "entries",
 										"name": "Two-Weapon Fighting",
 										"entries": [
 											"When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Unarmed Fighting",
+										"entries": [
+											"Your unarmed strikes can deal bludgeoning damage equal to {@damage 1d6} + your Strength modifier. If you strike with two free hands, the {@damage d6} becomes a {@damage d8}.",
+											"When you successfully grapple a creature, you can deal {@damage 1d4} bludgeoning damage to it. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
 										]
 									}
 								]
@@ -321,7 +346,7 @@
 					{
 						"name": "Hunter's Mark",
 						"entries": [
-							"At 2nd level, you learn to read your prey, allowing you to strike deeper and truer. As a bonus action on your turn, you can choose a creature you can see within 60 feet of you and mark it as your quarry. You can maintain this mark for a number of hours equal to your hunter level. You deal an extra {@damage 1d6} damage of the weapon's type to the marked target whenever you hit it with a weapon attack, and you have advantage on any Wisdom (Perception) or Wisdom (Survival) check you make to find it.",
+							"At 2nd level, you learn to read your prey, allowing you to strike deeper and truer. As a bonus action on your turn, you can choose a creature you can see within 90 feet of you and mark it as your quarry. You can maintain this mark for a number of hours equal to your hunter level. You deal an extra {@damage 1d6} damage of the weapon's type to the marked target whenever you hit it with a weapon attack, and you have advantage on any Wisdom (Perception) or Wisdom (Survival) check you make to find it.",
 							"This effect ends if you fall {@condition unconscious}, use it on another creature, or dismiss it as a bonus action.",
 							"You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a short or long rest."
 						]
@@ -402,7 +427,7 @@
 							"Some of your Hunter's Technique effects require your target to make a saving throw to resist the technique's effects. The saving throw DC is calculated as follows:",
 							{
 								"type": "abilityDc",
-								"name": "Maneuver",
+								"name": "Technique",
 								"attributes": [
 									"str",
 									"dex"
@@ -465,9 +490,9 @@
 				[],
 				[
 					{
-						"name": "Cunning Action",
+						"name": "Quick Reflexes",
 						"entries": [
-							"Starting at 10th level, your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the {@action Dash}, {@action Disengage}, or {@action Hide} action."
+							"Starting at 10th level, your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the {@action Dash}, {@action Disengage}, or {@action Hide} action. Additionally, when you roll initiative and are not surprised, you can use your reaction to take the {@action Hide} action, move up to your speed, or make one weapon attack."
 						]
 					}
 				],
@@ -604,7 +629,7 @@
 												"type": "inset",
 												"entries": [
 													"For players who do not have access to Xanathar's Guide to Everything, the following spell in the Ranger Spells can be replaced:",
-													"{@spell guardian of nature|XGE} with {@spell polymorph}"
+													"13th - {@spell guardian of nature|XGE} with {@spell polymorph}"
 												]
 											}
 										]
@@ -620,7 +645,7 @@
 										"type": "entries",
 										"name": "Hunter's Technique: Flurry",
 										"entries": [
-											"When you miss with a weapon attack, you can expend a use of your Hunter's Technique to make another weapon attack as part of the same action."
+											"When you miss with a weapon attack, you can expend a use of your Hunter's Technique to make two additional weapon attacks at the same target as part of the same action."
 										]
 									},
 									{
@@ -743,7 +768,7 @@
 										"type": "entries",
 										"name": "Hunter's Technique: Disarm",
 										"entries": [
-											"When you hit a creature with a weapon attack, or when a creature misses you with a melee weapon attack, you can expend a use of your Hunter's Technique to attempt to disarm the target, forcing it to drop one item of your choice that it's holding. The target succeed on a Strength saving throw or drop the object you choose, which lands at its feet."
+											"When you hit a creature with a weapon attack, or when a creature misses you with a melee weapon attack, you can expend a use of your Hunter's Technique to attempt to disarm the target, forcing it to drop one item of your choice that it's holding. The target must succeed on a Strength saving throw or drop the object you choose, which lands at its feet."
 										]
 									},
 									{
@@ -861,10 +886,10 @@
 													{
 														"type": "list",
 														"items": [
-															"{@spell absorb elements|XGE} with {@spell chromatic orb}",
-															"{@spell dragon's breath|XGE} and {@spell earthbind|XGE} with {@spell misty step} and {@spell web}",
-															"{@spell charm monster|XGE} and {@spell elemental bane|XGE} with {@spell confusion} and {@spell dimension door}",
-															"{@spell control winds|XGE} with {@spell conjure volley}"
+															"3rd - {@spell absorb elements|XGE} with {@spell chromatic orb}",
+															"5th - {@spell dragon's breath|XGE} and {@spell earthbind|XGE} with {@spell misty step} and {@spell web}",
+															"13th - {@spell charm monster|XGE} and {@spell elemental bane|XGE} with {@spell confusion} and {@spell dimension door}",
+															"17th - {@spell control winds|XGE} with {@spell conjure volley}"
 														]
 													}
 												]
@@ -873,16 +898,16 @@
 									},
 									{
 										"type": "entries",
-										"name": "Hunter's Technique: Sunder Scales",
+										"name": "Hunter's Technique: Clip Wings",
 										"entries": [
-											"When you hit a creature with a weapon attack, you can expend a use of your Hunter's Technique to reduce the creature's AC by {@dice 1d6} if it has natural armor or armor consisting of plate or scales. A creature's AC cannot be reduced to lower than 10 + its Dexterity modifier. A creature's natural armor heals over 1d6 days."
+											"When you hit a creature that is flying and has wings with a weapon attack, you can expend a use of your Hunter's Technique to attempt to knock it from the sky. The creature must succeed on a Strength saving throw or plummet, landing {@condition prone} if it hits the ground."
 										]
 									},
 									{
 										"type": "entries",
-										"name": "Hunter's Technique: Clip Wings",
+										"name": "Hunter's Technique: Sunder Scales",
 										"entries": [
-											"When you hit a creature that is flying and has wings with a weapon attack, you can expend a use of your Hunter's Technique to attempt to knock it from the sky. The creature must succeed on a Strength saving throw or plummet, landing {@condition prone} if it hits the ground."
+											"When you hit a creature with a weapon attack, you can expend a use of your Hunter's Technique to reduce the creature's AC by {@dice 1d6} if it has natural armor or armor consisting of plate or scales. A creature's AC cannot be reduced to lower than 10 + its Dexterity modifier. A creature's natural armor heals over 1d6 days."
 										]
 									},
 									{
@@ -990,16 +1015,16 @@
 									},
 									{
 										"type": "entries",
-										"name": "Hunter's Technique: Persistence",
+										"name": "Hunter's Technique: Bring Down",
 										"entries": [
-											"When a creature within 30 feet of succeeds a saving throw against one of your hunter spells, you can expend a use of your Hunter's Technique to force it to reroll the save."
+											"When you hit a creature with a weapon attack, you can expend a use of your Hunter's Technique to attempt to knock the target down. It must succeed on a Dexterity saving throw or be knocked {@condition prone} and take bludgeoning damage as it hits the ground. A Medium or smaller creature takes {@damage 1d6} damage, a Large creature takes {@damage 2d6} damage, a Huge creature takes {@damage 3d6} damage, and a Gargantuan creature takes {@damage 4d6} damage."
 										]
 									},
 									{
 										"type": "entries",
-										"name": "Hunter's Technique: Bring Down",
+										"name": "Hunter's Technique: Persistence",
 										"entries": [
-											"When you hit a creature with a weapon attack, you can expend a use of your Hunter's Technique to attempt to knock the target down. It must succeed on a Dexterity saving throw or be knocked {@condition prone} and take bludgeoning damage as it hits the ground. A Medium or smaller creature takes {@damage 1d6} damage, a Large creature takes {@damage 2d6} damage, a Huge creature takes {@damage 3d6} damage, and a Gargantuan creature takes {@damage 4d6} damage."
+											"When a creature within 30 feet of succeeds a saving throw against one of your hunter spells, you can expend a use of your Hunter's Technique to force it to reroll the save."
 										]
 									},
 									{
@@ -1032,7 +1057,7 @@
 										"type": "entries",
 										"name": "Coordinated Strike",
 										"entries": [
-											"At 11th level, you learn to coordinate your attacks with your allies on your quarry. When you use your Hunter's Mark, you can expend an additional use of your Hunter's Mark to choose a friendly creature within 60 feet of you. That creature's weapon attacks also deal an extra {@damage 1d6} damage of the weapon's type to the marked target.",
+											"At 11th level, you learn to coordinate your attacks with your allies on your quarry. When you use your Hunter's Mark, you can choose a friendly creature within 60 feet of you. That creature's weapon attacks also deal an extra {@damage 1d6} damage of the weapon's type to the marked target.",
 											"This effect ends if you fall {@condition unconscious}, use your Hunter's Mark on another creature, or dismiss it as a bonus action."
 										]
 									}
@@ -1109,9 +1134,16 @@
 												"type": "inset",
 												"entries": [
 													"For players who do not have access to Xanathar's Guide to Everything, the following spell in the Mage Hunter Spells can be replaced:",
-													"{@spell synaptic static|XGE} with {@spell dream}"
+													"17th - {@spell synaptic static|XGE} with {@spell dream}"
 												]
 											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Hunter's Technique: Copy Cast",
+										"entries": [
+											"As a reaction when you see a creature cast a cantrip or spell within 60 feet of you, you can expend a use of your Hunter's Technique to make an ability check using your spellcasting ability to attempt to copy the cantrip or spell. The DC equals 10 + the spell's level (DC 10 for cantrips). On a success, you know the cantrip or spell and can cast it as if it were a hunter spell for 1 minute."
 										]
 									},
 									{
@@ -1124,16 +1156,9 @@
 									},
 									{
 										"type": "entries",
-										"name": "Hunter's Technique: Copy Cast",
+										"name": "Arcanist Training",
 										"entries": [
-											"As a reaction when you see a creature cast a cantrip or spell within 60 feet of you, you can expend a use of your Hunter's Technique to make an ability check using your spellcasting ability to attempt to copy the cantrip or spell. The DC equals 10 + the spell's level (DC 10 for cantrips). On a success, you know the cantrip or spell and can cast it as if it were a hunter spell for 1 minute."
-										]
-									},
-									{
-										"type": "entries",
-										"name": "Bonus Cantrip",
-										"entries": [
-											"When you choose this prey at 3rd level, you learn one cantrip of your choice from the wizard spell list. Wisdom is your spellcasting ability for it."
+											"When you choose this prey at 3rd level, you gain proficiency in the Arcana skill and learn one cantrip of your choice from the wizard spell list. Wisdom is your spellcasting ability for the cantrip."
 										]
 									}
 								]
@@ -1234,7 +1259,7 @@
 												"type": "inset",
 												"entries": [
 													"For players who do not have access to Xanathar's Guide to Everything, the following spell in the Demon Slayer Spells can be replaced:",
-													"{@spell dawn|XGE} with {@spell geas}"
+													"17th - {@spell dawn|XGE} with {@spell geas}"
 												]
 											}
 										]
@@ -1243,14 +1268,14 @@
 										"type": "entries",
 										"name": "Hunter's Technique: Fortify",
 										"entries": [
-											"As a bonus action, you can expend a use of your Hunter's Technique to bolster your resilience. Choose one ability score. For 1 minute, you have advantage on one saving throws made using that ability score."
+											"As a bonus action, you can expend a use of your Hunter's Technique to bolster your resilience. Choose one ability score. For 1 minute, you have advantage on saving throws made using that ability score."
 										]
 									},
 									{
 										"type": "entries",
 										"name": "Hunter's Technique: Vicious Wound",
 										"entries": [
-											"When you hit a creature with a weapon attack, you can expend a use of your Hunter's Technique to attempt to inflict a festering wound. The target must make a Constitution saving throw. On a failed save, it can't regain hit points for 1 minute."
+											"When you hit a creature with a weapon attack, you can expend a use of your Hunter's Technique to inflict a festering wound, preventing the target from regaining hit points for 1 minute. Any creature can take an action to stanch the wound with a successful Wisdom (Medicine) check against your technique save DC."
 										]
 									},
 									{
@@ -1297,7 +1322,7 @@
 										"type": "entries",
 										"name": "Regeneration",
 										"entries": [
-											"At 15th level, your dealings with the unholy has imparted supernatural healing upon yourself. At the start of each of your turns, you gain temporary hit points equal to your Wisdom modifier. You lose these temporary hit points if exposed to sunlight."
+											"At 15th level, your dealings with the unholy has imparted supernatural healing upon yourself. At the start of each of your turns, you gain temporary hit points equal to 1d6 plus your Wisdom modifier if you are not standing in sunlight."
 										]
 									}
 								]
@@ -1359,23 +1384,23 @@
 												"type": "inset",
 												"entries": [
 													"For players who do not have access to Xanathar's Guide to Everything, the following spell in the Demon Slayer Spells can be replaced:",
-													"{@spell enemies abound|XGE} with {@spell slow}"
+													"9th - {@spell enemies abound|XGE} with {@spell slow}"
 												]
 											}
 										]
 									},
 									{
 										"type": "entries",
-										"name": "Hunter's Technique: Broad Stroke",
+										"name": "Hunter's Technique: Nimble Evasion",
 										"entries": [
-											"When you hit a creature with a melee weapon attack, you can expend a use of your Hunter's Technique to attempt to damage another creature with the same attack. Choose another creature within 5 feet of the original target and within your reach. If the original attack roll would hit the second creature, it takes the damage from your weapon's original damage roll. Spells or other features that affect the original damage roll (such as Divine Smite) are not applied to the second creature."
+											"As a reaction to being targeted by an attack or being forced to make a Dexterity saving throw, you can expend a use of your Hunter's Technique to take the Dodge action. Additionally, if you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage before the start of your next turn, you instead take no damage if you succeed on the saving throw, and only half damage if you fail."
 										]
 									},
 									{
 										"type": "entries",
-										"name": "Hunter's Technique: Rapid Defense",
+										"name": "Hunter's Technique: Shift Focus",
 										"entries": [
-											"You can expend a use of your Hunter's Technique to take the {@action Dodge} action as a bonus action."
+											"When you reduce the target of your Hunter's Mark to 0 hp, you can expend a use of your Hunter's Technique to shift the mark to another creature you can see within 90 feet of you. Doing so does not consume a use of your Hunter's Mark."
 										]
 									},
 									{
@@ -1515,7 +1540,7 @@
 										"type": "entries",
 										"name": "Hunter's Technique: Infusion",
 										"entries": [
-											"As a bonus action, you can expend a use of your Hunter's Technique to resupply your body with blood. You regain hit points equal to {@dice 1d6} + half your hunter level."
+											"As a bonus action, you can expend a use of your Hunter's Technique to resupply your body with blood. You regain hit points equal to {@dice 1d6} + your hunter level."
 										]
 									},
 									{
@@ -1566,11 +1591,12 @@
 												"type": "list",
 												"items": [
 													"You have resistance to bludgeoning, piercing, and slashing damage from nonmagical weapons that aren't silvered.",
-													"A creature that hits you with a melee attack while within 5 feet of you takes {@damage 1d6} necrotic damage."
+													"A creature that hits you with a melee attack while within 5 feet of you takes {@damage 1d6} necrotic damage.",
+													"When you hit a creature with a weapon attack, you regain hit points equal to your Constitution modifier (minimum of 1 hit point) if you have taken any damage since the end of your last turn."
 												]
 											},
 											"This curse lasts for 1 minute. It ends early if you are knocked {@condition unconscious}. You can also end this curse on your turn as a bonus action.",
-											"Once you use this feature, you must finish a long rest before you can use it again."
+											"Once you use this feature, you must finish a short or long rest before you can use it again."
 										]
 									}
 								]
@@ -1579,6 +1605,249 @@
 					],
 					"source": "Hunter",
 					"shortName": "Blood Hunter"
+				},
+				{
+					"name": "Plane Keeper",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Plane Keeper",
+								"entries": [
+									"Plane Keepers guard the world against threats that originate from other planes or that seek to ravage the mortal realm with otherworldly magic. They seek out planar portals and keep watch over them, venturing to the Inner Planes and the Outer Planes as needed to pursue their foes. These hunters are also friends to any forces in the multiverse\u2013especially benevolent dragons, fey, and elementals\u2013that work to preserve life and the order of the planes.",
+									{
+										"type": "entries",
+										"name": "Prey Spells",
+										"entries": [
+											"You gain prey spells at the hunter levels listed.",
+											{
+												"type": "table",
+												"caption": "Plane Keeper Spells",
+												"colLabels": [
+													"Hunter Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-3 text-center",
+													"col-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell protection from evil and good}, {@spell sanctuary}"
+													],
+													[
+														"5th",
+														"{@spell misty step}, {@spell rope trick}"
+													],
+													[
+														"9th",
+														"{@spell blink}, {@spell haste}"
+													],
+													[
+														"13th",
+														"{@spell banishment}, {@spell dimension door}"
+													],
+													[
+														"17th",
+														"{@spell contact other plane}, {@spell dispel evil and good}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Hunter's Technique: Ethereal Step",
+										"entries": [
+											"You can expend a use of your Hunter's Technique as a bonus action on your turn to infuse yourself with astral energies and become ethereal. Until the end of your turn, you can move through other creatures and objects as if they were difficult terrain. If you end your turn inside an object or creature, you are ejected into the nearest unoccupied space and take 5 force damage."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Hunter's Technique: Force Chains",
+										"entries": [
+											"When you hit a creature with a weapon attack, you can expend a use of your Hunter's Technique to attempt to bind it with planar energies. The target must succeed on a Strength saving throw or be {@condition grappled} for 1 minute. If the target is a creature that is not native to the plane you are in, it takes additional force damage equal to your hunter level and is {@condition restrained} while it is {@condition grappled}. A creature {@condition grappled} by this ability can use an action to make a Strength check against your technique save DC, ending the effect on a success."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Planar Warrior",
+										"entries": [
+											"At 3rd level you can spend 1 hour magically bond to a weapon that you are holding, granting it a pocket plane from which you summon it. While bonded to a weapon, you can summon it as a bonus action on your turn, opening a tear in space leading to the weapon's pocket plane.",
+											"You can have up to two bonded weapons, but can summon only one at a time with your bonus action. If you attempt to bond with a third weapon, you must break the bond with one of the other two."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Spectral Defense",
+										"entries": [
+											"By 7th level, your ability to move between planes allows you to slip through the planar boundaries to lessen the harm done to you during battle. When you take damage, you can use your reaction to give yourself resistance to all damage until the end of the turn."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Stutter Strike",
+										"entries": [
+											"At 11th level, you gain the ability to pass between the planes in a blink of an eye. When you use the Attack action, you can teleport up to 10 feet before or after each attack to an unoccupied space you can see. If you attack at least two different creatures with the action, you can make one additional attack with it against a third creature."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Astral Rift",
+										"entries": [
+											"At 15th level, your extraplanar experiences have granted you the ability to walk the rift between worlds. When you are in the Astral Plane, you can use your normal movement speed. Additionally, you can create a rift to the Astral Plane as an action, filling a 100-foot cube originating from you. For 1 minute, the area becomes filled with the essence of the Astral Plane. Each creatures aside from you inside the area can't use its normal movement speed, and instead has a movement speed (in feet) equal to 3 × its Intelligence score.",
+											"When a creature starts its turn within the area or enters the area for the first time on its turn, you can force it to make an Intelligence saving throw against your hunter spell save DC. The target takes {@damage 2d10} psychic damage on a failed save. If it fails this saving throw by 5 or more, it is {@condition stunned} until the end of its turn.",
+											"Once you create a rift, you can't do so again until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "Hunter",
+					"shortName": "Plane Keeper"
+				},
+				{
+					"name": "Night Stalker",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Night Stalker",
+								"entries": [
+									"Night Stalkers are at home in the darkest places: deep under the surface, in gloomy alleyways, in primeval forests, and wherever else the light dims. Most folk enter such places with trepidation, but a Night Stalker ventures boldly into the darkness, seeking to ambush the threats of the deep such as umberhulks, goblins, kobolds and ilithids. Such hunters are often found in the Underdark, but they will go any place where monsters lurk in the shadows.",
+									{
+										"type": "entries",
+										"name": "Prey Spells",
+										"entries": [
+											"You gain prey spells at the hunter levels listed.",
+											{
+												"type": "table",
+												"caption": "Night Hunter Spells",
+												"colLabels": [
+													"Hunter Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-3 text-center",
+													"col-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell alarm}, {@spell detect poison and disease}"
+													],
+													[
+														"5th",
+														"{@spell darkvision}, {@spell invisibility}"
+													],
+													[
+														"9th",
+														"{@spell clairvoyance}, {@spell nondetection}"
+													],
+													[
+														"13th",
+														"{@spell greater invisibility}, {@spell locate creature}"
+													],
+													[
+														"17th",
+														"{@spell mislead}, {@spell passwall}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Hunter's Technique: Deceive Senses",
+										"entries": [
+											"As an action, you can expend a use of your Hunter's Technique to trick the senses of a creature. Choose a creature within 30 feet of you. The target must succeed on a Wisdom saving throw or be unable to perceive you with sight, smell, hearing, blindsight, or tremorsense for 1 minute. It can repeat this saving throw at the end of each of its turns, ending the effect on a success."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Hunter's Technique: Dread Ambush",
+										"entries": [
+											"When you roll initiative and are not surprised, or as a bonus action on your turn, you can expend a use of your Hunter's Technique to cloak yourself with umbral magic for 1 minute. Until you cast a spell, force a creature to make a saving throw, or make a weapon attack, you are {@condition invisible} and your speed increases by 10 feet.",
+											"If this effect ends due to making a weapon attack against a creature, the attack deals additional psychic damage equal to your hunter level."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Umbral Senses",
+										"entries": [
+											"At 3rd level, your experience with dimly lit environments has allowed you to detect things even in low light. Dim light doesn't impose disadvantage on checks that rely on sight.",
+											"Additionally, being unable to see a creature doesn't impose disadvantage on your attack rolls against it, provided the creature isn't hidden from you."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Cloak of Darkness",
+										"entries": [
+											"Beginning at 7th level, you can empty your mind to hide your presence. While in dim light or darkness, you are immune to any effect that would sense your emotions or read your thoughts and have resistances to psychic damage.",
+											"Additionally, while you are in darkness, you are {@condition invisible} to any creature that relies on darkvision to see you in that darkness."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Symphony of the Night",
+										"entries": [
+											"Starting at 11th level, you can sing to the shadows around you, twisting them to encircle you. As a bonus action on your turn, you can exude an aura of darkness in a 30-foot radius around you until the start of your next turn. Any bright light within the aura becomes dim light, and any dim light becomes darkness.",
+											"Additionally, whenever you hit a creature that is in dim light or darkness with a weapon attack, the creature takes an extra {@damage 1d8} psychic damage."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Shadow Clone",
+										"entries": [
+											"At 15th level, you have learned methods to deceive your prey, striking both their body and mind. As an action while you are standing in dim light or darkness, you can create a shadowy replica of yourself, which appears in your space and lasts until you dismiss it as a bonus action or use this feature again. The replica is instantly destroyed if it is exposed to bright light, if it is subject to fire or radiant damage, or is targeted by any effect that dispels magic.",
+											"The replica's appearance, weight, size, and smell are identical to yours, and produces sounds as you do. It has no thoughts, and creatures with truesight can perceive it as a shadowy mass and are immune to the replica's attacks. The replica is immune to all damage and effects, but reacts realistically to being struck. It can occupy the spaces of other creatures. On your turn, you can mentally command the replica to move up to 30 feet in any direction (no action required), to a space you can see.",
+											"While the replica is in your space, creatures that don't have truesight or see the replica for what it is have disadvantage on attacks made against you. When you take the Attack action on your turn, you can attack as if you were in the replica's space, but you must use your own senses. If you do so, the attack deals psychic damage instead of its normal type.",
+											"If a creature within 30 feet of the replica uses its action to examine it, the creature can make an Intelligence (Investigation) check against your spell save DC. On a success, the creature can perceive the replica as a mass of shadowy darkness, becomes unaffected by this particular replica's attacks, and has advantage on Intelligence (Investigation) checks made to examine all replicas created by you for the next 24 hours.",
+											"Once you use this feature, you must finish a short or long rest before you can use it again."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "Hunter",
+					"shortName": "Night Stalker"
 				}
 			],
 			"classSpells": [
@@ -1626,10 +1895,33 @@
 					"name": "Find Greater Familiar",
 					"source": "Hunter"
 				},
-				"Find Traps",
+				{
+					"name": "Healing Spirit",
+					"source": "XGE"
+				},
+				{
+					"name": "Howling Wind",
+					"source": "Hunter"
+				},
 				"Lesser Restoration",
 				"Locate Animals or Plants",
 				"Locate Object",
+				{
+					"name": "Mark of the Leech",
+					"source": "Hunter"
+				},
+				{
+					"name": "Mark of the Prey",
+					"source": "Hunter"
+				},
+				{
+					"name": "Mark of the Storm",
+					"source": "Hunter"
+				},
+				{
+					"name": "Mark of the Wild",
+					"source": "Hunter"
+				},
 				"Melf's Acid Arrow",
 				"Moonbeam",
 				"Pass without Trace",
@@ -1649,6 +1941,10 @@
 				{
 					"name": "Flame Arrows",
 					"source": "XGE"
+				},
+				{
+					"name": "Junglerazer",
+					"source": "Hunter"
 				},
 				"Lightning Arrow",
 				"Nondetection",
@@ -1720,14 +2016,16 @@
 									"type": "entries",
 									"name": "Quick Build",
 									"entries": [
-										"You can make a hunter quickly by following these suggestions. First, make Dexterity your highest ability score, followed by Wisdom. (Some hunters who focus on two-weapon fighting or who take the Bounty Hunter or Colossus Slayer subclasses make Strength higher rather than Dexterity.) Second, choose the {@background outlander} background."
+										"You can make a hunter quickly by following these suggestions. First, make Strength or Dexterity your highest ability score, depending on whether you want to focus on melee weapons or on archery (or finesse weapons). If you plan to adopt the Bounty Hunter prey, make Strength your highest ability score. Your next-highest score should be Wisdom or Constitution, depending on whether you want to focus on ranged combat or melee combat respectively. Second, choose the outlander background."
 									]
 								}
 							]
 						}
 					],
 					"source": "Hunter",
-					"page": 1
+					"page": 1,
+					"name": "Hunter",
+					"type": "section"
 				}
 			],
 			"page": 1
@@ -1737,7 +2035,7 @@
 		{
 			"name": "Find Greater Familiar",
 			"source": "Hunter",
-			"page": 15,
+			"page": 16,
 			"level": 2,
 			"school": "C",
 			"time": [
@@ -1758,7 +2056,7 @@
 				"s": true,
 				"m": {
 					"text": "50 gp worth of charcoal, incense, and herbs that must be consumed by fire in a brass brazier",
-					"cost": "50gp",
+					"cost": 5000,
 					"consume": true
 				}
 			},
@@ -1772,7 +2070,7 @@
 			},
 			"entries": [
 				"You gain the service of a familiar, a spirit that takes an animal form you choose, of a beast with a challenge rating of 1/2 or lower. Appearing in an unoccupied space within range, the familiar has the statistics of the chosen form, though it is a celestial, fey, or fiend (your choice) instead of a beast.",
-				"Your familiar acts independently of you, but it always obeys your commands. In combat, it rolls its own initiative and acts on its own turn. When it hits a creature with a weapon attack, it is considered as one of your own weapon attacks for the purposes of spells and effects such as Hunter's Mark.",
+				"Your familiar acts independently of you, but it always obeys your commands. In combat, it rolls its own initiative and acts on its own turn. Your familiar can use your spell attack modifier in place of its own modifier for weapon attacks, and its natural weapons count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage. When it hits a creature with a weapon attack, it is considered as one of your own weapon attacks for the purposes of spells and effects such as Hunter's Mark.",
 				"When the familiar drops to 0 hit points, it disappears, leaving behind no physical form. It reappears after you cast this spell again.",
 				"While your familiar is within 100 feet of you, you can communicate with it telepathically. Additionally, as an action, you can see through your familiar's eyes and hear what it hears until the start of your next turn, gaining the benefits of any special senses that the familiar has. During this time, you are deaf and blind with regard to your own senses.",
 				"As an action, you can temporarily dismiss your familiar. It disappears into a pocket dimension where it awaits your summons. Alternatively, you can dismiss it forever. As an action while it is temporarily dismissed, you can cause it to reappear in any unoccupied space within 30 feet of you.",
@@ -1788,11 +2086,471 @@
 					]
 				}
 			],
+			"miscTags": [
+				"PRM",
+				"SMN",
+				"SGT"
+			],
 			"classes": {
 				"fromClassList": [
 					{
 						"name": "Hunter",
 						"source": "Hunter"
+					}
+				]
+			}
+		},
+		{
+			"name": "Howling Wind",
+			"source": "Hunter",
+			"page": 17,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"ritual": false
+			},
+			"entries": [
+				"You summon an elemental spirit of wind that takes on the form of a {@creature wolf} and appears in unoccupied space you can see within range. The elemental uses a {@creature wolf}'s statistics, except that it is an elemental instead of a beast, has resistance to bludgeoning, piercing, and slashing damage, has a fly speed of 60 feet, and its movement doesn't provoke opportunity attacks. Additionally, creatures within 10 feet of the elemental are {@condition deafened}.",
+				"The elemental is friendly to you and your companions, and acts on your initiative. When you cast the spell, you can command the elemental to move up to its speed and make an attack, using your spell attack modifier and spell save DC instead of its own attack bonus and save DC. Until the spell ends, you can use a bonus action to command the elemental again. If you don't issue any commands to it, the elemental takes the Dodge action.",
+				"A summoned creature disappears when it drops to 0 hit points or when the spell ends.",
+				"The DM has the creature's statistics."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a slot of 4th level or higher, you conjure another elemental for every two slot levels above 2nd. Each additional elemental appears in an unoccupied space you can see within range, and you can command all elementals conjured by this spell as part of the same bonus action."
+					]
+				}
+			],
+			"miscTags": [
+				"SMN",
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Hunter",
+						"source": "Hunter"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Junglerazer",
+			"source": "Hunter",
+			"page": 17,
+			"level": 3,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "line",
+				"distance": {
+					"type": "feet",
+					"amount": 100
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a pinch of ash from a burnt plant"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"ritual": false
+			},
+			"entries": [
+				"You send forth a blast of withering magic, forming a line 100 feet long and 10 feet wide from you in a direction you choose. Each beast, fey, or plant creature in the line must make a Constitution saving throw. A creature takes {@damage 4d10} necrotic damage on a failed save, or half as much damage on a successful one.",
+				"The spell destroys nonmagical plants and vegetation in the area, clearing away any such difficult terrain caused by them and reducing them to ash. Plants created by the {@spell entangle} or {@spell plant growth} spells in the area are also destroyed."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@scaledamage 4d10|3-9|1d10} and the length of the line increases by 20 feet for each slot level above 3rd."
+					]
+				}
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"areaTags": [
+				"L"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Hunter",
+						"source": "Hunter"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mark of the Leech",
+			"source": "Hunter",
+			"page": 17,
+			"level": 2,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a leech"
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"ritual": false
+			},
+			"entries": [
+				"You choose a creature you can see within range and mark it with draining energy. Until the spell ends, each time the target regains hit points, it takes necrotic damage equal to half the hit points it regained, and you gain temporary hit points equal to the necrotic damage taken and become aware of its location.",
+				"If the target drops to 0 hit points before this spell ends, you can use a bonus action on a subsequent turn of yours to mark a new creature that you can see within the spell's range."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Hunter",
+						"source": "Hunter"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mark of the Prey",
+			"source": "Hunter",
+			"page": 17,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a drop of rabbit's blood"
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"ritual": false
+			},
+			"entries": [
+				"You choose a creature you can see within range and mark it as prey for beasts of the wild. Until the spell ends, each beast that starts its turn within 120 feet of the target becomes aware of its location and is hostile to the target, regarding it as prey to be hunted.",
+				"If the target drops to 0 hit points before this spell ends, you can use a bonus action on a subsequent turn of yours to mark a new creature that you can see within the spell's range."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Hunter",
+						"source": "Hunter"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mark of the Storm",
+			"source": "Hunter",
+			"page": 17,
+			"level": 2,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a piece of iron"
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"ritual": false
+			},
+			"entries": [
+				"You choose a creature you can see within range and mark it as a lightning rod for the wrath of the storm. Until the spell ends, dark storm clouds form in the shape of a cylinder that is 10 feet tall with a 30-foot radius, centered on a point at least 300 feet above the target. When you cast the spell and every hour that passes before the spell ends, the target must succeed on a Dexterity saving throw, taking {@damage 1d12} lightning damage on a failed save, or half as much damage on a success. Until the spell ends, you can use a bonus action on your turn to call down lightning in this way again if you can see the target.",
+				"If the target goes indoors or has cover from above, the lightning will instead strike the structure directly above the target.",
+				"If the target drops to 0 hit points before this spell ends, you can use a bonus action on a subsequent turn of yours to mark a new creature that you can see within the spell's range."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"damageInflict": [
+				"lightning"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Hunter",
+						"source": "Hunter"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mark of the Wild",
+			"source": "Hunter",
+			"page": 18,
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a grape"
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"ritual": false
+			},
+			"entries": [
+				"You choose a creature you can see within range and mark it with verdant energy. Until the spell ends, any fertile soil near the target grows with vines and plants, becoming difficult terrain for it. These plants recede back into the ground after the target moves away. Additionally, if the target spends at least 1 minute in the same space of fertile soil, it becomes {@condition restrained} by sprouting vines. A creature {@condition restrained} by the vines can use its action to make a Strength check against your spell save DC. On a success, it frees itself. The vines can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage).",
+				"If the target drops to 0 hit points before this spell ends, you can use a bonus action on a subsequent turn of yours to mark a new creature that you can see within the spell's range."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"opposedCheck": [
+				"strength"
+			],
+			"conditionInflict": [
+				"restrained"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Hunter",
+						"source": "Hunter"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Survey Terrain",
+			"source": "Hunter",
+			"page": 18,
+			"level": 2,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a crystal"
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"ritual": false
+			},
+			"entries": [
+				"You create a mental image of the terrain in a location you choose within range. The area of this spell consists of up to three 10-foot cubes, which you can arrange as you wish. Each cube must have at least one face adjacent to the face of another cube. You become aware of any creatures, objects that bear magic, and the layout and any mechanical intricacies within the area."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, you create an additional 10-foot cube for each slot level above 2nd."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Hunter",
+						"source": "Hunter"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
 					}
 				]
 			}
