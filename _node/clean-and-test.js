@@ -62,6 +62,7 @@ function cleanFolder (folder) {
 
 				// region test
 				const validSources = new Set(file.contents._meta.sources.map(src => src.json));
+				validSources.add("UAClassFeatureVariants"); // Allow CFV UA sources
 
 				Object.keys(file.contents)
 					.filter(k => !CONTENT_KEY_BLACKLIST.has(k))
