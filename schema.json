@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"type": "object",
 	"description": "Homebrew for 5etools. Should include arrays titled similarly to the main site data, e.g. `spell` or `class`",
 	"definitions": {
@@ -1472,6 +1472,31 @@
 			},
 			"required": ["sources"]
 		},
+
+		"makebrewCreatureTrait": {
+			"description": "Additional trait templates which can be used in the homebrew builder.",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"entries": {
+						"$ref": "https://raw.githubusercontent.com/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/entry.json"
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"entries"
+				]
+			}
+		},
+
 		"adventure": {
 			"type": "array",
 			"items": {
@@ -1571,30 +1596,37 @@
 						"description": "Used to link spells in the homebrew to this extra Foundry data",
 						"type": "string"
 					},
-					"targetValue": {"type": "integer"},
-					"targetUnits": {"type": "string"},
-					"targetType": {
-						"description": "From Foundry's `CONFIG.DND5E.targetTypes`",
-						"type": "string",
-						"enum": [
-							"none",
-							"self",
-							"creature",
-							"ally",
-							"enemy",
-							"object",
-							"space",
-							"radius",
-							"sphere",
-							"cylinder",
-							"cone",
-							"square",
-							"cube",
-							"line",
-							"wall"
-						]
+					"data": {
+						"description": "Foundry data",
+						"properties": {
+							"target.value": {"type": "integer"},
+							"target.units": {"type": "string"},
+							"target.type": {
+								"description": "From Foundry's `CONFIG.DND5E.targetTypes`",
+								"type": "string",
+								"enum": [
+									"none",
+									"self",
+									"creature",
+									"ally",
+									"enemy",
+									"object",
+									"space",
+									"radius",
+									"sphere",
+									"cylinder",
+									"cone",
+									"square",
+									"cube",
+									"line",
+									"wall"
+								]
+							}
+						}
 					}
-				}
+				},
+				"required": ["name", "source"],
+				"additionalProperties": false
 			}
 		},
 		"item": {
