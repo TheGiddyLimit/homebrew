@@ -52,10 +52,8 @@ function checkFileContents () {
 	um.info(`PROP_CHECK`, `Complete.`);
 }
 
-const unlistedFilenamesCache = new Set(); // cache these on initial read to avoid re-reading every file
-
 function buildDeepIndex () {
-	um.info(`DEEP`, `Indexing...`);
+	um.info(`INDEX`, `Indexing...`);
 	const TIMESTAMP_PATH = "_generated/index-timestamps.json";
 	const PROP_PATH = "_generated/index-props.json";
 
@@ -85,43 +83,22 @@ function buildDeepIndex () {
 						.forEach(k => {
 							(propIndex[k] = propIndex[k] || {})[file.name] = folder;
 						});
-				} else if (hasMeta) unlistedFilenamesCache.add(file.name);
+				}
 			});
 	}
 
 	uf.runOnDirs((dir) => {
-		um.info(`DEEP`, `Indexing dir "${dir}"...`);
+		um.info(`INDEX`, `Indexing dir "${dir}"...`);
 		indexDir(dir);
 	});
 
-	um.info(`DEEP`, `Saving timestamp index to ${TIMESTAMP_PATH}`);
+	um.info(`INDEX`, `Saving timestamp index to ${TIMESTAMP_PATH}`);
 	fs.writeFileSync(`./${TIMESTAMP_PATH}`, JSON.stringify(timestampIndex), "utf-8");
 
-	um.info(`DEEP`, `Saving prop index to ${PROP_PATH}`);
+	um.info(`INDEX`, `Saving prop index to ${PROP_PATH}`);
 	fs.writeFileSync(`./${PROP_PATH}`, JSON.stringify(propIndex), "utf-8");
-}
-
-function buildDirIndex () {
-	um.info(`DIRECTORY`, `Indexing...`);
-
-	uf.runOnDirs((dir) => {
-		um.info(`DIRECTORY`, `Indexing dir "${dir}"...`);
-		const dirContent = fs.readdirSync(dir, "utf8")
-			.filter(file => file.endsWith(".json"));
-
-		const dirFiles = dirContent.map(it => ({
-			download_url: `https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/${dir}/${encodeURIComponent(it)}`,
-			path: `${dir}/${it}`,
-			name: it
-		})).filter(it => !unlistedFilenamesCache.has(it.path));
-
-		fs.writeFileSync(`_generated/index-dir-${dir}.json`, JSON.stringify(dirFiles), "utf-8");
-	});
-
-	um.info(`DIRECTORY`, `Complete.`);
 }
 
 checkFileContents();
 buildDeepIndex();
-buildDirIndex();
 um.info(`INDEX`, `Complete.`);
