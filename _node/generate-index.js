@@ -83,7 +83,7 @@ function buildDeepIndex () {
 					Object.keys(file.contents)
 						.filter(it => !it.startsWith("_"))
 						.forEach(k => {
-							(propIndex[k] = propIndex[k] || {})[file.name] = 1;
+							(propIndex[k] = propIndex[k] || {})[file.name] = folder;
 						});
 				} else if (hasMeta) unlistedFilenamesCache.add(file.name);
 			});
