@@ -5,10 +5,6 @@ const uf = require("./util-fs");
 const um = require("./util-misc");
 const ub = require("./util-brew");
 
-function _ascSort (a, b) {
-	return b === a ? 0 : b < a ? 1 : -1;
-}
-
 function checkFileContents () {
 	const DIR_TO_PRIMARY_PROP = {
 		"creature": [
@@ -56,31 +52,13 @@ function checkFileContents () {
 	um.info(`PROP_CHECK`, `Complete.`);
 }
 
-function buildCollectionIndex () {
-	um.info(`COLLECTIONS`, `Indexing...`);
-	const DIR_COLLECTION = "collection";
-	const FILE_INDEX = "index.json";
-
-	const outIndex = {};
-	fs.readdirSync(DIR_COLLECTION, "utf8")
-		.filter(file => file !== FILE_INDEX)
-		.forEach(file => {
-			const data = JSON.parse(fs.readFileSync(`${DIR_COLLECTION}/${file}`, "utf8"));
-			if (data._meta && data._meta.unlisted) return;
-			outIndex[file] = Object.keys(data).filter(it => !it.startsWith("_")).sort(_ascSort);
-		});
-
-	fs.writeFileSync(`${DIR_COLLECTION}/${FILE_INDEX}`, JSON.stringify(outIndex, null, "\t") + "\n");
-	um.info(`COLLECTIONS`, `Complete.`);
-}
-
-const unlistedFilenamesCache = new Set(); // cache these on initial read to avoid re-reading every file
-
-function buildTimestampIndex () {
-	um.info(`TIMESTAMPS`, `Indexing...`);
+function buildDeepIndex () {
+	um.info(`INDEX`, `Indexing...`);
 	const TIMESTAMP_PATH = "_generated/index-timestamps.json";
+	const PROP_PATH = "_generated/index-props.json";
 
 	const timestampIndex = {};
+	const propIndex = {};
 
 	function indexDir (folder) {
 		const files = uf.listFiles(folder);
@@ -95,42 +73,32 @@ function buildTimestampIndex () {
 					throw new Error(`File "${file.name}" did not have metadata!`);
 				}
 
-				if (hasMeta && !file.contents._meta.unlisted) timestampIndex[file.name] = {a: file.contents._meta.dateAdded, m: file.contents._meta.dateLastModified};
-				else if (hasMeta) unlistedFilenamesCache.add(file.name);
+				if (hasMeta && !file.contents._meta.unlisted) {
+					// Index timestamps
+					timestampIndex[file.name] = {a: file.contents._meta.dateAdded, m: file.contents._meta.dateLastModified};
+
+					// Index props
+					Object.keys(file.contents)
+						.filter(it => !it.startsWith("_"))
+						.forEach(k => {
+							(propIndex[k] = propIndex[k] || {})[file.name] = folder;
+						});
+				}
 			});
 	}
 
 	uf.runOnDirs((dir) => {
-		um.info(`TIMESTAMPS`, `Indexing dir "${dir}"...`);
+		um.info(`INDEX`, `Indexing dir "${dir}"...`);
 		indexDir(dir);
 	});
 
-	um.info(`TIMESTAMPS`, `Saving timestamp index to ${TIMESTAMP_PATH}`);
+	um.info(`INDEX`, `Saving timestamp index to ${TIMESTAMP_PATH}`);
 	fs.writeFileSync(`./${TIMESTAMP_PATH}`, JSON.stringify(timestampIndex), "utf-8");
-}
 
-function buildDirIndex () {
-	um.info(`DIRECTORY`, `Indexing...`);
-
-	uf.runOnDirs((dir) => {
-		um.info(`DIRECTORY`, `Indexing dir "${dir}"...`);
-		const dirContent = fs.readdirSync(dir, "utf8")
-			.filter(file => file.endsWith(".json"));
-
-		const dirFiles = dirContent.map(it => ({
-			download_url: `https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/${dir}/${encodeURIComponent(it)}`,
-			path: `${dir}/${it}`,
-			name: it
-		})).filter(it => !unlistedFilenamesCache.has(it.path));
-
-		fs.writeFileSync(`_generated/index-dir-${dir}.json`, JSON.stringify(dirFiles), "utf-8");
-	});
-
-	um.info(`DIRECTORY`, `Complete.`);
+	um.info(`INDEX`, `Saving prop index to ${PROP_PATH}`);
+	fs.writeFileSync(`./${PROP_PATH}`, JSON.stringify(propIndex), "utf-8");
 }
 
 checkFileContents();
-buildCollectionIndex();
-buildTimestampIndex();
-buildDirIndex();
+buildDeepIndex();
 um.info(`INDEX`, `Complete.`);
