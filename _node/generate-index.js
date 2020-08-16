@@ -54,11 +54,13 @@ function checkFileContents () {
 
 function buildDeepIndex () {
 	um.info(`INDEX`, `Indexing...`);
-	const TIMESTAMP_PATH = "_generated/index-timestamps.json";
-	const PROP_PATH = "_generated/index-props.json";
+	const PATH_TIMESTAMP_INDEX = "_generated/index-timestamps.json";
+	const PATH_PROP_INDEX = "_generated/index-props.json";
+	const PATH_SOURCE_INDEX = "_generated/index-sources.json";
 
 	const timestampIndex = {};
 	const propIndex = {};
+	const sourceIndex = {};
 
 	function indexDir (folder) {
 		const files = uf.listFiles(folder);
@@ -83,6 +85,11 @@ function buildDeepIndex () {
 						.forEach(k => {
 							(propIndex[k] = propIndex[k] || {})[file.name] = folder;
 						});
+
+					// Index sources
+					(file.contents._meta.sources || []).forEach(src => {
+						(sourceIndex[src.json] = sourceIndex[src.json] || []).push(file.name);
+					});
 				}
 			});
 	}
@@ -92,11 +99,14 @@ function buildDeepIndex () {
 		indexDir(dir);
 	});
 
-	um.info(`INDEX`, `Saving timestamp index to ${TIMESTAMP_PATH}`);
-	fs.writeFileSync(`./${TIMESTAMP_PATH}`, JSON.stringify(timestampIndex), "utf-8");
+	um.info(`INDEX`, `Saving timestamp index to ${PATH_TIMESTAMP_INDEX}`);
+	fs.writeFileSync(`./${PATH_TIMESTAMP_INDEX}`, JSON.stringify(timestampIndex), "utf-8");
 
-	um.info(`INDEX`, `Saving prop index to ${PROP_PATH}`);
-	fs.writeFileSync(`./${PROP_PATH}`, JSON.stringify(propIndex), "utf-8");
+	um.info(`INDEX`, `Saving prop index to ${PATH_PROP_INDEX}`);
+	fs.writeFileSync(`./${PATH_PROP_INDEX}`, JSON.stringify(propIndex), "utf-8");
+
+	um.info(`INDEX`, `Saving source index to ${PATH_PROP_INDEX}`);
+	fs.writeFileSync(`./${PATH_SOURCE_INDEX}`, JSON.stringify(sourceIndex), "utf-8");
 }
 
 checkFileContents();
