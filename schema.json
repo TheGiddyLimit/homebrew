@@ -1,1268 +1,9 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"type": "object",
 	"description": "Homebrew for 5etools. Should include arrays titled similarly to the main site data, e.g. `spell` or `class`",
-	"definitions": {
-		"entry": {
-			"$id": "/Entry",
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/entry.json"
-		},
-		"damImmune": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/entry.json#/definitions/dataDamImmune"
-		},
-		"bookSource": {
-			"type": "object",
-			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"source": {
-					"type": "string"
-				}
-			},
-			"required": [
-				"id",
-				"source"
-			]
-		},
-		"level1to9": {
-			"type": "object",
-			"properties": {
-				"lower": {
-					"type": "number"
-				},
-				"slots": {
-					"type": "number"
-				},
-				"spells": {
-					"type": "array",
-					"uniqueItems": true,
-					"items": {
-						"type": "string"
-					}
-				}
-			},
-			"required": [
-				"spells"
-			],
-			"additionalProperties": false
-		},
-		"arrayOfString": {
-			"type": "array",
-			"uniqueItems": true,
-			"items": {
-				"type": "string"
-			}
-		},
-		"frequency": {
-			"type": "object",
-			"properties": {
-				"9e": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"9": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"8e": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"8": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"7e": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"7": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"6e": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"6": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"5e": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"5": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"4e": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"4": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"3e": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"3": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"2e": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"2": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"1e": {
-					"$ref": "#/definitions/arrayOfString"
-				},
-				"1": {
-					"$ref": "#/definitions/arrayOfString"
-				}
-			},
-			"additionalProperties": false
-		},
-		"speedVal": {
-			"oneOf": [
-				{
-					"type": "object",
-					"properties": {
-						"number": {
-							"type": "integer"
-						},
-						"condition": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"number",
-						"condition"
-					],
-					"additionalProperties": false
-				},
-				{
-					"type": "integer"
-				}
-			]
-		},
-		"damResist": {
-			"oneOf": [
-				{
-					"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/entry.json#/definitions/dataDmgType"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"special": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": [
-						"special"
-					]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"preNote": {
-							"type": "string"
-						},
-						"resist": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/damResist"
-							}
-						},
-						"note": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": [
-						"resist"
-					]
-				}
-			]
-		},
-		"damVuln": {
-			"oneOf": [
-				{
-					"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/entry.json#/definitions/dataDmgType"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"special": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": [
-						"special"
-					]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"preNote": {
-							"type": "string"
-						},
-						"vulnerable": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/damVuln"
-							}
-						},
-						"note": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": [
-						"vulnerable"
-					]
-				}
-			]
-		},
-		"align": {
-			"oneOf": [
-				{
-					"type": "string",
-					"enum": [
-						"L",
-						"N",
-						"NX",
-						"NY",
-						"C",
-						"G",
-						"E",
-						"U",
-						"A"
-					]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"alignment": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/align"
-							}
-						},
-						"chance": {
-							"type": "integer"
-						}
-					},
-					"additionalProperties": false,
-					"required": [
-						"alignment"
-					]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"special": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": [
-						"special"
-					]
-				}
-			]
-		},
-		"acItem": {
-			"oneOf": [
-				{
-					"type": "object",
-					"properties": {
-						"ac": {
-							"type": "integer"
-						},
-						"from": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"condition": {
-							"type": "string"
-						},
-						"braces": {
-							"type": "boolean"
-						}
-					},
-					"required": [
-						"ac"
-					]
-				},
-				{
-					"type": "integer"
-				}
-			]
-		},
-		"creatureData": {
-			"properties": {
-				"name": {
-					"type": "string"
-				},
-				"alias": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"group": {
-					"description": "A group name, indexed by search. E.g. searching \"Lycanthrope\" would otherwise fail to find anything",
-					"type": "string"
-				},
-				"size": {
-					"type": "string",
-					"enum": [
-						"F",
-						"D",
-						"T",
-						"S",
-						"M",
-						"L",
-						"H",
-						"G",
-						"C",
-						"V"
-					]
-				},
-				"description": {
-					"type": "string"
-				},
-				"type": {
-					"anyOf": [
-						{
-							"type": "object",
-							"properties": {
-								"type": {
-									"type": "string",
-									"enum": [
-										"aberration",
-										"beast",
-										"celestial",
-										"construct",
-										"dragon",
-										"elemental",
-										"fey",
-										"fiend",
-										"giant",
-										"humanoid",
-										"monstrosity",
-										"ooze",
-										"plant",
-										"undead"
-									]
-								},
-								"swarmSize": {
-									"type": "string",
-									"enum": [
-										"F",
-										"D",
-										"T",
-										"S",
-										"M",
-										"L",
-										"H",
-										"G",
-										"C",
-										"V"
-									]
-								},
-								"tags": {
-									"type": "array",
-									"uniqueItems": true,
-									"items": {
-										"anyOf": [
-											{
-												"type": "string"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"tag": {
-														"type": "string"
-													},
-													"prefix": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"tag",
-													"prefix"
-												],
-												"additionalProperties": false
-											}
-										]
-									}
-								}
-							},
-							"required": [
-								"type"
-							],
-							"additionalProperties": false
-						},
-						{
-							"type": "string",
-							"enum": [
-								"aberration",
-								"beast",
-								"celestial",
-								"construct",
-								"dragon",
-								"elemental",
-								"fey",
-								"fiend",
-								"giant",
-								"humanoid",
-								"monstrosity",
-								"ooze",
-								"plant",
-								"undead"
-							]
-						}
-					]
-				},
-				"source": {
-					"type": "string"
-				},
-				"otherSources": {
-					"type": "array",
-					"items": {
-						"oneOf": [
-							{
-								"type": "object",
-								"properties": {
-									"source": {
-										"type": "string"
-									},
-									"page": {
-										"type": "integer"
-									}
-								},
-								"required": [
-									"source"
-								],
-								"additionalProperties": false
-							}
-						]
-					}
-				},
-				"externalSources": {
-					"description": "For homebrew use only.",
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"$ref": "#/definitions/entry"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					}
-				},
-				"alignment": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/align"
-					}
-				},
-				"ac": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/acItem"
-					}
-				},
-				"hp": {
-					"oneOf": [
-						{
-							"type": "object",
-							"properties": {
-								"average": {
-									"type": "integer"
-								},
-								"formula": {
-									"type": "string"
-								}
-							},
-							"additionalProperties": false
-						},
-						{
-							"type": "object",
-							"properties": {
-								"special": {
-									"type": "string"
-								}
-							},
-							"additionalProperties": false
-						}
-					]
-				},
-				"speed": {
-					"type": "object",
-					"properties": {
-						"walk": {
-							"$ref": "#/definitions/speedVal"
-						},
-						"burrow": {
-							"$ref": "#/definitions/speedVal"
-						},
-						"climb": {
-							"$ref": "#/definitions/speedVal"
-						},
-						"fly": {
-							"$ref": "#/definitions/speedVal"
-						},
-						"canHover": {
-							"type": "boolean"
-						},
-						"swim": {
-							"$ref": "#/definitions/speedVal"
-						},
-						"choose": {
-							"type": "object",
-							"properties": {
-								"from": {
-									"type": "array",
-									"items": {
-										"type": "string",
-										"enum": [
-											"walk",
-											"burrow",
-											"climb",
-											"fly",
-											"swim"
-										]
-									}
-								},
-								"amount": {
-									"type": "integer"
-								},
-								"note": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"amount",
-								"from"
-							],
-							"additionalProperties": false
-						},
-						"alternate": {
-							"type": "object",
-							"properties": {
-								"walk": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/speedVal"
-									}
-								},
-								"burrow": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/speedVal"
-									}
-								},
-								"climb": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/speedVal"
-									}
-								},
-								"fly": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/speedVal"
-									}
-								},
-								"swim": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/speedVal"
-									}
-								}
-							}
-						}
-					},
-					"additionalProperties": false
-				},
-				"str": {
-					"type": "integer"
-				},
-				"dex": {
-					"type": "integer"
-				},
-				"con": {
-					"type": "integer"
-				},
-				"int": {
-					"type": "integer"
-				},
-				"wis": {
-					"type": "integer"
-				},
-				"cha": {
-					"type": "integer"
-				},
-				"save": {
-					"type": "object",
-					"properties": {
-						"str": {
-							"type": "string"
-						},
-						"dex": {
-							"type": "string"
-						},
-						"con": {
-							"type": "string"
-						},
-						"int": {
-							"type": "string"
-						},
-						"wis": {
-							"type": "string"
-						},
-						"cha": {
-							"type": "string"
-						},
-						"special": {
-							"description": "For use in homebrew.",
-							"$ref": "#/definitions/entry"
-						}
-					},
-					"additionalProperties": false
-				},
-				"skill": {
-					"type": "object",
-					"properties": {
-						"acrobatics": {
-							"type": "string"
-						},
-						"animal handling": {
-							"type": "string"
-						},
-						"arcana": {
-							"type": "string"
-						},
-						"athletics": {
-							"type": "string"
-						},
-						"deception": {
-							"type": "string"
-						},
-						"history": {
-							"type": "string"
-						},
-						"insight": {
-							"type": "string"
-						},
-						"intimidation": {
-							"type": "string"
-						},
-						"investigation": {
-							"type": "string"
-						},
-						"medicine": {
-							"type": "string"
-						},
-						"nature": {
-							"type": "string"
-						},
-						"perception": {
-							"type": "string"
-						},
-						"performance": {
-							"type": "string"
-						},
-						"persuasion": {
-							"type": "string"
-						},
-						"religion": {
-							"type": "string"
-						},
-						"sleight of hand": {
-							"type": "string"
-						},
-						"stealth": {
-							"type": "string"
-						},
-						"survival": {
-							"type": "string"
-						},
-						"other": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"oneOf": {
-										"type": "object",
-										"acrobatics": {
-											"type": "string"
-										},
-										"animal handling": {
-											"type": "string"
-										},
-										"arcana": {
-											"type": "string"
-										},
-										"athletics": {
-											"type": "string"
-										},
-										"deception": {
-											"type": "string"
-										},
-										"history": {
-											"type": "string"
-										},
-										"insight": {
-											"type": "string"
-										},
-										"intimidation": {
-											"type": "string"
-										},
-										"investigation": {
-											"type": "string"
-										},
-										"medicine": {
-											"type": "string"
-										},
-										"nature": {
-											"type": "string"
-										},
-										"perception": {
-											"type": "string"
-										},
-										"performance": {
-											"type": "string"
-										},
-										"persuasion": {
-											"type": "string"
-										},
-										"religion": {
-											"type": "string"
-										},
-										"sleight of hand": {
-											"type": "string"
-										},
-										"stealth": {
-											"type": "string"
-										},
-										"survival": {
-											"type": "string"
-										}
-									}
-								}
-							}
-						}
-					},
-					"additionalProperties": false
-				},
-				"senses": {
-					"type": "string"
-				},
-				"passive": {
-					"type": "integer"
-				},
-				"languages": {
-					"type": "string"
-				},
-				"cr": {
-					"oneOf": [
-						{
-							"type": "string"
-						},
-						{
-							"type": "object",
-							"properties": {
-								"cr": {
-									"type": "string"
-								},
-								"lair": {
-									"type": "string"
-								},
-								"coven": {
-									"type": "string"
-								}
-							},
-							"additionalProperties": false,
-							"required": [
-								"cr"
-							]
-						}
-					]
-				},
-				"vulnerable": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/damVuln"
-					}
-				},
-				"resist": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/damResist"
-					}
-				},
-				"conditionImmune": {
-					"type": "array",
-					"items": {
-						"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/entry.json#/definitions/dataCondImmune"
-					}
-				},
-				"immune": {
-					"type": "array",
-					"items": {
-						"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/entry.json#/definitions/dataDamImmune"
-					}
-				},
-				"spellcasting": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"name": {
-								"type": "string"
-							},
-							"headerEntries": {
-								"type": "array",
-								"items": {
-									"$ref": "#/definitions/entry"
-								}
-							},
-							"constant": {
-								"$ref": "#/definitions/arrayOfString"
-							},
-							"will": {
-								"$ref": "#/definitions/arrayOfString"
-							},
-							"rest": {
-								"$ref": "#/definitions/frequency"
-							},
-							"daily": {
-								"$ref": "#/definitions/frequency"
-							},
-							"weekly": {
-								"$ref": "#/definitions/frequency"
-							},
-							"spells": {
-								"type": "object",
-								"properties": {
-									"0": {
-										"type": "object",
-										"properties": {
-											"spells": {
-												"type": "array",
-												"uniqueItems": true,
-												"items": {
-													"type": "string"
-												}
-											}
-										},
-										"required": [
-											"spells"
-										],
-										"additionalProperties": false
-									},
-									"1": {
-										"$ref": "#/definitions/level1to9"
-									},
-									"2": {
-										"$ref": "#/definitions/level1to9"
-									},
-									"3": {
-										"$ref": "#/definitions/level1to9"
-									},
-									"4": {
-										"$ref": "#/definitions/level1to9"
-									},
-									"5": {
-										"$ref": "#/definitions/level1to9"
-									},
-									"6": {
-										"$ref": "#/definitions/level1to9"
-									},
-									"7": {
-										"$ref": "#/definitions/level1to9"
-									},
-									"8": {
-										"$ref": "#/definitions/level1to9"
-									},
-									"9": {
-										"$ref": "#/definitions/level1to9"
-									}
-								},
-								"additionalProperties": false
-							},
-							"hidden": {
-								"description": "Allows the above properties to be specified, but not rendered. Useful if e.g. a creature can only cast one spell, and this is rendered in the header line.",
-								"type": "array",
-								"items": {
-									"type": "string",
-									"enum": [
-										"constant",
-										"will",
-										"rest",
-										"daily",
-										"weekly",
-										"spells"
-									]
-								}
-							},
-							"footerEntries": {
-								"type": "array",
-								"items": {
-									"$ref": "#/definitions/entry"
-								}
-							},
-							"ability": {
-								"type": "string",
-								"enum": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha"
-								]
-							}
-						},
-						"required": [
-							"name"
-						],
-						"additionalProperties": false
-					}
-				},
-				"trait": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"name": {
-								"type": "string"
-							},
-							"entries": {
-								"type": "array",
-								"items": {
-									"$ref": "#/definitions/entry"
-								}
-							},
-							"type": {
-								"type": "string",
-								"enum": [
-									"entries",
-									"inset"
-								]
-							}
-						},
-						"required": [
-							"name",
-							"entries"
-						],
-						"additionalProperties": false
-					}
-				},
-				"action": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"name": {
-								"type": "string"
-							},
-							"entries": {
-								"type": "array",
-								"items": {
-									"$ref": "#/definitions/entry"
-								}
-							}
-						},
-						"required": [
-							"name",
-							"entries"
-						],
-						"additionalProperties": false
-					}
-				},
-				"reaction": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"name": {
-								"type": "string"
-							},
-							"entries": {
-								"type": "array",
-								"items": {
-									"$ref": "#/definitions/entry"
-								}
-							}
-						},
-						"required": [
-							"name",
-							"entries"
-						],
-						"additionalProperties": false
-					}
-				},
-				"legendaryGroup": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						}
-					}
-				},
-				"legendaryActions": {
-					"type": "number"
-				},
-				"legendaryHeader": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/entry"
-					}
-				},
-				"legendary": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"name": {
-								"type": "string"
-							},
-							"entries": {
-								"type": "array",
-								"items": {
-									"$ref": "#/definitions/entry"
-								}
-							}
-						},
-						"required": [
-							"entries"
-						],
-						"additionalProperties": false
-					}
-				},
-				"variant": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/entry"
-					}
-				},
-				"page": {
-					"type": "integer"
-				},
-				"familiar": {
-					"type": "boolean"
-				},
-				"additionalSources": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"source": {
-								"type": "string"
-							},
-							"page": {
-								"type": "integer"
-							}
-						},
-						"required": [
-							"source",
-							"page"
-						],
-						"additionalProperties": false
-					}
-				},
-				"tokenUrl": {
-					"type": "string"
-				},
-				"fluff": {
-					"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source",
-					"type": "object",
-					"properties": {
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/entry"
-							}
-						},
-						"images": {
-							"type": "array",
-							"items": {
-								"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/entry.json#/definitions/entryImage"
-							}
-						}
-					}
-				},
-				"isNamedCreature": {
-					"type": "boolean"
-				},
-				"isNpc": {
-					"description": "Used to flag quest-specific NPCs",
-					"type": "boolean"
-				},
-				"environment": {
-					"type": "array",
-					"items": {
-						"type": "string",
-						"enum": [
-							"underwater",
-							"coastal",
-							"mountain",
-							"grassland",
-							"hill",
-							"arctic",
-							"urban",
-							"forest",
-							"swamp",
-							"underdark",
-							"desert"
-						]
-					}
-				},
-				"soundClip": {
-					"type": "string"
-				},
-				"dragonCastingColor": {
-					"type": "string",
-					"enum": [
-						"B",
-						"U",
-						"G",
-						"R",
-						"W",
-						"A",
-						"Z",
-						"C",
-						"O",
-						"S"
-					]
-				},
-				"traitTags": {
-					"type": "array",
-					"items": {
-						"type": "string",
-						"enum": [
-							"Aggressive",
-							"Ambusher",
-							"Amorphous",
-							"Amphibious",
-							"Antimagic Susceptibility",
-							"Brute",
-							"Charge",
-							"Damage Absorption",
-							"Death Burst",
-							"Devil's Sight",
-							"False Appearance",
-							"Fey Ancestry",
-							"Flyby",
-							"Hold Breath",
-							"Illumination",
-							"Immutable Form",
-							"Incorporeal Movement",
-							"Keen Senses",
-							"Legendary Resistances",
-							"Light Sensitivity",
-							"Magic Resistance",
-							"Magic Weapons",
-							"Pack Tactics",
-							"Pounce",
-							"Rampage",
-							"Reckless",
-							"Regeneration",
-							"Rejuvenation",
-							"Shapechanger",
-							"Siege Monster",
-							"Sneak Attack",
-							"Spider Climb",
-							"Sunlight Sensitivity",
-							"Turn Immunity",
-							"Turn Resistance",
-							"Undead Fortitude",
-							"Water Breathing",
-							"Web Sense",
-							"Web Walker"
-						]
-					}
-				},
-				"actionTags": {
-					"type": "array",
-					"items": {
-						"type": "string",
-						"enum": [
-							"Frightful Presence",
-							"Multiattack",
-							"Parry",
-							"Swallow",
-							"Teleport",
-							"Tentacles"
-						]
-					}
-				},
-				"languageTags": {
-					"type": "array",
-					"items": {
-						"type": "string",
-						"enum": [
-							"AB",
-							"AQ",
-							"AU",
-							"C",
-							"CE",
-							"D",
-							"DR",
-							"DS",
-							"DU",
-							"E",
-							"G",
-							"GI",
-							"GO",
-							"GTH",
-							"H",
-							"I",
-							"IG",
-							"O",
-							"OTH",
-							"P",
-							"S",
-							"T",
-							"TC",
-							"TP",
-							"U",
-							"X",
-							"XX"
-						]
-					}
-				},
-				"senseTags": {
-					"type": "array",
-					"items": {
-						"type": "string",
-						"enum": [
-							"B",
-							"D",
-							"SD",
-							"T",
-							"U"
-						]
-					}
-				},
-				"footer": {
-					"description": "Intended for homebrew use only.",
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/entry"
-					}
-				}
-			}
-		}
-	},
+
 	"properties": {
 		"_meta": {
 			"description": "Metadata for the included data arrays",
@@ -1324,7 +65,12 @@
 								"description": "The target schema version in 5etools, e.g. \"1.2.3\"."
 							}
 						},
-						"required": ["json", "abbreviation", "full", "version"]
+						"required": [
+							"json",
+							"abbreviation",
+							"full",
+							"version"
+						]
 					}
 				},
 				"skill": {
@@ -1363,7 +109,10 @@
 									"description": "HTML hex color code this source should use when displayed in lists, e.g. 'ff00ff'"
 								}
 							},
-							"required": ["full", "short"]
+							"required": [
+								"full",
+								"short"
+							]
 						}
 					}
 				},
@@ -1381,7 +130,9 @@
 									"type": "string"
 								}
 							},
-							"required": ["feetPerUnit"]
+							"required": [
+								"feetPerUnit"
+							]
 						}
 					}
 				},
@@ -1416,7 +167,10 @@
 									"type": "boolean"
 								}
 							},
-							"required": ["full", "short"]
+							"required": [
+								"full",
+								"short"
+							]
 						}
 					}
 				},
@@ -1450,7 +204,10 @@
 										"description": "If true, this currency will be used as a fallback when the copper value of the item is a fractional value (e.g. a single ball bearing is worth 0.1 cp; marking gold as the fallback currency would have this be converted to gold)."
 									}
 								},
-								"required": ["coin", "mult"]
+								"required": [
+									"coin",
+									"mult"
+								]
 							}
 						}
 					}
@@ -1461,7 +218,9 @@
 					"properties": {
 						"monster": {
 							"type": "array",
-							"items": {"type": "string"}
+							"items": {
+								"type": "string"
+							}
 						}
 					}
 				},
@@ -1470,9 +229,10 @@
 					"type": "boolean"
 				}
 			},
-			"required": ["sources"]
+			"required": [
+				"sources"
+			]
 		},
-
 		"makebrewCreatureTrait": {
 			"description": "Additional trait templates which can be used in the homebrew builder.",
 			"type": "array",
@@ -1486,7 +246,7 @@
 						"type": "string"
 					},
 					"entries": {
-						"$ref": "https://raw.githubusercontent.com/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/entry.json"
+						"type": "array"
 					}
 				},
 				"required": [
@@ -1496,94 +256,32 @@
 				]
 			}
 		},
-
 		"adventure": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/adventures.json#/properties/adventure/items"
-					},
-					{
-						"$ref": "#/definitions/bookSource"
-					}
-				]
-			}
+			"type": "array"
 		},
 		"adventureData": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"$ref": "#/definitions/bookSource"
-					},
-					{
-						"properties": {
-							"data": {
-								"type": "array",
-								"items": {
-									"$ref": "#/definitions/entry"
-								}
-							}
-						}
-					}
-				]
-			}
+			"type": "array"
 		},
 		"book": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/adventures.json#/properties/adventure/items"
-					},
-					{
-						"$ref": "#/definitions/bookSource"
-					}
-				]
-			}
+			"type": "array"
 		},
 		"bookData": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"$ref": "#/definitions/bookSource"
-					},
-					{
-						"properties": {
-							"data": {
-								"type": "array",
-								"items": {
-									"$ref": "#/definitions/entry"
-								}
-							}
-						}
-					}
-				]
-			}
+			"type": "array"
 		},
 		"class": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/class/class.json#/properties/class"
+			"type": "array"
 		},
 		"subclass": {
-			"type": "array",
-			"items": {
-				"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/class/class.json#/definitions/subclass"
-			}
+			"type": "array"
 		},
 		"spell": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/spells/spells.json#/properties/spell"
+			"type": "array"
 		},
 		"roll20Spell": {
 			"description": "Based on the Roll20 JSON data",
-			"type": "array",
-			"items": {
-				"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/spells/roll20.json#/definitions/spellMeta"
-			}
+			"type": "array"
 		},
 		"foundrySpell": {
-			"description": "Based on the Roll20 JSON data",
 			"type": "array",
 			"items": {
 				"type": "object",
@@ -1599,8 +297,12 @@
 					"data": {
 						"description": "Foundry data",
 						"properties": {
-							"target.value": {"type": "integer"},
-							"target.units": {"type": "string"},
+							"target.value": {
+								"type": "integer"
+							},
+							"target.units": {
+								"type": "string"
+							},
 							"target.type": {
 								"description": "From Foundry's `CONFIG.DND5E.targetTypes`",
 								"type": "string",
@@ -1625,139 +327,87 @@
 						}
 					}
 				},
-				"required": ["name", "source"],
+				"required": [
+					"name",
+					"source"
+				],
 				"additionalProperties": false
 			}
 		},
 		"item": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/items.json#/properties/item/items"
-					},
-					{
-						"properties": {
-							"fluff": {
-								"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/fluff-items.json#/properties/item/items"
-							}
-						}
-					}
-				]
-			}
+			"type": "array"
 		},
 		"itemGroup": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/items.json#properties/itemGroup"
+			"type": "array"
 		},
-		"basicitem": {
-			"description": "Not supported",
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/basicitems.json#properties/basicitem"
+		"baseitem": {
+			"type": "array"
 		},
 		"itemProperty": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/basicitems.json#properties/itemProperty"
+			"type": "array"
 		},
 		"itemType": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/basicitems.json#properties/itemType"
+			"type": "array"
 		},
 		"variant": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/magicvariants.json#properties/variant"
+			"type": "array"
 		},
 		"background": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/backgrounds.json#/properties/background/items"
-					},
-					{
-						"properties": {
-							"fluff": {
-								"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/fluff-backgrounds.json#/properties/background/items"
-							}
-						}
-					}
-				]
-			}
+			"type": "array"
 		},
 		"condition": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/conditionsdiseases.json#/properties/condition"
+			"type": "array"
 		},
 		"disease": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/conditionsdiseases.json#/properties/disease"
+			"type": "array"
 		},
 		"deity": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/deities.json#/properties/deity"
+			"type": "array"
 		},
 		"encounter": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/encounters.json#/properties/encounter"
+			"type": "array"
 		},
 		"feat": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/feats.json#/properties/feat"
-		},
-		"name": {
-			"description": "Not supported in homebrew",
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/names.json#/properties/name"
+			"type": "array"
 		},
 		"object": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/objects.json#/properties/object"
+			"type": "array"
 		},
 		"psionic": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/psionics.json#/properties/psionic"
+			"type": "array"
 		},
 		"race": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/races.json#/properties/race/items"
-					},
-					{
-						"properties": {
-							"fluff": {
-								"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/fluff-races.json#/properties/race/items"
-							}
-						}
-					}
-				]
-			}
+			"type": "array"
 		},
 		"reward": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/rewards.json#/properties/reward"
+			"type": "array"
 		},
 		"ship": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/ships.json#/properties/ship"
+			"type": "array"
 		},
 		"table": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/tables.json#/properties/table"
+			"type": "array"
 		},
 		"trap": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/trapshazards.json#/properties/trap"
+			"type": "array"
 		},
 		"hazard": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/trapshazards.json#/properties/hazard"
+			"type": "array"
 		},
 		"optionalfeature": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/optionalfeatures.json#properties/optionalfeature"
+			"type": "array"
 		},
 		"variantrule": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/variantrules.json#properties/variantrule"
+			"type": "array"
 		},
 		"legendaryGroup": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/bestiary/meta.json#/properties/legendaryGroup"
+			"type": "array"
 		},
 		"language": {
-			"$ref": "http://gitcdn.link/repo/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/bestiary/meta.json#/properties/language"
+			"type": "array"
 		},
 		"monster": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"allOf": [
-					{
-						"$ref": "#/definitions/creatureData"
-					}
-				]
-			}
+			"type": "array"
 		}
 	}
 }
