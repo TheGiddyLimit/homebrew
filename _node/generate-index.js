@@ -77,7 +77,7 @@ function buildDeepIndex () {
 
 				if (hasMeta && !file.contents._meta.unlisted) {
 					const cleanName = file.name
-						.replace(/#/g, "$23");
+						.replace(/#/g, "%23");
 
 					// Index timestamps
 					timestampIndex[cleanName] = {a: file.contents._meta.dateAdded, m: file.contents._meta.dateLastModified};
