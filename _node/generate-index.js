@@ -76,20 +76,23 @@ function buildDeepIndex () {
 				}
 
 				if (hasMeta && !file.contents._meta.unlisted) {
+					const cleanName = file.name
+						.replace(/#/g, "%23");
+
 					// Index timestamps
-					timestampIndex[file.name] = {a: file.contents._meta.dateAdded, m: file.contents._meta.dateLastModified};
+					timestampIndex[cleanName] = {a: file.contents._meta.dateAdded, m: file.contents._meta.dateLastModified};
 
 					// Index props
 					Object.keys(file.contents)
 						.filter(it => !it.startsWith("_"))
 						.forEach(k => {
-							(propIndex[k] = propIndex[k] || {})[file.name] = folder;
+							(propIndex[k] = propIndex[k] || {})[cleanName] = folder;
 						});
 
 					// Index sources
 					(file.contents._meta.sources || []).forEach(src => {
 						if (sourceIndex[src.json]) console.error(`${file.name} source "${src.json}" was already in ${sourceIndex[src.json]}`);
-						sourceIndex[src.json] = file.name;
+						sourceIndex[src.json] = cleanName;
 					});
 				}
 			});
