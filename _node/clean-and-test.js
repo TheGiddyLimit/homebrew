@@ -58,6 +58,12 @@ function cleanFolder (folder) {
 					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" had a "dateLastModified" in milliseconds! Converting to seconds...`);
 					file.contents._meta.dateLastModified = Math.round(file.contents._meta.dateLastModified / 1000);
 				}
+
+				(file.contents._meta.sources || []).forEach(source => {
+					if (source.version != null) return;
+					um.warn(`VERSION`, `\tFile "${file.name}" source "${source.json}" did not have "version"! Adding one...`);
+					source.version = "unknown";
+				});
 				// endregion
 
 				// region test
