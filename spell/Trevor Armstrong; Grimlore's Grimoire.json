@@ -6,7 +6,7 @@
 				"abbreviation": "GG",
 				"color": "7e40b8",
 				"full": "Grimlore's Grimoire",
-				"version": "",
+				"version": "2.11.1",
 				"url": "https://www.dmsguild.com/product/250265/Grimlores-Grimoire",
 				"authors": [
 					"Trevor Armstrong"
@@ -17,7 +17,7 @@
 			}
 		],
 		"dateAdded": 1577536578,
-		"dateLastModified": 1577536578
+		"dateLastModified": 1599576585
 	},
 	"spell": [
 		{
@@ -171,7 +171,12 @@
 			},
 			"duration": [
 				{
-					"type": "instant"
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
 				}
 			],
 			"entries": [
@@ -239,7 +244,12 @@
 			},
 			"duration": [
 				{
-					"type": "instant"
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
 				}
 			],
 			"entries": [
@@ -754,7 +764,7 @@
 			"range": {
 				"type": "point",
 				"distance": {
-					"type": "self"
+					"type": "touch"
 				}
 			},
 			"components": {
@@ -1063,7 +1073,7 @@
 			"time": [
 				{
 					"number": 1,
-					"unit": "action"
+					"unit": "minute"
 				}
 			],
 			"range": {
@@ -2568,7 +2578,7 @@
 				}
 			],
 			"entries": [
-				"You unleash a mournful wail, harming creatures of your choosing that are within range and can hear you. A target must succeed on a Consitution saving throw or take {@damage 6d8} psychic damage and become {@condition deafened} for 1 minute. At the end of each of its turns, a deafened creature can make another Consitution saving throw. On a success, the spell ends on the creature. This spell has no effect on constructs and undead."
+				"You unleash a mournful wail, harming creatures of your choosing that are within range and can hear you. A target must succeed on a Consitution saving throw or take {@damage 10d8} psychic damage and become {@condition deafened} for 1 minute. At the end of each of its turns, a deafened creature can make another Consitution saving throw. On a success, the spell ends on the creature. This spell has no effect on constructs and undead."
 			],
 			"entriesHigherLevel": [
 				{
@@ -3322,6 +3332,14 @@
 					{
 						"name": "Wizard",
 						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
 					}
 				]
 			}
@@ -3625,7 +3643,12 @@
 			},
 			"duration": [
 				{
-					"type": "instant"
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1,
+						"upTo": true
+					}
 				}
 			],
 			"meta": {
@@ -3749,7 +3772,8 @@
 			"time": [
 				{
 					"number": 1,
-					"unit": "action"
+					"unit": "reaction",
+					"condition": "which you take when you are hit by an attack or targeted by the {@spell magic missile} spell"
 				}
 			],
 			"range": {
@@ -4394,7 +4418,12 @@
 			},
 			"duration": [
 				{
-					"type": "instant"
+					"type": "timed",
+					"duration": {
+						"type": "day",
+						"amount": 10,
+						"upTo": true
+					}
 				}
 			],
 			"meta": {
@@ -4669,7 +4698,7 @@
 				}
 			],
 			"entries": [
-				"You point at a creature within range, causing a dark green glow to pass over their body. The creature must make a Constitution saving throw or take {@damage 4d10} poison damage and become diseased; suffering disadvantage on all attack and skill checks for the duration as their skin begins to pustules all over their body.",
+				"You point at a creature within range, causing a dark green glow to pass over their body. The creature must make a Constitution saving throw or take {@damage 4d10} poison damage and become diseased; suffering disadvantage on all attack and skill checks for the duration as their skin begins to form pustules all over its body. This spell has no effect on undead or constructs",
 				"If the disease is not removed within 1 hour, the creature must make another Constitution saving throw or die. If a creature dies as the result of this spell, every creature within 10 feet must make a Constitution saving throw or become affected by this spell, as if it was initially cast on them. Constructs and undead are immune to the spell."
 			],
 			"damageInflict": [
@@ -5982,7 +6011,7 @@
 				}
 			],
 			"entries": [
-				"You touch a creature and utter an ancient curse. The target must succeed on a Strength saving throw or take {@damage 2d8} necrotic damage and become restrained as spectral wrappings begin to tighten around its body. Until the spell ends, as an action on each of your turns, you can cause the target to take an additional {@damage 2d8} necrotic damage every round after the spell was initially cast. The target can use its action to make a Strength saving throw, breaking the spectral wrappings and ending the spell.",
+				"You touch a humanoid creature and utter an ancient curse. The target must succeed on a Strength saving throw or take {@damage 4d8} necrotic damage and become restrained as spectral wrappings begin to tighten around its body. Until the spell ends, as an action on each of your turns, you can cause the target to take an additional {@damage 2d8} necrotic damage every round after the spell was initially cast. The target can use its action to make a Strength saving throw, breaking the spectral wrappings and ending the spell.",
 				"A creature that dies while under the effect of this spell becomes a {@creature mummy} that is friendly to you and your companions for the remaining duration. Roll initiative for the mummy, which has its own turns. It obeys any verbal commands that you issue to it (no action required by you). If you don't issue any commands to the mummy, it defends itself from hostile creatures but otherwise takes no actions. Once the duration is reached, the mummy dies and turns to ash.",
 				"If your concentration is broken, the mummy doesn't die. Instead, you lose control of the mummy, it becomes hostile toward you and your companions, and will attack. An uncontrolled mummy can't be dismissed by you, and it turns to ash 10 minutes after the spell was initially cast. The DM has the mummy's statistics."
 			],
@@ -6454,12 +6483,17 @@
 			},
 			"duration": [
 				{
-					"type": "instant"
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
 				}
 			],
 			"entries": [
 				"You create a magical zone that enables deception in a 15-foot-radius sphere on a point of your choice within range. Until the spell ends, any creatures of your choosing that enter the spell's area gain advantage on all Deception skill checks.",
-				"Additionally, any creatures in the spell's area that you do not grant this bonus must make a Wisdom saving throw or suffer disadvantage on all Wisdom (Insight) checks made while in the area. When the spell ends, they know that they were deceived in this manner."
+				"Additionally, any creatures in the spell's area that you do not grant this bonus must make a Wisdom saving throw or suffer disadvantage on all Wisdom ({@skill Insight}) checks made while in the area. When the spell ends, they know that they were deceived in this manner."
 			],
 			"entriesHigherLevel": [
 				{
@@ -6497,7 +6531,7 @@
 			"source": "GrimloresGrimoire",
 			"page": 31,
 			"level": 3,
-			"school": "A",
+			"school": "T",
 			"time": [
 				{
 					"number": 1,
@@ -6914,6 +6948,10 @@
 					{
 						"name": "Sorcerer",
 						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
 					}
 				]
 			},
@@ -6926,7 +6964,7 @@
 			"source": "GrimloresGrimoire",
 			"page": 20,
 			"level": 2,
-			"school": "T",
+			"school": "C",
 			"time": [
 				{
 					"number": 1,
@@ -8099,7 +8137,7 @@
 			"spellAttack": [
 				"R"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"strength",
 				"dexterity"
 			],
@@ -8274,7 +8312,7 @@
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Wizard",
+						"name": "Sorcerer",
 						"source": "PHB"
 					}
 				]
@@ -8639,8 +8677,7 @@
 				"ritual": true
 			},
 			"entries": [
-				"For the duration, you gain the ability to read non-magical texts at a rate of 50 pages per minute and have perfect recollection of any information gained during the spell's",
-				"duration."
+				"For the duration, you gain the ability to read non-magical texts at a rate of 50 pages per minute and have perfect recollection of any information gained during the spell's duration."
 			],
 			"classes": {
 				"fromClassList": [
@@ -8744,7 +8781,7 @@
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Wizard",
+						"name": "Warlock",
 						"source": "PHB"
 					},
 					{
@@ -8957,6 +8994,10 @@
 					"type": "instant"
 				}
 			],
+			"components": {
+				"v": true,
+				"s": true
+			},
 			"entries": [
 				"You touch a humanoid creature that has at least 1 hit point, placing a curse upon it for 1 minute. If the creature dies while the curse is active, it is raised as a {@creature zombie} under your control (the DM has the creature's game statistics). A {@spell remove curse} spell ends this effect when cast upon a living creature.",
 				"On each of your turns, you can use a bonus action to mentally command any creature you made with this spell if the creature is within 60 feet of you (issuing the same command to each one if you control multiple creatures).",
@@ -9130,7 +9171,7 @@
 			"components": {
 				"v": true,
 				"s": true,
-				"m": "a non-magical weapon"
+				"m": "a nonmagical weapon"
 			},
 			"duration": [
 				{
@@ -9585,7 +9626,7 @@
 					]
 				}
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"constitution"
 			],
 			"miscTags": [
@@ -10103,7 +10144,7 @@
 				}
 			],
 			"entries": [
-				"You extend your hand toward a creature you can see within range and infect the target with a horrible disease, causing their flesh to form pustules and smell of decay. The creature must succeed on a Constitution saving throw or take {@damage 2d12} necrotic damage."
+				"You extend your hand toward a humanoid creature you can see within range and infect the target with a horrible disease, causing their flesh to form pustules and smell of decay. The creature must succeed on a Constitution saving throw or take {@damage 2d12} necrotic damage."
 			],
 			"entriesHigherLevel": [
 				{
@@ -10474,7 +10515,7 @@
 				"type": "point",
 				"distance": {
 					"type": "feet",
-					"amount": 61
+					"amount": 60
 				}
 			},
 			"components": {
@@ -11250,7 +11291,7 @@
 			"conditionInflict": [
 				"grappled"
 			],
-			"opposedCheck": [
+			"abilityCheck": [
 				"strength",
 				"dexterity"
 			],
@@ -11411,7 +11452,8 @@
 			"range": {
 				"type": "point",
 				"distance": {
-					"type": "touch"
+					"type": "touch",
+					"ammount": 15
 				}
 			},
 			"components": {
@@ -11772,7 +11814,7 @@
 			"time": [
 				{
 					"number": 1,
-					"unit": "bonus"
+					"unit": "action"
 				}
 			],
 			"range": {
@@ -11955,7 +11997,7 @@
 			"name": "Peaceful Valediction",
 			"source": "GrimloresGrimoire",
 			"page": 9,
-			"level": 1,
+			"level": 0,
 			"school": "N",
 			"time": [
 				{
@@ -12382,8 +12424,8 @@
 				}
 			],
 			"entries": [
-				"You feed off fragments of life-force from the dying. Select a humanoid that has 0 Hit Points and is not stable that you can see within range. The target must succeed a Death saving throw. On a failure, the creature inches closer to death and you gain a number of temporary Hit Points equal to one of the creature's Hit Dice. Alternatively, you can target a humanoid corpse that has died within the last minute to gain this benefit. You cannot use the same corpse more than once.",
-				"You gain one additional Hit Dice worth of temporary Hit Dice at 5th level (2 HD), 11th level (3 HD), and 17th level (4 HD)."
+				"You feed off fragments of life-force from the dying. Select a humanoid that has 0 Hit Points and is not stable that you can see within range. The target must succeed a Death saving throw. On a failure, the creature inches closer to death and you gain {@dice 1d4} temporary hit points. Alternatively, you can target a humanoid corpse that has died within the last minute to gain this benefit. You cannot use the same corpse more than once.",
+				"You gain one additional {@dice 1d4} temporary hit points at 5th level ({@dice 2d4}), 11th level ({@dice 3d4}), and 17th level ({@dice 4d4})."
 			],
 			"miscTags": [
 				"SGT",
@@ -12766,6 +12808,124 @@
 					}
 				]
 			}
+		},
+		{
+			"name": "Venomous Strike",
+			"source": "GrimloresGrimoire",
+			"page": 12,
+			"level": 0,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a weapon or piece of ammo"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"As part of the action used to cast this spell, you embue a magical poison on a weapon or piece of ammo you touch and must make an attack with a it against one creature within the weapon's range, otherwise the spell fails. On a hit, the target suffers the attack's normal effects plus {@damage 1d4} poison damage. If your attack roll deals critical damage, the target becomes {@condition poisoned} until the end of its next turn. Targets resistant or immune to poison damage or immune to the poisoned condition do not become poisoned."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				]
+			},
+			"conditionInflict": [
+				"poisoned"
+			],
+			"entriesHigherLevel": [
+				{
+					"name": "At Higher Levels",
+					"entries": [
+						"This spell deals an additional {@damage 1d4} poison damage when you reach 5th level ({@damage 2d4}), 11th level ({@damage 3d4}) and 17th level ({@damage 4d4})."
+					]
+				}
+			],
+			"damageInflict": [
+				"poison"
+			],
+			"spellAttack": [
+				"M"
+			]
+		},
+		{
+			"name": "Wind Slash",
+			"source": "GrimloresGrimoire",
+			"level": 0,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"A blade of wind flies from your outstretched hands in a straight line up to 15 feet in a direction you choose. If the blade would strike a creature, it must make a Dexterity saving throw. On a failed save, the target takes {@damage 1d8} slashing damage and then the spell ends.",
+				"This spell deals an additional {@damage 1d8} slashing damage when you reach 5th level ({@damage 2d8}), 11th level ({@damage 3d8}) and 17th level ({@damage 4d8})."
+			],
+			"page": 12,
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"damageInflict": [
+				"slashing"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"areaTags": [
+				"L"
+			]
 		}
 	]
 }
