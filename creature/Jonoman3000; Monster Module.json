@@ -9,24 +9,610 @@
 					"Jonoman3000"
 				],
 				"convertedBy": [
-					"zombiekiller 101"
+					"zombiekiller 101",
+					"Spappz",
+					"(tokens by Infamous)"
 				],
-				"version": "2",
+				"version": "1.0.1",
 				"url": "https://drive.google.com/file/d/0B-g9vLTX0eHKWDZHZ05QWkVNZVU/view",
-				"targetSchema": "1.6.3"
+				"targetSchema": "1.6.3",
+				"color": "BD6D31"
 			}
 		],
 		"dateAdded": 1555319662,
-		"dateLastModified": 1555319662,
+		"dateLastModified": 1606362890,
 		"internalCopies": [
 			"monsterFluff"
 		]
 	},
+	"legendaryGroup": [
+		{
+			"name": "Aboleth Sovereign",
+			"source": "MModule",
+			"lairActions": [
+				"When fighting inside its lair, an aboleth can invoke the ambient magic to take lair actions. On initiative count 20 (losing initiative ties), the aboleth takes a lair action to cause one of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"The aboleth sovereign casts {@spell phantasmal force} (no components required) on any number of creatures it can see within 60 feet of it. While maintaining concentration on this effect, the aboleth can’t take other lair actions.",
+						"Pools of water within 150 feet of the aboleth sovereign surge outward in a grasping tide. Any creature on the ground within 20 feet of such a pool must succeed on a {@dc 19} Strength saving throw or be pulled up to 20 feet into the water and {@condition restrained} until the end of their next turn. The aboleth can’t use this lair action again until it has used a different one.",
+						"Water in the aboleth sovereign's lair becomes momentarily charged with psychic energy. The aboleth sovereign can target any number of creatures it can see in such water within 150 feet of it. A target must succeed on a {@dc 19} Wisdom saving throw or take 14 ({@damage 4d6}) psychic damage and become {@condition paralyzed} until the end of their next turn. The aboleth can’t use this lair action again until it has used a different one."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region containing an aboleth's lair is warped by the creature's presence, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Underground surfaces within 1 mile of the aboleth's lair are slimy and wet and are difficult terrain.",
+						"Water sources within 1 mile of the lair are supernaturally fouled. Enemies of the aboleth that drink such water vomit it within minutes.",
+						 "As an action, the aboleth can create an illusory image of itself within 1 mile of the lair. The copy can appear at any location the aboleth has seen before or in any location a creature {@condition charmed} by the aboleth can currently see. Once created, the image lasts for as long as the aboleth maintains concentration, as if concentrating on a spell. Although the image is intangible, it looks, sounds, and can move like the aboleth. The aboleth can sense, speak, and use telepathy from the image's position as if present at that position. If the image takes any damage, it disappears."
+					]
+				},
+				"If the aboleth dies, the first two effects fade over the course of {@dice 3d10} days."
+			]
+		}
+	],
+	"disease": [
+		{
+			"name": "Adlet Bloodlust",
+			"source": "MModule",
+			"entries": [
+				"Symptoms manifest after {@dice 1d4} hours, and they include nausea, disorientation, and the unwavering desire to eat humanoid flesh. The infected creature gains one level of {@condition exhaustion} that can't be removed until the disease is cured. If the infected creature attempts to consume food other than humanoid flesh or drink anything besides humanoid blood, it must succeed on a {@dc 20} Constitution saving throw or immediately vomit up whatever it consumed, gaining no nutritional value from it.",
+				"At the end of each long rest, an infected creature can make a {@dc 15} Constitution saving throw. On a successful save, the DC for this save and the save to avoid vomiting are decreased by ({@dice 1d4}). When the saving throw DC drops to 0, the creature is cured."
+			],
+			"page": 7
+		}
+	],
 	"monster": [
+		{
+			"name": "Movanic Deva",
+			"group": "Angels",
+			"source": "MModule",
+			"page": 10,
+			"size": "M",
+			"type": "celestial",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 136,
+				"formula": "16d8 + 64"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 90
+			},
+			"str": 18,
+			"dex": 18,
+			"con": 18,
+			"int": 17,
+			"wis": 20,
+			"cha": 20,
+			"save": {
+				"wis": "+9",
+				"cha": "+9"
+			},
+			"skill": {
+				"insight": "+9",
+				"perception": "+9"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 19,
+			"resist": [
+				"radiant",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened"
+			],
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
+			"cr": "10",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The deva's spellcasting ability is Charisma (spell save {@dc 17}). The deva can innately cast the following spells, requiring only verbal components:"
+					],
+					"will": [
+						"{@spell detect evil and good}",
+						"{@spell protection from evil and good}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell commune}",
+							"{@spell raise dead}",
+							"{@spell dispel evil and good|phb|dispel evil/good}"
+						],
+						"3e": [
+							"{@spell banishment}"
+						]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Angelic Weapons",
+					"entries": [
+						"The deva's weapon attacks are magical. When the deva hits with any weapon, the weapon deals an extra {@dice 4d8} radiant damage (included in the attack)."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The deva has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Divine Enemy",
+					"entries": [
+						"When the deva hits a fiend or undead with any weapon, the weapon deals an extra {@damage 1d8} radiant damage."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The deva makes two melee attacks."
+					]
+				},
+				{
+					"name": "Mace",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) bludgeoning damage plus 18 ({@damage 4d8}) radiant damage."
+					]
+				},
+				{
+					"name": "Healing Touch (3/Day)",
+					"entries": [
+						"The deva touches another creature. The target magically regains 20 ({@dice 4d8 + 2}) hit points and is freed from any curse, disease, poison, blindness, or deafness."
+					]
+				},
+				{
+					"name": "Change Shape",
+					"entries": [
+						"The deva magically polymorphs into a humanoid or beast that has a challenge rating equal to or less than its own, or back into its true form. It reverts to its true form if it dies. Any equipment it is wearing or carrying is absorbed or borne by the new form (the deva's choice).",
+						"In a new form, the deva retains its game statistics and ability to speak, but its AC, movement modes, Strength, Dexterity, and special senses are replaced by those of the new form, and it gains any statistics and capabilities (except class features, legendary actions, and lair actions) that the new form has but that it lacks."
+					]
+				}
+			],
+			"tokenUrl": "https://noads.5e.tools/img/MM/Deva.png",
+			"soundClip": {
+				"type": "internal",
+				"path": "bestiary/deva.mp3"
+			},
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "internal",
+							"path": "bestiary/MM/Deva.jpg"
+						}
+					}
+				],
+				"entries": [
+					"A movanic deva is a soldier angel tasked with fighting undead and fiends throughout the planes."
+				]
+			},
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"TP",
+				"XX"
+			],
+			"damageTags": [
+				"B",
+				"R"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"conditionInflictSpell": [
+				"incapacitated"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Monadic Deva",
+			"group": "Angels",
+			"source": "MModule",
+			"page": 10,
+			"size": "M",
+			"type": "celestial",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 136,
+				"formula": "16d8 + 64"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 90
+			},
+			"str": 18,
+			"dex": 18,
+			"con": 18,
+			"int": 17,
+			"wis": 20,
+			"cha": 20,
+			"save": {
+				"wis": "+9",
+				"cha": "+9"
+			},
+			"skill": {
+				"insight": "+9",
+				"perception": "+9"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 19,
+			"resist": [
+				"radiant",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened"
+			],
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
+			"cr": "10",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The deva's spellcasting ability is Charisma (spell save {@dc 17}). The deva can innately cast the following spells, requiring only verbal components:"
+					],
+					"will": [
+						"{@spell detect evil and good}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell commune}",
+							"{@spell raise dead}"
+						]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Angelic Weapons",
+					"entries": [
+						"The deva's weapon attacks are magical. When the deva hits with any weapon, the weapon deals an extra {@dice 4d8} radiant damage (included in the attack)."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The deva has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Ethereal Sight",
+					"entries": [
+						"The deva can see 60 feet into the Ethereal Plane when it is on the Material Plane, and vice versa."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The deva makes two melee attacks."
+					]
+				},
+				{
+					"name": "Mace",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) bludgeoning damage plus 18 ({@damage 4d8}) radiant damage."
+					]
+				},
+				{
+					"name": "Healing Touch (3/Day)",
+					"entries": [
+						"The deva touches another creature. The target magically regains 20 ({@dice 4d8 + 2}) hit points and is freed from any curse, disease, poison, blindness, or deafness."
+					]
+				},
+				{
+					"name": "Change Shape",
+					"entries": [
+						"The deva magically polymorphs into a humanoid or beast that has a challenge rating equal to or less than its own, or back into its true form. It reverts to its true form if it dies. Any equipment it is wearing or carrying is absorbed or borne by the new form (the deva's choice).",
+						"In a new form, the deva retains its game statistics and ability to speak, but its AC, movement modes, Strength, Dexterity, and special senses are replaced by those of the new form, and it gains any statistics and capabilities (except class features, legendary actions, and lair actions) that the new form has but that it lacks."
+					]
+				},
+				{
+					"name": "Etherealness",
+					"entries": [
+						"The deva magically enters the Ethereal Plane, or vice versa."
+					]
+				}
+			],
+			"tokenUrl": "https://noads.5e.tools/img/MM/Deva.png",
+			"soundClip": {
+				"type": "internal",
+				"path": "bestiary/deva.mp3"
+			},
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "internal",
+							"path": "bestiary/MM/Deva.jpg"
+						}
+					}
+				],
+				"entries": [
+					"A monadic deva is a watcher of the Ethereal Plane and the Elemental Planes."
+				]
+			},
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"TP",
+				"XX"
+			],
+			"damageTags": [
+				"B",
+				"R"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Astral Deva",
+			"group": "Angels",
+			"source": "MModule",
+			"page": 10,
+			"size": "M",
+			"type": "celestial",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 136,
+				"formula": "16d8 + 64"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 90
+			},
+			"str": 18,
+			"dex": 18,
+			"con": 18,
+			"int": 17,
+			"wis": 20,
+			"cha": 20,
+			"save": {
+				"wis": "+9",
+				"cha": "+9"
+			},
+			"skill": {
+				"insight": "+9",
+				"perception": "+9"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 19,
+			"resist": [
+				"radiant",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened"
+			],
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
+			"cr": "10",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The deva's spellcasting ability is Charisma (spell save {@dc 17}). The deva can innately cast the following spells, requiring only verbal components:"
+					],
+					"will": [
+						"{@spell detect evil and good}",
+						"{@spell sending}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell commune}",
+							"{@spell raise dead}",
+							"{@spell astral projection}"
+						],
+						"3e": [
+							"{@spell plane shift}"
+						]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Angelic Weapons",
+					"entries": [
+						"The deva's weapon attacks are magical. When the deva hits with any weapon, the weapon deals an extra {@dice 4d8} radiant damage (included in the attack)."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The deva has advantage on saving throws against spells and other magical effects."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The deva makes two melee attacks."
+					]
+				},
+				{
+					"name": "Mace",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) bludgeoning damage plus 18 ({@damage 4d8}) radiant damage."
+					]
+				},
+				{
+					"name": "Healing Touch (3/Day)",
+					"entries": [
+						"The deva touches another creature. The target magically regains 20 ({@dice 4d8 + 2}) hit points and is freed from any curse, disease, poison, blindness, or deafness."
+					]
+				},
+				{
+					"name": "Change Shape",
+					"entries": [
+						"The deva magically polymorphs into a humanoid or beast that has a challenge rating equal to or less than its own, or back into its true form. It reverts to its true form if it dies. Any equipment it is wearing or carrying is absorbed or borne by the new form (the deva's choice).",
+						"In a new form, the deva retains its game statistics and ability to speak, but its AC, movement modes, Strength, Dexterity, and special senses are replaced by those of the new form, and it gains any statistics and capabilities (except class features, legendary actions, and lair actions) that the new form has but that it lacks."
+					]
+				}
+			],
+			"tokenUrl": "https://noads.5e.tools/img/MM/Deva.png",
+			"soundClip": {
+				"type": "internal",
+				"path": "bestiary/deva.mp3"
+			},
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "internal",
+							"path": "bestiary/MM/Deva.jpg"
+						}
+					}
+				],
+				"entries": [
+					"An astral deva is an angel tasked with watching over the upper planes and the astral plane."
+				]
+			},
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"TP",
+				"XX"
+			],
+			"damageTags": [
+				"B",
+				"R"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
 		{
 			"source": "MModule",
 			"name": "Aarakocra Captain",
+			"page": 3,
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Aarakocra Captain (token).png",
 			"type": {
 				"type": "humanoid",
 				"tags": [
@@ -100,8 +686,16 @@
 			"languageTags": [
 				"AU",
 				"OTH"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Aarakocra Captain.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Aarakocra Captain",
 					"source": "MModule"
@@ -121,7 +715,9 @@
 		{
 			"source": "MModule",
 			"name": "Aarakocra Sharpshooter",
+			"page": 3,
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Aarakocra Captain (token).png",
 			"type": {
 				"type": "humanoid",
 				"tags": [
@@ -183,8 +779,16 @@
 			"languageTags": [
 				"AU",
 				"OTH"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Aarakocra Captain.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Aarakocra Sharpshooter",
 					"source": "MModule"
@@ -203,7 +807,9 @@
 		{
 			"source": "MModule",
 			"name": "Aarakocra Priest of Aerdrie",
+			"page": 4,
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Aarakocra Priest of Aerdrie (token).png",
 			"type": {
 				"type": "humanoid",
 				"tags": [
@@ -360,8 +966,16 @@
 			"languageTags": [
 				"AU",
 				"OTH"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Aarakocra Priest of Aerdrie.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Aarakocra Priest of Aerdrie",
 					"source": "MModule"
@@ -383,7 +997,9 @@
 		{
 			"source": "MModule",
 			"name": "Aboleth Sovereign",
+			"page": 5,
 			"size": "H",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Aboleth (token).png",
 			"type": "aberration",
 			"alignment": [
 				"L",
@@ -483,7 +1099,10 @@
 					]
 				}
 			],
-			"legendaryGroup": "Aboleth Sovereign",
+			"legendaryGroup": {
+				"name": "Aboleth Sovereign",
+				"source": "MModule"
+			},
 			"legendary": [
 				{
 					"name": "Detect",
@@ -517,8 +1136,16 @@
 			],
 			"senseTags": [
 				"SD"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Aboleth Sovereign.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Aboleth Sovereign",
 					"source": "MModule"
@@ -538,12 +1165,18 @@
 			],
 			"conditionInflict": [
 				"charmed"
-			]
+			],
+			"legendaryGroup": {
+				"name": "Aboleth Sovereign",
+				"source": "MModule"
+			}
 		},
 		{
 			"source": "MModule",
 			"name": "Aboleth Spellcaster",
 			"size": "L",
+			"tokenUrl": "https://noads.5e.tools/img/MM/Aboleth.png",
+			"page": 6,
 			"type": "aberration",
 			"alignment": [
 				"L",
@@ -640,7 +1273,7 @@
 				{
 					"name": "Detect",
 					"entries": [
-						"The aboleth makes a Wisdom (Perception) check."
+						"The aboleth makes a Wisdom ({@skill Perception}) check."
 					]
 				},
 				{
@@ -652,12 +1285,7 @@
 				{
 					"name": "Psychic Drain (Costs 2 Actions)",
 					"entries": [
-						"One creature {@condition charmed} by the aboleth takes 10 ({@damage 3d6}) psychic damage, and the aboleth regains hit points equal to the damage the creature takes.",
-						"Lair Actions",
-						"When fighting inside its lair, an aboleth can invoke the ambient magic to take lair actions. On initiative count 20 (losing initiative ties), the aboleth takes a lair action to cause one of the following effects:",
-						"The aboleth casts phantasmal force (no components required) on any number of creatures it can see within 60 feet of it. While maintaining concentration on this effect, the aboleth can't take other lair actions. If a target succeeds on the saving throw or if the effect ends for it, the target is immune to the aboleth's phantasmal force lair action for the next 24 hours, although such a creature can choose to be affected.",
-						"Pools of water within 90 feet of the aboleth surge outward in a grasping tide. Any creature on the ground within 20 feet of such a pool must succeed on a {@dc 14} Strength saving throw or be pulled up to 20 feet into the water and knocked {@condition prone}. The aboleth can't use this lair action again until it has used a different one.",
-						"Water in the aboleth's lair magically becomes a conduit for the creature's rage. The aboleth can target any number of creatures it can see in such water within 90 feet of it. A target must succeed on a {@dc 14} Wisdom saving throw or take 7 ({@damage 2d6}) psychic damage. The aboleth can't use this lair action again until it has used a different one."
+						"One creature {@condition charmed} by the aboleth takes 10 ({@damage 3d6}) psychic damage, and the aboleth regains hit points equal to the damage the creature takes."
 					]
 				}
 			],
@@ -665,10 +1293,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The aboleth's innate spellcasting",
-						"ability is Charisma (spell save {@dc 16}). The aboleth can",
-						"innately cast the following spells, requiring no material",
-						"components."
+						"The aboleth's innate spellcasting ability is Charisma (spell save {@dc 16}). The aboleth can innately cast the following spells, requiring no material components."
 					],
 					"will": [
 						"{@spell silent image}"
@@ -720,12 +1345,29 @@
 			"conditionInflictSpell": [
 				"charmed",
 				"incapacitated"
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "internal",
+							"path": "bestiary/MM/Aboleth.jpg"
+						}
+					}
+				],
+				"_monsterFluff": {
+					"name": "Aboleth",
+					"source": "MM"
+				}
+			}
 		},
 		{
 			"source": "MModule",
 			"name": "Aboleth Sovereign Spellcaster",
 			"size": "H",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Aboleth (token).png",
+			"page": 6,
 			"type": "aberration",
 			"alignment": [
 				"L",
@@ -825,7 +1467,10 @@
 					]
 				}
 			],
-			"legendaryGroup": "Aboleth Sovereign",
+			"legendaryGroup": {
+				"name": "Aboleth Sovereign",
+				"source": "MModule"
+			},
 			"legendary": [
 				{
 					"name": "Detect",
@@ -850,10 +1495,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The aboleth sovereign's innate",
-						"spellcasting ability is Charisma (spell save {@dc 19}). The",
-						"aboleth can innately cast the following spells, requiring no",
-						"material components."
+						"The aboleth sovereign's innate spellcasting ability is Charisma (spell save {@dc 19}). The aboleth can innately cast the following spells, requiring no material components."
 					],
 					"will": [
 						"{@spell major image}"
@@ -884,8 +1526,16 @@
 			],
 			"senseTags": [
 				"SD"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Aboleth Sovereign.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Aboleth Sovereign",
 					"source": "MModule"
@@ -919,6 +1569,8 @@
 			"source": "MModule",
 			"name": "Young Aboleth",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Aboleth (token).png",
+			"page": 6,
 			"type": "aberration",
 			"alignment": [
 				"L",
@@ -1011,8 +1663,16 @@
 			],
 			"senseTags": [
 				"SD"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "internal",
+							"path": "bestiary/MM/Aboleth.jpg"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Young Aboleth",
 					"source": "MModule"
@@ -1030,6 +1690,8 @@
 			"source": "MModule",
 			"name": "Adlet",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Adlet (token).png",
+			"page": 7,
 			"type": {
 				"type": "humanoid",
 				"tags": [
@@ -1119,8 +1781,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Adlet.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Adlet",
 					"source": "MModule"
@@ -1146,6 +1816,8 @@
 			"source": "MModule",
 			"name": "Ahklut",
 			"size": "H",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Ahklut (token).png",
+			"page": 8,
 			"type": "monstrosity",
 			"alignment": [
 				"N",
@@ -1250,8 +1922,16 @@
 			],
 			"senseTags": [
 				"B"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Ahklut.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Ahklut",
 					"source": "MModule"
@@ -1275,6 +1955,9 @@
 			"source": "MModule",
 			"name": "Agathion",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Agathion (token).png",
+			"page": 9,
+			"group": "Angels",
 			"type": "celestial",
 			"alignment": [
 				"L",
@@ -1407,8 +2090,16 @@
 			],
 			"senseTags": [
 				"SD"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Agathion.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Agathion",
 					"source": "MModule"
@@ -1428,7 +2119,10 @@
 		{
 			"source": "MModule",
 			"name": "Valkyrie",
+			"page": 10,
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Valkyrie (token).png",
+			"group": "Angels",
 			"type": "celestial",
 			"alignment": [
 				"L",
@@ -1568,8 +2262,16 @@
 			],
 			"senseTags": [
 				"SD"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Valkyrie.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Valkyrie",
 					"source": "MModule"
@@ -1590,6 +2292,8 @@
 			"source": "MModule",
 			"name": "Animator's Staff",
 			"size": "S",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Animator's Staff (token).png",
+			"page": 11,
 			"type": "construct",
 			"alignment": [
 				"U"
@@ -1712,8 +2416,16 @@
 			],
 			"senseTags": [
 				"B"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Animator's Staff.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Animator's Staff",
 					"source": "MModule"
@@ -1733,7 +2445,9 @@
 			"source": "MModule",
 			"name": "Animator's Wand",
 			"size": "T",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Animator's Wand (token).png",
 			"type": "construct",
+			"page": 11,
 			"alignment": [
 				"U"
 			],
@@ -1831,10 +2545,9 @@
 			],
 			"senseTags": [
 				"B"
-			],
-			"fluff": {
+			],			"fluff": {
 				"_monsterFluff": {
-					"name": "Aarakocra Captain",
+					"name": "Animator's Wand",
 					"source": "MModule"
 				}
 			},
@@ -1852,6 +2565,8 @@
 			"source": "MModule",
 			"name": "Flying Caltrop",
 			"size": "T",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Flying Caltrop (token).png",
+			"page": 12,
 			"type": "construct",
 			"alignment": [
 				"U"
@@ -1931,10 +2646,9 @@
 			],
 			"senseTags": [
 				"B"
-			],
-			"fluff": {
+			],			"fluff": {
 				"_monsterFluff": {
-					"name": "Aarakocra Captain",
+					"name": "Flying Caltrop",
 					"source": "MModule"
 				}
 			},
@@ -1948,7 +2662,9 @@
 		{
 			"source": "MModule",
 			"name": "Flying Shield",
+			"page": 12,
 			"size": "S",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Flying Shield (token).png",
 			"type": "construct",
 			"alignment": [
 				"U"
@@ -2036,10 +2752,18 @@
 			],
 			"senseTags": [
 				"B"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Flying Shield.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
-					"name": "Aarakocra Captain",
+					"name": "Flying Shield",
 					"source": "MModule"
 				}
 			},
@@ -2054,6 +2778,8 @@
 			"source": "MModule",
 			"name": "Sack of Smothering",
 			"size": "S",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Sack of Smothering (token).png",
+			"page": 13,
 			"type": "construct",
 			"alignment": [
 				"U"
@@ -2134,10 +2860,9 @@
 			],
 			"senseTags": [
 				"B"
-			],
-			"fluff": {
+			],			"fluff": {
 				"_monsterFluff": {
-					"name": "Aarakocra Captain",
+					"name": "Sack of Smothering",
 					"source": "MModule"
 				}
 			},
@@ -2158,6 +2883,8 @@
 			"source": "MModule",
 			"name": "Swarm of Flying Caltrops",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Swarm of Flying Caltrops (token).png",
+			"page": 13,
 			"type": {
 				"type": "construct",
 				"swarmSize": "T"
@@ -2255,10 +2982,9 @@
 			],
 			"senseTags": [
 				"B"
-			],
-			"fluff": {
+			],			"fluff": {
 				"_monsterFluff": {
-					"name": "Aarakocra Captain",
+					"name": "Flying Caltrop",
 					"source": "MModule"
 				}
 			},
@@ -2272,7 +2998,9 @@
 		{
 			"source": "MModule",
 			"name": "Swarm of Ball Bearings",
+			"page": 13,
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Swarm of Ball Bearings (token).png",
 			"type": {
 				"type": "construct",
 				"swarmSize": "T"
@@ -2372,12 +3100,6 @@
 			"senseTags": [
 				"B"
 			],
-			"fluff": {
-				"_monsterFluff": {
-					"name": "Aarakocra Captain",
-					"source": "MModule"
-				}
-			},
 			"miscTags": [
 				"MW"
 			],
@@ -2394,7 +3116,9 @@
 		{
 			"source": "MModule",
 			"name": "Jungle Ankheg",
+			"page": 14,
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Jungle Ankheg (token).png",
 			"type": "monstrosity",
 			"alignment": [
 				"U"
@@ -2408,7 +3132,7 @@
 				},
 				{
 					"ac": 12,
-					"condition": "while prone"
+					"condition": "while {@condition prone}"
 				}
 			],
 			"hp": {
@@ -2474,8 +3198,16 @@
 			"senseTags": [
 				"D",
 				"T"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Jungle Ankheg.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Jungle Ankheg",
 					"source": "MModule"
@@ -2499,7 +3231,9 @@
 			"source": "MModule",
 			"name": "Azer Artisan",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Azer Lord (token).png",
 			"type": "elemental",
+			"page": 15,
 			"alignment": [
 				"L",
 				"N"
@@ -2579,8 +3313,16 @@
 			],
 			"languageTags": [
 				"IG"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Azer Lord.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Azer Artisan",
 					"source": "MModule"
@@ -2599,6 +3341,8 @@
 			"source": "MModule",
 			"name": "Azer Lord",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Azer Lord (token).png",
+			"page": 15,
 			"type": "elemental",
 			"alignment": [
 				"L",
@@ -2697,8 +3441,16 @@
 			],
 			"languageTags": [
 				"IG"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Azer Lord.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Azer Lord",
 					"source": "MModule"
@@ -2717,7 +3469,9 @@
 			"source": "MModule",
 			"name": "Baku",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Baku (token).png",
 			"type": "fey",
+			"page": 16,
 			"alignment": [
 				{
 					"alignment": [
@@ -2869,8 +3623,16 @@
 			],
 			"senseTags": [
 				"U"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Baku.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Baku",
 					"source": "MModule"
@@ -2900,9 +3662,12 @@
 		},
 		{
 			"source": "MModule",
+			"group": "Banshees",
 			"name": "Bewailer",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Bewailer (token).png",
 			"type": "undead",
+			"page": 17,
 			"alignment": [
 				"C",
 				"E"
@@ -3034,8 +3799,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Bewailer.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Bewailer",
 					"source": "MModule"
@@ -3057,6 +3830,8 @@
 			"source": "MModule",
 			"name": "Greater Basilisk",
 			"size": "H",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Greater Basilisk (token).png",
+			"page": 18,
 			"type": "monstrosity",
 			"alignment": [
 				"U"
@@ -3139,8 +3914,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Greater Basilisk.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Greater Basilisk",
 					"source": "MModule"
@@ -3169,6 +3952,8 @@
 			"source": "MModule",
 			"name": "Marine Basilisk",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Marine Basilisk (token).png",
+			"page": 19,
 			"type": "monstrosity",
 			"alignment": [
 				"U"
@@ -3238,8 +4023,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Marine Basilisk.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Marine Basilisk",
 					"source": "MModule"
@@ -3266,6 +4059,8 @@
 			"source": "MModule",
 			"name": "Plated Behir",
 			"size": "H",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Plated Behir (token).png",
+			"page": 20,
 			"type": "monstrosity",
 			"alignment": [
 				"N",
@@ -3374,8 +4169,16 @@
 			],
 			"senseTags": [
 				"SD"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Plated Behir.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Plated Behir",
 					"source": "MModule"
@@ -3405,8 +4208,11 @@
 		},
 		{
 			"source": "MModule",
+			"group": "Beholders",
 			"name": "Eye of the Deep",
+			"page": 21,
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Eye of the Deep (token).png",
 			"type": "aberration",
 			"alignment": [
 				"N",
@@ -3497,11 +4303,11 @@
 				{
 					"name": "Eye Rays",
 					"entries": [
-						"The beholder shoots two of the following magical eye rays at random (reroll duplicates), choosing up to two targets it can see within 120 feet of it:",
-						"1. Enervation Ray. The target must succeed on a {@dc 14} Constitution saving throw, taking 18 ({@damage 4d8}) necrotic damage on a failed save, or half as much damage on a successful one.",
-						"2. Pushing Ray. The target creature must succeed on a {@dc 14} Strength saving throw or be pushed up to 15 feet directly away from the beholder and have its speed halved until the start of the beholder's next turn.",
-						"3. Paralyzing Ray. The targeted creature must succeed on a {@dc 14} Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
-						"4. Sleep Ray. The targeted creature must succeed on a {@dc 14} Wisdom saving throw or fall asleep and remain {@condition unconscious} for 1 minute. The target awakens if it takes damage or another creature takes an action to wake it. This ray has no effect on constructs and undead."
+						"The beholder shoots two of the following magical eye rays at {@dice 1d4|random} (reroll duplicates), choosing up to two targets it can see within 120 feet of it:",
+						"1. {@i Enervation Ray.} The target must succeed on a {@dc 14} Constitution saving throw, taking 18 ({@damage 4d8}) necrotic damage on a failed save, or half as much damage on a successful one.",
+						"2. {@i Pushing Ray.} The target creature must succeed on a {@dc 14} Strength saving throw or be pushed up to 15 feet directly away from the beholder and have its speed halved until the start of the beholder's next turn.",
+						"3. {@i Paralyzing Ray.} The targeted creature must succeed on a {@dc 14} Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+						"4. {@i Sleep Ray.} The targeted creature must succeed on a {@dc 14} Wisdom saving throw or fall asleep and remain {@condition unconscious} for 1 minute. The target awakens if it takes damage or another creature takes an action to wake it. This ray has no effect on constructs and undead."
 					]
 				}
 			],
@@ -3518,8 +4324,16 @@
 			],
 			"senseTags": [
 				"SD"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Eye of the Deep.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Eye of the Deep",
 					"source": "MModule"
@@ -3548,6 +4362,8 @@
 			"source": "MModule",
 			"name": "Bramble Blight",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Bramble Blight (token).png",
+			"page": 22,
 			"type": "plant",
 			"alignment": [
 				"N",
@@ -3597,7 +4413,7 @@
 				{
 					"name": "Death Burst",
 					"entries": [
-						"When the blight dies, it leaves behind a cloud of poison that fills a 5-foot cube centered on its space. The area is lightly obscured, and any creature that starts its turn there must make a {@dc 12} Constitution saving throw. On a failed save, a creature takes 7 ({@damage 2d6}) poison damage  and is {@condition poisoned} until the start of their next turn. On a successful one, a creature takes half damage and is not {@condition poisoned}. Wind disperses the cloud, which otherwise lasts for 1 minute."
+						"When the blight dies, it leaves behind a cloud of poison that fills a 5-foot cube centered on its space. The area is lightly obscured, and any creature that starts its turn there must make a {@dc 12} Constitution saving throw. On a failed save, a creature takes 7 ({@damage 2d6}) poison damage and is {@condition poisoned} until the start of their next turn. On a successful one, a creature takes half damage and is not {@condition poisoned}. Wind disperses the cloud, which otherwise lasts for 1 minute."
 					]
 				},
 				{
@@ -3630,8 +4446,16 @@
 			],
 			"senseTags": [
 				"B"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Bramble Blight.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Bramble Blight",
 					"source": "MModule"
@@ -3657,6 +4481,8 @@
 			"source": "MModule",
 			"name": "Branch Blight",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Branch Blight (token).png",
+			"page": 23,
 			"type": "plant",
 			"alignment": [
 				"N",
@@ -3735,8 +4561,16 @@
 			],
 			"senseTags": [
 				"B"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Branch Blight.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Branch Blight",
 					"source": "MModule"
@@ -3763,6 +4597,8 @@
 			"source": "MModule",
 			"name": "Wood Blight",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Wood Blight (token).png",
+			"page": 23,
 			"type": "plant",
 			"alignment": [
 				"N",
@@ -3825,8 +4661,16 @@
 			],
 			"senseTags": [
 				"B"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Wood Blight.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Wood Blight",
 					"source": "MModule"
@@ -3842,7 +4686,9 @@
 		{
 			"source": "MModule",
 			"name": "Bugbear Assassin",
+			"page": 25,
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Bugbear Champion of Hruggek (token).png",
 			"type": {
 				"type": "humanoid",
 				"tags": [
@@ -3941,8 +4787,7 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
 				"_monsterFluff": {
 					"name": "Bugbear Assassin",
 					"source": "MModule"
@@ -3961,7 +4806,9 @@
 		{
 			"source": "MModule",
 			"name": "Bugbear Champion of Hruggek",
+			"page": 24,
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Bugbear Champion of Hruggek (token).png",
 			"type": {
 				"type": "humanoid",
 				"tags": [
@@ -4088,8 +4935,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Bugbear Champion of Hruggek.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Bugbear Champion of Hruggek",
 					"source": "MModule"
@@ -4109,6 +4964,8 @@
 			"source": "MModule",
 			"name": "Bullywug Chief",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Bullywug Chief (token).png",
+			"page": 26,
 			"type": {
 				"type": "humanoid",
 				"tags": [
@@ -4203,8 +5060,16 @@
 			],
 			"languageTags": [
 				"OTH"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Bullywug Chief.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Bullywug Chief",
 					"source": "MModule"
@@ -4221,6 +5086,8 @@
 			"source": "MModule",
 			"name": "Bullywug Hunter",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Bullywug Hunter (token).png",
+			"page": 26,
 			"type": {
 				"type": "humanoid",
 				"tags": [
@@ -4321,8 +5188,16 @@
 			],
 			"languageTags": [
 				"OTH"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Bullywug Hunter.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Bullywug Hunter",
 					"source": "MModule"
@@ -4350,6 +5225,8 @@
 			"source": "MModule",
 			"name": "Bullywug Shaman",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Bullywug Shaman (token).png",
+			"page": 25,
 			"type": {
 				"type": "humanoid",
 				"tags": [
@@ -4478,8 +5355,16 @@
 			],
 			"languageTags": [
 				"OTH"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Bullywug Shaman.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Bullywug Shaman",
 					"source": "MModule"
@@ -4499,7 +5384,10 @@
 		{
 			"source": "MModule",
 			"name": "Alu-fiend",
+			"group": "Cambions",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Alu-fiend (token).png",
+			"page": 27,
 			"type": "fiend",
 			"alignment": [
 				{
@@ -4644,8 +5532,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Alu-fiend.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Alu-fiend",
 					"source": "MModule"
@@ -4668,7 +5564,10 @@
 		{
 			"source": "MModule",
 			"name": "Spawn of Graz'zt",
+			"group": "Cambions",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Spawn of Graz'zt (token).png",
+			"page": 28,
 			"type": {
 				"type": "fiend",
 				"tags": [
@@ -4845,8 +5744,16 @@
 			],
 			"senseTags": [
 				"SD"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Spawn of Graz'zt.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Spawn of Graz'zt",
 					"source": "MModule"
@@ -4875,6 +5782,9 @@
 			"source": "MModule",
 			"name": "Spawn of Orcus",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Spawn of Orcus (token).png",
+			"page": 29,
+			"group": "Cambions",
 			"type": "fiend",
 			"alignment": [
 				"C",
@@ -5038,8 +5948,16 @@
 			],
 			"senseTags": [
 				"SD"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Spawn of Orcus.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Spawn of Orcus",
 					"source": "MModule"
@@ -5062,6 +5980,8 @@
 			"source": "MModule",
 			"name": "Tangle Crawler",
 			"size": "H",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Tangle Crawler (token).png",
+			"page": 30,
 			"type": "monstrosity",
 			"alignment": [
 				"U"
@@ -5156,8 +6076,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Tangle Crawler.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Tangle Crawler",
 					"source": "MModule"
@@ -5185,6 +6113,8 @@
 			"source": "MModule",
 			"name": "Centaur Knight",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Centaur Knight (token).png",
+			"page": 31,
 			"type": "monstrosity",
 			"alignment": [
 				"L",
@@ -5245,7 +6175,7 @@
 				{
 					"name": "Head Start",
 					"entries": [
-						"On its first turn of combat, the centuar can take the dash action as a bonus action."
+						"On its first turn of combat, the centaur can take the dash action as a bonus action."
 					]
 				},
 				{
@@ -5319,8 +6249,16 @@
 				"C",
 				"E",
 				"S"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Centaur Knight.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Centaur Knight",
 					"source": "MModule"
@@ -5347,6 +6285,8 @@
 			"source": "MModule",
 			"name": "Centaur Marksman",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Centaur Marksman (token).png",
+			"page": 32,
 			"type": "monstrosity",
 			"alignment": [
 				"N",
@@ -5396,7 +6336,7 @@
 				{
 					"name": "Magical Arrows",
 					"entries": [
-						"The centaur's attacks with its longbow are magical. When the deva hits with any weapon, the weapon deals an additional {@dice 4d8} damage on a hit (included in the attack)."
+						"The centaur's attacks with its longbow are magical, and deal an additional {@dice 1d8} damage on a hit (included in the attack)."
 					]
 				}
 			],
@@ -5444,13 +6384,24 @@
 			"languageTags": [
 				"E",
 				"S"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Centaur Marksman.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Centaur Marksman",
 					"source": "MModule"
 				}
 			},
+			"traitTags": [
+				"Magic Weapons"
+			],
 			"miscTags": [
 				"MW",
 				"RW",
@@ -5468,6 +6419,8 @@
 			"source": "MModule",
 			"name": "Centaur Spiritcaller",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Centaur Spiritcaller (token).png",
+			"page": 33,
 			"type": "monstrosity",
 			"alignment": [
 				"N",
@@ -5512,7 +6465,7 @@
 				{
 					"name": "Invigorate",
 					"entries": [
-						"As a bonus action, the centuar can expend one of its hit dice to cause the spirit summoned with Spirit Summon action to regain 10 ({@dice 1d10 + 5}) hit points. If the spirit was reduced to 0 hit points within the last minute, this action can revive it."
+						"As a bonus action, the centaur can expend one of its hit dice to cause the spirit summoned with Spirit Summon action to regain 10 ({@dice 1d10 + 5}) hit points. If the spirit was reduced to 0 hit points within the last minute, this action can revive it."
 					]
 				}
 			],
@@ -5538,7 +6491,7 @@
 				{
 					"name": "Summon Spirit (Recharges After A Long Rest)",
 					"entries": [
-						"The centaur summons a spirit that takes the form of a beast of CR 1 or lower in a space within 30 feet of it. The spirir is an ally of the centaur, and acts on the turn directly after its summoner in the initative order. It remains until it or its summoner dies, or until it is dismissed as an action."
+						"The centaur summons a spirit that takes the form of a {@filter beast of CR 1 or lower|bestiary|type=beast|challenge rating=[&0;&1]} in a space within 30 feet of it. The spirit is an ally of the centaur, and acts on the turn directly after its summoner in the imitative order. It remains until it or its summoner dies, or until it is dismissed as an action."
 					]
 				}
 			],
@@ -5580,8 +6533,16 @@
 			"languageTags": [
 				"E",
 				"S"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Centaur Spiritcaller.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Centaur Spiritcaller",
 					"source": "MModule"
@@ -5604,7 +6565,9 @@
 			"source": "MModule",
 			"name": "Centaur Wildling",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Centaur Wildling (token).png",
 			"type": "monstrosity",
+			"page": 33,
 			"alignment": [
 				"C",
 				"G"
@@ -5683,8 +6646,16 @@
 			"languageTags": [
 				"E",
 				"S"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Centaur Wildling.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Centaur Wildling",
 					"source": "MModule"
@@ -5702,6 +6673,8 @@
 			"source": "MModule",
 			"name": "Cerynitis",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Cerynitis (token).png",
+			"page": 34,
 			"type": "celestial",
 			"alignment": [
 				"C",
@@ -5833,8 +6806,16 @@
 			],
 			"senseTags": [
 				"SD"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Cerynitis.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Cerynitis",
 					"source": "MModule"
@@ -5862,6 +6843,8 @@
 			"source": "MModule",
 			"name": "Astral Chimera",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Astral Chimera (token).png",
+			"page": 35,
 			"type": "monstrosity",
 			"alignment": [
 				"N",
@@ -5988,8 +6971,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Astral Chimera.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Astral Chimera",
 					"source": "MModule"
@@ -6012,8 +7003,11 @@
 		},
 		{
 			"source": "MModule",
+			"group": "Chimeras",
 			"name": "Demimaera",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Demimaera (token).png",
+			"page": 36,
 			"type": "monstrosity",
 			"alignment": [
 				"C",
@@ -6096,8 +7090,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Demimaera.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Demimaera",
 					"source": "MModule"
@@ -6123,7 +7125,10 @@
 		{
 			"source": "MModule",
 			"name": "Maeragorgon",
+			"group": "Chimeras",
 			"size": "H",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Maeragorgon (token).png",
+			"page": 37,
 			"type": "fiend",
 			"alignment": [
 				"C",
@@ -6273,8 +7278,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Maeragorgon.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Maeragorgon",
 					"source": "MModule"
@@ -6297,6 +7310,8 @@
 			"source": "MModule",
 			"name": "Chupacabra",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Chupacabra (token).png",
+			"page": 38,
 			"type": "monstrosity",
 			"alignment": [
 				"C",
@@ -6384,8 +7399,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Chupacabra.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Chupacabra",
 					"source": "MModule"
@@ -6401,8 +7424,11 @@
 		},
 		{
 			"source": "MModule",
+			"group": "Clockworks",
+			"page": 39,
 			"name": "Brass Spider",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Brass Spider (token).png",
 			"type": "construct",
 			"alignment": [
 				"U"
@@ -6509,8 +7535,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Brass Spider.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Brass Spider",
 					"source": "MModule"
@@ -6541,6 +7575,9 @@
 			"source": "MModule",
 			"name": "Electrum Drake",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Electrum Drake (token).png",
+			"group": "Clockworks",
+			"page": 40,
 			"type": "construct",
 			"alignment": [
 				"U"
@@ -6652,8 +7689,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Electrum Drake.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Electrum Drake",
 					"source": "MModule"
@@ -6682,6 +7727,8 @@
 			"source": "MModule",
 			"name": "Greater Cockatrice",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Greater Cockatrice (token).png",
+			"page": 41,
 			"type": "monstrosity",
 			"alignment": [
 				"U"
@@ -6754,8 +7801,16 @@
 			],
 			"senseTags": [
 				"D"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Greater Cockatrice.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Greater Cockatrice",
 					"source": "MModule"
@@ -6784,6 +7839,8 @@
 			"source": "MModule",
 			"name": "Fallen Couatl",
 			"size": "M",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Fallen Couatl (token).png",
+			"page": 42,
 			"type": "celestial",
 			"alignment": [
 				"N",
@@ -6911,8 +7968,16 @@
 			],
 			"senseTags": [
 				"U"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Fallen Couatl.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Fallen Couatl",
 					"source": "MModule"
@@ -6948,6 +8013,8 @@
 			"source": "MModule",
 			"name": "Quetzalcouatl",
 			"size": "H",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Quetzalcouatl (token).png",
+			"page": 43,
 			"type": "celestial",
 			"alignment": [
 				"L",
@@ -7118,8 +8185,16 @@
 			],
 			"senseTags": [
 				"U"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Quetzalcouatl.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Quetzalcouatl",
 					"source": "MModule"
@@ -7149,7 +8224,9 @@
 			"source": "MModule",
 			"name": "Crysmal",
 			"size": "S",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Crysmal (token).png",
 			"type": "elemental",
+			"page": 44,
 			"alignment": [
 				"U"
 			],
@@ -7277,8 +8354,16 @@
 			"senseTags": [
 				"D",
 				"B"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Crysmal.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Crysmal",
 					"source": "MModule"
@@ -7301,6 +8386,8 @@
 			"source": "MModule",
 			"name": "Half-Cyclops",
 			"size": "L",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Half-Cyclops (token).png",
+			"page": 45,
 			"type": "giant",
 			"alignment": [
 				"N"
@@ -7363,8 +8450,16 @@
 			"languageTags": [
 				"C",
 				"GI"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Half-Cyclops.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Half-Cyclops",
 					"source": "MModule"
@@ -7390,6 +8485,8 @@
 			"source": "MModule",
 			"name": "Infernal Cyclops",
 			"size": "H",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Infernal Cyclops (token).png",
+			"page": 46,
 			"type": "giant",
 			"alignment": [
 				"L",
@@ -7498,8 +8595,16 @@
 				"C",
 				"GI",
 				"I"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Infernal Cyclops.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Infernal Cyclops",
 					"source": "MModule"
@@ -7529,6 +8634,8 @@
 			"source": "MModule",
 			"name": "Primal Cyclops",
 			"size": "H",
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/token/Primal Cyclops (token).png",
+			"page": 47,
 			"type": "giant",
 			"alignment": [
 				"N"
@@ -7613,8 +8720,16 @@
 			],
 			"languageTags": [
 				"GI"
-			],
-			"fluff": {
+			],			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/MModule/Primal Cyclops.webp"
+						}
+					}
+				],
 				"_monsterFluff": {
 					"name": "Primal Cyclops",
 					"source": "MModule"
@@ -7644,6 +8759,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Aarakocra",
+					"entries": [
+						"The small tribes of Aarakocra that dot the Elemental Plane of Air and the other worlds of D&D are made up of both fierce warbands and priestly orders devoted to their goddess, {@deity Aerdrie Faenya|Elven|MTF}. While most Aarakocra worship Aerdrie, a small number of tribes worship other gods and goddesses as well."
+					]
 				}
 			],
 			"source": "MModule"
@@ -7660,6 +8782,13 @@
 								"In order to create a well-balanced warband, a variety of both melee and ranged troops are necessary. This is where the aarakocra sharpshooters come in. Highly skilled with the longbow, these warriors make effective skirmishers that can greatly augment the effectiveness of a warband. Among the aarakocra, sharpshooters are the most nimble flyers. They are trained from a young age to fly with great dexterity, allowing them to easily evade their enemy's grasp."
 							]
 						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Aarakocra",
+					"entries": [
+						"The small tribes of Aarakocra that dot the Elemental Plane of Air and the other worlds of D&D are made up of both fierce warbands and priestly orders devoted to their goddess, {@deity Aerdrie Faenya|Elven|MTF}. While most Aarakocra worship Aerdrie, a small number of tribes worship other gods and goddesses as well."
 					]
 				}
 			],
@@ -7679,6 +8808,13 @@
 								"Priests of Aerdrie often act as assistants to the tribe's leader, and they may take over the leader's responsibilities if they were to meet an unfortunate end. As the mouthpiece of their goddess, priests of Aerdrie are some of the most powerful individuals in aarakocra society."
 							]
 						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Aarakocra",
+					"entries": [
+						"The small tribes of Aarakocra that dot the Elemental Plane of Air and the other worlds of D&D are made up of both fierce warbands and priestly orders devoted to their goddess, {@deity Aerdrie Faenya|Elven|MTF}. While most Aarakocra worship Aerdrie, a small number of tribes worship other gods and goddesses as well."
 					]
 				}
 			],
@@ -7841,6 +8977,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Animated Objects",
+					"entries": [
+						"Crafted with potent magic, animated objects are used in the service of powerful spellcasters as guards for their strongholds and towers."
+					]
 				}
 			],
 			"source": "MModule"
@@ -7858,6 +9001,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Animated Objects",
+					"entries": [
+						"Crafted with potent magic, animated objects are used in the service of powerful spellcasters as guards for their strongholds and towers."
+					]
 				}
 			],
 			"source": "MModule"
@@ -7874,6 +9024,13 @@
 								"Merely an animated spike, a flying caltrop isn't much of a threat on its own. When encountered in groups, however, these constructs can be quite formidable."
 							]
 						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Animated Objects",
+					"entries": [
+						"Crafted with potent magic, animated objects are used in the service of powerful spellcasters as guards for their strongholds and towers."
 					]
 				}
 			],
@@ -7893,6 +9050,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Animated Objects",
+					"entries": [
+						"Crafted with potent magic, animated objects are used in the service of powerful spellcasters as guards for their strongholds and towers."
+					]
 				}
 			],
 			"source": "MModule"
@@ -7910,6 +9074,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Animated Objects",
+					"entries": [
+						"Crafted with potent magic, animated objects are used in the service of powerful spellcasters as guards for their strongholds and towers."
+					]
 				}
 			],
 			"source": "MModule"
@@ -7917,6 +9088,7 @@
 		{
 			"name": "Jungle Ankheg",
 			"entries": [
+				"In the jungles of the world, some ankhegs have adapted themselves to this new, harsh wilderness. Tested and honed by hosts of deadly creatures, these ankhegs have become a much more fearsome foe to face.",
 				{
 					"type": "entries",
 					"entries": [
@@ -8017,6 +9189,7 @@
 		{
 			"name": "Bewailer",
 			"entries": [
+				"Banshees are spiteful creatures formed from the spirits of female elves. Occasionally, one of these spirits is instead formed as a bewailer, a creature that exists in a state of constant agony and anguish.",
 				{
 					"type": "entries",
 					"entries": [
@@ -8069,6 +9242,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Basilisks",
+					"entries": [
+						"Basilisks are adaptive and varied predators, and they come in many different forms, with some of those forms being much more powerful than regular basilisks."
+					]
 				}
 			],
 			"source": "MModule"
@@ -8100,6 +9280,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Basilisks",
+					"entries": [
+						"Basilisks are adaptive and varied predators, and they come in many different forms, with some of those forms being much more powerful than regular basilisks."
+					]
 				}
 			],
 			"source": "MModule"
@@ -8107,6 +9294,7 @@
 		{
 			"name": "Plated Behir",
 			"entries": [
+				"Behirs are powerful cavern predators, known for their long, snake-like bodies and their deadly lightning breath. Some behirs have gained certain mutations, making them stronger, or weaker, than their kin.",
 				{
 					"type": "entries",
 					"entries": [
@@ -8267,6 +9455,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Bullywugs",
+					"entries": [
+						"Brutish, frog-like amphibians, bullywugs are a primitive race of hunter gatherers, held together by a corrupt aristocracy and caste system. Bullywug society is defined by these separate castes, and a bullywug in a lower caste always tries to improve its station."
+					]
 				}
 			],
 			"source": "MModule"
@@ -8285,6 +9480,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Bullywugs",
+					"entries": [
+						"Brutish, frog-like amphibians, bullywugs are a primitive race of hunter gatherers, held together by a corrupt aristocracy and caste system. Bullywug society is defined by these separate castes, and a bullywug in a lower caste always tries to improve its station."
+					]
 				}
 			],
 			"source": "MModule"
@@ -8301,6 +9503,13 @@
 								"A member of the caste right below the chieftain, a bullywug shaman is often almost as powerful within bullywug society as the chieftain himself. Armed with potent druidic magic, a bullywug shaman is able create havoc on the battlefield, unleashing giant frogs and toads to attack the enemy as well as entering the fray themselves."
 							]
 						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Bullywugs",
+					"entries": [
+						"Brutish, frog-like amphibians, bullywugs are a primitive race of hunter gatherers, held together by a corrupt aristocracy and caste system. Bullywug society is defined by these separate castes, and a bullywug in a lower caste always tries to improve its station."
 					]
 				}
 			],
@@ -8326,6 +9535,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Cambions",
+					"entries": [
+						"Cambions, as the general term for a half-fiend, encompass a variety of possible pairings. These pairings, dependent mostly on the fiendish parent, can produce offspring that end up quite different from the more general cambion. Cambions sired from greater beings, like arch-devils and arch-demons, might end up overwhelmingly powerful once they come of age. Those sired by weaker fiends, however, could end up relatively weak, and in rare cases, might be able to resist the evil nature of their fiendish parents."
+					]
 				}
 			],
 			"source": "MModule"
@@ -8345,6 +9561,13 @@
 								"One of the signature abilities of the spawn of graz'zt is their ability to take the shape of other humanoids. They utilize this to deceive and impersonate others, much like a doppelganger."
 							]
 						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Cambions",
+					"entries": [
+						"Cambions, as the general term for a half-fiend, encompass a variety of possible pairings. These pairings, dependent mostly on the fiendish parent, can produce offspring that end up quite different from the more general cambion. Cambions sired from greater beings, like arch-devils and arch-demons, might end up overwhelmingly powerful once they come of age. Those sired by weaker fiends, however, could end up relatively weak, and in rare cases, might be able to resist the evil nature of their fiendish parents."
 					]
 				}
 			],
@@ -8378,6 +9601,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Cambions",
+					"entries": [
+						"Cambions, as the general term for a half-fiend, encompass a variety of possible pairings. These pairings, dependent mostly on the fiendish parent, can produce offspring that end up quite different from the more general cambion. Cambions sired from greater beings, like arch-devils and arch-demons, might end up overwhelmingly powerful once they come of age. Those sired by weaker fiends, however, could end up relatively weak, and in rare cases, might be able to resist the evil nature of their fiendish parents."
+					]
 				}
 			],
 			"source": "MModule"
@@ -8385,6 +9615,8 @@
 		{
 			"name": "Tangle Crawler",
 			"entries": [
+				"As deadly as they are monstrous, carrion crawlers are not an uncommon foe for those that explore damp caves and decrepit ruins. Known for their long, whip-like tentacles, these creatures generally hide in subterranean environments, clinging to dungeon or cavern ceilings while their tentacles probe the air, searching for any sign of a potential victim.",
+				"Not all carrion crawlers are the same, however. While all of them share the same general hunting patterns and behaviors, and can be identified by their array of tentacles, some carrion crawlers are specialized in hunting a specific prey, or have adapted to unique environments.",
 				{
 					"type": "entries",
 					"entries": [
@@ -8421,6 +9653,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Centaurs",
+					"entries": [
+						"Strong and proud, centaurs can make for formidable warriors and trustworthy allies. While most centaurs live their lives as tribal nomads, a few individuals break that mold, either seeking out nearby civilization or delving even deeper into the lonesome, vast forests of the world."
+					]
 				}
 			],
 			"source": "MModule"
@@ -8437,6 +9676,13 @@
 								"A centaur marksman is an master archer that has learned to weave natural magic into their shots. While some exceptional centaurs have managed to master this style of fighting on their own, most are in part taught by elven arcane archers. As the edges of a centaur's domain often intersect with the fringes of elven society, interactions between these two races are not uncommon. While this form of archery is similar to arcane archery, centaur marksmen use their innate magic, rather than learned magic, to augment their abilities."
 							]
 						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Centaurs",
+					"entries": [
+						"Strong and proud, centaurs can make for formidable warriors and trustworthy allies. While most centaurs live their lives as tribal nomads, a few individuals break that mold, either seeking out nearby civilization or delving even deeper into the lonesome, vast forests of the world."
 					]
 				}
 			],
@@ -8455,6 +9701,13 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Centaurs",
+					"entries": [
+						"Strong and proud, centaurs can make for formidable warriors and trustworthy allies. While most centaurs live their lives as tribal nomads, a few individuals break that mold, either seeking out nearby civilization or delving even deeper into the lonesome, vast forests of the world."
+					]
 				}
 			],
 			"source": "MModule"
@@ -8471,6 +9724,13 @@
 								"A centaur wildling is centaur that has completely abandoned civilization, even shunning the tribal nomadism of centaur society. Shaped by the harsh wilderness, these centaurs have become more savage and barbaric than their kin, and more willing to resort to violence. Skilled in battle, a wildling can often single-handedly take out bandit operations and hunt down dangerous monsters. While they've distanced themselves from their tribes, centaur wildlings still often help their tribe indirectly through their hunts and quests."
 							]
 						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Centaurs",
+					"entries": [
+						"Strong and proud, centaurs can make for formidable warriors and trustworthy allies. While most centaurs live their lives as tribal nomads, a few individuals break that mold, either seeking out nearby civilization or delving even deeper into the lonesome, vast forests of the world."
 					]
 				}
 			],
@@ -8623,15 +9883,22 @@
 			"source": "MModule"
 		},
 		{
-			"name": "Individual Designs",
+			"name": "Brass Spider",
+			"source": "MModule",
 			"entries": [
+				"The brass spider is one of the larger gnomish creations, built for its offensive power and mobility. Although commonly called a spider, the contraption only has six legs, rather than eight. However, its brass body and head resembles that of a large spider, with decorative \"fangs\" and a protruding abdomen. Each of its six legs are made from sharpened, iron blades. These blades serve as effective weapons, and also allow the construct to climb near-vertical surfaces, forcibly stabbing its legs into a wall for grip.",
+				"In combat, a brass spider is well suited to taking on multiple opponents, making it especially useful in a large-scale conflict. The raw power within its legs allows its to jump into the fray, knocking down and skewering multiple opponents at once. A brass spider that manages to knock down an opponent can keep that creature in place, stabbing a leg through the creature's body or clothes straight into the ground beneath them.",
 				{
-					"type": "entries",
+					"type": "section",
+					"name": "Clockworks",
 					"entries": [
+						"Gnomish advances in mechanical and magical design have led to the creation of many unique clockwork contraptions. Some of these designs have become staples among Gnomish crafters, while others have faded into obscurity.",
 						{
 							"type": "entries",
+							"name": "Individual Designs",
 							"entries": [
-								"When Gnomes create clockworks, they often individualize their work, adding unique enhancements or occasionally making mistakes in the construction process. Two additional clockwork enhancements and malfunctions are described below. If selecting randomly, you now roll a d12, rather than the d10 recommended by Mordenkainen's Tome of Foes.",
+								"{@footnote When Gnomes create clockworks, they often individualize their work, adding unique enhancements or occasionally making mistakes in the construction process.|A gnome artisan values an individualized clockwork more highly than a perfectly functioning one that copies too much from another creation. For that reason, even clockworks that fit established designs, such as those described here, are seldom identical.}",
+								"A clockwork can be customized by adding one of the following enhancements and one potential malfunction to its stat block. You can select randomly or choose a pair of modifications that fit the temperament of the clockwork's builder.",
 								{
 									"type": "table",
 									"caption": "Clockwork Enhancements",
@@ -8644,6 +9911,46 @@
 										"col-10"
 									],
 									"rows": [
+										[
+											"1",
+											"{@b Camouflaged.} The clockwork gains proficiency in {@skill Stealth} if it doesn't already have it. While motionless, it is indistinguishable from a stopped machine."
+										],
+										[
+											"2",
+											"{@b Sensors.} The range of the clockwork's {@sense darkvision} becomes 120 feet, unless it is higher, and it gains proficiency in {@skill Perception} if it doesn't already have it."
+										],
+										[
+											"3",
+											"{@b Improved Armor.} The clockwork's AC increases by 2."
+										],
+										[
+											"4",
+											"{@b Increased Speed.} The clockwork's speed increases by 10 feet."
+										],
+										[
+											"5",
+											"{@b Reinforced Construction.} The clockwork has resistance to force, lightning, and thunder damage."
+										],
+										[
+											"6",
+											"{@b Self-Repairing.} If the clockwork starts its turn with at least 1 hit point, it regains 5 hit points. If it takes lightning damage, this ability doesn't function at the start of its next turn."
+										],
+										[
+											"7",
+											"{@b Sturdy Frame.} The clockwork's hit point maximum increases by an amount equal to its number of Hit Dice."
+										],
+										[
+											"8",
+											"{@b Suction.} The clockwork gains a climbing speed of 30 feet."
+										],
+										[
+											"9",
+											"{@b Vocal Resonator.} The clockwork gains the ability to speak rudimentary Common or Gnomish (creator's choice)."
+										],
+										[
+											"10",
+											"{@b Water Propulsion.} The clockwork gains a swimming speed of 30 feet."
+										],
 										[
 											"11",
 											"{@b Makeshift Wings.} The clockwork gains a flying speed equal to its walking speed. If the clockwork ends its turn in the air, it falls."
@@ -8667,12 +9974,52 @@
 									],
 									"rows": [
 										[
+											"1",
+											"{@b Faulty Sensors.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork is {@condition blinded} until the end of its turn."
+										],
+										[
+											"2",
+											"{@b Flawed Targeting.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork makes attack rolls with disadvantage until the end of its turn."
+										],
+										[
+											"3",
+											"{@b Ground Fault.} The clockwork has vulnerability to lightning damage."
+										],
+										[
+											"4",
+											"{@b Imprinting Loop.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork mistakes one creature it can see within 30 feet for its creator. The clockwork won't willingly harm that creature for 1 minute or until that creature attacks it or deals damage to it."
+										],
+										[
+											"5",
+											"{@b Leaking Lubricant.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork gains 1 level of {@condition exhaustion} that it isn't immune to."
+										],
+										[
+											"6",
+											"{@b Limited Steering.} The clockwork must move in a straight line. It can turn up to 90 degrees before moving and again at the midpoint of its movement. It can rotate freely if it doesn't use any of its speeds on its turn."
+										],
+										[
+											"7",
+											"{@b Overactive Sense of Self-Preservation.} If the clockwork has half its hit points or fewer at the start of its turn in combat, roll a {@dice d6}. If you roll a 1, it retreats from combat. If retreat isn't possible, it continues fighting."
+										],
+										[
+											"8",
+											"{@b Overheats.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork is {@condition incapacitated} until the end of its turn."
+										],
+										[
+											"9",
+											"{@b Rusty Gears.} The clockwork has disadvantage on initiative rolls, and its speed decreases by 10 feet."
+										],
+										[
+											"10",
+											"{@b Weak Armor.} The clockwork isn't immune to bludgeoning, piercing, and slashing damage from nonmagical attacks that aren't adamantine."
+										],
+										[
 											"11",
-											"{@b Squeaky Gears.} The clockwork loses any proficiency in stealth, and has disadvantage on stealth checks."
+											"{@b Squeaky Gears.} The clockwork loses any proficiency in {@skill Stealth}, and has disadvantage on {@skill Stealth} checks."
 										],
 										[
 											"12",
-											"{@b Brittle.} When the clockwork takes damage, it must make a Constitution saving throw with a DC of half the damage it took. On a failed save, its speed is permanently reduced by 10 feet."
+											"{@b Brittle.} When the clockwork takes damage, it must make a Constitution saving throw with a DC equal to half the damage it took. On a failed save, its speed is permanently reduced by 10 feet."
 										]
 									]
 								}
@@ -8680,61 +10027,158 @@
 						}
 					]
 				}
-			],
-			"source": "MModule"
-		},
-		{
-			"name": "Brass Spider",
-			"source": "MModule",
-			"_copy": {
-				"name": "Individual Designs",
-				"source": "MModule",
-				"_mod": {
-					"entries": {
-						"mode": "prependArr",
-						"items": {
-							"type": "entries",
-							"entries": [
-								{
-									"type": "entries",
-									"entries": [
-										"The brass spider is one of the larger gnomish creations, built for its offensive power and mobility. Although commonly called a spider, the contraption only has six legs, rather than eight. However, its brass body and head resembles that of a large spider, with decorative \"fangs\" and a protruding abdomen. Each of its six legs are made from sharpened, iron blades. These blades serve as effective weapons, and also allow the construct to climb near-vertical surfaces, forcibly stabbing its legs into a wall for grip.",
-										"In combat, a brass spider is well suited to taking on multiple opponents, making it especially useful in a large-scale conflict. The raw power within its legs allows its to jump into the fray, knocking down and skewering multiple opponents at once. A brass spider that manages to knock down an opponent can keep that creature in place, stabbing a leg through the creature's body or clothes straight into the ground beneath them."
-									]
-								}
-							]
-						}
-					}
-				}
-			}
+			]
 		},
 		{
 			"name": "Electrum Drake",
 			"source": "MModule",
-			"_copy": {
-				"name": "Individual Designs",
-				"source": "MModule",
-				"_mod": {
-					"entries": {
-						"mode": "prependArr",
-						"items": {
+			"entries": [
+				"An electrum drake is a small clockwork construct built to protect its owner's treasures like a dragon protects its hoard. Dragon-like in appearance, though without wings, an electrum drake is equipped with two breath attacks: one that creates a burst of flame, and another that releases a paralyzing gas. The electrum drake utilizes both, depending on how its creator has programmed it to fight. Many are programmed to first try to incapacitate opponents, only using their deadly flame breath if the situation escalates.",
+				{
+					"type": "section",
+					"name": "Clockworks",
+					"entries": [
+						"Gnomish advances in mechanical and magical design have led to the creation of many unique clockwork contraptions. Some of these designs have become staples among Gnomish crafters, while others have faded into obscurity.",
+						{
 							"type": "entries",
+							"name": "Individual Designs",
 							"entries": [
+								"{@footnote When Gnomes create clockworks, they often individualize their work, adding unique enhancements or occasionally making mistakes in the construction process.|A gnome artisan values an individualized clockwork more highly than a perfectly functioning one that copies too much from another creation. For that reason, even clockworks that fit established designs, such as those described here, are seldom identical.}",
+								"A clockwork can be customized by adding one of the following enhancements and one potential malfunction to its stat block. You can select randomly or choose a pair of modifications that fit the temperament of the clockwork's builder.",
 								{
-									"type": "entries",
-									"entries": [
-										"An electrum drake is a small clockwork construct built to protect its owner's treasures like a dragon protects its hoard. Dragon-like in appearance, though without wings, an electrum drake is equipped with two breath attacks: one that creates a burst of flame, and another that releases a paralyzing gas. The electrum drake utilizes both, depending on how its creator has programmed it to fight. Many are programmed to first try to incapacitate opponents, only using their deadly flame breath if the situation escalates."
+									"type": "table",
+									"caption": "Clockwork Enhancements",
+									"colLabels": [
+										"d12",
+										"Enhancement"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-10"
+									],
+									"rows": [
+										[
+											"1",
+											"{@b Camouflaged.} The clockwork gains proficiency in {@skill Stealth} if it doesn't already have it. While motionless, it is indistinguishable from a stopped machine."
+										],
+										[
+											"2",
+											"{@b Sensors.} The range of the clockwork's {@sense darkvision} becomes 120 feet, unless it is higher, and it gains proficiency in {@skill Perception} if it doesn't already have it."
+										],
+										[
+											"3",
+											"{@b Improved Armor.} The clockwork's AC increases by 2."
+										],
+										[
+											"4",
+											"{@b Increased Speed.} The clockwork's speed increases by 10 feet."
+										],
+										[
+											"5",
+											"{@b Reinforced Construction.} The clockwork has resistance to force, lightning, and thunder damage."
+										],
+										[
+											"6",
+											"{@b Self-Repairing.} If the clockwork starts its turn with at least 1 hit point, it regains 5 hit points. If it takes lightning damage, this ability doesn't function at the start of its next turn."
+										],
+										[
+											"7",
+											"{@b Sturdy Frame.} The clockwork's hit point maximum increases by an amount equal to its number of Hit Dice."
+										],
+										[
+											"8",
+											"{@b Suction.} The clockwork gains a climbing speed of 30 feet."
+										],
+										[
+											"9",
+											"{@b Vocal Resonator.} The clockwork gains the ability to speak rudimentary Common or Gnomish (creator's choice)."
+										],
+										[
+											"10",
+											"{@b Water Propulsion.} The clockwork gains a swimming speed of 30 feet."
+										],
+										[
+											"11",
+											"{@b Makeshift Wings.} The clockwork gains a flying speed equal to its walking speed. If the clockwork ends its turn in the air, it falls."
+										],
+										[
+											"12",
+											"{@b Anti-magic Core.} The clockwork can cast {@spell counterspell} as a 3rd-level spell, using Wisdom as its spellcasting ability. Once it does so, it can't do so again until it completes a short or long rest."
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Clockwork Malfunctions",
+									"colLabels": [
+										"d12",
+										"Malfunction"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-10"
+									],
+									"rows": [
+										[
+											"1",
+											"{@b Faulty Sensors.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork is {@condition blinded} until the end of its turn."
+										],
+										[
+											"2",
+											"{@b Flawed Targeting.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork makes attack rolls with disadvantage until the end of its turn."
+										],
+										[
+											"3",
+											"{@b Ground Fault.} The clockwork has vulnerability to lightning damage."
+										],
+										[
+											"4",
+											"{@b Imprinting Loop.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork mistakes one creature it can see within 30 feet for its creator. The clockwork won't willingly harm that creature for 1 minute or until that creature attacks it or deals damage to it."
+										],
+										[
+											"5",
+											"{@b Leaking Lubricant.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork gains 1 level of {@condition exhaustion} that it isn't immune to."
+										],
+										[
+											"6",
+											"{@b Limited Steering.} The clockwork must move in a straight line. It can turn up to 90 degrees before moving and again at the midpoint of its movement. It can rotate freely if it doesn't use any of its speeds on its turn."
+										],
+										[
+											"7",
+											"{@b Overactive Sense of Self-Preservation.} If the clockwork has half its hit points or fewer at the start of its turn in combat, roll a {@dice d6}. If you roll a 1, it retreats from combat. If retreat isn't possible, it continues fighting."
+										],
+										[
+											"8",
+											"{@b Overheats.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork is {@condition incapacitated} until the end of its turn."
+										],
+										[
+											"9",
+											"{@b Rusty Gears.} The clockwork has disadvantage on initiative rolls, and its speed decreases by 10 feet."
+										],
+										[
+											"10",
+											"{@b Weak Armor.} The clockwork isn't immune to bludgeoning, piercing, and slashing damage from nonmagical attacks that aren't adamantine."
+										],
+										[
+											"11",
+											"{@b Squeaky Gears.} The clockwork loses any proficiency in {@skill Stealth}, and has disadvantage on {@skill Stealth} checks."
+										],
+										[
+											"12",
+											"{@b Brittle.} When the clockwork takes damage, it must make a Constitution saving throw with a DC equal to half the damage it took. On a failed save, its speed is permanently reduced by 10 feet."
+										]
 									]
 								}
 							]
 						}
-					}
+					]
 				}
-			}
+			]
 		},
 		{
 			"name": "Greater Cockatrice",
 			"entries": [
+				"Cockatrices are ferocious, avian monsters, resembling a horrifying hybrid of bird and reptile. Their glowing, otherworldly eyes tell of their magical nature, and even the glare of a smaller, common cockatrice strikes fear. But there exist far greater threats than the common cockatrice. Some cousins of the cockatrice pose a far greater threat.",
 				{
 					"type": "entries",
 					"entries": [
@@ -8910,30 +10354,11 @@
 			"source": "MModule"
 		}
 	],
-	"legendaryGroup": [
-		{
-			"name": "Aboleth Sovereign",
-			"source": "MModule",
-			"lairActions": [
-				"When fighting inside is lair, an aboleth sovereign can invoke ambient magic to take lair actions. On initiative count 20 (losing initiative ties), the aboleth sovereign takes a lair action to cause one of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"The aboleth sovereign casts phantasmal force (no components required) on any number of creatures it can see within 60 feet of it. While maintaining concentration on this effect, the aboleth can't take other lair actions.",
-						"Pools of water within 150 feet of the aboleth sovereign surge outward in a grasping tide. Any creature on the ground within 20 feet of such a pool must succeed on a DC 19 Strength saving throw or be pulled up to 20 feet into the water and {@condition restrained} until the end of their next turn. The aboleth can't use this lair action again until it has used a different one.",
-						"Water in the aboleth sovereign's lair becomes momentarily charged with psychic energy. The aboleth sovereign can target any number of creatures it can see in such water within 150 feet of it. A target must succeed on a DC 19 Wisdom saving throw or take 14 ({@damage 4d6}) psychic damage and become paralyzed until the end of their next turn. The aboleth can't use this lair action again until it has used a different one."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The area containing an aboleth sovereign's lair contains all the same effects as an aboleth, as listed in the Monster Manual."
-			]
-		}
-	],
 	"spell": [
 		{
 			"name": "Animate Construct",
 			"source": "MModule",
+			"page": 12,
 			"level": 3,
 			"school": "T",
 			"time": [
