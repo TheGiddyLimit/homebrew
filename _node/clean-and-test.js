@@ -17,6 +17,12 @@ const REPLACEMENTS = {
 	"…": "..."
 };
 
+const VANILLA_SOURCES = new Set([
+	"PHB",
+	"XGE",
+	"TCE",
+]);
+
 const replacementRegex = new RegExp(Object.keys(REPLACEMENTS).join("|"), 'g');
 
 const RUN_TIMESTAMP = Math.floor(Date.now() / 1000);
@@ -58,6 +64,12 @@ function cleanFolder (folder) {
 					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" had a "dateLastModified" in milliseconds! Converting to seconds...`);
 					file.contents._meta.dateLastModified = Math.round(file.contents._meta.dateLastModified / 1000);
 				}
+
+				(file.contents._meta.sources || []).forEach(source => {
+					if (source.version != null) return;
+					um.warn(`VERSION`, `\tFile "${file.name}" source "${source.json}" did not have "version"! Adding one...`);
+					source.version = "unknown";
+				});
 				// endregion
 
 				// region test
@@ -72,7 +84,7 @@ function cleanFolder (folder) {
 						data.forEach(it => {
 							const source = it.source || (it.inherits ? it.inherits.source : null);
 							if (!source) return ALL_ERRORS.push(`${file.name} :: ${k} :: "${it.name || it.id}" had no source!`);
-							if (!validSources.has(source)) return ALL_ERRORS.push(`${file.name} :: ${k} :: "${it.name || it.id}" source "${source}" was not in _meta`);
+							if (!validSources.has(source) && !VANILLA_SOURCES.has(source)) return ALL_ERRORS.push(`${file.name} :: ${k} :: "${it.name || it.id}" source "${source}" was not in _meta`);
 						});
 					});
 				// endregion
