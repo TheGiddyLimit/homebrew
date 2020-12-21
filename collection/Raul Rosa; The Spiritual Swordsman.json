@@ -5,7 +5,7 @@
 				"json": "SSW",
 				"abbreviation": "SSW",
 				"full": "The Spiritual Swordsman",
-				"version": "",
+				"version": "2.0",
 				"authors": [
 					"Ewerton Costa",
 					"Raul Rosá"
@@ -337,7 +337,7 @@
 			"startingEquipment": {
 				"additionalFromBackground": true,
 				"default": [
-					"A {@filter simple|items|source=phb|category=basic|type=simple weapon} or {@filter martial|items|source=phb|category=basic|type=martial weapon;melee weapon=sand} weapon and a {@item shield|phb}",
+					"A {@filter simple|items|source=phb|category=basic|type=simple weapon;melee weapon=sand} or {@filter martial|items|source=phb|category=basic|type=martial weapon;melee weapon=sand} weapon and a {@item shield|phb}",
 					"(a) {@item leather armor|phb} or (b) {@item scale mail|phb}",
 					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}"
 				],
@@ -346,6 +346,18 @@
 					{
 						"_": [
 							"shield|phb"
+						]
+					},
+					{
+						"a": [
+							{
+								"equipmentType": "weaponSimpleMelee"
+							}
+						],
+						"b": [
+							{
+								"equipmentType": "weaponMartialMelee"
+							}
 						]
 					},
 					{
@@ -430,6 +442,16 @@
 			"subclasses": [
 				{
 					"name": "Balance Protector",
+					"spellcastingAbility": "wis",
+					"additionalSpells": [
+						{
+							"prepared": {
+								"3": [
+									"spare the dying"
+								]
+							}
+						}
+					],
 					"subclassFeatures": [
 						"Balance Protector|Spiritual Swordsman|SSW|Balance Protector|SSW|3",
 						"Beacon of Crossing|Spiritual Swordsman|SSW|Balance Protector|SSW|6",
@@ -442,6 +464,18 @@
 				{
 					"name": "Elemental Blade",
 					"spellcastingAbility": "wis",
+					"additionalSpells": [
+						{
+							"prepared": {
+								"3": [
+									"gust|xge",
+									"mold earth|xge",
+									"control flames|xge",
+									"shape water|xge"
+								]
+							}
+						}
+					],
 					"subclassFeatures": [
 						"Elemental Blade|Spiritual Swordsman|SSW|Elemental Blade|SSW|3",
 						"Elemental Armor|Spiritual Swordsman|SSW|Elemental Blade|SSW|6",
@@ -499,11 +533,11 @@
 						},
 						{
 							"type": "inset",
-							"name": "Why Not an Archetype?",
+							"name": "Why Not a Subclass?",
 							"entries": [
-								"When you come across a new class, it's natural to ask the designers \"Why have you designed a class, and not an archetype?\".",
+								"When you come across a new class, it's natural to ask the designers \"Why have you designed a class, and not a subclass?\".",
 								"The spiritual swordsman, though resembling a {@class fighter}, {@class warlock} or even a bladesinger {@class wizard}, has a different and until now unique concept: It is a class that is deeply connected to the spiritual world, specters, ghosts and the soul. It has an intimate bond with the spiritual energies and is able to manipulate them, to the point of materializing this power in the shape of his Spiritual Weapon.",
-								"This deep knowledge about his own spirit and about spirits in general, the bond with its weapon and its responsability in the world are characteristics that can be explored in many ways, ways that could be impossible to explore with only an archetype. And, through this class and its archetypes, we try to bring these nuances and different kinds of bonds the spiritual swordsmen could have."
+								"This deep knowledge about his own spirit and about spirits in general, the bond with its weapon and its responsability in the world are characteristics that can be explored in many ways, ways that could be impossible to explore with only a subclass. And, through this class and its subclasses, we try to bring these nuances and different kinds of bonds the spiritual swordsmen could have."
 							]
 						},
 						{
@@ -1076,8 +1110,8 @@
 			"source": "SSW",
 			"featureType": "SM",
 			"entries": [
-				"You gain darkvision out to a range of 60 feet.",
-				"At 16th level, you also gain blindsight out to a range of 20 feet."
+				"You gain {@sense darkvision} out to a range of 60 feet.",
+				"At 16th level, you also gain {@sense blindsight} out to a range of 20 feet."
 			]
 		},
 		{
@@ -1533,7 +1567,7 @@
 				{
 					"type": "list",
 					"items": [
-						"You have darkvision out to a range of 60 feet, and can see through magical darkness within that range.",
+						"You have {@sense darkvision} out to a range of 60 feet, and can see through magical darkness within that range.",
 						"Attack rolls against you have disadvantage.",
 						"You have advantage on attack rolls as long as you or your target are under dim light or darkness.",
 						"You have light sensibility, giving you disadvantage on attack rolls and ability checks while you are in direct sunlight."
@@ -1749,34 +1783,23 @@
 				"You adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take the same Fighting Style option more than once, even if you get to choose again.",
 				{
 					"type": "options",
+					"count": 1,
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Defense",
-							"entries": [
-								"While you are wearing armor, you gain a +1 bonus to AC."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Defense"
 						},
 						{
-							"type": "entries",
-							"name": "Dueling",
-							"entries": [
-								"When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
 						},
 						{
-							"type": "entries",
-							"name": "Great Weapon Fighting",
-							"entries": [
-								"When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Great Weapon Fighting"
 						},
 						{
-							"type": "entries",
-							"name": "Two-Weapon Fighting",
-							"entries": [
-								"When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Two-Weapon Fighting"
 						}
 					]
 				}
