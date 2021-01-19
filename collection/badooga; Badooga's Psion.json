@@ -30,7 +30,7 @@
 			}
 		},
 		"dateAdded": 1579290139,
-		"dateLastModified": 1605694739
+		"dateLastModified": 1610964945
 	},
 	"class": [
 		{
@@ -336,6 +336,8 @@
 					"classFeature": "Psionic Order|Psion|B:P|1",
 					"gainSubclassFeature": true
 				},
+				"Talent Versatility|Psion|B:P|1",
+				"Enlightened Knowledge|Psion|B:P|2",
 				"Psychic Barrier|Psion|B:P|2",
 				"Telepathy|Psion|B:P|2",
 				{
@@ -350,8 +352,10 @@
 					"gainSubclassFeature": true
 				},
 				"Strength of Mind|Psion|B:P|7",
+				"Strength of Will|Psion|B:P|7",
 				"Ability Score Improvement|Psion|B:P|8",
 				"Proficiency Versatility|Psion|B:P|8|UAClassFeatureVariants",
+				"Psionic Guidance|Psion|B:P|9",
 				{
 					"classFeature": "Psionic Order feature|Psion|B:P|10",
 					"gainSubclassFeature": true
@@ -368,9 +372,11 @@
 				"Ability Score Improvement|Psion|B:P|16",
 				"Proficiency Versatility|Psion|B:P|16|UAClassFeatureVariants",
 				"Psionic Mastery (4/Day)|Psion|B:P|17",
+				"Blindsense|Psion|B:P|18",
 				"Ability Score Improvement|Psion|B:P|19",
 				"Proficiency Versatility|Psion|B:P|19|UAClassFeatureVariants",
-				"Psionic Body|Psion|B:P|20"
+				"Psionic Body|Psion|B:P|20",
+				"Psionic Champion|Psion|B:P|20"
 			],
 			"subclassTitle": "Psionic Order",
 			"subclasses": [
@@ -2933,9 +2939,9 @@
 						"min": 4,
 						"max": 4
 					},
-					"name": "Freeze",
+					"name": "Time Thief",
 					"entries": [
-						"On a failed save, a target's speed is reduced to 0 for 1 minute. It can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"Until the end of your next turn, your speed is doubled. Additionally, you can take an additional action immediately after activating this discipline to {@action Disengage}, {@action Dodge}, {@action Hide}, or {@action Use an Object}."
 					]
 				}
 			]
@@ -3711,6 +3717,13 @@
 						"Each greater discipline has several ways you can use it, all contained in its description. The discipline specifies the type of action and number of psi points it requires for each power. It also details whether you must concentrate on its effects, how many targets it affects, what saving throws it requires, and so on.",
 						"Greater disciplines were each discovered by different orders and tend to reflect their creators' specialties. However, a psion can learn any discipline regardless of its associated order. "
 					]
+				},
+				{
+					"name": "Uing a Talent",
+					"type": "entries",
+					"entries": [
+						"Psionic talents are minor abilities that require psionic aptitude but don't drain a psion's reservoir of psionic power. Talents are similar to lesser disciplines and use the same rules, but they lack the ability to be augmented in any way."
+					]
 				}
 			]
 		},
@@ -3743,7 +3756,8 @@
 					"type": "entries",
 					"name": "Components and Displays",
 					"entries": [
-						"Disciplines don't require the components that many spells require. Using a discipline requires no spoken words, gestures, or materials, as the power of psionics comes from the mind. However, when a psionic power is manifested, a display may accompany the primary effect. This secondary effect may be auditory and/or visual, such as a greenish glow around the psion or a faint humming noise originating from the psion's forehead. No power's display is significant enough to create consequences for the psion or any other creatures during combat. While the specifics of a display may be left up to the player (with the approval of the DM), they always allow the psion to be identified as the source of a psionic discipline (as it is with spell components), both during and after the discipline takes effect. At minimum, a display can be seen and/or heard from up to 60 feet away.",
+						"Disciplines don't require the components that many spells require. Using a discipline requires no spoken words, gestures, or materials, as the power of psionics comes from the mind. However, when a psionic power is manifested, a display may accompany the primary effect. This secondary effect may be auditory and/or visual, such as a greenish glow around the psion or a faint humming noise originating from the psion's forehead. No power's display is significant enough to create consequences for the psion or any other creatures during combat.",
+						"While the specifics of a display may be left up to the player (with the approval of the DM), they always allow the psion to be identified as the source of a psionic discipline (as it is with spell components), both during and after the discipline takes effect.",
 						{
 							"type": "inset",
 							"name": "Disciplines that Cast Spells",
@@ -4104,6 +4118,84 @@
 						"If you die, roll a {@dice d20}. On a 16 or higher, you discorporate with 0 hit points, instead of dying, and you fall {@condition unconscious}. You and your gear disappear. You appear at a spot of your choice {@dice 1d4} days later on the plane of existence where you died, having gained the benefits of one long rest."
 					]
 				}
+			]
+		},
+		{
+			"name": "Talent Versatility",
+			"source": "B:P",
+			"page": 24,
+			"className": "Psion",
+			"classSource": "B:P",
+			"level": 1,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 1st-level and higher psion {@variantrule optional class features|tce|optional feature} (enhances Psionic Talents)}",
+				"Whenever you gain a level in this class, you can replace a psionic talent you know with another talent available to your class. This change represents a shift of focus in your psionic training and practice, causing you to lose access to one power and gain access to another."
+			]
+		},
+		{
+			"name": "Enlightened Knowledge",
+			"source": "B:P",
+			"page": 24,
+			"className": "Psion",
+			"classSource": "B:P",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level psion {@variantrule optional class features|tce|optional feature}}",
+				"You can add half your proficiency bonus, rounded down, to any Intelligence or Wisdom check you make that doesn't already use your proficiency bonus."
+			]
+		},
+		{
+			"name": "Strength of Will",
+			"source": "B:P",
+			"page": 24,
+			"className": "Psion",
+			"classSource": "B:P",
+			"level": 7,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 7th-level psion {@variantrule optional class features|tce|optional feature} (replaces Strength of Mind)}",
+				"You have acquired greater mental strength. You gain proficiency in Charisma saving throws."
+			]
+		},
+		{
+			"name": "Psionic Guidance",
+			"source": "B:P",
+			"page": 24,
+			"className": "Psion",
+			"classSource": "B:P",
+			"level": 9,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 9th-level psion {@variantrule optional class features|tce|optional feature}}",
+				"You can tap into your inner wellspring of psionic power to try to conjure success from failure. When you make an ability check that fails, you can spend 3 psi points to reroll the d20, and you must use the new roll, potentially turning the failure into a success."
+			]
+		},
+		{
+			"name": "Blindsense",
+			"source": "B:P",
+			"page": 24,
+			"className": "Psion",
+			"classSource": "B:P",
+			"level": 18,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 18th-level psion {@variantrule optional class features|tce|optional feature}}",
+				"If you aren't incapacitated, you are aware of the location of any hidden or invisible creature within 10 feet of you, unless they can't be communicated with via telepathy or are protected by a {@spell mind blank} spell, a {@spell nondetection} spell, or similar effects."
+			]
+		},
+		{
+			"name": "Psionic Champion",
+			"source": "B:P",
+			"page": 24,
+			"className": "Psion",
+			"classSource": "B:P",
+			"level": 20,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 20th-level psion {@variantrule optional class features|tce|optional feature} (replaces Psionic Body)}",
+				"You embody the power of the mind. Your Intelligence and Wisdom scores increase by 4. Your maximum for those scores is now 24."
 			]
 		}
 	],
