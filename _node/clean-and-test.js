@@ -17,6 +17,12 @@ const REPLACEMENTS = {
 	"…": "..."
 };
 
+const VANILLA_SOURCES = new Set([
+	"PHB",
+	"XGE",
+	"TCE",
+]);
+
 const replacementRegex = new RegExp(Object.keys(REPLACEMENTS).join("|"), 'g');
 
 const RUN_TIMESTAMP = Math.floor(Date.now() / 1000);
@@ -78,7 +84,7 @@ function cleanFolder (folder) {
 						data.forEach(it => {
 							const source = it.source || (it.inherits ? it.inherits.source : null);
 							if (!source) return ALL_ERRORS.push(`${file.name} :: ${k} :: "${it.name || it.id}" had no source!`);
-							if (!validSources.has(source)) return ALL_ERRORS.push(`${file.name} :: ${k} :: "${it.name || it.id}" source "${source}" was not in _meta`);
+							if (!validSources.has(source) && !VANILLA_SOURCES.has(source)) return ALL_ERRORS.push(`${file.name} :: ${k} :: "${it.name || it.id}" source "${source}" was not in _meta`);
 						});
 					});
 				// endregion
