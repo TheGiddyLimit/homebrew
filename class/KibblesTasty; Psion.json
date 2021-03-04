@@ -278,7 +278,7 @@
 						"Rampaging Power|Psion|ktp|Unleashed|ktp|3",
 						"Empowered Psionics|Psion|ktp|Unleashed|ktp|6",
 						"Uncontrollable Mind|Psion|ktp|Unleashed|ktp|10",
-						"Crushing Power|Psion|ktp|Unleashed|ktp|14"
+						"Unstoppable Rampage|Psion|ktp|Unleashed|ktp|14"
 					],
 					"source": "ktp",
 					"shortName": "Unleashed"
@@ -666,7 +666,7 @@
 			},
 			"source": "ktp",
 			"entries": [
-				"You emit a blast of psychic energy. Each creature in a 60-foot cone must make an Intelligence saving throw. A creature takes 6d8 Psychic damage and is stunned for 1 minute on a failed save. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+				"You emit a blast of psychic energy. Each creature in a 60-foot cone must make an Intelligence saving throw. A creature takes 6d8 Psychic damage and is stunned until the end of their next turn on a failed save. A creature takes half as much damage and is not stunned on a successful save."
 			],
 			"page": 14,
 			"damageInflict": [
@@ -884,7 +884,7 @@
 			},
 			"source": "ktp",
 			"entries": [
-				"You flicker between the material and ethereal plane. Until the start of your next turn, each time you would take damage, including the triggering attack, roll a d4. On a 2, you gain to resistance to nonmagical damage. On a 4, you don't take any damage."
+				"You flicker between the material and ethereal plane. Until the start of your next turn, each time you would take damage, including the triggering attack, roll a d4. On a 2, you gain resistance to that instance of damage. On a 4, you don't take any damage."
 			],
 			"page": 14,
 			"areaTags": [
@@ -1325,25 +1325,6 @@
 			]
 		},
 		{
-			"name": "Hallucination",
-			"prerequisite": [
-				{
-					"otherSummary": {
-						"entry": "Requires Telepathy Discipline",
-						"entrySummary": "Requires Telepathy"
-					}
-				}
-			],
-			"entries": [
-				"If a target fails a saving throw against Telepathic Intrusion, you can use your bonus action to implant a false sensory input in their mind that lasts until the start of the next turn, with the effect of having cast {@spell minor illusion} and creating an illusion of your choice that affects only the creature."
-			],
-			"source": "ktp",
-			"page": 11,
-			"featureType": [
-				"PsiT"
-			]
-		},
-		{
 			"name": "Kinetic Slam",
 			"prerequisite": [
 				{
@@ -1354,7 +1335,26 @@
 				}
 			],
 			"entries": [
-				"When you use the Telekinetic Force power, you can unleash it as a blast of kinetic power. You make an attack roll using your psionic attack modifier. If the attack hits, apply the effect of the power as if the target failed their saving throw against it. You can only select the Hammering modifier when you use it in this way."
+				"When you use the Telekinetic Force power, you can unleash it as a blast of kinetic power. You can use your power as a ranged psionic attack (applying damage and effect on hit). You can only select the Hammering modifier when you use it in this way."
+			],
+			"source": "ktp",
+			"page": 11,
+			"featureType": [
+				"PsiT"
+			]
+		},
+		{
+			"name": "Mind Thrust",
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "Requires Telepathy Discipline",
+						"entrySummary": "Requires Telepathy"
+					}
+				}
+			],
+			"entries": [
+				"When you use your Telepathic Intrusion power, you can wield it as a lance of mental power. You can use your power as a ranged psionic attack (applying damage and effect on hit). You can only select the Rending modifier when you use it this way."
 			],
 			"source": "ktp",
 			"page": 11,
@@ -1460,7 +1460,7 @@
 				}
 			],
 			"entries": [
-				"You can enter a state of extreme focus. Your concentration is no longer interrupted by using a second ability that requires concentration, but your movement speed is reduced to zero while concentrating on more than one effect and you make any concentration check with disadvantage. If you move or fail a concentration check, one of your concentration effects ends. If both dice of the concentration check would fail, you lose both concentration effects."
+				"You can enter a state of extreme focus. Your concentration is no longer interrupted by using a second ability that requires concentration, but your movement speed is reduced to zero while concentrating on more than one effect; you have a -5 penalty to any concentration check. If you move or fail a concentration check, one of your concentration affects ends. If you fail the concentration check by 5 or more, you lose concentration on both effects."
 			],
 			"source": "ktp",
 			"page": 12,
@@ -1517,7 +1517,7 @@
 				}
 			],
 			"entries": [
-				"When you are under the effect of Enhancing Surge, you can choose to make your Strength or Dexterity ability score equal to your Intelligence ability score for 1 minute."
+				"When you use Enhancing Surge targeting yourself, you can choose to make your Strength or Dexterity ability score equal to your Intelligence modifier ability score until the start of your next turn."
 			],
 			"source": "ktp",
 			"page": 12,
@@ -1581,7 +1581,7 @@
 		{
 			"name": "Psionic Defenses",
 			"entries": [
-				"You gain a way to defend yourself using your psionic powers. This can be done via {@optfeature Telepathy Discipline|ktp|telepathy} (affecting creatures that would try to attack you), {@optfeature Telekinesis Discipline|ktp|telekinesis} (redirecting attacks that would hit you), or {@optfeature Enhancement Discipline|ktp|enhancement} (increasing your durability and agility). Your AC becomes 10 + your Dexterity modifier + your Intelligence modifier."
+				"You gain a way to defend yourself using your psionic powers. While you are not wearing any armor or carrying a shield, your Armor Class equals 13 + your Intelligence modifier."
 			],
 			"source": "ktp",
 			"page": 13,
@@ -1904,7 +1904,7 @@
 												],
 												[
 													"5",
-													"{@spell telekinesis}, {@spell animate objects}, {@spell wall of force}"
+													"{@spell telekinesis}, {@spell wall of force}"
 												]
 											]
 										},
@@ -1949,8 +1949,8 @@
 										"You can spend psi points up to your per use limit to add the following modifiers to Telepathic Intrusion (you can add multiple modifiers). The points must be spent when choosing the target of the power.",
 										"{@bold Rending} {@italic (1+ psi point)} : The target takes +1d8 psychic damage for each additional point spent.",
 										"{@bold Terrifying} {@italic (1 psi point)} : If the target fails its saving throw, it is {@condition frightened} of you until the end of its next turn.",
-										"{@bold Overwhelming} {@italic (2 psi points)} : If the target fails its saving throw, it is {@condition blinded} until the end of its next turn.",
-										"{@bold Double} {@italic (3 psi points)} : You can target a second creature."
+										"{@bold Meddling} {@italic (2 psi points)} : You make one creature invisible to target creature or cause the creature to see something that is not there with the effect of minor illusion until the start of your next turn if it fails its saving throw.",
+										"{@bold Overwhelming} {@italic (2 psi points)} : The target is stunned until the end of its next turn if it fails its saving throw."
 									]
 								},
 								{
@@ -2031,10 +2031,10 @@
 										"You step through space traveling up to 10 feet in a straight line, leaving a spacial tear behind. You can pass through creatures, and solid objects that are less than a foot thick. Any creature in the path of this tear must make a Dexterity saving throw or take 1d8 force damage.",
 										"You can spend psi points up to your per use limit to add the following modifiers to Phase Rift (you can add multiple modifiers). The points must be spent when choosing the target of the power.",
 										"{@bold Disruptive} {@italic (1+ psi point)} : Each target that fails their saving throw takes an additional 1d8 force damage.",
+										"{@bold Blurring} {@italic (1 psi point)} : You are indistinct and considered heavily obscured until the start of your next turn.",
 										"{@bold Long} {@italic (1-3 psi points)} : You can travel an additional 5 feet for each point spent.",
 										"{@bold Echoing} {@italic (2 psi points)} : You immediately Phase Rift again with the same action.",
-										"{@bold Ethereal} {@italic (2 psi points)} : You can pass through any solid objects so long as you don't end your Phase Rift inside of one.",
-										"{@bold Vanishing} {@italic (1 psi point)} : You are {@condition invisible} until the start of your next turn."
+										"{@bold Ethereal} {@italic (2 psi points)} : You can pass through any solid objects so long as you don't end your Phase Rift inside of one."
 									]
 								},
 								{
@@ -2117,7 +2117,7 @@
 										"You can spend Psi Points up to your per use limit to add the following modifiers to  (you can add multiple modifiers). The points must be spent when choosing the target of the power.",
 										"{@bold Amplifed} {@italic (1+ psi point)} : The target takes an additional 1d8 cold, fire, force or lightning damage.",
 										"{@bold Lasting} {@italic (1 psi point)} : Your Elemental Blast leaves a 5 foot radius sphere of devestating behind where it strikes until the start of your next turn. Creatures that enter this zone for the first time or end their turn in it must make a Constitution saving throw or suffer the secondary effects (slow, burn, arc) of the blast as if they had been hit by it.",
-										"{@bold Massive} {@italic (3 psi points)} : You unleash a massive blast; rather than making an attack roll, all creatures within a 30 foot cone must make a Dexterity Saving throw. On failure, they take the effect as if hit by the Elemental Blast.",
+										"{@bold Massive} {@italic (1-3 psi points)} : You unleash a massive blast; rather than making an attack roll, all creatures within a 15 foot cone must make a Dexterity Saving throw. On failure, they take the effect as if hit by the Elemental Blast. The size of the cone is doubled for each point up to 3 spent (2 points for 30 foot, 3 points for 60 foot).",
 										"{@bold Overcharged} {@italic (0 psi point)} : You take 1 force damage and do not add your Proficiency modifier from the attack or Spell Save DC for your Elemental Blast, but increase the damage it deals by twice your Proficiency modifier."
 									]
 								},
@@ -2217,7 +2217,7 @@
 			"entries": [
 				"{@italic Psionic Power}",
 				"{@bold Casting Time:} 1 action<br />{@bold Range:} 30 feet<br />{@bold Components:} S<br />{@bold Duration:} Instantaneous",
-				"You telekinetically fling a weapon at a creature or object. Choose a weapon within 15 feet that isn't been worn or carried, or choose a weapon under your control. Make a ranged spell attack. In hit, the weapon, the target takes damage equal to the weapons damage dice. The range of the attack decreases to 15 feet if the weapon has the heavy property, and increases to 60 feet if the weapon has the light property.",
+				"You telekinetically fling a weapon at a creature or object. Choose a weapon within 15 feet that isn't being worn or carried, or choose a weapon under your control. Make a ranged spell attack. On hit the target takes damage equal to the weapon's damage dice. The range of the attack decreases to 15 feet if the weapon has the heavy or special property, and increases to 60 feet if the weapon has the light property.",
 				"You can use Psionic Mastery points on this power, and this power counts as a Discipline Power of the Telekinetics Discpline (for example, for the puporse of Empowered Psionics).",
 				"You can spend Psi Points up to your per use limit to add the following modifiers to Telekinetic Force (you can add multiple modifiers). The points must be spent when choosing the target of the power.",
 				"{@bold Multiple} {@italic (1+ psi point)} : For each additional psi point spent, you can fling an additional weapon.",
@@ -2643,7 +2643,7 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"Starting at 14th level, you can briefly fully awaken your expanded mind to true comprehension. As a bonus action, you can expend 3 psi points to gain the effect of {@spell foresight} until the start of your next turn."
+				"Starting at 14th level, you can briefly fully awaken your expanded mind to true comprehension. As a bonus action, you can expend 2 Psi Points to gain advantage on all saving throws and attack rolls until the start of your next turn."
 			]
 		},
 		{
@@ -2716,7 +2716,7 @@
 			"level": 3,
 			"header": 2,
 			"entries": [
-				"Starting at 3rd level, you gain a d4 rampage die. Once during your turn, when you make a damage roll, you can add this rampage die to the damage roll. If you dealt damage during your last turn, your rampage die becomes a d6, increasing each subsequent turn you deal damage by one step, up to a d12. If you did not deal damage during your last turn, it becomes a d4 once more."
+				"Starting at 3rd level, you gain a d4 rampage die. Once per turn during your turn when making a damage roll, you can add this rampage die to the damage roll. If you dealt damage during your last turn, your rampage die becomes a d6, increasing with each subsequent turn you deal damage by one step, up to a d12; if you did not deal damage during your last turn or become incapacitated, it becomes a d4 once more. If you maintain a continuous d12 rampage die for more than one minute, you gain a level of exhaustion."
 			]
 		},
 		{
@@ -2744,11 +2744,11 @@
 			"level": 10,
 			"header": 2,
 			"entries": [
-				"Starting at 10th level, the strength of your rampaging mind is such that others' attempts to control it are futile. You gain immunity to charm, fear, and effects that would control your mind while your rampage die is a d6 or more."
+				"Starting at 10th level, the strength of your rampaging mind is such that others' attempts to control it are futile. You gain immunity to charm, fear, and effects that would control your mind while your rampage die is a d8 or more."
 			]
 		},
 		{
-			"name": "Crushing Power",
+			"name": "Unstoppable Rampage",
 			"source": "ktp",
 			"page": 1,
 			"className": "Psion",
@@ -2758,7 +2758,7 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"Starting at 14th level, as a bonus action you can expend 1 Psi Points to exert crushing force and buffeting winds around yourself in a radius of 15 feet until the start of your next turn. Creatures that enter the area for the first time or start their turn in it must make a Strength saving throw. On failure, you can make move them 5 feet in any direction, or make them fall prone."
+				"Starting at 14th level, when an attack reduces you to zero hit points, you can roll your rampage die. If your roll + your Constitution modifier is higher than the excess damage you took, you are instead reduced to one hit point. You can expend 2 psi points to roll an additional rampage die, adding it to the result."
 			]
 		},
 		{
@@ -2825,7 +2825,7 @@
 			"level": 3,
 			"header": 2,
 			"entries": [
-				"Starting at 3rd level, every time you grant a creature temporary hit points, you can add the hit points granted to a stored pool. The maximum value of the pool is your psion level. The next time you deal damage, you can expend the pool to add damage equal to the stored value. This stored damage is lost if not spent within 1 minute."
+				"Starting at 3rd level, when you use a psionic ability (power or spell) to restore hit points or grant temporary hit points, you can add the hit points granted to a stored pool. The maximum value of the pool is your psion level, and any points beyond the maximum are lost. The next time you make a damage roll, you can expend the pool to add damage equal to the stored value to one target affected by the damage roll. This stored damage is lost if not spent within 1 minute."
 			]
 		},
 		{
@@ -2839,7 +2839,7 @@
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"Starting at 6th level, when you grant temporary hit points with a psionic power, you can add half your Intelligence (rounded down) modifier to the temporary hit point gained by one creature."
+				"Starting at 6th level, when you grant temporary hit points with a psionic power you can add half your Intelligence modifier (rounded up) to the temporary hit points gained by one creature."
 			]
 		},
 		{
