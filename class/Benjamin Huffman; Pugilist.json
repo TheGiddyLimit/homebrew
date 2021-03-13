@@ -307,8 +307,8 @@
 				"weapons": [
 					"simple",
 					"improvised weapons",
-					"whip",
-					"hand crossbow"
+					"{@item whip|phb|whip}",
+					"{@item hand crossbow|phb|hand crossbow}"
 				],
 				"tools": [
 					"your choice of one artisan's tools, gaming set, or thieves' tools"
@@ -333,23 +333,41 @@
 			"startingEquipment": {
 				"additionalFromBackground": true,
 				"default": [
-					"(a) leather armor or (b) any simple weapon",
-					"(a) a dungeoneer's pack or (b) an explorer's pack",
-					"(a) a set of artisan's tools or (b) a gaming set or (c) thieves' tools"
+					"(a) {@item leather armor|phb} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
+					"(a) a set of {@item artisan's tools|phb} or (b) a {@filter gaming set|items|source=phb|miscellaneous=mundane|type=gaming set} or (c) {@item thieves' tools|phb}"
 				],
 				"defaultData": [
 					{
-						"a": [],
-						"b": []
+						"a": [
+							"leather armor|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
 					},
 					{
-						"a": [],
-						"b": []
+						"a": [
+							"dungeoneer's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
 					},
 					{
-						"a": [],
-						"b": [],
-						"c": []
+						"a": [
+							"artisan's tools|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "setGaming"
+							}
+						],
+						"c": [
+							"thieves' tools|phb"
+						]
 					}
 				]
 			},
@@ -451,9 +469,15 @@
 				{
 					"name": "Hand of Dread",
 					"additionalSpells": [
-						"eldritch blast",
-						"prestidigitation",
-						"blade ward"
+						{
+							"prepared": {
+								"3": [
+									"eldritch blast",
+									"prestidigitation",
+									"blade ward"
+								]
+							}
+						}
 					],
 					"subclassFeatures": [
 						"Hand of Dread|Pugilist|SterlingVermin|Hand of Dread|SterlingVermin|3",
@@ -1150,7 +1174,10 @@
 			],
 			"source": "SterlingVermin",
 			"bonusWeapon": "+3",
-			"genericBonus": "+3"
+			"genericBonus": "+3",
+			"conditionImmune": [
+				"disease"
+			]
 		},
 		{
 			"name": "Salamander Sauce",
@@ -1160,7 +1187,14 @@
 				"This potion is bright red and smells of peppers and spices. It is typically drizzled on food prior to being consumed but it is possible to consume it straight. A vial of salamander sauce typically has two doses.",
 				"When you consume this potion, you choose how many doses to consume. If you consume one dose, you gain resistance to cold damage for 8 hours. If you consume two doses, you gain immunity to cold damage and vulnerability to fire damage for 8 hours. For each dose you consume beyond the first two, you must succeed on a Constitution saving throw (DC 14) or gain a level of {@condition exhaustion}."
 			],
-			"source": "SterlingVermin"
+			"source": "SterlingVermin",
+			"resist": [
+				"cold"
+			],
+			"immune": [
+				"cold",
+				"fire"
+			]
 		},
 		{
 			"name": "Scyboo Snack",
