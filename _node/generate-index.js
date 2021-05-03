@@ -91,7 +91,7 @@ function buildDeepIndex () {
 
 					// Index sources
 					(file.contents._meta.sources || []).forEach(src => {
-						if (sourceIndex[src.json]) console.error(`${file.name} source "${src.json}" was already in ${sourceIndex[src.json]}`);
+						if (sourceIndex[src.json]) throw new Error(`${file.name} source "${src.json}" was already in ${sourceIndex[src.json]}`);
 						sourceIndex[src.json] = cleanName;
 					});
 				}
