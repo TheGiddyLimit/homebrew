@@ -89,8 +89,8 @@ function buildDeepIndex () {
 							(propIndex[k] = propIndex[k] || {})[cleanName] = folder;
 						});
 
-					// Index dependencies
-					Object.keys(file.contents._meta.dependencies || {})
+					// Index includes
+					Object.keys(file.contents._meta.includes || {})
 						.forEach(k => {
 							(propIndex[k] = propIndex[k] || {})[cleanName] = folder;
 						});
