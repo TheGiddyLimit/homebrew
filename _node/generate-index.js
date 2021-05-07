@@ -89,6 +89,12 @@ function buildDeepIndex () {
 							(propIndex[k] = propIndex[k] || {})[cleanName] = folder;
 						});
 
+					// Index dependencies
+					Object.keys(file.contents._meta.dependencies || {})
+						.forEach(k => {
+							(propIndex[k] = propIndex[k] || {})[cleanName] = folder;
+						});
+
 					// Index sources
 					(file.contents._meta.sources || []).forEach(src => {
 						if (sourceIndex[src.json]) throw new Error(`${file.name} source "${src.json}" was already in ${sourceIndex[src.json]}`);
