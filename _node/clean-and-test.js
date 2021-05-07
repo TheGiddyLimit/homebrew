@@ -96,6 +96,8 @@ function cleanFolder (folder) {
 					.forEach(k => {
 						const data = file.contents[k];
 
+						if (!(data instanceof Array) || !data.forEach) throw new Error(`File "${k}" data was not an array!`);
+
 						data.forEach(it => {
 							const source = it.source || (it.inherits ? it.inherits.source : null);
 							if (!source) return ALL_ERRORS.push(`${file.name} :: ${k} :: "${it.name || it.id}" had no source!`);
