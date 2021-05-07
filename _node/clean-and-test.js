@@ -43,7 +43,7 @@ const replacementRegex = new RegExp(Object.keys(REPLACEMENTS).join("|"), 'g');
 const RUN_TIMESTAMP = Math.floor(Date.now() / 1000);
 const MAX_TIMESTAMP = 9999999999;
 
-const CONTENT_KEY_BLACKLIST = new Set(["$schema", "_meta"]);
+const CONTENT_KEY_BLACKLIST = new Set(["$schema", "_meta", "siteVersion"]);
 
 function cleanFolder (folder) {
 	const ALL_ERRORS = [];
