@@ -108,7 +108,7 @@
 			}
 		],
 		"dateAdded": 1589115470,
-		"dateLastModified": 1620139313
+		"dateLastModified": 1620673095
 	},
 	"background": [
 		{
@@ -1528,7 +1528,7 @@
 		{
 			"name": "Swamp Pneumonia",
 			"entries": [
-				"{@b Source:} {@i Swamp pneumonia} is caused by camping in the open air during the winter months in swamps and bogs. When a creature spends a long rest in such conditions they must roll a Constitution saving throw (DC10). The DC increases by 1 for each consecutive long rest they spend in these conditions. On a failed save they experience the following:",
+				"{@b Source:} {@i Swamp pneumonia} is caused by camping in the open air during the winter months in swamps and bogs. When a creature spends a long rest in such conditions they must roll a Constitution saving throw ({@dc 10}). The DC increases by 1 for each consecutive long rest they spend in these conditions. On a failed save they experience the following:",
 				"{@b Symptoms:} Diffoculty breathing, accompanied by heavy wheezing and occasional productive cough. The mucus coughed out has a thick slimy consistency.",
 				"{@b Effects:} The afflicted creature suffers a \u22122 penalty to their Constitution score, vulnerability to poison and cold damage, and disadvantage on all Stealth checks.",
 				"{@b Cure:} {@spell Lesser restoration} or a cure of a similar level is able to cure {@i swamp pneumonia}.",
@@ -5982,7 +5982,7 @@
 					"type": "entries",
 					"entries": [
 						"This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with {@spell remove curse} or similar magic, you are unwilling to part with the weapon, keeping it within reach at all times.",
-						"When Executioner's Mercy is used in combat you start hearing maddening voices from the dead for {@dice 1d8} hours. If there are more than 5 dead or undead creatures in a 200-foot radius you must make a Wisdom saving throw (DC15) every minute you are in the presence of the dead. On a failed save you take {@damage 2d4 + 2} psychic damage. on a successful save you are able to shut out the voices for 1 hour."
+						"When Executioner's Mercy is used in combat you start hearing maddening voices from the dead for {@dice 1d8} hours. If there are more than 5 dead or undead creatures in a 200-foot radius you must make a Wisdom saving throw ({@dc 15}) every minute you are in the presence of the dead. On a failed save you take {@damage 2d4 + 2} psychic damage. on a successful save you are able to shut out the voices for 1 hour."
 					]
 				}
 			],
@@ -10307,6 +10307,655 @@
 	],
 	"monster": [
 		{
+			"name": "Adraloth",
+			"source": "ba",
+			"size": "M",
+			"type": {
+				"type": "fiend",
+				"tags": [
+					"demon"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 143,
+				"formula": "26d8 + 26"
+			},
+			"speed": {
+				"walk": 40,
+				"fly": {
+					"number": 20,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 10,
+			"dex": 16,
+			"con": 12,
+			"int": 14,
+			"wis": 10,
+			"cha": 13,
+			"save": {
+				"dex": "+7",
+				"int": "+6"
+			},
+			"skill": {
+				"stealth": "+7",
+				"perception": "+4"
+			},
+			"conditionImmune": [
+				"charmed",
+				"frightened"
+			],
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"senseTags": [
+				"D"
+			],
+			"passive": 14,
+			"languages": [
+				"Common",
+				"Abyssal"
+			],
+			"cr": "9",
+			"trait": [
+				{
+					"name": "Devil's Sight",
+					"entries": [
+						"Magical darkness doesn't impede the Adraloth's darkvision."
+					]
+				},
+				{
+					"name": "Many Eyes",
+					"entries": [
+						"The Adraloth can see in all directions at once and has advantage on Wisdom ({@skill Perception}) checks that rely on sight."
+					]
+				},
+				{
+					"name": "Nimble",
+					"entries": [
+						"The Adraloth can take the {@action Disengage} or {@action Hide} action as a bonus action on each of its turns."
+					]
+				}
+			],
+			"traitTags": [
+				"Devil's Sight",
+				"Keen Senses"
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The Adraloth makes three attacks with its blades."
+					]
+				},
+				{
+					"name": "Blades",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}16 ({@damage 2d8 + 3}) piercing damage."
+					]
+				},
+				{
+					"name": "Eyes of the Abyss",
+					"entries": [
+						"The Adraloth shoots three rays out of eyes to targets it can see within 90 feet: an {@i Abyssal Ray} from the center eye and two {@i Blinding Rays} from their many other eyes. Each ray must target a different creature.",
+						"{@b Abyssal Ray.} A ray of silvery magic shoots out from the Adraloth's center eye. The targeted creature must make a Constitution saving throw ({@dc DC 14}), taking {@damage 3d10} psychic damage on a failed save. If the target fails their saving throw by more than 5 they also become vulnerable to psychic damage for 1 hour. A creature immune to psychic damage becomes resistant, and a creature resistant to psychic damage loses its resistance.",
+						"{@b Blinding Ray}. A bright yellow ray shoots out of one of the many other eyes of the Adraloth. The targeted creature must make a Constitution saving throw ({@dc DC 14}) or become {@condition blinded} until the end of their next turn."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"P"
+			],
+			"conditionInflict": [
+				"blinded"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"fluff": {
+				"entries": [
+					"The demonic abominations known as Adraloth are feared across the realms for their ruthlessness. Onyx growths cover their forearms and speckle the skin of their body. Blades are affixed to the growths on their arms, turning their body into a weapon. These bladed arms, their innate ocular abilities, and their talent for stealth, combined with their disregard for life have given them the reputation of cold-blooded and fierce killers.",
+					{
+						"type": "entries",
+						"name": "Eyes in the Dark",
+						"entries": [
+							"Adraloths will prey on creatures separated from their group or pack and will almost always attack under the cover of darkness. Often catching their targets by surprise, their writhing mass of eyed tentacles has been confused for multiple creatures by the unfortunate souls who have encountered an Adraloth."
+						]
+					}
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Adraloth.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Adraloth-Token.png"
+		},
+		{
+			"name": "Aumleaf",
+			"source": "ba",
+			"size": "T",
+			"type": {
+				"type": "fey"
+			},
+			"alignment": [
+				"C",
+				"G"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 14,
+				"formula": "4d4 + 4"
+			},
+			"speed": {
+				"walk": 20
+			},
+			"str": 5,
+			"dex": 14,
+			"con": 12,
+			"int": 9,
+			"wis": 12,
+			"cha": 8,
+			"save": {
+				"dex": "+4"
+			},
+			"skill": {
+				"stealth": "+4",
+				"nature": "+4"
+			},
+			"vulnerable": [
+				"fire"
+			],
+			"resist": [
+				"necrotic"
+			],
+			"immune": [
+				{
+					"immune": [
+						"bludgeoning"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"conditionImmune": [
+				"charmed"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			],
+			"passive": 11,
+			"languages": [
+				"Sylvan"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "False Appearance",
+					"entries": [
+						"While the Aumleaf remains motionless, it is indistinguishable from an ordinary leaf."
+					]
+				},
+				{
+					"name": "Nimble Escape",
+					"entries": [
+						"The Aumleaf can take the {@action Disengage} or {@action Hide} actions as a bonus action on each of its turns."
+					]
+				},
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"The Aumleaf has advantage on an attack roll against a creature if at least one of the Aumleaf's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
+					]
+				}
+			],
+			"traitTags": [
+				"False Appearance",
+				"Pack Tactics"
+			],
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The Aumleaf's innate spellcasting ability is Wisdom (spell save {@dc 11}). The Aumleaf can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell druidcraft}",
+						"{@spell feather fall}",
+						"{@spell minor illusion}"
+					],
+					"daily": {
+						"1": [
+							"{@spell pass without trace}"
+						],
+						"2e": [
+							"{@spell animal friendship}",
+							"{@spell animal messenger}",
+							"{@spell cure wounds}",
+							"{@spell speak with animals}",
+							"{@spell speak with plants}"
+						]
+					},
+					"ability": "wis"
+				}
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"action": [
+				{
+					"name": "Scratch",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}1 slashing damage. The target must make a {@dc 11} Strength saving throw or take an additional {@damage 1d6} necrotic damage."
+					]
+				},
+				{
+					"name": "Razor Leaves",
+					"entries": [
+						"{@atk rs} {@hit 3} to hit, range 30 ft., one target. {@h}7 ({@damage 2d4 + 1}) slashing damage."
+					]
+				}
+			],
+			"damageTags": [
+				"S",
+				"N"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Brightpetal Aumleaf",
+					"entries": [
+						"A Brightpetal Aumleaf is a brightly colored variant of Aumleaf with a stronger connection to their innate magic. The Brightpetal Aumleaf is an Aumleaf with the following changes:",
+						"Their Dexterity is 10 ({@i Scratch} +2 to hit), their Wisdom is 16 (spell save {@dc 13}, {@i Razor Leaves} +5 to hit, 9 ({@damage 2d4 + 3}) slashing damage), their AC is 10, and they can cast {@spell entangle} twice per day."
+					]
+				}
+			],
+			"environment": [
+				"forest"
+			],
+			"fluff": {
+				"entries": [
+					"The Aumleaf is an extremely small fey creature that looks like a fallen leaf. Despite their slightly frightening visage they are actually quite friendly. Known to befriend various forest creatures as well as {@creature treant||treants}, these leafy fellows feel most at home on the forest floor.",
+					{
+						"type": "entries",
+						"name": "Community",
+						"entries": [
+							"Aumleaves usually live in small tribes deep in the forest, far away from civilization. Aumleaves take care of the forest and work hard in the fall season to prepare the forest and its denizens for the cold of winter. Because of this, Aumleaves tend to befriend many insects and small animals. An Aumleaf is not easily angered but they are known to be extremely protective of the environment, their pets and each other."
+						]
+					},
+					{
+						"type": "entries",
+						"name": "Unnoticed",
+						"entries": [
+							"It is pretty hard to spot an Aumleaf, especially in the fall season. Not only does their natural camouflage hide them in plain sight, but their innate magical abilities help them to blend in to their surroundings perfectly."
+						]
+					}
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Aumleaf.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Aumleaf-Token.png"
+		},
+		{
+			"name": "Autumn Elemental",
+			"source": "ba",
+			"size": "L",
+			"type": {
+				"type": "elemental"
+			},
+			"alignment": [
+				"C",
+				"N"
+			],
+			"ac": [
+				15
+			],
+			"hp": {
+				"average": 112,
+				"formula": "15d10 + 30"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 90,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 14,
+			"dex": 20,
+			"con": 15,
+			"int": 6,
+			"wis": 12,
+			"cha": 6,
+			"resist": [
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": [
+				"poison",
+				"necrotic"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"grappled",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained",
+				"unconscious"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			],
+			"passive": 11,
+			"languages": [
+				"Auran"
+			],
+			"cr": "6",
+			"trait": [
+				{
+					"name": "Air Form",
+					"entries": [
+						"The elemental can enter a hostile creature's space and stop there. It can move through a space as narrow as 1 inch wide without squeezing."
+					]
+				},
+				{
+					"name": "Swirling Debris",
+					"entries": [
+						"If a creature starts its turn in the elemental's space, it takes {@damage 2d6} slashing damage."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The elemental makes two slam attacks or uses its {@i Cutting Gusts} ability twice."
+					]
+				},
+				{
+					"name": "Slam",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d8 + 5}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Cutting Gusts",
+					"entries": [
+						"{@atk rw} {@hit 8} to hit, range 60/120 ft., one target. {@h}17 ({@damage 3d8 + 5}) slashing damage."
+					]
+				},
+				{
+					"name": "Autumn Storm {@recharge 4}",
+					"entries": [
+						"Each creature within 5 feet of the elemental must make a Strength saving throw ({@dc 13}). On a failed save, a target takes 15 ({@damage 3d8 + 2}) thunder damage and is flung up 20 feet away from the elemental and knocked {@condition prone}. If a thrown target strikes an object, such as a wall or floor, the target takes 3 ({@damage 1d6}) bludgeoning damage for every 10 feet it was thrown. If the target is thrown at another creature, that creature must succeed on a Dexterity saving throw ({@dc 13}) or take the same damage and be knocked prone. If the saving throw is successful, the target takes half the thunder damage and isn't flung away or knocked prone."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
+			],
+			"environment": [
+				"forest",
+				"grassland",
+				"hill"
+			],
+			"fluff": {
+				"entries": [
+					"Autumn Elementals are a type of {@creature air elemental} that have absorbed a great amount of fallen leaves and dirt off the ground in the stormy fall season. Because of this, an Autumn Elemental is slightly more tumultuous, volatile and dangerous than a regular air elemental.",
+					{
+						"type": "entries",
+						"name": "Howling Winds",
+						"entries": [
+							"What really sets these elementals apart is the sounds of howling winds they make. These sounds are often mistaken for ghosts or spirits which causes people to believe that locations where an Autumn Elemental resides are haunted."
+						]
+					}
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Autumn-Elemental.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Autumn-Elemental-Token.png"
+		},
+		{
+			"name": "Cait Sidhe",
+			"source": "ba",
+			"size": "S",
+			"type": {
+				"type": "fey"
+			},
+			"alignment": [
+				"C",
+				"N"
+			],
+			"ac": [
+				13,
+				{
+					"ac": 16,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
+			"hp": {
+				"average": 67,
+				"formula": "15d6 + 15"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 7,
+			"dex": 16,
+			"con": 12,
+			"int": 12,
+			"wis": 12,
+			"cha": 18,
+			"save": {
+				"dex": "+4",
+				"cha": "+7"
+			},
+			"skill": {
+				"acrobatics": "+6",
+				"insight": "+4",
+				"stealth": "+6",
+				"perception": "+4"
+			},
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"conditionImmune": [
+				"charmed"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			],
+			"passive": 14,
+			"languages": [
+				"Common",
+				"Sylvan"
+			],
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Bad Luck",
+					"entries": [
+						"The Cait Sidhe can use its reaction to force one creature it can see within 30 feet to have disadvantage on their next attack roll or ability check."
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The Cait Sidhe's spellcasting ability is Charisma (spell save {@dc 15}). The Cait Sidhe can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dancing lights}",
+						"{@spell feather fall}",
+						"{@spell true strike}",
+						"{@spell vicious mockery}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell hold person}",
+							"{@spell mage armor}",
+							"{@spell mirror image}",
+							"{@spell tongues}"
+						],
+						"2e": [
+							"{@spell bestow curse}",
+							"{@spell charm person}",
+							"{@spell misty step}",
+							"{@spell remove curse}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"conditionInflictSpell": [
+				"restrained"
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The Cait Sidhe makes 3 claw attacks or 2 attacks with {@i Fey Claw}."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
+					]
+				},
+				{
+					"name": "Fey Claw",
+					"entries": [
+						"{@atk rs} {@hit 7} to hit, range 90 ft., one target. {@h}6 ({@damage 1d6 + 4}) slashing damage."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Wild Cait Sidhe",
+					"entries": [
+						"This particular type of Cait Sidhe is larger and slightly more dangerous than their smaller counterparts. These variants are most often seen in the feywild, rather than the material plane. A Wild Cait Sidhe is a Cait Sidhe with the following changes:",
+						"Their size is Medium, they have 110 ({@dice 20d8 + 20}) hit points, their CR is 6 (2300 XP), their claw attack deals 7 ((@damage 1d8 + 3}) slashing damage, their Fey Claw attack deals 8 ((@damage 1d8 + 4}) slashing damage. Additionally, the Wild Cait Sidhe can cast {@spell plane shift} once per day, targeting itself."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"A Cait Sidhe is a fey creature that looks like a large black cat with a white spot on its chest. There are many different stories about these creatures that all differ wildly across cultures and kingdoms. What is made perfectly clear in all these stories, however, is that a Cait Sidhe can be incredibly dangerous if you are careless enough to displease them.",
+					{
+						"type": "entries",
+						"name": "Friend or Foe",
+						"entries": [
+							"The Cait Sidhe is a solitary creature that roams both the material plane and their native plane, the feywild. Sometimes they befriend other intelligent fey or humanoids if they are exceptionally kind to the Cait Sidhe. Their trust is not easily lost, but if it is, it will never be regained."
+						]
+					}
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Cait-Sidhe.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Cait-Sidhe-Token.png"
+		},
+		{
 			"name": "Giant Leech",
 			"size": "L",
 			"type": {
@@ -10348,8 +10997,20 @@
 							"{@creature leech|ba|Leeches} can be found swimming through murky waters and crawling through the mud. In some places people even use them for medical purposes. Their gigantic variation is often encountered in swamps and sometimes on other planes of existence where the planar magic changes their physical size."
 						]
 					},
-					"{@b Swarms:} Leeches are often encountered in groups. Giant leeches, however, often hunt alone or in packs of 3.",
-					"{@b Horrific Teeth:} Unlike its smaller counterpart, a giant leech tends to swallow a creature whole to drain it of its blood. For this purpose the entire inside of the leech is lined with rows of sharp teeth."
+					{
+						"type": "entries",
+						"name": "Swarms",
+						"entries": [
+							"Leeches are often encountered in groups. Giant leeches, however, often hunt alone or in packs of 3."
+						]
+					},
+					{
+						"type": "entries",
+						"name": "Horrific Teeth",
+						"entries": [
+							"Unlike its smaller counterpart, a giant leech tends to swallow a creature whole to drain it of its blood. For this purpose the entire inside of the leech is lined with rows of sharp teeth."
+						]
+					}
 				]
 			},
 			"skill": {
@@ -10442,7 +11103,13 @@
 							"Leeches can be found swimming through murky waters and crawling through the mud. In some places people even use them for medical purposes. Their {@creature giant leech|ba|gigantic variation} is often encountered in swamps and sometimes on other planes of existence where the planar magic changes their physical size."
 						]
 					},
-					"{@b Swarms:} Leeches are often encountered in groups."
+					{
+						"type": "entries",
+						"name": "Swarms",
+						"entries": [
+							"Leeches are often encountered in groups."
+						]
+					}
 				]
 			},
 			"skill": {
@@ -18310,7 +18977,7 @@
 					"23",
 					"Heroic",
 					"... of the Fearless",
-					"Advantage on saving throws versus being {@condition frightened}."
+					"Grants advantage on saving throws versus being {@condition frightened}."
 				],
 				[
 					"24",
@@ -18446,7 +19113,7 @@
 				],
 				[
 					"46",
-					"acid Laced",
+					"Acid Laced",
 					"... of the Swamps",
 					"Deals an additional {@damage 1d6} acid damage on hit."
 				],
@@ -18681,7 +19348,7 @@
 				[
 					"85",
 					"Witch's Rune",
-					"Occult ....",
+					"Occult ...",
 					"Grants a +1 bonus to your spell save DC."
 				],
 				[
