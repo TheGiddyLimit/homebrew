@@ -43,7 +43,7 @@ const replacementRegex = new RegExp(Object.keys(REPLACEMENTS).join("|"), 'g');
 const RUN_TIMESTAMP = Math.floor(Date.now() / 1000);
 const MAX_TIMESTAMP = 9999999999;
 
-const CONTENT_KEY_BLACKLIST = new Set(["$schema", "_meta"]);
+const CONTENT_KEY_BLACKLIST = new Set(["$schema", "_meta", "siteVersion"]);
 
 function cleanFolder (folder) {
 	const ALL_ERRORS = [];
@@ -95,6 +95,8 @@ function cleanFolder (folder) {
 					.filter(k => !CONTENT_KEY_BLACKLIST.has(k))
 					.forEach(k => {
 						const data = file.contents[k];
+
+						if (!(data instanceof Array) || !data.forEach) throw new Error(`File "${k}" data was not an array!`);
 
 						data.forEach(it => {
 							const source = it.source || (it.inherits ? it.inherits.source : null);
