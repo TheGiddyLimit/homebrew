@@ -45,6 +45,8 @@ const MAX_TIMESTAMP = 9999999999;
 
 const CONTENT_KEY_BLACKLIST = new Set(["$schema", "_meta", "siteVersion"]);
 
+const RE_INVALID_WINDOWS_CHARS = /[<>:"/\\|?*]/g;
+
 function cleanFolder (folder) {
 	const ALL_ERRORS = [];
 
@@ -55,6 +57,8 @@ function cleanFolder (folder) {
 			contents: uf.readJSON(file)
 		}))
 		.map(file => {
+			if (RE_INVALID_WINDOWS_CHARS.test(file.name.split("/").slice(1).join("/"))) ALL_ERRORS.push(`${file.name} contained invalid characters!`);
+
 			if (!ub.FILES_NO_META[file.name]) {
 				// region clean
 				// Ensure _meta is at the top of the file
