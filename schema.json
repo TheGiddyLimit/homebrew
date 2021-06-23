@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.5.0",
+	"version": "1.6.0",
 	"type": "object",
 	"description": "Homebrew for 5etools. Should include arrays titled similarly to the main site data, e.g. `spell` or `class`",
 
@@ -216,10 +216,22 @@
 					}
 				},
 				"dependencies": {
-					"description": "(Currently unused.)",
+					"description": "A map of `\"<data property>\": [\"<JsonSource1>\", ..., \"<JsonSourceN>\"]`. Entities from these sources can then be extended/referenced in this file.",
 					"type": "object",
-					"properties": {
-						"monster": {
+					"patternProperties": {
+						"^[a-zA-Z]+$": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"includes": {
+					"description": "Structure as per \"dependencies\". Additional sources to be included when loading the file.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-zA-Z]+$": {
 							"type": "array",
 							"items": {
 								"type": "string"

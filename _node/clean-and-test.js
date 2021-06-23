@@ -6,29 +6,43 @@ const fs = require("fs");
 const uf = require("./util-fs");
 const um = require("./util-misc");
 const ub = require("./util-brew");
+const {VANILLA_SOURCES} = require("./util-sources.js");
 
 const REPLACEMENTS = {
 	"—": "\\u2014",
 	"–": "\\u2013",
 	"−": "\\u2212",
+	"“": `\\"`,
+	"”": `\\"`,
 	"’": "'",
-	"“": '\\"',
-	"”": '\\"',
-	"…": "..."
+	"…": "...",
+	" ": " ", // non-breaking space
+	"ﬀ": "ff",
+	"ﬃ": "ffi",
+	"ﬄ": "ffl",
+	"ﬁ": "fi",
+	"ﬂ": "fl",
+	"Ĳ": "IJ",
+	"ĳ": "ij",
+	"Ǉ": "LJ",
+	"ǈ": "Lj",
+	"ǉ": "lj",
+	"Ǌ": "NJ",
+	"ǋ": "Nj",
+	"ǌ": "nj",
+	"ﬅ": "ft",
 };
 
-const VANILLA_SOURCES = new Set([
-	"PHB",
-	"XGE",
-	"TCE",
-]);
+const _VANILLA_SOURCES = new Set(VANILLA_SOURCES);
 
 const replacementRegex = new RegExp(Object.keys(REPLACEMENTS).join("|"), 'g');
 
 const RUN_TIMESTAMP = Math.floor(Date.now() / 1000);
 const MAX_TIMESTAMP = 9999999999;
 
-const CONTENT_KEY_BLACKLIST = new Set(["$schema", "_meta"]);
+const CONTENT_KEY_BLACKLIST = new Set(["$schema", "_meta", "siteVersion"]);
+
+const RE_INVALID_WINDOWS_CHARS = /[<>:"/\\|?*]/g;
 
 function cleanFolder (folder) {
 	const ALL_ERRORS = [];
@@ -40,6 +54,8 @@ function cleanFolder (folder) {
 			contents: uf.readJSON(file)
 		}))
 		.map(file => {
+			if (RE_INVALID_WINDOWS_CHARS.test(file.name.split("/").slice(1).join("/"))) ALL_ERRORS.push(`${file.name} contained invalid characters!`);
+
 			if (!ub.FILES_NO_META[file.name]) {
 				// region clean
 				// Ensure _meta is at the top of the file
@@ -81,10 +97,12 @@ function cleanFolder (folder) {
 					.forEach(k => {
 						const data = file.contents[k];
 
+						if (!(data instanceof Array) || !data.forEach) throw new Error(`File "${k}" data was not an array!`);
+
 						data.forEach(it => {
 							const source = it.source || (it.inherits ? it.inherits.source : null);
 							if (!source) return ALL_ERRORS.push(`${file.name} :: ${k} :: "${it.name || it.id}" had no source!`);
-							if (!validSources.has(source) && !VANILLA_SOURCES.has(source)) return ALL_ERRORS.push(`${file.name} :: ${k} :: "${it.name || it.id}" source "${source}" was not in _meta`);
+							if (!validSources.has(source) && !_VANILLA_SOURCES.has(source)) return ALL_ERRORS.push(`${file.name} :: ${k} :: "${it.name || it.id}" source "${source}" was not in _meta`);
 						});
 					});
 				// endregion
