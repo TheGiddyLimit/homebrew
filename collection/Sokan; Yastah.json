@@ -1035,7 +1035,11 @@
 					"1": "1d10",
 					"5": "2d10",
 					"11": "3d10",
-					"17": "4d10"
+					"17": "4d10",
+					"21": "5d10",
+					"25": "6d10",
+					"31": "7d10",
+					"37": "8d10"
 				}
 			},
 			"damageInflict": [
@@ -1165,6 +1169,28 @@
 			],
 			"areaTags": [
 				"ST"
+			],
+			"scalingLevelDice": {
+				"label": "force damage",
+				"scaling": {
+					"1": "1d8",
+					"5": "2d8",
+					"11": "3d8",
+					"17": "4d8",
+					"21": "5d8",
+					"25": "6d8",
+					"31": "7d8",
+					"37": "8d8"
+				}
+			},
+			"damageInflict": [
+				"force"
+			],
+			"spellAttack": [
+				"R"
+			],
+			"miscTags": [
+				"SCL"
 			],
 			"classes": {
 				"fromClassList": [
@@ -11463,7 +11489,8 @@
 				"At the end of each of its turns, and each time it takes damage, the target can make another Wisdom saving throw. The target has advantage on the saving throw if it's triggered by damage. On a success, the spell ends."
 			],
 			"conditionInflict": [
-				"prone"
+				"prone",
+				"incapacitated"
 			],
 			"savingThrow": [
 				"wisdom"
@@ -15629,7 +15656,7 @@
 			"entries": [
 				"A silvery beam of pale light shines down in a 5-foot-radius, 40-foot-high cylinder centered on a point within range. Until the spell ends, dim light fills the cylinder.",
 				"When a creature enters the spell's area for the first time on a turn or starts its turn there, it is engulfed in ghostly flames that cause searing pain, and it must make a Constitution saving throw. It takes {@damage 2d10} radiant damage on a failed save, or half as much damage on a successful one.",
-				"A shapechanger makes its saving throw with disadvantage. If it fails, it also instantly reverts to its original form and can't assume a different form until it leaves the spell's light.",
+				"A shapechanger makes its saving throw with disadvantage. If it fails, it also instantly reverts to its original form and can't assume a different form until it leaves the spell's light. Lycanthropes are changed into beast mode.",
 				"On each of your turns after you cast this spell, you can use an action to move the beam up to 60 feet in any direction."
 			],
 			"entriesHigherLevel": [
@@ -17391,7 +17418,7 @@
 				}
 			],
 			"entries": [
-				"When an opponent makes a physical attack against you, with a sword or a bow, or performs a spell that requires a somatic component, you can use your reaction to cause a twitch, or a spasm in that creature, causing their attempt to potentially go horribly wrong. Roll a {@dice D100} and get the correct correspondance below.",
+				"When an opponent makes a physical attack against you, or casts a spell that targets only you, you can use your reaction to cause a twitch, or a spasm in that creature, causing their attempt to potentially go horribly wrong. Roll a {@dice D100} and get the correct correspondance below.",
 				{
 					"type": "table",
 					"caption": "Disjointed Physical Attack Behaviour",
@@ -17432,7 +17459,7 @@
 									"max": 75
 								}
 							},
-							"Attack hits one of the creature's allies."
+							"Attack hits one of the creature's allies.  If no allies are in range, the attack just misses."
 						],
 						[
 							{
@@ -26622,7 +26649,7 @@
 			}
 		},
 		{
-			"name": "Circle of Power",
+			"name": "Aura of Power*",
 			"source": "Yastah",
 			"level": 5,
 			"school": "A",
@@ -26653,6 +26680,7 @@
 				}
 			],
 			"entries": [
+				"Formerly called 'Circle of Power'",
 				"Divine energy radiates from you, distorting and diffusing magical energy within 30 feet of you. Until the spell ends, the sphere moves with you, centered on you. For the duration, each friendly creature in the area (including you) has advantage on saving throws against spells and other magical effects. Additionally, when an affected creature succeeds on a saving throw made against a spell or magical effect that allows it to make a saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw."
 			],
 			"areaTags": [
@@ -37657,7 +37685,7 @@
 					"type": "entries",
 					"name": "Exotic",
 					"entries": [
-						"This strange and exotic weapon, from a far off land, requires a specific backgrounnd or class to use, as noted above.  Warriors of the 2nd rank or higher can be tought to use these weapons by practicing with their trainer."
+						"This strange and exotic weapon, from a far off land, requires a specific background or class to use, as noted above.  Warriors of the 2nd rank or higher can be tought to use these weapons by practicing with their trainer."
 					]
 				}
 			],
@@ -38139,6 +38167,11 @@
 						"You can try to cast a cantrip that you don't know. The cantrip must be on the warlock spell list, and you must make a DC 10 low/16 high Intelligence ({@skill Arcana}) check. If the check succeeds, you cast the spell. If the check fails, so does the spell, and the action used to cast the spell is wasted. In either case, you can't use this property again until you finish a long rest."
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "warlock"
+				}
 			]
 		},
 		{
@@ -38218,6 +38251,11 @@
 						"You can use the hat as a spellcasting focus for your wizard spells.",
 						"You can try to cast a cantrip that you don't know. The cantrip must be on the wizard spell list, and you must make a DC 10 low/16 high Intelligence ({@skill Arcana}) check. If the check succeeds, you cast the spell. If the check fails, so does the spell, and the action used to cast the spell is wasted. In either case, you can't use this property again until you finish a long rest."
 					]
+				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "wizard"
 				}
 			]
 		},
@@ -38767,6 +38805,14 @@
 			"entries": [
 				"The rounded head of this flail is perforated with tiny holes, arranged in symbols and patterns. The flail counts as a holy symbol for you. When you hit with an attack using this magic flail, the target takes an extra {@damage 1d8} radiant damage.",
 				"As a bonus action, you can speak the command word to cause the flail to emanate a thin cloud of incense out to 10 feet for 1 minute. At the start of each of your turns, you and any other creatures in the incense each regain {@dice 1d4} hit points. This property can't be used again until the next dawn."
+			],
+			"reqAttuneTags": [
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "paladin"
+				}
 			]
 		},
 		{
@@ -38791,6 +38837,11 @@
 			"bonusWeapon": "+3",
 			"entries": [
 				"You gain a +3 bonus to attack and damage rolls made with this magic weapon. It has the thrown property with a normal range of 20 feet and a long range of 60 feet. When you hit with a ranged attack using this weapon, it deals an extra {@dice 1d8} damage or, if the target is a giant, {@dice 2d8} damage. Immediately after the attack, the weapon flies back to your hand."
+			],
+			"reqAttuneTags": [
+				{
+					"race": "dwarf"
+				}
 			]
 		},
 		{
@@ -39567,6 +39618,17 @@
 				"lesser restoration",
 				"mass cure wounds",
 				"cure wounds"
+			],
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				},
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "druid"
+				}
 			]
 		},
 		{
@@ -39703,6 +39765,11 @@
 				"speak with animals",
 				"speak with plants",
 				"wall of thorns"
+			],
+			"reqAttuneTags": [
+				{
+					"class": "druid"
+				}
 			]
 		},
 		{
@@ -40929,6 +40996,11 @@
 						]
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -40951,6 +41023,11 @@
 					"entries": [
 						"You can immediately fly up to 60 feet without provoking opportunity attacks."
 					]
+				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
 				}
 			]
 		},
@@ -40975,6 +41052,11 @@
 						"You gain resistance to a damage type of your choice until the start of your next turn."
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -40998,6 +41080,11 @@
 						"One target of the spell that you can see catches fire. The burning target takes {@damage 2d10} fire damage at the start of its next turn, and then the flames go out."
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41020,6 +41107,11 @@
 					"entries": [
 						"You create a wave of water that bursts out from you in a 10-foot radius. Each creature of your choice that you can see in that area takes {@damage 2d6} cold damage and must succeed on a Strength saving throw against your spell save DC or be pushed 10 feet away from you and fall {@condition prone}."
 					]
+				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
 				}
 			]
 		},
@@ -41066,6 +41158,11 @@
 						]
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41088,6 +41185,11 @@
 					"entries": [
 						"Choose one creature who takes damage from the spell. That target has disadvantage on attack rolls and ability checks made before the start of your next turn."
 					]
+				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
 				}
 			]
 		},
@@ -41112,6 +41214,11 @@
 						"Choose one creature who takes damage from the spell. That target takes an extra {@damage 3d6} necrotic damage."
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41134,6 +41241,11 @@
 					"entries": [
 						"You or one creature of your choice that you can see within 30 feet of you gains {@dice 3d6} temporary hit points."
 					]
+				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
 				}
 			]
 		},
@@ -41158,6 +41270,11 @@
 						"You can end one of the following conditions affecting yourself or one creature you can see within 30 feet of you: {@condition charmed}, {@condition blinded}, {@condition deafened}, {@condition frightened}, {@condition poisoned}, or {@condition stunned}."
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41174,6 +41291,11 @@
 			"entries": [
 				"This writhing crystal is steeped in the warped essence of the Far Realm. As an action, you can attach the shard to a Tiny object (such as a weapon or a piece of jewelry) or detach it. It falls off if your attunement to it ends. You can use the shard as a spellcasting focus while you hold or wear it.",
 				"When you use a Metamagic option on a spell while you are holding or wearing the shard, you can cause a slimy tentacle to rip through the fabric of reality and strike one creature you can see within 30 feet of you. The creature must succeed on a Charisma saving throw against your spell save DC or take {@damage 3d6} psychic damage and become {@condition frightened} of you until the start of your next turn."
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41191,6 +41313,11 @@
 				"This warm crystal glints with the sunset colors of the Feywild sky and evokes whispers of emotional memory. As an action, you can attach the shard to a Tiny object (such as a weapon or a piece of jewelry) or detach it. It falls off if your attunement to it ends. You can use the shard as a spellcasting focus while you hold or wear it.",
 				"When you use a Metamagic option on a spell while you are holding or wearing the shard, you can roll on the {@table Wild Magic Surge|PHB} table in the {@book Player's Handbook|PHB}. If the result is a spell, it is too wild to be affected by your Metamagic, and if it normally requires concentration, it doesn't require concentration in this case; the spell lasts for its full duration.",
 				"If you don't have the Wild Magic Sorcerous Origin, once this property is used to roll on the {@table Wild Magic Surge|PHB} table, it can't be used again until the next dawn."
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41207,6 +41334,11 @@
 			"entries": [
 				"This dull, cold crystal sits heavy and leaden, saturated by the Shadowfell's despair. As an action, you can attach the shard to a Tiny object (such as a weapon or a piece of jewelry) or detach it. It falls off if your attunement to it ends. You can use the shard as a spellcasting focus while you hold or wear it.",
 				"When you use a Metamagic option on a spell while you are holding or wearing the shard, you can momentarily curse one creature targeted by the spell; choose one ability score, and until the end of your next turn, the creature has disadvantage on ability checks and saving throws that use that ability."
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41561,6 +41693,14 @@
 			],
 			"attachedSpells": [
 				"protection from evil and good"
+			],
+			"reqAttuneTags": [
+				{
+					"class": "druid"
+				},
+				{
+					"class": "warlock"
+				}
 			]
 		},
 		{
@@ -42177,7 +42317,7 @@
 			"wondrous": true,
 			"weight": 0,
 			"entries": [
-				"Earrings that when worn operate similarly to the @spell Message|yastah} Cantrip, to a distance of about 500 ft.  The basic ones broadcast on an open channel that all EoW within range can hear.",
+				"Earrings that when worn operate similarly to the {@spell Message|yastah} Cantrip, to a distance of about 500 ft.  The basic ones broadcast on an open channel that all EoW within range can hear.",
 				"For an extra 1,500 gold a private channel can be added per pair, up to a max of 4 earrings, or 2 pairs (So 2500 for a pair of private earrings or 5000 gp for a set of 4 private earrings).  This must be done when the EoW is crafted and cannot be added on later."
 			]
 		},
@@ -42316,6 +42456,14 @@
 				"This emblem is the symbol of a deity or a spiritual tradition. As an action, you can attach the emblem to a suit of armor or a shield or remove it.",
 				"The emblem has 3 charges. When you or a creature you can see within 30 feet of you suffers a critical hit while you're wearing the armor or wielding the shield that bears the emblem, you can use your reaction to expend 1 charge to turn the critical hit into a normal hit instead.",
 				"The emblem regains all expended charges daily at dawn."
+			],
+			"reqAttuneTags": [
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "paladin"
+				}
 			]
 		},
 		{
@@ -42514,6 +42662,11 @@
 					"source": "Yastah",
 					"page": 83
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				}
 			]
 		},
 		{
@@ -42558,6 +42711,14 @@
 			"entries": [
 				"This cloak shifts color and texture to blend with the terrain surrounding you. While wearing the cloak, you can use it as a spellcasting focus for your druid and ranger spells.",
 				"While you are in an area that is lightly obscured, you can {@action Hide} as a bonus action even if you are being directly observed."
+			],
+			"reqAttuneTags": [
+				{
+					"class": "druid"
+				},
+				{
+					"class": "ranger"
+				}
 			]
 		},
 		{
@@ -43068,6 +43229,17 @@
 						"Your spell save DC and spell attack bonus each increase by 2."
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "warlock"
+				},
+				{
+					"class": "wizard"
+				}
 			]
 		},
 		{
@@ -43218,6 +43390,11 @@
 			"entries": [
 				"You gain a +3 bonus to attack and damage rolls made with this magic weapon. When you hit a fiend or an undead with it, that creature takes an extra {@dice 2d10} radiant damage.",
 				"While you hold the drawn sword, it creates an aura in a 10-foot radius around you. You and all creatures friendly to you in the aura have advantage on saving throws against spells and other magical effects. If you have 17 or more levels in the paladin class, the radius of the aura increases to 30 feet."
+			],
+			"reqAttuneTags": [
+				{
+					"class": "paladin"
+				}
 			]
 		},
 		{
@@ -43259,17 +43436,43 @@
 		},
 		{
 			"name": "Vorpal Sword",
+			"source": "Yastah",
 			"type": "M",
 			"baseItem": "Sword, Scimitar|Yastah",
-			"source": "Yastah",
 			"tier": "major",
 			"rarity": "legendary",
 			"reqAttune": true,
 			"bonusWeapon": "+3",
+			"property": [
+				"F",
+				"L"
+			],
+			"dmg1": "1d6",
+			"dmgType": "S",
+			"sword": true,
+			"weapon": true,
 			"entries": [
 				"You gain a +3 bonus to attack and damage rolls made with this magic weapon. In addition, the weapon ignores resistance to slashing damage.",
 				"When you attack a creature that has at least one head with this weapon and roll a 20 on the attack roll, you cut off one of the creature's heads. The creature dies if it can't survive without the lost head. A creature is immune to this effect if it is immune to slashing damage, doesn't have or need a head, has legendary actions, or the DM decides that the creature is too big for its head to be cut off with this weapon. Such a creature instead takes an extra {@dice 6d8} slashing damage from the hit."
 			]
+		},
+		{
+			"name": "Sword, Scimitar",
+			"source": "Yastah",
+			"type": "M",
+			"rarity": "none",
+			"weight": 3,
+			"value": 2000,
+			"weaponCategory": "martial",
+			"property": [
+				"F",
+				"L"
+			],
+			"dmg1": "1d6",
+			"dmgType": "S",
+			"sword": true,
+			"weapon": true,
+			"entries": []
 		},
 		{
 			"name": "+3 Armor (Any Type)",
@@ -43995,26 +44198,6 @@
 			]
 		},
 		{
-			"name": "Aklys",
-			"source": "Yastah",
-			"type": "M",
-			"rarity": "none",
-			"weight": 2,
-			"value": 200,
-			"weaponCategory": "martial",
-			"property": [
-				"Chained",
-				"L",
-				"T"
-			],
-			"range": "10/15",
-			"dmg1": "1d4",
-			"dmgType": "B",
-			"spear": true,
-			"weapon": true,
-			"entries": []
-		},
-		{
 			"name": "Ankus",
 			"source": "Yastah",
 			"type": "M",
@@ -44030,7 +44213,18 @@
 			"dmg1": "1d6",
 			"dmgType": "P",
 			"weapon": true,
-			"entries": []
+			"entries": [],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/CX4pU2p.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Battleaxe",
@@ -44065,7 +44259,18 @@
 			"dmgType": "Slashing or Piercing",
 			"dmg2": "1d10",
 			"weapon": true,
-			"entries": []
+			"entries": [],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/rOwgban.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Boarding Gaff",
@@ -44085,7 +44290,18 @@
 			"dmgType": "S",
 			"spear": true,
 			"weapon": true,
-			"entries": []
+			"entries": [],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/bTMPFVI.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Flail",
@@ -45163,24 +45379,6 @@
 			"entries": []
 		},
 		{
-			"name": "Sword, Scimitar",
-			"source": "Yastah",
-			"type": "M",
-			"rarity": "none",
-			"weight": 3,
-			"value": 2000,
-			"weaponCategory": "martial",
-			"property": [
-				"F",
-				"L"
-			],
-			"dmg1": "1d6",
-			"dmgType": "S",
-			"sword": true,
-			"weapon": true,
-			"entries": []
-		},
-		{
 			"name": "Sword, Short",
 			"source": "Yastah",
 			"type": "M",
@@ -45786,8 +45984,7 @@
 			"weaponCategory": "simple",
 			"property": [
 				"L",
-				"Nonlethal",
-				"Silent"
+				"Nonlethal"
 			],
 			"dmg1": "1d4",
 			"dmgType": "B",
@@ -45875,7 +46072,18 @@
 			"dmgType": "P",
 			"dagger": true,
 			"weapon": true,
-			"entries": []
+			"entries": [],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/9OIOIEh.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Flail, Peasant",
@@ -46450,10 +46658,28 @@
 						"Clerics of Bilana, Paladins of Bilana, Warlocks of Bilana, Raven Monk Backgrounds, and Warriors of the 2nd Rank."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/fy6kZic.jpg"
+						}
+					},
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/twKwVBz.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
-			"name": "Doubles Blades",
+			"name": "Doubled Blades",
 			"source": "Yastah",
 			"type": "M",
 			"rarity": "none",
@@ -46484,7 +46710,18 @@
 						"This weapon does 1d8 Slashing with both Main-Hand and Off-Hand attacks."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/XICimKp.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Kusari-Gama",
@@ -46519,7 +46756,25 @@
 						"This weapon does 1d8 Slashing with Main-Hand attacks and 1d6 Bludgeoning with Off-Hand attacks."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/msmb5n6.jpg"
+						}
+					},
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/wIAmniQ.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Club, Spiked",
@@ -46554,10 +46809,21 @@
 						"This weapon does both 1d4 Bludgeoning & 1d4 Piercing with each attack, or 1d6's when wielded 2-handed."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/cGvXrlV.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
-			"name": "Garotte Wire",
+			"name": "Garrote Wire",
 			"source": "Yastah",
 			"type": "M",
 			"rarity": "none",
@@ -46590,7 +46856,18 @@
 						"Garrote Wire can only be used on a creature the same size or smaller than you, and only when you have advantage against them.  On a hit the target is automatically grappled by the weapon.  So long as the weapon is grappling the target and you hold on to the weapon the target is also Choking.  To escape, the enemy must use an action to succeed on an Athletics or Acrobatics check against your Grapple Check.  The target has Advantage if it becomes larger while grappled."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/uxAEboS.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Ranseur",
@@ -46618,7 +46895,18 @@
 						"This can only be learned by Warriors of the 2nd Rank."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/o75MY81.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Pistol, Pirate",
@@ -46722,7 +47010,8 @@
 				"Deadly",
 				"Freehanded",
 				"L",
-				"Worn"
+				"Worn",
+				"Silent"
 			],
 			"dmg1": "1d4",
 			"dmgType": "S",
@@ -46770,7 +47059,18 @@
 						"1 extra point of damage."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/HMwWmJK.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Glove, Armored",
@@ -46881,7 +47181,8 @@
 				"S",
 				"Freehanded",
 				"L",
-				"Worn"
+				"Worn",
+				"Silent"
 			],
 			"weapon": true,
 			"entries": [
