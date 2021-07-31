@@ -108,7 +108,7 @@
 			}
 		],
 		"dateAdded": 1589115470,
-		"dateLastModified": 1620673095
+		"dateLastModified": 1622751166
 	},
 	"background": [
 		{
@@ -409,6 +409,23 @@
 			]
 		}
 	],
+	"condition": [
+		{
+			"name": "Diseased",
+			"source": "ba",
+			"entries": [
+				{
+					"type": "list",
+					"items": [
+						"A diseased creature has disadvantage on all Strength, Constitution, and Dexterity saving throws.",
+						"A diseased creature's proficiency bonus is halved when applied to attack rolls.",
+						"A creature that is immune to all diseases is also immune to the diseased condition, and vice-versa.",
+						"The diseased condition may be removed with {@spell lesser restoration}."
+					]
+				}
+			]
+		}
+	],
 	"disease": [
 		{
 			"name": "Abyssal Warts",
@@ -503,8 +520,8 @@
 			"entries": [
 				"{@b Source:} This disease is usually carried by insects in woods and forests. The disease can also be contracted by trees, causing leaves to turn brown and wither regardless of season. Creatures might contract the {@i autumn blight} by being bitten by an infected insect or spending more than 8 hours in proximity to an infected tree or in an infected forest. In either case they must make a Constitution saving throw ({@dc 15}). For each subsequent insect bite or 2 hours spent, the saving throw is repeated and increases by 1 (up to a maximum DC of 20). On a failed save they will experience the following:",
 				"{@b Symptoms:} Dark rings under the eyes, brittle hair and nails. Shortness of breath and lowered energy.",
-				"{@b Effects:} Disadvantage on Athletics and Acrobatics checks. The creature's movement speed is reduced by 10 feet.} ",
-				"{@b Cure:} A simple {@item potion of healing|phb} or {@spell lesser restoration}. Any spell or item that removes poison can also cure this illness.",
+				"{@b Effects:} Disadvantage on Athletics and Acrobatics checks. The creature's movement speed is reduced by 10 feet.",
+				"{@b Cure:} A simple {@item potion of healing} or {@spell lesser restoration}. Any spell or item that removes poison can also cure this illness.",
 				"{@b Found On:} {@table d100 Diseases|ba}"
 			],
 			"source": "ba"
@@ -853,7 +870,7 @@
 		{
 			"name": "Fluctuating Activity Disorder",
 			"entries": [
-				"{@b Source:} {@i Fluctuating activity disorder} is a disease that can usually be found in creatures that have been affected by the {@spell haste} spell while {@condition exhausted}. When {@i haste} is cast on a creature with 2 or more levels of exhaustion, the target must make a Constitution saving throw ({@dc 15}). The DC increases by 1 for each point of exhaustion above 2. On a failed save they experience the following:",
+				"{@b Source:} {@i Fluctuating activity disorder} is a disease that can usually be found in creatures that have been affected by the {@spell haste} spell while {@condition exhaustion||exhausted}. When {@i haste} is cast on a creature with 2 or more levels of exhaustion, the target must make a Constitution saving throw ({@dc 15}). The DC increases by 1 for each point of exhaustion above 2. On a failed save they experience the following:",
 				"{@b Symptoms:} Different levels of energy each day, and sometimes even from one hour to the next.",
 				"{@b Effects:} When the creature finishes a long rest, roll on the table below. Their movement speed is lowered, heightened or remains the same based on the result. This effect lasts until they roll again at the conclusion of their next long rest.",
 				"{@b Cure:} {@spell Lesser restoration} or a cure of a similar level.",
@@ -5228,9 +5245,12 @@
 					"type": "entries",
 					"name": "Knowledge of the Swamp",
 					"entries": [
-						"If a {@class druid} attunes to this necklace, they gain the following beast shapes: {@creature rat}, {@creature raven}, {@creature giant rat}, {@creature poisonous snake}, {@creature stirge}, {@creature constrictor snake}, {@creature giant frog}, {@creature giant lizard}, {@creature giant poisonous snake}, {@creature crocodile}, {@creature giant spider}, {@creature giant toad}, {@creature giant constrictor snake}, and {@creature giant crocodile}."
+						"If a {@class druid} attunes to this necklace, they gain the following {@classFeature wild shape|druid||2||wild shapes}: {@creature rat}, {@creature raven}, {@creature giant rat}, {@creature poisonous snake}, {@creature stirge}, {@creature constrictor snake}, {@creature giant frog}, {@creature giant lizard}, {@creature giant poisonous snake}, {@creature crocodile}, {@creature giant spider}, {@creature giant toad}, {@creature giant constrictor snake}, and {@creature giant crocodile}."
 					]
 				}
+			],
+			"attachedSpells": [
+				"jump"
 			],
 			"fluff": {
 				"images": [
@@ -5251,6 +5271,11 @@
 			"type": "RG",
 			"rarity": "rare",
 			"reqAttune": "by a spellcaster",
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
 			"recharge": "dawn",
 			"charges": 10,
 			"entries": [
@@ -5294,6 +5319,11 @@
 			"type": "RG",
 			"rarity": "rare",
 			"reqAttune": "by a spellcaster",
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
 			"curse": true,
 			"recharge": "dawn",
 			"charges": 10,
@@ -5713,6 +5743,11 @@
 			"tier": "major",
 			"rarity": "very rare",
 			"reqAttune": "by a spellcaster",
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
 			"curse": true,
 			"wondrous": true,
 			"entries": [
@@ -6245,6 +6280,20 @@
 			"page": 5,
 			"rarity": "rare",
 			"reqAttune": "by a cleric, sorcerer, warlock, or wizard",
+			"reqAttuneTags": [
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "warlock"
+				},
+				{
+					"class": "wizard"
+				}
+			],
 			"focus": true,
 			"curse": true,
 			"weight": 4,
@@ -6303,6 +6352,11 @@
 			"tier": "major",
 			"rarity": "rare",
 			"reqAttune": "by a monk",
+			"reqAttuneTags": [
+				{
+					"class": "monk"
+				}
+			],
 			"wondrous": true,
 			"charges": 10,
 			"entries": [
@@ -6343,6 +6397,11 @@
 			"tier": "major",
 			"rarity": "legendary",
 			"reqAttune": "by a warlock",
+			"reqAttuneTags": [
+				{
+					"class": "warlock"
+				}
+			],
 			"wondrous": true,
 			"entries": [
 				{
@@ -6455,6 +6514,7 @@
 			"dmgType": "S",
 			"sword": true,
 			"weapon": true,
+			"bonusWeapon": "+1",
 			"entries": [
 				"This delicate {@item shortsword|phb} is forged from a solid jade blade attached to a sturdy brass handle.",
 				{
@@ -6493,6 +6553,11 @@
 			"type": "M",
 			"rarity": "legendary",
 			"reqAttune": "by a spellcaster",
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
 			"weight": 1,
 			"weaponCategory": "simple",
 			"property": [
@@ -6745,7 +6810,18 @@
 			"page": 8,
 			"tier": "major",
 			"rarity": "legendary",
-			"reqAttune": "by a cleric, paladin, or druid",
+			"reqAttune": "by a cleric, druid, or paladin",
+			"reqAttuneTags": [
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "paladin"
+				},
+				{
+					"class": "druid"
+				}
+			],
 			"recharge": "dusk",
 			"charges": 2,
 			"wondrous": true,
@@ -6811,7 +6887,7 @@
 			"name": "Port-a-boulder",
 			"source": "RotR1",
 			"page": 8,
-			"tier": "major",
+			"tier": "minor",
 			"rarity": "uncommon",
 			"wondrous": true,
 			"entries": [
@@ -6940,6 +7016,7 @@
 			"range": "20/60",
 			"dmg1": "1d4 + 1",
 			"dmgType": "P",
+			"bonusWeapon": "+1",
 			"entries": [
 				"This flanged {@item dart|phb} has a small golden beryl gemstone embedded into the rear. Its wide metal fins hum as the dart flies through the air.",
 				"You have a +1 bonus to attack and damage rolls made with this magic weapon. It has the following additional properties.",
@@ -7014,6 +7091,23 @@
 			"baseItem": "quarterstaff|phb",
 			"rarity": "legendary",
 			"reqAttune": "by a druid, monk, ranger, sorcerer, or wizard",
+			"reqAttuneTags": [
+				{
+					"class": "druid"
+				},
+				{
+					"class": "monk"
+				},
+				{
+					"class": "ranger"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "wizard"
+				}
+			],
 			"focus": true,
 			"weight": 4,
 			"weaponCategory": "simple",
@@ -7182,6 +7276,11 @@
 			"tier": "major",
 			"rarity": "very rare",
 			"reqAttune": "by a spellcaster",
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
 			"weight": 10,
 			"ac": 13,
 			"entries": [
@@ -7190,7 +7289,7 @@
 					"type": "entries",
 					"name": "Spell-Infused",
 					"entries": [
-						"This armor is infused with the {@spell mage armor} spell. The enchantment can be dispelled, at which point it reverts to mundane leather armor. If dispelled, the enchantment will automatically be restored after 24 hours."
+						"This armor is infused with the {@spell mage armor} spell. The enchantment can be dispelled, at which point it reverts to mundane leather armor (AC 11 + Dex). If dispelled, the enchantment will automatically be restored after 24 hours."
 					]
 				},
 				{
@@ -7200,6 +7299,9 @@
 						"While wearing this armor, you have a +1 bonus to all spell attacks. Additionally, if you cast an evocation spell that deals damage, it deals +2 bonus damage of the original type."
 					]
 				}
+			],
+			"attachedSpells": [
+				"mage armor"
 			],
 			"fluff": {
 				"images": [
@@ -7265,6 +7367,20 @@
 			"baseItem": "quarterstaff|phb",
 			"rarity": "uncommon",
 			"reqAttune": "by a druid, sorcerer, warlock, or wizard",
+			"reqAttuneTags": [
+				{
+					"class": "druid"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "warlock"
+				},
+				{
+					"class": "wizard"
+				}
+			],
 			"focus": true,
 			"weight": 4,
 			"weaponCategory": "simple",
@@ -7316,6 +7432,11 @@
 			"tier": "major",
 			"rarity": "Rare",
 			"reqAttune": "by a bard with proficiency with viols",
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				}
+			],
 			"wondrous": true,
 			"entries": [
 				"This finely-crafted wooden {@item viol|phb} bears the appearance of a skull on the body, with carved teeth acting as the bridge.",
@@ -7463,6 +7584,11 @@
 			"tier": "major",
 			"rarity": "uncommon",
 			"reqAttune": "by a bard with proficiency with flutes",
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				}
+			],
 			"wondrous": true,
 			"entries": [
 				"This finely-crafted wooden {@item flute|phb} features green vines curling around its shaft.",
@@ -7745,7 +7871,21 @@
 			"page": 2,
 			"tier": "major",
 			"rarity": "legendary",
-			"reqAttune": "by a wizard, sorcerer, druid, or warlock",
+			"reqAttune": "by a druid, sorcerer, warlock, or wizard",
+			"reqAttuneTags": [
+				{
+					"class": "wizard"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "druid"
+				},
+				{
+					"class": "warlock"
+				}
+			],
 			"wondrous": true,
 			"entries": [
 				"This fine rose gold circlet is warm to the touch, gentle heat radiating from the fire topaz embedded in its crest.",
@@ -7880,6 +8020,7 @@
 			"dmg1": "1d8",
 			"dmgType": "P",
 			"weapon": true,
+			"bonusWeapon": "+2",
 			"entries": [
 				"This simple {@item light crossbow|phb} feels lighter than it should be.",
 				{
@@ -8026,7 +8167,7 @@
 			"name": "Earring of Whispering",
 			"source": "RotR2",
 			"page": 3,
-			"tier": "major",
+			"tier": "minor",
 			"rarity": "uncommon",
 			"wondrous": true,
 			"entries": [
@@ -8171,7 +8312,7 @@
 			"name": "Goodberry Sapling",
 			"source": "RotR2",
 			"page": 3,
-			"tier": "major",
+			"tier": "minor",
 			"rarity": "uncommon",
 			"wondrous": true,
 			"entries": [
@@ -8208,7 +8349,7 @@
 			"name": "L'Arcana #23",
 			"source": "RotR2",
 			"page": 4,
-			"tier": "major",
+			"tier": "minor",
 			"rarity": "uncommon",
 			"wondrous": true,
 			"entries": [
@@ -8359,7 +8500,21 @@
 			"page": 4,
 			"tier": "major",
 			"rarity": "legendary",
-			"reqAttune": "by a wizard, sorcerer, druid, or warlock",
+			"reqAttune": "by a druid, sorcerer, warlock, or wizard",
+			"reqAttuneTags": [
+				{
+					"class": "wizard"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "druid"
+				},
+				{
+					"class": "warlock"
+				}
+			],
 			"wondrous": true,
 			"entries": [
 				"These brilliant robes radiate eternal heat, threatening to burn those around it.",
@@ -8408,6 +8563,17 @@
 			"tier": "major",
 			"rarity": "legendary",
 			"reqAttune": "by a bard, cleric, or druid",
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				},
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "druid"
+				}
+			],
 			"recharge": "dawn",
 			"charges": 3,
 			"wondrous": true,
@@ -8447,7 +8613,7 @@
 			"name": "Map Beacon",
 			"source": "RotR2",
 			"page": 5,
-			"tier": "major",
+			"tier": "minor",
 			"rarity": "uncommon",
 			"wondrous": true,
 			"entries": [
@@ -8464,7 +8630,7 @@
 					"name": "Split the Party",
 					"entries": [
 						"When a map beacon is placed onto a map and its command word is spoken, these tiny beacons will light up and hover over the location on the map of the creature they are bound to. If there are multiple bound creatures in one location, the beacons will hover over each other. If they are not anywhere on the map, the beacon lies still and dark.",
-						"Map beacons work best with detailed maps, but can also function to give general position on crudely-drawn maps. If yu draw a map for this purpose, it must have at least three points of reference and be enclosed by a rectangular edge."
+						"Map beacons work best with detailed maps, but can also function to give general position on crudely-drawn maps. If you draw a map for this purpose, it must have at least three points of reference and be enclosed by a rectangular edge."
 					]
 				}
 			],
@@ -8487,6 +8653,17 @@
 			"tier": "major",
 			"rarity": "rare",
 			"reqAttune": "by a cleric, paladin, or warlock",
+			"reqAttuneTags": [
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "paladin"
+				},
+				{
+					"class": "warlock"
+				}
+			],
 			"wondrous": true,
 			"bonusSavingThrow": "+2",
 			"entries": [
@@ -8580,7 +8757,7 @@
 			"name": "Nightliner",
 			"source": "RotR2",
 			"page": 6,
-			"tier": "major",
+			"tier": "minor",
 			"rarity": "uncommon",
 			"wondrous": true,
 			"entries": [
@@ -8612,6 +8789,14 @@
 			"tier": "major",
 			"rarity": "rare",
 			"reqAttune": "by a druid or monk",
+			"reqAttuneTags": [
+				{
+					"class": "druid"
+				},
+				{
+					"class": "monk"
+				}
+			],
 			"wondrous": true,
 			"entries": [
 				"This sparkling wooden orb hums gently when you listen closely.",
@@ -8781,6 +8966,17 @@
 			"type": "WD",
 			"rarity": "very rare",
 			"reqAttune": "by a sorcerer, warlock, or wizard",
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "warlock"
+				},
+				{
+					"class": "wizard"
+				}
+			],
 			"weight": 1,
 			"recharge": "dawn",
 			"charges": 3,
@@ -9655,7 +9851,22 @@
 			"tier": "major",
 			"rarity": "rare",
 			"reqAttune": "by a barbarian, druid, fighter, or monk",
+			"reqAttuneTags": [
+				{
+					"class": "barbarian"
+				},
+				{
+					"class": "druid"
+				},
+				{
+					"class": "fighter"
+				},
+				{
+					"class": "monk"
+				}
+			],
 			"wondrous": true,
+			"bonusWeapon": "+2",
 			"entries": [
 				"These dark bracers and gloves have sapphires embedded into the back of the hand, along the first row of knuckles, and as sharp nails projecting from the fingertips.",
 				{
@@ -9699,8 +9910,23 @@
 			"tier": "major",
 			"rarity": "rare",
 			"reqAttune": "by a barbarian, druid, fighter, or monk",
+			"reqAttuneTags": [
+				{
+					"class": "barbarian"
+				},
+				{
+					"class": "druid"
+				},
+				{
+					"class": "fighter"
+				},
+				{
+					"class": "monk"
+				}
+			],
 			"curse": true,
 			"wondrous": true,
+			"bonusWeapon": "+2",
 			"entries": [
 				"These dark bracers and gloves have sapphires embedded into the back of the hand, along the first row of knuckles, and as sharp nails projecting from the fingertips.",
 				{
@@ -10080,7 +10306,7 @@
 					"type": "entries",
 					"name": "King of Ducks",
 					"entries": [
-						"By speaking a command word ('Quack'), up to 5 ducks will perform the {@action help} action (minimum of 3 ducks). The ducks cannot attack, and will not perform any other action. Each duck has 1 hit point and an AC of 5. The ducks that assist you leave once the task has been completed. This feature cannot be used if there are fewer than 3 ducks remaining, but the remaining ducks will still follow you until dusk."
+						"By speaking a command word (\"Quack\"), up to 5 ducks will perform the {@action help} action (minimum of 3 ducks). The ducks cannot attack, and will not perform any other action. Each duck has 1 hit point and an AC of 5. The ducks that assist you leave once the task has been completed. This feature cannot be used if there are fewer than 3 ducks remaining, but the remaining ducks will still follow you until dusk."
 					]
 				}
 			],
@@ -10104,6 +10330,11 @@
 			"type": "M",
 			"rarity": "very rare",
 			"reqAttune": "by a spellcaster",
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
 			"recharge": "dawn",
 			"charges": 5,
 			"weight": 3,
@@ -10218,6 +10449,20 @@
 			"type": "RG",
 			"rarity": "rare",
 			"reqAttune": "by a cleric, druid, sorcerer, or wizard",
+			"reqAttuneTags": [
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "druid"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "wizard"
+				}
+			],
 			"recharge": "dawn",
 			"charges": 10,
 			"entries": [
@@ -10273,6 +10518,1134 @@
 						"href": {
 							"type": "external",
 							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR2/Wrath-of-the-Tempest.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Amulet of the Huntress",
+			"source": "RotR3",
+			"page": 1,
+			"tier": "major",
+			"rarity": "rare",
+			"reqAttune": true,
+			"wondrous": true,
+			"entries": [
+				"This brass amulet bears a striking resemblance to a wildcat's face.",
+				{
+					"type": "entries",
+					"name": "Predator's Stealth",
+					"entries": [
+						"While attuned to this amulet, you gain a +3 bonus to all Dexterity ({@skill Stealth}) checks."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Weapons of Choice",
+					"entries": [
+						"When dealing slashing or piercing damage, you gain +1 to the damage total. This bonus rises to +2 if you are shapechanged into a beast (e.g. via {@spell polymorph} or {@classFeature wild shape|druid||2||wild shape}), or if you possess teeth or claws that act as weapons (such as the {@race tabaxi|vgm|tabaxi's} {@i Cat's Claws} feature or the effects of {@spell alter self})."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Amulet-of-the-Huntress.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Amulet of the Warmage",
+			"source": "RotR3",
+			"page": 1,
+			"tier": "major",
+			"rarity": "rare",
+			"reqAttune": "by a spellcaster",
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
+			"recharge": "long rest",
+			"charges": 4,
+			"wondrous": true,
+			"entries": [
+				"Each facet of the affixed gems shimmer with a faint internal light, even in pitch darkness.",
+				{
+					"type": "entries",
+					"name": "Arcane Awareness",
+					"entries": [
+						"While attuned to this amulet, you gain resistance to force damage and a +3 bonus to all Intelligence ({@skill Arcana}) checks."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Extra Tricks",
+					"entries": [
+						"This amulet holds four charges. As an action, you can expend one charge to cast any cantrip from the {@filter wizard spell list|spells|class=wizard|level=0}, whether you know it or not. Cantrips cast in this way scale with your character level, if applicable. This amulet regains {@dice 1d4} charges at the end of a long rest.",
+						"If the last charge of this amulet is expended, roll a {@dice d20}. On a 1, one of the gems cracks and the amulet permanently loses 1 charge. When all four charges are lost, the amulet crumbles to dust."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Amulet-of-the-Warmage.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Angel's Sorrow",
+			"source": "RotR3",
+			"page": 1,
+			"baseItem": "quarterstaff|phb",
+			"rarity": "very rare",
+			"reqAttune": "by a cleric, druid, paladin, or ranger",
+			"reqAttuneTags": [
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "druid"
+				},
+				{
+					"class": "paladin"
+				},
+				{
+					"class": "ranger"
+				}
+			],
+			"recharge": "dawn",
+			"charges": 9,
+			"focus": true,
+			"weight": 4,
+			"weaponCategory": "simple",
+			"property": [
+				"V"
+			],
+			"dmg1": "1d6",
+			"dmgType": "B",
+			"dmg2": "1d8",
+			"staff": true,
+			"entries": [
+				"A perpetually-weeping angelic figure adorns the top of this sturdy metal staff.",
+				{
+					"type": "entries",
+					"name": "Divine Knowledge",
+					"entries": [
+						"While attuned to this staff, you gain a +1 bonus to your Intelligence and Wisdom scores (to a maximum of 20)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tears of the Angel",
+					"entries": [
+						"This staff holds 9 charges and regains {@dice 1d6 + 3} charges each day at dawn. If you are proficient in Intelligence ({@skill Religion}), all charges are regained at dawn instead."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Heavenly Lament",
+					"entries": [
+						"Whenever you cast a spell or use an ability that heals a target, they heal an additional number of hit points equal to the number of charges remaining in the staff."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Celestial Flight",
+					"entries": [
+						"You may expend 3 charges to cast {@spell fly} at 3rd level. You may cast this spell at a higher level by expending 2 additional charges per level."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Call of the Heavens",
+					"entries": [
+						"You may expend all 9 charges to cast {@spell harm} or {@spell heal} at 6th level. If this feature is used to cast {@i heal}, the target regains the additional 9 hit points granted by {@i Heavenly Lament}."
+					]
+				}
+			],
+			"attachedSpells": [
+				"fly",
+				"harm",
+				"heal"
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Angels-Sorrow.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Armor of Atomlesztes",
+			"source": "RotR3",
+			"page": 1,
+			"baseItem": "leather armor|phb",
+			"type": "LA",
+			"tier": "major",
+			"rarity": "very rare",
+			"reqAttune": true,
+			"weight": 10,
+			"ac": 11,
+			"entries": [
+				"Purple vestments adorn this fitted armor, with two skulls emblazoned on the chest in the form of a heart.",
+				{
+					"type": "entries",
+					"name": "Shield of the Afterlife",
+					"entries": [
+						"If you drop to 0 hit points without being killed outright while attuned to this armor, you heal {@dice 3d10 + 5} hit points and do not fall {@condition unconscious}. All friendly creatures of your choice within 15 feet regain half the number of hit points you healed, and you deal the same amount of necrotic damage to all hostile creatures of your choice within 15 feet. Once this feature has been used, it can't be used again until seven days have passed."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Step Into the Beyond",
+					"entries": [
+						"Three times per long rest, you can use this armor to cast {@spell misty step}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Regalia of Mortality",
+					"entries": [
+						"When you are attuned to this armor along with both {@i Gauntlets of Mortality} ({@item Gauntlet of Adni|RotR3} and {@item Gauntlet of Vesz|RotR3}), they count as a single attuned item instead of three separate items. The {@i Regalia of Mortality} are considered Legendary rarity.",
+						"In addition to the temporary hit points granted by the Gauntlets, while you are attuned to the Regalia you gain a +2 bonus to your AC and may use the {@i Lifegiver} and {@i Lifetaker} features of the Gauntlets twice each per long rest instead of once. Additionally, if you are affected by {@i Shield of the Afterlife}, it may affect you again after only three days have passed, rather than seven."
+					]
+				}
+			],
+			"attachedSpells": [
+				"misty step"
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Armor-of-Atomlesztes.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Axe of the Chromatic Queen",
+			"source": "RotR3",
+			"page": 2,
+			"baseItem": "battleaxe|phb",
+			"type": "M",
+			"tier": "major",
+			"rarity": "very rare",
+			"reqAttune": true,
+			"weight": 2,
+			"weaponCategory": "martial",
+			"property": [
+				"V"
+			],
+			"dmg1": "1d8",
+			"dmgType": "S",
+			"dmg2": "1d10",
+			"bonusWeapon": "+2",
+			"weapon": true,
+			"entries": [
+				"The blade of this heavy {@item battleaxe|phb} is forged to to spring from the mouths of five tiny dragons of different colors.",
+				{
+					"type": "entries",
+					"name": "Forged in Dragonbreath",
+					"entries": [
+						"You have a +2 bonus to attack and damage rolls made with this magic weapon."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Aspects of the Queen",
+					"entries": [
+						"Once per turn on a successful hit this axe deals {@damage 1d4 + 1} extra damage. This damage may be one of the following types of your choice: acid, cold, fire, lightning, or poison."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Queen's Audience",
+					"entries": [
+						"This axe may be used once per week to perform a ritual to cast {@spell gate}. The axe may be used in place of the listed material component (along with one of each of the following gemstones of any value, placed into each open maw of the dragons carved into the weapon: amethyst, diamond, emerald, ruby, and sapphire). When cast in this way, the spell has a casting time of 10 minutes instead of 1 action and can only be used to create a portal linking to the first circle of the Nine Hells. Additionally, the gemstones used as part of this ritual dissolve into ash and burn away once the portal closes."
+					]
+				}
+			],
+			"attachedSpells": [
+				"gate"
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Axe-of-the-Chromatic-Queen.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Beauty Sleep Mask",
+			"source": "RotR3",
+			"page": 2,
+			"tier": "minor",
+			"rarity": "uncommon",
+			"wondrous": true,
+			"entries": [
+				"This luxurious padded sleep mask has one small gem embedded on the outside of each eye rest.",
+				{
+					"type": "entries",
+					"name": "Deep Sleep",
+					"entries": [
+						"When you take a short or long rest wearing this mask, you recieve a \u22123 penalty to your passive Wisdom ({@skill Perception}) score and all active Wisdom ({@skill Perception}) checks are made with disadvantage. Additionally, wearing this mask {@condition blinded||blinds} you."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Rested and Refreshed",
+					"entries": [
+						"Following completion of a short rest while wearing this mask, you gain a +2 bonus to all Charisma ({@skill Persuasion}) checks made for the next hour. If you complete a long rest, this bonus persists for 16 hours."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Beauty-Sleep-Mask.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Blade of the Corrupted Lotus",
+			"source": "RotR3",
+			"page": 2,
+			"baseItem": "greatsword|phb",
+			"type": "M",
+			"tier": "major",
+			"rarity": "very rare",
+			"weight": 6,
+			"weaponCategory": "martial",
+			"property": [
+				"H",
+				"2H"
+			],
+			"dmg1": "2d6",
+			"dmgType": "S",
+			"bonusWeapon": "+2",
+			"charges": 8,
+			"reqAttune": true,
+			"entries": [
+				"The hilt of this heavy iron sword is orantely carved to resemble a blooming lotus.",
+				{
+					"type": "entries",
+					"name": "Dark Essence",
+					"entries": [
+						"You have a +2 bonus to attack and damage rolls made with this magic weapon."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Lotus Bite",
+					"entries": [
+						"The first time you hit with an attack on your turn, you may choose to drain the target of some of its life essence. You deal an additional {@damage 1d10} necrotic damage to the target and gain the same amount of hit points. You can use this feature twice per long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spark of Corruption",
+					"entries": [
+						"This sword can hold up to 8 charges, and has 0 charges when you first attune to it. For every 2 charges stored in the sword, your Strength score increases by 1 (to a maximum of 22) as long as you are attuned to it.",
+						"Whenever you land the killing blow on a creature with this weapon, you may attempt to absorb some of its fleeting life essence. Make a Constitution saving throw (DC 10 + the number of charges currently stored in the sword). On a success, the sword gains 1 charge. On a failure, you take {@damage 1d4} necrotic damage for each charge currently stored in the sword. This damage cannot be reduced in any way.",
+						"At the end of each long rest, this sword loses {@dice 2d4} charges (to a minimum of 0). For every 2 charges lost, your Strength score is reduced by 1."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Blade-of-the-Corrupted-Lotus.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Collar of the Chromatic Queen",
+			"source": "RotR3",
+			"page": 2,
+			"tier": "major",
+			"rarity": "Rare",
+			"wondrous": true,
+			"entries": [
+				"This dragonskin collar features five semiprecious gems embedded around its length.",
+				{
+					"type": "entries",
+					"name": "Draconic Resistance",
+					"entries": [
+						"At the end of a long rest while wearing this collar, roll a {@dice d6} and consult the table below. You gain the listed benefit until the end of your next long rest. If the collar is removed or destroyed, you lose this benefit prematurely."
+					]
+				},
+				{
+					"type": "table",
+					"colLabels": [
+						"{@dice d6}",
+						"Effect"
+					],
+					"colStyles": [
+						"col-1 text-center",
+						"col-11"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
+							"Acid resistance"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 2
+								}
+							},
+							"Cold resistance"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 3
+								}
+							},
+							"Fire resistance"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 4
+								}
+							},
+							"Lightning resistance"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"Poison resistance"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
+							"+1 bonus to AC and resistance of your choice from above"
+						]
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Collar-of-the-Chromatic-Queen.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Coin of Draconic Luck",
+			"source": "RotR3",
+			"page": 3,
+			"tier": "major",
+			"rarity": "uncommon",
+			"wondrous": true,
+			"entries": [
+				"This seemingly nondescript coin has two draconic faces emblazoned on either side, which shimmer with a different color upon landing One face shines with a metallic sheen, and the other is a dull flat color.",
+				{
+					"type": "entries",
+					"name": "Dragon's Bargain",
+					"entries": [
+						"Before making an ability check or attack roll, you may choose to {@chance 50|flip a coin}. On heads, the coin lands metallic side up and the following roll is made with advantage. On tails, the coin lands chromatic side up and the following roll is made with disadvantage. This feature may be used three times per day.",
+						"If the coin lands on tails three times in a row, roll a {@dice d20}. On a 1 the coin cracks in two and loses all magical properties."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Coin-of-Draconic-Luck.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Downfall",
+			"source": "RotR3",
+			"page": 3,
+			"baseItem": "greatsword|phb",
+			"type": "M",
+			"tier": "major",
+			"rarity": "rare",
+			"weight": 6,
+			"weaponCategory": "martial",
+			"property": [
+				"H",
+				"2H"
+			],
+			"dmg1": "2d6",
+			"dmgType": "S",
+			"bonusWeapon": "+1",
+			"reqAttune": true,
+			"entries": [
+				"This weapon exudes an aura of malice, making anyone who looks directly at it uncomfortable for reasons they can't explain.",
+				{
+					"type": "entries",
+					"name": "Infernal Steel",
+					"entries": [
+						"You have a +1 bonus to attack and damage rolls made with this magic weapon."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Brought Back",
+					"entries": [
+						"While attuned to this weapon, if you are at 0 hit points and fail a death saving throw you are instead healed for an amount equal to half of your maximum hit points and return to consciousness.",
+						"This effect can only happen once to you. Unattuning and reattuning to this weapon does not allow you to gain the benefit of this feature again."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Downfall.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Downfall (Cursed)",
+			"source": "RotR3",
+			"page": 3,
+			"baseItem": "greatsword|phb",
+			"type": "M",
+			"tier": "major",
+			"rarity": "rare",
+			"weight": 6,
+			"weaponCategory": "martial",
+			"property": [
+				"H",
+				"2H"
+			],
+			"dmg1": "2d6",
+			"dmgType": "S",
+			"bonusWeapon": "+1",
+			"reqAttune": true,
+			"curse": true,
+			"entries": [
+				"This weapon exudes an aura of malice, making anyone who looks directly at it uncomfortable for reasons they can't explain.",
+				{
+					"type": "entries",
+					"name": "Infernal Steel",
+					"entries": [
+						"You have a +1 bonus to attack and damage rolls made with this magic weapon."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Brought Back",
+					"entries": [
+						"While attuned to this weapon, if you are at 0 hit points and fail a death saving throw you are instead healed for an amount equal to half of your maximum hit points and return to consciousness.",
+						"This effect can only happen once to you. Unattuning and reattuning to this weapon does not allow you to gain the benefit of this feature again."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Infernal Pact (Curse)",
+					"entries": [
+						"This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with {@spell remove curse} or similar magic, you are unwilling to part with the weapon, keeping it within reach at all times.",
+						"If you gain the benefit of {@i Brought Back} above, you now owe your life to an infernal creature or entity. How and when this debt is paid will be determined by your DM. Unattuning from this weapon does not resolve this debt."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Downfall.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Zephyr's Edge",
+			"source": "RotR3",
+			"page": 3,
+			"baseItem": "rapier|phb",
+			"type": "M",
+			"rarity": "very rare",
+			"reqAttune": true,
+			"weight": 2,
+			"weaponCategory": "martial",
+			"property": [
+				"F"
+			],
+			"dmg1": "1d8",
+			"dmgType": "P",
+			"bonusWeapon": "+1",
+			"sword": true,
+			"weapon": true,
+			"entries": [
+				"This finely-crafted {@item rapier|phb} hums with electricity as it passes through the air.",
+				{
+					"type": "entries",
+					"name": "Stormforged",
+					"entries": [
+						"You have a +1 bonus to attack and damage rolls made with this magic weapon. This weapon also deals an additional 2 lightning damage with each hit."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Last Act",
+					"entries": [
+						"Whenever you land the killing blow on a creature with this weapon, the last of the creature's life essence is channeled through the blade into a burst of electricity. Each creature in a 15-foot line directly away from you (toward the target) must succeed on a {@dc 15} Dexterity saving throw or take {@damage 3d6 + 2} lightning damage, taking half damage on a success."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Lightning Rod",
+					"entries": [
+						"As an action, you may raise the rapier into the air and call down a bolt of lighting on a creature or object you can see within 100 feet. A creature must succeed on a {@dc 15} Dexterity saving throw or take {@damage 4d6 + 2} lightning damage and be {@condition stunned} until the end of your next turn. On a success, the target takes half the lighting damage and is not stunned. You may use this feature once per long rest."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Zephyrs-Edge.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Efreeti's Kusarigama",
+			"source": "RotR3",
+			"page": 3,
+			"baseItem": "sickle|phb",
+			"type": "M",
+			"tier": "major",
+			"rarity": "uncommon",
+			"weight": 2,
+			"weaponCategory": "simple",
+			"property": [
+				"R",
+				"2H"
+			],
+			"dmg1": "1d6",
+			"dmgType": "S",
+			"weapon": true,
+			"bonusWeapon": "+2",
+			"entries": [
+				"This curiously-shaped {@item sickle|phb} has a long chain attached to the rear end of its handle.",
+				{
+					"type": "entries",
+					"name": "Solid Flame Blade",
+					"entries": [
+						"You have a +2 bonus to attack and damage rolls made with this magic weapon. This weapon also deals an additional 2 fire damage with each hit."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Grip of the Fire Genie",
+					"entries": [
+						"You can use this weapon's chain and counterbalance to attempt to {@action grapple} a creature. Your Strength ({@skill Athletics}) check made to grapple is made with advantage if the creature is more than 5 feet away. Upon a successful grapple, the target receives {@damage 1d6} fire damage, taking another {@damage 1d6} fire damage at the end of each of its turns if it is still grappled."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Efreetis-Kusarigama.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Elderam's Gift",
+			"source": "RotR3",
+			"page": 4,
+			"baseItem": "dagger|phb",
+			"type": "M",
+			"rarity": "very rare",
+			"reqAttune": true,
+			"weight": 1,
+			"weaponCategory": "simple",
+			"property": [
+				"F",
+				"L",
+				"T"
+			],
+			"range": "20/60",
+			"dmg1": "1d4",
+			"dmgType": "P",
+			"bonusWeapon": "+2",
+			"entries": [
+				"This {@item dagger|phb} appears to be little more than a shard of some form of green crystal wrapped with twine.",
+				{
+					"type": "entries",
+					"name": "Plane-wrought",
+					"entries": [
+						"You have a +2 bonus to attack and damage rolls made with this magic weapon."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Emerald Menace",
+					"entries": [
+						"As an action, you may drive this dagger into the ground and speak a command word, causing 2-foot-tall crystal spikes to erupt from the ground in a 15-foot cone. Any creature within the cone must succeed on a {@dc 17} Dexterity saving throw or take {@damage 3d10} piercing damage, taking half damage on a success.",
+						"The crystals persist, causing the area to become rough terrain. The first time a creature moves into or within the they must succeed on a {@dc 12} Dexterity saving throw or take {@damage 1d4} piercing damage per 5 feet moved.",
+						"The crystals may be shattered by attacking them. The crystals have an AC of 8 and 3 hit points per 5-foot square covered. Otherwise, the crystals instantly retract when this dagger is pulled from the ground.",
+						"This feature may be used twice per long rest."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Elderams-Gift.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Elianim, The Dawnspark",
+			"source": "RotR3",
+			"page": 4,
+			"baseItem": "warhammer|phb",
+			"type": "M",
+			"rarity": "legendary",
+			"reqAttune": "by a cleric or paladin",
+			"reqAttuneTags": [
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "paladin"
+				}
+			],
+			"weight": 2,
+			"weaponCategory": "martial",
+			"property": [
+				"V"
+			],
+			"dmg1": "1d8",
+			"dmgType": "B",
+			"dmg2": "1d10",
+			"bonusWeapon": "+4",
+			"weapon": true,
+			"recharge": "dawn",
+			"charges": 3,
+			"entries": [
+				"This ancient {@item warhammer|phb}, forged in the storms of the waning years of the Dawn War, was granted to the paladins of {@deity Pelor|dawn war|dmg} by {@deity Kord|dawn war|dmg} to aid in their fight against {@deity Tharizdun|dawn war|dmg}. Very few were bestowed, and even fewer still survive to the present day.",
+				"You have a +4 bonus to attack and damage rolls made with this magic weapon. It has the following additional properties.",
+				{
+					"name": "Fury of the Storm",
+					"type": "entries",
+					"entries": [
+						"Elianim deals an extra {@damage 1d4} lightning and {@damage 1d4} thunder damage on hit."
+					]
+				},
+				{
+					"name": "Heart of the Sun",
+					"type": "entries",
+					"entries": [
+						"While attuned to this weapon, your Constitution score increases by 2."
+					]
+				},
+				{
+					"name": "Aura of the Dawn",
+					"type": "entries",
+					"entries": [
+						"This weapon sheds bright light in a 15-foot radius and dim light for an additional 15 feet. This light may be suppressed at will (no action required). This light is sunlight.",
+						"While this light is visible, you and all allies within 20 feet of you have advantage on saving throws against becoming {@condition frightened}."
+					]
+				},
+				{
+					"name": "Mercy of the Rain",
+					"type": "entries",
+					"entries": [
+						"This hammer holds 3 charges of crystallized light within the head. Whenever you cast a healing spell, you can expend one charge to heal one target for an extra {@dice 2d6} hit points. All three charges are restored at dawn."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Elianim-The-Dawnspark.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Fang of the Gatekeeper",
+			"source": "RotR3",
+			"page": 4,
+			"baseItem": "dagger|phb",
+			"type": "M",
+			"rarity": "legendary",
+			"reqAttune": true,
+			"weight": 1,
+			"weaponCategory": "simple",
+			"property": [
+				"F",
+				"L",
+				"T"
+			],
+			"range": "20/60",
+			"dmg1": "1d4",
+			"dmgType": "P",
+			"bonusWeapon": "+3",
+			"entries": [
+				"This {@item dagger|phb} seems to endlessly seep blood from the hilt, though the fluid never drips from the blade.",
+				{
+					"type": "entries",
+					"name": "Bite of the Hound",
+					"entries": [
+						"You have a +3 bonus to attack and damage rolls made with this magic weapon. The additional damage is necrotic."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Guardian of the Afterlife",
+					"entries": [
+						"This weapon deals an extra {@damage 1d4} piercing damage to humanoid or undead creatures."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Master's Command",
+					"entries": [
+						"Whenever you make a Charisma ({@skill Intimidation}) check while attuned to this dagger, you may add an additional {@dice 1d6} to the roll. In addition, depending on the roll, one of the following effects manifests for a few moments.",
+						{
+							"type": "table",
+							"colLabels": [
+								"{@dice d6}",
+								"Effect"
+							],
+							"colStyles": [
+								"col-1 text-center",
+								"col-11"
+							],
+							"rows": [
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"min": 1,
+											"max": 2
+										}
+									},
+									"Your voice deepens and resonates loudly"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"min": 3,
+											"max": 4
+										}
+									},
+									"Your eyes turn completely black"
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"min": 5,
+											"max": 6
+										}
+									},
+									"All light within 10 feet of you darkens"
+								]
+							]
+						}
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Fang-of-the-Gatekeeper.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Gauntlet of Adni",
+			"source": "RotR3",
+			"page": 5,
+			"tier": "major",
+			"rarity": "rare",
+			"reqAttune": true,
+			"wondrous": true,
+			"entries": [
+				"Touching anything with this soft purple glove feels like it isn't even there\u2014you can feel everything perfectly well.",
+				{
+					"type": "entries",
+					"name": "Touch of Life",
+					"entries": [
+						"When you deal damage with an unarmed strike, that damage is dealt as radiant damage instead of bludgeoning."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Protector of the Living",
+					"entries": [
+						"You can use this glove to cast {@spell spare the dying} at will."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Lifegiver",
+					"entries": [
+						"As an action, you can point to a creature you can see within 90 feet. You suffer {@damage 2d8} necrotic damage, and the target heals a number of hit points equal the damage you took. Once this feature has been used, it can't be used again until the end of your next long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Gauntlets of Mortality",
+					"entries": [
+						"When you are attuned to both the Gauntlet of Adni and the {@item Gauntlet of Vesz|RotR3}, they count as a set and take only one attunement slot. The {@i Gauntlets of Mortality} are considered Very Rare.",
+						"Additionally, at the end of each long rest you gain temporary hit points equal to 10 + your character level."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Gauntlet-of-Adni.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Gauntlet of Vesz",
+			"source": "RotR3",
+			"page": 5,
+			"tier": "major",
+			"rarity": "rare",
+			"reqAttune": true,
+			"wondrous": true,
+			"entries": [
+				"Upon donning this firm purple gauntlet, nearly all sensation is shut out on that hand.",
+				{
+					"type": "entries",
+					"name": "Touch of Death",
+					"entries": [
+						"When you deal damage with an unarmed strike, that damage is dealt as necrotic damage instead of bludgeoning."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Death Caller",
+					"entries": [
+						"You can use this glove to cast {@spell true strike} at will."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Lifetaker",
+					"entries": [
+						"As an action, you can point to a creature you can see within 90 feet. That creature must succeed on a {@dc 18} Constitution saving throw or suffer {@damage 2d8} necrotic damage. You heal a number of hit points equal the damage inflicted. Once this feature has been used, it can't be used again until the end of your next long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Gauntlets of Mortality",
+					"entries": [
+						"When you are attuned to both the {@item Gauntlet of Adni|RotR3} and the Gauntlet of Vesz, they count as a set and take only one attunement slot. The {@i Gauntlets of Mortality} are considered Very Rare.",
+						"Additionally, at the end of each long rest you gain temporary hit points equal to 10 + your character level."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR1/Gauntlet-of-Vesz.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Gloves of the Verdant Sentry",
+			"source": "RotR3",
+			"page": 5,
+			"tier": "major",
+			"rarity": "rare",
+			"reqAttune": "by a monk",
+			"reqAttuneTags": [
+				{
+					"class": "monk"
+				}
+			],
+			"wondrous": true,
+			"entries": [
+				"These green gloves each have one half of a shield emblem emblazoned on the back.",
+				{
+					"type": "entries",
+					"name": "Reinforced Strikes",
+					"entries": [
+						"While attuned to these gloves, you gain a +1 bonus to all attack and damage rolls made for your unarmed strikes."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Clasp of Protection",
+					"entries": [
+						"You can snap the half-shields on these gloves together as a reaction, summoning an invisible barrier around you. Until the start of your next turn, you have a +2 bonus to AC, including against the triggering attack, and you take no damage from {@spell magic missile}.",
+						"You can use this ability three times per long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Broken Seal",
+					"entries": [
+						"When you attack after using the {@i Clasp of Protection} feature, your first unarmed strike with each hand deals an extra {@damage 1d4} force damage."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR1/Gloves-of-the-Verdant-Sentry.webp"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Greataxe of the Hills",
+			"source": "RotR3",
+			"page": 5,
+			"baseItem": "greataxe|phb",
+			"type": "M",
+			"rarity": "uncommon",
+			"weight": 7,
+			"weaponCategory": "martial",
+			"property": [
+				"H",
+				"2H",
+				"R"
+			],
+			"dmg1": "1d12",
+			"dmgType": "S",
+			"bonusWeapon": "+1",
+			"axe": true,
+			"weapon": true,
+			"entries": [
+				"This heavy greataxe features a curiously extended handle, with reinforcements along the body.",
+				{
+					"type": "entries",
+					"name": "Heavy Hitter",
+					"entries": [
+						"You gain a +1 bonus to attack and damage rolls made with this magic weapon."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Over-axe-tended",
+					"entries": [
+						"Before making an attack roll with this weapon, you can choose to take a \u22123 penalty to the attack roll to gain the {@i Reach} property."
+					]
+				}
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/item/RotR3/Greataxe-of-the-Hills.webp"
 						}
 					}
 				]
@@ -10434,12 +11807,17 @@
 			],
 			"fluff": {
 				"entries": [
-					"The demonic abominations known as adraloth are feared across the realms for their ruthlessness. Onyx growths cover their forearms and speckle the skin of their body. Blades are affixed to the growths on their arms, turning their body into a weapon. These bladed arms, their innate ocular abilities, and their talent for stealth, combined with their disregard for life have given them the reputation of cold-blooded and fierce killers.",
 					{
 						"type": "entries",
-						"name": "Eyes in the Dark",
 						"entries": [
-							"Adraloths will prey on creatures separated from their group or pack and will almost always attack under the cover of darkness. Often catching their targets by surprise, their writhing mass of eyed tentacles has been confused for multiple creatures by the unfortunate souls who have encountered an adraloth."
+							"The demonic abominations known as adraloth are feared across the realms for their ruthlessness. Onyx growths cover their forearms and speckle the skin of their body. Blades are affixed to the growths on their arms, turning their body into a weapon. These bladed arms, their innate ocular abilities, and their talent for stealth, combined with their disregard for life have given them the reputation of cold-blooded and fierce killers.",
+							{
+								"type": "entries",
+								"name": "Eyes in the Dark",
+								"entries": [
+									"Adraloths will prey on creatures separated from their group or pack and will almost always attack under the cover of darkness. Often catching their targets by surprise, their writhing mass of eyed tentacles has been confused for multiple creatures by the unfortunate souls who have encountered an adraloth."
+								]
+							}
 						]
 					}
 				],
@@ -10604,23 +11982,29 @@
 				}
 			],
 			"environment": [
-				"forest"
+				"forest",
+				"hill"
 			],
 			"fluff": {
 				"entries": [
-					"The aumleaf is an extremely small fey creature that looks like a fallen leaf. Despite their slightly frightening visage they are actually quite friendly. Known to befriend various forest creatures as well as {@creature treant||treants}, these leafy fellows feel most at home on the forest floor.",
 					{
 						"type": "entries",
-						"name": "Community",
 						"entries": [
-							"Aumleaves usually live in small tribes deep in the forest, far away from civilization. Aumleaves take care of the forest and work hard in the fall season to prepare the forest and its denizens for the cold of winter. Because of this, aumleaves tend to befriend many insects and small animals. An aumleaf is not easily angered but they are known to be extremely protective of the environment, their pets and each other."
-						]
-					},
-					{
-						"type": "entries",
-						"name": "Unnoticed",
-						"entries": [
-							"It is pretty hard to spot an aumleaf, especially in the fall season. Not only does their natural camouflage hide them in plain sight, but their innate magical abilities help them to blend in to their surroundings perfectly."
+							"The aumleaf is an extremely small fey creature that looks like a fallen leaf. Despite their slightly frightening visage they are actually quite friendly. Known to befriend various forest creatures as well as {@creature treant||treants}, these leafy fellows feel most at home on the forest floor.",
+							{
+								"type": "entries",
+								"name": "Community",
+								"entries": [
+									"Aumleaves usually live in small tribes deep in the forest, far away from civilization. Aumleaves take care of the forest and work hard in the fall season to prepare the forest and its denizens for the cold of winter. Because of this, aumleaves tend to befriend many insects and small animals. An aumleaf is not easily angered but they are known to be extremely protective of the environment, their pets and each other."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Unnoticed",
+								"entries": [
+									"It is pretty hard to spot an aumleaf, especially in the fall season. Not only does their natural camouflage hide them in plain sight, but their innate magical abilities help them to blend in to their surroundings perfectly."
+								]
+							}
 						]
 					}
 				],
@@ -10761,18 +12145,22 @@
 				"RW"
 			],
 			"environment": [
-				"forest",
 				"grassland",
 				"hill"
 			],
 			"fluff": {
 				"entries": [
-					"Autumn elementals are a type of {@creature air elemental} that have absorbed a great amount of fallen leaves and dirt off the ground in the stormy fall season. Because of this, an autumn elemental is slightly more tumultuous, volatile and dangerous than a regular air elemental.",
 					{
 						"type": "entries",
-						"name": "Howling Winds",
 						"entries": [
-							"What really sets these elementals apart is the sounds of howling winds they make. These sounds are often mistaken for ghosts or spirits which causes people to believe that locations where an autumn elemental resides are haunted."
+							"Autumn elementals are a type of {@creature air elemental} that have absorbed a great amount of fallen leaves and dirt off the ground in the stormy fall season. Because of this, an autumn elemental is slightly more tumultuous, volatile and dangerous than a regular air elemental.",
+							{
+								"type": "entries",
+								"name": "Howling Winds",
+								"entries": [
+									"What really sets these elementals apart is the sounds of howling winds they make. These sounds are often mistaken for ghosts or spirits which causes people to believe that locations where an autumn elemental resides are haunted."
+								]
+							}
 						]
 					}
 				],
@@ -10905,7 +12293,7 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The cait sidhe makes 3 claw attacks or 2 attacks with {@i Fey Claw}."
+						"The cait sidhe makes three claw attacks or two attacks with {@i Fey Claw}."
 					]
 				},
 				{
@@ -10940,14 +12328,24 @@
 					]
 				}
 			],
+			"environment": [
+				"feywild",
+				"forest",
+				"urban"
+			],
 			"fluff": {
 				"entries": [
-					"A cait sidhe is a fey creature that looks like a large black cat with a white spot on its chest. There are many different stories about these creatures that all differ wildly across cultures and kingdoms. What is made perfectly clear in all these stories, however, is that a cait sidhe can be incredibly dangerous if you are careless enough to displease them.",
 					{
 						"type": "entries",
-						"name": "Friend or Foe",
 						"entries": [
-							"The cait sidhe is a solitary creature that roams both the material plane and their native plane, the feywild. Sometimes they befriend other intelligent fey or humanoids if they are exceptionally kind to the cait sidhe. Their trust is not easily lost, but if it is, it will never be regained."
+							"A cait sidhe is a fey creature that looks like a large black cat with a white spot on its chest. There are many different stories about these creatures that all differ wildly across cultures and kingdoms. What is made perfectly clear in all these stories, however, is that a cait sidhe can be incredibly dangerous if you are careless enough to displease them.",
+							{
+								"type": "entries",
+								"name": "Friend or Foe",
+								"entries": [
+									"The cait sidhe is a solitary creature that roams both the material plane and their native plane, the feywild. Sometimes they befriend other intelligent fey or humanoids if they are exceptionally kind to the cait sidhe. Their trust is not easily lost, but if it is, it will never be regained."
+								]
+							}
 						]
 					}
 				],
@@ -11079,13 +12477,13 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The candle guard makes two Snuffer Maul attacks."
+						"The candle guard makes two {@i Snuffer Maul} attacks."
 					]
 				},
 				{
 					"name": "Snuffer Maul",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}9 ({@damage 1d10 + 4}) bludeoning damage."
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}9 ({@damage 1d10 + 4}) bludgeoning damage."
 					]
 				}
 			],
@@ -11099,14 +12497,22 @@
 				"MW",
 				"RCH"
 			],
+			"environment": [
+				"urban"
+			],
 			"fluff": {
 				"entries": [
-					"These wax-headed constructs are ever vigilant, standing ready until the moment they are lit. Candle guards are protectors by design and are often seen in the service of people who think hiring, feeding, housing, and trusting humanoid guards is not the best option. In some places in the world, candle guards are used exclusively as night guards to allow a full night of rest for their humanoid counterparts.",
 					{
 						"type": "entries",
-						"name": "Bringers of Light",
 						"entries": [
-							"Candle guards are humanoid-sized constructs that are made to protect a place or person. The enchantments by which they are animated allows them to perform some small feats of magic. This grants them the ability to repair minor damage they sustain, keep their own flames lit, and ignite other candle guards in case it is required or ordered."
+							"These wax-headed constructs are ever vigilant, standing ready until the moment they are lit. Candle guards are protectors by design and are often seen in the service of people who think hiring, feeding, housing, and trusting humanoid guards is not the best option. In some places in the world, candle guards are used exclusively as night guards to allow a full night of rest for their humanoid counterparts.",
+							{
+								"type": "entries",
+								"name": "Bringers of Light",
+								"entries": [
+									"Candle guards are humanoid-sized constructs that are made to protect a place or person. The enchantments by which they are animated allows them to perform some small feats of magic. This grants them the ability to repair minor damage they sustain, keep their own flames lit, and ignite other candle guards in case it is required or ordered."
+								]
+							}
 						]
 					}
 				],
@@ -11166,29 +12572,38 @@
 			"miscTags": [
 				"MW"
 			],
+			"environment": [
+				"forest",
+				"grassland"
+			],
 			"fluff": {
 				"entries": [
-					"Grexian hornets are often found in tropical climates. This hornet can grow up to 4 inches long from head to stinger and lives in small hives of up to 150 individuals. Their hives are built on rocky cliff sides and trees and consist of layers of plant fibers. In the center of this hive lives the queen, an immobile specimen that lays eggs and feeds the young.",
-					"Coming across a few hornets is no problem for the average adventurer, but fighting {@creature swarm of grexian hornets|ba|an entire hive} without the proper equipment or magic may prove troublesome.",
 					{
 						"type": "entries",
-						"name": "Disease Vector",
 						"entries": [
-							"Grexian hornets are the main vector for {@disease grexialis|ba}, a disease that invokes hallucinations and impairs higher brain functions."
-						]
-					},
-					{
-						"type": "entries",
-						"name": "Omnivores",
-						"entries": [
-							"Grexian hornets have a diet that consists mainly of fruits and are particularly attracted to citrus fruits. However, grexian hornets have been known to scavenge the remains of corpses and consume flesh. Small mammals and birds sometimes fall prey to a swarm of agitated grexian hornets\u2014though this is very rare."
-						]
-					},
-					{
-						"type": "entries",
-						"name": "Territorial and Angry",
-						"entries": [
-							"It is easy to stay clear of a hive of grexian hornets. One need only keep an ear out for the characteristic deep buzzing sound. If a person were to wander near a hive they can expect to be instantly attacked by the hornets inside. Individual hornets or hornets far away from the hive are only aggressive when agitated or disturbed."
+							"Grexian hornets are often found in tropical climates. This hornet can grow up to 4 inches long from head to stinger and lives in small hives of up to 150 individuals. Their hives are built on rocky cliff sides and trees and consist of layers of plant fibers. In the center of this hive lives the queen, an immobile specimen that lays eggs and feeds the young.",
+							"Coming across a few hornets is no problem for the average adventurer, but fighting {@creature swarm of grexian hornets|ba|an entire hive} without the proper equipment or magic may prove troublesome.",
+							{
+								"type": "entries",
+								"name": "Disease Vector",
+								"entries": [
+									"Grexian hornets are the main vector for {@disease grexialis|ba}, a disease that invokes hallucinations and impairs higher brain functions."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Omnivores",
+								"entries": [
+									"Grexian hornets have a diet that consists mainly of fruits and are particularly attracted to citrus fruits. However, grexian hornets have been known to scavenge the remains of corpses and consume flesh. Small mammals and birds sometimes fall prey to a swarm of agitated grexian hornets\u2014though this is very rare."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Territorial and Angry",
+								"entries": [
+									"It is easy to stay clear of a hive of grexian hornets. One need only keep an ear out for the characteristic deep buzzing sound. If a person were to wander near a hive they can expect to be instantly attacked by the hornets inside. Individual hornets or hornets far away from the hive are only aggressive when agitated or disturbed."
+								]
+							}
 						]
 					}
 				],
@@ -11267,29 +12682,38 @@
 			"miscTags": [
 				"MW"
 			],
+			"environment": [
+				"forest",
+				"grassland"
+			],
 			"fluff": {
 				"entries": [
-					"Grexian hornets are often found in tropical climates. This hornet can grow up to 4 inches long from head to stinger and lives in small hives of up to 150 individuals. Their hives are built on rocky cliff sides and trees and consist of layers of plant fibers. In the center of this hive lives the queen, an immobile specimen that lays eggs and feeds the young.",
-					"Coming across {@creature grexian hornet|ba|a few hornets} is no problem for the average adventurer, but fighting an entire hive without the proper equipment or magic may prove troublesome.",
 					{
 						"type": "entries",
-						"name": "Disease Vector",
 						"entries": [
-							"Grexian hornets are the main vector for {@disease grexialis|ba}, a disease that invokes hallucinations and impairs higher brain functions."
-						]
-					},
-					{
-						"type": "entries",
-						"name": "Omnivores",
-						"entries": [
-							"Grexian hornets have a diet that consists mainly of fruits and are particularly attracted to citrus fruits. However, grexian hornets have been known to scavenge the remains of corpses and consume flesh. Small mammals and birds sometimes fall prey to a swarm of agitated grexian hornets\u2014though this is very rare."
-						]
-					},
-					{
-						"type": "entries",
-						"name": "Territorial and Angry",
-						"entries": [
-							"It is easy to stay clear of a hive of grexian hornets. One need only keep an ear out for the characteristic deep buzzing sound. If a person were to wander near a hive they can expect to be instantly attacked by the hornets inside. Individual hornets or hornets far away from the hive are only aggressive when agitated or disturbed."
+							"Grexian hornets are often found in tropical climates. This hornet can grow up to 4 inches long from head to stinger and lives in small hives of up to 150 individuals. Their hives are built on rocky cliff sides and trees and consist of layers of plant fibers. In the center of this hive lives the queen, an immobile specimen that lays eggs and feeds the young.",
+							"Coming across {@creature grexian hornet|ba|a few hornets} is no problem for the average adventurer, but fighting an entire hive without the proper equipment or magic may prove troublesome.",
+							{
+								"type": "entries",
+								"name": "Disease Vector",
+								"entries": [
+									"Grexian hornets are the main vector for {@disease grexialis|ba}, a disease that invokes hallucinations and impairs higher brain functions."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Omnivores",
+								"entries": [
+									"Grexian hornets have a diet that consists mainly of fruits and are particularly attracted to citrus fruits. However, grexian hornets have been known to scavenge the remains of corpses and consume flesh. Small mammals and birds sometimes fall prey to a swarm of agitated grexian hornets\u2014though this is very rare."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Territorial and Angry",
+								"entries": [
+									"It is easy to stay clear of a hive of grexian hornets. One need only keep an ear out for the characteristic deep buzzing sound. If a person were to wander near a hive they can expect to be instantly attacked by the hornets inside. Individual hornets or hornets far away from the hive are only aggressive when agitated or disturbed."
+								]
+							}
 						]
 					}
 				],
@@ -11417,19 +12841,24 @@
 			],
 			"fluff": {
 				"entries": [
-					"Hartindeeves are notorious for clawing out the hearts of their prey. They place the heart in a cavity in their chest, where it starts beating again. It is believed this is how the hartindeef sustains itself as they have no way of consuming food or drink. Those who have survived a fight with a hartindeef swear that they could see the heart beating within its gruesome chest.",
 					{
 						"type": "entries",
-						"name": "Demon of Grief",
 						"entries": [
-							"A hartindeef feeds off the grief and sadness in humanoid hearts. As such, they are often drawn to the heartbroken and bereaved."
-						]
-					},
-					{
-						"type": "entries",
-						"name": "Eyes of Loss",
-						"entries": [
-							"The eyes of a hartindeef are a dangerous weapon. {@condition blinded||Blinding} the hartindeef can prevent it from using this powerful gaze. Alchemists have used the eyes of a hartindeef for potions that fortify the mind and modify the memory to erase feelings of grief. There is a strong superstition among some peoples that consuming such a potion attracts more demonic creatures to them. Because of this, it is not common practice to create or consume these potions and is only done so as a last resort."
+							"Hartindeeves are notorious for clawing out the hearts of their prey. They place the heart in a cavity in their chest, where it starts beating again. It is believed this is how the hartindeef sustains itself as they have no way of consuming food or drink. Those who have survived a fight with a hartindeef swear that they could see the heart beating within its gruesome chest.",
+							{
+								"type": "entries",
+								"name": "Demon of Grief",
+								"entries": [
+									"A hartindeef feeds off the grief and sadness in humanoid hearts. As such, they are often drawn to the heartbroken and bereaved."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Eyes of Loss",
+								"entries": [
+									"The eyes of a hartindeef are a dangerous weapon. {@condition blinded||Blinding} the hartindeef can prevent it from using this powerful gaze. Alchemists have used the eyes of a hartindeef for potions that fortify the mind and modify the memory to erase feelings of grief. There is a strong superstition among some peoples that consuming such a potion attracts more demonic creatures to them. Because of this, it is not common practice to create or consume these potions and is only done so as a last resort."
+								]
+							}
 						]
 					}
 				],
@@ -11510,14 +12939,22 @@
 			"miscTags": [
 				"MW"
 			],
+			"environment": [
+				"swamp"
+			],
 			"fluff": {
 				"entries": [
-					"Leeches can be found swimming through murky waters and crawling through the mud. In some places people even use them for medical purposes. Their {@creature giant leech|ba|gigantic variation} is often encountered in swamps and sometimes on other planes of existence where the planar magic changes their physical size.",
 					{
 						"type": "entries",
-						"name": "Swarms",
 						"entries": [
-							"Leeches are often encountered in groups."
+							"Leeches can be found swimming through murky waters and crawling through the mud. In some places people even use them for medical purposes. Their {@creature giant leech|ba|gigantic variation} is often encountered in swamps and sometimes on other planes of existence where the planar magic changes their physical size.",
+							{
+								"type": "entries",
+								"name": "Swarms",
+								"entries": [
+									"Leeches are often encountered in groups."
+								]
+							}
 						]
 					}
 				],
@@ -11604,21 +13041,29 @@
 			"miscTags": [
 				"MW"
 			],
+			"environment": [
+				"swamp"
+			],
 			"fluff": {
 				"entries": [
-					"{@creature leech|ba|Leeches} can be found swimming through murky waters and crawling through the mud. In some places people even use them for medical purposes. Their gigantic variation is often encountered in swamps and sometimes on other planes of existence where the planar magic changes their physical size.",
 					{
 						"type": "entries",
-						"name": "Swarms",
 						"entries": [
-							"Leeches are often encountered in groups. Giant leeches, however, often hunt alone or in packs of 3."
-						]
-					},
-					{
-						"type": "entries",
-						"name": "Horrific Teeth",
-						"entries": [
-							"Unlike its smaller counterpart, a giant leech tends to swallow a creature whole to drain it of its blood. For this purpose the entire inside of the leech is lined with rows of sharp teeth."
+							"{@creature leech|ba|Leeches} can be found swimming through murky waters and crawling through the mud. In some places people even use them for medical purposes. Their gigantic variation is often encountered in swamps and sometimes on other planes of existence where the planar magic changes their physical size.",
+							{
+								"type": "entries",
+								"name": "Swarms",
+								"entries": [
+									"Leeches are often encountered in groups. Giant leeches, however, often hunt alone or in packs of 3."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Horrific Teeth",
+								"entries": [
+									"Unlike its smaller counterpart, a giant leech tends to swallow a creature whole to drain it of its blood. For this purpose the entire inside of the leech is lined with rows of sharp teeth."
+								]
+							}
 						]
 					}
 				],
@@ -11694,7 +13139,7 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The lindwyrm makes 3 attacks, one with its bite and two with its claws."
+						"The lindwyrm makes three attacks, one with its bite and two with its claws."
 					]
 				},
 				{
@@ -11737,14 +13182,22 @@
 					]
 				}
 			],
+			"environment": [
+				"underdark"
+			],
 			"fluff": {
 				"entries": [
-					"Deep underground, in damp tunnels and muddy caverns dwell the draconic creatures known as lindwyrms. These pale, slimy creatures employ their sharp teeth and claws to catch their prey by surprise in the complete darkness of their habitats. Lindwyrms are not as smart as their winged cousins, but they are extremely vicious and territorial. When a lindwyrm is threatened, it will most likely fight to the death in a blind fury of claws and teeth.",
 					{
 						"type": "entries",
-						"name": "Disgusting Lair",
 						"entries": [
-							"A lindwyrm does not consume its prey fresh. It kills its victim and lets it rot for at least a week in its lair. Pools of fetid and acidic water are a place of rest for the lindwyrm, sleeping just below the surface. If anything enters the lindwyrm's lair, it will sneak through these pools to ambush the intruder."
+							"Deep underground, in damp tunnels and muddy caverns dwell the draconic creatures known as lindwyrms. These pale, slimy creatures employ their sharp teeth and claws to catch their prey by surprise in the complete darkness of their habitats. Lindwyrms are not as smart as their winged cousins, but they are extremely vicious and territorial. When a lindwyrm is threatened, it will most likely fight to the death in a blind fury of claws and teeth.",
+							{
+								"type": "entries",
+								"name": "Disgusting Lair",
+								"entries": [
+									"A lindwyrm does not consume its prey fresh. It kills its victim and lets it rot for at least a week in its lair. Pools of fetid and acidic water are a place of rest for the lindwyrm, sleeping just below the surface. If anything enters the lindwyrm's lair, it will sneak through these pools to ambush the intruder."
+								]
+							}
 						]
 					}
 				],
@@ -11759,6 +13212,1339 @@
 				]
 			},
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Lindwyrm-Token.webp"
+		},
+		{
+			"name": "Pumpkin Ooze",
+			"source": "ba",
+			"size": "M",
+			"type": "ooze",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				8
+			],
+			"hp": {
+				"average": 34,
+				"formula": "4d8 + 16"
+			},
+			"speed": {
+				"walk": 15,
+				"climb": 15
+			},
+			"str": 16,
+			"dex": 6,
+			"con": 18,
+			"int": 2,
+			"wis": 5,
+			"cha": 1,
+			"immune": [
+				"lightning",
+				"necrotic",
+				"slashing"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"prone"
+			],
+			"senses": [
+				"darkvision 60 ft. ({@condition blinded||blind} beyond this radius)"
+			],
+			"senseTags": [
+				"D"
+			],
+			"passive": 7,
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Amorphous",
+					"entries": [
+						"The pumpkin ooze can move through a space as narrow as 1 inch wide without squeezing."
+					]
+				},
+				{
+					"name": "Gourd Absorb",
+					"entries": [
+						"When the pumpkin ooze moves into the space of a pumpkin, gourd, or other squash, it is absorbed by the ooze and the pumpkin ooze gains {@dice 2d6 + 4} temporary hit points."
+					]
+				}
+			],
+			"traitTags": [
+				"Amorphous"
+			],
+			"action": [
+				{
+					"name": "Pseudopod",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) bludgeoning damage plus 2 ({@damage 1d4}) necrotic damage."
+					]
+				},
+				{
+					"name": "Ooze Touch",
+					"entries": [
+						"The pumpkin ooze touches a pumpkin, gourd, or other squash within 5 feet of itself and imbues it with necrotic energy. The pumpkin turns into an independent pumpkin ooze after {@dice 1d4} rounds that acts on the same initiative count as the parent ooze. The new ooze's maximum hit points are halved for the first 24 hours following its creation."
+					]
+				}
+			],
+			"damageTags": [
+				"B",
+				"N"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Royal Pumpkin Ooze",
+					"entries": [
+						"Sometimes, when a pumpkin ooze absorbs a great number of pumpkins, it turns into the greater {@i royal pumpkin ooze} (sometimes called a {@i pumpkin spice ooze} due to its distinct smell). The royal pumpkin ooze is a pumpkin ooze with the following changes:",
+						"Its size becomes Large and its CR increases to 3 (700 xp). It has 142 ({@dice 15d10 + 60}) hit points. Additionally, it gains the following action option.",
+						{
+							"type": "entries",
+							"name": "Multiattack",
+							"entries": [
+								"The royal pumpkin ooze makes three pseudopod attacks and uses {@i Ooze Touch} once."
+							]
+						}
+					]
+				}
+			],
+			"environment": [
+				"swamp",
+				"underdark"
+			],
+			"fluff": {
+				"entries": [
+					{
+						"type": "entries",
+						"entries": [
+							"Jack 'o lanterns and pumpkins that are left out to rot have a chance to turn into a goopy animate slime known as a pumpkin ooze. Whether this happens because of wild magic surges or because a pumpkin came into contact with another type of ooze is unknown.",
+							{
+								"type": "entries",
+								"name": "Pumpkin Plague",
+								"entries": [
+									"The biggest problem with these oozes is that they tend to infect other pumpkins, turning them into more oozes. It is not uncommon for a single pumpkin ooze to multiply into dozens during celebratory harvest seasons."
+								]
+							}
+						]
+					}
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Pumpkin-Ooze.webp"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Pumpkin-Ooze-Token.webp"
+		},
+		{
+			"name": "Sand Elemental",
+			"source": "ba",
+			"size": "L",
+			"type": "elemental",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 114,
+				"formula": "12d10 + 48"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 20,
+			"dex": 11,
+			"con": 18,
+			"int": 5,
+			"wis": 10,
+			"cha": 7,
+			"save": {
+				"str": "+8"
+			},
+			"skill": {
+				"athletics": "+8"
+			},
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"unconscious"
+			],
+			"senses": [
+				"darkvision 60 ft.",
+				"tremorsense 60 ft."
+			],
+			"senseTags": [
+				"D",
+				"T"
+			],
+			"passive": 10,
+			"languages": [
+				"Terran"
+			],
+			"languageTags": [
+				"T"
+			],
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Sand Form",
+					"entries": [
+						"The elemental can move through a space as narrow as 1 inch wide without squeezing."
+					]
+				},
+				{
+					"name": "False Appearance",
+					"entries": [
+						"While the elemental remains motionless, it is indistinguishable from ordinary sand."
+					]
+				}
+			],
+			"traitTags": [
+				"Amorphous",
+				"False Appearance"
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The elemental makes two slam attacks."
+					]
+				},
+				{
+					"name": "Slam",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 15 ft., one target. {@h}14 ({@damage 2d8 + 5}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Dune's Embrace",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d8}) bludgeoning damage plus 2 ({@damage 1d4}) bludgeoning damage. If the target is Medium or smaller, it must succeed on a {@dc 16} Strength saving throw or become {@condition grappled} by the elemental. Until the grapple ends, the target is also considered {@condition restrained}. The elemental may have up to 3 creatures grappled this way."
+					]
+				}
+			],
+			"damageTags": [
+				"B"
+			],
+			"conditionInflict": [
+				"grappled",
+				"restrained"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"environment": [
+				"desert"
+			],
+			"fluff": {
+				"entries": [
+					{
+						"type": "entries",
+						"entries": [
+							"In arid deserts and sun-scorched wastelands, adventurers may encounter sand elementals. These creatures are related to the more common {@creature earth elemental}, but their general demeanor tends to be softer. Sand elementals usually do not actively seek confrontation, but stepping on (or rather in) one may provoke it. Because of their physicality, it is not uncommon for sand elementals to be mistaken for quicksand.",
+							{
+								"type": "entries",
+								"name": "Nomads and Wanderers",
+								"entries": [
+									"Sand elementals are not known to guard locations or stay in one place for very long. In contrast to most creatures that seek water and shade, a sand elemental will always try to be in the heat of the sun and avoid water for as long as possible. This behavior explains daily and seasonal movements of sand elementals. Those familiar with this behavior have even used it to their advantage to find their way in the desert and move toward sources of water."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Aquaphobia",
+								"entries": [
+									"It is rare to encounter a sand elemental in a subterranean environment (or other moist locales) except during heavy rainfall or thunderstorms, when they find shelter deep beneath the ground in caverns, caves or crypts in an attempt to stay dry."
+								]
+							}
+						]
+					}
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Sand-Elemental.webp"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Sand-Elemental-Token.webp"
+		},
+		{
+			"name": "Frightful Spirit",
+			"source": "ba",
+			"size": "S",
+			"type": {
+				"type": "undead",
+				"tags": [
+					"spirit"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				15
+			],
+			"hp": {
+				"average": 16,
+				"formula": "3d6 + 6"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 2,
+			"dex": 20,
+			"con": 14,
+			"int": 5,
+			"wis": 16,
+			"cha": 6,
+			"save": {
+				"dex": "+7",
+				"wis": "+5"
+			},
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": [
+				"necrotic",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"grappled",
+				"paralyzed",
+				"poisoned",
+				"prone",
+				"restrained",
+				"unconscious"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			],
+			"passive": 13,
+			"languages": [
+				"understands all languages it knew in life but can't speak"
+			],
+			"languageTags": [
+				"CS",
+				"LF"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Ephemeral",
+					"entries": [
+						"The spirit can't wear or carry anything."
+					]
+				},
+				{
+					"name": "Flyby",
+					"entries": [
+						"The spirit doesn't provoke opportunity attacks when it flies out of an enemy's reach."
+					]
+				},
+				{
+					"name": "Incorporeal Movement",
+					"entries": [
+						"The spirit can move through other creatures and objects as if they were difficult terrain. It takes 4 ({@damage 1d8}) force damage if it ends its turn inside an object."
+					]
+				}
+			],
+			"traitTags": [
+				"Flyby",
+				"Incorporeal Movement"
+			],
+			"action": [
+				{
+					"name": "Haunting Touch",
+					"entries": [
+						"{@atk ms} {@hit 5} to hit, reach 5 ft., one target. {@h}8 ({@damage 2d4 + 3}) psychic damage."
+					]
+				},
+				{
+					"name": "Frightful Howl",
+					"entries": [
+						"The spirit releases a horrifying screech, forcing all creatures that can hear it to make a Wisdom saving throw ({@dc 13}) or take 5 ({@damage 1d4 + 3}) psychic damage and become {@condition frightened} of the spirit. A frightened target can repeat the saving throw at the end of each of its turns, with disadvantage if the spirit is within line of sight, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the spirit's {@i Frightful Howl} for the next 24 hours."
+					]
+				}
+			],
+			"damageTags": [
+				"Y",
+				"O"
+			],
+			"conditionInflict": [
+				"frightened"
+			],
+			"fluff": {
+				"entries": [
+					{
+						"type": "entries",
+						"entries": [
+							"Spirits are echos of a creature's soul after death. A spirit can manifest in many ways. Sometimes, they can be a wayward soul and maintain personality and coherent thought. However, most spirits are just shreds of a soul that can be seen as the pure essence of emotion or trauma. Unlike other ephemeral undead such as {@creature ghost||ghosts}, these type of spirits most often do not seem to possess any type of coherent intelligence.",
+							{
+								"type": "entries",
+								"name": "Frightful Spirit",
+								"entries": [
+									"Borne of the strongest dread and fear, the {@i frightful spirit} preys on the fears of the living. They are also known as {@i haunting spirits}, and can be recognized by their intense wailing. People who have encountered a frightful spirit sometimes recall seeing the visage of their deepest fear, rather than the spirit itself. A frightful spirit is extremely erratic and will move and attack seemingly at random when encountered in battle."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Spiteful Spirit",
+								"entries": [
+									"A {@creature spiteful spirit|ba} is best left alone, and will generally ignore adventurers who do so. Spiteful spirits will hurt anyone (or anything) that hurts them, and are known to focus their ire on the first creature who attacks them. This kind of spirit is known to flee direct confrontation, stalking their attacker until a more opportune moment. It is extremely important to be rid of spiteful spirits\u2014that is, if you appreciate sleeping soundly."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Vengeful Spirit",
+								"entries": [
+									"Preying on the weak and looking to hurt whoever they can, the {@creature vengeful spirit|ba} is an aggressive spirit that will strike out at any creatures who come near. They usually roam in places such as long-forgotten battlefields or sites of dishonorable conduct. In battle they will often turn their attention to the latest source of harm because of this, without regard for any other creatures or dangers that may stand between them and their target."
+								]
+							}
+						]
+					}
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Frightful-Spirit.webp"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Frightful-Spirit-Token.webp"
+		},
+		{
+			"name": "Spiteful Spirit",
+			"source": "ba",
+			"size": "S",
+			"type": {
+				"type": "undead",
+				"tags": [
+					"spirit"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				15
+			],
+			"hp": {
+				"average": 19,
+				"formula": "3d6 + 9"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 50,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 2,
+			"dex": 20,
+			"con": 16,
+			"int": 7,
+			"wis": 16,
+			"cha": 6,
+			"save": {
+				"dex": "+7",
+				"wis": "+5"
+			},
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": [
+				"necrotic",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"grappled",
+				"paralyzed",
+				"poisoned",
+				"prone",
+				"restrained",
+				"unconscious"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			],
+			"passive": 13,
+			"languages": [
+				"understands all languages it knew in life but can't speak"
+			],
+			"languageTags": [
+				"CS",
+				"LF"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Ephemeral",
+					"entries": [
+						"The spirit can't wear or carry anything."
+					]
+				},
+				{
+					"name": "Essence of Spite",
+					"entries": [
+						"A creature that attacks or ends its turn within 5 feet of the spirit takes 5 ({@damage 2d4 + 1}) psychic damage."
+					]
+				},
+				{
+					"name": "Incorporeal Movement",
+					"entries": [
+						"The spirit can move through other creatures and objects as if they were difficult terrain. It takes 4 ({@damage 1d8}) force damage if it ends its turn inside an object."
+					]
+				}
+			],
+			"traitTags": [
+				"Incorporeal Movement"
+			],
+			"action": [
+				{
+					"name": "Psychic Spike",
+					"entries": [
+						"{@atk ms,rs} {@hit 5} to hit, reach 5 ft., or range 60 ft., one target. {@h}10 ({@damage 3d4 + 3}) psychic damage."
+					]
+				}
+			],
+			"damageTags": [
+				"Y",
+				"O"
+			],
+			"fluff": {
+				"entries": [
+					{
+						"type": "entries",
+						"entries": [
+							"Spirits are echos of a creature's soul after death. A spirit can manifest in many ways. Sometimes, they can be a wayward soul and maintain personality and coherent thought. However, most spirits are just shreds of a soul that can be seen as the pure essence of emotion or trauma. Unlike other ephemeral undead such as {@creature ghost||ghosts}, these type of spirits most often do not seem to possess any type of coherent intelligence.",
+							{
+								"type": "entries",
+								"name": "Frightful Spirit",
+								"entries": [
+									"Borne of the strongest dread and fear, the {@creature frightful spirit|ba} preys on the fears of the living. They are also known as {@i haunting spirits}, and can be recognized by their intense wailing. People who have encountered a frightful spirit sometimes recall seeing the visage of their deepest fear, rather than the spirit itself. A frightful spirit is extremely erratic and will move and attack seemingly at random when encountered in battle."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Spiteful Spirit",
+								"entries": [
+									"A {@i spiteful spirit} is best left alone, and will generally ignore adventurers who do so. Spiteful spirits will hurt anyone (or anything) that hurts them, and are known to focus their ire on the first creature who attacks them. This kind of spirit is known to flee direct confrontation, stalking their attacker until a more opportune moment. It is extremely important to be rid of spiteful spirits\u2014that is, if you appreciate sleeping soundly."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Vengeful Spirit",
+								"entries": [
+									"Preying on the weak and looking to hurt whoever they can, the {@creature vengeful spirit|ba} is an aggressive spirit that will strike out at any creatures who come near. They usually roam in places such as long-forgotten battlefields or sites of dishonorable conduct. In battle they will often turn their attention to the latest source of harm because of this, without regard for any other creatures or dangers that may stand between them and their target."
+								]
+							}
+						]
+					}
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Spiteful-Spirit.webp"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Spiteful-Spirit-Token.webp"
+		},
+		{
+			"name": "Vengeful Spirit",
+			"source": "ba",
+			"size": "S",
+			"type": {
+				"type": "undead",
+				"tags": [
+					"spirit"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				15
+			],
+			"hp": {
+				"average": 16,
+				"formula": "3d6 + 6"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 50,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 2,
+			"dex": 20,
+			"con": 14,
+			"int": 7,
+			"wis": 16,
+			"cha": 6,
+			"save": {
+				"dex": "+7",
+				"wis": "+5"
+			},
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": [
+				"necrotic",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"grappled",
+				"paralyzed",
+				"poisoned",
+				"prone",
+				"restrained",
+				"unconscious"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			],
+			"passive": 13,
+			"languages": [
+				"understands all languages it knew in life but can't speak"
+			],
+			"languageTags": [
+				"CS",
+				"LF"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Ephemeral",
+					"entries": [
+						"The spirit can't wear or carry anything."
+					]
+				},
+				{
+					"name": "Essence of Vengeance",
+					"entries": [
+						"When a creature attacks the spirit, they must make a Wisdom saving throw ({@dc 13}). On a failed save, the next attack made against that creature is made with advantage."
+					]
+				},
+				{
+					"name": "Incorporeal Movement",
+					"entries": [
+						"The spirit can move through other creatures and objects as if they were difficult terrain. It takes 4 ({@damage 1d8}) force damage if it ends its turn inside an object."
+					]
+				}
+			],
+			"traitTags": [
+				"Incorporeal Movement"
+			],
+			"action": [
+				{
+					"name": "Vengeful Spike",
+					"entries": [
+						"{@atk ms,rs} {@hit 5} to hit, reach 5 ft., or range 60 ft., one target. {@h}10 ({@damage 3d4 + 3}) necrotic damage."
+					]
+				}
+			],
+			"damageTags": [
+				"N",
+				"O"
+			],
+			"fluff": {
+				"entries": [
+					{
+						"type": "entries",
+						"entries": [
+							"Spirits are echos of a creature's soul after death. A spirit can manifest in many ways. Sometimes, they can be a wayward soul and maintain personality and coherent thought. However, most spirits are just shreds of a soul that can be seen as the pure essence of emotion or trauma. Unlike other ephemeral undead such as {@creature ghost||ghosts}, these type of spirits most often do not seem to possess any type of coherent intelligence.",
+							{
+								"type": "entries",
+								"name": "Frightful Spirit",
+								"entries": [
+									"Borne of the strongest dread and fear, the {@creature frightful spirit|ba} preys on the fears of the living. They are also known as {@i haunting spirits}, and can be recognized by their intense wailing. People who have encountered a frightful spirit sometimes recall seeing the visage of their deepest fear, rather than the spirit itself. A frightful spirit is extremely erratic and will move and attack seemingly at random when encountered in battle."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Spiteful Spirit",
+								"entries": [
+									"A {@creature spiteful spirit|ba} is best left alone, and will generally ignore adventurers who do so. Spiteful spirits will hurt anyone (or anything) that hurts them, and are known to focus their ire on the first creature who attacks them. This kind of spirit is known to flee direct confrontation, stalking their attacker until a more opportune moment. It is extremely important to be rid of spiteful spirits\u2014that is, if you appreciate sleeping soundly."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Vengeful Spirit",
+								"entries": [
+									"Preying on the weak and looking to hurt whoever they can, the {@i vengeful spirit} is an aggressive spirit that will strike out at any creatures who come near. They usually roam in places such as long-forgotten battlefields or sites of dishonorable conduct. In battle they will often turn their attention to the latest source of harm because of this, without regard for any other creatures or dangers that may stand between them and their target."
+								]
+							}
+						]
+					}
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Vengeful-Spirit.webp"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Vengeful-Spirit-Token.webp"
+		},
+		{
+			"name": "Spirit Caller",
+			"source": "ba",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"any race"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				12,
+				{
+					"ac": 16,
+					"condition": "with {@i Spirit Ward}",
+					"braces": true
+				}
+			],
+			"hp": {
+				"average": 117,
+				"formula": "18d8 + 36"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 14,
+			"con": 15,
+			"int": 12,
+			"wis": 18,
+			"cha": 12,
+			"save": {
+				"con": "+5",
+				"wis": "+7"
+			},
+			"skill": {
+				"arcana": "+4",
+				"insight": "+7",
+				"intimidation": "+4",
+				"religion": "+4"
+			},
+			"resist": [
+				"necrotic"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			],
+			"passive": 14,
+			"languages": [
+				"any two languages (usually Common and one other)"
+			],
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"cr": "8",
+			"trait": [
+				{
+					"name": "Spirit Ward",
+					"entries": [
+						"The spirit caller can use a bonus action to sacrifice one spirit they have summoned using their {@i Summon Spirit} ability to increase their AC to 16 for 8 hours."
+					]
+				},
+				{
+					"name": "Censer of the Afterlife",
+					"entries": [
+						"All hostile undead creatures within 10 feet of the spirit caller have disadvantage on all saving throws."
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The spirit caller is a 9th-level spellcaster. Their spellcasting ability is Wisdom (spell save {@dc 15}, {@hit 7} to hit with spell attacks). The spirit caller has following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light}",
+								"{@spell sacred flame}",
+								"{@spell spare the dying}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell bane}",
+								"{@spell bless}",
+								"{@spell cure wounds}",
+								"{@spell inflict wounds}",
+								"{@spell shield of faith}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell gentle repose}",
+								"{@spell hold person}",
+								"{@spell prayer of healing}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell bestow curse}",
+								"{@spell revivify}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell banishment}",
+								"{@spell death ward}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell planar binding}",
+								"{@spell raise dead}"
+							]
+						}
+					},
+					"ability": "wis"
+				}
+			],
+			"spellcastingTags": [
+				"CC"
+			],
+			"conditionInflictSpell": [
+				"paralyzed"
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The spirit caller makes two attacks with their {@i Censer Flail}."
+					]
+				},
+				{
+					"name": "Censer Flail",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}7 ({@damage 1d8 + 3}) bludgeoning damage plus 5 ({@damage 2d4}) necrotic damage."
+					]
+				},
+				{
+					"name": "Summon Spirit {@recharge 4}",
+					"entries": [
+						"The spirit caller summons one spirit. The spirit caller can sacrifice a piece of themselves to select a specific spirit (taking {@damage 1d4 - 1} necrotic damage), or you can roll to determine the spirit summoned randomly on the table below.",
+						"The spirit caller can use a bonus action to command any or all of the spirits they have summoned. The summoned spirit takes its turn directly after the spirit caller in the initiative order.",
+						"The spirit caller can summon up to 10 spirits per long rest, and can have a maximum of six spirits summoned at any given time. Attempting to summon another spirit will cause the least recently summoned spirit to break free of the spirit caller's control and become hostile toward them.",
+						{
+							"type": "table",
+							"caption": "Spirits",
+							"colLabels": [
+								"{@dice d6}",
+								"Spirit Summoned"
+							],
+							"colStyles": [
+								"col-1 text-center"
+							],
+							"rows": [
+								[
+									"1-2",
+									"{@creature frightful spirit|ba}"
+								],
+								[
+									"3-4",
+									"{@creature spiteful spirit|ba}"
+								],
+								[
+									"5-6",
+									"{@creature vengeful spirit|ba}"
+								]
+							]
+						}
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B",
+				"N"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"fluff": {
+				"entries": [
+					{
+						"type": "entries",
+						"entries": [
+							"A spirit caller calls upon wayward spirits to aid them in battle. They walk a fine line between necromancy and divinity. Some of them worship deities, while others seek power for themselves. In some cultures they are respected as conduit to the spirits and the afterlife, but in others they are feared for their connection to death and the undead.",
+							{
+								"type": "entries",
+								"name": "Spirits from Beyond",
+								"entries": [
+									"Although little is known about the spirits that a spirit caller commands, it is generally believed that they are manifestations of damaged souls. Spirit callers possess the power to command these spirits so they may finally find peace in the afterlife when they perish."
+								]
+							}
+						]
+					}
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Spirit-Caller.webp"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Spirit-Caller-Token.webp"
+		},
+		{
+			"name": "Vrelock",
+			"source": "ba",
+			"size": "M",
+			"type": {
+				"type": "fiend",
+				"tags": [
+					"demon"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 19,
+				"formula": "3d8 + 6"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 11,
+			"dex": 15,
+			"con": 14,
+			"int": 10,
+			"wis": 12,
+			"cha": 9,
+			"skill": {
+				"stealth": "+4",
+				"perception": "+3"
+			},
+			"resist": [
+				"poison"
+			],
+			"immune": [
+				"acid"
+			],
+			"conditionImmune": [
+				"charmed",
+				"diseased|ba",
+				"frightened"
+			],
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"senseTags": [
+				"SD"
+			],
+			"passive": 11,
+			"languages": [
+				"Abyssal"
+			],
+			"languageTags": [
+				"AB"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Plague Aura",
+					"entries": [
+						"When any creature that isn't a fiend starts its turn within 15 feet of one or more vrelock, that creature must succeed on a {@dc 12} Constitution saving throw, taking 2 ({@damage 1d4}) poison damage, plus 1 poison damage for each vrelock within 15 feet of them."
+					]
+				},
+				{
+					"name": "Diseased Hold",
+					"entries": [
+						"If a creature is {@condition grappled} by the vrelock (or the vrelock is grappled by a creature), the creature grappling or grappled by the vrelock takes 2 ({@damage 1d4}) acid damage at the start of their turn."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The vrelock has advantage on saving throws against spells and other magical effects."
+					]
+				}
+			],
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The vrelock makes two attacks, one with with its bite and one with its claws."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}5 ({@damage 1d6 + 2}) piercing damage plus 2 ({@damage 1d4}) acid damage. On a successful hit, the target must make a {@dc 12} Constitution saving throw or become {@condition diseased|ba}."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}4 ({@damage 1d4 + 2}) slashing damage."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"A",
+				"P",
+				"S"
+			],
+			"conditionInflict": [
+				"diseased|ba"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Vrelock Disease Variants",
+					"entries": [
+						"One vrelock can assimilate a number of different diseases. Instead of applying the {@condition diseased|ba} condition during a bite attack, you can use any other disease or condition of your choice. (For example, you can roll on {@table d100 Diseases|ba} for inspiration.)"
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					{
+						"type": "entries",
+						"entries": [
+							"Although vrelocks are considered lesser demons, they are widely regarded as the heralds of plague and disease. Their bites can infect other creatures with various ailments, and even standing near one of these creatures can be dangerous for your wellbeing.",
+							{
+								"type": "entries",
+								"name": "Plague of Demons",
+								"entries": [
+									"Vrelocks are commonly encountered in larger packs (usually a half-dozen to a dozen). Their strength lies in their numbers. In the wars of the Lower Planes they are often dispatched (and sacrificed) for the sole purpose of afflicting the opposing force with a plague, reducing their strength."
+								]
+							},
+							{
+								"type": "entries",
+								"name": "Disease Hoarders",
+								"entries": [
+									"Vrelocks thrive on disease and rot. They assimilate sickness by consuming the flesh of diseased creatures. They then become the vector for this disease and are able to transfer it to their next victim, regardless of original vector. Surviving the initial attack from a pack of vrelocks is not the most important problem; Surviving the diseases they may have carried is perhaps a bigger ordeal."
+								]
+							}
+						]
+					}
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Vrelock.webp"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Vrelock-Token.webp"
+		},
+		{
+			"name": "Wrentuix",
+			"source": "ba",
+			"size": "S",
+			"type": "fey",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 66,
+				"formula": "12d6 + 24"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 12,
+			"dex": 14,
+			"con": 14,
+			"int": 17,
+			"wis": 10,
+			"cha": 9,
+			"save": {
+				"dex": "+5",
+				"int": "+6"
+			},
+			"skill": {
+				"acrobatics": "+5",
+				"arcana": "+6",
+				"perception": "+6"
+			},
+			"resist": [
+				"cold",
+				"necrotic"
+			],
+			"conditionImmune": [
+				"charmed"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			],
+			"passive": 10,
+			"languages": [
+				"Common",
+				"Sylvan"
+			],
+			"languageTags": [
+				"C",
+				"S"
+			],
+			"cr": "6",
+			"trait": [
+				{
+					"name": "Permanent Slave",
+					"entries": [
+						"The wrentuix can perform a one-hour ritual on an undead servant they gained through a spell (such as {@spell animate dead}). The ritual causes the undead servant to remain in the service of the wrentuix indefininetly, regardless of any time constraints outlined in the spell."
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The wrentuix is a 6th-level spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). It has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell minor illusion}",
+								"{@spell poison spray}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell expeditious retreat}",
+								"{@spell shield}",
+								"{@spell sleep}",
+								"{@spell unseen servant}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell invisibility}",
+								"{@spell misty step}",
+								"{@spell shatter}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell animate dead}",
+								"{@spell bestow curse}",
+								"{@spell counterspell}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
+			"spellcastingTags": [
+				"CW"
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The wrentuix makes three attacks with its claws if it is holding a staff, or four if it is not holding a staff."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}4 ({@damage 1d4 + 2}) slashing damage."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"environment": [
+				"feywild",
+				"forest",
+				"mountain"
+			],
+			"fluff": {
+				"entries": [
+					{
+						"type": "entries",
+						"entries": [
+							"The six-limbed fey creatures known as the wrentuix can often be found scampering through the snow-covered pine forests and across the frozen tundras of the realms. They are solitary creatures but often bend other beings to their will.",
+							"Wrentuix are deeply interested in the dark arts of necromancy. They are often encountered with a few reanimated corpses in their service. When they do not have such servants, they are most likely seeking an unfortunate creature to make a fresh corpse.",
+							{
+								"type": "entries",
+								"name": "Thieves and Tricksters",
+								"entries": [
+									"Wrentuix are infamous for their trickery. They covet magical staffs and wands more than anything, and often try to steal such items to use as their spellcasting focus. A Wrentuix that does not have a spellcasting focus will try its best to steal one from a waylaid wizard or sorcerer."
+								]
+							}
+						]
+					}
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Wrentuix.webp"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/creature/Wrentuix-Token.webp"
 		}
 	],
 	"subclass": [
@@ -19605,7 +22391,7 @@
 				[
 					"3",
 					"Holy",
-					"Sanctified ...",
+					"Sanctified...",
 					"Deals an additional 1 radiant damage on hit."
 				],
 				[
@@ -19617,25 +22403,25 @@
 				[
 					"5",
 					"Minor Force",
-					"Charged ...",
+					"Charged...",
 					"Deals an additional 1 force damage on hit."
 				],
 				[
 					"6",
 					"Minor lightning",
-					"Sparking ...",
+					"Sparking...",
 					"Deals an additional 1 lightning damage on hit."
 				],
 				[
 					"7",
 					"Minor Acid",
-					"Biting ...",
+					"Biting...",
 					"Deals an additional 1 acid damage on hit."
 				],
 				[
 					"8",
 					"Contaminated",
-					"Toxic ...",
+					"Toxic...",
 					"Deals an additional 1 poison damage on hit."
 				],
 				[
@@ -19659,19 +22445,19 @@
 				[
 					"12",
 					"Flamewrought",
-					"Blazing ...",
+					"Blazing...",
 					"Grants a +1 bonus to attack rolls and deals fire damage instead of the normal weapon damage."
 				],
 				[
 					"13",
 					"Coldforged",
-					"Glacial ...",
+					"Glacial...",
 					"Grants a +1 bonus to attack rolls and deals cold damage instead of the normal weapon type."
 				],
 				[
 					"14",
 					"Lifestealing",
-					"Vampiric ...",
+					"Vampiric...",
 					"Heals you for half the damage dealt on a critical hit."
 				],
 				[
@@ -19695,7 +22481,7 @@
 				[
 					"18",
 					"Dark Rune",
-					"Corrupted ...",
+					"Corrupted...",
 					"Deals an additional {@damage 1d4} necrotic damage on hit."
 				],
 				[
@@ -19707,19 +22493,19 @@
 				[
 					"20",
 					"Lightning Rune",
-					"Electrifying ...",
+					"Electrifying...",
 					"Deals an additional {@damage 1d4} lightning damage on hit."
 				],
 				[
 					"21",
 					"Acid Rune",
-					"Corrosive ...",
+					"Corrosive...",
 					"Deals an additional {@damage 1d4} acid damage on hit."
 				],
 				[
 					"22",
 					"Poison Rune",
-					"Noxious ...",
+					"Noxious...",
 					"Deals an additional {@damage 1d4} poison damage on hit."
 				],
 				[
@@ -19755,37 +22541,37 @@
 				[
 					"28",
 					"Guardian",
-					"Protector's ...",
+					"Protector's...",
 					"Grants a +1 bonus to AC."
 				],
 				[
 					"29",
 					"Precision",
-					"Heartseeker's ...",
+					"Heartseeker's...",
 					"Grants a +1 bonus to attack rolls, and deals an additional 1 force damage on hit."
 				],
 				[
 					"30",
 					"Rune of Mercy",
-					"Merciful ...",
+					"Merciful...",
 					"A creature reduced to 0 hit points from damage by this weapon falls {@condition unconscious} instead of dying."
 				],
 				[
 					"31",
 					"Rune of Bloodlust",
-					"Feral ...",
+					"Feral...",
 					"When making more than one attack against the same creature on your turn, you have avantage on the second (and onward) attack."
 				],
 				[
 					"32",
 					"Runeforged",
-					"Enchanted ...",
+					"Enchanted...",
 					"Deals an additional 2 force damage on hit, and grants a +1 to Intelligence ({@skill Arcana}) checks."
 				],
 				[
 					"33",
 					"Holy Light",
-					"Lightbringer ...",
+					"Lightbringer...",
 					"Deals an additional 1 radiant damage on hit. As a bonus action, you can cast {@spell light} targeting the sword."
 				],
 				[
@@ -19869,7 +22655,7 @@
 				[
 					"47",
 					"Mental",
-					"Mind Assaulting ...",
+					"Mind Assaulting...",
 					"Deals an additional {@damage 1d6} psychic damage on hit."
 				],
 				[
@@ -19881,13 +22667,13 @@
 				[
 					"49",
 					"Energy Blocker",
-					"Chiblocker's ...",
+					"Chiblocker's...",
 					"On critical hit, the target has disadvantage on its next attack roll."
 				],
 				[
 					"50",
 					"Stunning",
-					"Peacekeeper's ...",
+					"Peacekeeper's...",
 					"On critical hit, the target is {@condition stunned} until the end of your next turn."
 				],
 				[
@@ -19911,7 +22697,7 @@
 				[
 					"54",
 					"Hidden",
-					"Trickster's ...",
+					"Trickster's...",
 					"As an action, you can cast {@spell invisibility} once per day, targeting the weapon itself."
 				],
 				[
@@ -19923,7 +22709,7 @@
 				[
 					"56",
 					"Finesse",
-					"Nimble ...",
+					"Nimble...",
 					"Grants a +1 bonus to Dexterity saving throws."
 				],
 				[
@@ -19947,13 +22733,13 @@
 				[
 					"60",
 					"Level Headed",
-					"Harmonious ...",
+					"Harmonious...",
 					"Grants a +1 bonus to Charisma saving throws."
 				],
 				[
 					"61",
 					"Invigorating",
-					"Commander's ...",
+					"Commander's...",
 					"On a critical hit, all allies who can see both you and the target gain a {@dice d4} inspiration die (per {@classFeature bardic inspiration|bard||1||bardic inspiration})."
 				],
 				[
@@ -19995,7 +22781,7 @@
 				[
 					"68",
 					"Celestial",
-					"Hallowed ...",
+					"Hallowed...",
 					"Deals an additional {@damage 1d4} radiant damage to fiends."
 				],
 				[
@@ -20019,7 +22805,7 @@
 				[
 					"72",
 					"Destruction",
-					"Destructive ...",
+					"Destructive...",
 					"Deals an additional {@damage 1d4} damage to constructs."
 				],
 				[
@@ -20037,13 +22823,13 @@
 				[
 					"75",
 					"Depletion",
-					"Cleaner's ...",
+					"Cleaner's...",
 					"Deals an additional {@damage 1d4} force damage to oozes."
 				],
 				[
 					"76",
 					"Extermination",
-					"Root Ravaging ...",
+					"Root Ravaging...",
 					"Deals an additional {@damage 1d4} damage to plants."
 				],
 				[
@@ -20073,7 +22859,7 @@
 				[
 					"81",
 					"Copying",
-					"Twin ...",
+					"Twin...",
 					"As a bonus action, you may split this weapon into two identical copies. You may also use a bonus action to merge the copies together again."
 				],
 				[
@@ -20085,19 +22871,19 @@
 				[
 					"83",
 					"Repairing",
-					"Unbreakable ...",
+					"Unbreakable...",
 					"Whenever this weapon gets damaged, it automatically casts {@spell mending} on itself."
 				],
 				[
 					"84",
 					"Caster's Rune",
-					"Spellbound ...",
+					"Spellbound...",
 					"Grants a +1 bonus to your spell attack modifier."
 				],
 				[
 					"85",
 					"Witch's Rune",
-					"Occult ...",
+					"Occult...",
 					"Grants a +1 bonus to your spell save DC."
 				],
 				[
@@ -20109,7 +22895,7 @@
 				[
 					"87",
 					"Shadow",
-					"Shrouded ...",
+					"Shrouded...",
 					"Grants a +2 bonus to Dexterity ({@skill Stealth}) checks and attack rolls when attacking while unseen."
 				],
 				[
@@ -20145,13 +22931,13 @@
 				[
 					"93",
 					"Swift",
-					"Rapid ...",
+					"Rapid...",
 					"Grants a +1 bonus to initiative rolls."
 				],
 				[
 					"94",
 					"Law",
-					"Empire's ...",
+					"Empire's...",
 					"Deals an additional {@damage 1d4} to chaotic-aligned creatures on hit."
 				],
 				[
@@ -20163,13 +22949,13 @@
 				[
 					"96",
 					"Evil",
-					"Hateful ...",
+					"Hateful...",
 					"Deals an additional {@damage 1d4} damage to good-aligned creatures on hit."
 				],
 				[
 					"97",
 					"Good",
-					"Honorable ...",
+					"Honorable...",
 					"Deals an additional {@damage 1d4} damage to evil-aligned creatures on hit."
 				],
 				[
@@ -20190,6 +22976,1285 @@
 					"... of Storms",
 					"Deals an additional {@damage 1d4} lightning and {@damage 1d4} thunder damage on hit."
 				]
+			]
+		}
+	],
+	"trap": [
+		{
+			"name": "Breath of Zevira",
+			"source": "ba",
+			"trapHazType": "MAG",
+			"entries": [
+				{
+					"type": "section",
+					"entries": [
+						"This stone carving is a trap shaped in honor of Zevira, a minor goddess of air and weather. According to legend, this goddess created the winds and embodied them with her voice, losing it in the process. Sometimes her voice can be heard in the howling of the winds. Others say that Zevira had her voice stolen by a storm deity. Talking in front of the trap will cause it to trigger.",
+						{
+							"type": "image",
+							"href": {
+								"type": "external",
+								"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/trap/Breath-of-Zevira.webp"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Trap Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Detail",
+										"Description"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Trigger",
+											"Sound"
+										],
+										[
+											"Area",
+											"20-foot cone"
+										],
+										[
+											"Duration",
+											"Instantaneous"
+										],
+										[
+											"Save",
+											"Strength ({@dc 15})"
+										],
+										[
+											"Effects",
+											"13 ({@damage 2d10 + 2}) bludgeoning damage, pushed 5 feet away"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Trap Details",
+							"entries": [
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Trigger",
+											"entries": [
+												"When a creature within 40 feet of the face uses their voice (including talking, using verbal spell components, etc.)"
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Effect",
+											"entries": [
+												"A burst of air blows outward in a 20-foot cone centered on the target. All creatures in the area must succeed on a {@dc 15} Strength saving throw or take 13 ({@damage 2d10 + 2}) bludgeoning damage and be pushed 5 feet directly away from the trap. On a successful save, they take half damage and are not pushed."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Phase",
+										"Solution"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Detection",
+											"Wisdom ({@skill Perception}) ({@dc 14}) or {@spell detect magic} (strong evocation)"
+										],
+										[
+											"Analysis",
+											"Intelligence ({@skill Investigation}) ({@dc 15}) or Intelligence ({@skill Arcana} or {@skill Religion}) ({@dc 12})"
+										],
+										[
+											"Solution",
+											"{@spell Dispel magic}"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Details",
+							"entries": [
+								"A particularly intelligent creature may recognize the image of Zevira and notice the holes that enable its effects.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Disarming",
+											"entries": [
+												"Read the following text aloud when a character disarms the trap by casting {@spell dispel magic}.",
+												{
+													"type": "insetReadaloud",
+													"entries": [
+														"As you finish casting the spell, a soft warm breeze blows around you and you hear a soft sigh from the wall. Its stony lips close and the wind ceases. You've soothed Zevira's sorrow... for now."
+													]
+												},
+												"If the magic of the trap is dispelled this way, it regains its magic after {@dice 1d6} days."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Other Countermeasures",
+							"entries": [
+								"There are other methods of disabling the trap. Use the {@i Analysis} and {@i Solution} DCs above (if applicable) to determine whether a creature can use these methods.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Intelligence",
+											"entries": [
+												"Casting the spell {@spell silence} on the face in the wall also stops it from working for the duration. The face is also a valid target for {@spell blindness/deafness} ({@condition deafened||deafen} only) and automatically fails the saving throw."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Strength",
+											"entries": [
+												"Destroying the face (for example with a bludgeoning weapon or with {@item mason's tools|phb}) can temporarily or permanently disable it. The wall has an AC of 17 and 12 hit points."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Wisdom",
+											"entries": [
+												"Plugging the 3 holes with cloth or some other substance prevents the face from detecting sound."
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bucket of Acid",
+			"source": "ba",
+			"tier": 1,
+			"threat": 1,
+			"trapHazType": "SMPL",
+			"trigger": [
+				"See above."
+			],
+			"effect": [
+				"See above."
+			],
+			"countermeasures": [
+				"See above."
+			],
+			"entries": [
+				{
+					"type": "section",
+					"entries": [
+						"An old-fashioned prank where a bucket is carefully balanced on a door. This bucket, however, is filled with acidic goo rather than harmless water.",
+						{
+							"type": "image",
+							"href": {
+								"type": "external",
+								"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/trap/Bucket-of-Acid.webp"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Trap Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Detail",
+										"Description"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Trigger",
+											"Door opening"
+										],
+										[
+											"Area",
+											"5-foot cube"
+										],
+										[
+											"Duration",
+											"Instantaneous"
+										],
+										[
+											"Save",
+											"Dexterity ({@dc 10})"
+										],
+										[
+											"Effects",
+											"5 ({@damage 2d4}) acid damage plus 1 bludgeoning"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Trap Details",
+							"entries": [
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Trigger",
+											"entries": [
+												"The bucket is balanced on a door which opens inwards. Opening the door causes it to fall, triggering the trap."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Effect",
+											"entries": [
+												"A scraping noise can be heard as the door is opened. A rusty bucket full of acidic goo tumbles down on the creature opening the door. They must succeed on a {@dc 10} dexterity saving throw or take 5 ({@damage 2d4}) acid damage plus 1 bludgeoning damage, taking half of the acid damage and no bludgeoning damage on a success."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Phase",
+										"Solution"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Detection",
+											"Wisdom ({@skill Perception}) ({@dc 13})"
+										],
+										[
+											"Analysis",
+											"Intelligence ({@skill Investigation}) ({@dc 8})"
+										],
+										[
+											"Solution",
+											"Dexterity ({@skill Sleight of Hand}) ({@dc 6})"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Details",
+							"entries": [
+								"A perceptive creature may see the door is slightly ajar and spot that there's something balanced on top of it.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Disarming",
+											"entries": [
+												"Read the following text aloud when a character chooses to carefully open the door with a successful Dexterity ({@skill Sleight of Hand}) check.",
+												{
+													"type": "insetReadaloud",
+													"entries": [
+														"You stand to the side of the door and open it, taking shelter behind the wall as the bucket tumbles down and splashes acid on the floor across the threshold."
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Other Countermeasures",
+							"entries": [
+								"There are other methods of disabling the trap. Use the {@i Analysis} and {@i Solution} DCs above (if applicable) to determine whether a creature can use these methods.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Intelligence",
+											"entries": [
+												"Using {@spell mage hand} or {@spell unseen servant} to remove the bucket safely and place it gently on the ground conserves the contents and does not make any noise in the process."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Dexterity",
+											"entries": [
+												"A creature can attempt to swiftly open the door and catch the bucket before it falls. They must succeed on a {@dc 12} Dexterity saving throw to catch the bucket. On a failed save, they spill the bucket over themselves and take 5 ({@damage 2d4}) acid damage."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Wisdom",
+											"entries": [
+												"Closing the door causes the bucket to lose its balance and tumble down on the other side. It makes a lot of noise as the acid splatters on the floor but the creature remains unharmed on this side of the door."
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Dark Moon Obelisk",
+			"source": "ba",
+			"trapHazType": "MAG",
+			"entries": [
+				{
+					"type": "section",
+					"entries": [
+						"These obelisks are monuments to Hekant, a minor god of the grave. Erected as a means to keep the living from plundering the tombs they protect, they also act as wards preventing the dead from encroaching on the living world.",
+						{
+							"type": "image",
+							"href": {
+								"type": "external",
+								"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/trap/Dark-Moon-Obelisk.webp"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Trap Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Detail",
+										"Description"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Trigger",
+											"Proximity"
+										],
+										[
+											"Area",
+											"20- to 60-foot line"
+										],
+										[
+											"Duration",
+											"Up to 1 minute"
+										],
+										[
+											"Save",
+											"Wisdom ({@dc 15})"
+										],
+										[
+											"Effects",
+											"14 ({@damage 4d6}) radiant damage; {@condition blinded}, {@condition deafened}, {@condition frightened}, or {@condition paralyzed}"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Trap Details",
+							"entries": [
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Trigger",
+											"entries": [
+												"The obelisk's base is a 5-foot square and the obelisk itself extends to a height anywhere from 20 to 60 feet. The obelisk's activation space is composed of 5-foot-wide lines extending outward from each of the four faces, reaching a distance equal to the height of the obelisk. When a creature moves into any of the four spaces, the corresponding side of the obelisk activates."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Effect",
+											"entries": [
+												"When a side is triggered, all creatures in the line outward from that side must make a Wisdom saving throw ({@dc 15}). On a failed save, they take 14 ({@damage 4d6}) radiant damage and are subject to one of the conditions on the table below. The condition lasts for 1 minute. An affected creature can repeat its saving throw at the end of each of its turns, ending the effects on a success. You can either choose one of the conditions, roll randomly on the table, or assign a condition to each of the sides by direction. On a success, the creature takes half the radiant damage and is not subject to the condition."
+											]
+										}
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Obelisk Sides",
+									"colLabels": [
+										"{@dice d4}",
+										"Direction",
+										"Condition"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-2"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"North",
+											"{@condition Blinded}"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"East",
+											"{@condition Deafened}"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"South",
+											"{@condition Frightened}"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"West",
+											"{@condition Paralyzed}"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Phase",
+										"Solution"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Detection",
+											"Wisdom ({@skill Perception}) ({@dc 8})"
+										],
+										[
+											"Analysis",
+											"Intelligence ({@skill Arcana} or {@skill Religion}) ({@dc 15})"
+										],
+										[
+											"Solution",
+											"{@spell Dispel magic} or {@spell remove curse}"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Details",
+							"entries": [
+								"A creature will easily spot the obelisk itself as it is a rather large structure. Noticing the potential danger without having seen or experienced its effects, however, may prove more difficult.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Disarming",
+											"entries": [
+												"Read the following text aloud when a character disarms the trap by casting {@spell dispel magic} or {@spell remove curse}.",
+												{
+													"type": "insetReadaloud",
+													"entries": [
+														"As you finish casting the spell, sharp white light blinks along the runes engraved on the obelisk's surface. As the light fades, it stands inert before you, just as impressive as before."
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Other Countermeasures",
+							"entries": [
+								"There are other methods of disabling the trap. Use the {@i Analysis} and {@i Solution} DCs above (if applicable) to determine whether a creature can use these methods.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Intelligence",
+											"entries": [
+												"The magic of the obelisk is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt. Creating an obstruction won't prevent the effects from activating, but creatures behind such barriers are safe from them."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Strength",
+											"entries": [
+												"Destroying the obelisk itself (for example with a bludgeoning weapon or with {@item mason's tools|phb}) without entering one of the activation spaces can render it inoperable. The obelisk has an AC of 17 and 60 hit points. Each face has 15 hit points, and may be individually destroyed to disable that face's effect."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Wisdom",
+											"entries": [
+												"It is possible to tunnel beneath or fly over the activation spaces. The activation spaces extend only from the ground to the height of the obelisk."
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Doorknob of Welcoming",
+			"source": "ba",
+			"trapHazType": "MAG",
+			"entries": [
+				{
+					"type": "section",
+					"entries": [
+						"A face is engraved into the face of this otherwise nondescript doorknob.",
+						{
+							"type": "image",
+							"href": {
+								"type": "external",
+								"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/trap/Doorknob-of-Welcoming.webp"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Trap Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Detail",
+										"Description"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Trigger",
+											"Touch"
+										],
+										[
+											"Area",
+											"100-foot radius"
+										],
+										[
+											"Duration",
+											"Instantaneous"
+										],
+										[
+											"Save",
+											"None"
+										],
+										[
+											"Effects",
+											"Alarm sound"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Trap Details",
+							"entries": [
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Trigger",
+											"entries": [
+												"The trap activates when a creature touches the doorknob. Wearing gloves or otherwise maintaining indirect physical contact does not stop the effects from triggering."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Effect",
+											"entries": [
+												"The doorknob announces with a boisterous voice the full true name and title (if any) of the creature who touches it. The sound may be heard clearly up to 100 feet away."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Phase",
+										"Solution"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Detection",
+											"Wisdom ({@skill Perception}) ({@dc 13}) or {@spell detect magic} (weak divination)"
+										],
+										[
+											"Analysis",
+											"Intelligence ({@skill Investigation}) ({@dc 10}) or Intelligence ({@skill Arcana}) ({@dc 12})"
+										],
+										[
+											"Solution",
+											"{@item Thieves' tools|phb} ({@dc 12}), {@spell dispel magic}"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Details",
+							"entries": [
+								"A perceptive creature notice the peculiar shape of the doorknob and a slight tingling sensation in their hand as they reach to open the door.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Disarming",
+											"entries": [
+												"Read the following text aloud if a character successfully unlocks the door using thieves' tools.",
+												{
+													"type": "insetReadaloud",
+													"entries": [
+														"With your thieves' tools you manage to open the latch between the door and the frame. With a bit of wiggling you should be able to pull the door open without touching the doorknob."
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Other Countermeasures",
+							"entries": [
+								"There are other methods of disabling the trap. Use the {@i Analysis} and {@i Solution} DCs above (if applicable) to determine whether a creature can use these methods.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Intelligence",
+											"entries": [
+												"Using {@spell mage hand} or {@spell unseen servant} to open the door will not trigger the trap, as these spells do not conjure creatures with names."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Strength",
+											"entries": [
+												"A creature can always attempt to kick in the door without touching the doorknob. The AC and HP of the door and frame varies depending on what material they're made of."
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Earth Elemental's Grasp",
+			"source": "ba",
+			"trapHazType": "MAG",
+			"entries": [
+				{
+					"type": "section",
+					"entries": [
+						"This traps is crafted from the half-buried hand of a long-dead earth elemental. The five fingertips appear as large rocks protruding from the ground.",
+						{
+							"type": "image",
+							"href": {
+								"type": "external",
+								"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/trap/Earth-Elementals-Grasp.webp"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Trap Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Detail",
+										"Description"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Trigger",
+											"Proximity"
+										],
+										[
+											"Area",
+											"5-foot radius"
+										],
+										[
+											"Duration",
+											"24 hours"
+										],
+										[
+											"Save",
+											"Deterity ({@dc 15})"
+										],
+										[
+											"Effects",
+											"14 ({@damage 4d6}) bludgeoning damage, {@condition restrained}"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Trap Details",
+							"entries": [
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Trigger",
+											"entries": [
+												"Five large rocks stand in a 10-foot circle. When a creature is between more than two of the rocks, the trap triggers."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Effect",
+											"entries": [
+												"The hand closes, grasping the creature inside. The target must succeed on a {@dc 15} Dexterity saving throw or take 14 ({@damage 4d6}) bludgeoning damage and are {@condition restrained}. They can use an action to attempt to escape the grasp by making a Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check ({@dc 15}). On a success, they slip through the massive fingers. The hand stays clenched for 24 hours, reverting back to its original state unless disarmed."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Phase",
+										"Solution"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Detection",
+											"Wisdom ({@skill Perception}) ({@dc 12}) or {@spell detect magic} (moderate conjuration)"
+										],
+										[
+											"Analysis",
+											"Intelligence ({@skill Investigation}) ({@dc 15}) or Intelligence ({@skill Arcana} or {@skill Nature}) ({@dc 13})"
+										],
+										[
+											"Solution",
+											"{@spell Dispel magic}"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Details",
+							"entries": [
+								"The rocks are easily spotted and a creature may notice how they are arranged. Only through successful investigation, however, may they discover the true nature of what lies beneath.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Disarming",
+											"entries": [
+												"Read the following text aloud when a character disarms the trap by casting {@spell dispel magic}.",
+												{
+													"type": "insetReadaloud",
+													"entries": [
+														"You cast the spell, targeting an area slightly below the surface. As the spell completes, the rocks slowly pull themselves from the ground, crumbling to pieces."
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Other Countermeasures",
+							"entries": [
+								"There are other methods of disabling the trap. Use the {@i Analysis} and {@i Solution} DCs above (if applicable) to determine whether a creature can use these methods.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Strength",
+											"entries": [
+												"Destroying the rocks themselves (for example with a bludgeoning weapon or with {@item mason's tools|phb}) breaks apart the hand, disabling the trap. Each rock has an AC of 17 and 10 hit points. Once three rocks have been destroyed, the rest of the hand crumbles."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Wisdom",
+											"entries": [
+												"Simply skirting around the trap is sufficient. It may be climbed and jumped across, or other movement may make it possible to avoid touching the ground within the fingers."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "variant",
+							"name": "Burrowing Hand and Vertical Placement",
+							"entries": [
+								"You may decide that the rocks are completely buried beneath the ground. In this case, the {@i Detection} and {@i Analysis} DCs increase by 8. The only clue that something is amiss is the presence of loose or disturbed soil.",
+								"You can also place this trap embedded into a wall or ceiling. The trigger area becomes a 10-foot tall, 5-foot radius cylinder extending from the surface it's embedded under."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Poison Vent",
+			"source": "ba",
+			"tier": 2,
+			"threat": 1,
+			"trapHazType": "SMPL",
+			"trigger": [
+				"See above."
+			],
+			"effect": [
+				"See above."
+			],
+			"countermeasures": [
+				"See above."
+			],
+			"entries": [
+				{
+					"type": "section",
+					"entries": [
+						"A metal box embedded into the wall is filled with a poisonous liquid which turns into a gas when exposed to air. It is closed off with a metal cover which is attached to a wire. This trap is most effective in narrow hallways and corridors.",
+						{
+							"type": "image",
+							"href": {
+								"type": "external",
+								"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/trap/Poison-Vent.webp"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Trap Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Detail",
+										"Description"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Trigger",
+											"Tripwire"
+										],
+										[
+											"Area",
+											"10-foot radius"
+										],
+										[
+											"Duration",
+											"1 minute"
+										],
+										[
+											"Save",
+											"Constitution ({@dc 14})"
+										],
+										[
+											"Effects",
+											"14 ({@damage 4d6}) poison damage, {@condition poisoned}"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Trap Details",
+							"entries": [
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Trigger",
+											"entries": [
+												"A tripwire leading from the vent is attached to another object or anchor. When it is disturbed, the vent swings open and the poison gas immediately fills a 10-foot radius sphere. Each round the vent is open, the sphere's radius increases by 5 feet, to a maximum of 20 feet. After 1 minute, the poison stored in the trap is expended, and the cloud begins to dissipate over {@dice 1d4} minutes."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Effect",
+											"entries": [
+												"This poison irritates the skin, eyes and lungs on contact. The first time a creature enters the poison cloud and every turn they start fully within the cloud, the must succeed on a {@dc 14} Constitution saving throw or take 14 ({@damage 4d6}) poison damage and are {@condition poisoned} for 10 minutes, taking half damage on a success."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Phase",
+										"Solution"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Detection",
+											"Wisdom ({@skill Perception}) ({@dc 14})"
+										],
+										[
+											"Analysis",
+											"Intelligence ({@skill Investigation}) ({@dc 10})"
+										],
+										[
+											"Solution",
+											"Dexterity ({@skill Sleight of Hand}) ({@dc 8})"
+										]
+									]
+								},
+								"{@i A successful Analysis reduces the Solution DC by 2.}"
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Details",
+							"entries": [
+								"A creature may spot the vent(s) in the walls or the tripwire running across the floor. When inspecting the trap they may be see how a little bit of tension would open the vent. They may also be able to discern the harmful contents of the metal box because the metal is corroded.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Disarming",
+											"entries": [
+												"Read the following text aloud when a character successfully disarms the trap with a successful Dexterity ({@skill Sleight of Hand}) check.",
+												{
+													"type": "insetReadaloud",
+													"entries": [
+														"You use a blade to carefully cut the tripwire without putting any tension on it. The rope slackens and the metal cover it is attached to in the wall stays closed."
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Other Countermeasures",
+							"entries": [
+								"There are other methods of disabling the trap. Use the {@i Analysis} and {@i Solution} DCs above (if applicable) to determine whether a creature can use these methods.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Intelligence",
+											"entries": [
+												"The poison still inside the vent can be stabilized with a neutral liquid such as water. After the poison has been stabilized, the existing cloud dissipates on its own over {@dice 1d4} minutes.",
+												"It is also possible to disperse the cloud using ventilation or magical wind. It takes 1 minute of wind to fully disperse the cloud."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Constitution",
+											"entries": [
+												"Creatures immune to poison (or creatures that do not need to breathe) may safely travel through the cloud."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Wisdom",
+											"entries": [
+												"Covering the vent or closing it manually prevents more gas from being released. After the vent has been closed, the cloud dissipates on its own over {@dice 1d4} minutes. If the vent is re-opened after the cloud dissipates, the liquid harmlessly splashes to the floor."
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Scorch Plate",
+			"source": "ba",
+			"tier": 2,
+			"threat": 2,
+			"trapHazType": "SMPL",
+			"trigger": [
+				"See above."
+			],
+			"effect": [
+				"See above."
+			],
+			"countermeasures": [
+				"See above."
+			],
+			"entries": [
+				{
+					"type": "section",
+					"entries": [
+						"A pressure plate embedded in the floor houses a small nozzle that spews flaming gas as soon as a creature steps on it.",
+						{
+							"type": "image",
+							"href": {
+								"type": "external",
+								"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/BA/trap/Scorch-Plate.webp"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Trap Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Detail",
+										"Description"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Trigger",
+											"Pressure plate"
+										],
+										[
+											"Area",
+											"5-foot cube"
+										],
+										[
+											"Duration",
+											"{@dice 1d4 + 1} minutes"
+										],
+										[
+											"Save",
+											"Dexterity ({@dc 14})"
+										],
+										[
+											"Effects",
+											"13 ({@damage 3d8}) fire damage"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Trap Details",
+							"entries": [
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Trigger",
+											"entries": [
+												"A 3-foot square metal plate sinks into the ground roughly 2 inches when a creature of Medium size or larger steps on it. As the plate lowers a reservoir of flammable liquid is compressed, expelling the gas through a nozzle that ignites it into a blaze by a small spark."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Effect",
+											"entries": [
+												"A 5-foot flame shoots up, striking the creature that triggered the trap. The creature must succeed on a {@dc 14} Dexterity saving throw or take 13 ({@damage 3d8}) fire damage, taking half damage on a success.",
+												"When a creature steps off the plate, the flame is extinguished. As long as there is sufficient weight on the plate, the flame will continue to burn for {@dice 1d4 + 1} minutes."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Summary",
+							"entries": [
+								{
+									"type": "table",
+									"colLabels": [
+										"Phase",
+										"Solution"
+									],
+									"colStyles": [
+										"col-2"
+									],
+									"rows": [
+										[
+											"Detection",
+											"Wisdom ({@skill Perception}) ({@dc 11})"
+										],
+										[
+											"Analysis",
+											"Intelligence ({@skill Investigation}) ({@dc 15})"
+										],
+										[
+											"Solution",
+											"Dexterity ({@skill Sleight of Hand}) ({@dc 15})"
+										]
+									]
+								},
+								"{@i A successful Analysis reduces the Solution DC by 3.}"
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spotting and Disarming Details",
+							"entries": [
+								"A perceptive creature may spot the pressure plate in the ground. They could also notice the ash and scorch marks around the nozzle, and perhaps a faint whiff of the gas.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Disarming",
+											"entries": [
+												"Read the following text aloud when a character successfully disarms the trap with a successful Dexterity ({@skill Sleight of Hand}) check.",
+												{
+													"type": "insetReadaloud",
+													"entries": [
+														"You gently work your way around the pressure plate, wedging it in place so it can't be compressed anymore."
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Other Countermeasures",
+							"entries": [
+								"There are other methods of disabling the trap. Use the {@i Analysis} and {@i Solution} DCs above (if applicable) to determine whether a creature can use these methods.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Intelligence",
+											"entries": [
+												"Making it impossible for the fuel to ignite disables the trap. For example, disabling the sparking mechanism or cutting open the reservoir can prevent the plate from activating."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Wisdom",
+											"entries": [
+												"Placing sufficient (non-flammable) weight on the pressure plate causes it to burn out in {@dice 1d4 + 1} minutes."
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
 			]
 		}
 	]
