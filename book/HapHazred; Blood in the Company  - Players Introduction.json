@@ -18,32 +18,8 @@
 			}
 		],
 		"dateAdded": 1621278254,
-		"dateLastModified": 1627735975
+		"dateLastModified": 1628013472
 	},
-	"variant": [
-		{
-			"name": "Ululu (Generic)",
-			"requires": [
-				{
-					"name": "Club"
-				}
-			],
-			"inherits": {
-				"page": 9,
-				"source": "BloodInTheCompanyPlayersIntroduction",
-				"type": "INS",
-				"rarity": "none",
-				"nameRemove": "Club",
-				"namePrefix": "Ululu",
-				"valueExpression": "200",
-				"entries": [
-					"A small percussive {@book Helveti|BITC|7|The Helveti} instrument. Doubles as a {@item club|phb|club}.",
-					"It's kind of like a wooden/bone/metal tuning fork.",
-					"It makes noise when it goes 'bonk'."
-				]
-			}
-		}
-	],
 	"book": [
 		{
 			"name": "Blood in the Company: Player's Introduction",
@@ -562,7 +538,8 @@
 								"In Helviti society, those who live in the few cities of the wastes are not considered adults until they prove themselves to their {@book Comanda|BITC|4|The Helveti Comanda}, often through service. Upon being considered an adult, they are given their {@table Armor and Shields; Armor|phb|armour}, which often varies in quality and origin.",
 								"Children are expected to work to sustain the adults in the wastes, and are given protection by the dangerous {@book Helveti Comandas|BITC|4|The Helveti Comanda}.",
 								"Also present in the wastes are the nomads. The Helviti Inquisition mostly draws from these monastic tribes.",
-								"In short, the Helviti Wastes are a grim and inhospitable landscape filled with monsters, but most dangerous of all are its inhabitants."
+								"In short, the Helviti Wastes are a grim and inhospitable landscape filled with monsters, but most dangerous of all are its inhabitants.",
+								"{@homebrew P.s. there are {@creature Winged Spider|BITC|Winged Spiders}}."
 							]
 						},
 						{
@@ -655,7 +632,7 @@
 								],
 								[
 									"4",
-									"An {@item Ululu|BloodInTheCompanyPlayersIntroduction}, a small percussive Helviti instrument. Doubles as a {@item club|phb|club}."
+									"An {@item ululu|BloodInTheCompanyPlayersIntroduction}, a small percussive Helviti instrument. Doubles as a {@item club|phb|club}."
 								],
 								[
 									"5",
@@ -831,6 +808,155 @@
 						}
 					]
 				}
+			]
+		}
+	],
+	"variant": [
+		{
+			"name": "Ululu (Generic)",
+			"type": "GV",
+			"requires": [
+				{
+					"name": "Club"
+				},
+				{
+					"name": "Greatclub"
+				}
+			],
+			"inherits": {
+				"page": 9,
+				"source": "BloodInTheCompanyPlayersIntroduction",
+				"type": "INS",
+				"rarity": "none",
+				"nameRemove": "Club|eatclub",
+				"nameSuffix": "ululu",
+				"valueExpression": "200",
+				"entries": [
+					"A small percussive {@book Helveti|BITC|7|The Helveti} instrument. Doubles as a {@item club|phb|club}.",
+					"It's kind of like a wooden/bone/metal tuning fork.",
+					"It makes noise when it goes {@i 'bonk'}."
+				]
+			}
+		}
+	],
+	"monster": [
+		{
+			"name": "Winged Spider",
+			"source": "BloodInTheCompanyPlayersIntroduction",
+			"page": 8,
+			"size": "L",
+			"type": "monstrosity",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "10d10 + 20",
+				"average": 75
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30,
+				"fly": 50,
+				"canHover": false
+			},
+			"str": 14,
+			"dex": 18,
+			"con": 12,
+			"int": 2,
+			"wis": 11,
+			"cha": 4,
+			"skill": {
+				"stealth": "+8"
+			},
+			"senses": [
+				"blindsight 10 ft.",
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				},
+				{
+					"name": "Web Sense",
+					"entries": [
+						"While in contact with a web, the spider knows the exact location of any other creature in contact with the same web."
+					]
+				},
+				{
+					"name": "Web Walker",
+					"entries": [
+						"The spider ignores movement restrictions caused by webbing."
+					]
+				},
+				{
+					"name": "Ambusher",
+					"entries": [
+						"The giant spider has advantage on attack rolls against any creature it has surprised."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The Winged Spider makes two bite attacks."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 3}) piercing damage, and the target must make a {@dc 11} Constitution saving throw, taking 9 ({@damage 2d8}) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but {@condition poisoned} for 1 hour, even after regaining hit points, and is {@condition paralyzed} while {@condition poisoned} in this way."
+					]
+				},
+				{
+					"name": "Web {@recharge 5}",
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 30/60 ft., one creature. {@h}The target is {@condition restrained} by webbing. As an action, the {@condition restrained} target can make a {@dc 12} Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
+					]
+				}
+			],
+			"environment": [
+				"desert",
+				"mountain"
+			],
+			"traitTags": [
+				"Ambusher",
+				"Spider Climb",
+				"Web Sense",
+				"Web Walker"
+			],
+			"senseTags": [
+				"B",
+				"D"
+			],
+			"damageTags": [
+				"P",
+				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
+			],
+			"conditionInflict": [
+				"poisoned",
+				"paralyzed",
+				"restrained"
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		}
 	]
