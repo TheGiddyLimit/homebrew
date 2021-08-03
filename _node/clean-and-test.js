@@ -55,6 +55,7 @@ function cleanFolder (folder) {
 		}))
 		.map(file => {
 			if (RE_INVALID_WINDOWS_CHARS.test(file.name.split("/").slice(1).join("/"))) ALL_ERRORS.push(`${file.name} contained invalid characters!`);
+			if (!file.name.endsWith(".json")) ALL_ERRORS.push(`${file.name} had invalid extension! Should be ".json" (case-sensitive).`);
 
 			if (!ub.FILES_NO_META[file.name]) {
 				// region clean
