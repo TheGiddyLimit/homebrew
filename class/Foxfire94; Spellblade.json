@@ -18,7 +18,7 @@
 			}
 		],
 		"dateAdded": 1594524520,
-		"dateLastModified": 1599203518
+		"dateLastModified": 1628132888
 	},
 	"class": [
 		{
@@ -423,7 +423,7 @@
 					"gainSubclassFeature": true
 				},
 				"Ability Score Improvement|Spellblade|FoxfireSpellblade|8",
-				"Elemental Adept|Spellblade|FoxfireSpellblade|10",
+				"Elemental Mastery|Spellblade|FoxfireSpellblade|10",
 				{
 					"classFeature": "Archetype Feature|Spellblade|FoxfireSpellblade|11",
 					"gainSubclassFeature": true
@@ -600,7 +600,7 @@
 			"level": 1,
 			"entries": [
 				"You've trained to enhance your weapon with magical energy. Starting at 1st level you can spend an hour during a long rest to perform a ritual upon one weapon in your possession, imbuing it with an element of your choosing from the following: acid, cold, fire, lightning or thunder.",
-				"Whenever you hit with an attack using that weapon it deals an extra 1d4 damage of the chosen element. This amount of damage increases as you level up, as shown in the Arcane Blade column on Spellblade class table. This weapon is bound to you and when you will it, it goes into a pocket dimension. You can pull an arcane blade weapon from this pocket dimension as a bonus action.",
+				"Once per turn when you hit with an attack using that weapon it deals an extra 1d4 damage of the chosen element. This amount of damage increases as you level up, as shown in the Arcane Blade column on Spellblade class table. This weapon is bound to you and when you will it, it goes into a pocket dimension. You can pull an arcane blade weapon from this pocket dimension as a bonus action.",
 				"You may only imbue one weapon with elemental energy. You can imbue one additional weapon at 10th level, and another at 15th level. If you imbue another weapon over your limit with an element in this way, you choose which weapon loses the benefits of your Arcane Blade feature."
 			]
 		},
@@ -710,13 +710,13 @@
 			]
 		},
 		{
-			"name": "Elemental Adept",
+			"name": "Elemental Mastery",
 			"source": "FoxfireSpellblade",
 			"className": "Spellblade",
 			"classSource": "FoxfireSpellblade",
 			"level": 10,
 			"entries": [
-				"Starting at 10th level the elemental damage from your arcane blade feature ignores resistances to that element and treats immunity to that element as resistance instead."
+				"Starting at 10th level the extra damage from your arcane blade feature ignores resistances to that damage type."
 			]
 		},
 		{
@@ -817,7 +817,7 @@
 			]
 		},
 		{
-			"name": "Clever Clash",
+			"name": "Magical Might",
 			"source": "FoxfireSpellblade",
 			"className": "Spellblade",
 			"classSource": "FoxfireSpellblade",
@@ -826,7 +826,65 @@
 			"level": 2,
 			"header": 2,
 			"entries": [
-				"Beginning at 2nd level whenever you attack with a weapon benefiting from your Arcane Blade feature, you can use your Intelligence modifier, instead of Strength or Dexterity, for the attack and damage rolls."
+				"At 2nd level when you hit a creature with an attack using a weapon benefiting from your Arcane Blade feature, you can expend one spell slot to add three additional Arcane Blade damage dice to the damage roll. This additional damage is the same type as that of your Arcane Blade feature."
+			]
+		},
+		{
+			"name": "Martial Expertise",
+			"source": "FoxfireSpellblade",
+			"className": "Spellblade",
+			"classSource": "FoxfireSpellblade",
+			"subclassShortName": "Blademaster",
+			"subclassSource": "FoxfireSpellblade",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"At 6th level, you learn maneuvers that are fueled by special dice called superiority dice.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Maneuvers",
+							"entries": [
+								"You learn two {@filter maneuvers|optionalfeatures|feature type=mv:b} of your choice, which are chosen from the list of {@filter maneuvers|optionalfeatures|feature type=mv:b} available to fighters with the Battle Master archetype. Many maneuvers enhance an attack in some way. You can use only one maneuver per attack.",
+								"You learn two additional {@filter maneuvers|optionalfeatures|feature type=mv:b} of your choice at 11th and 18th levels. When you learn a new maneuver, you can also replace one maneuver you know with a different one."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Superiority Dice",
+							"entries": [
+								"You have four superiority dice, which are d8s. A superiority die is expended when you use it. You regain all of your expended superiority dice when you finish a short or long rest."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+						"type": "entries",
+						"name": "Saving Throws",
+						"entries": [
+								"Some of your maneuvers require your target to make a saving throw to resist the maneuver's effects. The saving throw DC is calculated as follows:",
+								{
+									"type": "abilityDc",
+									"name": "Maneuver",
+									"attributes": [
+										"str",
+										"dex"
+									]
+								}
+							]
+						}
+					]
+				}
 			]
 		},
 		{
@@ -836,15 +894,16 @@
 			"classSource": "FoxfireSpellblade",
 			"subclassShortName": "Blademaster",
 			"subclassSource": "FoxfireSpellblade",
-			"level": 6,
+			"level": 11,
 			"header": 2,
 			"entries": [
-				"Starting at 6th level you can push yourself to strike with unparalleled ferocity. At the start your turn, you can enter a storm of swords; until the end of you next turn whenever you hit with a weapon attack you may make an additional weapon attack against the same creature. Hitting with an additional attack from this feature does not grant you an additional attack.",
-				"Once you use this feature, you must finish a long rest before you can use it again."
+				"Starting at 11th level you can push yourself to strike with unparalleled ferocity. At the start your turn, you can enter a storm of swords; until the end of your next turn whenever you hit with a weapon attack you may make an additional weapon attack against the same creature.",
+				"Hitting with an additional attack from this feature does not grant you an additional attack.",
+				"You may use this feature once, and twice at 18th level; you regain any expended uses when you finish a long rest."
 			]
 		},
 		{
-			"name": "Magical Might",
+			"name": "Additional Maneuvers",
 			"source": "FoxfireSpellblade",
 			"className": "Spellblade",
 			"classSource": "FoxfireSpellblade",
@@ -853,8 +912,7 @@
 			"level": 11,
 			"header": 2,
 			"entries": [
-				"At 11th level when you hit a creature with an attack using a weapon benefitting from your Arcane Blade feature, you can expend one spell slot to deal additional damage to the target, in addition to the weapon's damage. This additional damage is the same type as that imbued by the arcane blade feature.",
-				"The extra damage is 1d6 for a 1st-level spell slot, plus 1d6 for each spell level higher than 1st, to a maximum of 5d6."
+				"You learn two additional {@filter maneuvers|optionalfeatures|feature type=mv:b} of your choice at 11th and 18th levels. When you learn a new maneuver, you can also replace one maneuver you know with a different one."
 			]
 		},
 		{
@@ -871,7 +929,7 @@
 			]
 		},
 		{
-			"name": "Martial Expertise",
+			"name": "Additional Maneuvers",
 			"source": "FoxfireSpellblade",
 			"className": "Spellblade",
 			"classSource": "FoxfireSpellblade",
@@ -880,7 +938,7 @@
 			"level": 18,
 			"header": 2,
 			"entries": [
-				"At 18th level, you can choose a second option from the Fighting Style class feature."
+				"You learn two additional {@filter maneuvers|optionalfeatures|feature type=mv:b} of your choice at 18th level. When you learn a new maneuver, you can also replace one maneuver you know with a different one."
 			]
 		},
 		{
@@ -918,20 +976,7 @@
 			"level": 2,
 			"header": 2,
 			"entries": [
-				"At 2nd level you gain an additional spell slot, making your total spell slots 3. You also gain an additional cantrip, making your total cantrips 3."
-			]
-		},
-		{
-			"name": "Reflecting Ward",
-			"source": "FoxfireSpellblade",
-			"className": "Spellblade",
-			"classSource": "FoxfireSpellblade",
-			"subclassShortName": "Magister",
-			"subclassSource": "FoxfireSpellblade",
-			"level": 6,
-			"header": 2,
-			"entries": [
-				"Beginning at 6th level as a reaction to a creature making an attack against you, you may cast a reflecting ward. Until the start of your next turn, any attack that targets only you and misses deals its damage to the attacking creature. You must finish a long rest before you can use this feature again."
+				"At 2nd level you gain a spell slot, in addition to those listed in the class table, making your total spell slots 3. You also gain an additional cantrip, making your total cantrips 3 (for an eventual total of 5 at 10th level)."
 			]
 		},
 		{
@@ -941,10 +986,25 @@
 			"classSource": "FoxfireSpellblade",
 			"subclassShortName": "Magister",
 			"subclassSource": "FoxfireSpellblade",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"At 6th level you have studied a wide variety of magical disciplines. Choose two non-cantrip spells from the following classes: bard, cleric, druid, warlock, or wizard. A spell you choose must be of a level you can cast, as shown on the Spellblade table and it counts as a sorcerer spell for you.",
+				"They do not count towards your limit."
+			]
+		},
+		{
+			"name": "Reflecting Ward",
+			"source": "FoxfireSpellblade",
+			"className": "Spellblade",
+			"classSource": "FoxfireSpellblade",
+			"subclassShortName": "Magister",
+			"subclassSource": "FoxfireSpellblade",
 			"level": 11,
 			"header": 2,
 			"entries": [
-				"At 11th level you have studied a wide variety of magical disciplines. Choose two non-cantrip spells from the following classes: bard, cleric, druid, sorcerer, warlock, or wizard. A spell you choose must be of a level you can cast, as shown on the Spellblade table and it counts as a sorcerer spell for you. They do not count towards your limit."
+				"Beginning at 11th level as a reaction to a creature making an attack against you, you may cast a reflecting ward. Until the start of your next turn, any attack that targets only you and misses deals its damage to the attacking creature if its attack roll would hit its own AC.",
+				"You may use this feature once, and twice at 18th level; you regain any expended uses when you finish a long rest."
 			]
 		},
 		{
@@ -957,7 +1017,7 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"At 14th level you gain an additional spell slot, making your total spell slots 5."
+				"At 14th level you gain another spell slot, in addition to those listed in the class table and from previous features, making your total spell slots 5."
 			]
 		},
 		{
@@ -970,7 +1030,8 @@
 			"level": 18,
 			"header": 2,
 			"entries": [
-				"At 18th level you have learned yet more of other magical disciplines. Choose two non-cantrip spells from the following classes: bard, cleric, druid, sorcerer, warlock, or wizard. A spell you choose must be of a level you can cast, as shown on the Spellblade table and it counts as a sorcerer spell for you. They do not count towards your limit."
+				"At 18th level you have learned yet more of other magical disciplines. Choose two non-cantrip spells from the following classes: bard, cleric, druid, warlock, or wizard. A spell you choose must be of a level you can cast, as shown on the Spellblade table and it counts as a sorcerer spell for you.",
+				"They do not count towards your limit."
 			]
 		},
 		{
@@ -993,11 +1054,12 @@
 			"name": "Blademaster",
 			"subclassFeatures": [
 				"Blademaster Archetype|Spellblade|FoxfireSpellblade|Blademaster|FoxfireSpellblade|2",
-				"Clever Clash|Spellblade|FoxfireSpellblade|Blademaster|FoxfireSpellblade|2",
-				"Storm of Swords|Spellblade|FoxfireSpellblade|Blademaster|FoxfireSpellblade|6",
-				"Magical Might|Spellblade|FoxfireSpellblade|Blademaster|FoxfireSpellblade|11",
+				"Magical Might|Spellblade|FoxfireSpellblade|Blademaster|FoxfireSpellblade|2",
+				"Martial Expertise|Spellblade|FoxfireSpellblade|Blademaster|FoxfireSpellblade|6",
+				"Storm of Swords|Spellblade|FoxfireSpellblade|Blademaster|FoxfireSpellblade|11",
+				"Additional Maneuvers|Spellblade|FoxfireSpellblade|Blademaster|FoxfireSpellblade|11",
 				"Triple Threat|Spellblade|FoxfireSpellblade|Blademaster|FoxfireSpellblade|14",
-				"Martial Expertise|Spellblade|FoxfireSpellblade|Blademaster|FoxfireSpellblade|18",
+				"Additional Maneuvers|Spellblade|FoxfireSpellblade|Blademaster|FoxfireSpellblade|18",
 				"Magical Flurry|Spellblade|FoxfireSpellblade|Blademaster|FoxfireSpellblade|20"
 			],
 			"source": "FoxfireSpellblade",
@@ -1010,8 +1072,8 @@
 			"subclassFeatures": [
 				"Magister Archetype|Spellblade|FoxfireSpellblade|Magister|FoxfireSpellblade|2",
 				"Arcane Power|Spellblade|FoxfireSpellblade|Magister|FoxfireSpellblade|2",
-				"Reflecting Ward|Spellblade|FoxfireSpellblade|Magister|FoxfireSpellblade|6",
-				"Magical Scholar|Spellblade|FoxfireSpellblade|Magister|FoxfireSpellblade|11",
+				"Magical Scholar|Spellblade|FoxfireSpellblade|Magister|FoxfireSpellblade|6",
+				"Reflecting Ward|Spellblade|FoxfireSpellblade|Magister|FoxfireSpellblade|11",
 				"Increased Arcane Power|Spellblade|FoxfireSpellblade|Magister|FoxfireSpellblade|14",
 				"Magical Savant|Spellblade|FoxfireSpellblade|Magister|FoxfireSpellblade|18",
 				"Extreme Arcane Power|Spellblade|FoxfireSpellblade|Magister|FoxfireSpellblade|20"
