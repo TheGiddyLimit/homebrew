@@ -58,11 +58,13 @@ function buildDeepIndex () {
 	const PATH_PROP_INDEX = "_generated/index-props.json";
 	const PATH_SOURCE_INDEX = "_generated/index-sources.json";
 	const PATH_NAME_INDEX = "_generated/index-names.json";
+	const PATH_ABBREVIATION_INDEX = "_generated/index-abbreviations.json";
 
 	const timestampIndex = {};
 	const propIndex = {};
 	const sourceIndex = {};
 	const nameIndex = {};
+	const abbreviationIndex = {};
 
 	function indexDir (folder) {
 		const files = uf.listFiles(folder);
@@ -103,11 +105,12 @@ function buildDeepIndex () {
 						sourceIndex[src.json] = cleanName;
 					});
 
-					// Index names
+					// Index names and abbreviations
 					if (file.contents._meta.sources?.length) {
 						const fileName = file.name.split("/").slice(1).join("/");
-						if (nameIndex[fileName]) throw new Error(`Filename "${fileName}" was already in the index!`);
+						if (nameIndex[fileName] || abbreviationIndex[fileName]) throw new Error(`Filename "${fileName}" was already in the index!`);
 						nameIndex[fileName] = file.contents._meta.sources.map(it => it.full).filter(Boolean);
+						abbreviationIndex[fileName] = file.contents._meta.sources.map(it => it.abbreviation).filter(Boolean);
 					}
 				}
 			});
@@ -129,6 +132,9 @@ function buildDeepIndex () {
 
 	um.info(`INDEX`, `Saving name index to ${PATH_NAME_INDEX}`);
 	fs.writeFileSync(`./${PATH_NAME_INDEX}`, JSON.stringify(nameIndex), "utf-8");
+
+	um.info(`INDEX`, `Saving abbreviation index to ${PATH_ABBREVIATION_INDEX}`);
+	fs.writeFileSync(`./${PATH_ABBREVIATION_INDEX}`, JSON.stringify(abbreviationIndex), "utf-8");
 }
 
 checkFileContents();
