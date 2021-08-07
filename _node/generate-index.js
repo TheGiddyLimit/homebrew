@@ -110,7 +110,7 @@ function buildDeepIndex () {
 						const fileName = file.name.split("/").slice(1).join("/");
 						if (nameIndex[fileName] || abbreviationIndex[fileName]) throw new Error(`Filename "${fileName}" was already in the index!`);
 						nameIndex[fileName] = file.contents._meta.sources.map(it => it.full).filter(Boolean);
-						abbreviationIndex[fileName] = file.contents._meta.sources.map(it => it.abbreviation).filter(Boolean);
+						abbreviationIndex[cleanName] = file.contents._meta.sources.map(it => it.abbreviation).filter(Boolean);
 					}
 				}
 			});
