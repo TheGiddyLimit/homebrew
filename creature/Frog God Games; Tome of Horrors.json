@@ -1,5 +1,5 @@
 {
-	"siteVersion": "1.136.0",
+	"siteVersion": "1.134.0",
 	"_meta": {
 		"sources": [
 			{
@@ -11,8 +11,8 @@
 				"convertedBy": ["fingerzz"]
 			}
 		],
-		"dateAdded": 1632937324,
-		"dateLastModified": 1632937324
+		"dateAdded": 1633161292,
+		"dateLastModified": 1633161292
 	},
 	"monster": [
 		{
@@ -185,12 +185,17 @@
 			"passive": 10,
 			"resist": [
 				{
-					"resist": ["slashing and piercing damage"],
-					"note": "from nonmagical attacks",
-					"cond": true
+					"resist": ["piercing", "slashing"]
+				},
+				{
+					"resist": [
+						{
+							"special": "non-magical physical"
+						}
+					]
 				}
 			],
-			"immune": ["lightning", "fire damage"],
+			"immune": ["fire", "lightning"],
 			"conditionImmune": ["prone"],
 			"languages": ["Common (understands but can't speak)"],
 			"cr": "3",
@@ -544,8 +549,7 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The ara makes one Bite attack and one Talon or one",
-						"Spear attack."
+						"The ara makes one Bite attack and one Talon or one Spear attack."
 					]
 				},
 				{
@@ -754,11 +758,7 @@
 			"passive": 11,
 			"immune": [
 				{
-					"immune": ["bludgeoning", "piercing"]
-				},
-				{
-					"immune": ["slashing"],
-					"preNote": "and",
+					"immune": ["bludgeoning", "piercing", "slashing"],
 					"note": "from nonmagical attacks that aren't silver"
 				}
 			],
@@ -861,11 +861,7 @@
 			"passive": 10,
 			"resist": [
 				{
-					"resist": ["bludgeoning", "piercing"]
-				},
-				{
-					"resist": ["slashing"],
-					"preNote": "and",
+					"resist": ["bludgeoning", "piercing", "slashing"],
 					"note": "from nonmagical attacks"
 				}
 			],
@@ -874,8 +870,7 @@
 				{
 					"name": "Transparent",
 					"entries": [
-						"The bake kujira is transparent and only its skeleton is visible, which makes it appear to be some undead monstrosity. Attacks upon the bake kujira require successful {@dc 19} Wisdom",
-						"(Perception) checks or are made at disadvantage."
+						"The bake kujira is transparent and only its skeleton is visible, which makes it appear to be some undead monstrosity. Attacks upon the bake kujira require successful {@dc 19} Wisdom (Perception) checks or are made at disadvantage."
 					]
 				},
 				{
@@ -974,10 +969,11 @@
 				{
 					"name": "Pack Tactics",
 					"entries": [
-						"The basalt warhound has advantage on an attack roll against a creature if at least one of the warhound's allies is within five feet of the creature and the ally isn't {@condition incapacitated}.",
-						"A ctions"
+						"The basalt warhound has advantage on an attack roll against a creature if at least one of the warhound's allies is within five feet of the creature and the ally isn't {@condition incapacitated}."
 					]
-				},
+				}
+			],
+			"action": [
 				{
 					"name": "Multiattack",
 					"entries": ["The basalt warhound makes two Bite attacks."]
@@ -1006,6 +1002,7 @@
 			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/basalt%20warhound.png",
 			"traitTags": ["Death Burst", "Keen Senses", "Pack Tactics"],
 			"senseTags": ["D"],
+			"actionTags": ["Multiattack"],
 			"languageTags": ["IG"],
 			"damageTags": ["F", "P"],
 			"miscTags": ["MW"]
@@ -1909,9 +1906,10 @@
 			"senses": ["darkvision 60 ft."],
 			"passive": 11,
 			"resist": [
+				"bludgeoning",
+				"piercing",
 				{
-					"resist": ["bludgeoning", "piercing"],
-					"note": "from nonmagical attacks"
+					"special": "from nonmagical attacks"
 				}
 			],
 			"immune": ["necrotic", "poison", "psychic"],
@@ -3986,6 +3984,3801 @@
 			"damageTags": ["I", "P", "S"],
 			"miscTags": ["AOE", "MW"],
 			"conditionInflict": ["poisoned"]
+		},
+		{
+			"name": "Craniform Priestess",
+			"source": "toh",
+			"page": 39,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": ["craniform"]
+			},
+			"alignment": ["L", "G"],
+			"ac": [
+				{
+					"ac": 13,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 32,
+				"formula": "5d8 + 10"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 40
+			},
+			"str": 16,
+			"dex": 11,
+			"con": 15,
+			"int": 10,
+			"wis": 14,
+			"cha": 10,
+			"skill": {
+				"perception": "+4"
+			},
+			"senses": ["darkvision 60 ft."],
+			"passive": 14,
+			"languages": ["Craniform", "Aquan"],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The craniform priestess is a 6th-level spellcaster. Her spellcasting ability is Wisdom (spell save {@dc 12}, {@hit 4} to hit with spell attacks). She has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell bless}",
+								"{@spell detect magic}",
+								"{@spell guiding bolt}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell spiritual weapon} (trident)"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell mass healing word}",
+								"{@spell tongues}"
+							]
+						}
+					},
+					"ability": "wis",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Limited Amphibiousness",
+					"entries": [
+						"The craniform priestess can breathe air and water but begins to suffocate if not submerged at least once every four hours."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The craniform priestess makes two Pincer attacks or one",
+						"Pincer attack and one Spear attack."
+					]
+				},
+				{
+					"name": "Pincer",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) slashing damage. The target is {@condition grappled} (escape {@dc 13}) if it is a Large or smaller creature and the craniform priestess doesn't have another creature {@condition grappled} already. The target is {@condition restrained} until the grapple ends."
+					]
+				},
+				{
+					"name": "Spear",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Blessed by the Sea Mother herself, the craniform priestess is called to the Sea Mother’s service in a vision. This vision reveals the Sea Mother’s true form: a massive sea turtle. Craniform priestesses are referred to as “gifted” among fellow craniforms.",
+					"Craniform priestesses serve an integral role in craniform communities. They are the spiritual advisors, healers, and ritual officiants, and also the leaders of their respective communities. The priestesses must first approve every major decision that affects a craniform colony."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Craniform%20priest.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Craniform%20priest.png",
+			"senseTags": ["D"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AQ"],
+			"damageTags": ["P", "S"],
+			"spellcastingTags": ["CC"],
+			"miscTags": ["MW"],
+			"conditionInflict": ["grappled", "restrained"],
+			"conditionInflictSpell": ["paralyzed"]
+		},
+		{
+			"name": "Craniform",
+			"source": "toh",
+			"page": 39,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": ["craniform"]
+			},
+			"alignment": ["L", "G"],
+			"ac": [
+				{
+					"ac": 13,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 32,
+				"formula": "5d8 + 10"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 40
+			},
+			"str": 16,
+			"dex": 11,
+			"con": 15,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"skill": {
+				"perception": "+4"
+			},
+			"senses": ["darkvision 60 ft."],
+			"passive": 14,
+			"languages": ["Craniform", "Aquan"],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Limited Amphibiousness",
+					"entries": [
+						"The craniform can breathe air and water but begins to suffocate if not submerged at least once every four hours."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The craniform makes two Pincer attacks or one Pincer attack and one Spear attack."
+					]
+				},
+				{
+					"name": "Pincer",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) slashing damage. The target is {@condition grappled} (escape {@dc 13}) if it is a Large or smaller creature and the craniform doesn't have another creature {@condition grappled} already. The target is {@condition restrained} until the grapple ends."
+					]
+				},
+				{
+					"name": "Spear",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Craniforms are bipedal cancriform humanoids with a chitinous carapace, eyestalks, antennae, and a pair of mandibles set to either side of a complementary set of horizontally-aligned maxillae that constitute the creatures’ mouths. Extending outward from the neck of each creature is a set of short but large chitinous arms, each of which terminate in a seemingly oversized claw. Below these larger claws is another set of arms. These extend from either side of the upper torso, not unlike how arms extend from shoulders in more familiar humanoids. This second set of smaller chitinous arms each end with a smaller pincer. The creatures’ torsos and legs are covered by the same chitinous exoskeleton and extend to cover their clawed feet.",
+					"Females and males are hard to tell apart, but males are slightly smaller than females. Craniform inhabit tropical coastal waters where they usually create permanent colonies. These timid and reclusive creatures are very rare and stay well away from other humanoid settlements. Craniform typically live in coastal caves, but some communities excavate more expansive subterranean underwater burrows beneath the waterline and back up and under the shoreline. Craniform society is as complex as most terrestrial societies.",
+					"Craniform are led temporally and spiritually by a group of priestesses who oversee most of their important functions, rituals, and endeavors. Craniform are deeply reverential of their deity, the Sea Mother, goddess of all sea creatures, and see themselves as the Sea Mother’s chosen stewards of the sea. While little is known of the magics of the reclusive craniform and their priestesses, it is believed that they can confer the ability to breathe underwater to surface dwellers through a ritual venerating the Sea Mother called the Sea Mother’s Blessing."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/craniform.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/craniform.png",
+			"senseTags": ["D"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AQ"],
+			"damageTags": ["P", "S"],
+			"miscTags": ["MW"],
+			"conditionInflict": ["grappled", "restrained"]
+		},
+		{
+			"name": "Crawling Hand",
+			"source": "toh",
+			"page": 39,
+			"size": "T",
+			"type": "undead",
+			"alignment": ["N", "E"],
+			"ac": [
+				{
+					"ac": 13,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 7,
+				"formula": "3d4"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 13,
+			"dex": 11,
+			"con": 14,
+			"int": 2,
+			"wis": 11,
+			"cha": 7,
+			"skill": {
+				"stealth": "+2"
+			},
+			"senses": ["blindsight 30 ft. (blind beyond this radius)"],
+			"passive": 10,
+			"immune": ["poison"],
+			"conditionImmune": [
+				"exhaustion",
+				"paralyzed",
+				"poisoned",
+				"stunned",
+				"unconscious"
+			],
+			"languages": [
+				"understands the languages of its creator",
+				"but can't speak"
+			],
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Leap",
+					"entries": [
+						"The crawling hand's long jump is up to 10 feet and its high jump is up to five feet, with or without a running start."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Grab",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 0 ft., one target. Hit:",
+						"The crawling hand attaches to the target. At the beginning of the crawling hand's next turn, the target begins suffocating and cannot cast spells that require verbal components. The target or another creature can use an action to make a {@dc 13} Strength check to pull the crawling hand off, removing it on a successful check."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Crawling hands are horrid necromantic creations that wander darkened areas, often crypts, in search of living prey to choke the life out of them. Some are made by foul magics that seek to create swarms of lesser minions to guard areas and commit assassinations. Other crawling hands are the result of careless adventurers who hack away at zombies with little regard to the lingering necromantic energies that might reanimate severed parts."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/crawling%20hand.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/crawling%20hand.png",
+			"senseTags": ["B"],
+			"languageTags": ["CS"],
+			"miscTags": ["MW"]
+		},
+		{
+			"name": "Crawling Offspring",
+			"source": "toh",
+			"page": 40,
+			"size": "S",
+			"type": "aberration",
+			"alignment": ["U"],
+			"ac": [
+				{
+					"ac": 13,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 16,
+				"formula": "3d6 + 6"
+			},
+			"speed": {
+				"walk": 20
+			},
+			"str": 16,
+			"dex": 11,
+			"con": 14,
+			"int": 2,
+			"wis": 10,
+			"cha": 11,
+			"skill": {
+				"perception": "+2"
+			},
+			"senses": ["blindsight 60 ft."],
+			"passive": 12,
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Mutation",
+					"entries": [
+						"Each crawling offspring is different in form and shape. These blobs of horror have a special ability from the following list:",
+						{
+							"type": "table",
+							"colStyles": ["col-4 text-center", "col-6"],
+							"colLabels": ["{@dice 1d6}", "Ability"],
+							"rows": [
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 1
+										}
+									},
+									{
+										"type": "entries",
+										"name": "Acidic spit (recharge 5-6)",
+										"entries": [
+											"As an action, the crawling offspring can spit a cone of acid 15 feet long. Any creature caught in this cone must make a {@dc 12} Dexterity saving throw, taking 9 ({@damage 2d8}) acid damage on a failure or half as much damage on a success save."
+										]
+									}
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 2
+										}
+									},
+									{
+										"type": "entries",
+										"name": "Necrotic touch",
+										"entries": [
+											"The crawling offspring's pseudopod attack inflicts an additional 3 ({@damage 1d6}) necrotic damage."
+										]
+									}
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 3
+										}
+									},
+									{
+										"type": "entries",
+										"name": "Clawed tentacle",
+										"entries": [
+											"The crawling offspring gains a Clawed Tentacle attack and may multiattack, making one Clawed Tentacle and one Pseudopod attack. The Clawed Tentacle attack is {@hit 5} to hit, reach 10 ft., one target, {@h}6 ({@damage 1d6 + 3}) slashing damage."
+										]
+									}
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 4
+										}
+									},
+									{
+										"type": "entries",
+										"name": "Wings",
+										"entries": [
+											"The crawling offspring gains flight 30 ft."
+										]
+									}
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 5
+										}
+									},
+									{
+										"type": "entries",
+										"name": "Rubbery, oily skin",
+										"entries": [
+											"The crawling offspring gains resistance to bludgeoning, piercing, and slashing attacks from nonmagical attacks, and vulnerability to fire damage."
+										]
+									}
+								],
+								[
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 6
+										}
+									},
+									{
+										"type": "entries",
+										"name": "None",
+										"entries": ["No mutation"]
+									}
+								]
+							]
+						}
+					]
+				},
+				{
+					"name": "Regeneration",
+					"entries": [
+						"The crawling offspring regains 5 hit points as long as it starts its turn with 1 hit point."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Pseudopod",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}4 ({@dice 1d2}",
+						"+ 3) bludgeoning damage."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Crawling offspring are mindless creatures with no single form or appearance. Some are oval, while others are round or even boxy. Many have dangling pseudopodia, while others sport whipping claw-tipped tentacles, flapping wings, bulging eyes, warty flesh that leaks oily substances, or none or all of the above."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/crawling%20offspring.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/crawling%20offspring.png",
+			"traitTags": ["Regeneration"],
+			"senseTags": ["B"],
+			"damageTags": ["A", "N", "S"],
+			"miscTags": ["MW", "RCH"]
+		},
+		{
+			"name": "Monstrous Crayfish",
+			"source": "toh",
+			"page": 41,
+			"size": "L",
+			"type": "beast",
+			"alignment": ["U"],
+			"ac": [
+				{
+					"ac": 14,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 30,
+				"formula": "4d10 + 8"
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 40
+			},
+			"str": 16,
+			"dex": 10,
+			"con": 14,
+			"int": 1,
+			"wis": 10,
+			"cha": 2,
+			"senses": ["darkvision 60 ft."],
+			"passive": 10,
+			"conditionImmune": ["frightened"],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Water Dependency",
+					"entries": [
+						"A monstrous crayfish can survive out of water for seven hours. After this limit, a monstrous crayfish begins suffocating."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": ["A monstrous crayfish makes two attacks."]
+				},
+				{
+					"name": "Pincer",
+					"entries": [
+						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 3}) slashing damage and the target is {@condition grappled} (escape {@dc 15})."
+					]
+				},
+				{
+					"name": "Crush",
+					"entries": [
+						"The monstrous crayfish crushes one creature that it has {@condition grappled}. The target takes 7 ({@damage 1d8 + 3}) piercing damage."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"A giant crayfish looks like a giant lobster with a sharp snout and eyes on movable, flickering stalks. Two large claws extend from its thorax in front of four smaller pairs of spindly walking legs. Its exoskeleton is dark brown.",
+					"Monstrous crayfish are freshwater creatures that dwell on the bottoms of seas, lakes, ponds, and other shallow water. They are predators and scavengers that exist on a diet of decaying flesh from dead fish, algae, snails, worms, and other animals, including swimmers who venture too close to the monstrous crayfish’s lair.",
+					"These giant crayfish make their homes under rocks or in underwater tunnels that they dig. Their flooded tunnels extend over long distances and always include a “chimney” through which the monstrous crayfish can enter and exit its home via dry ground. These exits have been found as far as 100 feet inland from the lake shore or riverbank."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Crayfish%2C%20Monstrous.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Crayfish%2C%20Monstrous.png",
+			"senseTags": ["D"],
+			"actionTags": ["Multiattack"],
+			"damageTags": ["P", "S"],
+			"conditionInflict": ["grappled"]
+		},
+		{
+			"name": "Dark Creeper",
+			"isNamedCreature": true,
+			"source": "toh",
+			"page": 42,
+			"size": "S",
+			"type": "humanoid",
+			"alignment": ["C", "N"],
+			"ac": [
+				{
+					"ac": 14,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 22,
+				"formula": "4d6 + 8"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 11,
+			"dex": 17,
+			"con": 14,
+			"int": 9,
+			"wis": 10,
+			"cha": 8,
+			"skill": {
+				"perception": "+4",
+				"stealth": "+7"
+			},
+			"passive": 14,
+			"languages": ["Undercommon (dark folk dialect)"],
+			"cr": "1",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dark creeper's spellcasting ability is Charisma (spell save {@dc 9}). The dark creeper can innately cast the following spells, requiring no material components:"
+					],
+					"will": ["{@spell darkness}", "{@spell detect magic}"],
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Death Throes",
+					"entries": [
+						"When a dark creeper dies, it combusts in a flash of bright white light, and each creature within 10 feet of it must make a {@dc 13} Constitution saving throw or be {@condition blinded} for one minute. A target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. Other dark creepers within 10 feet of the flash of light are automatically {@condition blinded} until the end of their next turn. A dark creeper's gear and treasure are unaffected by this explosion."
+					]
+				},
+				{
+					"name": "Envenomed Attacks",
+					"entries": [
+						"The dark creeper coats its weapons with black smear, a foul-smelling black paste distilled from fungi found deep underground."
+					]
+				},
+				{
+					"name": "Exceptional Dark Vision",
+					"entries": [
+						"Dark creepers can see perfectly in darkness of any kind, including magical darkness."
+					]
+				},
+				{
+					"name": "Light Sensitivity",
+					"entries": [
+						"While in bright light, the dark creeper has disadvantage on attack rolls as well as on Wisdom (Perception) checks that rely on sight."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage, and the target must make a {@dc 13} Constitution saving throw, taking 7 ({@damage 2d6}) poison damage on a failed save, or half as much on a successful one."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Dark creepers are diminutive dwellers found in the depths of the earth. The wear layers of filthy rags to hide their pale, wan bodies. Unwilling to show their true forms even to each other, they do not remove their clothing, and merely add a new layer as the outermost grows too ragged or stained. Some say entire cities of these folk exist in the dark depths, and that they raid the surface for loot, kidnapped servants, and the love of mayhem."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Dark%20Creeper.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Dark%20Creeper.png",
+			"traitTags": ["Death Burst", "Light Sensitivity"],
+			"languageTags": ["U"],
+			"damageTags": ["I", "P"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["AOE", "MW"],
+			"conditionInflict": ["blinded"]
+		},
+		{
+			"name": "Death Weaver",
+			"source": "toh",
+			"page": 44,
+			"size": "S",
+			"type": "aberration",
+			"alignment": ["N", "E"],
+			"ac": [
+				{
+					"ac": 17,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 21,
+				"formula": "6d6"
+			},
+			"speed": {
+				"fly": 20
+			},
+			"str": 7,
+			"dex": 17,
+			"con": 10,
+			"int": 14,
+			"wis": 14,
+			"cha": 16,
+			"skill": {
+				"perception": "+4"
+			},
+			"senses": ["darkvision 60 ft."],
+			"passive": 14,
+			"languages": ["Common"],
+			"cr": "4",
+			"trait": [
+				{
+					"name": "Feeding",
+					"entries": [
+						"If the death weaver successfully uses its tentacle attack to devour a piece of a creature's soul, it gains 10 temporary hit points and gains the ability to innately cast the web spell three times. This lasts for one hour."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The death weaver has advantage on any saving throws to resist spells and other magical effects."
+					]
+				},
+				{
+					"name": "Radiance",
+					"entries": [
+						"The death weaver glows, shedding bright light for 20 feet and dim light for 20 feet beyond that."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Paralyzing Song",
+					"entries": [
+						"The death weaver emits a bizarre humming that effects all creatures within a 30-foot cube centered on itself. Affected creatures must succeed at a {@dc 13} Wisdom saving throw or be {@condition paralyzed} for one hour. Creatures that successfully save against a death weaver's paralyzing song are immune to the effect for 24 hours."
+					]
+				},
+				{
+					"name": "Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}1 bludgeoning damage. If the death weaver hits a {@condition paralyzed} creature with its tentacle attack, it may attempt to devour that creature's lifeforce. The target must succeed on a {@dc 13} Constitution saving throw or suffer 14 ({@damage 4d6}) necrotic damage. If a creature is reduced to 0 hit points by this attack, it dies and can be raised only by powerful magic such as true resurrection or wish."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Death weavers are orbs of evil from a place beyond, or perhaps between, places. Maybe a time beyond, or perhaps between, times. Whichever, it is not from here and now. It does hunt the here and now, however, paralyzing prey with its tuneless humming before absorbing them body and soul into one of its many irregularly shaped gaping mouths."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/death%20weaver.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/death%20weaver.png",
+			"traitTags": ["Magic Resistance"],
+			"senseTags": ["D"],
+			"actionTags": ["Tentacles"],
+			"languageTags": ["C"],
+			"damageTags": ["B", "N"],
+			"miscTags": ["AOE", "MW"],
+			"conditionInflict": ["paralyzed"]
+		},
+		{
+			"name": "Death Worm",
+			"source": "toh",
+			"page": 44,
+			"size": "L",
+			"type": "monstrosity",
+			"alignment": ["U"],
+			"ac": [
+				{
+					"ac": 15,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 59,
+				"formula": "7d10 + 21"
+			},
+			"speed": {
+				"walk": 20,
+				"burrow": 10
+			},
+			"str": 18,
+			"dex": 13,
+			"con": 16,
+			"int": 3,
+			"wis": 11,
+			"cha": 5,
+			"save": {
+				"wis": "+3"
+			},
+			"senses": ["tremorsense 60 ft."],
+			"passive": 10,
+			"conditionImmune": ["blindness", "prone"],
+			"cr": "3",
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one creature. {@h}9 ({@damage 1d10 + 4}) piercing damage plus 4 ({@damage 1d8}) acid damage."
+					]
+				},
+				{
+					"name": "Acid Spit {@recharge 5}",
+					"entries": [
+						"All creatures along a five-foot-wide, 30-foot- long line extending from the death worm must succeed on a {@dc 11} Dexterity saving throw or take 14 ({@damage 4d6}) acid damage."
+					]
+				},
+				{
+					"name": "Lightning {@recharge}",
+					"entries": [
+						"All creatures along a five-foot-wide, 20-foot-long line extending from the death worm must make a {@dc 11} Dexterity saving throw, taking 18 ({@damage 4d8}) lightning damage on a failure, or half as much on a success."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Terrors of the open sands, death worms are dun-and-beige colored worms related to purple worms. They lair deep beneath the ground where sand meets bedrock, where they carve out a small hollow in which to lay their eggs. Those who regularly",
+					"travel the sandy wastes know the areas hunted by these lethal vermiforms and avoid them. Some desert cultures hold that the death worms are lesser demons and send their heroes out to slay the beasts — a good way to rid a tribe of excess heroes."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/deathworm.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/deathworm.png",
+			"senseTags": ["T"],
+			"damageTags": ["A", "L", "P"],
+			"miscTags": ["MW"]
+		},
+		{
+			"name": "Deepmind",
+			"source": "toh",
+			"page": 45,
+			"size": "H",
+			"type": "monstrosity",
+			"alignment": ["L", "E"],
+			"ac": [
+				{
+					"ac": 16,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 266,
+				"formula": "28d12 + 84"
+			},
+			"speed": {
+				"walk": 0,
+				"swim": 20
+			},
+			"str": 14,
+			"dex": 10,
+			"con": 16,
+			"int": 19,
+			"wis": 17,
+			"cha": 18,
+			"save": {
+				"int": "+11",
+				"wis": "+8"
+			},
+			"skill": {
+				"intimidation": "+14",
+				"perception": "+13",
+				"persuasion": "+14"
+			},
+			"senses": ["blindsight 120 ft."],
+			"passive": 23,
+			"languages": ["Aquan", "telepathy 120 feet"],
+			"cr": "16",
+			"trait": [
+				{
+					"name": "Oceanic Domination",
+					"entries": [
+						"A deepmind exercises psychic control over all sea creatures that have an Intelligence score of 2 or less within a one-mile radius. Creatures of Intelligence 3 or higher must make",
+						"{@dc 18} Intelligence saving throws or are also controlled. If actively resisting control, creatures of Intelligence 3 or higher can make a saving throw at the end of each of their turns to break the control.",
+						"A creature that succeeds on its saving throw is immune to that deepmind's control for 24 hours. Controlled creatures obey the deepmind's commands. The deepmind can also see and hear through its controlled creatures, which allows it to make Wisdom (Perception) checks through their senses. Controlled creatures also act to defend the deepmind if so commanded. Creatures that are not native to the ocean—such as humans, elves, or dwarves who are underwater through magical means—are immune to the deepmind's control."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": ["The deepmind makes six Tentacle attacks."]
+				},
+				{
+					"name": "Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 50 ft., one creature. {@h}The target is {@condition grappled} (escape {@dc 15}). Until the grapple ends, the target is {@condition restrained} and has disadvantage on Strength checks and Strength saving throws, and the deepmind can't use the same tentacle on another target. While {@condition grappled}, the target takes 12 ({@dice 3d6}",
+						"+ 2) bludgeoning damage at the beginning of the deepmind's turn."
+					]
+				},
+				{
+					"name": "Psychic Pulse {@recharge 5}",
+					"entries": [
+						"The deepmind unleashes a pulse of pure psychic energy over a 50-foot radius centered on itself. Any living creature in the area except those controlled by the deepmind through its Oceanic Domination ability must make a {@dc 18} Wisdom saving throw, taking 66 ({@damage 12d10}) psychic damage and being {@condition stunned} until the start of the deepmind's next turn on a failed save, or half as much damage and not being {@condition stunned} on a successful saving throw."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"The alien jellyfish creatures known as deepminds dwell in the depths of the sea, often in ocean trenches, unaffected by the massive pressures there. Highly hostile and dangerous, deepminds control all of the unintelligent sea life in surrounding regions, using them for defense against intruders and other deepminds.",
+					"The deepmind floats in the cold darkness of the ocean depths, illuminated by a faint bluish glow. Several small tentacles hang from its central mass, while six larger ones ring the body, gleaming with tiny eyespots. They reproduce asexually by budding. Young deepminds have their full powers within a matter of days and strike out instinctively, seeking out new territories to dominate.",
+					"While they are solitary and extremely hostile creatures, deepminds are highly intelligent and can communicate mentally and in the Aquan language. They are driven by self-interest and the need to survive and accordingly are willing to make deals with other intelligent sea creatures, especially those of evil alignment. Such allies reward a deepmind by keeping outsiders away while using sea creatures dominated by the deepmind for their own purposes."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Deepmind.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Deepmind.png",
+			"senseTags": ["B"],
+			"actionTags": ["Multiattack", "Tentacles"],
+			"languageTags": ["AQ", "TP"],
+			"damageTags": ["Y"],
+			"miscTags": ["AOE", "MW", "RCH"],
+			"conditionInflict": ["grappled", "restrained"]
+		},
+		{
+			"name": "Demi-Lich",
+			"source": "toh",
+			"page": 46,
+			"size": "T",
+			"type": "undead",
+			"alignment": ["N", "E"],
+			"ac": [20],
+			"hp": {
+				"average": 110,
+				"formula": "20d4 + 60"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 4,
+			"dex": 19,
+			"con": 17,
+			"int": 20,
+			"wis": 18,
+			"cha": 17,
+			"save": {
+				"dex": "+10",
+				"con": "+9",
+				"int": "+11",
+				"wis": "+10"
+			},
+			"skill": {
+				"arcana": "+11",
+				"history": "+11",
+				"perception": "+10",
+				"religion": "+11"
+			},
+			"senses": ["truesight 120 ft."],
+			"passive": 20,
+			"resist": [
+				{
+					"special": "damage from spells"
+				},
+				"cold"
+			],
+			"immune": [
+				"necrotic",
+				"poison",
+				"psychic",
+				{
+					"immune": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned"
+			],
+			"languages": ["telepathy 120 ft."],
+			"cr": "19",
+			"trait": [
+				{
+					"name": "Evasion",
+					"entries": [
+						"If the demi-lich is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, the demilich instead takes no damage if it succeeds on the saving throw, and only half damage if it fails."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"If the demi-lich fails a saving throw, it can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Turn Resistance",
+					"entries": [
+						"The demi-lich has advantage on saving throws against any effect that turns undead."
+					]
+				},
+				{
+					"name": "Rejuvenation",
+					"entries": [
+						"If it has a phylactery, a destroyed demi-lich's skull reforms in {@dice 1d10} days, regaining all its hit points and becoming active again. The skull reforms within five feet of the phylactery."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Drain Life",
+					"entries": [
+						"Deep violet beams lance out from the demi-lich's gemstone eyes and strike up to three creatures within 40 feet of it. Each target must succeed on a {@dc 19} Constitution saving throw or take 17 ({@damage 5d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and the demi-lich regains hit points equal to that amount. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+					]
+				},
+				{
+					"name": "Soul Scream {@recharge 5}",
+					"entries": [
+						"The demi-lich unleashes a soulshattering scream. All non-undead creatures within 30 feet of the demi-lich who hear the scream must succeed on a {@dc 17} Wisdom saving throw or drop to 0 hit points. On a successful save, the creature takes 11 ({@damage 2d10}) psychic damage and is {@condition frightened} until the end of its next turn."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "",
+					"entries": [
+						"The demi-lich can take three legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The demi-lich regains spent legendary actions at the start of its turn."
+					]
+				},
+				{
+					"name": "Flight",
+					"entries": [
+						"The demi-lich moves up to its speed without provoking opportunity attacks."
+					]
+				},
+				{
+					"name": "Bone Dust",
+					"entries": [
+						"Blinding bone dust swirls magically around the demi-lich in a five-foot radius. That area is heavily obscured to creatures other than the demi-lich until the end of the demi-lich's next turn. This effect moves with the demi-lich."
+					]
+				},
+				{
+					"name": "Disrupt Life (costs 3 actions)",
+					"entries": [
+						"Each living creature within 20 feet of the demi-lich must make a {@dc 18} Constitution saving throw against this magic, taking 21 ({@damage 6d6}) necrotic damage on a failed save, or half as much damage on a successful one."
+					]
+				},
+				{
+					"name": "Profane Curse (costs 2 actions)",
+					"entries": [
+						"The demi-lich targets one creature it can see within 30 feet of it. The target must succeed on a {@dc 19} Wisdom saving throw or be magically cursed. Until the curse ends, the target has disadvantage on ability checks, attack rolls, and saving throws. The target can repeat the saving throw at the end of each of its turns, ending the curse on itself on a success."
+					]
+				},
+				{
+					"name": "Dreadful Glare (costs 2 actions)",
+					"entries": [
+						"The demi-lich targets one creature it can see within 60 feet of it. If the target can see the demi-lich, it must succeed on a {@dc 19} Wisdom saving throw or become {@condition frightened} until the end of the demi-lich's next turn. If the target fails the saving throw by 5 or more, it is also {@condition paralyzed} for the same duration.",
+						"A target that succeeds on the saving throw is immune to the demilich's Dreadful Glare effect for the next 24 hours.",
+						"Lair Actions",
+						"On initiative count 20 (losing initiative ties), the demi-lich can take a lair action to cause one of the following effects. The demi-lich can't use the same effect two rounds in a row."
+					]
+				},
+				{
+					"name": "Healing Suppression",
+					"entries": [
+						"All living creatures within 60 feet of the demilich must succeed on a {@dc 19} Wisdom saving throw or be unable to regain hit points until initiative 20 of the next round."
+					]
+				},
+				{
+					"name": "Malevolent Echo",
+					"entries": [
+						"A short-lived echo of the demi-lich's former self appears in the form of a wraith in an unoccupied space within 30 feet of the demi-lich and obeys the demi-lich's telepathic commands"
+					]
+				},
+				{
+					"name": "(no action required)",
+					"entries": [
+						"It rolls initiative, acts on its own turn, and disappears after one minute or when it drops to 0 hit points."
+					]
+				},
+				{
+					"name": "Tap Phylactery",
+					"entries": [
+						"The demi-lich draws negative energy from its phylactery, if it exists and is on the same plane as the demi- lich, and regains 22 ({@dice 4d10}) hit points."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"When the lifeforce of an ancient lich of incredible power finally diminishes and its material body decays — a process that often takes centuries of undeath —the undead being’s soul lingers in the area and possesses the only viable remains: the skull. After this second death, the eye sockets and the teeth of the demi-lich-",
+					"possessed skull oddly transform into clear gemstones (each worth 1,000 gp), with a single gemstone growing in each eye socket to match the six gems that replace the teeth."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/dem-ilich.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/dem-ilich.png",
+			"traitTags": [
+				"Legendary Resistances",
+				"Rejuvenation",
+				"Turn Resistance"
+			],
+			"senseTags": ["U"],
+			"languageTags": ["TP"],
+			"damageTags": ["N", "Y"],
+			"conditionInflict": ["frightened", "paralyzed"]
+		},
+		{
+			"name": "Greater Demi-Lich",
+			"source": "toh",
+			"page": 48,
+			"size": "T",
+			"type": "undead",
+			"alignment": ["N", "E"],
+			"ac": [21],
+			"hp": {
+				"average": 180,
+				"formula": "24d4 + 120"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 40,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 4,
+			"dex": 21,
+			"con": 20,
+			"int": 22,
+			"wis": 20,
+			"cha": 20,
+			"save": {
+				"dex": "+13",
+				"con": "+13",
+				"int": "+14",
+				"wis": "+13",
+				"cha": "+13"
+			},
+			"skill": {
+				"arcana": "+14",
+				"history": "+14",
+				"perception": "+13",
+				"religion": "+14"
+			},
+			"senses": ["truesight 120 ft."],
+			"passive": 23,
+			"resist": [
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from magical weapons",
+					"cond": true
+				},
+				{
+					"special": "damage from spells"
+				}
+			],
+			"immune": [
+				"cold",
+				"necrotic",
+				"poison",
+				"psychic",
+				{
+					"immune": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned"
+			],
+			"languages": ["telepathy 120 ft."],
+			"cr": "25",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The demi-lich's innate spellcasting ability is Charisma (spell save {@dc 24}, {@hit 16} to hit with spell attacks). The demilich can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell counterspell}",
+						"{@spell detect thoughts}",
+						"{@spell dimension door}",
+						"{@spell greater invisibility}",
+						"{@spell mirror image}",
+						"{@spell shield}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell animate dead}",
+							"{@spell antilife shell}",
+							"{@spell antimagic field}",
+							"{@spell dispel magic} (as a 6th-level slot)",
+							"{@spell fireball} (as a 6th-level slot)",
+							"{@spell globe of invulnerability} (as a 7th-level slot)"
+						],
+						"1e": [
+							"{@spell contingency}",
+							"{@spell disintegrate}",
+							"{@spell plane shift}",
+							"{@spell time stop}"
+						]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Evasion",
+					"entries": [
+						"If the demi-lich is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, the demilich instead takes no damage if it succeeds on the saving throw, and only half damage if it fails."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"If the demi-lich fails a saving throw, it can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Turn Immunity",
+					"entries": [
+						"The greater demi-lich is immune to effects that turn undead."
+					]
+				},
+				{
+					"name": "Rejuvenation",
+					"entries": [
+						"If it has a phylactery, a destroyed demi-lich's skull reforms in {@dice 1d4} days, regaining all its hit points and becoming active again. The skull reforms within five feet of the phylactery."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "D",
+					"entries": []
+				},
+				{
+					"name": "Drain Life",
+					"entries": [
+						"Deep violet beams lance out from the demi-lich's gemstone eyes and strike up to three creatures within 40 feet of it. Each target must succeed on a {@dc 21} Constitution saving throw or take 24 ({@damage 7d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and the demi-lich regains hit points equal to that amount. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+					]
+				},
+				{
+					"name": "Soul Scream {@recharge 5}",
+					"entries": [
+						"The demi-lich unleashes a soulshattering scream. All non-undead creatures within 30 feet of the demi-lich who can hear the scream must succeed on a {@dc 18} Wisdom saving throw or drop to 0 hit points. On a successful save, the creature takes 22 ({@damage 4d10}) psychic damage and is {@condition frightened} until the end of its next turn."
+					]
+				},
+				{
+					"name": "Soul Steal {@recharge}",
+					"entries": [
+						"The demi-lich chooses a creature it can see within 60 feet. That creature must make a {@dc 18} Charisma saving throw. On a failed save, the creature's soul is ripped out of its body and stored in one of the demi-lich's skull gems. The demi-lich can never capture more than eight souls, one in each of its gems. Killing a demi-lich and destroying one of its gems within 48 hours of the soul being captured releases any soul trapped therein. The soul automatically reoccupies the creature's soulless body if it is still intact, and the creature is immediately conscious. On a successful save, the creature is {@condition stunned} until the end of its next turn."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "",
+					"entries": [
+						"The demi-lich can take three legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The demi-lich regains spent legendary actions at the start of its turn."
+					]
+				},
+				{
+					"name": "Flight",
+					"entries": [
+						"The demi-lich moves up to its speed without provoking opportunity attacks."
+					]
+				},
+				{
+					"name": "Bone Dust",
+					"entries": [
+						"Blinding bone dust swirls magically around the demi-lich in a five-foot radius. That area is heavily obscured to creatures other than the demi-lich until the end of the demi-lich's next turn. This effect moves with the demi-lich."
+					]
+				},
+				{
+					"name": "Disrupt Life (costs 3 actions)",
+					"entries": [
+						"Each living creature within 20 feet of the demi-lich must make a {@dc 20} Constitution saving throw against this magic, taking 35 ({@damage 10d6}) necrotic damage on a failed save, or half as much damage on a successful one."
+					]
+				},
+				{
+					"name": "Profane Curse (costs 2 actions)",
+					"entries": [
+						"The demi-lich targets one creature it can see within 30 feet of it. The target must succeed on a {@dc 21} Wisdom saving throw or be magically cursed. Until the curse ends, the target has disadvantage on ability checks, attack rolls, and saving throws. The target can repeat the saving throw at the end of each of its turns, ending the curse on itself on a success."
+					]
+				},
+				{
+					"name": "Dreadful Glare (costs 2 actions)",
+					"entries": [
+						"The demi-lich targets one creature it can see within 60 feet of it. If the target can see the demi-lich, it must succeed on a {@dc 21} Wisdom saving throw or become {@condition frightened} until the end of the demi-lich's next turn. If the target fails the saving throw by 5 or more, it is also {@condition paralyzed} for the same duration.",
+						"A target that succeeds on the saving throw is immune to the demilich's Dreadful Glare effect for the next 24 hours.",
+						"Lair Actions",
+						"On initiative count 20 (losing initiative ties), the demi-lich can take a lair action to cause one of the following effects. The demi-lich can't use the same effect two rounds in a row."
+					]
+				},
+				{
+					"name": "Healing Suppression",
+					"entries": [
+						"All living creatures within 60 feet of the demilich must succeed on a {@dc 21} Wisdom saving throw or be unable to regain hit points until initiative 20 of the next round."
+					]
+				},
+				{
+					"name": "Malevolent Echoes",
+					"entries": [
+						"Two separate short-lived echoes of the demi-lich's former self appear in the form of wraiths in two unoccupied spaces within 30 feet of the demi-lich and obey the demi-lich's telepathic commands (no action required). Each rolls initiative, acts on its own turn, and disappears after one minute or when it drops to 0 hit points."
+					]
+				},
+				{
+					"name": "Tap Phylactery",
+					"entries": [
+						"The demi-lich draws negative energy from its phylactery, if it exists and is on the same plane as the demi-lich, and regains 33 ({@dice 6d10}) hit points."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"A greater demi-lich is a demi-lich that has spent eons traveling the planes of existence and exploring dark, arcane secrets. It has succeeded in recovering some of its former spellcasting ability and developing other unholy powers beyond even those it had as a lich. Some say such demi-liches deliberately abandoned their",
+					"bodies in order to more fully focus on their sinister studies. Although a greater demi-lich can never regain its lost body, it has learned to capture the souls of the creatures it encounters and store them in the gemstones embedded in its skull. It then transfers the souls to once again power its phylactery",
+					"Greater demi-liches very similar to ordinary demi-liches, with a skull with clear gemstone eyes and teeth sitting on top of, or floating over, a pile of bones and dust. However, greater demi-liches seem much more purposeful than ordinary demi-liches, often employing lesser undead as guardians and servants. Although they still almost always remain in their lairs, they actively seek paths to transcendence and even loftier levels of power such as godhood."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/dem-ilich.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/dem-ilich.png",
+			"traitTags": [
+				"Legendary Resistances",
+				"Rejuvenation",
+				"Turn Immunity"
+			],
+			"senseTags": ["U"],
+			"languageTags": ["TP"],
+			"damageTags": ["N", "Y"],
+			"spellcastingTags": ["I"],
+			"conditionInflict": ["frightened", "paralyzed", "stunned"],
+			"conditionInflictSpell": ["invisible"]
+		},
+		{
+			"name": "Dark Stalker",
+			"isNamedCreature": true,
+			"source": "toh",
+			"page": 43,
+			"size": "M",
+			"type": "humanoid",
+			"alignment": ["C", "N"],
+			"ac": [15],
+			"hp": {
+				"average": 52,
+				"formula": "7d8 + 21"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 14,
+			"dex": 18,
+			"con": 16,
+			"int": 9,
+			"wis": 11,
+			"cha": 13,
+			"save": {
+				"dex": "+6",
+				"cha": "+3"
+			},
+			"skill": {
+				"perception": "+4",
+				"stealth": "+8"
+			},
+			"senses": ["darkvision 120 ft."],
+			"passive": 14,
+			"languages": ["Undercommon (dark folk dialect)"],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dark stalker's spellcasting ability is Charisma (spell save {@dc 10}). The dark stalker can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell detect magic}",
+						"{@spell fog cloud}"
+					],
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Death Throes",
+					"entries": [
+						"When a dark stalker dies, it combusts in a flash of white-hot flame, and each creature within 20 feet of it must make a {@dc 14} Dexterity saving throw, taking 14 ({@damage 4d6}) fire damage on a failed save, or half as much on a success. A dark stalker's gear and treasure are unaffected by this explosion."
+					]
+				},
+				{
+					"name": "Envenomed Attacks",
+					"entries": [
+						"The dark stalker coats its weapons with black smear, a foul-smelling black paste distilled from fungi that live deep underground."
+					]
+				},
+				{
+					"name": "Exceptional Dark Vision",
+					"entries": [
+						"Dark stalkers can see perfectly in darkness of any kind, including magical darkness."
+					]
+				},
+				{
+					"name": "Light Sensitivity",
+					"entries": [
+						"While in bright light, the dark stalker has disadvantage on attack rolls as well as on Wisdom (Perception) checks that rely on sight."
+					]
+				},
+				{
+					"name": "Sneak Attack",
+					"entries": [
+						"Once per turn, the dark stalker deals an extra 14 ({@damage 4d6}) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within five feet of an ally of the dark stalker that isn't {@condition incapacitated}, and the dark stalker doesn't have disadvantage on the attack roll."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The dark stalker makes two Shortsword attacks."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage, and the target must succeed on a",
+						"{@dc 14} Constitution saving throw, taking 14 ({@damage 4d6}) poison damage on a failed save, or half as much on a successful one."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"While they are the leaders of dark creeper communities ranging from small village outpost to the mighty cities of the dark folk said to exist deep within the earth, the dark stalkers are a people apart. Although of the same race as the dark creepers, dark stalkers are taller, more courageous, and possibly more intelligent. They share many of the same cultural attitudes, an unwillingness to be nude, an acceptance of murder and cannibalism, and general unhygienic ways of their diminutive brethren. A group of dark creepers led by a dark stalker is a deadly force of assassins, marauders, and raiders made bolder by the presence of their taller kin."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/darkstalker.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/darkstalker.png",
+			"traitTags": ["Death Burst", "Light Sensitivity", "Sneak Attack"],
+			"senseTags": ["SD"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["U"],
+			"damageTags": ["F", "I", "P"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["AOE", "MW"],
+			"conditionInflict": ["incapacitated"]
+		},
+		{
+			"name": "Abrikandilu",
+			"source": "toh",
+			"page": 48,
+			"size": "S",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["C", "E"],
+			"ac": [
+				{
+					"ac": 15,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 22,
+				"formula": "4d6 + 8"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 17,
+			"dex": 14,
+			"con": 16,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"senses": ["darkvision 120 ft."],
+			"passive": 10,
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": ["Abyssal"],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Goring Charge",
+					"entries": [
+						"If an abrikandilu demon moves at least 30 feet straight toward a target and then hits with a gore attack on the same turn, the target takes an extra 5 ({@damage 2d4}) piercing damage."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The abrikandilu demon has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Self-Loathing",
+					"entries": [
+						"If an abrikandilu demon can see a mirror within 30 feet of itself, it attacks that mirror on its next turn."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The creature makes one Gore attack and one Bite attack."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@dice 1d6}",
+						"+ 3) piercing damage."
+					]
+				},
+				{
+					"name": "Gore",
+					"entries": [
+						"{@atk mw} +X to hit, reach 0 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Abrikandilu, also called Wreckers, are fiendish foot soldiers from the Abyss that delight in destroying things of beauty and intellect. Objects of art, illuminated manuscripts, and beautiful creatures are the favored victims of their demonic wrath. The only thing they despise more than objects of beauty is their own wretched reflection. When faced with a mirror, they cease all other activities and turn their attention to shattering their own visage so that they are no longer faced with the horror that is their essence. Their horrific features entirely justify this extreme self-loathing. They are squat, dwarfish fiends standing roughly four feet tall and weighing more than 200 pounds. Hooked horns sprout from their wispy-haired row, and they have a tusked lower jaw that protrudes from their thick neck and heavy jowls."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Abrikandilu.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Abrikandilu.png",
+			"traitTags": ["Magic Resistance"],
+			"senseTags": ["SD"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AB"],
+			"damageTags": ["P"],
+			"miscTags": ["MW"]
+		},
+		{
+			"name": "Alu Demon",
+			"source": "toh",
+			"page": 49,
+			"size": "M",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["C", "E"],
+			"ac": [
+				{
+					"ac": 16,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 65,
+				"formula": "10d8 + 20"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 50
+			},
+			"str": 17,
+			"dex": 15,
+			"con": 15,
+			"int": 15,
+			"wis": 15,
+			"cha": 16,
+			"save": {
+				"constitution": "+5"
+			},
+			"skill": {
+				"deception+": "6",
+				"intimidation": "+6",
+				"stealth": "+5"
+			},
+			"senses": ["darkvision 120 ft."],
+			"passive": 12,
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": ["Abyssal", "telepathy 100 ft."],
+			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The alu demon's innate spellcasting ability is Charisma (spell save {@dc 14}, {@hit 6} to hit with spell attacks). It can cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": ["{@spell dimension door}"],
+						"3e": [
+							"{@spell alter self}",
+							"{@spell charm person}",
+							"{@spell detect thoughts}",
+							"{@spell suggestion}"
+						]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The alu demon has advantage on saving throws against spells and other magical effects."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The alu demon makes one Longsword attack and one Claw attack."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage. The alu demon gains temporary hit points equal to the amount of damage inflicted with its claw attack.",
+						"These temporary hit points last one hour."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Standing more than six feet tall, alu demons have dark flowing hair from which tiny horns protrude. They have faintly snake-like skin that runs the gamut of human flesh tones. They typically arm themselves and dress in the local attire of the mortals upon whom they prey, favoring armor, swords, and flowing capes that hide their small leathery wings.",
+					"Alu demons are the offspring of unions between succubi or incubi and mortals. Born in the chaotic Abyss and raised as servants of the demon lords, these fiendish creatures are not always as truly chaotic, nor evil, as their forebears, though most are. Alu demons typically have dark brown or black hair and brown, dark green, or black eyes. They have the comely, pouting expression of their demonic parent, which allows them to pass freely among the lands of mortals."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Alu.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Alu.png",
+			"traitTags": ["Magic Resistance"],
+			"senseTags": ["SD"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AB", "TP"],
+			"damageTags": ["S"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["MW"],
+			"conditionInflictSpell": ["charmed"]
+		},
+		{
+			"name": "Cacodemon",
+			"source": "toh",
+			"page": 50,
+			"size": "M",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["N", "E"],
+			"ac": [
+				{
+					"ac": 14,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 71,
+				"formula": "11d8 + 22"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 13,
+			"con": 15,
+			"int": 14,
+			"wis": 14,
+			"cha": 15,
+			"skill": {
+				"athletics": "+5",
+				"deception": "+4",
+				"intimidation": "+4",
+				"perception": "+4",
+				"stealth": "+3"
+			},
+			"senses": ["darkvision 60 ft."],
+			"passive": 14,
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": [
+				"Abyssal",
+				"Common",
+				"Demonic",
+				"Infernal",
+				"telepathy 120 ft."
+			],
+			"cr": "4",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The cacodemon's innate spellcasting ability is Charisma (spell save {@dc 12}). It can cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": ["{@spell hold person}"],
+						"3e": [
+							"{@spell darkness}",
+							"{@spell detect magic}",
+							"{@spell detect thoughts}",
+							"{@spell see invisibility}"
+						]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The cacodemon has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"The cacodemon's weapon attacks are considered magical for the purposes of damage resistances."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The cacodemon makes two Longsword and one Claw attack, or two Claw attacks."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage, or 8 ({@damage 1d10 + 3}) slashing damage if used with two hands to make a melee attack."
+					]
+				},
+				{
+					"name": "Change Shape",
+					"entries": [
+						"The cacodemon magically polymorphs into a humanoid whose Challenge rating is equal to or lower than its own, or back into its true form. It reverts to its true form if it dies. Any equipment it is wearing or carrying is absorbed or borne by the new form (the cacodemon's choice). In a new form, the cacodemon retains its game statistics and ability to speak, but its Armor",
+						"Class, movement modes, Strength, Dexterity, and special senses are replaced by those of the new form, and it gains any statistics and capabilities (except class features, legendary actions, and lair"
+					]
+				},
+				{
+					"name": "Summon (1/Day)",
+					"entries": [
+						"The cacodemon has a 35% chance to summon {@dice 1d3} derghodemons (see Tome of Horrors 5e) or a cacodemon. The summoned demon appears in an unoccupied space within 60 feet of the cacodemon, but can't summon other demons. It remains for one minute, until it or the first cacodemon is slain, or until the first cacodemon takes an action to dismiss it."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Cacodemons stand about seven feet tall and weigh about 800 pounds. Cacodemons are relentless combatants and never back down from a fight. They often begin combat by changing forms and appearing as a race friendly to their potential opponents. Once an opponent is lured close to the cacodemon, it changes back to its natural form and attacks. Dreaded and feared, cacodemons are often employed as soldiers and assassins. Cacodemons are completely loyal and never question their position or authority; they do not take orders from other demons."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Cacodemon.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Cacodemon.png",
+			"traitTags": ["Magic Resistance", "Magic Weapons"],
+			"senseTags": ["D"],
+			"actionTags": ["Multiattack", "Shapechanger"],
+			"languageTags": ["AB", "C", "I", "TP"],
+			"damageTags": ["S"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["MW"],
+			"conditionInflictSpell": ["paralyzed"]
+		},
+		{
+			"name": "Charonademon",
+			"source": "toh",
+			"page": 51,
+			"size": "M",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["N", "E"],
+			"ac": [
+				{
+					"ac": 16,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d8 + 30"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 18,
+			"dex": 16,
+			"con": 16,
+			"int": 15,
+			"wis": 14,
+			"cha": 18,
+			"save": {
+				"con": "+6",
+				"wis": "+5"
+			},
+			"skill": {
+				"arcana": "+6",
+				"deception": "+8",
+				"intimidation": "+8",
+				"perception": "+6",
+				"stealth": "+7",
+				"survival": "+6"
+			},
+			"senses": ["darkvision 60 ft."],
+			"passive": 16,
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["acid", "poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": [
+				"Abyssal",
+				"Common",
+				"Demonic",
+				"Infernal",
+				"telepathy 120 ft."
+			],
+			"cr": "7",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The charonademon's innate spellcasting ability is Charisma (spell save {@dc 16}). It can cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell darkness}",
+						"{@spell see invisibility}"
+					],
+					"daily": {
+						"1": ["{@spell plane shift} (skiff and self only)"]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The charonademon has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"The charonademon's weapon attacks are considered magical for the purposes of damage resistances."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The charonademon makes two Quarterstaff attacks."
+					]
+				},
+				{
+					"name": "Quarterstaff",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) bludgeoning damage, or 13 ({@damage 2d8 + 4}) bludgeoning damage if used with two hands to make a melee attack."
+					]
+				},
+				{
+					"name": "Fear Gaze",
+					"entries": [
+						"Creatures within 30 feet of the charonademon who can see it must make a {@dc 16} Wisdom saving throw. On a failed saving throw, the creature takes 10 ({@damage 3d6}) psychic damage and is {@condition frightened} for one minute. On a successful saving throw, the creature takes half damage and is not {@condition frightened}.",
+						"While {@condition frightened}, the target must take the Dash action and move away from the charonademon by the safest available route on each of its turns, unless there is nowhere to move. The creature can repeat the saving throw if it ends its turn out of line of sight with the charonademon, ending the effect on a success. If the creature's saving throw succeeds, or the effect ends for it, the target is immune to a charonademon's fear gaze for 24 hours."
+					]
+				},
+				{
+					"name": "Summon (1/Day)",
+					"entries": [
+						"The charonademon has a 35% chance to summon",
+						"{@dice 1d4} hydrodemons or a charonademon. The summoned demon appears in an unoccupied space within 60 feet of the charonademon but can't summon other demons. It remains for one minute, until it or the first charonademon is slain, or until the first charonademon takes an action to dismiss it."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Tall, gaunt, skeletal, clad in black robes, and bearing a staff, it is easy to confuse a charonademon for their master, the boatman of the Lower Planes. While that being is more likely to be trusted, a charonademon is not. They love to murder and rob those seeking to cross the River Styx and even take passengers in their boats only",
+					"to kill them or dump them in the river. They can be bought off, but such a plan needs to be ready and the money in full, and even then, it might not work. Their standard fare is 50 gp per level of each creature being carried, double that if you plan to bribe them to keep them from murdering you."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Charanodemon.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Charanodemon.png",
+			"traitTags": ["Magic Resistance", "Magic Weapons"],
+			"senseTags": ["D"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AB", "C", "I", "TP"],
+			"damageTags": ["B", "Y"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["MW"],
+			"conditionInflict": ["frightened"]
+		},
+		{
+			"name": "Daraka",
+			"source": "toh",
+			"page": 52,
+			"size": "L",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["C", "E"],
+			"ac": ["type", 14],
+			"hp": {
+				"average": 105,
+				"formula": "10d10 + 50"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 18,
+			"dex": 11,
+			"con": 20,
+			"int": 18,
+			"wis": 18,
+			"cha": 20,
+			"save": {
+				"constitution": "+8"
+			},
+			"skill": {
+				"deception": "+8",
+				"intimidation": "+8",
+				"perception": "+7"
+			},
+			"senses": ["darkvision 60 ft."],
+			"passive": 17,
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": ["Abyssal"],
+			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The daraka's innate spellcasting ability is Charisma (spell save {@dc 16}, {@hit 8} to hit with spell attacks). It can cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell detect evil and good}",
+						"{@spell invisibility} (self only)",
+						"{@spell spiritual weapon}",
+						"{@spell teleport} (self only)"
+					],
+					"daily": {
+						"3": ["{@spell chill touch}"],
+						"1e": ["{@spell feeblemind}", "{@spell shatter}"]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Scorpion Body",
+					"entries": [
+						"A creature that hits the daraka with a melee attack suffers 3 ({@damage 1d6}) piercing damage and must succeed at a {@dc 16} Constitution saving throw or suffer an additional 9 ({@damage 2d8}) poison damage and be {@condition poisoned} for one hour from the scorpions that scurry out of the wound to attack."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The daraka demon has advantage on saving throws against spells and other magical effects."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The creature makes one Claw attack and one Scorpion",
+						"Throw attack, or two Claw attacks."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 10 ft., one target. {@h}13 ({@damage 2d8 + 4}) slashing damage and the target is {@condition grappled} by the daraka (escape {@dc 15}). A creature that is {@condition grappled} by the daraka at the start of its turn suffers the effects of the demon's scorpion body ability. The daraka has two claws and can grapple only two creatures at a time."
+					]
+				},
+				{
+					"name": "Scorpion Throw",
+					"entries": [
+						"{@atk rw} {@hit 3} to hit, range 10/20 ft., one target. {@h}3 ({@damage 1d6}) piercing damage and the target must succeed at a {@dc 16} Constitution saving throw or suffer an additional 9 ({@damage 2d8}) poison damage and be {@condition poisoned} for one hour."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"This nine-foot-tall nightmare appears as a faun-legged humanoid with oily writhing flesh, a cruel bestial head adorned with curling ram’s horns, and a mouth full of jagged rotting teeth. A daraka’s skin is leathery and oily and from a distance of 10 feet or more appears to be a mass of writhing flesh. Closer inspection reveals thousands of tiny scorpions swarming its flesh, skittering in and out of its mouth, ears, and nose, seemingly unnoticed by the demon. They act as guards to greater demons or as shock troops in demonic armies. Quite intelligent, they are often used as commanders or leaders, with each daraka having a battalion of minor demons at its command."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Daraka.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Daraka.png",
+			"traitTags": ["Magic Resistance"],
+			"senseTags": ["D"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AB"],
+			"damageTags": ["I", "P", "S"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["MW", "RCH", "RW"],
+			"conditionInflict": ["grappled", "poisoned"],
+			"conditionInflictSpell": ["invisible"]
+		},
+		{
+			"name": "Gallu",
+			"source": "toh",
+			"page": 54,
+			"size": "L",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["N", "E"],
+			"ac": [
+				{
+					"ac": 15,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 85,
+				"formula": "10d10 + 30"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 19,
+			"dex": 11,
+			"con": 16,
+			"int": 12,
+			"wis": 14,
+			"cha": 15,
+			"skill": {
+				"deception": "+8",
+				"perception": "+5",
+				"stealth": "+6"
+			},
+			"senses": ["darkvision 60 ft."],
+			"passive": 15,
+			"resist": [
+				"acid",
+				"cold",
+				"fire",
+				{
+					"resist": ["bludgening", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["lightning", "poison"],
+			"conditionImmune": ["paralyzed", "poisoned"],
+			"languages": ["Abyssal", "Common", "telepathy 60 ft."],
+			"cr": "6",
+			"trait": [
+				{
+					"name": "Shapechanger",
+					"entries": [
+						"The gallu can use its action to polymorph into a Small or Medium humanoid, or back into its true form. Other than its size and speed, its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The gallu makes two Claw attacks and one Bite attack."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d10 + 4}) slashing damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) slashing damage and the target is {@condition grappled} (escape",
+						"{@dc 15}). Until the grapple ends, the target is {@condition restrained} and has disadvantage on Strength checks and Strength saving throws, and the gallu can't grapple another target."
+					]
+				},
+				{
+					"name": "Plane Shift {@recharge 5}",
+					"entries": [
+						"The gallu casts a plane shift spell requiring only verbal components. If the gallu has a creature {@condition grappled}, that creature must succeed on a {@dc 15} Wisdom saving throw or be transported along with the gallu."
+					]
+				},
+				{
+					"name": "Teleport {@recharge 5}",
+					"entries": [
+						"The gallu magically teleports, along with any equipment it is wearing or carrying, up to 120 feet to an unoccupied space it can see. If the gallu has a creature {@condition grappled}, that creature must succeed on a {@dc 15} Wisdom saving throw or be transported along with the gallu."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"A gallu demon is nine feet tall and weighs about 800 pounds. Its flesh is glossy black and, other than a large mouth lined with teeth, it has no facial features. The gallu demon excels at disguising itself as a normal humanoid to befriend a mortal,",
+					"whom it then whisks back to its Abyssal lair. Gallu demons have been known to spend months on the Material Plane just to get close to and eventually abduct a chosen target. Abducted victims are sometimes devoured by a gallu demon before it completes its task, but more often than not, an abducted victim is given to the gallu demon’s master, who enslaves the victim (or sometimes devours it himself)."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Gallu.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Gallu.png",
+			"traitTags": ["Shapechanger"],
+			"senseTags": ["D"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AB", "C", "TP"],
+			"damageTags": ["S"],
+			"miscTags": ["MW"],
+			"conditionInflict": ["grappled", "restrained"]
+		},
+		{
+			"name": "Huangshe'yao",
+			"source": "toh",
+			"page": 55,
+			"size": "L",
+			"type": "aberration",
+			"alignment": [
+				{
+					"special": "alignment varies"
+				}
+			],
+			"ac": [
+				{
+					"ac": 20,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 231,
+				"formula": "22d10 + 110"
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 30
+			},
+			"str": 18,
+			"dex": 15,
+			"con": 20,
+			"int": 18,
+			"wis": 18,
+			"cha": 20,
+			"save": {
+				"str": "+9",
+				"con": "+10",
+				"wis": "+9",
+				"cha": "+10"
+			},
+			"senses": ["tremorsense 30 ft."],
+			"passive": 14,
+			"resist": [
+				{
+					"resist": [
+						"fire",
+						"lightning",
+						"bludgeoning",
+						"piercing and slashing damage"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": ["Abyssal"],
+			"cr": "15",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The huangshe'yao's spellcasting ability is Charisma (spell save {@dc 18}). The huangshe'yao can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"3e": [
+							"{@spell charm person}",
+							"{@spell enthrall}",
+							"{@spell hold person}",
+							"{@spell hypnotic pattern}",
+							"{@spell suggestion}"
+						],
+						"1e": [
+							"{@spell dominate person}",
+							"{@spell mass suggestion}"
+						]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Wish-Bargain",
+					"entries": [
+						"A huangshe'yao can grant a single wish (as per the 9th-level spell) to a mortal petitioner. The cost of this wish is high, however, for the petitioner must, in exchange for the wish, allow itself to be subject to a geas from the huangshe'yao. This geas is treated as if it was cast with a 9th-level spell slot (meaning that it is permanent until removed by remove curse, greater restoration, or wish) and the target receives no saving throw."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The huangshe'yao has advantage on saving throws against spells and other magical effects."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The huangshe'yao makes one Bite and one Constriction attack. It may not make a constriction attack if it already has one target {@condition restrained}."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 10 ft., one target. Hit:18 ({@damage 4d6 + 4}) damage."
+					]
+				},
+				{
+					"name": "Constriction",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 10 ft., one target. {@h}15 ({@damage 2d10 + 4}) bludgeoning damage. If the target is",
+						"Medium or smaller, it is {@condition grappled} (escape {@dc 19}). Until this grapple ends, the target is {@condition restrained}, the target takes 15 ({@damage 2d10 + 4}) bludgeoning damage at the start of the huangshe'yao's turn, and the huangshe'yao can't make constriction attacks against other targets."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"The huangshe’yao are generally benevolent beings; they are, however, extremely subtle, and dealing with them can be a very risky proposition. Physically, they resemble enormous constrictor snakes with yellow-gold scales and faces somewhat like horned vipers, with orange eyes that reflect significant intelligence. They often dwell outside the Material Planes, visiting from time to time for their own purposes.",
+					"The huangshe’yao are wish-granters, but in return they require that a supplicant agree to be subject to a geas. The geas might not be applied immediately, being retained by the huangshe’yao for use at a later date, but usually humans will encounter a huangshe’yao when it is already engaged in some specific purpose and has decided to engage an ally (or minion). Despite the general tendency of the huangshe’yao toward good alignments, evil individuals are possible, and such corrupted ones are very evil indeed. Evil-aligned huangshe’yao are outcasts from their kin, and never encountered in association with those of any other alignment."
+				]
+			},
+			"traitTags": ["Magic Resistance"],
+			"senseTags": ["T"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AB"],
+			"damageTags": ["B"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["MW", "RCH"],
+			"conditionInflict": ["restrained"],
+			"conditionInflictSpell": ["charmed", "incapacitated", "paralyzed"]
+		},
+		{
+			"name": "Hundred-eyed demon",
+			"isNamedCreature": true,
+			"source": "toh",
+			"page": 56,
+			"size": "H",
+			"type": "fiend",
+			"alignment": ["U"],
+			"ac": [
+				{
+					"ac": 17,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 207,
+				"formula": "18d12 + 90"
+			},
+			"speed": {
+				"walk": 50,
+				"burrow": 20,
+				"climb": 20
+			},
+			"str": 20,
+			"dex": 10,
+			"con": 21,
+			"int": 3,
+			"wis": 18,
+			"cha": 5,
+			"skill": {
+				"perception": "+8"
+			},
+			"senses": ["darkvision 120 ft.", "tremorsense 60 ft."],
+			"passive": 18,
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing and slashing damage",
+						"thunder"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["poison", "psychic"],
+			"conditionImmune": ["charmed", "poisoned"],
+			"cr": "12",
+			"trait": [
+				{
+					"name": "Enhanced Perception",
+					"entries": [
+						"Hundred-eyed demons are highly sensitive to motion and tremors. They have advantage on all Wisdom (Perception) checks due to their multiple eyes and their other enhanced senses.",
+						"Sustenance-free. Hundred-eyed demons do not need to eat, sleep or breathe."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}32 ({@damage 6d8 + 5}) piercing damage plus 13 ({@damage 3d8}) poison damage. The target must succeed on a {@dc 17} Constitution saving throw or be {@condition poisoned} for one minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. In addition, the creature is {@condition grappled} (escape {@dc 17}). The hundred-eyed demon cannot make bite attacks when it has a {@condition grappled} target, but it can continue to inflict 13 ({@damage 3d8}) poison damage on its turn upon its {@condition grappled} target."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"The hundred-eyed demon is a massive armored centipede with a thick carapace studded with dozens of tiny black eyes. Its mandibles clack with deadly intent. Sleepless, mindless, and infinitely patient, hundred-eyed demons lurk in silent darkness awaiting intruders, then attack from the shadows. Their senses are incredibly acute, allowing them to detect vibrations and movement from a great distance and quickly pinpoint the source of the disturbance."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Hundred-Eyed.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Hundred-Eyed.png",
+			"senseTags": ["SD", "T"],
+			"damageTags": ["I", "P"],
+			"miscTags": ["MW"],
+			"conditionInflict": ["grappled", "poisoned"]
+		},
+		{
+			"name": "Mezzalorn Demon",
+			"source": "toh",
+			"page": 57,
+			"size": "L",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["C", "E"],
+			"ac": [
+				{
+					"ac": 18,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 95,
+				"formula": "10d10 + 40"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": 50
+			},
+			"str": 18,
+			"dex": 18,
+			"con": 18,
+			"int": 13,
+			"wis": 16,
+			"cha": 16,
+			"skill": {
+				"deception": "+6",
+				"intimidation": "+6",
+				"perception": "+6",
+				"stealth": "+7"
+			},
+			"senses": ["darkvision 60 ft."],
+			"passive": 16,
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": ["Abyssal", "Common", "telepathy 100 ft."],
+			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The mezzalorn demon's innate spellcasting ability is Charisma (spell save {@dc 14}, {@hit 6} to hit with spell attacks). It can cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell spiritual weapon}",
+						"{@spell teleport} (self only)"
+					],
+					"daily": {
+						"1": ["{@spell hypnotic pattern}"],
+						"3e": ["{@spell bane}", "{@spell blight}"]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The mezzalorn demon has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Pheromones",
+					"entries": [
+						"When reduced to half or less of its maximum hit points, the mezzalorn releases a cloud of pheromones that excite the natural aggression of its kind, granting advantage on all attack rolls to any mezzalorn within 50 feet."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The mezzalorn makes one Sting attack and one Claw attack."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d6 + 4}) slashing damage."
+					]
+				},
+				{
+					"name": "Sting",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d8 + 5}) piercing damage and the target must succeed at a {@dc 15} Constitution saving throw or suffer an additional 9 ({@damage 2d8}) poison damage and be {@condition poisoned} for one hour."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Mezzalorns (or wasp demons as they are sometimes called) are flying horrors from the rifts of the Abyss with the lower half of a nightmarish wasp. Where the wasp’s head would be sprouts a head and arms that appear to be born of the cross between a howling monkey and an unholy insect. Its clawed arms are covered in spines and its wide-set insectoid eyes frame a flat-nosed face and mouth filled with razor sharp fangs. A mezzalorn stands as tall as a human and is about 10 feet long. Its body is dark with red bands and ends in a golden stinger. Its legs resemble those of a giant wasp and are covered in fine hairs and bristles. Its human-like visage is copper and sports matted dark hair.",
+					"These flying demons spend most of their time high above the Abyssal planes scouring the lands for food or patrolling a demon lord’s domain. When serving under a demon lord or one of his generals, mezzalorns are often used as shock troops or first-assault troops in war. Mezzalorns are thoroughly evil and despise all non-demons, attacking them on sight. Slain creatures are arried back to their lair and distributed among the inhabitants of the nest. A nest is composed of just about anything a mezzalorn can find and carry: bones, debris, refuse, weapons, and so on."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Mezzalorn.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Mezzalorn.png",
+			"traitTags": ["Magic Resistance"],
+			"senseTags": ["D"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AB", "C", "TP"],
+			"damageTags": ["I", "P", "S"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["MW"],
+			"conditionInflict": ["poisoned"],
+			"conditionInflictSpell": ["charmed", "incapacitated"]
+		},
+		{
+			"name": "Hydrodemon",
+			"source": "toh",
+			"page": 58,
+			"size": "L",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["N", "E"],
+			"ac": [
+				{
+					"ac": 15,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 85,
+				"formula": "9d10 + 36"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 40,
+				"swim": 60
+			},
+			"str": 18,
+			"dex": 14,
+			"con": 18,
+			"int": 8,
+			"wis": 11,
+			"cha": 14,
+			"save": {
+				"dex": "+5",
+				"con": "+7"
+			},
+			"skill": {
+				"perception": "+6"
+			},
+			"senses": ["darkvision 60 ft."],
+			"passive": 16,
+			"resist": ["cold", "fire", "lightning"],
+			"immune": ["poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": ["Abyssal"],
+			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The hydrodemon's spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell detect magic}",
+						"{@spell water walk}"
+					],
+					"daily": {
+						"1": ["{@spell hallow}"],
+						"2e": ["{@spell dimension door}", "{@spell teleport}"]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": ["The hydrodemon can breathe air and water."]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The hydrodemon has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": ["The hydrodemon's weapon attacks are magical."]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The hydrodemon makes one Bite attack and two Claws attacks. The demon can use its Sleep Spittle instead of using its Bite."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d8 + 4}) piercing damage, and the target is {@condition grappled} (escape {@dc 14}).",
+						"Until this grapple ends, the target is {@condition restrained} and the demon can't bite another target."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d6 + 4}) slashing damage."
+					]
+				},
+				{
+					"name": "Sleep Spittle",
+					"entries": [
+						"One target within 60 feet must succeed on a {@dc 15} Wisdom saving throw or fall {@condition unconscious} for one minute. The sleeping target can be awakened if someone uses an action to shake or slap the sleeper awake, and the target wakes if it takes damage."
+					]
+				},
+				{
+					"name": "Summon (1/Day)",
+					"entries": [
+						"The demon chooses what to summon and attempts a magical summoning. A hydrodemon has a 30% chance of summoning a hydrodemon. A summoned demon appears in an unoccupied space within 60 feet of its summoner, acts as an ally of its summoner, and can't summon other demons. It remains for one minute, until it or its summoner dies, or until its summoner dismisses it as an action."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Hydrodemons are natives of the River Styx and are the only creatures known to possess a natural resistance to the river’s deleterious effects. They are truly massive, standing 10 feet tall at the shoulder, and weigh 4,000 pounds or more. Their green, warty skin serves as an excellent protection, and their sickly yellow eyes take in the world with a baleful malevolence. On the attack, they prefer to glide at their foes and then spit at them. Their spittle causes drowsiness and sleep."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Hydrodemon.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Hydrodemon.png",
+			"traitTags": ["Amphibious", "Magic Resistance", "Magic Weapons"],
+			"senseTags": ["D"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AB"],
+			"damageTags": ["P", "S"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["MW", "RCH"],
+			"conditionInflict": ["grappled", "restrained", "unconscious"]
+		},
+		{
+			"name": "Nabasu",
+			"source": "toh",
+			"page": 59,
+			"size": "M",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["C", "E"],
+			"ac": [
+				{
+					"ac": 14,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 157,
+				"formula": "15d8 + 90"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 60
+			},
+			"str": 22,
+			"dex": 13,
+			"con": 22,
+			"int": 14,
+			"wis": 16,
+			"cha": 15,
+			"save": {
+				"constitution": "+9"
+			},
+			"skill": {
+				"perception": "+7"
+			},
+			"senses": ["darkvision 120 ft."],
+			"passive": 17,
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["poison"],
+			"conditionImmune": ["paralyzed", "poisoned"],
+			"languages": ["Abyssal", "Common", "telepathy 100 ft."],
+			"cr": "10",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The nabasu's innate spellcasting ability is Charisma (spell save {@dc 14}, {@hit 6} to hit with spell attacks). It can cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell teleport} (self only)"
+					],
+					"daily": {
+						"1": ["{@spell regenerate}"],
+						"3e": [
+							"{@spell silence}",
+							"{@spell plane shift}",
+							"{@spell ray of enfeeblement}",
+							"{@spell vampiric touch}"
+						]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Death Gaze",
+					"entries": [
+						"When a creature that can see the nabasu's eyes starts its turn within 30 feet of the nabasu, the nabasu can force it to make a",
+						"{@dc 15} Wisdom saving throw if the nabasu isn't {@condition incapacitated} and can see the creature. On a failure, the creature loses a hit die. A creature that has lost its last hit die to the nabasu's death gaze has disadvantage on all death saves for the next 24 hours, and if it dies within that time, it rises as a ghoul in {@dice 1d4} rounds under the nabasu's control. Ghouls created in this way become free willed if the nabasu that created them dies. Unless surprised, a creature can avert its eyes to avoid the saving throw at the start of its turn. If the creature does so, it can't see the nabasu until the start of its next turn, when it can avert its eyes again. If the creature looks at the nabasu in the meantime, it must immediately attempt the save. While averting its eyes, any attacks on the nabasu are done at disadvantage."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The nabasu demon has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Paralysis Aura (1/Day)",
+					"entries": [
+						"As a bonus action, the nabasu releases a cloud of magical energy that can paralyze its foes. This cloud fills a 10-foot cube, and all creatures within that cube must succeed at a {@dc 17} Constitution saving throw or become {@condition paralyzed} for one minute. A {@condition paralyzed} creature may repeat the saving throw at the end of each of its turns, ending the effect on a success."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The nabasu makes one Bite attack and two Claw attacks."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}15 ({@damage 2d8 + 6}) piercing damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d6 + 6}) slashing damage."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"The horned head of the nabasu has a cruel and vaguely humanoid face that appears trapped in a constant state of rage and pain. Its ever-pervasive, glowing golden stare is known to strike its foes dead at its mere gaze. Their bodies are tall and wire thin, with gray reptilian skin and large leathery wings and spindly arms that end in hooked razor-sharp talons.",
+					"The majority of nabasu encountered outside of the Abyss are nabasu demonlings. These proud creations of the demon lords are sent to the Material Plane to feast on the souls of the innocent until they reach maturity and can re-enter the Abyss on their own. Once there, they devour the physical hearts and mortal souls of their prey, growing stronger and deadlier with each third victim they destroy. Nabasu derive great pleasure from torturing and killing other creatures."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Nabassu.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Nabassu.png",
+			"traitTags": ["Magic Resistance"],
+			"senseTags": ["SD"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AB", "C", "TP"],
+			"damageTags": ["P", "S"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["AOE", "MW"],
+			"conditionInflict": ["paralyzed"],
+			"conditionInflictSpell": ["deafened"]
+		},
+		{
+			"name": "Nerizo Demon",
+			"alias": ["Bloodhound Demon"],
+			"source": "toh",
+			"page": 60,
+			"size": "M",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["C", "E"],
+			"ac": [
+				{
+					"ac": 15,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 85,
+				"formula": "10d8 + 40"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 18,
+			"dex": 16,
+			"con": 18,
+			"int": 12,
+			"wis": 14,
+			"cha": 16,
+			"skill": {
+				"athletics": "+7",
+				"perception": "+5",
+				"stealth": "+6"
+			},
+			"senses": ["darkvision 60 ft."],
+			"passive": 15,
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["acid", "poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": ["Abyssal"],
+			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The nerizo's innate spellcasting ability is Charisma (spell save {@dc 14}, {@hit 6} to hit with spell attacks). It can cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell detect evil and good}",
+						"{@spell teleport} (self only)"
+					],
+					"daily": {
+						"1": ["{@spell confusion}"]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The nerizo demon has advantage on saving throws against spells and other magical effects."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The nerizo makes one Sting attack and two Claw attacks."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) slashing damage."
+					]
+				},
+				{
+					"name": "Sting",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) piercing damage and the target must succeed at a {@dc 15} Constitution saving throw or suffer an additional 9 ({@damage 2d8}) poison damage and be {@condition poisoned} for one hour."
+					]
+				},
+				{
+					"name": "Spit Acid {@recharge 5}",
+					"entries": [
+						"The nerizo spits a 15-foot line of poison. All creatures caught in the line must make a {@dc 14} Dexterity saving throw, taking 18 ({@damage 4d8}) acid damage on a failure or half as much damage on a successful save."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"The vaguely humanoid man-sized nerizo demon has skin of deep navy blue. It has a scorpion-like tail, the hindquarters of a goat, and the head of a slathering hound whose jaws drip caustic acid. Its arms end in sharpened claws, and its feet are splayed hooves. Nerizos stand six feet tall and weigh about 160 pounds. ",
+					"The bestial nerizo can be found on almost all layers of the Abyss. More animalistic than not, the nerizo are sometimes used as “hunting dogs” by the greater demons and demon lords. The nerizo themselves realize that they may not be the smartest or strongest of the demons, but they resent being relegated to common hunting dogs for the greater demons. Nerizos often roam in deadly packs looking for lost and escaped spirits to torment among the rifts of the Abyss."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Nerizo.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Nerizo.png",
+			"traitTags": ["Magic Resistance"],
+			"senseTags": ["D"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AB"],
+			"damageTags": ["A", "I", "P", "S"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["AOE", "MW"],
+			"conditionInflict": ["poisoned"]
+		},
+		{
+			"name": "Nysrock",
+			"alias": ["Cobra Demon"],
+			"source": "toh",
+			"page": 61,
+			"size": "L",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["C", "E"],
+			"ac": [
+				{
+					"ac": 16,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 105,
+				"formula": "10d10 + 50"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 20,
+			"dex": 14,
+			"con": 20,
+			"int": 16,
+			"wis": 19,
+			"cha": 18,
+			"save": {
+				"constitution": "+9"
+			},
+			"skill": {
+				"deception": "+8",
+				"intimidation": "+8",
+				"perception": "+8",
+				"stealth": "+6"
+			},
+			"senses": ["darkvision 100 ft."],
+			"passive": 18,
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": [
+				"Abyssal",
+				"Celestial,‐ Common",
+				"Draconic",
+				"Infernal",
+				"telepathy 100 ft."
+			],
+			"cr": "10",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The nysrock's innate spellcasting ability is Charisma (spell save {@dc 16}, {@hit 8} to hit with spell attacks). It can cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell blight}",
+						"{@spell dispel magic}",
+						"{@spell teleport} (self only)"
+					],
+					"daily": {
+						"3e": ["{@spell bane}", "{@spell spiritual weapon}"]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The nysrock demon has advantage on saving throws against spells and other magical effects."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The nysrock demon makes one Sting attack and one other attack."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}14 ({@damage 2d8 + 5}) piercing damage and the target must succeed at a {@dc 17} Constitution saving throw or suffer an additional 18 ({@dice 4d8}) and be {@condition poisoned} for one hour. A creature already suffering the {@condition poisoned} condition caused by a nysrock is also {@condition stunned} until the end of its next turn."
+					]
+				},
+				{
+					"name": "Spit Poison",
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 30/120 ft., one target. {@h}11 ({@damage 2d8 + 2}) poison damage and the target must succeed at a {@dc 17} Constitution saving throw or be {@condition blinded} until the end of its next turn."
+					]
+				},
+				{
+					"name": "Sting",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}15 ({@damage 4d4 + 5}) piercing damage and the target must succeed at a {@dc 17} Constitution saving throw or suffer an additional 18 ({@damage 4d8}) poison damage and be {@condition poisoned} for one hour. A creature already suffering the {@condition poisoned} condition caused by a nysrock is also {@condition stunned} until the end of its next turn."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Nysrock demons are horrid, 14-foot-long cobras with vaguely humanoid faces that protrude from a broad hood. Golden scales run down the length of its snake body to end in a scorpion’s stinger that oozes unholy venom. They weigh between 350 and 450 pounds. ",
+					"Believed to be the offspring of a marilith and a naga, the nysrock is a sinister denizen of the Abyss that is often found in the courts of various demon lords where they serve as advisors and counselors. Their cunning intellects are used to full effect by their masters in weaving battle plans and plots and intrigues against rival lords and enemies.",
+					"Rumors abound (supposedly from an eyewitness who lived to tell the tale) of an abyssal plane ruled by a massive nysrock at least 40 feet long. Its palace is a network of underground tunnels populated with all manner of snakes, fiendish serpents, and intelligent and cunning reptiles of all shapes and sizes."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Nysrock.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Nysrock.png",
+			"traitTags": ["Magic Resistance"],
+			"senseTags": ["SD"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AB", "C", "CE", "DR", "I", "TP"],
+			"damageTags": ["I", "P"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["MW", "RW"],
+			"conditionInflict": ["blinded", "poisoned"]
+		},
+		{
+			"name": "Piscodemon",
+			"source": "toh",
+			"page": 62,
+			"size": "M",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["N", "E"],
+			"ac": [
+				{
+					"ac": 20,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 127,
+				"formula": "15d8 + 60"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 50
+			},
+			"str": 22,
+			"dex": 18,
+			"con": 18,
+			"int": 14,
+			"wis": 14,
+			"cha": 17,
+			"save": {
+				"str": "+10",
+				"con": "+8",
+				"wis": "+6",
+				"cha": "+7"
+			},
+			"senses": ["blindsight 30 ft.", "darkvision 60 ft"],
+			"passive": 12,
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["acid", "poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": ["Abyssal", "Demonic", "Infernal; telepathy 100 ft."],
+			"cr": "10",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The piscodemon's innate spellcasting ability is Charisma (spell save {@dc 15}, {@hit 7} to hit with spell attacks). It can cast the following spells, requiring no material components:"
+					],
+					"will": ["{@spell dispel magic}"],
+					"daily": {
+						"3e": ["{@spell fly}", "{@spell stinking cloud}"]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": ["The piscodemon can breathe air and water."]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The piscodemon has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": ["The piscodemon's weapon attacks are magical."]
+				},
+				{
+					"name": "Improved Critical",
+					"entries": [
+						"The piscodemon's weapon attacks score a critical hit on a roll of 19 or 20."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The piscodemon makes one Claw attack and one",
+						"Tentacle attack or two Claw attacks."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d6 + 6}) piercing damage and the target is {@condition grappled} (escape {@dc 18}).",
+						"The piscodemon has two claws, each of which can grapple only one target."
+					]
+				},
+				{
+					"name": "Teleport",
+					"entries": [
+						"The piscodemon magically teleports, along with any equipment it is wearing or carrying, up to 120 feet to an unoccupied space it can see."
+					]
+				},
+				{
+					"name": "Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}11 ({@damage 1d10 + 6}) bludgeoning damage plus 5 ({@damage 1d10}) poison damage and the target must succeed on a {@dc 16} Constitution saving throw or be {@condition poisoned} for one hour."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"The cannon fodder of the Lower Planes, piscodemons are by no means weak. Their powerful armored bodies resemble a lobster standing on two legs, with a short fish-like tail, and a centipedal head fringed with writhing tentacles. Their numbers are great, which is the only reason they remain in existence, for their lords and masters throw them away in battle like so many empty seed pods and abuse them in any manner their whims devise."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Piscodemon.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Piscodemon.png",
+			"traitTags": ["Amphibious", "Magic Resistance", "Magic Weapons"],
+			"senseTags": ["B", "D"],
+			"actionTags": ["Multiattack", "Teleport", "Tentacles"],
+			"languageTags": ["AB", "I", "TP"],
+			"damageTags": ["B", "I", "P"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["MW"],
+			"conditionInflict": ["grappled", "poisoned"]
+		},
+		{
+			"name": "Shrroth",
+			"alias": ["Squid Demon"],
+			"source": "toh",
+			"page": 63,
+			"size": "H",
+			"type": "fiend",
+			"alignment": ["C", "E"],
+			"ac": [
+				{
+					"ac": 14,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 189,
+				"formula": "14d12 + 98"
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 60
+			},
+			"str": 24,
+			"dex": 10,
+			"con": 24,
+			"int": 14,
+			"wis": 16,
+			"cha": 18,
+			"save": {
+				"constitution": "+11"
+			},
+			"skill": {
+				"deception": "+8",
+				"intimidation": "+8",
+				"perception": "+7",
+				"persuasion": "+8"
+			},
+			"senses": ["truesight 100 ft."],
+			"passive": 17,
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": ["Abyssal", "Common", "telepathy 100 ft."],
+			"cr": "12",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The shrroth's innate spellcasting ability is Charisma (spell save {@dc 16}, {@hit 8} to hit with spell attacks). It can cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dispel magic}",
+						"{@spell mirror image}",
+						"{@spell spiritual weapon}",
+						"{@spell teleport} (self only)",
+						"{@spell water breathing} (others only)"
+					],
+					"daily": {
+						"1": ["{@spell blindness/deafness} (blindness only)"],
+						"2": ["{@spell feeblemind}"]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": ["The shrroth can breathe air and water."]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The shrroth demon has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Jet Burst {@recharge 4}",
+					"entries": [
+						"As a bonus action, the shrroth moves up to 80 feet through a body of water. This movement does not provoke opportunity attacks."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The shrroth makes one Trident attack and up to four",
+						"Tentacle attacks."
+					]
+				},
+				{
+					"name": "Trident",
+					"entries": [
+						"{@atk mw} {@hit 11} to hit, reach 15 ft., one target. {@h}18 ({@damage 2d10 + 7}) piercing damage."
+					]
+				},
+				{
+					"name": "Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 11} to hit, reach 15 ft., one target. {@h}13 ({@damage 1d12 + 7}) bludgeoning damage and the target is {@condition grappled} (escape {@dc 19}) by the shrroth. The shrroth has six tentacles and can only grapple up to six creatures at a time. A creature that starts its turn {@condition grappled} by the shrroth suffers 9 ({@damage 2d8}) bludgeoning damage.",
+						"Each tentacle has an AC of 20, 15 hit points, and immunity to poison and psychic damage. Severing or destroying a tentacle deals no damage to the shrroth and severed tentacles regrow at a rate of one per day."
+					]
+				},
+				{
+					"name": "Sickening Cloud {@recharge 5}",
+					"entries": [
+						"The shrroth emits a cloud of grayish liquid into a body of water that fills a 40-foot cube and remains for {@dice 2d4} rounds. Any creature that begins its turn within the cloud must succeed at a {@dc 19} Constitution saving throw or be {@condition poisoned} for one minute."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Swimming through the fetid backwaters of the River Styx as it flows through the bottomless sea rifts of the Abyss comes a tentacled horror known in the nightmares of marines and sailors. Shrroth sometimes pass through the thin barriers between the mortal realm and the underworld. They quickly set up shop along sea lanes where they harry sailors, sink ships for sport, and take prisoners whom they torment and torture mercilessly before devouring them body and soul.",
+					"Shrroths are 15-foot-tall demons with the lower torso of an octopus and the upper torso of a copper-skinned humanoid. Its arms end in six-fingered talons, and it wields a wicked trident. A mass of long black hair hangs from its head. Two forward-curving, blackish horns protrude under this tangle of hair. Its lower torso sports a mass of writing tentacles reaching lengths of 10 feet. Six larger tentacles stretching 20 feet surround the smaller tentacles. The creature’s mouth is a jagged wreck of sharks teeth."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Shrroth.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Shrroth.png",
+			"traitTags": ["Amphibious", "Magic Resistance"],
+			"senseTags": ["U"],
+			"actionTags": ["Multiattack", "Tentacles"],
+			"languageTags": ["AB", "C", "TP"],
+			"damageTags": ["B", "P"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["AOE", "MW", "RCH"],
+			"conditionInflict": ["grappled", "poisoned"],
+			"conditionInflictSpell": ["blinded", "deafened"]
+		},
+		{
+			"name": "Skitterdark",
+			"source": "toh",
+			"page": 64,
+			"size": "T",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["C", "E"],
+			"ac": [
+				{
+					"ac": 15,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 55,
+				"formula": "10d4 + 30"
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 30
+			},
+			"str": 8,
+			"dex": 17,
+			"con": 16,
+			"int": 11,
+			"wis": 12,
+			"cha": 12,
+			"save": {
+				"str": "+2",
+				"con": "+5",
+				"wis": "+2",
+				"cha": "+3"
+			},
+			"senses": ["darkvision 60 ft"],
+			"passive": 11,
+			"resist": [
+				"acid",
+				"cold",
+				"fire",
+				{
+					"resist": ["bludgeoning", "piercing", "slashing"],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": ["lightning", "poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": ["Abyssal", "Common"],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The skitterdark's innate spellcasting ability is Charisma (spell save {@dc 11}, {@hit 3} to hit with spell attacks). It can cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect evil and good}",
+						"{@spell detect magic}"
+					],
+					"daily": {
+						"1e": ["{@spell hold person}", "{@spell fear}"]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The skitterdark has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": ["The skitterdark's weapon attacks are magical."]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The skitterdark makes one Claw attack and one Bite attack."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@dice 1d4}",
+						"+ 3) piercing damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d3 + 3}) slashing damage plus 2 ({@damage 1d4}) necrotic damage."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Skitterdarks are minor demons in the grand scheme of demons, but demons nonetheless. Like their larger ilk, they delight in bloodshed and sowing chaos. Most often, they are summoned to the world by wizards to carry out minor assassinations, protect items, and harass foes. Easily bored, skitterdarks can be distracted by shiny things, fresh prey, and logical thought."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Skitterdark.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Skitterdark.png",
+			"traitTags": ["Magic Resistance", "Magic Weapons"],
+			"senseTags": ["D"],
+			"actionTags": ["Multiattack"],
+			"languageTags": ["AB", "C"],
+			"damageTags": ["N", "S"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["MW"],
+			"conditionInflictSpell": ["frightened", "paralyzed"]
+		},
+		{
+			"name": "Stirge Demon",
+			"source": "toh",
+			"page": 65,
+			"size": "L",
+			"type": {
+				"type": "fiend",
+				"tags": ["demon"]
+			},
+			"alignment": ["C", "E"],
+			"ac": [
+				{
+					"ac": 17,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 136,
+				"formula": "13d10 + 65"
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 60
+			},
+			"str": 22,
+			"dex": 17,
+			"con": 20,
+			"int": 14,
+			"wis": 14,
+			"cha": 15,
+			"save": {
+				"str": "+10",
+				"con": "+9",
+				"wis": "+6",
+				"cha": "+6"
+			},
+			"senses": ["darkvision 60 ft"],
+			"passive": 12,
+			"resist": ["acid", "cold", "fire"],
+			"immune": ["lightning", "poison"],
+			"conditionImmune": ["poisoned"],
+			"languages": ["Abyssal", "Common"],
+			"cr": "10",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The stirge demon's innate spellcasting ability is Charisma (spell save {@dc 14}, {@hit 6} to hit with spell attacks). It can cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell dispel magic}",
+						"{@spell see invisibility}",
+						"{@spell telekinesis}"
+					],
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Blood Drain",
+					"entries": [
+						"At the start of its turn, the stirge demon causes a creature it has {@condition grappled} with its bite to lose 7 ({@dice 2d6}) hit points."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The stirge demon has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"The stirge demon's weapon attacks are magical."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The stirge demon makes one Bite attack and two Claw attacks."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}19 ({@damage 3d8 + 6}) piercing damage and the target is {@condition grappled} (escape {@dc 18}).",
+						"The stirge demon can only grapple one creature."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d6 + 6}) slashing damage."
+					]
+				},
+				{
+					"name": "Teleport",
+					"entries": [
+						"The stirge demon magically teleports, along with any equipment it is wearing or carrying, up to 120 feet to an unoccupied space it can see."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"An all too common sight on the Lower Planes, demon stirges are pest and predator, attacking and sucking the blood from weaker demons while avoiding the wrath of those more powerful. Their bodies are long, over 10 feet, and far too heavy to sustain flight on their withered leathery wings. They attack in numbers if possible, but these swarms are not allies; they are rivals intent on feeding and fleeing at the first chance any individual gets."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Stirge.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Stirge.png",
+			"traitTags": ["Magic Resistance", "Magic Weapons"],
+			"senseTags": ["D"],
+			"actionTags": ["Multiattack", "Teleport"],
+			"languageTags": ["AB", "C"],
+			"damageTags": ["P", "S"],
+			"spellcastingTags": ["I"],
+			"miscTags": ["MW"],
+			"conditionInflict": ["grappled"],
+			"conditionInflictSpell": ["restrained"]
+		},
+		{
+			"name": "Fox Demon",
+			"source": "toh",
+			"page": 53,
+			"size": "M",
+			"type": "fiend",
+			"alignment": ["C", "E"],
+			"ac": [
+				{
+					"ac": 17,
+					"from": ["natural armor"]
+				}
+			],
+			"hp": {
+				"average": 156,
+				"formula": "24d8 + 48"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 10,
+			"dex": 20,
+			"con": 14,
+			"int": 13,
+			"wis": 16,
+			"cha": 18,
+			"save": {
+				"dex": "+9",
+				"wis": "+7",
+				"cha": "+8"
+			},
+			"skill": {
+				"intimidation": "+12",
+				"perception": "+11",
+				"stealth": "+13"
+			},
+			"passive": 13,
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing and slashing damage",
+						"cold",
+						"fire",
+						"lightning"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"languages": ["Abyssal", "Common", "telepathy 120 ft."],
+			"cr": "9",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The fox demon's spellcasting ability is Charisma (spell save {@dc 16}). The fox demon can innately cast the following spells, requiring no material components:"
+					],
+					"ability": "cha",
+					"type": "spellcasting"
+				},
+				{
+					"name": "Spellcasting",
+					"will": ["{@spell confusion}"],
+					"daily": {
+						"3e": [
+							"{@spell confusion}",
+							"{@spell dominate person}",
+							"{@spell expeditious retreat}"
+						],
+						"1e": ["{@spell dominate monster}"]
+					},
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Shapechanger",
+					"entries": [
+						"The fox demon can use its actions to polymorph into a Small or Medium humanoid, or back into its true form. Other than its size and speed, its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Charm",
+					"entries": [
+						"One humanoid that the fox demon can see within 30 feet must succeed on a {@dc 15} Wisdom saving throw or be magically {@condition charmed} for one day. The {@condition charmed} target obeys the fox demon's verbal or telepathic commands. If the target suffers any harm or receives a suicidal command, it can repeat the saving throw, ending the effect on a success. If the target successfully saves against the effect, or if the effect on it ends, the target is immune to this fox demon's Charm for the next 24 hours. The fox demon can have up to four {@condition charmed} targets at a time. If it charms another, the effect on one previous target ends."
+					]
+				}
+			],
+			"fluff": {
+				"entries": [
+					"Fox demons are a race of chaotic fiends that delight in mischief and confusion. Like the creatures they resemble, these demons are sly and cunning, and capable of quick escape should their schemes or identities be discovered. These shapeshifters able to take unassuming forms of humans, but their fox forms are frightening and demonic, with a snarling visage and burning yellow eyes. ",
+					"Fox demons often assume disguises to gain trust, then charm their victims to go out and commit various acts of disruption, disobedience, and lawlessness. Fox demons find outright violence such as assault and murder to be somewhat classless and distasteful; they far prefer to put their victims in situations where they are caught stealing, are discovered by a jealous lover, are arrested on false charges, etc. A fox demon is not terribly concerned if these acts eventually lead to violence or death, but they prefer it to be the result of their elaborate schemes of misdirection, seduction, and scheming."
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Fox.png"
+						}
+					}
+				]
+			},
+			"tokenUrl": "https://raw.githubusercontent.com/lslavkov/homebrew/master/_img/ToH/Demon%2C%20Fox.png",
+			"traitTags": ["Shapechanger"],
+			"languageTags": ["AB", "C", "TP"],
+			"spellcastingTags": ["I"],
+			"conditionInflict": ["charmed"]
 		}
 	]
 }
