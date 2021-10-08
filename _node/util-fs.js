@@ -34,7 +34,7 @@ function listFiles (dir) {
 		.map(file => `${dir}/${file}`);
 	return dirContent.reduce((acc, file) => {
 		if (isDirectory(file)) acc.push(...listFiles(file));
-		else acc.push(file.replace(/\.json$/i, ".json"));
+		else acc.push(file);
 		return acc;
 	}, [])
 }
