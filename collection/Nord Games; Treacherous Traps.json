@@ -893,7 +893,6 @@
 							"page": 11,
 							"entries": [
 								"Roll a {@dice d100} on the table below to choose a random trap appropriate for {@homebrew level} 1-4 characters, or select a desired lethality and roll a {@dice d10}.",
-								"{@note Due to the limitations of 5etools' engine, this table, which appears as a single object in the book, has been split into multiple, individual tables.}",
 								{
 									"type": "list",
 									"style": "list-no-bullets",
@@ -1554,7 +1553,6 @@
 							"page": 26,
 							"entries": [
 								"Roll a {@dice d100} on the table below to choose a random trap appropriate for {@homebrew level} 5-8 characters, or select a desired lethality and roll a {@dice d10}.",
-								"{@note Due to the limitations of 5etools' engine, this table, which appears as a single object in the book, has been split into multiple, individual tables.}",
 								{
 									"type": "list",
 									"style": "list-no-bullets",
@@ -2216,7 +2214,6 @@
 							"page": 41,
 							"entries": [
 								"Roll a {@dice d100} on the table below to choose a random trap appropriate for {@homebrew level} 9-12 characters, or select a desired lethality and roll a {@dice d10}.",
-								"{@note Due to the limitations of 5etools' engine, this table, which appears as a single object in the book, has been split into multiple, individual tables.}",
 								{
 									"type": "list",
 									"style": "list-no-bullets",
@@ -2877,7 +2874,6 @@
 							"page": 41,
 							"entries": [
 								"Roll a {@dice d100} on the table below to choose a random trap appropriate for {@homebrew level} 13-16 characters, or select a desired lethality and roll a {@dice d10}.",
-								"{@note Due to the limitations of 5etools' engine, this table, which appears as a single object in the book, has been split into multiple, individual tables.}",
 								{
 									"type": "list",
 									"style": "list-no-bullets",
@@ -3538,7 +3534,6 @@
 							"page": 72,
 							"entries": [
 								"Roll a {@dice d100} on the table below to choose a random trap appropriate for {@homebrew level} 17-20 characters, or select a desired lethality and roll a {@dice d10}.",
-								"{@note Due to the limitations of 5etools' engine, this table, which appears as a single object in the book, has been split into multiple, individual tables.}",
 								{
 									"type": "list",
 									"style": "list-no-bullets",
@@ -5311,7 +5306,6 @@
 							"name": "Trigger and Effect Generation Table",
 							"page": 112,
 							"entries": [
-								"{@note Due to the limitations of 5etools' engine, this table, which appears as a single object in the book, has been split into multiple, individual tables.}",
 								{
 									"type": "list",
 									"columns": 2,
@@ -14235,6 +14229,156 @@
 			"ruleType": "O",
 			"entries": [
 				"As an optional rule you can allow a character to use a successful Intelligence ({@skill Arcana}) check to disable a {@spell glyph of warding} or {@spell symbol} as well as {@spell dispel magic}. When we present {@footnote these kinds|This refers to {@filter magic traps|traphazards|source=TreTra|type=MAG} from this source.} of traps throughout, we assume that this optional rule is in effect."
+			]
+		}
+	],
+	"trap": [
+		{
+			"source": "TreTra",
+			"page": 88,
+			"trapHazType": "CMPX",
+			"name": "Stair Slide",
+			"level": {
+				"min": 1,
+				"max": 4
+			},
+			"threat": "setback",
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Purpose:",
+							"entry": "harm"
+						}
+					]
+				},
+				"A 200-foot long, 10-foot wide staircase leads up from one floor to the next. 120 feet from the bottom of the stairs is a pressure plate that turns the stairs into a slide. Creatures on the stairs slide down and into the path of bolts fired from holes in the walls. Once they reach the bottom of the stairs, they are deposited into a pit."
+			],
+			"trigger": [
+				"{@b {@i (Weight Sensitive Surface).}} Two or more Medium or larger creatures standing on the steps past the 120-foot mark triggers the trap."
+			],
+			"initiative": 2,
+			"eActive": [
+				"The Stair Slide is primarily a ramp depositing creatures in the pit at its bottom, but also has bolts that fire at creatures along the 120 feet from the trigger area to the trapdoor.",
+				{
+					"type": "list",
+					"items": [
+						{
+							"type": "item",
+							"name": "Stairs to Slide (Initiative 20).",
+							"entry": "This element activates only once, the first time the trap acts. The stairs fold down, turning into a slide that is difficult terrain. Each creature on any portion of the stairs must succeed on a DC 10 Dexterity saving throw or fall {@condition prone}."
+						},
+						{
+							"type": "item",
+							"name": "Open the Pit (Initiative 20).",
+							"entry": "This element activates only once, the first time the trap acts. A trap door at the bottom landing of the stairs opens, revealing a 10-foot deep pit."
+						},
+						{
+							"type": "item",
+							"name": "Hidden Bolts (Initiative 10).",
+							"entry": "Bolts fire out from holes in the walls in the 120 feet between the trigger area and the trapdoor, making one attack against each creature in the area: {@hit 5} attack bonus; 2 ({@damage 1d4}) piercing damage on a hit."
+						}
+					]
+				}
+			],
+			"eDynamic": [
+				"A creature that starts its turn on the slide moves 30 feet down it, towards the pit. The distance the creature moves increases by 30 feet each time it starts its turn on the slide."
+			],
+			"eConstant": [
+				"Creatures are subjected to a shower of crossbow bolts while on the slide and drop into the pit when they hit the bottom.",
+				{
+					"type": "list",
+					"items": [
+						{
+							"type": "item",
+							"name": "Hail of Bolts.",
+							"entry": "Any creature that ends its turn in the Hidden Bolts' area is targeted by a ranged attack: {@hit 5} attack bonus; taking 2 ({@damage 1d4}) piercing damage on a hit."
+						},
+						{
+							"type": "item",
+							"name": "Into the Pit.",
+							"entry": "A creature that reaches the bottom of the slide while {@condition prone} or moving faster than their base speed must succeed on a DC 10 Dexterity saving throw or fall into the pit, taking 3 ({@damage 1d6}) bludgeoning damage and landing {@condition prone}."
+						}
+					]
+				}
+			],
+			"countermeasures": [
+				"Creatures can avoid activating the Stair Slide and deal with these elements in a number of ways.",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Trigger.",
+							"entry": "A creature can spot the weight sensitive stairs that trigger the trap with a successful DC 10 Wisdom ({@skill Perception}) check. Once found, the trigger can be disabled with a successful DC 10 Dexterity check using {@item thieves' tools|phb}."
+						},
+						{
+							"type": "item",
+							"name": "Stairs to Slide.",
+							"entry": "A creature can try to make the slide revert back to stairs with a successful DC 10 Dexterity check using {@item thieves' tools|phb}."
+						},
+						{
+							"type": "item",
+							"name": "Open the Pit.",
+							"entry": "A creature can climb out of the pit with a successful DC 10 Strength ({@skill Athletics}) check. The trap doors can be closed with a successful DC 10 Strength check; the doors lock together. A creature that fails this check falls into the pit."
+						},
+						{
+							"type": "item",
+							"name": "Hidden Bolts.",
+							"entry": "Creatures who succeed on a DC 10 Wisdom ({@skill Perception}) check find the holes in a 5-foot section of wall from which the bolts fire. They can then plug these holes with cloth or something similar as an action. Plugging the holes prevents the bolts from firing in that area."
+						}
+					]
+				}
+			]
+		},
+		{
+			"source": "TreTra",
+			"page": 12,
+			"name": "Aging Offerings",
+			"trapHazType": "MAG",
+			"level": {
+				"min": 1,
+				"max": 4
+			},
+			"threat": "setback",
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Purpose:",
+							"entry": "hinder"
+						}
+					]
+				},
+				"Atop a shrine rests a copper bowl filled with gemstones.",
+				{
+					"type": "entries",
+					"name": "Trigger (Offering)",
+					"entries": [
+						"A creature that removes the offerings from the bowl triggers the trap."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Effect (Aging)",
+					"entries": [
+						"A pulse of necromantic energy emanates from the bowl, aging the thief. The triggering creature must succeed on a DC 10 Constitution saving throw or be magically aged {@dice 1d10} years. If the roll is even, the creature is made younger; if odd, it becomes older. This forced aging can be undone with {@spell remove curse} or more powerful magic."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Countermeasures",
+					"entries": [
+						"A creature can infer the importance of the offerings with a successful DC 10 Intelligence (Religion) check, and {@spell detect magic} reveals an aura of necromancy on the bowl. Casting {@spell dispel magic} on the bowl disables the trap."
+					]
+				}
 			]
 		}
 	]
