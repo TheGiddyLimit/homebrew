@@ -67,7 +67,7 @@ function buildDeepIndex () {
 	const abbreviationIndex = {};
 
 	function indexDir (folder) {
-		const files = uf.listFiles(folder);
+		const files = uf.listJsonFiles(folder);
 		files
 			.map(file => ({
 				name: file,
