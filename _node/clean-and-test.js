@@ -47,7 +47,7 @@ const RE_INVALID_WINDOWS_CHARS = /[<>:"/\\|?*]/g;
 function cleanFolder (folder) {
 	const ALL_ERRORS = [];
 
-	const files = uf.listFiles(folder);
+	const files = uf.listJsonFiles(folder);
 	files
 		.map(file => ({
 			name: file,
