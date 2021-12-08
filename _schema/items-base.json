@@ -219,6 +219,12 @@
 							]
 						}
 					},
+					"lootTables": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
 					"hasFluff": {
 						"type": "boolean"
 					},
@@ -229,41 +235,26 @@
 						"description": "ID of a value conversion table. Homebrew only.",
 						"type": "string"
 					},
-					"fluff": {
-						"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source.",
-						"anyOf": [
-							{
-								"description": "References \"itemFluff\" array items",
-								"type": "object",
-								"properties": {
-									"_itemFluff": {
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"source": {
-												"type": "string"
-											}
-										}
-									},
-									"_appendItemFluff": {
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"source": {
-												"type": "string"
-											}
-										}
-									}
-								}
-							},
-							{
-								"$ref": "util.json#/definitions/fluffObject"
-							}
+					"foundryType": {
+						"description": "Homebrew only: used to manually specify the exact Foundry item type an item should be imported as. \n\"CONFIG.Item.typeLabels\" correct as of Foundry v0.8.9",
+						"type": "string",
+						"enum": [
+							"weapon",
+							"equipment",
+							"consumable",
+							"tool",
+							"loot",
+							"class",
+							"spell",
+							"feat",
+							"backpack"
 						]
+					},
+					"foundryData": {
+						"$ref": "util.json#/definitions/foundryDataObject"
+					},
+					"fluff": {
+						"$ref": "shared-items.json#/definitions/fluff"
 					}
 				},
 				"required": [
@@ -273,7 +264,13 @@
 					"source",
 					"page"
 				],
-				"additionalProperties": false
+				"additionalProperties": {
+					"type": [
+						"boolean",
+						"integer",
+						"string"
+					]
+				}
 			}
 		},
 		"itemProperty": {
