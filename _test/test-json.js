@@ -76,9 +76,8 @@ async function main () {
 		const msg = `Schema test failed (${errors.length} failure${errors.length === 1 ? "" : "s"}).`;
 		if (!process.env.CI) {
 			fs.writeFileSync(`_test/test-json.error.log`, errors.join("\n\n=====\n\n"));
-			throw new Error(msg);
 		}
-		um.warn(LOG_TAG, msg);
+		throw new Error(msg);
 	}
 
 	if (!errors.length) um.info(LOG_TAG, `Schema test passed.`);
