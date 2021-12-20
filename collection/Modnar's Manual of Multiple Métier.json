@@ -153,12 +153,13 @@
 			}
 		},
 		"dateAdded": 0,
-		"dateLastModified": 1582571305
+		"dateLastModified": 1638898652
 	},
 	"itemProperty": [
 		{
 			"abbreviation": "BL",
 			"source": "3mx",
+			"page": 0,
 			"entries": [
 				{
 					"type": "entries",
@@ -172,6 +173,7 @@
 		{
 			"abbreviation": "Se",
 			"source": "MMMxArtificer",
+			"page": 0,
 			"entries": [
 				{
 					"type": "entries",
@@ -185,6 +187,7 @@
 		{
 			"abbreviation": "E",
 			"source": "3mx",
+			"page": 0,
 			"entries": [
 				{
 					"type": "entries",
@@ -204,6 +207,8 @@
 			"name": "Artificer",
 			"id": "M3xA",
 			"source": "MMMxArtificer",
+			"group": "homebrew",
+			"published": "2020-02-26",
 			"contents": [
 				{
 					"name": "Artificer",
@@ -244,7 +249,7 @@
 			]
 		}
 	],
-	"bookdata": [
+	"bookData": [
 		{
 			"id": "MMMxArtificer",
 			"source": "MMMxArtificer",
@@ -723,7 +728,6 @@
 	],
 	"subclass": [
 		{
-			"version": "1.0",
 			"name": "Phantom Blade",
 			"subclassTableGroups": [
 				{
@@ -882,7 +886,6 @@
 			"classSource": "PHB"
 		},
 		{
-			"class": "Dirge",
 			"name": "Epistemological (Futility)",
 			"subclassFeatures": [
 				"Delayed Gratification|Dirge|reddit_UA|Epistemology|reddit_UA|3",
@@ -897,7 +900,6 @@
 			"classSource": "reddit_UA-modnar"
 		},
 		{
-			"class": "Dirge",
 			"name": "Existential (Apathy)",
 			"subclassFeatures": [
 				"Delayed Gratification|Dirge|reddit_UA|Existential|reddit_UA|3",
@@ -911,7 +913,6 @@
 			"classSource": "reddit_UA-modnar"
 		},
 		{
-			"class": "Dirge",
 			"name": "Mereological (Dysfunction)",
 			"subclassFeatures": [
 				"Delayed Gratification|Dirge|reddit_UA|Mereology|reddit_UA|3",
@@ -1187,19 +1188,20 @@
 					"Poisoner's Kit",
 					"Alchemist's Supplies"
 				],
-				"armor": [
-					"none"
-				],
-				"skills": {
-					"choose": 3,
-					"from": [
-						"History",
-						"Insight",
-						"Investigation",
-						"Deception",
-						"Religion"
-					]
-				}
+				"skills": [
+					{
+						"choose": {
+							"count": 3,
+							"from": [
+								"history",
+								"insight",
+								"investigation",
+								"deception",
+								"religion"
+							]
+						}
+					}
+				]
 			},
 			"startingEquipment": {
 				"additionalFromBackground": true,
@@ -1409,6 +1411,7 @@
 			],
 			"fluff": [
 				{
+					"source": "reddit_UA-modnar",
 					"entries": [
 						"Troubor, Bard, Minstrel, Gleeman, and Loremaster. All are names that talk about those spirits of adventure, whose use music,poetry, and dance bring merriment and delight. They distract and delude their audience bringing hope to hopeless and respite to those souls weary from the fight.",
 						"But, there is a darker side.",
@@ -1547,16 +1550,20 @@
 				"tools": [
 					"any one type of artisan's tool, in which you gain expertise."
 				],
-				"skills": {
-					"choose": 1,
-					"from": [
-						"Animal Handling",
-						"Athletics",
-						"Insight",
-						"Persuasion",
-						"Survival"
-					]
-				}
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"animal handling",
+								"athletics",
+								"insight",
+								"persuasion",
+								"survival"
+							],
+							"count": 1
+						}
+					}
+				]
 			},
 			"startingEquipment": {
 				"additionalFromBackground": true,
@@ -1601,12 +1608,6 @@
 				"Waste Not, Want Not IV|Commoner|reddit|18",
 				"Whew, Take a Breather Champ|Commoner|reddit|19",
 				"Big Damn Hero, Sir|Commoner|reddit|20"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTag": [
-				"C"
 			]
 		},
 		{
@@ -1716,27 +1717,13 @@
 				"armor": [
 					"light",
 					"medium",
-					"shield"
+					"{@item shield|phb|shields}"
 				],
 				"weapons": [
 					"simple"
 				],
 				"tools": [
-					{
-						"choose": {
-							"from": [
-								"Alchemist's Tools",
-								"Artisan's Tools",
-								"Healer's Kit",
-								"Herbalism Kit",
-								"Poisoner's Kit",
-								"Smithing Tools",
-								"Thief's Tools",
-								"Tinkerer's Kit"
-							],
-							"count": 2
-						}
-					}
+					"choose any 2 from, alchemist's tools, artisan's tools, healer's kit, herbalism kit, poisoner's kit, smithing tools, thief's tools, tinkerer's kit"
 				],
 				"skills": [
 					{
@@ -3556,13 +3543,7 @@
 			"int": 13,
 			"wis": 14,
 			"cha": 0,
-			"skill": {
-				"see": "crafter"
-			},
 			"passive": 3,
-			"immune": [
-				""
-			],
 			"conditionImmune": [
 				"poisoned",
 				"charmed"
@@ -3628,9 +3609,6 @@
 						"{@atk mw} {@hit -1} to hit, reach 5ft., one target. *Hit* {@dice 1d3} bludgeoning,piercing, or slashing damage. (Hammer, Knife, Awl Punch)"
 					]
 				}
-			],
-			"languageTags": [
-				"all languages known by its creator"
 			],
 			"miscTags": [
 				"MW"
@@ -3744,7 +3722,9 @@
 		},
 		{
 			"name": "Stone Golem",
-			"group": "Animated Objects",
+			"group": [
+				"Animated Objects"
+			],
 			"source": "MMMxArtificer",
 			"size": "M",
 			"type": "construct",
@@ -3771,6 +3751,7 @@
 			"int": 3,
 			"wis": 12,
 			"cha": 1,
+			"passive": null,
 			"immune": [
 				"poison",
 				"psychic"
@@ -3856,7 +3837,9 @@
 		},
 		{
 			"name": "Animated Armor",
-			"group": "Animated Objects",
+			"group": [
+				"Animated Objects"
+			],
 			"source": "MMMxArtificer",
 			"size": "M",
 			"type": "construct",
@@ -3977,7 +3960,9 @@
 		},
 		{
 			"name": "Animated Chains",
-			"group": "Animated Objects",
+			"group": [
+				"Animated Objects"
+			],
 			"source": "MMMxArtificer",
 			"size": "S",
 			"type": "construct",
@@ -4012,7 +3997,7 @@
 			"immune": [
 				"poison",
 				"psychic",
-				"lighting",
+				"lightning",
 				"thunder",
 				"piercing"
 			],
@@ -4100,7 +4085,9 @@
 		},
 		{
 			"name": "Clay Golem",
-			"group": "Automatons",
+			"group": [
+				"Automatons"
+			],
 			"source": "MMMxArtificer",
 			"size": "M",
 			"type": "construct",
@@ -4217,7 +4204,9 @@
 		},
 		{
 			"name": "Clockwork Bomb",
-			"group": "Automatons",
+			"group": [
+				"Automatons"
+			],
 			"source": "MMMxArtificer",
 			"size": "T",
 			"type": "construct",
@@ -4314,7 +4303,9 @@
 		},
 		{
 			"name": "Clockwork Iron Cobra",
-			"group": "Animated Objects",
+			"group": [
+				"Animated Objects"
+			],
 			"source": "MMMxArtificer",
 			"size": "M",
 			"type": "construct",
@@ -4356,7 +4347,7 @@
 			],
 			"skill": {
 				"athletics": "+3",
-				"Sneak": "+5"
+				"stealth": "+5"
 			},
 			"cr": "1",
 			"trait": [
@@ -4452,14 +4443,13 @@
 			"passive": 7,
 			"conditionInflict": [
 				"grappled"
-			],
-			"damageTags": [
-				null
 			]
 		},
 		{
 			"name": "Clockwork Iron Defender",
-			"group": "Animated Objects",
+			"group": [
+				"Animated Objects"
+			],
 			"source": "MMMxArtificer",
 			"size": "M",
 			"type": "construct",
@@ -4578,7 +4568,9 @@
 		},
 		{
 			"name": "Dancing Weapon",
-			"group": "Animated Objects",
+			"group": [
+				"Animated Objects"
+			],
 			"source": "MMMxArtificer",
 			"size": "S",
 			"type": "construct",
@@ -4637,7 +4629,7 @@
 			"skill": {
 				"athletics": "+4",
 				"acrobatics": "+2",
-				"perform": "+2"
+				"performance": "+2"
 			},
 			"cr": "1",
 			"trait": [
@@ -4706,7 +4698,9 @@
 		},
 		{
 			"name": "Persistent Harrier",
-			"group": "Automatons",
+			"group": [
+				"Automatons"
+			],
 			"source": "MMMxArtificer",
 			"size": "S",
 			"type": "construct",
@@ -4839,7 +4833,9 @@
 		},
 		{
 			"name": "Shadesteel Golem",
-			"group": "Automatons",
+			"group": [
+				"Automatons"
+			],
 			"source": "MMMxArtificer",
 			"size": "M",
 			"type": "construct",
@@ -5232,7 +5228,9 @@
 		},
 		{
 			"name": "Helmed Horror",
-			"group": "Animated Objects",
+			"group": [
+				"Animated Objects"
+			],
 			"size": "M",
 			"type": "construct",
 			"source": "MMMxArtificer",
@@ -5357,7 +5355,9 @@
 		},
 		{
 			"name": "Arrow Swarm",
-			"group": "Animated Objects",
+			"group": [
+				"Animated Objects"
+			],
 			"source": "MMMxArtificer",
 			"size": "L",
 			"type": {
@@ -5382,6 +5382,7 @@
 			"int": 1,
 			"wis": 3,
 			"cha": 1,
+			"passive": null,
 			"senses": [
 				"Sight 120 ft."
 			],
@@ -5493,7 +5494,9 @@
 		},
 		{
 			"name": "Ball Bearing Swarm",
-			"group": "Animated Objects",
+			"group": [
+				"Animated Objects"
+			],
 			"source": "MMMxArtificer",
 			"size": "L",
 			"type": {
@@ -5522,6 +5525,7 @@
 			"int": 1,
 			"wis": 3,
 			"cha": 1,
+			"passive": null,
 			"senses": [
 				"Tremorsense 60 ft."
 			],
@@ -5650,7 +5654,9 @@
 		},
 		{
 			"name": "Caltrop Swarm",
-			"group": "Animated Objects",
+			"group": [
+				"Animated Objects"
+			],
 			"source": "MMMxArtificer",
 			"size": "L",
 			"type": {
@@ -5795,7 +5801,9 @@
 		},
 		{
 			"name": "Dancing Guardian Shield",
-			"group": "Animated Objects",
+			"group": [
+				"Animated Objects"
+			],
 			"source": "MMMxArtificer",
 			"size": "S",
 			"type": "construct",
@@ -5922,7 +5930,9 @@
 		},
 		{
 			"name": "Iron Golem",
-			"group": "Animated Objects",
+			"group": [
+				"Animated Objects"
+			],
 			"source": "MMMxArtificer",
 			"size": "M",
 			"type": "construct",
@@ -5972,7 +5982,6 @@
 				"con": "+4"
 			},
 			"skill": {
-				"intimidate": "+7",
 				"intimidation": "+7"
 			},
 			"cr": "1",
@@ -6071,7 +6080,6 @@
 			"page": 10,
 			"level": 1,
 			"school": "V",
-			"reversible": true,
 			"time": [
 				{
 					"number": 1,
@@ -6120,7 +6128,7 @@
 				}
 			],
 			"damageInflict": [
-				"pscychic"
+				"psychic"
 			],
 			"spellAttack": [
 				"R"
@@ -6384,7 +6392,6 @@
 		{
 			"name": "Tasha's Piteous Lamantation",
 			"level": 1,
-			"reversible": true,
 			"school": "E",
 			"time": [
 				{
@@ -6443,7 +6450,6 @@
 			"name": "Killing Jar",
 			"level": 1,
 			"school": "A",
-			"reversible": true,
 			"time": [
 				{
 					"number": 1,
@@ -6751,7 +6757,7 @@
 				"psychic"
 			],
 			"savingThrow": [
-				"consitution"
+				"constitution"
 			],
 			"roll20Spell": [
 				{
@@ -7176,9 +7182,6 @@
 			"subschools": [
 				"InCrg"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -7244,9 +7247,6 @@
 			"subschools": [
 				"I:Art"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -7320,9 +7320,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -7386,12 +7383,6 @@
 			"subschools": [
 				"I:Art"
 			],
-			"meta": {
-				"Consumable": true,
-				"Artistic/Wondrous": true,
-				"Recycle": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -7456,10 +7447,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"attunement": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -7546,9 +7533,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -7637,10 +7621,6 @@
 				"I:CON",
 				"I:Art"
 			],
-			"meta": {
-				"Constant": true,
-				"Artistic/Wondrous": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -7719,10 +7699,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 2,
@@ -7797,9 +7773,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -8208,9 +8181,6 @@
 			"subschools": [
 				"InCrg"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -8277,9 +8247,6 @@
 			"subschools": [
 				"InCrg"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -8346,9 +8313,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -8413,9 +8377,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -8479,9 +8440,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -8674,9 +8632,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -8751,9 +8706,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -8823,9 +8775,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 2,
@@ -8890,10 +8839,6 @@
 			"subschools": [
 				"I:Spl"
 			],
-			"meta": {
-				"Spellfusion": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -8960,9 +8905,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -9108,9 +9050,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -9259,9 +9198,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -10188,9 +10124,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -10269,9 +10202,6 @@
 				"I:C",
 				"I:Art"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -10443,10 +10373,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -10587,9 +10513,6 @@
 			"subschools": [
 				"InCrg"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -10682,9 +10605,6 @@
 				"InCrg",
 				"I:CON"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 8,
@@ -10752,9 +10672,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -10904,9 +10821,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -10982,9 +10896,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -11093,9 +11004,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -11202,9 +11110,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -11316,9 +11221,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -11434,9 +11336,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -11545,9 +11444,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -11629,10 +11525,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -11709,10 +11601,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Charged": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -11790,10 +11678,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -11871,9 +11755,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -11951,10 +11832,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -12030,10 +11907,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -12112,10 +11985,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Charged": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 42,
@@ -12203,10 +12072,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Charged": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 2,
@@ -12283,10 +12148,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -12367,10 +12228,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -12447,9 +12304,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -12527,10 +12381,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 3,
@@ -12608,10 +12458,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Charged": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -12700,9 +12546,6 @@
 			"subschools": [
 				"I:Spl"
 			],
-			"meta": {
-				"Spellfusion": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -12778,10 +12621,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -12858,10 +12697,6 @@
 			"subschools": [
 				"I:Spl"
 			],
-			"meta": {
-				"Spellfusion": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -12941,9 +12776,6 @@
 			"subschools": [
 				"I:Spl"
 			],
-			"meta": {
-				"Spellfusion": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -13017,10 +12849,6 @@
 			"subschools": [
 				"I:Art"
 			],
-			"meta": {
-				"Artistic/Wondrous": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -13101,10 +12929,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 4,
@@ -13190,10 +13014,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 4,
@@ -13271,10 +13091,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 2,
@@ -13350,10 +13166,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -13430,10 +13242,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Charged": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -13522,10 +13330,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -13602,10 +13406,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -13687,10 +13487,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -13772,10 +13568,6 @@
 			"subschools": [
 				""
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 8,
@@ -13861,10 +13653,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 8,
@@ -13942,10 +13730,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 8,
@@ -14023,10 +13807,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 8,
@@ -14107,10 +13887,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 8,
@@ -14191,10 +13967,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 14,
@@ -14270,10 +14042,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 24,
@@ -14349,10 +14117,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 24,
@@ -14429,10 +14193,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 24,
@@ -14508,10 +14268,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 24,
@@ -14590,10 +14346,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -14672,10 +14424,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 2,
@@ -14752,10 +14500,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 3,
@@ -14833,9 +14577,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -14914,10 +14655,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 36,
@@ -14995,10 +14732,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 12,
@@ -15075,10 +14808,6 @@
 			"subschools": [
 				""
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 24,
@@ -15157,10 +14886,6 @@
 			"subschools": [
 				"I:crg"
 			],
-			"meta": {
-				"Charged": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -15237,10 +14962,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Charged": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 36,
@@ -15316,10 +15037,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -15396,10 +15113,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 12,
@@ -15476,10 +15189,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -15556,10 +15265,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 8,
@@ -15636,10 +15341,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 8,
@@ -15716,10 +15417,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 24,
@@ -15798,11 +15495,6 @@
 				"I:Art",
 				"I:Crg"
 			],
-			"meta": {
-				"Artistic/Wondrous": true,
-				"Charged": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -15881,11 +15573,6 @@
 				"I:Art",
 				"I:Crg"
 			],
-			"meta": {
-				"Charged": true,
-				"Artistic/Wondrous": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -15975,10 +15662,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -16056,9 +15739,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Consumable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -16137,10 +15817,6 @@
 			"subschools": [
 				""
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -16220,10 +15896,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Consumable": true,
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -16310,9 +15982,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -16399,9 +16068,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -16479,9 +16145,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -16560,9 +16223,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -16639,9 +16299,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -16719,9 +16376,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -16799,9 +16453,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -16879,9 +16530,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -16959,9 +16607,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -17041,9 +16686,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"consumable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -17124,10 +16766,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reuseable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -17206,9 +16844,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Consumable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -17285,12 +16920,9 @@
 			"level": 9,
 			"school": "In",
 			"subschools": [
-				"I:C"
+				"I:C",
+				"I:Art"
 			],
-			"meta": {
-				"Consumable": true,
-				"Artistic/Wondrous": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -17380,11 +17012,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -17462,9 +17089,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Charged": true
-			},
 			"time": [
 				{
 					"number": 2,
@@ -17541,10 +17165,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Consumable": true,
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -17623,9 +17243,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -17713,9 +17330,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -17794,11 +17408,6 @@
 				"I:CON",
 				"I:Art"
 			],
-			"meta": {
-				"Constant": true,
-				"Artistic/Wondrous": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 2,
@@ -17876,9 +17485,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -17957,9 +17563,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Consumable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -18038,10 +17641,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Consumable": true,
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -18115,9 +17714,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Consumable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -18198,10 +17794,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 4,
@@ -18318,11 +17910,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Recycle": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -18457,11 +18044,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 14,
@@ -18597,11 +18179,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -18727,11 +18304,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 6,
@@ -18866,11 +18438,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -19000,10 +18567,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 16,
@@ -19143,11 +18706,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 36,
@@ -19272,11 +18830,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -19415,10 +18968,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -19557,11 +19106,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -19695,11 +19239,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -19837,11 +19376,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -19966,11 +19500,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -20100,11 +19629,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true,
-				"Attunement": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -20238,9 +19762,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -20327,10 +19848,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -20408,10 +19925,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Consumable": true,
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -20501,10 +20014,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Consumable": true,
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -20592,10 +20101,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Consumable": true,
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -20682,10 +20187,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Consumable": true,
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 2,
@@ -20838,10 +20339,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Charged": true,
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 2,
@@ -20923,10 +20420,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -21064,11 +20557,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Reusable": true,
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -21208,10 +20696,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -21348,10 +20832,6 @@
 			"subschools": [
 				"I:Art"
 			],
-			"meta": {
-				"Artistic/Wondrous": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -21485,9 +20965,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Charged": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -21570,10 +21047,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -21660,10 +21133,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -21741,9 +21210,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 2,
@@ -21820,9 +21286,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -21972,9 +21435,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -22121,9 +21581,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -22199,9 +21656,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -22277,9 +21731,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -22353,9 +21804,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -22435,9 +21883,6 @@
 			"subschools": [
 				"I:Crg"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -22513,9 +21958,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -22590,9 +22032,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -22666,9 +22105,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -22743,10 +22179,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true,
-				"Attuned": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -22820,9 +22252,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -22898,9 +22327,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -22977,9 +22403,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -23056,9 +22479,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -23133,9 +22553,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -23210,9 +22627,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -23290,9 +22704,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -23368,9 +22779,6 @@
 				"I:CON",
 				"I:C"
 			],
-			"meta": {
-				"Recycle": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -23446,11 +22854,6 @@
 			"subschools": [
 				"I:Aut"
 			],
-			"meta": {
-				"Automaton": true,
-				"Attunement": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 4,
@@ -23568,9 +22971,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -23649,9 +23049,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -23728,9 +23125,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -23809,9 +23203,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -23886,10 +23277,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true,
-				"Attuned": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -23966,9 +23353,6 @@
 			"subschools": [
 				"I:CON"
 			],
-			"meta": {
-				"Constant": true
-			},
 			"time": [
 				{
 					"number": 10,
@@ -24046,10 +23430,6 @@
 			"subschools": [
 				"I:C"
 			],
-			"meta": {
-				"Attuned": true,
-				"Reusable": true
-			},
 			"time": [
 				{
 					"number": 1,
@@ -25788,7 +25168,6 @@
 			]
 		},
 		{
-			"type": "entries",
 			"name": "Bonus Proficiency",
 			"entries": [
 				"You gain proficiency in Arcana (or expertise if already proficient)."
@@ -25802,7 +25181,6 @@
 			"header": 1
 		},
 		{
-			"type": "entries",
 			"name": "Cantrip",
 			"entries": [
 				"You learn two Cantrips from the following list: {@spell Gust}, {@spell Control Flames}, {@spell Mage Hand}, {@spell Magic Stone}, or {@spell Light}"
@@ -25816,7 +25194,6 @@
 			"header": 1
 		},
 		{
-			"type": "entries",
 			"name": "Arcane Knowledge",
 			"entries": [
 				"You learn three 1st-level spells of your choice from either the Wizard or the Expanded spell list below.",
@@ -25841,7 +25218,6 @@
 			"header": 1
 		},
 		{
-			"type": "entries",
 			"name": "Arcane Spellcasting",
 			"entries": [
 				"At 1st level you can cast any spell you know. (Spells and Schemas are different things) Doing so uses infusion points equal to twice the spell slot used, you may not use a higher spell slot then the highest spell level you can learn.",
@@ -25880,7 +25256,6 @@
 			"header": 1
 		},
 		{
-			"type": "entries",
 			"name": " Arcane Engineer's Additional Spell List",
 			"entries": [
 				"You always have certain spells prepared after you reach particular levels in this class, as shown in the Arcane Engineer Spells table. These spells count as artificer spells for you, but they don't count against the number of artificer spells you prepare.",
@@ -26077,7 +25452,6 @@
 			]
 		},
 		{
-			"type": "entries",
 			"name": "Bonus Proficiency",
 			"entries": [
 				"You gain proficiency with: all Martial weapons and Heavy Armor; and {@item Smith's Tools|PHB}."
@@ -26091,7 +25465,6 @@
 			"header": 1
 		},
 		{
-			"type": "entries",
 			"name": "Bonus Cantrip",
 			"entries": [
 				"You gain one cantrip from the following list; {@spell Green Flame Blade|PHB}, {@spell Blade Ward|PHB}, {@spell Shillelagh|PHB}, or {@spell Sword Burst|PHB}."
@@ -26105,7 +25478,6 @@
 			"header": 1
 		},
 		{
-			"type": "entries",
 			"name": "Bonus Infusions",
 			"entries": [
 				"You gain 1 Constant type Infusion with each level.",
@@ -26434,7 +25806,6 @@
 			]
 		},
 		{
-			"type": "entries",
 			"name": "Bonus Proficiency",
 			"entries": [
 				"You gain proficiency with two of the following artisan kit/tools; {@item Calligraphy Supplies|phb}, {@item Carpenter's Tools|phb}, {@item Cook's Utensils|phb}, {@item Painter's Kit|phb}, {@item Potter's Tools|phb}, {@item Weaver's|Weaver's Tools|phb}, {@item , and Woodworker's Tools|phb}. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice."
@@ -26448,7 +25819,6 @@
 			"header": 1
 		},
 		{
-			"type": "entries",
 			"name": "Bonus Cantrip",
 			"entries": [
 				"You learn 2 Cantrips from the Following List: {@spell Message|phb}, {@spell Guidance|phb}, or {@spell Mage Hand|phb}."
@@ -26462,7 +25832,6 @@
 			"header": 1
 		},
 		{
-			"type": "entries",
 			"name": "Bonus Infusions",
 			"entries": [
 				"You gain one additional infusion of the type Artistic/Wonderous with each level.",
@@ -26487,7 +25856,6 @@
 			"header": 1
 		},
 		{
-			"type": "entries",
 			"name": "ReCharged",
 			"entries": [
 				"At 1st level, You may, as a bonus action, use 1 infusion point + 2 points per spell slot level to grant a magic item with a Temporary single charge.",
@@ -26515,7 +25883,6 @@
 			"header": 1
 		},
 		{
-			"type": "entries",
 			"name": "Enduring Enchantment",
 			"entries": [
 				"{@i (This grants early access of the Enduring Enchantment received at 6th level)}",
@@ -26607,7 +25974,6 @@
 			]
 		},
 		{
-			"type": "entries",
 			"name": "Spellcasting",
 			"entries": [
 				"When you reach 3rd level, you gain the ability to cast spells. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter warlock spell list|spells|class=warlock}.",
@@ -26685,7 +26051,6 @@
 			"header": 1
 		},
 		{
-			"type": "entries",
 			"name": "Phantom Zone",
 			"entries": [
 				"At 3rd level, you develop connection to an extra dimensional pocket that only you can access. This pocket space is separate from your inventory and can contain 2 lbs or 8 cubic feet of content. The contents do not count against your encumbrance. If the character dies, their pocket dimension collapses and its contents are lost to Astral Space.",
@@ -26701,7 +26066,6 @@
 			"header": 1
 		},
 		{
-			"type": "entries",
 			"name": "Phantom Augmentations",
 			"entries": [
 				"You develop augmentations which agument your phantasmal space abilities. At 4th level, you gain a phantasmal augmentation of your choice. Your augmentations options are detailed at the end of the class description. When you gain certain phantom blade levels, you gain additional agumentations of your choice, as shown in the Augmentations Known column of the Phantom Blade table."
