@@ -10,6 +10,12 @@
 				"name": {
 					"type": "string"
 				},
+				"raceName": {
+					"type": "string"
+				},
+				"raceSource": {
+					"type": "string"
+				},
 				"alias": {
 					"type": "array",
 					"items": {
@@ -165,23 +171,6 @@
 				"_versions": {
 					"$ref": "util.json#/definitions/versionsArray"
 				},
-				"race": {
-					"description": "For use in homebrew files featuring standalone subraces of existing full races.",
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"name",
-						"source"
-					],
-					"additionalProperties": false
-				},
 				"fluff": {
 					"$ref": "#/definitions/fluff"
 				},
@@ -291,12 +280,6 @@
 				},
 				"soundClip": {
 					"$ref": "entry.json#/definitions/mediaHref"
-				},
-				"subraces": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/subraceData"
-					}
 				},
 				"darkvision": {
 					"type": "integer"
@@ -672,12 +655,6 @@
 						"soundClip": {
 							"$ref": "entry.json#/definitions/mediaHref"
 						},
-						"subraces": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/subraceData"
-							}
-						},
 						"darkvision": {
 							"type": "integer"
 						},
@@ -903,12 +880,6 @@
 						"soundClip": {
 							"$ref": "entry.json#/definitions/mediaHref"
 						},
-						"subraces": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/subraceData"
-							}
-						},
 						"darkvision": {
 							"type": "integer"
 						},
@@ -1090,12 +1061,17 @@
 			]
 		},
 		"subrace": {
-			"description": "Homebrew use only.",
 			"anyOf": [
 				{
 					"type": "object",
 					"properties": {
 						"name": {
+							"type": "string"
+						},
+						"raceName": {
+							"type": "string"
+						},
+						"raceSource": {
 							"type": "string"
 						},
 						"alias": {
@@ -1252,23 +1228,6 @@
 						},
 						"_versions": {
 							"$ref": "util.json#/definitions/versionsArray"
-						},
-						"race": {
-							"description": "For use in homebrew files featuring standalone subraces of existing full races.",
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							],
-							"additionalProperties": false
 						},
 						"fluff": {
 							"$ref": "#/definitions/fluff"
@@ -1336,13 +1295,20 @@
 					"required": [
 						"name",
 						"source",
-						"race"
+						"raceName",
+						"raceSource"
 					]
 				},
 				{
 					"type": "object",
 					"properties": {
 						"name": {
+							"type": "string"
+						},
+						"raceName": {
+							"type": "string"
+						},
+						"raceSource": {
 							"type": "string"
 						},
 						"alias": {
@@ -1499,23 +1465,6 @@
 						},
 						"_versions": {
 							"$ref": "util.json#/definitions/versionsArray"
-						},
-						"race": {
-							"description": "For use in homebrew files featuring standalone subraces of existing full races.",
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							],
-							"additionalProperties": false
 						},
 						"fluff": {
 							"$ref": "#/definitions/fluff"
@@ -1630,18 +1579,19 @@
 				"$ref": "#/definitions/race"
 			}
 		},
-		"_meta": {
-			"$ref": "util.json#/definitions/metaBlock"
-		},
 		"subrace": {
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/subrace"
 			}
+		},
+		"_meta": {
+			"$ref": "util.json#/definitions/metaBlock"
 		}
 	},
 	"required": [
-		"race"
+		"race",
+		"subrace"
 	],
 	"additionalProperties": false
 }
