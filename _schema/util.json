@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.3",
+	"version": "1.11.5",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -1086,12 +1086,6 @@
 				"Language Proficiency"
 			]
 		},
-		"proficiencyTags": {
-			"type": "array",
-			"items": {
-				"$ref": "#/definitions/proficiencyTag"
-			}
-		},
 		"_speedVal": {
 			"oneOf": [
 				{
@@ -1863,6 +1857,45 @@
 							}
 						}
 					}
+				]
+			}
+		},
+		"resourcesArray": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"recharge": {
+						"type": "string"
+					},
+					"count": {
+						"type": [
+							"integer",
+							"string"
+						]
+					},
+					"number": {
+						"type": [
+							"integer",
+							"string"
+						]
+					},
+					"faces": {
+						"type": [
+							"integer",
+							"string"
+						]
+					}
+				},
+				"required": [
+					"name",
+					"type"
 				]
 			}
 		},
@@ -3232,6 +3265,9 @@
 		},
 		"foundryDataObject": {
 			"type": "object"
+		},
+		"foundryImg": {
+			"type": "string"
 		},
 		"foundrySubEntitiesObject": {
 			"description": "A 5etools-data-like object of additional entities to import.",
