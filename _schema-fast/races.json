@@ -1,13 +1,19 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "races.json",
-	"version": "1.9.1",
+	"version": "1.10.1",
 	"type": "object",
 	"definitions": {
 		"subraceData": {
 			"type": "object",
 			"properties": {
 				"name": {
+					"type": "string"
+				},
+				"raceName": {
+					"type": "string"
+				},
+				"raceSource": {
 					"type": "string"
 				},
 				"alias": {
@@ -47,7 +53,7 @@
 					"type": "integer"
 				},
 				"feats": {
-					"type": "integer"
+					"$ref": "util.json#/definitions/additionalFeatsArray"
 				},
 				"traitTags": {
 					"oneOf": [
@@ -165,25 +171,11 @@
 				"_versions": {
 					"$ref": "util.json#/definitions/versionsArray"
 				},
-				"race": {
-					"description": "For use in homebrew files featuring standalone subraces of existing full races.",
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"name",
-						"source"
-					],
-					"additionalProperties": false
-				},
 				"fluff": {
 					"$ref": "#/definitions/fluff"
+				},
+				"foundryImg": {
+					"$ref": "util.json#/definitions/foundryImg"
 				},
 				"_copy": {
 					"type": "object",
@@ -292,17 +284,11 @@
 				"soundClip": {
 					"$ref": "entry.json#/definitions/mediaHref"
 				},
-				"subraces": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/subraceData"
-					}
-				},
 				"darkvision": {
 					"type": "integer"
 				},
 				"feats": {
-					"type": "integer"
+					"$ref": "util.json#/definitions/additionalFeatsArray"
 				},
 				"traitTags": {
 					"oneOf": [
@@ -412,6 +398,9 @@
 				"_versions": {
 					"$ref": "util.json#/definitions/versionsArray"
 				},
+				"foundryImg": {
+					"$ref": "util.json#/definitions/foundryImg"
+				},
 				"_copy": {
 					"type": "object",
 					"properties": {
@@ -488,10 +477,10 @@
 						"Magic Resistance",
 						"Monstrous Race",
 						"Natural Armor",
+						"Natural Weapon",
 						"NPC Race",
 						"Powerful Build",
 						"Sunlight Sensitivity",
-						"Unarmed Strike",
 						"Uncommon Race"
 					]
 				}
@@ -672,17 +661,11 @@
 						"soundClip": {
 							"$ref": "entry.json#/definitions/mediaHref"
 						},
-						"subraces": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/subraceData"
-							}
-						},
 						"darkvision": {
 							"type": "integer"
 						},
 						"feats": {
-							"type": "integer"
+							"$ref": "util.json#/definitions/additionalFeatsArray"
 						},
 						"traitTags": {
 							"oneOf": [
@@ -791,6 +774,9 @@
 						},
 						"_versions": {
 							"$ref": "util.json#/definitions/versionsArray"
+						},
+						"foundryImg": {
+							"$ref": "util.json#/definitions/foundryImg"
 						},
 						"_copy": {
 							"type": "object",
@@ -903,17 +889,11 @@
 						"soundClip": {
 							"$ref": "entry.json#/definitions/mediaHref"
 						},
-						"subraces": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/subraceData"
-							}
-						},
 						"darkvision": {
 							"type": "integer"
 						},
 						"feats": {
-							"type": "integer"
+							"$ref": "util.json#/definitions/additionalFeatsArray"
 						},
 						"traitTags": {
 							"oneOf": [
@@ -1023,6 +1003,9 @@
 						"_versions": {
 							"$ref": "util.json#/definitions/versionsArray"
 						},
+						"foundryImg": {
+							"$ref": "util.json#/definitions/foundryImg"
+						},
 						"_copy": {
 							"type": "object",
 							"properties": {
@@ -1090,12 +1073,17 @@
 			]
 		},
 		"subrace": {
-			"description": "Homebrew use only.",
 			"anyOf": [
 				{
 					"type": "object",
 					"properties": {
 						"name": {
+							"type": "string"
+						},
+						"raceName": {
+							"type": "string"
+						},
+						"raceSource": {
 							"type": "string"
 						},
 						"alias": {
@@ -1135,7 +1123,7 @@
 							"type": "integer"
 						},
 						"feats": {
-							"type": "integer"
+							"$ref": "util.json#/definitions/additionalFeatsArray"
 						},
 						"traitTags": {
 							"oneOf": [
@@ -1253,25 +1241,11 @@
 						"_versions": {
 							"$ref": "util.json#/definitions/versionsArray"
 						},
-						"race": {
-							"description": "For use in homebrew files featuring standalone subraces of existing full races.",
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							],
-							"additionalProperties": false
-						},
 						"fluff": {
 							"$ref": "#/definitions/fluff"
+						},
+						"foundryImg": {
+							"$ref": "util.json#/definitions/foundryImg"
 						},
 						"_copy": {
 							"type": "object",
@@ -1336,13 +1310,20 @@
 					"required": [
 						"name",
 						"source",
-						"race"
+						"raceName",
+						"raceSource"
 					]
 				},
 				{
 					"type": "object",
 					"properties": {
 						"name": {
+							"type": "string"
+						},
+						"raceName": {
+							"type": "string"
+						},
+						"raceSource": {
 							"type": "string"
 						},
 						"alias": {
@@ -1382,7 +1363,7 @@
 							"type": "integer"
 						},
 						"feats": {
-							"type": "integer"
+							"$ref": "util.json#/definitions/additionalFeatsArray"
 						},
 						"traitTags": {
 							"oneOf": [
@@ -1500,25 +1481,11 @@
 						"_versions": {
 							"$ref": "util.json#/definitions/versionsArray"
 						},
-						"race": {
-							"description": "For use in homebrew files featuring standalone subraces of existing full races.",
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							],
-							"additionalProperties": false
-						},
 						"fluff": {
 							"$ref": "#/definitions/fluff"
+						},
+						"foundryImg": {
+							"$ref": "util.json#/definitions/foundryImg"
 						},
 						"_copy": {
 							"type": "object",
@@ -1630,18 +1597,19 @@
 				"$ref": "#/definitions/race"
 			}
 		},
-		"_meta": {
-			"$ref": "util.json#/definitions/metaBlock"
-		},
 		"subrace": {
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/subrace"
 			}
+		},
+		"_meta": {
+			"$ref": "util.json#/definitions/metaBlock"
 		}
 	},
 	"required": [
-		"race"
+		"race",
+		"subrace"
 	],
 	"additionalProperties": false
 }

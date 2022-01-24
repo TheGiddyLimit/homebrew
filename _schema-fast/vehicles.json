@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "vehicles.json",
-	"version": "1.5.0",
+	"version": "1.5.1",
 	"type": "object",
 	"definitions": {
 		"vehicleTerrain": {
@@ -145,6 +145,7 @@
 				},
 				"actionThresholds": {
 					"type": "object",
+					"description": "A map of \"number of vehicle actions\": \"number of remaining crew members\"",
 					"patternProperties": {
 						"\\d+": {
 							"type": "integer"
@@ -170,7 +171,8 @@
 							"type": "string"
 						},
 						"dt": {
-							"type": "integer"
+							"type": "integer",
+							"description": "Damage Threshold"
 						}
 					},
 					"required": [
@@ -194,7 +196,8 @@
 								"type": "integer"
 							},
 							"dt": {
-								"type": "integer"
+								"type": "integer",
+								"description": "Damage Threshold"
 							},
 							"entries": {
 								"type": "array",
@@ -232,7 +235,8 @@
 								"type": "string"
 							},
 							"dt": {
-								"type": "integer"
+								"type": "integer",
+								"description": "Damage Threshold"
 							},
 							"locomotion": {
 								"description": "Legacy format, from the original UA release.",
@@ -305,7 +309,8 @@
 								"type": "integer"
 							},
 							"dt": {
-								"type": "integer"
+								"type": "integer",
+								"description": "Damage Threshold"
 							},
 							"entries": {
 								"type": "array",
@@ -400,6 +405,9 @@
 				},
 				"foundryData": {
 					"$ref": "util.json#/definitions/foundryDataObject"
+				},
+				"foundryImg": {
+					"$ref": "util.json#/definitions/foundryImg"
 				}
 			},
 			"required": [
@@ -513,6 +521,7 @@
 				},
 				"actionStation": {
 					"type": "array",
+					"description": "The Action Stations section of a vehicle block, for example the \"Helm\" or a weapon.",
 					"items": {
 						"type": "object",
 						"properties": {
@@ -553,6 +562,19 @@
 				},
 				"hasFluffImages": {
 					"type": "boolean"
+				},
+				"fluff": {
+					"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source",
+					"$ref": "util.json#/definitions/fluffObject"
+				},
+				"tokenUrl": {
+					"type": "string"
+				},
+				"foundryData": {
+					"$ref": "util.json#/definitions/foundryDataObject"
+				},
+				"foundryImg": {
+					"$ref": "util.json#/definitions/foundryImg"
 				}
 			},
 			"required": [

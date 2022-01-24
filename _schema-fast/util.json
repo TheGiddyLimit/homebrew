@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.2",
+	"version": "1.11.6",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -1062,6 +1062,20 @@
 				}
 			}
 		},
+		"additionalFeatsArray": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"any": {
+						"type": "integer"
+					}
+				},
+				"additionalProperties": {
+					"type": "boolean"
+				}
+			}
+		},
 		"proficiencyTag": {
 			"type": "string",
 			"enum": [
@@ -1071,12 +1085,6 @@
 				"Tool Proficiency",
 				"Language Proficiency"
 			]
-		},
-		"proficiencyTags": {
-			"type": "array",
-			"items": {
-				"$ref": "#/definitions/proficiencyTag"
-			}
 		},
 		"_speedVal": {
 			"oneOf": [
@@ -1851,6 +1859,69 @@
 					}
 				]
 			}
+		},
+		"resourcesArray": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"recharge": {
+						"type": "string"
+					},
+					"count": {
+						"type": [
+							"integer",
+							"string"
+						]
+					},
+					"number": {
+						"type": [
+							"integer",
+							"string"
+						]
+					},
+					"faces": {
+						"type": [
+							"integer",
+							"string"
+						]
+					}
+				},
+				"required": [
+					"name",
+					"type"
+				]
+			}
+		},
+		"consumesObject": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"examples": [
+						"Superiority Dice",
+						"Ki",
+						"Channel Divinity",
+						"Psionic Energy Dice",
+						"Wild Shape",
+						"Sorcery Points",
+						"Arcane Shot"
+					]
+				},
+				"amount": {
+					"type": "integer"
+				}
+			},
+			"required": [
+				"name"
+			],
+			"additionalProperties": false
 		},
 		"dataDamageTags": {
 			"type": "string",
@@ -3218,6 +3289,9 @@
 		},
 		"foundryDataObject": {
 			"type": "object"
+		},
+		"foundryImg": {
+			"type": "string"
 		},
 		"foundrySubEntitiesObject": {
 			"description": "A 5etools-data-like object of additional entities to import.",
