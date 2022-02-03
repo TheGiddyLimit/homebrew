@@ -9,7 +9,8 @@
 					"badooga"
 				],
 				"convertedBy": [
-					"GoR"
+					"GoR",
+					"badooga"
 				],
 				"version": "1.0",
 				"color": "ae899f",
@@ -17,8 +18,8 @@
 				"targetSchema": "1.2"
 			}
 		],
-		"dateAdded": 1642890556,
-		"dateLastModified": 1642890556,
+		"dateAdded": 1643931149,
+		"dateLastModified": 1643931161,
 		"optionalFeatureTypes": {
 			"MP": "Martial Practice"
 		}
@@ -78,7 +79,7 @@
 			"page": 2,
 			"entries": [
 				"As an action, you focus on boosting one of your defenses in order to protect yourself from harm or to shake off an effect.",
-				"Until the start of your next turn, or until you are incapacitated, you have advantage on all saving throws using one ability of your choice (except Dexterity, which is already covered by the {@action Dodge} action)."
+				"Until the start of your next turn, or until you are {@condition incapacitated}, you have advantage on all saving throws using one ability of your choice (except Dexterity, which is already covered by the {@action Dodge} action)."
 			],
 			"time": [
 				{
@@ -129,8 +130,8 @@
 			"source": "martialpower",
 			"page": 2,
 			"entries": [
-				"Using the {@action Attack} action, you can attempt to throw one creature you have grappled. If you're able to make multiple attacks with the Attack action, this throw replaces one of them.",
-				"You make a Strength (Athletics) check contested by the target's Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). You have advantage on this check if you are larger than the creature, or disadvantage if you are smaller. Additionally, you succeed on the check automatically if the target is {@condition incapacitated}.",
+				"Using the {@action Attack} action, you can attempt to throw one creature you have {@condition grappled}. If you're able to make multiple attacks with the Attack action, this throw replaces one of them.",
+				"You make a Strength (Athletics) check contested by the target's Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check (the target chooses the ability to use). You have advantage on this check if you are larger than the creature, or disadvantage if you are smaller. Additionally, you succeed on the check automatically if the target is {@condition incapacitated}.",
 				"If you succeed, you can make an improvised attack using the grappled creature. If you make a melee attack, you can choose not to end the grapple if your check succeeded by 5 or more. If you make a ranged attack, its range is 5 feet, plus a number of feet equal to 5 × your Strength modifier (minimum total of 5 feet); doing so causes the target to fall {@condition prone}, but also ends the grapple.",
 				"On a hit, both the creature and the target take an amount of bludgeoning damage depending on the size of the thrown creature: {@damage 1d6} (Tiny), {@damage 2d6} (Small or Medium), {@damage 3d6} (Large), {@damage 4d6} (Huge), or {@damage 6d6} (Gargantuan), plus your Strength modifier."
 			],
@@ -143,6 +144,40 @@
 		}
 	],
 	"variantrule": [
+		{
+			"name": "Fighting Styles",
+			"source": "martialpower",
+			"ruleType": "VO",
+			"entries": [
+				"The two entries below enhance the use of fighting styles.",
+				{
+					"name": "Fighting Style Options",
+					"type": "entries",
+					"entries": [
+						"When you choose a fighting style, the following styles are added to your list of options.",
+						{
+							"type": "list",
+							"items": [
+								"{@optfeature Defend the Line|martialpower}",
+								"{@optfeature Earthsense|martialpower}",
+								"{@optfeature Hammer Hands|martialpower}",
+								"{@optfeature Undaunted Stride|martialpower}",
+								"{@optfeature Vaulting Expert|martialpower}"
+							]
+						}
+					]
+				},
+				{
+					"name": "Martial Stances",
+					"type": "entries",
+					"entries": [
+						"With this variant, your style of fighting is constantly flexible. Whenever you would learn a Fighting Style, you can instead choose two styles from the same list to learn as martial stances.",
+						"When you roll initiative, and as a bonus action on your turn in combat, you can choose to enter one of the stances you know and gain its benefits. You remain in the stance until combat ends or until you use this bonus action again. You can only benefit from one stance at a time, unless a feature says otherwise.",
+						"If a style allows you to learn a maneuver, spell, or some other option, you make the choice for that option when you learn it as a stance, and can't swap it for a different option by simply switching to and from stance. Similarly, if a fighting style only recharges on a short or long rest or otherwise has some resource attached to it, switching to and from that stance doesn't recharge it."
+					]
+				}
+			]
+		},
 		{
 			"name": "Cleaving Through Creatures",
 			"source": "martialpower",
@@ -159,7 +194,7 @@
 			"page": 3,
 			"ruleType": "V",
 			"entries": [
-				"When a creature and at least one of its allies are adjacent to an enemy they can see and on opposite sides or corners of the enemy's space, they are flanking that enemy. While a creature is incapacitated, prone, restrained, or flanked, it is incapable of flanking. A Large or larger creature is flanking as long as at least one square or hex of its space qualifies for flanking.",
+				"When a creature and at least one of its allies are adjacent to an enemy they can see and on opposite sides or corners of the enemy's space, they are flanking that enemy. While a creature is {@condition incapacitated}, {@condition prone}, {@condition restrained}, or flanked, it is incapable of flanking. A Large or larger creature is flanking as long as at least one square or hex of its space qualifies for flanking.",
 				"A creature that is flanking another creature gains a +2 bonus to attack rolls against that creature, unless they themselves are being flanked.",
 				"At the DM's discretion, creatures that are not disadvantaged by multiple opponents due to their type (like oozes) are immune to being flanked."
 			]
@@ -211,7 +246,7 @@
 					"name": "Rattle",
 					"page": 3,
 					"entries": [
-						"When a creature grappled by you attempts to cast a spell, you can use your reaction to attempt to forcibly interrupt the casting. The target must make a Constitution saving throw with a DC of 10 + your Strength modifier. The target's spell fails and the spell slot (if any) is wasted on a failed save, and the target's spell works normally on a successful one."
+						"When a creature {@condition grappled} by you attempts to cast a spell, you can use your reaction to attempt to forcibly interrupt the casting. The target must make a Constitution saving throw with a DC of 10 + your Strength modifier. The target's spell fails and the spell slot (if any) is wasted on a failed save, and the target's spell works normally on a successful one."
 					]
 				},
 				{
@@ -227,7 +262,7 @@
 					"name": "Yank",
 					"page": 3,
 					"entries": [
-						"When a creature grappled by you attempts to make a weapon attack against a creature other than you, you can use your reaction to pull them away and make it harder for them to hit, imposing disadvantage on the attack roll."
+						"When a creature {@condition grappled} by you attempts to make a weapon attack against a creature other than you, you can use your reaction to pull them away and make it harder for them to hit, imposing disadvantage on the attack roll."
 					]
 				}
 			]
@@ -459,191 +494,10 @@
 			"ruleType": "V",
 			"entries": [
 				"This section presents ways of getting maneuvers that are unique to each class. Each one has multiple differences compared to the others, but they all are tailored to their respective classes. Most of them are fueled by a class resource and thus only add versatility and not necessarily raw power.",
-				"{@b Battle Ferocity} is a barbarian feature that lets you choose to gain one or more superiority dice from Reckless Attack, rather than advantage.",
-				"{@b Combat Expertise} is a fighter feature that grants fighters a scaling pool of superiority dice, which may be appealing to those that think the base class lacks enough features to properly shine.",
-				"{@b Ki Maneuvers} is a monk feature that lets you spend ki points to fuel your maneuvers.",
-				"{@b Roguish Exploits} is a rogue feature that lets you sacrifice Sneak Attack dice to fuel your maneuvers.",
-				{
-					"type": "entries",
-					"name": "Battle Ferocity",
-					"page": 10,
-					"entries": [
-						"{@note 3rd-level barbarian optional feature (adds to {@classFeature Reckless Attack|Barbarian|PHB|2})}",
-						"You learn maneuvers that are fueled by special dice called superiority dice.",
-						{
-							"type": "entries",
-							"name": "Maneuvers",
-							"entries": [
-								"You know two maneuvers, which are chosen from the list of maneuvers available to the fighter's Battle Master archetype. You learn one additional maneuver of your choice at 6th, 10th, and 14th level. Each time you learn a new maneuver, you can also replace one maneuver you know with a different one."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Superiority Dice",
-							"entries": [
-								"Instead of having a pool of superiority dice, your maneuvers are fueled by sheer anger and reckless abandon. When you use your Reckless Attack feature in combat, you can forgo gaining advantage on attack rolls to instead gain one superiority die, a {@dice d6}, which you can use anytime before the start of your next turn. This die becomes a {@dice d8} at 9th level and a {@dice d10} at 15th level. Starting at 5th level, you gain two dice from this feature rather than one. You then gain three dice at 11th level and four dice at 17th level."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Saving Throws",
-							"entries": [
-								"If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength modifier."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Combat Expertise",
-					"page": 10,
-					"entries": [
-						"{@note 3rd-level fighter optional feature}",
-						"You lean maneuvers that are fueled by a special dice called superiority dice",
-						{
-							"type": "entries",
-							"name": "Maneuvers",
-							"entries": [
-								"You learn three maneuvers of your choice from among those available to the Battle Master archetype. Many maneuvers enhance an attack in some way. You can useonly one maneuver per attack.",
-								"You learn one additional maneuver of your choice at 7th, 10th, 15th, and 18th level. Each time you learn a new maneuver, you can also replace one maneuver you know with a different one."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Superiority Dice",
-							"entries": [
-								"You have two superiority dice, which are {@dice d6}s. A superiority die is expended when you use it. You regain all of your expended superiority dice when you finish a short or long rest. You gain another superiority die at 7th level and again at 15th level. Additionally, your superiority dice become {@dice d8}s at 10th level and become {@dice d10}s at 18th level."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Saving Throws",
-							"entries": [
-								"If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice)."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Archetype Maneuvers (Optional)",
-							"entries": [
-								"When you choose your martial archetype at 3rd level, you learn one additional maneuver based on the archetype you chose, as shown in the table below. For homebrew archetypes, the DM may choose a list of possible maneuvers that best fits the archetype.",
-								{
-									"type": "table",
-									"caption": "Archetype Maneuvers",
-									"colLabels": [
-										"Archetype",
-										"Maneuver Learned"
-									],
-									"colStyles": [
-										"col-2 text-left",
-										"col-10 text-left"
-									],
-									"rows": [
-										[
-											"Arcane Archer",
-											"{@optfeature Evasive Footwork}, {@optfeature Precision Attack}, or {@optfeature Pushing Attack}"
-										],
-										[
-											"Banneret",
-											"{@optfeature Commander's Strike}, {@optfeature Maneuvering Attack}, or {@optfeature Rally}"
-										],
-										[
-											"Cavalier",
-											"{@optfeature Lunging Attack}, {@optfeature Maneuvering Attack}, or {@optfeature Parry}"
-										],
-										[
-											"Champion",
-											"Any maneuver of your choice"
-										],
-										[
-											"Echo Knight",
-											"{@optfeature Evasive Footwork}, {@optfeature Feinting Attack}, or {@optfeature Lunging Attack}"
-										],
-										[
-											"Eldritch Knight",
-											"{@optfeature Distracting Strike}, {@optfeature Menacing Attack}, or {@optfeature Pushing Attack}"
-										],
-										[
-											"Psi Knight",
-											"{@optfeature Distracting Strike}, {@optfeature Lunging Attack}, or {@optfeature Pushing Attack}"
-										],
-										[
-											"Rune Knight",
-											"{@optfeature Menacing Attack}, {@optfeature Pushing Attack}, or {@optfeature Trip Attack}"
-										],
-										[
-											"Samurai",
-											"{@optfeature Evasive Footwork}, {@optfeature Feinting Attack}, or {@optfeature Riposte}"
-										]
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Ki Maneuvers",
-					"page": 10,
-					"entries": [
-						"{@note 3rd-level monk optional feature}",
-						"You learn maneuvers that are fueled by special dice called superiority dice.",
-						{
-							"type": "entries",
-							"name": "Maneuvers",
-							"entries": [
-								"You learn two maneuvers of your choice from among those available to the Battle Master archetype. Many maneuvers enhance an attack in some way. You can useonly one maneuver per attack.",
-								"You learn one additional maneuver of your choice at 6th, 11th, and 17th level. Each time you learn a new maneuver, you can also replace one maneuver you know with a different one."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Superiority Dice",
-							"entries": [
-								"Instead of having a pool of superiority dice, you can use a maneuver by spending 1 ki point. If the maneuver has you roll a superiority die, you roll a Martial Arts die instead."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Saving Throws",
-							"entries": [
-								"If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals your ki save DC."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Roguish Exploits",
-					"page": 11,
-					"entries": [
-						"{@note 3rd-level and higher rogue optional feature}",
-						"You learn maneuvers that are fueled by special dice called superiority dice",
-						{
-							"type": "entries",
-							"name": "Maneuvers",
-							"entries": [
-								"You learn two maneuvers of your choice from among those available to the Battle Master archetype. Many maneuvers enhance an attack in some way. You can useonly one maneuver per attack.",
-								"You learn one additional maneuver of your choice at 6th, 9th, 13th, and 17th level. Each time you learn a new maneuver, you can also replace one maneuver you know with a different one."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Superiority Dice",
-							"entries": [
-								"Instead of having a pool of superiority dice, you draw from the damage dice used by your Sneak Attack feature. At any point on your turn where you haven't used your Sneak Attack feature yet, you can choose to subtract {@dice 2d6} from your Sneak Attack dice pool, as long as it has at least 2d6 dice remaining in it, which lasts until the start of your next turn. You then gain a single superiority die, a {@dice d6}, which can be expended to use a maneuver before it disappears at the start of your turn.",
-								"As an additional option, the DM may grant you a single superiority die, a {@dice d6}, which is meant to be used on maneuvers outside of combat or the normal turn order. You regain this die after you finish a short or long rest. You gain another superiority die at 7th level and one more at 15th level."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Saving Throws",
-							"entries": [
-								"If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice)."
-							]
-						}
-					]
-				}
+				"{@classFeature Battle Ferocity|Barbarian||3|martialpower} is a barbarian feature that lets you choose to gain one or more superiority dice from Reckless Attack, rather than advantage.",
+				"{@classFeature Combat Expertise|Fighter||3|martialpower} is a fighter feature that grants fighters a scaling pool of superiority dice, which may be appealing to those that think the base class lacks enough features to properly shine.",
+				"{@classFeature Ki Maneuvers|Monk||3|martialpower} is a monk feature that lets you spend ki points to fuel your maneuvers.",
+				"{@classFeature Roguish Exploits|Rogue||3|martialpower} is a rogue feature that lets you sacrifice Sneak Attack dice to fuel your maneuvers."
 			]
 		},
 		{
@@ -881,8 +735,15 @@
 			"source": "martialpower",
 			"page": 5,
 			"entries": [
-				"When you take the {@action Dodge} action, you also gain temporary hit points equal to your Constitution modifier + half your level, which lasts until the start of your next turn.",
-				"As a bonus action, you can enter a protective stance until the start of your next turn. For the duration, you can force any attack targeted at an ally within your reach to target you instead, even if you would normally be outside of its range or reach."
+				"You excel at protecting your allies in combat by drawing fire to yourself. You gain the following benefits",
+				{
+					"type": "list",
+					"items": [
+						"As a bonus action, you can enter a protective stance until the start of your next turn. For the duration, you can force any attack targeted at an ally within your reach to target you instead, even if you would normally be outside of its range or reach.",
+						"Allies within your melee reach have advantage on checks and saves made to avoid or escape being {@condition grappled} or {@action shove|phb}.",
+						"You have advantage on saving throws against being {@condition charmed} or {@condition frightened}."
+					]
+				}
 			]
 		},
 		{
@@ -922,12 +783,12 @@
 			"source": "martialpower",
 			"page": 5,
 			"entries": [
-				"The defensive uses of your shield can be extended to your allies as well. You gain the following benefits while you are wielding a shield:",
+				"The defensive uses of your shield can be extended to your allies as well. You gain the following benefits while you are wielding a {@item shield|phb}:",
 				{
 					"type": "list",
 					"items": [
-						"Each ally within 5 feet of you that doesn't have this featgains half cover while you aren't incapacitated or prone.",
-						"When you move on your turn, you can allow an ally within 5 feet of you that isn't incapacitated and doesn't have a speed of 0 to accompany you. The chosen ally can move with you (no action required), staying within 5 feet of you when possible, but you can't move more than half your speed during the turn."
+						"Each ally within 5 feet of you that doesn't have this feat gains half cover while you aren't {@condition incapacitated} or {@condition prone}.",
+						"When you move on your turn, you can allow an ally within 5 feet of you that isn't {@condition incapacitated} and doesn't have a speed of 0 to accompany you. The chosen ally can move with you (no action required), staying within 5 feet of you when possible, but you can't move more than half your speed during the turn."
 					]
 				}
 			]
@@ -1043,9 +904,7 @@
 			"page": 6,
 			"prerequisite": [
 				{
-					"feature": [
-						"{@feat Unarmored Defense|martialpower}"
-					]
+					"other": "Unarmored Defense {@feat Unarmored Defense|martialpower|feat} or feature"
 				}
 			],
 			"entries": [
@@ -1055,7 +914,7 @@
 					"items": [
 						"Your walking speed increases by 10 feet, and you gain a climbing speed and a swimming speed equal to your walking speed.",
 						"When you fail a Dexterity saving throw, you can use your reaction to reroll the save and take the second result.",
-						"You have advantage on checks made to avoid or escape being grappled."
+						"You have advantage on checks made to avoid or escape being {@condition grappled}."
 					]
 				}
 			]
@@ -1096,7 +955,7 @@
 				"MP"
 			],
 			"entries": [
-				"{@i Your hands and voice soothe a beast so that it will treat youas a friend.}",
+				"{@i Your hands and voice soothe a beast so that it will treat you as a friend.}",
 				{
 					"type": "list",
 					"style": "list-hang-notitle",
@@ -1270,7 +1129,7 @@
 						}
 					]
 				},
-				"While in a settlement with creatures that aren't hostile to you, you can secure the aid of a few creatures for a time. The number of creatures that aid you is equal to your character level. These creatures can perform mundane tasks for you, but they do not fight for you, will not follow you into obviously dangerous areas (such as dungeons), and will leave you early if they are endangered or abused.",
+				"While in a settlement with creatures that aren't hostile to you, you can secure the aid of a few creatures for the duration. The number of creatures that aid you is equal to your character level. These creatures can perform mundane tasks for you, but they do not fight for you, will not follow you into obviously dangerous areas (such as dungeons), and will leave you early if they are endangered or abused.",
 				"When you use this practice, make a Charisma check. On a 15 or higher, the duration increases to 1 hour."
 			]
 		},
@@ -1591,9 +1450,267 @@
 			"entries": [
 				"When you make an Intelligence ({@skill Nature}), a Wisdom ({@skill Animal Handling}), or a Wisdom ({@skill Survival}) check, you can expend one superiority die and add the superiority die to the ability check."
 			]
+		},
+		{
+			"name": "Defend the Line",
+			"source": "martialpower",
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"You retaliate against foes that would dare to attack your companions.",
+				"When a creature within 5 feet of you makes an attack against an ally of yours that isn't also using this style, you can use your reaction to make a melee weapon attack against the attacking creature."
+			]
+		},
+		{
+			"name": "Earthsense",
+			"source": "martialpower",
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"You can sense even the faintest of tremors, letting you see what others cannot.",
+				"You gain tremorsense out to a range of 10 feet, which can be used to detect and pinpoint the origin of any vibration that comes from a source that is in contact with the same ground or substance as you. Tremorsense can't be used to detect flying or incorporeal creatures."
+			]
+		},
+		{
+			"name": "Hammer Hands",
+			"source": "martialpower",
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"You throw your weight into each attack, striking with such force that you drive your enemy before you.",
+				"Once per turn when you hit a creature with a melee weapon attack, you can move it 5 feet to an unoccupied space, provided the target is no more than one size larger than you."
+			]
+		},
+		{
+			"name": "Undaunted Stride",
+			"source": "martialpower",
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"You move gracefully over and past obstacles that impede your foes.",
+				"You gain a climbing and swimming speed equal to your walking speed."
+			]
+		},
+		{
+			"name": "Vaulting Expert",
+			"source": "martialpower",
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"You assume a balanced pose, ready to leap away using the force of your weapon attacks at any moment.",
+				"Your jump distance is doubled, and once per turn when you hit a creature with a melee weapon attack, you can move into an unoccupied space within 5 feet of you without expending movement or provoking opportunity attacks."
+			]
 		}
 	],
 	"classFeature": [
+		{
+			"name": "Battle Ferocity",
+			"source": "martialpower",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 10,
+			"level": 3,
+			"entries": [
+				"{@note 3rd-level barbarian optional feature (adds to {@classFeature Reckless Attack|Barbarian|PHB|2})}",
+				"You learn maneuvers that are fueled by special dice called superiority dice.",
+				{
+					"type": "entries",
+					"name": "Maneuvers",
+					"entries": [
+						"You know two maneuvers, which are chosen from the list of maneuvers available to the fighter's Battle Master archetype. You learn one additional maneuver of your choice at 6th, 10th, and 14th level. Each time you learn a new maneuver, you can also replace one maneuver you know with a different one."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Superiority Dice",
+					"entries": [
+						"Instead of having a pool of superiority dice, your maneuvers are fueled by sheer anger and reckless abandon. When you use your Reckless Attack feature in combat, you can forgo gaining advantage on attack rolls to instead gain one superiority die, a {@dice d6}, which you can use anytime before the start of your next turn. This die becomes a {@dice d8} at 9th level and a {@dice d10} at 15th level. Starting at 5th level, you gain two dice from this feature rather than one. You then gain three dice at 11th level and four dice at 17th level."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Saving Throws",
+					"entries": [
+						"If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength modifier."
+					]
+				}
+			]
+		},
+		{
+			"name": "Combat Expertise",
+			"source": "martialpower",
+			"className": "Fighter",
+			"classSource": "PHB",
+			"page": 10,
+			"level": 3,
+			"entries": [
+				"{@note 3rd-level fighter optional feature}",
+				"You lean maneuvers that are fueled by a special dice called superiority dice",
+				{
+					"type": "entries",
+					"name": "Maneuvers",
+					"entries": [
+						"You learn three maneuvers of your choice from among those available to the Battle Master archetype. Many maneuvers enhance an attack in some way. You can useonly one maneuver per attack.",
+						"You learn one additional maneuver of your choice at 7th, 10th, 15th, and 18th level. Each time you learn a new maneuver, you can also replace one maneuver you know with a different one."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Superiority Dice",
+					"entries": [
+						"You have two superiority dice, which are {@dice d6}s. A superiority die is expended when you use it. You regain all of your expended superiority dice when you finish a short or long rest. You gain another superiority die at 7th level and again at 15th level. Additionally, your superiority dice become {@dice d8}s at 10th level and become {@dice d10}s at 18th level."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Saving Throws",
+					"entries": [
+						"If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Archetype Maneuvers (Optional)",
+					"entries": [
+						"When you choose your martial archetype at 3rd level, you learn one additional maneuver based on the archetype you chose, as shown in the table below. For homebrew archetypes, the DM may choose a list of possible maneuvers that best fits the archetype.",
+						{
+							"type": "table",
+							"caption": "Archetype Maneuvers",
+							"colLabels": [
+								"Archetype",
+								"Maneuver Learned"
+							],
+							"colStyles": [
+								"col-2 text-left",
+								"col-10 text-left"
+							],
+							"rows": [
+								[
+									"Arcane Archer",
+									"{@optfeature Evasive Footwork}, {@optfeature Precision Attack}, or {@optfeature Pushing Attack}"
+								],
+								[
+									"Banneret",
+									"{@optfeature Commander's Strike}, {@optfeature Maneuvering Attack}, or {@optfeature Rally}"
+								],
+								[
+									"Cavalier",
+									"{@optfeature Lunging Attack}, {@optfeature Maneuvering Attack}, or {@optfeature Parry}"
+								],
+								[
+									"Champion",
+									"Any maneuver of your choice"
+								],
+								[
+									"Echo Knight",
+									"{@optfeature Evasive Footwork}, {@optfeature Feinting Attack}, or {@optfeature Lunging Attack}"
+								],
+								[
+									"Eldritch Knight",
+									"{@optfeature Distracting Strike}, {@optfeature Menacing Attack}, or {@optfeature Pushing Attack}"
+								],
+								[
+									"Psi Knight",
+									"{@optfeature Distracting Strike}, {@optfeature Lunging Attack}, or {@optfeature Pushing Attack}"
+								],
+								[
+									"Rune Knight",
+									"{@optfeature Menacing Attack}, {@optfeature Pushing Attack}, or {@optfeature Trip Attack}"
+								],
+								[
+									"Samurai",
+									"{@optfeature Evasive Footwork}, {@optfeature Feinting Attack}, or {@optfeature Riposte}"
+								]
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ki Maneuvers",
+			"source": "martialpower",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 10,
+			"level": 3,
+			"entries": [
+				"{@note 3rd-level monk optional feature}",
+				"You learn maneuvers that are fueled by special dice called superiority dice.",
+				{
+					"type": "entries",
+					"name": "Maneuvers",
+					"entries": [
+						"You learn two maneuvers of your choice from among those available to the Battle Master archetype. Many maneuvers enhance an attack in some way. You can use only one maneuver per attack.",
+						"You learn one additional maneuver of your choice at 6th, 11th, and 17th level. Each time you learn a new maneuver, you can also replace one maneuver you know with a different one."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Superiority Dice",
+					"entries": [
+						"Instead of having a pool of superiority dice, you can use a maneuver by spending 1 ki point. If the maneuver has you roll a superiority die, you roll a Martial Arts die instead."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Saving Throws",
+					"entries": [
+						"If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals your ki save DC."
+					]
+				}
+			]
+		},
+		{
+			"name": "Roguish Exploits",
+			"source": "martialpower",
+			"className": "Rogue",
+			"classSource": "PHB",
+			"page": 11,
+			"level": 3,
+			"entries": [
+				"{@note 3rd-level and higher rogue optional feature}",
+				"You learn maneuvers that are fueled by special dice called superiority dice",
+				{
+					"type": "entries",
+					"name": "Maneuvers",
+					"entries": [
+						"You learn two maneuvers of your choice from among those available to the Battle Master archetype. Many maneuvers enhance an attack in some way. You can useonly one maneuver per attack.",
+						"You learn one additional maneuver of your choice at 6th, 9th, 13th, and 17th level. Each time you learn a new maneuver, you can also replace one maneuver you know with a different one."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Superiority Dice",
+					"entries": [
+						"Instead of having a pool of superiority dice, you draw from the damage dice used by your Sneak Attack feature. At any point on your turn where you haven't used your Sneak Attack feature yet, you can choose to subtract {@dice 2d6} from your Sneak Attack dice pool, as long as it has at least 2d6 dice remaining in it, which lasts until the start of your next turn. You then gain a single superiority die, a {@dice d6}, which can be expended to use a maneuver before it disappears at the start of your turn.",
+						"As an additional option, the DM may grant you a single superiority die, a {@dice d6}, which is meant to be used on maneuvers outside of combat or the normal turn order. You regain this die after you finish a short or long rest. You gain another superiority die at 7th level and one more at 15th level."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Saving Throws",
+					"entries": [
+						"If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice)."
+					]
+				}
+			]
+		},
 		{
 			"name": "Savage Leaps",
 			"source": "martialpower",
@@ -1961,7 +2078,7 @@
 			"level": 3,
 			"entries": [
 				"{@note 3rd-level monk optional feature (alternative to {@classFeature Deflect Missiles|Monk||3})}",
-				"You can use your reaction to parry your opponent when you are hit by a melee weapon attack. When you do so, the damage you take from the attack is reduced by {@dice 1d10} + your Strength or Dexterity modifier + half your monk level. If you reduce the damage to 0 and the target is Large or smaller, you can spend 1 ki to force the target to make a Strength saving throw. On a failed save, you can either push the target up to 10 feet away from you in a straight line or to knock it prone. Starting at 11th level, you can use this ability on Huge or smaller creatures, and Medium and smaller creatures have disadvantage on the save."
+				"You can use your reaction to parry your opponent when you are hit by a melee weapon attack. When you do so, the damage you take from the attack is reduced by {@dice 1d10} + your Strength or Dexterity modifier + half your monk level. If you reduce the damage to 0 and the target is Large or smaller, you can spend 1 ki to force the target to make a Strength saving throw. On a failed save, you can either push the target up to 10 feet away from you in a straight line or to knock it {@condition prone}. Starting at 11th level, you can use this ability on Huge or smaller creatures, and Medium and smaller creatures have disadvantage on the save."
 			]
 		},
 		{
@@ -2267,7 +2384,7 @@
 			"entries": [
 				"{@note 15th-level rogue optional feature (enhances {@classFeature Slippery Mind|Rogue||15})}",
 				"If you are already proficient in Wisdom saving throws when you gain the Slippery Mind feature, you instead gain proficiency in Charisma saves.",
-				"Additionally, you are immune to being {@condition charmed}, and your thoughts can’t be read by magic or other means unless you allow it."
+				"Additionally, you are immune to being {@condition charmed}, and your thoughts can't be read by magic or other means unless you allow it."
 			]
 		}
 	],
@@ -2344,7 +2461,7 @@
 			"header": 2,
 			"entries": [
 				"{@note 7th-level Beast Master optional feature (replaces {@subclassFeature Exceptional Training|Ranger||Beast Master||7})}",
-				"Once on each of your turns when your beast companion doesn’t attack, you can command it to take the {@action Dash}, {@action Disengage}, {@action Help}, {@action Search}, or {@action Use an Object} action on its turn (no action required).",
+				"Once on each of your turns when your beast companion doesn't attack, you can command it to take the {@action Dash}, {@action Disengage}, {@action Help}, {@action Search}, or {@action Use an Object} action on its turn (no action required).",
 				"In addition, the beast's attacks now count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage."
 			]
 		},
@@ -2410,6 +2527,10 @@
 							"depth": 1
 						},
 						{
+							"header": "Fighting Styles",
+							"depth": 1
+						},
+						{
 							"header": "Flanking Revised",
 							"depth": 1
 						},
@@ -2464,7 +2585,7 @@
 						},
 						"Other Variants",
 						{
-							"header": "Action options",
+							"header": "Action Options",
 							"depth": 1
 						},
 						{
@@ -2583,11 +2704,45 @@
 									]
 								},
 								{
+									"name": "Fighting Styles",
+									"source": "martialpower",
+									"type": "entries",
+									"entries": [
+										"The two entries below enhance the use of fighting styles.",
+										{
+											"name": "Fighting Style Options",
+											"type": "entries",
+											"entries": [
+												"When you choose a fighting style, the following styles are added to your list of options.",
+												{
+													"type": "list",
+													"items": [
+														"{@optfeature Defend the Line|martialpower}",
+														"{@optfeature Earthsense|martialpower}",
+														"{@optfeature Hammer Hands|martialpower}",
+														"{@optfeature Undaunted Stride|martialpower}",
+														"{@optfeature Vaulting Expert|martialpower}"
+													]
+												}
+											]
+										},
+										{
+											"name": "Martial Stances",
+											"type": "entries",
+											"entries": [
+												"With this variant, your style of fighting is constantly flexible. Whenever you would learn a Fighting Style, you can instead choose two styles from the same list to learn as martial stances.",
+												"When you roll initiative, and as a bonus action on your turn in combat, you can choose to enter one of the stances you know and gain its benefits. You remain in the stance until combat ends or until you use this bonus action again. You can only benefit from one stance at a time, unless a feature says otherwise.",
+												"If a style allows you to learn a maneuver, spell, or some other option, you make the choice for that option when you learn it as a stance, and can't swap it for a different option by simply switching to and from stance. Similarly, if a fighting style only recharges on a short or long rest or otherwise has some resource attached to it, switching to and from that stance doesn't recharge it."
+											]
+										}
+									]
+								},
+								{
 									"type": "entries",
 									"name": "Flanking Revised",
 									"page": 3,
 									"entries": [
-										"When a creature and at least one of its allies are adjacent to an enemy they can see and on opposite sides or corners of the enemy's space, they are flanking that enemy. While a creature is incapacitated, prone, restrained, or flanked, it is incapable of flanking. A Large or larger creature is flanking as long as at least one square or hex of its space qualifies for flanking.",
+										"When a creature and at least one of its allies are adjacent to an enemy they can see and on opposite sides or corners of the enemy's space, they are flanking that enemy. While a creature is {@condition incapacitated}, {@condition prone}, {@condition restrained}, or flanked, it is incapable of flanking. A Large or larger creature is flanking as long as at least one square or hex of its space qualifies for flanking.",
 										"A creature that is flanking another creature gains a +2 bonus to attack rolls against that creature, unless they themselves are being flanked.",
 										"At the DM's discretion, creatures that are not disadvantaged by multiple opponents due to their type (like oozes) are immune to being flanked."
 									]
@@ -2638,7 +2793,7 @@
 											"name": "Rattle",
 											"page": 3,
 											"entries": [
-												"When a creature grappled by you attempts to cast a spell, you can use your reaction to attempt to forcibly interrupt the casting. The target must make a Constitution saving throw with a DC of 10 + your Strength modifier. The target's spell fails and the spell slot (if any) is wasted on a failed save, and the target's spell works normally on a successful one."
+												"When a creature {@condition grappled} by you attempts to cast a spell, you can use your reaction to attempt to forcibly interrupt the casting. The target must make a Constitution saving throw with a DC of 10 + your Strength modifier. The target's spell fails and the spell slot (if any) is wasted on a failed save, and the target's spell works normally on a successful one."
 											]
 										},
 										{
@@ -2654,7 +2809,7 @@
 											"name": "Yank",
 											"page": 3,
 											"entries": [
-												"When a creature grappled by you attempts to make a weapon attack against a creature other than you, you can use your reaction to pull them away and make it harder for them to hit, imposing disadvantage on the attack roll."
+												"When a creature {@condition grappled} by you attempts to make a weapon attack against a creature other than you, you can use your reaction to pull them away and make it harder for them to hit, imposing disadvantage on the attack roll."
 											]
 										}
 									]
@@ -3080,191 +3235,10 @@
 									"page": 9,
 									"entries": [
 										"This section presents ways of getting maneuvers that are unique to each class. Each one has multiple differences compared to the others, but they all are tailored to their respective classes. Most of them are fueled by a class resource and thus only add versatility and not necessarily raw power.",
-										"{@b Battle Ferocity} is a barbarian feature that lets you choose to gain one or more superiority dice from Reckless Attack, rather than advantage.",
-										"{@b Combat Expertise} is a fighter feature that grants fighters a scaling pool of superiority dice, which may be appealing to those that think the base class lacks enough features to properly shine.",
-										"{@b Ki Maneuvers} is a monk feature that lets you spend ki points to fuel your maneuvers.",
-										"{@b Roguish Exploits} is a rogue feature that lets you sacrifice Sneak Attack dice to fuel your maneuvers.",
-										{
-											"type": "entries",
-											"name": "Battle Ferocity",
-											"page": 10,
-											"entries": [
-												"{@note 3rd-level barbarian optional feature (adds to {@classFeature Reckless Attack|Barbarian|PHB|2})}",
-												"You learn maneuvers that are fueled by special dice called superiority dice.",
-												{
-													"type": "entries",
-													"name": "Maneuvers",
-													"entries": [
-														"You know two maneuvers, which are chosen from the list of maneuvers available to the fighter's Battle Master archetype. You learn one additional maneuver of your choice at 6th, 10th, and 14th level. Each time you learn a new maneuver, you can also replace one maneuver you know with a different one."
-													]
-												},
-												{
-													"type": "entries",
-													"name": "Superiority Dice",
-													"entries": [
-														"Instead of having a pool of superiority dice, your maneuvers are fueled by sheer anger and reckless abandon. When you use your Reckless Attack feature in combat, you can forgo gaining advantage on attack rolls to instead gain one superiority die, a {@dice d6}, which you can use anytime before the start of your next turn. This die becomes a {@dice d8} at 9th level and a {@dice d10} at 15th level. Starting at 5th level, you gain two dice from this feature rather than one. You then gain three dice at 11th level and four dice at 17th level."
-													]
-												},
-												{
-													"type": "entries",
-													"name": "Saving Throws",
-													"entries": [
-														"If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength modifier."
-													]
-												}
-											]
-										},
-										{
-											"type": "entries",
-											"name": "Combat Expertise",
-											"page": 10,
-											"entries": [
-												"{@note 3rd-level fighter optional feature}",
-												"You lean maneuvers that are fueled by a special dice called superiority dice",
-												{
-													"type": "entries",
-													"name": "Maneuvers",
-													"entries": [
-														"You learn three maneuvers of your choice from among those available to the Battle Master archetype. Many maneuvers enhance an attack in some way. You can useonly one maneuver per attack.",
-														"You learn one additional maneuver of your choice at 7th, 10th, 15th, and 18th level. Each time you learn a new maneuver, you can also replace one maneuver you know with a different one."
-													]
-												},
-												{
-													"type": "entries",
-													"name": "Superiority Dice",
-													"entries": [
-														"You have two superiority dice, which are {@dice d6}s. A superiority die is expended when you use it. You regain all of your expended superiority dice when you finish a short or long rest. You gain another superiority die at 7th level and again at 15th level. Additionally, your superiority dice become {@dice d8}s at 10th level and become {@dice d10}s at 18th level."
-													]
-												},
-												{
-													"type": "entries",
-													"name": "Saving Throws",
-													"entries": [
-														"If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice)."
-													]
-												},
-												{
-													"type": "entries",
-													"name": "Archetype Maneuvers (Optional)",
-													"entries": [
-														"When you choose your martial archetype at 3rd level, you learn one additional maneuver based on the archetype you chose, as shown in the table below. For homebrew archetypes, the DM may choose a list of possible maneuvers that best fits the archetype.",
-														{
-															"type": "table",
-															"caption": "Archetype Maneuvers",
-															"colLabels": [
-																"Archetype",
-																"Maneuver Learned"
-															],
-															"colStyles": [
-																"col-2 text-left",
-																"col-10 text-left"
-															],
-															"rows": [
-																[
-																	"Arcane Archer",
-																	"{@optfeature Evasive Footwork}, {@optfeature Precision Attack}, or {@optfeature Pushing Attack}"
-																],
-																[
-																	"Banneret",
-																	"{@optfeature Commander's Strike}, {@optfeature Maneuvering Attack}, or {@optfeature Rally}"
-																],
-																[
-																	"Cavalier",
-																	"{@optfeature Lunging Attack}, {@optfeature Maneuvering Attack}, or {@optfeature Parry}"
-																],
-																[
-																	"Champion",
-																	"Any maneuver of your choice"
-																],
-																[
-																	"Echo Knight",
-																	"{@optfeature Evasive Footwork}, {@optfeature Feinting Attack}, or {@optfeature Lunging Attack}"
-																],
-																[
-																	"Eldritch Knight",
-																	"{@optfeature Distracting Strike}, {@optfeature Menacing Attack}, or {@optfeature Pushing Attack}"
-																],
-																[
-																	"Psi Knight",
-																	"{@optfeature Distracting Strike}, {@optfeature Lunging Attack}, or {@optfeature Pushing Attack}"
-																],
-																[
-																	"Rune Knight",
-																	"{@optfeature Menacing Attack}, {@optfeature Pushing Attack}, or {@optfeature Trip Attack}"
-																],
-																[
-																	"Samurai",
-																	"{@optfeature Evasive Footwork}, {@optfeature Feinting Attack}, or {@optfeature Riposte}"
-																]
-															]
-														}
-													]
-												}
-											]
-										},
-										{
-											"type": "entries",
-											"name": "Ki Maneuvers",
-											"page": 10,
-											"entries": [
-												"{@note 3rd-level monk optional feature}",
-												"You learn maneuvers that are fueled by special dice called superiority dice.",
-												{
-													"type": "entries",
-													"name": "Maneuvers",
-													"entries": [
-														"You learn two maneuvers of your choice from among those available to the Battle Master archetype. Many maneuvers enhance an attack in some way. You can useonly one maneuver per attack.",
-														"You learn one additional maneuver of your choice at 6th, 11th, and 17th level. Each time you learn a new maneuver, you can also replace one maneuver you know with a different one."
-													]
-												},
-												{
-													"type": "entries",
-													"name": "Superiority Dice",
-													"entries": [
-														"Instead of having a pool of superiority dice, you can use a maneuver by spending 1 ki point. If the maneuver has you roll a superiority die, you roll a Martial Arts die instead."
-													]
-												},
-												{
-													"type": "entries",
-													"name": "Saving Throws",
-													"entries": [
-														"If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals your ki save DC."
-													]
-												}
-											]
-										},
-										{
-											"type": "entries",
-											"name": "Roguish Exploits",
-											"page": 11,
-											"entries": [
-												"{@note 3rd-level and higher rogue optional feature}",
-												"You learn maneuvers that are fueled by special dice called superiority dice",
-												{
-													"type": "entries",
-													"name": "Maneuvers",
-													"entries": [
-														"You learn two maneuvers of your choice from among those available to the Battle Master archetype. Many maneuvers enhance an attack in some way. You can useonly one maneuver per attack.",
-														"You learn one additional maneuver of your choice at 6th, 9th, 13th, and 17th level. Each time you learn a new maneuver, you can also replace one maneuver you know with a different one."
-													]
-												},
-												{
-													"type": "entries",
-													"name": "Superiority Dice",
-													"entries": [
-														"Instead of having a pool of superiority dice, you draw from the damage dice used by your Sneak Attack feature. At any point on your turn where you haven't used your Sneak Attack feature yet, you can choose to subtract {@dice 2d6} from your Sneak Attack dice pool, as long as it has at least 2d6 dice remaining in it, which lasts until the start of your next turn. You then gain a single superiority die, a {@dice d6}, which can be expended to use a maneuver before it disappears at the start of your turn.",
-														"As an additional option, the DM may grant you a single superiority die, a {@dice d6}, which is meant to be used on maneuvers outside of combat or the normal turn order. You regain this die after you finish a short or long rest. You gain another superiority die at 7th level and one more at 15th level."
-													]
-												},
-												{
-													"type": "entries",
-													"name": "Saving Throws",
-													"entries": [
-														"If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice)."
-													]
-												}
-											]
-										}
+										"{@classFeature Battle Ferocity|Barbarian||3|martialpower} is a barbarian feature that lets you choose to gain one or more superiority dice from Reckless Attack, rather than advantage.",
+										"{@classFeature Combat Expertise|Fighter||3|martialpower} is a fighter feature that grants fighters a scaling pool of superiority dice, which may be appealing to those that think the base class lacks enough features to properly shine.",
+										"{@classFeature Ki Maneuvers|Monk||3|martialpower} is a monk feature that lets you spend ki points to fuel your maneuvers.",
+										"{@classFeature Roguish Exploits|Rogue||3|martialpower} is a rogue feature that lets you sacrifice Sneak Attack dice to fuel your maneuvers."
 									]
 								}
 							]
@@ -3277,7 +3251,7 @@
 								"This section lists miscellaneous rules that relate to the use of maneuvers.",
 								{
 									"type": "entries",
-									"name": "Action options",
+									"name": "Action Options",
 									"page": 11,
 									"entries": [
 										"One approach is to transform maneuvers into weaker action options that anyone can take, rather than making a bunch of features that grant access to maneuvers. Here are a few examples:",
