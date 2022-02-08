@@ -69,8 +69,30 @@
 		"reprintedAs": {
 			"type": "array",
 			"items": {
-				"description": "A UID, e.g. \"longsword|phb\"",
-				"type": "string"
+				"oneOf": [
+					{
+						"description": "A UID, e.g. \"longsword|phb\"",
+						"type": "string"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"uid": {
+								"description": "A UID, e.g. \"longsword|phb\"",
+								"type": "string"
+							},
+							"tag": {
+								"description": "A tag used in the renderer, e.g. \"creature\"",
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"tag",
+							"uid"
+						]
+					}
+				]
 			}
 		},
 		"languageNameLower": {
