@@ -31,7 +31,7 @@
 			"CM:W": "Combat Maneuvers; Warlord"
 		},
 		"dateAdded": 1622696556,
-		"dateLastModified": 1643510620
+		"dateLastModified": 1644139411
 	},
 	"book": [
 		{
@@ -837,7 +837,7 @@
 					"entries": [
 						"When a class or feature grants you general proficiency with martial weapons, or you choose the Pact of the Blade or Way of the Kensei, you can choose to learn a technique that takes advantage of the properties of a weapon or family of weapons, as given on the table below. Afterward, you learn one additional weapon technique of your choice each time you gain an Ability Score Improvement.",
 						"At your DM's discretion, you can learn a new technique by spending a number of downtime days equal to 10 minus your Intelligence modifier training with an appropriate expert.",
-						"When a technique requires a saving throw, the DC is 8 + your weapon attack bonus. A technique can only be used while wielding a weapon in its list, and when a technique allows you to make an attack, you must do so with a weapon in its list, unless otherwise noted. When a technique deals damage to a creature, you can add any appropriate magical bonus from your weapon to the damage roll.",
+						"When a technique requires a saving throw, the DC is 8 + your weapon attack bonus. A technique can only be used while wielding a weapon in its list, and when a technique allows you to make an attack, you must do so with a weapon in its list, unless otherwise noted. When a technique deals damage to a creature, you can add any appropriate bonus from your weapon or class features to the damage roll.",
 						"When a technique is used as a special melee attack, it must replace the attack granted by the {@action Attack} action. If you have multiple attacks as part of the {@action Attack} action, the technique replaces one of them.",
 						{
 							"type": "table",
@@ -1340,8 +1340,9 @@
 							"type": "entries",
 							"name": "Converter's notes about FoundryVTT",
 							"entries": [
-								"{@note Not part of the FAQ}",
-								"The plutonium import for Techniques and Maneuvers assume that Strength is the ability used for damage and saving throw scaling for most actions, change it to dexterity if you are using a finesse or ranged weapon. Maneuvers also assume a 1d8 superiority die.",
+								"{@note This is not part of the actual FAQ}",
+								"The plutonium import for Techniques and Maneuvers assume that Strength is the ability used for damage and saving throw scaling for most actions, change it to dexterity if you are using a finesse or ranged weapon. Maneuvers also assume a 1d8 superiority die. You'll need to manually add any damage and DC bonus, like when using +1 weapons, to the feature's. Since we cannot add flat number to the save DC, I use 'Chat Message Flavor' to remember the DC bonus.",
+								"Maneuvers by default will use the third resource in the character sheet as their Superiority Dice pool.",
 								"5etools and Plutonium Import do not like features and items sharing the same name. In 5etools it will mess the generic variants automation (like +1 weapon) for homebrew weapons, this can be fixed by blacklisting in PHB weapons. Plutonium will hide this brew's weapons in the importer if 5etools is checked while importing, unchecking 5etools will not prevent generic variants from applying to this brew's weapons.",
 								"Since this brew add several weapon properties, in order to see them on the weapon, make sure that 'Include Damage, Properties, Rarity and Attunement in Description' is checked in Plutonium Import (Items) settings. Consider checking 'Collapse Item Cards in Chat' in system settings to keep the chat log clear of massive descriptive texts."
 							]
@@ -3055,7 +3056,7 @@
 					"2 sp",
 					"{@dice 1d6} bludgeoning",
 					"4 lb.",
-					"Versatile (    {@dice 1d8})"
+					"Versatile ({@dice 1d8})"
 				],
 				[
 					"{@item Sickle|marpro}",
@@ -3069,7 +3070,7 @@
 					"1 gp",
 					"{@dice 1d6} piercing",
 					"3 lb.",
-					"Thrown (20/60), versatile (    {@dice 1d8})"
+					"Thrown (20/60), versatile ({@dice 1d8})"
 				],
 				[
 					"{@item Whip|marpro}",
@@ -3244,14 +3245,14 @@
 					"5 gp",
 					"{@dice 1d8} piercing",
 					"4 lb.",
-					"Entrapping, Thrown, versatile (    {@dice 1d10})"
+					"Entrapping, Thrown, versatile ({@dice 1d10})"
 				],
 				[
 					"{@item Warhammer|marpro}",
 					"15 gp",
 					"{@dice 1d8} bludgeoning",
 					"4 lb.",
-					"Siege, versatile (    {@dice 1d10})"
+					"Siege, versatile ({@dice 1d10})"
 				],
 				[
 					"{@item War Pick|marpro}",
@@ -4022,6 +4023,18 @@
 			],
 			"entries": [
 				"Being unable to see a creature within 30 feet of you doesn't impose disadvantage on your attack rolls against it or grant advantage on its attack rolls against you, provided the creature isn't hidden from you."
+			],
+			"foundryEffects": [
+				{
+					"name": "Blind-Fighting (Setting Sun)",
+					"changes": [
+						{
+							"key": "dummy",
+							"mode": "Custom",
+							"value": "1"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -4036,6 +4049,18 @@
 			],
 			"entries": [
 				"When you end your turn without using more than 5 feet of movement, you gain temporary hit points equal to your proficiency bonus and have advantage on your Strength and Constitution checks and saving throws. These effects, including any remaining temporary hit points, end at the beginning of your next turn."
+			],
+			"foundryEffects": [
+				{
+					"name": "Bulwark (Stonefoot Stance)",
+					"changes": [
+						{
+							"key": "dummy",
+							"mode": "Custom",
+							"value": "1"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -4073,6 +4098,18 @@
 			],
 			"entries": [
 				"You inspire vigor and raise morale in your allies. Once per turn when you hit a hostile creature with a melee attack, a creature you choose, other than you, within 30 feet of you gains temporary hit points equal to your Charisma modifier."
+			],
+			"foundryEffects": [
+				{
+					"name": "Devoted Spirit",
+					"changes": [
+						{
+							"key": "dummy",
+							"mode": "Custom",
+							"value": "1"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -4097,6 +4134,18 @@
 			],
 			"entries": [
 				"You learn two cantrips from the {@filter druid spell list|spells|level=0|class=druid}, which you can cast only while in this stance. They count as ranger spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a ranger level, you can replace one of these cantrips with another cantrip from the druid spell list."
+			],
+			"foundryEffects": [
+				{
+					"name": "Druidic Warrior",
+					"changes": [
+						{
+							"key": "dummy",
+							"mode": "Custom",
+							"value": "1"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -4111,6 +4160,18 @@
 			],
 			"entries": [
 				"When you engage in two-weapon fighting, you can add your ability modifier to the damage of the additional attack."
+			],
+			"foundryEffects": [
+				{
+					"name": "Double Striking (Thicket of Blades)",
+					"changes": [
+						{
+							"key": "dummy",
+							"mode": "Custom",
+							"value": "1"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -4149,6 +4210,18 @@
 			],
 			"entries": [
 				"When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit."
+			],
+			"foundryEffects": [
+				{
+					"name": "Great Weapon Fighting (Stone Dragon)",
+					"changes": [
+						{
+							"key": "dummy",
+							"mode": "Custom",
+							"value": "1"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -4162,19 +4235,27 @@
 				"CS:B"
 			],
 			"entries": [
-				"When a creature you can see hits a target, other than you, within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a {@item shield|phb} to use this reaction.",
+				"When a creature you can see hits a target, other than you, within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + half your level (rounded down), to a minimum of 0 damage. You must be wielding a {@item shield|phb} to use this reaction.",
 				"At 10th level, you can use this reaction when you are hit."
 			],
 			"foundryData": {
 				"activation.cost": "1",
 				"activation.type": "reaction",
 				"actionType": "util",
-				"damage.parts": [
-					[
-						"1d10+@prof"
+				"formula": "1d10+floor(@details.level/2)"
+			},
+			"foundryEffects": [
+				{
+					"name": "Interception (Phalanx of Steel)",
+					"changes": [
+						{
+							"key": "dummy",
+							"mode": "Custom",
+							"value": "1"
+						}
 					]
-				]
-			}
+				}
+			]
 		},
 		{
 			"name": "Savagery (Raging Demon)",
@@ -4188,6 +4269,18 @@
 			],
 			"entries": [
 				"Once per turn when you hit with a weapon attack, you can choose to roll each of your weapon dice twice and take the higher result of each die."
+			],
+			"foundryEffects": [
+				{
+					"name": "Savagery (Raging Demon)",
+					"changes": [
+						{
+							"key": "dummy",
+							"mode": "Custom",
+							"value": "1"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -4277,6 +4370,8 @@
 				"At the start of your turn, you can choose to deal bludgeoning damage equal to your Strength modifier to one creature you are {@condition grappled|phb|grappling}."
 			],
 			"foundryData": {
+				"activation.cost": "1",
+				"activation.type": "special",
 				"actionType": "mwak",
 				"ability": "str",
 				"damage.parts": [
@@ -4287,7 +4382,19 @@
 				],
 				"damage.versatile": "1d8+@mod",
 				"formula": "@abilities.str.mod[grappled bludgeoning damage]"
-			}
+			},
+			"foundryEffects": [
+				{
+					"name": "Unarmed Fighting (Tiger Claw)",
+					"changes": [
+						{
+							"key": "dummy",
+							"mode": "Custom",
+							"value": "1"
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Vanguard (White Raven)",
@@ -4299,6 +4406,18 @@
 			],
 			"entries": [
 				"When you hit a creature with a melee attack, the next attack roll against that creature made by someone other than you has advantage. You must remain within 5 feet of the creature to grant this benefit."
+			],
+			"foundryEffects": [
+				{
+					"name": "Vanguard (White Raven)",
+					"changes": [
+						{
+							"key": "dummy",
+							"mode": "Custom",
+							"value": "1"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -4356,6 +4475,18 @@
 			],
 			"entries": [
 				"While you are {@optfeature Blind-Fighting (Setting Sun)|marpro|Blind-Fighting}, you can use your reaction to add your proficiency bonus to any Wisdom saving throw you make that does not already use your proficiency bonus."
+			],
+			"foundryEffects": [
+				{
+					"name": "Diamond Mind",
+					"changes": [
+						{
+							"key": "data.abilities.wis.bonuses.save",
+							"mode": "ADD",
+							"value": "@prof"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -4449,7 +4580,19 @@
 			"foundryData": {
 				"activation.cost": "1",
 				"activation.type": "reaction"
-			}
+			},
+			"foundryEffects": [
+				{
+					"name": "Protection (Shield Master Feat)",
+					"changes": [
+						{
+							"key": "data.abilities.dex.bonuses.save",
+							"mode": "ADD",
+							"value": "2"
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Pugilism",
@@ -4531,6 +4674,9 @@
 				"You get a special reaction that you can take once on every creature's turn, until the start of your next turn. You can only use this special reaction to either make a ranged weapon attack or to move up to half your speed without provoking opportunity attacks and make a melee weapon attack, and you can't use it on the same turn that you take any other reaction. You must target the triggering creature with this attack, and if you hit, you deal additional damage equal to your superiority die."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"activation.cost": "1",
 				"activation.type": "action",
 				"damage.parts": [
@@ -4565,6 +4711,9 @@
 				"As a bonus action, you focus briefly to battle beyond the limits of your endurance. Expend one hit die and recover two superiority dice, up to your maximum number of superiority dice."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"activation.cost": "1",
 				"activation.type": "bonus"
 			}
@@ -4580,6 +4729,9 @@
 				"When you hit a creature with an unarmed strike, you can expend a superiority die to add it to your damage roll and force the target to make a Constitution saving throw. On a failure, it can either use an action or move on its next turn, but not both."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -4603,6 +4755,9 @@
 				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to disarm the target, forcing it to drop one item of your choice that it's holding. You add the superiority die to the attack's damage roll, and the target must make a Strength saving throw. On a failed save, it drops the object you choose. The object lands at its feet."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -4627,6 +4782,9 @@
 				"The advantage is lost if not used on the turn you gain it."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -4648,6 +4806,9 @@
 				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to goad the target into attacking you. You add the superiority die to the attack's damage roll, and the target must make a Wisdom saving throw. On a failed save, the target has disadvantage on all attack rolls against targets other than you until the end of your next turn."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -4671,6 +4832,9 @@
 				"Before you make a melee weapon attack on your turn, you can expend one superiority die to increase your reach by 5 feet until the end of your turn. If you hit with this attack, add your superiority die to the attack's damage roll."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -4693,6 +4857,9 @@
 				"At 10th level, the AC bonus lasts until the end of your turn."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -4724,6 +4891,9 @@
 				"You prepare a flawless combination of strikes. As an action, expend a superiority die and begin concentrating (as if on a spell). For one minute or until your concentration ends, add your superiority die to your weapon damage rolls."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"activation.cost": "1",
 				"activation.type": "action"
@@ -4757,6 +4927,9 @@
 				"When you make a weapon attack roll against a creature, you can expend one superiority die to add it to the roll. You can use this maneuver before or after making the attack roll, but before any effects of the attack are applied."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -4774,6 +4947,9 @@
 				"Before you roll damage for a weapon attack, you can expend a superiority die to add it to your damage roll and maximize one damage die of your choice, treating the die as if you rolled its maximum value. On a critical hit, you maximize two dice of your choice."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -4806,6 +4982,9 @@
 				"At 15th level, the radius expands to 20 feet."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -4827,6 +5006,9 @@
 				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to drive the target back. You add the superiority die to the attack's damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you push the target up to 15 feet away from you."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -4851,6 +5033,9 @@
 				"At 10th level, the movement loss increases to 20 feet."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -4882,6 +5067,9 @@
 				"Armies fall before your blade. As an action, you can expend a superiority die and gain the benefit of a {@action Disengage} action. Choose any number of creatures, up to the die result plus your proficiency bonus, provided that you move within 5 feet of each targeted creature on this turn. Each target must make a Constitution saving throw. On a failure, it is reduced to 0 hit points, unless it has a Challenge Rating greater than half your proficiency bonus (rounded down). Such a creature, or one that succeeds on its saving throw, is unaffected."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8 + @prof[targets]",
 				"activation.cost": "1",
@@ -4912,6 +5100,9 @@
 				"You then teleport to an unoccupied space you can see within 5 feet of one of the targets."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"ability": "str",
 				"damage.parts": [
@@ -4934,6 +5125,9 @@
 				"When you hit a creature with a melee weapon attack, you can expend a superiority die to damage other creatures with the same attack. Choose any number of other creatures, up to your proficiency bonus, within your weapon's range. Each target takes damage equal the number you roll on your superiority die in the same type dealt by the original attack."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -4952,15 +5146,14 @@
 				"CM"
 			],
 			"entries": [
-				"When you hit a creature with a melee weapon attack, you can expend one superiority die to attempt to damage another creature with the same attack. Choose another creature within 5 feet of the original target and within your reach. If the original attack roll would hit the second creature, it takes damage equal to the number you roll on your superiority die. The damage is of the same type dealt by the original attack."
+				"When you make an Intelligence ({@skill Investigation}), an Intelligence ({@skill History}), or a Wisdom ({@skill Insight}) check, you can expend one superiority die and add the superiority die to the ability check."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
-				"damage.parts": [
-					[
-						"1d8"
-					]
-				],
+				"formula": "1d8",
 				"activation.cost": "1",
 				"activation.type": "special"
 			}
@@ -4976,6 +5169,9 @@
 				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to knock the target down. You add the superiority die to the attack's damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you knock the target {@condition prone}."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5010,6 +5206,9 @@
 				"At 15th level, the range of this ability becomes 60 feet."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5031,6 +5230,9 @@
 				"As a bonus action, you expend a superiority die while binding the wounds of yourself or another. The target regains hit points equal to your die roll, and can choose to expend a hit die to regain additional hit points, as if it had done so during a short rest. After a creature benefits from this effect, it cannot do so again until it finishes a short or long rest."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5048,6 +5250,9 @@
 				"When you make a Dexterity ({@skill Stealth}) check or an initiative roll, you can expend one superiority die and add the die to the roll, provided you aren't {@condition incapacitated}."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5079,6 +5284,9 @@
 				"As an action, you can expend a superiority die to force a creature within 5 feet of you to make a Wisdom saving throw. On a failure, the creature takes your superiority die in bludgeoning or piercing damage (your choice) and is {@condition blinded} until the end of its next turn."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5102,6 +5310,9 @@
 				"When a creature within 5 feet of you casts a spell, you can expend a superiority die and use your reaction to make a melee attack against it. On a hit, add the die result to your damage roll, and the target must succeed on a Constitution saving throw or the spell fails, but the spell slot is not lost."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5125,6 +5336,9 @@
 				"When you move, you can expend one superiority die, rolling the die and adding the result to your AC until the end of your turn. If you take the {@action Dash}, {@action Disengage}, or {@action Dodge} action, the bonus instead lasts until the start of your next turn."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5142,6 +5356,9 @@
 				"As a bonus action, you can expend one superiority die and make one attack with a light weapon that has the thrown property, drawing it from an appropriate container. Add your superiority die to the attack roll."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5173,6 +5390,9 @@
 				"Immediately after you hit a creature with a melee weapon attack on your turn, you can expend a superiority die to add it to the damage roll and use a bonus action to make a Dexterity ({@skill Sleight of Hand}) check against the target's Wisdom ({@skill Perception}). On a success, you steal or plant a small object on their person, such as a coin purse or bottle."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5194,6 +5414,9 @@
 				"When you make a ranged weapon attack with advantage and hit, you can expend a superiority die to pierce the target. Any creature in a straight line behind it, within the normal range of your weapon, takes piercing damage equal to your die roll, up to a number of creatures equal to your proficiency bonus."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5225,6 +5448,9 @@
 				"When you hit a creature with a weapon attack, you can expend a superiority die to inhibit its ability to speak or shout. Add your superiority die to the damage roll, and the creature must succeed on a Constitution saving throw or be unable to speak clearly beyond 10 feet, or cast a spell with a verbal component, until the end of your next turn."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5248,6 +5474,9 @@
 				"Immediately after you hit a creature with a melee weapon attack on your turn, you can expend one superiority die and use a bonus action to attempt to {@action grapple} the target with a free hand. Add your superiority die to your grapple check."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5265,6 +5494,9 @@
 				"As a bonus action, you can expend a superiority die to carefully aim, giving yourself advantage on your next ranged attack. If you hit, add your superiority die to the damage roll."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5297,6 +5529,9 @@
 				"As a reaction to being knocked {@condition prone}, you can expend a superiority die and stand up, reducing any damage taken by the die result plus your Dexterity modifier (to a minimum of 0 damage)."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8 + @abilities.dex.mod[dex only for prone reaction]",
 				"activation.cost": "1",
@@ -5314,6 +5549,9 @@
 				"As a bonus action, you can expend one superiority die to coat a melee weapon, or up to three pieces of ammunition, with a poison, venom or toxin that you have on your person. The next attack you make with the envenomed weapon deals additional poison damage equal to your superiority die."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5336,6 +5574,9 @@
 				"When you make a Intelligence ({@skill Religion}) or Intelligence ({@skill Arcana}) check, you can expend a superiority die and add the die roll to the result."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5367,6 +5608,9 @@
 				"As a bonus action, you can expend a superiority die and lift yourself off the ground briefly. You gain a flying speed equal to your walking speed until the end of your turn. If you hit with the next weapon attack you make this turn, add your superiority die to the damage roll. If you end your turn in the air, you float safely downward a distance up to your speed, then fall any remaining distance to the ground."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5389,6 +5633,9 @@
 				"At 10th level, the target emits light for one minute."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5412,6 +5659,9 @@
 				"At 10th level, this ability releases a 30 foot cone."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5444,6 +5694,9 @@
 				"When you hit a creature with a melee weapon attack, you can use a bonus action to expend a superiority die and release negative energy. The attack deals extra necrotic damage equal to your superiority die to the target, and the target must succeed on a Constitution saving throw or it deals only half damage with weapon attacks that use Strength until the end of its next turn."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5468,6 +5721,9 @@
 				"You can use a bonus action to partially blink through the ethereal plane, expending a superiority die. Until the start of your next turn, when you are hit by an attack, roll your superiority die. On a 1 or 2, you take damage as usual. On any other result, you gain resistance to the triggering damage."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5486,6 +5742,9 @@
 				"At 10th level, you affect a 30 foot line that is 10 feet wide. At 15th level, the line becomes 15 feet wide."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5524,6 +5783,9 @@
 				"When you hit a creature with a weapon attack, you can use a bonus action and expend a superiority die to set it aflame. The target takes fire damage equal to your superiority die and must make a Dexterity saving throw or be set aflame for one minute. At the start of each of its turns, the creature takes fire damage equal to your superiority die, ending when it uses an action to put out the flame or is otherwise doused."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5548,6 +5810,9 @@
 				"When you expend a hit die to recover hit points, you can expend a superiority die to add it to the number of hit points you recover. If you do so during a short rest, you do not recover this superiority die at the end of that short rest."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5575,6 +5840,9 @@
 				"When you {@action Dash} as an action, you can expend a superiority die to ignite the ground at your feet. You gain the benefit of a {@action Disengage} action, and a 5-foot wide wall of shimmering, spectral fire appears behind you, along the path you take. Any other creature within 5 feet of the wall at the start of its turn must make a Dexterity saving throw or take your superiority die in fire damage. If a creature enters the wall for the first time on a turn, it takes your superiority die in fire damage. The flames are extinguished at the start of your next turn."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5599,6 +5867,9 @@
 				"When you hit a creature with a weapon attack, you can expend a superiority die and release a burst of static. You deal extra lightning damage equal to your superiority die and the target cannot take reactions until the start of your next turn."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5635,6 +5906,9 @@
 				"When you take the {@action Attack} action, you can use a bonus action to charge a melee weapon with sonic energy and expend a superiority die. Each time you hit with the weapon during this action, all creatures in a 10 foot cube originating from you and including the creature must make a Constitution saving throw. On a failure, a creature takes thunder damage equal to your superiority die and is pushed 5 feet away from you. On a success, a creature takes no damage and is not pushed. Each thundering burst makes a loud noise audible up to 100 feet away."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5659,6 +5933,9 @@
 				"Choose a damage type - acid, cold, fire, lightning, or thunder - and expend a superiority die as a bonus action. Until the end of your turn, your weapon attacks deal damage of the chosen type instead of their usual damage type, and you add your superiority die to your next damage roll on this turn."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5702,6 +5979,9 @@
 				"At the end of each of its turns, the creature can repeat the saving throw, ending the effect on a success."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5733,6 +6013,9 @@
 				"At 15th level, the radius of your slam increases to 20 feet."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5757,6 +6040,9 @@
 				"When you make a Wisdom ({@skill Survival}) or Wisdom ({@skill Medicine}) check, or a Wisdom ({@skill Perception}) check that relies on hearing or smell, you can expend a superiority die and add the die roll to the result."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5785,6 +6071,9 @@
 				"Alternatively, you can use this maneuver to add your superiority die to a Strength check."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5803,6 +6092,9 @@
 				"You cannot move into a creature's space if you do not have enough movement to exit its space."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"ability": "str",
 				"damage.parts": [
@@ -5836,6 +6128,9 @@
 				"At 15th level, add your Strength modifier to the die result when calculating how far you can throw an object or creature."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8*5[throw distance]",
 				"activation.cost": "1",
@@ -5862,6 +6157,9 @@
 				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to frighten the target. You add the superiority die to the attack's damage roll, and the target must make a Wisdom saving throw. On a failed save, it is {@condition frightened} of you until the end of your next turn."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5885,6 +6183,9 @@
 				"Roaring with rage, you inspire your allies to greater ferocity. As a bonus action, choose a number of other creatures up to your proficiency bonus within 30 feet who can hear you, and expend a superiority die. If an affected creature hits with its next attack before the start of your next turn, add your superiority die to its damage roll."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5906,6 +6207,9 @@
 				"As a bonus action, you expend one superiority die and goad your enemies. Choose a number of creatures within 30 feet that can hear you, up to your proficiency bonus. Each target must succeed on a Wisdom saving throw or take a penalty equal to your superiority die on all attack rolls against targets other than you until the start of your next turn."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5925,6 +6229,9 @@
 				"If, at the start of your turn, you are under an effect that causes the {@condition charmed}, {@condition frightened}, or {@condition poisoned} condition, or that allows you to make a saving throw at the end of each of your turns to end it, you can immediately expend a superiority die to make a saving throw against the original save DC, ending the effect on a success. Add your superiority die to the roll."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5942,6 +6249,9 @@
 				"When you make a an ability check to defend against a {@action grapple}, or a saving throw against an effect that subjects you to the {@condition grappled}, {@condition prone}, {@condition restrained}, or {@condition stunned} condition, you can expend one superiority die and add the die roll to your check or saving throw."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -5959,6 +6269,9 @@
 				"When you are hit by an attack, you can use your reaction to expend a superiority die and reduce the damage by the die roll plus your Constitution modifier, to a minimum of zero."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8 + @abilities.con.mod",
 				"activation.cost": "1",
@@ -5976,6 +6289,9 @@
 				"When you hit a creature with a melee weapon attack, you can use a bonus action to expend a superiority die and damage natural or worn armor. Add the die to the damage roll, and the target must make a Constitution saving throw. On a failure, its AC is reduced by by 1 until the damage can be repaired with appropriate armorer's tools. In the case of natural armor, the AC reduction ends when the creature receives magical healing equal to your superiority die size. A creature's AC cannot be reduced below 10 + its Dexterity modifier."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -5999,6 +6315,9 @@
 				"As part of your movement into the space of a willing creature within 5 feet, you can move it into the space you previously occupied and expend a superiority die. Until the start of your next turn, the ally gains a bonus to AC equal to the die result. You must both fit in the space available, and neither you nor the target provoke opportunity attacks for this movement."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -6017,6 +6336,9 @@
 				"At 10th level, you no longer expend your bonus action when you use this maneuver."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -6049,6 +6371,9 @@
 				"After doing so, reorder initiative. If a creature's new initiative is now higher than yours, it is placed in the initiative order immediately after you."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8 + @abilities.cha.mod",
 				"activation.cost": "1",
@@ -6066,6 +6391,9 @@
 				"When you hit a creature with a weapon attack, you can expend one superiority die to distract the creature, giving your allies an opening. You add the superiority die to the attack's damage roll. The next attack roll against the target by an attacker other than you has advantage if the attack is made before the start of your next turn."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -6087,6 +6415,9 @@
 				"When you hit a creature with a weapon attack, you can expend a superiority die to create an opening for your allies. Add the die to your damage roll, and until the start of your next turn, attack rolls against the creature are considered one higher for the purposes of determining whether or not the result is a critical hit. This effect ends if the creature takes a critical hit as a result of this modifier."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -6116,6 +6447,9 @@
 				"As a reaction to a creature within 30 feet of you making an attack, you can choose another maneuver you know that is triggered by your attack or hit and apply it to their attack or hit. If the maneuver rolls a superiority die, halve the die result (rounding down)."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -6137,6 +6471,9 @@
 				"When you hit a creature with a weapon attack, you can expend one superiority die to maneuver one of your comrades into a more advantageous position. You add the superiority die to the attack's damage roll, and you choose a friendly creature who can see or hear you. That creature can use its reaction to move up to half its speed without provoking opportunity attacks from the target of your attack."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -6169,6 +6506,9 @@
 				"At 15th level, the range of this ability increases to 20 feet."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -6186,6 +6526,9 @@
 				"On your turn, you can use a bonus action and expend one superiority die to bolster the resolve of one of your companions. When you do so, choose a friendly creature who can see or hear you. That creature gains temporary hit points equal to the superiority die roll + your Charisma modifier."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8 + @abilities.cha.mod",
 				"activation.cost": "1",
@@ -6203,6 +6546,9 @@
 				"When a creature misses you with a melee attack, you can use your reaction and expend one superiority die to make a melee weapon attack against the creature. If you hit, you add the superiority die to the attack's damage roll."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"damage.parts": [
 					[
@@ -6224,6 +6570,9 @@
 				"When you make a Charisma ({@skill Intimidation}), a Charisma ({@skill Performance}), or a Charisma ({@skill Persuasion}) check, you can expend one superiority die and add the superiority die to the ability check."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
@@ -6251,6 +6600,9 @@
 				"When you {@action Dash} as an action, you can expend a superiority die to inspire others to join your avalanche of steel. Choose a number of allied creatures who can hear you, up to 1 plus your Charisma modifier, and designate a creature you can see as a target. Each ally can use its reaction to move up to its speed towards the target and make one melee attack, adding your superiority die to its attack roll. This movement must be in the most direct, safe path available. If the target is slain, you can designate a new target for any remaining allies."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1 + @abilities.cha.mod[allied creatures]",
 				"damage.parts": [
@@ -6283,6 +6635,9 @@
 				"When you take the {@action Attack} action on your turn, you can forgo one of your attacks to inspire your allies. Expend a superiority die and choose a creature other than yourself within 30 feet of you that can hear you. That creature gains an inspiration die of equal size to your superiority die, which acts identically to that granted by the {@classFeature Bardic Inspiration|Bard||1||bard feature (PHB pg. 53)}."
 			],
 			"foundryData": {
+				"consume.amount": "1",
+				"consume.target": "resources.tertiary.value",
+				"consume.type": "attribute",
 				"actionType": "util",
 				"formula": "1d8",
 				"activation.cost": "1",
