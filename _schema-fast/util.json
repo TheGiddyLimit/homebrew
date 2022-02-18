@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.6",
+	"version": "1.11.8",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -64,6 +64,35 @@
 					"source"
 				],
 				"additionalProperties": false
+			}
+		},
+		"reprintedAs": {
+			"type": "array",
+			"items": {
+				"oneOf": [
+					{
+						"description": "A UID, e.g. \"longsword|phb\"",
+						"type": "string"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"uid": {
+								"description": "A UID, e.g. \"longsword|phb\"",
+								"type": "string"
+							},
+							"tag": {
+								"description": "A tag used in the renderer, e.g. \"creature\"",
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"tag",
+							"uid"
+						]
+					}
+				]
 			}
 		},
 		"languageNameLower": {
@@ -1106,6 +1135,9 @@
 				},
 				{
 					"type": "integer"
+				},
+				{
+					"const": true
 				}
 			]
 		},
@@ -1428,6 +1460,10 @@
 							},
 							"additionalProperties": false
 						}
+					},
+					"note": {
+						"description": "An additional note that accompanies the proficiencies, but is not part of them.",
+						"type": "string"
 					}
 				},
 				"additionalProperties": false
@@ -3031,6 +3067,32 @@
 							},
 							"count": {
 								"type": "integer"
+							}
+						},
+						"required": [
+							"choose"
+						],
+						"additionalProperties": false
+					},
+					{
+						"type": "object",
+						"properties": {
+							"choose": {
+								"type": "object",
+								"properties": {
+									"from": {
+										"description": "An array of spell UIDs to be chosen from.",
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"uniqueItems": true
+									},
+									"count": {
+										"type": "integer"
+									}
+								},
+								"additionalProperties": false
 							}
 						},
 						"required": [
