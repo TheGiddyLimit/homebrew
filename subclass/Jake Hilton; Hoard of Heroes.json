@@ -1,5 +1,4 @@
 {
-	"$schema": "../schema.json",
 	"_meta": {
 		"sources": [
 			{
@@ -25,6 +24,7 @@
 			"source": "herohoard",
 			"page": 5,
 			"type": "S",
+			"rarity": "unknown",
 			"weight": 7,
 			"value": 1500,
 			"ac": 2,
@@ -83,6 +83,15 @@
 			],
 			"entries": [
 				"You can cast {@spell identify} at will, without expending a spell slot or material components. Your patron gains the knowledge of whatever item you identify with this spell. Additionally, you can accurately estimate the value in gold pieces of any nonmagical item (if it has one) that you can see that fits within a 10 foot cube."
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"identify"
+						]
+					}
+				}
 			]
 		},
 		{
@@ -99,6 +108,12 @@
 			],
 			"entries": [
 				"You gain proficiency in the {@skill Investigation} and {@skill Perception} skills."
+			],
+			"skillProficiencies": [
+				{
+					"investigation": true,
+					"perception": true
+				}
 			]
 		},
 		{
@@ -155,6 +170,19 @@
 			],
 			"entries": [
 				"You can cast {@spell Leomund's secret chest} once using a warlock spell slot without needing material components. You can't do so again until you finish a long rest."
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"leomund's secret chest"
+								]
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -250,28 +278,16 @@
 				}
 			],
 			"subclassSpells": [
-				{
-					"name": "Ceremony",
-					"source": "XGE"
-				},
+				"ceremony|xge",
 				"Charm Person",
 				"Crown of Madness",
-				{
-					"name": "Pyrotechnics",
-					"source": "XGE"
-				},
+				"pyrotechnics|xge",
 				"Create Food and Water",
 				"Hypnotic Pattern",
-				{
-					"name": "Charm Monster",
-					"source": "XGE"
-				},
+				"charm monster|xge",
 				"Compulsion",
 				"Hallow",
-				{
-					"name": "Synaptic Static",
-					"source": "XGE"
-				},
+				"synaptic static|xge",
 				"Prestidigitation"
 			],
 			"subclassFeatures": [
@@ -365,10 +381,7 @@
 				"Enhance Ability",
 				"Spider Climb",
 				"Gaseous Form",
-				{
-					"name": "Thunder Step",
-					"source": "XGE"
-				},
+				"thunder step|xge",
 				"Freedom of Movement",
 				"Locate Creature",
 				"Greater Restoration",
@@ -388,17 +401,11 @@
 			"shortName": "Stone Singer",
 			"source": "herohoard",
 			"subclassSpells": [
-				{
-					"name": "Earth Tremor",
-					"source": "XGE"
-				},
+				"earth tremor|xge",
 				"Shatter",
 				"Meld Into Stone",
 				"Stone Shape",
-				{
-					"name": "Transmute Rock",
-					"source": "XGE"
-				}
+				"transmute rock|xge"
 			],
 			"subclassFeatures": [
 				"Stone Singer|Ranger||Stone Singer|herohoard|3",
@@ -440,27 +447,15 @@
 			"shortName": "Ancient Dragon",
 			"source": "herohoard",
 			"subclassSpells": [
-				{
-					"name": "Absorb Elements",
-					"source": "XGE"
-				},
+				"absorb elements|xge",
 				"Command",
-				{
-					"name": "Dragon's Breath",
-					"source": "XGE"
-				},
+				"dragon's breath|xge",
 				"Alter Self",
 				"Elemental Weapon",
 				"Wind Wall",
-				{
-					"name": "Elemental Bane",
-					"source": "XGE"
-				},
+				"elemental bane|xge",
 				"Locate Creature",
-				{
-					"name": "Control Winds",
-					"source": "XGE"
-				},
+				"control winds|xge",
 				"Legend Lore"
 			],
 			"subclassFeatures": [
@@ -779,7 +774,6 @@
 			"subclassSource": "herohoard",
 			"level": 3,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"{@i 3rd-level College of Mirrors feature}",
 				"When you join the College of Mirrors at 3rd level, you gain proficiency in {@filter medium|items|source=PHB|type=medium armor} and {@filter heavy|items|source=PHB|type=heavy armor} armor, {@item shield|PHB|shields}, and {@item smith's tools|PHB}."
@@ -795,7 +789,6 @@
 			"subclassSource": "herohoard",
 			"level": 3,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"{@i 3rd-level College of Mirrors feature}",
 				"Beginning at 3rd level, as part of your joining the College of Mirrors you gain a {@item mirrored shield|herohoard} to wield in battle (see chapter 5 of the Player's Handbook for the rules regarding shields). While you wield this shield it functions as a spellcasting focus for your bard spells, and if it is lost or destroyed you can replace it with 15 gp and 8 hours of work (providing you have access to a forge, smithy, or similar workspace). While wielding your shield, you gain access to the following new uses for your Bardic Inspiration.",
@@ -2629,11 +2622,8 @@
 			"entries": [
 				"Your patron is an everwatchful beholder, filled with malice and an often insane drive towards dominating all those it considers below it, which is everyone, especially other beholders. While it might share its power with you in an attempt to further its own goals, it despises you and mistrusts you as much as you it. Prominent beholders include Xanathar, of the eponymous Thieves' Guild in Skullport, or Large Luigi, the barkeeper on the Rock of Bral.",
 				{
-					"type": "inset",
-					"name": "Variant: Gazer Familiar",
-					"entries": [
-						"Along with the special forms listed within the Pact of the Chain feature in the Player's Handbook, a DM can allow a player access to the {@creature gazer|VGM}, a creature described in Volo's Guide to Monsters (Page 126)."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Variant: Gazer Familiar|Warlock||Beholder|herohoard|1"
 				},
 				{
 					"type": "entries",
@@ -2681,6 +2671,21 @@
 					"subclassFeature": "Eyes of the Beholder|Warlock||Beholder|herohoard|1"
 				}
 			]
+		},
+		{
+			"type": "inset",
+			"name": "Variant: Gazer Familiar",
+			"entries": [
+				"Along with the special forms listed within the Pact of the Chain feature in the Player's Handbook, a DM can allow a player access to the {@creature gazer|VGM}, a creature described in Volo's Guide to Monsters (Page 126)."
+			],
+			"source": "herohoard",
+			"page": 15,
+			"className": "Warlock",
+			"classSource": "PHB",
+			"subclassShortName": "Beholder",
+			"subclassSource": "herohoard",
+			"level": 1,
+			"header": 1
 		},
 		{
 			"name": "Eyes of the Beholder",

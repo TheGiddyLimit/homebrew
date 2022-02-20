@@ -57,13 +57,17 @@ function buildDeepIndex () {
 	const PATH_TIMESTAMP_INDEX = "_generated/index-timestamps.json";
 	const PATH_PROP_INDEX = "_generated/index-props.json";
 	const PATH_SOURCE_INDEX = "_generated/index-sources.json";
+	const PATH_NAME_INDEX = "_generated/index-names.json";
+	const PATH_ABBREVIATION_INDEX = "_generated/index-abbreviations.json";
 
 	const timestampIndex = {};
 	const propIndex = {};
 	const sourceIndex = {};
+	const nameIndex = {};
+	const abbreviationIndex = {};
 
 	function indexDir (folder) {
-		const files = uf.listFiles(folder);
+		const files = uf.listJsonFiles(folder);
 		files
 			.map(file => ({
 				name: file,
@@ -89,11 +93,25 @@ function buildDeepIndex () {
 							(propIndex[k] = propIndex[k] || {})[cleanName] = folder;
 						});
 
+					// Index includes
+					Object.keys(file.contents._meta.includes || {})
+						.forEach(k => {
+							(propIndex[k] = propIndex[k] || {})[cleanName] = folder;
+						});
+
 					// Index sources
 					(file.contents._meta.sources || []).forEach(src => {
-						if (sourceIndex[src.json]) console.error(`${file.name} source "${src.json}" was already in ${sourceIndex[src.json]}`);
+						if (sourceIndex[src.json]) throw new Error(`${file.name} source "${src.json}" was already in ${sourceIndex[src.json]}`);
 						sourceIndex[src.json] = cleanName;
 					});
+
+					// Index names and abbreviations
+					if (file.contents._meta.sources?.length) {
+						const fileName = file.name.split("/").slice(1).join("/");
+						if (nameIndex[fileName] || abbreviationIndex[fileName]) throw new Error(`Filename "${fileName}" was already in the index!`);
+						nameIndex[fileName] = file.contents._meta.sources.map(it => it.full).filter(Boolean);
+						abbreviationIndex[cleanName] = file.contents._meta.sources.map(it => it.abbreviation).filter(Boolean);
+					}
 				}
 			});
 	}
@@ -109,8 +127,14 @@ function buildDeepIndex () {
 	um.info(`INDEX`, `Saving prop index to ${PATH_PROP_INDEX}`);
 	fs.writeFileSync(`./${PATH_PROP_INDEX}`, JSON.stringify(propIndex), "utf-8");
 
-	um.info(`INDEX`, `Saving source index to ${PATH_PROP_INDEX}`);
+	um.info(`INDEX`, `Saving source index to ${PATH_SOURCE_INDEX}`);
 	fs.writeFileSync(`./${PATH_SOURCE_INDEX}`, JSON.stringify(sourceIndex), "utf-8");
+
+	um.info(`INDEX`, `Saving name index to ${PATH_NAME_INDEX}`);
+	fs.writeFileSync(`./${PATH_NAME_INDEX}`, JSON.stringify(nameIndex), "utf-8");
+
+	um.info(`INDEX`, `Saving abbreviation index to ${PATH_ABBREVIATION_INDEX}`);
+	fs.writeFileSync(`./${PATH_ABBREVIATION_INDEX}`, JSON.stringify(abbreviationIndex), "utf-8");
 }
 
 checkFileContents();
