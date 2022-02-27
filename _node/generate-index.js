@@ -88,7 +88,7 @@ function buildDeepIndex () {
 
 					// Index props
 					Object.keys(file.contents)
-						.filter(it => !it.startsWith("_"))
+						.filter(it => !it.startsWith("_") && it !== "$schema")
 						.forEach(k => {
 							(propIndex[k] = propIndex[k] || {})[cleanName] = folder;
 						});
