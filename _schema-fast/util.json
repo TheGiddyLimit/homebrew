@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.8",
+	"version": "1.11.9",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -322,7 +322,17 @@
 							"from": {
 								"type": "array",
 								"items": {
-									"$ref": "#/definitions/toolNameLower"
+									"anyOf": [
+										{
+											"$ref": "#/definitions/toolNameLower"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"anyArtisansTool"
+											]
+										}
+									]
 								}
 							},
 							"count": {
