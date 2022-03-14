@@ -209,8 +209,8 @@ For each item, check if it exists in the target array; if not, append it to the 
 
 #### insertArr
 
-Insert items into an array at the specified.
-Note that these are applied in order of appearance, and that indexes should not be relied upon.
+Insert items into an array at the specified index.
+Note that these are applied in order of appearance. Note that index-based operations are brittle, and using them should therefore be avoided where possible.
 
 ```yaml
 {
