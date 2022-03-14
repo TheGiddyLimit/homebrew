@@ -28,13 +28,14 @@ function readJSON (path) {
 	}
 }
 
-function listFiles (dir) {
+function listJsonFiles (dir) {
 	const dirContent = fs.readdirSync(dir, "utf8")
-		.filter(file => file.toLowerCase().endsWith(".json"))
 		.map(file => `${dir}/${file}`);
 	return dirContent.reduce((acc, file) => {
-		if (isDirectory(file)) acc.push(...listFiles(file));
-		else acc.push(file.replace(/\.json$/i, ".json"));
+		if (isDirectory(file)) acc.push(...listJsonFiles(file));
+		else {
+			if (file.toLowerCase().endsWith(".json")) acc.push(file);
+		}
 		return acc;
 	}, [])
 }
@@ -59,7 +60,7 @@ function mkDirs (pathToCreate) {
 
 module.exports = {
 	readJSON,
-	listFiles,
+	listJsonFiles,
 	runOnDirs,
 	mkDirs
 };
