@@ -1,4 +1,4 @@
-const fs = require("fs");
+import * as fs from "fs";
 
 const filename = process.argv[2];
 if (!filename) throw new Error(`Usage: "node character-checker path-to-file"`);
