@@ -1,8 +1,33 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.7.3",
+	"version": "1.7.4",
 	"type": "object",
 	"description": "Homebrew for 5etools. Should include arrays titled similarly to the main site data, e.g. `spell` or `class`",
+	"definitions": {
+		"wrappedAdventureBookDataArray": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "util.json#/definitions/adventureBookData"
+					}
+				},
+				"required": [
+					"id",
+					"source",
+					"data"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
 	"properties": {
 		"_meta": {
 			"description": "Metadata for the included data arrays",
@@ -304,7 +329,7 @@
 			"$ref": "adventures.json#/properties/adventure"
 		},
 		"adventureData": {
-			"$ref": "adventure/adventure.json#/properties/data"
+			"$ref": "#/definitions/wrappedAdventureBookDataArray"
 		},
 		"monster": {
 			"$ref": "bestiary/bestiary.json#/properties/monster"
@@ -322,7 +347,7 @@
 			"$ref": "books.json#/properties/book"
 		},
 		"bookData": {
-			"$ref": "book/book.json#/properties/data"
+			"$ref": "#/definitions/wrappedAdventureBookDataArray"
 		},
 		"class": {
 			"$ref": "class/class.json#/properties/class"
