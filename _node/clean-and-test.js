@@ -1,12 +1,10 @@
 // Adapted from 5etools `clean-jsons.js`
 // ===
-"use strict";
 
-const fs = require("fs");
-const uf = require("./util-fs");
-const um = require("./util-misc");
-const ub = require("./util-brew");
-const {VANILLA_SOURCES} = require("./util-sources.js");
+import * as fs from "fs";
+import {Um, Uf} from "5etools-utils";
+import * as Ub from "./util-brew.js";
+import {VANILLA_SOURCES} from "./util-sources.js";
 
 const REPLACEMENTS = {
 	"—": "\\u2014",
@@ -47,17 +45,17 @@ const RE_INVALID_WINDOWS_CHARS = /[<>:"/\\|?*]/g;
 function cleanFolder (folder) {
 	const ALL_ERRORS = [];
 
-	const files = uf.listJsonFiles(folder);
+	const files = Uf.listJsonFiles(folder);
 	files
 		.map(file => ({
 			name: file,
-			contents: uf.readJSON(file)
+			contents: Uf.readJSON(file)
 		}))
 		.map(file => {
 			if (RE_INVALID_WINDOWS_CHARS.test(file.name.split("/").slice(1).join("/"))) ALL_ERRORS.push(`${file.name} contained invalid characters!`);
 			if (!file.name.endsWith(".json")) ALL_ERRORS.push(`${file.name} had invalid extension! Should be ".json" (case-sensitive).`);
 
-			if (!ub.FILES_NO_META[file.name]) {
+			if (!Ub.FILES_NO_META[file.name]) {
 				// region clean
 				// Ensure _meta is at the top of the file
 				const tmp = {$schema: file.contents.$schema, _meta: file.contents._meta};
@@ -67,24 +65,24 @@ function cleanFolder (folder) {
 				file.contents = tmp;
 
 				if (file.contents._meta.dateAdded == null) {
-					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateAdded"! Adding one...`);
+					Um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateAdded"! Adding one...`);
 					file.contents._meta.dateAdded = RUN_TIMESTAMP;
 				} else if (file.contents._meta.dateAdded > MAX_TIMESTAMP) {
-					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" had a "dateAdded" in milliseconds! Converting to seconds...`);
+					Um.warn(`TIMESTAMPS`, `\tFile "${file.name}" had a "dateAdded" in milliseconds! Converting to seconds...`);
 					file.contents._meta.dateAdded = Math.round(file.contents._meta.dateAdded / 1000);
 				}
 
 				if (file.contents._meta.dateLastModified == null) {
-					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateLastModified"! Adding one...`);
+					Um.warn(`TIMESTAMPS`, `\tFile "${file.name}" did not have "dateLastModified"! Adding one...`);
 					file.contents._meta.dateLastModified = RUN_TIMESTAMP;
 				} else if (file.contents._meta.dateLastModified > MAX_TIMESTAMP) {
-					um.warn(`TIMESTAMPS`, `\tFile "${file.name}" had a "dateLastModified" in milliseconds! Converting to seconds...`);
+					Um.warn(`TIMESTAMPS`, `\tFile "${file.name}" had a "dateLastModified" in milliseconds! Converting to seconds...`);
 					file.contents._meta.dateLastModified = Math.round(file.contents._meta.dateLastModified / 1000);
 				}
 
 				(file.contents._meta.sources || []).forEach(source => {
 					if (source.version != null) return;
-					um.warn(`VERSION`, `\tFile "${file.name}" source "${source.json}" did not have "version"! Adding one...`);
+					Um.warn(`VERSION`, `\tFile "${file.name}" source "${source.json}" did not have "version"! Adding one...`);
 					source.version = "unknown";
 				});
 				// endregion
@@ -113,7 +111,7 @@ function cleanFolder (folder) {
 			return file;
 		})
 		.map(file => {
-			um.info(`CLEANER`, `\t- "${file.name}"...`);
+			Um.info(`CLEANER`, `\t- "${file.name}"...`);
 			file.contents = file.contents.replace(replacementRegex, (match) => REPLACEMENTS[match]);
 			return file;
 		})
@@ -127,9 +125,9 @@ function cleanFolder (folder) {
 	}
 }
 
-uf.runOnDirs((dir) => {
-	um.info(`CLEANER`, `Cleaning dir "${dir}"...`);
+Uf.runOnDirs((dir) => {
+	Um.info(`CLEANER`, `Cleaning dir "${dir}"...`);
 	cleanFolder(dir);
 });
 
-um.info(`CLEANER`, "Cleaning complete.");
+Um.info(`CLEANER`, "Cleaning complete.");
