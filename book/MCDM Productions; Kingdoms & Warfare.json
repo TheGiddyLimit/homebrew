@@ -2851,6 +2851,72 @@
                                     "title": "Underworld Syndicate party sheet"
                                 }
                             ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "NPC Realms",
+                            "page": 65,
+                            "entries": [
+                                "When a domain is controlled by an NPC—whether a villain, an ally, or a mystery figure whose role the characters need to figure out—the GM sets that domain up as an NPC realm. This section presents sixteen NPC realms for the GM’s use in a campaign, covering a wide array of domain types, from the explicitly villainous (it’s hard to imagine how a despotic regime could be a good thing) to neutral and possibly friendly realms such as a fey court or a gnomish kingdom.",
+                                "Unlike heroic organizations, {@b each NPC realm has only one title, given to the leader}. This reflects the fact that all the officers of a villainous realm (and any other domain outside the characters’ domain) are run by the GM, and no GM needs to worry about five NPCs with special abilities! Also unlike organizations, NPC realms have no specialization. They have the same number of domain powers and domain features overall, but those powers and features are consistent for each type of realm. This allows a GM to quickly copy the details for an NPC realm onto the generic domain sheet (page 315) and be ready to go.",
+                                "Some of an NPC realm’s domain powers can be taken only by the domain’s leader. Other powers can be taken by the leader or other officers.",
+                                "There’s no rule that says all the NPC domains in a game must be realms from this section. GMs can use the domains in the {@book Heroic Organizations|KaW|2|Heroic Organizations} section as well when populating a world with NPC domains. But by keeping the setup for these realms simpler and less customizable, the intent is to make them easier for the GM to use."
+                            ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "Despotic Regime",
+                            "page": 65,
+                            "entries": [
+                                "A despotic warlord rules through fear and propaganda. They are not interested in the health or well-being of their people, but only in making sure their army is always prepared for battle. Despots are cruel. Conquest is the tool they use to appease their soldiers, but power is all they care about. If it ever seems as though a despot is being reasonable during negotiations, this is a ruse. They are always scheming, even against their allies. And if they defer to a greater power, it is only because a despot fears anyone with more power than them.",
+                                {
+                                    "type": "list",
+                                    "style": "list-no-bullets",
+                                    "columns": 2,
+                                    "items": [
+                                        "{@b Skills}",
+                                        "{@b Diplomacy:} -1",
+                                        "{@b Espionage:} +2",
+                                        "{@b Lore:} +0",
+                                        "{@b Operations:} +2",
+                                        "{@b Defenses}",
+                                        "{@b Communications:} 11",
+                                        "{@b Resolve:} 12",
+                                        "{@b Resources:} 10"
+                                    ]
+                                },
+                                {
+                                    "type": "entries",
+                                    "name": "Domain Title",
+                                    "page": 66,
+                                    "entries": [
+                                        "The despotic regime leader gains the following title and the noted additional features.",
+                                        "{@optfeature Despot|KaW}"
+                                    ]
+                                },
+                                {
+                                    "type": "entries",
+                                    "name": "Domain Powers",
+                                    "page": 66,
+                                    "entries": [
+                                        "The despotic regime leader gains access to the following domain powers.",
+                                        "{@optfeature Make an Example|KaW}",
+                                        "{@optfeature My Life for Yours|KaW}"
+                                    ]
+                                },
+                                {
+                                    "type": "entries",
+                                    "name": "Domain Features",
+                                    "page": 66,
+                                    "entries": [
+                                        "Despotic regime officers gain access to the following domain features.",
+                                        "{@optfeature Death to Spies|KaW}",
+                                        "{@optfeature Readiness is All|KaW}",
+                                        "{@optfeature The Crimson Guard (Special Unit)|KaW}",
+                                        "{@optfeature Work the Prisoners to the Bone|KaW}"
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -5755,6 +5821,141 @@
             ],
             "entries": [
                 "As a domain action, make an Espionage test against an opposed domain’s Resources. On a success, your domain’s Resources level increases by by 1, and at the start of the next battle, one of the opposed domain’s Tier I units of your choice must decrement its casualty die."
+            ]
+        },
+        {
+            "name": "Despot",
+            "source": "KaW",
+            "page": 66,
+            "featureType": [
+                "DTTL"
+            ],
+            "prerequisite": [
+                {
+                    "other": "Despotic Regime (Leader)"
+                }
+            ],
+            "entries": [
+                "When an enemy the despot can see drops to 0 hit points within 30 feet of them, the despot can use a reaction to have their attacks deal an extra {@damage 1d6} damage for 1 minute. If an enemy triggers this effect while the despot’s attacks are already dealing this extra damage, the benefit is cumulative."
+            ],
+            "foundryData": {
+                "activation.type": "reaction",
+                "activation.cost": "1",
+                "activation.condition": "an enemy the despot can see drops to 0 hit points within 30 feet of them"
+            }
+        },
+        {
+            "name": "Make an Example",
+            "source": "KaW",
+            "page": 66,
+            "featureType": [
+                "DPWR"
+            ],
+            "prerequisite": [
+                {
+                    "other": "Despotic Regime (Leader)"
+                }
+            ],
+            "entries": [
+                "As an action, the leader takes any number of power dice from their domain’s pool. If the total of the dice is equal to or greater than the remaining hit points of one of the domain’s lieutenant’s, the leader executes the lieutenant. Each of the domain’s remaining lieutenants can then immediately use a reaction to make one weapon attack or cast a cantrip with a casting time of 1 action."
+            ],
+            "foundryData": {
+                "activation.type": "action",
+                "activation.cost": "1"
+            }
+        },
+        {
+            "name": "My Life for Yours",
+            "source": "KaW",
+            "page": 66,
+            "featureType": [
+                "DPWR"
+            ],
+            "prerequisite": [
+                {
+                    "other": "Despotic Regime (Leader)"
+                }
+            ],
+            "entries": [
+                "When the leader is hit by a melee attack, they can take one power die from their domain’s pool and cause a lieutenant within 5 feet of them to use a reaction to become the target of the attack instead. The attack’s damage is reduced by the number on the power die. As part of the reaction, the lieutenant can then make a melee weapon attack against the triggering attacker."
+            ],
+            "foundryData": {
+                "activation.type": "reaction",
+                "activation.cost": "1",
+                "activation.condition": "the leader is hit by a melee attack"
+            }
+        },
+        {
+            "name": "Death to Spies",
+            "source": "KaW",
+            "page": 66,
+            "featureType": [
+                "DFTR"
+            ],
+            "prerequisite": [
+                {
+                    "other": "Despotic Regime (Officer)"
+                }
+            ],
+            "entries": [
+                "As a domain reaction when an opposed domain makes an Espionage test, an officer makes an Operations test against the opposed domain’s Communications. On a success, the opposed domain’s Communications level decreases by 1."
+            ]
+        },
+        {
+            "name": "Readiness is All",
+            "source": "KaW",
+            "page": 66,
+            "featureType": [
+                "DFTR"
+            ],
+            "prerequisite": [
+                {
+                    "other": "Despotic Regime (Officer)"
+                }
+            ],
+            "entries": [
+                "If the despotic regime’s Resources level is 2 or higher at the start of a battle, the level of another defense of the officer’s choice increases by 1."
+            ]
+        },
+        {
+            "name": "The Crimson Guard (Special Unit)",
+            "source": "KaW",
+            "page": 66,
+            "featureType": [
+                "DFTR"
+            ],
+            "prerequisite": [
+                {
+                    "other": "Despotic Regime (Officer)"
+                }
+            ],
+            "entries": [
+                "As a domain action, an officer makes a DC 13 Operations test. On a success, the despotic regime musters the Crimson Guard, a special unit of loyal soldiers who show no mercy to enemies.",
+                {
+                    "type": "image",
+                    "href": {
+                        "type": "external",
+                        "url": "https://i.imgur.com/fSJu3i4.jpg"
+                    },
+                    "title": "Crimson Guard unit card",
+                    "maxWidth": 500
+                }
+            ]
+        },
+        {
+            "name": "Work the Prisoners to the Bone",
+            "source": "KaW",
+            "page": 66,
+            "featureType": [
+                "DFTR"
+            ],
+            "prerequisite": [
+                {
+                    "other": "Despotic Regime (Officer)"
+                }
+            ],
+            "entries": [
+                "Once per intrigue as a domain bonus action, an officer can make an Operations test against an opposed domain’s Resources. On a success, the opposed domain immediately loses a number of levies equal to the despotic regime’s domain size (chosen by whoever controls the opposed domain), and the despotic regime’s Resources level increases by 1. If the opposed domain has no levies, it instead loses one unit, and the despotic regime’s Resources level increases by 1."
             ]
         }
     ]
