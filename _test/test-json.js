@@ -5,7 +5,7 @@ import {Um, JsonTester} from "5etools-utils";
 const LOG_TAG = "JSON";
 
 function main () {
-	const {errors, errorsFull} = new JsonTester({dirSchema: "_schema", tagLog: LOG_TAG}).getErrors();
+	const {errors, errorsFull} = new JsonTester({dirSchema: "_schema", tagLog: LOG_TAG}).getErrorsOnDirs();
 
 	if (errors.length) {
 		if (!process.env.CI) fs.writeFileSync(`_test/test-json.error.log`, errorsFull.join("\n\n=====\n\n"));
