@@ -10,9 +10,10 @@
 				],
 				"convertedBy": [
 					"crabGoblin",
-					"Jenny"
+					"Jenny",
+					"cellescent"
 				],
-				"version": "1.0",
+				"version": "1.2",
 				"url": "https://www.gmbinder.com/share/-MW5r6wBJTW_lOU6gLyU"
 			},
 			{
@@ -36,19 +37,21 @@
 					"KibblesTasty"
 				],
 				"convertedBy": [
-					"SasquatchBrah"
+					"SasquatchBrah",
+					"cellescent"
 				],
-				"version": "1.0",
+				"version": "1.4",
 				"url": "https://www.patreon.com/posts/kibbles-casting-50137612"
 			}
 		],
 		"dateAdded": 1622581997,
-		"dateLastModified": 1623519395
+		"dateLastModified": 1649559103
 	},
 	"spell": [
 		{
 			"name": "Alacrity",
 			"source": "KibblesTasty:CC",
+			"page": 7,
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -65,8 +68,7 @@
 			},
 			"components": {
 				"v": true,
-				"s": true,
-				"m": "the hand of a broken clock"
+				"s": true
 			},
 			"duration": [
 				{
@@ -79,7 +81,7 @@
 			],
 			"entries": [
 				"Until the spell ends, your speed is doubled, you gain a +2 bonus to AC, you have advantage on Dexterity saving throws, and you gain an additional action. That action can be used only to take the {@action Attack} (one weapon attack only), {@action Dash}, {@action Disengage}, {@action Hide}, or {@action Use an Object} action.",
-				"If you are under the effect of haste, you gain no benefit from this spell."
+				"If you are under the effect of {@spell haste}, you gain no benefit from this spell."
 			],
 			"savingThrow": [
 				"dexterity"
@@ -111,6 +113,7 @@
 		{
 			"name": "Arcane Ablation",
 			"source": "KibblesTasty:CC",
+			"page": 7,
 			"level": 1,
 			"school": "T",
 			"time": [
@@ -151,13 +154,106 @@
 				}
 			],
 			"miscTags": [
+				"SCL",
 				"THP"
 			],
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Artificer",
-						"source": "TCE"
+						"name": "Artificer (Revised)",
+						"source": "KT:A"
+					}
+				]
+			}
+		},
+		{
+			"name": "Arcanist's Sword",
+			"source": "KibblesTasty:CC",
+			"page": 8,
+			"level": 7,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a miniature platinum sword with a grip and pommel of copper and zinc, worth 250 gp",
+					"cost": 25000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You create a glowing sword-shaped plane of force that hovers within range. It lasts for the duration. When the sword appears and as a bonus action on subsequent turns, you can give the sword a command:",
+				{
+					"type": "entries",
+					"name": "Attack:",
+					"entries": [
+						"The sword will move up to 20 feet toward a creature and attack it, making a melee spell attack. On a hit, the target takes {@damage 3d10} + your spell casting ability modifier force damage on hit."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Guard:",
+					"entries": [
+						"The sword will move up 20 feet toward a creature. It grants half cover to the creature while it shares that creature's space as it attempts to deflect incoming attacks. The first time a hostile creature comes within 5 feet of the sword, it will attack that creature, making a melee spell attack. On a hit, the target takes {@damage 3d10} + your spell casting ability modifier force damage on hit. It cannot attack again until you issue a command again."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spin:",
+					"entries": [
+						"The sword will move up to 20 feet toward a point, when it reaches that point it will begin to spin in a deadly whirl. Creatures that start their turn in the sword's space, or enter it for the first time on their turn within 5 feet of the sword must pass a Dexterity saving throw, or take {@damage 4d10} force damage."
+					]
+				},
+				{
+					"type": "inset",
+					"name": "Caius' Notes: The Lost True Version",
+					"entries": [
+						"The true version of {@spell mordenkainen's sword|PHB|a famous wizard's floating magic sword}. Tragically most sources of the spell list an incomplete version copied by an apprentice unable to fully understand the spell. More widely known lesser versions flaws makes it unstable requiring concentration, and it lacks the later parts of functionality of the true version."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"spellAttack": [
+				"M"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
 					}
 				]
 			}
@@ -165,7 +261,7 @@
 		{
 			"name": "Arcane Conduit",
 			"source": "KibblesTasty:CC",
-			"page": 0,
+			"page": 7,
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -195,8 +291,8 @@
 				}
 			],
 			"entries": [
-				"You tap directly into the arcane weave. For the duration, you have resistance to all magical damage besides Force damage, but gain vulnerability to force damage.",
-				"At the start of each of your turns while tapped into this power, you and all creatures with 5 feet of you take {@damage 1d4} Force damage. This damage increases by {@dice 1d4} for each subsequent turn you concentration on this spell."
+				"You tap directly into the arcane weave. For the duration, you have resistance to all damage from magical sources besides Force damage.",
+				"At the start of each of your turns while tapped into this power, you and all creatures with 5 feet of you take {@damage 1d6} Force damage. The damage increases by 1d6 each turn to a maximum of {@damage 4d6} damage."
 			],
 			"damageInflict": [
 				"force"
@@ -238,18 +334,29 @@
 					"duration": {
 						"type": "hour",
 						"amount": 1
-					},
-					"concentration": true
+					}
 				}
 			],
 			"entries": [
-				"You touch a weapon and imbue it with magic. For the duration the weapon counts as a magical weapon and any damage dealt by it is Force damage."
+				"You touch a weapon and imbue it with magic. For the duration the weapon counts as a magical weapon and any damage dealt by it is Force damage. When casting this one a weapon with the ammunition property, it no longer consumes ammunition when fired, and does not need to be reloaded."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd or 4th level, the duration becomes 8 hours. When you use a spell slot of 5th level or higher, the duration becomes 24 hours."
+					]
+				}
+			],
+			"miscTags": [
+				"SCL"
 			],
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Artificer",
-						"source": "TCE"
+						"name": "Artificer (Revised)",
+						"source": "KT:A"
 					}
 				]
 			}
@@ -257,7 +364,7 @@
 		{
 			"name": "Animate Object",
 			"source": "KibblesTasty:CC",
-			"page": 0,
+			"page": 9,
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -288,24 +395,12 @@
 				}
 			],
 			"entries": [
-				"You bring a small or smaller object to life. Its Constitution is 10 and its Intelligence and Wisdom are 3, and its Charisma is",
-				{
-					"type": "entries",
-					"name": "1",
-					"entries": [
-						"Its speed is 30 feet; if the object lacks legs or other appendages it can use for locomotion, it instead has a flying speed of 30 feet and can hover. The object has the following stats: HP: 20, AC: 18, Str: 4, Dex: 18. The object has an attack modifier equal to your spell attack modifier. If the object is a weapon, it deals damage equal to the weapon's damage dice + your Wisdom modifier on hit dealing that weapons damage type, otherwise it deals {@damage 1d4} + your Wisdom modifier bludgeoning damage on hit.",
-						"As a bonus action, you can mentally command the animated object as long as it is within 60 feet of you. You decide what action the creature will take and where it will move during its next turn, or you can issue a general command, such as to guard a particular chamber or corridor.",
-						"If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.",
-						"If the object is securely attached to a surface or a larger object, such as a chain bolted to a wall, its speed is 0. It has {@sense blindsight} with a radius of 30 feet and is blind beyond that distance. When the animated object drops to 0 hit points, it reverts to its original object form, and any remaining damage carries over to its original object form."
-					]
-				}
+				"You bring a Tiny object to life. Its Constitution is 10 and its Intelligence and Wisdom are 3, and its Charisma is 1. Its speed is 30 feet; if the object lacks legs or other appendages it can use for locomotion, it instead has a flying speed of 30 feet and can hover. The object has the following stats: HP: 20, AC: 18, Str: 4, Dex: 18. The object has an attack modifier equal to your spell attack modifier. It deals {@damage 1d4} + your Spellcasting modifier damage on hit. If it is a weapon, it uses the weapon's damage type, otherwise it deals bludgeoning damage.",
+				"As a bonus action, you can mentally command the animated object as long as it is within 60 feet of you. You decide what action the creature will take and where it will move during its next turn, or you can issue a general command, such as to guard a particular chamber or corridor. If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.",
+				"If the object is securely attached to a surface or a larger object, such as a chain bolted to a wall, its speed is 0. It has {@sense blindsight} with a radius of 30 feet and is {@condition blinded|PHB|blind} beyond that distance. When the animated object drops to 0 hit points, it reverts to its original object form, and any remaining damage carries over to its original object form."
 			],
 			"classes": {
 				"fromClassList": [
-					{
-						"name": "Artificer",
-						"source": "TCE"
-					},
 					{
 						"name": "Bard",
 						"source": "PHB"
@@ -324,7 +419,7 @@
 		{
 			"name": "Animate Shadow",
 			"source": "KibblesTasty:CC",
-			"page": 0,
+			"page": 9,
 			"level": 3,
 			"school": "I",
 			"time": [
@@ -356,16 +451,16 @@
 				}
 			],
 			"entries": [
-				"Targeting a creature you can see within range, you bring it's shadow to life under your control. If the creature has a CR of more than 3 or the creature has no shadow (either from the nature of the creature or from the lack of a light source to cast one) the spell fails.",
-				"Otherwise a copy of the creature is created using its game statistics is created adjacent to the creature (on the side away from the brightest light near it). The shadow has no legendary actions, legendary resistance, and cannot cast spells. The shadow creature has hit points equal to half the target's hit points, and looks like mirrored version of the creature it was summoned from formed from inky black smoke. The creature is resistant to bludgeoning, piercing, and slashing damage from non-magical sources while in darkness. The creature is vulnerable to all damage while in bright light, and always vulnerable to fire, lightning, and radiant damage. If the shadow is killed, the target creature it was summoned from casts no shadows for the next 8 hours.",
-				"The shadow acts immediately after the creature's turn, and without further direction it attempts to follow and takes the attack action against it was summoned from. As a reaction to the shadow starting it's turn, the caster can exert control over it and cause it to move and take its action as the caster directs."
+				"Targeting a creature you can see within range, you bring its shadow to life under your control. If the creature has a CR of more than 3 or the creature has no shadow (either from the nature of the creature or from the lack of a light source to cast one) the spell fails. Creatures without CR (Such as players) are immune to this spell.",
+				"Otherwise a copy of the creature is created using its game statistics adjacent to the creature (on the side away from the brightest light near it). The shadow has no legendary actions, legendary resistance, and cannot cast spells. The shadow has hit points equal to half the target's hit points, and looks like mirrored version of the creature it was summoned from formed from inky black smoke. The shadow is resistant to bludgeoning, piercing, and slashing damage from non-magical sources while in darkness. The shadow is vulnerable to all damage while in bright light, and always vulnerable to fire, lightning, and radiant damage. If the shadow is killed, the target creature it was summoned from casts no shadows for the next 8 hours.",
+				"The shadow acts immediately after the creature's turn, and without further direction it attempts to follow and takes the {@action attack} action against the creature it was summoned from. As a reaction to the shadow starting it's turn, the caster can exert control over it and cause it to move and take its action as the caster directs."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a 5th- or 6th-level spell slot, the maximum CR of the target increases to CR 4. When you cast it using a 7th- or 8th-level spell slot, the maximum CR of the target increases to CR 5. When you cast it using a spell slot of 9th level or higher, the maximum CR of the target increases to CR 6."
+						"When you cast this spell using a 5th or 6th level spell slot, the maximum CR of the target increases to CR 4. When you cast it using a 7th or 8th level spell slot, the maximum CR of the target increases to CR 5. When you cast it using a spell slot of 9th level, the maximum CR of the target increases to CR 6."
 					]
 				}
 			],
@@ -376,6 +471,7 @@
 		{
 			"name": "Anvil Drop",
 			"source": "KibblesTasty:CC",
+			"page": 9,
 			"level": 5,
 			"school": "C",
 			"time": [
@@ -405,7 +501,7 @@
 				}
 			],
 			"entries": [
-				"Targeting a point you can see, you conjure an anvil 500 feet above the target point. At the start of your next turn, the anvil hits the ground; creatures within 5 feet of the target point must make a Dexterity saving throw. On a success, they move to the closest unoccupied space outside of the radius, if no space is available or they cannot move, they automatically fail. On failure, they take {@damage 10d10 + 10} bludgeoning damage. Creatures within 20 feet of the target point take {@damage 4d4} thunder damage.",
+				"You conjure an anvil 500 feet above a point you can see. At initiative count 0 (Losing initiative ties) on the next round, the anvil hits the ground; creatures within 5 feet of the target point must make a Dexterity saving throw. On a success, they move to the closest unoccupied space outside of the radius, if no space is available or they cannot move, they automatically fail. On failure, they take {@damage 10d10 + 10} bludgeoning damage. Creatures within 20 feet of the target point take {@damage 4d4} thunder damage.",
 				"If the path of the anvil (directly above the target point) is interupted, the creature or object above it is hit first. If the creature or object is killed or destroyed, the anvil continues, though the damage dealt is subtracted from the final impact damage of the anvil.",
 				"If the anvil deals less than 80 damage, the anvil survives the impact, and is an anvil of moderate quality."
 			],
@@ -440,6 +536,7 @@
 		{
 			"name": "Awaken Rope",
 			"source": "KibblesTasty:CC",
+			"page": 10,
 			"level": 1,
 			"school": "T",
 			"time": [
@@ -473,8 +570,7 @@
 					"type": "entries",
 					"name": "Bind",
 					"entries": [
-						"The rope attempts to bind a creature of your choice within 20 feet of you. The creature must make a Dexterity saving throw or become {@condition restrained} until it is freed. A creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the rope (AC",
-						"10) also frees the creature without harming it, ending the effect and destroying the rope."
+						"The rope attempts to bind a creature of your choice within 20 feet of you. The creature must make a Dexterity saving throw or become {@condition restrained} until it is freed. A creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the rope (AC 10) also frees the creature without harming it, ending the effect and destroying the rope."
 					]
 				},
 				{
@@ -497,23 +593,9 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, you can target a chain instead of a rope. It has the same available actions, but it has a DC 15, an",
-						"AC of 15, and resistance to slashing damage when taking the",
-						"Bind action. When cast with a spell slot of 3rd level or higher targeting a rope, that rope is magically imbued for 1 minute, gaining an DC of 15, an AC 20, and 20 hit points."
+						"When you cast this spell using a spell slot of 2nd level or higher, you can target a chain instead of a rope. It has the same available actions, but it has a DC 15, an AC of 15, and resistance to slashing damage when taking the Bind action. When cast with a spell slot of 3rd level or higher targeting a rope, that rope is magically imbued for 1 minute, gaining an DC of 15, an AC 20, and 20 hit points."
 					]
 				}
-			],
-			"damageResist": [
-				"slashing"
-			],
-			"damageImmune": [
-				"slashing"
-			],
-			"damageVulnerable": [
-				"slashing"
-			],
-			"damageInflict": [
-				"slashing"
 			],
 			"conditionInflict": [
 				"restrained"
@@ -525,19 +607,11 @@
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Artificer",
-						"source": "TCE"
-					},
-					{
 						"name": "Bard",
 						"source": "PHB"
 					},
 					{
 						"name": "Ranger",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
 						"source": "PHB"
 					},
 					{
@@ -550,6 +624,7 @@
 		{
 			"name": "Beam of Annihilation",
 			"source": "KibblesTasty:CC",
+			"page": 10,
 			"level": 6,
 			"school": "V",
 			"time": [
@@ -579,7 +654,7 @@
 				}
 			],
 			"entries": [
-				"You unleash a beam of pure energy, selecting cold, fire, force, or lightning energy and blasting it outward in a line that is 60 feet long and 10 feet wide that persists at the start of your next turn. Any creature that starts their turn in this beam must make a Dexterity saving throw. On failure, they take {@damage 8d8} damage of the beams energy type, taking half as much on a successful save.",
+				"You unleash a beam of pure energy, selecting cold, fire, force, or lightning energy when you cast this spell and blasting it outward in a line that is 60 feet long and 10 feet wide that persists until the start of your next turn. Any creature that starts their turn in this beam must make a Dexterity saving throw. On a failed save they take {@damage 8d8} damage of the beam's energy type, or taking half as much on a successful save.",
 				"While you are concentrating on this spell, your movement speed is zero. At the start of your next turn, you can use your action to maintain the beam or redirect it, rotating it up to 90 degrees. Any creature the beam passes through while rotating (if the beam passes completely through them and they will not start their turn inside of it) must make a Dexterity saving throw immediately, taking {@damage 4d8} damage of the beams energy type on a failed save, and taking no damage on a successful save.",
 				"If you do not use your action maintain or redirect it, the spell ends early."
 			],
@@ -602,6 +677,7 @@
 		{
 			"name": "Baba's Walking Hut",
 			"source": "KibblesTasty:CC",
+			"page": 10,
 			"level": 6,
 			"school": "T",
 			"time": [
@@ -633,7 +709,7 @@
 			"entries": [
 				"You touch a hut, cabin, or other building no more than 15 feet by 15 feet by 10 feet. On completion of the spell, the building grows legs large enough to support it, as well as the structural integrity needed stand and move, and becomes a gargantuan creature. It has 250 hit points, an AC of 12, and a walking speed of 20 feet. If it drops to 0 hit points, the spell ends.",
 				"On your turn, you can direct it to move (no action required) and it will continue to move as directed until you direct it to stop or reaches its destination. It can take no actions, but if it walks over a large or smaller creature, you can direct it to attempt to step on that creature, and that creature must succeed a Dexterity saving throw, or take {@damage 2d10} bludgeoning damage and be knocked {@condition prone}.",
-				"If you cast this spell on the same building every day for a year, the spell lasts until dispelled."
+				"If you cast this spell on the same building every day for a year, the spell lasts until dispelled, or you cast it on another building."
 			],
 			"damageInflict": [
 				"bludgeoning"
@@ -648,6 +724,7 @@
 		{
 			"name": "Befuddling Curse",
 			"source": "KibblesTasty:CC",
+			"page": 11,
 			"level": 1,
 			"school": "E",
 			"time": [
@@ -687,11 +764,74 @@
 			],
 			"savingThrow": [
 				"wisdom"
-			]
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT:O"
+					}
+				]
+			}
 		},
 		{
 			"name": "Binding Curse",
 			"source": "KibblesTasty:CC",
+			"page": 12,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "something from the target creature (such as blood, hair, or scales) which the spell consumes",
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"You bind a creature to a point within 5 feet of it, causing a glowing chains of light to connect it to that point. For the duration of the spell, if the creature attempts to move away from that point, the must make a Wisdom saving throw, or be unable to move more than 5 feet away from from that point until the start of their next turn.",
+				"If a creature starts its turn more than 10 feet from the binding point, they must make a Strength saving throw or be dragged 5 feet toward the binding point."
+			],
+			"savingThrow": [
+				"wisdom",
+				"strength"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT:O"
+					}
+				]
+			}
+		},
+		{
+			"name": "Blazing Beacon",
+			"source": "KibblesTasty:CC",
+			"page": 12,
 			"level": 1,
 			"school": "E",
 			"time": [
@@ -721,7 +861,7 @@
 				}
 			],
 			"entries": [
-				"You are bathed in holy light, illuminating bright light up to 30 feet and dim light for additional 30 feet.",
+				"You are bathed in holy light, shedding bright light up to 30 feet and dim light for additional 30 feet.",
 				"Any creature targets you with an attack roll or spell that requires them to see you must make a Constitution saving throw. On failure, they are {@condition blinded} until the start of their next turn. A creature with {@sense darkvision} makes this roll with disadvantage. A creature without eyes automatically passes their saving throw."
 			],
 			"conditionInflict": [
@@ -733,10 +873,6 @@
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Bard",
-						"source": "PHB"
-					},
-					{
 						"name": "Cleric",
 						"source": "PHB"
 					},
@@ -745,11 +881,7 @@
 						"source": "PHB"
 					},
 					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
+						"name": "Warlock",
 						"source": "PHB"
 					}
 				]
@@ -758,8 +890,9 @@
 		{
 			"name": "Boil Blood",
 			"source": "KibblesTasty:CC",
+			"page": 12,
 			"level": 2,
-			"school": "T",
+			"school": "N",
 			"time": [
 				{
 					"number": 1,
@@ -810,6 +943,7 @@
 		{
 			"name": "Bond Item",
 			"source": "KibblesTasty:CC",
+			"page": 12,
 			"level": 1,
 			"school": "C",
 			"time": [
@@ -843,12 +977,117 @@
 			],
 			"savingThrow": [
 				"charisma"
+			]
+		},
+		{
+			"name": "Bramble Binding",
+			"source": "KibblesTasty:CC",
+			"page": 12,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Brambles burst from your hand, lashing out at a target within range. The target must make a Dexterity saving throw. On failure, they take {@damage 4d4} piercing damage and, if the target is Large or smaller, it becomes entangled by brambles. While entangled by brambles, it can't move, but it can free itself as as an action (taking no additional damage) or rip itself free using half of its movement and taking an additional {@damage 2d4} piecing damage. On a successful save, they take half as much damage and aren't entangled by brambles."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 2nd level or higher, both the initial damage and the damage taken ripping free of the brambles increases by {@damage 1d4} for each slot level above 1st."
+					]
+				}
+			],
+			"savingThrow": [
+				"dexterity"
 			],
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Artificer",
-						"source": "TCE"
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Bramble Barrier",
+			"source": "KibblesTasty:CC",
+			"page": 12,
+			"level": 3,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You create a line of low brambles that erupts from a point you can see within range. This line is 30 feet long and 5 feet wide, made of up of six 5-foot squares of brambles. Each patch much connect to another patch and be placed on the ground. The bramble patches are difficult terrain and a creature that enters a square of brambles takes {@damage 4d4} piecing damage and must make a Constitution saving throw. On failure, their speed becomes 0 until the end of their turn.",
+				"The brambles wither and die after 1 day if the area isn't suitable for them to grow. Each 5-foot-square portion of brambles requires at least 1 minute to clear by hand, or can be cleared if they take 5 or more fire damage. The brambles crumble to dust immediately if you cast this spell again."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 4th level or higher, you can create two additional 5-foot squares of brambles for each slot level above 3rd."
+					]
+				}
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
 					}
 				]
 			}
@@ -856,6 +1095,7 @@
 		{
 			"name": "Burn",
 			"source": "KibblesTasty:CC",
+			"page": 13,
 			"level": 0,
 			"school": "T",
 			"time": [
@@ -910,13 +1150,18 @@
 					{
 						"name": "Sorcerer",
 						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
 					}
 				]
 			}
 		},
 		{
-			"name": "Burning Weapon",
+			"name": "Burning Strike",
 			"source": "KibblesTasty:CC",
+			"page": 13,
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -935,7 +1180,7 @@
 				"v": true,
 				"s": true,
 				"m": {
-					"text": "M (a piece of ammunition or weapon at least 1 cp).",
+					"text": "a piece of ammunition or weapon at least 1 cp",
 					"cost": 1
 				}
 			},
@@ -968,7 +1213,71 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Paladin",
+						"source": "PHB"
+					},
+					{
 						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Carnivorous Garden",
+			"source": "KibblesTasty:CC",
+			"page": 13,
+			"level": 4,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a dried carnivorous plant"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Targeting four unoccupied spaces that you can see within range, rooted carnivorous plants erupt from the ground, filling a 5-foot cube each. The ground within 5 feet of them becomes difficult terrain. When the plants appear, they each attack a creature of your choice within 5 feet of them. Each plant makes a melee spell attack, dealing {@damage 2d8} piercing damage on hit. Make a separate attack roll for each plant.",
+				"If a creature ends their turn within 5 feet of one or more of the carnivorous plants, the plants automatically attack that creature unless you use your reaction to prevent them from doing so. The plants use your spell attack modifier, and deal {@damage 2d8} piercing damage on hit.",
+				"The plants have AC 14 and 30 hit points, and have vulnerability to fire and slashing damage. Each plant regains all its hit points at the start of your turn if it has at least 1 hit point. A plant dies if it is reduced to zero hit points. When the spell ends, the plants wither and die leaving behind difficult terrain unless they were killed be fire damage."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 5th level or higher, you can summon 1 additional carnivorous plant for each slot level above 4th."
+					]
+				}
+			],
+			"damageInflict": [
+				"piercing"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
 						"source": "PHB"
 					}
 				]
@@ -977,6 +1286,7 @@
 		{
 			"name": "Crippling Agony",
 			"source": "KibblesTasty:CC",
+			"page": 14,
 			"level": 1,
 			"school": "N",
 			"time": [
@@ -1024,6 +1334,7 @@
 		{
 			"name": "Cruel Puppetry",
 			"source": "KibblesTasty:CC",
+			"page": 14,
 			"level": 3,
 			"school": "N",
 			"time": [
@@ -1064,10 +1375,15 @@
 			"entries": [
 				"You attempt to bind a creatures soul to a doll, linking the creature to the doll in a sympathetic link. The target must make a Charisma saving throw. On failure, the creature becomes bound to the doll. On a successful save, the creature is not bound and the spell ends.",
 				"As part of casting the spell when the creature fails the save, and on subsequent turns using your action until the spell ends, you can perform one of the following actions:",
-				"Hold the doll still, causing the creature to be Restrained until start of your next turn.",
-				"Force the doll to move, causing the creature to move 15 feet in a direction of your choice that it can move.",
-				"Smash the doll, causing it take {@damage 4d6} bludgeoning damage.",
-				"Rip the doll in half, ending the spell, destroying the doll, and dealing {@damage 4d12} necrotic damage.",
+				{
+					"type": "list",
+					"items": [
+						"Hold the doll still, causing the creature to be {@condition Restrained} until start of your next turn.",
+						"Force the doll to move, causing the creature to move 15 feet in a direction of your choice that it can move.",
+						"Stab the doll, causing the creature take {@damage 4d6} piercing damage.",
+						"Rip the doll in half, ending the spell, destroying the doll, and dealing {@damage 4d12} necrotic damage to the creature."
+					]
+				},
 				"Each time after the first you use an action to manipulate the doll, after the effect takes place, the creature can repeat the Charisma with disadvantage, ending the effect on a successful save.",
 				"Once a creature has been targeted by this spell, they cannot be targeted again for 24 hours."
 			],
@@ -1080,8 +1396,11 @@
 					]
 				}
 			],
+			"conditionInflict": [
+				"restrained"
+			],
 			"damageInflict": [
-				"bludgeoning",
+				"piercing",
 				"necrotic"
 			],
 			"savingThrow": [
@@ -1091,6 +1410,7 @@
 		{
 			"name": "Crushing Singularity",
 			"source": "KibblesTasty:CC",
+			"page": 14,
 			"level": 3,
 			"school": "T",
 			"time": [
@@ -1120,8 +1440,7 @@
 				}
 			],
 			"entries": [
-				"You create an overwhelming gravitational singularity at a point within range that lasts until the start of your next turn.",
-				"When you cast this spell, any creature within 15 feet of the point must make a Strength saving throw. Creatures that fail their saving throw are moved to the closest available space adjacent to the singularity and take {@damage 3d6} bludgeoning damage, and an additional {@damage 1d6} bludgeoning damage for each other creature that failed the saving throw, up to a maximum of {@damage 6d6} bludgeoning damage. Creatures make their saving throw with disadvantage if they are between the center of the area another creature that fails their saving throw.",
+				"You create an overwhelming gravitational singularity at a point within range that lasts until the start of your next turn. When you cast this spell, any creature within 15 feet of the point must make a Strength saving throw. Creatures that fail their saving throw are moved to the closest available space adjacent to the singularity and take {@damage 3d6} bludgeoning damage, and an additional {@damage 1d6} bludgeoning damage for each other creature that failed the saving throw, up to a maximum of {@damage 6d6} bludgeoning damage.",
 				"While within 15 feet of the singularity, moving away from the singularity requires twice as much movement. If a creature ends its turn within 15 feet of the singularity, it must make a Strength saving throw. On failure, they take {@damage 2d6} bludgeoning damage are dragged back to the closest available spot to the center of the singularity."
 			],
 			"damageInflict": [
@@ -1142,6 +1461,7 @@
 		{
 			"name": "Curse of Impotence",
 			"source": "KibblesTasty:CC",
+			"page": 14,
 			"level": 5,
 			"school": "E",
 			"time": [
@@ -1180,11 +1500,20 @@
 			],
 			"savingThrow": [
 				"wisdom"
-			]
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT:O"
+					}
+				]
+			}
 		},
 		{
 			"name": "Decaying Touch",
 			"source": "KibblesTasty:CC",
+			"page": 15,
 			"level": 0,
 			"school": "T",
 			"time": [
@@ -1251,6 +1580,7 @@
 		{
 			"name": "Deglove Creature",
 			"source": "KibblesTasty:CC",
+			"page": 15,
 			"level": 5,
 			"school": "N",
 			"time": [
@@ -1288,8 +1618,72 @@
 			]
 		},
 		{
+			"name": "Devouring Darkness",
+			"source": "KibblesTasty:CC",
+			"page": 15,
+			"level": 5,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 20
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Dark tendrils burst out from you in all directions. Creatures of your choice within must make a Constitution saving throw. On failure, they take {@damage 6d8} necrotic damage, and you can move them in a straight line to within 5 feet of you if there is an empty space they can be pulled to. On success, they take half as much damage and are not moved. You regain hit points equal to one quarter (rounded down) of the necrotic damage taken by all targets effected by the spell."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 6th level or higher, the damage increases by 1d8 for each slot level above 5th."
+					]
+				}
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT:O"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
 			"name": "Disorient",
 			"source": "KibblesTasty:CC",
+			"page": 16,
 			"level": 2,
 			"school": "I",
 			"time": [
@@ -1316,14 +1710,13 @@
 				}
 			],
 			"entries": [
-				"Targeting a creature with you can see, you flip their perception of reality. The target creature must make a Wisdom saving throw. On failure, each time they attempt to move, they must make an Intelligence saving throw or they move 5 feet in the opposite direction. If they cannot move 5 feet in the opposite direction, they fall {@condition prone} instead.",
-				"This affect persists until they moved a total of 60 feet or complete a short or long rest. While under the effect, they have disadvantage on all attack rolls."
+				"Targeting a creature with you can see, you flip their perception of reality. The target creature must pass a Wisdom saving throw or become disoriented. A disoriented creature has disadvantage on all attack rolls and at the start of their turn moves 10 feet (up to its speed) in a random direction before their speed becomes zero until the start of their next turn.",
+				"At the end of each of its turns, the target can make another Wisdom saving throw. On a success, the spell ends, but if the target fails by 5 or more, it fails {@condition prone}."
 			],
 			"conditionInflict": [
 				"prone"
 			],
 			"savingThrow": [
-				"intelligence",
 				"wisdom"
 			],
 			"miscTags": [
@@ -1345,6 +1738,7 @@
 		{
 			"name": "Dispel Construct",
 			"source": "KibblesTasty:CC",
+			"page": 16,
 			"level": 3,
 			"school": "A",
 			"time": [
@@ -1370,23 +1764,16 @@
 				}
 			],
 			"entries": [
-				"You can attempt to purge the magic animating a construct within range, rendering it inert. The target must succeed on a Constitution saving throw, or be reduced to zero hit points. If the target has more than 100 hit points remaining, it makes this roll with advantage."
+				"You can attempt to purge the magic animating a construct within range, rendering it inert. The target takes {@damage 4d10} force damage and must succeed on a Constitution saving throw or become {@condition stunned} for 1 minute. At the end of each of its turns, the target can make another Constitution saving throw. On a success, the spell ends on the target. If the target has less than 50 hit points remaining when it fails, it is reduced to zero hit points."
 			],
 			"savingThrow": [
 				"constitution"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Artificer",
-						"source": "TCE"
-					}
-				]
-			}
+			]
 		},
 		{
 			"name": "Dimension Cutter",
 			"source": "KibblesTasty:CC",
+			"page": 16,
 			"level": 4,
 			"school": "C",
 			"time": [
@@ -1405,8 +1792,8 @@
 			"components": {
 				"v": true,
 				"m": {
-					"text": "a melee weapon you are proficient with worth at least 1 sp",
-					"cost": 10
+					"text": "a melee weapon you are proficient with worth at least 1 cp",
+					"cost": 1
 				}
 			},
 			"duration": [
@@ -1432,6 +1819,7 @@
 		{
 			"name": "Divide Self",
 			"source": "KibblesTasty:CC",
+			"page": 16,
 			"level": 5,
 			"school": "I",
 			"time": [
@@ -1460,11 +1848,11 @@
 				}
 			],
 			"entries": [
-				"You you create an exact duplicate of yourself in an empty space you can see within 30 feet of you. When you cast this spell at the start of each of your turns for the duration, you can determine which of the duplicates is you.",
-				"It has all of your stats, abilities, and equipment (including magic items). It acts on your initiative, and has its own actions, though it shares its concentration on this spell, and if either of you lose concentration, the spell ends.",
+				"You you create an exact duplicate of yourself in an empty space you can see within 30 feet of you. When you cast this spell at the start of each of your turns for the duration, you can switch places with your duplicate.",
+				"The duplicate has all of your stats, abilities, and equipment (including magic items). It acts on your initiative, and has its own actions, though it shares its concentration on this spell, and if either of you lose concentration, the spell ends.",
 				"Your current hit points are divided between you and the duplicate and shares all other resources and abilities with you (including limited use magic items), with any usage by either you or the duplicate depleting the resource for both of you.",
 				"Your duplicate can take any action you can take, but it can deal a maximum of 15 damage on its turn (any additional damage dealt deals no further damage, when dealing area of effect damage, damage is split between all targets equally up to the maximum).",
-				"If either you or the duplicate is reduced to zero, the spell ends and you become the copy that was not reduced to zero hit points. When the spell ends, if both you and the duplicate are still present, decide which is you, and the other vanishes. Anything that was copied during the spell has the copied version vanish."
+				"If either you or the duplicate is reduced to zero hit points, the spell ends and you become the copy that was not reduced to zero hit points. When the spell ends, if both you and the duplicate are still present, decide which is you, and the other vanishes. Anything that was copied during the spell has the copied version vanish."
 			],
 			"entriesHigherLevel": [
 				{
@@ -1481,6 +1869,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Occultist",
+						"source": "KT:O"
+					},
+					{
 						"name": "Sorcerer",
 						"source": "PHB"
 					},
@@ -1494,6 +1886,7 @@
 		{
 			"name": "Fall",
 			"source": "KibblesTasty:CC",
+			"page": 18,
 			"level": 1,
 			"school": "T",
 			"time": [
@@ -1524,10 +1917,6 @@
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Artificer",
-						"source": "TCE"
-					},
-					{
 						"name": "Sorcerer",
 						"source": "PHB"
 					},
@@ -1541,6 +1930,7 @@
 		{
 			"name": "Field of Stars",
 			"source": "KibblesTasty:CC",
+			"page": 18,
 			"level": 5,
 			"school": "V",
 			"time": [
@@ -1609,6 +1999,7 @@
 		{
 			"name": "Fireburst Mine",
 			"source": "KibblesTasty:CC",
+			"page": 18,
 			"level": 3,
 			"school": "A",
 			"time": [
@@ -1626,7 +2017,10 @@
 			"components": {
 				"v": true,
 				"s": true,
-				"m": "Any tiny nonmagical item, which is destroyed by the activation of the spell"
+				"m": {
+					"text": "Any tiny nonmagical item, which is destroyed by the activation of the spell",
+					"consume": true
+				}
 			},
 			"duration": [
 				{
@@ -1639,27 +2033,20 @@
 			],
 			"entries": [
 				"You can set a magical trap by infusing explosive magic into an item. You can set this item to detonate when someone comes within 5 feet of it, or by a verbal command using your reaction (one or more mines can be detonated).",
-				"When the magic trap detonates, each creature in a 20-foot radius sphere centered on the item must make a Dexterity saving throw. A creature takes {@damage 5d8} fire damage on a failed save, or half as much damage on a successful one. If a creature is in the area of effect of more than one fireburst mine during a turn, they take half damage from any subsequent effects of the mines.",
-				"A magical mine must be set 5 feet or more from another mine, and cannot be moved once placed; any attempt to move it results in it detonating unless the Artificer that set it disarms it with an action."
+				"When the magic trap detonates, each creature in a 20-foot radius sphere centered on the item must make a Dexterity saving throw. A creature takes {@damage 5d8} fire damage on a failed save, or half as much damage on a successful one. If a creature is in the area of effect of more than one fireburst mine during a turn, they take half damage from any mines beyond the first.",
+				"A magical mine must be set 5 feet or more from another mine, and cannot be moved once placed; any attempt to move it results in it detonating unless the caster that set it disarms it with an action."
 			],
 			"damageInflict": [
 				"fire"
 			],
 			"savingThrow": [
 				"dexterity"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Artificer",
-						"source": "TCE"
-					}
-				]
-			}
+			]
 		},
 		{
 			"name": "Fire Cyclone",
 			"source": "KibblesTasty:CC",
+			"page": 19,
 			"level": 3,
 			"school": "C",
 			"time": [
@@ -1700,7 +2087,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"At Higher Levels. When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@dice 1d6} and the height of the cyclone as well as the distance a creature is thrown upward increases by 5 feet for each level above 3rd."
+						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@damage 1d6} and the height of the cyclone as well as the distance a creature is thrown upward increases by 5 feet for each level above 3rd."
 					]
 				}
 			],
@@ -1734,6 +2121,7 @@
 		{
 			"name": "Fists of Fire",
 			"source": "KibblesTasty:CC",
+			"page": 19,
 			"level": 0,
 			"school": "T",
 			"time": [
@@ -1778,6 +2166,10 @@
 					{
 						"name": "Sorcerer",
 						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
 					}
 				]
 			}
@@ -1785,6 +2177,7 @@
 		{
 			"name": "Fling",
 			"source": "KibblesTasty:CC",
+			"page": 19,
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -1838,6 +2231,7 @@
 		{
 			"name": "Form of Familiar",
 			"source": "KibblesTasty:CC",
+			"page": 20,
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -1849,8 +2243,7 @@
 			"range": {
 				"type": "point",
 				"distance": {
-					"type": "feet",
-					"amount": 60
+					"type": "self"
 				}
 			},
 			"components": {
@@ -1887,6 +2280,7 @@
 		{
 			"name": "Freeze",
 			"source": "KibblesTasty:CC",
+			"page": 21,
 			"level": 0,
 			"school": "T",
 			"time": [
@@ -1941,6 +2335,10 @@
 					{
 						"name": "Sorcerer",
 						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
 					}
 				]
 			}
@@ -1948,6 +2346,7 @@
 		{
 			"name": "Gale Shot",
 			"source": "KibblesTasty:CC",
+			"page": 21,
 			"level": 4,
 			"school": "T",
 			"time": [
@@ -1966,7 +2365,7 @@
 				"v": true,
 				"s": true,
 				"m": {
-					"text": "M (a piece of ammunition or weapon with the thrown property worth at least 1 cp).",
+					"text": "a piece of ammunition or weapon with the thrown property worth at least 1 cp",
 					"cost": 1
 				}
 			},
@@ -1980,8 +2379,7 @@
 				}
 			],
 			"entries": [
-				"You touch a piece of ammunition or weapon with the thrown property, imbuing it with the power of a hurricane for the duration. The first time you attack with the empowered item, unleashes a blasting galeforce, greatly empowering the shot.",
-				"On a hit, the target takes an additional {@damage 4d8} damage from the attack, and is knocked backwards 30 feet. Any creature the target is knocked into by this movement takes {@damage 2d8} bludgeoning damage. On a miss, the target takes half as much damage and is not knocked back.",
+				"You touch a piece of ammunition or weapon with the thrown property, imbuing it with the power of a hurricane for the duration. The first time you attack with the empowered item, unleashes a blasting galeforce, greatly empowering the shot. On a hit, the target takes an additional {@damage 4d8} damage from the attack, and is knocked backwards 30 feet. Any creature the target is knocked into by this movement takes {@damage 2d8} bludgeoning damage. On a miss, the target takes half as much damage and is not knocked back.",
 				"Once an attack has been made with the piece of ammunition or weapon, the spell ends."
 			],
 			"entriesHigherLevel": [
@@ -2008,6 +2406,7 @@
 		{
 			"name": "Gravity Surge",
 			"source": "KibblesTasty:CC",
+			"page": 21,
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -2033,8 +2432,7 @@
 				}
 			],
 			"entries": [
-				"You create a crushing field of gravity in a 15 radius sphere.",
-				"Any creature within the area of effect must make a Strength saving throw. On failure, creatures take {@damage 2d6} bludgeoning damage and falls {@condition prone}. On success, creatures take half as much damage are not knocked {@condition prone}. Creatures that are not on the ground make this save with disadvantage."
+				"You create a crushing field of gravity in a 15 radius sphere. Any creature within the area of effect must make a Strength saving throw. On failure, creatures take {@damage 2d6} bludgeoning damage and falls {@condition prone}. On success, creatures take half as much damage are not knocked {@condition prone}. Creatures that are not on the ground make this save with disadvantage."
 			],
 			"damageInflict": [
 				"bludgeoning"
@@ -2057,6 +2455,7 @@
 		{
 			"name": "Grip of the Dead",
 			"source": "KibblesTasty:CC",
+			"page": 22,
 			"level": 1,
 			"school": "N",
 			"time": [
@@ -2112,8 +2511,65 @@
 			]
 		},
 		{
+			"name": "Grasping Roots",
+			"source": "KibblesTasty:CC",
+			"page": 22,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"A twisting burst of roots launch from your hand, reaching to grab a Large or smaller target. The target must make a Strength saving throw. On success, the target is moved 5 feet in a direction of your choice. On a failure, the target is moved 20 feet in a direction of your choice. A creature can choose to fail this save."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 2nd level or higher, you move a creature an additional 5 feet for each slot level above 1st."
+					]
+				}
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
 			"name": "Ice Weapon",
 			"source": "KibblesTasty:CC",
+			"page": 22,
 			"level": 0,
 			"school": "T",
 			"time": [
@@ -2153,8 +2609,8 @@
 						"Properties"
 					],
 					"colStyles": [
-						"col-4 text-center",
-						"col-8 text-left",
+						"col-3 text-center",
+						"col-3 text-center",
 						"col-8 text-left"
 					],
 					"rows": [
@@ -2185,12 +2641,20 @@
 						]
 					]
 				},
-				"Regardless of it's form, the weapon deals cold damage. You can end the spell early, letting the weapon melt to a harmless splash of water (no action required). You can have up to three ice weapons formed from this spell at a time. After forming a fourth, the first created one melts away."
+				"Regardless of its form, the weapon deals cold damage. You can end the spell early, letting the weapon melt to a harmless splash of water (no action required). You can have up to three ice weapons formed from this spell at a time. After forming a fourth, the first created one melts away."
 			],
 			"classes": {
 				"fromClassList": [
 					{
 						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
 						"source": "PHB"
 					}
 				]
@@ -2199,6 +2663,7 @@
 		{
 			"name": "Impact",
 			"source": "KibblesTasty:CC",
+			"page": 23,
 			"level": 0,
 			"school": "T",
 			"time": [
@@ -2253,6 +2718,10 @@
 					{
 						"name": "Sorcerer",
 						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
 					}
 				]
 			}
@@ -2260,6 +2729,7 @@
 		{
 			"name": "Imbue Luck",
 			"source": "KibblesTasty:CC",
+			"page": 23,
 			"level": 2,
 			"school": "A",
 			"time": [
@@ -2276,7 +2746,8 @@
 			},
 			"components": {
 				"v": true,
-				"s": true
+				"s": true,
+				"m": "a four leaf clover"
 			},
 			"duration": [
 				{
@@ -2291,19 +2762,12 @@
 				"You touch a weapon or worn item and imbue luck into it. If imbued on a weapon, for the duration, on an attack roll, the wielder can roll an additional {@dice d20} (they can choose to do this after they roll, but before the outcome is determined). The creature can choose which of the {@dice d20}s is used for the attack roll.",
 				"If imbued into a worn item, they can roll a {@dice d20} when attacked, then choose whether the attack uses the attacker's roll or theirs.",
 				"With either use, the spell immediately ends upon rolling the extra {@dice d20}."
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Artificer",
-						"source": "TCE"
-					}
-				]
-			}
+			]
 		},
 		{
 			"name": "Immutability",
 			"source": "KibblesTasty:CC",
+			"page": 23,
 			"level": 3,
 			"school": "T",
 			"time": [
@@ -2337,9 +2801,6 @@
 				"If you don't move during your turn, you gain advantage on Strength or Constitution saving throws made before the start of your next turn, and cannot be moved or knocked down against your will.",
 				"While the spell is active, as a reaction to taking bludgeoning, piercing, or slashing damage you can gain resistance to that damage type until the end of your next turn, but your movement speed becomes zero until the end of your next turn."
 			],
-			"savingThrow": [
-				"constitution"
-			],
 			"classes": {
 				"fromClassList": [
 					{
@@ -2356,6 +2817,7 @@
 		{
 			"name": "Induce Headache",
 			"source": "KibblesTasty:CC",
+			"page": 23,
 			"level": 1,
 			"school": "V",
 			"time": [
@@ -2392,9 +2854,6 @@
 			"damageInflict": [
 				"psychic"
 			],
-			"savingThrow": [
-				"constitution"
-			],
 			"classes": {
 				"fromClassList": [
 					{
@@ -2411,6 +2870,7 @@
 		{
 			"name": "Iron Wind Strike",
 			"source": "KibblesTasty:CC",
+			"page": 23,
 			"level": 2,
 			"school": "C",
 			"time": [
@@ -2430,8 +2890,8 @@
 				"v": true,
 				"s": true,
 				"m": {
-					"text": "a melee weapon you are proficient with worth at least 1 sp",
-					"cost": 10
+					"text": "a melee weapon you are proficient with worth at least 1 cp",
+					"cost": 1
 				}
 			},
 			"duration": [
@@ -2440,7 +2900,7 @@
 				}
 			],
 			"entries": [
-				"You flourish a weapon you are proficient with used in the casting and then vanish to strike like the wind. Choose up to three creatures you can see within range. Make a melee weapon attack against each target. On a hit, a target takes {@damage 3d8} damage of the weapon's damage type.",
+				"You flourish a weapon weapon you are proficient with used in the casting and then vanish to strike like the wind. Choose up to three creatures you can see within range. Make a melee weapon attack against each target. On a hit, a target takes {@damage 3d8} damage of the weapon's damage type.",
 				"You can then teleport to an unoccupied space you can see within 5 feet of one of the targets you hit or missed."
 			],
 			"entriesHigherLevel": [
@@ -2468,8 +2928,9 @@
 		{
 			"name": "Killing Curse",
 			"source": "KibblesTasty:CC",
+			"page": 24,
 			"level": 5,
-			"school": "E",
+			"school": "N",
 			"time": [
 				{
 					"number": 1,
@@ -2503,69 +2964,20 @@
 			],
 			"entries": [
 				"You curse a target to die. The targets current and maximum hit points is reduced by {@dice 3d10 + 10}. If this causes a creatures to have zero hit points, the creature dies.",
-				"For the duration of the spell, the target cannot regain hit points unless from a magical effect cast by a spell slot of higher level than this spell slot this curse was cast with, and any death saving throw they roll is automatically considered a 1.",
+				"For the duration of the spell, the target cannot regain hit points unless from a spell cast using a spell slot of higher level than the spell slot this curse was cast with, and any death saving throw they roll is automatically considered a 1.",
 				"At the start of a creatures turn while they are under the effect of this spell, they make a Charisma saving throw. On failure, their current and maximum hit points is reduced by {@dice 1d10 + 10}. On a successful save, the spell ends. A creature's maximum hit points are restored when it takes a long rest."
+			],
+			"savingThrow": [
+				"charisma"
 			],
 			"miscTags": [
 				"HL"
-			]
-		},
-		{
-			"name": "Lightning Charged",
-			"source": "KibblesTasty:CC",
-			"level": 2,
-			"school": "V",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "touch"
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true,
-				"m": "a piece of once used lightning rod"
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "minute",
-						"amount": 10
-					}
-				}
-			],
-			"entries": [
-				"You channel lightning energy into a creature. The energy is harmless to the creature, but escapes in dangerous bursts to other nearby creatures.",
-				"Every time that creature strikes another creature with a melee attack, affects a creature with a spell with a range of touch, is struck by another creature with melee attack, or ends their turn while grappling or being {@condition grappled} by another creature, they deal {@damage 1d6} Lightning damage to that creature.",
-				"Once this spell has discharged 6 times (dealing up to {@damage 6d6} damage), the spell ends."
-			],
-			"entriesHigherLevel": [
-				{
-					"type": "entries",
-					"name": "At Higher Levels",
-					"entries": [
-						"The spell can discharge damage 2 additional times (dealing {@dice 2d6} more total damage) before the spell ends for each slot level above 2nd."
-					]
-				}
-			],
-			"damageInflict": [
-				"lightning"
-			],
-			"conditionInflict": [
-				"grappled"
 			],
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Artificer",
-						"source": "TCE"
+						"name": "Occultist",
+						"source": "KT:O"
 					}
 				]
 			}
@@ -2573,6 +2985,7 @@
 		{
 			"name": "Lightning Shot",
 			"source": "KibblesTasty:CC",
+			"page": 24,
 			"level": 3,
 			"school": "T",
 			"time": [
@@ -2591,7 +3004,7 @@
 				"v": true,
 				"s": true,
 				"m": {
-					"text": "M (a piece of ammunition or weapon with the thrown property worth at least 1 cp).",
+					"text": "a piece of ammunition or weapon with the thrown property worth at least 1 cp",
 					"cost": 1
 				}
 			},
@@ -2606,7 +3019,7 @@
 			],
 			"entries": [
 				"You touch a piece of ammunition or weapon with the thrown property, imbuing it with crackling lightning energy for the duration.",
-				"The first time you attack with the empowered item, it transforms into a bolt of lightning, and when fired blasts out from you in a line 100 feet long and 5 feet wide. Make the weapon's attack roll against each creature in that line, dealing {@damage 4d8} damage on hit, and half as much on a miss. This damage roll does not add any modifiers or bonus associated to weapon attacks. The lightning ignites flammable objects in the area that aren't being worn or carried.",
+				"The first time you attack with the empowered item, it transforms into a bolt of lightning, and when fired blasts out from you in a line 100 feet long and 5 feet wide. Make the weapon's attack roll against each creature in that line, (Using the same roll against each creature) dealing {@damage 4d8} lightning damage on hit, and half as much on a miss. This damage roll does not add any modifiers or bonus associated to weapon attacks. The lightning ignites flammable objects in the area that aren't being worn or carried.",
 				"Once an attack has been made with the piece of ammunition or weapon, the spell ends."
 			],
 			"entriesHigherLevel": [
@@ -2630,6 +3043,7 @@
 		{
 			"name": "Manipulate Fate",
 			"source": "KibblesTasty:CC",
+			"page": 25,
 			"level": 9,
 			"school": "D",
 			"time": [
@@ -2755,7 +3169,14 @@
 						]
 					]
 				},
-				"When you alter a roll, you can choose to cast aside subtlety and yank the thread of fate, and select any value of the {@dice d20} as the outcome of the result, but the backlash causes you to take a number {@dice d6} equal to the difference in the value selected from the value rolled in necrotic damage. The spell immediately ends after the result is changed in this more drastic way."
+				"When you alter a roll, you can choose to cast aside subtlety and yank the thread of fate, and select any value of the {@dice d20} as the outcome of the result, but the backlash causes you to take a number {@dice d6} equal to the difference in the value selected from the value rolled in necrotic damage. The spell immediately ends after the result is changed in this more drastic way.",
+				{
+					"type": "inset",
+					"name": "Editor's Note",
+					"entries": [
+						"The numbers you can pick are the adjacent sides of a d20 to the number rolled. This represents literally nudging the die of fate."
+					]
+				}
 			],
 			"classes": {
 				"fromClassList": [
@@ -2767,10 +3188,11 @@
 			}
 		},
 		{
-			"name": "Become Fire",
-			"source": "KibblesTasty:EFS",
-			"level": 2,
-			"school": "T",
+			"name": "Multishot",
+			"source": "KibblesTasty:CC",
+			"page": 25,
+			"level": 1,
+			"school": "V",
 			"time": [
 				{
 					"number": 1,
@@ -2780,12 +3202,16 @@
 			"range": {
 				"type": "point",
 				"distance": {
-					"type": "self"
+					"type": "touch"
 				}
 			},
 			"components": {
 				"v": true,
-				"s": true
+				"s": true,
+				"m": {
+					"text": "a piece of ammunition or weapon with the thrown property worth at least 1 cp",
+					"cost": 1
+				}
 			},
 			"duration": [
 				{
@@ -2797,31 +3223,78 @@
 				}
 			],
 			"entries": [
-				"You become a burst of elemental flames. Until the start of your next turn, you gain the following benefits:",
+				"You touch a piece of ammunition or weapon with the thrown property, giving it a magical duplicate superimposed over it until the end of your next turn. The first time you attack with the empowered item before the end of your next turn, select a second target within range of the weapon for the attack, making a separate ranged weapon attack roll for the magically duplicated projectile. On hit, the target takes {@damage 2d8} force damage. This damage roll does not add any modifiers or bonus associated to weapon attacks.",
+				"Once an attack has been made with the piece of ammunition or weapon, the spell ends."
+			],
+			"entriesHigherLevel": [
 				{
-					"type": "list",
-					"items": [
-						"You are resistant to fire damage and to bludgeoning, slashing, and piercing damage from nonmagical attacks.",
-						"You can move through the space of other creatures and ignore difficult terrain. The first time you enter the space of another creature, it takes {@damage 1d6} fire damage.",
-						"Once during your turn when you roll fire damage, you can maximize the value of one die of fire damage."
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 2nd Level or higher, you can select one additional target for each slot level above 1st."
 					]
 				}
-			],
-			"damageInflict": [
-				"fire"
 			],
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Druid",
+						"name": "Ranger",
 						"source": "PHB"
-					},
+					}
+				]
+			}
+		},
+		{
+			"name": "Martial Steel Wind Strike",
+			"source": "KibblesTasty:CC",
+			"page": 26,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a melee weapon you are proficient with worth at least 1 cp",
+					"cost": 1
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You flourish a weapon weapon you are proficient with used in the casting and then vanish to strike like the wind. Choose up to five creatures you can see within range. Make a melee {@b weapon} attack against each target. On a hit, a target takes {@damage 6d10} damage of the weapon's damage type.",
+				"You can then teleport to an unoccupied space you can see within 5 feet of one of the targets you hit or missed.",
+				{
+					"type": "inset",
+					"name": "Caius' Notes: Steel Wind Strike",
+					"entries": [
+						"I have long been confused by {@spell Steel Wind Strike} - clearly a spell meant for Martials but one that they cannot seemingly use. As usual, the culprit was meddlesome Wizards, you have tweaked the spell to suit them, leaving it rather unsuitable for its intended audience. Fortunately, I have been able to reconstruct it's true form."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"TP"
+			],
+			"classes": {
+				"fromClassList": [
 					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Warlock",
+						"name": "Ranger",
 						"source": "PHB"
 					},
 					{
@@ -2832,10 +3305,11 @@
 			}
 		},
 		{
-			"name": "Mordenkainen's Unsheathed Sword",
+			"name": "Martial Transformation",
 			"source": "KibblesTasty:CC",
-			"level": 7,
-			"school": "V",
+			"page": 26,
+			"level": 6,
+			"school": "T",
 			"time": [
 				{
 					"number": 1,
@@ -2845,65 +3319,56 @@
 			"range": {
 				"type": "point",
 				"distance": {
-					"type": "feet",
-					"amount": 60
+					"type": "self"
 				}
 			},
 			"components": {
 				"v": true,
 				"s": true,
-				"m": {
-					"text": "a miniature platinum sword with a grip and pommel of copper and zinc, worth 250 gp",
-					"cost": 25000
-				}
+				"m": "a few hairs from a bull"
 			},
 			"duration": [
 				{
 					"type": "timed",
 					"duration": {
 						"type": "minute",
-						"amount": 1
+						"amount": 10
 					}
 				}
 			],
 			"entries": [
-				"You create a glowing sword-shaped plane of force that hovers within range. It lasts for the duration. When the sword appears and as a bonus action on subsequent turns, you can give the sword a command:",
+				"You endow yourself with endurance and martial prowess fueled by magic. Until the spell ends, you can't cast spells or concentrate them, and you gain the following benefits:",
 				{
-					"type": "entries",
-					"name": "{@action Attack}",
-					"entries": [
-						"The sword will move up to 20 feet toward a creature and attack it, making a melee spell attack. On a hit, the target takes {@damage 3d10} + your spell casting ability modifier force damage on hit."
+					"type": "list",
+					"items": [
+						"You gain 50 temporary hit points. If any of these remain when the spell ends, they are lost.",
+						"You have advantage on attack rolls that you make with simple and martial weapons.",
+						"When you hit a target with a weapon attack, that target takes an extra {@damage 2d12} force damage.",
+						"You have proficiency with all armor, shields, simple weapons, and martial weapons.",
+						"You have proficiency in Strength and Constitution saving throws.",
+						"You can attack twice, instead of once, when you take the {@action Attack} action on your turn. You ignore this benefit if you already have a feature, like Extra Attack, that gives you extra attacks.",
+						"You can conjure and equip (as part of the action used to cast the spell) and set of heavy or medium armor and any simple or martial weapon of your choice. These items have no strength requirements and are magical in nature though have the same properties as their nonmagical counterparts, vanishing when the spell ends."
 					]
 				},
+				"Immediately after the spell ends, you must succeed on a DC 15 Constitution saving throw or suffer one level of {@condition exhaustion}.",
 				{
-					"type": "entries",
-					"name": "{@action Guard}",
+					"type": "inset",
+					"name": "Caius' Notes: The Lost True Version",
 					"entries": [
-						"The sword will move up 20 feet toward a creature. It grants partial cover to the creature while it shares that creature's space as it attempts to deflect incoming attacks. The first time a hostile creature comes within 5 feet of the sword, it will attack that creature, making a melee spell attack. On a hit, the target takes {@damage 3d10} + your spell casting ability modifier force damage on hit. It cannot attack again until you issue a command again."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "{@action Spin}",
-					"entries": [
-						"The sword will move up to 20 feet toward a point, when it reaches that point it will begin to spin in a deadly whirl. Creatures that start their turn or enter for the first time on their turn within 5 feet of the sword must pass a Dexterity saving throw, or take {@damage 4d10} force damage."
+						"Another example of a {@spell tenser's transformation|XGE|great wizard's spell} being tragically incompletely copied from the ancient sources that clearly forgot to include the lines the equip the Wizard with gear to fit their transformation."
 					]
 				}
 			],
 			"damageInflict": [
 				"force"
 			],
-			"savingThrow": [
-				"dexterity"
+			"miscTags": [
+				"THP"
 			],
 			"classes": {
 				"fromClassList": [
 					{
 						"name": "Wizard",
-						"source": "PHB"
-					},
-					{
-						"name": "Bard",
 						"source": "PHB"
 					}
 				]
@@ -2912,6 +3377,7 @@
 		{
 			"name": "Mutate",
 			"source": "KibblesTasty:CC",
+			"page": 26,
 			"level": 3,
 			"school": "T",
 			"time": [
@@ -2948,24 +3414,24 @@
 					"items": [
 						"Your body becomes malleable and amorphous. You have advantage on saves and checks against grapples and the {@condition restrained} condition, you do not suffer disadvantage from squeezing into smaller spaces, and you can squeeze through openings two sizes smaller than you.",
 						"You grow one additional appendage. This appendage serves as arm and a hand, though it can take the shape an arm, tentacle, or similar appendage.",
-						"You spout antennae that give you {@sense tremorsense} with a range of 30 feet.",
-						"You extend the length of your limbs, giving you a 10 foot reach on melee attacks, touch spells, and object interactions.",
-						"Your flesh hardens, your base AC becomes 13 + your dexterity modifier if it is not already higher.",
-						"You grow a vicious natural weapon; this weapon can have the statistics of any martial melee weapon and takes on a form vaguely reminiscent of it. You have proficiency with this weapon, and are considered holding it. You can use your spellcasting modifier in place of your Strength modifier for attack and damage rolls with this natural weapon.",
+						"You extend the length of your limbs, increasing the reach on melee attacks, touch spells, and object interactions by 5 feet.",
+						"Your flesh hardens, your base AC becomes 14 + your dexterity modifier if it is not already higher.",
 						"You grow more resilient, adapting against one external threat. You gain advantage on one type of saving throw of your choice.",
-						"You can gain any of the effects of the {@spell alter self} spell. You can select this multiple times to gain multiple benefits of the {@spell alter self} spell.",
-						"You can gain either of the effects of the {@spell enlarge/reduce} spell.",
-						"You gain the effect of the {@spell spider climb} spell."
+						"You adapt your body to an aquatic environment, sprouting gills and growing webbing between your fingers. You can breathe underwater and gain a swimming speed equal to your walking speed.",
+						"Your body grows ablative armor. You gain temporary hit points equal to your spellcasting ability modifier at the start of each of your turns.",
+						"You can grow one size larger or smaller.",
+						"You sprout wings. You gain a flying speed of 30 feet.",
+						"You grow a natural weapon; this weapon can have the statistics of any martial melee weapon without the thrown property, and takes on a form vaguely reminiscent of it. You have proficiency with this weapon, and are considered to be holding it. You can use your spellcasting modifier in place of your Strength or Dexterity modifier for attack and damage rolls with this natural weapon. The natural weapon is magic and you have a +1 bonus to the attack and damage rolls you make using it."
 					]
 				},
-				"For the duration of the spell, you can use an action to change one or all of the properties, losing the benefits of your previously select properties and gaining the benefits of the new selected properties."
+				"For the duration of the spell, you can use an action to change one or all of the properties, losing the benefits of your previously selected properties and gaining the benefits of the new selected properties."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th or higher, you can select one additional properties from the list of options for each slot level above 3rd."
+						"When you cast this spell using a spell slot of 4th or higher, you can select one additional property from the list of options, with one additional property per spell level above 3rd."
 					]
 				}
 			],
@@ -2994,119 +3460,9 @@
 			}
 		},
 		{
-			"name": "Multishot",
-			"source": "KibblesTasty:CC",
-			"level": 1,
-			"school": "V",
-			"time": [
-				{
-					"number": 1,
-					"unit": "bonus"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "touch"
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true,
-				"m": {
-					"text": "a piece of ammunition or weapon with the thrown property worth at least 1 cp",
-					"cost": 1
-				}
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "round",
-						"amount": 1
-					}
-				}
-			],
-			"entries": [
-				"You touch a piece of ammunition or weapon with the thrown property, giving it a magical duplicate superimposed over it until the end of your next turn. The first time you attack with that weapon before the end of your next turn, select a second target within range of the weapon for the attack, making a separate ranged weapon attack roll for the magically duplicated projectile. On hit, the target takes {@damage 2d8} force damage. This damage roll does not add any modifiers or bonus associated to weapon attacks.",
-				"Once an attack has been made with the piece of ammunition or weapon, the spell ends."
-			],
-			"entriesHigherLevel": [
-				{
-					"type": "entries",
-					"name": "At Higher Levels",
-					"entries": [
-						"When you cast this spell using a spell slot of 2nd Level or higher, you can select one additional target for each slot level above 1st."
-					]
-				}
-			],
-			"damageInflict": [
-				"force"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Ranger",
-						"source": "PHB"
-					}
-				]
-			}
-		},
-		{
-			"name": "Martial Steel Wind Strike",
-			"source": "KibblesTasty:CC",
-			"level": 5,
-			"school": "C",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "radius",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true,
-				"m": {
-					"text": "a melee weapon you are proficient with worth at least 1 sp",
-					"cost": 10
-				}
-			},
-			"duration": [
-				{
-					"type": "instant"
-				}
-			],
-			"entries": [
-				"You flourish a weapon you are proficient with used in the casting and then vanish to strike like the wind. Choose up to five creatures you can see within range. Make a melee weapon attack against each target. On a hit, a target takes {@damage 6d10} damage of the weapon's damage type.",
-				"You can then teleport to an unoccupied space you can see within 5 feet of one of the targets you hit or missed."
-			],
-			"miscTags": [
-				"SGT",
-				"TP"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Ranger",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			}
-		},
-		{
 			"name": "Rain of Spiders",
 			"source": "KibblesTasty:CC",
+			"page": 28,
 			"level": 3,
 			"school": "C",
 			"time": [
@@ -3167,6 +3523,7 @@
 		{
 			"name": "Repair",
 			"source": "KibblesTasty:CC",
+			"page": 28,
 			"level": 4,
 			"school": "T",
 			"time": [
@@ -3205,19 +3562,12 @@
 			],
 			"miscTags": [
 				"HL"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Artificer",
-						"source": "TCE"
-					}
-				]
-			}
+			]
 		},
 		{
 			"name": "Revised Dust Devil",
 			"source": "KibblesTasty:CC",
+			"page": 28,
 			"level": 2,
 			"school": "C",
 			"time": [
@@ -3250,7 +3600,7 @@
 			],
 			"entries": [
 				"Choose a target point on the ground that you can see within range. A small cyclone whips up at the target point with a radius of 5 feet and a height of 30 feet.",
-				"Any creature that starts its turn within the radius of the dust devil or enters its radius for the first time during its turn must make a Strength saving throw. On a failed save, the creature takes {@damage 1d12} bludgeoning damage is pushed 5 feet away. On a successful save, the creature takes half as much damage isn't pushed.",
+				"Any creature that starts its turn within the radius of the dust devil or enters its radius for the first time during its turn must make a Strength saving throw. On a failed save, the creature takes {@damage 1d12} bludgeoning damage is pushed 5 feet away from the center. On a successful save, the creature takes half as much damage isn't pushed.",
 				"As a bonus action, you can move the dust devil up 30 feet in any direction. The first time you pass the dust devil's radius through a creature, that creature must make the saving throw against the dust devils's damage and are pushed out its way on failure. You can continue to move the dust devil, but its strength is exhausted until the end of your turn and subsequent creatures an unaffected by it passing through them.",
 				"If the dust devil moves over sand, dust, loose dirt, or small gravel, it sucks up the material and heavily obscures its radius until the start of your next turn."
 			],
@@ -3288,6 +3638,7 @@
 		{
 			"name": "Rotting Curse",
 			"source": "KibblesTasty:CC",
+			"page": 28,
 			"level": 1,
 			"school": "N",
 			"time": [
@@ -3330,11 +3681,20 @@
 			],
 			"miscTags": [
 				"HL"
-			]
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT:O"
+					}
+				]
+			}
 		},
 		{
 			"name": "Seeking Projectile",
 			"source": "KibblesTasty:CC",
+			"page": 29,
 			"level": 1,
 			"school": "T",
 			"time": [
@@ -3351,7 +3711,11 @@
 			},
 			"components": {
 				"v": true,
-				"s": true
+				"s": true,
+				"m": {
+					"text": "a piece of ammunition or weapon with the thrown property worth at least 1 cp",
+					"cost": 1
+				}
 			},
 			"duration": [
 				{
@@ -3364,130 +3728,12 @@
 				}
 			],
 			"entries": [
-				"You touch a piece of ammunition or weapon with the thrown property imbuing it with the property of seeking its target.",
-				"When a ranged attack roll is made with that weapon, the attack roll can add your spell casting modifier to the value on the dice. If that makes the value on the die a 20 or more, the attack is a critical hit as if a 20 was rolled. After making the attack roll, the spell ends."
+				"You touch a piece of ammunition or weapon with the thrown property imbuing it with the property of seeking its target. When a ranged attack roll is made with that weapon, the attack roll can add your spell casting modifier to the value on the dice. If that makes the value on the die a 20 or more, the attack is a critical hit as if a 20 was rolled. After making the attack roll, the spell ends."
 			],
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Artificer",
-						"source": "TCE"
-					}
-				]
-			}
-		},
-		{
-			"name": "Skyburst",
-			"source": "KibblesTasty:CC",
-			"level": 5,
-			"school": "V",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"duration": [
-				{
-					"type": "instant"
-				}
-			],
-			"entries": [
-				"Five bolts of lightning strike five points of your choice that you can see within range. Each point must be at least 10 feet from all other selected points. Each creature within 5 feet of the chosen points must make a Dexterity saving throw. A creature takes {@damage 4d12} damage on a failed save, or half as much on a successful one."
-			],
-			"entriesHigherLevel": [
-				{
-					"type": "entries",
-					"name": "At Higher Levels",
-					"entries": [
-						"When you cast this spell using a spell slot of 6th level or higher, you can call down an additional bolt of lightning targeting another point within range for each slot level above 5th."
-					]
-				}
-			],
-			"savingThrow": [
-				"dexterity"
-			],
-			"miscTags": [
-				"SGT"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Druid",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			}
-		},
-		{
-			"name": "Sonic Shriek",
-			"source": "KibblesTasty:CC",
-			"level": 5,
-			"school": "V",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "cone",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"duration": [
-				{
-					"type": "instant"
-				}
-			],
-			"entries": [
-				"You emit a sonic blast covering a huge area. Each creature in a 120 foot cone must make a Constitution saving throw. On a failed save, a creature takes {@damage 6d8} damage if they are within 60 feet of you, or {@damage 3d8} damage if they are further than 60 feet from you. On a successful save, a creature takes half as much damage."
-			],
-			"entriesHigherLevel": [
-				{
-					"type": "entries",
-					"name": "At Higher Levels",
-					"entries": [
-						"When you cast this spell using a spell slot of 6th level or higher, the damage increases by {@dice 1d8} for each slot level above 5th."
-					]
-				}
-			],
-			"savingThrow": [
-				"constitution"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
+						"name": "Ranger",
 						"source": "PHB"
 					}
 				]
@@ -3496,6 +3742,7 @@
 		{
 			"name": "Spelltrap",
 			"source": "KibblesTasty:CC",
+			"page": 29,
 			"level": 2,
 			"school": "A",
 			"time": [
@@ -3525,7 +3772,14 @@
 			],
 			"entries": [
 				"You create a spelltrap, marking it on yourself, typically as a small glowing mark on your skin. The first time you have to make a saving throw against a 1st level or below spell, the spell is absorbed by the spell trap and none of the effects of the spell take place.",
-				"On your next turn, you can cast the spell absorbed the spell trap without expending a spell slot. If you do not cast the spell during your next turn, the spell trap fades and trapped spell is lost."
+				"On your next turn, you can cast the spell absorbed the spell trap without expending a spell slot. If you do not cast the spell during your next turn, the spell trap fades and trapped spell is lost.",
+				{
+					"type": "inset",
+					"name": "Note:",
+					"entries": [
+						"Spelltrap absorbs the first spell you have to save against that qualifies it for the criteria."
+					]
+				}
 			],
 			"entriesHigherLevel": [
 				{
@@ -3560,6 +3814,7 @@
 		{
 			"name": "Stone Forming",
 			"source": "KibblesTasty:CC",
+			"page": 30,
 			"level": 0,
 			"school": "T",
 			"time": [
@@ -3584,7 +3839,7 @@
 				}
 			],
 			"entries": [
-				"You touch a stone surface or the ground, and call forth stone that shapes itself to your command. You can make any roughly shaped item from the stone, including functional simple or martial melee weapons."
+				"You touch a stone surface or the ground, and call forth stone that shapes itself to your command. You can make any roughly shaped Small or Tiny item from the stone, including functional simple or martial melee weapons (for Medium or smaller creatures). Items made this way lose any magical durability after one hour, and become easily broken if they would not normally be functional in that shape."
 			],
 			"classes": {
 				"fromClassList": [
@@ -3593,7 +3848,61 @@
 						"source": "PHB"
 					},
 					{
+						"name": "Occultist",
+						"source": "KT:O"
+					},
+					{
 						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Sprout Tree",
+			"source": "KibblesTasty:CC",
+			"page": 30,
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Targeting a 5-foot square on the ground that you can see within range, you cause a tree to sprout from the ground, growing rapidly to 20 feet tall with a 2-foot-radius trunk. This spell can only target a surface through with a tree could grow (for example, you can't target solid rock). At the DM's discretion, it can burst through up to 6 inches of most material.",
+				"A Large or smaller creature in this space must make a Dexterity saving throw. On a failure, they are lifted 20 feet into the air in the branches of the tree. On a success, they move 5 feet to an occupied space of their choice (if there is no space they can move, they automatically fail). A Large or smaller creature can choose to fail their saving throw. A Huge or large creature automatically succeeds on their save. The tree stops growing if it would hit a ceiling or other object when growing.",
+				"The tree provides as half cover to any creature within its branches, and three-quarters cover from effects originating on the other side of its trunk. The tree has an AC 13 and 50 hit points.",
+				"The tree remains there, but may die rapidly if sprouted in an unsuitable location or environment. Its wood is flammable only when dried, and serves no useful purpose other than firewood."
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
 						"source": "PHB"
 					}
 				]
@@ -3602,6 +3911,7 @@
 		{
 			"name": "Spiritual Consultation",
 			"source": "KibblesTasty:CC",
+			"page": 31,
 			"level": 1,
 			"school": "N",
 			"time": [
@@ -3645,6 +3955,8 @@
 		},
 		{
 			"name": "Summon Archon",
+			"source": "KibblesTasty:CC",
+			"page": 31,
 			"level": 2,
 			"school": "C",
 			"time": [
@@ -3658,6 +3970,14 @@
 				"distance": {
 					"type": "feet",
 					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an ornate relic worth at least 200 gp",
+					"cost": 20000
 				}
 			},
 			"duration": [
@@ -3691,16 +4011,6 @@
 				"You call forth a minor celestial archon. It manifests in an unoccupied space that you can see within range. It takes the form of the {@creature archon spirit|KibblesTasty:CC} stat block. When you cast the spell, choose Hound, Lantern, or Trumpet. The creature resembles the Archon of your choice, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.",
 				"The creature is allied to you and your companions. In combat, the creature shares your initiative count, but it takes its turn immediately after yours. It obeys your verbal commands (no action required by you). if you don't issue any, it takes the {@action Dodge} action and uses its move to avoid danger."
 			],
-			"source": "KibblesTasty:CC",
-			"page": 31,
-			"components": {
-				"v": true,
-				"s": true,
-				"m": {
-					"text": "an ornate relic worth at least 200 gp",
-					"cost": 20000
-				}
-			},
 			"entriesHigherLevel": [
 				{
 					"name": "At Higher Levels",
@@ -3716,6 +4026,8 @@
 		},
 		{
 			"name": "Summon Dragon",
+			"source": "KibblesTasty:CC",
+			"page": 32,
 			"level": 5,
 			"school": "C",
 			"time": [
@@ -3742,6 +4054,14 @@
 					"concentration": true
 				}
 			],
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a dragon statuette worth at least 500 gp",
+					"cost": 50000
+				}
+			},
 			"classes": {
 				"fromClassList": [
 					{
@@ -3824,16 +4144,6 @@
 					]
 				}
 			],
-			"source": "KibblesTasty:CC",
-			"page": 32,
-			"components": {
-				"v": true,
-				"s": true,
-				"m": {
-					"text": "a dragon statuette worth at least 500 gp",
-					"cost": 50000
-				}
-			},
 			"entriesHigherLevel": [
 				{
 					"name": "At Higher Levels",
@@ -3970,8 +4280,143 @@
 			]
 		},
 		{
+			"name": "Summon Plant",
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1,
+						"upTo": true
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You call forth a magical plant. It manifests in an unoccupied space that you can see within range. This corporeal form uses the {@creature Plant Spirit|KibblesTasty:CC} stat block. When you cast the spell, choose Dryad, Shambling Mound, or Treant. The creature resembles the creature of your choice, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.",
+				"The creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turn immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the {@action Dodge} action and uses its move to avoid danger."
+			],
+			"source": "KibblesTasty:CC",
+			"page": 34,
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a carved wooden figurine worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"entriesHigherLevel": [
+				{
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell of 4th level or higher, use the higher level whenever the spell's level appears in the stat block."
+					]
+				}
+			],
+			"miscTags": [
+				"SCL",
+				"SMN"
+			]
+		},
+		{
+			"name": "Summon Swarm",
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1,
+						"upTo": true
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You call forth a magical swarm. It manifests in an unoccupied space that you can see within range. This corporeal form uses the {@creature Swarm Spirit|KibblesTasty:CC} stat block. When you cast the spell, choose from Quippers, Spiders, or Wasps. The creature resembles the creature of your choice, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.",
+				"The creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turn immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the {@action Dodge} action and uses its move to avoid danger."
+			],
+			"source": "KibblesTasty:CC",
+			"page": 35,
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a golden insect worth at least 200 gp",
+					"cost": 20000
+				}
+			},
+			"entriesHigherLevel": [
+				{
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, use the higher level whenever the spell's level appears in the stat block."
+					]
+				}
+			],
+			"miscTags": [
+				"SCL",
+				"SMN"
+			]
+		},
+		{
 			"name": "Swapping Curse",
 			"source": "KibblesTasty:CC",
+			"page": 36,
 			"level": 5,
 			"school": "E",
 			"time": [
@@ -4014,13 +4459,21 @@
 				"necrotic"
 			],
 			"savingThrow": [
-				"charisma",
-				"constitution"
-			]
+				"charisma"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT:O"
+					}
+				]
+			}
 		},
 		{
 			"name": "Thunderburst Mine",
 			"source": "KibblesTasty:CC",
+			"page": 36,
 			"level": 2,
 			"school": "A",
 			"time": [
@@ -4059,12 +4512,63 @@
 			],
 			"savingThrow": [
 				"constitution"
+			]
+		},
+		{
+			"name": "Thunder Note",
+			"source": "KibblesTasty:CC",
+			"page": 36,
+			"level": 0,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You emit a crashing bang with a localized point of intensity targeting a creature within range. The target must succeed on a Constitution saving throw or take {@damage 1d8} thunder damage and become {@condition deafened} until the start of their next turn. Constitution saving throws to maintain concentration on spells triggered by this damage are made with disadvantage.",
+				"The spell's damage increases by {@dice 1d8} when you reach 5th level ({@dice 2d8}), 11th level ({@dice 3d8}), and 17th level ({@dice 4d8})."
+			],
+			"scalingLevelDice": {
+				"label": "thunder damage",
+				"scaling": {
+					"1": "1d8",
+					"5": "2d8",
+					"11": "3d8",
+					"17": "4d8"
+				}
+			},
+			"damageInflict": [
+				"thunder"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SCL"
 			],
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Artificer",
-						"source": "TCE"
+						"name": "Bard",
+						"source": "PHB"
 					}
 				]
 			}
@@ -4072,6 +4576,7 @@
 		{
 			"name": "Twisting Eruption",
 			"source": "KibblesTasty:CC",
+			"page": 37,
 			"level": 7,
 			"school": "C",
 			"time": [
@@ -4104,8 +4609,7 @@
 			],
 			"entries": [
 				"You target a point and call forth tendrils, twisted vines, and gnarled roots of dark energy that erupt from the ground in a 60 foot radius. All creatures of your choice must make a Dexterity saving throw or be {@condition restrained} as the shadowy plant tendrils grasp and drain the life from it.",
-				"At start of a creature's turn, if it is {@condition restrained} by the spell, it takes {@damage 2d10} bludgeoning damage, and {@damage 2d10} necrotic damage.",
-				"Each time a creature takes necrotic damage from this spell, the caster regains {@dice 1d4} hit points.",
+				"At start of a creature's turn, if it is {@condition restrained} by the spell, it takes {@damage 2d10} bludgeoning damage, and {@damage 2d10} necrotic damage. Each time a creature takes necrotic damage from this spell, the caster regains {@dice 1d4} hit points.",
 				"A creature {@condition restrained} by the tendrils can use its action to make a Strength or Dexterity check (its choice) against your spell save DC. On a success, it frees itself. A tendril can be destroyed, freeing a creature from its grasp. They have an AC of 10, 20 hit point, and are immune to all damage besides radiant and fire. Spells that deal radiant or fire damage to creatures in an area of effect also affect tendrils in that area.",
 				"Creatures that end their turn within the radius while not {@condition restrained} must make a Dexterity saving throw or become {@condition restrained} by the tendrils."
 			],
@@ -4126,6 +4630,7 @@
 		{
 			"name": "Unburden",
 			"source": "KibblesTasty:CC",
+			"page": 37,
 			"level": 1,
 			"school": "T",
 			"time": [
@@ -4155,19 +4660,12 @@
 			],
 			"entries": [
 				"A creature you touch no longer suffers the penalties to movement speed or to their Dexterity ({@skill Stealth}) checks while wearing medium or heavy armor, and is no longer encumbered from carry weight unless they are carrying more than twice the weight that would encumber them."
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Artificer",
-						"source": "TCE"
-					}
-				]
-			}
+			]
 		},
 		{
 			"name": "Vacuum Pull",
 			"source": "KibblesTasty:CC",
+			"page": 37,
 			"level": 2,
 			"school": "V",
 			"time": [
@@ -4193,8 +4691,7 @@
 				}
 			],
 			"entries": [
-				"You cause a sudden savage burst of wind to howl toward you, attempting to pull a Huge or smaller creature within range that you can see toward you. The target must succeed a Strength saving throw or is yanked off their feet and flung toward you, landing within 5 feet of you and falling {@condition prone}.",
-				"Flying creatures make the Strength save with disadvantage."
+				"You cause a sudden savage burst of wind to howl toward you, attempting to pull a Huge or smaller creature within range that you can see toward you. The target must succeed a Strength saving throw or be yanked off their feet and flung toward you, landing within 5 feet of you and falling {@condition prone}. Flying creatures make the Strength save with disadvantage."
 			],
 			"entriesHigherLevel": [
 				{
@@ -4221,6 +4718,10 @@
 						"source": "PHB"
 					},
 					{
+						"name": "Occultist",
+						"source": "KT:O"
+					},
+					{
 						"name": "Ranger",
 						"source": "PHB"
 					},
@@ -4236,8 +4737,9 @@
 			}
 		},
 		{
-			"name": "Vorpal Arrow",
+			"name": "Vorpal Shot",
 			"source": "KibblesTasty:CC",
+			"page": 37,
 			"level": 5,
 			"school": "T",
 			"time": [
@@ -4256,7 +4758,7 @@
 				"v": true,
 				"s": true,
 				"m": {
-					"text": "M (a piece of ammunition or weapon with the thrown property worth at least 1 cp).",
+					"text": "a piece of ammunition or weapon with the thrown property worth at least 1 cp",
 					"cost": 1
 				}
 			},
@@ -4285,6 +4787,7 @@
 		{
 			"name": "Vorpal Weapon",
 			"source": "KibblesTasty:CC",
+			"page": 38,
 			"level": 5,
 			"school": "T",
 			"time": [
@@ -4316,32 +4819,12 @@
 			"entries": [
 				"You touch a weapon and imbue it with power. Until the spell ends, the weapon becomes indescribably sharp, ignoring resistance to slashing damage, and gains the Siege property, dealing double damage to inanimate objects such as structures. If a weapon has a modifier of less than +3 to attack and damage rolls, its modifier becomes +3 to attack and damage rolls for the duration of the spell.",
 				"Additionally, if a critical strike of this weapon would leave a creature with less than 50 hitpoints, the target creature is decapitated, killing it."
-			],
-			"damageResist": [
-				"slashing"
-			],
-			"damageImmune": [
-				"slashing"
-			],
-			"damageVulnerable": [
-				"slashing"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Ranger",
-						"source": "PHB"
-					},
-					{
-						"name": "Artificer",
-						"source": "TCE"
-					}
-				]
-			}
+			]
 		},
 		{
 			"name": "Wind Cutter",
 			"source": "KibblesTasty:CC",
+			"page": 38,
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -4360,8 +4843,8 @@
 				"v": true,
 				"s": true,
 				"m": {
-					"text": "a melee weapon that deals damage worth at least 1 sp",
-					"cost": 10
+					"text": "a melee weapon that deals damage worth at least 1 cp",
+					"cost": 1
 				}
 			},
 			"duration": [
@@ -4384,12 +4867,12 @@
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Artificer",
-						"source": "TCE"
-					},
-					{
 						"name": "Druid",
 						"source": "PHB"
+					},
+					{
+						"name": "Occultist",
+						"source": "KT:O"
 					},
 					{
 						"name": "Ranger",
@@ -4405,6 +4888,7 @@
 		{
 			"name": "Windsense",
 			"source": "KibblesTasty:CC",
+			"page": 39,
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -4454,6 +4938,7 @@
 		{
 			"name": "Whirling Conflagration",
 			"source": "KibblesTasty:CC",
+			"page": 39,
 			"level": 3,
 			"school": "T",
 			"time": [
@@ -4472,8 +4957,8 @@
 			"components": {
 				"v": true,
 				"m": {
-					"text": "a melee weapon you are proficient with worth at least 1 sp",
-					"cost": 10
+					"text": "a melee weapon you are proficient with worth at least 1 cp",
+					"cost": 1
 				}
 			},
 			"duration": [
@@ -4482,7 +4967,7 @@
 				}
 			],
 			"entries": [
-				"You flourish a weapon weapon you are proficient with used in the casting and then whirl around, ignited it in whirling conflagration. Make a melee weapon attack against each target within 15 feet. Each target takes {@damage 6d6} fire damage on hit, or half as much on a miss"
+				"You flourish the weapon used in the casting and then whirl it around, igniting it in whirling conflagration. Make a melee weapon attack against each creature within 15 feet. (Using the same roll against each creature) Each target takes {@damage 6d6} fire damage on hit, or half as much on a miss"
 			],
 			"entriesHigherLevel": [
 				{
@@ -4508,6 +4993,7 @@
 		{
 			"name": "Wither",
 			"source": "KibblesTasty:CC",
+			"page": 39,
 			"level": 3,
 			"school": "N",
 			"time": [
@@ -4538,7 +5024,7 @@
 				}
 			],
 			"entries": [
-				"Dark energy tears the moisture from a body, sapping of life and vitality. The target must make a Constitution saving throw. The target takes {@damage 4d10} necrotic damage on a failed save and becomes withered until the start of your next turn, or half as much on a successful one and does not become withered. A withered creature gains vulnerability to fire damage if they are not resistance to fire damage, or loses their resistance to fire if they were resistant to fire."
+				"Dark energy tears the moisture from a body, sapping of life and vitality from a creature within range. The target must make a Constitution saving throw. The target takes {@damage 4d10} necrotic damage on a failed save and becomes withered until the start of your next turn, or half as much on a successful one and does not become withered. A withered creature gains vulnerability to fire damage if they are not resistant to it, or loses their resistance to fire if they were resistant to fire."
 			],
 			"entriesHigherLevel": [
 				{
@@ -4548,12 +5034,6 @@
 						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@dice 1d10} for each slot level above 5th."
 					]
 				}
-			],
-			"damageResist": [
-				"fire"
-			],
-			"damageImmune": [
-				"fire"
 			],
 			"damageVulnerable": [
 				"fire"
@@ -4574,602 +5054,15 @@
 			}
 		},
 		{
-			"name": "Become Stone",
-			"source": "KibblesTasty:EFS",
-			"level": 2,
-			"school": "T",
-			"time": [
-				{
-					"number": 1,
-					"unit": "bonus"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "self"
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "round",
-						"amount": 1
-					}
-				}
-			],
-			"entries": [
-				"You solidify into a stone. Until the start of your next turn,you are {@condition petrified}. Your AC becomes 20 and you gain temporary hit points equal to your spell casting modifier while {@condition petrified}."
-			],
-			"conditionInflict": [
-				"petrified"
-			],
-			"miscTags": [
-				"MAC",
-				"THP"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Druid",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Warlock",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			}
-		},
-		{
-			"name": "Become Water",
-			"source": "KibblesTasty:EFS",
-			"level": 2,
-			"school": "T",
-			"time": [
-				{
-					"number": 1,
-					"unit": "bonus"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "self"
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "round",
-						"amount": 1
-					}
-				}
-			],
-			"entries": [
-				"You become a burst of elemental water. Until the start of your next turn, you gain resistance to bludgeoning, slashing, and piercing attacks damage from nonmagical attacks.",
-				"Additionally, you can move through the space of other creatures and ignore difficult terrain; the first time you move through a Large or smaller creature, it must pass a Strength saving throw or be knocked {@condition prone}."
-			],
-			"conditionInflict": [
-				"prone"
-			],
-			"savingThrow": [
-				"strength"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Druid",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Warlock",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			}
-		},
-		{
-			"name": "Become Wind",
-			"source": "KibblesTasty:EFS",
-			"level": 2,
-			"school": "T",
-			"time": [
-				{
-					"number": 1,
-					"unit": "bonus"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "self"
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "round",
-						"amount": 1
-					}
-				}
-			],
-			"entries": [
-				"You become a burst of elemental wind until the start of the next turn. You gain resistance to lightning damage and bludgeoning, slashing, and piercing attacks damage from nonmagical attacks. Additionally, you gain flying speed of 30 feet, can move through the space of other creatures, and ignore difficult terrain, but will fall at the start of your next turn if not held aloft."
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Druid",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Warlock",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			}
-		},
-		{
-			"name": "Form of Fire",
-			"source": "KibblesTasty:EFS",
-			"level": 6,
-			"school": "T",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "self"
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "minute",
-						"amount": 10
-					},
-					"concentration": true
-				}
-			],
-			"entries": [
-				"You become elemental fire, shedding bright light in a 30-foot radius and dim light for an additional 30 feet. Until the spell ends, you gain the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"You are immune to fire damage.",
-						"You can move through the space of other creatures and ignore difficult terrain. The first time on your turn you enter the space of another creature, it takes {@damage 1d6} fire damage.",
-						"If a creature within 5 feet hits you with a melee attack, it takes {@damage 1d6} fire damage.",
-						"You can use your action to create a line of fire 30 feet long and 5 feet wide extending from you in a direction of your choice. Each creature in the line must make a Dexterity saving throw. A creature takes {@damage 6d6} fire damage on a failed save, or half as much damage on a successful one.",
-						"During your turn, if you roll fire damage, you can maximize one die of the damage dealt."
-					]
-				}
-			],
-			"damageInflict": [
-				"fire"
-			],
-			"savingThrow": [
-				"dexterity"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Druid",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Warlock",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			}
-		},
-		{
-			"name": "Form of Ice",
-			"source": "KibblesTasty:EFS",
-			"level": 6,
-			"school": "T",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "self"
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "minute",
-						"amount": 10
-					},
-					"concentration": true
-				}
-			],
-			"entries": [
-				"You freeze over, becoming a form of elemental ice. Until the spell ends, you gain the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"You are immune to cold damage.",
-						"You can move across difficult terrain created by ice or snow without spending extra movement.",
-						"The ground in a 10-foot radius around you is icy and is difficult terrain for creatures other than you. The radius moves with you.",
-						"You can use your action to create a 20-foot cone of freezing wind extending from your outstretched hand in a direction you choose. Each creature in the cone must make a Constitution saving throw. A creature takes {@damage 4d8} cold damage on a failed save, or half as much damage on a successful one. A creature that fails its save against this effect has its speed halved until the start of your next turn.",
-						"During your turn, if you roll cold damage, you gain temporary hit points equal to one die rolled (your choice)."
-					]
-				}
-			],
-			"damageInflict": [
-				"cold"
-			],
-			"savingThrow": [
-				"constitution"
-			],
-			"miscTags": [
-				"THP"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Druid",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Warlock",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			}
-		},
-		{
-			"name": "Form of Wind",
-			"source": "KibblesTasty:EFS",
-			"level": 6,
-			"school": "T",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "self"
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "minute",
-						"amount": 10
-					},
-					"concentration": true
-				}
-			],
-			"entries": [
-				"You become a gust of elemental wind. Until the spell ends, you gain the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"You have a flying speed of 60 feet.",
-						"You can move through and occupy the space of other creatures, and you ignore difficult terrain.",
-						"You are {@condition invisible}.",
-						"You can use your action to unleash a powerful blast of wind in a 30 foot cone. Each creature in the cone must make a Strength saving throw. A creature takes {@damage 4d8} bludgeoning damage is knocked 15 feet away from you on a failed save, or half as much damage isn't knocked backward on a successful one."
-					]
-				}
-			],
-			"damageInflict": [
-				"bludgeoning"
-			],
-			"conditionInflict": [
-				"invisible"
-			],
-			"savingThrow": [
-				"strength"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Druid",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Warlock",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			}
-		},
-		{
-			"name": "Form of Water",
-			"source": "KibblesTasty:EFS",
-			"level": 6,
-			"school": "T",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "self"
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "minute",
-						"amount": 10
-					},
-					"concentration": true
-				}
-			],
-			"entries": [
-				"You become a surge of elemental water. Until the spell ends, you gain the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"You have resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.",
-						"You can move through the space of other creatures and ignore difficult terrain; the first time you move through a Large or smaller creature, it must pass a Strength saving throw or be knocked {@condition prone}.",
-						"You can use your action to unleash a blast of water 15 feet long and 5 feet wide extending from you in a direction your choice. Each creature in the line must make a Strength saving throw. A creature takes {@damage 5d6} bludgeoning damage and is knocked {@condition prone} on a failed save, or half as much and isn't knocked {@condition prone} on a successful one."
-					]
-				}
-			],
-			"damageInflict": [
-				"bludgeoning"
-			],
-			"conditionInflict": [
-				"prone"
-			],
-			"savingThrow": [
-				"strength"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Druid",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Warlock",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			}
-		},
-		{
-			"name": "Form of Stone",
-			"source": "KibblesTasty:EFS",
-			"level": 6,
-			"school": "T",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "self"
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "minute",
-						"amount": 10
-					},
-					"concentration": true
-				}
-			],
-			"entries": [
-				"You become made of stone. Until the spell ends, you gain the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"You have resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.",
-						"You can move across difficult terrain made of earth or stone without spending extra movement. You can move through solid earth or stone as if it was air and without destabilizing it, but you can't end your movement there. If you do so, you are ejected to the nearest unoccupied space, this spell ends, and you are {@condition stunned} until the end of your next turn.",
-						"You can use your action to call spikes of stone to raise from the ground. All creatures of your choice within 15 feet of you must make a Dexterity saving throw. A creature takes {@damage 4d8} piercing damage on a failed save, or half as much on a successful one. Their space becomes difficult terrain either way."
-					]
-				}
-			],
-			"damageInflict": [
-				"piercing"
-			],
-			"conditionInflict": [
-				"stunned"
-			],
-			"savingThrow": [
-				"dexterity"
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Druid",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Warlock",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			}
-		},
-		{
-			"name": "Elemental Avatar",
-			"source": "KibblesTasty:EFS",
-			"level": 9,
-			"school": "T",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "self"
-				}
-			},
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "minute",
-						"amount": 10
-					},
-					"concentration": true
-				}
-			],
-			"entries": [
-				"For the duration of the spell, you gain the benefits of the {@spell form of fire|kefs}, form of ice|kefs}, {@spell form of wind|kefs}, {@spell form of water|kefs}, and {@spell form of stone|kefs} spells."
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Druid",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Warlock",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			}
-		},
-		{
 			"name": "Erode",
 			"source": "KibblesTasty:GS",
 			"page": 4,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 18
+				}
+			],
 			"level": 3,
 			"school": "C",
 			"time": [
@@ -5223,6 +5116,10 @@
 					{
 						"name": "Wizard",
 						"source": "PHB"
+					},
+					{
+						"name": "Occultist",
+						"source": "KT:O"
 					}
 				]
 			}
@@ -5231,6 +5128,12 @@
 			"name": "Acid Rain",
 			"source": "KibblesTasty:GS",
 			"page": 4,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 7
+				}
+			],
 			"level": 5,
 			"school": "C",
 			"time": [
@@ -5263,7 +5166,7 @@
 			],
 			"entries": [
 				"Acid rain begins falling within a 40-foot-radius 60-foot-high cylinder centered on a point you choose within range. When a creature moves into the spell's area for the first time on a turn or starts its turn there, the creature must succeed on a Dexterity saving throw or take {@damage 8d4} acid damage, and becomes covered in acid.",
-				"A creature takes {@damage 2d4} acid damage if it ends its turn while covered with acid. A creature can clear the acid with an action."
+				"A creature takes {@damage 3d4} acid damage if it ends its turn while covered with acid. A creature can clear the acid with an action."
 			],
 			"damageInflict": [
 				"acid"
@@ -5291,6 +5194,12 @@
 			"name": "Arctic Breath",
 			"source": "KibblesTasty:GS",
 			"page": 4,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 8
+				}
+			],
 			"level": 1,
 			"school": "C",
 			"time": [
@@ -5360,6 +5269,12 @@
 			"name": "Entomb",
 			"source": "KibblesTasty:GS",
 			"page": 4,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 18
+				}
+			],
 			"level": 1,
 			"school": "T",
 			"time": [
@@ -5404,9 +5319,7 @@
 				}
 			],
 			"damageInflict": [
-				"bludgeoning",
-				"cold",
-				"fire"
+				"cold"
 			],
 			"conditionInflict": [
 				"restrained"
@@ -5434,6 +5347,12 @@
 			"name": "Cold Snap",
 			"source": "KibblesTasty:GS",
 			"page": 4,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 13
+				}
+			],
 			"level": 2,
 			"school": "V",
 			"time": [
@@ -5450,7 +5369,6 @@
 				}
 			},
 			"components": {
-				"v": true,
 				"s": true
 			},
 			"duration": [
@@ -5500,6 +5418,12 @@
 			"name": "Flash Freeze",
 			"source": "KibblesTasty:GS",
 			"page": 4,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 19
+				}
+			],
 			"level": 3,
 			"school": "V",
 			"time": [
@@ -5565,9 +5489,100 @@
 			}
 		},
 		{
+			"name": "Form of Ice",
+			"source": "KibblesTasty:GS",
+			"page": 5,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 20
+				},
+				{
+					"source": "KibblesTasty:EFS",
+					"page": 2
+				}
+			],
+			"level": 6,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"You freeze over, becoming a form of elemental ice. Until the spell ends, you gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You are immune to cold damage.",
+						"You can move across difficult terrain created by ice or snow without spending extra movement.",
+						"The ground in a 10-foot radius around you is icy and is difficult terrain for creatures other than you. The radius moves with you.",
+						"You can use your action to create a 30-foot cone of freezing wind extending from your outstretched hand in a direction you choose. Each creature in the cone must make a Constitution saving throw. A creature takes {@damage 4d8} cold damage on a failed save, or half as much damage on a successful one. A creature that fails its save against this effect has its speed halved until the start of your next turn.",
+						"During your turn, if you roll cold damage, you gain temporary hit points equal to one die rolled (your choice)."
+					]
+				}
+			],
+			"damageInflict": [
+				"cold"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"THP"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
 			"name": "Ice Spike",
 			"source": "KibblesTasty:GS",
 			"page": 5,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 22
+				}
+			],
 			"level": 4,
 			"school": "V",
 			"time": [
@@ -5628,9 +5643,87 @@
 			}
 		},
 		{
+			"name": "Become Stone",
+			"source": "KibblesTasty:GS",
+			"page": 5,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 11
+				},
+				{
+					"source": "KibblesTasty:EFS",
+					"page": 1
+				}
+			],
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You solidify into a stone. Until the start of your next turn, you are {@condition petrified}. Your AC becomes 20 and you gain 10 temporary hit points. Any remaining temporary hit points fade when the spell ends."
+			],
+			"conditionInflict": [
+				"petrified"
+			],
+			"miscTags": [
+				"MAC",
+				"THP"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
 			"name": "Earth Ripple",
 			"source": "KibblesTasty:GS",
 			"page": 5,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 17
+				}
+			],
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -5703,6 +5796,12 @@
 			"name": "Fissure",
 			"source": "KibblesTasty:GS",
 			"page": 5,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 19
+				}
+			],
 			"level": 5,
 			"school": "T",
 			"time": [
@@ -5729,7 +5828,7 @@
 			],
 			"entries": [
 				"You rend asunder the earth in a 60-foot-long 5-foot-wide line, targeting an area of dirt, sand, or rock at least 10 feet deep.",
-				"Creatures in that line must make a Dexterity save. On a failure, a creature falls into a suddenly opened crevice in the ground, falling into it before it snaps shut, crushing them. From the fall and crush, creatures that fail the saving throw take {@damage 6d10} bludgeoning damage. The creature is buried in 10 feet of rubble, and creatures without a burrowing speed require 30 feet of movement to extract themselves from the loose rubble to return to where they failed the saving throw. If they end their turn while buried, they take an additional {@damage 1d10} bludgeoning damage."
+				"Creatures in that line must make a Dexterity saving throw. On a failure, a creature falls into a suddenly opened crevice in the ground, falling into it before it snaps shut, crushing them. Creatures that fail the saving throw take {@damage 6d10} bludgeoning damage from the fall and crushing. The creature is buried in 10 feet of rubble, and creatures without a burrowing speed require 25 feet of movement to extract themselves from the loose rubble to return to where they failed the saving throw. If they end their turn while buried, they take an additional {@damage 1d10} bludgeoning damage."
 			],
 			"damageInflict": [
 				"bludgeoning"
@@ -5761,9 +5860,98 @@
 			}
 		},
 		{
+			"name": "Form of Stone",
+			"source": "KibblesTasty:GS",
+			"page": 6,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 21
+				},
+				{
+					"source": "KibblesTasty:EFS",
+					"page": 2
+				}
+			],
+			"level": 6,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"You become made of stone. Until the spell ends, you gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You have resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.",
+						"You can move across difficult terrain made of earth or stone without spending extra movement. You can move through solid earth or stone as if it was air and without destabilizing it, but you can't end your movement there. If you do so, you are ejected to the nearest unoccupied space, this spell ends, and you are {@condition stunned} until the end of your next turn.",
+						"You can use your action to call spikes of stone to raise from the ground. All creatures of your choice within 15 feet of you must make a Dexterity saving throw. A creature takes {@damage 4d8} piercing damage on a failed save, or half as much on a successful one. Their space becomes difficult terrain either way."
+					]
+				}
+			],
+			"damageInflict": [
+				"piercing"
+			],
+			"conditionInflict": [
+				"stunned"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
 			"name": "Orbital Stones",
 			"source": "KibblesTasty:GS",
-			"page": 5,
+			"page": 6,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 27
+				}
+			],
 			"level": 4,
 			"school": "T",
 			"time": [
@@ -5826,7 +6014,13 @@
 		{
 			"name": "Stone Fist",
 			"source": "KibblesTasty:GS",
-			"page": 5,
+			"page": 6,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 30
+				}
+			],
 			"level": 1,
 			"school": "T",
 			"time": [
@@ -5901,9 +6095,173 @@
 			}
 		},
 		{
+			"name": "Become Fire",
+			"source": "KibblesTasty:GS",
+			"page": 6,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 11
+				},
+				{
+					"source": "KibblesTasty:EFS",
+					"page": 1
+				}
+			],
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You become a burst of elemental flames. Until the start of your next turn, you gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You are resistant to fire damage and to bludgeoning, piercing, and slashing damage from nonmagical attacks.",
+						"You can move through the space of other creatures and ignore difficult terrain. The first time you enter the space of another creature, it takes {@damage 1d6} fire damage.",
+						"Once during your turn when you roll fire damage, you can maximize the value of one die of fire damage."
+					]
+				}
+			],
+			"damageInflict": [
+				"fire"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Form of Fire",
+			"source": "KibblesTasty:GS",
+			"page": 6,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 20
+				},
+				{
+					"source": "KibblesTasty:EFS",
+					"page": 1
+				}
+			],
+			"level": 6,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"You become elemental fire, shedding bright light in a 30-foot radius and dim light for an additional 30 feet. Until the spell ends, you gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You are immune to fire damage.",
+						"You can move through the space of other creatures and ignore difficult terrain. The first time on your turn you enter the space of another creature, it takes {@damage 1d6} fire damage.",
+						"If a creature within 5 feet hits you with a melee attack, it takes {@damage 1d6} fire damage.",
+						"You can use your action to create a line of fire 30 feet long and 5 feet wide extending from you in a direction of your choice. Each creature in the line must make a Dexterity saving throw. A creature takes {@damage 6d6} fire damage on a failed save, or half as much damage on a successful one.",
+						"During your turn, if you roll fire damage, you can maximize one die of the damage dealt."
+					]
+				}
+			],
+			"damageInflict": [
+				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
 			"name": "Aether Lance",
 			"source": "KibblesTasty:GS",
-			"page": 5,
+			"page": 7,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 8
+				}
+			],
 			"level": 3,
 			"school": "V",
 			"time": [
@@ -5965,7 +6323,13 @@
 		{
 			"name": "Aether Storm",
 			"source": "KibblesTasty:GS",
-			"page": 6,
+			"page": 7,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 8
+				}
+			],
 			"level": 5,
 			"school": "V",
 			"time": [
@@ -6034,7 +6398,13 @@
 		{
 			"name": "Seeking Orb",
 			"source": "KibblesTasty:GS",
-			"page": 6,
+			"page": 7,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 28
+				}
+			],
 			"level": 2,
 			"school": "V",
 			"time": [
@@ -6090,7 +6460,13 @@
 		{
 			"name": "Force Bolt",
 			"source": "KibblesTasty:GS",
-			"page": 6,
+			"page": 7,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 20
+				}
+			],
 			"level": 0,
 			"school": "V",
 			"time": [
@@ -6152,7 +6528,13 @@
 		{
 			"name": "Force Blade",
 			"source": "KibblesTasty:GS",
-			"page": 6,
+			"page": 7,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 19
+				}
+			],
 			"level": 4,
 			"school": "V",
 			"time": [
@@ -6184,13 +6566,25 @@
 				}
 			],
 			"entries": [
-				"You create an oversized blade of pure scintillating force energy in your hand. For the duration of the spell, as an action, you can sweep the blade through on target within reach, dealing {@damage 2d12} force damage."
+				"You create an oversized blade of pure scintillating force energy in your hand. For the duration of the spell, as an action, you can sweep the blade through up to two creatures within reach, dealing {@damage 2d12} force damage to each."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast it using a 5th- or 6th-level spell slot, the damage increases to {@damage 3d12}. When you cast it using a spell slot of 7th level or higher, the damage increases to {@damage 4d12}."
+					]
+				}
 			],
 			"damageInflict": [
 				"force"
 			],
 			"areaTags": [
 				"ST"
+			],
+			"miscTags": [
+				"SCL"
 			],
 			"classes": {
 				"fromClassList": [
@@ -6208,7 +6602,13 @@
 		{
 			"name": "Star Dust",
 			"source": "KibblesTasty:GS",
-			"page": 6,
+			"page": 7,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 29
+				}
+			],
 			"level": 2,
 			"school": "V",
 			"time": [
@@ -6258,7 +6658,13 @@
 		{
 			"name": "Crackle",
 			"source": "KibblesTasty:GS",
-			"page": 6,
+			"page": 8,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 13
+				}
+			],
 			"level": 2,
 			"school": "V",
 			"time": [
@@ -6285,7 +6691,7 @@
 			],
 			"entries": [
 				"You create three arcs of lightning striking targets in range. You can direct them at one target or several.",
-				"Make a ranged spell attack for each arc. On a hit, the target takes {@damage 1d12} lightning damage. If three or more arcs hit a single target, they must make a Constitution saving throw or become {@condition shocked}, stunning them until the start of their next turn."
+				"Make a ranged spell attack for each arc. On a hit, the target takes {@damage 1d12} lightning damage. If three or more arcs hit a single target, they must make a Constitution saving throw or become {@condition shocked}, {@condition stunned|PHB|stunning} them until the start of their next turn."
 			],
 			"entriesHigherLevel": [
 				{
@@ -6335,7 +6741,13 @@
 		{
 			"name": "Electrocute",
 			"source": "KibblesTasty:GS",
-			"page": 7,
+			"page": 8,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 17
+				}
+			],
 			"level": 3,
 			"school": "V",
 			"time": [
@@ -6404,7 +6816,13 @@
 		{
 			"name": "Electrify",
 			"source": "KibblesTasty:GS",
-			"page": 7,
+			"page": 8,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 17
+				}
+			],
 			"level": 1,
 			"school": "V",
 			"time": [
@@ -6433,8 +6851,8 @@
 				}
 			],
 			"entries": [
-				"You channel lightning into your hands. The next time you hit a creature with a melee attack (including a melee spell attack) before the start of your next turn, the target takes {@damage 1d10} lightning damage and must make a Constitution saving throw. On a failed save, the target becomes {@condition stunned} until the start of their next turn.",
-				"The spell ends after dealing damage, or at the start of your next turn, whichever occurs first. For the duration of the spell, you can cast the spell {@spell shocking grasp}."
+				"You channel lightning into your hands. The next time you hit a creature with a melee attack (including a melee spell attack) before the start of your next turn, the target takes {@damage 1d12} lightning damage and must make a Constitution saving throw. On a failed save, the target becomes {@condition stunned} until the start of their next turn.",
+				"The spell ends after dealing damage, or at the start of your next turn, whichever occurs first."
 			],
 			"damageInflict": [
 				"lightning"
@@ -6451,6 +6869,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
 						"name": "Sorcerer",
 						"source": "PHB"
 					},
@@ -6464,7 +6886,13 @@
 		{
 			"name": "Lightning Charged",
 			"source": "KibblesTasty:GS",
-			"page": 7,
+			"page": 8,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 24
+				}
+			],
 			"level": 2,
 			"school": "V",
 			"time": [
@@ -6525,7 +6953,13 @@
 		{
 			"name": "Lightning Tendril",
 			"source": "KibblesTasty:GS",
-			"page": 7,
+			"page": 8,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 24
+				}
+			],
 			"level": 1,
 			"school": "V",
 			"time": [
@@ -6535,7 +6969,7 @@
 				}
 			],
 			"range": {
-				"type": "point",
+				"type": "radius",
 				"distance": {
 					"type": "feet",
 					"amount": 20
@@ -6602,7 +7036,13 @@
 		{
 			"name": "Jumping Jolt",
 			"source": "KibblesTasty:GS",
-			"page": 7,
+			"page": 8,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 23
+				}
+			],
 			"level": 4,
 			"school": "V",
 			"time": [
@@ -6668,7 +7108,13 @@
 		{
 			"name": "Sky Burst",
 			"source": "KibblesTasty:GS",
-			"page": 7,
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 29
+				}
+			],
 			"level": 5,
 			"school": "V",
 			"time": [
@@ -6738,7 +7184,13 @@
 		{
 			"name": "Bad Blood",
 			"source": "KibblesTasty:GS",
-			"page": 8,
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 10
+				}
+			],
 			"level": 1,
 			"school": "N",
 			"time": [
@@ -6819,7 +7271,13 @@
 		{
 			"name": "Nauseating Poison",
 			"source": "KibblesTasty:GS",
-			"page": 8,
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 27
+				}
+			],
 			"level": 1,
 			"school": "N",
 			"time": [
@@ -6879,7 +7337,13 @@
 		{
 			"name": "Poison Dart",
 			"source": "KibblesTasty:GS",
-			"page": 8,
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 27
+				}
+			],
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -6937,6 +7401,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
 						"name": "Warlock",
 						"source": "PHB"
 					},
@@ -6950,7 +7418,13 @@
 		{
 			"name": "Poison Puff",
 			"source": "KibblesTasty:GS",
-			"page": 8,
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 27
+				}
+			],
 			"level": 4,
 			"school": "T",
 			"time": [
@@ -7015,7 +7489,13 @@
 		{
 			"name": "Stinging Swarm",
 			"source": "KibblesTasty:GS",
-			"page": 8,
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 29
+				}
+			],
 			"level": 4,
 			"school": "C",
 			"time": [
@@ -7079,7 +7559,13 @@
 		{
 			"name": "Spider Bite",
 			"source": "KibblesTasty:GS",
-			"page": 8,
+			"page": 10,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 30
+				}
+			],
 			"level": 3,
 			"school": "T",
 			"time": [
@@ -7105,7 +7591,7 @@
 			],
 			"entries": [
 				"You prick a target with a tiny magical fang of venom. Make a melee spell attack against a creature within reach. On a hit, the target takes {@damage 4d12} poison damage and must succeed on a Constitution saving throw or becoming {@condition poisoned} for 1 minute. At the end of each of its turns, the target can make another Constitution saving throw. On a success, the target is no longer {@condition poisoned}.",
-				"If you miss your melee attack roll, you can concentrate (as if concentrating on a spell) to maintain the attack for another attempt until the end of your next turn."
+				"If you miss your melee attack roll, you can concentrate (as if concentrating on a spell) to maintain the attack for another attempt until the end of your next turn. (You may make subsequent attempts until you hit or lose concentration)"
 			],
 			"entriesHigherLevel": [
 				{
@@ -7151,7 +7637,13 @@
 		{
 			"name": "Vicious Vapors",
 			"source": "KibblesTasty:GS",
-			"page": 8,
+			"page": 10,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 37
+				}
+			],
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -7218,7 +7710,13 @@
 		{
 			"name": "Echoing Lance",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 10,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 17
+				}
+			],
 			"level": 4,
 			"school": "V",
 			"time": [
@@ -7250,8 +7748,17 @@
 				}
 			],
 			"entries": [
-				"You emit a targeted burst of intense sonic energy at a target within range. The target must make a Constitution saving throw. On failure, they take {@damage 3d8} thunder damage and become {@condition deafened} and {@condition stunned} for the duration by the intense sound. On a successful save, the target takes half as much damage and is not {@condition stunned}.",
+				"You emit a targeted burst of intense sonic energy at a target within range. The target must make a Constitution saving throw. On failure, they take {@damage 3d8} thunder damage and become {@condition stunned} for the duration by the intense sound. On a successful save, the target takes half as much damage and is not {@condition stunned}.",
 				"At the end of each of its turns, the target can make another Constitution saving throw. On a success, the spell ends on the target; on failure they take an additional {@dice 1d8} thunder from the echoes within their mind."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by {@damage 1d8} for each slot level above 4th."
+					]
+				}
 			],
 			"damageInflict": [
 				"thunder"
@@ -7269,6 +7776,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
 						"name": "Sorcerer",
 						"source": "PHB"
 					},
@@ -7282,7 +7793,13 @@
 		{
 			"name": "Sonic Shriek",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 10,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 29
+				}
+			],
 			"level": 5,
 			"school": "V",
 			"time": [
@@ -7308,7 +7825,7 @@
 				}
 			],
 			"entries": [
-				"You emit a sonic blast covering a huge area. Each creature in a 120 foot cone must make a Constitution saving throw. On a failed save, a creature takes {@damage 6d8} damage and is {@condition deafened} if they are within 60 feet of you, or {@damage 3d8} damage if they are further than 60 feet from you. On a successful save, a creature takes half as much damage. The spell emits a ringing shriek audible out to 300 feet in the direction cast."
+				"You emit a sonic blast covering a huge area. Each creature in a 120-foot cone must make a Constitution saving throw. On a failed save, a creature takes {@damage 6d8} thunder damage. On a successful save, a creature takes half as much damage. A creature automatically succeed on its saving throw if it is more than 60 feet from you."
 			],
 			"entriesHigherLevel": [
 				{
@@ -7318,9 +7835,6 @@
 						"When you cast this spell using a spell slot of 6th level or higher, the damage increases by {@damage 1d8} for each slot level above 5th."
 					]
 				}
-			],
-			"conditionInflict": [
-				"deafened"
 			],
 			"savingThrow": [
 				"constitution"
@@ -7351,7 +7865,13 @@
 		{
 			"name": "Thunder Pulse",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 10,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 36
+				}
+			],
 			"level": 3,
 			"school": "V",
 			"time": [
@@ -7383,7 +7903,8 @@
 				}
 			],
 			"entries": [
-				"You gather sonic energy and can expel it in shockwaves for the duration. Until the spell ends, you can use an action to emit a shockwave in a 15-foot cone. Each creature in that area must make a Constitution saving throw, taking {@damage 3d8} thunder damage and being knocked 10 feet away from you on a failed save, or half as much damage and not being knocked away on a successful one."
+				"You gather sonic energy and can expel as a shockwave in a 15 foot cone. Each creature in that area must make a Constitution saving throw. On a failed save, a creature takes {@damage 3d8} thunder damage is knocked 10 feet away. On a successful save, the creature takes half as much damage and not being knocked away.",
+				"You can create a new shockwave as your action on subsequent turn until the spell ends."
 			],
 			"entriesHigherLevel": [
 				{
@@ -7410,6 +7931,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
 						"name": "Sorcerer",
 						"source": "PHB"
 					},
@@ -7423,7 +7948,13 @@
 		{
 			"name": "Thunder Punch",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 10,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 36
+				}
+			],
 			"level": 1,
 			"school": "V",
 			"time": [
@@ -7475,7 +8006,89 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
 						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Become Water",
+			"source": "KibblesTasty:GS",
+			"page": 11,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 11
+				},
+				{
+					"source": "KibblesTasty:EFS",
+					"page": 1
+				}
+			],
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You become a burst of elemental water. Until the start of your next turn, you gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You are resistant to bludgeoning, piercing, and slashing damage from nonmagical attacks.",
+						"You can move through the space of other creatures and ignore difficult terrain; the first time you move through a Large or smaller creature on a turn, it must pass a Strength saving throw or be knocked {@condition prone}."
+					]
+				}
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
 						"source": "PHB"
 					},
 					{
@@ -7488,7 +8101,13 @@
 		{
 			"name": "Crashing Wave",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 11,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 14
+				}
+			],
 			"level": 1,
 			"school": "C",
 			"time": [
@@ -7561,7 +8180,13 @@
 		{
 			"name": "Dancing Wave",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 11,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 14
+				}
+			],
 			"level": 2,
 			"school": "C",
 			"time": [
@@ -7626,9 +8251,98 @@
 			}
 		},
 		{
+			"name": "Form of Water",
+			"source": "KibblesTasty:GS",
+			"page": 11,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 21
+				},
+				{
+					"source": "KibblesTasty:EFS",
+					"page": 2
+				}
+			],
+			"level": 6,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"You become a surge of elemental water. Until the spell ends, you gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You have resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.",
+						"You can move through the space of other creatures and ignore difficult terrain; the first time you move through a Large or smaller creature, it must pass a Strength saving throw or be knocked {@condition prone}.",
+						"You can use your action to unleash a blast of water 15 feet long and 5 feet wide extending from you in a direction your choice. Each creature in the line must make a Strength saving throw. A creature takes {@damage 5d6} bludgeoning damage and is knocked {@condition prone} on a failed save, or half as much and isn't knocked {@condition prone} on a successful one."
+					]
+				}
+			],
+			"damageInflict": [
+				"bludgeoning"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
 			"name": "Geyser",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 11,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 22
+				}
+			],
 			"level": 4,
 			"school": "C",
 			"time": [
@@ -7688,7 +8402,13 @@
 		{
 			"name": "Pressure Cutter",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 11,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 27
+				}
+			],
 			"level": 5,
 			"school": "C",
 			"time": [
@@ -7753,7 +8473,13 @@
 		{
 			"name": "Water Blast",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 12,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 38
+				}
+			],
 			"level": 1,
 			"school": "C",
 			"time": [
@@ -7819,6 +8545,10 @@
 						"source": "PHB"
 					},
 					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
 						"name": "Wizard",
 						"source": "PHB"
 					}
@@ -7828,7 +8558,13 @@
 		{
 			"name": "Water Cannon",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 12,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 38
+				}
+			],
 			"level": 3,
 			"school": "V",
 			"time": [
@@ -7891,7 +8627,13 @@
 		{
 			"name": "Aero Barrage",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 12,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 7
+				}
+			],
 			"level": 4,
 			"school": "T",
 			"time": [
@@ -7956,9 +8698,80 @@
 			}
 		},
 		{
+			"name": "Become Wind",
+			"source": "KibblesTasty:GS",
+			"page": 12,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 11
+				},
+				{
+					"source": "KibblesTasty:EFS",
+					"page": 1
+				}
+			],
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You become a burst of elemental wind until the start of the next turn. You gain resistance to lightning damage and bludgeoning, slashing, and piercing attacks damage from nonmagical attacks. Additionally, you gain flying speed of 30 feet, can move through the space of other creatures, and ignore difficult terrain, but will fall at the start of your next turn if not held aloft."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
 			"name": "Gale Bolt",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 12,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 21
+				}
+			],
 			"level": 1,
 			"school": "V",
 			"time": [
@@ -8032,7 +8845,13 @@
 		{
 			"name": "Windborne Weapon",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 12,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 38
+				}
+			],
 			"level": 0,
 			"school": "T",
 			"time": [
@@ -8098,7 +8917,13 @@
 		{
 			"name": "Hurricane Slash",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 12,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 22
+				}
+			],
 			"level": 2,
 			"school": "V",
 			"time": [
@@ -8169,9 +8994,99 @@
 			}
 		},
 		{
+			"name": "Form of Wind",
+			"source": "KibblesTasty:GS",
+			"page": 13,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 20
+				},
+				{
+					"source": "KibblesTasty:EFS",
+					"page": 2
+				}
+			],
+			"level": 6,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"You become a gust of elemental wind. Until the spell ends, you gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You have a flying speed of 60 feet.",
+						"You can move through and occupy the space of other creatures, and you ignore difficult terrain.",
+						"You are {@condition invisible}.",
+						"You can use your action to unleash a powerful blast of wind in a 30 foot cone. Each creature in the cone must make a Strength saving throw. A creature takes {@damage 4d8} bludgeoning damage is knocked 15 feet away from you on a failed save, or half as much damage isn't knocked backward on a successful one."
+					]
+				}
+			],
+			"damageInflict": [
+				"bludgeoning"
+			],
+			"conditionInflict": [
+				"invisible"
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
 			"name": "Suffocate",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 13,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 30
+				}
+			],
 			"level": 4,
 			"school": "T",
 			"time": [
@@ -8205,7 +9120,7 @@
 			"entries": [
 				"You create a whirling sphere of air around a target that causes them to struggle to breathe. The target must make a Constitution saving throw. On a failure, the target loses {@dice 5d8} hit points due to lack of air, has disadvantage on all ability checks, and cannot speak. On a success, the target takes half as much damage and suffers no other effects. For the duration, as an action, you can force the creation to make a saving throw against the ability again.",
 				"If a target fails their saving throw against this spell 3 times in a row, they become {@condition incapacitated} until they succeed on a save or the spell ends. If you don't use your action to force the target to make a save, it counts as a success.",
-				"A creature that does not breathe is unaffected by this spell."
+				"A creature that does not need to breathe is unaffected by this spell."
 			],
 			"conditionInflict": [
 				"incapacitated"
@@ -8232,7 +9147,13 @@
 		{
 			"name": "Tornado",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 13,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 37
+				}
+			],
 			"level": 5,
 			"school": "T",
 			"time": [
@@ -8300,7 +9221,13 @@
 		{
 			"name": "Vortex Blast",
 			"source": "KibblesTasty:GS",
-			"page": 9,
+			"page": 13,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 38
+				}
+			],
 			"level": 3,
 			"school": "V",
 			"time": [
@@ -8353,7 +9280,77 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
 						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Form of the Elements",
+			"source": "KibblesTasty:GS",
+			"page": 13,
+			"otherSources": [
+				{
+					"source": "KibblesTasty:CC",
+					"page": 17
+				},
+				{
+					"source": "KibblesTasty:EFS",
+					"page": 2
+				}
+			],
+			"level": 9,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"For the duration of the spell, you gain the benefits of the {@spell form of fire|kibblestasty:gs}, {@spell form of ice|kibblestasty:gs}, {@spell form of stone|kibblestasty:gs}, {@spell form of water|kibblestasty:gs}, and {@spell form of wind|kibblestasty:gs} spells."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
 						"source": "PHB"
 					},
 					{
@@ -8384,8 +9381,10 @@
 		{
 			"name": "Archon Spirit",
 			"size": [
-				"V"
+				"S",
+				"M"
 			],
+			"sizeNote": "(for Hound or Trumpet)",
 			"type": "celestial",
 			"source": "KibblesTasty:CC",
 			"summonedBySpell": "Summon Archon|KibblesTasty:CC",
@@ -8861,8 +9860,223 @@
 						"piercing",
 						"slashing"
 					],
-					"note": "from non-magical attacks"
+					"note": "from nonmagical attacks"
 				}
+			]
+		},
+		{
+			"name": "Plant Spirit",
+			"size": [
+				"M",
+				"L"
+			],
+			"sizeNote": "(for Treant or Shambling Mound)",
+			"type": "plant",
+			"source": "KibblesTasty:CC",
+			"summonedBySpell": "Summon Plant|KibblesTasty:CC",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"special": "12 + the level of the spell (natural armor)"
+				}
+			],
+			"hp": {
+				"special": "35 + 10 for each spell level above 3rd"
+			},
+			"speed": {
+				"walk": 20
+			},
+			"str": 16,
+			"dex": 8,
+			"con": 14,
+			"int": 10,
+			"wis": 16,
+			"cha": 10,
+			"passive": 10,
+			"page": 34,
+			"senses": [
+				"darkvision 60 ft.",
+				"blindsight 60 ft. (Shambling Mound only)"
+			],
+			"senseTags": [
+				"D",
+				"B"
+			],
+			"languages": [
+				"Sylvan",
+				"understands the languages you speak"
+			],
+			"languageTags": [
+				"S"
+			],
+			"resist": [
+				"bludgeoning"
+			],
+			"vulnerable": [
+				"fire"
+			],
+			"trait": [
+				{
+					"name": "Engulf (Shambling Mound only)",
+					"entries": [
+						"If the plant hits a target that is grappling, that target becomes {@condition restrained} until the {@condition grappled|PHB|grapple} ends."
+					]
+				},
+				{
+					"name": "Tree Stride (Dryad only)",
+					"entries": [
+						"Once on its turn, the plant can use 10 feet of its movement to step magically into one living tree within its reach and emerge from a second living tree within 60 feet of the first tree, appearing in an unoccupied space within 5 feet of the second tree. Both trees must be large or larger."
+					]
+				}
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The plant makes a number of attacks equal to half this spell's level (rounded down)."
+					]
+				},
+				{
+					"name": "Entangling Slam (Treant or Shambling Mound only)",
+					"entries": [
+						"{@atk mw} your spell attack modifier to hit, reach 5 ft., one target. {@h}9 ({@damage 1d10 + 3 + #$prompt_number:min=3,title=Input the spell's level!,default=3$#|1d10 + 3 + the spell's level}) bludgeoning damage and the target is {@condition grappled} (escape DC is your spell save DC). Until this grapple ends, plant can't use this attack on another target."
+					]
+				},
+				{
+					"name": "Vine Lash (Treant or Dryad only)",
+					"entries": [
+						"{@atk mw} your spell attack modifier to hit, reach 15 ft., one target. {@h}8 ({@damage 1d8 + 3 + #$prompt_number:min=3,title=Input the spell's level!,default=3$#|1d8 + 3 + the spell's level}) slashing damage and the target is {@condition grappled} (escape DC is your spell save DC). Until this grapple ends, plant can't use this attack on another target.",
+						{
+							"type": "inset",
+							"name": "Note: Vulnerable Limbs!",
+							"entries": [
+								"As per Sage Jeremy, a creature you are grappling can attack you regardless if you are in its normal attack range by attacking the limb grappling you."
+							]
+						}
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B",
+				"S"
+			]
+		},
+		{
+			"name": "Swarm Spirit",
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "beast",
+				"swarmSize": "T"
+			},
+			"source": "KibblesTasty:CC",
+			"summonedBySpell": "Summon Swarm|KibblesTasty:CC",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"special": "10 + the level of the spell (natural armor)"
+				}
+			],
+			"hp": {
+				"special": "10 + 5 for each spell level above 1st"
+			},
+			"speed": {
+				"walk": {
+					"number": 30,
+					"condition": "(Spiders only), 5 ft. (Quippers, or Wasps only)"
+				},
+				"fly": {
+					"number": 30,
+					"condition": "(Wasps only)"
+				},
+				"swim": {
+					"number": 30,
+					"condition": "(Quippers only)"
+				}
+			},
+			"str": 3,
+			"dex": 13,
+			"con": 10,
+			"int": 1,
+			"wis": 7,
+			"cha": 1,
+			"passive": 8,
+			"page": 35,
+			"senses": [
+				"blindsight 10 ft."
+			],
+			"senseTags": [
+				"B"
+			],
+			"languages": [
+				"understands the languages you speak"
+			],
+			"resist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
+			"trait": [
+				{
+					"name": "Spider Climb (Spider only)",
+					"entries": [
+						"The swarm can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				},
+				{
+					"name": "Swarm",
+					"entries": [
+						"The swarm can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny creature. The swarm can't regain hit points or gain temporary hit points."
+					]
+				},
+				{
+					"name": "Web Walker (Spider only)",
+					"entries": [
+						"The swarm ignores movement restrictions caused by webbing."
+					]
+				}
+			],
+			"miscTags": [
+				"MW"
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The swarm makes a number of attacks equal to half this spell's level (rounded down)."
+					]
+				},
+				{
+					"name": "Bite (Spider and Wasp only)",
+					"entries": [
+						"{@atk mw} your spell attack modifier to hit, reach 0 ft., one target. {@h}5 ({@damage 2d4 + #$prompt_number:min=2,title=Input the spell's level!,default=2$#|2d4 + the spell's level}) piercing damage + {@damage 1d4} poison damage."
+					]
+				},
+				{
+					"name": "Bite (Quipper only)",
+					"entries": [
+						"{@atk mw} your spell attack modifier to hit, reach 0 ft., one target. {@h}8 ({@damage 3d4 + #$prompt_number:min=2,title=Input the spell's level!,default=2$#|3d4 + the spell's level}) piercing damage."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"P",
+				"O"
 			]
 		}
 	],
@@ -8905,13 +10119,22 @@
 						"One of the common things I see folks at my table and across the D&D Community looking for all the time is spells that better fit elemental archetypes beyond fire. It feels as if the fire spell list was completed, and everything else got a few leftovers. This is the complete list that gives each element it's own buffet.",
 						"You can simple reflavor fire spells suit your needs - if that works for and your table, great! However, in my experience over the years of doing exactly that, it tends to rob the elements of the last vestige of unique flavor, subtle differences, and as consequent the world setting which should feel deep, mysterious, and magical, starts to feel more game-like, more formulaic.",
 						"In providing this wave of new spells and their possibilities, this document can help a world have that mystifying depth of magic that represents the true scope of elemental magic and the touch of the thousands of wizards that have come before leaving behind the research, a true basis and complete system of generic elemental magic.",
+						{
+							"type": "inset",
+							"name": "Open Content",
+							"entries": [
+								"The new spells (marked with <sup>K</sup>) presented here are Open Content are meant to be as universal and generally useful as possible, and consequently are created with the intention of open and free use.",
+								"{@b Feel free to use them with or without credit for any use.} You can import them to your VTT of choice, you can include them in your supplements or character options or whatever you want to use them for.",
+								"For more details about permissions for KibblesTasty content, see <a href=https://www.kthomebrew.com/permissions>https://www.kthomebrew.com/permissions</a>."
+							]
+						},
 						"This is a list of spells that do straight forward effects of the elements and only includes damaging effects. Some types of spells have control effects beyond their damaging application, but those are not recorded here, as this just focuses on an alternative to re-theming the same fire spells for each damage type.",
 						{
 							"type": "entries",
 							"name": "Fire",
 							"page": 2,
 							"entries": [
-								"Fire spells are largely complete in the default list, and consequently get the fewest new items. Fire spells typically deal the most damage, and typically operate with consistent d6 dice, and sometimes ignite for additional damage. Generally feature dexterity saves.",
+								"Fire spells are largely complete in the default list, and consequently get the fewest new items. Fire spells typically deal the most damage, and typically operate with consistent {@damage d6} dice, and sometimes ignite for additional damage. Generally feature dexterity saves.",
 								{
 									"type": "table",
 									"colLabels": [
@@ -8933,7 +10156,7 @@
 										],
 										[
 											"2nd",
-											"{@spell aganazzar's scorcher|xge}, {@spell flaming sphere}, {@spell scorching ray}"
+											"{@spell aganazzar's scorcher|xge}, {@spell become fire|KibblesTasty:GS}<sup>K</sup>, {@spell flaming sphere}, {@spell scorching ray}"
 										],
 										[
 											"3rd",
@@ -8946,6 +10169,10 @@
 										[
 											"5th",
 											"{@spell flame strike}, {@spell immolation|xge}"
+										],
+										[
+											"6th",
+											"{@spell form of fire|KibblesTasty:GS}<sup>K</sup>"
 										]
 									]
 								}
@@ -8956,7 +10183,7 @@
 							"name": "Acid",
 							"page": 2,
 							"entries": [
-								"Widely features damage over time, acid deals damage with smaller initial damage and typically deals its damage in consistent d4s. Generally features Dexterity saving throws.",
+								"Widely features damage over time, acid deals damage with smaller initial damage and typically deals its damage in consistent {@damage d4}s. Generally features Dexterity saving throws.",
 								{
 									"type": "table",
 									"colLabels": [
@@ -8974,15 +10201,15 @@
 										],
 										[
 											"1st",
-											"{@spell tasha's caustic brew|tce}"
+											"{@spell tasha's caustic brew|tce|caustic brew}"
 										],
 										[
 											"2nd",
-											"{@spell melf's acid arrow}"
+											"{@spell melf's acid arrow|PHB|acid arrow}"
 										],
 										[
 											"3rd",
-											"{@spell erode|KibblesTasty:GS|erode (K)}"
+											"{@spell erode|KibblesTasty:GS}<sup>K</sup>"
 										],
 										[
 											"4th",
@@ -8990,7 +10217,7 @@
 										],
 										[
 											"5th",
-											"{@spell acid rain|KibblesTasty:GS|acid rain (K)}"
+											"{@spell acid rain|KibblesTasty:GS}<sup>K</sup>"
 										]
 									]
 								}
@@ -9001,7 +10228,7 @@
 							"name": "Cold",
 							"page": 2,
 							"entries": [
-								"Cold spells deal less than other types of spells, often using d8 damage dice they tend to debuff the target, slowing them, restraining them, or leaving difficult terrain. They most often feature Constitution saves.",
+								"Cold spells deal less than other types of spells, often using {@damage d8} damage dice they tend to debuff the target, slowing them, {@condition restrained|PHB|restraining} them, or leaving difficult terrain. They most often feature Constitution saves.",
 								{
 									"type": "table",
 									"colLabels": [
@@ -9019,23 +10246,27 @@
 										],
 										[
 											"1st",
-											"{@spell arctic breath|kgs|arctic breath (K)}, {@spell entomb|kgs|entomb (K)}, {@spell ice knife|xge}"
+											"{@spell arctic breath|kibblestasty:gs}<sup>K</sup>, {@spell entomb|kibblestasty:gs}<sup>K</sup>, {@spell ice knife|xge}"
 										],
 										[
 											"2nd",
-											"{@spell cold snap|kgs| cold snap (K)}"
+											"{@spell cold snap|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"3rd",
-											"{@spell flash freeze|kgs| flash freeze (K)}"
+											"{@spell flash freeze|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"4th",
-											"{@spell ice storm}, {@spell ice spike|kgs| ice spike (K)}"
+											"{@spell ice storm}, {@spell ice spike|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"5th",
 											"{@spell cone of cold}"
+										],
+										[
+											"6th",
+											"{@spell form of ice|KibblesTasty:GS}<sup>K</sup>"
 										]
 									]
 								}
@@ -9046,7 +10277,7 @@
 							"name": "Earth",
 							"page": 2,
 							"entries": [
-								"In the unusual position of dealing a physical damage type (bludgeoning) this type most often uses d10 damage and targets Dexterity saves, often having secondary elements knocking targets around, creating difficult terrain, or creating obstacles and cover.",
+								"In the unusual position of dealing a physical damage type (bludgeoning) this type most often uses {@damage d10} damage and targets Dexterity saves, often having secondary elements knocking targets around, creating difficult terrain, or creating obstacles and cover.",
 								{
 									"type": "table",
 									"colLabels": [
@@ -9064,23 +10295,27 @@
 										],
 										[
 											"1st",
-											"{@spell earth tremor|xge}"
+											"{@spell create pit|kibblestasty:gs}<sup>K</sup>, {@spell earth tremor|xge}, {@spell stone fist|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"2nd",
-											"{@spell earth ripple|kgs|earth ripple (K)}"
+											"{@spell become stone|kibblestasty:gs}<sup>K</sup>, {@spell earth ripple|kibblestasty:gs}<sup>K</sup>, {@spell stone pillar|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"3rd",
-											"{@spell erupting earth|xge}"
+											"{@spell erupting earth|xge}, {@spell quicksand|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"4th",
-											"{@spell orbital stones|kgs|orbital stones (K)}"
+											"{@spell orbital stones|kibblestasty:gs}<sup>K</sup>, {@spell stone coffin|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"5th",
-											"{@spell fissure|kgs|fissure (K)}"
+											"{@spell fissure|kibblestasty:gs}<sup>K</sup>"
+										],
+										[
+											"6th",
+											"{@spell form of stone|KibblesTasty:GS}<sup>K</sup>"
 										]
 									]
 								}
@@ -9091,7 +10326,7 @@
 							"name": "Force",
 							"page": 3,
 							"entries": [
-								"Force damage brings the ultimate in consistency, with most spells offering no save or attack roll, but consequently dealing only moderate but consistent damage with d4s.",
+								"Force damage brings the ultimate in consistency, with most spells offering no save or attack roll, but consequently dealing only moderate but consistent damage with {@damage d4}s.",
 								{
 									"type": "table",
 									"colLabels": [
@@ -9105,7 +10340,7 @@
 									"rows": [
 										[
 											"Cantrip",
-											"{@spell force bolt|kgs|force bolt (K)}"
+											"{@spell force bolt|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"1st",
@@ -9113,19 +10348,19 @@
 										],
 										[
 											"2nd",
-											"{@spell seeking orb|kgs|seeking orb (K)},{@spell star dust|kgs|star dust (K)}"
+											"{@spell seeking orb|kibblestasty:gs}<sup>K</sup>,{@spell star dust|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"3rd",
-											"{@spell aether lance|kgs|aether lance (K)}"
+											"{@spell aether lance|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"4th",
-											"{@spell force blade|kgs|force blade (K)}"
+											"{@spell force blade|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"5th",
-											"{@spell aether storm|kgs|aether storm (K)}"
+											"{@spell aether storm|kibblestasty:gs}<sup>K</sup>"
 										]
 									]
 								}
@@ -9136,7 +10371,7 @@
 							"name": "Lightning",
 							"page": 3,
 							"entries": [
-								"Highly volatile damage spells, these often feature d12s with high variance, and sometimes come with powerful status effects, shocking targets or even stunning them, they come in a mix of Constitution and Dexterity saving throws.",
+								"Highly volatile damage spells, these often feature {@damage d12}s with high variance, and sometimes come with powerful status effects, {@condition shocked|kibblestasty:gs|shocking} targets or even {@condition stunned|PHB|stunning} them, they come in a mix of Constitution and Dexterity saving throws.",
 								{
 									"type": "table",
 									"colLabels": [
@@ -9154,23 +10389,23 @@
 										],
 										[
 											"1st",
-											"{@spell lightning tendril|kgs|lightning tendril (K)}"
+											"{@spell lightning tendril|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"2nd",
-											"{@spell crackle|kgs|crackle (K)}, {@spell lightning charged|kgs|lightning charged (K)}"
+											"{@spell crackle|kibblestasty:gs}<sup>K</sup>, {@spell lightning charged|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"3rd",
-											"{@spell electrocute|kgs|electrocute (K)}, {@spell call lightning}, {@spell lightning bolt}"
+											"{@spell electrocute|kibblestasty:gs}<sup>K</sup>, {@spell call lightning}, {@spell lightning bolt}"
 										],
 										[
 											"4th",
-											"{@spell jumping jolt|kgs|jumping jolt (K)}, {@spell storm sphere|xge}"
+											"{@spell jumping jolt|kibblestasty:gs}<sup>K</sup>, {@spell storm sphere|xge}"
 										],
 										[
 											"5th",
-											"{@spell sky burst|kgs|sky burst (K)}"
+											"{@spell sky burst|kibblestasty:gs}<sup>K</sup>"
 										]
 									]
 								}
@@ -9199,7 +10434,7 @@
 										],
 										[
 											"1st",
-											"{@spell thunder punch|kgs}, {@spell thunderwave}"
+											"{@spell thunder punch|kibblestasty:gs}<sup>K</sup>, {@spell thunderwave}"
 										],
 										[
 											"2nd",
@@ -9207,15 +10442,15 @@
 										],
 										[
 											"3rd",
-											"{@spell thunder pulse|kgs}"
+											"{@spell thunder pulse|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"4th",
-											"{@spell echoing lance|kgs}"
+											"{@spell echoing lance|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"5th",
-											"{@spell sonic shriek|kgs}"
+											"{@spell sonic shriek|kibblestasty:gs}<sup>K</sup>"
 										]
 									]
 								}
@@ -9226,7 +10461,7 @@
 							"name": "Poison",
 							"page": 3,
 							"entries": [
-								"Offering high damage with high limitations, poison spells typically target Constitution and deal high variance {@damage d12} damage, some having a chance to poison the target for an ongoing effect.",
+								"Offering high damage with high limitations, poison spells typically target Constitution and deal high variance {@damage d12} damage, some having a chance to {@condition poisoned|PHB|poison} the target for an ongoing effect.",
 								{
 									"type": "table",
 									"colLabels": [
@@ -9244,19 +10479,19 @@
 										],
 										[
 											"1st",
-											"{@spell bad blood|kgs}, {@spell nauseating poison|kgs}"
+											"{@spell bad blood|kibblestasty:gs}<sup>K</sup>, {@spell nauseating poison|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"2nd",
-											"{@spell poison dart|kgs}, {@spell vicious vapors|kgs}"
+											"{@spell poison dart|kibblestasty:gs}<sup>K</sup>, {@spell vicious vapors|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"3rd",
-											"{@spell spider bite|kgs}, {@spell stinking cloud}"
+											"{@spell spider bite|kibblestasty:gs}<sup>K</sup>, {@spell stinking cloud}"
 										],
 										[
 											"4th",
-											"{@spell stinging swarm|kgs}, {@spell poison puff|kgs}"
+											"{@spell stinging swarm|kibblestasty:gs}<sup>K</sup>, {@spell poison puff|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"5th",
@@ -9271,7 +10506,7 @@
 							"name": "Water",
 							"page": 3,
 							"entries": [
-								"Water spells conjure and forcefully manipulate water, using it as a medium to transfer kinetic energy, frequently moving targets or knocking them prone. They most often feature strength or dexterity saves, and use reliable {@damage d6} damage dice.",
+								"Water spells conjure and forcefully manipulate water, using it as a medium to transfer kinetic energy, frequently moving targets or knocking them {@condition prone}. They most often feature strength or dexterity saves, and use reliable {@damage d6} damage dice.",
 								{
 									"type": "table",
 									"colLabels": [
@@ -9289,23 +10524,27 @@
 										],
 										[
 											"1st",
-											"{@spell crashing wave|kgs}, {@spell water blast|kgs}"
+											"{@spell crashing wave|kibblestasty:gs}<sup>K</sup>, {@spell water blast|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"2nd",
-											"{@spell dancing wave|kgs}"
+											"{@spell become water|kibblestasty:gs}<sup>K</sup>, {@spell dancing wave|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"3rd",
-											"{@spell water cannon|kgs}"
+											"{@spell tidal wave|xge}, {@spell water cannon|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"4th",
-											"{@spell geyser|kgs}"
+											"{@spell geyser|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"5th",
-											"{@spell pressure cutter|kgs}"
+											"{@spell pressure cutter|kibblestasty:gs}<sup>K</sup>, {@spell watery sphere|xge}"
+										],
+										[
+											"6th",
+											"{@spell form of water|kibblestasty:gs}<sup>K</sup>"
 										]
 									]
 								}
@@ -9316,7 +10555,7 @@
 							"name": "Wind",
 							"page": 3,
 							"entries": [
-								"Spells that deal damage typically involve manipulating into intense bursts, blades of compressed force, or manipulating into creating dangerous vortexes. It tends to deal slashing damage with d8s and have Dexterity saving throws.",
+								"Spells that deal damage typically involve manipulating into intense bursts, blades of compressed force, or manipulating into creating dangerous vortexes. It tends to deal slashing damage with {@damage d8}s and have Dexterity saving throws.",
 								{
 									"type": "table",
 									"colLabels": [
@@ -9330,27 +10569,31 @@
 									"rows": [
 										[
 											"Cantrips",
-											"{@spell windborne weapon|kgs}"
+											"{@spell windborne weapon|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"1st",
-											"{@spell gale bolt|kgs}"
+											"{@spell gale bolt|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"2nd",
-											"{@spell hurricane slash|kgs}"
+											"{@spell become wind|kibblestasty:gs}, {@spell dust cyclone|kibblestasty:gs}<sup>K</sup>, {@spell hurricane slash|kibblestasty:gs}<sup>K</sup>, {@spell vacuum pull|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"3rd",
-											"{@spell vortex blast|kgs}"
+											"{@spell vortex blast|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"4th",
-											"{@spell aero barrage|kgs}, {@spell suffocate|kgs}"
+											"{@spell aero barrage|kibblestasty:gs}<sup>K</sup>, {@spell suffocate|kibblestasty:gs}<sup>K</sup>"
 										],
 										[
 											"5th",
-											"{@spell tornado|kgs}"
+											"{@spell tornado|kibblestasty:gs}<sup>K</sup>"
+										],
+										[
+											"6th",
+											"{@spell form of wind|kibblestasty:gs}<sup>K</sup>"
 										]
 									]
 								}
