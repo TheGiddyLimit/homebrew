@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.14",
+	"version": "1.11.17",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -1416,6 +1416,25 @@
 							"additionalProperties": false
 						}
 					},
+					"background": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"displayEntry": {
+									"description": "Optional long-form name to be used in the rendered entity.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"name"
+							],
+							"additionalProperties": false
+						}
+					},
 					"ability": {
 						"type": "array",
 						"items": {
@@ -1955,6 +1974,24 @@
 					"name",
 					"type"
 				]
+			}
+		},
+		"sensesArray": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"propertyNames": {
+					"enum": [
+						"blindsight",
+						"darkvision",
+						"tremorsense",
+						"truesight"
+					]
+				},
+				"additionalProperties": {
+					"type": "integer"
+				},
+				"minProperties": 1
 			}
 		},
 		"consumesObject": {
@@ -3511,6 +3548,89 @@
 				"$ref": "entry.json"
 			}
 		},
+		"optionalfeatureProgression": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"featureType": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/dataOptionalfeatureType"
+						},
+						"uniqueItems": true
+					},
+					"progression": {
+						"oneOf": [
+							{
+								"type": "array",
+								"description": "Features gained when the total count of features increases according to level.",
+								"items": {
+									"type": "integer"
+								},
+								"minItems": 20,
+								"maxItems": 20
+							},
+							{
+								"type": "object",
+								"description": "Features gained at the exact levels specified.",
+								"patternProperties": {
+									"^\\d+$": {
+										"type": "integer"
+									}
+								},
+								"additionalProperties": false
+							},
+							{
+								"type": "object",
+								"description": "Features gained at the level this feature is gained.",
+								"properties": {
+									"*": {
+										"type": "integer"
+									}
+								},
+								"additionalProperties": false
+							}
+						]
+					},
+					"required": {
+						"oneOf": [
+							{
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"minItems": 20,
+								"maxItems": 20
+							},
+							{
+								"type": "object",
+								"patternProperties": {
+									"^\\d+$": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									}
+								},
+								"additionalProperties": false
+							}
+						]
+					}
+				},
+				"required": [
+					"name",
+					"featureType",
+					"progression"
+				]
+			}
+		},
 		"foundryDataObject": {
 			"type": "object"
 		},
@@ -3609,6 +3729,9 @@
 						"items": {
 							"$ref": "entry.json"
 						}
+					},
+					"isIgnored": {
+						"const": true
 					},
 					"data": {
 						"$ref": "#/definitions/foundryDataObject"
