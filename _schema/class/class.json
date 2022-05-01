@@ -515,64 +515,6 @@
 						"additionalSpells": {
 							"$ref": "../util.json#/definitions/additionalSpellsArray"
 						},
-						"_copy": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								},
-								"pantheon": {
-									"description": "Used in deity data",
-									"type": "string"
-								},
-								"shortName": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"className": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"classSource": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"_mod": {
-									"$ref": "../util.json#/definitions/_modObject"
-								},
-								"_trait": {
-									"type": "object",
-									"properties": {
-										"name": {
-											"type": "string"
-										},
-										"source": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"name",
-										"source"
-									]
-								},
-								"_preserve": {
-									"type": "object",
-									"patternProperties": {
-										".*": {
-											"type": "boolean"
-										}
-									}
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							],
-							"additionalProperties": false
-						},
 						"subclassSpells": {
 							"description": "Homebrew use only; adds custom subclasses to lists in spells.\nDoes not enable VTT import - see \"additionalSpells\".",
 							"type": "array",
@@ -727,6 +669,35 @@
 						"additionalSpells": {
 							"$ref": "../util.json#/definitions/additionalSpellsArray"
 						},
+						"subclassSpells": {
+							"description": "Homebrew use only; adds custom subclasses to lists in spells.\nDoes not enable VTT import - see \"additionalSpells\".",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/spellRef"
+							}
+						},
+						"subSubclassSpells": {
+							"description": "Homebrew use only; adds custom sub-subclasses to lists in spells.\nPrimarily used by cleric orders and druid circles.\nDoes not enable VTT import - use \"additionalSpells\" as well.",
+							"type": "object",
+							"patternProperties": {
+								".*": {
+									"type": "array",
+									"description": "For example, a druid circle, religious order, or other sub-subclass name",
+									"items": {
+										"$ref": "#/definitions/spellRef"
+									}
+								}
+							}
+						},
+						"foundryData": {
+							"$ref": "../util.json#/definitions/foundryDataObject"
+						},
+						"foundryFlags": {
+							"$ref": "../util.json#/definitions/foundryFlagsObject"
+						},
+						"foundryImg": {
+							"$ref": "../util.json#/definitions/foundryImg"
+						},
 						"_copy": {
 							"type": "object",
 							"properties": {
@@ -784,35 +755,6 @@
 								"source"
 							],
 							"additionalProperties": false
-						},
-						"subclassSpells": {
-							"description": "Homebrew use only; adds custom subclasses to lists in spells.\nDoes not enable VTT import - see \"additionalSpells\".",
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/spellRef"
-							}
-						},
-						"subSubclassSpells": {
-							"description": "Homebrew use only; adds custom sub-subclasses to lists in spells.\nPrimarily used by cleric orders and druid circles.\nDoes not enable VTT import - use \"additionalSpells\" as well.",
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "array",
-									"description": "For example, a druid circle, religious order, or other sub-subclass name",
-									"items": {
-										"$ref": "#/definitions/spellRef"
-									}
-								}
-							}
-						},
-						"foundryData": {
-							"$ref": "../util.json#/definitions/foundryDataObject"
-						},
-						"foundryFlags": {
-							"$ref": "../util.json#/definitions/foundryFlagsObject"
-						},
-						"foundryImg": {
-							"$ref": "../util.json#/definitions/foundryImg"
 						}
 					},
 					"additionalProperties": false,
@@ -935,64 +877,6 @@
 				},
 				"additionalSpells": {
 					"$ref": "../util.json#/definitions/additionalSpellsArray"
-				},
-				"_copy": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						},
-						"pantheon": {
-							"description": "Used in deity data",
-							"type": "string"
-						},
-						"shortName": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"className": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"classSource": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"_mod": {
-							"$ref": "../util.json#/definitions/_modObject"
-						},
-						"_trait": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							]
-						},
-						"_preserve": {
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "boolean"
-								}
-							}
-						}
-					},
-					"required": [
-						"name",
-						"source"
-					],
-					"additionalProperties": false
 				},
 				"subclassSpells": {
 					"description": "Homebrew use only; adds custom subclasses to lists in spells.\nDoes not enable VTT import - see \"additionalSpells\".",
@@ -1358,64 +1242,6 @@
 						"additionalSpells": {
 							"$ref": "../util.json#/definitions/additionalSpellsArray"
 						},
-						"_copy": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								},
-								"pantheon": {
-									"description": "Used in deity data",
-									"type": "string"
-								},
-								"shortName": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"className": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"classSource": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"_mod": {
-									"$ref": "../util.json#/definitions/_modObject"
-								},
-								"_trait": {
-									"type": "object",
-									"properties": {
-										"name": {
-											"type": "string"
-										},
-										"source": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"name",
-										"source"
-									]
-								},
-								"_preserve": {
-									"type": "object",
-									"patternProperties": {
-										".*": {
-											"type": "boolean"
-										}
-									}
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							],
-							"additionalProperties": false
-						},
 						"classSpells": {
 							"description": "Homebrew use only",
 							"type": "array",
@@ -1717,6 +1543,26 @@
 						"additionalSpells": {
 							"$ref": "../util.json#/definitions/additionalSpellsArray"
 						},
+						"classSpells": {
+							"description": "Homebrew use only",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/spellRef"
+							}
+						},
+						"requirementsSpecial": {
+							"description": "For homebrew use.",
+							"type": "string"
+						},
+						"foundryData": {
+							"$ref": "../util.json#/definitions/foundryDataObject"
+						},
+						"foundryFlags": {
+							"$ref": "../util.json#/definitions/foundryFlagsObject"
+						},
+						"foundryImg": {
+							"$ref": "../util.json#/definitions/foundryImg"
+						},
 						"_copy": {
 							"type": "object",
 							"properties": {
@@ -1774,26 +1620,6 @@
 								"source"
 							],
 							"additionalProperties": false
-						},
-						"classSpells": {
-							"description": "Homebrew use only",
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/spellRef"
-							}
-						},
-						"requirementsSpecial": {
-							"description": "For homebrew use.",
-							"type": "string"
-						},
-						"foundryData": {
-							"$ref": "../util.json#/definitions/foundryDataObject"
-						},
-						"foundryFlags": {
-							"$ref": "../util.json#/definitions/foundryFlagsObject"
-						},
-						"foundryImg": {
-							"$ref": "../util.json#/definitions/foundryImg"
 						}
 					},
 					"additionalProperties": false,
@@ -2075,64 +1901,6 @@
 				},
 				"additionalSpells": {
 					"$ref": "../util.json#/definitions/additionalSpellsArray"
-				},
-				"_copy": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						},
-						"pantheon": {
-							"description": "Used in deity data",
-							"type": "string"
-						},
-						"shortName": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"className": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"classSource": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"_mod": {
-							"$ref": "../util.json#/definitions/_modObject"
-						},
-						"_trait": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							]
-						},
-						"_preserve": {
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "boolean"
-								}
-							}
-						}
-					},
-					"required": [
-						"name",
-						"source"
-					],
-					"additionalProperties": false
 				},
 				"classSpells": {
 					"description": "Homebrew use only",
