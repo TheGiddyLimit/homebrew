@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "foundry-class.json",
-	"version": "1.3.4",
+	"version": "1.3.5",
 	"type": "object",
 	"definitions": {
 		"entryDataObject": {
@@ -78,6 +78,9 @@
 					"flags": {
 						"$ref": "../util.json#/definitions/foundryFlagsObject"
 					},
+					"advancement": {
+						"$ref": "../util.json#/definitions/foundryAdvancementsArray"
+					},
 					"chooseData": {
 						"type": "array",
 						"items": {
@@ -97,10 +100,7 @@
 						"type": "object"
 					},
 					"effects": {
-						"type": "array",
-						"items": {
-							"$ref": "../util.json#/definitions/foundryEffectObject"
-						}
+						"$ref": "../util.json#/definitions/foundryEffectsArray"
 					},
 					"img": {
 						"type": "string"
@@ -112,6 +112,78 @@
 				"required": [
 					"name",
 					"source"
+				],
+				"additionalProperties": false
+			}
+		},
+		"subclass": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"className": {
+						"type": "string"
+					},
+					"classSource": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "../entry.json"
+						}
+					},
+					"entryData": {
+						"$ref": "#/definitions/entryDataObject"
+					},
+					"data": {
+						"$ref": "../util.json#/definitions/foundryDataObject"
+					},
+					"flags": {
+						"$ref": "../util.json#/definitions/foundryFlagsObject"
+					},
+					"advancement": {
+						"$ref": "../util.json#/definitions/foundryAdvancementsArray"
+					},
+					"chooseData": {
+						"type": "array",
+						"items": {
+							"$ref": "../util.json#/definitions/foundryDataObject"
+						}
+					},
+					"isChooseDataRenderEntries": {
+						"type": "boolean"
+					},
+					"isIgnored": {
+						"const": true
+					},
+					"actorDataMod": {
+						"type": "object"
+					},
+					"actorTokenMod": {
+						"type": "object"
+					},
+					"effects": {
+						"$ref": "../util.json#/definitions/foundryEffectsArray"
+					},
+					"img": {
+						"type": "string"
+					},
+					"subEntities": {
+						"$ref": "../util.json#/definitions/foundrySubEntitiesObject"
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"className",
+					"classSource"
 				],
 				"additionalProperties": false
 			}
@@ -170,10 +242,7 @@
 						"type": "object"
 					},
 					"effects": {
-						"type": "array",
-						"items": {
-							"$ref": "../util.json#/definitions/foundryEffectObject"
-						}
+						"$ref": "../util.json#/definitions/foundryEffectsArray"
 					},
 					"img": {
 						"type": "string"
@@ -252,10 +321,7 @@
 						"type": "object"
 					},
 					"effects": {
-						"type": "array",
-						"items": {
-							"$ref": "../util.json#/definitions/foundryEffectObject"
-						}
+						"$ref": "../util.json#/definitions/foundryEffectsArray"
 					},
 					"img": {
 						"type": "string"
@@ -279,6 +345,7 @@
 	},
 	"required": [
 		"class",
+		"subclass",
 		"classFeature",
 		"subclassFeature"
 	],
