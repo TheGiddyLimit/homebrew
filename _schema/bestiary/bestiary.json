@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.21.2",
+	"version": "1.21.3",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
@@ -1102,64 +1102,6 @@
 				},
 				"foundryImg": {
 					"$ref": "../util.json#/definitions/foundryImg"
-				},
-				"_copy": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						},
-						"pantheon": {
-							"description": "Used in deity data",
-							"type": "string"
-						},
-						"shortName": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"className": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"classSource": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"_mod": {
-							"$ref": "../util.json#/definitions/_modObject"
-						},
-						"_trait": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							]
-						},
-						"_preserve": {
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "boolean"
-								}
-							}
-						}
-					},
-					"required": [
-						"name",
-						"source"
-					],
-					"additionalProperties": false
 				}
 			},
 			"additionalProperties": false
@@ -2180,64 +2122,6 @@
 						},
 						"foundryImg": {
 							"$ref": "../util.json#/definitions/foundryImg"
-						},
-						"_copy": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								},
-								"pantheon": {
-									"description": "Used in deity data",
-									"type": "string"
-								},
-								"shortName": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"className": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"classSource": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"_mod": {
-									"$ref": "../util.json#/definitions/_modObject"
-								},
-								"_trait": {
-									"type": "object",
-									"properties": {
-										"name": {
-											"type": "string"
-										},
-										"source": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"name",
-										"source"
-									]
-								},
-								"_preserve": {
-									"type": "object",
-									"patternProperties": {
-										".*": {
-											"type": "boolean"
-										}
-									}
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							],
-							"additionalProperties": false
 						}
 					},
 					"additionalProperties": false,
@@ -3412,87 +3296,199 @@
 			"anyOf": [
 				{
 					"type": "object",
-					"allOf": [
-						{
-							"$ref": "../entry.json#/definitions/entry"
+					"properties": {
+						"name": {
+							"type": "string"
 						},
-						{
+						"type": {
+							"type": "string",
+							"const": "variant"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "../util.json#/definitions/page"
+						},
+						"srd": {
+							"$ref": "../util.json#/definitions/srd"
+						},
+						"data": {
+							"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+							"type": "object"
+						},
+						"id": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "../entry.json"
+							}
+						},
+						"token": {
 							"type": "object",
 							"properties": {
-								"type": {
-									"const": "variant"
-								},
 								"name": {
 									"type": "string"
-								},
-								"entries": {
-									"type": "array",
-									"items": {
-										"$ref": "../entry.json"
-									}
-								}
-							},
-							"required": [
-								"name",
-								"entries"
-							]
-						},
-						{
-							"$ref": "#/definitions/variantToken"
-						},
-						{
-							"$ref": "#/definitions/variantVersion"
-						}
-					]
-				},
-				{
-					"type": "object",
-					"allOf": [
-						{
-							"$ref": "../entry.json#/definitions/entry"
-						},
-						{
-							"type": "object",
-							"properties": {
-								"type": {
-									"const": "inset"
-								},
-								"name": {
-									"type": "string"
-								},
-								"entries": {
-									"type": "array",
-									"items": {
-										"$ref": "../entry.json"
-									}
-								},
-								"data": {
-									"type": "object"
-								},
-								"page": {
-									"$ref": "../util.json#/definitions/page"
 								},
 								"source": {
 									"type": "string"
 								},
-								"id": {
-									"type": "string"
-								},
-								"style": {
-									"type": "string"
+								"page": {
+									"$ref": "../util.json#/definitions/page"
 								}
 							},
 							"required": [
-								"entries"
+								"name",
+								"source"
 							]
 						},
-						{
-							"$ref": "#/definitions/variantToken"
-						},
-						{
-							"$ref": "#/definitions/variantVersion"
+						"_version": {
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"source": {
+											"type": "string"
+										},
+										"addAs": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"addAs"
+									],
+									"additionalProperties": false
+								},
+								{
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"source": {
+											"type": "string"
+										},
+										"addHeadersAs": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"addHeadersAs"
+									],
+									"additionalProperties": false
+								}
+							]
 						}
-					]
+					},
+					"required": [
+						"name",
+						"entries"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "inset"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "../util.json#/definitions/page"
+						},
+						"srd": {
+							"$ref": "../util.json#/definitions/srd"
+						},
+						"data": {
+							"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+							"type": "object"
+						},
+						"id": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "../entry.json"
+							}
+						},
+						"style": {
+							"type": "string"
+						},
+						"token": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"$ref": "../util.json#/definitions/page"
+								}
+							},
+							"required": [
+								"name",
+								"source"
+							]
+						},
+						"_version": {
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"source": {
+											"type": "string"
+										},
+										"addAs": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"addAs"
+									],
+									"additionalProperties": false
+								},
+								{
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"source": {
+											"type": "string"
+										},
+										"addHeadersAs": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"addHeadersAs"
+									],
+									"additionalProperties": false
+								}
+							]
+						}
+					},
+					"required": [
+						"entries"
+					],
+					"additionalProperties": false
 				}
 			]
 		},
