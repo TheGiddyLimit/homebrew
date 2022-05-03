@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.17",
+	"version": "1.11.18",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -2064,64 +2064,6 @@
 					"items": {
 						"$ref": "entry.json"
 					}
-				},
-				"_copy": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						},
-						"pantheon": {
-							"description": "Used in deity data",
-							"type": "string"
-						},
-						"shortName": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"className": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"classSource": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"_mod": {
-							"$ref": "#/definitions/_modObject"
-						},
-						"_trait": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							]
-						},
-						"_preserve": {
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "boolean"
-								}
-							}
-						}
-					},
-					"required": [
-						"name",
-						"source"
-					],
-					"additionalProperties": false
 				}
 			},
 			"additionalProperties": false
@@ -2158,64 +2100,6 @@
 								"items": {
 									"$ref": "entry.json"
 								}
-							},
-							"_copy": {
-								"type": "object",
-								"properties": {
-									"name": {
-										"type": "string"
-									},
-									"source": {
-										"type": "string"
-									},
-									"pantheon": {
-										"description": "Used in deity data",
-										"type": "string"
-									},
-									"shortName": {
-										"description": "Used in subclass data",
-										"type": "string"
-									},
-									"className": {
-										"description": "Used in subclass data",
-										"type": "string"
-									},
-									"classSource": {
-										"description": "Used in subclass data",
-										"type": "string"
-									},
-									"_mod": {
-										"$ref": "#/definitions/_modObject"
-									},
-									"_trait": {
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"source": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"name",
-											"source"
-										]
-									},
-									"_preserve": {
-										"type": "object",
-										"patternProperties": {
-											".*": {
-												"type": "boolean"
-											}
-										}
-									}
-								},
-								"required": [
-									"name",
-									"source"
-								],
-								"additionalProperties": false
 							}
 						},
 						"additionalProperties": false,
@@ -3637,6 +3521,16 @@
 		"foundryFlagsObject": {
 			"type": "object"
 		},
+		"foundryAdvancementObject": {
+			"type": "object"
+		},
+		"foundryAdvancementsArray": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/foundryAdvancementObject"
+			},
+			"uniqueItems": true
+		},
 		"foundryImg": {
 			"type": "string"
 		},
@@ -3682,6 +3576,13 @@
 				"changes"
 			],
 			"additionalProperties": false
+		},
+		"foundryEffectsArray": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/foundryEffectObject"
+			},
+			"uniqueItems": true
 		},
 		"foundrySideDataGenericArray": {
 			"type": "array",
