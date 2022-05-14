@@ -123,11 +123,14 @@ function cleanFolder (folder) {
 		ALL_ERRORS.forEach(e => console.error(e));
 		throw new Error(`Errors were found. See above.`);
 	}
+
+	return files.length;
 }
 
+let totalFiles = 0;
 Uf.runOnDirs((dir) => {
 	Um.info(`CLEANER`, `Cleaning dir "${dir}"...`);
-	cleanFolder(dir);
+	totalFiles += cleanFolder(dir);
 });
 
-Um.info(`CLEANER`, "Cleaning complete.");
+Um.info(`CLEANER`, `Cleaning complete. Cleaned ${totalFiles} file${totalFiles === 1 ? "" : "s"}.`);
