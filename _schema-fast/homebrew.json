@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.7.4",
+	"version": "1.8.0",
 	"type": "object",
 	"description": "Homebrew for 5etools. Should include arrays titled similarly to the main site data, e.g. `spell` or `class`",
 	"definitions": {
@@ -213,6 +213,12 @@
 					"type": "integer",
 					"description": "The epoch timestamp (in seconds) when the homebrew was last modified. Not guaranteed to be anywhere near accurate."
 				},
+				"_dateLastModifiedHash": {
+					"type": "string",
+					"description": "A file hash used to automatically update the value of \"dateLastModified\". Should not be manually created/edited.",
+					"minLength": 10,
+					"maxLength": 10
+				},
 				"currencyConversions": {
 					"type": "object",
 					"description": "Keys should be uniquely-named value conversion objects, and can be referenced from item entities as \"currencyConversion\": \"<MyKey>\". The currency conversion info will then be used when rendering the value of the item.",
@@ -280,7 +286,9 @@
 				}
 			},
 			"required": [
-				"sources"
+				"sources",
+				"dateAdded",
+				"dateLastModified"
 			],
 			"additionalProperties": false
 		},
