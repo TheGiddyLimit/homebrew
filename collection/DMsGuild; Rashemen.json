@@ -1583,7 +1583,6 @@
 			"cha": 12,
 			"passive": 10,
 			"cr": "8",
-			"shortName": true,
 			"senses": [
 				"blindsight 10 ft.",
 				"darkvision 120 ft."
@@ -1677,13 +1676,6 @@
 						"Each creature in the orglash's space must make a {@dc 14} Constitution saving throw, taking 16 ({@damage 3d8 + 3}) cold damage on a failed save, or half as much damage on a successful one.",
 						"If the saving throw fails by 5 or more, the creature also gains a level of {@condition exhaustion}."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"entries": [
-						"",
-						"3/day: "
-					]
 				}
 			],
 			"spellcasting": [
@@ -1715,8 +1707,7 @@
 					"Otherwise known as ice spirits, these chill cyclones are native to the Rashemen area. They are solitary creatures who inhabit mountain peaks, ice caves, and snow fields. Orglash are attuned to the land of Rashemen, and stalwartly protect it against threats from without, and within.",
 					"Despite being a wholly magical being, unlike many other elemental creatures, orglash are native to the material plane. This natural physiology imparts upon it the inability to survive in warm climates. When an orglash is slain, it leaves behind a shard of elemental ice. If the orglash took fire damage in the last minute before it died, the shard melts immediately. A shard of elemental ice can be affixed to a spellcasting focus, allowing the bearer to reroll 1's and 2's on cold damage dealt by spells they cast."
 				]
-			},
-			"isNamedCreature": true
+			}
 		},
 		{
 			"name": "Rusalka",
@@ -5817,25 +5808,6 @@
 			],
 			"hasFluff": true,
 			"hasFluffImages": true,
-			"_versions": [
-				{
-					"name": "Archmage (Familiar)",
-					"source": "MM",
-					"_mod": {
-						"_": {
-							"mode": "addSpells",
-							"spells": {
-								"1": {
-									"spells": [
-										"{@spell find familiar} (one of the creatures described in the spell or some other Tiny monster, such as a {@creature crawling claw}, {@creature imp}, {@creature pseudodragon}, or {@creature quasit})"
-									]
-								}
-							}
-						}
-					},
-					"variant": null
-				}
-			],
 			"tokenUrl": "https://5e.tools/img/MM/Archmage.png",
 			"fluff": {
 				"entries": [
@@ -5863,6 +5835,188 @@
 		}
 	],
 	"spell": [
+		{
+			"name": "Cohort",
+			"level": 3,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 24
+					}
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Wychlaran",
+						"source": "rcg"
+					}
+				]
+			},
+			"entries": [
+				"You perform a ritual of bonding with another willing creature, tethering them to you and your magic. When you cast this spell, you and the target gain the benefits listed below:",
+				{
+					"type": "list",
+					"items": [
+						"When you and the target are forced to make a saving throw against the same spell, use either your or the target's result, whichever is higher.",
+						"When taking damage, either you or the target can use your reaction to gain resistance to that damage type if the other has resistance to that damage.",
+						"Spells and features that either you or the target use with a range of touch can target the other, as long as you are within 30 feet of each other and can see the target."
+					]
+				},
+				"This bonding ends early if either you or the target are reduced to 0 hit points, are ever on a different plane of existence for more than 1 hour, or if you cast this spell again and bond to a different creature."
+			],
+			"source": "rcg",
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "two pints of jhuild worth 1 gp each, which the spell consumes",
+					"consume": true,
+					"cost": 100
+				}
+			},
+			"meta": {
+				"ritual": true
+			},
+			"entriesHigherLevel": [
+				{
+					"name": "At Higher Levels",
+					"entries": [
+						"You can create a permanent bond by casting this spell using a spell slot of 6th level or higher, targeting the same creature every day for one year. After doing so, this effect only ends if you or the bonded creature die."
+					]
+				}
+			]
+		},
+		{
+			"name": "Enrage",
+			"level": 2,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1,
+						"upTo": true
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wychlaran",
+						"source": "rcg"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You touch a target, bestowing them with a fit of rage. An unwilling creature can make a Wisdom saving throw to resist this effect. When successful, the target becomes enraged, giving them advantage on any melee attack roll using Strength. Attacks made against the target by other creatures within 5 feet have advantage.",
+				"This effect ends early at the end of the enraged creature's turn if they have not dealt damage with a Strength-based attack since the start of their last turn, or if they are reduced to 0 hit points. The target can also attempt to end the effect early by making a Wisdom saving throw at the end of their turn (no action required)."
+			],
+			"source": "rcg",
+			"components": {
+				"s": true
+			}
+		},
+		{
+			"name": "Flashburst",
+			"level": 3,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wychlaran",
+						"source": "rcg"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You cause a blinding flash of light to erupt around one target creature within range. The target is {@condition blinded} for the duration and must make a Constitution saving throw or be {@condition stunned} for 1 round. Additionally, each creature within a 10-foot radius of the target must succeed on a Wisdom saving throw or be {@condition blinded} for the duration. At the end of each of its turns, an affected creature can make a Constitution saving throw, ending the effect on themselves on a success."
+			],
+			"source": "rcg",
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a pinch of sulfur or phosphorus"
+			},
+			"conditionInflict": [
+				"blinded",
+				"stunned"
+			]
+		},
 		{
 			"name": "Moon Blade",
 			"source": "rcg",
@@ -5892,13 +6046,14 @@
 					"type": "timed",
 					"duration": {
 						"type": "minute",
-						"amount": 1
+						"amount": 1,
+						"upTo": true
 					},
 					"concentration": true
 				}
 			],
 			"entries": [
-				"You evoke a blazing sword of moonlight into your hand. The moon blade is a simple weapon with which you are proficient. It deals {@damage 3d8} radiant damage on a hit and has the finesse and light properties. The blade deals an additional {@roll 2d8} radiant damage to undead on a hit.",
+				"You evoke a blazing sword of moonlight into your hand. The moon blade is a simple weapon with which you are proficient. It deals {@damage 3d8} radiant damage on a hit and has the finesse and light properties. The blade deals an additional {@damage 2d8} radiant damage to undead on a hit.",
 				"Targets struck by the moon blade have difficulty maintaining or casting spells. Creatures have disadvantage on concentration checks made against damage from the moon blade. Additionally, until the end of the target's next turn, targets must succeed on a saving throw using their spellcasting ability to cast a spell, or their spell fails and has no effect."
 			],
 			"classes": {
@@ -6209,7 +6364,8 @@
 					"type": "timed",
 					"duration": {
 						"type": "minute",
-						"amount": 1
+						"amount": 1,
+						"upTo": true
 					},
 					"concentration": true
 				}
@@ -6264,7 +6420,8 @@
 					"type": "timed",
 					"duration": {
 						"type": "minute",
-						"amount": 1
+						"amount": 1,
+						"upTo": true
 					},
 					"concentration": true
 				}
@@ -6910,7 +7067,6 @@
 				"Blindness/Deafness",
 				"Blur",
 				"Cloud of Daggers",
-				"Cohort|rcg",
 				"Continual Flame",
 				"Crown of Madness",
 				"Darkness",
@@ -8347,33 +8503,32 @@
 					"rows": [
 						[
 							"2nd",
-							"{@monster Sage|ckm}",
-							"{@monster Thug}",
-							"{@monster Scout}"
+							"{@creature Sage|cm}",
+							"{@creature Thug}",
+							"{@creature Scout}"
 						],
 						[
 							"6th",
-							"{@monster Bard|vgm}",
-							"{@monster Berserker}",
-							"{@monster Spy}"
+							"{@creature Bard|vgm}",
+							"{@creature Berserker}",
+							"{@creature Spy}"
 						],
 						[
 							"10th",
-							"{@monster Illusionist|vgm}",
-							"{@monster Knight}",
-							"{@monster Swashbuckler|vgm}"
+							"{@creature Illusionist|vgm}",
+							"{@creature Knight}",
+							"{@creature Swashbuckler|vgm}"
 						],
 						[
 							"14th",
-							"{@monster Enchanter|vgm} or {@monster Transmuter|vgm}",
-							"{@monster Gladiator}",
-							"{@monster Master Thief|vgm}"
+							"{@creature Enchanter|vgm} or {@creature Transmuter|vgm}",
+							"{@creature Gladiator}",
+							"{@creature Master Thief|vgm}"
 						]
 					]
 				},
 				"Your cohort must be a humanoid native of Rashemen and share at least one language with you, but you can choose or randomly select specific details such as their race or gender. Your cohort would risk their life to protect you, and follows your orders to the best of their ability. In combat, they roll their own initiative and act on their own turn. Out of combat they may run small errands or scout out an area, but they will not willingly travel more than a few miles away from the one they are sworn to protect.",
-				"If your cohort dies and is not revived, you must return to a populated area (such as a city or village) and spend 2d6 days searching for another suitable cohort.",
-				"Cohort stat blocks can be found in Appendix A \u2014 Published Stat Blocks (page 164)."
+				"If your cohort dies and is not revived, you must return to a populated area (such as a city or village) and spend 2d6 days searching for another suitable cohort."
 			]
 		},
 		{
