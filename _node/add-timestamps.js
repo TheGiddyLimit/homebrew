@@ -26,13 +26,10 @@ async function pUpdateDir (dir) {
 
 			let updateType = _UPDATE_TYPES.NONE;
 
-			// We hash the file *without* `_meta`, as `_meta` includes:
-			//  - "dateAdded" and "dateLastModified", which we want to ignore for hashing for timestamp updates
-			//  - the "_dateLastModifiedHash", which we want to ignore for hashing
-			// Unfortunately this means that updating the `_meta` does not trigger a hash change, but this is an
-			//   acceptable sacrifice for the rest of the system being simpler.
+			// We hash the file without `dateAdded`, `dateLastModified`, and `_dateLastModifiedHash` to ensure the hash
+			//   is stable when changing date values.
 			const toHashObj = {...fileData.json};
-			delete toHashObj._meta;
+			toHashObj._meta = {...toHashObj._meta, dateAdded: undefined, dateLastModified: undefined, _dateLastModifiedHash: undefined};
 			const expectedHash = (await hasha.async(JSON.stringify(toHashObj))).slice(0, 10);
 
 			if (!fileData.json._meta._dateLastModifiedHash) {
