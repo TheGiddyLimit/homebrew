@@ -39,24 +39,24 @@ An example homebrew file might contain the following information in it's `_meta`
 
 ```jsonc
 "dependencies": {
-    "monster": [    //Use the property name first
-        "MM",       //Then the source ID
-        "TDCSR"     //Homebrew sources can also be used, but must be stored in the repo
+    "monster": [    // Use the property name first
+        "MM",       // Then the source ID
+        "TDCSR"     // Homebrew sources can also be used, but must be stored in the repo
     ],
     "monsterFluff": [
         "MM",
         "TDCSR"
     ],
     "subclass": [
-        "fighter",  //Note the use of the class name for (sub)class(Feature) dependencies
-        "TDCSR"     //Homebrew (sub)class(Feature) dependencies use the normal source
+        "fighter",  // Note the use of the class name for (sub)class(Feature) dependencies
+        "TDCSR"     // Homebrew (sub)class(Feature) dependencies use the normal source
     ]
 },
-"internalCopies": [ //A list of properties from the current document that are copied
+"internalCopies": [ // A list of properties from the current document that are copied
     "monsterFluff",
     "item"
 ],
-"includes": {       //A map of properties to be loaded from sources
+"includes": {       // A map of properties to be loaded from sources
     "spell": [
         "TDCSR"
     ]
