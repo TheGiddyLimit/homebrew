@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "vehicles.json",
-	"version": "1.5.1",
+	"version": "1.5.4",
 	"type": "object",
 	"definitions": {
 		"vehicleTerrain": {
@@ -47,7 +47,7 @@
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/definitions/page"
 				},
 				"upgradeType": {
 					"type": "array",
@@ -81,7 +81,7 @@
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/definitions/page"
 				},
 				"vehicleType": {
 					"const": "SHIP"
@@ -406,6 +406,9 @@
 				"foundryData": {
 					"$ref": "util.json#/definitions/foundryDataObject"
 				},
+				"foundryFlags": {
+					"$ref": "util.json#/definitions/foundryFlagsObject"
+				},
 				"foundryImg": {
 					"$ref": "util.json#/definitions/foundryImg"
 				}
@@ -426,7 +429,7 @@
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/definitions/page"
 				},
 				"vehicleType": {
 					"const": "INFWAR"
@@ -573,6 +576,9 @@
 				"foundryData": {
 					"$ref": "util.json#/definitions/foundryDataObject"
 				},
+				"foundryFlags": {
+					"$ref": "util.json#/definitions/foundryFlagsObject"
+				},
 				"foundryImg": {
 					"$ref": "util.json#/definitions/foundryImg"
 				}
@@ -609,12 +615,14 @@
 	"properties": {
 		"vehicle": {
 			"type": "array",
+			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/vehicle"
 			}
 		},
 		"vehicleUpgrade": {
 			"type": "array",
+			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/vehicleUpgrade"
 			}

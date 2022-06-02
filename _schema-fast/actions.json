@@ -1,11 +1,12 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "actions.json",
-	"version": "1.1.3",
+	"version": "1.1.5",
 	"type": "object",
 	"properties": {
 		"action": {
 			"type": "array",
+			"uniqueItems": true,
 			"items": {
 				"type": "object",
 				"properties": {
@@ -22,7 +23,7 @@
 						"type": "string"
 					},
 					"page": {
-						"type": "integer"
+						"$ref": "util.json#/definitions/page"
 					},
 					"fromVariant": {
 						"type": "string",
@@ -71,6 +72,15 @@
 							"type": "string",
 							"description": "UIDs of \"action\"s to be linked in a \"See Also\" footnote.\nEx.: \"disarm|dmg\"."
 						}
+					},
+					"foundryData": {
+						"$ref": "util.json#/definitions/foundryDataObject"
+					},
+					"foundryFlags": {
+						"$ref": "util.json#/definitions/foundryFlagsObject"
+					},
+					"foundryEffects": {
+						"$ref": "util.json#/definitions/foundryEffectsArray"
 					},
 					"foundryImg": {
 						"$ref": "util.json#/definitions/foundryImg"

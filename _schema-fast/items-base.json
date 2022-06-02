@@ -1,12 +1,14 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "items-base.json",
-	"version": "1.4.9",
+	"version": "1.4.13",
 	"definitions": {
 		"itemLookupArray": {
 			"type": "array",
 			"uniqueItems": true,
-			"items": {}
+			"items": {
+				"$ref": "#/definitions/itemLookup"
+			}
 		},
 		"itemLookupBase": {
 			"type": "object",
@@ -18,7 +20,7 @@
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/definitions/page"
 				},
 				"name": {
 					"type": "string"
@@ -26,26 +28,13 @@
 				"template": {
 					"$comment": "Note that this is not used on item types.",
 					"type": "string"
-				},
-				"entries": {
-					"type": "array",
-					"items": {
-						"$ref": "entry.json"
-					}
-				},
-				"entriesTemplate": {
-					"type": "array",
-					"items": {
-						"$ref": "entry.json"
-					}
 				}
 			},
+			"additionalProperties": false,
 			"required": [
 				"abbreviation",
-				"source",
-				"page"
-			],
-			"additionalProperties": false
+				"source"
+			]
 		},
 		"itemLookup": {
 			"anyOf": [
@@ -59,7 +48,7 @@
 							"type": "string"
 						},
 						"page": {
-							"type": "integer"
+							"$ref": "util.json#/definitions/page"
 						},
 						"name": {
 							"type": "string"
@@ -73,20 +62,13 @@
 							"items": {
 								"$ref": "entry.json"
 							}
-						},
-						"entriesTemplate": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
 						}
 					},
+					"additionalProperties": false,
 					"required": [
 						"abbreviation",
-						"source",
-						"page"
-					],
-					"additionalProperties": false
+						"source"
+					]
 				},
 				{
 					"type": "object",
@@ -98,7 +80,7 @@
 							"type": "string"
 						},
 						"page": {
-							"type": "integer"
+							"$ref": "util.json#/definitions/page"
 						},
 						"name": {
 							"type": "string"
@@ -107,12 +89,6 @@
 							"$comment": "Note that this is not used on item types.",
 							"type": "string"
 						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						},
 						"entriesTemplate": {
 							"type": "array",
 							"items": {
@@ -120,12 +96,11 @@
 							}
 						}
 					},
+					"additionalProperties": false,
 					"required": [
 						"abbreviation",
-						"source",
-						"page"
-					],
-					"additionalProperties": false
+						"source"
+					]
 				}
 			]
 		}
@@ -151,7 +126,7 @@
 						"type": "string"
 					},
 					"page": {
-						"type": "integer"
+						"$ref": "util.json#/definitions/page"
 					},
 					"ac": {
 						"type": "integer"
@@ -342,11 +317,17 @@
 					"foundryData": {
 						"$ref": "util.json#/definitions/foundryDataObject"
 					},
-					"fluff": {
-						"$ref": "shared-items.json#/definitions/fluff"
+					"foundryFlags": {
+						"$ref": "util.json#/definitions/foundryFlagsObject"
+					},
+					"foundryEffects": {
+						"$ref": "util.json#/definitions/foundryEffectsArray"
 					},
 					"foundryImg": {
 						"$ref": "util.json#/definitions/foundryImg"
+					},
+					"fluff": {
+						"$ref": "shared-items.json#/definitions/fluff"
 					}
 				},
 				"required": [

@@ -1,0 +1,84 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"version": "1.0.1",
+	"$id": "traits.json",
+	"type": "object",
+	"definitions": {
+		"trait": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "../util.json#/definitions/page"
+				},
+				"ref": {
+					"type": "string"
+				},
+				"crMin": {
+					"type": "string"
+				},
+				"crMax": {
+					"type": "string"
+				},
+				"prerequisite": {
+					"type": "object",
+					"patternProperties": {
+						"^.*$": {
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"min": {},
+										"max": {}
+									},
+									"additionalProperties": false
+								},
+								{
+									"type": "object",
+									"properties": {
+										"oneOf": {
+											"type": "array"
+										}
+									},
+									"additionalProperties": false
+								}
+							]
+						}
+					}
+				},
+				"apply": {
+					"type": "object",
+					"properties": {
+						"_root": {
+							"$ref": "bestiary.json#/definitions/creatureData"
+						},
+						"_mod": {
+							"$ref": "../util.json#/definitions/_modObject"
+						}
+					}
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"name",
+				"source",
+				"apply"
+			]
+		}
+	},
+	"properties": {
+		"trait": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/definitions/trait"
+			}
+		}
+	},
+	"additionalProperties": false
+}

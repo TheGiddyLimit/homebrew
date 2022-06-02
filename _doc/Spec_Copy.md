@@ -2,9 +2,70 @@
 
 The copy system allows an existing creature to be copied, with modifications, to create a new creature.
 
-## Usage
+## Homebrew Metadata
 
-```yaml
+When using `"_copy"` as part of a homebrew file, dependencies need to be declared so that the site loads data in the correct order.
+The `"_meta"` property can contain a list of `"dependencies"`, `"internalCopies"` and `"includes"` when needed.
+
+### dependencies
+
+Dependencies are declared on site source files as a map in the following format:
+
+```jsonc
+"<data property>": [
+    "<JsonSource1>",
+    ...,
+    "<JsonSourceN>"
+]
+```
+
+#### Note
+
+Entities from these sources can then be extended/referenced in this file. When copying classes/subclasses/class features/subclass features, the array should consist of `"<classIdentifier1>", ..., "<classIdentifierN>"` items, where `"classIdentifierN"` matches the keys in `"5etools/data/class/index.json"`.
+
+When copying class/etc. homebrew, normal "source"-based linking applies.
+
+### internalCopies
+
+An array of keys that are copied from within the current document. e.g. `"item"`, `"monsterFluff"`, `"background"` etc.
+
+### includes
+
+`"includes"` is structured similarly to `"dependencies"` and enables the site to load additional content from other homebrew files that are stored in the homebrew repo.
+
+### Example
+
+An example homebrew file might contain the following information in it's `_meta` property:
+
+```jsonc
+"dependencies": {
+    "monster": [    // Use the property name first
+        "MM",       // Then the source ID
+        "TDCSR"     // Homebrew sources can also be used, but must be stored in the repo
+    ],
+    "monsterFluff": [
+        "MM",
+        "TDCSR"
+    ],
+    "subclass": [
+        "fighter",  // Note the use of the class name for (sub)class(Feature) dependencies
+        "TDCSR"     // Homebrew (sub)class(Feature) dependencies use the normal source
+    ]
+},
+"internalCopies": [ // A list of properties from the current document that are copied
+    "monsterFluff",
+    "item"
+],
+"includes": {       // A map of properties to be loaded from sources
+    "spell": [
+        "TDCSR"
+    ]
+}
+```
+
+## Usage of `"_copy"`
+
+```jsonc
 // replace values from the copy with values specified in the root
 // (N.B. these are kept in the root to ease external tooling, instead of doing e.g.:
 //    `name = name || _copy._set.name` we should always have basic info at the root level)
@@ -98,7 +159,7 @@ Modifiers have modes, these are:
 
 Regex replace text.
 
-```yaml
+```jsonc
 {
     "mode": "replaceTxt",
     "replace": "the captain", // regex pattern to match
@@ -111,7 +172,7 @@ Regex replace text.
 
 Append a string to an existing string (with optional joiner), or add a new string.
 
-```yaml
+```jsonc
 {
   "mode": "appendStr",
   "str": "some text to append",
@@ -123,7 +184,7 @@ Append a string to an existing string (with optional joiner), or add a new strin
 
 Prepend items to an array.
 
-```yaml
+```jsonc
 {
     "mode": "prependArr",
     // items can be a single item (shorthand)
@@ -140,7 +201,7 @@ Prepend items to an array.
 
 Append items to an array.
 
-```yaml
+```jsonc
 {
     "mode": "appendArr",
     // items can be a single item (shorthand)
@@ -158,7 +219,7 @@ Append items to an array.
 Replace named items in an array.
 If the item does not have a name, this falls back on trying to replace string literals.
 
-```yaml
+```jsonc
 {
     "mode": "replaceArr",
     "replace": "Mace", // name of target to replace
@@ -175,7 +236,7 @@ If the item does not have a name, this falls back on trying to replace string li
 
 `"replace"` can alternately be of the form:
 
-```yaml
+```jsonc
 {
     "regex": "a*b",
     "flags": "i"
@@ -196,7 +257,7 @@ Try to `replaceArr`, fall back on `appendArr`.
 
 For each item, check if it exists in the target array; if not, append it to the target array.
 
-```yaml
+```jsonc
 {
     "mode": "appendIfNotExistsArr",
     // items can be an item or an array of items
@@ -209,10 +270,10 @@ For each item, check if it exists in the target array; if not, append it to the 
 
 #### insertArr
 
-Insert items into an array at the specified.
-Note that these are applied in order of appearance, and that indexes should not be relied upon.
+Insert items into an array at the specified index.
+Note that these are applied in order of appearance. Note that index-based operations are brittle, and using them should therefore be avoided where possible.
 
-```yaml
+```jsonc
 {
     "mode": "insertArr",
     "index": 1,
@@ -230,7 +291,7 @@ Note that these are applied in order of appearance, and that indexes should not 
 
 Remove named or plain items from an array.
 
-```yaml
+```jsonc
 {
     "mode": "removeArr",
     // name/array of names of item to remove
@@ -249,7 +310,7 @@ Remove named or plain items from an array.
 
 Calculate a property, and add it to an object.
 
-```yaml
+```jsonc
 {
     "mode": "calculateProp",
     "prop": "stealth",
@@ -278,7 +339,7 @@ Available variables are:
 
 Add a scalar to a number or number-like property.
 
-```yaml
+```jsonc
 {
     "mode": "scalarAddProp",
     // "prop": "*", this affects all properties
@@ -291,7 +352,7 @@ Add a scalar to a number or number-like property.
 
 Multiply a number or number-like property by a scalar
 
-```yaml
+```jsonc
 {
     "mode": "scalarMultProp",
     "prop": "average",
@@ -304,7 +365,7 @@ Multiply a number or number-like property by a scalar
 
 Add senses to a statblock. If the creature has greater range in the same senses as those that would be added, no changes are made.
 
-```yaml
+```jsonc
 {
     "mode": "addSenses",
     "senses": {
@@ -318,7 +379,7 @@ Add senses to a statblock. If the creature has greater range in the same senses 
 
 Add skills to a statblock. If the creature has greater skill bonuses in the same skills as those that would be added, no changes are made.
 
-```yaml
+```jsonc
 {
     "mode": "addSkills",
     "skills": {
@@ -332,7 +393,7 @@ Add skills to a statblock. If the creature has greater skill bonuses in the same
 
 Add spells to a spell trait. Requires the creature to already be a spellcaster, and only targets the first listed trait.
 
-```yaml
+```jsonc
 {
     "mode": "addSpells",
     "spells": {
@@ -349,16 +410,16 @@ Add spells to a spell trait. Requires the creature to already be a spellcaster, 
 
 Replace spells in a spell trait. Requires the creature to already be a spellcaster, and only targets the first listed trait.
 
-```yaml
+```jsonc
 {
     "mode": "replaceSpells",
     "spells": {
         "4": [
-             {
-                 "replace": "{@spell banishment}",
-                 "with":"{@spell dimension door}" // can be an array
-             }
-         ]
+            {
+                "replace": "{@spell banishment}",
+                "with":"{@spell dimension door}" // can be an array
+            }
+        ]
     },
     "daily": {
         "1e": [
@@ -375,7 +436,7 @@ Replace spells in a spell trait. Requires the creature to already be a spellcast
 
 Add a scalar to `@hit` tags in a statblock
 
-```yaml
+```jsonc
 {
     "mode": "scalarAddHit",
     "scalar": 2
@@ -386,7 +447,7 @@ Add a scalar to `@hit` tags in a statblock
 
 Add a scalar to `@dc` tags in a statblock
 
-```yaml
+```jsonc
 {
     "mode": "scalarAddDc",
     "scalar": 2
@@ -397,7 +458,7 @@ Add a scalar to `@dc` tags in a statblock
 
 Set a statblock's `size` to the maximum of the present value and the value provided.
 
-```yaml
+```jsonc
 {
     "mode": "maxSize",
     // if the creature is "H" (huge), it will be set to "L" (large).
@@ -410,7 +471,7 @@ Set a statblock's `size` to the maximum of the present value and the value provi
 
 Multiply a creature's XP value by a scalar.
 
-```yaml
+```jsonc
 {
     "mode": "scalarMultXp",
     "scalar": 0.5,
