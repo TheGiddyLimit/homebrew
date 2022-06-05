@@ -3,7 +3,7 @@
 	"$id": "entry.json",
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.7.0",
+	"version": "1.7.1",
 	"definitions": {
 		"_arrayOfSpell": {
 			"type": "array",
@@ -1988,6 +1988,45 @@
 				"dataItem"
 			]
 		},
+		"entryStatblock": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"const": "statblock"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/definitions/page"
+				},
+				"srd": {
+					"$ref": "util.json#/definitions/srd"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"tag": {
+					"$ref": "util.json#/definitions/tagNameStats"
+				},
+				"hash": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"tag",
+				"name"
+			],
+			"additionalProperties": false
+		},
 		"entryRefClassFeature": {
 			"description": "For use in classes page content only.",
 			"type": "object",
@@ -2557,6 +2596,9 @@
 		},
 		{
 			"$ref": "#/definitions/entryDataItem"
+		},
+		{
+			"$ref": "#/definitions/entryStatblock"
 		},
 		{
 			"$ref": "#/definitions/entryRefClassFeature"
