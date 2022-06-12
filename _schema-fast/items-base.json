@@ -1,12 +1,14 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "items-base.json",
-	"version": "1.4.12",
+	"version": "1.4.13",
 	"definitions": {
 		"itemLookupArray": {
 			"type": "array",
 			"uniqueItems": true,
-			"items": {}
+			"items": {
+				"$ref": "#/definitions/itemLookup"
+			}
 		},
 		"itemLookupBase": {
 			"type": "object",
@@ -28,12 +30,11 @@
 					"type": "string"
 				}
 			},
+			"additionalProperties": false,
 			"required": [
 				"abbreviation",
-				"source",
-				"page"
-			],
-			"additionalProperties": false
+				"source"
+			]
 		},
 		"itemLookup": {
 			"anyOf": [
@@ -63,12 +64,11 @@
 							}
 						}
 					},
+					"additionalProperties": false,
 					"required": [
 						"abbreviation",
-						"source",
-						"page"
-					],
-					"additionalProperties": false
+						"source"
+					]
 				},
 				{
 					"type": "object",
@@ -96,12 +96,11 @@
 							}
 						}
 					},
+					"additionalProperties": false,
 					"required": [
 						"abbreviation",
-						"source",
-						"page"
-					],
-					"additionalProperties": false
+						"source"
+					]
 				}
 			]
 		}
