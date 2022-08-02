@@ -3,7 +3,7 @@
 	"$id": "entry.json",
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.7.1",
+	"version": "1.7.4",
 	"definitions": {
 		"_arrayOfSpell": {
 			"type": "array",
@@ -30,6 +30,12 @@
 					}
 				]
 			}
+		},
+		"_entryDataStyle": {
+			"type": "string",
+			"enum": [
+				"inset"
+			]
 		},
 		"mediaHref": {
 			"oneOf": [
@@ -1370,7 +1376,6 @@
 						}
 					},
 					"required": [
-						"name",
 						"entry"
 					],
 					"additionalProperties": false
@@ -1415,7 +1420,6 @@
 						}
 					},
 					"required": [
-						"name",
 						"entries"
 					],
 					"additionalProperties": false
@@ -1566,6 +1570,10 @@
 						},
 						"offsetY": {
 							"type": "integer"
+						},
+						"scale": {
+							"description": "Map image scaling. Where possible, avoid using this, and use size/offset instead.",
+							"type": "number"
 						}
 					},
 					"additionalProperties": false
@@ -1912,6 +1920,9 @@
 				"type": {
 					"const": "dataCreature"
 				},
+				"style": {
+					"$ref": "#/definitions/_entryDataStyle"
+				},
 				"dataCreature": {
 					"$ref": "bestiary/bestiary.json#/definitions/creature"
 				}
@@ -1927,6 +1938,9 @@
 				"type": {
 					"const": "dataSpell"
 				},
+				"style": {
+					"$ref": "#/definitions/_entryDataStyle"
+				},
 				"dataSpell": {
 					"$ref": "spells/spells.json#/definitions/spell"
 				}
@@ -1941,6 +1955,9 @@
 			"properties": {
 				"type": {
 					"const": "dataTrapHazard"
+				},
+				"style": {
+					"$ref": "#/definitions/_entryDataStyle"
 				},
 				"dataTrapHazard": {
 					"oneOf": [
@@ -1964,6 +1981,9 @@
 				"type": {
 					"const": "dataObject"
 				},
+				"style": {
+					"$ref": "#/definitions/_entryDataStyle"
+				},
 				"dataObject": {
 					"$ref": "objects.json#/definitions/object"
 				}
@@ -1978,6 +1998,9 @@
 			"properties": {
 				"type": {
 					"const": "dataItem"
+				},
+				"style": {
+					"$ref": "#/definitions/_entryDataStyle"
 				},
 				"dataItem": {
 					"$ref": "items.json#/definitions/item"
@@ -2019,6 +2042,9 @@
 				},
 				"hash": {
 					"type": "string"
+				},
+				"style": {
+					"$ref": "#/definitions/_entryDataStyle"
 				}
 			},
 			"required": [

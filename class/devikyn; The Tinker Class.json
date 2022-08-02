@@ -1,0 +1,4085 @@
+{
+	"$schema": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_schema-fast/homebrew.json",
+	"_meta": {
+		"sources": [
+			{
+				"json": "devikyn-tinker",
+				"abbreviation": "TTC",
+				"color": "186218",
+				"full": "The Tinker Class",
+				"authors": [
+					"/u/devikyn"
+				],
+				"convertedBy": [
+					"/u/devikyn"
+				],
+				"version": "4.31",
+				"url": "https://drive.google.com/file/d/1GLqBe4BpFrimZR4j4Io3ZchQaWIkkSq_/view?usp=sharing",
+				"targetSchema": "1.8.0"
+			}
+		],
+		"optionalFeatureTypes": {
+			"TS:Art": "Tinker Specialization, Artillerist",
+			"TS:Aug": "Tinker Specialization, Augmenter",
+			"TS:Che": "Tinker Specialization, Chemist",
+			"TS:Chr": "Tinker Specialization, Chronicle",
+			"TS:Gol": "Tinker Specialization, Golemancer",
+			"TS:Spe": "Tinker Specialization, Spellcrafter",
+			"TS:Wan": "Tinker Specialization, Wandslinger"
+		},
+		"dateAdded": 0,
+		"dateLastModified": 0,
+		"_dateLastModifiedHash": "afb9489c65"
+	},
+	"class": [
+		{
+			"name": "Tinker",
+			"source": "devikyn-tinker",
+			"fluff": [
+				{
+					"type": "section",
+					"name": "Tinker",
+					"entries": [
+						"A human in painted leathers lays in wait, peering through a makeshift scope. It is a magical glass that hovers just above her weapon, providing her enhanced sight. Her crossbow, modified with a large, glowing barrel, creaks as she pulls the trigger. With a crack, a wave of thunderous energy slams into an owlbear that plagued her home.",
+						"An elf, investigating a swamp near her home, brushes her hand over her face. Her skin, laced with veins of arcane magic, glows and forms a mask over her mouth. She wades into the swamp, investigating its depths. When she discovers an undead alligator, she emerges from the muck with a boom, propelled into the air by magic, and fires a large, heavy pellet from a modified crossbow.",
+						"A dwarf searches his satchel for components, with a brilliant concoction in mind. He quickly rifles through the dozens of labeled ingredients, pulling two out and mixing them together in a vial. The liquid bubbles and shimmers, and he loads it into a small crossbow, clicking it into place in a small, customized cartridge. He fires it to test its capability, and grins when the vial explodes into a pool of acid, burning away at the stone he used as a test dummy.",
+						"Between the many different walks of life, there are always tinkers \u2014 those crafty few who breathe new purpose into items that most would be satisfied to simply use. Tinkers, with their desire to study magic and infuse it into their work, commonly take great pride in upgrading items and inventing novel ways to use them. They see magic as a piece to an unfinished puzzle that they seek to complete; to do so needs experimentation and understanding. As such, tinkers can't resist the call of adventure, which allows them to make new and exciting discoveries that leave their particular signature on the world.",
+						{
+							"type": "entries",
+							"name": "Magical Innovators",
+							"entries": [
+								"Tinkers prefer to create tools for adventuring, rather than using their talents for trade. These crafty explorers will search out sources of magic in order to study it and learn how to incorporate new and exciting effects into their work. They revel in disassembling the workings of magic and manipulating its constituent components to their benefit.",
+								"Tinkers believe that there is more to magic than meets the eye. A tinker would jump at mere rumour of magical items, hoping to use their tools and insight to deciper its mysteries. Stories are often heard of the dancing light show that is a tinker combining a simple piece of rope with magical trinkets and essence, turning it into a snaking, quasi-sentient tool."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Experimental Tinkering",
+							"entries": [
+								"Tinkers, beyond all else, love to experiment. These crafty artisans will take any opportunity to try out a new modification, whether it is on weapons, armor, ammunition, or even other tools. A tinker will often be observed with a random item in their posession, using their tools to try and improve it in some way.",
+								"While their experiments sometimes have grand results, more often than not they produce something that is useless, wasting the original component. As such, perception of tinkers is generally negative - they are seen as wasteful, and are sometimes conceited because of their dedication to their craft. Tinkers know that their labors will bear fruit, and breaking a few eggs to do so is trivial to them."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Tinker",
+							"entries": [
+								"As you make your tinker, think about how that character decided to tinker instead of taking up a more established artisanal craft. Did you find the everyday achievements of a normal artisan bland? Do you have a vision that current weapon styles do not suit? Were you commissioned by a powerful benefactor to improve their items in a way that their enemies would not expect? Are you, perhaps, madly obsessed with achieving perfection? Any of these options are valid reasons to become a tinker.",
+								"Perhaps you received an injury that prevents you from drawing a bow string, and you want revenge. Others still might have no combat training at all, but a natural knack for creativity and a talent with their tools, and so they use their abilities profitably by becoming an adventurer. While thinking about what makes you a tinker, also consider why you fight.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make a tinker quickly using these choices. First, put your highest ability score in Dexterity, followed by Intelligence. Second, choose the guild artisan background."
+									]
+								}
+							]
+						}
+					],
+					"source": "devikyn-tinker",
+					"page": 1
+				}
+			],
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"startingProficiencies": {
+				"weapons": [
+					"simple",
+					"{@item hand crossbow|phb|hand crossbows",
+					"{@item heavy crossbow|phb|heavy crossbows"
+				],
+				"armor": [
+					"light",
+					"medium",
+					"{@item shield|phb|shields}"
+				],
+				"tools": [
+					"{@item tinker's tools|phb}"
+				],
+				"skills": [
+					{
+						"choose": {
+							"count": 3,
+							"from": [
+								"acrobatics",
+								"arcana",
+								"history",
+								"investigation",
+								"perception",
+								"sleight of hand",
+								"survival"
+							]
+						}
+					}
+				]
+			},
+			"proficiency": [
+				"dex",
+				"int"
+			],
+			"multiclassing": {
+				"requirements": {
+					"dex": 13,
+					"int": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light",
+						"medium",
+						"{@item shield|phb|shields}"
+					],
+					"weapons": [
+						"simple"
+					]
+				}
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item warhammer|phb} or (b) any two {@filter simple weapons|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
+					"(a) {@item leather armor|phb} or (b) {@item scale mail|phb}",
+					"{@item tinker's tools|phb}, a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 crossbow bolts}"
+				],
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"warhammer|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple",
+								"quantity": 2
+							}
+						]
+					},
+					{
+						"a": [
+							"dungeoneer's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
+					},
+					{
+						"a": [
+							"leather armor|phb"
+						],
+						"b": [
+							"scale mail|phb"
+						]
+					},
+					{
+						"_": [
+							"tinker's tools|phb",
+							"light crossbow|phb",
+							"crossbow bolts (20)|phb"
+						]
+					}
+				]
+			},
+			"spellcastingAbility": "int",
+			"casterProgression": "artificer",
+			"cantripProgression": [
+				0,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				4
+			],
+			"preparedSpells": "<$level$> / 2 + <$int_mod$>",
+			"classSpells": [
+				"Acid Splash",
+				"Blade Ward",
+				"Booming Blade|TCE",
+				"Create Bonfire",
+				"Fire Bolt",
+				"Green-Flame Blade|TCE",
+				"Guidance",
+				"Light",
+				"Mage Hand",
+				"Magic Stone",
+				"Mechanize|devikyn-tinker",
+				"Mending",
+				"Message",
+				"Poison Spray",
+				"Prestidigitation",
+				"Ray of Frost",
+				"Resistance",
+				"Shocking Grasp",
+				"Spare the Dying",
+				"Thorn Whip",
+				"Thunderclap",
+				"Absorb Elements|XGE",
+				"Alarm",
+				"Arcane Bayonet|devikyn-tinker",
+				"Catapult",
+				"Charm Person",
+				"Create or Destroy Water",
+				"Cure Wounds",
+				"Detect Magic",
+				"Detect Poison and Disease",
+				"Disguise Self",
+				"Expeditious Retreat",
+				"Faerie Fire",
+				"Feather Fall",
+				"Ice Knife|XGE",
+				"Identify",
+				"Jump",
+				"Longstrider",
+				"Magic Missle",
+				"Miasma Bomb|devikyn-tinker",
+				"Purify Food and Drink",
+				"Sanctuary",
+				"Snare|XGE",
+				"Sleep",
+				"Tasha's Hideous Laughter",
+				"Tenser's Floating Disk",
+				"Web",
+				"Aid",
+				"Alter Self",
+				"Arcane Lock",
+				"Bitterchill Mine|devikyn-tinker",
+				"Blur",
+				"Continual Flame",
+				"Darkvision",
+				"Dragon's Breath|XGE",
+				"Enlarge/Reduce",
+				"Find Traps",
+				"Hold Person",
+				"Invisibility",
+				"Lesser Restoration",
+				"Levitate",
+				"Locate Object",
+				"Nystul's Magic Aura",
+				"Magic Mouth",
+				"Magic Weapon",
+				"Misty Step",
+				"Pass without Trace",
+				"Protection from Poison",
+				"Rope Trick",
+				"See Invisibility",
+				"Shatter",
+				"Skywrite",
+				"Silence",
+				"Spider Climb",
+				"Tasha's Caustic Brew|TCE",
+				"Animate Dead",
+				"Blink",
+				"Clairvoyance",
+				"Create Food and Water",
+				"Dispel Magic",
+				"Energize Weapon|devikyn-tinker",
+				"Feign Death",
+				"Fly",
+				"Gaseous Form",
+				"Glyph of Warding",
+				"Haste",
+				"Intellect Fortress|TCE",
+				"Lightning Bolt",
+				"Magic Circle",
+				"Protection from Energy",
+				"Sending",
+				"Speak with Dead",
+				"Tiny Servant|XGE",
+				"Water Breathing",
+				"Water Walk",
+				"Arcane Eye",
+				"Charm Monster|XGE",
+				"Elemental Bane|XGE",
+				"Fabricate",
+				"Freedom of Movement",
+				"Leomund's Secret Chest",
+				"Mordenkainen's Faithful Hound",
+				"Mordenkainen's Private Sanctum",
+				"Otiluke's Resilient Sphere",
+				"Stone Shape",
+				"Stoneskin",
+				"Vitriolic Sphere",
+				"Animate Objects",
+				"Bigby's Hand",
+				"Creation",
+				"Danse Macabre|XGE",
+				"Hold Monster",
+				"Legend Lore",
+				"Mislead",
+				"Negative Energy Flood",
+				"Rory's Telepathic Bond",
+				"Scrying",
+				"Skill Empowerment|XGE",
+				"Transmute Rock",
+				"Wall of Stone"
+			],
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"Amalgamates"
+					],
+					"rows": [
+						[
+							0
+						],
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							6
+						],
+						[
+							6
+						],
+						[
+							6
+						],
+						[
+							6
+						]
+					]
+				},
+				{
+					"colLabels": [
+						"{@filter Cantrips Known|spells|level=0|class=Tinker (TTC)}"
+					],
+					"rows": [
+						[
+							0
+						],
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							4
+						]
+					]
+				},
+				{
+					"title": "Spell Slots per Spell Level",
+					"colLabels": [
+						"{@filter 1st|spells|level=1|class=Tinker (TTC)}",
+						"{@filter 2nd|spells|level=2|class=Tinker (TTC)}",
+						"{@filter 3rd|spells|level=3|class=Tinker (TTC)}",
+						"{@filter 4th|spells|level=4|class=Tinker (TTC)}",
+						"{@filter 5th|spells|level=5|class=Tinker (TTC)}"
+					],
+					"rows": [
+						[
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							2,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Arcane Preservation|Tinker|devikyn-tinker|1|devikyn-tinker",
+				"Bursting Modification|Tinker|devikyn-tinker|1|devikyn-tinker",
+				"Amalgamation|Tinker|devikyn-tinker|2|devikyn-tinker",
+				"Spellcasting|Tinker|devikyn-tinker|2|devikyn-tinker",
+				{
+					"classFeature": "Tinker Specialization|Tinker|devikyn-tinker|3|devikyn-tinker",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Tinker|devikyn-tinker|4|devikyn-tinker",
+				{
+					"classFeature": "Tinker Specialization feature|Tinker|devikyn-tinker|5|devikyn-tinker",
+					"gainSubclassFeature": true
+				},
+				"Use Magic Device|Tinker|devikyn-tinker|6|devikyn-tinker",
+				"Magical Crafting Efficiency|Tinker|devikyn-tinker|6|devikyn-tinker",
+				"Infuse Magic|Tinker|devikyn-tinker|7|devikyn-tinker",
+				"The Right Tool for the Job|Tinker|devikyn-tinker|7|devikyn-tinker",
+				"Ability Score Improvement|Tinker|devikyn-tinker|8|devikyn-tinker",
+				"Empowering Attunement|Tinker|devikyn-tinker|10|devikyn-tinker",
+				"Drain Amalgamate|Tinker|devikyn-tinker|11|devikyn-tinker",
+				"Ability Score Improvement|Tinker|devikyn-tinker|12|devikyn-tinker",
+				{
+					"classFeature": "Tinker Specialization feature|Tinker|devikyn-tinker|14|devikyn-tinker",
+					"gainSubclassFeature": true
+				},
+				{
+					"classFeature": "Expert Tinker|Tinker|devikyn-tinker|15|devikyn-tinker",
+					"gainSubclassFeature": true
+				},
+				"The Right Tool for the Job improvement|Tinker|devikyn-tinker|15|devikyn-tinker",
+				"Ability Score Improvement|Tinker|devikyn-tinker|16|devikyn-tinker",
+				"Attuned Perseverence|Tinker|devikyn-tinker|18|devikyn-tinker",
+				"Ability Score Improvement|Tinker|devikyn-tinker|19|devikyn-tinker",
+				{
+					"classFeature": "Tinker Specialization feature|Tinker|devikyn-tinker|20|devikyn-tinker",
+					"gainSubclassFeature": true
+				}
+			],
+			"subclassTitle": "Tinker Specialization",
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"mechanize|devikyn-tinker",
+							"mending",
+							"identify"
+						]
+					}
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "Artillerist",
+			"shortName": "Artillerist",
+			"source": "devikyn-tinker",
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"page": 4,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"shield",
+							"thunderwave"
+						],
+						"5": [
+							"knock",
+							"scorching ray"
+						],
+						"9": [
+							"fireball",
+							"wind wall"
+						],
+						"13": [
+							"fire shield",
+							"wall of fire"
+						],
+						"17": [
+							"immolation",
+							"wall of force"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Artillerist|Tinker|devikyn-tinker|Artillerist|devikyn-tinker|3",
+				"Metallurgy Expert|Tinker|devikyn-tinker|Artillerist|devikyn-tinker|3",
+				"Arcane Turret|Tinker|devikyn-tinker|Artillerist|devikyn-tinker|3",
+				"Empowered Turret|Tinker|devikyn-tinker|Artillerist|devikyn-tinker|5",
+				"Fortified Position|Tinker|devikyn-tinker|Artillerist|devikyn-tinker|14",
+				"Expert Tinker (Artillerist)|Tinker|devikyn-tinker|Artillerist|devikyn-tinker|15",
+				"Autonomous Turret|Tinker|devikyn-tinker|Artillerist|devikyn-tinker|20"
+			]
+		},
+		{
+			"name": "Augmenter",
+			"shortName": "Augmenter",
+			"source": "devikyn-tinker",
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"page": 5,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"false life",
+							"hunter's mark"
+						],
+						"5": [
+							"enhance ability",
+							"see invisibility"
+						],
+						"9": [
+							"aura of vitality",
+							"vampiric touch"
+						],
+						"13": [
+							"greater invisibility",
+							"polymorph"
+						],
+						"17": [
+							"antilife shell",
+							"steel wind strike|XGE"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Augmenter|Tinker|devikyn-tinker|Augmenter|devikyn-tinker|3",
+				"Construct Skin|Tinker|devikyn-tinker|Augmenter|devikyn-tinker|3",
+				"Slugshooter Crafting|Tinker|devikyn-tinker|Augmenter|devikyn-tinker|3",
+				"Modular Upgrade|Tinker|devikyn-tinker|Augmenter|devikyn-tinker|5",
+				"Propelled Frame|Tinker|devikyn-tinker|Augmenter|devikyn-tinker|14",
+				"Expert Tinker|Tinker|devikyn-tinker|Augmenter|devikyn-tinker|15",
+				"Reinforced Skin|Tinker|devikyn-tinker|Augmenter|devikyn-tinker|20"
+			]
+		},
+		{
+			"name": "Chemist",
+			"shortName": "Chemist",
+			"source": "devikyn-tinker",
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"page": 6,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"goodberry",
+							"ray of sickness"
+						],
+						"5": [
+							"flaming sphere",
+							"melf's acid arrow"
+						],
+						"9": [
+							"plant growth",
+							"stinking cloud"
+						],
+						"13": [
+							"blight",
+							"death ward"
+						],
+						"17": [
+							"cloudkill",
+							"raise dead"
+						]
+					},
+					"innate": {
+						"14": {
+							"daily": {
+								"1": [
+									"lesser restoration"
+								]
+							}
+						}
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Chemist|Tinker|devikyn-tinker|Chemist|devikyn-tinker|3",
+				"Frantic Chemistry|Tinker|devikyn-tinker|Chemist|devikyn-tinker|3",
+				"Dartbow Crafting|Tinker|devikyn-tinker|Chemist|devikyn-tinker|3",
+				"Volatile Mix|Tinker|devikyn-tinker|Chemist|devikyn-tinker|5",
+				"Restorative Reagents|Tinker|devikyn-tinker|Chemist|devikyn-tinker|14",
+				"Expert Tinker (Chemist)|Tinker|devikyn-tinker|Chemist|devikyn-tinker|15",
+				"Spark of Genius|Tinker|devikyn-tinker|Chemist|devikyn-tinker|20"
+			],
+			"optionalfeatureProgression": [
+				{
+					"featureType": [
+						"CF"
+					],
+					"name": "Chemical Formulas",
+					"progression": [
+						0,
+						0,
+						2,
+						2,
+						3,
+						3,
+						3,
+						3,
+						4,
+						4,
+						4,
+						4,
+						5,
+						5,
+						5,
+						5,
+						6,
+						6,
+						6,
+						6
+					]
+				}
+			]
+		},
+		{
+			"name": "Chronicle",
+			"shortName": "Chronicle",
+			"source": "devikyn-tinker",
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"page": 9,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"comprehend languages",
+							"dissonant whispers"
+						],
+						"5": [
+							"detect thoughts",
+							"mind spike|XGE"
+						],
+						"9": [
+							"hypnotic pattern",
+							"tongues"
+						],
+						"13": [
+							"locate creature",
+							"phantasmal killer"
+						],
+						"17": [
+							"modify memory",
+							"skill empowerment|XGE"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Chronicle|Tinker|devikyn-tinker|Chronicle|devikyn-tinker|3",
+				"Dutiful Scribe|Tinker|devikyn-tinker|Chronicle|devikyn-tinker|3",
+				"Artificial Mind|Tinker|devikyn-tinker|Chronicle|devikyn-tinker|3",
+				"Information Overload|Tinker|devikyn-tinker|Chronicle|devikyn-tinker|5",
+				"Mind Network|Tinker|devikyn-tinker|Chronicle|devikyn-tinker|14",
+				"Expert Tinker (Chronicle)|Tinker|devikyn-tinker|Chronicle|devikyn-tinker|15",
+				"Pure Information|Tinker|devikyn-tinker|Chronicle|devikyn-tinker|20"
+			]
+		},
+		{
+			"name": "Golemancer",
+			"shortName": "Golemancer",
+			"source": "devikyn-tinker",
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"page": 10,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"earth tremor|XGE",
+							"unseen servant"
+						],
+						"5": [
+							"heat metal",
+							"maximilian's earthen grasp|XGE"
+						],
+						"9": [
+							"meld into stone",
+							"erupting earth|XGE"
+						],
+						"13": [
+							"fabricate",
+							"summon construct|TCE"
+						],
+						"17": [
+							"conjure elemental",
+							"passwall"
+						]
+					},
+					"innate": {
+						"3": [
+							"find familiar"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Golemancer|Tinker|devikyn-tinker|Golemancer|devikyn-tinker|3",
+				"Gear Spider|Tinker|devikyn-tinker|Golemancer|devikyn-tinker|3",
+				"Mechanical Servant|Tinker|devikyn-tinker|Golemancer|devikyn-tinker|3",
+				"Refined Machinery|Tinker|devikyn-tinker|Golemancer|devikyn-tinker|5",
+				"Protective Charge|Tinker|devikyn-tinker|Golemancer|devikyn-tinker|14",
+				"Expert Tinker|Tinker|devikyn-tinker|Golemancer|devikyn-tinker|15",
+				"Golem Overdrive|Tinker|devikyn-tinker|Golemancer|devikyn-tinker|20"
+			]
+		},
+		{
+			"name": "Spellcrafter",
+			"shortName": "Spellcrafter",
+			"source": "devikyn-tinker",
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"page": 11,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"ensnaring strike",
+							"snare|xge"
+						],
+						"5": [
+							"cloud of daggers",
+							"mirror image"
+						],
+						"9": [
+							"conjure barrage",
+							"flame arrows|xge"
+						],
+						"13": [
+							"banishment",
+							"elemental bane|xge"
+						],
+						"17": [
+							"banishing smite",
+							"conjure volley"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Spellcrafter|Tinker|devikyn-tinker|Spellcrafter|devikyn-tinker|3",
+				"Arcane Weapon Crafting|Tinker|devikyn-tinker|Spellcrafter|devikyn-tinker|3",
+				"Spellcraft Toolkit|Tinker|devikyn-tinker|Spellcrafter|devikyn-tinker|3",
+				"Thunder Monger|Tinker|devikyn-tinker|Spellcrafter|devikyn-tinker|5",
+				"Shock Jump|Tinker|devikyn-tinker|Spellcrafter|devikyn-tinker|14",
+				"Expert Tinker|Tinker|devikyn-tinker|Spellcrafter|devikyn-tinker|15",
+				"Cannon Spellburst|Tinker|devikyn-tinker|Spellcrafter|devikyn-tinker|20"
+			]
+		},
+		{
+			"name": "Wandslinger",
+			"shortName": "Wandslinger",
+			"source": "devikyn-tinker",
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"page": 12,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"chromatic orb",
+							"color spray"
+						],
+						"5": [
+							"dust devil|XGE",
+							"pyrotechnics|XGE"
+						],
+						"9": [
+							"counterspell",
+							"melf's minute meteors|XGE"
+						],
+						"13": [
+							"dimension door",
+							"ice storm"
+						],
+						"17": [
+							"geas",
+							"synaptic static|XGE"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Wandslinger|Tinker|devikyn-tinker|Wandslinger|devikyn-tinker|3",
+				"Crafter of Implements|Tinker|devikyn-tinker|Wandslinger|devikyn-tinker|3",
+				"Magic Wand Prototype|Tinker|devikyn-tinker|Wandslinger|devikyn-tinker|3",
+				"Sleight of Wand|Tinker|devikyn-tinker|Wandslinger|devikyn-tinker|5",
+				"Duet of Tricks|Tinker|devikyn-tinker|Wandslinger|devikyn-tinker|14",
+				"Expert Tinker (Wandslinger)|Tinker|devikyn-tinker|Wandslinger|devikyn-tinker|15",
+				"Perfected Magic Wand|Tinker|devikyn-tinker|Wandslinger|devikyn-tinker|20"
+			]
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Arcane Preservation",
+			"source": "devikyn-tinker",
+			"page": 2,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 1,
+			"entries": [
+				"At 1st level, your understanding of magic items allows you to analyze and repair them. You learn the {@spell mechanize|devikyn-tinker} and {@spell mending|phb} cantrips. When you cast {@spell mending|phb} on a {@filter construct|bestiary|type=construct} or an object, the target regains 4 hit points for each of your tinker levels. Additionally, you can cast the {@spell identify|phb} spell as a ritual, using your {@item tinker's tools|phb} in place of the material component for the spell."
+			]
+		},
+		{
+			"name": "Bursting Modification",
+			"source": "devikyn-tinker",
+			"page": 2,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 1,
+			"entries": [
+				"Also at 1st level, you can alter the firing mechanism of ranged weapons to allow rapid, but less forceful shooting.",
+				"You spend 30 minutes, which can be during a short or long rest, using your {@item tinker's tools|phb} to reassemble an improved version of one {@filter ranged weapon you are holding that has the loading property|items|type=range|property=loading}. The weapon loses its {@i loading} property and gains the {@i bursting} property (see the {@book Weapon Properties|PHB|5|Weapon Properties|0} section)."
+			]
+		},
+		{
+			"name": "Amalgamation",
+			"source": "devikyn-tinker",
+			"page": 2,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 2,
+			"entries": [
+				"By 2nd level, you can store magic within non-magical items, infusing them with power to create new amalgamates.",
+				"Whenever you finish a long rest, you can touch a nonmagical object and imbue it with the magical properties of one of the magic items in the Amalgamate Items table below. You must choose a magic item appropriate for your tinker level, but the item can otherwise be of your choice. You can have a number of magic items from this feature equal to the Amalgamates column of the tinker table. If you create a new item while at this limit, you must replace one of your amalgamate magic items, which loses any properties it gained from this feature.",
+				"You gain one item of your choice from the list of Available Items in the Amalgamate Items table for your tinker level when you gain this feature, as your labor researching and tinkering to perfect the amalgamation process bears fruit.",
+				{
+					"type": "table",
+					"caption": "Amalgamate Items",
+					"colLabels": [
+						"Tinker Level",
+						"Available Items"
+					],
+					"colStyles": [
+						"col-3 text-center",
+						"col-9"
+					],
+					"rows": [
+						[
+							"2nd",
+							"{@item bag of holding|dmg}, {@item cap of water breathing|dmg}, {@item cloak of the manta ray|dmg}, {@item driftglobe|dmg}, {@item eversmoking bottle|dmg}, {@item figurine of wondrous power, silver raven|dmg}, {@item goggles of night|dmg}, {@item sending stones|dmg}, {@item wind fan|dmg}"
+						],
+						[
+							"5th",
+							"{@item +1 weapon|dmg}, {@item boots of the winterlands|dmg}, {@item bracers of archery|dmg}, {@item circlet of blasting|dmg}, {@item hat of disguise|dmg}, {@item helm of comprehending languages|dmg}, {@item lantern of revealing|dmg}, {@item ring of animal influence|dmg}, {@item ring of animal influence|dmg}, {@item ring of jumping|dmg}, {@item ring of swimming|dmg}, {@item rope of climbing|dmg}, {@item wand of magic detection|dmg}, {@item wand of secrets|dmg}"
+						],
+						[
+							"9th",
+							"{@item +1 armor|dmg}, {@item +1 shield|dmg}, {@item alchemy jug|dmg}, {@item boots of levitation|dmg}, {@item chime of opening|dmg}, {@item eyes of minute seeing|dmg}, {@item folding boat|dmg}, {@item gauntlets of ogre power|dmg}, {@item heward's handy haversack|dmg}, {@item ioun stone, protection|dmg}, {@item iron bands of bilarro|dmg}, {@item medallion of thoughts|dmg}, {@item wand of enemy detection|dmg}"
+						],
+						[
+							"13th",
+							"{@item +2 weapon|dmg}, {@item boots of elvenkind|dmg}, {@item boots of striding and springing|dmg}, {@item brooch of shielding|dmg}, {@item cloak of protection|dmg}, {@item eyes of charming|dmg}, {@item gloves of thievery|dmg}, {@item helm of telepathy|dmg}, {@item luckstone|dmg}, {@item necklace of adaptation|dmg}, {@item periapt of wound closure|dmg}, {@item ring of the ram|dmg}, {@item slippers of spider climbing|dmg}, {@item wings of flying|dmg}"
+						],
+						[
+							"17th",
+							"{@item +2 armor|dmg}, {@item +2 shield|dmg}, {@item amulet of health|dmg}, {@item belt of hill giant strength|dmg}, {@item cloak of arachnida|dmg}, {@item cloak of elvenkind|dmg}, {@item eyes of the eagle|dmg}, {@item gem of brightness|dmg}, {@item gloves of missile snaring|dmg}, {@item gloves of swimming and climbing|dmg}, {@item robe of useful items|dmg}, {@item ring of evasion|dmg}, {@item ring of mind shielding|dmg}, {@item winged boots|dmg}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 2,
+			"entries": [
+				"Also by 2nd level, as part of your study of magic, you gain the ability to cast spells. The spells tinkers typically learn are ones that allow them to change the form or function of other creatures and objects. See the {@book Player's Handbook chapter 10|PHB|10} for the general rules of spellcasting and Spells for the {@filter tinker spell list|spells|class=Tinker (TTC)}.",
+				{
+					"type": "entries",
+					"name": "Cantrips",
+					"entries": [
+						"When you reach 2nd level, you learn two {@filter cantrips of your choice from the tinker spell list|spells|level=0|class=Tinker (TTC)}. You learn additional tinker cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Tinker table."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Preparing and Casting Spells",
+					"entries": [
+						"The Tinker table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+						"You prepare the list of tinker spells that are available for you to cast. To do so, choose a number of tinker spells equal to your Intelligence modifier + half your tinker level, rounded down (minimum of one spell). The spells must be of a level for which you have spell slots.",
+						"For example, if you're a 5th-level tinker, you have four 1st-level and two 2nd-level spell slots. With an Intelligence of 16, your list of prepared spells can include five spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell {@spell magic missile|phb}, you can cast it using a 1st level or a 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.",
+						"You can change your list of prepared spells when you finish a long rest. Preparing a new list of tinker spells requires time spent in tinkering with your spellcasting foci: at least 1 minute per spell level for each spell on your list."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Ability",
+					"entries": [
+						"Intelligence is your spellcasting ability for your tinker spells, as your magic is powered by understanding the theory behind it. You use your Intelligence whenever a spell refers to your spellcasting ability. You also use your Intelligence modifier when setting the saving throw DC for a tinker spell you cast and when making an attack roll with one.",
+						{
+							"type": "abilityDc",
+							"name": "Spell",
+							"attributes": [
+								"int"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "Spell",
+							"attributes": [
+								"int"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Ritual Casting",
+					"entries": [
+						"You may cast any tinker spell as a ritual if that spell has the {@filter ritual tag|spells|class=Tinker (TTC)|components & miscellaneous=ritual} and you have the spell prepared."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Focus",
+					"entries": [
+						"You can use {@item tinker's tools|phb} as a spellcasting focus for your tinker spells."
+					]
+				}
+			]
+		},
+		{
+			"name": "Tinker Specialization",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"At 3rd level, you begin to master a particular craft. Choose one of the following specializations: Artillerist, Augmenter, Chemist, Chronicle, Golemancer, Spellcrafter, or Wandslinger, detailed at the end of the class description. Your specialization grants you additional features at 3rd, 5th, 14th, and 20th level.",
+				"Some of your specialization features require your target to make a saving throw to resist the effects. The saving throw DC is calculated as follows:",
+				{
+					"type": "abilityDc",
+					"name": "Specialization",
+					"attributes": [
+						"int"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Specialty Spells",
+					"entries": [
+						"Each specialization has a list of spells - its specialty spells - that you gain at the tinker levels noted in the specialization description. Once you gain a specialty spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day.",
+						"If you have a specialty spell that doesn't appear on the tinker spell list, the spell is nonetheless a tinker spell for you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 4,
+			"entries": [
+				"At 4th level, you can increase one ability score of your choice by 2, or increase two ability scores by 1 each. As usual, you cannot increase an ability score above 20 using this ability.",
+				"If your DM allows the use of feats, you may instead take a {@filter feat|feats}."
+			]
+		},
+		{
+			"name": "Tinker Specialization feature",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 5,
+			"entries": [
+				"Your specialization grants you an additional feature at 5th level."
+			]
+		},
+		{
+			"name": "Use Magic Device",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 6,
+			"entries": [
+				"By 6th level, you have learned enough about the workings of magic that you can improvise the use of items even when they are not intended for you. You ignore all class, race, and level requirements on the use of magic items."
+			]
+		},
+		{
+			"name": "Magical Crafting Efficiency",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 6,
+			"entries": [
+				"Starting at 6th level, whenever you create a magic item with a rarity no greater than the rarity shown in the Magical Crafts Table for your tinker level, it takes a quarter of the time it would normally take, and it costs you half of the item's normal gold cost.",
+				{
+					"type": "table",
+					"caption": "Magical Crafts",
+					"colLabels": [
+						"Tinker Level",
+						"Rarity"
+					],
+					"colStyles": [
+						"col-3 text-center",
+						"col-9"
+					],
+					"rows": [
+						[
+							"6th",
+							"{@filter uncommon|items|type=|rarity=common;uncommon}"
+						],
+						[
+							"11th",
+							"{@filter rare|items|type=|rarity=common;uncommon;rare}"
+						],
+						[
+							"16th",
+							"{@filter very rare|items|type=|rarity=common;uncommon;rare;very rare}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Infuse Magic",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 7,
+			"entries": [
+				"By 7th level, you gain the ability to channel your tinker spells into objects for later use.",
+				"When you cast a tinker spell with a casting time of 1 action or 1 bonus action while holding a nonmagical object, you can choose to expend the spell slot, but forego the spell's effects. Instead, you infuse the spell's magic inside the object. While a spell is infused into an object in this way, you can't regain the spell slot used to cast the spell by any means. The spell is infused until the object is used to cast it or until you use your action to dismiss it, and the object becomes magical while affected by this feature. Any creature holding the infused object can activate the stored spell as an action. The spell uses your spellcasting ability and originates from the object, but is otherwise treated as if the creature activating the object had cast it."
+			]
+		},
+		{
+			"name": "The Right Tool for the Job",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 7,
+			"entries": [
+				"Also at 7th level, you can put together a reasonable approximation of any craft through tinkering.",
+				"You can use {@item tinker's tools} whenever a different {@filter artisan's tool|items|type=artisan's tools} is required, allowing you to apply half of your proficiency bonus to applicable ability checks."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 8,
+			"entries": [
+				"At 8th level, you can increase one ability score of your choice by 2, or increase two ability scores by 1 each. As usual, you cannot increase an ability score above 20 using this ability.",
+				"If your DM allows the use of feats, you may instead take a {@filter feat|feats}."
+			]
+		},
+		{
+			"name": "Empowering Attunement",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 10,
+			"entries": [
+				"By 10th level, you have mastered the use of magical items, allowing you to utilize more of them. You can now attune to a number of magic items equal to your proficiency bonus at the same time, instead of the usual three items.",
+				"Also, while you are attuned to at least one magical item, you have a magical bonus to the attack and damage rolls of your weapon and spell attacks equal to half of the number of magic items you are attuned to (rounded up). If you already have a bonus to these rolls (such as from a +2 weapon), you can choose which bonus to use."
+			]
+		},
+		{
+			"name": "Drain Amalgamate",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 11,
+			"entries": [
+				"At 11th level, while at least one of the magic items from your Amalgamate feature is within 30 feet of you, you can use your reaction when a creature (including you) within the same distance makes an ability check, an attack roll, or a saving throw. When you do, you must choose one of these magic items, which loses the magical properties it gained from your Amalgamate feature, and you grant the creature {@dice 2d20dl1|advantage on their d20 roll}."
+			],
+			"foundryData": {
+				"activation.type": "reaction",
+				"activation.cost": "1",
+				"activation.condition": "When a creature within 30 feet of you makes an ability check, attack roll, or saving throw, and one of your Amalgamate magic items is within 30 feet of you"
+			}
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 12,
+			"entries": [
+				"At 12th level, you can increase one ability score of your choice by 2, or increase two ability scores by 1 each. As usual, you cannot increase an ability score above 20 using this ability.",
+				"If your DM allows the use of feats, you may instead take a {@filter feat|feats}."
+			]
+		},
+		{
+			"name": "Tinker Specialization feature",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 14,
+			"entries": [
+				"Your specialization grants you an additional feature at 14th level."
+			]
+		},
+		{
+			"name": "Expert Tinker",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 15,
+			"entries": [
+				"By 15th level, as a benefit of constant trial and error, your skill at tinkering reaches new depths.",
+				"Your proficiency bonus is doubled for any ability check you make that uses a tool proficiency you gained from this class. Additionally, items and objects you use as part of an ability check never break as a result of the check, regardless of whether you succeed or fail."
+			],
+			"expertise": [
+				{
+					"tinker's tools": true
+				}
+			]
+		},
+		{
+			"name": "The Right Tool for the Job improvement",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 15,
+			"entries": [
+				"At 15th level, your skill at using {@item tinker's tools} whenever a different {@filter artisan's tool|items|type=artisan's tools} is required improves, allowing you to apply your full proficiency bonus to applicable ability checks, instead of only half."
+			],
+			"toolProficiencies": [
+				{
+					"artisan's tools": true
+				}
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 16,
+			"entries": [
+				"At 16th level, you can increase one ability score of your choice by 2, or increase two ability scores by 1 each. As usual, you cannot increase an ability score above 20 using this ability.",
+				"If your DM allows the use of feats, you may instead take a {@filter feat|feats}."
+			]
+		},
+		{
+			"name": "Attuned Perseverence",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 18,
+			"entries": [
+				"By 18th level, you can utilize the magic within items as a protective force, warding against danger. You can add a bonus equal to half of the number of magic items you are attuned to (rounded up) to each saving throw that you make.",
+				"Additionally, whenever you finish a long rest, you can choose one creature within 60 feet of you that's attuned to a magical item you've created. The target gains the benefit of the {@spell death ward} spell for the next 8 hours."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 19,
+			"entries": [
+				"At 19th level, you can increase one ability score of your choice by 2, or increase two ability scores by 1 each. As usual, you cannot increase an ability score above 20 using this ability.",
+				"If your DM allows the use of feats, you may instead take a {@filter feat|feats}."
+			]
+		},
+		{
+			"name": "Tinker Specialization feature",
+			"source": "devikyn-tinker",
+			"page": 3,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"level": 20,
+			"entries": [
+				"Your specialization grants you an additional feature at 20th level."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Artillerist",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Artillerist",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"Tinkers that focus on artillery specialize in using magic to create explosions and defensive sentries, making them handy demolition experts and frightening combatants.",
+				"At each indicated tinker level, add the listed spells to your spells prepared. You always have them prepared, and they do not count against the number of spells you can prepare normally.",
+				{
+					"type": "table",
+					"caption": "Artillerist Specialty Spells",
+					"colLabels": [
+						"Tinker Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell shield}, {@spell thunderwave}"
+						],
+						[
+							"5th",
+							"{@spell knock}, {@spell scorching ray}"
+						],
+						[
+							"9th",
+							"{@spell fireball}, {@spell wind wall}"
+						],
+						[
+							"13th",
+							"{@spell fire shield}, {@spell wall of fire}"
+						],
+						[
+							"17th",
+							"{@spell immolation}, {@spell wall of force}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Metallurgy Expert",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Artillerist",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"At 3rd level, you have become an expert in the field of metalworking, allowing you to create metallic objects efficiently.",
+				"You gain proficiency with {@item smith's tools|phb}, and the amount of gold and time you must spend to smith an item or object is halved. Also, you can use your Smith's tools as a spellcasting focus for your tinker spells."
+			],
+			"toolProficiencies": [
+				{
+					"smith's tools": true
+				}
+			]
+		},
+		{
+			"name": "Arcane Turret",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Artillerist",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"Also at 3rd level, you learn how to create a magical turret.",
+				"With your {@item smith's tools|phb} in hand, you can use your action to summon an {@creature arcane turret|devikyn-tinker} in an unoccupied space on the ground within 5 feet of you. You can only have one Arcane Turret from this feature at a time. The turret disappears if it is reduced to 0 hit points or after 10 minutes, and you can dismiss it early as an action.",
+				"Your turret takes its turn immediately after yours in combat. You can control the turret as a bonus action; when you do, you choose where it moves and which one of its available actions it will take on its turn. Otherwise, the turret remains in place and takes the {@action Dodge} action.",
+				"As an action, you can command your turret to detonate if you are within 60 feet of it. Doing so destroys the turret and forces each creature within 10 feet of it to make a Dexterity saving throw against your spell save DC, taking {@dice 3d6} force damage on a failed save, or half as much on a successful one.",
+				"You can summon your Arcane Turret once, and you must finish a long rest before you can do so again. Alternatively, you can expend a spell slot to summon the turret again without resting. If you summon a second turret, the previously summoned turret disappears."
+			],
+			"foundryData": {
+				"activation.type": "action",
+				"activation.cost": "1",
+				"activation.condition": "If holding a set of Smith's tools (to summon a turret), to dismiss a summoned turret, or to cause a summoned turret to detonate"
+			}
+		},
+		{
+			"name": "Empowered Turret",
+			"source": "devikyn-tinker",
+			"page": 5,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Artillerist",
+			"subclassSource": "devikyn-tinker",
+			"level": 5,
+			"entries": [
+				"At 5th level, your turret's design improves, allowing it to harness more magical energy.",
+				"Your {@creature arcane turret|devikyn-tinker} now adds your Intelligence modifier to its attack and damage rolls. The temporary hit points granted by its Defensive Burst increase by 1d8 ({@dice 2d8}), increasing by 1d8 again at 9th level (3d8), 13th level (4d8), and 17th level (5d8). When you use your action to detonate the turret, the damage dealt by the explosion increases by 2d6 (5d6), increasing by 2d6 again at 9th level (7d6), 13th level (9d6) and 17th level (11d6)."
+			]
+		},
+		{
+			"name": "Fortified Position",
+			"source": "devikyn-tinker",
+			"page": 5,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Artillerist",
+			"subclassSource": "devikyn-tinker",
+			"level": 14,
+			"entries": [
+				"At 14th level, turrets you create gain a fortified damage shield.",
+				"Your {@creature arcane turret|devikyn-tinker}, as well as creatures of your choice within 10 feet of the turret, have the benefits of half cover, due to a shimmering field of magical protection that the turret emits. When you detonate the turret, you can choose creatures within range of the explosion who automatically succeed on their saving throws against it."
+			]
+		},
+		{
+			"name": "Expert Tinker (Artillerist)",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Artillerist",
+			"subclassSource": "devikyn-tinker",
+			"level": 15,
+			"entries": [
+				"At 15th level, your Expert Tinker feature grants you expertise with {@item smith's tools|phb}, as it was gained from your Metallurgy Expert feature."
+			],
+			"expertise": [
+				{
+					"smith's tools": true,
+					"tinker's tools": true
+				}
+			]
+		},
+		{
+			"name": "Autonomous Turret",
+			"source": "devikyn-tinker",
+			"page": 5,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Artillerist",
+			"subclassSource": "devikyn-tinker",
+			"level": 20,
+			"entries": [
+				"At 20th level, you build rudamentary intelligence into your turret's design, allowing them to act independently and with greater efficacy.",
+				"Your {@creature arcane turret|devikyn-tinker} can now take its turn independent of you, without requiring your bonus action. It follows your commands to the best of its ability, which you give verbally (no action required). Additionally, when your turret uses its Force Ballista, it can target two creatures within range, making separate attack rolls for each target."
+			]
+		},
+		{
+			"name": "Augmenter",
+			"source": "devikyn-tinker",
+			"page": 5,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Augmenter",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"Tinkers that focus on augmentation learn to create magically infused material that they can wear, which protects their body and allows them to explore unreachable places.",
+				"At each indicated tinker level, add the listed spells to your spells prepared. You always have them prepared, and they do not count against the number of spells you can prepare normally.",
+				{
+					"type": "table",
+					"caption": "Augmenter Specialty Spells",
+					"colLabels": [
+						"Tinker Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell false life}, {@spell hunter's mark}"
+						],
+						[
+							"5th",
+							"{@spell enhance ability}, {@spell see invisibility}"
+						],
+						[
+							"9th",
+							"{@spell aura of vitality}, {@spell vampiric touch}"
+						],
+						[
+							"13th",
+							"{@spell greater invisibility}, {@spell polymorph}"
+						],
+						[
+							"17th",
+							"{@spell antilife shell}, {@spell steel wind strike|xge}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Construct Skin",
+			"source": "devikyn-tinker",
+			"page": 5,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Augmenter",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"When you choose this specialization at 3rd level, you learn how to integrate golemancy with your own physiology, allowing you to construct a powerful, magical exoskeleton.",
+				"You have created {@item construct skin|devikyn-tinker}, a suit of animated material which is integrated with your body. You are proficient with your construct skin, and you can don or doff it as an action. At your discretion, you can create a suit of Construct Skin by expending 200 gp worth of precious metals and spending 8 hours a day tinkering for a week.",
+				"While you're wearing construct skin, you have a pool of energy equal to 5 times your tinker level. At the start of each of your turns, you can deduct a number of points up to your tinker level and gain the same amount of temporary hit points. This pool is replenished when you finish a long rest."
+			],
+			"resources": [
+				{
+					"name": "Construct Skin",
+					"type": "",
+					"recharge": "daily",
+					"count": "5 * <$level$>"
+				}
+			]
+		},
+		{
+			"name": "Slugshooter Crafting",
+			"source": "devikyn-tinker",
+			"page": 6,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Augmenter",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"Also at 3rd level, you have perfected your signature weapon modification: a barreled weapon with a protective plate.",
+				"You spend 2 hours, which can be during a long rest, transforming a {@i two-handed} weapon you are holding which has the {@i bursting} property into your {@item slugshooter|devikyn-tinker}.",
+				"Only you are proficient with this weapon. It cannot be used as a component for others' spells and abilities."
+			]
+		},
+		{
+			"name": "Modular Upgrade",
+			"source": "devikyn-tinker",
+			"page": 6,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Augmenter",
+			"subclassSource": "devikyn-tinker",
+			"level": 5,
+			"entries": [
+				"At 5th level, you incorporate an easily adaptable upgrade into your construct skin.",
+				"When you gain this feature, and each time you finish a long rest thereafter, you can choose one of the following upgrades for your construct skin. The upgrade lasts until you choose another option for this feature.",
+				{
+					"type": "list",
+					"style": "list-hang",
+					"items": [
+						{
+							"type": "entries",
+							"name": "Dragon Cannon",
+							"entries": [
+								"If you have a hand free, you can cast aganazzar's scorcher as a bonus action, without expending a spell slot or requiring components. You can't do so again for 1 minute."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Environmental Seal",
+							"entries": [
+								"You don't need to breathe, and you are immune to poison and disease."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Jet Propellant",
+							"entries": [
+								"Your movement speed increases by 10 feet, and you gain 10 feet of flying speed."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Protective Field",
+							"entries": [
+								"When you gain temporary hit points from your construct skin's pool, each creature of your choice within 10 feet of you gains the same amount of temporary hit points."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Rocket-propelled Fists",
+							"entries": [
+								"Each of your construct skin's fists are magical melee weapons that can be wielded only when the hand is holding nothing. You are proficient with the fists, which each deal 1d10 force damage and have the {@i light} and {@i thrown} properties, with a range of 20/60 feet. When thrown, a fist detaches and flies at the attack's target, then immediately returns to you and reattaches if able."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Shocking Attractor",
+							"entries": [
+								"You can cast {@spell lightning lure} as a reaction when a creature moves within 15 feet of you, targeting the creature that moved."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Stabilizers",
+							"entries": [
+								"You can attack twice, instead of once, whenever you take the Attack action on your turn."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Propelled Frame",
+			"source": "devikyn-tinker",
+			"page": 6,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Augmenter",
+			"subclassSource": "devikyn-tinker",
+			"level": 14,
+			"entries": [
+				"At 14th level, your construct skin's magical reservoirs are sufficient to use stored magic as propellant for your whole body.",
+				"You can use your bonus action to gain 60 feet of flying speed while the pool of temporary hit points for your Construct Skin isn't depleted, or until you use your bonus action to end this effect. You have the ability to hover while flying in this way.",
+				"Five of the temporary hit points from your Construct Skin's pool are consumed for every 10 minutes that this feature is active, unless your current Modular Upgrade option is Jet Propellant."
+			]
+		},
+		{
+			"name": "Expert Tinker",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Augmenter",
+			"subclassSource": "devikyn-tinker",
+			"level": 15,
+			"entries": [
+				"By 15th level, as a benefit of constant trial and error, your skill at tinkering reaches new depths.",
+				"Your proficiency bonus is doubled for any ability check you make that uses a tool proficiency you gained from this class. Additionally, items and objects you use as part of an ability check never break as a result of the check, regardless of whether you succeed or fail."
+			],
+			"expertise": [
+				{
+					"tinker's tools": true
+				}
+			]
+		},
+		{
+			"name": "Reinforced Skin",
+			"source": "devikyn-tinker",
+			"page": 6,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Augmenter",
+			"subclassSource": "devikyn-tinker",
+			"level": 20,
+			"entries": [
+				"At 20th level, you perfect the infusion of magic into the material of your construct skin, making it more resilient. You have the following benefits while donned with your Construct Skin:",
+				{
+					"type": "list",
+					"items": [
+						"You are resistant to acid and cold damage, as well as bludgeoning, piercing, and slashing damage.",
+						"When you finish a long rest, you can choose one additional upgrade for your Modular Upgrade feature, which also lasts until you choose another option for the feature.",
+						"The pool of temporary hit points granted by your Construct Skin is also replenished when you finish a short rest."
+					]
+				}
+			],
+			"resist": [
+				"acid",
+				"cold",
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
+			"resources": [
+				{
+					"name": "Construct Skin",
+					"type": "",
+					"recharge": "rest",
+					"count": "5 * <$level$>"
+				}
+			]
+		},
+		{
+			"name": "Chemist",
+			"source": "devikyn-tinker",
+			"page": 6,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chemist",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"A chemist is an expert at combining exotic reagents to produce various materials, from healing draughts that can mend a wound in moments to clinging goo that slows creatures down.",
+				"At each indicated tinker level, add the listed spells to your spells prepared. You always have them prepared, and they do not count against the number of spells you can prepare normally.",
+				{
+					"type": "table",
+					"caption": "Chemist Specialty Spells",
+					"colLabels": [
+						"Tinker Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell goodberry}, {@spell ray of sickness}"
+						],
+						[
+							"5th",
+							"{@spell flaming sphere}, {@spell melf's acid arrow}"
+						],
+						[
+							"9th",
+							"{@spell plant growth}, {@spell stinking cloud}"
+						],
+						[
+							"13th",
+							"{@spell blight}, {@spell death ward}"
+						],
+						[
+							"17th",
+							"{@spell cloudkill}, {@spell raise dead}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Frantic Chemistry",
+			"source": "devikyn-tinker",
+			"page": 7,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chemist",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"When you choose this specialization at 3rd level, you learn to rapidly concoct and use a variety of different chemicals, using the reagents in your Alchemist's supplies.",
+				"You gain proficiency with Alchemist's supplies, which you can use as an arcane focus. You also learn two concoctions of your choice, which are detailed under {@filter Concoction Formulas|optionalfeatures|feature type=cf} below. You learn another formula of your choice at 5th, 9th, 13th, and 17th levels. You can utilize one of your concoctions as an action."
+			],
+			"toolProficiencies": [
+				{
+					"alchemist's supplies": true
+				}
+			]
+		},
+		{
+			"name": "Dartbow Crafting",
+			"source": "devikyn-tinker",
+			"page": 7,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chemist",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"Also at 3rd level, you have perfected your signature weapon modification: a small crossbow which has been modified to fire both ammunition and chemical concoctions.",
+				"You spend 2 hours, which can be during a long rest, transforming a {@i one-handed} weapon you are holding which has the {@i bursting} property into your {@item dartbow|devikyn-tinker}. Your dartbow can be loaded with a {@filter chemical concoction|optionalfeatures|feature type=cf}, as well as its normal ammunition.",
+				"Only you are proficient with this weapon. It cannot be used as a component for others' spells and abilities."
+			]
+		},
+		{
+			"name": "Volatile Mix",
+			"source": "devikyn-tinker",
+			"page": 7,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chemist",
+			"subclassSource": "devikyn-tinker",
+			"level": 5,
+			"entries": [
+				"At 5th level, you can use one of your concoctions as a bonus action, rather than an action. You can only use concoctions once per turn.",
+				"Also, each of your concoctions - as well as each {@filter tinker spell that you cast using Alchemist's supplies as the spellcasting focus|spells|class=Tinker (TTC)|components & miscellaneous=material;!material with cost;!material is consumed} - gains a bonus equal to your Intelligence modifier (minimum of +1) to one of its damage or healing rolls."
+			],
+			"foundryData": {
+				"activation.type": "bonus",
+				"activation.cost": "1"
+			}
+		},
+		{
+			"name": "Restorative Reagents",
+			"source": "devikyn-tinker",
+			"page": 7,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chemist",
+			"subclassSource": "devikyn-tinker",
+			"level": 14,
+			"entries": [
+				"Starting at 14th level, you can incorporate restorative reagents into some of your works:",
+				{
+					"type": "list",
+					"items": [
+						"You can use your {@item alchemist's supplies|phb} and an empty vial to create an experimental fortifying elixir as an action, which loses its potency at the end of your next turn. You or another creature can drink the elixir as a bonus action to gain temporary hit points equal to 2d6 + your Intelligence modifier (minimum of 1 temporary hit point). While a creature has these temporary hit points, it is resistant to fire and cold damage, and immune to the effects of extreme heat and cold.",
+						"You can cast lesser restoration without expending a spell slot and without preparing the spell, provided you use Alchemist's supplies as the spellcasting focus. You can do so a number of times equal to your Intelligence modifier (minimum of once), and you regain all expended uses when you finish a long rest."
+					]
+				}
+			],
+			"foundryData": {
+				"activation.type": "action",
+				"activation.cost": "1",
+				"activation.condition": "To create a fortifying elixir, which can be consumed by any creature as a bonus action"
+			}
+		},
+		{
+			"name": "Expert Tinker (Chemist)",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chemist",
+			"subclassSource": "devikyn-tinker",
+			"level": 15,
+			"entries": [
+				"At 15th level, your Expert Tinker feature grants you expertise with {@item alchemist's supplies|phb}, as it was gained from your Frantic Chemistry feature."
+			],
+			"expertise": [
+				{
+					"alchemist's supplies": true,
+					"tinker's tools": true
+				}
+			]
+		},
+		{
+			"name": "Spark of Genius",
+			"source": "devikyn-tinker",
+			"page": 7,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chemist",
+			"subclassSource": "devikyn-tinker",
+			"level": 20,
+			"entries": [
+				"At 20th level, your advanced understanding of magic allows you to attempt to replicate magical effects.",
+				"As an action, you can attempt to combine alchemical reagents in order to create the effects of a spell. You expend one spell slot and choose {@filter a spell from any class' spell list whose casting time is 1 action|spells|level=0;1;2;3;4;5|cast time=action} and whose spell level is equal to or below the level of the expended spell slot.",
+				"Make an Intelligence ({@item alchemist's supplies|phb}) check of DC 10 + the spell's level. The DC increases by 5 if the spell has a material component with a gp cost. On a failed check, you take 4d10 force damage as the reagents violently react. If you fail the check by 5 or more, you fail to cast the spell. Otherwise, you successfully cast it, treating the spell as a tinker spell for this casting.",
+				"You can use this feature twice, and expended uses are replenished when you finish a short or long rest."
+			],
+			"foundryData": {
+				"activation.type": "action",
+				"activation.cost": "1"
+			}
+		},
+		{
+			"name": "Chronicle",
+			"source": "devikyn-tinker",
+			"page": 9,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chronicle",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"Chronicles are tinkers that have become masters of storing knowledge and creating artificial intelligences fueled by magic. These techniques have yet to be perfected or institutionalized, and of all tinkers, archivists are on the cutting edge of arcane science.",
+				"At each indicated tinker level, add the listed spells to your spells prepared. You always have them prepared, and they do not count against the number of spells you can prepare normally.",
+				{
+					"type": "table",
+					"caption": "Chronicle Specialty Spells",
+					"colLabels": [
+						"Tinker Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell comprehend languages}, {@spell dissonant whispers}"
+						],
+						[
+							"5th",
+							"{@spell detect thoughts}, {@spell mind spike|xge}"
+						],
+						[
+							"9th",
+							"{@spell hypnotic pattern}, {@spell tongues}"
+						],
+						[
+							"13th",
+							"{@spell locate creature}, {@spell phantasmal killer}"
+						],
+						[
+							"17th",
+							"{@spell modify memory}, {@spell skill empowerment|xge}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Dutiful Scribe",
+			"source": "devikyn-tinker",
+			"page": 9,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chronicle",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"By the time you adopt this specialty at 3rd level, you're deeply familiar with employing its tools.",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Proficiencies",
+							"entry": "You gain proficiency with {@item calligrapher's supplies|phb} and the {@item forgery kit|phb}, assuming you don't already have them. You also gain calligrapher's supplies and a forgery kit for free \u2014 the result of tinkering you've done as you've prepared for this specialization."
+						},
+						{
+							"type": "item",
+							"name": "Crafting",
+							"entry": "If you craft a magic item in the {@filter scroll|items|type=scroll} category, it takes you a quarter of the normal time, and it costs you half as much of the usual gold."
+						}
+					]
+				}
+			],
+			"toolProficiencies": [
+				{
+					"calligrapher's supplies": true,
+					"forgery kit": true
+				}
+			]
+		},
+		{
+			"name": "Artificial Mind",
+			"source": "devikyn-tinker",
+			"page": 9,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chronicle",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"At 3rd level, you discover how to implant a mock sentience inside an object. Whenever you finish a long rest, you can use your calligrapher's supplies to emblazon magical inscriptions onto a magic item that you created with your Amalgamate feature. While emblazoned, the item gains the following abilities:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Telepathic Advisor",
+							"entry": "The artificial mind mentally supplies the creature possessing it with advice and information about certain topics: while a creature holds the item, that creature has proficiency in one skill of your choice. If the item requires attunement, the creature must be attuned to it to gain this benefit. A creature can only gain this benefit from one item at a time."
+						},
+						{
+							"type": "item",
+							"name": "Manifest Mind",
+							"entry": "As a bonus action, you can cause an artificial mind created by this feature to manifest as a Tiny spectral presence, hovering in an unoccupied space of your choice within 60 feet of the item hosting the mind. You determine the spectral mind's appearance, other than its size. This presence is intangible and invulnerable, and it sheds dim light in a 10-foot radius. When you cast a spell on your turn, you can cast it as if you were in the spectral mind's space, instead of your own, using its senses. You can manifest only one spectral mind at a time. While manifested, the spectral mind can hear and see, and it has darkvision with a range of 60 feet. In combat, the spectral presence takes its turn immediately after you. As an action, you can hear and see using the mind's senses, instead of your own, until your concentration ends (as if concentrating on a spell). As a bonus action, you can cause the spectral mind to hover up to 30 feet to an unoccupied space that you or it can see. It can pass through creatures but not objects. The spectral mind stops manifesting if it is ever more than 300 feet away from its host magic item or if you dismiss it as a bonus action."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Information Overload",
+			"source": "devikyn-tinker",
+			"page": 9,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chronicle",
+			"subclassSource": "devikyn-tinker",
+			"level": 5,
+			"entries": [
+				"At 5th level, your artificial mind can overload the thoughts of other creatures, momentarily distracting them.",
+				"When a creature uses its bonus action to command a spectral mind to move, the spectral mind can overload the thoughts of a creature within 30 feet of where it finishes its movement. Unless the target succeeds on an Intelligence saving throw against your spell save DC, it takes psychic damage equal to {@dice 1d8} plus your Intelligence modifier, and the next attack roll against it before the end of your next turn has advantage, since the target is temporarily distracted. The damage increases by 1d8 when you reach 11th level ({@dice 2d8}) and 17th level ({@dice 3d8}) in this class."
+			],
+			"foundryData": {
+				"activation.type": "bonus",
+				"activation.cost": "1",
+				"activation.condition": "When a creature uses its bonus action to command a spectral mind to move"
+			}
+		},
+		{
+			"name": "Mind Network",
+			"source": "devikyn-tinker",
+			"page": 9,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chronicle",
+			"subclassSource": "devikyn-tinker",
+			"level": 14,
+			"entries": [
+				"At 14th level, you've learned to use your artifices to create a web of instant communication, allowing for rapid information transfer.",
+				"Creatures that possess an item affected by your Artificial Mind feature can communicate telepathically with each other, as the mind within each item transmits pure thoughts. These creatures can also communicate telepathically with you while in possession of the item. This two-way communication works over any distance, even across planar boundaries, and even if the creatures don't share a language."
+			],
+			"languageProficiencies": [
+				{
+					"other": true
+				}
+			]
+		},
+		{
+			"name": "Expert Tinker (Chronicle)",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chronicle",
+			"subclassSource": "devikyn-tinker",
+			"level": 15,
+			"entries": [
+				"At 15th level, your Expert Tinker feature grants you expertise with {@item calligrapher's supplies|phb} and the {@item forgery kit|phb}, as they were gained from your Dutiful Scribe feature."
+			],
+			"expertise": [
+				{
+					"calligrapher's supplies": true,
+					"forgery kit": true,
+					"tinker's tools": true
+				}
+			]
+		},
+		{
+			"name": "Pure Information",
+			"source": "devikyn-tinker",
+			"page": 9,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Chronicle",
+			"subclassSource": "devikyn-tinker",
+			"level": 20,
+			"entries": [
+				"At 20th level, your artificial mind is able to convert physical information to data, which it can receive and transmit.",
+				"As an action while an Artificial Mind magic item is on your person, you cause the mind to turn you into pure information, teleporting you to an unoccupied space nearest to a manifested mind or to an item affected by your Artificial Mind feature, where you reappear."
+			],
+			"foundryData": {
+				"activation.type": "action",
+				"activation.cost": "1",
+				"activation.condition": "While an Artificial Mind exists within both an item you carry and one another creature carries"
+			}
+		},
+		{
+			"name": "Golemancer",
+			"source": "devikyn-tinker",
+			"page": 10,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Golemancer",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"Tinkers who practice golemancy excel at creating magically-fueled constructs, which serve and protect their creator and their charges.",
+				"At each indicated tinker level, add the listed spells to your spells prepared. You always have them prepared, and they do not count against the number of spells you can prepare normally.",
+				{
+					"type": "table",
+					"caption": "Golemancer Specialty Spells",
+					"colLabels": [
+						"Tinker Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell earth tremor|xge}, {@spell unseen servant}"
+						],
+						[
+							"5th",
+							"{@spell heat metal}, {@spell maximilian's earthen grasp|xge}"
+						],
+						[
+							"9th",
+							"{@spell meld into stone}, {@spell erupting earth|xge}"
+						],
+						[
+							"13th",
+							"{@spell fabricate}, {@spell summon construct|tce}"
+						],
+						[
+							"17th",
+							"{@spell conjure elemental}, {@spell passwall}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Gear Spider",
+			"source": "devikyn-tinker",
+			"page": 10,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Golemancer",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"When you choose this specialization at 3rd level, you can create a utility construct which can climb most surfaces. This construct can explore for you, as well as fetch and use items and objects.",
+				"You can cast the {@spell find familiar} spell as a ritual. When you cast {@spell find familiar} via this feature, the only form you can choose is a {@creature spider}. Your ritual for the spell consists of weaving magic into a modified form of a {@creature spider}, using your {@item tinker's tools|phb}.",
+				"The {@creature spider} that you summon is a construct instead of a beast, and it has exceptionally large chelicera that can be used to hold an item or object that is no bigger than Tiny in size. Finally, the {@creature spider} uses your Investigation modifier for Investigation checks that it makes."
+			]
+		},
+		{
+			"name": "Mechanical Servant",
+			"source": "devikyn-tinker",
+			"page": 10,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Golemancer",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"Also at 3rd level, your research and mastery of your craft allow you to produce a mechanical construct that obeys and protects you.",
+				"Whenever you finish a long rest, you can use your {@item tinker's tools} to create a mechanical servant in an unoccupied space within 5 feet of you. You can only have one mechanical servant at any time.",
+				"The servant's statistics are detailed in the {@creature mechanical servant|devikyn-tinker} stat block. You determine the servant's general appearance, as appropriate to its statistics. Some tinkers prefer mechanical-looking birds, whereas others prefer winged vials and miniature cauldrons.",
+				"The servant is friendly to you and your companions, and it obeys your commands. In combat, the servant shares your initiative count, taking its turn immediately after yours. If it is not given a command, it prioritizes your protection, even at the cost of its own safety.",
+				"If the servant is killed, it can be returned to life via normal means, such as with the {@spell revivify} spell. Material components are not necessary to revive your servant with spells."
+			]
+		},
+		{
+			"name": "Refined Machinery",
+			"source": "devikyn-tinker",
+			"page": 10,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Golemancer",
+			"subclassSource": "devikyn-tinker",
+			"level": 5,
+			"entries": [
+				"At 5th level, {@creature mechanical servant|devikyn-tinker}'s attacks become magical. Also, it adds your Intelligence modifier to its AC, to its saving throws, to skills with which it is proficient, and to its attack and damage rolls."
+			]
+		},
+		{
+			"name": "Protective Charge",
+			"source": "devikyn-tinker",
+			"page": 11,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Golemancer",
+			"subclassSource": "devikyn-tinker",
+			"level": 14,
+			"entries": [
+				"At 14th level, your servant can almost instantaneously intervene to foil your foes' attacks against you by charging them.",
+				"When you are targeted by an attack that your {@creature mechanical servant|devikyn-tinker} can see, the servant can use its reaction to move up to its speed and make one melee attack against the creature targeting you if the creature is within the servant's reach. On a hit, its target suffers the attack's normal effects, and it must succeed a Strength saving throw or target your Mechanical Servant with the attack instead of you."
+			],
+			"foundryData": {
+				"activation.type": "reaction",
+				"activation.cost": "1",
+				"activation.condition": "Your mechanical servant sees a creature attack you"
+			}
+		},
+		{
+			"name": "Expert Tinker",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Golemancer",
+			"subclassSource": "devikyn-tinker",
+			"level": 15,
+			"entries": [
+				"By 15th level, as a benefit of constant trial and error, your skill at tinkering reaches new depths.",
+				"Your proficiency bonus is doubled for any ability check you make that uses a tool proficiency you gained from this class. Additionally, items and objects you use as part of an ability check never break as a result of the check, regardless of whether you succeed or fail."
+			],
+			"expertise": [
+				{
+					"tinker's tools": true
+				}
+			]
+		},
+		{
+			"name": "Golem Overdrive",
+			"source": "devikyn-tinker",
+			"page": 11,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Golemancer",
+			"subclassSource": "devikyn-tinker",
+			"level": 20,
+			"entries": [
+				"At 20th level, you can overcharge your Mechanical Servant with magic, vastly increasing its abilities.",
+				"If your Mechanical Servant is within 60 feet of you and you can see it, you can use your action and expend a spell slot to grant the servant certain benefits for 1 minute:",
+				{
+					"type": "list",
+					"items": [
+						"It gains a bonus to its damage rolls equal to 1d6 for a 1st-level spell slot, plus 1d6 per level of the slot above 1st.",
+						"It gains 10 temporary hit points per level of the slot, which are lost if they remain when the duration elapses.",
+						"Its speeds increase by 5 feet per level of the slot."
+					]
+				}
+			],
+			"foundryData": {
+				"activation.type": "action",
+				"activation.cost": "1",
+				"activation.condition": "Your mechanical servant is within 60 feet of you, you can see it, and you have a spell slot"
+			}
+		},
+		{
+			"name": "Spellcrafter",
+			"source": "devikyn-tinker",
+			"page": 11,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Spellcrafter",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"Spellcrafters have mastered their ability to imbue weapons with magical power, allowing these tinkers to create a powerful magical cannon for themselves.",
+				"At each indicated tinker level, add the listed spells to your spells prepared. You always have them prepared, and they do not count against the number of spells you can prepare normally.",
+				{
+					"type": "table",
+					"caption": "Spellcrafter Specialty Spells",
+					"colLabels": [
+						"Tinker Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell ensnaring strike}, {@spell snare|xge}"
+						],
+						[
+							"5th",
+							"{@spell cloud of daggers}, {@spell mirror image}"
+						],
+						[
+							"9th",
+							"{@spell conjure barrage}, {@spell flame arrows|xge}"
+						],
+						[
+							"13th",
+							"{@spell banishment}, {@spell elemental bane|xge}"
+						],
+						[
+							"17th",
+							"{@spell banishing smite}, {@spell conjure volley}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Arcane Weapon Crafting",
+			"source": "devikyn-tinker",
+			"page": 11,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Spellcrafter",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"When you choose this specialization at 3rd level, you perfect your signature weapon modification: a deadly cannon which combines knowledge of arcane magic, engineering and metallurgy.",
+				"You spend 2 hours, which can be during a long rest, transforming a ranged weapon you're holding which has the {@i bursting} property into your arcane weapon. If the weapon is {@i one-handed}, you can turn it into a compact {@item arcane musket|devikyn-tinker}; if it's {@i two-handed}, you can turn it into a robust, yet portable {@item arcane cannon|devikyn-tinker}.",
+				"If you take the Attack action or your Thunder Monger action while you are wielding two arcane muskets and you attack with one of them, you can use your bonus action to make one weapon attack using the other arcane musket.",
+				"Only you are proficient with these weapons. They cannot be used as components for others' spells and abilities."
+			]
+		},
+		{
+			"name": "Spellcraft Toolkit",
+			"source": "devikyn-tinker",
+			"page": 11,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Spellcrafter",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"Also at 3rd level, you craft a leather bag used to carry your tools and ammunition for your arcane cannon. Your spellcraft toolkit magically produces the powders, lead shot, and other materials needed to keep the cannon functioning.",
+				"You can use this toolkit as a spellcasting focus for your tinker spells, and it functions as tinker's tools for you. You can also use it to produce nonmagical ammunition. At the end of each long rest you take, you can create one of your choice from the following options: up to 40 arrows, 40 crossbow bolts, or 80 sling pellets. Any pieces of ammunition created by your spellcraft toolkit disintegrate and disappear after 8 hours.",
+				"If you lose your spellcraft toolkit, you can create a new one over the course of a long rest, using an empty pouch as raw material."
+			]
+		},
+		{
+			"name": "Thunder Monger",
+			"source": "devikyn-tinker",
+			"page": 11,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Spellcrafter",
+			"subclassSource": "devikyn-tinker",
+			"level": 5,
+			"entries": [
+				"At 5th level, you learn to create kinetic energy within your arcane cannon and fire it in a lethal display of power.",
+				"As an action, you can make one of the following special attacks with your arcane weapon:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Blast",
+							"entry": "Make a ranged weapon attack with your arcane cannon or arcane musket. On a hit, the attack's damage type changes to thunder and deals an extra {@dice 3d6} damage. The extra damage increases as you gain levels in this class: {@dice 4d6} at 9th level, {@dice 5d6} at 13th level, and {@dice 6d6} at 17th level."
+						},
+						{
+							"type": "item",
+							"name": "Pierce",
+							"entry": "Instead of making an attack roll, you can choose to unleash a bolt of lightning that is 5-feet wide and 30-feet long from your arcane cannon. Each creature in the area must make a Dexterity saving throw. On a failed save, a target takes {@dice 2d10} lightning damage. This damage increases as you gain levels in this class: {@dice 3d10} at 9th level, {@dice 4d10} at 13th level, and {@dice 5d10} at 17th level."
+						}
+					]
+				}
+			],
+			"foundryData": {
+				"activation.type": "action",
+				"activation.cost": "1",
+				"activation.condition": "You are wielding your arcane weapon"
+			}
+		},
+		{
+			"name": "Shock Jump",
+			"source": "devikyn-tinker",
+			"page": 12,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Spellcrafter",
+			"subclassSource": "devikyn-tinker",
+			"level": 14,
+			"entries": [
+				"At 14th level, you can aim your arcane weapon downward and create a blast of energy that propels you skyward.",
+				"As an action, you use your arcane weapon to propel yourself up to 10 feet into the air and force each creature in a 10-foot radius around you to make a Constitution saving throw, taking {@dice 5d6} thunder damage on a failed save, or half as much damage on a successful one. On a failed save, a creature is pushed 10 feet in a straight line away from you. You can then move up to 20 feet while in the air without expending your movement, landing in an unoccupied space."
+			],
+			"foundryData": {
+				"activation.type": "action",
+				"activation.cost": "1",
+				"activation.condition": "You are wielding your arcane weapon"
+			}
+		},
+		{
+			"name": "Expert Tinker",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Spellcrafter",
+			"subclassSource": "devikyn-tinker",
+			"level": 15,
+			"entries": [
+				"By 15th level, as a benefit of constant trial and error, your skill at tinkering reaches new depths.",
+				"Your proficiency bonus is doubled for any ability check you make that uses a tool proficiency you gained from this class. Additionally, items and objects you use as part of an ability check never break as a result of the check, regardless of whether you succeed or fail."
+			],
+			"expertise": [
+				{
+					"tinker's tools": true
+				}
+			]
+		},
+		{
+			"name": "Cannon Spellburst",
+			"source": "devikyn-tinker",
+			"page": 12,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Spellcrafter",
+			"subclassSource": "devikyn-tinker",
+			"level": 20,
+			"entries": [
+				"At 20th level, you can draw magic from your arcane weapon's overcharge, creating an explosion of magic.",
+				"When you score a critical hit with a ranged attack using your arcane weapon, you can immediately use your reaction to evoke the attack's bolstered magic as an explosion. The target, as well as each creature within 10 feet of it, must make a Dexterity saving throw. A creature takes 6d8 force damage on a failed save, or half as much damage on a successful one."
+			],
+			"foundryData": {
+				"activation.type": "reaction",
+				"activation.cost": "1",
+				"activation.condition": "You score a critical hit with a ranged attack using your arcane weapon"
+			}
+		},
+		{
+			"name": "Wandslinger",
+			"source": "devikyn-tinker",
+			"page": 12,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Wandslinger",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"Wandslinging tinkers learn to inject magic into wands, turning them into dazzling and deadly weapons, as well as creating tools that can't be emulated with mundane methods.",
+				"At each indicated tinker level, add the listed spells to your spells prepared. You always have them prepared, and they do not count against the number of spells you can prepare normally.",
+				{
+					"type": "table",
+					"caption": "Wandslinger Specialty Spells",
+					"colLabels": [
+						"Tinker Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell chromatic orb}, {@spell color spray}"
+						],
+						[
+							"5th",
+							"{@spell dust devil|xge}, {@spell pyrotechnics|xge}"
+						],
+						[
+							"9th",
+							"{@spell counterspell}, {@spell melf's minute meteors|xge}"
+						],
+						[
+							"13th",
+							"{@spell dimension door}, {@spell ice storm}"
+						],
+						[
+							"17th",
+							"{@spell geas}, {@spell synaptic static|xge}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Crafter of Implements",
+			"source": "devikyn-tinker",
+			"page": 12,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Wandslinger",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"At 3rd level, you gain proficiency with {@item woodcarver's tools|phb}, and the amount of gold and time you must spend to create any {@filter rods, staves or wands|items|type=rod;staff;wand} is halved. In addition, you can use a rod, wand or staff as a spellcasting focus for your tinker spells.",
+				"You also gain one non-magical {@item wand}, an item carefully crafted in your signature style."
+			],
+			"toolProficiencies": [
+				{
+					"woodcarver's tools": true
+				}
+			]
+		},
+		{
+			"name": "Magic Wand Prototype",
+			"source": "devikyn-tinker",
+			"page": 12,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Wandslinger",
+			"subclassSource": "devikyn-tinker",
+			"level": 3,
+			"entries": [
+				"Also at 3rd level, you can regularly experiment with channeling different types of magic through wands. Whenever you finish a long rest, you can use your {@item woodcarver's tools|phb} to invest a non-magical {@item wand} with magic. A number of wands equal to your proficiency bonus can be invested with magic in this way at a time. Using this feature again while at the limit causes the magic to disappear from one of the currently invested wands of your choice.",
+				"The magic you invest takes the form of one {@filter cantrip from the tinker spell list with a casting time of 1 action|spells|level=0|class=Tinker (TTC)|cast time=action}, even if you don't know the cantrip. While a creature wields the invested wand, it can cast that cantrip at will using your spellcasting ability. If the cantrip deals damage, that damage gains a bonus equal to your Intelligence modifier (minimum of +1).",
+				"You also invest the wand with one {@filter 1st-level spell from the tinker spell list|spells|level=1|class=Tinker (TTC)}, which the wand's wielder can cast once at its lowest level without expending a spell slot or providing material components. The spell uses your spellcasting ability. This spell can't be cast from the wand again until the next dawn."
+			]
+		},
+		{
+			"name": "Sleight of Wand",
+			"source": "devikyn-tinker",
+			"page": 12,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Wandslinger",
+			"subclassSource": "devikyn-tinker",
+			"level": 5,
+			"entries": [
+				"At 5th level, you learn to overcharge the energy in your wand, hurling it at your foes with explosive results.",
+				"When you use a wand to cast a cantrip that deals damage, you can expend a spell slot to deal extra damage to one of the targets. The extra damage is 2d8 for a 1st-level spell slot, plus 1d8 for each spell level higher than 1st."
+			]
+		},
+		{
+			"name": "Duet of Tricks",
+			"source": "devikyn-tinker",
+			"page": 12,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Wandslinger",
+			"subclassSource": "devikyn-tinker",
+			"level": 14,
+			"entries": [
+				"At 14th level, magic wands you create can now store two spells of greater power.",
+				"Your magic wand prototypes can now be invested with two {@filter tinker spells of 1st-to-3rd-level|spells|level=1;2;3|class=Tinker (TTC)}, rather than one 1st-level tinker spell, and a creature wielding an invested wand can use any spell slots that it has to cast the invested spell at higher levels. Once cast, each spell can't be cast from the wand again until the next dawn."
+			]
+		},
+		{
+			"name": "Expert Tinker (Wandslinger)",
+			"source": "devikyn-tinker",
+			"page": 4,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Wandslinger",
+			"subclassSource": "devikyn-tinker",
+			"level": 15,
+			"entries": [
+				"At 15th level, your Expert Tinker feature grants you expertise with {@item woodcarver's tools|phb}, as it was gained from your Crafter of Implements feature."
+			],
+			"expertise": [
+				{
+					"tinker's tools": true,
+					"woodcarver's tools": true
+				}
+			]
+		},
+		{
+			"name": "Perfected Magic Wand",
+			"source": "devikyn-tinker",
+			"page": 12,
+			"className": "Tinker",
+			"classSource": "devikyn-tinker",
+			"subclassShortName": "Wandslinger",
+			"subclassSource": "devikyn-tinker",
+			"level": 20,
+			"entries": [
+				"At 20th level, you have perfected the wand creation process, improving your magic wand prototypes in the following ways:",
+				{
+					"type": "list",
+					"items": [
+						"The spells of 1st level or higher invested into your wands can be cast again after the wand's wielder finishes a short or long rest.",
+						"Whenever a creature casts a spell from an invested wand, the creature can roll a d20. On a 16 or higher, if the spell requires an attack roll, the attack becomes a critical hit. If the spell requires a saving throw, the DC increases by 5."
+					]
+				}
+			]
+		}
+	],
+	"optionalfeature": [
+		{
+			"name": "Corrosive Gel",
+			"source": "devikyn-tinker",
+			"page": 7,
+			"featureType": [
+				"CF"
+			],
+			"entries": [
+				"You concoct a sticky gel that explodes on impact. You apply it to a weapon or a piece of ammunition you are holding, and then make one weapon attack using the affected weapon or ammunition. On a hit, the weapon's damage type changes to acid for the attack, and the attack deals an extra 5 acid damage. This attack deals maximum damage to objects, rather than making a damage roll.",
+				"You can expend a spell slot when you use this concoction to increase the extra damage by 5 for each level of the slot."
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"will": [
+								"corrosive gel|devikyn-tinker"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Healing Salve",
+			"source": "devikyn-tinker",
+			"page": 7,
+			"featureType": [
+				"CF"
+			],
+			"entries": [
+				"You concoct a vial of healing liquid, then splash it on a creature within 5 feet of you or fire it from your {@item dartbow|devikyn-tinker}. Either way, choose a creature within range. The creature regains {@dice 1d10} hit points. A creature can't be affected by this concoction again until it finishes a short or long rest.",
+				"You can expend a spell slot when you use this concoction to increase the amount healed by {@dice 1d10} for each level of the slot."
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"will": [
+								"healing salve|devikyn-tinker"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Hemorrhaging Cold",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"featureType": [
+				"CF"
+			],
+			"entries": [
+				"You concoct a glistening, clear liquid, then throw it up to 20 feet or fire it from your {@item dartbow|devikyn-tinker}. Either way, choose a creature within range, which must make a Dexterity saving throw. On a failed save, for 1 minute, the target's speed is reduced by 10 feet and it takes {@dice 2d4} cold damage at the start of each of its turns, as bitter cold crystals expand from its wound. A creature can break away the crystals early by using its action to make a Strength (Athletics) check against your spell save DC.",
+				"You can expend a spell slot when you use this concoction to increase the damage it deals at the start of the turn by {@dice 2d4} for each level of the slot."
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"will": [
+								"hemorrhaging cold|devikyn-tinker"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Noxious Vapors",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"featureType": [
+				"CF"
+			],
+			"entries": [
+				"You concoct a vial full of greenish-yellow liquid, which creates a plume of noxious mist, then hurl it up to 20 feet or fire it from your {@item dartbow|devikyn-tinker}. Either way, choose a point within range. The vial breaks on impact, creating noxious vapors in a 10-foot radius around the point, which last for 1 minute. You can't concoct this formula again until you finish a short or long rest, as the reactive agents used to concoct it need time to disperse.",
+				"Any creature that enters the noxious vapors for the first time on a turn or starts its turn there must make a Constitution saving throw, taking {@dice 3d6} poison damage on a failed save, or half as much damage on a successful one. On a failed save, the creature is poisoned. If an affected creature leaves the area of noxious vapors and remains outside of it until the end of its next turn, that creature is no longer poisoned.",
+				"You can expend a spell slot when you use this concoction to increase the concoction's damage and radius. The damage increases by {@dice 1d6} and the radius increases by 5 feet per level of the slot."
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"rest": {
+								"1": [
+									"noxious vapors|devikyn-tinker"
+								]
+							}
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Smoke Stick",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"featureType": [
+				"CF"
+			],
+			"entries": [
+				"You can concoct a stick that produces a thick plume of smoke. You can hold onto the stick, or you can immediately throw it up to 20 feet or fire it from your {@item dartbow|devikyn-tinker}. If you hold it, you can throw or fire it later as a bonus action. The area in a 10-foot radius around the stick is filled with thick smoke that heavily obscures the area. The stick crumbles to dust and the smoke disperses after 1 minute. You can't concoct this formula again until you finish a short or long rest, as the reactive agents used to concoct it need time to disperse.",
+				"You can expend a spell slot when you use this concoction to increase the concoction's radius by 5 feet per level of the slot."
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"will": [
+								"smoke stick|devikyn-tinker"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Swift Step Salve",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"featureType": [
+				"CF"
+			],
+			"entries": [
+				"You concoct a vial filled with a bubbling, brown liquid, then splash it on yourself or on a creature within 5 feet of you. The target's speed is increased by 20 feet until the end of its next turn.",
+				"You can expend a spell slot when you use this concoction to further increase the target's speed by 10 feet per level of the slot."
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"will": [
+								"swift step salve|devikyn-tinker"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Tanglefoot Bag",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"featureType": [
+				"CF"
+			],
+			"entries": [
+				"You concoct a bag filled with writhing, sticky black tar and hurl it at a point on the ground within 20 feet of you, or you can fire it from your {@item dartbow|devikyn-tinker}. Either way, choose a point within range. The bag bursts on impact and covers the ground in a 5-foot radius with sticky goo. That area becomes difficult terrain for 1 minute, and any creature that starts its turn on the ground in that area has its speed halved until the end of its turn. You can't concoct this formula again until you finish a short or long rest, as the reactive agents used to concoct it need time to disperse.",
+				"You can expend a spell slot when using this concoction to increase the concoction's area by 5 feet on each side per level of the slot."
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"rest": {
+								"1": [
+									"tanglefoot bag|devikyn-tinker"
+								]
+							}
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Thunderstone",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"featureType": [
+				"CF"
+			],
+			"entries": [
+				"You concoct a crystalline shard that hums with energy, then hurl it at a creature, object, or surface within 20 feet of you, or you can fire it from your {@item dartbow|devikyn-tinker}. Either way, the shard shatters on impact with a blast of concussive energy. Each creature within 10 feet of the point of impact must succeed on a Constitution saving throw or take {@dice 3d4} thunder damage and be pushed 10 feet away from the point of impact.",
+				"You can expend a spell slot when you use this concoction to increase the damage you deal with it and stun its victims. The damage increases by {@dice 1d4} per level of the slot. If you expend a spell slot, each creature that is pushed into a wall or object by this concoction is stunned until the end of your next turn."
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"will": [
+								"thunderstone|devikyn-tinker"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Volatile Fire",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"featureType": [
+				"CF"
+			],
+			"entries": [
+				"You concoct a vial of volatile liquid, then up to 20 feet or fire it from your {@item dartbow|devikyn-tinker}. Either way, choose a point within range. Creatures in a 5-foot radius around the point must make a Dexterity saving throw, taking {@dice 2d6} fire damage on a failed save, or half as much damage on a successful one.",
+				"You can expend a spell slot when you use this concoction to increase the concoction's damage and radius. The damage increases by {@dice 2d6} and the radius increases by 5 feet per level of the slot."
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"will": [
+								"volatile fire|devikyn-tinker"
+							]
+						}
+					}
+				}
+			]
+		}
+	],
+	"spell": [
+		{
+			"name": "Corrosive Gel",
+			"source": "devikyn-tinker",
+			"page": 7,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "special"
+			},
+			"components": {
+				"v": false,
+				"s": false,
+				"m": {
+					"text": "a weapon or piece of ammunition"
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You concoct a sticky gel that explodes on impact. You apply it to a weapon or a piece of ammunition you are holding, and then make one weapon attack using the affected weapon or ammunition. On a hit, the weapon's damage type changes to acid for the attack, and the attack deals an extra 5 acid damage. This attack deals maximum damage to objects, rather than making a damage roll."
+			],
+			"entriesHigherLevel": [
+				"You can expend a spell slot when you use this concoction to increase the extra damage by 5 for each level of the slot."
+			],
+			"damageInflict": [
+				"acid"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Tinker",
+							"source": "devikyn-tinker"
+						},
+						"subclass": {
+							"name": "Chemist",
+							"source": "devikyn-tinker"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Healing Salve",
+			"source": "devikyn-tinker",
+			"page": 7,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"amount": 5,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": false,
+				"s": false
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You concoct a vial of healing liquid, then splash it on a creature within 5 feet of you or fire it from your {@item dartbow|devikyn-tinker}. Either way, choose a creature within range. The creature regains {@dice 1d10} hit points. A creature can't be affected by this concoction again until it finishes a short or long rest."
+			],
+			"entriesHigherLevel": [
+				"You can expend a spell slot when you use this concoction to increase the amount healed by {@dice 1d10} for each level of the slot."
+			],
+			"miscTags": [
+				"HL"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Tinker",
+							"source": "devikyn-tinker"
+						},
+						"subclass": {
+							"name": "Chemist",
+							"source": "devikyn-tinker"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Hemorrhaging Cold",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"amount": 20,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": false,
+				"s": false
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"amount": 1,
+						"type": "minute"
+					}
+				}
+			],
+			"entries": [
+				"You concoct a glistening, clear liquid, then throw it up to 20 feet or fire it from your {@item dartbow|devikyn-tinker}. Either way, choose a creature within range, which must make a Dexterity saving throw. On a failed save, for 1 minute, the target's speed is reduced by 10 feet and it takes {@dice 2d4} cold damage at the start of each of its turns, as bitter cold crystals expand from its wound. A creature can break away the crystals early by using its action to make a Strength (Athletics) check against your spell save DC."
+			],
+			"entriesHigherLevel": [
+				"You can expend a spell slot when you use this concoction to increase the damage it deals at the start of the turn by {@dice 2d4} for each level of the slot."
+			],
+			"damageInflict": [
+				"cold"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"abilityCheck": [
+				"strength"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Tinker",
+							"source": "devikyn-tinker"
+						},
+						"subclass": {
+							"name": "Chemist",
+							"source": "devikyn-tinker"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Noxious Vapors",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"amount": 20,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": false,
+				"s": false
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"amount": 1,
+						"type": "minute"
+					}
+				}
+			],
+			"entries": [
+				"You concoct a vial full of greenish-yellow liquid, which creates a plume of noxious mist, then hurl it up to 20 feet or fire it from your {@item dartbow|devikyn-tinker}. Either way, choose a point within range. The vial breaks on impact, creating noxious vapors in a 10-foot radius around the point, which last for 1 minute. You can't concoct this formula again until you finish a short or long rest, as the reactive agents used to concoct it need time to disperse.",
+				"Any creature that enters the noxious vapors for the first time on a turn or starts its turn there must make a Constitution saving throw, taking {@dice 3d6} poison damage on a failed save, or half as much damage on a successful one. On a failed save, the creature is poisoned. If an affected creature leaves the area of noxious vapors and remains outside of it until the end of its next turn, that creature is no longer poisoned."
+			],
+			"entriesHigherLevel": [
+				"You can expend a spell slot when you use this concoction to increase the concoction's damage and radius. The damage increases by {@dice 1d6} and the radius increases by 5 feet per level of the slot."
+			],
+			"damageInflict": [
+				"poison"
+			],
+			"areaTags": [
+				"S"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Tinker",
+							"source": "devikyn-tinker"
+						},
+						"subclass": {
+							"name": "Chemist",
+							"source": "devikyn-tinker"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Smoke Stick",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"amount": 20,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": false,
+				"s": false
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"amount": 1,
+						"type": "minute"
+					}
+				}
+			],
+			"entries": [
+				"You can concoct a stick that produces a thick plume of smoke. You can hold onto the stick, or you can immediately throw it up to 20 feet or fire it from your {@item dartbow|devikyn-tinker}. If you hold it, you can throw or fire it later as a bonus action. The area in a 10-foot radius around the stick is filled with thick smoke that heavily obscures the area. The stick crumbles to dust and the smoke disperses after 1 minute. You can't concoct this formula again until you finish a short or long rest, as the reactive agents used to concoct it need time to disperse."
+			],
+			"entriesHigherLevel": [
+				"You can expend a spell slot when you use this concoction to increase the concoction's radius by 5 feet per level of the slot."
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Tinker",
+							"source": "devikyn-tinker"
+						},
+						"subclass": {
+							"name": "Chemist",
+							"source": "devikyn-tinker"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Swift Step Salve",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"amount": 5,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": false,
+				"s": false
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"amount": 1,
+						"type": "round"
+					}
+				}
+			],
+			"entries": [
+				"You concoct a vial filled with a bubbling, brown liquid, then splash it on yourself or on a creature within 5 feet of you. The target's speed is increased by 20 feet until the end of its next turn."
+			],
+			"entriesHigherLevel": [
+				"You can expend a spell slot when you use this concoction to further increase the target's speed by 10 feet per level of the slot."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Tinker",
+							"source": "devikyn-tinker"
+						},
+						"subclass": {
+							"name": "Chemist",
+							"source": "devikyn-tinker"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Tanglefoot Bag",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cube",
+				"distance": {
+					"amount": 20,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": false,
+				"s": false
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"amount": 1,
+						"type": "minute"
+					}
+				}
+			],
+			"entries": [
+				"You concoct a bag filled with writhing, sticky black tar and hurl it at a point on the ground within 20 feet of you, or you can fire it from your {@item dartbow|devikyn-tinker}. Either way, choose a point within range. The bag bursts on impact and covers the ground in a 5-foot radius with sticky goo. That area becomes difficult terrain for 1 minute, and any creature that starts its turn on the ground in that area has its speed halved until the end of its turn. You can't concoct this formula again until you finish a short or long rest, as the reactive agents used to concoct it need time to disperse."
+			],
+			"entriesHigherLevel": [
+				"You can expend a spell slot when using this concoction to increase the concoction's area by 5 feet on each side per level of the slot."
+			],
+			"areaTags": [
+				"C"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Tinker",
+							"source": "devikyn-tinker"
+						},
+						"subclass": {
+							"name": "Chemist",
+							"source": "devikyn-tinker"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Thunderstone",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cube",
+				"distance": {
+					"amount": 20,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": false,
+				"s": false
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You concoct a crystalline shard that hums with energy, then hurl it at a creature, object, or surface within 20 feet of you, or you can fire it from your {@item dartbow|devikyn-tinker}. Either way, the shard shatters on impact with a blast of concussive energy. Each creature within 10 feet of the point of impact must succeed on a Constitution saving throw or take {@dice 3d4} thunder damage and be pushed 10 feet away from the point of impact."
+			],
+			"entriesHigherLevel": [
+				"You can expend a spell slot when you use this concoction to increase the damage you deal with it and stun its victims. The damage increases by {@dice 1d4} per level of the slot. If you expend a spell slot, each creature that is pushed into a wall or object by this concoction is stunned until the end of your next turn."
+			],
+			"damageInflict": [
+				"thunder"
+			],
+			"areaTags": [
+				"C"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"conditionInflict": [
+				"stunned"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Tinker",
+							"source": "devikyn-tinker"
+						},
+						"subclass": {
+							"name": "Chemist",
+							"source": "devikyn-tinker"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Volatile Fire",
+			"source": "devikyn-tinker",
+			"page": 8,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"amount": 20,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": false,
+				"s": false
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You concoct a vial of volatile liquid, then up to 20 feet or fire it from your {@item dartbow|devikyn-tinker}. Either way, choose a point within range. Creatures in a 5-foot radius around the point must make a Dexterity saving throw, taking {@dice 2d6} fire damage on a failed save, or half as much damage on a successful one."
+			],
+			"entriesHigherLevel": [
+				"You can expend a spell slot when you use this concoction to increase the concoction's damage and radius. The damage increases by {@dice 2d6} and the radius increases by 5 feet per level of the slot."
+			],
+			"damageInflict": [
+				"fire"
+			],
+			"areaTags": [
+				"S"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Tinker",
+							"source": "devikyn-tinker"
+						},
+						"subclass": {
+							"name": "Chemist",
+							"source": "devikyn-tinker"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Mechanize",
+			"source": "devikyn-tinker",
+			"page": 15,
+			"level": 0,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": false,
+				"s": true,
+				"m": "Thieves' tools or any artisan's tools"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You touch a Tiny nonmagical object and invest it with a spark of magic. The object gains one of the following effects of your choice:",
+				{
+					"type": "list",
+					"items": [
+						"The object sheds bright light in a 5-foot radius and dim light for an additional 5 feet.",
+						"When the object is touched by a creature, the object emits a recorded message for up to 6 seconds that can be heard up to 10 feet away. You utter the message when you bestow this effect on the object.",
+						"The object continuously emits your choice of an odor or a nonverbal sound (wind, waves, chirping, or the like). The chosen phenomenon is perceivable up to 10 feet away.",
+						"A static visual effect appears on one of the object's surfaces. This effect can be a picture, up to 25 words of text, lines and shapes, or a mixture of these elements, as you like."
+					]
+				},
+				"The chosen effect lasts indefinitely. As an action, you can touch the affected object and end one of these effects. You can only affect one object with this spell at a time; if you cast it on a different object, any effects on the previously affected object end."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Tinker",
+						"source": "devikyn-tinker"
+					}
+				]
+			}
+		},
+		{
+			"name": "Arcane Bayonet",
+			"source": "devikyn-tinker",
+			"page": 15,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"concentration": true,
+					"duration": {
+						"amount": 10,
+						"type": "minute",
+						"upTo": true
+					}
+				}
+			],
+			"entries": [
+				"You touch a ranged weapon and coat it with arcane energy, honed to a fine edge. For the duration, whenever the weapon's wielder would use it to make a weapon attack, the wielder can instead make a melee spell attack using your spell attack bonus. On a hit, the attack deals slashing damage equal to {@dice 1d8} plus your spellcasting ability modifier."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When cast at 2nd or 3rd level, this spell's damage increases to {@dice 2d8}. When cast at 4th level or higher, this spell's damage increases to {@dice 3d8}."
+					]
+				}
+			],
+			"spellAttack": [
+				"M"
+			],
+			"damageInflict": [
+				"slashing"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Tinker",
+						"source": "devikyn-tinker"
+					}
+				]
+			}
+		},
+		{
+			"name": "Miasma Bomb",
+			"source": "devikyn-tinker",
+			"page": 15,
+			"level": 1,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"amount": 60,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": false,
+				"s": true,
+				"m": "a skunk's odor gland"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You hurl an orb of noxious, withering magic at a point you can see within range. The orb explodes, and creatures within a 20-foot radius of the point must make a Dexterity saving throw. On a failed save, for 1 minute, an affected creature has disadvantage on Intelligence (Investigation) checks, Wisdom (Perception) checks and Constitution saving throws, as the debilitating miasma sticks to its body."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When cast at 2nd level or higher, the area of this spell increases by 20 feet for each spell level above 1st."
+					]
+				}
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Tinker",
+						"source": "devikyn-tinker"
+					}
+				]
+			}
+		},
+		{
+			"name": "Bitterchill Mine",
+			"source": "devikyn-tinker",
+			"page": 15,
+			"level": 2,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"amount": 5,
+					"type": "feet"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a mint leaf"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"concentration": true,
+					"duration": {
+						"amount": 1,
+						"type": "hour",
+						"upTo": true
+					}
+				}
+			],
+			"entries": [
+				"A tiny azure glyph, inlaid with cold magic, glows upon the ground at a point you can see within range. A creature that steps within 5 feet of the glyph alerts you to its presence, as long as you are on the same plane of existence, and you can then use your reaction to cause the glyph to explode. Creatures within 10-foot of the glyph when it explodes must make a Constitution saving throw, taking {@dice 5d4} cold damage on a failed save, or half as much damage on a successful one. On a failed save, a target's speed is reduced to 0 until the end of its next turn."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When cast at 3rd level or higher, this spell's damage increases by {@dice 2d4} for each spell level above 2nd."
+					]
+				}
+			],
+			"spellAttack": [
+				"M"
+			],
+			"damageInflict": [
+				"cold"
+			],
+			"areaTags": [
+				"C"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Tinker",
+						"source": "devikyn-tinker"
+					}
+				]
+			}
+		},
+		{
+			"name": "Energize Weapon",
+			"source": "devikyn-tinker",
+			"page": 15,
+			"level": 3,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"concentration": true,
+					"duration": {
+						"amount": 8,
+						"type": "hour",
+						"upTo": true
+					}
+				}
+			],
+			"entries": [
+				"You channel arcane energy into one weapon or wand you're holding, and choose one damage type: acid, cold, fire, lightning, poison, or thunder. Until the spell ends, when you deal damage with a weapon attack or a cantrip while holding the affected weapon or wand, you deal 8 extra damage of the chosen type. The weapon also becomes magical for the duration.",
+				"As a bonus action for the duration, you can change this spell's damage type, choosing from the options above."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When cast at 4th level or higher, the extra damage increases by 4 for each spell level above 3rd."
+					]
+				}
+			],
+			"damageInflict": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison",
+				"thunder"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Paladin",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Tinker",
+						"source": "devikyn-tinker"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	],
+	"itemProperty": [
+		{
+			"abbreviation": "BST",
+			"source": "devikyn-tinker",
+			"page": 13,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Bursting",
+					"entries": [
+						"This weapon can be fired in rapid succession. Whenever you take the Attack action and make a ranged weapon attack with this weapon, you can choose to instead make two special attacks with it. When you do, you make each attack roll normally, but forego adding your ability score modifier to the damage rolls of each attack on a hit."
+					]
+				}
+			]
+		},
+		{
+			"abbreviation": "SLD",
+			"source": "devikyn-tinker",
+			"page": 13,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Shielded",
+					"entries": [
+						"This weapon has a barrier attached to it. While holding it with both hands, you have a +2 bonus to your AC."
+					]
+				}
+			]
+		},
+		{
+			"abbreviation": "SPT",
+			"source": "devikyn-tinker",
+			"page": 13,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Special (Arcane Cannon, Arcane Musket, Dartbow, Slugshooter)",
+					"entries": [
+						"These weapons retain properties of the original weapon, other than the changes listed in the {@quickref weapons} table.",
+						"The {@item slugshooter|devikyn-tinker} can't load any ammunition except sling bullets."
+					]
+				}
+			]
+		}
+	],
+	"item": [
+		{
+			"name": "Construct Skin",
+			"source": "devikyn-tinker",
+			"type": "LA",
+			"armor": true,
+			"rarity": "varies",
+			"value": 200,
+			"weight": 25,
+			"acSpecial": "10 + your Dexterity modifier + your Intelligence modifier",
+			"entries": [
+				"Construct skin is a body-fitting suit of armor made by a tinker out of precious metals and infused with magic. While doffed, the construct skin retracts into a cube small enough to carry in one hand (its weight remains the same). Your armor class is 10 + your Dexterity modifier + your Intelligence modifier while you aren't wearing any other armor. The armor can't be removed against your will without destroying it. If you are missing any limbs, the armor replaces those limbs\u2014hands, arms, feet, legs, or similar appendages. The replacements function identically to the body parts they replace."
+			]
+		},
+		{
+			"name": "Slugshooter",
+			"source": "devikyn-tinker",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "martial",
+			"rarity": "none",
+			"bonusAc": "2",
+			"ammunition": true,
+			"ammoType": "sling bullet|phb",
+			"dmgType": "P",
+			"dmg1": "1d12",
+			"range": "20/60",
+			"property": [
+				"2H",
+				"A",
+				"BST",
+				"SLD",
+				"SPT"
+			],
+			"entries": [
+				"An augmenter's signature weapon modification: a barreled weapon with a protective plate."
+			]
+		},
+		{
+			"name": "Rocket-propelled Fists",
+			"source": "devikyn-tinker",
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "martial",
+			"rarity": "none",
+			"dmgType": "F",
+			"dmg1": "1d10",
+			"range": "30/120",
+			"property": [
+				"L",
+				"T"
+			],
+			"entries": [
+				"A mid-ranged fist augmentation for construct skin which strikes with magical force and returns to the wielder when fired at range."
+			]
+		},
+		{
+			"name": "Dartbow",
+			"source": "devikyn-tinker",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "martial",
+			"rarity": "none",
+			"ammunition": true,
+			"dmgType": "P",
+			"dmg1": "1d10",
+			"range": "40/160",
+			"property": [
+				"A",
+				"BST",
+				"SPT"
+			],
+			"entries": [
+				"A chemist's signature weapon modification: a small crossbow which has been modified to fire both ammunition and chemical concoctions."
+			]
+		},
+		{
+			"name": "Arcane Musket",
+			"source": "devikyn-tinker",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "martial",
+			"rarity": "none",
+			"ammunition": true,
+			"dmgType": "P",
+			"dmg1": "1d8",
+			"range": "50/200",
+			"property": [
+				"A",
+				"BST",
+				"SPT"
+			],
+			"entries": [
+				"A spellcrafter's signature weapon modification: a deadly musket which combines knowledge of arcane magic, engineering and metallurgy."
+			]
+		},
+		{
+			"name": "Arcane Cannon",
+			"source": "devikyn-tinker",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "martial",
+			"rarity": "none",
+			"ammunition": true,
+			"dmgType": "P",
+			"dmg1": "2d6",
+			"range": "90/360",
+			"property": [
+				"A",
+				"BST",
+				"SPT"
+			],
+			"entries": [
+				"A spellcrafter's signature weapon modification: a deadly musket which combines knowledge of arcane magic, engineering and metallurgy."
+			]
+		},
+		{
+			"name": "Thunder Monger",
+			"source": "devikyn-tinker",
+			"type": "R",
+			"weapon": true,
+			"weaponCategory": "martial",
+			"rarity": "none",
+			"ammunition": true,
+			"dmgType": "T",
+			"dmg1": "3d6",
+			"dmg2": "2d10",
+			"property": [
+				"A",
+				"BST",
+				"SPT"
+			],
+			"entries": [
+				"As an action, you can make one of the following special attacks with your arcane weapon:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Blast",
+							"entry": "Make a ranged weapon attack with your arcane cannon or arcane musket. On a hit, the attack's damage type changes to thunder and deals an extra {@dice 3d6} damage. The extra damage increases as you gain levels in this class: {@dice 4d6} at 9th level, {@dice 5d6} at 13th level, and {@dice 6d6} at 17th level."
+						},
+						{
+							"type": "item",
+							"name": "Pierce",
+							"entry": "Instead of making an attack roll, you can choose to unleash a bolt of lightning that is 5-feet wide and 30-feet long from your arcane cannon. Each creature in the area must make a Dexterity saving throw. On a failed save, a target takes {@dice 2d10} lightning damage. This damage increases as you gain levels in this class: {@dice 3d10} at 9th level, {@dice 4d10} at 13th level, and {@dice 5d10} at 17th level."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Magic Wand Prototype",
+			"source": "devikyn-tinker",
+			"type": "WD",
+			"weapon": true,
+			"baseItem": "club|phb",
+			"rarity": "varies",
+			"entries": [
+				"A special wand crafted by a wandslinger. Contains one {@filter cantrip from the tinker spell list with a casting time of 1 action|spells|level=0|class=Tinker (TTC)|cast time=action}, which can be cast at will, and one {@filter 1st-level spell from the tinker spell list|spells|level=1|class=Tinker (TTC)}, which can be cast once and recharges at dawn. These spells use the spellcasting ability of the wandslinger that created the wand.",
+				"If created by a sufficiently powerful wandslinger, the wand can contain two {@filter 3rd-level or lower spells from the tinker spell list|spells|level=1|class=Tinker (TTC)}, and can recharge after every short and long rest, instead of at dawn."
+			]
+		}
+	],
+	"monster": [
+		{
+			"name": "Arcane Turret",
+			"source": "devikyn-tinker",
+			"page": 5,
+			"size": [
+				"S"
+			],
+			"type": "construct",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "equal to five times your tinker level + your Intelligence modifier"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 10,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"disease",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"senseTags": [
+				"D"
+			],
+			"passive": 10,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Animated Object",
+					"entries": [
+						"The turret counts as a magical object, rather than a creature, for purposes of targeting and resolving attacks, effects and spells."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Force Ballista",
+					"entries": [
+						"{@atk rw} {@hit 2} to hit, range 120 ft., one target. {@h}7 ({@damage 2d6}) force damage"
+					]
+				},
+				{
+					"name": "Defensive Burst (3/Day)",
+					"entries": [
+						"The turret emits a burst of positive energy that grants itself and each creature of your choice within 10 feet of it a number of temporary hit points equal to {@dice 1d8} + your Intelligence modifier (minimum of +1)."
+					]
+				}
+			],
+			"miscTags": [
+				"RW",
+				"RNG"
+			],
+			"damageTags": [
+				"F"
+			],
+			"tokenUrl": "https://www.dropbox.com/s/oy3n7vhkimtj4iu/Arcane%20Turret%20Token.png?dl=1"
+		},
+		{
+			"name": "Mechanical Servant",
+			"source": "devikyn-tinker",
+			"page": 10,
+			"size": [
+				"S"
+			],
+			"type": "construct",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "equal to five times your tinker level + your Intelligence modifier"
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 30
+			},
+			"str": 4,
+			"dex": 15,
+			"con": 11,
+			"int": 10,
+			"wis": 10,
+			"cha": 7,
+			"skill": {
+				"perception": "4",
+				"stealth": "4"
+			},
+			"immune": [
+				"acid",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"poisoned"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			],
+			"passive": 14,
+			"cr": "equal to half of your tinker level",
+			"trait": [
+				{
+					"name": "Inspirational Salve (5/Day)",
+					"entries": [
+						"When a creature within 5 feet of the servant makes an ability check, the servant can use its reaction to touch the creature and apply an invigorating salve, granting advantage on the check."
+					]
+				},
+				{
+					"name": "Reinforcing Salve",
+					"entries": [
+						"When a creature within 5 feet of the servant regains hit points, the servant can use its reaction to touch the creature and apply a protective salve, granting the target temporary hit points equal to your Intelligence modifier."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Acidic Spit",
+					"entries": [
+						"{@atk rw} {@hit 4} to hit, range 30 ft., one target. {@h}5 ({@damage 1d6+2}) acid damage"
+					]
+				},
+				{
+					"name": "Buoyancy Salve (1/Day)",
+					"entries": [
+						"The servant touches a creature and applies a flotational salve, which grants the target a fly speed of 10 feet and the ability to hover for 10 minutes."
+					]
+				}
+			],
+			"miscTags": [
+				"RW",
+				"RNG"
+			],
+			"damageTags": [
+				"A"
+			],
+			"tokenUrl": "https://www.dropbox.com/s/rlflzbr5ncixu8b/Mechanical%20Servant%20Token.png?dl=1"
+		}
+	]
+}
