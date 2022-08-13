@@ -3,7 +3,7 @@
 	"$id": "entry.json",
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.7.4",
+	"version": "1.7.5",
 	"definitions": {
 		"_arrayOfSpell": {
 			"type": "array",
@@ -2012,46 +2012,98 @@
 			]
 		},
 		"entryStatblock": {
-			"type": "object",
-			"properties": {
-				"name": {
-					"type": "string"
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "statblock"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "util.json#/definitions/page"
+						},
+						"srd": {
+							"$ref": "util.json#/definitions/srd"
+						},
+						"data": {
+							"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+							"type": "object"
+						},
+						"id": {
+							"type": "string"
+						},
+						"tag": {
+							"$ref": "util.json#/definitions/tagNameStats"
+						},
+						"displayName": {
+							"type": "string"
+						},
+						"hash": {
+							"type": "string"
+						},
+						"style": {
+							"$ref": "#/definitions/_entryDataStyle"
+						}
+					},
+					"required": [
+						"tag",
+						"name"
+					],
+					"additionalProperties": false
 				},
-				"type": {
-					"type": "string",
-					"const": "statblock"
-				},
-				"source": {
-					"type": "string"
-				},
-				"page": {
-					"$ref": "util.json#/definitions/page"
-				},
-				"srd": {
-					"$ref": "util.json#/definitions/srd"
-				},
-				"data": {
-					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
-					"type": "object"
-				},
-				"id": {
-					"type": "string"
-				},
-				"tag": {
-					"$ref": "util.json#/definitions/tagNameStats"
-				},
-				"hash": {
-					"type": "string"
-				},
-				"style": {
-					"$ref": "#/definitions/_entryDataStyle"
+				{
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "statblock"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "util.json#/definitions/page"
+						},
+						"srd": {
+							"$ref": "util.json#/definitions/srd"
+						},
+						"data": {
+							"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+							"type": "object"
+						},
+						"id": {
+							"type": "string"
+						},
+						"prop": {
+							"$ref": "util.json#/definitions/propNameStats"
+						},
+						"displayName": {
+							"type": "string"
+						},
+						"hash": {
+							"type": "string"
+						},
+						"style": {
+							"$ref": "#/definitions/_entryDataStyle"
+						}
+					},
+					"required": [
+						"prop",
+						"name",
+						"source"
+					]
 				}
-			},
-			"required": [
-				"tag",
-				"name"
-			],
-			"additionalProperties": false
+			]
 		},
 		"entryRefClassFeature": {
 			"description": "For use in classes page content only.",
