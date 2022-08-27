@@ -432,6 +432,26 @@ Replace spells in a spell trait. Requires the creature to already be a spellcast
 }
 ```
 
+#### removeSpells
+
+Remove spells in a spell trait. Requires the creature to already be a spellcaster, and only targets the first listed trait.
+
+```jsonc
+{
+    "mode": "removeSpells",
+    "spells": {
+        "4": [
+            "{@spell banishment}"
+        ]
+    },
+    "daily": {
+        "1e": [
+            "{@spell banishment}"
+        ]
+    }
+}
+```
+
 #### scalarAddHit
 
 Add a scalar to `@hit` tags in a statblock

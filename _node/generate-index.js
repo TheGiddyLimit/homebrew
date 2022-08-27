@@ -15,9 +15,6 @@ function checkFileContents () {
 			"adventure",
 			"adventureData"
 		],
-		"magicvariant": [
-			"variant"
-		],
 		"makebrew": [
 			"makebrewCreatureTrait"
 		]
