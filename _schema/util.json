@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.18",
+	"version": "1.11.25",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -100,6 +100,48 @@
 					}
 				]
 			}
+		},
+		"tagNameStats": {
+			"type": "string",
+			"enum": [
+				"spell",
+				"item",
+				"creature",
+				"condition",
+				"disease",
+				"status",
+				"background",
+				"race",
+				"optfeature",
+				"reward",
+				"feat",
+				"psionic",
+				"object",
+				"cult",
+				"boon",
+				"trap",
+				"hazard",
+				"deity",
+				"variantrule",
+				"charoption",
+				"vehicle",
+				"vehupgrade",
+				"class",
+				"action",
+				"language",
+				"classFeature",
+				"subclassFeature",
+				"table",
+				"recipe",
+				"skill",
+				"sense"
+			]
+		},
+		"propNameStats": {
+			"type": "string",
+			"enum": [
+				"subclass"
+			]
 		},
 		"languageNameLower": {
 			"type": "string",
@@ -224,7 +266,8 @@
 				"thieves' tools",
 				"poisoner's kit",
 				"vehicles (land)",
-				"vehicles (water)"
+				"vehicles (water)",
+				"vehicles (space)"
 			]
 		},
 		"toolProficiencies": {
@@ -320,6 +363,9 @@
 						"type": "boolean"
 					},
 					"vehicles (water)": {
+						"type": "boolean"
+					},
+					"vehicles (space)": {
 						"type": "boolean"
 					},
 					"choose": {
@@ -594,6 +640,9 @@
 						"type": "boolean"
 					},
 					"vehicles (water)": {
+						"type": "boolean"
+					},
+					"vehicles (space)": {
 						"type": "boolean"
 					},
 					"anySkill": {
@@ -1099,6 +1148,9 @@
 						"type": "boolean"
 					},
 					"vehicles (water)": {
+						"type": "boolean"
+					},
+					"vehicles (space)": {
 						"type": "boolean"
 					},
 					"poisoner's kit": {
@@ -2593,6 +2645,24 @@
 					"type": "object",
 					"properties": {
 						"mode": {
+							"const": "removeSpells"
+						},
+						"spells": {
+							"type": "object"
+						},
+						"daily": {
+							"type": "object"
+						}
+					},
+					"required": [
+						"mode"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
 							"const": "addSpells"
 						},
 						"spells": {
@@ -3569,7 +3639,10 @@
 					}
 				},
 				"disabled": {
-					"type": "boolean"
+					"const": true
+				},
+				"transfer": {
+					"const": true
 				}
 			},
 			"required": [
