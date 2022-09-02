@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "trapshazards.json",
-	"version": "1.2.2",
+	"version": "1.2.5",
 	"type": "object",
 	"definitions": {
 		"trap": {
@@ -25,7 +25,7 @@
 							"type": "string"
 						},
 						"page": {
-							"type": "integer"
+							"$ref": "util.json#/definitions/page"
 						},
 						"entries": {
 							"type": "array",
@@ -66,7 +66,7 @@
 							"type": "string"
 						},
 						"page": {
-							"type": "integer"
+							"$ref": "util.json#/definitions/page"
 						},
 						"entries": {
 							"type": "array",
@@ -192,7 +192,7 @@
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/definitions/page"
 				},
 				"otherSources": {
 					"$ref": "util.json#/definitions/otherSources"
@@ -205,6 +205,15 @@
 				},
 				"srd": {
 					"$ref": "util.json#/definitions/srd"
+				},
+				"foundryData": {
+					"$ref": "util.json#/definitions/foundryDataObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/definitions/foundryFlagsObject"
+				},
+				"foundryEffects": {
+					"$ref": "util.json#/definitions/foundryEffectsArray"
 				},
 				"foundryImg": {
 					"$ref": "util.json#/definitions/foundryImg"
@@ -221,12 +230,14 @@
 	"properties": {
 		"trap": {
 			"type": "array",
+			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/trap"
 			}
 		},
 		"hazard": {
 			"type": "array",
+			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/hazard"
 			}

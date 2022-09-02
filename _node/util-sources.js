@@ -1,5 +1,3 @@
-"use strict";
-
 // Dumped from `Object.keys(Parser.SOURCE_JSON_TO_FULL)`
 // TODO(Future) sensibly factor this out
 const VANILLA_SOURCES = [
@@ -9,7 +7,6 @@ const VANILLA_SOURCES = [
 	"EET",
 	"HotDQ",
 	"LMoP",
-	"Mag",
 	"MM",
 	"OotA",
 	"PHB",
@@ -19,6 +16,7 @@ const VANILLA_SOURCES = [
 	"SCAG",
 	"SKT",
 	"ToA",
+	"TLK",
 	"ToD",
 	"TTP",
 	"TftYP",
@@ -38,6 +36,7 @@ const VANILLA_SOURCES = [
 	"GGR",
 	"KKW",
 	"LLK",
+	"AZfyT",
 	"GoS",
 	"AI",
 	"OoW",
@@ -69,10 +68,37 @@ const VANILLA_SOURCES = [
 	"TCE",
 	"VRGR",
 	"HoL",
+	"RtG",
+	"AitFR",
+	"AitFR-ISF",
+	"AitFR-THP",
+	"AitFR-AVT",
+	"AitFR-DN",
+	"AitFR-FCD",
+	"WBtW",
+	"DoD",
+	"MaBJoV",
+	"FTD",
+	"SCC",
+	"SCC-CK",
+	"SCC-HfMT",
+	"SCC-TMM",
+	"SCC-ARiR",
+	"MPMM",
+	"CRCotN",
 	"Screen",
 	"ScreenWildernessKit",
+	"ScreenDungeonKit",
 	"HF",
 	"CM",
+	"NRH",
+	"NRH-TCMC",
+	"NRH-AVitW",
+	"NRH-ASS",
+	"NRH-CoI",
+	"NRH-TLT",
+	"NRH-AWoL",
+	"NRH-AT",
 	"ALCurseOfStrahd",
 	"ALElementalEvil",
 	"ALRageOfDemons",
@@ -82,6 +108,7 @@ const VANILLA_SOURCES = [
 	"PSZ",
 	"PSX",
 	"PSD",
+	"XMtS",
 	"UAArtificer",
 	"UAEladrinAndGith",
 	"UAEberron",
@@ -150,9 +177,11 @@ const VANILLA_SOURCES = [
 	"UA2021GothicLineages",
 	"UA2021FolkOfTheFeywild",
 	"UA2021DraconicOptions",
-	"UA2021MagesOfStrixhaven"
+	"UA2021MagesOfStrixhaven",
+	"UA2021TravelersOfTheMultiverse",
+	"UA2022HeroesOfKrynn"
 ];
 
-module.exports = {
-	VANILLA_SOURCES
+export {
+	VANILLA_SOURCES,
 };
