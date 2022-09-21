@@ -3,178 +3,186 @@
 	"$id": "cultsboons.json",
 	"version": "1.0.6",
 	"type": "object",
+	"definitions": {
+		"cult": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/definitions/page"
+				},
+				"otherSources": {
+					"$ref": "util.json#/definitions/otherSources"
+				},
+				"reprintedAs": {
+					"$ref": "util.json#/definitions/reprintedAs"
+				},
+				"type": {
+					"type": "string",
+					"examples": [
+						"Demonic",
+						"Diabolical",
+						"Elder Evil",
+						"Elemental"
+					]
+				},
+				"goal": {
+					"type": "object",
+					"properties": {
+						"entry": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				},
+				"cultists": {
+					"type": "object",
+					"properties": {
+						"entry": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				},
+				"signaturespells": {
+					"type": "object",
+					"properties": {
+						"entry": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					}
+				},
+				"foundryData": {
+					"$ref": "util.json#/definitions/foundryDataObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/definitions/foundryFlagsObject"
+				},
+				"foundryEffects": {
+					"$ref": "util.json#/definitions/foundryEffectsArray"
+				},
+				"foundryImg": {
+					"$ref": "util.json#/definitions/foundryImg"
+				}
+			},
+			"required": [
+				"name",
+				"source",
+				"entries"
+			],
+			"additionalProperties": false
+		},
+		"boon": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/definitions/page"
+				},
+				"otherSources": {
+					"$ref": "util.json#/definitions/otherSources"
+				},
+				"reprintedAs": {
+					"$ref": "util.json#/definitions/reprintedAs"
+				},
+				"type": {
+					"type": "string",
+					"examples": [
+						"Demonic"
+					]
+				},
+				"ability": {
+					"type": "object",
+					"properties": {
+						"entry": {
+							"$ref": "entry.json"
+						}
+					},
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				},
+				"signaturespells": {
+					"type": "object",
+					"properties": {
+						"entry": {
+							"$ref": "entry.json"
+						}
+					},
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				},
+				"entries": {
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"$ref": "entry.json"
+					}
+				},
+				"foundryData": {
+					"$ref": "util.json#/definitions/foundryDataObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/definitions/foundryFlagsObject"
+				},
+				"foundryEffects": {
+					"$ref": "util.json#/definitions/foundryEffectsArray"
+				},
+				"foundryImg": {
+					"$ref": "util.json#/definitions/foundryImg"
+				}
+			},
+			"required": [
+				"name",
+				"source",
+				"type",
+				"entries"
+			],
+			"additionalProperties": false
+		}
+	},
 	"properties": {
 		"cult": {
 			"type": "array",
 			"uniqueItems": true,
 			"items": {
-				"type": "object",
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"source": {
-						"type": "string"
-					},
-					"page": {
-						"$ref": "util.json#/definitions/page"
-					},
-					"otherSources": {
-						"$ref": "util.json#/definitions/otherSources"
-					},
-					"reprintedAs": {
-						"$ref": "util.json#/definitions/reprintedAs"
-					},
-					"type": {
-						"type": "string",
-						"examples": [
-							"Demonic",
-							"Diabolical",
-							"Elder Evil",
-							"Elemental"
-						]
-					},
-					"goal": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					},
-					"cultists": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					},
-					"signaturespells": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					},
-					"entries": {
-						"type": "array",
-						"items": {
-							"$ref": "entry.json"
-						}
-					},
-					"foundryData": {
-						"$ref": "util.json#/definitions/foundryDataObject"
-					},
-					"foundryFlags": {
-						"$ref": "util.json#/definitions/foundryFlagsObject"
-					},
-					"foundryEffects": {
-						"$ref": "util.json#/definitions/foundryEffectsArray"
-					},
-					"foundryImg": {
-						"$ref": "util.json#/definitions/foundryImg"
-					}
-				},
-				"required": [
-					"name",
-					"source",
-					"entries"
-				],
-				"additionalProperties": false
+				"$ref": "#/definitions/cult"
 			}
 		},
 		"boon": {
 			"type": "array",
 			"uniqueItems": true,
 			"items": {
-				"type": "object",
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"source": {
-						"type": "string"
-					},
-					"page": {
-						"$ref": "util.json#/definitions/page"
-					},
-					"otherSources": {
-						"$ref": "util.json#/definitions/otherSources"
-					},
-					"reprintedAs": {
-						"$ref": "util.json#/definitions/reprintedAs"
-					},
-					"type": {
-						"type": "string",
-						"examples": [
-							"Demonic"
-						]
-					},
-					"ability": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"$ref": "entry.json"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					},
-					"signaturespells": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"$ref": "entry.json"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					},
-					"entries": {
-						"type": "array",
-						"uniqueItems": true,
-						"items": {
-							"$ref": "entry.json"
-						}
-					},
-					"foundryData": {
-						"$ref": "util.json#/definitions/foundryDataObject"
-					},
-					"foundryFlags": {
-						"$ref": "util.json#/definitions/foundryFlagsObject"
-					},
-					"foundryEffects": {
-						"$ref": "util.json#/definitions/foundryEffectsArray"
-					},
-					"foundryImg": {
-						"$ref": "util.json#/definitions/foundryImg"
-					}
-				},
-				"required": [
-					"name",
-					"source",
-					"type",
-					"entries"
-				],
-				"additionalProperties": false
+				"$ref": "#/definitions/boon"
 			}
 		}
 	},
