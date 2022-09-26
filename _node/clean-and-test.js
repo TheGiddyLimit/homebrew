@@ -76,6 +76,8 @@ function cleanFolder (folder) {
 
 					if (!(data instanceof Array) || !data.forEach) throw new Error(`File "${k}" data was not an array!`);
 
+					if (!data.length) throw new Error(`File "${k}" array is empty!`);
+
 					data.forEach(it => {
 						const source = it.source || (it.inherits ? it.inherits.source : null);
 						if (!source) return ALL_ERRORS.push(`${file} :: ${k} :: "${it.name || it.id}" had no source!`);
