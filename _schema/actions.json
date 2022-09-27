@@ -3,96 +3,101 @@
 	"$id": "actions.json",
 	"version": "1.1.5",
 	"type": "object",
+	"definitions": {
+		"action": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					}
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/definitions/page"
+				},
+				"fromVariant": {
+					"type": "string",
+					"description": "UID of a \"variantrule\" to be linked as a footnote in the action."
+				},
+				"time": {
+					"type": "array",
+					"items": {
+						"oneOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"unit": {
+										"type": "string",
+										"enum": [
+											"action",
+											"bonus",
+											"reaction"
+										]
+									},
+									"number": {
+										"type": "integer"
+									}
+								},
+								"required": [
+									"unit",
+									"number"
+								],
+								"additionalProperties": false
+							}
+						]
+					}
+				},
+				"srd": {
+					"$ref": "util.json#/definitions/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/definitions/basicRules"
+				},
+				"seeAlsoAction": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"description": "UIDs of \"action\"s to be linked in a \"See Also\" footnote.\nEx.: \"disarm|dmg\"."
+					}
+				},
+				"foundryData": {
+					"$ref": "util.json#/definitions/foundryDataObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/definitions/foundryFlagsObject"
+				},
+				"foundryEffects": {
+					"$ref": "util.json#/definitions/foundryEffectsArray"
+				},
+				"foundryImg": {
+					"$ref": "util.json#/definitions/foundryImg"
+				}
+			},
+			"required": [
+				"name",
+				"entries",
+				"source",
+				"page"
+			],
+			"additionalProperties": false
+		}
+	},
 	"properties": {
 		"action": {
 			"type": "array",
 			"uniqueItems": true,
 			"items": {
-				"type": "object",
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"entries": {
-						"type": "array",
-						"items": {
-							"$ref": "entry.json"
-						}
-					},
-					"source": {
-						"type": "string"
-					},
-					"page": {
-						"$ref": "util.json#/definitions/page"
-					},
-					"fromVariant": {
-						"type": "string",
-						"description": "UID of a \"variantrule\" to be linked as a footnote in the action."
-					},
-					"time": {
-						"type": "array",
-						"items": {
-							"oneOf": [
-								{
-									"type": "string"
-								},
-								{
-									"type": "object",
-									"properties": {
-										"unit": {
-											"type": "string",
-											"enum": [
-												"action",
-												"bonus",
-												"reaction"
-											]
-										},
-										"number": {
-											"type": "integer"
-										}
-									},
-									"required": [
-										"unit",
-										"number"
-									],
-									"additionalProperties": false
-								}
-							]
-						}
-					},
-					"srd": {
-						"$ref": "util.json#/definitions/srd"
-					},
-					"basicRules": {
-						"$ref": "util.json#/definitions/basicRules"
-					},
-					"seeAlsoAction": {
-						"type": "array",
-						"items": {
-							"type": "string",
-							"description": "UIDs of \"action\"s to be linked in a \"See Also\" footnote.\nEx.: \"disarm|dmg\"."
-						}
-					},
-					"foundryData": {
-						"$ref": "util.json#/definitions/foundryDataObject"
-					},
-					"foundryFlags": {
-						"$ref": "util.json#/definitions/foundryFlagsObject"
-					},
-					"foundryEffects": {
-						"$ref": "util.json#/definitions/foundryEffectsArray"
-					},
-					"foundryImg": {
-						"$ref": "util.json#/definitions/foundryImg"
-					}
-				},
-				"required": [
-					"name",
-					"entries",
-					"source",
-					"page"
-				],
-				"additionalProperties": false
+				"$ref": "#/definitions/action"
 			}
 		}
 	},
