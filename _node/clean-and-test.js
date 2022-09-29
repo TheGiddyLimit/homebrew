@@ -12,7 +12,7 @@ const _VANILLA_SOURCES = new Set(VANILLA_SOURCES);
 const RUN_TIMESTAMP = Math.floor(Date.now() / 1000);
 const MAX_TIMESTAMP = 9999999999;
 
-const CONTENT_KEY_BLACKLIST = new Set(["$schema", "_meta", "siteVersion"]);
+const CONTENT_KEY_BLOCKLIST = new Set(["$schema", "_meta", "siteVersion"]);
 
 const RE_INVALID_WINDOWS_CHARS = /[<>:"/\\|?*]/g;
 
@@ -79,7 +79,7 @@ function cleanFolder (folder) {
 			validSources.add("UAClassFeatureVariants"); // Allow CFV UA sources
 
 			Object.keys(contents)
-				.filter(k => !CONTENT_KEY_BLACKLIST.has(k))
+				.filter(k => !CONTENT_KEY_BLOCKLIST.has(k))
 				.forEach(k => {
 					const data = contents[k];
 
