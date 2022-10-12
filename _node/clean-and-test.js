@@ -12,9 +12,11 @@ const _VANILLA_SOURCES = new Set(VANILLA_SOURCES);
 const RUN_TIMESTAMP = Math.floor(Date.now() / 1000);
 const MAX_TIMESTAMP = 9999999999;
 
-const CONTENT_KEY_BLACKLIST = new Set(["$schema", "_meta", "siteVersion"]);
+const CONTENT_KEY_BLOCKLIST = new Set(["$schema", "_meta", "siteVersion"]);
 
 const RE_INVALID_WINDOWS_CHARS = /[<>:"/\\|?*]/g;
+
+const ALL_SOURCES_JSON_LOWER = new Set();
 
 function cleanFolder (folder) {
 	const ALL_ERRORS = [];
@@ -66,15 +68,24 @@ function cleanFolder (folder) {
 			// endregion
 
 			// region test
-			const validSources = new Set(contents._meta.sources.map(src => src.json));
+			const docSourcesJson = contents._meta.sources.map(src => src.json);
+			const duplicateSourcesJson = docSourcesJson.filter(src => ALL_SOURCES_JSON_LOWER.has(src.toLowerCase()));
+			if (duplicateSourcesJson.length) {
+				ALL_ERRORS.push(`${file} :: "json" source${duplicateSourcesJson.length === 1 ? "" : "s"} exist in other documents; sources were: ${duplicateSourcesJson.map(src => `"${src}"`).join(", ")}`);
+			}
+			docSourcesJson.forEach(src => ALL_SOURCES_JSON_LOWER.add(src.toLowerCase()));
+
+			const validSources = new Set(docSourcesJson);
 			validSources.add("UAClassFeatureVariants"); // Allow CFV UA sources
 
 			Object.keys(contents)
-				.filter(k => !CONTENT_KEY_BLACKLIST.has(k))
+				.filter(k => !CONTENT_KEY_BLOCKLIST.has(k))
 				.forEach(k => {
 					const data = contents[k];
 
 					if (!(data instanceof Array) || !data.forEach) throw new Error(`File "${k}" data was not an array!`);
+
+					if (!data.length) throw new Error(`File "${k}" array is empty!`);
 
 					data.forEach(it => {
 						const source = it.source || (it.inherits ? it.inherits.source : null);
