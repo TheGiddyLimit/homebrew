@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.22",
+	"version": "1.11.27",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -15,7 +15,8 @@
 							"type": "array",
 							"items": {
 								"type": "string"
-							}
+							},
+							"uniqueItems": true
 						}
 					}
 				},
@@ -52,7 +53,8 @@
 					"source"
 				],
 				"additionalProperties": false
-			}
+			},
+			"uniqueItems": true
 		},
 		"additionalSources": {
 			"type": "array",
@@ -70,7 +72,8 @@
 					"source"
 				],
 				"additionalProperties": false
-			}
+			},
+			"uniqueItems": true
 		},
 		"reprintedAs": {
 			"type": "array",
@@ -99,7 +102,8 @@
 						]
 					}
 				]
-			}
+			},
+			"uniqueItems": true
 		},
 		"tagNameStats": {
 			"type": "string",
@@ -135,6 +139,12 @@
 				"recipe",
 				"skill",
 				"sense"
+			]
+		},
+		"propNameStats": {
+			"type": "string",
+			"enum": [
+				"subclass"
 			]
 		},
 		"languageNameLower": {
@@ -219,7 +229,8 @@
 								"type": "array",
 								"items": {
 									"$ref": "#/definitions/languageNameLower"
-								}
+								},
+								"uniqueItems": true
 							},
 							"count": {
 								"type": "integer"
@@ -228,7 +239,8 @@
 						"additionalProperties": false
 					}
 				}
-			}
+			},
+			"uniqueItems": true
 		},
 		"toolNameLower": {
 			"type": "string",
@@ -260,7 +272,8 @@
 				"thieves' tools",
 				"poisoner's kit",
 				"vehicles (land)",
-				"vehicles (water)"
+				"vehicles (water)",
+				"vehicles (space)"
 			]
 		},
 		"toolProficiencies": {
@@ -358,6 +371,9 @@
 					"vehicles (water)": {
 						"type": "boolean"
 					},
+					"vehicles (space)": {
+						"type": "boolean"
+					},
 					"choose": {
 						"type": "object",
 						"properties": {
@@ -375,7 +391,8 @@
 											]
 										}
 									]
-								}
+								},
+								"uniqueItems": true
 							},
 							"count": {
 								"type": "integer"
@@ -387,7 +404,8 @@
 				"additionalProperties": {
 					"type": "boolean"
 				}
-			}
+			},
+			"uniqueItems": true
 		},
 		"skillNameLower": {
 			"type": "string",
@@ -481,7 +499,8 @@
 								"type": "array",
 								"items": {
 									"$ref": "#/definitions/skillNameLower"
-								}
+								},
+								"uniqueItems": true
 							},
 							"count": {
 								"type": "integer"
@@ -632,6 +651,9 @@
 					"vehicles (water)": {
 						"type": "boolean"
 					},
+					"vehicles (space)": {
+						"type": "boolean"
+					},
 					"anySkill": {
 						"type": "integer"
 					},
@@ -759,13 +781,15 @@
 									"additionalProperties": false
 								}
 							]
-						}
+						},
+						"uniqueItems": true
 					}
 				},
 				"additionalProperties": {
 					"type": "boolean"
 				}
-			}
+			},
+			"uniqueItems": true
 		},
 		"weaponProficiencies": {
 			"type": "array",
@@ -916,7 +940,8 @@
 					}
 				},
 				"additionalProperties": false
-			}
+			},
+			"uniqueItems": true
 		},
 		"armorProficiencies": {
 			"type": "array",
@@ -937,7 +962,8 @@
 					}
 				},
 				"additionalProperties": false
-			}
+			},
+			"uniqueItems": true
 		},
 		"savingThrowProficiencies": {
 			"type": "array",
@@ -976,7 +1002,8 @@
 										"wis",
 										"cha"
 									]
-								}
+								},
+								"uniqueItems": true
 							},
 							"count": {
 								"type": "integer"
@@ -989,7 +1016,8 @@
 					}
 				},
 				"additionalProperties": false
-			}
+			},
+			"uniqueItems": true
 		},
 		"expertise": {
 			"type": "array",
@@ -1137,11 +1165,15 @@
 					"vehicles (water)": {
 						"type": "boolean"
 					},
+					"vehicles (space)": {
+						"type": "boolean"
+					},
 					"poisoner's kit": {
 						"type": "boolean"
 					}
 				}
-			}
+			},
+			"uniqueItems": true
 		},
 		"additionalFeatsArray": {
 			"type": "array",
@@ -1155,7 +1187,8 @@
 				"additionalProperties": {
 					"type": "boolean"
 				}
-			}
+			},
+			"uniqueItems": true
 		},
 		"proficiencyTag": {
 			"type": "string",
@@ -1230,7 +1263,8 @@
 											"fly",
 											"swim"
 										]
-									}
+									},
+									"uniqueItems": true
 								},
 								"amount": {
 									"type": "integer"
@@ -1252,31 +1286,36 @@
 									"type": "array",
 									"items": {
 										"$ref": "#/definitions/_speedVal"
-									}
+									},
+									"uniqueItems": true
 								},
 								"burrow": {
 									"type": "array",
 									"items": {
 										"$ref": "#/definitions/_speedVal"
-									}
+									},
+									"uniqueItems": true
 								},
 								"climb": {
 									"type": "array",
 									"items": {
 										"$ref": "#/definitions/_speedVal"
-									}
+									},
+									"uniqueItems": true
 								},
 								"fly": {
 									"type": "array",
 									"items": {
 										"$ref": "#/definitions/_speedVal"
-									}
+									},
+									"uniqueItems": true
 								},
 								"swim": {
 									"type": "array",
 									"items": {
 										"$ref": "#/definitions/_speedVal"
-									}
+									},
+									"uniqueItems": true
 								}
 							}
 						}
@@ -1711,7 +1750,8 @@
 								]
 							}
 						]
-					}
+					},
+					"uniqueItems": true
 				},
 				{
 					"type": "null"
@@ -1743,7 +1783,8 @@
 						}
 					}
 				]
-			}
+			},
+			"uniqueItems": true
 		},
 		"damageResistArray": {
 			"oneOf": [
@@ -1788,7 +1829,8 @@
 								]
 							}
 						]
-					}
+					},
+					"uniqueItems": true
 				},
 				{
 					"type": "null"
@@ -1820,7 +1862,8 @@
 						}
 					}
 				]
-			}
+			},
+			"uniqueItems": true
 		},
 		"damageVulnerabilityArray": {
 			"oneOf": [
@@ -1865,7 +1908,8 @@
 								]
 							}
 						]
-					}
+					},
+					"uniqueItems": true
 				},
 				{
 					"type": "null"
@@ -1897,7 +1941,8 @@
 						}
 					}
 				]
-			}
+			},
+			"uniqueItems": true
 		},
 		"conditionImmunityArray": {
 			"oneOf": [
@@ -1939,7 +1984,8 @@
 								]
 							}
 						]
-					}
+					},
+					"uniqueItems": true
 				},
 				{
 					"type": "null"
@@ -1971,7 +2017,8 @@
 						}
 					}
 				]
-			}
+			},
+			"uniqueItems": true
 		},
 		"resourcesArray": {
 			"type": "array",
@@ -2010,7 +2057,8 @@
 					"name",
 					"type"
 				]
-			}
+			},
+			"uniqueItems": true
 		},
 		"sensesArray": {
 			"type": "array",
@@ -2028,7 +2076,8 @@
 					"type": "integer"
 				},
 				"minProperties": 1
-			}
+			},
+			"uniqueItems": true
 		},
 		"consumesObject": {
 			"type": "object",
@@ -3262,7 +3311,8 @@
 												"wis",
 												"cha"
 											]
-										}
+										},
+										"uniqueItems": true
 									}
 								},
 								"required": [
@@ -3354,6 +3404,7 @@
 										"equipmentType": {
 											"type": "string",
 											"enum": [
+												"weapon",
 												"weaponSimple",
 												"weaponSimpleMelee",
 												"weaponMartial",
@@ -3623,7 +3674,10 @@
 					}
 				},
 				"disabled": {
-					"type": "boolean"
+					"const": true
+				},
+				"transfer": {
+					"const": true
 				}
 			},
 			"required": [
