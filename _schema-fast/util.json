@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.27",
+	"version": "1.11.29",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -30,6 +30,11 @@
 					}
 				}
 			}
+		},
+		"url": {
+			"type": "string",
+			"description": "\"uri-reference\" is unsuitable for brew, as it requires URL-encoding \"'\" (see: https://www.ietf.org/rfc/rfc3986.txt)",
+			"minLength": 3
 		},
 		"page": {
 			"type": [
@@ -74,6 +79,12 @@
 				"additionalProperties": false
 			},
 			"uniqueItems": true
+		},
+		"alias": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
 		},
 		"reprintedAs": {
 			"type": "array",
