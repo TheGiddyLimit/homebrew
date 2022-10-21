@@ -1,13 +1,22 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "items-base.json",
-	"version": "1.4.13",
+	"version": "1.4.15",
 	"definitions": {
-		"itemLookupArray": {
+		"itemPropertyLookupArray": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/itemLookup"
+				"$ref": "#/definitions/itemPropertyLookup"
+			}
+		},
+		"itemTypeLookupArray": {
+			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/definitions/itemTypeLookup"
 			}
 		},
 		"itemLookupBase": {
@@ -24,10 +33,6 @@
 				},
 				"name": {
 					"type": "string"
-				},
-				"template": {
-					"$comment": "Note that this is not used on item types.",
-					"type": "string"
 				}
 			},
 			"additionalProperties": false,
@@ -36,7 +41,7 @@
 				"source"
 			]
 		},
-		"itemLookup": {
+		"itemPropertyLookup": {
 			"anyOf": [
 				{
 					"type": "object",
@@ -54,7 +59,6 @@
 							"type": "string"
 						},
 						"template": {
-							"$comment": "Note that this is not used on item types.",
 							"type": "string"
 						},
 						"entries": {
@@ -86,7 +90,66 @@
 							"type": "string"
 						},
 						"template": {
-							"$comment": "Note that this is not used on item types.",
+							"type": "string"
+						},
+						"entriesTemplate": {
+							"type": "array",
+							"items": {
+								"$ref": "entry.json"
+							}
+						}
+					},
+					"additionalProperties": false,
+					"required": [
+						"abbreviation",
+						"source"
+					]
+				}
+			]
+		},
+		"itemTypeLookup": {
+			"anyOf": [
+				{
+					"type": "object",
+					"properties": {
+						"abbreviation": {
+							"type": "string"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "util.json#/definitions/page"
+						},
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "entry.json"
+							}
+						}
+					},
+					"additionalProperties": false,
+					"required": [
+						"abbreviation",
+						"source"
+					]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"abbreviation": {
+							"type": "string"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "util.json#/definitions/page"
+						},
+						"name": {
 							"type": "string"
 						},
 						"entriesTemplate": {
@@ -109,6 +172,7 @@
 	"properties": {
 		"baseitem": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
 				"type": "object",
@@ -347,26 +411,14 @@
 			}
 		},
 		"itemProperty": {
-			"$ref": "#/definitions/itemLookupArray"
+			"$ref": "#/definitions/itemPropertyLookupArray"
 		},
 		"itemType": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/itemLookupArray"
-				},
-				{
-					"items": {
-						"not": {
-							"required": [
-								"template"
-							]
-						}
-					}
-				}
-			]
+			"$ref": "#/definitions/itemTypeLookupArray"
 		},
 		"itemEntry": {
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"type": "object",
 				"properties": {
@@ -387,6 +439,7 @@
 		},
 		"itemTypeAdditionalEntries": {
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"type": "object",
 				"properties": {
