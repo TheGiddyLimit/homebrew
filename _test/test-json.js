@@ -1,36 +1,20 @@
-const uf = require("../_node/util-fs.js");
-const um = require("../_node/util-misc.js");
+import * as fs from "fs";
 
-const Ajv = require("ajv");
-
-const ajv = new Ajv();
+import {Um, JsonTester} from "5etools-utils";
 
 const LOG_TAG = "JSON";
+const _IS_FAIL_SLOW = !!process.env.FAIL_SLOW;
 
-async function main () {
-	um.info(LOG_TAG, `Validating JSON against schema`);
+function main () {
+	const {errors, errorsFull} = new JsonTester({dirSchema: "_schema", tagLog: LOG_TAG}).getErrorsOnDirs({isFailFast: !_IS_FAIL_SLOW});
 
-	const schema = uf.readJSON("schema.json");
-	ajv.addSchema(schema, "schema.json");
+	if (errors.length) {
+		if (!process.env.CI) fs.writeFileSync(`_test/test-json.error.log`, errorsFull.join("\n\n=====\n\n"));
+		console.error(`Schema test failed (${errors.length} failure${errors.length === 1 ? "" : "s"}).`);
+		process.exit(1);
+	}
 
-	let cntErr = 0;
-
-	uf.runOnDirs((dir) => {
-		uf.listFiles(dir)
-			.forEach(path => {
-				const data = uf.readJSON(path);
-				const valid = ajv.validate(schema, data);
-
-				if (!valid) {
-					um.error(LOG_TAG, `${path}\n${JSON.stringify(ajv.errors, null, 2)}`);
-					cntErr++;
-				}
-			});
-	});
-
-	if (cntErr) throw new Error(`Schema test failed (${cntErr} failure${cntErr === 1 ? "" : "s"}).`);
-
-	um.info(LOG_TAG, `Schema test passed.`);
+	if (!errors.length) Um.info(LOG_TAG, `Schema test passed.`);
 }
 
-module.exports = main();
+main();

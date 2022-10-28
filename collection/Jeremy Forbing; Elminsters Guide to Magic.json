@@ -19,7 +19,8 @@
 			}
 		],
 		"dateAdded": 1596201930,
-		"dateLastModified": 1596201930
+		"dateLastModified": 1666128523,
+		"_dateLastModifiedHash": "4de572e32c"
 	},
 	"spell": [
 		{
@@ -943,7 +944,7 @@
 				"s": true,
 				"m": {
 					"text": "(a special consecrated book or scroll inscribed with the target's name, detailing the crimes for which the target is being condemned, which requires 10,000 gp worth of special metallic inks and rare mineral dusts to inscribe, and which is consumed in the casting of the spell",
-					"consumed": true,
+					"consume": true,
 					"cost": 10000
 				}
 			},
@@ -1275,7 +1276,7 @@
 				"s": true,
 				"m": {
 					"text": "the brain of a humanoid that has been dead less than 24 hours, treated with 10,000 gp worth of alchemical reagents, with the brain being consumed by the spell",
-					"consumed": true,
+					"consume": true,
 					"cost": 10000
 				}
 			},
@@ -1333,7 +1334,7 @@
 				"s": true,
 				"m": {
 					"text": "a canary diamond worth at least 5,000 gp, which the spell consumes",
-					"consumed": true,
+					"consume": true,
 					"cost": 5000
 				}
 			},
@@ -3985,7 +3986,7 @@
 				"s": true,
 				"m": {
 					"text": "a fire source the size of a torch, some yew wood, and a ruby worth 500gp which is consumed by the spell",
-					"consumed": true,
+					"consume": true,
 					"cost": 500
 				}
 			},
@@ -11376,7 +11377,7 @@
 				}
 			],
 			"entries": [
-				"The creature you touch turns {@condition invisible}, and its scent and sound are masked for the spell's duration. Like greater invisibility, the subject can attack and cast spells without ending the spell. This spell also hides the subject from {@sense blindsight}, {@sense tremorsense}, and any other sense that would normally reveal a hidden creature.",
+				"The creature you touch turns {@condition invisible}, and its scent and sound are masked for the spell's duration. Like greater invisibility, the subject can attack and cast spells without ending the spell. This spell also hides the subject from {@sense blindsight}, {@sense tremorsense|MM}, and any other sense that would normally reveal a hidden creature.",
 				"In addition, the subject of the spell is immune to see invisibility, faerie fire, and similar spells for the spell's duration."
 			],
 			"classes": {
@@ -13675,10 +13676,10 @@
 					"type": "timed",
 					"duration": {
 						"type": "round",
-						"amount": 3
+						"amount": 3,
+						"upTo": true
 					},
-					"concentration": true,
-					"upTo": true
+					"concentration": true
 				}
 			],
 			"entries": [
@@ -17266,10 +17267,10 @@
 					"type": "timed",
 					"duration": {
 						"type": "hour",
-						"amount": 1
+						"amount": 1,
+						"upTo": true
 					},
-					"concentration": true,
-					"upTo": true
+					"concentration": true
 				}
 			],
 			"meta": {
@@ -17396,10 +17397,10 @@
 					"type": "timed",
 					"duration": {
 						"type": "hour",
-						"amount": 1
+						"amount": 1,
+						"upTo": true
 					},
-					"concentration": true,
-					"upTo": true
+					"concentration": true
 				}
 			],
 			"entries": [
@@ -18541,10 +18542,10 @@
 					"type": "timed",
 					"duration": {
 						"type": "hour",
-						"amount": 8
+						"amount": 8,
+						"upTo": true
 					},
-					"concentration": true,
-					"upTo": true
+					"concentration": true
 				}
 			],
 			"entries": [
@@ -22056,6 +22057,24 @@
 	],
 	"item": [
 		{
+			"name": "Ring of Wizardry",
+			"source": "Elminsters Guide to Magic",
+			"page": 0,
+			"type": "RG",
+			"rarity": "varies",
+			"reqAttune": "by a wizard",
+			"entries": [
+				"There are four distinct types of this ring (ring of wizardry I, II, III, and IV), each of which grants you additional spell slots. If you have spell slots of the level listed in the table below for your type of ring, the number of spell slots of that level you have is doubled. The details for each ring type are shown in the following table:",
+				"Ring I II III IV",
+				"Benefit doubles 1st level spell slots doubles 2nd level spell slots doubles 3rd level spell slots doubles 4th level spell slots"
+			],
+			"reqAttuneTags": [
+				{
+					"class": "wizard"
+				}
+			]
+		},
+		{
 			"name": "Rod of Seven Parts",
 			"source": "Elminsters Guide to Magic",
 			"page": 0,
@@ -22157,7 +22176,15 @@
 				"bludgeoning",
 				"piercing",
 				"slashing"
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"alignment": [
+						"L"
+					]
+				}
+			],
+			"rechargeAmount": 3
 		},
 		{
 			"name": "Ring of Cantrips",
@@ -22170,7 +22197,25 @@
 			"charges": 6,
 			"entries": [
 				"This ring allows the wearer to expend 1 of the ring's charges and cast any cantrip. This ring has 6 charges, and it regains {@dice 1d6} expended charges daily at dawn."
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				},
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "druid"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "wizard"
+				}
+			],
+			"rechargeAmount": "{@dice 1d6}"
 		},
 		{
 			"name": "Ring of Counterspelling",
@@ -22183,21 +22228,25 @@
 			"charges": 6,
 			"entries": [
 				"You can cast a spell into this ring. Afterwards, if someone casts the spell you cast into this ring while they are within 60 feet of you, you can use a reaction to expend 1 of the ring's charges and cast counterspell as a 9th-level spell. This ring has 6 charges, and it regains {@dice 1d6} expended charges daily at dawn."
-			]
-		},
-		{
-			"name": "Ring of Wizardry",
-			"source": "Elminsters Guide to Magic",
-			"page": 0,
-			"type": "RG",
-			"rarity": "varies",
-			"reqAttune": "by a wizard",
-			"entries": [
-				"There are four distinct types of this ring (ring of wizardry I, II, III, and IV), each of which grants you additional spell slots. If you have spell slots of the level listed in the table below for your type of ring, the number of spell slots of that level you have is doubled. The details for each ring type are shown in the following table:",
-				"Ring I II III IV",
-				"Benefit doubles 1st level spell slots doubles 2nd level spell slots doubles 3rd level spell slots doubles 4th level spell slots"
 			],
-			"__prop": "itemGroup"
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				},
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "druid"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "wizard"
+				}
+			],
+			"rechargeAmount": "{@dice 1d6}"
 		},
 		{
 			"name": "Rod of Interference",
@@ -22210,7 +22259,25 @@
 			"charges": 6,
 			"entries": [
 				"This rod has 6 charges. While holding the rod, you can use an action to expend 1 of the rod's charges and make a ranged spell attack with an {@condition invisible} ray of antimagic against a target within 60 feet. On a hit, any spell that is on the target ends, and if it is concentrating on a spell, that spell ends as well. In addition, the target you hit cannot cast spells again until the end of its next turn. The rod regains {@dice 1d6} charges daily at dawn."
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				},
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "druid"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "wizard"
+				}
+			],
+			"rechargeAmount": "{@dice 1d6}"
 		},
 		{
 			"name": "Rod of Spheres",
@@ -22222,7 +22289,8 @@
 			"charges": 3,
 			"entries": [
 				"This rod has 3 charges. While holding the rod, you can use an action to expend one of the rod's charges and create a sphere of force that hovers 3 feet off the ground. The sphere can hold up to 200 pounds of items, and follows you around for up to 2 hours. The sphere is destroyed if it takes any damage, but any objects inside float to the ground as if affected by the feather fall spell. You can create up to 3 spheres per day. The rod regains 3 charges daily at dawn."
-			]
+			],
+			"rechargeAmount": 3
 		},
 		{
 			"name": "Staff of the Artisan",
@@ -22246,7 +22314,22 @@
 			"entries": [
 				"This staff has 10 charges. While holding it, you can use an action to expend 1 or more of its charges to cast one of the following spells from it, using your spell save DC and spellcasting ability modifier: create item* (1 charge), stone shape (1 charge), animate objects (2 charges), fabricate (2 charges), or demiplane (10 charges).",
 				"The staff regains {@dice 1d6 + 4} expended charges daily at dawn. If you expend the last charge, roll a {@dice d20}. On a 1, the staff blackens, crumbles into cinders, and is destroyed."
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				},
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "wizard"
+				}
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Staff of Cacophony",
@@ -22270,7 +22353,25 @@
 			"entries": [
 				"This staff has 10 charges. While holding it, you can use an action to expend 1 or more of its charges to cast one of the following spells from it, using your spell save DC and spellcasting ability modifier: thunderwave (1 charge per level, up to 5 charges), shatter (1 charge per level, up to 5 charges), thunderlance (4 charges), or thunderous reprisal (4 charges, cast at level 4).",
 				"The staff regains {@dice 1d6 + 4} expended charges daily at dawn. If you expend the last charge, roll a {@dice d20}. On a 1, the staff blackens, crumbles into cinders, and is destroyed."
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				},
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "druid"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "wizard"
+				}
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Staff of Earth and Stone",
@@ -22294,7 +22395,25 @@
 			"entries": [
 				"This staff has 10 charges. While holding it, you can use an action to expend 1 or more of its charges to cast one of the following spells from it, using your spell save DC and spellcasting ability modifier: stone shape (1 charge), meld into stone (2 charges), move earth (4 charges), or wall of stone (4 charges).",
 				"The staff regains {@dice 1d6 + 4} expended charges daily at dawn. If you expend the last charge, roll a {@dice d20}. On a 1, the staff blackens, crumbles into cinders, and is destroyed."
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				},
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "druid"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "wizard"
+				}
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Staff of the Gaol",
@@ -22318,7 +22437,22 @@
 			"entries": [
 				"This staff has 10 charges. While holding it, you can use an action to expend 1 or more of its charges to cast one of the following spells from it, using your spell save DC and spellcasting ability modifier: hold person (1 charge, cast at level 2), hold monster (2 charges, cast at level 5), maze (5 charges), or imprisonment (10 charges).",
 				"The staff regains {@dice 1d6 + 4} expended charges daily at dawn. If you expend the last charge, roll a {@dice d20}. On a 1, the staff blackens, crumbles into cinders, and is destroyed."
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "druid"
+				},
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "wizard"
+				}
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Wand of Blasting",
@@ -22332,7 +22466,13 @@
 			"entries": [
 				"This wand has 7 charges. While holding it, you can use an action to expend 1 or more of its charges to cast cloud of daggers, fireball, lightning bolt or Melf's acid arrow. The spell's save DC is 15. For 1 charge, you cast the 3rd-level version of the spell. You can increase the spell slot level by one for each additional charge you expend.",
 				"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand crumbles into ashes and is destroyed."
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Control",
@@ -22346,7 +22486,13 @@
 			"entries": [
 				"This wand has 7 charges. While holding it, you can use an action to expend 1 or more of its charges to cast Evard's black tentacles, hold monster, hypnotic pattern, slow, or wall of fire. The spell's save DC is 15. Where allowed, you can increase the spell slot level by one for each additional charge you expend.",
 				"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand crumbles into ashes and is destroyed."
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Elemental Burst",
@@ -22360,7 +22506,13 @@
 			"entries": [
 				"This wand has 7 charges. While holding it, you can use an action to expend 1 of its charges to cast the elemental burst spell (save DC 15) from it.",
 				"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand crumbles into ashes and is destroyed."
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Sudden Transposition",
@@ -22374,7 +22526,13 @@
 			"entries": [
 				"This wand has 7 charges. While holding it, you can use an action to expend 1 of its charges to cast the sudden transposition spell (save DC 15) from it.",
 				"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand crumbles into ashes and is destroyed."
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Aquamarine of Spell Extending",
@@ -22387,7 +22545,19 @@
 			"charges": 3,
 			"entries": [
 				"This blue stone can be set in an object and then used as a spell focus. You can use a bonus action to expend a charge, and double the duration of any spell cast using a 6th or lower level spell slot that has a duration of at least 1 minute. The aquamarine has 3 charges. The stone regains 3 charges at dawn."
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "warlock"
+				},
+				{
+					"class": "wizard"
+				}
+			],
+			"rechargeAmount": 3
 		},
 		{
 			"name": "Armband of Exemplary Healing",
@@ -22398,6 +22568,11 @@
 			"wondrous": true,
 			"entries": [
 				"This armband is made of silver and inset with small diamonds. The armband allows the spellcaster who attunes to it to use a bonus action to expend a charge and maximize the number of hit points regained when casting a healing spell using a 6th or lower level spell slot. The armband regains 3 charges at dawn."
+			],
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
 			]
 		},
 		{

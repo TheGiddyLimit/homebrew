@@ -5,16 +5,17 @@
 				"json": "Yastah",
 				"abbreviation": "Yastah",
 				"full": "Yastah",
-				"url": "",
+				"url": "https://github.com/TheGiddyLimit/homebrew",
 				"authors": [
 					"Sokan"
 				],
 				"convertedBy": [],
-				"version": "1.0"
+				"version": "1.4.5.1"
 			}
 		],
 		"dateAdded": 1612901649,
-		"dateLastModified": 1614892121
+		"dateLastModified": 1666635069,
+		"_dateLastModifiedHash": "1c39248397"
 	},
 	"spell": [
 		{
@@ -1035,7 +1036,11 @@
 					"1": "1d10",
 					"5": "2d10",
 					"11": "3d10",
-					"17": "4d10"
+					"17": "4d10",
+					"21": "5d10",
+					"25": "6d10",
+					"31": "7d10",
+					"37": "8d10"
 				}
 			},
 			"damageInflict": [
@@ -1147,7 +1152,8 @@
 			"range": {
 				"type": "point",
 				"distance": {
-					"type": "self"
+					"type": "feet",
+					"amount": 60
 				}
 			},
 			"components": {
@@ -1164,6 +1170,28 @@
 			],
 			"areaTags": [
 				"ST"
+			],
+			"scalingLevelDice": {
+				"label": "force damage",
+				"scaling": {
+					"1": "1d8",
+					"5": "2d8",
+					"11": "3d8",
+					"17": "4d8",
+					"21": "5d8",
+					"25": "6d8",
+					"31": "7d8",
+					"37": "8d8"
+				}
+			},
+			"damageInflict": [
+				"force"
+			],
+			"spellAttack": [
+				"R"
+			],
+			"miscTags": [
+				"SCL"
 			],
 			"classes": {
 				"fromClassList": [
@@ -4886,10 +4914,10 @@
 				}
 			],
 			"range": {
-				"type": "cone",
+				"type": "point",
 				"distance": {
 					"type": "feet",
-					"amount": 60
+					"amount": 30
 				}
 			},
 			"components": {
@@ -4898,7 +4926,12 @@
 			},
 			"duration": [
 				{
-					"type": "instant"
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
 				}
 			],
 			"entries": [
@@ -7362,6 +7395,10 @@
 				"fromClassList": [
 					{
 						"name": "Cleric",
+						"source": "Yastah"
+					},
+					{
+						"name": "Shaman",
 						"source": "Yastah"
 					},
 					{
@@ -11453,7 +11490,8 @@
 				"At the end of each of its turns, and each time it takes damage, the target can make another Wisdom saving throw. The target has advantage on the saving throw if it's triggered by damage. On a success, the spell ends."
 			],
 			"conditionInflict": [
-				"prone"
+				"prone",
+				"incapacitated"
 			],
 			"savingThrow": [
 				"wisdom"
@@ -15619,7 +15657,7 @@
 			"entries": [
 				"A silvery beam of pale light shines down in a 5-foot-radius, 40-foot-high cylinder centered on a point within range. Until the spell ends, dim light fills the cylinder.",
 				"When a creature enters the spell's area for the first time on a turn or starts its turn there, it is engulfed in ghostly flames that cause searing pain, and it must make a Constitution saving throw. It takes {@damage 2d10} radiant damage on a failed save, or half as much damage on a successful one.",
-				"A shapechanger makes its saving throw with disadvantage. If it fails, it also instantly reverts to its original form and can't assume a different form until it leaves the spell's light.",
+				"A shapechanger makes its saving throw with disadvantage. If it fails, it also instantly reverts to its original form and can't assume a different form until it leaves the spell's light. Lycanthropes are changed into beast mode.",
 				"On each of your turns after you cast this spell, you can use an action to move the beam up to 60 feet in any direction."
 			],
 			"entriesHigherLevel": [
@@ -17381,7 +17419,7 @@
 				}
 			],
 			"entries": [
-				"When an opponent makes a physical attack against you, with a sword or a bow, or performs a spell that requires a somatic component, you can use your reaction to cause a twitch, or a spasm in that creature, causing their attempt to potentially go horribly wrong. Roll a {@dice D100} and get the correct correspondance below.",
+				"When an opponent makes a physical attack against you, or casts a spell that targets only you, you can use your reaction to cause a twitch, or a spasm in that creature, causing their attempt to potentially go horribly wrong. Roll a {@dice D100} and get the correct correspondance below.",
 				{
 					"type": "table",
 					"caption": "Disjointed Physical Attack Behaviour",
@@ -17422,7 +17460,7 @@
 									"max": 75
 								}
 							},
-							"Attack hits one of the creature's allies."
+							"Attack hits one of the creature's allies.  If no allies are in range, the attack just misses."
 						],
 						[
 							{
@@ -26612,7 +26650,7 @@
 			}
 		},
 		{
-			"name": "Circle of Power",
+			"name": "Aura of Power*",
 			"source": "Yastah",
 			"level": 5,
 			"school": "A",
@@ -26643,6 +26681,7 @@
 				}
 			],
 			"entries": [
+				"Formerly called 'Circle of Power'",
 				"Divine energy radiates from you, distorting and diffusing magical energy within 30 feet of you. Until the spell ends, the sphere moves with you, centered on you. For the duration, each friendly creature in the area (including you) has advantage on saving throws against spells and other magical effects. Additionally, when an affected creature succeeds on a saving throw made against a spell or magical effect that allows it to make a saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw."
 			],
 			"areaTags": [
@@ -29595,6 +29634,16 @@
 							"name": "Celestial Bloodline",
 							"source": "Yastah"
 						}
+					},
+					{
+						"class": {
+							"name": "Shaman",
+							"source": "Yastah"
+						},
+						"subclass": {
+							"name": "Journey of Despair",
+							"source": "Yastah"
+						}
 					}
 				]
 			}
@@ -29710,10 +29759,6 @@
 					{
 						"name": "Druid",
 						"source": "Yastah"
-					},
-					{
-						"name": "Shaman",
-						"source": "Yastah"
 					}
 				],
 				"fromSubclass": [
@@ -29724,6 +29769,26 @@
 						},
 						"subclass": {
 							"name": "Bilana Domain",
+							"source": "Yastah"
+						}
+					},
+					{
+						"class": {
+							"name": "Sorcerer",
+							"source": "Yastah"
+						},
+						"subclass": {
+							"name": "Celestial Bloodline",
+							"source": "Yastah"
+						}
+					},
+					{
+						"class": {
+							"name": "Shaman",
+							"source": "Yastah"
+						},
+						"subclass": {
+							"name": "Journey of Harmony",
 							"source": "Yastah"
 						}
 					}
@@ -30083,6 +30148,16 @@
 						},
 						"subclass": {
 							"name": "Oath of Elemental Balance",
+							"source": "Yastah"
+						}
+					},
+					{
+						"class": {
+							"name": "Shaman",
+							"source": "Yastah"
+						},
+						"subclass": {
+							"name": "Journey of Wrath",
 							"source": "Yastah"
 						}
 					}
@@ -33217,7 +33292,7 @@
 						"You can use an action to name a place the humanoid saw in life, which creates an {@condition invisible} sensor somewhere in that place if it is on the plane of existence you're currently on. The sensor remains for as long as you concentrate, up to 10 minutes (as if you were concentrating on a spell). You receive visual and auditory information from the sensor as if you were in its space using your senses."
 					]
 				},
-				"A creature that can see the sensor (such as one using {@spell see invisibility|yastah} or {@sense truesight|yastah}) sees a translucent image of the tormented humanoid whose soul you caged."
+				"A creature that can see the sensor (such as one using {@spell see invisibility|yastah} or {@sense truesight}) sees a translucent image of the tormented humanoid whose soul you caged."
 			],
 			"miscTags": [
 				"HL"
@@ -36886,7 +36961,7 @@
 				"s": true,
 				"m": {
 					"text": "A vial of chloroform, consumed by spell",
-					"consumed": true
+					"consume": true
 				}
 			},
 			"duration": [
@@ -37498,7 +37573,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Bypass",
@@ -37511,7 +37587,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Chained",
@@ -37524,7 +37601,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Close",
@@ -37537,7 +37615,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Concealed",
@@ -37550,7 +37629,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Critical",
@@ -37563,7 +37643,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Deadly",
@@ -37576,7 +37657,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Defensive",
@@ -37589,7 +37671,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Ensnaring",
@@ -37602,7 +37685,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Exotic",
@@ -37611,11 +37695,12 @@
 					"type": "entries",
 					"name": "Exotic",
 					"entries": [
-						"This strange and exotic weapon, from a far off land, requires a specific backgrounnd or class to use, as noted above.  Warriors of the 2nd rank or higher can be tought to use these weapons by practicing with their trainer."
+						"This strange and exotic weapon, from a far off land, requires a specific background or class to use, as noted above.  Warriors of the 2nd rank or higher can be tought to use these weapons by practicing with their trainer."
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Finisher",
@@ -37628,7 +37713,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Fragile",
@@ -37641,7 +37727,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Freehanded",
@@ -37654,7 +37741,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Grappling",
@@ -37667,7 +37755,22 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
+		},
+		{
+			"abbreviation": "Heavy",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Heavy",
+					"entries": [
+						"The weapon is larger and more weighty than a standard weapon, lending it unique advantages and challenges. A Heavy weapon can be used to make only one attack per turn, unless it is being wielded by a character with a Strength score of 13 or more. For small creatures, there's no disadvantage but requirement is Strength score of 19 or more. A Heavy weapon uses a bonus action to draw or stow. Any attempt to disarm the wielder of a heavy weapon is made at disadvantage."
+					]
+				}
+			],
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Limited",
@@ -37680,7 +37783,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Long",
@@ -37693,7 +37797,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Multifire",
@@ -37706,7 +37811,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Nonlethal",
@@ -37719,7 +37825,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Ongoing",
@@ -37732,7 +37839,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Pellets",
@@ -37745,7 +37853,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "ProneFighting",
@@ -37758,7 +37867,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Returning",
@@ -37771,7 +37881,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Sharp",
@@ -37784,7 +37895,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Silent",
@@ -37797,7 +37909,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Slow",
@@ -37810,7 +37923,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Stable",
@@ -37823,7 +37937,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Strongbow",
@@ -37836,7 +37951,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Tripping",
@@ -37849,7 +37965,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Weak",
@@ -37862,7 +37979,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Winged",
@@ -37875,7 +37993,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Worn",
@@ -37888,7 +38007,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Silvered",
@@ -37901,7 +38021,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "DualWield",
@@ -37914,7 +38035,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "Crafted",
@@ -37927,7 +38049,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "FAM",
@@ -37940,7 +38063,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "FAS",
@@ -37953,7 +38077,8 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
 		},
 		{
 			"abbreviation": "FAE",
@@ -37966,7 +38091,515 @@
 					]
 				}
 			],
-			"source": "Yastah"
+			"source": "Yastah",
+			"page": 0
+		}
+	],
+	"baseitem": [
+		{
+			"name": "Arrow",
+			"source": "Yastah",
+			"page": 0,
+			"type": "A",
+			"rarity": "none",
+			"weight": 0.05,
+			"value": 5,
+			"entries": []
+		},
+		{
+			"name": "Blowgun Needle",
+			"source": "Yastah",
+			"page": 0,
+			"type": "A",
+			"rarity": "none",
+			"weight": 0.02,
+			"value": 2,
+			"entries": []
+		},
+		{
+			"name": "Crossbow Bolt",
+			"source": "Yastah",
+			"page": 0,
+			"type": "A",
+			"rarity": "none",
+			"weight": 0.075,
+			"value": 5,
+			"entries": []
+		},
+		{
+			"name": "Sling Bullet",
+			"source": "Yastah",
+			"page": 0,
+			"type": "A",
+			"rarity": "none",
+			"weight": 0.075,
+			"value": 0.2,
+			"entries": []
+		}
+	],
+	"magicvariant": [
+		{
+			"name": "Moon-Touched Sword (Any Sword)",
+			"type": "GV",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"namePrefix": "Moon-Touched ",
+				"source": "Yastah",
+				"page": 138,
+				"tier": "minor",
+				"rarity": "common",
+				"entries": [
+					"In darkness, the unsheathed blade of this sword sheds moonlight, creating bright light in a 15-foot radius and dim light for an additional 15 feet."
+				]
+			},
+			"entries": [
+				"In darkness, the unsheathed blade of this sword sheds moonlight, creating bright light in a 15-foot radius and dim light for an additional 15 feet."
+			]
+		},
+		{
+			"name": "Walloping Ammunition",
+			"type": "GV",
+			"requires": [
+				{
+					"type": "A"
+				},
+				{
+					"type": "AF"
+				}
+			],
+			"inherits": {
+				"namePrefix": "Walloping ",
+				"ammo": true,
+				"source": "Yastah",
+				"page": 0,
+				"tier": "minor",
+				"rarity": "common",
+				"value": 10000,
+				"entries": [
+					" This ammunition packs a wallop. A creature hit by the ammunition must succeed on a DC 10 Strength saving throw or be knocked {@condition prone}."
+				]
+			},
+			"entries": [
+				" This ammunition packs a wallop. A creature hit by the ammunition must succeed on a DC 10 Strength saving throw or be knocked {@condition prone}."
+			]
+		},
+		{
+			"name": "Nine Lives Stealer (Any Sword)",
+			"type": "M",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"namePrefix": "Nine Lives Stealer ",
+				"page": 0,
+				"tier": "major",
+				"rarity": "very rare",
+				"value": 10000000,
+				"reqAttune": true,
+				"bonusWeapon": "+2",
+				"charges": "{@dice 1d8 + 1}",
+				"entries": [
+					"You gain a +2 bonus to attack and damage rolls made with this magic weapon.",
+					"The sword has {@dice 1d8 + 1} charges. If you score a critical hit against a creature that has fewer than 100 hit points, it must succeed on a DC 15 low/21 high Constitution saving throw or be slain instantly as the sword tears its life force from its body (a construct or an undead is immune). The sword loses 1 charge if the creature is slain. When the sword has no charges remaining, it loses this property."
+				]
+			},
+			"entries": [
+				"You gain a +2 bonus to attack and damage rolls made with this magic weapon.",
+				"The sword has {@dice 1d8 + 1} charges. If you score a critical hit against a creature that has fewer than 100 hit points, it must succeed on a DC 15 low/21 high Constitution saving throw or be slain instantly as the sword tears its life force from its body (a construct or an undead is immune). The sword loses 1 charge if the creature is slain. When the sword has no charges remaining, it loses this property."
+			]
+		},
+		{
+			"name": "Sword of Life Stealing (Any Sword)",
+			"type": "M",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"nameSuffix": " of Life Stealing",
+				"page": 0,
+				"tier": "major",
+				"rarity": "rare",
+				"value": 1000000,
+				"reqAttune": true,
+				"entries": [
+					"When you attack a creature with this magic weapon and roll a 20 on the attack roll, that target takes an extra {@dice 3d6} necrotic damage if it isn't a construct or an undead. You also gain temporary hit points equal to the extra damage dealt."
+				]
+			},
+			"entries": [
+				"When you attack a creature with this magic weapon and roll a 20 on the attack roll, that target takes an extra {@dice 3d6} necrotic damage if it isn't a construct or an undead. You also gain temporary hit points equal to the extra damage dealt."
+			]
+		},
+		{
+			"name": "Sword of Sharpness (Any Sword that does Slashing Damage)",
+			"type": "M",
+			"requires": [
+				{
+					"sword": true,
+					"dmgType": "S"
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"nameSuffix": " of Sharpness",
+				"page": 0,
+				"tier": "major",
+				"rarity": "very rare",
+				"value": 10000000,
+				"reqAttune": true,
+				"entries": [
+					"When you attack an object with this magic sword and hit, maximize your weapon damage dice against the target.",
+					"When you attack a creature with this weapon and roll a 20 on the attack roll, that target takes an extra {@dice 4d6} slashing damage. Then roll another {@dice d20}. If you roll a 20, you lop off one of the target's limbs, with the effect of such loss determined by the GM. If the creature has no limb to sever, you lop off a portion of its body instead.",
+					"In addition, you can speak the sword's command to cause the blade to shed bright light in a 10-foot radius and dim light for an additional 10 feet. Speaking the command word again or sheathing the sword puts out the light."
+				]
+			},
+			"entries": [
+				"When you attack an object with this magic sword and hit, maximize your weapon damage dice against the target.",
+				"When you attack a creature with this weapon and roll a 20 on the attack roll, that target takes an extra {@dice 4d6} slashing damage. Then roll another {@dice d20}. If you roll a 20, you lop off one of the target's limbs, with the effect of such loss determined by the GM. If the creature has no limb to sever, you lop off a portion of its body instead.",
+				"In addition, you can speak the sword's command to cause the blade to shed bright light in a 10-foot radius and dim light for an additional 10 feet. Speaking the command word again or sheathing the sword puts out the light."
+			]
+		},
+		{
+			"name": "Sword of Wounding (Any Sword)",
+			"type": "M",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"nameSuffix": " of Wounding",
+				"page": 0,
+				"tier": "major",
+				"rarity": "rare",
+				"value": 1000000,
+				"reqAttune": true,
+				"entries": [
+					"Hit points lost to this weapon's damage can be regained only through a short or long rest, rather than by regeneration, magic, or any other means.",
+					"Once per turn, when you hit a creature with an attack using this magic weapon, you can wound the target. At the start of each of the wounded creature's turns, it takes {@dice 1d4} necrotic damage for each time you've wounded it, and it can then make a DC 15 low/21 high Constitution saving throw, ending the effect of all such wounds on itself on a success. Alternatively, the wounded creature, or a creature within 5 feet of it, can use an action to make a DC 15 low/21 high Wisdom ({@skill Medicine}) check, ending the effect of such wounds on it on a success."
+				]
+			},
+			"entries": [
+				"Hit points lost to this weapon's damage can be regained only through a short or long rest, rather than by regeneration, magic, or any other means.",
+				"Once per turn, when you hit a creature with an attack using this magic weapon, you can wound the target. At the start of each of the wounded creature's turns, it takes {@dice 1d4} necrotic damage for each time you've wounded it, and it can then make a DC 15 low/21 high Constitution saving throw, ending the effect of all such wounds on itself on a success. Alternatively, the wounded creature, or a creature within 5 feet of it, can use an action to make a DC 15 low/21 high Wisdom ({@skill Medicine}) check, ending the effect of such wounds on it on a success."
+			]
+		},
+		{
+			"name": "Arrow of Slaying",
+			"type": "GV",
+			"requires": [
+				{
+					"type": "A"
+				},
+				{
+					"type": "AF"
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"nameSuffix": " of Slaying",
+				"page": 0,
+				"tier": "minor",
+				"rarity": "very rare",
+				"value": 10000000,
+				"ammo": true,
+				"entries": [
+					"An arrow of slaying is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both arrows of dragon slaying and arrows of blue dragon slaying. If a creature belonging to the type, race, or group associated with an arrow of slaying takes damage from the arrow, the creature must make a DC 17 low / 23 high Constitution saving throw, taking an extra {@dice 6d10} piercing damage on a failed save, or half as much extra damage on a successful one.",
+					"Once an arrow of slaying deals its extra damage to a creature, it becomes a nonmagical arrow.",
+					"Other types of magic ammunition of this kind exist, such as bolts of slaying meant for a crossbow, though arrows are most common."
+				]
+			},
+			"entries": [
+				"An arrow of slaying is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both arrows of dragon slaying and arrows of blue dragon slaying. If a creature belonging to the type, race, or group associated with an arrow of slaying takes damage from the arrow, the creature must make a DC 17 low / 23 high Constitution saving throw, taking an extra {@dice 6d10} piercing damage on a failed save, or half as much extra damage on a successful one.",
+				"Once an arrow of slaying deals its extra damage to a creature, it becomes a nonmagical arrow.",
+				"Other types of magic ammunition of this kind exist, such as bolts of slaying meant for a crossbow, though arrows are most common."
+			]
+		},
+		{
+			"name": "Dancing Sword (Any Sword)",
+			"type": "M",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"namePrefix": "Dancing ",
+				"page": 0,
+				"tier": "major",
+				"rarity": "very rare",
+				"value": 10000000,
+				"reqAttune": true,
+				"entries": [
+					"You can use a bonus action to toss this magic sword into the air and speak the command word. When you do so, the sword begins to hover, flies up to 30 feet, and attacks one creature of your choice within 5 feet of it. The sword uses your attack roll and ability score modifier to damage rolls.",
+					"While the sword hovers, you can use a bonus action to cause it to fly up to 30 feet to another spot within 30 feet of you. As part of the same bonus action, you can cause the sword to attack one creature within 5 feet of it.",
+					"After the hovering sword attacks for the fourth time, it flies up to 30 feet and tries to return to your hand. If you have no hand free, it falls to the ground at your feet. If the sword has no unobstructed path to you, it moves as close to you as it can and then falls to the ground. It also ceases to hover if you grasp it or move more than 30 feet away from it."
+				]
+			},
+			"entries": [
+				"You can use a bonus action to toss this magic sword into the air and speak the command word. When you do so, the sword begins to hover, flies up to 30 feet, and attacks one creature of your choice within 5 feet of it. The sword uses your attack roll and ability score modifier to damage rolls.",
+				"While the sword hovers, you can use a bonus action to cause it to fly up to 30 feet to another spot within 30 feet of you. As part of the same bonus action, you can cause the sword to attack one creature within 5 feet of it.",
+				"After the hovering sword attacks for the fourth time, it flies up to 30 feet and tries to return to your hand. If you have no hand free, it falls to the ground at your feet. If the sword has no unobstructed path to you, it moves as close to you as it can and then falls to the ground. It also ceases to hover if you grasp it or move more than 30 feet away from it."
+			]
+		},
+		{
+			"name": "Dragon Slayer (Any Sword)",
+			"type": "M",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"namePrefix": "Dragon Slayer ",
+				"page": 0,
+				"tier": "major",
+				"rarity": "rare",
+				"value": 1000000,
+				"bonusWeapon": "+1",
+				"bonusAc": "+1",
+				"entries": [
+					"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
+					"When you hit a dragon with this weapon, the dragon takes an extra {@dice 3d6} damage of the weapon's type. For the purpose of this weapon, \"dragon\" refers to any creature with the dragon type, including dragon turtles and wyverns."
+				]
+			},
+			"entries": [
+				"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
+				"When you hit a dragon with this weapon, the dragon takes an extra {@dice 3d6} damage of the weapon's type. For the purpose of this weapon, \"dragon\" refers to any creature with the dragon type, including dragon turtles and wyverns."
+			]
+		},
+		{
+			"name": "Flame Tongue (Any Sword)",
+			"type": "M",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"namePrefix": "Flame Tongue ",
+				"page": 0,
+				"tier": "major",
+				"rarity": "rare",
+				"value": 1000000,
+				"reqAttune": true,
+				"entries": [
+					"You can use a bonus action to speak this magic sword's command word, causing flames to erupt from the blade. These flames shed bright light in a 40-foot radius and dim light for an additional 40 feet. While the sword is ablaze, it deals an extra {@dice 2d6} fire damage to any target it hits. The flames last until you use a bonus action to speak the command word again or until you drop or sheathe the sword."
+				]
+			},
+			"entries": [
+				"You can use a bonus action to speak this magic sword's command word, causing flames to erupt from the blade. These flames shed bright light in a 40-foot radius and dim light for an additional 40 feet. While the sword is ablaze, it deals an extra {@dice 2d6} fire damage to any target it hits. The flames last until you use a bonus action to speak the command word again or until you drop or sheathe the sword."
+			]
+		},
+		{
+			"name": "Frost Brand (Any Sword)",
+			"type": "M",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"namePrefix": "Frost Brand ",
+				"page": 0,
+				"tier": "major",
+				"rarity": "very rare",
+				"value": 10000000,
+				"reqAttune": true,
+				"entries": [
+					"When you hit with an attack using this magic sword, the target takes an extra {@dice 1d6} cold damage. In addition, while you hold the sword, you have resistance to fire damage.",
+					"In freezing temperatures, the blade sheds bright light in a 10-foot radius and dim light for an additional 10 feet.",
+					"When you draw this weapon, you can extinguish all nonmagical flames within 30 feet of you. This property can be used no more than once per hour."
+				]
+			},
+			"entries": [
+				"When you hit with an attack using this magic sword, the target takes an extra {@dice 1d6} cold damage. In addition, while you hold the sword, you have resistance to fire damage.",
+				"In freezing temperatures, the blade sheds bright light in a 10-foot radius and dim light for an additional 10 feet.",
+				"When you draw this weapon, you can extinguish all nonmagical flames within 30 feet of you. This property can be used no more than once per hour."
+			]
+		},
+		{
+			"name": "Giant Slayer (Any Axe or Sword)",
+			"type": "M",
+			"requires": [
+				{
+					"axe": true
+				},
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"namePrefix": "Giant Slayer ",
+				"page": 0,
+				"tier": "major",
+				"rarity": "rare",
+				"value": 1000000,
+				"bonusWeapon": "+1",
+				"entries": [
+					"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
+					"When you hit a giant with it, the giant takes an extra {@dice 2d6} damage of the weapon's type and must succeed on a DC 15 low/21 high Strength saving throw or fall {@condition prone}. For the purpose of this weapon, \"giant\" refers to any creature with the giant type, including ettins and trolls."
+				]
+			},
+			"entries": [
+				"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
+				"When you hit a giant with it, the giant takes an extra {@dice 2d6} damage of the weapon's type and must succeed on a DC 15 low/21 high Strength saving throw or fall {@condition prone}. For the purpose of this weapon, \"giant\" refers to any creature with the giant type, including ettins and trolls."
+			]
+		},
+		{
+			"name": "Defender (Any Sword)",
+			"type": "M",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"namePrefix": "Defender ",
+				"page": 0,
+				"tier": "major",
+				"rarity": "legendary",
+				"reqAttune": true,
+				"bonusWeapon": "+3",
+				"bonusAc": "+1",
+				"entries": [
+					"You gain a +3 bonus to attack and damage rolls made with this magic weapon.",
+					"The first time you attack with the sword on each of your turns, you can transfer some or all of the sword's bonus to your Armor Class, instead of using the bonus on any attacks that turn. For example, you could reduce the bonus to your attack and damage rolls to +1 and gain a +2 bonus to AC. The adjusted bonuses remain in effect until the start of your next turn, although you must hold the sword to gain a bonus to AC from it."
+				]
+			},
+			"entries": [
+				"You gain a +3 bonus to attack and damage rolls made with this magic weapon.",
+				"The first time you attack with the sword on each of your turns, you can transfer some or all of the sword's bonus to your Armor Class, instead of using the bonus on any attacks that turn. For example, you could reduce the bonus to your attack and damage rolls to +1 and gain a +2 bonus to AC. The adjusted bonuses remain in effect until the start of your next turn, although you must hold the sword to gain a bonus to AC from it."
+			]
+		},
+		{
+			"name": "Holy Avenger (Any Sword)",
+			"type": "M",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"page": 0,
+				"namePrefix": "Holy Avenger ",
+				"tier": "major",
+				"rarity": "legendary",
+				"reqAttune": "by a paladin",
+				"bonusWeapon": "+3",
+				"bonusAc": "+3",
+				"entries": [
+					"You gain a +3 bonus to attack and damage rolls made with this magic weapon. When you hit a fiend or an undead with it, that creature takes an extra {@dice 2d10} radiant damage.",
+					"While you hold the drawn sword, it creates an aura in a 10-foot radius around you. You and all creatures friendly to you in the aura have advantage on saving throws against spells and other magical effects. If you have 17 or more levels in the paladin class, the radius of the aura increases to 30 feet."
+				],
+				"reqAttuneTags": [
+					{
+						"class": "paladin"
+					}
+				]
+			},
+			"entries": [
+				"You gain a +3 bonus to attack and damage rolls made with this magic weapon. When you hit a fiend or an undead with it, that creature takes an extra {@dice 2d10} radiant damage.",
+				"While you hold the drawn sword, it creates an aura in a 10-foot radius around you. You and all creatures friendly to you in the aura have advantage on saving throws against spells and other magical effects. If you have 17 or more levels in the paladin class, the radius of the aura increases to 30 feet."
+			]
+		},
+		{
+			"name": "Luck Blade (Any Sword)",
+			"type": "M",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"page": 0,
+				"namePrefix": "Luck Blade ",
+				"tier": "major",
+				"rarity": "legendary",
+				"reqAttune": true,
+				"bonusWeapon": "+1",
+				"bonusAc": "+1",
+				"bonusSavingThrow": "+1",
+				"charges": "{@dice 1d4 - 1}",
+				"entries": [
+					"You gain a +1 bonus to attack and damage rolls made with this magic weapon. While the sword is on your person, you also gain a +1 bonus to saving throws.",
+					{
+						"type": "entries",
+						"name": "Luck",
+						"entries": [
+							"If the sword is on your person, you can call on its luck (no action required) to reroll one attack roll, ability check, or saving throw you dislike. You must use the second roll. This property can't be used again until the next dawn."
+						]
+					},
+					{
+						"type": "entries",
+						"name": "Wish",
+						"entries": [
+							"The sword has {@dice 1d4 - 1} charges. While holding it, you can use an action to expend 1 charge and cast the {@spell wish|Yastah} spell from it. This property can't be used again until the next dawn. The sword loses this property if it has no charges."
+						]
+					}
+				],
+				"attachedSpells": [
+					"wish"
+				]
+			},
+			"entries": [
+				"You gain a +1 bonus to attack and damage rolls made with this magic weapon. While the sword is on your person, you also gain a +1 bonus to saving throws.",
+				{
+					"type": "entries",
+					"name": "Luck",
+					"entries": [
+						"If the sword is on your person, you can call on its luck (no action required) to reroll one attack roll, ability check, or saving throw you dislike. You must use the second roll. This property can't be used again until the next dawn."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Wish",
+					"entries": [
+						"The sword has {@dice 1d4 - 1} charges. While holding it, you can use an action to expend 1 charge and cast the {@spell wish|Yastah} spell from it. This property can't be used again until the next dawn. The sword loses this property if it has no charges."
+					]
+				}
+			]
+		},
+		{
+			"name": "+3 Armor (Any Type)",
+			"type": "GV",
+			"requires": [
+				{
+					"armor": true
+				}
+			],
+			"inherits": {
+				"source": "Yastah",
+				"page": 0,
+				"namePrefix": "+3 ",
+				"tier": "major",
+				"rarity": "legendary",
+				"bonusAc": "+3",
+				"entries": [
+					"You have a +3 bonus to AC while wearing this armor."
+				]
+			},
+			"entries": [
+				"You have a +3 bonus to AC while wearing this armor."
+			]
 		}
 	],
 	"item": [
@@ -38080,6 +38713,11 @@
 						"You can try to cast a cantrip that you don't know. The cantrip must be on the warlock spell list, and you must make a DC 10 low/16 high Intelligence ({@skill Arcana}) check. If the check succeeds, you cast the spell. If the check fails, so does the spell, and the action used to cast the spell is wasted. In either case, you can't use this property again until you finish a long rest."
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "warlock"
+				}
 			]
 		},
 		{
@@ -38138,7 +38776,8 @@
 			"charges": 3,
 			"entries": [
 				"This hat has 3 charges. While holding the hat, you can use an action to expend 1 of its charges and speak a command word that summons your choice of a {@creature bat}, a {@creature frog}, or a {@creature rat}. The summoned creature magically appears in the hat and tries to get away from you as quickly as possible. The creature is neither friendly nor hostile, and it isn't under your control. It behaves as an ordinary creature of its kind and disappears after 1 hour or when it drops to 0 hit points. The hat regains all expended charges daily at dawn."
-			]
+			],
+			"rechargeAmount": 3
 		},
 		{
 			"name": "Hat of Wizardry",
@@ -38160,6 +38799,11 @@
 						"You can try to cast a cantrip that you don't know. The cantrip must be on the wizard spell list, and you must make a DC 10 low/16 high Intelligence ({@skill Arcana}) check. If the check succeeds, you cast the spell. If the check fails, so does the spell, and the action used to cast the spell is wasted. In either case, you can't use this property again until you finish a long rest."
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "wizard"
+				}
 			]
 		},
 		{
@@ -38173,7 +38817,8 @@
 			"charges": 10,
 			"entries": [
 				"This belt pouch appears empty and has 10 charges. While holding the pouch, you can use an action to expend 1 of its charges, speak the name of any nonmagical food seasoning (such as salt, pepper, saffron, or cilantro), and remove a pinch of the desired seasoning from the pouch. A pinch is enough to season a single meal. The pouch regains {@dice 1d6 + 4} expended charges daily at dawn."
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Horn of Silent Alarm",
@@ -38186,7 +38831,8 @@
 			"charges": 4,
 			"entries": [
 				"This horn has 4 charges. When you use an action to blow it, one creature of your choice can hear the horns blare, provided the creature is within 600 feet of the horn and not {@condition deafened}. No other creature hears sound coming from the horn. The horn regains {@dice 1d4} expended charges daily at dawn."
-			]
+			],
+			"rechargeAmount": "{@dice 1d4}"
 		},
 		{
 			"name": "Instrument of Illusions",
@@ -38215,7 +38861,8 @@
 			"entries": [
 				"This musical instrument has 3 charges. While you are playing it, you can use an action to expend 1 charge from the instrument and write a magical message on a nonmagical object or surface that you can see within 30 feet of you. The message can be up to six words long and is written in a language you know. If you are a bard, you can scribe an additional seven words and choose to make the message glow faintly, allowing it to be seen in nonmagical darkness. Casting {@spell dispel magic|yastah} on the message erases it. Otherwise, the message fades away after 24 hours.",
 				"The instrument regains all expended charges daily at dawn."
-			]
+			],
+			"rechargeAmount": 3
 		},
 		{
 			"name": "Lock of Trickery",
@@ -38369,7 +39016,8 @@
 			"entries": [
 				"This wooden staff is decorated with bird carvings. It has 10 charges. While holding it, you can use an action to expend 1 charge from the staff and cause it to create one of the following sounds out to a range of 60 feet: a finch's chirp, a raven's caw, a duck's quack, a chicken's cluck, a goose's honk, a loon's call, a turkey's gobble, a seagull's cry, an owl's hoot, or an eagle's shriek.",
 				"The staff regains {@dice 1d6 + 4} expended charges daily at dawn. If you expend the last charge, roll a {@dice d20}. On a 1, the staff explodes in a harmless cloud of bird feathers and is lost forever."
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Staff of Flowers",
@@ -38390,7 +39038,8 @@
 			"staff": true,
 			"entries": [
 				"This wooden staff has 10 charges. While holding it, you can use an action to expend 1 charge from the staff and cause a flower to sprout from a patch of earth or soil within 5 feet of you, or from the staff itself. Unless you choose a specific kind of flower, the staff creates a mildscented daisy. The flower is harmless and nonmagical, and it grows or withers as a normal flower would. The staff regains {@dice 1d6 + 4} expended charges daily at dawn. If you expend the last charge, roll a {@dice d20}. On a 1, the staff turns into flower petals and is lost forever."
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Talking Doll",
@@ -38450,7 +39099,8 @@
 			"entries": [
 				"This wand has 3 charges. While holding it, you can use an action to expend 1 of its charges and create orchestral music by waving it around. The music can be heard out to a range of 60 feet and ends when you stop waving the wand.",
 				"The wand regains all expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, a sad tuba sound plays as the wand crumbles to dust and is destroyed."
-			]
+			],
+			"rechargeAmount": 3
 		},
 		{
 			"name": "Wand of Pyrotechnics",
@@ -38465,7 +39115,8 @@
 			"entries": [
 				"This wand has 7 charges. While holding it, you can use an action to expend 1 of its charges and create a harmless burst of multicolored light at a point you can see up to 60 feet away. The burst of light is accompanied by a crackling noise that can be heard up to 300 feet away. The light is as bright as a torch flame but lasts only a second.",
 				"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand erupts in a harmless pyrotechnic display and is destroyed."
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Scowls",
@@ -38480,7 +39131,8 @@
 			"entries": [
 				"This wand has 3 charges. While holding it, you can use an action to expend 1 of its charges and target a humanoid you can see within 30 feet of you. The target must succeed on a DC 10 low/16 high Charisma saving throw or be forced to scowl for 1 minute.",
 				"The wand regains all expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand transforms into a {@item wand of smiles|Yastah}."
-			]
+			],
+			"rechargeAmount": 3
 		},
 		{
 			"name": "Wand of Smiles",
@@ -38495,113 +39147,8 @@
 			"entries": [
 				"This wand has 3 charges. While holding it, you can use an action to expend 1 of its charges and target a humanoid you can see within 30 feet of you. The target must succeed on a DC 10 low/16 high Charisma saving throw or be forced to smile for 1 minute.",
 				"The wand regains all expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand transforms into a {@item wand of scowls|Yastah}."
-			]
-		},
-		{
-			"name": "Walloping Ammunition",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "A"
-				},
-				{
-					"type": "AF"
-				}
 			],
-			"ammo": true,
-			"source": "Yastah",
-			"tier": "minor",
-			"rarity": "common",
-			"value": 10000,
-			"entries": [
-				" This ammunition packs a wallop. A creature hit by the ammunition must succeed on a DC 10 Strength saving throw or be knocked {@condition prone}."
-			],
-			"variants": [
-				{
-					"base": {
-						"name": "Arrow",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "none",
-						"weight": 0.05,
-						"value": 5,
-						"entries": []
-					},
-					"specificVariant": {
-						"name": "Walloping Arrow",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "common",
-						"weight": 0.05,
-						"entries": [],
-						"value": 10000,
-						"tier": "minor"
-					}
-				},
-				{
-					"base": {
-						"name": "Blowgun Needle",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "none",
-						"weight": 0.02,
-						"value": 2,
-						"entries": []
-					},
-					"specificVariant": {
-						"name": "Walloping Blowgun Needle",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "common",
-						"weight": 0.02,
-						"entries": [],
-						"value": 10000,
-						"tier": "minor"
-					}
-				},
-				{
-					"base": {
-						"name": "Crossbow Bolt",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "none",
-						"weight": 0.075,
-						"value": 5,
-						"entries": []
-					},
-					"specificVariant": {
-						"name": "Walloping Crossbow Bolt",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "common",
-						"weight": 0.075,
-						"entries": [],
-						"value": 10000,
-						"tier": "minor"
-					}
-				},
-				{
-					"base": {
-						"name": "Sling Bullet",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "none",
-						"weight": 0.075,
-						"value": 0.2,
-						"entries": []
-					},
-					"specificVariant": {
-						"name": "Walloping Sling Bullet",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "common",
-						"weight": 0.075,
-						"entries": [],
-						"value": 10000,
-						"tier": "minor"
-					}
-				}
-			]
+			"rechargeAmount": 3
 		},
 		{
 			"name": "Walloping Arrow",
@@ -38678,11 +39225,19 @@
 			"weight": 2,
 			"weaponCategory": "martial",
 			"dmg1": "1d8",
-			"dmgType": "Bludgeoning or Piercing",
+			"dmgType": "B",
 			"weapon": true,
 			"entries": [
 				"The rounded head of this flail is perforated with tiny holes, arranged in symbols and patterns. The flail counts as a holy symbol for you. When you hit with an attack using this magic flail, the target takes an extra {@damage 1d8} radiant damage.",
 				"As a bonus action, you can speak the command word to cause the flail to emanate a thin cloud of incense out to 10 feet for 1 minute. At the start of each of your turns, you and any other creatures in the incense each regain {@dice 1d4} hit points. This property can't be used again until the next dawn."
+			],
+			"reqAttuneTags": [
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "paladin"
+				}
 			]
 		},
 		{
@@ -38707,6 +39262,11 @@
 			"bonusWeapon": "+3",
 			"entries": [
 				"You gain a +3 bonus to attack and damage rolls made with this magic weapon. It has the thrown property with a normal range of 20 feet and a long range of 60 feet. When you hit with a ranged attack using this weapon, it deals an extra {@dice 1d8} damage or, if the target is a giant, {@dice 2d8} damage. Immediately after the attack, the weapon flies back to your hand."
+			],
+			"reqAttuneTags": [
+				{
+					"race": "dwarf"
+				}
 			]
 		},
 		{
@@ -38784,27 +39344,8 @@
 			"entries": [
 				"This magic weapon has 3 charges. While holding it, you can use an action and expend 1 charge to release a wave of terror. Each creature of your choice in a 30-foot radius extending from you must succeed on a DC 15 low/21 high Wisdom saving throw or become {@condition frightened} of you for 1 minute. While it is {@condition frightened} in this way, a creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action it can use only the {@action Dash} action or try to escape from an effect that prevents it from moving. If it has nowhere it can move, the creature can use the {@action Dodge} action. At the end of each of its turns, a creature can repeat the saving throw, ending the effect on itself on a success.",
 				"The mace regains {@dice 1d3} expended charges daily at dawn."
-			]
-		},
-		{
-			"name": "Nine Lives Stealer (Any Sword)",
-			"type": "M",
-			"requires": [
-				{
-					"sword": true
-				}
 			],
-			"source": "Yastah",
-			"tier": "major",
-			"rarity": "very rare",
-			"value": 10000000,
-			"reqAttune": true,
-			"bonusWeapon": "+2",
-			"charges": "{@dice 1d8 + 1}",
-			"entries": [
-				"You gain a +2 bonus to attack and damage rolls made with this magic weapon.",
-				"The sword has {@dice 1d8 + 1} charges. If you score a critical hit against a creature that has fewer than 100 hit points, it must succeed on a DC 15 low/21 high Constitution saving throw or be slain instantly as the sword tears its life force from its body (a construct or an undead is immune). The sword loses 1 charge if the creature is slain. When the sword has no charges remaining, it loses this property."
-			]
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Oathbow",
@@ -38879,61 +39420,6 @@
 			]
 		},
 		{
-			"name": "Sword of Life Stealing (Any Sword)",
-			"type": "M",
-			"requires": [
-				{
-					"sword": true
-				}
-			],
-			"source": "Yastah",
-			"tier": "major",
-			"rarity": "rare",
-			"value": 1000000,
-			"reqAttune": true,
-			"entries": [
-				"When you attack a creature with this magic weapon and roll a 20 on the attack roll, that target takes an extra {@dice 3d6} necrotic damage if it isn't a construct or an undead. You also gain temporary hit points equal to the extra damage dealt."
-			]
-		},
-		{
-			"name": "Sword of Sharpness (Any Sword that does Slashing Damage)",
-			"type": "M",
-			"requires": [
-				{
-					"sword": true,
-					"dmgType": "S"
-				}
-			],
-			"source": "Yastah",
-			"tier": "major",
-			"rarity": "very rare",
-			"value": 10000000,
-			"reqAttune": true,
-			"entries": [
-				"When you attack an object with this magic sword and hit, maximize your weapon damage dice against the target.",
-				"When you attack a creature with this weapon and roll a 20 on the attack roll, that target takes an extra {@dice 4d6} slashing damage. Then roll another {@dice d20}. If you roll a 20, you lop off one of the target's limbs, with the effect of such loss determined by the GM. If the creature has no limb to sever, you lop off a portion of its body instead.",
-				"In addition, you can speak the sword's command to cause the blade to shed bright light in a 10-foot radius and dim light for an additional 10 feet. Speaking the command word again or sheathing the sword puts out the light."
-			]
-		},
-		{
-			"name": "Sword of Wounding (Any Sword)",
-			"type": "M",
-			"requires": [
-				{
-					"sword": true
-				}
-			],
-			"source": "Yastah",
-			"tier": "major",
-			"rarity": "rare",
-			"value": 1000000,
-			"reqAttune": true,
-			"entries": [
-				"Hit points lost to this weapon's damage can be regained only through a short or long rest, rather than by regeneration, magic, or any other means.",
-				"Once per turn, when you hit a creature with an attack using this magic weapon, you can wound the target. At the start of each of the wounded creature's turns, it takes {@dice 1d4} necrotic damage for each time you've wounded it, and it can then make a DC 15 low/21 high Constitution saving throw, ending the effect of all such wounds on itself on a success. Alternatively, the wounded creature, or a creature within 5 feet of it, can use an action to make a DC 15 low/21 high Wisdom ({@skill Medicine}) check, ending the effect of such wounds on it on a success."
-			]
-		},
-		{
 			"name": "Trident of Fish Command",
 			"source": "Yastah",
 			"baseItem": "trident|Yastah",
@@ -38960,213 +39446,8 @@
 			],
 			"attachedSpells": [
 				"dominate beast"
-			]
-		},
-		{
-			"name": "Arrow of Slaying",
-			"type": "GV",
-			"source": "Yastah",
-			"tier": "minor",
-			"rarity": "very rare",
-			"value": 10000000,
-			"requires": [
-				{
-					"type": "A"
-				},
-				{
-					"type": "AF"
-				}
 			],
-			"ammo": true,
-			"entries": [
-				"An arrow of slaying is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both arrows of dragon slaying and arrows of blue dragon slaying. If a creature belonging to the type, race, or group associated with an arrow of slaying takes damage from the arrow, the creature must make a DC 17 low / 23 high Constitution saving throw, taking an extra {@dice 6d10} piercing damage on a failed save, or half as much extra damage on a successful one.",
-				"Once an arrow of slaying deals its extra damage to a creature, it becomes a nonmagical arrow.",
-				"Other types of magic ammunition of this kind exist, such as bolts of slaying meant for a crossbow, though arrows are most common."
-			],
-			"variants": [
-				{
-					"base": {
-						"name": "Arrow",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "none",
-						"weight": 0.05,
-						"value": 5,
-						"entries": []
-					},
-					"specificVariant": {
-						"name": "Arrow of Slaying",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "very rare",
-						"value": 10000000,
-						"weight": 0.05,
-						"entries": [],
-						"tier": "minor",
-						"lootTables": [
-							"Magic Item Table E"
-						]
-					}
-				},
-				{
-					"base": {
-						"name": "Blowgun Needle",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "none",
-						"weight": 0.02,
-						"value": 2,
-						"entries": []
-					},
-					"specificVariant": {
-						"name": "Blowgun Needle of Slaying",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "very rare",
-						"value": 10000000,
-						"weight": 0.02,
-						"entries": [],
-						"tier": "minor"
-					}
-				},
-				{
-					"base": {
-						"name": "Crossbow Bolt",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "none",
-						"weight": 0.075,
-						"value": 5,
-						"entries": []
-					},
-					"specificVariant": {
-						"name": "Crossbow Bolt of Slaying",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "very rare",
-						"value": 10000000,
-						"weight": 0.075,
-						"entries": [],
-						"tier": "minor"
-					}
-				},
-				{
-					"base": {
-						"name": "Sling Bullet",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "none",
-						"weight": 0.075,
-						"value": 0.2,
-						"entries": []
-					},
-					"specificVariant": {
-						"name": "Sling Bullet of Slaying",
-						"source": "Yastah",
-						"type": "A",
-						"rarity": "very rare",
-						"value": 10000000,
-						"weight": 0.075,
-						"entries": [],
-						"tier": "minor"
-					}
-				}
-			]
-		},
-		{
-			"name": "Dancing Sword (Any Sword)",
-			"type": "M",
-			"requires": [
-				{
-					"sword": true
-				}
-			],
-			"source": "Yastah",
-			"tier": "major",
-			"rarity": "very rare",
-			"value": 10000000,
-			"reqAttune": true,
-			"entries": [
-				"You can use a bonus action to toss this magic sword into the air and speak the command word. When you do so, the sword begins to hover, flies up to 30 feet, and attacks one creature of your choice within 5 feet of it. The sword uses your attack roll and ability score modifier to damage rolls.",
-				"While the sword hovers, you can use a bonus action to cause it to fly up to 30 feet to another spot within 30 feet of you. As part of the same bonus action, you can cause the sword to attack one creature within 5 feet of it.",
-				"After the hovering sword attacks for the fourth time, it flies up to 30 feet and tries to return to your hand. If you have no hand free, it falls to the ground at your feet. If the sword has no unobstructed path to you, it moves as close to you as it can and then falls to the ground. It also ceases to hover if you grasp it or move more than 30 feet away from it."
-			]
-		},
-		{
-			"name": "Dragon Slayer (Any Sword)",
-			"type": "M",
-			"requires": [
-				{
-					"sword": true
-				}
-			],
-			"source": "Yastah",
-			"tier": "major",
-			"rarity": "rare",
-			"value": 1000000,
-			"bonusWeapon": "+1",
-			"bonusAc": "+1",
-			"entries": [
-				"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
-				"When you hit a dragon with this weapon, the dragon takes an extra {@dice 3d6} damage of the weapon's type. For the purpose of this weapon, \"dragon\" refers to any creature with the dragon type, including dragon turtles and wyverns."
-			]
-		},
-		{
-			"name": "Flame Tongue (Any Sword)",
-			"type": "M",
-			"requires": [
-				{
-					"sword": true
-				}
-			],
-			"source": "Yastah",
-			"tier": "major",
-			"rarity": "rare",
-			"value": 1000000,
-			"reqAttune": true,
-			"entries": [
-				"You can use a bonus action to speak this magic sword's command word, causing flames to erupt from the blade. These flames shed bright light in a 40-foot radius and dim light for an additional 40 feet. While the sword is ablaze, it deals an extra {@dice 2d6} fire damage to any target it hits. The flames last until you use a bonus action to speak the command word again or until you drop or sheathe the sword."
-			]
-		},
-		{
-			"name": "Frost Brand (Any Sword)",
-			"type": "M",
-			"requires": [
-				{
-					"sword": true
-				}
-			],
-			"source": "Yastah",
-			"tier": "major",
-			"rarity": "very rare",
-			"value": 10000000,
-			"reqAttune": true,
-			"entries": [
-				"When you hit with an attack using this magic sword, the target takes an extra {@dice 1d6} cold damage. In addition, while you hold the sword, you have resistance to fire damage.",
-				"In freezing temperatures, the blade sheds bright light in a 10-foot radius and dim light for an additional 10 feet.",
-				"When you draw this weapon, you can extinguish all nonmagical flames within 30 feet of you. This property can be used no more than once per hour."
-			]
-		},
-		{
-			"name": "Giant Slayer (Any Axe or Sword)",
-			"type": "M",
-			"requires": [
-				{
-					"axe": true
-				},
-				{
-					"sword": true
-				}
-			],
-			"source": "Yastah",
-			"tier": "major",
-			"rarity": "rare",
-			"value": 1000000,
-			"bonusWeapon": "+1",
-			"entries": [
-				"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
-				"When you hit a giant with it, the giant takes an extra {@dice 2d6} damage of the weapon's type and must succeed on a DC 15 low/21 high Strength saving throw or fall {@condition prone}. For the purpose of this weapon, \"giant\" refers to any creature with the giant type, including ettins and trolls."
-			]
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Dwarven Plate",
@@ -39425,7 +39706,8 @@
 				"burning hands",
 				"fireball",
 				"wall of fire"
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Staff of Frost",
@@ -39455,7 +39737,8 @@
 				"fog cloud",
 				"ice storm",
 				"wall of ice"
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Staff of Healing",
@@ -39483,7 +39766,19 @@
 				"lesser restoration",
 				"mass cure wounds",
 				"cure wounds"
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				},
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "druid"
+				}
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Staff of Striking",
@@ -39507,7 +39802,8 @@
 			"entries": [
 				"This staff can be wielded as a magic quarterstaff that grants a +3 bonus to attack and damage rolls made with it.",
 				"The staff has 10 charges. When you hit with a melee attack using it, you can expend up to 3 of its charges. For each charge you expend, the target takes an extra {@dice 1d6} force damage. The staff regains {@dice 1d6 + 4} expended charges daily at dawn. If you expend the last charge, roll a {@dice d20}. On a 1, the staff becomes a nonmagical quarterstaff."
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Staff of Swarming Insects",
@@ -39547,7 +39843,8 @@
 			"attachedSpells": [
 				"giant insect",
 				"insect plague"
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Staff of the Python",
@@ -39619,7 +39916,13 @@
 				"speak with animals",
 				"speak with plants",
 				"wall of thorns"
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"class": "druid"
+				}
+			],
+			"rechargeAmount": "{@dice 1d6 + 4}"
 		},
 		{
 			"name": "Staff of Thunder and Lightning",
@@ -39698,7 +40001,8 @@
 			"entries": [
 				"This staff has 3 charges and regains {@dice 1d3} expended charges daily at dawn.",
 				"The staff can be wielded as a magic quarterstaff. On a hit, it deals damage as a normal quarterstaff, and you can expend 1 charge to deal an extra {@dice 2d10} necrotic damage to the target. In addition, the target must succeed on a DC 15 low/21 high Constitution saving throw or have disadvantage for 1 hour on any ability check or saving throw that uses Strength or Constitution."
-			]
+			],
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Wand of Binding",
@@ -39731,7 +40035,8 @@
 			"attachedSpells": [
 				"hold monster",
 				"hold person"
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Enemy Detection",
@@ -39747,7 +40052,8 @@
 			"entries": [
 				"This wand has 7 charges. While holding it, you can use an action and expend 1 charge to speak its command word. For the next minute, you know the direction of the nearest creature hostile to you within 60 feet, but not its distance from you. The wand can sense the presence of hostile creatures that are ethereal, {@condition invisible}, disguised, or hidden, as well as those in plain sight. The effect ends if you stop holding the wand.",
 				"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand crumbles into ashes and is destroyed."
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Fear",
@@ -39779,7 +40085,8 @@
 			],
 			"attachedSpells": [
 				"command"
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Fireballs",
@@ -39798,7 +40105,8 @@
 			],
 			"attachedSpells": [
 				"fireball"
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Lightning Bolts",
@@ -39817,7 +40125,8 @@
 			],
 			"attachedSpells": [
 				"lightning bolt"
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Magic Detection",
@@ -39834,7 +40143,8 @@
 			],
 			"attachedSpells": [
 				"detect magic"
-			]
+			],
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Wand of Magic Missiles",
@@ -39852,7 +40162,8 @@
 			],
 			"attachedSpells": [
 				"magic missile"
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Paralysis",
@@ -39868,7 +40179,8 @@
 			"entries": [
 				"This wand has 7 charges. While holding it, you can use an action to expend 1 of its charges to cause a thin blue ray to streak from the tip toward a creature you can see within 60 feet of you. The target must succeed on a DC 15 low/21 high Constitution saving throw or be {@condition paralyzed} for 1 minute. At the end of each of the target's turns, it can repeat the saving throw, ending the effect on itself on a success.",
 				"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand crumbles into ashes and is destroyed."
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Polymorph",
@@ -39887,7 +40199,8 @@
 			],
 			"attachedSpells": [
 				"polymorph"
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Secrets",
@@ -39901,7 +40214,8 @@
 			"charges": 3,
 			"entries": [
 				"The wand has 3 charges. While holding it, you can use an action to expend 1 of its charges, and if a secret door or trap is within 30 feet of you, the wand pulses and points at the one nearest to you. The wand regains {@dice 1d3} expended charges daily at dawn."
-			]
+			],
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Wand of Web",
@@ -39920,7 +40234,8 @@
 			],
 			"attachedSpells": [
 				"web"
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Wand of Wonder",
@@ -40051,7 +40366,8 @@
 				"darkness",
 				"fireball",
 				"invisibility"
-			]
+			],
+			"rechargeAmount": "{@dice 1d6 + 1}"
 		},
 		{
 			"name": "Amulet of Health",
@@ -40100,7 +40416,8 @@
 			],
 			"attachedSpells": [
 				"detect thoughts"
-			]
+			],
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Necklace of Adaptation",
@@ -40192,7 +40509,8 @@
 				"animal friendship",
 				"fear",
 				"speak with animals"
-			]
+			],
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Ring of Evasion",
@@ -40206,7 +40524,8 @@
 			"charges": 3,
 			"entries": [
 				"This ring has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. When you fail a Dexterity saving throw while wearing it, you can use your reaction to expend 1 of its charges to succeed on that saving throw instead."
-			]
+			],
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Ring of Feather Falling",
@@ -40388,7 +40707,12 @@
 			"value": 100000,
 			"entries": [
 				"You have a swimming speed of 40 feet while wearing this ring."
-			]
+			],
+			"modifySpeed": {
+				"static": {
+					"swim": 40
+				}
+			}
 		},
 		{
 			"name": "Ring of Telekinesis",
@@ -40418,7 +40742,8 @@
 			"entries": [
 				"This ring has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing the ring, you can use an action to expend 1 to 3 of its charges to attack one creature you can see within 60 feet of you. The ring produces a spectral ram's head and makes its attack roll with a +7 bonus. On a hit, for each charge you spend, the target takes {@dice 2d10} force damage and is pushed 5 feet away from you.",
 				"Alternatively, you can expend 1 to 3 of the ring's charges as an action to try to break an object you can see within 60 feet of you that isn't being worn or carried. The ring makes a Strength check with a +5 bonus for each charge you spend."
-			]
+			],
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Ring of Warmth",
@@ -40557,7 +40882,8 @@
 						"{@color You can only have one Tattoo!|e40707}"
 					]
 				}
-			]
+			],
+			"rechargeAmount": 3
 		},
 		{
 			"name": "Illuminator's Tattoo",
@@ -40845,6 +41171,11 @@
 						]
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -40867,6 +41198,11 @@
 					"entries": [
 						"You can immediately fly up to 60 feet without provoking opportunity attacks."
 					]
+				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
 				}
 			]
 		},
@@ -40891,6 +41227,11 @@
 						"You gain resistance to a damage type of your choice until the start of your next turn."
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -40914,6 +41255,11 @@
 						"One target of the spell that you can see catches fire. The burning target takes {@damage 2d10} fire damage at the start of its next turn, and then the flames go out."
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -40936,6 +41282,11 @@
 					"entries": [
 						"You create a wave of water that bursts out from you in a 10-foot radius. Each creature of your choice that you can see in that area takes {@damage 2d6} cold damage and must succeed on a Strength saving throw against your spell save DC or be pushed 10 feet away from you and fall {@condition prone}."
 					]
+				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
 				}
 			]
 		},
@@ -40982,6 +41333,11 @@
 						]
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41004,6 +41360,11 @@
 					"entries": [
 						"Choose one creature who takes damage from the spell. That target has disadvantage on attack rolls and ability checks made before the start of your next turn."
 					]
+				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
 				}
 			]
 		},
@@ -41028,6 +41389,11 @@
 						"Choose one creature who takes damage from the spell. That target takes an extra {@damage 3d6} necrotic damage."
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41050,6 +41416,11 @@
 					"entries": [
 						"You or one creature of your choice that you can see within 30 feet of you gains {@dice 3d6} temporary hit points."
 					]
+				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
 				}
 			]
 		},
@@ -41074,6 +41445,11 @@
 						"You can end one of the following conditions affecting yourself or one creature you can see within 30 feet of you: {@condition charmed}, {@condition blinded}, {@condition deafened}, {@condition frightened}, {@condition poisoned}, or {@condition stunned}."
 					]
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41090,6 +41466,11 @@
 			"entries": [
 				"This writhing crystal is steeped in the warped essence of the Far Realm. As an action, you can attach the shard to a Tiny object (such as a weapon or a piece of jewelry) or detach it. It falls off if your attunement to it ends. You can use the shard as a spellcasting focus while you hold or wear it.",
 				"When you use a Metamagic option on a spell while you are holding or wearing the shard, you can cause a slimy tentacle to rip through the fabric of reality and strike one creature you can see within 30 feet of you. The creature must succeed on a Charisma saving throw against your spell save DC or take {@damage 3d6} psychic damage and become {@condition frightened} of you until the start of your next turn."
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41107,6 +41488,11 @@
 				"This warm crystal glints with the sunset colors of the Feywild sky and evokes whispers of emotional memory. As an action, you can attach the shard to a Tiny object (such as a weapon or a piece of jewelry) or detach it. It falls off if your attunement to it ends. You can use the shard as a spellcasting focus while you hold or wear it.",
 				"When you use a Metamagic option on a spell while you are holding or wearing the shard, you can roll on the {@table Wild Magic Surge|PHB} table in the {@book Player's Handbook|PHB}. If the result is a spell, it is too wild to be affected by your Metamagic, and if it normally requires concentration, it doesn't require concentration in this case; the spell lasts for its full duration.",
 				"If you don't have the Wild Magic Sorcerous Origin, once this property is used to roll on the {@table Wild Magic Surge|PHB} table, it can't be used again until the next dawn."
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41123,6 +41509,11 @@
 			"entries": [
 				"This dull, cold crystal sits heavy and leaden, saturated by the Shadowfell's despair. As an action, you can attach the shard to a Tiny object (such as a weapon or a piece of jewelry) or detach it. It falls off if your attunement to it ends. You can use the shard as a spellcasting focus while you hold or wear it.",
 				"When you use a Metamagic option on a spell while you are holding or wearing the shard, you can momentarily curse one creature targeted by the spell; choose one ability score, and until the end of your next turn, the creature has disadvantage on ability checks and saving throws that use that ability."
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				}
 			]
 		},
 		{
@@ -41237,9 +41628,6 @@
 					"type": "table",
 					"colLabels": [
 						"Bag of Tricks Variety"
-					],
-					"colStyles": [
-						"col-12"
 					],
 					"rows": [
 						[
@@ -41477,7 +41865,16 @@
 			],
 			"attachedSpells": [
 				"protection from evil and good"
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"class": "druid"
+				},
+				{
+					"class": "warlock"
+				}
+			],
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Belt of Dwarvenkind",
@@ -41647,7 +42044,12 @@
 			"entries": [
 				"While you wear these boots, you can use a bonus action and click the boots' heels together. If you do, the boots double your walking speed, and any creature that makes an opportunity attack against you has disadvantage on the attack roll. If you click your heels together again, you end the effect.",
 				"When the boots' property has been used for a total of 10 minutes, the magic ceases to function until you finish a long rest."
-			]
+			],
+			"modifySpeed": {
+				"multiply": {
+					"walk": 2
+				}
+			}
 		},
 		{
 			"name": "Boots of Striding and Springing",
@@ -41659,7 +42061,12 @@
 			"wondrous": true,
 			"entries": [
 				"While you wear these boots, your walking speed becomes 30 feet, unless your walking speed is higher, and your speed isn't reduced if you are encumbered or wearing heavy armor. In addition, you can jump three times the normal distance, though you can't jump farther than your remaining movement would allow."
-			]
+			],
+			"modifySpeed": {
+				"static": {
+					"walk": 30
+				}
+			}
 		},
 		{
 			"name": "Boots of the Winterlands",
@@ -41830,9 +42237,6 @@
 					"colLabels": [
 						"Carpet Sizes"
 					],
-					"colStyles": [
-						"col-12"
-					],
 					"rows": [
 						[
 							"{@item Carpet of Flying, 3 ft. × 5 ft.|Yastah}"
@@ -41948,7 +42352,12 @@
 			],
 			"attachedSpells": [
 				"web"
-			]
+			],
+			"modifySpeed": {
+				"equal": {
+					"climb": "walk"
+				}
+			}
 		},
 		{
 			"name": "Cloak of Displacement",
@@ -42013,7 +42422,12 @@
 			"wondrous": true,
 			"entries": [
 				"While wearing this cloak with its hood up, you can breathe underwater, and you have a swimming speed of 60 feet. Pulling the hood up or down requires an action."
-			]
+			],
+			"modifySpeed": {
+				"static": {
+					"swim": 60
+				}
+			}
 		},
 		{
 			"name": "Decanter of Endless Water",
@@ -42093,7 +42507,7 @@
 			"wondrous": true,
 			"weight": 0,
 			"entries": [
-				"Earrings that when worn operate similarly to the @spell Message|yastah} Cantrip, to a distance of about 500 ft.  The basic ones broadcast on an open channel that all EoW within range can hear.",
+				"Earrings that when worn operate similarly to the {@spell Message|yastah} Cantrip, to a distance of about 500 ft.  The basic ones broadcast on an open channel that all EoW within range can hear.",
 				"For an extra 1,500 gold a private channel can be added per pair, up to a max of 4 earrings, or 2 pairs (So 2500 for a pair of private earrings or 5000 gp for a set of 4 private earrings).  This must be done when the EoW is crafted and cannot be added on later."
 			]
 		},
@@ -42112,7 +42526,8 @@
 			],
 			"attachedSpells": [
 				"charm person"
-			]
+			],
+			"rechargeAmount": 3
 		},
 		{
 			"name": "Eyes of Minute Seeing",
@@ -42232,7 +42647,16 @@
 				"This emblem is the symbol of a deity or a spiritual tradition. As an action, you can attach the emblem to a suit of armor or a shield or remove it.",
 				"The emblem has 3 charges. When you or a creature you can see within 30 feet of you suffers a critical hit while you're wearing the armor or wielding the shield that bears the emblem, you can use your reaction to expend 1 charge to turn the critical hit into a normal hit instead.",
 				"The emblem regains all expended charges daily at dawn."
-			]
+			],
+			"reqAttuneTags": [
+				{
+					"class": "cleric"
+				},
+				{
+					"class": "paladin"
+				}
+			],
+			"rechargeAmount": 3
 		},
 		{
 			"name": "Handy Haversack",
@@ -42336,7 +42760,8 @@
 			],
 			"attachedSpells": [
 				"teleport"
-			]
+			],
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Horn of Blasting",
@@ -42430,6 +42855,11 @@
 					"source": "Yastah",
 					"page": 83
 				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "bard"
+				}
 			]
 		},
 		{
@@ -42474,6 +42904,14 @@
 			"entries": [
 				"This cloak shifts color and texture to blend with the terrain surrounding you. While wearing the cloak, you can use it as a spellcasting focus for your druid and ranger spells.",
 				"While you are in an area that is lightly obscured, you can {@action Hide} as a bonus action even if you are being directly observed."
+			],
+			"reqAttuneTags": [
+				{
+					"class": "druid"
+				},
+				{
+					"class": "ranger"
+				}
 			]
 		},
 		{
@@ -42489,7 +42927,8 @@
 			"charges": 3,
 			"entries": [
 				"You must be proficient with wind instruments to use these pipes. They have 3 charges. You can use an action to play them and expend 1 charge to create an eerie, spellbinding tune. Each creature within 30 feet of you that hears you play must succeed on a DC 15 low/21 high Wisdom saving throw or become {@condition frightened} of you for 1 minute. If you wish, all creatures in the area that aren't hostile toward you automatically succeed on the saving throw. A creature that fails the saving throw can repeat it at the end of each of its turns, ending the effect on itself on a success. A creature that succeeds on its saving throw is immune to the effect of these pipes for 24 hours. The pipes regain {@dice 1d3} expended charges daily at dawn."
-			]
+			],
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Quiver of Holding",
@@ -42538,7 +42977,8 @@
 			"charges": 3,
 			"entries": [
 				"This robe has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While you wear it, you can use an action and expend 1 charge to cause the garment to display a shifting pattern of dazzling hues until the end of your next turn. During this time, the robe sheds bright light in a 30-foot radius and dim light for an additional 30 feet. Creatures that can see you have disadvantage on attack rolls against you. In addition, any creature in the bright light that can see you when the robe's power is activated must succeed on a DC 15 low/21 high Wisdom saving throw or become {@condition stunned} until the effect ends."
-			]
+			],
+			"rechargeAmount": "{@dice 1d3}"
 		},
 		{
 			"name": "Robe of Stars",
@@ -42685,7 +43125,12 @@
 			"wondrous": true,
 			"entries": [
 				"While you wear these light shoes, you can move up, down, and across vertical surfaces and upside down along ceilings, while leaving your hands free. You have a climbing speed equal to your walking speed. However, the slippers don't allow you to move this way on a slippery surface, such as one covered by ice or oil."
-			]
+			],
+			"modifySpeed": {
+				"equal": {
+					"climb": "walk"
+				}
+			}
 		},
 		{
 			"name": "Wind Fan",
@@ -42724,7 +43169,12 @@
 			"wondrous": true,
 			"entries": [
 				"While wearing this cloak, you can use an action to speak its command word. This turns the cloak into a pair of bat wings or bird wings on your back for 1 hour or until you repeat the command word as an action. The wings give you a flying speed of 60 feet. When they disappear, you can't use them again for {@dice 1d12} hours."
-			]
+			],
+			"modifySpeed": {
+				"static": {
+					"fly": 60
+				}
+			}
 		},
 		{
 			"name": "Armor of Invulnerability",
@@ -42810,9 +43260,6 @@
 				{
 					"type": "table",
 					"caption": "Crystal Balls",
-					"colStyles": [
-						"col-12"
-					],
 					"rows": [
 						[
 							"{@item Crystal Ball of Mind Reading|Yastah}"
@@ -42887,7 +43334,7 @@
 			"weight": 10,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"2H"
 			],
 			"dmg1": "2d6",
@@ -42908,7 +43355,8 @@
 					]
 				},
 				"The hammer also has 5 charges. While attuned to it, you can expend 1 charge and make a ranged weapon attack with the hammer, hurling it as if it had the thrown property with a normal range of 20 feet and a long range of 60 feet. If the attack hits, the hammer unleashes a thunderclap audible out to 300 feet. The target and every creature within 30 feet of it must succeed on a DC 17 low/23 high Constitution saving throw or be {@condition stunned} until the end of your next turn. The hammer regains {@dice 1d4 + 1} expended charges daily at dawn."
-			]
+			],
+			"rechargeAmount": "{@dice 1d4 + 1}"
 		},
 		{
 			"name": "Plate Armor of Etherealness",
@@ -42983,6 +43431,17 @@
 						"You have advantage on saving throws against spell and other magical effects.",
 						"Your spell save DC and spell attack bonus each increase by 2."
 					]
+				}
+			],
+			"reqAttuneTags": [
+				{
+					"class": "sorcerer"
+				},
+				{
+					"class": "warlock"
+				},
+				{
+					"class": "wizard"
 				}
 			]
 		},
@@ -43096,112 +43555,48 @@
 				"light",
 				"mage hand",
 				"protection from evil and good"
-			]
-		},
-		{
-			"name": "Defender (Any Sword)",
-			"type": "M",
-			"requires": [
-				{
-					"sword": true
-				}
 			],
-			"source": "Yastah",
-			"tier": "major",
-			"rarity": "legendary",
-			"reqAttune": true,
-			"bonusWeapon": "+3",
-			"bonusAc": "+1",
-			"entries": [
-				"You gain a +3 bonus to attack and damage rolls made with this magic weapon.",
-				"The first time you attack with the sword on each of your turns, you can transfer some or all of the sword's bonus to your Armor Class, instead of using the bonus on any attacks that turn. For example, you could reduce the bonus to your attack and damage rolls to +1 and gain a +2 bonus to AC. The adjusted bonuses remain in effect until the start of your next turn, although you must hold the sword to gain a bonus to AC from it."
-			]
-		},
-		{
-			"name": "Holy Avenger (Any Sword)",
-			"type": "M",
-			"requires": [
-				{
-					"sword": true
-				}
-			],
-			"source": "Yastah",
-			"tier": "major",
-			"rarity": "legendary",
-			"reqAttune": "by a paladin",
-			"bonusWeapon": "+3",
-			"bonusAc": "+3",
-			"entries": [
-				"You gain a +3 bonus to attack and damage rolls made with this magic weapon. When you hit a fiend or an undead with it, that creature takes an extra {@dice 2d10} radiant damage.",
-				"While you hold the drawn sword, it creates an aura in a 10-foot radius around you. You and all creatures friendly to you in the aura have advantage on saving throws against spells and other magical effects. If you have 17 or more levels in the paladin class, the radius of the aura increases to 30 feet."
-			]
-		},
-		{
-			"name": "Luck Blade (Any Sword)",
-			"type": "M",
-			"requires": [
-				{
-					"sword": true
-				}
-			],
-			"source": "Yastah",
-			"tier": "major",
-			"rarity": "legendary",
-			"reqAttune": true,
-			"bonusWeapon": "+1",
-			"bonusAc": "+1",
-			"bonusSavingThrow": "+1",
-			"charges": "{@dice 1d4 - 1}",
-			"entries": [
-				"You gain a +1 bonus to attack and damage rolls made with this magic weapon. While the sword is on your person, you also gain a +1 bonus to saving throws.",
-				{
-					"type": "entries",
-					"name": "Luck",
-					"entries": [
-						"If the sword is on your person, you can call on its luck (no action required) to reroll one attack roll, ability check, or saving throw you dislike. You must use the second roll. This property can't be used again until the next dawn."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Wish",
-					"entries": [
-						"The sword has {@dice 1d4 - 1} charges. While holding it, you can use an action to expend 1 charge and cast the {@spell wish|Yastah} spell from it. This property can't be used again until the next dawn. The sword loses this property if it has no charges."
-					]
-				}
-			],
-			"attachedSpells": [
-				"wish"
-			]
+			"rechargeAmount": "{@dice 4d6 + 2}"
 		},
 		{
 			"name": "Vorpal Sword",
+			"source": "Yastah",
 			"type": "M",
 			"baseItem": "Sword, Scimitar|Yastah",
-			"source": "Yastah",
 			"tier": "major",
 			"rarity": "legendary",
 			"reqAttune": true,
 			"bonusWeapon": "+3",
+			"property": [
+				"F",
+				"L"
+			],
+			"dmg1": "1d6",
+			"dmgType": "S",
+			"sword": true,
+			"weapon": true,
 			"entries": [
 				"You gain a +3 bonus to attack and damage rolls made with this magic weapon. In addition, the weapon ignores resistance to slashing damage.",
 				"When you attack a creature that has at least one head with this weapon and roll a 20 on the attack roll, you cut off one of the creature's heads. The creature dies if it can't survive without the lost head. A creature is immune to this effect if it is immune to slashing damage, doesn't have or need a head, has legendary actions, or the DM decides that the creature is too big for its head to be cut off with this weapon. Such a creature instead takes an extra {@dice 6d8} slashing damage from the hit."
 			]
 		},
 		{
-			"name": "+3 Armor (Any Type)",
-			"type": "GV",
+			"name": "Sword, Scimitar",
 			"source": "Yastah",
-			"tier": "major",
-			"rarity": "legendary",
-			"bonusAc": "+3",
-			"requires": [
-				{
-					"armor": true
-				}
+			"type": "M",
+			"rarity": "none",
+			"weight": 3,
+			"value": 2000,
+			"weaponCategory": "martial",
+			"property": [
+				"F",
+				"L"
 			],
-			"entries": [
-				"You have a +3 bonus to AC while wearing this armor."
-			]
+			"dmg1": "1d6",
+			"dmgType": "S",
+			"sword": true,
+			"weapon": true,
+			"entries": []
 		},
 		{
 			"name": "Padded Armor",
@@ -43475,7 +43870,7 @@
 			"rarity": "none",
 			"weight": 15,
 			"value": 20000,
-			"ac": "2 (One-Handed) +4 (Two-Handed)",
+			"ac": 4,
 			"entries": [
 				"These shields have the heavy property and grant a +2 AC bonus when wielded with one hand. If you use the shield with both hands it grants a +4 AC bonus instead, while moving you only have the normal shield AC. In addition, you can make attacks with shields."
 			]
@@ -43911,26 +44306,6 @@
 			]
 		},
 		{
-			"name": "Aklys",
-			"source": "Yastah",
-			"type": "M",
-			"rarity": "none",
-			"weight": 2,
-			"value": 200,
-			"weaponCategory": "martial",
-			"property": [
-				"Chained",
-				"L",
-				"T"
-			],
-			"range": "10/15",
-			"dmg1": "1d4",
-			"dmgType": "B",
-			"spear": true,
-			"weapon": true,
-			"entries": []
-		},
-		{
 			"name": "Ankus",
 			"source": "Yastah",
 			"type": "M",
@@ -43946,7 +44321,18 @@
 			"dmg1": "1d6",
 			"dmgType": "P",
 			"weapon": true,
-			"entries": []
+			"entries": [],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/CX4pU2p.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Battleaxe",
@@ -43978,10 +44364,21 @@
 				"V"
 			],
 			"dmg1": "1d8",
-			"dmgType": "Slashing or Piercing",
+			"dmgType": "S",
 			"dmg2": "1d10",
 			"weapon": true,
-			"entries": []
+			"entries": [],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/rOwgban.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Boarding Gaff",
@@ -43992,7 +44389,7 @@
 			"value": 1000,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"Long",
 				"Tripping",
 				"2H"
@@ -44001,7 +44398,18 @@
 			"dmgType": "S",
 			"spear": true,
 			"weapon": true,
-			"entries": []
+			"entries": [],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/bTMPFVI.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Flail",
@@ -44012,7 +44420,7 @@
 			"value": 1000,
 			"weaponCategory": "martial",
 			"dmg1": "1d8",
-			"dmgType": "Bludgeoning or Piercing",
+			"dmgType": "B",
 			"weapon": true,
 			"property": [
 				"Bypass",
@@ -44029,7 +44437,7 @@
 			"value": 1200,
 			"weaponCategory": "martial",
 			"dmg1": "1d8",
-			"dmgType": "Bludgeoning or Piercing",
+			"dmgType": "B",
 			"weapon": true,
 			"property": [
 				"Bypass",
@@ -44048,11 +44456,11 @@
 			"value": 1600,
 			"weaponCategory": "martial",
 			"dmg1": "2d4",
-			"dmgType": "Bludgeoning or Piercing",
+			"dmgType": "B",
 			"weapon": true,
 			"property": [
 				"Bypass",
-				"H"
+				"Heavy"
 			],
 			"entries": []
 		},
@@ -44065,7 +44473,7 @@
 			"value": 2000,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"R",
 				"2H"
 			],
@@ -44083,7 +44491,7 @@
 			"value": 3000,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"2H",
 				"Finisher"
 			],
@@ -44102,7 +44510,7 @@
 			"value": 500,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"Long",
 				"R",
 				"2H",
@@ -44122,7 +44530,7 @@
 			"value": 2500,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"R",
 				"2H"
 			],
@@ -44158,13 +44566,13 @@
 			"value": 2000,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"Long",
 				"R",
 				"2H"
 			],
 			"dmg1": "1d10",
-			"dmgType": "Slashing or Piercing",
+			"dmgType": "S",
 			"weapon": true,
 			"entries": []
 		},
@@ -44341,12 +44749,12 @@
 			"value": 2000,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"R",
 				"2H"
 			],
 			"dmg1": "1d10",
-			"dmgType": "Bludgeoning or Piercing",
+			"dmgType": "B",
 			"weapon": true,
 			"entries": []
 		},
@@ -44359,7 +44767,7 @@
 			"value": 3000,
 			"weaponCategory": "martial",
 			"property": [
-				"H"
+				"Heavy"
 			],
 			"dmg1": "1d8",
 			"dmgType": "B",
@@ -44376,7 +44784,7 @@
 			"value": 1000,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"2H"
 			],
 			"dmg1": "2d6",
@@ -44394,7 +44802,7 @@
 			"value": 3000,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"V"
 			],
 			"dmg1": "1d8",
@@ -44415,7 +44823,7 @@
 				"Finisher"
 			],
 			"dmg1": "1d8",
-			"dmgType": "Bludgeoning or Piercing",
+			"dmgType": "B",
 			"mace": true,
 			"weapon": true,
 			"entries": []
@@ -44429,7 +44837,7 @@
 			"value": 500,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"Long",
 				"R",
 				"2H"
@@ -44448,7 +44856,7 @@
 			"value": 5000,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"Long",
 				"R",
 				"2H",
@@ -44468,14 +44876,14 @@
 			"value": 3500,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"Long",
 				"R",
 				"2H",
 				"S"
 			],
 			"dmg1": "1d10",
-			"dmgType": "Bludgeoning, Slashing, or Piercing",
+			"dmgType": "B",
 			"axe": true,
 			"weapon": true,
 			"entries": [
@@ -44638,7 +45046,7 @@
 			"weaponCategory": "martial",
 			"property": [
 				"Bypass",
-				"H",
+				"Heavy",
 				"Ongoing",
 				"R",
 				"Tripping",
@@ -44685,7 +45093,7 @@
 			"value": 1000,
 			"weaponCategory": "martial",
 			"property": [
-				"H"
+				"Heavy"
 			],
 			"dmg1": "2d4",
 			"dmgType": "S",
@@ -44747,7 +45155,7 @@
 			"value": 6000,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"Finisher",
 				"2H"
 			],
@@ -44844,7 +45252,7 @@
 			"weaponCategory": "martial",
 			"property": [
 				"Deadly",
-				"H"
+				"Heavy"
 			],
 			"dmg1": "2d4",
 			"dmgType": "P",
@@ -44879,7 +45287,7 @@
 			"weaponCategory": "martial",
 			"property": [
 				"Deadly",
-				"H",
+				"Heavy",
 				"Sharp",
 				"2H"
 			],
@@ -44910,7 +45318,7 @@
 				"L"
 			],
 			"dmg1": "1d8",
-			"dmgType": "Slashing or Piercing",
+			"dmgType": "S",
 			"sword": true,
 			"weapon": true,
 			"entries": []
@@ -44924,11 +45332,11 @@
 			"value": 5000,
 			"weaponCategory": "martial",
 			"property": [
-				"H",
+				"Heavy",
 				"2H"
 			],
 			"dmg1": "2d6",
-			"dmgType": "Slashing or Piercing",
+			"dmgType": "S",
 			"sword": true,
 			"weapon": true,
 			"entries": []
@@ -44998,10 +45406,10 @@
 			"weaponCategory": "martial",
 			"property": [
 				"Deadly",
-				"H"
+				"Heavy"
 			],
 			"dmg1": "1d8",
-			"dmgType": "Bludgeoning or Slashing",
+			"dmgType": "B",
 			"sword": true,
 			"weapon": true,
 			"entries": []
@@ -45036,7 +45444,7 @@
 				"Critical",
 				"2H",
 				"Finisher",
-				"H"
+				"Heavy"
 			],
 			"dmg1": "1d12",
 			"dmgType": "S",
@@ -45079,24 +45487,6 @@
 			"entries": []
 		},
 		{
-			"name": "Sword, Scimitar",
-			"source": "Yastah",
-			"type": "M",
-			"rarity": "none",
-			"weight": 3,
-			"value": 2000,
-			"weaponCategory": "martial",
-			"property": [
-				"F",
-				"L"
-			],
-			"dmg1": "1d6",
-			"dmgType": "S",
-			"sword": true,
-			"weapon": true,
-			"entries": []
-		},
-		{
 			"name": "Sword, Short",
 			"source": "Yastah",
 			"type": "M",
@@ -45127,7 +45517,7 @@
 				"Tripping"
 			],
 			"dmg1": "1d6",
-			"dmgType": "Slashing or Piercing",
+			"dmgType": "S",
 			"sword": true,
 			"weapon": true,
 			"entries": []
@@ -45290,7 +45680,7 @@
 			"weaponCategory": "martial",
 			"property": [
 				"Deadly",
-				"H",
+				"Heavy",
 				"V"
 			],
 			"dmg1": "2d4",
@@ -45570,7 +45960,7 @@
 			"weaponCategory": "martial",
 			"property": [
 				"A",
-				"H",
+				"Heavy",
 				"LD",
 				"2H"
 			],
@@ -45613,7 +46003,7 @@
 			"property": [
 				"A",
 				"2H",
-				"H",
+				"Heavy",
 				"Strongbow"
 			],
 			"range": "150/600",
@@ -45702,8 +46092,7 @@
 			"weaponCategory": "simple",
 			"property": [
 				"L",
-				"Nonlethal",
-				"Silent"
+				"Nonlethal"
 			],
 			"dmg1": "1d4",
 			"dmgType": "B",
@@ -45721,7 +46110,7 @@
 			"weaponCategory": "simple",
 			"property": [
 				"2H",
-				"H",
+				"Heavy",
 				"Nonlethal",
 				"Stable"
 			],
@@ -45791,7 +46180,18 @@
 			"dmgType": "P",
 			"dagger": true,
 			"weapon": true,
-			"entries": []
+			"entries": [],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/9OIOIEh.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Flail, Peasant",
@@ -45823,7 +46223,7 @@
 				"Finisher"
 			],
 			"dmg1": "1d4",
-			"dmgType": "Bludgeoning or Piercing",
+			"dmgType": "B",
 			"spear": true,
 			"weapon": true,
 			"entries": [
@@ -46081,7 +46481,7 @@
 			],
 			"range": "10/60",
 			"dmg1": "1d6",
-			"dmgType": "Slashing or Piercing",
+			"dmgType": "S",
 			"dmg2": "1d8",
 			"spear": true,
 			"weapon": true,
@@ -46366,10 +46766,28 @@
 						"Clerics of Bilana, Paladins of Bilana, Warlocks of Bilana, Raven Monk Backgrounds, and Warriors of the 2nd Rank."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/fy6kZic.jpg"
+						}
+					},
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/twKwVBz.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
-			"name": "Doubles Blades",
+			"name": "Doubled Blades",
 			"source": "Yastah",
 			"type": "M",
 			"rarity": "none",
@@ -46400,7 +46818,18 @@
 						"This weapon does 1d8 Slashing with both Main-Hand and Off-Hand attacks."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/XICimKp.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Kusari-Gama",
@@ -46418,7 +46847,7 @@
 			],
 			"dmg1": "1d8",
 			"dmg2": "1d6",
-			"dmgType": "Bludgeoning or Slashing",
+			"dmgType": "B",
 			"weapon": true,
 			"entries": [
 				{
@@ -46435,7 +46864,25 @@
 						"This weapon does 1d8 Slashing with Main-Hand attacks and 1d6 Bludgeoning with Off-Hand attacks."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/msmb5n6.jpg"
+						}
+					},
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/wIAmniQ.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Club, Spiked",
@@ -46453,7 +46900,7 @@
 			],
 			"dmg1": "2d4",
 			"dmg2": "2d6",
-			"dmgType": "Bludgeoning and Piercing",
+			"dmgType": "B",
 			"weapon": true,
 			"entries": [
 				{
@@ -46470,10 +46917,21 @@
 						"This weapon does both 1d4 Bludgeoning & 1d4 Piercing with each attack, or 1d6's when wielded 2-handed."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/cGvXrlV.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
-			"name": "Garotte Wire",
+			"name": "Garrote Wire",
 			"source": "Yastah",
 			"type": "M",
 			"rarity": "none",
@@ -46506,7 +46964,18 @@
 						"Garrote Wire can only be used on a creature the same size or smaller than you, and only when you have advantage against them.  On a hit the target is automatically grappled by the weapon.  So long as the weapon is grappling the target and you hold on to the weapon the target is also Choking.  To escape, the enemy must use an action to succeed on an Athletics or Acrobatics check against your Grapple Check.  The target has Advantage if it becomes larger while grappled."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/uxAEboS.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Ranseur",
@@ -46517,14 +46986,14 @@
 			"value": 2500,
 			"weaponCategory": "Exotic",
 			"property": [
-				"H",
+				"Heavy",
 				"R",
 				"2H",
 				"Winged",
 				"Exotic"
 			],
 			"dmg1": "1d10",
-			"dmgType": "Slashing or Piercing",
+			"dmgType": "S",
 			"weapon": true,
 			"entries": [
 				{
@@ -46534,7 +47003,18 @@
 						"This can only be learned by Warriors of the 2nd Rank."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/o75MY81.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Pistol, Pirate",
@@ -46638,7 +47118,8 @@
 				"Deadly",
 				"Freehanded",
 				"L",
-				"Worn"
+				"Worn",
+				"Silent"
 			],
 			"dmg1": "1d4",
 			"dmgType": "S",
@@ -46686,7 +47167,18 @@
 						"1 extra point of damage."
 					]
 				}
-			]
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://imgur.com/HMwWmJK.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Glove, Armored",
@@ -46797,7 +47289,8 @@
 				"S",
 				"Freehanded",
 				"L",
-				"Worn"
+				"Worn",
+				"Silent"
 			],
 			"weapon": true,
 			"entries": [
@@ -51637,6 +52130,11 @@
 					"str": 1
 				}
 			],
+			"armorProficiencies": [
+				{
+					"heavy": true
+				}
+			],
 			"entries": [
 				"You have trained to master the use of heavy armor, gaining the following benefits:",
 				{
@@ -51724,6 +52222,11 @@
 					}
 				}
 			],
+			"armorProficiencies": [
+				{
+					"light": true
+				}
+			],
 			"entries": [
 				"You have trained to master the use of light armor, gaining the following benefits:",
 				{
@@ -51740,6 +52243,11 @@
 			"ability": [
 				{
 					"int": 1
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 3
 				}
 			],
 			"entries": [
@@ -51984,6 +52492,12 @@
 						],
 						"amount": 1
 					}
+				}
+			],
+			"armorProficiencies": [
+				{
+					"medium": true,
+					"shield|phb": true
 				}
 			],
 			"entries": [
@@ -52260,6 +52774,19 @@
 		{
 			"name": "Skilled",
 			"source": "Yastah",
+			"skillToolLanguageProficiencies": [
+				{
+					"choose": [
+						{
+							"from": [
+								"anySkill",
+								"anyTool"
+							],
+							"count": 3
+						}
+					]
+				}
+			],
 			"entries": [
 				"You gain proficiency in any combination of three {@book skills|phb|7|skills} or {@filter tools|items|type=tools;artisan's tools;instrument;gaming set;vehicle (land);vehicle (water)|source=yastah} of your choice."
 			]
@@ -52440,6 +52967,14 @@
 							"dex"
 						],
 						"amount": 1
+					}
+				}
+			],
+			"weaponProficiencies": [
+				{
+					"choose": {
+						"fromFilter": "type=martial weapon;mundane weapon|miscellaneous=mundane",
+						"count": 4
 					}
 				}
 			],
@@ -52672,6 +53207,11 @@
 						"Any hit you score with a dagger against a creature that is surprised is a critical hit.",
 						"You gain advantage on any Dexterity ({@skill Sleight of Hand}) checks to conceal a dagger on your person."
 					]
+				}
+			],
+			"skillProficiencies": [
+				{
+					"sleight of hand": true
 				}
 			]
 		},
@@ -53198,6 +53738,11 @@
 					]
 				}
 			],
+			"skillProficiencies": [
+				{
+					"stealth": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -53408,6 +53953,16 @@
 					"cha": 1
 				}
 			],
+			"skillProficiencies": [
+				{
+					"deception": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"disguise kit": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -53449,6 +54004,19 @@
 					}
 				}
 			],
+			"skillToolLanguageProficiencies": [
+				{
+					"choose": [
+						{
+							"from": [
+								"anySkill",
+								"anyTool"
+							],
+							"count": 3
+						}
+					]
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -53469,6 +54037,11 @@
 							"dex": 13
 						}
 					]
+				}
+			],
+			"skillProficiencies": [
+				{
+					"sleight of hand": true
 				}
 			],
 			"entries": [
@@ -53525,6 +54098,11 @@
 					}
 				}
 			],
+			"weaponProficiencies": [
+				{
+					"net|phb": true
+				}
+			],
 			"entries": [
 				{
 					"type": "list",
@@ -53562,6 +54140,11 @@
 			"prerequisite": [
 				{
 					"other": "Extra Attacks"
+				}
+			],
+			"skillProficiencies": [
+				{
+					"perception": true
 				}
 			],
 			"entries": [
@@ -53855,6 +54438,11 @@
 					}
 				}
 			],
+			"skillProficiencies": [
+				{
+					"insight": true
+				}
+			],
 			"entries": [
 				"The blood of the Archangels runs through you, and like them, nothing in the way of words gets by you. You gain the following benefits:",
 				{
@@ -53887,6 +54475,11 @@
 						],
 						"amount": 1
 					}
+				}
+			],
+			"toolProficiencies": [
+				{
+					"tinkerer's tools": true
 				}
 			],
 			"entries": [
@@ -54140,6 +54733,11 @@
 					}
 				}
 			],
+			"skillProficiencies": [
+				{
+					"nature": true
+				}
+			],
 			"entries": [
 				"You have an innate wonderment of the world around you, but these people need to be more careful with fire! You gain the following benefits:",
 				{
@@ -54270,6 +54868,11 @@
 						],
 						"amount": 1
 					}
+				}
+			],
+			"toolProficiencies": [
+				{
+					"glassblower's supplies": true
 				}
 			],
 			"entries": [
@@ -54508,6 +55111,42 @@
 					}
 				}
 			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"athletics",
+							"acrobatics",
+							"sleight of hand",
+							"stealth",
+							"arcana",
+							"history",
+							"investigation",
+							"nature",
+							"religion",
+							"animal handling",
+							"insight",
+							"medicine",
+							"perception",
+							"survival",
+							"deception",
+							"intimidation",
+							"performance",
+							"persuasion"
+						]
+					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 1
+				}
+			],
+			"toolProficiencies": [
+				{
+					"any": 1
+				}
+			],
 			"entries": [
 				"Blessed with the Blood of Man and the adaptability of a demigod, you have a knack for learning new things. You gain the following benefits:",
 				{
@@ -54542,6 +55181,11 @@
 					}
 				}
 			],
+			"skillProficiencies": [
+				{
+					"persuasion": true
+				}
+			],
 			"entries": [
 				"You can feel yourself growing closer to decay, but it only makes you more powerful. You gain the following benefits:",
 				{
@@ -54574,6 +55218,11 @@
 						],
 						"amount": 1
 					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"any": 2
 				}
 			],
 			"entries": [
@@ -54644,6 +55293,17 @@
 					}
 				}
 			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"persuasion",
+							"deception"
+						],
+						"count": 1
+					}
+				}
+			],
 			"entries": [
 				"Though you may be pitiful, your silver tongue might make you grand one day. You gain the following benefits:",
 				{
@@ -54676,6 +55336,11 @@
 						],
 						"amount": 1
 					}
+				}
+			],
+			"skillProficiencies": [
+				{
+					"acrobatics": true
 				}
 			],
 			"entries": [
@@ -55095,6 +55760,32 @@
 					}
 				}
 			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"athletics",
+							"acrobatics",
+							"sleight of hand",
+							"stealth",
+							"arcana",
+							"history",
+							"investigation",
+							"nature",
+							"religion",
+							"animal handling",
+							"insight",
+							"medicine",
+							"perception",
+							"survival",
+							"deception",
+							"intimidation",
+							"performance",
+							"persuasion"
+						]
+					}
+				}
+			],
 			"entries": [
 				"Yastah is your world. It always has been, and it always will be as long as you have a say in the matter. Through your studies of Luna and Soual, and of the first empire of Ereborn, you learn that you were made to be adaptable, and so you shall be. You gain the Following Benefits:",
 				{
@@ -55337,7 +56028,7 @@
 				{
 					"type": "list",
 					"items": [
-						"You gain the {@spell Toll the Dead|yastah} cantrip, and the ability to cast {@pell Inflict Wounds|yastah}, {@spell Vampiric Touch|yastah} (at Character level 5 or higher), and {@spell Contagion|yastah} (at character level 9 or higher) once per day"
+						"You gain the {@spell Toll the Dead|yastah} cantrip, and the ability to cast {@spell Inflict Wounds|yastah}, {@spell Vampiric Touch|yastah} (at Character level 5 or higher), and {@spell Contagion|yastah} (at character level 9 or higher) once per day"
 					]
 				}
 			]

@@ -13,167 +13,198 @@
 					"MrVauxs"
 				],
 				"version": "1.0",
-				"color": "2911f9"
+				"color": "3399ff"
 			}
 		],
+		"includes": {
+			"class": [
+				"VariantSorcerer_By_devikyn",
+				"SterlingVermin"
+			],
+			"foundryClassFeature": [
+				"VariantSorcerer_By_devikyn",
+				"SterlingVermin"
+			],
+			"classFeature": [
+				"VariantSorcerer_By_devikyn",
+				"SterlingVermin"
+			],
+			"subclassFeature": [
+				"VariantSorcerer_By_devikyn",
+				"SterlingVermin",
+				"SterlingVermin:Patreon"
+			],
+			"monster": [
+				"VariantSorcerer_By_devikyn",
+				"SterlingVermin"
+			],
+			"optionalfeature": [
+				"VariantSorcerer_By_devikyn"
+			],
+			"subclass": [
+				"VariantSorcerer_By_devikyn",
+				"SterlingVermin",
+				"SterlingVermin:Patreon"
+			],
+			"itemProperty": [
+				"SterlingVermin"
+			],
+			"item": [
+				"SterlingVermin"
+			],
+			"baseitem": [
+				"SterlingVermin"
+			],
+			"magicvariant": [
+				"SterlingVermin"
+			],
+			"foundrySubclassFeature": [
+				"SterlingVermin",
+				"SterlingVermin:Patreon"
+			]
+		},
 		"dateAdded": 1596497919,
-		"dateLastModified": 1601943923,
-		"unlisted": true
+		"dateLastModified": 1664312670,
+		"unlisted": true,
+		"_dateLastModifiedHash": "20b5b94d8a"
 	},
-	"monster": [
+	"variantrule": [
 		{
-			"name": "Captain Shatterscale \"Stevie\" Wonder",
+			"name": "Downtime Activity: Crafting",
 			"source": "CONowa",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"lizardfolk"
-				]
-			},
-			"alignment": [
-				"N"
-			],
-			"ac": [
+			"entries": [
+				"If you have access to a blueprint or have a relevant tool proficiency, you may craft an item during downtime.",
 				{
-					"ac": 15,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 45,
-				"formula": "7d8 + 14"
-			},
-			"speed": {
-				"walk": 30,
-				"swim": 30
-			},
-			"str": 16,
-			"dex": 14,
-			"CONowa": 14,
-			"int": 11,
-			"wis": 10,
-			"cha": 14,
-			"skill": {
-				"athletics": "+5",
-				"survival": "+4"
-			},
-			"passive": 10,
-			"cr": "2",
-			"trait": [
-				{
-					"name": "Flourish",
+					"name": "Resources",
 					"entries": [
-						"The captain adds its Charisma modifier to the damage roll for its longsword attacks (included in the attack)."
+						"The process of crafting an item can vary from item to item, which is determined by the rarity of the item and the crafters proficiency with the tools to craft it.",
+						"When crafting, the outcome of a days worth of work is determined as follows:",
+						{
+							"type": "abilityGeneric",
+							"text": "{@dice d8} + relevant tool or skill proficiency bonus + progress - difficulty"
+						},
+						"The outcomes on specific rolls are listed below.",
+						{
+							"type": "table",
+							"caption": "Crafting Outcomes",
+							"colLabels": [
+								"Roll",
+								"Result"
+							],
+							"colStyles": [
+								"col-6 text-center",
+								"col-6 text-center"
+							],
+							"rows": [
+								[
+									"0-7",
+									"Status Quo"
+								],
+								[
+									"8-10",
+									"+1 Progress"
+								],
+								[
+									"11-13",
+									"+2 Progress"
+								],
+								[
+									"14+",
+									"The Item is Crafted"
+								]
+							]
+						},
+						"On completion, you pay the cost of the item in either resources or gold (usually half the original price)."
 					]
 				},
 				{
-					"name": "Sea Legs",
+					"type": "entries",
+					"name": "Difficulty",
 					"entries": [
-						"The captain has advantage on ability checks and saving throws to resist being knocked {@condition prone}."
+						"Below is a table specifying the difficulty to craft an item based on rarity.",
+						{
+							"type": "table",
+							"caption": "Item Difficulty and Progress Capstones",
+							"colLabels": [
+								"Item Rarity",
+								"Difficulty"
+							],
+							"colStyles": [
+								"col-6 text-center",
+								"col-6 text-center"
+							],
+							"rows": [
+								[
+									"Common",
+									"2"
+								],
+								[
+									"Uncommon",
+									"5"
+								],
+								[
+									"Rare",
+									"6"
+								],
+								[
+									"Very Rare",
+									"7"
+								],
+								[
+									"Legendary",
+									"8"
+								]
+							]
+						}
 					]
 				},
 				{
-					"name": "Hold Breath (Lizardfolk)",
+					"name": "Complications",
 					"entries": [
-						"The captain can hold its breath for 15 minutes."
+						"Complications usually arise when you gain the Status Quo effect on the crafting check. Roll on the table below to see what effects happen.",
+						{
+							"type": "table",
+							"caption": "Crafting Complications",
+							"colLabels": [
+								"{@dice d10}",
+								"Result"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"1",
+									"You must start over, causing you to lose all current {@i progress}."
+								],
+								[
+									"2-3",
+									"You must pay half the cost of crafting the item in gold or resources that day, having failed or wanting to redo a certain part."
+								],
+								[
+									"4-6",
+									"You must pay quarter of the cost of crafting the item in gold or resources that day, trying various ways to craft the item."
+								],
+								[
+									"7-10",
+									"Nothing happens."
+								]
+							]
+						}
 					]
 				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The captain makes two attacks: one with its hand crossbow and one with its longsword."
-					]
-				},
-				{
-					"name": "Longsword",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d8 + 5}) slashing damage, or 10 ({@damage 1d10 + 5}) slashing damage if used with two hands."
-					]
-				},
-				{
-					"name": "Hand Crossbow",
-					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
-					]
-				}
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"damageTags": [
-				"S",
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"RNG"
-			],
-			"shortName": "Captain",
-			"languages": [
-				"Common",
-				"Draconic",
-				"telepathy 60 ft."
-			],
-			"languageTags": [
-				"C",
-				"DR",
-				"TP"
-			],
-			"reaction": [
-				{
-					"name": "Shrug it Off",
-					"entries": [
-						"The captain can use its reaction to halve the damage that it takes from an attack that hits it. The monster must be able to see the attacker."
-					]
-				}
-			],
-			"tokenUrl": "https://noads.5e.tools/img/GoS/Lizardfolk%20Commoner.png",
-			"alias": [
-				"Stevie"
-			],
-			"fluff": {
-				"entries": [
-					{
-						"type": "quote",
-						"entries": [
-							"Standing before you is a 6'4\", slim lizardfolk. He smiles as he welcomes you aboard by waving his 4 fingered claw, one arm visibly more scarred than the other. As he waves, under his arm dangles a copper and wood wand, attached to an iron chain bracelet. He wears a simple white shirt, about the right fit if not a bit tight on his arms. His bottom part of the body is covered by slightly brown shorts, with a special, third \"socket\" for his rather large tail, on which are strapped a couple satchels."
-						]
-					}
-				]
-			}
+			]
 		}
 	],
 	"feat": [
 		{
-			"name": "Chosen Strike",
+			"name": "Infernal Attunement",
 			"source": "CONowa",
-			"entries": [
-				"Some of your strikes are blessed by the gods to smite your foes. Once per long rest, when you hit a melee weapon attack, you can deal {@dice 2d8} radiant damage to the target, in addition to the weapons' damage. The damage increases by {@dice 1d8} if the target is an undead or a fiend."
-			]
-		},
-		{
-			"name": "Dragon Ferocity",
-			"source": "CONowa",
-			"prerequisite": [
-				{
-					"race": [
-						{
-							"name": "dragonborn"
-						}
-					]
-				}
-			],
 			"ability": [
 				{
 					"choose": {
 						"from": [
-							"str",
 							"con",
 							"cha"
 						],
@@ -181,78 +212,56 @@
 					}
 				}
 			],
-			"entries": [
-				"You manifest scales and claws reminiscent of your draconic ancestors. You gain the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"Increase your Strength, Constitution, or Charisma by 1, to a maximum of 20.",
-						"Your scales harden. While you aren't wearing armor, you can calculate your AC as 13 + your Dexterity modifier. You can use a shield and still gain this benefit.",
-						"Instead of exhaling destructive energy, you can expend a charge of your Breath Weapon trait to roar, forcing each creature of your choice within 30 feet of you to make a Wisdom saving throw (DC 8 + your proficiency bonus + your Charisma modifier). A target automatically succeeds on the save if it can't hear or see you. On a failed save, a target becomes {@condition frightened} of you for 1 minute. If the {@condition frightened} target takes any damage, it can repeat the saving throw, ending the effect on itself on a success."
-					]
-				}
-			]
-		},
-		{
-			"name": "Dragon Discharge",
-			"source": "CONowa",
 			"prerequisite": [
 				{
 					"race": [
 						{
-							"name": "dragonborn"
+							"name": "tiefling"
 						}
 					]
 				}
 			],
-			"ability": [
-				{
-					"choose": {
-						"from": [
-							"CONowa",
-							"cha"
-						],
-						"amount": 1
-					}
-				}
-			],
 			"entries": [
-				"You have gained higher control of your elemental core. You gain the following benefits:",
+				"Attuning more into your infernal heritage, you evolve into a form capable of doing great things. With that, you gain the benefits as listed below:",
 				{
 					"type": "list",
 					"items": [
-						"Your are able to control your breath in short bursts, which you can use as a ranged natural weapon. This weapon has a range of 30 feet, uses your Constitution or Charisma modifier (your choice) for it's attack and damage rolls, and deals {@dice 2d6} damage, the damage type determined by your ancestry.",
-						"You can use your Charisma modifier instead of Constitution when calculating the DC for your Breath Weapon racial trait."
+						"Choose one of the following:",
+						{
+							"type": "list",
+							"items": [
+								"Your body grows new tools at your disposal, similar to the fiend you are related to. You gain a new natural weapon, which deals {@damage 1d6} + your Strength modifier slashing, piercing or bludgeoning damage, as appropriate for the appendage(s) created or upgraded by this feat. In case of gaining new limbs, you can make them appear and dissapear as a bonus action.",
+								"Your connection to the depths of hell grows stronger. Pick a 2nd-level spell from the Warlock spell list. You can cast this spell once per long rest.",
+								"You can manifest your rage as a beam of brimstone darkness. When you take the {@action Attack} action, you can replace one of your attacks with shooting a beam of brimstone out of your mouth. The laser is a 5 feet wide, 30-foot line that damages anyone and anything in its path. Each creature in the area must make a Dexterity saving throw against a DC equal to 8 + your Constitution modifier + your proficiency bonus. A creature takes {@dice 2d6} radiant damage on a failed save, or half that on a success."
+							]
+						}
 					]
 				}
 			]
 		},
 		{
-			"name": "Fiendish Escape",
+			"name": "Infernal Wings",
 			"source": "CONowa",
 			"prerequisite": [
 				{
 					"race": [
 						{
 							"name": "tiefling"
-						},
-						{
-							"name": "genasi (fire)"
 						}
 					]
 				}
 			],
 			"ability": [
 				{
-					"dex": 1
+					"str": 1
 				}
 			],
 			"entries": [
-				"You sometimes leave fire in your wake, especially in dangerous situations. You gain the following benefits:",
+				"Your infernal heritage owns wings, and now whether suddenly, through arcane experimentation, or drinking fiendish blood, you have them too.",
 				{
 					"type": "list",
 					"items": [
-						"Whenver you take the {@action Dash} or {@action Disengage} action, you leave a trail of fire behind you. This fire lasts until the beginning of your next turn. A creature takes fire damage equal to your proficiency modifier when it enters the trail's area for the first time on a turn or starts its turn there."
+						"You grow bat wings from your back, those giving you a flight speed of 30 feet. You can make them appear and dissapear as a bonus action."
 					]
 				}
 			]
@@ -454,252 +463,11 @@
 	],
 	"race": [
 		{
-			"name": "Elf (Woja)",
-			"source": "CONowa",
-			"size": "M",
-			"speed": 30,
-			"ability": [
-				{
-					"dex": 2,
-					"int": 1
-				}
-			],
-			"darkvision": 60,
-			"traitTags": [
-				"Improved Resting"
-			],
-			"languageProficiencies": [
-				{
-					"common": true,
-					"elvish": true
-				}
-			],
-			"skillProficiencies": [
-				{
-					"perception": true
-				}
-			],
-			"soundClip": {
-				"type": "internal",
-				"path": "races/elf.mp3"
-			},
-			"entries": [
-				{
-					"name": "Age",
-					"type": "entries",
-					"entries": [
-						"Although elves reach physical maturity at about the same age as humans, the elven understanding of adulthood goes beyond physical growth to encompass worldly experience. An elf typically claims adulthood and an adult name around the age of 100 and can live to be 750 years old."
-					]
-				},
-				{
-					"name": "Alignment",
-					"type": "entries",
-					"entries": [
-						"Elves love freedom, variety, and self-expression, especially in art. So they lean strongly toward the gentler aspects of chaos. They value and protect others' freedom as well as their own, and they are more often good than not."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Size",
-					"entries": [
-						"Elves range from under 5 to over 6 feet tall and have slender builds. Your size is Medium."
-					]
-				},
-				{
-					"name": "Darkvision",
-					"entries": [
-						"Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Keen Senses",
-					"entries": [
-						"You have proficiency in the {@skill Perception} skill."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Fey Ancestry",
-					"entries": [
-						"You have advantage on saving throws against being {@condition charmed}, and magic can't put you to sleep."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Trance",
-					"entries": [
-						"Elves don't need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is \"trance.\") While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.",
-						"{@note If you meditate during a long rest, you finish the rest after only 4 hours. You otherwise obey all the rules for a long rest; only the duration is changed.}"
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Languages",
-					"entries": [
-						"You can speak, read, and write Common and Elvish. Elvish is fluid, with subtle intonations and intricate grammar. Elven literature is rich and varied, and their songs and poems are famous among other races. Many bards learn their language so they can add Elvish ballads to their repertoires."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Elf Weapon Training",
-					"entries": [
-						"You have proficiency with the {@item longsword|phb}, {@item shortsword|phb}, {@item shortbow|phb}, and {@item longbow|phb}."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Fleet of Foot",
-					"entries": [
-						"Your base walking speed increases to 35 feet."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Mask of the Wild",
-					"entries": [
-						"You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
-					],
-					"type": "entries"
-				}
-			],
-			"heightAndWeight": {
-				"baseHeight": 54,
-				"heightMod": "2d10",
-				"baseWeight": 90,
-				"weightMod": "1d4"
-			},
-			"weaponProficiencies": [
-				{
-					"longsword|phb": true,
-					"shortsword|phb": true,
-					"shortbow|phb": true,
-					"longbow|phb": true
-				}
-			]
-		},
-		{
-			"name": "Elf (Eter)",
-			"source": "CONowa",
-			"size": "M",
-			"speed": 30,
-			"ability": [
-				{
-					"dex": 2,
-					"int": 1
-				}
-			],
-			"darkvision": 60,
-			"traitTags": [
-				"Tool Proficiency",
-				"Improved Resting"
-			],
-			"languageProficiencies": [
-				{
-					"common": true,
-					"elvish": true
-				}
-			],
-			"skillProficiencies": [
-				{
-					"perception": true
-				}
-			],
-			"soundClip": {
-				"type": "internal",
-				"path": "races/elf.mp3"
-			},
-			"entries": [
-				{
-					"name": "Age",
-					"type": "entries",
-					"entries": [
-						"Although elves reach physical maturity at about the same age as humans, the elven understanding of adulthood goes beyond physical growth to encompass worldly experience. An elf typically claims adulthood and an adult name around the age of 100 and can live to be 750 years old."
-					]
-				},
-				{
-					"name": "Alignment",
-					"type": "entries",
-					"entries": [
-						"Elves love freedom, variety, and self-expression, especially in art. So they lean strongly toward the gentler aspects of chaos. They value and protect others' freedom as well as their own, and they are more often good than not."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Size",
-					"entries": [
-						"Elves range from under 5 to over 6 feet tall and have slender builds. Your size is Medium."
-					]
-				},
-				{
-					"name": "Darkvision",
-					"entries": [
-						"Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Keen Senses",
-					"entries": [
-						"You have proficiency in the {@skill Perception} skill."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Fey Ancestry",
-					"entries": [
-						"You have advantage on saving throws against being {@condition charmed}, and magic can't put you to sleep."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Trance",
-					"entries": [
-						"Elves don't need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is \"trance.\") While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.",
-						"{@note If you meditate during a long rest, you finish the rest after only 4 hours. You otherwise obey all the rules for a long rest; only the duration is changed.}"
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Languages",
-					"entries": [
-						"You can speak, read, and write Common and Elvish. Elvish is fluid, with subtle intonations and intricate grammar. Elven literature is rich and varied, and their songs and poems are famous among other races. Many bards learn their language so they can add Elvish ballads to their repertoires."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Elf Tools Training",
-					"entries": [
-						"You have proficiency with one type of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan's tools}. Your proficiency bonus is doubled for any ability check you make with it."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Cantrip",
-					"entries": [
-						"You know one {@filter cantrip of your choice from the artificer spell list|spells|level=0|class=Artificer}. Intelligence is your spellcasting ability for it."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Extra Language",
-					"entries": [
-						"You can speak, read, and write one extra language of your choosing."
-					],
-					"type": "entries"
-				}
-			],
-			"heightAndWeight": {
-				"baseHeight": 54,
-				"heightMod": "2d10",
-				"baseWeight": 90,
-				"weightMod": "1d4"
-			}
-		},
-		{
 			"name": "Dwarf (Road)",
 			"source": "CONowa",
-			"size": "M",
+			"size": [
+				"M"
+			],
 			"speed": 35,
 			"ability": [
 				{
@@ -710,7 +478,9 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Tool Proficiency"
+				"Skill Proficiency",
+				"Tool Proficiency",
+				"Weapon Proficiency"
 			],
 			"languageProficiencies": [
 				{
@@ -965,196 +735,79 @@
 			"resist": [
 				"poison"
 			],
-			"weaponProficiencies": [
-				{
-					"battleaxe|phb": true,
-					"handaxe|phb": true,
-					"light hammer|phb": true,
-					"warhammer|phb": true
-				}
-			]
-		},
-		{
-			"name": "Dragonborn",
-			"source": "CONowa",
-			"size": "M",
-			"speed": 30,
-			"ability": [
-				{
-					"str": 2,
-					"cha": 1
-				}
-			],
-			"heightAndWeight": {
-				"baseHeight": 66,
-				"heightMod": "2d8",
-				"baseWeight": 175,
-				"weightMod": "2d6"
-			},
-			"traitTags": [
-				"Damage Resistance",
-				"Uncommon Race",
-				"Monstrous Race"
-			],
-			"languageProficiencies": [
-				{
-					"common": true,
-					"draconic": true
-				}
-			],
-			"soundClip": {
-				"type": "internal",
-				"path": "races/dragonborn.mp3"
-			},
-			"entries": [
-				{
-					"name": "Age",
-					"type": "entries",
-					"entries": [
-						"Young dragonborn grow quickly. They walk hours after hatching, attain the size and development of a 10-year-old human child by the age of 3, and reach adulthood by 15. They live to be around 80."
-					]
-				},
-				{
-					"name": "Alignment",
-					"type": "entries",
-					"entries": [
-						"Dragonborn tend to extremes, making a conscious choice for one side or the other in the cosmic war between good and evil (represented by Bahamut and Tiamat, respectively). Most dragonborn are good, but those who side with Tiamat can be terrible villains."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Size",
-					"entries": [
-						"Dragonborn are taller and heavier than humans, standing well over 6 feet tall and averaging almost 250 pounds. Your size is Medium."
-					]
-				},
-				{
-					"name": "Draconic Ancestry",
-					"entries": [
-						"You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon, damage resistance and insight of your area are determined by the dragon type, as shown in the table.",
-						{
-							"type": "table",
-							"caption": "Draconic Ancestry",
-							"colLabels": [
-								"Dragon",
-								"Damage Type",
-								"Breath Weapon",
-								"Area"
-							],
-							"colStyles": [
-								"col-2 text-center",
-								"col-2 text-center",
-								"col-5 text-center",
-								"col-3 text-center"
-							],
-							"rows": [
-								[
-									"Black",
-									"Acid",
-									"5 by 30 ft. line (Dex. save)",
-									"Swamp"
-								],
-								[
-									"Blue",
-									"Lightning",
-									"5 by 30 ft. line (Dex. save)",
-									"Desert or Coast"
-								],
-								[
-									"Brass",
-									"Fire",
-									"5 by 30 ft. line (Dex. save)",
-									"Desert"
-								],
-								[
-									"Bronze",
-									"Lightning",
-									"5 by 30 ft. line (Dex. save)",
-									"Coast"
-								],
-								[
-									"Copper",
-									"Acid",
-									"5 by 30 ft. line (Dex. save)",
-									"Hill"
-								],
-								[
-									"Gold",
-									"Fire",
-									"15 ft. cone (Dex. save)",
-									"Forest or Grassland"
-								],
-								[
-									"Green",
-									"Poison",
-									"15 ft. cone (Con. save)",
-									"Forest"
-								],
-								[
-									"Red",
-									"Fire",
-									"15 ft. cone (Dex. save)",
-									"Hill or Mountain"
-								],
-								[
-									"Silver",
-									"Cold",
-									"15 ft. cone (Con. save)",
-									"Mountain or Urban"
-								],
-								[
-									"White",
-									"Cold",
-									"15 ft. cone (Con. save)",
-									"Arctic"
-								]
-							]
-						}
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Breath Weapon",
-					"entries": [
-						"You have an amount of charges equal your proficiency modifier, which you can expend by using your action to exhale destructive energy. Your draconic ancestry determines the size, shape, and damage type of the exhalation.",
-						"When you use your breath weapon, each creature in the area of the exhalation must make a saving throw, the type of which is determined by your draconic ancestry. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus.",
-						"A creature takes {@dice (#$prompt_number:min=1,title=Enter the amount of charges you expend.,max=6,min=1,default=1$#)d6|1d6} damage determined by your ancestry per charge expended on a failed saving throw, or half as much damage on a successful one.",
-						"You regain all expended breath weapon charges upon finishing a long rest."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Damage Resistance",
-					"entries": [
-						"You have resistance to the damage type associated with your draconic ancestry."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Dragon Claws",
-					"entries": [
-						"You have retractable claws from the tips of your fingers. Extending or retracting the claws requires no action. The claws are natural weapons, which you can use to make unarmed strikes. If you hit with them, you deal slashing damage equal to {@dice 1d4} + your Strength modifier, instead of the normal bludgeoning damage for an unarmed strike."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Dragon Knowledge",
-					"entries": [
-						"Your ancestry has given you an insight into certain areas. When you make a {@skill Nature}, or a {@skill Survival} check related to or while you are in a type of area determined by your dragon ancestry, you have advantage on that check."
-					],
-					"type": "entries"
-				},
-				{
-					"name": "Languages",
-					"entries": [
-						"You can speak, read, and write Common and Draconic. Draconic is thought to be one of the oldest languages and is often used in the study of magic. The language sounds harsh to most other creatures and includes numerous hard consonants and sibilants."
-					],
-					"type": "entries"
-				}
-			]
+			"age": {
+				"mature": 20,
+				"max": 350
+			}
 		}
 	],
 	"spell": [
+		{
+			"name": "Embrace the Pit",
+			"level": 3,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					}
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You call upon and embrace the pits of hell to grant you otherworldly strength, taking on the features of a hellish being closest to your bloodline. You gain the following benefits until the spell ends:",
+				{
+					"type": "list",
+					"items": [
+						"You are resistant to fire, as well as your choice of either piercing, slashing, or bludgeoning damage.",
+						"You have devil's sight, able to see through both common and magical darkness to a range of 60 feet.",
+						"You are immune to poison damage and the {@condition poisoned} condition."
+					]
+				}
+			],
+			"source": "CONowa",
+			"components": {
+				"v": true
+			},
+			"savingThrow": [
+				"strength"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"miscTags": [
+				"MAC"
+			]
+		},
 		{
 			"name": "Witch Bolt",
 			"source": "CONowa",
@@ -1233,39 +886,22 @@
 	],
 	"item": [
 		{
-			"name": "Eyes of Various Lenses",
-			"source": "CONowa",
-			"wondrous": true,
-			"rarity": "rare",
-			"reqAttune": true,
-			"entries": [
-				"These leather-framed goggles feature multiple, multicolored lenses. While wearing the goggles, you gain the following properties:",
-				{
-					"type": "list",
-					"items": [
-						"You have advantage on Intelligence ({@skill Arcana}) to reveal information about an object you can see, and Intelligence ({@skill Investigation}) and Wisdom ({@skill Perception}) checks that rely on sight.",
-						"You can make out details of even extremely intricate objects up close, or extremely distant creatures and objects as small as 2 feet across.",
-						"You can cast the {@spell identify} spell using the goggles. Once you do so, you can't do so again until the next dawn."
-					]
-				}
-			]
-		},
-		{
 			"name": "Goggles of Object Reading",
 			"source": "CONowa",
 			"rarity": "uncommon",
 			"reqAttune": true,
 			"wondrous": true,
 			"entries": [
-				"These leather-framed goggles feature purple crystal lenses. While wearing the goggles, you can see magic as of the {@spell detect magic|phb} spell and have advantage on Intelligence ({@skill Arcana}) checks made to reveal information about a creature or object you can see.",
+				"These leather-framed goggles feature purple crystal lenses. While wearing the goggles, you can see magic as of the {@spell detect magic|phb} spell and have advantage on Intelligence checks made to reveal information about a creature or object you can see.",
 				"In addition, you can cast the {@spell identify} spell using the googles. Once you do so, you can't do so again until the next dawn."
 			],
 			"attachedSpells": [
-				"identify"
+				"identify",
+				"detect magic"
 			]
 		},
 		{
-			"name": "Mace of the Black Crown",
+			"name": "Shaped Glass",
 			"source": "CONowa",
 			"baseItem": "mace|PHB",
 			"type": "M",
@@ -1299,18 +935,59 @@
 					"type": "entries",
 					"name": "Dormant",
 					"entries": [
-						"The mace grants the following benefits in its dormant state:",
+						"The Shaped Glass grants the following benefits in its dormant state:",
 						{
 							"type": "list",
 							"items": [
 								"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
-								"You can cause the mace to overwhelm you with it's weave on your turn, gaining an additional action. Roll a {@dice d4}. On a result of 1 to 3, you start your next turn stunned. This property can't be used again until you finish a long rest.",
+								"You can cause the mace to overwhelm you with it's weave on your turn, gaining an additional action. Roll a {@dice d4}. On a result of 1 to 3, you start your next turn {@condition stunned}. This property can't be used again until dawn.",
 								"Once per turn, when you hit an attack with the mace, you can make it deal double damage. After dealing damage to the creature, you take double damage until the start of your next turn."
 							]
 						}
 					]
+				},
+				{
+					"type": "entries",
+					"name": "Awakened",
+					"entries": [
+						"As the Shaped Glass awakens, it grants the following benefits:",
+						{
+							"type": "list",
+							"items": [
+								"You gain +2 bonus to attack and damage rolls made with this magic weapon.",
+								"When rolling the {@dice d4} after gaining an additional action from this item, you only become {@condition stunned} on a roll of 1 to 2.",
+								"During a short or long rest, you can reform Shaped Glass as a part of another weapon that deals piercing or slashing damage. After this, the weapon becomes magical and gains the properties of Shaped Glass, becoming one with the item.",
+								"Also, when trying to lose attunement to Shaped Glass, the user must make a DC 20 Charisma save to successfully remove the item from their consciousness. On a failed save, they are knocked {@condition unconscious}."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Exalted",
+					"entries": [
+						"Shaped Glass is at its peak, becoming true with its nature and granting you the following benefits in its exalted state:",
+						{
+							"type": "list",
+							"items": [
+								"You gain +3 bonus to attack and damage rolls made with this magic weapon.",
+								"When rolling the {@dice d4} after gaining an additional action from this item, you only become {@condition stunned} on a roll of 1.",
+								"You are now pernamently attuned to the Glass Shard, only to be separated from it through divine intervention."
+							]
+						}
+					]
 				}
-			]
+			],
+			"fluff": {
+				"entries": [
+					"Pairings -",
+					"Unstructured glass, from the heart of the [Moon]. Sung out, in ethereal wisps, over the course of 3 cycles. Pause.",
+					"We fold time into its material - twice. Our time and his. A cost he was willing us to pay. Folded and shaped, with a god's designs.",
+					"He wields it, in one of many great hands. The time we injected is unfolded in his grasp. Outputs quicken - muscles compress twice. Twice as many intentions. Twice the ordered complexities, folded upon themselves. Loops loop back onto [?] in pairs. Time dependent functions. Pause.",
+					"He sunders a construct into a thousand pieces.",
+					"But time is fair. Microtears begin to uncoil in pairs. Muscles begin to snap, twice as fast.  The cost of folded time. But he has plenty of time."
+				]
+			}
 		}
 	]
 }
