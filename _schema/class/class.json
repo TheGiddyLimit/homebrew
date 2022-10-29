@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "2.10.1",
+	"version": "2.10.7",
 	"$id": "class.json",
 	"type": "object",
 	"definitions": {
@@ -120,12 +120,13 @@
 					"type": "integer"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "../util.json#/definitions/page"
 				},
 				"type": {
 					"type": "string",
 					"enum": [
-						"inset"
+						"inset",
+						"item"
 					]
 				},
 				"entries": {
@@ -145,6 +146,9 @@
 				},
 				"foundryData": {
 					"$ref": "../util.json#/definitions/foundryDataObject"
+				},
+				"foundryFlags": {
+					"$ref": "../util.json#/definitions/foundryFlagsObject"
 				},
 				"foundryImg": {
 					"$ref": "../util.json#/definitions/foundryImg"
@@ -230,12 +234,13 @@
 					"type": "integer"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "../util.json#/definitions/page"
 				},
 				"type": {
 					"type": "string",
 					"enum": [
-						"inset"
+						"inset",
+						"item"
 					]
 				},
 				"entries": {
@@ -259,6 +264,9 @@
 				},
 				"foundryData": {
 					"$ref": "../util.json#/definitions/foundryDataObject"
+				},
+				"foundryFlags": {
+					"$ref": "../util.json#/definitions/foundryFlagsObject"
 				},
 				"foundryImg": {
 					"$ref": "../util.json#/definitions/foundryImg"
@@ -423,7 +431,7 @@
 							"$ref": "../util.json#/definitions/basicRules"
 						},
 						"page": {
-							"type": "integer"
+							"$ref": "../util.json#/definitions/page"
 						},
 						"casterProgression": {
 							"enum": [
@@ -493,7 +501,7 @@
 							}
 						},
 						"optionalfeatureProgression": {
-							"$ref": "#/definitions/optionalfeatureProgression"
+							"$ref": "../util.json#/definitions/optionalfeatureProgression"
 						},
 						"subclassTableGroups": {
 							"type": "array",
@@ -506,64 +514,6 @@
 						},
 						"additionalSpells": {
 							"$ref": "../util.json#/definitions/additionalSpellsArray"
-						},
-						"_copy": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								},
-								"pantheon": {
-									"description": "Used in deity data",
-									"type": "string"
-								},
-								"shortName": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"className": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"classSource": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"_mod": {
-									"$ref": "../util.json#/definitions/_modObject"
-								},
-								"_trait": {
-									"type": "object",
-									"properties": {
-										"name": {
-											"type": "string"
-										},
-										"source": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"name",
-										"source"
-									]
-								},
-								"_preserve": {
-									"type": "object",
-									"patternProperties": {
-										".*": {
-											"type": "boolean"
-										}
-									}
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							],
-							"additionalProperties": false
 						},
 						"subclassSpells": {
 							"description": "Homebrew use only; adds custom subclasses to lists in spells.\nDoes not enable VTT import - see \"additionalSpells\".",
@@ -587,6 +537,12 @@
 						},
 						"foundryData": {
 							"$ref": "../util.json#/definitions/foundryDataObject"
+						},
+						"foundryFlags": {
+							"$ref": "../util.json#/definitions/foundryFlagsObject"
+						},
+						"foundryAdvancement": {
+							"$ref": "../util.json#/definitions/foundryAdvancementsArray"
 						},
 						"foundryImg": {
 							"$ref": "../util.json#/definitions/foundryImg"
@@ -632,7 +588,7 @@
 							"$ref": "../util.json#/definitions/basicRules"
 						},
 						"page": {
-							"type": "integer"
+							"$ref": "../util.json#/definitions/page"
 						},
 						"casterProgression": {
 							"enum": [
@@ -702,7 +658,7 @@
 							}
 						},
 						"optionalfeatureProgression": {
-							"$ref": "#/definitions/optionalfeatureProgression"
+							"$ref": "../util.json#/definitions/optionalfeatureProgression"
 						},
 						"subclassTableGroups": {
 							"type": "array",
@@ -715,6 +671,38 @@
 						},
 						"additionalSpells": {
 							"$ref": "../util.json#/definitions/additionalSpellsArray"
+						},
+						"subclassSpells": {
+							"description": "Homebrew use only; adds custom subclasses to lists in spells.\nDoes not enable VTT import - see \"additionalSpells\".",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/spellRef"
+							}
+						},
+						"subSubclassSpells": {
+							"description": "Homebrew use only; adds custom sub-subclasses to lists in spells.\nPrimarily used by cleric orders and druid circles.\nDoes not enable VTT import - use \"additionalSpells\" as well.",
+							"type": "object",
+							"patternProperties": {
+								".*": {
+									"type": "array",
+									"description": "For example, a druid circle, religious order, or other sub-subclass name",
+									"items": {
+										"$ref": "#/definitions/spellRef"
+									}
+								}
+							}
+						},
+						"foundryData": {
+							"$ref": "../util.json#/definitions/foundryDataObject"
+						},
+						"foundryFlags": {
+							"$ref": "../util.json#/definitions/foundryFlagsObject"
+						},
+						"foundryAdvancement": {
+							"$ref": "../util.json#/definitions/foundryAdvancementsArray"
+						},
+						"foundryImg": {
+							"$ref": "../util.json#/definitions/foundryImg"
 						},
 						"_copy": {
 							"type": "object",
@@ -773,32 +761,6 @@
 								"source"
 							],
 							"additionalProperties": false
-						},
-						"subclassSpells": {
-							"description": "Homebrew use only; adds custom subclasses to lists in spells.\nDoes not enable VTT import - see \"additionalSpells\".",
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/spellRef"
-							}
-						},
-						"subSubclassSpells": {
-							"description": "Homebrew use only; adds custom sub-subclasses to lists in spells.\nPrimarily used by cleric orders and druid circles.\nDoes not enable VTT import - use \"additionalSpells\" as well.",
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "array",
-									"description": "For example, a druid circle, religious order, or other sub-subclass name",
-									"items": {
-										"$ref": "#/definitions/spellRef"
-									}
-								}
-							}
-						},
-						"foundryData": {
-							"$ref": "../util.json#/definitions/foundryDataObject"
-						},
-						"foundryImg": {
-							"$ref": "../util.json#/definitions/foundryImg"
 						}
 					},
 					"additionalProperties": false,
@@ -838,7 +800,7 @@
 					"$ref": "../util.json#/definitions/basicRules"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "../util.json#/definitions/page"
 				},
 				"casterProgression": {
 					"enum": [
@@ -908,7 +870,7 @@
 					}
 				},
 				"optionalfeatureProgression": {
-					"$ref": "#/definitions/optionalfeatureProgression"
+					"$ref": "../util.json#/definitions/optionalfeatureProgression"
 				},
 				"subclassTableGroups": {
 					"type": "array",
@@ -921,64 +883,6 @@
 				},
 				"additionalSpells": {
 					"$ref": "../util.json#/definitions/additionalSpellsArray"
-				},
-				"_copy": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						},
-						"pantheon": {
-							"description": "Used in deity data",
-							"type": "string"
-						},
-						"shortName": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"className": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"classSource": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"_mod": {
-							"$ref": "../util.json#/definitions/_modObject"
-						},
-						"_trait": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							]
-						},
-						"_preserve": {
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "boolean"
-								}
-							}
-						}
-					},
-					"required": [
-						"name",
-						"source"
-					],
-					"additionalProperties": false
 				},
 				"subclassSpells": {
 					"description": "Homebrew use only; adds custom subclasses to lists in spells.\nDoes not enable VTT import - see \"additionalSpells\".",
@@ -1002,6 +906,12 @@
 				},
 				"foundryData": {
 					"$ref": "../util.json#/definitions/foundryDataObject"
+				},
+				"foundryFlags": {
+					"$ref": "../util.json#/definitions/foundryFlagsObject"
+				},
+				"foundryAdvancement": {
+					"$ref": "../util.json#/definitions/foundryAdvancementsArray"
 				},
 				"foundryImg": {
 					"$ref": "../util.json#/definitions/foundryImg"
@@ -1065,77 +975,6 @@
 				}
 			},
 			"additionalProperties": false
-		},
-		"optionalfeatureProgression": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"featureType": {
-						"type": "array",
-						"items": {
-							"$ref": "../util.json#/definitions/dataOptionalfeatureType"
-						},
-						"uniqueItems": true
-					},
-					"progression": {
-						"oneOf": [
-							{
-								"type": "array",
-								"items": {
-									"type": "integer"
-								},
-								"minItems": 20,
-								"maxItems": 20
-							},
-							{
-								"type": "object",
-								"patternProperties": {
-									"^\\d+$": {
-										"type": "integer"
-									}
-								},
-								"additionalProperties": false
-							}
-						]
-					},
-					"required": {
-						"oneOf": [
-							{
-								"type": "array",
-								"items": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									}
-								},
-								"minItems": 20,
-								"maxItems": 20
-							},
-							{
-								"type": "object",
-								"patternProperties": {
-									"^\\d+$": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									}
-								},
-								"additionalProperties": false
-							}
-						]
-					}
-				},
-				"required": [
-					"name",
-					"featureType",
-					"progression"
-				]
-			}
 		},
 		"class": {
 			"anyOf": [
@@ -1345,7 +1184,7 @@
 							"additionalProperties": false
 						},
 						"optionalfeatureProgression": {
-							"$ref": "#/definitions/optionalfeatureProgression"
+							"$ref": "../util.json#/definitions/optionalfeatureProgression"
 						},
 						"classFeatures": {
 							"type": "array",
@@ -1376,7 +1215,7 @@
 							"type": "string"
 						},
 						"page": {
-							"type": "integer"
+							"$ref": "../util.json#/definitions/page"
 						},
 						"fluff": {
 							"type": "array",
@@ -1393,7 +1232,7 @@
 										}
 									},
 									"page": {
-										"type": "integer"
+										"$ref": "../util.json#/definitions/page"
 									},
 									"source": {
 										"type": "string"
@@ -1412,64 +1251,6 @@
 						"additionalSpells": {
 							"$ref": "../util.json#/definitions/additionalSpellsArray"
 						},
-						"_copy": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								},
-								"pantheon": {
-									"description": "Used in deity data",
-									"type": "string"
-								},
-								"shortName": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"className": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"classSource": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"_mod": {
-									"$ref": "../util.json#/definitions/_modObject"
-								},
-								"_trait": {
-									"type": "object",
-									"properties": {
-										"name": {
-											"type": "string"
-										},
-										"source": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"name",
-										"source"
-									]
-								},
-								"_preserve": {
-									"type": "object",
-									"patternProperties": {
-										".*": {
-											"type": "boolean"
-										}
-									}
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							],
-							"additionalProperties": false
-						},
 						"classSpells": {
 							"description": "Homebrew use only",
 							"type": "array",
@@ -1483,6 +1264,12 @@
 						},
 						"foundryData": {
 							"$ref": "../util.json#/definitions/foundryDataObject"
+						},
+						"foundryFlags": {
+							"$ref": "../util.json#/definitions/foundryFlagsObject"
+						},
+						"foundryAdvancement": {
+							"$ref": "../util.json#/definitions/foundryAdvancementsArray"
 						},
 						"foundryImg": {
 							"$ref": "../util.json#/definitions/foundryImg"
@@ -1701,7 +1488,7 @@
 							"additionalProperties": false
 						},
 						"optionalfeatureProgression": {
-							"$ref": "#/definitions/optionalfeatureProgression"
+							"$ref": "../util.json#/definitions/optionalfeatureProgression"
 						},
 						"classFeatures": {
 							"type": "array",
@@ -1732,7 +1519,7 @@
 							"type": "string"
 						},
 						"page": {
-							"type": "integer"
+							"$ref": "../util.json#/definitions/page"
 						},
 						"fluff": {
 							"type": "array",
@@ -1749,7 +1536,7 @@
 										}
 									},
 									"page": {
-										"type": "integer"
+										"$ref": "../util.json#/definitions/page"
 									},
 									"source": {
 										"type": "string"
@@ -1767,6 +1554,29 @@
 						},
 						"additionalSpells": {
 							"$ref": "../util.json#/definitions/additionalSpellsArray"
+						},
+						"classSpells": {
+							"description": "Homebrew use only",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/spellRef"
+							}
+						},
+						"requirementsSpecial": {
+							"description": "For homebrew use.",
+							"type": "string"
+						},
+						"foundryData": {
+							"$ref": "../util.json#/definitions/foundryDataObject"
+						},
+						"foundryFlags": {
+							"$ref": "../util.json#/definitions/foundryFlagsObject"
+						},
+						"foundryAdvancement": {
+							"$ref": "../util.json#/definitions/foundryAdvancementsArray"
+						},
+						"foundryImg": {
+							"$ref": "../util.json#/definitions/foundryImg"
 						},
 						"_copy": {
 							"type": "object",
@@ -1825,23 +1635,6 @@
 								"source"
 							],
 							"additionalProperties": false
-						},
-						"classSpells": {
-							"description": "Homebrew use only",
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/spellRef"
-							}
-						},
-						"requirementsSpecial": {
-							"description": "For homebrew use.",
-							"type": "string"
-						},
-						"foundryData": {
-							"$ref": "../util.json#/definitions/foundryDataObject"
-						},
-						"foundryImg": {
-							"$ref": "../util.json#/definitions/foundryImg"
 						}
 					},
 					"additionalProperties": false,
@@ -2057,7 +1850,7 @@
 					"additionalProperties": false
 				},
 				"optionalfeatureProgression": {
-					"$ref": "#/definitions/optionalfeatureProgression"
+					"$ref": "../util.json#/definitions/optionalfeatureProgression"
 				},
 				"classFeatures": {
 					"type": "array",
@@ -2088,7 +1881,7 @@
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "../util.json#/definitions/page"
 				},
 				"fluff": {
 					"type": "array",
@@ -2105,7 +1898,7 @@
 								}
 							},
 							"page": {
-								"type": "integer"
+								"$ref": "../util.json#/definitions/page"
 							},
 							"source": {
 								"type": "string"
@@ -2124,64 +1917,6 @@
 				"additionalSpells": {
 					"$ref": "../util.json#/definitions/additionalSpellsArray"
 				},
-				"_copy": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						},
-						"pantheon": {
-							"description": "Used in deity data",
-							"type": "string"
-						},
-						"shortName": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"className": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"classSource": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"_mod": {
-							"$ref": "../util.json#/definitions/_modObject"
-						},
-						"_trait": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							]
-						},
-						"_preserve": {
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "boolean"
-								}
-							}
-						}
-					},
-					"required": [
-						"name",
-						"source"
-					],
-					"additionalProperties": false
-				},
 				"classSpells": {
 					"description": "Homebrew use only",
 					"type": "array",
@@ -2195,6 +1930,12 @@
 				},
 				"foundryData": {
 					"$ref": "../util.json#/definitions/foundryDataObject"
+				},
+				"foundryFlags": {
+					"$ref": "../util.json#/definitions/foundryFlagsObject"
+				},
+				"foundryAdvancement": {
+					"$ref": "../util.json#/definitions/foundryAdvancementsArray"
 				},
 				"foundryImg": {
 					"$ref": "../util.json#/definitions/foundryImg"
@@ -2249,25 +1990,33 @@
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/class"
-			}
+			},
+			"minItems": 1,
+			"uniqueItems": true
 		},
 		"subclass": {
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/subclass"
-			}
+			},
+			"minItems": 1,
+			"uniqueItems": true
 		},
 		"classFeature": {
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/classFeature"
-			}
+			},
+			"minItems": 1,
+			"uniqueItems": true
 		},
 		"subclassFeature": {
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/subclassFeature"
-			}
+			},
+			"minItems": 1,
+			"uniqueItems": true
 		}
 	},
 	"additionalProperties": false

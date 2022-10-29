@@ -1,14 +1,15 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "charcreationoptions.json",
-	"version": "1.1.1",
+	"version": "1.1.6",
 	"title": "Character Creation Options",
 	"type": "object",
 	"definitions": {
 		"optionType": {
 			"type": "string",
-			"description": "DG: Dark Gift\n OF: Optional Feature\n RF:B Replacement Feature: Background\n SG: Supernatural Gift",
+			"description": "CS: Character Secret\nDG: Dark Gift\n OF: Optional Feature\n RF:B Replacement Feature: Background\n SG: Supernatural Gift",
 			"examples": [
+				"CS",
 				"DG",
 				"OF",
 				"RF:B",
@@ -31,7 +32,7 @@
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/definitions/page"
 				},
 				"optionType": {
 					"$comment": "Note that this field supports arbitrary strings for homebrew usage.",
@@ -52,9 +53,21 @@
 				"hasFluffImages": {
 					"type": "boolean"
 				},
+				"prerequisite": {
+					"$ref": "util.json#/definitions/prerequisite"
+				},
 				"fluff": {
 					"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source",
 					"$ref": "util.json#/definitions/fluffObject"
+				},
+				"foundryData": {
+					"$ref": "util.json#/definitions/foundryDataObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/definitions/foundryFlagsObject"
+				},
+				"foundryEffects": {
+					"$ref": "util.json#/definitions/foundryEffectsArray"
 				},
 				"foundryImg": {
 					"$ref": "util.json#/definitions/foundryImg"
@@ -72,6 +85,8 @@
 	"properties": {
 		"charoption": {
 			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/charoption"
 			}

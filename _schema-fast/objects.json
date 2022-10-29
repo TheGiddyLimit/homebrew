@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "objects.json",
-	"version": "1.2.3",
+	"version": "1.2.6",
 	"type": "object",
 	"definitions": {
 		"object": {
@@ -14,7 +14,7 @@
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/definitions/page"
 				},
 				"size": {
 					"$ref": "util.json#/definitions/size"
@@ -151,6 +151,8 @@
 	"properties": {
 		"object": {
 			"type": "array",
+			"uniqueItems": true,
+			"minItems": 1,
 			"items": {
 				"$ref": "#/definitions/object"
 			}
