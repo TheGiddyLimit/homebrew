@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.30",
+	"version": "1.11.31",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -1253,6 +1253,16 @@
 				}
 			]
 		},
+		"_speedMode": {
+			"type": "string",
+			"enum": [
+				"walk",
+				"burrow",
+				"climb",
+				"fly",
+				"swim"
+			]
+		},
 		"speed": {
 			"oneOf": [
 				{
@@ -1282,14 +1292,7 @@
 								"from": {
 									"type": "array",
 									"items": {
-										"type": "string",
-										"enum": [
-											"walk",
-											"burrow",
-											"climb",
-											"fly",
-											"swim"
-										]
+										"$ref": "#/definitions/_speedMode"
 									},
 									"uniqueItems": true,
 									"minItems": 2
@@ -1346,6 +1349,14 @@
 									"uniqueItems": true
 								}
 							}
+						},
+						"hidden": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/_speedMode"
+							},
+							"uniqueItems": true,
+							"minItems": 1
 						}
 					},
 					"additionalProperties": false
