@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.10.3",
+	"version": "1.10.4",
 	"type": "object",
 	"description": "Homebrew for 5etools. Should include arrays titled similarly to the main site data, e.g. `spell` or `class`",
 	"definitions": {
@@ -188,20 +188,6 @@
 						}
 					}
 				},
-				"dateAdded": {
-					"type": "integer",
-					"description": "The epoch timestamp (in seconds) when the homebrew was added to the repository. Not guaranteed to be anywhere near accurate."
-				},
-				"dateLastModified": {
-					"type": "integer",
-					"description": "The epoch timestamp (in seconds) when the homebrew was last modified. Not guaranteed to be anywhere near accurate."
-				},
-				"_dateLastModifiedHash": {
-					"type": "string",
-					"description": "A file hash used to automatically update the value of \"dateLastModified\". Should not be manually created/edited.",
-					"minLength": 10,
-					"maxLength": 10
-				},
 				"currencyConversions": {
 					"type": "object",
 					"description": "Keys should be uniquely-named value conversion objects, and can be referenced from item entities as \"currencyConversion\": \"<MyKey>\". The currency conversion info will then be used when rendering the value of the item.",
@@ -233,6 +219,20 @@
 							"uniqueItems": true
 						}
 					}
+				},
+				"dateAdded": {
+					"type": "integer",
+					"description": "The epoch timestamp (in seconds) when the homebrew was added to the repository. Not guaranteed to be anywhere near accurate."
+				},
+				"dateLastModified": {
+					"type": "integer",
+					"description": "The epoch timestamp (in seconds) when the homebrew was last modified. Not guaranteed to be anywhere near accurate."
+				},
+				"_dateLastModifiedHash": {
+					"type": "string",
+					"description": "A file hash used to automatically update the value of \"dateLastModified\". Should not be manually created/edited.",
+					"minLength": 10,
+					"maxLength": 10
 				},
 				"dependencies": {
 					"description": "A map of `\"<data property>\": [\"<JsonSource1>\", ..., \"<JsonSourceN>\"]`. Entities from these sources can then be extended/referenced in this file.\nNote: when copying classes/subclasses/class features/subclass features, the array should consist of \"<classIdentifier1>\", ..., \"<classIdentifierN>\" items, where \"classIdentifierN\" matches the keys in \"5etools/data/class/index.json\" (when copying class/etc. homebrew, normal \"source\"-based linking applies).",
@@ -272,6 +272,16 @@
 				"unlisted": {
 					"description": "If this homebrew file should be ignored/hidden by any indexer.",
 					"type": "boolean"
+				},
+				"status": {
+					"description": "An overall status for the homebrew.\n\"ready\" indicates that this brew is ready for use, and is in an internally consistent state.\n\"wip\" indicates that this brew is e.g. incomplete, or partially migrated between versions of the source document(s).\n\"invalid\" indicates that using this brew is inadvisable, because while it is schema-passing, it breaks clients which attempt to use it.\n\"deprecated\" indicates this brew is ready for use, but that using it is inadvisable, because e.g. it has been superseded by another brew.",
+					"type": "string",
+					"enum": [
+						"ready",
+						"wip",
+						"invalid",
+						"deprecated"
+					]
 				}
 			},
 			"required": [
