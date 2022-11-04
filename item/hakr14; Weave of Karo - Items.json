@@ -10,11 +10,11 @@
                 "authors": [
                     "hakr14"
                 ],
-                "version": "1.0.1"
+                "version": "1.0.2"
             }
         ],
         "dateAdded": 1662156010,
-        "dateLastModified": 1662264605
+        "dateLastModified": 1667539141
     },
     "item": [
         {
@@ -57,13 +57,121 @@
             "attachedSpells": [
                 "revivify"
             ],
-            "charges": "1",
+            "charges": 1,
             "recharge": "dawn",
             "entries": [
                 "The hilt of this shortsword is ornately carved with a relief of a winged figure kneeling down to help a wounded soldier.",
                 "This shortsword has 1 charge. As an action, you can expend a charge to cast {@spell revivify}. When cast this way, the spell does not consume its material component.",
                 "Each dawn, if the shortsword has no charge, roll a {@dice d8}. On an 8, the shortsword regains its charge."
-            ]
+            ],
+            "foundryImg": "icons/weapons/swords/sword-guard-bronze.webp"
+        },
+		{
+			"source": "karoitem",
+            "name": "Expedient Wrappings",
+            "rarity": "uncommon",
+            "wondrous": true,
+			"type": "G",
+			"charges": 5,
+			"recharge": "dawn",
+			"entries": [
+				"These leg wrappings have 5 charges, and regain all expended charges each dawn. When you use the {@action Dash} action, you can expend a charge to also gain the benefits of the {@action Disengage} action."
+			],
+			"foundryData": {
+				"activation.type": "special",
+				"activation.condition": "When you use the Dash action"
+			},
+			"foundryImg": "icons/equipment/wrist/wrap-wide-cloth-gold-red.webp"
+		},
+        {
+            "source": "karoitem",
+            "name": "Crested Bluehawk Feather",
+            "rarity": "uncommon",
+            "wondrous": true,
+            "charges": 1,
+            "recharge": "dawn",
+            "reqAttune": true,
+            "entries": [
+                "Plucked from a live magical bird, this feather retains some of its more interesting properties.",
+                "While attuned to this item, when you have a flying speed, that flying speed is increased by 10 feet.",
+                "Additionally, once per day, you can grant yourself a flying speed of 10 feet for 1 minute. This flying speed cannot benefit from the bonus speed this item grants."
+            ],
+            "foundryData": {
+                "activation.type": "none",
+                "duration.value": 1,
+                "duration.units": "minute"
+            },
+            "foundryEffects": [
+                {
+                    "name": "Wings of the Hawk",
+                    "disabled": true,
+                    "changes": [
+                        {
+                            "key": "system.attributes.movement.fly",
+                            "mode": "ADD",
+                            "value": 10
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/commodities/materials/feather-blue.webp"
+        },
+        {
+            "source": "karoitem",
+            "name": "Sleepless Serandite",
+            "rarity": "uncommon",
+            "wondrous": true,
+            "entries": [
+                "A muted pink gemstone. The gemstone flashes bright white when a creature within 5 feet moves away from it.",
+                "When this happens, you may use your reaction to make an opportunity attack against this creature. You do not need to be able to see the creature to do this.",
+                "Additionally, you cannot have disadvantage on an opportunity attacks while equipped with this item."
+            ],
+            "foundryImg": "icons/commodities/gems/gem-faceted-teardrop-pink.webp"
+        },
+        {
+            "source": "karoitem",
+            "name": "Summoner's Grimoire",
+            "rarity": "uncommon",
+            "wondrous": true,
+            "reqAttune": "by a creature with the ability to summon another creature",
+            "entries": [
+                "A thick tome. Most of the text within is indecipherable, but a passage detailing a way to take advantage of the energy transfer of summoning stands out.",
+                "When you summon a creature, each creature of your choice within 5 feet of the summon must make a DC 14 Constitution saving throw. On a failure, the creature takes {@damage 1d6} necrotic damage, and the damage dealt is returned as temporary hit points either to you or to the summoned creature."
+            ],
+            "foundryData": {
+                "activation.type": "special",
+                "activation.condition": "When you summon a creature",
+                "target.value": 5,
+                "target.units": "ft",
+                "target.type": "rad",
+                "actionType": "save",
+                "damage.parts": [
+                    [
+                        "1d6",
+                        "necrotic"
+                    ]
+                ],
+                "save.ability": "con",
+                "save.dc": 14,
+                "save.scaling": "flat"
+            },
+            "foundryImg": "icons/sundries/books/book-embossed-gold-green.webp"
+        },
+        {
+            "source": "karoitem",
+            "name": "Lucky Pauldron",
+            "rarity": "uncommon",
+            "wondrous": true,
+			"type": "G",
+            "reqAttune": "by a creature with proficiency with medium armor",
+            "entries": [
+                "A single, well-loved pauldron.",
+                "While attuned to this pauldron, your weapon attacks score a critical hit on a roll of 19 or 20."
+            ],
+            "foundryFlags": {
+                "flags.dnd5e.weaponCriticalThreshold": true
+            },
+            "foundryImg": "icons/equipment/shoulder/pauldron-purple-worn.webp"
         }
     ]
 }
