@@ -1,90 +1,96 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "rewards.json",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"type": "object",
-	"properties": {
+	"definitions": {
 		"reward": {
-			"type": "array",
-			"uniqueItems": true,
-			"items": {
-				"type": "object",
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"source": {
-						"type": "string"
-					},
-					"page": {
-						"$ref": "util.json#/definitions/page"
-					},
-					"type": {
-						"type": "string",
-						"examples": [
-							"Blessing",
-							"Boon",
-							"Charm",
-							"Draconic Gift",
-							"Inhabitation",
-							"Fragment of Suffering",
-							"Other"
-						]
-					},
-					"ability": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"$ref": "entry.json"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					},
-					"signaturespells": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"$ref": "entry.json"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					},
-					"rarity": {
-						"$ref": "util.json#/definitions/rarity"
-					},
-					"entries": {
-						"type": "array",
-						"uniqueItems": true,
-						"items": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/definitions/page"
+				},
+				"type": {
+					"type": "string",
+					"examples": [
+						"Blessing",
+						"Boon",
+						"Charm",
+						"Draconic Gift",
+						"Inhabitation",
+						"Fragment of Suffering",
+						"Other"
+					]
+				},
+				"ability": {
+					"type": "object",
+					"properties": {
+						"entry": {
 							"$ref": "entry.json"
 						}
 					},
-					"foundryData": {
-						"$ref": "util.json#/definitions/foundryDataObject"
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				},
+				"signaturespells": {
+					"type": "object",
+					"properties": {
+						"entry": {
+							"$ref": "entry.json"
+						}
 					},
-					"foundryFlags": {
-						"$ref": "util.json#/definitions/foundryFlagsObject"
-					},
-					"foundryEffects": {
-						"$ref": "util.json#/definitions/foundryEffectsArray"
-					},
-					"foundryImg": {
-						"$ref": "util.json#/definitions/foundryImg"
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				},
+				"rarity": {
+					"$ref": "util.json#/definitions/rarity"
+				},
+				"entries": {
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"$ref": "entry.json"
 					}
 				},
-				"required": [
-					"name",
-					"source",
-					"type",
-					"entries"
-				],
-				"additionalProperties": false
+				"foundryData": {
+					"$ref": "util.json#/definitions/foundryDataObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/definitions/foundryFlagsObject"
+				},
+				"foundryEffects": {
+					"$ref": "util.json#/definitions/foundryEffectsArray"
+				},
+				"foundryImg": {
+					"$ref": "util.json#/definitions/foundryImg"
+				}
+			},
+			"required": [
+				"name",
+				"source",
+				"type",
+				"entries"
+			],
+			"additionalProperties": false
+		}
+	},
+	"properties": {
+		"reward": {
+			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/definitions/reward"
 			}
 		}
 	},

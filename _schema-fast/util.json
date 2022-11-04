@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.27",
+	"version": "1.11.31",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -31,6 +31,11 @@
 				}
 			}
 		},
+		"url": {
+			"type": "string",
+			"description": "\"uri-reference\" is unsuitable for brew, as it requires URL-encoding \"'\" (see: https://www.ietf.org/rfc/rfc3986.txt)",
+			"minLength": 3
+		},
 		"page": {
 			"type": [
 				"integer",
@@ -54,7 +59,8 @@
 				],
 				"additionalProperties": false
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"additionalSources": {
 			"type": "array",
@@ -73,7 +79,14 @@
 				],
 				"additionalProperties": false
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
+		},
+		"alias": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
 		},
 		"reprintedAs": {
 			"type": "array",
@@ -103,7 +116,8 @@
 					}
 				]
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"tagNameStats": {
 			"type": "string",
@@ -240,7 +254,8 @@
 					}
 				}
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"toolNameLower": {
 			"type": "string",
@@ -392,7 +407,8 @@
 										}
 									]
 								},
-								"uniqueItems": true
+								"uniqueItems": true,
+								"minItems": 2
 							},
 							"count": {
 								"type": "integer"
@@ -405,7 +421,8 @@
 					"type": "boolean"
 				}
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"skillNameLower": {
 			"type": "string",
@@ -500,7 +517,8 @@
 								"items": {
 									"$ref": "#/definitions/skillNameLower"
 								},
-								"uniqueItems": true
+								"uniqueItems": true,
+								"minItems": 2
 							},
 							"count": {
 								"type": "integer"
@@ -742,7 +760,8 @@
 														]
 													}
 												]
-											}
+											},
+											"minItems": 2
 										},
 										"count": {
 											"type": "integer"
@@ -782,14 +801,16 @@
 								}
 							]
 						},
-						"uniqueItems": true
+						"uniqueItems": true,
+						"minItems": 1
 					}
 				},
 				"additionalProperties": {
 					"type": "boolean"
 				}
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"weaponProficiencies": {
 			"type": "array",
@@ -941,7 +962,8 @@
 				},
 				"additionalProperties": false
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"armorProficiencies": {
 			"type": "array",
@@ -963,7 +985,8 @@
 				},
 				"additionalProperties": false
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"savingThrowProficiencies": {
 			"type": "array",
@@ -1003,7 +1026,8 @@
 										"cha"
 									]
 								},
-								"uniqueItems": true
+								"uniqueItems": true,
+								"minItems": 2
 							},
 							"count": {
 								"type": "integer"
@@ -1017,7 +1041,8 @@
 				},
 				"additionalProperties": false
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"expertise": {
 			"type": "array",
@@ -1173,7 +1198,8 @@
 					}
 				}
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"additionalFeatsArray": {
 			"type": "array",
@@ -1188,7 +1214,8 @@
 					"type": "boolean"
 				}
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"proficiencyTag": {
 			"type": "string",
@@ -1226,6 +1253,16 @@
 				}
 			]
 		},
+		"_speedMode": {
+			"type": "string",
+			"enum": [
+				"walk",
+				"burrow",
+				"climb",
+				"fly",
+				"swim"
+			]
+		},
 		"speed": {
 			"oneOf": [
 				{
@@ -1255,16 +1292,10 @@
 								"from": {
 									"type": "array",
 									"items": {
-										"type": "string",
-										"enum": [
-											"walk",
-											"burrow",
-											"climb",
-											"fly",
-											"swim"
-										]
+										"$ref": "#/definitions/_speedMode"
 									},
-									"uniqueItems": true
+									"uniqueItems": true,
+									"minItems": 2
 								},
 								"amount": {
 									"type": "integer"
@@ -1318,6 +1349,14 @@
 									"uniqueItems": true
 								}
 							}
+						},
+						"hidden": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/_speedMode"
+							},
+							"uniqueItems": true,
+							"minItems": 1
 						}
 					},
 					"additionalProperties": false
@@ -1343,6 +1382,7 @@
 		},
 		"prerequisite": {
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"type": "object",
 				"properties": {
@@ -1751,7 +1791,8 @@
 							}
 						]
 					},
-					"uniqueItems": true
+					"uniqueItems": true,
+					"minItems": 1
 				},
 				{
 					"type": "null"
@@ -1830,7 +1871,8 @@
 							}
 						]
 					},
-					"uniqueItems": true
+					"uniqueItems": true,
+					"minItems": 1
 				},
 				{
 					"type": "null"
@@ -1863,7 +1905,8 @@
 					}
 				]
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"damageVulnerabilityArray": {
 			"oneOf": [
@@ -1942,7 +1985,8 @@
 					}
 				]
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"conditionImmunityArray": {
 			"oneOf": [
@@ -1985,7 +2029,8 @@
 							}
 						]
 					},
-					"uniqueItems": true
+					"uniqueItems": true,
+					"minItems": 1
 				},
 				{
 					"type": "null"
@@ -2018,7 +2063,8 @@
 					}
 				]
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		},
 		"resourcesArray": {
 			"type": "array",
@@ -2155,6 +2201,7 @@
 		},
 		"genericFluffArray": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
 				"anyOf": [
@@ -3050,6 +3097,7 @@
 		},
 		"versionsArray": {
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"$ref": "#/definitions/version"
 			}
@@ -3233,6 +3281,7 @@
 		},
 		"_additionalSpellArrayOfStringOrChoiceObject": {
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"oneOf": [
 					{
@@ -3286,6 +3335,7 @@
 		"additionalSpellsArray": {
 			"description": "A collection of additional spells which a feature grants.\nThis array enables import functionality for VTTs, and should be used in addition to \"classSpells\"/\"subclassSpells\"/\"subSubclassSpells\" blocks which enable references on the site.",
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"type": "object",
 				"properties": {
@@ -3474,6 +3524,7 @@
 		},
 		"reqAttuneTags": {
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"type": "object",
 				"properties": {
@@ -3535,10 +3586,12 @@
 			"type": "array",
 			"items": {
 				"$ref": "entry.json"
-			}
+			},
+			"minItems": 1
 		},
 		"optionalfeatureProgression": {
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"type": "object",
 				"properties": {
@@ -3631,6 +3684,7 @@
 		},
 		"foundryAdvancementsArray": {
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"$ref": "#/definitions/foundryAdvancementObject"
 			},
@@ -3690,10 +3744,12 @@
 			"items": {
 				"$ref": "#/definitions/foundryEffectObject"
 			},
+			"minItems": 1,
 			"uniqueItems": true
 		},
 		"foundrySideDataGenericArray": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
 				"type": "object",
@@ -3723,6 +3779,7 @@
 		},
 		"foundrySideDataGenericFeatureArray": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
 				"type": "object",

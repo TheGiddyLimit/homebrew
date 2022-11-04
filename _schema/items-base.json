@@ -1,13 +1,22 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "items-base.json",
-	"version": "1.4.13",
+	"version": "1.4.15",
 	"definitions": {
-		"itemLookupArray": {
+		"itemPropertyLookupArray": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/itemLookup"
+				"$ref": "#/definitions/itemPropertyLookup"
+			}
+		},
+		"itemTypeLookupArray": {
+			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/definitions/itemTypeLookup"
 			}
 		},
 		"itemLookupBase": {
@@ -24,10 +33,6 @@
 				},
 				"name": {
 					"type": "string"
-				},
-				"template": {
-					"$comment": "Note that this is not used on item types.",
-					"type": "string"
 				}
 			},
 			"additionalProperties": false,
@@ -36,7 +41,7 @@
 				"source"
 			]
 		},
-		"itemLookup": {
+		"itemPropertyLookup": {
 			"anyOf": [
 				{
 					"type": "object",
@@ -54,7 +59,6 @@
 							"type": "string"
 						},
 						"template": {
-							"$comment": "Note that this is not used on item types.",
 							"type": "string"
 						},
 						"entries": {
@@ -86,7 +90,66 @@
 							"type": "string"
 						},
 						"template": {
-							"$comment": "Note that this is not used on item types.",
+							"type": "string"
+						},
+						"entriesTemplate": {
+							"type": "array",
+							"items": {
+								"$ref": "entry.json"
+							}
+						}
+					},
+					"additionalProperties": false,
+					"required": [
+						"abbreviation",
+						"source"
+					]
+				}
+			]
+		},
+		"itemTypeLookup": {
+			"anyOf": [
+				{
+					"type": "object",
+					"properties": {
+						"abbreviation": {
+							"type": "string"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "util.json#/definitions/page"
+						},
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "entry.json"
+							}
+						}
+					},
+					"additionalProperties": false,
+					"required": [
+						"abbreviation",
+						"source"
+					]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"abbreviation": {
+							"type": "string"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "util.json#/definitions/page"
+						},
+						"name": {
 							"type": "string"
 						},
 						"entriesTemplate": {
@@ -109,6 +172,7 @@
 	"properties": {
 		"baseitem": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
 				"type": "object",
@@ -117,10 +181,10 @@
 						"type": "string"
 					},
 					"type": {
-						"$ref": "shared-items.json#/definitions/itemType"
+						"$ref": "items-shared.json#/definitions/itemType"
 					},
 					"rarity": {
-						"$ref": "shared-items.json#/definitions/itemRarity"
+						"$ref": "items-shared.json#/definitions/itemRarity"
 					},
 					"source": {
 						"type": "string"
@@ -132,7 +196,7 @@
 						"type": "integer"
 					},
 					"age": {
-						"$ref": "shared-items.json#/definitions/itemAge"
+						"$ref": "items-shared.json#/definitions/itemAge"
 					},
 					"armor": {
 						"description": "Flag used when merging generic variants",
@@ -157,7 +221,7 @@
 						}
 					},
 					"property": {
-						"$ref": "shared-items.json#/definitions/itemProperty"
+						"$ref": "items-shared.json#/definitions/itemProperty"
 					},
 					"range": {
 						"type": "string"
@@ -166,7 +230,7 @@
 						"type": "integer"
 					},
 					"scfType": {
-						"$ref": "shared-items.json#/definitions/itemScfType"
+						"$ref": "items-shared.json#/definitions/itemScfType"
 					},
 					"stealth": {
 						"type": "boolean"
@@ -219,7 +283,7 @@
 						"type": "boolean"
 					},
 					"weaponCategory": {
-						"$ref": "shared-items.json#/definitions/itemWeaponCategory"
+						"$ref": "items-shared.json#/definitions/itemWeaponCategory"
 					},
 					"weight": {
 						"type": "number"
@@ -240,7 +304,7 @@
 						"$ref": "util.json#/definitions/otherSources"
 					},
 					"ammoType": {
-						"$ref": "shared-items.json#/definitions/itemAmmoType"
+						"$ref": "items-shared.json#/definitions/itemAmmoType"
 					},
 					"packContents": {
 						"type": "array",
@@ -327,7 +391,7 @@
 						"$ref": "util.json#/definitions/foundryImg"
 					},
 					"fluff": {
-						"$ref": "shared-items.json#/definitions/fluff"
+						"$ref": "items-shared.json#/definitions/fluff"
 					}
 				},
 				"required": [
@@ -347,13 +411,14 @@
 			}
 		},
 		"itemProperty": {
-			"$ref": "#/definitions/itemLookupArray"
+			"$ref": "#/definitions/itemPropertyLookupArray"
 		},
 		"itemType": {
-			"$ref": "#/definitions/itemLookupArray"
+			"$ref": "#/definitions/itemTypeLookupArray"
 		},
 		"itemEntry": {
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"type": "object",
 				"properties": {
@@ -374,6 +439,7 @@
 		},
 		"itemTypeAdditionalEntries": {
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"type": "object",
 				"properties": {
