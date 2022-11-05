@@ -118,7 +118,7 @@ function buildDeepIndex () {
 							// abbreviation
 							a: file.contents._meta.sources.map(it => it.abbreviation).filter(Boolean),
 							// status
-							s: file.contents.status,
+							s: file.contents._meta.status,
 						};
 					}
 				}
