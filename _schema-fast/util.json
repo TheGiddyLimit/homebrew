@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.31",
+	"version": "1.12.0",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -3673,7 +3673,7 @@
 				]
 			}
 		},
-		"foundryDataObject": {
+		"foundrySystemObject": {
 			"type": "object"
 		},
 		"foundryFlagsObject": {
@@ -3717,7 +3717,13 @@
 									"integer"
 								]
 							},
-							"value": true
+							"value": true,
+							"priority": {
+								"type": [
+									"string",
+									"integer"
+								]
+							}
 						},
 						"required": [
 							"key",
@@ -3726,6 +3732,12 @@
 						],
 						"additionalProperties": false
 					}
+				},
+				"flags": {
+					"type": "object"
+				},
+				"duration": {
+					"type": "object"
 				},
 				"disabled": {
 					"const": true
@@ -3760,8 +3772,8 @@
 					"source": {
 						"type": "string"
 					},
-					"data": {
-						"$ref": "#/definitions/foundryDataObject"
+					"system": {
+						"$ref": "#/definitions/foundrySystemObject"
 					},
 					"effects": {
 						"type": "array",
@@ -3799,8 +3811,8 @@
 					"isIgnored": {
 						"const": true
 					},
-					"data": {
-						"$ref": "#/definitions/foundryDataObject"
+					"system": {
+						"$ref": "#/definitions/foundrySystemObject"
 					},
 					"actorDataMod": {
 						"type": "object"
