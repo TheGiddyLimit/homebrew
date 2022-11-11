@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "2.10.6",
+	"version": "2.11.0",
 	"$id": "class.json",
 	"type": "object",
 	"definitions": {
@@ -144,8 +144,8 @@
 				"consumes": {
 					"$ref": "../util.json#/definitions/consumesObject"
 				},
-				"foundryData": {
-					"$ref": "../util.json#/definitions/foundryDataObject"
+				"foundrySystem": {
+					"$ref": "../util.json#/definitions/foundrySystemObject"
 				},
 				"foundryFlags": {
 					"$ref": "../util.json#/definitions/foundryFlagsObject"
@@ -262,8 +262,8 @@
 				"consumes": {
 					"$ref": "../util.json#/definitions/consumesObject"
 				},
-				"foundryData": {
-					"$ref": "../util.json#/definitions/foundryDataObject"
+				"foundrySystem": {
+					"$ref": "../util.json#/definitions/foundrySystemObject"
 				},
 				"foundryFlags": {
 					"$ref": "../util.json#/definitions/foundryFlagsObject"
@@ -535,8 +535,8 @@
 								}
 							}
 						},
-						"foundryData": {
-							"$ref": "../util.json#/definitions/foundryDataObject"
+						"foundrySystem": {
+							"$ref": "../util.json#/definitions/foundrySystemObject"
 						},
 						"foundryFlags": {
 							"$ref": "../util.json#/definitions/foundryFlagsObject"
@@ -692,8 +692,8 @@
 								}
 							}
 						},
-						"foundryData": {
-							"$ref": "../util.json#/definitions/foundryDataObject"
+						"foundrySystem": {
+							"$ref": "../util.json#/definitions/foundrySystemObject"
 						},
 						"foundryFlags": {
 							"$ref": "../util.json#/definitions/foundryFlagsObject"
@@ -904,8 +904,8 @@
 						}
 					}
 				},
-				"foundryData": {
-					"$ref": "../util.json#/definitions/foundryDataObject"
+				"foundrySystem": {
+					"$ref": "../util.json#/definitions/foundrySystemObject"
 				},
 				"foundryFlags": {
 					"$ref": "../util.json#/definitions/foundryFlagsObject"
@@ -1000,6 +1000,18 @@
 						"isReprinted": {
 							"type": "boolean"
 						},
+						"classGroup": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"examples": [
+									"expert",
+									"mage",
+									"priest",
+									"warrior"
+								]
+							}
+						},
 						"isSidekick": {
 							"type": "boolean"
 						},
@@ -1262,8 +1274,8 @@
 							"description": "For homebrew use.",
 							"type": "string"
 						},
-						"foundryData": {
-							"$ref": "../util.json#/definitions/foundryDataObject"
+						"foundrySystem": {
+							"$ref": "../util.json#/definitions/foundrySystemObject"
 						},
 						"foundryFlags": {
 							"$ref": "../util.json#/definitions/foundryFlagsObject"
@@ -1304,6 +1316,18 @@
 						"isReprinted": {
 							"type": "boolean"
 						},
+						"classGroup": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"examples": [
+									"expert",
+									"mage",
+									"priest",
+									"warrior"
+								]
+							}
+						},
 						"isSidekick": {
 							"type": "boolean"
 						},
@@ -1566,8 +1590,8 @@
 							"description": "For homebrew use.",
 							"type": "string"
 						},
-						"foundryData": {
-							"$ref": "../util.json#/definitions/foundryDataObject"
+						"foundrySystem": {
+							"$ref": "../util.json#/definitions/foundrySystemObject"
 						},
 						"foundryFlags": {
 							"$ref": "../util.json#/definitions/foundryFlagsObject"
@@ -1665,6 +1689,18 @@
 				},
 				"isReprinted": {
 					"type": "boolean"
+				},
+				"classGroup": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"examples": [
+							"expert",
+							"mage",
+							"priest",
+							"warrior"
+						]
+					}
 				},
 				"isSidekick": {
 					"type": "boolean"
@@ -1928,8 +1964,8 @@
 					"description": "For homebrew use.",
 					"type": "string"
 				},
-				"foundryData": {
-					"$ref": "../util.json#/definitions/foundryDataObject"
+				"foundrySystem": {
+					"$ref": "../util.json#/definitions/foundrySystemObject"
 				},
 				"foundryFlags": {
 					"$ref": "../util.json#/definitions/foundryFlagsObject"
@@ -1990,25 +2026,33 @@
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/class"
-			}
+			},
+			"minItems": 1,
+			"uniqueItems": true
 		},
 		"subclass": {
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/subclass"
-			}
+			},
+			"minItems": 1,
+			"uniqueItems": true
 		},
 		"classFeature": {
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/classFeature"
-			}
+			},
+			"minItems": 1,
+			"uniqueItems": true
 		},
 		"subclassFeature": {
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/subclassFeature"
-			}
+			},
+			"minItems": 1,
+			"uniqueItems": true
 		}
 	},
 	"additionalProperties": false
