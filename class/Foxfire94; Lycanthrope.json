@@ -8,17 +8,16 @@
 				"authors": [
 					"Foxfire94"
 				],
-				"version": "1.2",
+				"version": "1.6",
 				"convertedBy": [
 					"Foxfire94"
 				],
-				"url": "https://www.dmsguild.com/product/304790/Lycanthrope-Class-for-DD-5e-2020?",
+				"url": "https://www.dmsguild.com/product/304790/Lycanthrope-Class-for-DD-5e-2022",
 				"targetSchema": "1.0.0"
 			}
 		],
 		"dateAdded": 1584380044,
-		"dateLastModified": 1628132888,
-		"_dateLastModifiedHash": "7ad50fc5a4"
+		"dateLastModified": 1668454530
 	},
 	"class": [
 		{
@@ -1119,6 +1118,93 @@
 			"featureType": [
 				"Totem Power"
 			]
+		},
+		{
+			"name": "Enfeebling Fangs",
+			"source": "FoxfireLycan",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 10,
+						"class": {
+							"name": "Lycanthrope"
+						}
+					},
+					"feature": [
+						"Werebat Lycanthrope Origin"
+					]
+				}
+			],
+			"entries": [
+				"Once per turn when you hit a creature with your bite you can force the creature to make a Constitution saving throw with a DC equal to 8 + your proficiency bonus + your Constitution modifier. On a failed save the target deals only half damage with weapon attacks that use Strength for 1 minute The target may repeat the saving throw on each of its turns for the duration, ending the effect on a success."
+			],
+			"featureType": [
+				"Totem Power"
+			]
+		},
+		{
+			"name": "Vampiric Bite",
+			"source": "FoxfireLycan",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 10,
+						"class": {
+							"name": "Lycanthrope"
+						}
+					},
+					"feature": [
+						"Werebat Lycanthrope Origin"
+					]
+				}
+			],
+			"entries": [
+				"Once per turn when you hit a creature with your bite you can regain hit points equal to your Lycanthrope level."
+			],
+			"featureType": [
+				"Totem Power"
+			]
+		},
+		{
+			"name": "Nine-Tails",
+			"source": "FoxfireLycan",
+			"prerequisite": [
+				{
+					"feature": [
+						"Werefox Lycanthrope Origin"
+					]
+				}
+			],
+			"entries": [
+				"Your hybrid and animal forms display fey-touched magical power, gaining an additional tail for every two Lycanthrope levels you posses, up to a maximum of 9 tails.",
+				"For each tail your hybrid form has, choose a 1st-level spell from the {@filter druid spell list|spells|class=druid}. You may cast one of these spells using this totem power a number of times equal to your proficiency bonus, and you regain all expended uses of this totem power when you finish a long rest."
+			],
+			"featureType": [
+				"Totem Power"
+			]
+		},
+		{
+			"name": "Silver Tongue Trickster",
+			"source": "FoxfireLycan",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 10,
+						"class": {
+							"name": "Lycanthrope"
+						}
+					},
+					"feature": [
+						"Werefox Lycanthrope Origin"
+					]
+				}
+			],
+			"entries": [
+				"When you take the Attack action on your turn, you can replace one attack with an attempt to deceive one humanoid you can see within 30 feet of you that can see and hear you. Make a Charisma ({@skill Deception}) check contested by the target's Wisdom ({@skill Insight}) check. If your check succeeds, your movement doesn't provoke opportunity attacks from the target and your attack rolls against it have advantage; both benefits last until the end of your next turn or until you use this ability on a different target. If your check fails, the target can't be deceived by you in this way for 1 hour."
+			],
+			"featureType": [
+				"Totem Power"
+			]
 		}
 	],
 	"monster": [
@@ -1179,6 +1265,101 @@
 			],
 			"miscTags": [
 				"MW"
+			]
+		},
+		{
+			"name": "Fox",
+			"size": [
+				"S"
+			],
+			"type": "beast",
+			"source": "FoxfireLycan",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "2d6 + 0",
+				"average": 7
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 8,
+			"dex": 15,
+			"con": 10,
+			"int": 3,
+			"wis": 12,
+			"cha": 7,
+			"passive": 13,
+			"cr": "1/8",
+			"senses": [
+				"60ft. darkvision"
+			],
+			"senseTags": [
+				"D"
+			],
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"trait": [
+				{
+					"name": "Keen Hearing and Smell",
+					"entries": [
+						"The fox has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or smell."
+					]
+				},
+				{
+					"name": "Pounce",
+					"entries": [
+						"If the fox moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, the target must succeed on a {@dc 9} Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the fox can make one bite attack against it as a bonus action."
+					]
+				}
+			],
+			"traitTags": [
+				"Keen Senses",
+				"Pounce"
+			],
+			"shortName": true,
+			"conditionInflict": [
+				"prone"
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) piercing damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) slashing damage."
+					]
+				}
+			],
+			"miscTags": [
+				"MW"
+			],
+			"reaction": [
+				{
+					"name": "Elude",
+					"entries": [
+						"The fox adds 2 to its AC against one opportunity attack that would hit it."
+					]
+				}
 			]
 		}
 	],
@@ -1932,7 +2113,7 @@
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"At 6th Level You gain the hunting sensibilities of a wolf. You can track other creatures while traveling at a fast pace, and you can move stealthily while traveling at a normal pace (see Chapter 8 of the Player's Handbook for rules on travel pace)."
+				"At 6th level you gain the hunting sensibilities of a wolf. You can track other creatures while traveling at a fast pace, and you can move stealthily while traveling at a normal pace (see Chapter 8 of the Player's Handbook for rules on travel pace)."
 			]
 		},
 		{
@@ -2449,6 +2630,184 @@
 				"At 18th level, whilst in your hybrid form you can use your action to force each creature of your choice that is within 60 feet of you and aware of you to make a Wisdom saving throw with a DC of 8 + your proficiency bonus + your Charisma modifier or become {@condition frightened} of you for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to your Frightful Presence for the next 24 hours.",
 				"You may use this feature a number of times equal to your Charisma modifier (minimum of 1) and you regain all expended uses when you finish a long rest."
 			]
+		},
+		{
+			"name": "Werebat",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Werebat",
+			"subclassSource": "FoxfireLycan",
+			"level": 1,
+			"entries": [
+				"Commonly, though incorrectly, thought to be lycanthropes exclusive to goblinoids, Werebats are shrieking and deadly winged creatures of the night. As humanoids they're typically pug-nosed and sharp-toothed, but such differences are so minute that they are virtually indistinguishable; often intelligent, these ambush predators enjoy hunting the most dangerous game.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bat-Hybrid Form|Lycanthrope|FoxfireLycan|Werebat|FoxfireLycan|1"
+				}
+			]
+		},
+		{
+			"name": "Bat-Hybrid Form",
+			"entries": [
+				"When choosing this origin at 1st level your hybrid form takes the shape of a bat-humanoid and your bite becomes a natural weapon you are proficient with whilst in that form.",
+				"When making a melee attack with your bite, you have a reach of 5 feet and deal {@dice 1d4} piercing damage on a hit. You may add your Strength or Dexterity modifier to the attack and damage rolls.",
+				"A creature hit by your bite must succeed on a Constitution saving throw with a DC of 8 + your proficiency bonus + your Constitution modifier or be cursed with werebat lycanthropy.",
+				"Additionally, while in your hybrid form you gain a flying speed equal to your movement speed. To use this speed, you can't be wearing medium or heavy armor. You can also use Dexterity instead of Strength for the attack and damage rolls of your unarmed strikes made using your predatory strikes feature."
+			],
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Werebat",
+			"subclassSource": "FoxfireLycan",
+			"level": 1,
+			"header": 1
+		},
+		{
+			"name": "Echolocation",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Werebat",
+			"subclassSource": "FoxfireLycan",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Starting at 6th level you gain blindsight out to a range of 30 feet as long as you are not deafened while in your hybrid form.",
+				"At 14th level the range of your blindsight increases to 60 feet."
+			]
+		},
+		{
+			"name": "Bat Form",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Werebat",
+			"subclassSource": "FoxfireLycan",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Starting at 10th level you can transform into a {@creature bat|MM} instead of your hybrid form when using your Hybrid Form feature. You retain the benefits granted by the hybrid form feature. Any equipment you are wearing or carrying isn't transformed and you can't wear any armor unless it is made to fit your animal form. You have disadvantage when using equipment meant for humanoids and cannot cast spells that require material components while in this form.",
+				"Your statistics other than your AC and size remain the same in your animal form. Your AC when in your animal form is 12 + your Dexterity modifier + your Constitution modifier (you still get the bonus AC from your Resilient Hide feature in situations when it would apply) and your size becomes Tiny.",
+				"To discern that you aren't a normal animal of your type, a creature can use its action to inspect your appearance and must make an Intelligence ({@skill Investigation}) check contested by your Charisma ({@skill deception}) check.",
+				"Transforming this way counts as a use of your hybrid form feature."
+			]
+		},
+		{
+			"name": "Dark Ambusher",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Werebat",
+			"subclassSource": "FoxfireLycan",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"At 14th level you learn to with blinding speed against the unprepared. You have advantage on initiative rolls, additionally on your first turn during combat, you have advantage on attack rolls against creatures that have not yet acted."
+			]
+		},
+		{
+			"name": "Screech",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Werebat",
+			"subclassSource": "FoxfireLycan",
+			"level": 18,
+			"header": 2,
+			"entries": [
+				"Beginning at 18th level you can use your action to let loose an ear-shattering screech. Each creature within 15 feet of you that can hear the screech must make a Constitution saving throw with a DC equal to 8 + your proficiency bonus + your Constitution modifier. On a failure, the creature takes {@damage 8d6} thunder damage and is deafened for 1 minute. On a success, the creature takes half as much damage and isn't deafened. The screech deals double damage to objects and structures, emits a dreadful sound audible out to 300 feet and also deafens you for 1 minute.",
+				"Once you use this feature you can't use it again until you finish a long rest."
+			]
+		},
+		{
+			"name": "Werefox",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Werefox",
+			"subclassSource": "FoxfireLycan",
+			"level": 1,
+			"entries": [
+				"Werefoxes are sly and clever lycanthropes, typically thought to be self-centered, hedonistic and vain; some are instead simply mischievous tricksters. As humanoids they radiate and elven-like countenance regardless of their race, while in their hybrid form they retain a lean and lithe physique; both of these aid their preferred deceptive and illusive tactics. Although werefoxes are overwhelmingly female, rare exceptions do exist.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Fox-Hybrid Form|Lycanthrope|FoxfireLycan|Werefox|FoxfireLycan|1"
+				}
+			]
+		},
+		{
+			"name": "Fox-Hybrid Form",
+			"entries": [
+				"When choosing this origin at 1st level your hybrid form takes the shape of a fox-humanoid and your bite becomes a natural weapon you are proficient with whilst in that form.",
+				"When making a melee attack with your bite, you have a reach of 5 feet and deal {@dice 1d6} piercing damage on a hit. You add your Strength modifier to the attack and damage rolls.",
+				"A creature hit by your bite must succeed on a Constitution saving throw with a DC of 8 + your proficiency bonus + your Constitution modifier or be cursed with werefox lycanthropy.",
+				"Additionally, while in your hybrid form you gain a burrowing speed equal to half your movement speed."
+			],
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Werefox",
+			"subclassSource": "FoxfireLycan",
+			"level": 1,
+			"header": 1
+		},
+		{
+			"name": "Vulpine Charm",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Werefox",
+			"subclassSource": "FoxfireLycan",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Starting at 6th level you have advantage on saving throws against being charmed, magic can't put you to sleep, and you gain advantage on any Charisma ({@skill Deception}) or Charisma ({@skill Persuasion}) checks you make.",
+				"Additionally on a successful Charisma ({@skill Deception}) or Charisma ({@skill Persuasion}) check you can spend a use of this feature to cause the creature to be charmed by you for 1 minute or until you or your companions do anything harmful to it. You can use this part of the feature a number of times equal to your Charisma modifier (minimum of 1). You regain expended uses of this feature when you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Fox Form",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Werefox",
+			"subclassSource": "FoxfireLycan",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Starting at 10th level you can transform into a {@creature fox|FoxfireLycan} instead of your hybrid form when using your Hybrid Form feature. You retain the benefits granted by the hybrid form feature. Any equipment you are wearing or carrying isn't transformed and you can't wear any armor unless it is made to fit your animal form. You have disadvantage when using equipment meant for humanoids and cannot cast spells that require material components while in this form.",
+				"Your statistics other than your AC and size remain the same in your animal form. Your AC when in your animal form is 12 + your Dexterity modifier + your Constitution modifier (you still get the bonus AC from your Resilient Hide feature in situations when it would apply) and your size becomes Small.",
+				"To discern that you aren't a normal animal of your type, a creature can use its action to inspect your appearance and must make an Intelligence ({@skill Investigation}) check contested by your Charisma ({@skill deception}) check.",
+				"Transforming this way counts as a use of your hybrid form feature."
+			]
+		},
+		{
+			"name": "Infravision",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Werefox",
+			"subclassSource": "FoxfireLycan",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"At 14th level, whenever you are in your hybrid or animal form you are able to see normally in dim light and darkness within 60 feet of you. You can't discern colours in darkness, only shades of grey."
+			]
+		},
+		{
+			"name": "Elude",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Werefox",
+			"subclassSource": "FoxfireLycan",
+			"level": 18,
+			"header": 2,
+			"entries": [
+				"At 18th level, when you take the disengage action or you are hit by an opportunity attack, you can spend a use of this feature and gain a +5 bonus to your AC until the start of your next turn.",
+				"You can use this feature a number of times equal to your Dexterity modifier (minimum of 1). You regain expended uses of this feature when you finish a short or long rest."
+			]
 		}
 	],
 	"subclass": [
@@ -2589,6 +2948,34 @@
 			],
 			"source": "FoxfireLycan",
 			"shortName": "Were-Dragon",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan"
+		},
+		{
+			"name": "Werebat",
+			"subclassFeatures": [
+				"Werebat|Lycanthrope|FoxfireLycan|Werebat|FoxfireLycan|1",
+				"Echolocation|Lycanthrope|FoxfireLycan|Werebat|FoxfireLycan|6",
+				"Bat Form|Lycanthrope|FoxfireLycan|Werebat|FoxfireLycan|10",
+				"Dark Ambusher|Lycanthrope|FoxfireLycan|Werebat|FoxfireLycan|14",
+				"Screech|Lycanthrope|FoxfireLycan|Werebat|FoxfireLycan|18"
+			],
+			"source": "FoxfireLycan",
+			"shortName": "Werebat",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan"
+		},
+		{
+			"name": "Werefox",
+			"subclassFeatures": [
+				"Werefox|Lycanthrope|FoxfireLycan|Werefox|FoxfireLycan|1",
+				"Vulpine Charm|Lycanthrope|FoxfireLycan|Werefox|FoxfireLycan|6",
+				"Fox Form|Lycanthrope|FoxfireLycan|Werefox|FoxfireLycan|10",
+				"Infravision|Lycanthrope|FoxfireLycan|Werefox|FoxfireLycan|14",
+				"Elude|Lycanthrope|FoxfireLycan|Werefox|FoxfireLycan|18"
+			],
+			"source": "FoxfireLycan",
+			"shortName": "Werefox",
 			"className": "Lycanthrope",
 			"classSource": "FoxfireLycan"
 		}
