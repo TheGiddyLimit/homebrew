@@ -53,12 +53,14 @@ function buildDeepIndex () {
 	const PATH_SOURCE_INDEX = "_generated/index-sources.json";
 	const PATH_NAME_INDEX = "_generated/index-names.json";
 	const PATH_ABBREVIATION_INDEX = "_generated/index-abbreviations.json";
+	const PATH_META_INDEX = "_generated/index-meta.json";
 
 	const timestampIndex = {};
 	const propIndex = {};
 	const sourceIndex = {};
 	const nameIndex = {};
 	const abbreviationIndex = {};
+	const metaIndex = {};
 
 	function indexDir (folder) {
 		const files = Uf.listJsonFiles(folder);
@@ -102,9 +104,22 @@ function buildDeepIndex () {
 					// Index names and abbreviations
 					if (file.contents._meta.sources?.length) {
 						const fileName = file.name.split("/").slice(1).join("/");
-						if (nameIndex[fileName] || abbreviationIndex[fileName]) throw new Error(`Filename "${fileName}" was already in the index!`);
+
+						// region FIXME deprecated; remove in future
+						if (nameIndex[fileName] || abbreviationIndex[cleanName]) throw new Error(`Filename "${fileName}" was already in the index!`);
 						nameIndex[fileName] = file.contents._meta.sources.map(it => it.full).filter(Boolean);
 						abbreviationIndex[cleanName] = file.contents._meta.sources.map(it => it.abbreviation).filter(Boolean);
+						// endregion
+
+						if (metaIndex[fileName]) throw new Error(`Filename "${fileName}" was already in the index!`);
+						metaIndex[fileName] = {
+							// name
+							n: file.contents._meta.sources.map(it => it.full).filter(Boolean),
+							// abbreviation
+							a: file.contents._meta.sources.map(it => it.abbreviation).filter(Boolean),
+							// status
+							s: file.contents._meta.status,
+						};
 					}
 				}
 			});
@@ -126,6 +141,9 @@ function buildDeepIndex () {
 
 	Um.info(`INDEX`, `Saving name index to ${PATH_NAME_INDEX}`);
 	fs.writeFileSync(`./${PATH_NAME_INDEX}`, JSON.stringify(nameIndex), "utf-8");
+
+	Um.info(`INDEX`, `Saving meta-index to ${PATH_META_INDEX}`);
+	fs.writeFileSync(`./${PATH_META_INDEX}`, JSON.stringify(metaIndex), "utf-8");
 
 	Um.info(`INDEX`, `Saving abbreviation index to ${PATH_ABBREVIATION_INDEX}`);
 	fs.writeFileSync(`./${PATH_ABBREVIATION_INDEX}`, JSON.stringify(abbreviationIndex), "utf-8");
