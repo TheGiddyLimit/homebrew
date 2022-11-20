@@ -5,8 +5,9 @@ import {Um, JsonTester} from "5etools-utils";
 const LOG_TAG = "JSON";
 const _IS_FAIL_SLOW = !!process.env.FAIL_SLOW;
 
-function main () {
-	const {errors, errorsFull} = new JsonTester({dirSchema: "_schema", tagLog: LOG_TAG}).getErrorsOnDirs({isFailFast: !_IS_FAIL_SLOW});
+async function main () {
+	const {errors, errorsFull} = await new JsonTester({dirSchema: "_schema", tagLog: LOG_TAG})
+		.pGetErrorsOnDirsWorkers({isFailFast: !_IS_FAIL_SLOW});
 
 	if (errors.length) {
 		if (!process.env.CI) fs.writeFileSync(`_test/test-json.error.log`, errorsFull.join("\n\n=====\n\n"));
