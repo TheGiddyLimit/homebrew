@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"version": "1.21.8",
+	"version": "1.21.9",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
@@ -141,6 +141,41 @@
 									"description": "Size of the individual creatures that make up the swarm."
 								},
 								"tags": {
+									"type": "array",
+									"uniqueItems": true,
+									"items": {
+										"oneOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "object",
+												"properties": {
+													"tag": {
+														"type": "string"
+													},
+													"prefix": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"tag",
+													"prefix"
+												],
+												"additionalProperties": false
+											}
+										]
+									}
+								},
+								"sidekickType": {
+									"type": "string",
+									"enum": [
+										"expert",
+										"spellcaster",
+										"warrior"
+									]
+								},
+								"sidekickTags": {
 									"type": "array",
 									"uniqueItems": true,
 									"items": {
@@ -1227,6 +1262,41 @@
 													}
 												]
 											}
+										},
+										"sidekickType": {
+											"type": "string",
+											"enum": [
+												"expert",
+												"spellcaster",
+												"warrior"
+											]
+										},
+										"sidekickTags": {
+											"type": "array",
+											"uniqueItems": true,
+											"items": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "object",
+														"properties": {
+															"tag": {
+																"type": "string"
+															},
+															"prefix": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"tag",
+															"prefix"
+														],
+														"additionalProperties": false
+													}
+												]
+											}
 										}
 									},
 									"required": [
@@ -2278,6 +2348,41 @@
 											"description": "Size of the individual creatures that make up the swarm."
 										},
 										"tags": {
+											"type": "array",
+											"uniqueItems": true,
+											"items": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "object",
+														"properties": {
+															"tag": {
+																"type": "string"
+															},
+															"prefix": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"tag",
+															"prefix"
+														],
+														"additionalProperties": false
+													}
+												]
+											}
+										},
+										"sidekickType": {
+											"type": "string",
+											"enum": [
+												"expert",
+												"spellcaster",
+												"warrior"
+											]
+										},
+										"sidekickTags": {
 											"type": "array",
 											"uniqueItems": true,
 											"items": {
