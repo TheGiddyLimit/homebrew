@@ -1,9 +1,9 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "recipes.json",
-	"version": "1.2.2",
+	"version": "1.2.5",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"recipe": {
 			"type": "object",
 			"properties": {
@@ -14,7 +14,7 @@
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/$defs/page"
 				},
 				"serves": {
 					"oneOf": [
@@ -159,10 +159,10 @@
 					"type": "boolean"
 				},
 				"fluff": {
-					"$ref": "util.json#/definitions/fluffObject"
+					"$ref": "util.json#/$defs/fluffObject"
 				},
 				"foundryImg": {
-					"$ref": "util.json#/definitions/foundryImg"
+					"$ref": "util.json#/$defs/foundryImg"
 				}
 			},
 			"required": [
@@ -177,8 +177,10 @@
 	"properties": {
 		"recipe": {
 			"type": "array",
+			"uniqueItems": true,
+			"minItems": 1,
 			"items": {
-				"$ref": "#/definitions/recipe"
+				"$ref": "#/$defs/recipe"
 			}
 		}
 	},

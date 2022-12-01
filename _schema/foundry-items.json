@@ -1,0 +1,57 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "foundry-items.json",
+	"version": "1.2.0",
+	"type": "object",
+	"properties": {
+		"magicvariant": {
+			"$ref": "util.json#/$defs/foundrySideDataGenericArray"
+		},
+		"item": {
+			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"system": {
+						"$ref": "util.json#/$defs/foundrySystemObject"
+					},
+					"flags": {
+						"$ref": "util.json#/$defs/foundryFlagsObject"
+					},
+					"effects": {
+						"$ref": "util.json#/$defs/foundryEffectsArray"
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"weapon",
+							"tool",
+							"consumable",
+							"equipment",
+							"container",
+							"loot"
+						]
+					}
+				},
+				"required": [
+					"name",
+					"source"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"required": [
+		"magicvariant",
+		"item"
+	],
+	"additionalProperties": false
+}

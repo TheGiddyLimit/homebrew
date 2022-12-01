@@ -1,10 +1,10 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "entry.json",
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.5.4",
-	"definitions": {
+	"version": "1.8.3",
+	"$defs": {
 		"_arrayOfSpell": {
 			"type": "array",
 			"uniqueItems": true,
@@ -31,6 +31,12 @@
 				]
 			}
 		},
+		"_entryDataStyle": {
+			"type": "string",
+			"enum": [
+				"inset"
+			]
+		},
 		"mediaHref": {
 			"oneOf": [
 				{
@@ -55,7 +61,7 @@
 							"const": "external"
 						},
 						"url": {
-							"type": "string"
+							"$ref": "util.json#/$defs/url"
 						}
 					},
 					"required": [
@@ -77,1049 +83,1067 @@
 				"source": {
 					"type": "string"
 				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
 					"type": "object"
 				},
-				"page": {
-					"type": "integer"
-				},
 				"id": {
 					"type": "string"
 				}
-			}
+			},
+			"required": [
+				"type"
+			]
 		},
 		"entrySection": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "section"
-						},
-						"name": {
-							"type": "string"
-						},
-						"alias": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						},
-						"data": {
-							"type": "object"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"source": {
-							"type": "string"
-						},
-						"id": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"entries"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "section"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"alias": {
+					"$ref": "util.json#/$defs/alias"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				},
+				"style": {
+					"type": "string"
 				}
-			]
+			},
+			"required": [
+				"type",
+				"entries"
+			],
+			"additionalProperties": false
 		},
 		"entryEntries": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "entries"
-						},
-						"name": {
-							"type": "string"
-						},
-						"alias": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						},
-						"data": {
-							"type": "object"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"source": {
-							"type": "string"
-						},
-						"id": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"entries"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "entries"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				},
+				"alias": {
+					"$ref": "util.json#/$defs/alias"
+				},
+				"style": {
+					"type": "string"
 				}
-			]
+			},
+			"required": [
+				"type",
+				"entries"
+			],
+			"additionalProperties": false
 		},
 		"entryQuote": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "quote"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						},
-						"by": {
-							"type": "string"
-						},
-						"from": {
-							"type": "string"
-						},
-						"skipMarks": {
-							"description": "If the automatically-inserted quotation marks should be skipped.",
-							"type": "boolean"
-						},
-						"skipItalics": {
-							"type": "boolean"
-						}
-					},
-					"required": [
-						"entries"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "quote"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				},
+				"by": {
+					"type": "string"
+				},
+				"from": {
+					"type": "string"
+				},
+				"skipMarks": {
+					"description": "If the automatically-inserted quotation marks should be skipped.",
+					"type": "boolean"
+				},
+				"skipItalics": {
+					"type": "boolean"
 				}
-			]
+			},
+			"required": [
+				"type",
+				"entries"
+			],
+			"additionalProperties": false
 		},
 		"entryInlineEntries": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "inline"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						}
-					},
-					"required": [
-						"entries"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "inline"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
 				}
-			]
+			},
+			"required": [
+				"type",
+				"entries"
+			],
+			"additionalProperties": false
 		},
 		"entryEntriesInlineEntries": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "inlineBlock"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						}
-					},
-					"required": [
-						"entries"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "inlineBlock"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
 				}
-			]
+			},
+			"required": [
+				"type",
+				"entries"
+			],
+			"additionalProperties": false
 		},
 		"entryOptions": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "options"
-						},
-						"count": {
-							"description": "Used to specify how many of the listed options can be chosen as e.g. permanent character features. Leave blank for transient choices.",
-							"type": "integer"
-						},
-						"name": {
-							"type": "string"
-						},
-						"style": {
-							"type": "string"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						}
-					},
-					"required": [
-						"entries"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "options"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"count": {
+					"description": "Used to specify how many of the listed options can be chosen as e.g. permanent character features. Leave blank for transient choices.",
+					"type": "integer"
+				},
+				"style": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
 				}
-			]
+			},
+			"required": [
+				"type",
+				"entries"
+			],
+			"additionalProperties": false
 		},
 		"entryTable": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "table"
-						},
-						"caption": {
-							"type": "string"
-						},
-						"isStriped": {
-							"type": "boolean"
-						},
-						"isNameGenerator": {
-							"type": "boolean",
-							"description": "Uses the result rolled to construct a name from multiple columns, such as Prefix, Given, Family, Suffix names etc."
-						},
-						"style": {
-							"type": "string"
-						},
-						"colLabels": {
-							"type": "array",
-							"items": {
-								"type": "string"
+				"type": {
+					"type": "string",
+					"const": "table"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"caption": {
+					"type": "string"
+				},
+				"isStriped": {
+					"type": "boolean"
+				},
+				"isNameGenerator": {
+					"type": "boolean",
+					"description": "Uses the result rolled to construct a name from multiple columns, such as Prefix, Given, Family, Suffix names etc."
+				},
+				"style": {
+					"type": "string"
+				},
+				"colLabels": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"colStyles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"rowLabels": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"rowStyles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"rows": {
+					"type": "array",
+					"items": {
+						"anyOf": [
+							{
+								"type": "array",
+								"items": {
+									"$ref": "#"
+								}
+							},
+							{
+								"$ref": "#/$defs/entryTableRow"
 							}
-						},
-						"colStyles": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"rowLabels": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"rowStyles": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"rows": {
-							"type": "array",
-							"items": {
-								"anyOf": [
-									{
-										"type": "array",
-										"items": {
-											"$ref": "#"
-										}
-									},
-									{
-										"$ref": "#/definitions/entryTableRow"
-									}
-								]
-							}
-						},
-						"footnotes": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						},
-						"data": {
-							"type": "object"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"intro": {
-							"description": "Primarily for homebrew use.",
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						},
-						"outro": {
-							"description": "Primarily for homebrew use.",
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						}
-					},
-					"required": [
-						"rows"
-					],
-					"additionalProperties": false
+						]
+					}
+				},
+				"footnotes": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				},
+				"intro": {
+					"description": "Primarily for homebrew use.",
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				},
+				"outro": {
+					"description": "Primarily for homebrew use.",
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
 				}
-			]
+			},
+			"required": [
+				"type",
+				"rows"
+			],
+			"additionalProperties": false
 		},
 		"entryTableGroup": {
 			"description": "Used to group related tables together; has no effect on rendering.",
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "tableGroup"
-						},
-						"tables": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/entryTable"
-							}
-						},
-						"name": {
-							"type": "string"
-						},
-						"data": {
-							"type": "object"
-						}
-					},
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "tableGroup"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"tables": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/entryTable"
+					}
 				}
-			]
+			},
+			"required": [
+				"type",
+				"tables"
+			],
+			"additionalProperties": false
 		},
 		"entryTableRow": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "row"
-						},
-						"style": {
-							"type": "string"
-						},
-						"row": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						}
-					},
-					"required": [
-						"type",
-						"row"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "row"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"style": {
+					"type": "string"
+				},
+				"row": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
 				}
-			]
+			},
+			"required": [
+				"type",
+				"row"
+			],
+			"additionalProperties": false
 		},
 		"entryTableCell": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "cell"
-						},
-						"width": {
-							"type": "integer"
-						},
-						"roll": {
-							"oneOf": [
-								{
-									"type": "object",
-									"properties": {
-										"min": {
-											"type": "integer"
-										},
-										"max": {
-											"type": "integer"
-										},
-										"pad": {
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"min",
-										"max"
-									],
-									"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "cell"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"width": {
+					"type": "integer"
+				},
+				"roll": {
+					"oneOf": [
+						{
+							"type": "object",
+							"properties": {
+								"min": {
+									"type": "integer"
 								},
-								{
-									"type": "object",
-									"properties": {
-										"exact": {
-											"type": "integer"
-										},
-										"pad": {
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"exact"
-									],
-									"additionalProperties": false
+								"max": {
+									"type": "integer"
+								},
+								"pad": {
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"min",
+								"max"
+							],
+							"additionalProperties": false
 						},
-						"entry": {
-							"$ref": "#"
+						{
+							"type": "object",
+							"properties": {
+								"exact": {
+									"type": "integer"
+								},
+								"pad": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"exact"
+							],
+							"additionalProperties": false
 						}
-					},
-					"additionalProperties": false
+					]
+				},
+				"entry": {
+					"$ref": "#"
 				}
-			]
+			},
+			"required": [
+				"type"
+			],
+			"additionalProperties": false
 		},
 		"entryList": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "list"
-						},
-						"columns": {
-							"description": "Number of columns the content should be split into. Note that the full value is only displayed on wide screens, and screens below certain widths will see an appropriately reduced number of columns.",
-							"type": "integer"
-						},
-						"style": {
-							"type": "string",
-							"description": "Formatting to be applied to the list; not providing a style results in a simple bullet point list.\n list-decimal: decimal numbering 1. 2. 3. etc \n list-hang: a list with the bullets removed and a full indentation \n list-hang-notitle: a list with no bullets that indents all lines but the first\n list-lower-roman: lowercase roman numeral numbering i, ii, iii, iv, etc.\n list-name: a bulleted list with all text in bold\n list-no-bullets: a list with the bullets removed and reduced indentation",
-							"enum": [
-								"list-decimal",
-								"list-hang",
-								"list-hang-notitle",
-								"list-lower-roman",
-								"list-name",
-								"list-no-bullets"
-							]
-						},
-						"name": {
-							"type": "string"
-						},
-						"items": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						}
-					},
-					"required": [
-						"items"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "list"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"columns": {
+					"description": "Number of columns the content should be split into. Note that the full value is only displayed on wide screens, and screens below certain widths will see an appropriately reduced number of columns.",
+					"type": "integer"
+				},
+				"style": {
+					"type": "string",
+					"description": "Formatting to be applied to the list; not providing a style results in a simple bullet point list.\n list-decimal: decimal numbering 1. 2. 3. etc \n list-hang: a list with the bullets removed and a full indentation \n list-hang-notitle: a list with no bullets that indents all lines but the first\n list-lower-roman: lowercase roman numeral numbering i, ii, iii, iv, etc.\n list-name: a bulleted list with all text in bold\n list-no-bullets: a list with the bullets removed and reduced indentation",
+					"enum": [
+						"list-decimal",
+						"list-hang",
+						"list-hang-notitle",
+						"list-lower-roman",
+						"list-name",
+						"list-no-bullets"
+					]
+				},
+				"items": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
 				}
-			]
+			},
+			"required": [
+				"type",
+				"items"
+			],
+			"additionalProperties": false
 		},
 		"entryBonus": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "bonus"
-						},
-						"value": {
-							"type": "integer"
-						}
-					},
-					"required": [
-						"value"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "bonus"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"value": {
+					"type": "integer"
 				}
-			]
+			},
+			"required": [
+				"type",
+				"value"
+			],
+			"additionalProperties": false
 		},
 		"entryBonusSpeed": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "bonusSpeed"
-						},
-						"value": {
-							"type": "integer"
-						}
-					},
-					"required": [
-						"value"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "bonusSpeed"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"value": {
+					"type": "integer"
 				}
-			]
+			},
+			"required": [
+				"type",
+				"value"
+			],
+			"additionalProperties": false
 		},
 		"entryDice": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "dice"
-						},
-						"toRoll": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"number": {
-										"type": "integer"
-									},
-									"faces": {
-										"type": "integer"
-									},
-									"modifier": {
-										"description": "(Warning: unused)",
-										"type": "integer"
-									},
-									"hideModifier": {
-										"description": "(Warning: unused)",
-										"type": "boolean"
-									}
-								},
-								"required": [
-									"number",
-									"faces"
-								]
+				"type": {
+					"type": "string",
+					"const": "dice"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"toRoll": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"number": {
+								"type": "integer"
+							},
+							"faces": {
+								"type": "integer"
+							},
+							"modifier": {
+								"description": "(Warning: unused)",
+								"type": "integer"
+							},
+							"hideModifier": {
+								"description": "(Warning: unused)",
+								"type": "boolean"
 							}
 						},
-						"rollable": {
-							"type": "boolean"
-						}
-					},
-					"additionalProperties": false
+						"required": [
+							"number",
+							"faces"
+						]
+					}
+				},
+				"rollable": {
+					"type": "boolean"
 				}
-			]
+			},
+			"required": [
+				"type"
+			],
+			"additionalProperties": false
 		},
 		"entryAbilityDc": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "abilityDc"
-						},
-						"name": {
-							"type": "string"
-						},
-						"attributes": {
-							"type": "array",
-							"items": {
-								"type": "string",
-								"enum": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha",
-									"spellcasting"
-								]
-							}
-						}
-					},
-					"required": [
-						"name",
-						"attributes"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "abilityDc"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"attributes": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"examples": [
+							"str",
+							"dex",
+							"con",
+							"int",
+							"wis",
+							"cha",
+							"spellcasting"
+						]
+					}
 				}
-			]
+			},
+			"required": [
+				"type",
+				"name",
+				"attributes"
+			],
+			"additionalProperties": false
 		},
 		"entryAbilityAttackMod": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "abilityAttackMod"
-						},
-						"name": {
-							"type": "string"
-						},
-						"attributes": {
-							"type": "array",
-							"items": {
-								"type": "string",
-								"enum": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha",
-									"spellcasting"
-								]
-							}
-						}
-					},
-					"required": [
-						"name",
-						"attributes"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "abilityAttackMod"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"attributes": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"examples": [
+							"str",
+							"dex",
+							"con",
+							"int",
+							"wis",
+							"cha",
+							"spellcasting"
+						]
+					}
 				}
-			]
+			},
+			"required": [
+				"type",
+				"name",
+				"attributes"
+			],
+			"additionalProperties": false
 		},
 		"abilityGeneric": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "abilityGeneric"
-						},
-						"name": {
-							"type": "string"
-						},
-						"text": {
-							"type": "string"
-						},
-						"attributes": {
-							"type": "array",
-							"items": {
-								"type": "string",
-								"enum": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha"
-								]
-							}
-						}
-					},
-					"required": [
-						"text"
-					],
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "abilityGeneric"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"text": {
+					"type": "string"
+				},
+				"attributes": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"str",
+							"dex",
+							"con",
+							"int",
+							"wis",
+							"cha"
+						]
+					}
 				}
-			]
+			},
+			"required": [
+				"type",
+				"text"
+			],
+			"additionalProperties": false
 		},
 		"entryLink": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "link"
-						},
-						"text": {
-							"type": "string"
-						},
-						"href": {
-							"oneOf": [
-								{
-									"type": "object",
-									"properties": {
-										"type": {
-											"const": "internal"
-										},
-										"path": {
-											"type": "string"
-										},
-										"hash": {
-											"type": "string"
-										},
-										"hashPreEncoded": {
-											"type": "boolean"
-										},
-										"subhashes": {
-											"type": "array",
-											"items": {
-												"oneOf": [
-													{
-														"type": "object",
-														"properties": {
-															"key": {
-																"type": "string"
-															},
-															"values": {
-																"type": "array",
-																"items": {
-																	"type": "string"
-																}
-															},
-															"preEncoded": {
-																"type": "boolean"
-															}
-														},
-														"required": [
-															"key",
-															"values"
-														],
-														"additionalProperties": false
-													},
-													{
-														"type": "object",
-														"properties": {
-															"key": {
-																"type": "string"
-															},
-															"value": {
-																"type": "string"
-															},
-															"preEncoded": {
-																"type": "boolean"
-															}
-														},
-														"required": [
-															"key",
-															"value"
-														],
-														"additionalProperties": false
-													}
-												]
-											}
-										},
-										"hover": {
-											"type": "object",
-											"properties": {
-												"page": {
-													"type": "string"
-												},
-												"source": {
-													"type": "string"
-												},
-												"hash": {
-													"description": "Optional; overrides the href hash for hover handlers.",
-													"type": "string"
-												},
-												"hashPreEncoded": {
-													"type": "boolean"
-												}
-											},
-											"additionalProperties": false,
-											"required": [
-												"page",
-												"source"
-											]
-										}
-									},
-									"required": [
-										"path"
-									],
-									"additionalProperties": false
-								},
-								{
-									"type": "object",
-									"properties": {
-										"type": {
-											"const": "external"
-										},
-										"url": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"url"
-									],
-									"additionalProperties": false
-								}
-							]
-						}
-					},
-					"required": [
-						"text",
-						"href"
-					],
-					"additionalProperties": false
-				}
-			]
-		},
-		"entryOptFeature": {
-			"description": "For e.g. Eldritch Invocations which require prerequisite text",
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+				"type": {
+					"type": "string",
+					"const": "link"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"type": {
-							"const": "optfeature"
-						},
-						"prerequisite": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"name"
-					]
-				}
-			]
-		},
-		"entryInset": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+				"source": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "inset"
-						},
-						"name": {
-							"type": "string"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						},
-						"data": {
-							"type": "object"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"source": {
-							"type": "string"
-						},
-						"id": {
-							"type": "string"
-						},
-						"style": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"entries"
-					]
-				}
-			]
-		},
-		"entryInsetReadaloud": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+				"page": {
+					"$ref": "util.json#/$defs/page"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "insetReadaloud"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						},
-						"page": {
-							"type": "integer"
-						},
-						"source": {
-							"type": "string"
-						},
-						"id": {
-							"type": "string"
-						},
-						"style": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"entries"
-					]
-				}
-			]
-		},
-		"entryVariant": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "variant"
-						},
-						"name": {
-							"type": "string"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						}
-					},
-					"required": [
-						"name",
-						"entries"
-					]
-				}
-			]
-		},
-		"entryVariantInner": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "variantInner"
-						},
-						"name": {
-							"type": "string"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						}
-					},
-					"required": [
-						"name",
-						"entries"
-					],
-					"additionalProperties": false
-				}
-			]
-		},
-		"entryVariantSub": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "variantSub"
-						},
-						"name": {
-							"type": "string"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						}
-					},
-					"required": [
-						"name",
-						"entries"
-					],
-					"additionalProperties": false
-				}
-			]
-		},
-		"entryItem": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+				"id": {
+					"type": "string"
 				},
-				{
+				"text": {
+					"type": "string"
+				},
+				"href": {
 					"oneOf": [
 						{
 							"type": "object",
 							"properties": {
 								"type": {
-									"const": "item"
+									"const": "internal"
 								},
-								"style": {
+								"path": {
 									"type": "string"
 								},
-								"name": {
+								"hash": {
 									"type": "string"
 								},
-								"entry": {
-									"$ref": "#"
+								"hashPreEncoded": {
+									"type": "boolean"
 								},
-								"nameDot": {
-									"const": false
+								"subhashes": {
+									"type": "array",
+									"items": {
+										"oneOf": [
+											{
+												"type": "object",
+												"properties": {
+													"key": {
+														"type": "string"
+													},
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"preEncoded": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"key",
+													"values"
+												],
+												"additionalProperties": false
+											},
+											{
+												"type": "object",
+												"properties": {
+													"key": {
+														"type": "string"
+													},
+													"value": {
+														"type": "string"
+													},
+													"preEncoded": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"key",
+													"value"
+												],
+												"additionalProperties": false
+											}
+										]
+									}
+								},
+								"hover": {
+									"type": "object",
+									"properties": {
+										"page": {
+											"$ref": "util.json#/$defs/page"
+										},
+										"source": {
+											"type": "string"
+										},
+										"hash": {
+											"description": "Optional; overrides the href hash for hover handlers.",
+											"type": "string"
+										},
+										"hashPreEncoded": {
+											"type": "boolean"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"page",
+										"source"
+									]
 								}
 							},
 							"required": [
-								"name",
-								"entry"
+								"path"
 							],
 							"additionalProperties": false
 						},
@@ -1127,46 +1151,324 @@
 							"type": "object",
 							"properties": {
 								"type": {
-									"const": "item"
+									"const": "external"
 								},
-								"style": {
-									"type": "string"
-								},
-								"name": {
-									"type": "string"
-								},
-								"entries": {
-									"type": "array",
-									"items": {
-										"$ref": "#"
-									}
-								},
-								"nameDot": {
-									"const": false
+								"url": {
+									"$ref": "util.json#/$defs/url"
 								}
 							},
 							"required": [
-								"name",
-								"entries"
+								"url"
 							],
 							"additionalProperties": false
 						}
 					]
 				}
-			]
+			},
+			"required": [
+				"type",
+				"text",
+				"href"
+			],
+			"additionalProperties": false
 		},
-		"entryItemSub": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+		"entryOptFeature": {
+			"description": "For e.g. Eldritch Invocations which require prerequisite text",
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
+				"type": {
+					"type": "string",
+					"const": "optfeature"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"prerequisite": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				}
+			},
+			"required": [
+				"type",
+				"name"
+			],
+			"additionalProperties": false
+		},
+		"entryInset": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"const": "inset"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				},
+				"style": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"type",
+				"entries"
+			],
+			"additionalProperties": false
+		},
+		"entryInsetReadaloud": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"const": "insetReadaloud"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				},
+				"style": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"type",
+				"entries"
+			],
+			"additionalProperties": false
+		},
+		"entryVariant": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"const": "variant"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				}
+			},
+			"required": [
+				"type",
+				"name",
+				"entries"
+			],
+			"additionalProperties": false
+		},
+		"entryVariantInner": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"const": "variantInner"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				}
+			},
+			"required": [
+				"type",
+				"name",
+				"entries"
+			],
+			"additionalProperties": false
+		},
+		"entryVariantSub": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"const": "variantSub"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				}
+			},
+			"required": [
+				"type",
+				"name",
+				"entries"
+			],
+			"additionalProperties": false
+		},
+		"entryItem": {
+			"oneOf": [
 				{
 					"type": "object",
 					"properties": {
-						"type": {
-							"const": "itemSub"
-						},
 						"name": {
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "item"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "util.json#/$defs/page"
+						},
+						"srd": {
+							"$ref": "util.json#/$defs/srd"
+						},
+						"basicRules": {
+							"$ref": "util.json#/$defs/basicRules"
+						},
+						"data": {
+							"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+							"type": "object"
+						},
+						"id": {
+							"type": "string"
+						},
+						"style": {
 							"type": "string"
 						},
 						"entry": {
@@ -1177,225 +1479,41 @@
 						}
 					},
 					"required": [
-						"name",
+						"type",
 						"entry"
 					],
 					"additionalProperties": false
-				}
-			]
-		},
-		"entryItemSpell": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
 				},
 				{
 					"type": "object",
 					"properties": {
-						"type": {
-							"const": "itemSpell"
-						},
 						"name": {
 							"type": "string"
 						},
-						"entry": {
-							"$ref": "#"
-						}
-					},
-					"required": [
-						"name",
-						"entry"
-					],
-					"additionalProperties": false
-				}
-			]
-		},
-		"entryImage": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
-				},
-				{
-					"type": "object",
-					"properties": {
 						"type": {
-							"const": "image"
-						},
-						"href": {
-							"$ref": "#/definitions/mediaHref"
-						},
-						"hrefThumbnail": {
-							"title": "A thumbnail image used in rare cases, e.g. when loading a wall of maps to choose from in the DM Screen.",
-							"$ref": "#/definitions/mediaHref"
-						},
-						"title": {
-							"type": "string"
-						},
-						"altText": {
-							"description": "For accessibility purposes",
-							"type": "string"
-						},
-						"imageType": {
 							"type": "string",
-							"enum": [
-								"map",
-								"mapPlayer"
-							]
+							"const": "item"
 						},
-						"grid": {
-							"type": "object",
-							"properties": {
-								"type": {
-									"type": "string",
-									"enum": [
-										"none",
-										"square",
-										"hexRowsOdd",
-										"hexRowsEven",
-										"hexColsOdd",
-										"hexColsEven"
-									]
-								},
-								"size": {
-									"type": "integer"
-								},
-								"offsetX": {
-									"type": "integer"
-								},
-								"offsetY": {
-									"type": "integer"
-								}
-							},
-							"additionalProperties": false
-						},
-						"mapRegions": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"area": {
-										"type": "string"
-									},
-									"points": {
-										"type": "array",
-										"items": {
-											"type": "array",
-											"items": {
-												"type": "integer"
-											},
-											"maxItems": 2,
-											"minItems": 2
-										},
-										"uniqueItems": true
-									}
-								},
-								"additionalProperties": false
-							}
-						},
-						"mapParent": {
-							"description": "Note that the order of transformations is: scale, then offset.",
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "string"
-								},
-								"offsetX": {
-									"description": "The X position of this map within the parent map. Defaults to 0.",
-									"type": "integer"
-								},
-								"offsetY": {
-									"description": "The Y position of this map within the parent map. Defaults to 0.",
-									"type": "integer"
-								},
-								"scaleX": {
-									"description": "X scaling required for this map to match the parent map. Defaults to 1.",
-									"type": "number",
-									"exclusiveMinimum": 0
-								},
-								"scaleY": {
-									"description": "Y scaling required for this map to match the parent map. Defaults to 1.",
-									"type": "number",
-									"exclusiveMinimum": 0
-								},
-								"autoScale": {
-									"description": "If the X/Y scaling for this map should be based on the size ratio between the two. This is often used a placeholder for maps requiring future manual adjustment.",
-									"type": "boolean"
-								}
-							},
-							"additionalProperties": false
-						},
-						"mapName": {
+						"source": {
 							"type": "string"
 						},
-						"width": {
-							"type": "integer"
+						"page": {
+							"$ref": "util.json#/$defs/page"
 						},
-						"height": {
-							"type": "integer"
+						"srd": {
+							"$ref": "util.json#/$defs/srd"
 						},
-						"maxWidth": {
-							"description": "Specify the max desired display width of the images, as opposed to \"width\" which should only be used for the _real_ width. Assumes pixels by default.",
-							"type": "integer"
+						"basicRules": {
+							"$ref": "util.json#/$defs/basicRules"
 						},
-						"maxHeight": {
-							"description": "As per \"maxWidth\"",
-							"type": "integer"
+						"data": {
+							"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+							"type": "object"
 						},
-						"maxWidthUnits": {
-							"type": "string"
-						},
-						"maxHeightUnits": {
+						"id": {
 							"type": "string"
 						},
 						"style": {
-							"enum": [
-								"comic-speaker-left",
-								"comic-speaker-right",
-								"deity-symbol"
-							]
-						}
-					},
-					"required": [
-						"href"
-					],
-					"additionalProperties": false
-				}
-			]
-		},
-		"entryGallery": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "gallery"
-						},
-						"images": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/entryImage"
-							}
-						}
-					},
-					"required": [
-						"images"
-					],
-					"additionalProperties": false
-				}
-			]
-		},
-		"entryActions": {
-			"allOf": [
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "actions"
-						},
-						"name": {
 							"type": "string"
 						},
 						"entries": {
@@ -1403,221 +1521,1409 @@
 							"items": {
 								"$ref": "#"
 							}
+						},
+						"nameDot": {
+							"const": false
 						}
 					},
 					"required": [
 						"type",
-						"name",
 						"entries"
 					],
 					"additionalProperties": false
 				}
 			]
 		},
-		"entryAttack": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+		"entryItemSub": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
+				"type": {
+					"type": "string",
+					"const": "itemSub"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entry": {
+					"$ref": "#"
+				},
+				"nameDot": {
+					"const": false
+				}
+			},
+			"required": [
+				"type",
+				"name",
+				"entry"
+			],
+			"additionalProperties": false
+		},
+		"entryItemSpell": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"const": "itemSpell"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entry": {
+					"$ref": "#"
+				}
+			},
+			"required": [
+				"type",
+				"name",
+				"entry"
+			],
+			"additionalProperties": false
+		},
+		"entryImage": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"const": "image"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"href": {
+					"$ref": "#/$defs/mediaHref"
+				},
+				"hrefThumbnail": {
+					"title": "A thumbnail image used in rare cases, e.g. when loading a wall of maps to choose from in the DM Screen.",
+					"$ref": "#/$defs/mediaHref"
+				},
+				"title": {
+					"type": "string"
+				},
+				"altText": {
+					"description": "For accessibility purposes",
+					"type": "string"
+				},
+				"imageType": {
+					"type": "string",
+					"enum": [
+						"map",
+						"mapPlayer"
+					]
+				},
+				"grid": {
 					"type": "object",
 					"properties": {
 						"type": {
-							"const": "attack"
-						},
-						"attackType": {
 							"type": "string",
-							"description": "MW: Melee Weapon\n RW: Ranged Weapon",
 							"enum": [
-								"MW",
-								"RW"
+								"none",
+								"square",
+								"hexRowsOdd",
+								"hexRowsEven",
+								"hexColsOdd",
+								"hexColsEven"
 							]
 						},
-						"attackEntries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
+						"size": {
+							"type": "integer"
 						},
-						"hitEntries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						}
-					},
-					"required": [
-						"type",
-						"attackType",
-						"attackEntries",
-						"hitEntries"
-					],
-					"additionalProperties": false
-				}
-			]
-		},
-		"entryFlowchart": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "flowchart"
+						"offsetX": {
+							"type": "integer"
 						},
-						"blocks": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/entry"
-							}
-						}
-					},
-					"required": [
-						"type",
-						"blocks"
-					],
-					"additionalProperties": false
-				}
-			]
-		},
-		"entryFlowBlock": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "flowBlock"
+						"offsetY": {
+							"type": "integer"
 						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/entry"
-							}
-						},
-						"name": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"type"
-					],
-					"additionalProperties": false
-				}
-			]
-		},
-		"entryIngredient": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "ingredient"
-						},
-						"entry": {
-							"$ref": "#"
-						}
-					},
-					"patternProperties": {
-						"^amount\\d+$": {
+						"scale": {
+							"description": "Map image scaling. Where possible, avoid using this, and use size/offset instead.",
 							"type": "number"
 						}
 					},
-					"required": [
-						"type",
-						"entry"
-					],
 					"additionalProperties": false
-				}
-			]
-		},
-		"entryDataCreature": {
-			"type": "object",
-			"properties": {
-				"type": {
-					"const": "dataCreature"
 				},
-				"dataCreature": {
-					"$ref": "bestiary/bestiary.json#/definitions/creature"
-				}
-			},
-			"required": [
-				"type",
-				"dataCreature"
-			]
-		},
-		"entryDataSpell": {
-			"type": "object",
-			"properties": {
-				"type": {
-					"const": "dataSpell"
-				},
-				"dataSpell": {
-					"$ref": "spells/spells.json#/definitions/spell"
-				}
-			},
-			"required": [
-				"type",
-				"dataSpell"
-			]
-		},
-		"entryDataTrapHazard": {
-			"type": "object",
-			"properties": {
-				"type": {
-					"const": "dataTrapHazard"
-				},
-				"dataTrapHazard": {
-					"oneOf": [
-						{
-							"$ref": "trapshazards.json#/definitions/trap"
+				"mapRegions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"area": {
+								"type": "string"
+							},
+							"points": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer"
+									},
+									"maxItems": 2,
+									"minItems": 2
+								},
+								"uniqueItems": true
+							}
 						},
-						{
-							"$ref": "trapshazards.json#/definitions/hazard"
+						"additionalProperties": false
+					}
+				},
+				"mapParent": {
+					"description": "Note that the order of transformations is: scale, then offset.",
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "string"
+						},
+						"offsetX": {
+							"description": "The X position of this map within the parent map. Defaults to 0.",
+							"type": "integer"
+						},
+						"offsetY": {
+							"description": "The Y position of this map within the parent map. Defaults to 0.",
+							"type": "integer"
+						},
+						"scaleX": {
+							"description": "X scaling required for this map to match the parent map. Defaults to 1.",
+							"type": "number",
+							"exclusiveMinimum": 0
+						},
+						"scaleY": {
+							"description": "Y scaling required for this map to match the parent map. Defaults to 1.",
+							"type": "number",
+							"exclusiveMinimum": 0
+						},
+						"autoScale": {
+							"description": "If the X/Y scaling for this map should be based on the size ratio between the two. This is often used a placeholder for maps requiring future manual adjustment.",
+							"type": "boolean"
 						}
+					},
+					"additionalProperties": false
+				},
+				"mapName": {
+					"type": "string"
+				},
+				"width": {
+					"type": "integer"
+				},
+				"height": {
+					"type": "integer"
+				},
+				"maxWidth": {
+					"description": "Specify the max desired display width of the images, as opposed to \"width\" which should only be used for the _real_ width. Assumes pixels by default.",
+					"type": "integer"
+				},
+				"maxHeight": {
+					"description": "As per \"maxWidth\"",
+					"type": "integer"
+				},
+				"maxWidthUnits": {
+					"type": "string"
+				},
+				"maxHeightUnits": {
+					"type": "string"
+				},
+				"style": {
+					"enum": [
+						"comic-speaker-left",
+						"comic-speaker-right",
+						"deity-symbol"
 					]
 				}
 			},
 			"required": [
 				"type",
-				"dataTrapHazard"
-			]
+				"href"
+			],
+			"additionalProperties": false
 		},
-		"entryDataObject": {
+		"entryGallery": {
 			"type": "object",
 			"properties": {
-				"type": {
-					"const": "dataObject"
+				"name": {
+					"type": "string"
 				},
-				"dataObject": {
-					"$ref": "objects.json#/definitions/object"
+				"type": {
+					"type": "string",
+					"const": "gallery"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/entryImage"
+					}
 				}
 			},
 			"required": [
 				"type",
-				"dataObject"
-			]
+				"images"
+			],
+			"additionalProperties": false
 		},
-		"entryDataItem": {
+		"entryActions": {
 			"type": "object",
 			"properties": {
-				"type": {
-					"const": "dataItem"
+				"name": {
+					"type": "string"
 				},
-				"dataItem": {
-					"$ref": "items.json#/definitions/item"
+				"type": {
+					"type": "string",
+					"const": "actions"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
 				}
 			},
 			"required": [
 				"type",
-				"dataItem"
+				"name",
+				"entries"
+			],
+			"additionalProperties": false
+		},
+		"entryAttack": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"const": "attack"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"attackType": {
+					"type": "string",
+					"description": "MW: Melee Weapon\n RW: Ranged Weapon",
+					"enum": [
+						"MW",
+						"RW"
+					]
+				},
+				"attackEntries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				},
+				"hitEntries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				}
+			},
+			"required": [
+				"type",
+				"attackType",
+				"attackEntries",
+				"hitEntries"
+			],
+			"additionalProperties": false
+		},
+		"entryFlowchart": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"const": "flowchart"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"blocks": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/entry"
+					}
+				}
+			},
+			"required": [
+				"type",
+				"blocks"
+			],
+			"additionalProperties": false
+		},
+		"entryFlowBlock": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"const": "flowBlock"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/entry"
+					}
+				}
+			},
+			"required": [
+				"type"
+			],
+			"additionalProperties": false
+		},
+		"entryIngredient": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"const": "ingredient"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entry": {
+					"$ref": "#"
+				}
+			},
+			"required": [
+				"type",
+				"entry"
+			],
+			"patternProperties": {
+				"^amount\\d+$": {
+					"type": "number"
+				}
+			},
+			"additionalProperties": false
+		},
+		"entryStatblockInline": {
+			"anyOf": [
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "monster"
+						},
+						"data": {
+							"$ref": "bestiary/bestiary.json#/$defs/creature"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "legendaryGroup"
+						},
+						"data": {
+							"$ref": "bestiary/legendarygroups.json#/$defs/legendaryGroup"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "spell"
+						},
+						"data": {
+							"$ref": "spells/spells.json#/$defs/spell"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "action"
+						},
+						"data": {
+							"$ref": "actions.json#/$defs/action"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "item"
+						},
+						"data": {
+							"$ref": "items.json#/$defs/item"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "background"
+						},
+						"data": {
+							"$ref": "backgrounds.json#/$defs/background"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "charoption"
+						},
+						"data": {
+							"$ref": "charcreationoptions.json#/$defs/charoption"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "condition"
+						},
+						"data": {
+							"$ref": "conditionsdiseases.json#/$defs/conditionDisease"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "disease"
+						},
+						"data": {
+							"$ref": "conditionsdiseases.json#/$defs/conditionDisease"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "status"
+						},
+						"data": {
+							"$ref": "conditionsdiseases.json#/$defs/conditionDisease"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "cult"
+						},
+						"data": {
+							"$ref": "cultsboons.json#/$defs/cult"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "boon"
+						},
+						"data": {
+							"$ref": "cultsboons.json#/$defs/boon"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "deity"
+						},
+						"data": {
+							"$ref": "deities.json#/$defs/deity"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "feat"
+						},
+						"data": {
+							"$ref": "feats.json#/$defs/feat"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "language"
+						},
+						"data": {
+							"$ref": "languages.json#/$defs/language"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "object"
+						},
+						"data": {
+							"$ref": "objects.json#/$defs/object"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "optionalfeature"
+						},
+						"data": {
+							"$ref": "optionalfeatures.json#/$defs/optionalfeature"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "psionic"
+						},
+						"data": {
+							"$ref": "psionics.json#/$defs/psionic"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "race"
+						},
+						"data": {
+							"$ref": "races.json#/$defs/race"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "recipe"
+						},
+						"data": {
+							"$ref": "recipes.json#/$defs/recipe"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "reward"
+						},
+						"data": {
+							"$ref": "rewards.json#/$defs/reward"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "table"
+						},
+						"data": {
+							"$ref": "tables.json#/$defs/tableData"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "trap"
+						},
+						"data": {
+							"$ref": "trapshazards.json#/$defs/trap"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "hazard"
+						},
+						"data": {
+							"$ref": "trapshazards.json#/$defs/hazard"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "variantrule"
+						},
+						"data": {
+							"$ref": "variantrules.json#/$defs/variantrule"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "vehicle"
+						},
+						"data": {
+							"$ref": "vehicles.json#/$defs/vehicle"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "vehicleUpgrade"
+						},
+						"data": {
+							"$ref": "vehicles.json#/$defs/vehicleUpgrade"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "skill"
+						},
+						"data": {
+							"$ref": "skills.json#/$defs/skill"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "statblockInline"
+						},
+						"dataType": {
+							"const": "sense"
+						},
+						"data": {
+							"$ref": "senses.json#/$defs/sense"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"dataType",
+						"data"
+					],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryStatblock": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "statblock"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "util.json#/$defs/page"
+						},
+						"srd": {
+							"$ref": "util.json#/$defs/srd"
+						},
+						"basicRules": {
+							"$ref": "util.json#/$defs/basicRules"
+						},
+						"data": {
+							"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+							"type": "object"
+						},
+						"id": {
+							"type": "string"
+						},
+						"tag": {
+							"$ref": "util.json#/$defs/tagNameStats"
+						},
+						"displayName": {
+							"type": "string"
+						},
+						"hash": {
+							"type": "string"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"tag",
+						"name"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "statblock"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "util.json#/$defs/page"
+						},
+						"srd": {
+							"$ref": "util.json#/$defs/srd"
+						},
+						"basicRules": {
+							"$ref": "util.json#/$defs/basicRules"
+						},
+						"data": {
+							"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+							"type": "object"
+						},
+						"id": {
+							"type": "string"
+						},
+						"prop": {
+							"$ref": "util.json#/$defs/propNameStats"
+						},
+						"displayName": {
+							"type": "string"
+						},
+						"hash": {
+							"type": "string"
+						},
+						"style": {
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
+						}
+					},
+					"required": [
+						"type",
+						"prop",
+						"name",
+						"source"
+					]
+				}
 			]
 		},
 		"entryRefClassFeature": {
@@ -1683,151 +2989,164 @@
 			]
 		},
 		"entrySpellcasting": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
+				"type": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"headerEntries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				},
+				"constant": {
+					"$ref": "#/$defs/_arrayOfSpell"
+				},
+				"will": {
+					"$ref": "#/$defs/_arrayOfSpell"
+				},
+				"ritual": {
+					"$ref": "#/$defs/_arrayOfSpell"
+				},
+				"rest": {
+					"$ref": "#/$defs/entrySpellcasting_frequency"
+				},
+				"daily": {
+					"$ref": "#/$defs/entrySpellcasting_frequency"
+				},
+				"weekly": {
+					"$ref": "#/$defs/entrySpellcasting_frequency"
+				},
+				"yearly": {
+					"$ref": "#/$defs/entrySpellcasting_frequency"
+				},
+				"charges": {
+					"$ref": "#/$defs/entrySpellcasting_frequency"
+				},
+				"spells": {
 					"type": "object",
 					"properties": {
-						"type": {
-							"const": "spellcasting"
-						},
-						"name": {
-							"type": "string"
-						},
-						"headerEntries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						},
-						"constant": {
-							"$ref": "#/definitions/_arrayOfSpell"
-						},
-						"will": {
-							"$ref": "#/definitions/_arrayOfSpell"
-						},
-						"ritual": {
-							"$ref": "#/definitions/_arrayOfSpell"
-						},
-						"rest": {
-							"$ref": "#/definitions/entrySpellcasting_frequency"
-						},
-						"daily": {
-							"$ref": "#/definitions/entrySpellcasting_frequency"
-						},
-						"weekly": {
-							"$ref": "#/definitions/entrySpellcasting_frequency"
-						},
-						"yearly": {
-							"$ref": "#/definitions/entrySpellcasting_frequency"
-						},
-						"charges": {
-							"$ref": "#/definitions/entrySpellcasting_frequency"
-						},
-						"spells": {
+						"0": {
 							"type": "object",
 							"properties": {
-								"0": {
-									"type": "object",
-									"properties": {
-										"spells": {
-											"type": "array",
-											"uniqueItems": true,
-											"items": {
-												"type": "string"
-											}
-										}
-									},
-									"required": [
-										"spells"
-									],
-									"additionalProperties": false
-								},
-								"1": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"2": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"3": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"4": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"5": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"6": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"7": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"8": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"9": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
+								"spells": {
+									"type": "array",
+									"uniqueItems": true,
+									"items": {
+										"type": "string"
+									}
 								}
 							},
+							"required": [
+								"spells"
+							],
 							"additionalProperties": false
 						},
-						"hidden": {
-							"description": "Allows the above properties to be specified, but not rendered. Useful if e.g. a creature can only cast one spell, and this is rendered in the header line.",
-							"type": "array",
-							"items": {
-								"type": "string",
-								"enum": [
-									"constant",
-									"will",
-									"rest",
-									"daily",
-									"weekly",
-									"yearly",
-									"ritual",
-									"spells"
-								]
-							}
+						"1": {
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						},
-						"footerEntries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
+						"2": {
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						},
-						"ability": {
-							"type": "string",
-							"enum": [
-								"str",
-								"dex",
-								"con",
-								"int",
-								"wis",
-								"cha"
-							]
+						"3": {
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						},
-						"displayAs": {
-							"description": "Implicitly \"trait\"",
-							"type": "string",
-							"enum": [
-								"trait",
-								"action"
-							]
+						"4": {
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						},
-						"chargesItem": {
-							"type": "string",
-							"description": "The UID of an item which provides the charges required to cast any \"charges\" spells."
+						"5": {
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
+						},
+						"6": {
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
+						},
+						"7": {
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
+						},
+						"8": {
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
+						},
+						"9": {
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						}
 					},
-					"required": [
-						"name"
-					],
 					"additionalProperties": false
+				},
+				"hidden": {
+					"description": "Allows the above properties to be specified, but not rendered. Useful if e.g. a creature can only cast one spell, and this is rendered in the header line.",
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"constant",
+							"will",
+							"rest",
+							"daily",
+							"weekly",
+							"yearly",
+							"ritual",
+							"spells"
+						]
+					}
+				},
+				"footerEntries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				},
+				"ability": {
+					"type": "string",
+					"enum": [
+						"str",
+						"dex",
+						"con",
+						"int",
+						"wis",
+						"cha"
+					]
+				},
+				"displayAs": {
+					"description": "Implicitly \"trait\"",
+					"type": "string",
+					"enum": [
+						"trait",
+						"action"
+					]
+				},
+				"chargesItem": {
+					"type": "string",
+					"description": "The UID of an item which provides the charges required to cast any \"charges\" spells."
 				}
-			]
+			},
+			"required": [
+				"type",
+				"name"
+			],
+			"additionalProperties": false
 		},
 		"entrySpellcasting_level1to9": {
 			"type": "object",
@@ -1855,87 +3174,103 @@
 			"type": "object",
 			"properties": {
 				"1": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"2": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"3": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"4": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"5": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"6": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"7": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"8": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"9": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"9e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"8e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"7e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"6e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"5e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"4e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"3e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"2e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"1e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				}
 			},
 			"additionalProperties": false
 		},
 		"entryWrapped": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "wrapper"
-						},
-						"wrapped": {}
-					},
-					"required": [
-						"wrapper",
-						"wrapped"
-					],
-					"additionalProperties": false
-				}
-			]
+				"type": {
+					"type": "string",
+					"const": "wrapper"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"wrapped": {}
+			},
+			"required": [
+				"type",
+				"wrapped"
+			],
+			"additionalProperties": false
 		},
 		"dataDamImmune": {
 			"oneOf": [
 				{
-					"$ref": "util.json#/definitions/dataDamageType"
+					"$ref": "util.json#/$defs/dataDamageType"
 				},
 				{
 					"type": "object",
@@ -1958,7 +3293,7 @@
 						"immune": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/dataDamImmune"
+								"$ref": "#/$defs/dataDamImmune"
 							}
 						},
 						"note": {
@@ -1975,7 +3310,7 @@
 		"dataCondImmune": {
 			"oneOf": [
 				{
-					"$ref": "util.json#/definitions/dataCondition"
+					"$ref": "util.json#/$defs/dataCondition"
 				},
 				{
 					"type": "object",
@@ -1998,7 +3333,7 @@
 						"conditionImmune": {
 							"type": "array",
 							"items": {
-								"$ref": "util.json#/definitions/dataCondition"
+								"$ref": "util.json#/$defs/dataCondition"
 							}
 						},
 						"note": {
@@ -2013,181 +3348,185 @@
 			]
 		},
 		"entryHomebrew": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "homebrew"
-						},
-						"name": {
-							"type": "string"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						},
-						"movedTo": {
-							"$ref": "#"
-						},
-						"oldEntries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							}
-						},
-						"data": {
-							"type": "object"
-						}
-					},
-					"additionalProperties": false
+				"type": {
+					"type": "string",
+					"const": "homebrew"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
+					"type": "object"
+				},
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
+				},
+				"movedTo": {
+					"$ref": "#"
+				},
+				"oldEntries": {
+					"type": "array",
+					"items": {
+						"$ref": "#"
+					}
 				}
-			]
+			},
+			"required": [
+				"type"
+			],
+			"additionalProperties": false
 		}
 	},
 	"anyOf": [
 		{
-			"$ref": "#/definitions/entrySection"
+			"$ref": "#/$defs/entrySection"
 		},
 		{
-			"$ref": "#/definitions/entryEntries"
+			"$ref": "#/$defs/entryEntries"
 		},
 		{
-			"$ref": "#/definitions/entryHomebrew"
+			"$ref": "#/$defs/entryHomebrew"
 		},
 		{
-			"$ref": "#/definitions/entryQuote"
+			"$ref": "#/$defs/entryQuote"
 		},
 		{
-			"$ref": "#/definitions/entryInlineEntries"
+			"$ref": "#/$defs/entryInlineEntries"
 		},
 		{
-			"$ref": "#/definitions/entryEntriesInlineEntries"
+			"$ref": "#/$defs/entryEntriesInlineEntries"
 		},
 		{
-			"$ref": "#/definitions/entryOptions"
+			"$ref": "#/$defs/entryOptions"
 		},
 		{
-			"$ref": "#/definitions/entryTableGroup"
+			"$ref": "#/$defs/entryTableGroup"
 		},
 		{
-			"$ref": "#/definitions/entryTable"
+			"$ref": "#/$defs/entryTable"
 		},
 		{
-			"$ref": "#/definitions/entryTableRow"
+			"$ref": "#/$defs/entryTableRow"
 		},
 		{
-			"$ref": "#/definitions/entryTableCell"
+			"$ref": "#/$defs/entryTableCell"
 		},
 		{
-			"$ref": "#/definitions/entryList"
+			"$ref": "#/$defs/entryList"
 		},
 		{
-			"$ref": "#/definitions/entryBonus"
+			"$ref": "#/$defs/entryBonus"
 		},
 		{
-			"$ref": "#/definitions/entryBonusSpeed"
+			"$ref": "#/$defs/entryBonusSpeed"
 		},
 		{
-			"$ref": "#/definitions/entryDice"
+			"$ref": "#/$defs/entryDice"
 		},
 		{
-			"$ref": "#/definitions/entryAbilityDc"
+			"$ref": "#/$defs/entryAbilityDc"
 		},
 		{
-			"$ref": "#/definitions/entryAbilityAttackMod"
+			"$ref": "#/$defs/entryAbilityAttackMod"
 		},
 		{
-			"$ref": "#/definitions/abilityGeneric"
+			"$ref": "#/$defs/abilityGeneric"
 		},
 		{
-			"$ref": "#/definitions/entryLink"
+			"$ref": "#/$defs/entryLink"
 		},
 		{
-			"$ref": "#/definitions/entryOptFeature"
+			"$ref": "#/$defs/entryOptFeature"
 		},
 		{
-			"$ref": "#/definitions/entryInset"
+			"$ref": "#/$defs/entryInset"
 		},
 		{
-			"$ref": "#/definitions/entryInsetReadaloud"
+			"$ref": "#/$defs/entryInsetReadaloud"
 		},
 		{
-			"$ref": "#/definitions/entryVariant"
+			"$ref": "#/$defs/entryVariant"
 		},
 		{
-			"$ref": "#/definitions/entryVariantInner"
+			"$ref": "#/$defs/entryVariantInner"
 		},
 		{
-			"$ref": "#/definitions/entryVariantSub"
+			"$ref": "#/$defs/entryVariantSub"
 		},
 		{
-			"$ref": "#/definitions/entryItem"
+			"$ref": "#/$defs/entryItem"
 		},
 		{
-			"$ref": "#/definitions/entryItemSub"
+			"$ref": "#/$defs/entryItemSub"
 		},
 		{
-			"$ref": "#/definitions/entryItemSpell"
+			"$ref": "#/$defs/entryItemSpell"
 		},
 		{
-			"$ref": "#/definitions/entryImage"
+			"$ref": "#/$defs/entryImage"
 		},
 		{
-			"$ref": "#/definitions/entryGallery"
+			"$ref": "#/$defs/entryGallery"
 		},
 		{
-			"$ref": "#/definitions/entryActions"
+			"$ref": "#/$defs/entryActions"
 		},
 		{
-			"$ref": "#/definitions/entryAttack"
+			"$ref": "#/$defs/entryAttack"
 		},
 		{
-			"$ref": "#/definitions/entryDataCreature"
+			"$ref": "#/$defs/entryStatblockInline"
 		},
 		{
-			"$ref": "#/definitions/entryDataSpell"
+			"$ref": "#/$defs/entryStatblock"
 		},
 		{
-			"$ref": "#/definitions/entryDataTrapHazard"
+			"$ref": "#/$defs/entryRefClassFeature"
 		},
 		{
-			"$ref": "#/definitions/entryDataObject"
+			"$ref": "#/$defs/entryRefSubclassFeature"
 		},
 		{
-			"$ref": "#/definitions/entryDataItem"
+			"$ref": "#/$defs/entryRefOptionalfeature"
 		},
 		{
-			"$ref": "#/definitions/entryRefClassFeature"
+			"$ref": "#/$defs/entryHr"
 		},
 		{
-			"$ref": "#/definitions/entryRefSubclassFeature"
+			"$ref": "#/$defs/entrySpellcasting"
 		},
 		{
-			"$ref": "#/definitions/entryRefOptionalfeature"
+			"$ref": "#/$defs/entryFlowchart"
 		},
 		{
-			"$ref": "#/definitions/entryHr"
+			"$ref": "#/$defs/entryFlowBlock"
 		},
 		{
-			"$ref": "#/definitions/entrySpellcasting"
+			"$ref": "#/$defs/entryIngredient"
 		},
 		{
-			"$ref": "#/definitions/entryFlowchart"
-		},
-		{
-			"$ref": "#/definitions/entryFlowBlock"
-		},
-		{
-			"$ref": "#/definitions/entryIngredient"
-		},
-		{
-			"$ref": "#/definitions/entryWrapped"
+			"$ref": "#/$defs/entryWrapped"
 		},
 		{
 			"type": "string"

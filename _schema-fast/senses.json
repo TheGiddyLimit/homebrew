@@ -1,0 +1,54 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "senses.json",
+	"version": "1.0.1",
+	"type": "object",
+	"$defs": {
+		"sense": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					}
+				}
+			},
+			"required": [
+				"name",
+				"source",
+				"entries"
+			],
+			"additionalProperties": false
+		}
+	},
+	"properties": {
+		"sense": {
+			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/$defs/sense"
+			}
+		}
+	},
+	"required": [
+		"sense"
+	],
+	"additionalProperties": false
+}

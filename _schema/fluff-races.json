@@ -1,9 +1,9 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "fluff-races.json",
-	"version": "2.1.0",
+	"version": "2.1.2",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"raceFluffData": {
 			"type": "object",
 			"properties": {
@@ -18,7 +18,7 @@
 						{
 							"type": "array",
 							"items": {
-								"$ref": "entry.json#/definitions/entryImage"
+								"$ref": "entry.json#/$defs/entryImage"
 							}
 						},
 						{
@@ -37,64 +37,6 @@
 				},
 				"monstrous": {
 					"type": "boolean"
-				},
-				"_copy": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						},
-						"pantheon": {
-							"description": "Used in deity data",
-							"type": "string"
-						},
-						"shortName": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"className": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"classSource": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"_mod": {
-							"$ref": "util.json#/definitions/_modObject"
-						},
-						"_trait": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							]
-						},
-						"_preserve": {
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "boolean"
-								}
-							}
-						}
-					},
-					"required": [
-						"name",
-						"source"
-					],
-					"additionalProperties": false
 				}
 			},
 			"additionalProperties": false
@@ -115,7 +57,7 @@
 								{
 									"type": "array",
 									"items": {
-										"$ref": "entry.json#/definitions/entryImage"
+										"$ref": "entry.json#/$defs/entryImage"
 									}
 								},
 								{
@@ -134,64 +76,6 @@
 						},
 						"monstrous": {
 							"type": "boolean"
-						},
-						"_copy": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								},
-								"pantheon": {
-									"description": "Used in deity data",
-									"type": "string"
-								},
-								"shortName": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"className": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"classSource": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"_mod": {
-									"$ref": "util.json#/definitions/_modObject"
-								},
-								"_trait": {
-									"type": "object",
-									"properties": {
-										"name": {
-											"type": "string"
-										},
-										"source": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"name",
-										"source"
-									]
-								},
-								"_preserve": {
-									"type": "object",
-									"patternProperties": {
-										".*": {
-											"type": "boolean"
-										}
-									}
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							],
-							"additionalProperties": false
 						}
 					},
 					"additionalProperties": false,
@@ -215,7 +99,7 @@
 								{
 									"type": "array",
 									"items": {
-										"$ref": "entry.json#/definitions/entryImage"
+										"$ref": "entry.json#/$defs/entryImage"
 									}
 								},
 								{
@@ -261,7 +145,7 @@
 									"type": "string"
 								},
 								"_mod": {
-									"$ref": "util.json#/definitions/_modObject"
+									"$ref": "util.json#/$defs/_modObject"
 								},
 								"_trait": {
 									"type": "object",
@@ -282,7 +166,7 @@
 									"type": "object",
 									"patternProperties": {
 										".*": {
-											"type": "boolean"
+											"const": true
 										}
 									}
 								}
@@ -305,8 +189,10 @@
 	"properties": {
 		"raceFluff": {
 			"type": "array",
+			"uniqueItems": true,
+			"minItems": 1,
 			"items": {
-				"$ref": "#/definitions/raceFluff"
+				"$ref": "#/$defs/raceFluff"
 			}
 		},
 		"raceFluffMeta": {
@@ -321,7 +207,7 @@
 			}
 		},
 		"_meta": {
-			"$ref": "util.json#/definitions/metaBlock"
+			"$ref": "util.json#/$defs/metaBlock"
 		}
 	},
 	"additionalProperties": false

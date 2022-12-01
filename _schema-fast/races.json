@@ -1,285 +1,44 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "races.json",
-	"version": "1.10.2",
+	"version": "1.12.0",
 	"type": "object",
-	"definitions": {
-		"subraceData": {
-			"type": "object",
-			"properties": {
-				"name": {
-					"type": "string"
-				},
-				"raceName": {
-					"type": "string"
-				},
-				"raceSource": {
-					"type": "string"
-				},
-				"alias": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"source": {
-					"type": "string"
-				},
-				"page": {
-					"type": "integer"
-				},
-				"otherSources": {
-					"$ref": "util.json#/definitions/otherSources"
-				},
-				"reprintedAs": {
-					"$ref": "util.json#/definitions/reprintedAs"
-				},
-				"ability": {
-					"$ref": "#/definitions/abilityScores"
-				},
-				"size": {
-					"type": "array",
-					"items": {
-						"$ref": "util.json#/definitions/size"
-					}
-				},
-				"speed": {
-					"$ref": "util.json#/definitions/speed"
-				},
-				"entries": {
-					"type": "array",
-					"items": {
-						"$ref": "entry.json"
-					}
-				},
-				"darkvision": {
-					"type": "integer"
-				},
-				"feats": {
-					"$ref": "util.json#/definitions/additionalFeatsArray"
-				},
-				"traitTags": {
-					"oneOf": [
-						{
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/traitTag"
-							}
-						},
-						{
-							"type": "null"
-						}
-					]
-				},
-				"languageProficiencies": {
-					"$ref": "util.json#/definitions/languageProficiencies"
-				},
-				"skillProficiencies": {
-					"$ref": "util.json#/definitions/skillProficiencies"
-				},
-				"toolProficiencies": {
-					"$ref": "util.json#/definitions/toolProficiencies"
-				},
-				"skillToolLanguageProficiencies": {
-					"$ref": "util.json#/definitions/skillToolLanguageProficiencies"
-				},
-				"expertise": {
-					"$ref": "util.json#/definitions/expertise"
-				},
-				"weaponProficiencies": {
-					"$ref": "util.json#/definitions/weaponProficiencies"
-				},
-				"armorProficiencies": {
-					"$ref": "util.json#/definitions/armorProficiencies"
-				},
-				"overwrite": {
-					"description": "Map of 'property' -> true where 'property' is a property on the base race which should be overwritten by that of the subrace",
-					"type": "object"
-				},
-				"srd": {
-					"$ref": "util.json#/definitions/srd"
-				},
-				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
-				},
-				"heightAndWeight": {
-					"oneOf": [
-						{
-							"$ref": "#/definitions/heightAndWeight"
-						},
-						{
-							"type": "null"
-						}
-					]
-				},
-				"additionalSpells": {
-					"oneOf": [
-						{
-							"type": "null"
-						},
-						{
-							"$ref": "util.json#/definitions/additionalSpellsArray"
-						}
-					]
-				},
-				"resist": {
-					"oneOf": [
-						{
-							"$ref": "util.json#/definitions/damageResistArrayPlayer"
-						},
-						{
-							"type": "null"
-						}
-					]
-				},
-				"immune": {
-					"oneOf": [
-						{
-							"$ref": "util.json#/definitions/damageImmunityArrayPlayer"
-						},
-						{
-							"type": "null"
-						}
-					]
-				},
-				"vulnerable": {
-					"oneOf": [
-						{
-							"$ref": "util.json#/definitions/damageVulnerabilityArrayPlayer"
-						},
-						{
-							"type": "null"
-						}
-					]
-				},
-				"conditionImmune": {
-					"oneOf": [
-						{
-							"$ref": "util.json#/definitions/conditionImmunityArrayPlayer"
-						},
-						{
-							"type": "null"
-						}
-					]
-				},
-				"age": {
-					"$ref": "#/definitions/age"
-				},
-				"hasFluff": {
-					"type": "boolean"
-				},
-				"hasFluffImages": {
-					"type": "boolean"
-				},
-				"_versions": {
-					"$ref": "util.json#/definitions/versionsArray"
-				},
-				"fluff": {
-					"$ref": "#/definitions/fluff"
-				},
-				"foundryImg": {
-					"$ref": "util.json#/definitions/foundryImg"
-				},
-				"_copy": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						},
-						"pantheon": {
-							"description": "Used in deity data",
-							"type": "string"
-						},
-						"shortName": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"className": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"classSource": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"_mod": {
-							"$ref": "util.json#/definitions/_modObject"
-						},
-						"_trait": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							]
-						},
-						"_preserve": {
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "boolean"
-								}
-							}
-						}
-					},
-					"required": [
-						"name",
-						"source"
-					],
-					"additionalProperties": false
-				}
-			},
-			"additionalProperties": false
-		},
-		"raceData": {
+	"$defs": {
+		"sharedData": {
 			"type": "object",
 			"properties": {
 				"name": {
 					"type": "string"
 				},
 				"alias": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"$ref": "util.json#/$defs/alias"
 				},
 				"source": {
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/$defs/page"
 				},
 				"otherSources": {
-					"$ref": "util.json#/definitions/otherSources"
+					"$ref": "util.json#/$defs/otherSources"
 				},
 				"additionalSources": {
-					"$ref": "util.json#/definitions/additionalSources"
+					"$ref": "util.json#/$defs/additionalSources"
 				},
 				"reprintedAs": {
-					"$ref": "util.json#/definitions/reprintedAs"
+					"$ref": "util.json#/$defs/reprintedAs"
 				},
 				"ability": {
-					"$ref": "#/definitions/abilityScores"
-				},
-				"speed": {
-					"$ref": "util.json#/definitions/speed"
+					"$ref": "#/$defs/abilityScores"
 				},
 				"size": {
-					"description": "An array of choices.",
 					"type": "array",
 					"items": {
-						"$ref": "util.json#/definitions/size"
+						"$ref": "util.json#/$defs/size"
 					}
+				},
+				"speed": {
+					"$ref": "util.json#/$defs/speed"
 				},
 				"entries": {
 					"type": "array",
@@ -287,21 +46,21 @@
 						"$ref": "entry.json"
 					}
 				},
-				"soundClip": {
-					"$ref": "entry.json#/definitions/mediaHref"
-				},
 				"darkvision": {
 					"type": "integer"
 				},
+				"blindsight": {
+					"type": "integer"
+				},
 				"feats": {
-					"$ref": "util.json#/definitions/additionalFeatsArray"
+					"$ref": "util.json#/$defs/additionalFeatsArray"
 				},
 				"traitTags": {
 					"oneOf": [
 						{
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/traitTag"
+								"$ref": "#/$defs/traitTag"
 							}
 						},
 						{
@@ -309,40 +68,50 @@
 						}
 					]
 				},
+				"soundClip": {
+					"$ref": "entry.json#/$defs/mediaHref"
+				},
 				"languageProficiencies": {
-					"$ref": "util.json#/definitions/languageProficiencies"
+					"$ref": "util.json#/$defs/languageProficiencies"
 				},
 				"skillProficiencies": {
-					"$ref": "util.json#/definitions/skillProficiencies"
+					"$ref": "util.json#/$defs/skillProficiencies"
 				},
 				"toolProficiencies": {
-					"$ref": "util.json#/definitions/toolProficiencies"
+					"$ref": "util.json#/$defs/toolProficiencies"
 				},
 				"skillToolLanguageProficiencies": {
-					"$ref": "util.json#/definitions/skillToolLanguageProficiencies"
+					"$ref": "util.json#/$defs/skillToolLanguageProficiencies"
 				},
 				"expertise": {
-					"$ref": "util.json#/definitions/expertise"
+					"$ref": "util.json#/$defs/expertise"
 				},
 				"weaponProficiencies": {
-					"$ref": "util.json#/definitions/weaponProficiencies"
+					"$ref": "util.json#/$defs/weaponProficiencies"
 				},
 				"armorProficiencies": {
-					"$ref": "util.json#/definitions/armorProficiencies"
-				},
-				"fluff": {
-					"$ref": "#/definitions/fluff"
+					"$ref": "util.json#/$defs/armorProficiencies"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"lineage": {
+					"oneOf": [
+						{
+							"$ref": "#/$defs/lineage"
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"heightAndWeight": {
 					"oneOf": [
 						{
-							"$ref": "#/definitions/heightAndWeight"
+							"$ref": "#/$defs/heightAndWeight"
 						},
 						{
 							"type": "null"
@@ -350,22 +119,54 @@
 					]
 				},
 				"additionalSpells": {
-					"$ref": "util.json#/definitions/additionalSpellsArray"
+					"oneOf": [
+						{
+							"type": "null"
+						},
+						{
+							"$ref": "util.json#/$defs/additionalSpellsArray"
+						}
+					]
 				},
 				"resist": {
-					"$ref": "util.json#/definitions/damageResistArrayPlayer"
+					"oneOf": [
+						{
+							"$ref": "util.json#/$defs/damageResistArrayPlayer"
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"immune": {
-					"$ref": "util.json#/definitions/damageImmunityArrayPlayer"
+					"oneOf": [
+						{
+							"$ref": "util.json#/$defs/damageImmunityArrayPlayer"
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"vulnerable": {
-					"$ref": "util.json#/definitions/damageVulnerabilityArrayPlayer"
+					"oneOf": [
+						{
+							"$ref": "util.json#/$defs/damageVulnerabilityArrayPlayer"
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"conditionImmune": {
-					"$ref": "util.json#/definitions/conditionImmunityArrayPlayer"
-				},
-				"lineage": {
-					"$ref": "#/definitions/lineage"
+					"oneOf": [
+						{
+							"$ref": "util.json#/$defs/conditionImmunityArrayPlayer"
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"creatureTypes": {
 					"type": "array",
@@ -377,7 +178,7 @@
 									"choose": {
 										"type": "array",
 										"items": {
-											"$ref": "util.json#/definitions/creatureType"
+											"$ref": "util.json#/$defs/creatureType"
 										}
 									}
 								},
@@ -387,7 +188,7 @@
 								"additionalProperties": false
 							},
 							{
-								"$ref": "util.json#/definitions/creatureType"
+								"$ref": "util.json#/$defs/creatureType"
 							}
 						]
 					}
@@ -395,12 +196,13 @@
 				"creatureTypeTags": {
 					"type": "array",
 					"uniqueItems": true,
+					"minItems": 1,
 					"items": {
 						"type": "string"
 					}
 				},
 				"age": {
-					"$ref": "#/definitions/age"
+					"$ref": "#/$defs/age"
 				},
 				"hasFluff": {
 					"type": "boolean"
@@ -409,82 +211,275 @@
 					"type": "boolean"
 				},
 				"_versions": {
-					"$ref": "util.json#/definitions/versionsArray"
+					"$ref": "util.json#/$defs/versionsArray"
+				},
+				"fluff": {
+					"$ref": "#/$defs/fluff"
+				},
+				"foundrySystem": {
+					"$ref": "util.json#/$defs/foundrySystemObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/$defs/foundryFlagsObject"
+				},
+				"foundryEffects": {
+					"$ref": "util.json#/$defs/foundryEffectsArray"
 				},
 				"foundryImg": {
-					"$ref": "util.json#/definitions/foundryImg"
-				},
-				"_copy": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						},
-						"pantheon": {
-							"description": "Used in deity data",
-							"type": "string"
-						},
-						"shortName": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"className": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"classSource": {
-							"description": "Used in subclass data",
-							"type": "string"
-						},
-						"_mod": {
-							"$ref": "util.json#/definitions/_modObject"
-						},
-						"_trait": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							]
-						},
-						"_preserve": {
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "boolean"
-								}
-							}
-						}
-					},
-					"required": [
-						"name",
-						"source"
-					],
-					"additionalProperties": false
+					"$ref": "util.json#/$defs/foundryImg"
 				}
 			},
 			"additionalProperties": false
 		},
+		"subraceData": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"alias": {
+					"$ref": "util.json#/$defs/alias"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"otherSources": {
+					"$ref": "util.json#/$defs/otherSources"
+				},
+				"additionalSources": {
+					"$ref": "util.json#/$defs/additionalSources"
+				},
+				"reprintedAs": {
+					"$ref": "util.json#/$defs/reprintedAs"
+				},
+				"ability": {
+					"$ref": "#/$defs/abilityScores"
+				},
+				"size": {
+					"type": "array",
+					"items": {
+						"$ref": "util.json#/$defs/size"
+					}
+				},
+				"speed": {
+					"$ref": "util.json#/$defs/speed"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					}
+				},
+				"darkvision": {
+					"type": "integer"
+				},
+				"blindsight": {
+					"type": "integer"
+				},
+				"feats": {
+					"$ref": "util.json#/$defs/additionalFeatsArray"
+				},
+				"traitTags": {
+					"oneOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/traitTag"
+							}
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"soundClip": {
+					"$ref": "entry.json#/$defs/mediaHref"
+				},
+				"languageProficiencies": {
+					"$ref": "util.json#/$defs/languageProficiencies"
+				},
+				"skillProficiencies": {
+					"$ref": "util.json#/$defs/skillProficiencies"
+				},
+				"toolProficiencies": {
+					"$ref": "util.json#/$defs/toolProficiencies"
+				},
+				"skillToolLanguageProficiencies": {
+					"$ref": "util.json#/$defs/skillToolLanguageProficiencies"
+				},
+				"expertise": {
+					"$ref": "util.json#/$defs/expertise"
+				},
+				"weaponProficiencies": {
+					"$ref": "util.json#/$defs/weaponProficiencies"
+				},
+				"armorProficiencies": {
+					"$ref": "util.json#/$defs/armorProficiencies"
+				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
+				"lineage": {
+					"oneOf": [
+						{
+							"$ref": "#/$defs/lineage"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"heightAndWeight": {
+					"oneOf": [
+						{
+							"$ref": "#/$defs/heightAndWeight"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"additionalSpells": {
+					"oneOf": [
+						{
+							"type": "null"
+						},
+						{
+							"$ref": "util.json#/$defs/additionalSpellsArray"
+						}
+					]
+				},
+				"resist": {
+					"oneOf": [
+						{
+							"$ref": "util.json#/$defs/damageResistArrayPlayer"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"immune": {
+					"oneOf": [
+						{
+							"$ref": "util.json#/$defs/damageImmunityArrayPlayer"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"vulnerable": {
+					"oneOf": [
+						{
+							"$ref": "util.json#/$defs/damageVulnerabilityArrayPlayer"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"conditionImmune": {
+					"oneOf": [
+						{
+							"$ref": "util.json#/$defs/conditionImmunityArrayPlayer"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"creatureTypes": {
+					"type": "array",
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"properties": {
+									"choose": {
+										"type": "array",
+										"items": {
+											"$ref": "util.json#/$defs/creatureType"
+										}
+									}
+								},
+								"required": [
+									"choose"
+								],
+								"additionalProperties": false
+							},
+							{
+								"$ref": "util.json#/$defs/creatureType"
+							}
+						]
+					}
+				},
+				"creatureTypeTags": {
+					"type": "array",
+					"uniqueItems": true,
+					"minItems": 1,
+					"items": {
+						"type": "string"
+					}
+				},
+				"age": {
+					"$ref": "#/$defs/age"
+				},
+				"hasFluff": {
+					"type": "boolean"
+				},
+				"hasFluffImages": {
+					"type": "boolean"
+				},
+				"_versions": {
+					"$ref": "util.json#/$defs/versionsArray"
+				},
+				"fluff": {
+					"$ref": "#/$defs/fluff"
+				},
+				"foundrySystem": {
+					"$ref": "util.json#/$defs/foundrySystemObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/$defs/foundryFlagsObject"
+				},
+				"foundryEffects": {
+					"$ref": "util.json#/$defs/foundryEffectsArray"
+				},
+				"foundryImg": {
+					"$ref": "util.json#/$defs/foundryImg"
+				},
+				"raceName": {
+					"type": "string"
+				},
+				"raceSource": {
+					"type": "string"
+				},
+				"overwrite": {
+					"description": "Map of 'property' -> true where 'property' is a property on the base race which should be overwritten by that of the subrace",
+					"type": "object"
+				}
+			},
+			"additionalProperties": false
+		},
+		"raceData": {
+			"$ref": "#/$defs/sharedData"
+		},
 		"traitTag": {
 			"oneOf": [
 				{
-					"$ref": "util.json#/definitions/proficiencyTag"
+					"$ref": "util.json#/$defs/proficiencyTag"
 				},
 				{
 					"type": "string",
 					"enum": [
 						"Amphibious",
-						"Blindsight",
 						"Dragonmark",
 						"Improved Resting",
 						"Magic Resistance",
@@ -493,7 +488,9 @@
 						"Natural Weapon",
 						"NPC Race",
 						"Powerful Build",
+						"Skill Bonus Dice",
 						"Sunlight Sensitivity",
+						"Tool Bonus Dice",
 						"Uncommon Race"
 					]
 				}
@@ -635,38 +632,34 @@
 							"type": "string"
 						},
 						"alias": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
+							"$ref": "util.json#/$defs/alias"
 						},
 						"source": {
 							"type": "string"
 						},
 						"page": {
-							"type": "integer"
+							"$ref": "util.json#/$defs/page"
 						},
 						"otherSources": {
-							"$ref": "util.json#/definitions/otherSources"
+							"$ref": "util.json#/$defs/otherSources"
 						},
 						"additionalSources": {
-							"$ref": "util.json#/definitions/additionalSources"
+							"$ref": "util.json#/$defs/additionalSources"
 						},
 						"reprintedAs": {
-							"$ref": "util.json#/definitions/reprintedAs"
+							"$ref": "util.json#/$defs/reprintedAs"
 						},
 						"ability": {
-							"$ref": "#/definitions/abilityScores"
-						},
-						"speed": {
-							"$ref": "util.json#/definitions/speed"
+							"$ref": "#/$defs/abilityScores"
 						},
 						"size": {
-							"description": "An array of choices.",
 							"type": "array",
 							"items": {
-								"$ref": "util.json#/definitions/size"
+								"$ref": "util.json#/$defs/size"
 							}
+						},
+						"speed": {
+							"$ref": "util.json#/$defs/speed"
 						},
 						"entries": {
 							"type": "array",
@@ -674,21 +667,21 @@
 								"$ref": "entry.json"
 							}
 						},
-						"soundClip": {
-							"$ref": "entry.json#/definitions/mediaHref"
-						},
 						"darkvision": {
 							"type": "integer"
 						},
+						"blindsight": {
+							"type": "integer"
+						},
 						"feats": {
-							"$ref": "util.json#/definitions/additionalFeatsArray"
+							"$ref": "util.json#/$defs/additionalFeatsArray"
 						},
 						"traitTags": {
 							"oneOf": [
 								{
 									"type": "array",
 									"items": {
-										"$ref": "#/definitions/traitTag"
+										"$ref": "#/$defs/traitTag"
 									}
 								},
 								{
@@ -696,40 +689,50 @@
 								}
 							]
 						},
+						"soundClip": {
+							"$ref": "entry.json#/$defs/mediaHref"
+						},
 						"languageProficiencies": {
-							"$ref": "util.json#/definitions/languageProficiencies"
+							"$ref": "util.json#/$defs/languageProficiencies"
 						},
 						"skillProficiencies": {
-							"$ref": "util.json#/definitions/skillProficiencies"
+							"$ref": "util.json#/$defs/skillProficiencies"
 						},
 						"toolProficiencies": {
-							"$ref": "util.json#/definitions/toolProficiencies"
+							"$ref": "util.json#/$defs/toolProficiencies"
 						},
 						"skillToolLanguageProficiencies": {
-							"$ref": "util.json#/definitions/skillToolLanguageProficiencies"
+							"$ref": "util.json#/$defs/skillToolLanguageProficiencies"
 						},
 						"expertise": {
-							"$ref": "util.json#/definitions/expertise"
+							"$ref": "util.json#/$defs/expertise"
 						},
 						"weaponProficiencies": {
-							"$ref": "util.json#/definitions/weaponProficiencies"
+							"$ref": "util.json#/$defs/weaponProficiencies"
 						},
 						"armorProficiencies": {
-							"$ref": "util.json#/definitions/armorProficiencies"
-						},
-						"fluff": {
-							"$ref": "#/definitions/fluff"
+							"$ref": "util.json#/$defs/armorProficiencies"
 						},
 						"srd": {
-							"$ref": "util.json#/definitions/srd"
+							"$ref": "util.json#/$defs/srd"
 						},
 						"basicRules": {
-							"$ref": "util.json#/definitions/basicRules"
+							"$ref": "util.json#/$defs/basicRules"
+						},
+						"lineage": {
+							"oneOf": [
+								{
+									"$ref": "#/$defs/lineage"
+								},
+								{
+									"type": "null"
+								}
+							]
 						},
 						"heightAndWeight": {
 							"oneOf": [
 								{
-									"$ref": "#/definitions/heightAndWeight"
+									"$ref": "#/$defs/heightAndWeight"
 								},
 								{
 									"type": "null"
@@ -737,22 +740,54 @@
 							]
 						},
 						"additionalSpells": {
-							"$ref": "util.json#/definitions/additionalSpellsArray"
+							"oneOf": [
+								{
+									"type": "null"
+								},
+								{
+									"$ref": "util.json#/$defs/additionalSpellsArray"
+								}
+							]
 						},
 						"resist": {
-							"$ref": "util.json#/definitions/damageResistArrayPlayer"
+							"oneOf": [
+								{
+									"$ref": "util.json#/$defs/damageResistArrayPlayer"
+								},
+								{
+									"type": "null"
+								}
+							]
 						},
 						"immune": {
-							"$ref": "util.json#/definitions/damageImmunityArrayPlayer"
+							"oneOf": [
+								{
+									"$ref": "util.json#/$defs/damageImmunityArrayPlayer"
+								},
+								{
+									"type": "null"
+								}
+							]
 						},
 						"vulnerable": {
-							"$ref": "util.json#/definitions/damageVulnerabilityArrayPlayer"
+							"oneOf": [
+								{
+									"$ref": "util.json#/$defs/damageVulnerabilityArrayPlayer"
+								},
+								{
+									"type": "null"
+								}
+							]
 						},
 						"conditionImmune": {
-							"$ref": "util.json#/definitions/conditionImmunityArrayPlayer"
-						},
-						"lineage": {
-							"$ref": "#/definitions/lineage"
+							"oneOf": [
+								{
+									"$ref": "util.json#/$defs/conditionImmunityArrayPlayer"
+								},
+								{
+									"type": "null"
+								}
+							]
 						},
 						"creatureTypes": {
 							"type": "array",
@@ -764,7 +799,7 @@
 											"choose": {
 												"type": "array",
 												"items": {
-													"$ref": "util.json#/definitions/creatureType"
+													"$ref": "util.json#/$defs/creatureType"
 												}
 											}
 										},
@@ -774,7 +809,7 @@
 										"additionalProperties": false
 									},
 									{
-										"$ref": "util.json#/definitions/creatureType"
+										"$ref": "util.json#/$defs/creatureType"
 									}
 								]
 							}
@@ -782,12 +817,13 @@
 						"creatureTypeTags": {
 							"type": "array",
 							"uniqueItems": true,
+							"minItems": 1,
 							"items": {
 								"type": "string"
 							}
 						},
 						"age": {
-							"$ref": "#/definitions/age"
+							"$ref": "#/$defs/age"
 						},
 						"hasFluff": {
 							"type": "boolean"
@@ -796,68 +832,22 @@
 							"type": "boolean"
 						},
 						"_versions": {
-							"$ref": "util.json#/definitions/versionsArray"
+							"$ref": "util.json#/$defs/versionsArray"
+						},
+						"fluff": {
+							"$ref": "#/$defs/fluff"
+						},
+						"foundrySystem": {
+							"$ref": "util.json#/$defs/foundrySystemObject"
+						},
+						"foundryFlags": {
+							"$ref": "util.json#/$defs/foundryFlagsObject"
+						},
+						"foundryEffects": {
+							"$ref": "util.json#/$defs/foundryEffectsArray"
 						},
 						"foundryImg": {
-							"$ref": "util.json#/definitions/foundryImg"
-						},
-						"_copy": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								},
-								"pantheon": {
-									"description": "Used in deity data",
-									"type": "string"
-								},
-								"shortName": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"className": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"classSource": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"_mod": {
-									"$ref": "util.json#/definitions/_modObject"
-								},
-								"_trait": {
-									"type": "object",
-									"properties": {
-										"name": {
-											"type": "string"
-										},
-										"source": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"name",
-										"source"
-									]
-								},
-								"_preserve": {
-									"type": "object",
-									"patternProperties": {
-										".*": {
-											"type": "boolean"
-										}
-									}
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							],
-							"additionalProperties": false
+							"$ref": "util.json#/$defs/foundryImg"
 						}
 					},
 					"additionalProperties": false,
@@ -873,38 +863,34 @@
 							"type": "string"
 						},
 						"alias": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
+							"$ref": "util.json#/$defs/alias"
 						},
 						"source": {
 							"type": "string"
 						},
 						"page": {
-							"type": "integer"
+							"$ref": "util.json#/$defs/page"
 						},
 						"otherSources": {
-							"$ref": "util.json#/definitions/otherSources"
+							"$ref": "util.json#/$defs/otherSources"
 						},
 						"additionalSources": {
-							"$ref": "util.json#/definitions/additionalSources"
+							"$ref": "util.json#/$defs/additionalSources"
 						},
 						"reprintedAs": {
-							"$ref": "util.json#/definitions/reprintedAs"
+							"$ref": "util.json#/$defs/reprintedAs"
 						},
 						"ability": {
-							"$ref": "#/definitions/abilityScores"
-						},
-						"speed": {
-							"$ref": "util.json#/definitions/speed"
+							"$ref": "#/$defs/abilityScores"
 						},
 						"size": {
-							"description": "An array of choices.",
 							"type": "array",
 							"items": {
-								"$ref": "util.json#/definitions/size"
+								"$ref": "util.json#/$defs/size"
 							}
+						},
+						"speed": {
+							"$ref": "util.json#/$defs/speed"
 						},
 						"entries": {
 							"type": "array",
@@ -912,21 +898,21 @@
 								"$ref": "entry.json"
 							}
 						},
-						"soundClip": {
-							"$ref": "entry.json#/definitions/mediaHref"
-						},
 						"darkvision": {
 							"type": "integer"
 						},
+						"blindsight": {
+							"type": "integer"
+						},
 						"feats": {
-							"$ref": "util.json#/definitions/additionalFeatsArray"
+							"$ref": "util.json#/$defs/additionalFeatsArray"
 						},
 						"traitTags": {
 							"oneOf": [
 								{
 									"type": "array",
 									"items": {
-										"$ref": "#/definitions/traitTag"
+										"$ref": "#/$defs/traitTag"
 									}
 								},
 								{
@@ -934,40 +920,50 @@
 								}
 							]
 						},
+						"soundClip": {
+							"$ref": "entry.json#/$defs/mediaHref"
+						},
 						"languageProficiencies": {
-							"$ref": "util.json#/definitions/languageProficiencies"
+							"$ref": "util.json#/$defs/languageProficiencies"
 						},
 						"skillProficiencies": {
-							"$ref": "util.json#/definitions/skillProficiencies"
+							"$ref": "util.json#/$defs/skillProficiencies"
 						},
 						"toolProficiencies": {
-							"$ref": "util.json#/definitions/toolProficiencies"
+							"$ref": "util.json#/$defs/toolProficiencies"
 						},
 						"skillToolLanguageProficiencies": {
-							"$ref": "util.json#/definitions/skillToolLanguageProficiencies"
+							"$ref": "util.json#/$defs/skillToolLanguageProficiencies"
 						},
 						"expertise": {
-							"$ref": "util.json#/definitions/expertise"
+							"$ref": "util.json#/$defs/expertise"
 						},
 						"weaponProficiencies": {
-							"$ref": "util.json#/definitions/weaponProficiencies"
+							"$ref": "util.json#/$defs/weaponProficiencies"
 						},
 						"armorProficiencies": {
-							"$ref": "util.json#/definitions/armorProficiencies"
-						},
-						"fluff": {
-							"$ref": "#/definitions/fluff"
+							"$ref": "util.json#/$defs/armorProficiencies"
 						},
 						"srd": {
-							"$ref": "util.json#/definitions/srd"
+							"$ref": "util.json#/$defs/srd"
 						},
 						"basicRules": {
-							"$ref": "util.json#/definitions/basicRules"
+							"$ref": "util.json#/$defs/basicRules"
+						},
+						"lineage": {
+							"oneOf": [
+								{
+									"$ref": "#/$defs/lineage"
+								},
+								{
+									"type": "null"
+								}
+							]
 						},
 						"heightAndWeight": {
 							"oneOf": [
 								{
-									"$ref": "#/definitions/heightAndWeight"
+									"$ref": "#/$defs/heightAndWeight"
 								},
 								{
 									"type": "null"
@@ -975,22 +971,54 @@
 							]
 						},
 						"additionalSpells": {
-							"$ref": "util.json#/definitions/additionalSpellsArray"
+							"oneOf": [
+								{
+									"type": "null"
+								},
+								{
+									"$ref": "util.json#/$defs/additionalSpellsArray"
+								}
+							]
 						},
 						"resist": {
-							"$ref": "util.json#/definitions/damageResistArrayPlayer"
+							"oneOf": [
+								{
+									"$ref": "util.json#/$defs/damageResistArrayPlayer"
+								},
+								{
+									"type": "null"
+								}
+							]
 						},
 						"immune": {
-							"$ref": "util.json#/definitions/damageImmunityArrayPlayer"
+							"oneOf": [
+								{
+									"$ref": "util.json#/$defs/damageImmunityArrayPlayer"
+								},
+								{
+									"type": "null"
+								}
+							]
 						},
 						"vulnerable": {
-							"$ref": "util.json#/definitions/damageVulnerabilityArrayPlayer"
+							"oneOf": [
+								{
+									"$ref": "util.json#/$defs/damageVulnerabilityArrayPlayer"
+								},
+								{
+									"type": "null"
+								}
+							]
 						},
 						"conditionImmune": {
-							"$ref": "util.json#/definitions/conditionImmunityArrayPlayer"
-						},
-						"lineage": {
-							"$ref": "#/definitions/lineage"
+							"oneOf": [
+								{
+									"$ref": "util.json#/$defs/conditionImmunityArrayPlayer"
+								},
+								{
+									"type": "null"
+								}
+							]
 						},
 						"creatureTypes": {
 							"type": "array",
@@ -1002,7 +1030,7 @@
 											"choose": {
 												"type": "array",
 												"items": {
-													"$ref": "util.json#/definitions/creatureType"
+													"$ref": "util.json#/$defs/creatureType"
 												}
 											}
 										},
@@ -1012,7 +1040,7 @@
 										"additionalProperties": false
 									},
 									{
-										"$ref": "util.json#/definitions/creatureType"
+										"$ref": "util.json#/$defs/creatureType"
 									}
 								]
 							}
@@ -1020,12 +1048,13 @@
 						"creatureTypeTags": {
 							"type": "array",
 							"uniqueItems": true,
+							"minItems": 1,
 							"items": {
 								"type": "string"
 							}
 						},
 						"age": {
-							"$ref": "#/definitions/age"
+							"$ref": "#/$defs/age"
 						},
 						"hasFluff": {
 							"type": "boolean"
@@ -1034,10 +1063,22 @@
 							"type": "boolean"
 						},
 						"_versions": {
-							"$ref": "util.json#/definitions/versionsArray"
+							"$ref": "util.json#/$defs/versionsArray"
+						},
+						"fluff": {
+							"$ref": "#/$defs/fluff"
+						},
+						"foundrySystem": {
+							"$ref": "util.json#/$defs/foundrySystemObject"
+						},
+						"foundryFlags": {
+							"$ref": "util.json#/$defs/foundryFlagsObject"
+						},
+						"foundryEffects": {
+							"$ref": "util.json#/$defs/foundryEffectsArray"
 						},
 						"foundryImg": {
-							"$ref": "util.json#/definitions/foundryImg"
+							"$ref": "util.json#/$defs/foundryImg"
 						},
 						"_copy": {
 							"type": "object",
@@ -1065,7 +1106,7 @@
 									"type": "string"
 								},
 								"_mod": {
-									"$ref": "util.json#/definitions/_modObject"
+									"$ref": "util.json#/$defs/_modObject"
 								},
 								"_trait": {
 									"type": "object",
@@ -1086,7 +1127,7 @@
 									"type": "object",
 									"patternProperties": {
 										".*": {
-											"type": "boolean"
+											"const": true
 										}
 									}
 								}
@@ -1113,41 +1154,35 @@
 						"name": {
 							"type": "string"
 						},
-						"raceName": {
-							"type": "string"
-						},
-						"raceSource": {
-							"type": "string"
-						},
 						"alias": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
+							"$ref": "util.json#/$defs/alias"
 						},
 						"source": {
 							"type": "string"
 						},
 						"page": {
-							"type": "integer"
+							"$ref": "util.json#/$defs/page"
 						},
 						"otherSources": {
-							"$ref": "util.json#/definitions/otherSources"
+							"$ref": "util.json#/$defs/otherSources"
+						},
+						"additionalSources": {
+							"$ref": "util.json#/$defs/additionalSources"
 						},
 						"reprintedAs": {
-							"$ref": "util.json#/definitions/reprintedAs"
+							"$ref": "util.json#/$defs/reprintedAs"
 						},
 						"ability": {
-							"$ref": "#/definitions/abilityScores"
+							"$ref": "#/$defs/abilityScores"
 						},
 						"size": {
 							"type": "array",
 							"items": {
-								"$ref": "util.json#/definitions/size"
+								"$ref": "util.json#/$defs/size"
 							}
 						},
 						"speed": {
-							"$ref": "util.json#/definitions/speed"
+							"$ref": "util.json#/$defs/speed"
 						},
 						"entries": {
 							"type": "array",
@@ -1158,15 +1193,18 @@
 						"darkvision": {
 							"type": "integer"
 						},
+						"blindsight": {
+							"type": "integer"
+						},
 						"feats": {
-							"$ref": "util.json#/definitions/additionalFeatsArray"
+							"$ref": "util.json#/$defs/additionalFeatsArray"
 						},
 						"traitTags": {
 							"oneOf": [
 								{
 									"type": "array",
 									"items": {
-										"$ref": "#/definitions/traitTag"
+										"$ref": "#/$defs/traitTag"
 									}
 								},
 								{
@@ -1174,41 +1212,50 @@
 								}
 							]
 						},
+						"soundClip": {
+							"$ref": "entry.json#/$defs/mediaHref"
+						},
 						"languageProficiencies": {
-							"$ref": "util.json#/definitions/languageProficiencies"
+							"$ref": "util.json#/$defs/languageProficiencies"
 						},
 						"skillProficiencies": {
-							"$ref": "util.json#/definitions/skillProficiencies"
+							"$ref": "util.json#/$defs/skillProficiencies"
 						},
 						"toolProficiencies": {
-							"$ref": "util.json#/definitions/toolProficiencies"
+							"$ref": "util.json#/$defs/toolProficiencies"
 						},
 						"skillToolLanguageProficiencies": {
-							"$ref": "util.json#/definitions/skillToolLanguageProficiencies"
+							"$ref": "util.json#/$defs/skillToolLanguageProficiencies"
 						},
 						"expertise": {
-							"$ref": "util.json#/definitions/expertise"
+							"$ref": "util.json#/$defs/expertise"
 						},
 						"weaponProficiencies": {
-							"$ref": "util.json#/definitions/weaponProficiencies"
+							"$ref": "util.json#/$defs/weaponProficiencies"
 						},
 						"armorProficiencies": {
-							"$ref": "util.json#/definitions/armorProficiencies"
-						},
-						"overwrite": {
-							"description": "Map of 'property' -> true where 'property' is a property on the base race which should be overwritten by that of the subrace",
-							"type": "object"
+							"$ref": "util.json#/$defs/armorProficiencies"
 						},
 						"srd": {
-							"$ref": "util.json#/definitions/srd"
+							"$ref": "util.json#/$defs/srd"
 						},
 						"basicRules": {
-							"$ref": "util.json#/definitions/basicRules"
+							"$ref": "util.json#/$defs/basicRules"
+						},
+						"lineage": {
+							"oneOf": [
+								{
+									"$ref": "#/$defs/lineage"
+								},
+								{
+									"type": "null"
+								}
+							]
 						},
 						"heightAndWeight": {
 							"oneOf": [
 								{
-									"$ref": "#/definitions/heightAndWeight"
+									"$ref": "#/$defs/heightAndWeight"
 								},
 								{
 									"type": "null"
@@ -1221,14 +1268,14 @@
 									"type": "null"
 								},
 								{
-									"$ref": "util.json#/definitions/additionalSpellsArray"
+									"$ref": "util.json#/$defs/additionalSpellsArray"
 								}
 							]
 						},
 						"resist": {
 							"oneOf": [
 								{
-									"$ref": "util.json#/definitions/damageResistArrayPlayer"
+									"$ref": "util.json#/$defs/damageResistArrayPlayer"
 								},
 								{
 									"type": "null"
@@ -1238,7 +1285,7 @@
 						"immune": {
 							"oneOf": [
 								{
-									"$ref": "util.json#/definitions/damageImmunityArrayPlayer"
+									"$ref": "util.json#/$defs/damageImmunityArrayPlayer"
 								},
 								{
 									"type": "null"
@@ -1248,7 +1295,7 @@
 						"vulnerable": {
 							"oneOf": [
 								{
-									"$ref": "util.json#/definitions/damageVulnerabilityArrayPlayer"
+									"$ref": "util.json#/$defs/damageVulnerabilityArrayPlayer"
 								},
 								{
 									"type": "null"
@@ -1258,15 +1305,48 @@
 						"conditionImmune": {
 							"oneOf": [
 								{
-									"$ref": "util.json#/definitions/conditionImmunityArrayPlayer"
+									"$ref": "util.json#/$defs/conditionImmunityArrayPlayer"
 								},
 								{
 									"type": "null"
 								}
 							]
 						},
+						"creatureTypes": {
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"type": "object",
+										"properties": {
+											"choose": {
+												"type": "array",
+												"items": {
+													"$ref": "util.json#/$defs/creatureType"
+												}
+											}
+										},
+										"required": [
+											"choose"
+										],
+										"additionalProperties": false
+									},
+									{
+										"$ref": "util.json#/$defs/creatureType"
+									}
+								]
+							}
+						},
+						"creatureTypeTags": {
+							"type": "array",
+							"uniqueItems": true,
+							"minItems": 1,
+							"items": {
+								"type": "string"
+							}
+						},
 						"age": {
-							"$ref": "#/definitions/age"
+							"$ref": "#/$defs/age"
 						},
 						"hasFluff": {
 							"type": "boolean"
@@ -1275,71 +1355,32 @@
 							"type": "boolean"
 						},
 						"_versions": {
-							"$ref": "util.json#/definitions/versionsArray"
+							"$ref": "util.json#/$defs/versionsArray"
 						},
 						"fluff": {
-							"$ref": "#/definitions/fluff"
+							"$ref": "#/$defs/fluff"
+						},
+						"foundrySystem": {
+							"$ref": "util.json#/$defs/foundrySystemObject"
+						},
+						"foundryFlags": {
+							"$ref": "util.json#/$defs/foundryFlagsObject"
+						},
+						"foundryEffects": {
+							"$ref": "util.json#/$defs/foundryEffectsArray"
 						},
 						"foundryImg": {
-							"$ref": "util.json#/definitions/foundryImg"
+							"$ref": "util.json#/$defs/foundryImg"
 						},
-						"_copy": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								},
-								"pantheon": {
-									"description": "Used in deity data",
-									"type": "string"
-								},
-								"shortName": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"className": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"classSource": {
-									"description": "Used in subclass data",
-									"type": "string"
-								},
-								"_mod": {
-									"$ref": "util.json#/definitions/_modObject"
-								},
-								"_trait": {
-									"type": "object",
-									"properties": {
-										"name": {
-											"type": "string"
-										},
-										"source": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"name",
-										"source"
-									]
-								},
-								"_preserve": {
-									"type": "object",
-									"patternProperties": {
-										".*": {
-											"type": "boolean"
-										}
-									}
-								}
-							},
-							"required": [
-								"name",
-								"source"
-							],
-							"additionalProperties": false
+						"raceName": {
+							"type": "string"
+						},
+						"raceSource": {
+							"type": "string"
+						},
+						"overwrite": {
+							"description": "Map of 'property' -> true where 'property' is a property on the base race which should be overwritten by that of the subrace",
+							"type": "object"
 						}
 					},
 					"additionalProperties": false,
@@ -1356,41 +1397,35 @@
 						"name": {
 							"type": "string"
 						},
-						"raceName": {
-							"type": "string"
-						},
-						"raceSource": {
-							"type": "string"
-						},
 						"alias": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
+							"$ref": "util.json#/$defs/alias"
 						},
 						"source": {
 							"type": "string"
 						},
 						"page": {
-							"type": "integer"
+							"$ref": "util.json#/$defs/page"
 						},
 						"otherSources": {
-							"$ref": "util.json#/definitions/otherSources"
+							"$ref": "util.json#/$defs/otherSources"
+						},
+						"additionalSources": {
+							"$ref": "util.json#/$defs/additionalSources"
 						},
 						"reprintedAs": {
-							"$ref": "util.json#/definitions/reprintedAs"
+							"$ref": "util.json#/$defs/reprintedAs"
 						},
 						"ability": {
-							"$ref": "#/definitions/abilityScores"
+							"$ref": "#/$defs/abilityScores"
 						},
 						"size": {
 							"type": "array",
 							"items": {
-								"$ref": "util.json#/definitions/size"
+								"$ref": "util.json#/$defs/size"
 							}
 						},
 						"speed": {
-							"$ref": "util.json#/definitions/speed"
+							"$ref": "util.json#/$defs/speed"
 						},
 						"entries": {
 							"type": "array",
@@ -1401,15 +1436,18 @@
 						"darkvision": {
 							"type": "integer"
 						},
+						"blindsight": {
+							"type": "integer"
+						},
 						"feats": {
-							"$ref": "util.json#/definitions/additionalFeatsArray"
+							"$ref": "util.json#/$defs/additionalFeatsArray"
 						},
 						"traitTags": {
 							"oneOf": [
 								{
 									"type": "array",
 									"items": {
-										"$ref": "#/definitions/traitTag"
+										"$ref": "#/$defs/traitTag"
 									}
 								},
 								{
@@ -1417,41 +1455,50 @@
 								}
 							]
 						},
+						"soundClip": {
+							"$ref": "entry.json#/$defs/mediaHref"
+						},
 						"languageProficiencies": {
-							"$ref": "util.json#/definitions/languageProficiencies"
+							"$ref": "util.json#/$defs/languageProficiencies"
 						},
 						"skillProficiencies": {
-							"$ref": "util.json#/definitions/skillProficiencies"
+							"$ref": "util.json#/$defs/skillProficiencies"
 						},
 						"toolProficiencies": {
-							"$ref": "util.json#/definitions/toolProficiencies"
+							"$ref": "util.json#/$defs/toolProficiencies"
 						},
 						"skillToolLanguageProficiencies": {
-							"$ref": "util.json#/definitions/skillToolLanguageProficiencies"
+							"$ref": "util.json#/$defs/skillToolLanguageProficiencies"
 						},
 						"expertise": {
-							"$ref": "util.json#/definitions/expertise"
+							"$ref": "util.json#/$defs/expertise"
 						},
 						"weaponProficiencies": {
-							"$ref": "util.json#/definitions/weaponProficiencies"
+							"$ref": "util.json#/$defs/weaponProficiencies"
 						},
 						"armorProficiencies": {
-							"$ref": "util.json#/definitions/armorProficiencies"
-						},
-						"overwrite": {
-							"description": "Map of 'property' -> true where 'property' is a property on the base race which should be overwritten by that of the subrace",
-							"type": "object"
+							"$ref": "util.json#/$defs/armorProficiencies"
 						},
 						"srd": {
-							"$ref": "util.json#/definitions/srd"
+							"$ref": "util.json#/$defs/srd"
 						},
 						"basicRules": {
-							"$ref": "util.json#/definitions/basicRules"
+							"$ref": "util.json#/$defs/basicRules"
+						},
+						"lineage": {
+							"oneOf": [
+								{
+									"$ref": "#/$defs/lineage"
+								},
+								{
+									"type": "null"
+								}
+							]
 						},
 						"heightAndWeight": {
 							"oneOf": [
 								{
-									"$ref": "#/definitions/heightAndWeight"
+									"$ref": "#/$defs/heightAndWeight"
 								},
 								{
 									"type": "null"
@@ -1464,14 +1511,14 @@
 									"type": "null"
 								},
 								{
-									"$ref": "util.json#/definitions/additionalSpellsArray"
+									"$ref": "util.json#/$defs/additionalSpellsArray"
 								}
 							]
 						},
 						"resist": {
 							"oneOf": [
 								{
-									"$ref": "util.json#/definitions/damageResistArrayPlayer"
+									"$ref": "util.json#/$defs/damageResistArrayPlayer"
 								},
 								{
 									"type": "null"
@@ -1481,7 +1528,7 @@
 						"immune": {
 							"oneOf": [
 								{
-									"$ref": "util.json#/definitions/damageImmunityArrayPlayer"
+									"$ref": "util.json#/$defs/damageImmunityArrayPlayer"
 								},
 								{
 									"type": "null"
@@ -1491,7 +1538,7 @@
 						"vulnerable": {
 							"oneOf": [
 								{
-									"$ref": "util.json#/definitions/damageVulnerabilityArrayPlayer"
+									"$ref": "util.json#/$defs/damageVulnerabilityArrayPlayer"
 								},
 								{
 									"type": "null"
@@ -1501,15 +1548,48 @@
 						"conditionImmune": {
 							"oneOf": [
 								{
-									"$ref": "util.json#/definitions/conditionImmunityArrayPlayer"
+									"$ref": "util.json#/$defs/conditionImmunityArrayPlayer"
 								},
 								{
 									"type": "null"
 								}
 							]
 						},
+						"creatureTypes": {
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"type": "object",
+										"properties": {
+											"choose": {
+												"type": "array",
+												"items": {
+													"$ref": "util.json#/$defs/creatureType"
+												}
+											}
+										},
+										"required": [
+											"choose"
+										],
+										"additionalProperties": false
+									},
+									{
+										"$ref": "util.json#/$defs/creatureType"
+									}
+								]
+							}
+						},
+						"creatureTypeTags": {
+							"type": "array",
+							"uniqueItems": true,
+							"minItems": 1,
+							"items": {
+								"type": "string"
+							}
+						},
 						"age": {
-							"$ref": "#/definitions/age"
+							"$ref": "#/$defs/age"
 						},
 						"hasFluff": {
 							"type": "boolean"
@@ -1518,13 +1598,32 @@
 							"type": "boolean"
 						},
 						"_versions": {
-							"$ref": "util.json#/definitions/versionsArray"
+							"$ref": "util.json#/$defs/versionsArray"
 						},
 						"fluff": {
-							"$ref": "#/definitions/fluff"
+							"$ref": "#/$defs/fluff"
+						},
+						"foundrySystem": {
+							"$ref": "util.json#/$defs/foundrySystemObject"
+						},
+						"foundryFlags": {
+							"$ref": "util.json#/$defs/foundryFlagsObject"
+						},
+						"foundryEffects": {
+							"$ref": "util.json#/$defs/foundryEffectsArray"
 						},
 						"foundryImg": {
-							"$ref": "util.json#/definitions/foundryImg"
+							"$ref": "util.json#/$defs/foundryImg"
+						},
+						"raceName": {
+							"type": "string"
+						},
+						"raceSource": {
+							"type": "string"
+						},
+						"overwrite": {
+							"description": "Map of 'property' -> true where 'property' is a property on the base race which should be overwritten by that of the subrace",
+							"type": "object"
 						},
 						"_copy": {
 							"type": "object",
@@ -1552,7 +1651,7 @@
 									"type": "string"
 								},
 								"_mod": {
-									"$ref": "util.json#/definitions/_modObject"
+									"$ref": "util.json#/$defs/_modObject"
 								},
 								"_trait": {
 									"type": "object",
@@ -1573,7 +1672,7 @@
 									"type": "object",
 									"patternProperties": {
 										".*": {
-											"type": "boolean"
+											"const": true
 										}
 									}
 								}
@@ -1596,7 +1695,7 @@
 			"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source.",
 			"anyOf": [
 				{
-					"$ref": "util.json#/definitions/fluffObject"
+					"$ref": "util.json#/$defs/fluffObject"
 				},
 				{
 					"description": "References \"raceFluff\" array items",
@@ -1632,18 +1731,22 @@
 	"properties": {
 		"race": {
 			"type": "array",
+			"uniqueItems": true,
+			"minItems": 1,
 			"items": {
-				"$ref": "#/definitions/race"
+				"$ref": "#/$defs/race"
 			}
 		},
 		"subrace": {
 			"type": "array",
+			"uniqueItems": true,
+			"minItems": 1,
 			"items": {
-				"$ref": "#/definitions/subrace"
+				"$ref": "#/$defs/subrace"
 			}
 		},
 		"_meta": {
-			"$ref": "util.json#/definitions/metaBlock"
+			"$ref": "util.json#/$defs/metaBlock"
 		}
 	},
 	"required": [

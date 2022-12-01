@@ -1,162 +1,190 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "cultsboons.json",
-	"version": "1.0.4",
+	"version": "1.1.0",
 	"type": "object",
-	"properties": {
+	"$defs": {
 		"cult": {
-			"type": "array",
-			"uniqueItems": true,
-			"items": {
-				"type": "object",
-				"properties": {
-					"name": {
-						"type": "string"
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"otherSources": {
+					"$ref": "util.json#/$defs/otherSources"
+				},
+				"reprintedAs": {
+					"$ref": "util.json#/$defs/reprintedAs"
+				},
+				"type": {
+					"type": "string",
+					"examples": [
+						"Demonic",
+						"Diabolical",
+						"Elder Evil",
+						"Elemental"
+					]
+				},
+				"goal": {
+					"type": "object",
+					"properties": {
+						"entry": {
+							"type": "string"
+						}
 					},
-					"source": {
-						"type": "string"
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				},
+				"cultists": {
+					"type": "object",
+					"properties": {
+						"entry": {
+							"type": "string"
+						}
 					},
-					"page": {
-						"type": "integer"
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				},
+				"signaturespells": {
+					"type": "object",
+					"properties": {
+						"entry": {
+							"type": "string"
+						}
 					},
-					"otherSources": {
-						"$ref": "util.json#/definitions/otherSources"
-					},
-					"reprintedAs": {
-						"$ref": "util.json#/definitions/reprintedAs"
-					},
-					"type": {
-						"type": "string",
-						"examples": [
-							"Demonic",
-							"Diabolical",
-							"Elder Evil",
-							"Elemental"
-						]
-					},
-					"goal": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					},
-					"cultists": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					},
-					"signaturespells": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					},
-					"entries": {
-						"type": "array",
-						"items": {
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					}
+				},
+				"foundrySystem": {
+					"$ref": "util.json#/$defs/foundrySystemObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/$defs/foundryFlagsObject"
+				},
+				"foundryEffects": {
+					"$ref": "util.json#/$defs/foundryEffectsArray"
+				},
+				"foundryImg": {
+					"$ref": "util.json#/$defs/foundryImg"
+				}
+			},
+			"required": [
+				"name",
+				"source",
+				"entries"
+			],
+			"additionalProperties": false
+		},
+		"boon": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"otherSources": {
+					"$ref": "util.json#/$defs/otherSources"
+				},
+				"reprintedAs": {
+					"$ref": "util.json#/$defs/reprintedAs"
+				},
+				"type": {
+					"type": "string",
+					"examples": [
+						"Demonic"
+					]
+				},
+				"ability": {
+					"type": "object",
+					"properties": {
+						"entry": {
 							"$ref": "entry.json"
 						}
 					},
-					"foundryImg": {
-						"$ref": "util.json#/definitions/foundryImg"
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				},
+				"signaturespells": {
+					"type": "object",
+					"properties": {
+						"entry": {
+							"$ref": "entry.json"
+						}
+					},
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				},
+				"entries": {
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"$ref": "entry.json"
 					}
 				},
-				"required": [
-					"name",
-					"source",
-					"entries"
-				],
-				"additionalProperties": false
+				"foundrySystem": {
+					"$ref": "util.json#/$defs/foundrySystemObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/$defs/foundryFlagsObject"
+				},
+				"foundryEffects": {
+					"$ref": "util.json#/$defs/foundryEffectsArray"
+				},
+				"foundryImg": {
+					"$ref": "util.json#/$defs/foundryImg"
+				}
+			},
+			"required": [
+				"name",
+				"source",
+				"type",
+				"entries"
+			],
+			"additionalProperties": false
+		}
+	},
+	"properties": {
+		"cult": {
+			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/$defs/cult"
 			}
 		},
 		"boon": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"type": "object",
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"source": {
-						"type": "string"
-					},
-					"page": {
-						"type": "integer"
-					},
-					"otherSources": {
-						"$ref": "util.json#/definitions/otherSources"
-					},
-					"reprintedAs": {
-						"$ref": "util.json#/definitions/reprintedAs"
-					},
-					"type": {
-						"type": "string",
-						"examples": [
-							"Demonic"
-						]
-					},
-					"ability": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"$ref": "entry.json"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					},
-					"signaturespells": {
-						"type": "object",
-						"properties": {
-							"entry": {
-								"$ref": "entry.json"
-							}
-						},
-						"required": [
-							"entry"
-						],
-						"additionalProperties": false
-					},
-					"entries": {
-						"type": "array",
-						"uniqueItems": true,
-						"items": {
-							"$ref": "entry.json"
-						}
-					},
-					"foundryImg": {
-						"$ref": "util.json#/definitions/foundryImg"
-					}
-				},
-				"required": [
-					"name",
-					"source",
-					"type",
-					"entries"
-				],
-				"additionalProperties": false
+				"$ref": "#/$defs/boon"
 			}
 		}
 	},

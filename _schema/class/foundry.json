@@ -1,48 +1,51 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "foundry-class.json",
-	"version": "1.3.1",
+	"version": "1.4.1",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"entryDataObject": {
 			"description": "Additional \"5etools-type\" data to be stored on the entry.",
 			"type": "object",
 			"properties": {
 				"languageProficiencies": {
-					"$ref": "../util.json#/definitions/languageProficiencies"
+					"$ref": "../util.json#/$defs/languageProficiencies"
 				},
 				"skillProficiencies": {
-					"$ref": "../util.json#/definitions/skillProficiencies"
+					"$ref": "../util.json#/$defs/skillProficiencies"
 				},
 				"weaponProficiencies": {
-					"$ref": "../util.json#/definitions/weaponProficiencies"
+					"$ref": "../util.json#/$defs/weaponProficiencies"
 				},
 				"armorProficiencies": {
-					"$ref": "../util.json#/definitions/armorProficiencies"
+					"$ref": "../util.json#/$defs/armorProficiencies"
 				},
 				"toolProficiencies": {
-					"$ref": "../util.json#/definitions/toolProficiencies"
+					"$ref": "../util.json#/$defs/toolProficiencies"
 				},
 				"savingThrowProficiencies": {
-					"$ref": "../util.json#/definitions/savingThrowProficiencies"
+					"$ref": "../util.json#/$defs/savingThrowProficiencies"
 				},
 				"expertise": {
-					"$ref": "../util.json#/definitions/expertise"
+					"$ref": "../util.json#/$defs/expertise"
 				},
 				"resist": {
-					"$ref": "../util.json#/definitions/damageResistArrayPlayer"
+					"$ref": "../util.json#/$defs/damageResistArrayPlayer"
 				},
 				"immune": {
-					"$ref": "../util.json#/definitions/damageImmunityArrayPlayer"
+					"$ref": "../util.json#/$defs/damageImmunityArrayPlayer"
 				},
 				"vulnerable": {
-					"$ref": "../util.json#/definitions/damageVulnerabilityArrayPlayer"
+					"$ref": "../util.json#/$defs/damageVulnerabilityArrayPlayer"
 				},
 				"conditionImmune": {
-					"$ref": "../util.json#/definitions/conditionImmunityArrayPlayer"
+					"$ref": "../util.json#/$defs/conditionImmunityArrayPlayer"
 				},
 				"resources": {
-					"$ref": "../util.json#/definitions/resourcesArray"
+					"$ref": "../util.json#/$defs/resourcesArray"
+				},
+				"senses": {
+					"$ref": "../util.json#/$defs/sensesArray"
 				}
 			},
 			"additionalProperties": false
@@ -67,22 +70,31 @@
 						}
 					},
 					"entryData": {
-						"$ref": "#/definitions/entryDataObject"
+						"$ref": "#/$defs/entryDataObject"
 					},
-					"data": {
-						"$ref": "../util.json#/definitions/foundryDataObject"
+					"system": {
+						"$ref": "../util.json#/$defs/foundrySystemObject"
 					},
-					"chooseData": {
+					"flags": {
+						"$ref": "../util.json#/$defs/foundryFlagsObject"
+					},
+					"advancement": {
+						"$ref": "../util.json#/$defs/foundryAdvancementsArray"
+					},
+					"chooseSystem": {
 						"type": "array",
 						"items": {
-							"$ref": "../util.json#/definitions/foundryDataObject"
+							"$ref": "../util.json#/$defs/foundrySystemObject"
 						}
 					},
-					"isChooseDataRenderEntries": {
+					"isChooseSystemRenderEntries": {
+						"type": "boolean"
+					},
+					"isChooseFlagsRenderEntries": {
 						"type": "boolean"
 					},
 					"isIgnored": {
-						"type": "boolean"
+						"const": true
 					},
 					"actorDataMod": {
 						"type": "object"
@@ -91,16 +103,13 @@
 						"type": "object"
 					},
 					"effects": {
-						"type": "array",
-						"items": {
-							"$ref": "../util.json#/definitions/foundryEffectObject"
-						}
+						"$ref": "../util.json#/$defs/foundryEffectsArray"
 					},
 					"img": {
 						"type": "string"
 					},
 					"subEntities": {
-						"$ref": "../util.json#/definitions/foundrySubEntitiesObject"
+						"$ref": "../util.json#/$defs/foundrySubEntitiesObject"
 					}
 				},
 				"required": [
@@ -108,7 +117,86 @@
 					"source"
 				],
 				"additionalProperties": false
-			}
+			},
+			"minItems": 1,
+			"uniqueItems": true
+		},
+		"subclass": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"className": {
+						"type": "string"
+					},
+					"classSource": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "../entry.json"
+						}
+					},
+					"entryData": {
+						"$ref": "#/$defs/entryDataObject"
+					},
+					"system": {
+						"$ref": "../util.json#/$defs/foundrySystemObject"
+					},
+					"flags": {
+						"$ref": "../util.json#/$defs/foundryFlagsObject"
+					},
+					"advancement": {
+						"$ref": "../util.json#/$defs/foundryAdvancementsArray"
+					},
+					"chooseSystem": {
+						"type": "array",
+						"items": {
+							"$ref": "../util.json#/$defs/foundrySystemObject"
+						}
+					},
+					"isChooseSystemRenderEntries": {
+						"type": "boolean"
+					},
+					"isChooseFlagsRenderEntries": {
+						"type": "boolean"
+					},
+					"isIgnored": {
+						"const": true
+					},
+					"actorDataMod": {
+						"type": "object"
+					},
+					"actorTokenMod": {
+						"type": "object"
+					},
+					"effects": {
+						"$ref": "../util.json#/$defs/foundryEffectsArray"
+					},
+					"img": {
+						"type": "string"
+					},
+					"subEntities": {
+						"$ref": "../util.json#/$defs/foundrySubEntitiesObject"
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"className",
+					"classSource"
+				],
+				"additionalProperties": false
+			},
+			"minItems": 1,
+			"uniqueItems": true
 		},
 		"classFeature": {
 			"type": "array",
@@ -137,22 +225,28 @@
 						}
 					},
 					"entryData": {
-						"$ref": "#/definitions/entryDataObject"
+						"$ref": "#/$defs/entryDataObject"
 					},
-					"data": {
-						"$ref": "../util.json#/definitions/foundryDataObject"
+					"system": {
+						"$ref": "../util.json#/$defs/foundrySystemObject"
 					},
-					"chooseData": {
+					"flags": {
+						"$ref": "../util.json#/$defs/foundryFlagsObject"
+					},
+					"chooseSystem": {
 						"type": "array",
 						"items": {
-							"$ref": "../util.json#/definitions/foundryDataObject"
+							"$ref": "../util.json#/$defs/foundrySystemObject"
 						}
 					},
-					"isChooseDataRenderEntries": {
+					"isChooseSystemRenderEntries": {
+						"type": "boolean"
+					},
+					"isChooseFlagsRenderEntries": {
 						"type": "boolean"
 					},
 					"isIgnored": {
-						"type": "boolean"
+						"const": true
 					},
 					"actorDataMod": {
 						"type": "object"
@@ -161,16 +255,13 @@
 						"type": "object"
 					},
 					"effects": {
-						"type": "array",
-						"items": {
-							"$ref": "../util.json#/definitions/foundryEffectObject"
-						}
+						"$ref": "../util.json#/$defs/foundryEffectsArray"
 					},
 					"img": {
 						"type": "string"
 					},
 					"subEntities": {
-						"$ref": "../util.json#/definitions/foundrySubEntitiesObject"
+						"$ref": "../util.json#/$defs/foundrySubEntitiesObject"
 					}
 				},
 				"required": [
@@ -181,7 +272,9 @@
 					"level"
 				],
 				"additionalProperties": false
-			}
+			},
+			"minItems": 1,
+			"uniqueItems": true
 		},
 		"subclassFeature": {
 			"type": "array",
@@ -216,22 +309,28 @@
 						}
 					},
 					"entryData": {
-						"$ref": "#/definitions/entryDataObject"
+						"$ref": "#/$defs/entryDataObject"
 					},
-					"data": {
-						"$ref": "../util.json#/definitions/foundryDataObject"
+					"system": {
+						"$ref": "../util.json#/$defs/foundrySystemObject"
 					},
-					"chooseData": {
+					"flags": {
+						"$ref": "../util.json#/$defs/foundryFlagsObject"
+					},
+					"chooseSystem": {
 						"type": "array",
 						"items": {
-							"$ref": "../util.json#/definitions/foundryDataObject"
+							"$ref": "../util.json#/$defs/foundrySystemObject"
 						}
 					},
-					"isChooseDataRenderEntries": {
+					"isChooseSystemRenderEntries": {
+						"type": "boolean"
+					},
+					"isChooseFlagsRenderEntries": {
 						"type": "boolean"
 					},
 					"isIgnored": {
-						"type": "boolean"
+						"const": true
 					},
 					"actorDataMod": {
 						"type": "object"
@@ -240,16 +339,13 @@
 						"type": "object"
 					},
 					"effects": {
-						"type": "array",
-						"items": {
-							"$ref": "../util.json#/definitions/foundryEffectObject"
-						}
+						"$ref": "../util.json#/$defs/foundryEffectsArray"
 					},
 					"img": {
 						"type": "string"
 					},
 					"subEntities": {
-						"$ref": "../util.json#/definitions/foundrySubEntitiesObject"
+						"$ref": "../util.json#/$defs/foundrySubEntitiesObject"
 					}
 				},
 				"required": [
@@ -262,11 +358,14 @@
 					"subclassSource"
 				],
 				"additionalProperties": false
-			}
+			},
+			"minItems": 1,
+			"uniqueItems": true
 		}
 	},
 	"required": [
 		"class",
+		"subclass",
 		"classFeature",
 		"subclassFeature"
 	],

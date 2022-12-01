@@ -1,33 +1,69 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "vehicles.json",
-	"version": "1.5.1",
+	"version": "1.7.0",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"vehicleTerrain": {
+			"description": "Note that a vehicle's \"primary\" terrain should be listed first.",
 			"type": "array",
 			"items": {
 				"type": "string",
 				"examples": [
 					"land",
 					"sea",
-					"air"
+					"air",
+					"space"
 				]
 			}
+		},
+		"_vehicleCost": {
+			"description": "In copper pieces.",
+			"type": "number"
+		},
+		"spelljammerPaceObj": {
+			"type": "object",
+			"properties": {
+				"walk": {
+					"$ref": "#/$defs/_spelljammerPace"
+				},
+				"burrow": {
+					"$ref": "#/$defs/_spelljammerPace"
+				},
+				"climb": {
+					"$ref": "#/$defs/_spelljammerPace"
+				},
+				"fly": {
+					"$ref": "#/$defs/_spelljammerPace"
+				},
+				"swim": {
+					"$ref": "#/$defs/_spelljammerPace"
+				}
+			},
+			"additionalProperties": false
+		},
+		"_spelljammerPace": {
+			"type": [
+				"string",
+				"number"
+			]
 		},
 		"vehicle": {
 			"oneOf": [
 				{
-					"$ref": "#/definitions/vehicleShip"
+					"$ref": "#/$defs/vehicleShip"
 				},
 				{
-					"$ref": "#/definitions/vehicleInfernalWarMachine"
+					"$ref": "#/$defs/vehicleSpelljammer"
 				},
 				{
-					"$ref": "#/definitions/vehicleCreature"
+					"$ref": "#/$defs/vehicleInfernalWarMachine"
 				},
 				{
-					"$ref": "#/definitions/vehicleObject"
+					"$ref": "#/$defs/vehicleCreature"
+				},
+				{
+					"$ref": "#/$defs/vehicleObject"
 				}
 			]
 		},
@@ -47,12 +83,15 @@
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/$defs/page"
+				},
+				"otherSources": {
+					"$ref": "util.json#/$defs/otherSources"
 				},
 				"upgradeType": {
 					"type": "array",
 					"items": {
-						"$ref": "util.json#/definitions/dataOptionalfeatureType",
+						"$ref": "util.json#/$defs/dataOptionalfeatureType",
 						"type": "string"
 					}
 				},
@@ -81,13 +120,16 @@
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/$defs/page"
+				},
+				"otherSources": {
+					"$ref": "util.json#/$defs/otherSources"
 				},
 				"vehicleType": {
 					"const": "SHIP"
 				},
 				"terrain": {
-					"$ref": "#/definitions/vehicleTerrain"
+					"$ref": "#/$defs/vehicleTerrain"
 				},
 				"size": {
 					"type": "string"
@@ -111,7 +153,9 @@
 					]
 				},
 				"pace": {
-					"type": "integer"
+					"type": [
+						"number"
+					]
 				},
 				"str": {
 					"type": "integer"
@@ -134,13 +178,13 @@
 				"conditionImmune": {
 					"type": "array",
 					"items": {
-						"$ref": "entry.json#/definitions/dataCondImmune"
+						"$ref": "entry.json#/$defs/dataCondImmune"
 					}
 				},
 				"immune": {
 					"type": "array",
 					"items": {
-						"$ref": "entry.json#/definitions/dataDamImmune"
+						"$ref": "entry.json#/$defs/dataDamImmune"
 					}
 				},
 				"actionThresholds": {
@@ -398,16 +442,192 @@
 				},
 				"fluff": {
 					"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source",
-					"$ref": "util.json#/definitions/fluffObject"
+					"$ref": "util.json#/$defs/fluffObject"
 				},
 				"tokenUrl": {
 					"type": "string"
 				},
-				"foundryData": {
-					"$ref": "util.json#/definitions/foundryDataObject"
+				"foundrySystem": {
+					"$ref": "util.json#/$defs/foundrySystemObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/$defs/foundryFlagsObject"
 				},
 				"foundryImg": {
-					"$ref": "util.json#/definitions/foundryImg"
+					"$ref": "util.json#/$defs/foundryImg"
+				}
+			},
+			"required": [
+				"name",
+				"source"
+			],
+			"additionalProperties": false
+		},
+		"vehicleSpelljammer": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"$ref": "util.json#/$defs/page"
+				},
+				"otherSources": {
+					"$ref": "util.json#/$defs/otherSources"
+				},
+				"vehicleType": {
+					"const": "SPELLJAMMER"
+				},
+				"terrain": {
+					"$ref": "#/$defs/vehicleTerrain"
+				},
+				"dimensions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"capCrew": {
+					"type": "integer"
+				},
+				"capCrewNote": {
+					"type": "string"
+				},
+				"capCargo": {
+					"type": [
+						"number",
+						"string"
+					]
+				},
+				"pace": {
+					"$ref": "#/$defs/spelljammerPaceObj"
+				},
+				"speed": {
+					"$ref": "util.json#/$defs/speed"
+				},
+				"hull": {
+					"type": "object",
+					"properties": {
+						"ac": {
+							"type": "integer"
+						},
+						"acFrom": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"hp": {
+							"type": "integer"
+						},
+						"dt": {
+							"type": "integer",
+							"description": "Damage Threshold"
+						}
+					},
+					"required": [
+						"ac",
+						"hp"
+					],
+					"additionalProperties": false
+				},
+				"cost": {
+					"$ref": "#/$defs/_vehicleCost"
+				},
+				"weapon": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"ac": {
+								"type": "integer"
+							},
+							"hp": {
+								"type": "integer"
+							},
+							"count": {
+								"type": "integer"
+							},
+							"crew": {
+								"type": "integer"
+							},
+							"costs": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"cost": {
+											"$ref": "#/$defs/_vehicleCost"
+										},
+										"note": {
+											"type": "string"
+										}
+									},
+									"additionalProperties": false
+								}
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							},
+							"action": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"entries": {
+											"type": "array",
+											"items": {
+												"$ref": "entry.json"
+											}
+										}
+									},
+									"additionalProperties": false
+								}
+							}
+						},
+						"required": [
+							"name",
+							"entries"
+						],
+						"additionalProperties": false
+					}
+				},
+				"hasToken": {
+					"type": "boolean"
+				},
+				"hasFluff": {
+					"type": "boolean"
+				},
+				"hasFluffImages": {
+					"type": "boolean"
+				},
+				"fluff": {
+					"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source",
+					"$ref": "util.json#/$defs/fluffObject"
+				},
+				"tokenUrl": {
+					"type": "string"
+				},
+				"foundrySystem": {
+					"$ref": "util.json#/$defs/foundrySystemObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/$defs/foundryFlagsObject"
+				},
+				"foundryImg": {
+					"$ref": "util.json#/$defs/foundryImg"
 				}
 			},
 			"required": [
@@ -426,13 +646,16 @@
 					"type": "string"
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/$defs/page"
+				},
+				"otherSources": {
+					"$ref": "util.json#/$defs/otherSources"
 				},
 				"vehicleType": {
 					"const": "INFWAR"
 				},
 				"terrain": {
-					"$ref": "#/definitions/vehicleTerrain"
+					"$ref": "#/$defs/vehicleTerrain"
 				},
 				"size": {
 					"type": "string"
@@ -493,13 +716,13 @@
 				"conditionImmune": {
 					"type": "array",
 					"items": {
-						"$ref": "entry.json#/definitions/dataCondImmune"
+						"$ref": "entry.json#/$defs/dataCondImmune"
 					}
 				},
 				"immune": {
 					"type": "array",
 					"items": {
-						"$ref": "entry.json#/definitions/dataDamImmune"
+						"$ref": "entry.json#/$defs/dataDamImmune"
 					}
 				},
 				"trait": {
@@ -565,16 +788,19 @@
 				},
 				"fluff": {
 					"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source",
-					"$ref": "util.json#/definitions/fluffObject"
+					"$ref": "util.json#/$defs/fluffObject"
 				},
 				"tokenUrl": {
 					"type": "string"
 				},
-				"foundryData": {
-					"$ref": "util.json#/definitions/foundryDataObject"
+				"foundrySystem": {
+					"$ref": "util.json#/$defs/foundrySystemObject"
+				},
+				"foundryFlags": {
+					"$ref": "util.json#/$defs/foundryFlagsObject"
 				},
 				"foundryImg": {
-					"$ref": "util.json#/definitions/foundryImg"
+					"$ref": "util.json#/$defs/foundryImg"
 				}
 			},
 			"required": [
@@ -590,7 +816,7 @@
 					"const": "CREATURE"
 				},
 				"terrain": {
-					"$ref": "#/definitions/vehicleTerrain"
+					"$ref": "#/$defs/vehicleTerrain"
 				}
 			}
 		},
@@ -601,7 +827,7 @@
 					"const": "OBJECT"
 				},
 				"terrain": {
-					"$ref": "#/definitions/vehicleTerrain"
+					"$ref": "#/$defs/vehicleTerrain"
 				}
 			}
 		}
@@ -609,14 +835,18 @@
 	"properties": {
 		"vehicle": {
 			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/vehicle"
+				"$ref": "#/$defs/vehicle"
 			}
 		},
 		"vehicleUpgrade": {
 			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/vehicleUpgrade"
+				"$ref": "#/$defs/vehicleUpgrade"
 			}
 		}
 	},

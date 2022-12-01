@@ -1,9 +1,9 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "tables.json",
-	"version": "1.1.1",
+	"version": "1.1.4",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"tableData": {
 			"type": "object",
 			"properties": {
@@ -21,11 +21,17 @@
 				"source": {
 					"type": "string"
 				},
+				"srd": {
+					"$ref": "util.json#/$defs/srd"
+				},
+				"basicRules": {
+					"$ref": "util.json#/$defs/basicRules"
+				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/$defs/page"
 				},
 				"otherSources": {
-					"$ref": "util.json#/definitions/otherSources"
+					"$ref": "util.json#/$defs/otherSources"
 				},
 				"chapter": {
 					"type": "object",
@@ -104,7 +110,7 @@
 								}
 							},
 							{
-								"$ref": "entry.json#/definitions/entryTableRow"
+								"$ref": "entry.json#/$defs/entryTableRow"
 							}
 						]
 					}
@@ -112,7 +118,7 @@
 				"tables": {
 					"type": "array",
 					"items": {
-						"$ref": "#/definitions/tableData"
+						"$ref": "#/$defs/tableData"
 					}
 				},
 				"footnotes": {
@@ -146,7 +152,7 @@
 					}
 				},
 				"foundryImg": {
-					"$ref": "util.json#/definitions/foundryImg"
+					"$ref": "util.json#/$defs/foundryImg"
 				}
 			},
 			"additionalProperties": false,
@@ -179,13 +185,14 @@
 	"properties": {
 		"table": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/tableData"
+				"$ref": "#/$defs/tableData"
 			}
 		},
 		"_meta": {
-			"$ref": "util.json#/definitions/metaBlock"
+			"$ref": "util.json#/$defs/metaBlock"
 		}
 	},
 	"required": [

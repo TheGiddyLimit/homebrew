@@ -1,10 +1,10 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "encounters.json",
-	"version": "1.2.1",
+	"version": "1.2.5",
 	"title": "EncounterArray",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"encounterTableRow": {
 			"type": "object",
 			"properties": {
@@ -15,6 +15,9 @@
 					"type": "integer"
 				},
 				"result": {
+					"$ref": "entry.json"
+				},
+				"resultAttitude": {
 					"$ref": "entry.json"
 				}
 			},
@@ -37,16 +40,17 @@
 				"diceType": {
 					"type": "integer"
 				},
+				"rollAttitude": {
+					"type": "boolean"
+				},
 				"table": {
 					"type": "array",
 					"items": {
-						"$ref": "#/definitions/encounterTableRow"
+						"$ref": "#/$defs/encounterTableRow"
 					}
 				}
 			},
 			"required": [
-				"minlvl",
-				"maxlvl",
 				"table"
 			],
 			"additionalProperties": false
@@ -63,11 +67,11 @@
 				"tables": {
 					"type": "array",
 					"items": {
-						"$ref": "#/definitions/encounterTable"
+						"$ref": "#/$defs/encounterTable"
 					}
 				},
 				"page": {
-					"type": "integer"
+					"$ref": "util.json#/$defs/page"
 				}
 			},
 			"required": [
@@ -81,8 +85,10 @@
 	"properties": {
 		"encounter": {
 			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/encounter"
+				"$ref": "#/$defs/encounter"
 			}
 		}
 	},
