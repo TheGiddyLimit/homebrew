@@ -1,13 +1,22 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "items-base.json",
-	"version": "1.4.13",
-	"definitions": {
-		"itemLookupArray": {
+	"version": "1.5.1",
+	"$defs": {
+		"itemPropertyLookupArray": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/itemLookup"
+				"$ref": "#/$defs/itemPropertyLookup"
+			}
+		},
+		"itemTypeLookupArray": {
+			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/$defs/itemTypeLookup"
 			}
 		},
 		"itemLookupBase": {
@@ -20,13 +29,9 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"name": {
-					"type": "string"
-				},
-				"template": {
-					"$comment": "Note that this is not used on item types.",
 					"type": "string"
 				}
 			},
@@ -36,7 +41,7 @@
 				"source"
 			]
 		},
-		"itemLookup": {
+		"itemPropertyLookup": {
 			"anyOf": [
 				{
 					"type": "object",
@@ -48,13 +53,12 @@
 							"type": "string"
 						},
 						"page": {
-							"$ref": "util.json#/definitions/page"
+							"$ref": "util.json#/$defs/page"
 						},
 						"name": {
 							"type": "string"
 						},
 						"template": {
-							"$comment": "Note that this is not used on item types.",
 							"type": "string"
 						},
 						"entries": {
@@ -80,13 +84,72 @@
 							"type": "string"
 						},
 						"page": {
-							"$ref": "util.json#/definitions/page"
+							"$ref": "util.json#/$defs/page"
 						},
 						"name": {
 							"type": "string"
 						},
 						"template": {
-							"$comment": "Note that this is not used on item types.",
+							"type": "string"
+						},
+						"entriesTemplate": {
+							"type": "array",
+							"items": {
+								"$ref": "entry.json"
+							}
+						}
+					},
+					"additionalProperties": false,
+					"required": [
+						"abbreviation",
+						"source"
+					]
+				}
+			]
+		},
+		"itemTypeLookup": {
+			"anyOf": [
+				{
+					"type": "object",
+					"properties": {
+						"abbreviation": {
+							"type": "string"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "util.json#/$defs/page"
+						},
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "entry.json"
+							}
+						}
+					},
+					"additionalProperties": false,
+					"required": [
+						"abbreviation",
+						"source"
+					]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"abbreviation": {
+							"type": "string"
+						},
+						"source": {
+							"type": "string"
+						},
+						"page": {
+							"$ref": "util.json#/$defs/page"
+						},
+						"name": {
 							"type": "string"
 						},
 						"entriesTemplate": {
@@ -109,6 +172,7 @@
 	"properties": {
 		"baseitem": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
 				"type": "object",
@@ -117,22 +181,22 @@
 						"type": "string"
 					},
 					"type": {
-						"$ref": "items-shared.json#/definitions/itemType"
+						"$ref": "items-shared.json#/$defs/itemType"
 					},
 					"rarity": {
-						"$ref": "items-shared.json#/definitions/itemRarity"
+						"$ref": "items-shared.json#/$defs/itemRarity"
 					},
 					"source": {
 						"type": "string"
 					},
 					"page": {
-						"$ref": "util.json#/definitions/page"
+						"$ref": "util.json#/$defs/page"
 					},
 					"ac": {
 						"type": "integer"
 					},
 					"age": {
-						"$ref": "items-shared.json#/definitions/itemAge"
+						"$ref": "items-shared.json#/$defs/itemAge"
 					},
 					"armor": {
 						"description": "Flag used when merging generic variants",
@@ -148,7 +212,7 @@
 						"type": "string"
 					},
 					"dmgType": {
-						"$ref": "util.json#/definitions/dataDamageTags"
+						"$ref": "util.json#/$defs/dataDamageTags"
 					},
 					"entries": {
 						"type": "array",
@@ -157,7 +221,7 @@
 						}
 					},
 					"property": {
-						"$ref": "items-shared.json#/definitions/itemProperty"
+						"$ref": "items-shared.json#/$defs/itemProperty"
 					},
 					"range": {
 						"type": "string"
@@ -166,7 +230,7 @@
 						"type": "integer"
 					},
 					"scfType": {
-						"$ref": "items-shared.json#/definitions/itemScfType"
+						"$ref": "items-shared.json#/$defs/itemScfType"
 					},
 					"stealth": {
 						"type": "boolean"
@@ -219,7 +283,7 @@
 						"type": "boolean"
 					},
 					"weaponCategory": {
-						"$ref": "items-shared.json#/definitions/itemWeaponCategory"
+						"$ref": "items-shared.json#/$defs/itemWeaponCategory"
 					},
 					"weight": {
 						"type": "number"
@@ -231,16 +295,16 @@
 						"type": "integer"
 					},
 					"srd": {
-						"$ref": "util.json#/definitions/srd"
+						"$ref": "util.json#/$defs/srd"
 					},
 					"basicRules": {
-						"$ref": "util.json#/definitions/basicRules"
+						"$ref": "util.json#/$defs/basicRules"
 					},
 					"otherSources": {
-						"$ref": "util.json#/definitions/otherSources"
+						"$ref": "util.json#/$defs/otherSources"
 					},
 					"ammoType": {
-						"$ref": "items-shared.json#/definitions/itemAmmoType"
+						"$ref": "items-shared.json#/$defs/itemAmmoType"
 					},
 					"packContents": {
 						"type": "array",
@@ -314,28 +378,27 @@
 							"backpack"
 						]
 					},
-					"foundryData": {
-						"$ref": "util.json#/definitions/foundryDataObject"
+					"foundrySystem": {
+						"$ref": "util.json#/$defs/foundrySystemObject"
 					},
 					"foundryFlags": {
-						"$ref": "util.json#/definitions/foundryFlagsObject"
+						"$ref": "util.json#/$defs/foundryFlagsObject"
 					},
 					"foundryEffects": {
-						"$ref": "util.json#/definitions/foundryEffectsArray"
+						"$ref": "util.json#/$defs/foundryEffectsArray"
 					},
 					"foundryImg": {
-						"$ref": "util.json#/definitions/foundryImg"
+						"$ref": "util.json#/$defs/foundryImg"
 					},
 					"fluff": {
-						"$ref": "items-shared.json#/definitions/fluff"
+						"$ref": "items-shared.json#/$defs/fluff"
 					}
 				},
 				"required": [
 					"name",
 					"type",
 					"rarity",
-					"source",
-					"page"
+					"source"
 				],
 				"additionalProperties": {
 					"type": [
@@ -347,26 +410,14 @@
 			}
 		},
 		"itemProperty": {
-			"$ref": "#/definitions/itemLookupArray"
+			"$ref": "#/$defs/itemPropertyLookupArray"
 		},
 		"itemType": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/itemLookupArray"
-				},
-				{
-					"items": {
-						"not": {
-							"required": [
-								"template"
-							]
-						}
-					}
-				}
-			]
+			"$ref": "#/$defs/itemTypeLookupArray"
 		},
 		"itemEntry": {
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"type": "object",
 				"properties": {
@@ -387,6 +438,7 @@
 		},
 		"itemTypeAdditionalEntries": {
 			"type": "array",
+			"minItems": 1,
 			"items": {
 				"type": "object",
 				"properties": {

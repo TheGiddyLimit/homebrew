@@ -1,10 +1,10 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "entry.json",
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.8.0",
-	"definitions": {
+	"version": "1.8.3",
+	"$defs": {
 		"_arrayOfSpell": {
 			"type": "array",
 			"uniqueItems": true,
@@ -61,7 +61,7 @@
 							"const": "external"
 						},
 						"url": {
-							"type": "string"
+							"$ref": "util.json#/$defs/url"
 						}
 					},
 					"required": [
@@ -84,13 +84,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -99,7 +99,10 @@
 				"id": {
 					"type": "string"
 				}
-			}
+			},
+			"required": [
+				"type"
+			]
 		},
 		"entrySection": {
 			"type": "object",
@@ -115,13 +118,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -131,10 +134,7 @@
 					"type": "string"
 				},
 				"alias": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"$ref": "util.json#/$defs/alias"
 				},
 				"entries": {
 					"type": "array",
@@ -147,6 +147,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"entries"
 			],
 			"additionalProperties": false
@@ -165,13 +166,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -187,16 +188,14 @@
 					}
 				},
 				"alias": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"$ref": "util.json#/$defs/alias"
 				},
 				"style": {
 					"type": "string"
 				}
 			},
 			"required": [
+				"type",
 				"entries"
 			],
 			"additionalProperties": false
@@ -215,13 +214,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -251,6 +250,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"entries"
 			],
 			"additionalProperties": false
@@ -269,13 +269,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -292,6 +292,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"entries"
 			],
 			"additionalProperties": false
@@ -310,13 +311,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -333,6 +334,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"entries"
 			],
 			"additionalProperties": false
@@ -351,13 +353,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -381,6 +383,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"entries"
 			],
 			"additionalProperties": false
@@ -399,13 +402,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -462,7 +465,7 @@
 								}
 							},
 							{
-								"$ref": "#/definitions/entryTableRow"
+								"$ref": "#/$defs/entryTableRow"
 							}
 						]
 					}
@@ -489,6 +492,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"rows"
 			],
 			"additionalProperties": false
@@ -508,13 +512,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -526,11 +530,12 @@
 				"tables": {
 					"type": "array",
 					"items": {
-						"$ref": "#/definitions/entryTable"
+						"$ref": "#/$defs/entryTable"
 					}
 				}
 			},
 			"required": [
+				"type",
 				"tables"
 			],
 			"additionalProperties": false
@@ -549,13 +554,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -575,6 +580,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"row"
 			],
 			"additionalProperties": false
@@ -593,13 +599,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -653,6 +659,9 @@
 					"$ref": "#"
 				}
 			},
+			"required": [
+				"type"
+			],
 			"additionalProperties": false
 		},
 		"entryList": {
@@ -669,13 +678,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -708,6 +717,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"items"
 			],
 			"additionalProperties": false
@@ -726,13 +736,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -746,6 +756,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"value"
 			],
 			"additionalProperties": false
@@ -764,13 +775,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -784,6 +795,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"value"
 			],
 			"additionalProperties": false
@@ -802,13 +814,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -847,6 +859,9 @@
 					"type": "boolean"
 				}
 			},
+			"required": [
+				"type"
+			],
 			"additionalProperties": false
 		},
 		"entryAbilityDc": {
@@ -863,13 +878,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -895,6 +910,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"name",
 				"attributes"
 			],
@@ -914,13 +930,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -946,6 +962,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"name",
 				"attributes"
 			],
@@ -965,13 +982,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -999,6 +1016,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"text"
 			],
 			"additionalProperties": false
@@ -1017,13 +1035,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1104,7 +1122,7 @@
 									"type": "object",
 									"properties": {
 										"page": {
-											"$ref": "util.json#/definitions/page"
+											"$ref": "util.json#/$defs/page"
 										},
 										"source": {
 											"type": "string"
@@ -1136,7 +1154,7 @@
 									"const": "external"
 								},
 								"url": {
-									"type": "string"
+									"$ref": "util.json#/$defs/url"
 								}
 							},
 							"required": [
@@ -1148,6 +1166,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"text",
 				"href"
 			],
@@ -1168,13 +1187,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1194,6 +1213,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"name"
 			],
 			"additionalProperties": false
@@ -1212,13 +1232,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1238,6 +1258,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"entries"
 			],
 			"additionalProperties": false
@@ -1256,13 +1277,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1282,6 +1303,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"entries"
 			],
 			"additionalProperties": false
@@ -1300,13 +1322,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1323,6 +1345,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"name",
 				"entries"
 			],
@@ -1342,13 +1365,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1365,6 +1388,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"name",
 				"entries"
 			],
@@ -1384,13 +1408,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1407,6 +1431,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"name",
 				"entries"
 			],
@@ -1428,13 +1453,13 @@
 							"type": "string"
 						},
 						"page": {
-							"$ref": "util.json#/definitions/page"
+							"$ref": "util.json#/$defs/page"
 						},
 						"srd": {
-							"$ref": "util.json#/definitions/srd"
+							"$ref": "util.json#/$defs/srd"
 						},
 						"basicRules": {
-							"$ref": "util.json#/definitions/basicRules"
+							"$ref": "util.json#/$defs/basicRules"
 						},
 						"data": {
 							"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1454,6 +1479,7 @@
 						}
 					},
 					"required": [
+						"type",
 						"entry"
 					],
 					"additionalProperties": false
@@ -1472,13 +1498,13 @@
 							"type": "string"
 						},
 						"page": {
-							"$ref": "util.json#/definitions/page"
+							"$ref": "util.json#/$defs/page"
 						},
 						"srd": {
-							"$ref": "util.json#/definitions/srd"
+							"$ref": "util.json#/$defs/srd"
 						},
 						"basicRules": {
-							"$ref": "util.json#/definitions/basicRules"
+							"$ref": "util.json#/$defs/basicRules"
 						},
 						"data": {
 							"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1501,6 +1527,7 @@
 						}
 					},
 					"required": [
+						"type",
 						"entries"
 					],
 					"additionalProperties": false
@@ -1521,13 +1548,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1544,6 +1571,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"name",
 				"entry"
 			],
@@ -1563,13 +1591,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1583,6 +1611,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"name",
 				"entry"
 			],
@@ -1602,13 +1631,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1618,11 +1647,11 @@
 					"type": "string"
 				},
 				"href": {
-					"$ref": "#/definitions/mediaHref"
+					"$ref": "#/$defs/mediaHref"
 				},
 				"hrefThumbnail": {
 					"title": "A thumbnail image used in rare cases, e.g. when loading a wall of maps to choose from in the DM Screen.",
-					"$ref": "#/definitions/mediaHref"
+					"$ref": "#/$defs/mediaHref"
 				},
 				"title": {
 					"type": "string"
@@ -1756,6 +1785,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"href"
 			],
 			"additionalProperties": false
@@ -1774,13 +1804,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1792,11 +1822,12 @@
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/definitions/entryImage"
+						"$ref": "#/$defs/entryImage"
 					}
 				}
 			},
 			"required": [
+				"type",
 				"images"
 			],
 			"additionalProperties": false
@@ -1815,13 +1846,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1838,6 +1869,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"name",
 				"entries"
 			],
@@ -1857,13 +1889,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1894,6 +1926,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"attackType",
 				"attackEntries",
 				"hitEntries"
@@ -1914,13 +1947,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1932,11 +1965,12 @@
 				"blocks": {
 					"type": "array",
 					"items": {
-						"$ref": "#/definitions/entry"
+						"$ref": "#/$defs/entry"
 					}
 				}
 			},
 			"required": [
+				"type",
 				"blocks"
 			],
 			"additionalProperties": false
@@ -1955,13 +1989,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -1973,10 +2007,13 @@
 				"entries": {
 					"type": "array",
 					"items": {
-						"$ref": "#/definitions/entry"
+						"$ref": "#/$defs/entry"
 					}
 				}
 			},
+			"required": [
+				"type"
+			],
 			"additionalProperties": false
 		},
 		"entryIngredient": {
@@ -1993,13 +2030,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -2012,14 +2049,15 @@
 					"$ref": "#"
 				}
 			},
+			"required": [
+				"type",
+				"entry"
+			],
 			"patternProperties": {
 				"^amount\\d+$": {
 					"type": "number"
 				}
 			},
-			"required": [
-				"entry"
-			],
 			"additionalProperties": false
 		},
 		"entryStatblockInline": {
@@ -2034,10 +2072,13 @@
 							"const": "monster"
 						},
 						"data": {
-							"$ref": "bestiary/bestiary.json#/definitions/creature"
+							"$ref": "bestiary/bestiary.json#/$defs/creature"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2057,10 +2098,13 @@
 							"const": "legendaryGroup"
 						},
 						"data": {
-							"$ref": "bestiary/legendarygroups.json#/definitions/legendaryGroup"
+							"$ref": "bestiary/legendarygroups.json#/$defs/legendaryGroup"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2080,10 +2124,13 @@
 							"const": "spell"
 						},
 						"data": {
-							"$ref": "spells/spells.json#/definitions/spell"
+							"$ref": "spells/spells.json#/$defs/spell"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2103,10 +2150,13 @@
 							"const": "action"
 						},
 						"data": {
-							"$ref": "actions.json#/definitions/action"
+							"$ref": "actions.json#/$defs/action"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2126,10 +2176,13 @@
 							"const": "item"
 						},
 						"data": {
-							"$ref": "items.json#/definitions/item"
+							"$ref": "items.json#/$defs/item"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2149,10 +2202,13 @@
 							"const": "background"
 						},
 						"data": {
-							"$ref": "backgrounds.json#/definitions/background"
+							"$ref": "backgrounds.json#/$defs/background"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2172,10 +2228,13 @@
 							"const": "charoption"
 						},
 						"data": {
-							"$ref": "charcreationoptions.json#/definitions/charoption"
+							"$ref": "charcreationoptions.json#/$defs/charoption"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2195,10 +2254,13 @@
 							"const": "condition"
 						},
 						"data": {
-							"$ref": "conditionsdiseases.json#/definitions/conditionDisease"
+							"$ref": "conditionsdiseases.json#/$defs/conditionDisease"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2218,10 +2280,13 @@
 							"const": "disease"
 						},
 						"data": {
-							"$ref": "conditionsdiseases.json#/definitions/conditionDisease"
+							"$ref": "conditionsdiseases.json#/$defs/conditionDisease"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2241,10 +2306,13 @@
 							"const": "status"
 						},
 						"data": {
-							"$ref": "conditionsdiseases.json#/definitions/conditionDisease"
+							"$ref": "conditionsdiseases.json#/$defs/conditionDisease"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2264,10 +2332,13 @@
 							"const": "cult"
 						},
 						"data": {
-							"$ref": "cultsboons.json#/definitions/cult"
+							"$ref": "cultsboons.json#/$defs/cult"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2287,10 +2358,13 @@
 							"const": "boon"
 						},
 						"data": {
-							"$ref": "cultsboons.json#/definitions/boon"
+							"$ref": "cultsboons.json#/$defs/boon"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2310,10 +2384,13 @@
 							"const": "deity"
 						},
 						"data": {
-							"$ref": "deities.json#/definitions/deity"
+							"$ref": "deities.json#/$defs/deity"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2333,10 +2410,13 @@
 							"const": "feat"
 						},
 						"data": {
-							"$ref": "feats.json#/definitions/feat"
+							"$ref": "feats.json#/$defs/feat"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2356,10 +2436,13 @@
 							"const": "language"
 						},
 						"data": {
-							"$ref": "languages.json#/definitions/language"
+							"$ref": "languages.json#/$defs/language"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2379,10 +2462,13 @@
 							"const": "object"
 						},
 						"data": {
-							"$ref": "objects.json#/definitions/object"
+							"$ref": "objects.json#/$defs/object"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2402,10 +2488,13 @@
 							"const": "optionalfeature"
 						},
 						"data": {
-							"$ref": "optionalfeatures.json#/definitions/optionalfeature"
+							"$ref": "optionalfeatures.json#/$defs/optionalfeature"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2425,10 +2514,13 @@
 							"const": "psionic"
 						},
 						"data": {
-							"$ref": "psionics.json#/definitions/psionic"
+							"$ref": "psionics.json#/$defs/psionic"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2448,10 +2540,13 @@
 							"const": "race"
 						},
 						"data": {
-							"$ref": "races.json#/definitions/race"
+							"$ref": "races.json#/$defs/race"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2471,10 +2566,13 @@
 							"const": "recipe"
 						},
 						"data": {
-							"$ref": "recipes.json#/definitions/recipe"
+							"$ref": "recipes.json#/$defs/recipe"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2494,10 +2592,13 @@
 							"const": "reward"
 						},
 						"data": {
-							"$ref": "rewards.json#/definitions/reward"
+							"$ref": "rewards.json#/$defs/reward"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2517,10 +2618,13 @@
 							"const": "table"
 						},
 						"data": {
-							"$ref": "tables.json#/definitions/tableData"
+							"$ref": "tables.json#/$defs/tableData"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2540,10 +2644,13 @@
 							"const": "trap"
 						},
 						"data": {
-							"$ref": "trapshazards.json#/definitions/trap"
+							"$ref": "trapshazards.json#/$defs/trap"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2563,10 +2670,13 @@
 							"const": "hazard"
 						},
 						"data": {
-							"$ref": "trapshazards.json#/definitions/hazard"
+							"$ref": "trapshazards.json#/$defs/hazard"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2586,10 +2696,13 @@
 							"const": "variantrule"
 						},
 						"data": {
-							"$ref": "variantrules.json#/definitions/variantrule"
+							"$ref": "variantrules.json#/$defs/variantrule"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2609,10 +2722,13 @@
 							"const": "vehicle"
 						},
 						"data": {
-							"$ref": "vehicles.json#/definitions/vehicle"
+							"$ref": "vehicles.json#/$defs/vehicle"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2632,10 +2748,13 @@
 							"const": "vehicleUpgrade"
 						},
 						"data": {
-							"$ref": "vehicles.json#/definitions/vehicleUpgrade"
+							"$ref": "vehicles.json#/$defs/vehicleUpgrade"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2655,10 +2774,13 @@
 							"const": "skill"
 						},
 						"data": {
-							"$ref": "skills.json#/definitions/skill"
+							"$ref": "skills.json#/$defs/skill"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2678,10 +2800,13 @@
 							"const": "sense"
 						},
 						"data": {
-							"$ref": "senses.json#/definitions/sense"
+							"$ref": "senses.json#/$defs/sense"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
@@ -2709,13 +2834,13 @@
 							"type": "string"
 						},
 						"page": {
-							"$ref": "util.json#/definitions/page"
+							"$ref": "util.json#/$defs/page"
 						},
 						"srd": {
-							"$ref": "util.json#/definitions/srd"
+							"$ref": "util.json#/$defs/srd"
 						},
 						"basicRules": {
-							"$ref": "util.json#/definitions/basicRules"
+							"$ref": "util.json#/$defs/basicRules"
 						},
 						"data": {
 							"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -2725,7 +2850,7 @@
 							"type": "string"
 						},
 						"tag": {
-							"$ref": "util.json#/definitions/tagNameStats"
+							"$ref": "util.json#/$defs/tagNameStats"
 						},
 						"displayName": {
 							"type": "string"
@@ -2734,10 +2859,14 @@
 							"type": "string"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
+						"type",
 						"tag",
 						"name"
 					],
@@ -2757,13 +2886,13 @@
 							"type": "string"
 						},
 						"page": {
-							"$ref": "util.json#/definitions/page"
+							"$ref": "util.json#/$defs/page"
 						},
 						"srd": {
-							"$ref": "util.json#/definitions/srd"
+							"$ref": "util.json#/$defs/srd"
 						},
 						"basicRules": {
-							"$ref": "util.json#/definitions/basicRules"
+							"$ref": "util.json#/$defs/basicRules"
 						},
 						"data": {
 							"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -2773,7 +2902,7 @@
 							"type": "string"
 						},
 						"prop": {
-							"$ref": "util.json#/definitions/propNameStats"
+							"$ref": "util.json#/$defs/propNameStats"
 						},
 						"displayName": {
 							"type": "string"
@@ -2782,10 +2911,14 @@
 							"type": "string"
 						},
 						"style": {
-							"$ref": "#/definitions/_entryDataStyle"
+							"$ref": "#/$defs/_entryDataStyle"
+						},
+						"collapsed": {
+							"const": true
 						}
 					},
 					"required": [
+						"type",
 						"prop",
 						"name",
 						"source"
@@ -2868,13 +3001,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -2890,28 +3023,28 @@
 					}
 				},
 				"constant": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"will": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"ritual": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"rest": {
-					"$ref": "#/definitions/entrySpellcasting_frequency"
+					"$ref": "#/$defs/entrySpellcasting_frequency"
 				},
 				"daily": {
-					"$ref": "#/definitions/entrySpellcasting_frequency"
+					"$ref": "#/$defs/entrySpellcasting_frequency"
 				},
 				"weekly": {
-					"$ref": "#/definitions/entrySpellcasting_frequency"
+					"$ref": "#/$defs/entrySpellcasting_frequency"
 				},
 				"yearly": {
-					"$ref": "#/definitions/entrySpellcasting_frequency"
+					"$ref": "#/$defs/entrySpellcasting_frequency"
 				},
 				"charges": {
-					"$ref": "#/definitions/entrySpellcasting_frequency"
+					"$ref": "#/$defs/entrySpellcasting_frequency"
 				},
 				"spells": {
 					"type": "object",
@@ -2933,31 +3066,31 @@
 							"additionalProperties": false
 						},
 						"1": {
-							"$ref": "#/definitions/entrySpellcasting_level1to9"
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						},
 						"2": {
-							"$ref": "#/definitions/entrySpellcasting_level1to9"
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						},
 						"3": {
-							"$ref": "#/definitions/entrySpellcasting_level1to9"
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						},
 						"4": {
-							"$ref": "#/definitions/entrySpellcasting_level1to9"
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						},
 						"5": {
-							"$ref": "#/definitions/entrySpellcasting_level1to9"
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						},
 						"6": {
-							"$ref": "#/definitions/entrySpellcasting_level1to9"
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						},
 						"7": {
-							"$ref": "#/definitions/entrySpellcasting_level1to9"
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						},
 						"8": {
-							"$ref": "#/definitions/entrySpellcasting_level1to9"
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						},
 						"9": {
-							"$ref": "#/definitions/entrySpellcasting_level1to9"
+							"$ref": "#/$defs/entrySpellcasting_level1to9"
 						}
 					},
 					"additionalProperties": false
@@ -3010,6 +3143,7 @@
 				}
 			},
 			"required": [
+				"type",
 				"name"
 			],
 			"additionalProperties": false
@@ -3040,58 +3174,58 @@
 			"type": "object",
 			"properties": {
 				"1": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"2": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"3": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"4": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"5": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"6": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"7": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"8": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"9": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"9e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"8e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"7e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"6e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"5e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"4e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"3e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"2e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				},
 				"1e": {
-					"$ref": "#/definitions/_arrayOfSpell"
+					"$ref": "#/$defs/_arrayOfSpell"
 				}
 			},
 			"additionalProperties": false
@@ -3110,13 +3244,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -3128,6 +3262,7 @@
 				"wrapped": {}
 			},
 			"required": [
+				"type",
 				"wrapped"
 			],
 			"additionalProperties": false
@@ -3135,7 +3270,7 @@
 		"dataDamImmune": {
 			"oneOf": [
 				{
-					"$ref": "util.json#/definitions/dataDamageType"
+					"$ref": "util.json#/$defs/dataDamageType"
 				},
 				{
 					"type": "object",
@@ -3158,7 +3293,7 @@
 						"immune": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/dataDamImmune"
+								"$ref": "#/$defs/dataDamImmune"
 							}
 						},
 						"note": {
@@ -3175,7 +3310,7 @@
 		"dataCondImmune": {
 			"oneOf": [
 				{
-					"$ref": "util.json#/definitions/dataCondition"
+					"$ref": "util.json#/$defs/dataCondition"
 				},
 				{
 					"type": "object",
@@ -3198,7 +3333,7 @@
 						"conditionImmune": {
 							"type": "array",
 							"items": {
-								"$ref": "util.json#/definitions/dataCondition"
+								"$ref": "util.json#/$defs/dataCondition"
 							}
 						},
 						"note": {
@@ -3226,13 +3361,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"data": {
 					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
@@ -3257,138 +3392,141 @@
 					}
 				}
 			},
+			"required": [
+				"type"
+			],
 			"additionalProperties": false
 		}
 	},
 	"anyOf": [
 		{
-			"$ref": "#/definitions/entrySection"
+			"$ref": "#/$defs/entrySection"
 		},
 		{
-			"$ref": "#/definitions/entryEntries"
+			"$ref": "#/$defs/entryEntries"
 		},
 		{
-			"$ref": "#/definitions/entryHomebrew"
+			"$ref": "#/$defs/entryHomebrew"
 		},
 		{
-			"$ref": "#/definitions/entryQuote"
+			"$ref": "#/$defs/entryQuote"
 		},
 		{
-			"$ref": "#/definitions/entryInlineEntries"
+			"$ref": "#/$defs/entryInlineEntries"
 		},
 		{
-			"$ref": "#/definitions/entryEntriesInlineEntries"
+			"$ref": "#/$defs/entryEntriesInlineEntries"
 		},
 		{
-			"$ref": "#/definitions/entryOptions"
+			"$ref": "#/$defs/entryOptions"
 		},
 		{
-			"$ref": "#/definitions/entryTableGroup"
+			"$ref": "#/$defs/entryTableGroup"
 		},
 		{
-			"$ref": "#/definitions/entryTable"
+			"$ref": "#/$defs/entryTable"
 		},
 		{
-			"$ref": "#/definitions/entryTableRow"
+			"$ref": "#/$defs/entryTableRow"
 		},
 		{
-			"$ref": "#/definitions/entryTableCell"
+			"$ref": "#/$defs/entryTableCell"
 		},
 		{
-			"$ref": "#/definitions/entryList"
+			"$ref": "#/$defs/entryList"
 		},
 		{
-			"$ref": "#/definitions/entryBonus"
+			"$ref": "#/$defs/entryBonus"
 		},
 		{
-			"$ref": "#/definitions/entryBonusSpeed"
+			"$ref": "#/$defs/entryBonusSpeed"
 		},
 		{
-			"$ref": "#/definitions/entryDice"
+			"$ref": "#/$defs/entryDice"
 		},
 		{
-			"$ref": "#/definitions/entryAbilityDc"
+			"$ref": "#/$defs/entryAbilityDc"
 		},
 		{
-			"$ref": "#/definitions/entryAbilityAttackMod"
+			"$ref": "#/$defs/entryAbilityAttackMod"
 		},
 		{
-			"$ref": "#/definitions/abilityGeneric"
+			"$ref": "#/$defs/abilityGeneric"
 		},
 		{
-			"$ref": "#/definitions/entryLink"
+			"$ref": "#/$defs/entryLink"
 		},
 		{
-			"$ref": "#/definitions/entryOptFeature"
+			"$ref": "#/$defs/entryOptFeature"
 		},
 		{
-			"$ref": "#/definitions/entryInset"
+			"$ref": "#/$defs/entryInset"
 		},
 		{
-			"$ref": "#/definitions/entryInsetReadaloud"
+			"$ref": "#/$defs/entryInsetReadaloud"
 		},
 		{
-			"$ref": "#/definitions/entryVariant"
+			"$ref": "#/$defs/entryVariant"
 		},
 		{
-			"$ref": "#/definitions/entryVariantInner"
+			"$ref": "#/$defs/entryVariantInner"
 		},
 		{
-			"$ref": "#/definitions/entryVariantSub"
+			"$ref": "#/$defs/entryVariantSub"
 		},
 		{
-			"$ref": "#/definitions/entryItem"
+			"$ref": "#/$defs/entryItem"
 		},
 		{
-			"$ref": "#/definitions/entryItemSub"
+			"$ref": "#/$defs/entryItemSub"
 		},
 		{
-			"$ref": "#/definitions/entryItemSpell"
+			"$ref": "#/$defs/entryItemSpell"
 		},
 		{
-			"$ref": "#/definitions/entryImage"
+			"$ref": "#/$defs/entryImage"
 		},
 		{
-			"$ref": "#/definitions/entryGallery"
+			"$ref": "#/$defs/entryGallery"
 		},
 		{
-			"$ref": "#/definitions/entryActions"
+			"$ref": "#/$defs/entryActions"
 		},
 		{
-			"$ref": "#/definitions/entryAttack"
+			"$ref": "#/$defs/entryAttack"
 		},
 		{
-			"$ref": "#/definitions/entryStatblockInline"
+			"$ref": "#/$defs/entryStatblockInline"
 		},
 		{
-			"$ref": "#/definitions/entryStatblock"
+			"$ref": "#/$defs/entryStatblock"
 		},
 		{
-			"$ref": "#/definitions/entryRefClassFeature"
+			"$ref": "#/$defs/entryRefClassFeature"
 		},
 		{
-			"$ref": "#/definitions/entryRefSubclassFeature"
+			"$ref": "#/$defs/entryRefSubclassFeature"
 		},
 		{
-			"$ref": "#/definitions/entryRefOptionalfeature"
+			"$ref": "#/$defs/entryRefOptionalfeature"
 		},
 		{
-			"$ref": "#/definitions/entryHr"
+			"$ref": "#/$defs/entryHr"
 		},
 		{
-			"$ref": "#/definitions/entrySpellcasting"
+			"$ref": "#/$defs/entrySpellcasting"
 		},
 		{
-			"$ref": "#/definitions/entryFlowchart"
+			"$ref": "#/$defs/entryFlowchart"
 		},
 		{
-			"$ref": "#/definitions/entryFlowBlock"
+			"$ref": "#/$defs/entryFlowBlock"
 		},
 		{
-			"$ref": "#/definitions/entryIngredient"
+			"$ref": "#/$defs/entryIngredient"
 		},
 		{
-			"$ref": "#/definitions/entryWrapped"
+			"$ref": "#/$defs/entryWrapped"
 		},
 		{
 			"type": "string"
