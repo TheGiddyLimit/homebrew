@@ -86,6 +86,13 @@ const VANILLA_SOURCES = [
 	"SCC-ARiR",
 	"MPMM",
 	"CRCotN",
+	"JttRC",
+	"SAiS",
+	"AAG",
+	"BAM",
+	"LoX",
+	"DoSI",
+	"DSotDQ",
 	"Screen",
 	"ScreenWildernessKit",
 	"ScreenDungeonKit",
@@ -99,6 +106,9 @@ const VANILLA_SOURCES = [
 	"NRH-TLT",
 	"NRH-AWoL",
 	"NRH-AT",
+	"MGELFT",
+	"VD",
+	"SjA",
 	"ALCurseOfStrahd",
 	"ALElementalEvil",
 	"ALRageOfDemons",
@@ -179,7 +189,12 @@ const VANILLA_SOURCES = [
 	"UA2021DraconicOptions",
 	"UA2021MagesOfStrixhaven",
 	"UA2021TravelersOfTheMultiverse",
-	"UA2022HeroesOfKrynn"
+	"UA2022HeroesOfKrynn",
+	"UA2022HeroesOfKrynnRevisited",
+	"UA2022GiantOptions",
+	"UA2022WondersOfTheMultiverse",
+	"MCV1SC",
+	"MCV2DC"
 ];
 
 export {

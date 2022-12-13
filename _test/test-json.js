@@ -1,12 +1,29 @@
 import * as fs from "fs";
+import {Command} from "commander";
 
 import {Um, JsonTester} from "5etools-utils";
 
 const LOG_TAG = "JSON";
 const _IS_FAIL_SLOW = !!process.env.FAIL_SLOW;
 
-function main () {
-	const {errors, errorsFull} = new JsonTester({dirSchema: "_schema", tagLog: LOG_TAG}).getErrorsOnDirs({isFailFast: !_IS_FAIL_SLOW});
+const program = new Command()
+	.argument("[file]", "File to test")
+;
+
+program.parse(process.argv);
+
+
+async function main () {
+	const jsonTester = new JsonTester({dirSchema: "_schema", tagLog: LOG_TAG});
+
+	let results;
+	if (program.args[0]) {
+		results = jsonTester.getFileErrors({filePath: program.args[0]});
+	} else {
+		results = await jsonTester.pGetErrorsOnDirsWorkers({isFailFast: !_IS_FAIL_SLOW})
+	}
+
+	const {errors, errorsFull} = results;
 
 	if (errors.length) {
 		if (!process.env.CI) fs.writeFileSync(`_test/test-json.error.log`, errorsFull.join("\n\n=====\n\n"));
