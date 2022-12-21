@@ -14,7 +14,7 @@ program.parse(process.argv);
 
 
 async function main () {
-	const jsonTester = new JsonTester({dirSchema: "_schema", tagLog: LOG_TAG});
+	const jsonTester = new JsonTester({isBrew: true, tagLog: LOG_TAG, fnGetSchemaId: () => "homebrew.json"});
 
 	let results;
 	if (program.args[0]) {
