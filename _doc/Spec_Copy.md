@@ -476,7 +476,7 @@ Add a scalar to `@dc` tags in a statblock
 
 #### maxSize
 
-Set a statblock's `size` to the maximum of the present value and the value provided.
+Set a statblock's `size` to the minimum of the present value and the value provided.
 
 ```jsonc
 {
