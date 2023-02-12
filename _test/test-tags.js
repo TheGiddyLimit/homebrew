@@ -31,7 +31,7 @@ async function main () {
 
 	console.timeEnd(TIME_TAG);
 
-	return !outMessage;
+	if (outMessage) process.exit(1);
 }
 
 export default main();
