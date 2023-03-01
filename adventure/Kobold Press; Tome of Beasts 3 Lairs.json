@@ -30,8 +30,8 @@
 			}
 		],
 		"status": "wip",
-		"dateAdded": 1677538561,
-		"dateLastModified": 1677538561,
+		"dateAdded": 1677710025,
+		"dateLastModified": 1677710025,
 		"dependencies": {
 			"monster": [
 				"MM",
@@ -40,6 +40,133 @@
 		}
 	},
 	"monster": [
+		{
+			"name": "Weakened Origami Golem",
+			"source": "ToB3-Lairs",
+			"page": 46,
+			"_copy": {
+				"name": "Origami Golem",
+				"source": "ToB3",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Trumpeting Blast (Swan Form Only) {@recharge 5}",
+						"items": {
+							"name": "Trumpeting Blast (Swan Form Only) {@recharge 6}",
+							"entries": [
+								"The golem emits a trumpeting blast in a 30-foot cone. Each creature in that area must make a {@dc 15} Constitution saving throw. On a failure, a creature takes 31 ({@damage 7d8}) thunder damage and is {@condition deafened} until the end of its next turn. On a success, a creature takes half the damage and isn't {@condition deafened}."
+							]
+						}
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Weakened",
+							"entries": [
+								"Any damage the golem deals to the PCs is halved."
+							]
+						}
+					}
+				}
+			},
+			"hp": {
+				"special": "32"
+			},
+			"cr": "3"
+		},
+		{
+			"name": "Animated Piano",
+			"source": "ToB3-Lairs",
+			"page": 45,
+			"_copy": {
+				"name": "Mimic",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "removeArr",
+						"names": [
+							"Adhesive (Object Form Only)",
+							"Shapechanger"
+						]
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Pseudopod",
+						"items": {
+							"name": "Piano Wire",
+							"entries": [
+								"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) bludgeoning damage. If the target is a creature, it is {@condition grappled} (escape {@dc 13}). Ability checks made to escape this grapple have disadvantage."
+							]
+						}
+					}
+				}
+			},
+			"type": {
+				"type": "construct"
+			}
+		},
+		{
+			"name": "Flour Mephit",
+			"source": "ToB3-Lairs",
+			"page": 39,
+			"_copy": {
+				"name": "Dust Mephit",
+				"source": "MM"
+			},
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (1/Day)",
+					"headerEntries": [
+						"The mephit can innately cast {@spell grease}, requiring no material components. Its innate spellcasting ability is Charisma."
+					],
+					"will": [
+						"{@spell grease}"
+					],
+					"ability": "cha",
+					"hidden": [
+						"will"
+					],
+					"type": "spellcasting"
+				}
+			]
+		},
+		{
+			"name": "Panifex",
+			"source": "ToB3-Lairs",
+			"page": 41,
+			"_copy": {
+				"name": "Ghost",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Summon Silverfish (1/Day)",
+							"entries": [
+								"Panifex can use an action to summon a {@creature swarm of insects} (silverfish) to attack his foes."
+							]
+						}
+					},
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "humanoid",
+						"with": "dragon"
+					},
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Incorporeal Movement",
+						"items": {
+							"name": "Incorporeal Movement",
+							"entries": [
+								"The ghost can move through other creatures and objects as if they were {@quickref difficult terrain||3}. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object.",
+								"Panifex cannot move beyond {@adventure Areas 8 and 9|ToB3-Lairs|6|8. Hidden Room} unless he has possessed a corporeal body."
+							]
+						}
+					}
+				}
+			},
+			"isNpc": true
+		},
 		{
 			"name": "Juvenile Razorback Crab",
 			"source": "ToB3-Lairs",
@@ -371,7 +498,7 @@
 					"headers": [
 						"Adventure Background",
 						"Adventure Hook",
-						"Draconci Confections",
+						"Draconic Confections",
 						{
 							"depth": 1,
 							"header": "1. Shop Front"
@@ -2839,8 +2966,8 @@
 												{
 													"type": "table",
 													"colStyles": [
-														"col-2",
-														"col-10"
+														"col-1",
+														"col-11"
 													],
 													"caption": "Razorback Crab Burrow",
 													"page": 20,
@@ -4025,7 +4152,343 @@
 								]
 							]
 						},
-						"{@note Coming soon!}"
+						{
+							"type": "entries",
+							"name": "Adventure Background",
+							"id": "6.ab",
+							"page": 36,
+							"entries": [
+								"The {@creature bakery drake|ToB3}, Amaranth, is the darling of the local upper crust. Since her arrival in the city, the baked goods she crafts have sold well among the nobility and other wealthy citizens. Her culinary craft has been in high demand, and the drake herself is known to be an excellent conversationalist and an appealing figure to invite to high-profile events.",
+								"Recently, several notable figures among the city’s elite have died under mysterious circumstances. Initial investigations discovered they had been poisoned, but the method of delivery remained a mystery until a bright, young alchemist made the connection that all the victims had eaten foods baked at Amaranth’s establishment. The poison had been delivered as two or three separate components which, when combined, created the toxin. Shocked officials now have a suspect, though her motive remains unclear.",
+								"What they do not realize is that the {@creature bakery drake|ToB3} is under duress. During renovations to her bakery, a hidden room was discovered, previously walled off from the rest of the bakery. When investigating this find, Amaranth was attacked by the ghost of {@creature Panifex|ToB3-Lairs}, the former owner and another bakery drake. A decade ago, {@creature Panifex|ToB3-Lairs|Panifex's} baked goods were the talk of the town. However, unlike Amaranth, he was not simply a baker, but also a spy, using his place in high society to glean sensitive information to pass on to his masters. He was eventually discovered, and one night agents of the nobility sneaked into the bakery, subdued {@creature Panifex|ToB3-Lairs}, and walled him up in his own basement as punishment for his treason. {@creature Panifex|ToB3-Lairs} died a slow death, cursing his captors with his final breath. But the drake’s spirit lingered, bent on revenge . . . yet he could not leave the rooms in which he died. Years later, when Amaranth took over the bakery, she discovered the hidden rooms and accidentally unleashed {@creature Panifex|ToB3-Lairs|Panifex's} ghost. The spirit possessed Amaranth and began plotting his revenge, using his baking skills—and Amaranth’s fame—to learn which of the city’s elite had caused his demise, then bake his way to sweet, sweet revenge."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Adventure Hook",
+							"page": 36,
+							"entries": [
+								"The following can start the PCs on this adventure:",
+								{
+									"type": "list",
+									"items": [
+										"{@b {@i Deputized.}} The PCs are hired to arrest Amaranth, as capturing a {@creature bakery drake|ToB3} is not something typically in the purview of the average city guard.",
+										"{@b {@i Mercenaries.}} The next of kin of one of the murdered elites hires the PCs to bring Amaranth to them before the city officials can get ahold of her, believing the drake to be too popular to face true justice without their intervention.",
+										"{@b {@i To the Rescue.}} The PCs are friends and confidants of Amaranth. Having heard the news that she is the prime suspect in the recent murders, they head to the bakery to warn her and/or get more information about the situation."
+									]
+								},
+								"In the “Deputized” and “Mercenaries” hooks, the hiring party emphasizes that Amaranth should be brought in alive. Either of these two hooks offer a reward of 150 gp per PC; with the “To the Rescue” hook, Amaranth will offer the same amount as a reward if she is rescued from {@creature Panifex|ToB3-Lairs}."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Draconic Confections",
+							"page": 38,
+							"entries": [
+								"Amaranth’s bakery sits just off a main thoroughfare in the mercantile quarter of the city, near its border to the noble quarter. Of stone construction, the building has a partial second story, and the roof of its first story sports several chimneys, which are almost always sending streams of woodsmoke into the sky. The front of the shop has several large windows to display goods, and above the door hangs a wooden sign with the shop’s name, as well as an image of a lithe, draconic form coiled around a hoard of baked goods.",
+								"Much gossip is discussed while patrons wait in line at the bakery, so {@creature Panifex|ToB3-Lairs} is well aware of the general situation and expects the law to descend upon the bakery soon. The staff has been sent home, and the place is locked up tight.",
+								{
+									"type": "image",
+									"href": {
+										"type": "external",
+										"url": "https://raw.githubusercontent.com/Spappz/homebrew/tob3-lairs/_img/ToB3-Lairs/map/6_DM.webp"
+									},
+									"imageType": "map"
+								},
+								"{@note An unlabelled version of the map can be found {@link here|https://raw.githubusercontent.com/Spappz/homebrew/tob3-lairs/_img/ToB3-Lairs/map/6.jpg}.}",
+								{
+									"type": "entries",
+									"name": "1. Shop Front",
+									"id": "6.1",
+									"page": 38,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Tables of delicious-looking confections line the front of the shop under the windows. Flowering shrubs planted in large, glazed pots decorate the waiting area. A polished, wooden countertop divides the room, behind which are shelves holding various baked goods for sale. A bright red curtain covers the doorway to the back areas of the bakery."
+											]
+										},
+										"Though the place looks ready for business, there is no one present, and a hand-painted sign reading “{@style closed until further notice|small-caps}” has been placed in the window just to the right of the doors. The doors themselves are locked, but can be opened with the key (which Amaranth holds) or can be picked with a successful DC 15 Dexterity check using {@item thieves' tools|phb}.",
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Behind the counter, on the floor, is an iron lockbox (which is locked, but can be picked with a successful DC 15 Dexterity check using {@item thieves' tools|phb}) containing 100 cp, 40 sp, and 40 gp."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "2. Bakery",
+									"id": "6.2",
+									"page": 38,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This warm room smells of woodsmoke and baked bread. The center of the room is dominated by ten brick ovens that still crackle with flame. Around the room are several prep tables, their surfaces covered with flour and the remnants of dough and icing. Casks, crates, and sacks of ingredients line the back wall between two doors, alongside stacks of firewood. A large trapdoor in the floor is visible in the southeast corner."
+											]
+										},
+										"The ovens in the main work area of the bakery remain hot, the coals having been banked but kept lit when the workers were released by Amaranth/{@creature Panifex|ToB3-Lairs}. The sacks and crates contain dried fruits, nuts, and other ingredients; the casks contain various flours, water, honey, molasses, and salt.",
+										{
+											"type": "entries",
+											"name": "Discovery",
+											"entries": [
+												"Searching the area reveals the kitchen manager’s ledger on the table on the west side of the room, in which he keeps track of things such as the bakers’ hours and pay, ingredient stock on hand, etc. A DC 12 Intelligence ({@skill Investigation}) check finds a slip of paper in between some pages near the back of the book with the words “{@style three dozen cabbage buns, day old|small-caps}” written with care on it. This phrase can be used to bypass the magical trap on the door leading to {@area 5|6.5|u}.",
+												"While looking around the room, the PCs notice a sheet of paper has been pinned to the trapdoor. In large letters the words “{@style do not enter|small-caps}” have been written on it, with each word underlined three times; below that, in smaller letters, it reads: “{@style by order of the boss!|small-caps}” If the ledger has been located, a successful DC 10 Intelligence check determines that the handwriting on the sign is the same as in the ledger; a creature proficient with {@item calligrapher's supplies|phb} makes the check with advantage."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Trapped Trapdoor",
+											"entries": [
+												"If a creature other than Amaranth attempts to open the trapdoor to {@area 7|6.7|u}, the entire room shakes, knocking things off shelves, toppling glass bottles, and most importantly, causing six bags of flour that were perched on the rafters above to fall to the floor and burst open, spreading flour into the air. This makes the air visibly dusty, rendering anything more than 20 feet away lightly obscured to the observer. It takes 5 minutes for the flour to settle.",
+												"If the trapdoor is opened, a spurt of flame bursts out of one of the ovens, igniting the flour in the air in a sudden flash of roaring flame, inflicting 11 ({@damage 2d10}) fire damage to all creatures in the room and igniting any unattended flammable materials, such as paper or cloth. Anyone standing in the space directly in front of the middle oven on the south side of the building also takes an additional 5 ({@damage 1d10}) points of fire damage from the spurt of flame it releases."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Detection",
+											"entries": [
+												"With a successful DC 15 Wisdom ({@skill Perception}) check, a creature examining the area around the trapdoor (or the trapdoor itself after the first part of the trap is triggered) detects a sense of menace and foreboding hinting at a magical trap or that there is a hostile supernatural effect at play."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Prevention",
+											"entries": [
+												"Casting {@spell gust of wind} or using similar magic to remove the flour from the air prevents the trap’s flame from igniting it, as does waiting 5 minutes or more to open the trapdoor. Otherwise, a creature who succeeds on a DC 15 Intelligence ({@skill Arcana}) or DC 17 Dexterity check using {@item thieves' tools|phb} can disable the trapdoor for 1 minute, preventing the second part of the trap from triggering."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"If the flame spurt is triggered, four {@creature flour mephit|ToB3-Lairs|flour mephits} (use statistics for {@creature dust mephit}) emerge from flour casks after the fire subsides and attack any creatures they see that are not wearing Draconic Confections uniforms. For their innate spell, the {@creature flour mephit|ToB3-Lairs|flour mephits} can cast {@spell grease} instead of {@spell sleep}; the effect created by the spell is clearly butter.",
+												"After 1 round of combat, the three {@creature wolf||guard dogs} from {@area 3|6.3|u} come investigate the noise and join the fight."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Magical Wards",
+											"entries": [
+												"Everything in this room has been magically warded to be immune to fire."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Among the other ingredients in the room are containers of gold foil and dust, used to decorate the bakery’s fancier confections (worth 50 gp total)."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "3. Delivery Room and Storage",
+									"id": "6.3",
+									"page": 39,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"A pair of carts, their beds covered by canvas, occupy most of this wide room. A staircase leads to the second floor."
+											]
+										},
+										"If approached from outside, there is a third set of double doors that open to a ramp down to the cellar, {@area 7|6.7|u}. All the doors to and from this room are locked (but can be picked with a successful DC 15 Dexterity check using {@item thieves' tools|phb}). The carts are used by bakery employees to make deliveries and pick up supplies for the bakery. The room also serves as a temporary storage area until supplies can be moved down to the cellar. The stairs lead up to {@area 4|6.4|u}.",
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Three guard dogs (use statistics for {@creature wolf}) patrol this area, here to guard the bakery against thieves during the off-hours. Two are currently resting on one of the carts beneath the canvas. If they detect any intruders moving through this area, they attack. If combat ensues, after the first round, the third guard dog comes down the stairs and joins the fray. A successful DC 12 Wisdom ({@skill Perception}) check spots a bowl full of water under the wagon, possibly providing a clue to the dogs’ presence prior to an attack.",
+												"After 1 round, the {@creature flour mephit|ToB3-Lairs|flour mephits} from {@area 2|6.2|u} join the fight."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "4. Entry Hall",
+									"id": "6.4",
+									"page": 39,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The room at the top of the stairs is spacious and airy. To the north, several windows overlook the street that runs outside past the bakery, while a single window to the south offers a view of the smokestacks on the building’s rooftop. A comfortable divan and a pair of plush chairs occupy the southeast corner, situated around a low table of polished wood. A door to the east and a door leading out to the rooftops are the only apparent exits other than the stairs."
+											]
+										},
+										"Amaranth uses this room to entertain guests and meets with potential clients to discuss orders. The door to the roof is unlocked. The door to {@area 5|6.5|u} is locked (but can be picked with a successful DC 15 Dexterity check using {@item thieves' tools|phb}); it is also trapped.",
+										{
+											"type": "entries",
+											"name": "Magical Trap",
+											"entries": [
+												"If an attempt is made to open this door without Amaranth’s key, a blast of golden magical energy lashes out at the creature, forcing them to make a DC 15 Dexterity saving throw. On a failure, the creature is {@condition paralyzed} for 1 minute; on a success, the creature is not {@condition paralyzed}, but is instead under the effect of the {@spell slow} spell for 1 minute.",
+												"Touching the door also triggers the {@spell alarm} spell that was placed on it, causing it to start ringing loudly. After the alarm rings for 1 round, the gargoyle in {@area 6|6.6|u} comes to investigate and attacks any creatures not wearing Draconic Confections uniforms it sees in the Entry Hall."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Detection",
+											"entries": [
+												"With a successful DC 15 Wisdom ({@skill Perception}) check, a creature examining the area around the door detects a sense of menace and foreboding hinting at a magical trap or that there is a hostile supernatural effect at play."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Prevention",
+											"entries": [
+												"If Amaranth’s key is used to unlock the door, the trap is not triggered. Alternately, the passphrase found in the ledger in Area 2 deactivates the trap for 1 minute. This is to allow Amaranth’s foreman—who has a copy of the key not attuned to the trap—access to the room for emergencies or unusual circumstances."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "5. Amaranth's Room",
+									"id": "6.5",
+									"page": 40,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This is a large, tidy living space. To the south is a fireplace and a large, four-poster bed that’s piled with cushions and thick blankets. A comfortable-looking stuffed sofa faces the window to the north, and a low table occupies the center of the room. A bookshelf stands adjacent to the fireplace, holding a number of books."
+											]
+										},
+										"The fireplace is connected to the chimney of one of the ovens in the kitchen below, allowing the smell of baking to rise up into the room when the oven is used. The bookshelf is filled with cookbooks, containing recipes for a variety of baked goods from a wide range of lands and cultures. The table is very low to the ground, a little awkward for a Medium bipedal creature, but comfortable for a Small-sized one. The bed is comfortable, but full of crumbs.",
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Under the bed is an iron lockbox (which is locked, but can be picked with a successful DC 15 Dexterity check using {@item thieves' tools|phb}); inside is 100 cp, 400 sp, and 100 gp, as well as a set of silver measuring spoons (worth 25 gp)."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "6. Rooftop",
+									"id": "6.6",
+									"page": 40,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This flat roof is featureless save for a number of smokestacks and a stone rainwater cistern with pipes leading from it down into the kitchen."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creature",
+											"entries": [
+												"Perched atop the cistern is a {@creature gargoyle}, an old ally of {@creature Panifex|ToB3-Lairs|Panifex's} that has been recruited to aid him. It can be easily seen by any creature that ventures to the southern edge of the rooftop. It remains motionless unless attacked, or it realizes that there are unauthorized creatures inside the building—either because they open the door to the roof or because they set off the alarm on the door. The {@creature gargoyle} is brash but not completely foolhardy—nor overly loyal to {@creature Panifex|ToB3-Lairs}. It attempts to flee if reduced to a quarter of its hit points."
+											]
+										},
+										{
+											"type": "image",
+											"href": {
+												"type": "external",
+												"url": "https://raw.githubusercontent.com/Spappz/homebrew/tob3-lairs/_img/ToB3-Lairs/creature/Gargoyle.webp"
+											}
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "7. Cellar",
+									"id": "6.7",
+									"page": 40,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This cellar is stocked with crates, casks, and sacks, as well as stacks of firewood. A wheelbarrow sits in the southwest corner. A ramp leads up to a pair of double doors to the northwest, and another to a trapdoor in the ceiling to the southeast. This room is stocked with various goods used in the bakery—flour, sugar, molasses, nuts, dried fruits, and other foodstuffs, as well as cords of wood of the sort that would be used to feed ovens."
+											]
+										},
+										"Specifically looking under the ramp leading up to the trapdoor reveals a hole broken into the wall that leads to Area 8; otherwise, a successful DC 12 Wisdom ({@skill Perception}) check locates it."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "8. Hidden Room",
+									"id": "6.8",
+									"page": 41,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Bricks and mortar from the hole in the wall are scattered across the floor on the northern side of this room. Bookshelves line the walls here, sagging with age and the weight of their contents. One has fallen to the floor, its books scattered around it. There’s an archway in the middle of the western wall, leading to another room. The smell of old books is in the air, as is a slight odor of dampness or mildew—but, strangely, the predominant smell that fills this area is that of fresh-baked pastries."
+											]
+										},
+										"This was once {@creature Panifex|ToB3-Lairs|Panifex's} library. All of the books here have succumbed to rot and an infestation of silverfish. There are hundreds of rotted tomes.",
+										"If the PCs linger in this area, Amaranth/{@creature Panifex|ToB3-Lairs|Panifex's} calls out from {@area 9|6.9|u}: {@i “No confections today, I’m afraid. We’re closed.\"}"
+									]
+								},
+								{
+									"type": "entries",
+									"name": "9. Death Chamber of Panifex",
+									"id": "6.9",
+									"page": 41,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The floor of this room is covered with shredded paper and leather, as well as several books that have been torn apart by claws and teeth. In the southwest corner are the skeletal remains of a reptilian creature about the size of a jackal. The scent of pastry is much stronger here, and it is easy to determine the source: The bakery drake in the white vest with “{@style Draconic Confections|small-caps}” stitched on one of the breast pockets; the creature smiles at you as you enter, and somehow the sweet aroma in the air becomes even stronger."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"The {@creature bakery drake|ToB3}, Amaranth, is lurking here, curled up in the northeast corner of the room (and thus is not visible from {@area 8|6.8|u}). She was driven to linger in this place by the ghost of {@creature Panifex|ToB3-Lairs}. In her possessed state, Amaranth fights until she dies or is knocked {@condition unconscious}; when either eventuality occurs, {@creature Panifex|ToB3-Lairs} emerges from her fallen form as a {@creature ghost} to continue the combat, fighting until destroyed."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Panifex",
+											"entries": [
+												"{@creature Panifex|ToB3-Lairs} can use an action to summon a {@creature swarm of insects} (silverfish) to attack his foes; once he has used this ability, he cannot do so again until the next dawn. {@creature Panifex|ToB3-Lairs|Panifex's} Possession ability only works on creatures of the dragon type, and he cannot move beyond {@area Areas 8|6.8|x} and {@area 9|6.9|x} unless he has possessed a corporeal body."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Tactics",
+											"entries": [
+												"On his first turn after he emerges as a ghost, {@creature Panifex|ToB3-Lairs} uses his action to summon the {@creature swarm of insects}. The silverfish swarm out of the old books in {@area 8|6.8|u} and move to attack the nearest creature hostile to {@creature Panifex|ToB3-Lairs}."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"While searching the debris in the room, a successful DC 13 Intelligence ({@skill Investigation}) check discovers a scroll tube of carved ebony, inlaid with and capped in silver (worth 75 gp). Inside the scroll tube are the collected recipes created by {@creature Panifex|ToB3-Lairs}. Bakers far and wide would pay dearly for the secret to such confections, and the recipes can be sold for 200 gp to the right buyer. In one of the pockets of Amaranth’s vest is a key that unlocks any of (and bypasses any traps on) the locked doors in Draconic Confections."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Drake Bones",
+											"entries": [
+												"The skeletal remains in the southwest corner belong to {@creature Panifex|ToB3-Lairs}. A successful DC 10 Wisdom ({@skill Medicine}) or Intelligence ({@skill Investigation}) check determines that {@creature Panifex|ToB3-Lairs} was likely also a {@creature bakery drake|ToB3}."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Concluding the Adventure",
+							"page": 41,
+							"entries": [
+								"If Amaranth still lives, once {@creature Panifex|ToB3-Lairs} has been defeated, she is safe from his influence and can explain what happened to her, as noted in the {@area Adventure Background|6.ab|x}.",
+								"If the PCs were deputized or hired to deal with the drake, they can take her in to plead her case. Sympathetic PCs may testify on her behalf about the ghost and her possession.",
+								"If the PCs came to rescue her, they can still provide testimony, but may decide to not turn her over to authorities—though if given a choice, Amaranth would prefer to turn herself in and be given a chance to plead her case. Many of the city authorities and nobility remember {@creature Panifex|ToB3-Lairs}, and those directly involved in his demise are grateful to be spared any more of his vengeance—so they are likely to believe any truthful testimony from the PCs and be lenient toward Amaranth as a result.",
+								"The PCs are duly rewarded for their efforts; depending on which adventure hook you chose, their reward comes from either the city’s ruler, a noble/merchant, or Amaranth herself. Provide them with what seems a fitting reward, or whatever was promised, if an amount was already set.",
+								"Amaranth herself is insistent on providing the PCs with regular gifts of goods from her bakery in addition to any monetary sum agreed upon, and she would certainly also be willing to purchase {@creature Panifex|ToB3-Lairs|Panifex's} recipes if the PCs found them."
+							]
+						}
 					]
 				},
 				{
@@ -4044,7 +4507,425 @@
 								]
 							]
 						},
-						"{@note Coming soon!}"
+						{
+							"type": "entries",
+							"name": "Adventure Background",
+							"page": 42,
+							"entries": [
+								"Three days ago, an orphan named Budanyek entered the haunted Heinrosch Bardic College, goaded by the gang he was with to sneak inside. When Budanyek didn’t come back, most of the other youths blew off his absence, save for a few friends who grew worried for his safety. Held back by superstition, they have not risked going in after him, believing Budanyek was taken by a spirit of the college. And they’re right—the ghost of the college’s founder, Mikolaj Heinrosch has captured and possessed Budanyek. Now, Heinrosch’s ghost works Budanyek to the bone to finish his life’s work. If the ghost succeeds, he believes he shall have eternal rest, despite the cost—Budanyek’s life."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Adventure Hook",
+							"page": 42,
+							"entries": [
+								"The following can used to start the PCs on this adventure:",
+								{
+									"type": "list",
+									"items": [
+										"{@b {@i Gang Prank.}} A group of teens, part of an unnamed, mostly harmless street gang, approaches the PCs, asking for their help in rescuing their friend, Budanyek. Led by his sibling, Rabbit, they explain how they lost their friend; loitering around the old college, daring each other and teasing him with his childhood nickname, Buttanyek. Penniless, Rabbit and the orphans try to appeal to the PCs’ good nature as a reward for Budanyek’s safe return. Failing that, they share that Budanyek often talked about someday cracking a safe he’d glimpsed inside the college.",
+										"{@b {@i Collector.}} A collector hires the PCs to recover any Heinrosch memorabilia from the college grounds. He knows that much of it has likely been pilfered by bandits, but he hopes that something of interest remains. He offers 50 gp for each piece of Heinrosch memorabilia delivered. He doesn’t tell the PCs what his total budget is—because he wants to be able to pick and choose from whatever they find—but he has a soft cap of 300 gp."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Heinrosch Bardic College",
+							"page": 42,
+							"entries": [
+								"The college, built more than sixty years ago, is as much a monument to the ambitions and ego of Mikolaj Heinrosch as it is an academy. With wealth earned through years of adventuring, he retired and turned his hand to composing music—and indeed achieved some minor repute in that realm, with a handful of his compositions occasionally (okay, once) mentioned among those of the great composers. Not content with the “minor” part of “minor repute,” or the fact that he was only once mentioned among the greats, Heinrosch hired gnomish architects and inventors to design an institute that would elevate his bardic legacy. Alas, Heinrosch died before the college ever became successful, and the institution folded abruptly after his demise.",
+								"Now, within the college’s walls, musical constructs have awakened by Heinrosch’s ghost, assisting him while he works towards his goal of completing his unfinished magnum opus.",
+								"The building is clearly abandoned, with all windows boarded up except where otherwise noted. All of the doors have likewise been boarded, but the eastern entrance door is ajar, left so when Budanyek used a crowbar to break inside.",
+								{
+									"type": "image",
+									"href": {
+										"type": "external",
+										"url": "https://raw.githubusercontent.com/Spappz/homebrew/tob3-lairs/_img/ToB3-Lairs/map/7_DM.webp"
+									},
+									"imageType": "map"
+								},
+								"{@note An unlabelled version of the map can be found {@link here|https://raw.githubusercontent.com/Spappz/homebrew/tob3-lairs/_img/ToB3-Lairs/map/7.jpg}.}",
+								{
+									"type": "entries",
+									"name": "1. Entrance",
+									"id": "7.1",
+									"page": 44,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The door opens to reveal a vast space with vaulted ceilings that reach 60 feet high. A tattered banner of purple cloth hangs from the ceiling, with yellow stitching spelling out the words “{@style Welcome Students|small-caps}.” To the north, a dusty, glass-faced cabinet stands in the gloom. Beyond the cabinet, and around the corner to the north, a long corridor stretches into the dark as the rest of the room to the west continues forward into another large, open area."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Display Cabinet",
+											"entries": [
+												"This cabinet once held trophies for the school’s triumphs and Heinrosch’s own accomplishments. Now, it’s almost completely empty; the only remaining sign of a trophy is on the top shelf, a brass plaque with the heading “{@style The Gilded Quill|small-caps}” in large letters, with the following written below in smaller text: “{@style The Pen With Which Heinrosch’s Symphony No. 3, Oboe Concerto No. 2, and Violin Sonata No. 7 Were Written|small-caps}.” There is a mounting bracket where an item was clearly once displayed, but there is presently no sign of the quill in question."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "2. Hall of Revelry",
+									"id": "7.2",
+									"page": 44,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Four boarded-up, curtained windows on the south wall allow in slivers of dim light that lance across a disarray of cocktail tables. Opposite the windows, posters depicting bygone performances plaster a wall between three closed doors."
+											]
+										},
+										"Music can be heard coming from inside {@area 10|7.10|u}. A successful DC 11 Wisdom ({@skill Insight}) or Charisma ({@skill Performance}) check makes out five distinct sounds coming from the room: four woodwind instruments playing in practiced harmony while a young man’s voice fluctuates between cries of pain and frustrated vocalizations. A success that surpasses the DC by 5 or more determines that as the music plays on and off, it subtly changes each time.",
+										"Regardless of the skill check result, any creature in this area hears the voice’s cries.",
+										{
+											"type": "entries",
+											"name": "Performance Hall Doors",
+											"entries": [
+												"Heinrosch’s influence magically holds shut all six doors leading to {@area 10|7.10|u}. The doors can be opened with a successful DC 23 Strength ({@skill Athletics}) or Intelligence ({@skill Arcana}) check.",
+												"For each encounter resolved in {@area Areas 5–8|7.58|x}, reduce the DC by 1. By defeating the {@creature origami golem|ToB3} in {@area 9|7.9|u}, reduce the DC by 3. If all encounters in Areas {@area Areas 5|7.58|x}–{@area 9|7.9|x} are completed, Heinrosch’s influence over the Performance Hall is broken, and the doors open normally thereafter."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "3. Hall of Muses",
+									"id": "7.3",
+									"page": 44,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Three heavy wooden tables and benches are arrayed here, and light floods the area, shining through the pair of partially boarded windows. A trio of statues are lined up along a wall to the north."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Statues",
+											"entries": [
+												"The three stone statues—of The Harpist, The Painter, and The Warrior-Poet—depict the three bardic muses; students would lay offerings at the foot of the statues for luck and creative inspiration. Examining the statues reveals that they are in various states of disrepair.",
+												"A successful DC 13 Intelligence ({@skill Investigation}) check notes the following: All of The Harpist’s strings have snapped; The Painter’s easel holds no canvas; and The Warrior-Poet holds a quill made of stone in one hand, poised as if to write something in a book held in his other hand, but his other hand is empty. There are bits of broken string still attached to the harp, indicating that some elements of the statues were originally not stone.",
+												"The intent of the statues being only partially stone was so that the students could interact with them—play a song on The Harpist’s instrument, place a painting on The Painter’s easel, or add a poem to The Warrior-Poet’s book."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Development",
+											"entries": [
+												"If all three statues are repaired, the muses offer a blessing. Any creature that assisted at all in the repair has advantage on Intelligence, Wisdom, and Charisma ability checks for the next eight hours.",
+												"Suitable materials to repair the statues can be found within the college or can possibly be carried or crafted by well-prepared PCs."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "4. Dean's Office",
+									"id": "7.4",
+									"page": 44,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Thick dust coats every surface in this richly appointed office. The window on the western wall lets in soft light, and a crack in one of its panes allows in a breeze that flutters yellowed stationary atop a handsome desk. On the walls are paintings depicting heroic deeds, and light glints off a basket-hilted saber mounted on the wall behind the desk. A black safe looms in the corner."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Locked Door",
+											"entries": [
+												"The door to this room is locked, but can be picked with a successful DC 13 Dexterity check using {@item thieves' tools|phb}. A spare key is hidden above the door, which can be spotted with a successful DC 16 Wisdom ({@skill Perception}) or Intelligence ({@skill Investigation}) check. Budanyek (who is in the Performance Hall) also has a key."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Paintings",
+											"entries": [
+												"A successful DC 13 Intelligence ({@skill Investigation}) check notices that the same bardic figure in a jaunty hat is present in all of the paintings (though he is one of many figures depicted); proficiency with {@item painter's supplies|phb} provides advantage on this check."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"What’s left of the late founder’s wealth is contained within this room. Spending an hour to gather the room’s contents accrues the following: six paintings (worth 300 gp total), rare books (worth 100 gp total), and {@dice 3d4} small mundane objects of dubious value or utility. The mounted saber is a {@item silvered longsword|phb} (worth 150 gp)."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "The Desk",
+											"entries": [
+												"A nameplate on the desk reads “{@style Dean Heinrosch|small-caps}.” While searching the desk, a successful DC 10 Intelligence ({@skill Investigation}) check discovers a drawer with a false bottom. If the check surpasses the DC by 5 or more, it also reveals that the drawer is trapped; if it doesn’t, and the PC specifically looks for traps, a successful DC 15 Wisdom ({@skill Perception}) detects it. A successful DC 13 Dexterity check using {@item thieves' tools|phb} disarms the trap. Failure to disarm the trap triggers a small poisoned needle when the false bottom is accessed, forcing one creature interacting with the drawer to make a DC 13 Constitution save. The creature takes 2 piercing damage and 16 ({@damage 3d10}) poison damage on a failed save or half as much damage on a successful one.",
+												"Inside the false bottom are a collection of blueprints for a massive auditorium, arcane schematics for the creation of animated quartets and symphonies, a {@item spell scroll (2nd level)||scroll} of {@spell detect thoughts}, and a {@item spell scroll (4th level)||scroll} of {@spell locate object}."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "The Safe",
+											"entries": [
+												"A combination lock secures the safe; it has three rotating dials, each numbered 0-9. The code is 3, 2, 7—the numbers of Heinrosch’s three best-regarded compositions; a clue to both the numbers and the order in which they appear in the combination can be found in the display cabinet in {@area 1|7.1|u}. Without the code, the safe code can be cracked with a successful DC 19 Intelligence check; a creature with proficiency in {@item thieves' tools|phb} can add their proficiency bonus to the check.",
+												"If the PCs can’t unlock the safe and are stumped about the code, assuming they examined the display cabinet in {@area 1|7.1|u}, a successful DC 13 Intelligence ({@skill Investigation}) or Wisdom ({@skill Perception}) check recalls that they previously encountered three numbers extremely significant to the (egotistical) owner of this safe."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"The safe contains a {@item +1 hand crossbow}, a {@item whip|phb}, Heinrosch’s iconic hat, 20 pp, a {@item potion of climbing}, and a {@item potion of greater healing}."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "5–8. Practice Rooms",
+									"id": "7.58",
+									"page": 45,
+									"entries": [
+										"Each one of these rooms are functionally the same, with 20-foot ceilings and thick, alchemically concocted insulation that isolates the occupants from hearing activities in the other rooms. The rooms are setup with the standard equipment one would expect to find in each type of space.",
+										"While combat might ensue in these rooms, each presents opportunities for quick-thinking PCs to find non-combat solutions. If PCs choose to resolve an encounter through a skill challenge, calculate the DC as 10 plus the number of creatures in the room. If the PCs succeed three times before failing three times they successfully resolve the encounter peacefully. If the PCs fail three times as a group, the creatures within become hostile.",
+										{
+											"type": "entries",
+											"name": "Area 5",
+											"entries": [
+												"A music rehearsal space. 1 {@creature clockwork conductor|ToB3} leads 1 {@creature animated piano|ToB3-Lairs} (use statistics for {@creature mimic}, with the changes listed below) in practicing a piece, the piano playing its own keys."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creature Change",
+											"entries": [
+												"The {@creature animated piano|ToB3-Lairs} is a construct and doesn’t have the Shapechanger or Adhesive abilities. Its Pseudopod (Piano Wire) attack is the same, but change the last line to read: If the target is a creature, it is {@condition grappled} (escape DC 13). Ability checks made to escape this grapple have disadvantage."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Area 6",
+											"entries": [
+												"A music rehearsal space. 2 {@creature animated instrument|ToB3|animated instruments} (cellos, Medium instrument) engage in a musical duel while a panel of 3 {@creature clockwork conductor|ToB3|clockwork conductors} judge them."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Area 7",
+											"entries": [
+												"A dance rehearsal space. Ballet barres are mounted on each wall; above and below the barre on the east wall are mirrors that go floor to barre and barre to ceiling. 2 {@creature clockwork pugilist|ToB3|clockwork pugilists} rehearse ballet movements, with 1 {@creature animated instrument|ToB3} (violin, Small instrument) providing the music."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Area 8",
+											"entries": [
+												"A music rehearsal space. {@dice 1d4+2} {@creature animated instrument|ToB3|animated instruments} (a harp, Medium instrument, with various woodwinds, Small instruments) practice syncopated melodies, led by 1 {@creature clockwork conductor|ToB3}. A small supply cabinet in the southeast corner contains a variety of instrument maintenance gear, such as replacement strings, reeds, rosin, spare string instrument bows, etc."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "9. Professor's Study",
+									"id": "7.9",
+									"page": 46,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Light filters through frosted windows, casting a dim haze over this large room. Loose, half-graded pages litter the surface of the office furniture while tools and art supplies lie scattered across a wall-mounted workbench. An enormous model swan the size of a bear, made from folded parchment, sits on a platform amid sheets of colorful paper and a pair of silver shears that have fallen apart. Several stepladders stand open behind the swan."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Books and art supplies are scattered throughout this room, all associated with the teachings of over a dozen different disciplines of art and performance.",
+												"In a journal open on the desk is written a dissertation’s first draft on the ethics of giving inanimate objects life and sentience. A nameplate on the desk reads {@style Professor Ravenshollow|small-caps}.” Inside a desk drawer are 5 blank journals, 20 quill ink pens, a tarnished silver necklace (worth 15 gp), and {@dice 1d4+2} small mundane objects of dubious value or utility.",
+												"PCs who spend at least 10 minutes at the workbench can assemble a set of {@item painter's supplies|phb} or {@item calligrapher's supplies|phb}. Under the workbench are 10 blank canvases and 5 folded easels."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"The paper swan is not just a piece of art, but an {@creature origami golem|ToB3}. The {@creature weakened origami golem|ToB3-Lairs|golem} activates when anything in the room is picked up. It follows its last directive, “Stop any student from interfering with my work.” The {@creature weakened origami golem|ToB3-Lairs|golem} takes this directive very literally and pursues any creature that activates it until it, or the creature, is destroyed, though it will not leave the college or enter {@area room 10|7.10|x}. The {@creature weakened origami golem|ToB3-Lairs|golem} was left unfinished when its creator vanished or perished; in its weakened state, it is CR 3 (700 exp) with the following changes:",
+												{
+													"type": "list",
+													"items": [
+														"It has 32 hit points.",
+														"Its Trumpeting Blast recharges on a 6.",
+														"Any damage it deals to the PCs is halved."
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Silvered Weapons",
+											"entries": [
+												"Each arm of the broken silver shears near the {@creature weakened origami golem|ToB3-Lairs|golem's} platform can be used as a {@item silvered dagger|phb|silver dagger}."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "10. Performance Hall",
+									"id": "7.10",
+									"page": 46,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This enormous auditorium tapers in toward an impressive stage. Rows of seating littered with old playbills sit underneath a dark, sixty-foot-high vaulted ceiling while torches hover overhead and dimly glow with ghostly fire. You see a young man hunching over a sheet of paper pressed flat on the stage as he furiously writes something on it with a quill pen with golden barbs. Suddenly, he shouts “No, no, no!” and sweeps the paper into the air. An {@creature animated quartet|ToB3|animated woodwind quartet} plays a sorrowful melody while the man—no, just a teen boy—breaks down into mutters and sobs."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Lights",
+											"entries": [
+												"Sixteen torches float throughout the room and glow with ghostly green fire, casting dim light in a 20-foot radius around each one."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Doors",
+											"entries": [
+												"The six doors to the area aren’t traditionally locked, but are held fast by the will of Heinrosch’s ghost, which is currently possessing the young man by the stage, Budanyek. Once the PCs open at least one of the doors, Heinrosch loses his hold on them, and all doors work normally thereafter."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Opening the doors attracts the attention of both Heinrosch’s {@creature ghost} (currently possessing Budanyek) and the {@creature animated quartet|ToB3}."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Tactics",
+											"entries": [
+												"Heinrosch does not engage, and instead tries to get back to work. The {@creature animated quartet|ToB3}, however, attacks immediately after a door opens.",
+												"If the {@creature animated quartet|ToB3} is defeated, or at the end of the third round of combat, with Budanyek’s voice, Heinrosch shouts:",
+												{
+													"type": "insetReadaloud",
+													"entries": [
+														{
+															"type": "quote",
+															"entries": [
+																"Stop, stop, stop! It is impossible to concentrate with all this racket! How am I supposed to craft my magnum opus amidst this . . . this cacophony?"
+															]
+														}
+													]
+												},
+												"At Heinrosch’s words, the {@creature animated quartet|ToB3} (if still engaged in combat) stops attacking and moves to hover just above the young man’s shoulder. Heinrosch continues:",
+												{
+													"type": "insetReadaloud",
+													"entries": [
+														{
+															"type": "quote",
+															"entries": [
+																"Listen to me. Listen! I need just a little more time. Just a little more time. Please! I'm so close. I've spent so many years searching for the right melody. And . . . I've almost got it. I know it! I can't let you ruin this for me. My entire legacy hangs upon this achievement."
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Ghostwriting Heinrosch's Final Sonata",
+							"page": 47,
+							"entries": [
+								"Heinrosch is obsessed with completing his magnum opus, a final sonata his death left unfinished. As the PCs speak to him, the {@creature ghost} maintains perfect control over Budanyek’s movement and actions, though the boy still intermittently wrests back control of his own body to cry out in pain before Heinrosch regains control.",
+								"If the PCs question Heinrosch, other than his work, he doesn’t remember anything they might ask about, such as how, when, or how long ago he died. If they ask about anything else, he angrily shouts that he doesn’t have time for idle chatter, but he’s willing to listen to anything the PCs offer that might help him finish his opus.",
+								"Here are three likely scenarios via which the PCs can resolve the situation:",
+								{
+									"type": "list",
+									"items": [
+										"{@b {@i Have a PC Finish It.}} Heinrosch can be convinced to relinquish control of Budanyek if a PC offers to be possessed instead; Heinrosch only agrees if the PC has a {@skill Performance} modifier of 3 or higher, or with a successful DC 17 Charisma ({@skill Persuasion}) check (made with advantage if the PC is wearing Heinrosch’s iconic hat found in {@area 4|7.4|u}). If the PCs choose this option, Heinrosch’s {@creature ghost} leaves Budanyek, possesses the PC, and immediately returns to his work. The possessed PC requires {@dice 2d8+2} hours to finish Heinrosch’s work. The PC must make a DC 10 Constitution saving throw each hour; if they fail three times, they suffer a level of {@condition exhaustion} and then suffer an additional level each additional failure.",
+										"{@b {@i Let Budanyek Finish It.}} Heinrosch wishes to keep possessing Budanyek until his work is finished. If the PCs choose this option, it takes Heinrosch {@dice 1d8+1} hours to finish his work; this process requires Budanyek to succeed on a DC 13 Constitution saving throw every hour or else suffer a level of {@condition exhaustion}. This could very easily end with Budanyek’s death without intervention, as the teen is a {@creature commoner} who is already suffering from three levels of {@condition exhaustion} due to the rigors he has already endured. The PCs are free to assist Budanyek however they wish, whether it’s via the {@action Help} action and/or spells or other means; allow a player’s creative thinking to be beneficial to this process regardless of normal game mechanics.",
+										"{@b {@i Stop the Ghost.}} The PCs can choose to exorcise the {@creature ghost} from Budanyek’s body, via the means detailed in the {@creature ghost||ghost’s} Possession ability. Choosing this action always results in combat as the {@creature animated quartet|ToB3} quickly moves to defend the {@creature ghost}, fighting until it is destroyed. Because Budanyek is in no shape to fight and Heinrosch is obsessed with his legacy, Heinrosch only takes the {@action Dodge} action in the hopes of finishing the sonata amid the fracas."
+									]
+								},
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Heinrosch/Budanyek holds “The Gilded Quill” pen (see {@area 1|7.1|u}). It’s worth 10 gp purely for the novelty of it being a gold quill, but a savvy negotiator might be able to get someone to pay up to 25 gp for it as a curiosity if they tell the tale of Heinrosch or invent a compelling fiction.",
+												"If you used the Collector adventure hook, however, the collector will excitedly pay triple the fee he promised the PCs for this one item—150 gp—and will go above and beyond any budget limits in order to acquire this piece."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Evaluating the Composition",
+									"page": 48,
+									"entries": [
+										"If Budanyek completes the composition, he must make a Charisma ({@skill Performance}) check (with a {@d20 +2} modifier); when you make this roll, do it publicly so the players can see the die roll result. However, unless restorative magic has been used on Budanyek, do note that he has disadvantage on ability checks due to {@condition exhaustion}.",
+										"If a PC completes the composition, they must make their own Charisma ({@skill Performance}) check.",
+										"Once you have the result, consult the “Magnum Opus?” table to determine how well the composition turned out.",
+										{
+											"type": "table",
+											"caption": "Magnum Opus?",
+											"page": 48,
+											"colStyles": [
+												"col-1",
+												"col-11"
+											],
+											"colLabels": [
+												"DC",
+												"Result"
+											],
+											"rows": [
+												[
+													"10",
+													"Middling. It’s . . . fine? Children who are just learning to play their instruments seem to enjoy performing it."
+												],
+												[
+													"15",
+													"Good. A work that will likely find great appreciation among the masses, but often does not excite an expert’s ear. Heinrosch’s previous “masterworks” were of this level."
+												],
+												[
+													"20",
+													"Incredible. A masterpiece that will surely be remembered forever."
+												],
+												[
+													"25",
+													"Astounding. A work of unsurpassed genius that only one-in-a-million composers could even attempt."
+												],
+												[
+													"35",
+													"Legendary. Undoubtedly among the finest works ever produced. Truly a magnum opus of magnum opuses."
+												]
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Concluding the Adventure",
+							"page": 48,
+							"entries": [
+								"If Budanyek is not saved, the PCs find his gang waiting outside when they leave the college. They’re heartbroken at the news (explaining who they are to the PCs if they haven’t met before). If the PCs brokered a deal with the gang, the teens now refuse to fulfill their end of any bargain, citing Budanyek’s death as a deal-breaker. Resentful of the PCs’ failure, Rabbit and the gang disparage the PCs in whatever locale they’re going to next; while in that city/town, the PCs have disadvantage on any Charisma ability checks until they can repair their reputation.",
+								"If Budanyek is saved, he gets halfway through offering his thanks before fainting from exhaustion. Budanyek’s gang waits just outside the college and are beside themselves with joy when they’re reunited with their friend (perhaps confusing the PCs if they haven’t met before); they gladly pay any reward that was agreed to. If the PCs refuse the reward (or never asked for one in the first place), Rabbit and the gang talk up the PCs in whatever locale they’re going to next; while in that city/town, the PCs have advantage on any Charisma ability checks for one week.",
+								"If Heinrosch completes his final composition and the result on the “Magnum Opus?” table is 15–24, Heinrosch is thrilled and asks the PCs to give it an impressive title and share it with the world. If the result is 25 or higher, Heinrosch reacts the same as above, but afterward breaks down, weeping with joy and whispering, {@i “I’ve done it. I’ve truly done it.”} The {@creature ghost} then fades into the afterlife and disappears for good. If the PCs do share the composition with the world, and the result is 25 or higher, they hear it being played any time such music might be played, such as at royal’s or noble’s party.",
+								"If Heinrosch completes his final composition and the result on the “Magnum Opus?” table is 14 or lower, Heinrosch is at first furious, naming the PCs incompetent hacks, but quickly turns morose, lamenting his legacy. As he continues muttering, before long, he fades away into the afterlife and disappears for good—{@i or so the PCs think}. Heinrosch is enraged at the failure to cement his legacy and, in the future, seeks revenge on the PCs, possessing the leader of a group of bandits that comes to the college to loot whatever isn’t nailed down; in this new warrior body, Heinrosch bides his time, striking when it’s most opportune, with the goal of possessing either the PC that he previously possessed or the PC with the highest {@skill Performance} modifier."
+							]
+						}
 					]
 				},
 				{
