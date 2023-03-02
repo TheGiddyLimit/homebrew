@@ -11,14 +11,14 @@
 				"convertedBy": [
 					"Maal"
 				],
-				"version": "1.0",
+				"version": "1.1",
 				"color": "f96c0b",
 				"url": "https://docs.google.com/document/d/1lkB8MmKyUQlECzSzwyo5L77vwk7Uvvi5ps00gJhTg7A/edit",
 				"targetSchema": "1.2"
 			}
 		],
 		"dateAdded": 1671361149,
-		"dateLastModified": 1671678331,
+		"dateLastModified": 1677036329,
 		"spellSchools": {
 			"AR": {
 				"full": "Arte",
@@ -26,7 +26,7 @@
 				"color": "f96c0b"
 			}
 		},
-		"_dateLastModifiedHash": "810770e7c0"
+		"_dateLastModifiedHash": "a96b58fcaa"
 	},
 	"book": [
 		{
@@ -137,6 +137,7 @@
 							"name": "Artes List",
 							"items": [
 								"{@spell Berserker's Brand|Artes}",
+								"{@spell Binding Blade|Artes}",
 								"{@spell Blade Ward|Artes}*PHB",
 								"{@spell Booming Blade|Artes}*TCE",
 								"{@spell Boreal Gale|Artes}",
@@ -193,8 +194,8 @@
 							"page": 11,
 							"name": "Multiclassing",
 							"entries": [
-								"When multiclassing, learning new {@filter artes|spells|school=AR|subschool=!Grand} should be treated the same as learning cantrips when taking levels in classes that cast spells. Like cantrips, artes increase in power at higher levels based on your character level, not your level in a particular class.",
-								"Similarly, each class listed in the Classes section above learns new cantrips at their 4th and 10th class levels. Treat each of these classes as if they had an Artes Known column on their class tables, just like how spellcasters have a Cantrips Known column. If you have 1 level in fighter and 1 level in rogue, for example, you would know a total of 7 artes, and would learn a new one when you reach 4th level in either class."
+								"When multiclassing, learning new {@filter artes|spells|school=AR|subschool=!Grand} are treated the same as learning cantrips when taking levels in classes that cast spells. Like cantrips, artes increase in power at higher levels based on your character level, not your level in a particular class.",
+								"Similarly, each class listed in the Classes section above learns new cantrips at their 4th and 10th class levels. Treat each of these classes as if they had an Artes Known column on their class tables, just like the Cantrips Known columns on many spellcasting class tables. If you have 1 level in fighter and 1 level in rogue, for example, you would know a total of 7 artes, and would learn a new one when you reach 4th level in either class."
 							]
 						},
 						{
@@ -396,6 +397,75 @@
 				]
 			},
 			"foundryImg": "icons/magic/death/skull-weapon-staff-glow-pink.webp"
+		},
+		{
+			"name": "Binding Blade",
+			"source": "Artes",
+			"page": 3,
+			"level": 0,
+			"school": "AR",
+			"time": [
+				{
+					"number": 1,
+					"unit": "attack"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true,
+				"m": {
+					"text": "a weapon"
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Your attack summons spectral chains that coil around your target's body and hold them in place. Make a weapon attack as part of using this arte. If the target is Large or smaller, on a hit, the target's movement range becomes limited. Until the end of the target's next turn, if it moves more than 15 feet from its space when this arte was used, it takes {@damage 1d6} force damage and is unable to move further.",
+				"This arte's damage increases by {@dice 1d6} when you reach 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6})."
+			],
+			"scalingLevelDice": [
+				{
+					"label": "force damage",
+					"scaling": {
+						"1": "1d6",
+						"5": "2d6",
+						"11": "3d6",
+						"17": "4d6"
+					}
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"miscTags": [
+				"SCL"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"foundrySystem": {
+				"preparation.mode": "atwill",
+				"activation.cost": "1",
+				"activation.type": "special",
+				"target.value": "1",
+				"target.units": "0",
+				"target.type": "creature",
+				"range.value": "5",
+				"range.units": "ft"
+			},
+			"foundryImg": "icons/magic/control/debuff-energy-hold-green.webp"
 		},
 		{
 			"name": "Blade Ward",
@@ -623,7 +693,7 @@
 				}
 			],
 			"entries": [
-				"Your weapon scatters seething, sparking motes of flame that explode, burning your target and anything near it. Make a weapon attack as part of using this arte. On a hit, the target suffers the weapon's normal effects. Hit or miss, the target and all creatures and objects except you within 5 feet of the target must succeed on a Dexterity saving throw or take {@damage 1d4} fire damage.",
+				"Your weapon scatters seething, sparking motes of flame on impact, burning your target and anything near it. Make a weapon attack as part of using this arte. On a hit, the target suffers the weapon's normal effects and the target and all creatures and objects except you within 5 feet of the target take {@damage 1d4} fire damage.",
 				"This arte's damage increases by {@dice 1d4} when you reach 5th level ({@damage 2d4}), 11th level ({@damage 3d4}), and 17th level ({@damage 4d4})."
 			],
 			"scalingLevelDice": [
@@ -640,9 +710,6 @@
 			"damageInflict": [
 				"fire"
 			],
-			"savingThrow": [
-				"dexterity"
-			],
 			"miscTags": [
 				"SCL"
 			],
@@ -653,7 +720,6 @@
 				"preparation.mode": "atwill",
 				"activation.cost": "1",
 				"activation.type": "special",
-				"save.scaling": "str",
 				"target.value": "1",
 				"target.units": "0",
 				"target.type": "creature",
@@ -693,17 +759,18 @@
 				}
 			],
 			"entries": [
-				"You conjure a surge of water around you that crashes into your foes and forces them back. All creatures and objects within 5 feet of you, other than you, must succeed on a Strength saving throw or take {@damage 1d4} bludgeoning damage and be pushed 5 feet away from you. Each space within 5 feet of you is doused with 1 gallon of water that evaporates at the end of your turn.",
-				"This arte's damage increases by {@dice 1d4} when you reach 5th level ({@damage 2d4}), 11th level ({@damage 3d4}), and 17th level ({@damage 4d4})."
+				"You conjure a surge of water around you that crashes into your foes and forces them back. All creatures and objects within 5 feet of you, other than you, must succeed on a Strength saving throw or take {@damage 1d6} bludgeoning damage and be pushed 5 feet away from you. Each space within 5 feet of you is doused with 1 gallon of water that evaporates at the end of your turn.",
+				"This arte's damage increases by {@dice 1d6} when you reach 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6}).",
+				"At 11th level, the distance targets are pushed increases from 5 feet to 10 feet."
 			],
 			"scalingLevelDice": [
 				{
 					"label": "bludgeoning damage",
 					"scaling": {
-						"1": "1d4",
-						"5": "2d4",
-						"11": "3d4",
-						"17": "4d4"
+						"1": "1d6",
+						"5": "2d6",
+						"11": "3d6",
+						"17": "4d6"
 					}
 				}
 			],
@@ -837,26 +904,22 @@
 				}
 			],
 			"entries": [
-				"You imbue your weapon with elemental wind, delivering an attack that slams your foe with a vicious gale even if it is blocked or dodged. Make a weapon attack as part of using this arte. On a hit, the target suffers the weapon attack's normal effects. Hit or miss, if the target is Large or smaller, the target must then succeed on a Strength saving throw or take {@damage 1d6} bludgeoning damage and be pushed 5 feet away from you.",
-				"This arte's damage increases by {@dice 1d6} when you reach 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6}).",
+				"You imbue your weapon with elemental wind, delivering an attack that slams your foe with a vicious gale. Make a weapon attack as part of using this arte. On a hit, the target suffers the weapon attack's normal effects and if the target is Large or smaller, it is pushed 5 feet away from you.",
+				"This arte's damage increases when you reach certain levels. At 5th level, the weapon attack deals an extra {@damage 1d8} bludgeoning damage to the target on a hit. This arte's bludgeoning damage increases by {@damage 1d8} at 11th level ({@damage 2d8}) and 17th level ({@damage 3d8}).",
 				"At 11th level, the distance the target is pushed increases from 5 feet to 10 feet."
 			],
 			"scalingLevelDice": [
 				{
 					"label": "bludgeoning damage",
 					"scaling": {
-						"1": "1d6",
-						"5": "2d6",
-						"11": "3d6",
-						"17": "4d6"
+						"5": "1d8",
+						"11": "2d8",
+						"17": "3d8"
 					}
 				}
 			],
 			"damageInflict": [
 				"bludgeoning"
-			],
-			"savingThrow": [
-				"strength"
 			],
 			"miscTags": [
 				"SCL",
@@ -869,10 +932,16 @@
 				"preparation.mode": "atwill",
 				"activation.cost": "1",
 				"activation.type": "special",
-				"save.scaling": "str",
+				"scaling.mode": "none",
 				"target.value": "1",
 				"target.units": "0",
-				"target.type": "creature"
+				"target.type": "creature",
+				"damage.parts": [
+					[
+						"(floor(((@details.level + @details.spellLevel) + 1) / 6))d8",
+						"bludgeoning"
+					]
+				]
 			},
 			"foundryImg": "icons/magic/air/wind-tornado-spiral-blue-gray.webp"
 		},
@@ -911,17 +980,17 @@
 				}
 			],
 			"entries": [
-				"Flames fly from your weapon and surround your foe, floating menacingly around them, ready to strike if they dare to attack your allies. Make a weapon attack as part of using this arte. On a hit, the target suffers the weapon attack's normal effects and becomes surrounded by flickering flames until the start of your next turn. If the target deals damage to a creature other than you before then, the target takes {@damage 1d8} fire damage, and the arte ends.",
-				"This arte's damage increases when you reach certain levels. At 5th level, the melee attack deals an extra {@damage 1d8} fire damage to the target on a hit, and the damage the target takes for moving increases to {@damage 2d8}. Both damage rolls increase by 1d8 at 11th level ({@damage 2d8} and {@damage 3d8}) and again at 17th level ({@damage 3d8} and {@damage 4d8})."
+				"Flames fly from your weapon and surround your foe, floating menacingly around them, ready to strike if they dare to attack your allies. Make a weapon attack as part of using this arte. On a hit, the target suffers the weapon attack's normal effects and becomes surrounded by flickering flames until the start of your next turn. If the target deals damage to a creature other than you before then, the target takes damage equal to your arte ability modifier, and the arte ends.",
+				"This arte's damage increases when you reach certain levels. At 5th level, the melee attack deals an extra {@damage 1d8} fire damage to the target on a hit, and the damage the target takes for attacking increases to {@damage 1d8} + your arte ability modifier. Both damage rolls increase by {@damage 1d8} at 11th level ({@damage 2d8} and {@damage 2d8}) and again at 17th level ({@damage 3d8} and {@damage 3d8})."
 			],
 			"scalingLevelDice": [
 				{
 					"label": "fire damage on attacking another target",
 					"scaling": {
-						"1": "1d8",
-						"5": "2d8",
-						"11": "3d8",
-						"17": "4d8"
+						"1": "{{spellcasting_mod}}",
+						"5": "1d8 + {{spellcasting_mod}}",
+						"11": "2d8 + {{spellcasting_mod}}",
+						"17": "3d8 + {{spellcasting_mod}}"
 					}
 				},
 				{
@@ -947,6 +1016,7 @@
 				"activation.cost": "1",
 				"activation.type": "special",
 				"actionType": "other",
+				"ability": "str",
 				"scaling.mode": "none",
 				"target.value": "1",
 				"target.units": "0",
@@ -957,7 +1027,7 @@
 						"fire"
 					]
 				],
-				"damage.versatile": "(floor(((@details.level + @details.spellLevel) + 1) / 6) + 1)d8[on attacking another target]"
+				"damage.versatile": "@mod + (floor(((@details.level + @details.spellLevel) + 1) / 6))d8[on attacking another target]"
 			},
 			"foundryImg": "icons/magic/fire/flame-burning-chain.webp"
 		},
@@ -1079,7 +1149,8 @@
 			],
 			"entries": [
 				"A layer of frost forms on your weapon and spreads onto your target when you strike, hindering their movement. Make a weapon attack as part of using this arte. On a hit, the target suffers the weapon attack's normal effects and its speed is reduced by 10 feet until the start of your next turn.",
-				"Starting at 5th level, this arte's weapon attack deals an additional {@damage 1d8} cold damage. This arte's cold damage increases by {@dice 1d8} at 11th level ({@damage 2d8}) and again at 17th level ({@damage 3d8})."
+				"Starting at 5th level, this arte's weapon attack deals an additional {@damage 1d8} cold damage. This arte's cold damage increases by {@dice 1d8} at 11th level ({@damage 2d8}) and again at 17th level ({@damage 3d8}).",
+				"At 11th level, the target's speed is reduced by 20 feet instead of 10."
 			],
 			"scalingLevelDice": [
 				{
@@ -1371,15 +1442,15 @@
 			],
 			"entries": [
 				"Swirling cold envelopes your weapon, spreading a numbing chill to your target when you strike. Make a weapon attack as part of using this arte. On a hit, the target suffers the weapon attack's normal effects and the next time it makes an attack before the end of your next turn, it must roll a {@dice d4} and subtract the number rolled from that attack roll.",
-				"Starting at 5th level, this arte's weapon attack deals an additional {@damage 1d6} cold damage. This arte's cold damage increases by {@dice 1d6} at 11th level ({@damage 2d6}) and again at 17th level ({@damage 3d6})."
+				"Starting at 5th level, this arte's weapon attack deals an additional {@damage 1d8} cold damage. This arte's cold damage increases by {@dice 1d8} at 11th level ({@damage 2d8}) and again at 17th level ({@damage 3d8})."
 			],
 			"scalingLevelDice": [
 				{
 					"label": "cold damage",
 					"scaling": {
-						"5": "1d6",
-						"11": "2d6",
-						"17": "3d6"
+						"5": "1d8",
+						"11": "2d8",
+						"17": "3d8"
 					}
 				}
 			],
@@ -1403,7 +1474,7 @@
 				"target.type": "creature",
 				"damage.parts": [
 					[
-						"(floor(((@details.level + @details.spellLevel) + 1) / 6))d6",
+						"(floor(((@details.level + @details.spellLevel) + 1) / 6))d8",
 						"cold"
 					]
 				]
@@ -1441,7 +1512,7 @@
 				}
 			],
 			"entries": [
-				"As part of casting this arte, you make a melee weapon attack against one creature or object. On a hit, the target suffers the weapon attack's normal effects, and you can move up to 15 feet without consuming movement and without provoking an opportunity attack from your target.",
+				"A billowing flame erupts from your weapon, obscuring your position from your foe. Make a melee weapon attack as part of using this arte. On a hit, the target suffers the weapon attack's normal effects, and you can move up to 15 feet without consuming movement and without provoking an opportunity attack from your target.",
 				"Starting at 5th level, this arte's weapon attack deals an additional {@damage 1d8} fire damage. This arte's fire damage increases by {@dice 1d8} at 11th level ({@damage 2d8}) and again at 17th level ({@damage 3d8}).",
 				"At 11th level, you can teleport up to 15 feet instead of moving."
 			],
@@ -1725,10 +1796,10 @@
 				}
 			],
 			"range": {
-				"type": "radius",
+				"type": "point",
 				"distance": {
 					"type": "feet",
-					"amount": 30
+					"amount": 60
 				}
 			},
 			"components": {
@@ -1743,7 +1814,7 @@
 				}
 			],
 			"entries": [
-				"You focus power into your shield to hurl it at your foe and draw it back to you afterward through will alone. Make a ranged weapon attack with your shield against one creature or object within range. On a hit, the target takes {@damage 1d6} bludgeoning damage + your arte ability modifier.",
+				"You focus power into your shield to hurl it at your foe and draw it back to you afterward through will alone. Make a ranged arte attack with your shield against one creature or object within range. On a hit, the target takes {@damage 1d6} bludgeoning damage + your arte ability modifier.",
 				"Whether you hit or miss, your shield returns to you at the end of your turn. If your shield is magic, add its bonus to AC to this arte's attack and damage roll.",
 				"This arte's damage increases by {@dice 1d6} when you reach 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6})."
 			],
@@ -1777,7 +1848,7 @@
 				"target.value": "1",
 				"target.units": "0",
 				"target.type": "creature",
-				"range.value": "30",
+				"range.value": "60",
 				"range.units": "ft",
 				"damage.parts": [
 					[
@@ -1959,7 +2030,7 @@
 				}
 			],
 			"entries": [
-				"You charge your ammunition or thrown weapon with power beyond its physical capacity, causing it to explode and send fragments flying at creatures near your target. Make a ranged weapon attack against one creature or object within range. On a hit, the target suffers the weapon attack's normal effects. Hit or miss, the target and each creature or object within 5 feet of it must succeed on a Dexterity saving throw or take {@damage 1d6} piercing damage. The ammunition or thrown weapon is then destroyed.",
+				"You charge your ammunition or thrown weapon with power beyond its physical capacity, causing it to explode and send fragments flying at creatures near your target. Make a ranged weapon attack against one creature or object within range. On a hit, the target suffers the weapon attack's normal effects, and the target and each creature or object within 5 feet of it takes {@damage 1d6} piercing damage. The ammunition or thrown weapon is then destroyed.",
 				"This arte's damage increases by {@dice 1d6} when you reach 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6})."
 			],
 			"scalingLevelDice": [
@@ -1982,14 +2053,10 @@
 			"areaTags": [
 				"S"
 			],
-			"savingThrow": [
-				"dexterity"
-			],
 			"foundrySystem": {
 				"preparation.mode": "atwill",
 				"activation.cost": "1",
 				"activation.type": "special",
-				"save.scaling": "dex",
 				"target.value": "1",
 				"target.units": "0",
 				"target.type": "creature",
@@ -4080,6 +4147,7 @@
 					"name": "Artes List",
 					"items": [
 						"{@spell Berserker's Brand|Artes}",
+						"{@spell Binding Blade|Artes}",
 						"{@spell Blade Ward|Artes}*PHB",
 						"{@spell Booming Blade|Artes}*TCE",
 						"{@spell Boreal Gale|Artes}",
