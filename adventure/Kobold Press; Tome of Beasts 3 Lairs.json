@@ -39,7 +39,60 @@
 			]
 		}
 	},
+	"baseitem": [
+		{
+			"name": "Pitchfork",
+			"source": "ToB3-Lairs",
+			"page": 53,
+			"type": "M",
+			"rarity": "none",
+			"weight": 3,
+			"value": 2500,
+			"weaponCategory": "martial",
+			"property": [
+				"F",
+				"L"
+			],
+			"dmg1": "1d6",
+			"dmgType": "P",
+			"sword": true,
+			"weapon": true
+		}
+	],
 	"monster": [
+		{
+			"name": "Andel",
+			"source": "ToB3-Lairs",
+			"page": 55,
+			"_copy": {
+				"name": "Acolyte",
+				"source": "MM",
+				"_mod": {
+					"_": {
+						"mode": "replaceSpells",
+						"spells": {
+							"1": [
+								{
+									"replace": "{@spell sanctuary}",
+									"with": "{@spell command}"
+								}
+							]
+						}
+					}
+				}
+			},
+			"isNpc": true,
+			"alignment": [
+				"N",
+				"G"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
 		{
 			"name": "Weakened Origami Golem",
 			"source": "ToB3-Lairs",
@@ -4944,7 +4997,476 @@
 								]
 							]
 						},
-						"{@note Coming soon!}"
+						{
+							"type": "entries",
+							"name": "Adventure Background",
+							"page": 49,
+							"entries": [
+								"In the small farming village of Sycamore Crossing, this year’s harvest is inexplicably failing. Faced with starvation (or worse), the villagers have fallen under the fell sway of Sheriff Ialos, who promises a full harvest if the village sacrifices living subjects to the earth they till.",
+								"The farmers have already kidnapped two travelers and fed them to a strange, living plant creature in the woods. The positive results on the crops were noticeable immediately, and so now even the local druid and the village priest have agreed to go along with Ialos’ dark solution. Last night, a traveler named Rinus Aldebrand came to the village and was taken prisoner by the growing cult."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Adventure Hook",
+							"page": 49,
+							"entries": [
+								"Tosef Smallfoot, the sheriff of Yrunby, hires the PCs to travel to Sycamore Crossing to look for a man named Rinus Aldebrand. The sheriff offers 150 gp per PC if they can return Rinus to Yrunby.",
+								"Using the above hook, you can choose one of the following identities for Rinus Aldebrand, which best suits your PCs’ motivations:",
+								{
+									"type": "list",
+									"items": [
+										"{@b {@i Rust Runner.}} Rinus Aldebrand, a thug who recently ran with a gang called the Rust Wolves, fled north when their operation was destroyed. The sheriff hires the PCs to capture Rinus so he can stand trial. Two days ago, he was seen heading in the direction of the village of Sycamore Crossing.",
+										"{@b {@i Tome Hunting.}} Rinus Aldebrand is a young scholar (and aspiring wizard) who has gleaned the location of a lost tome relevant to his arcane research. Yendra Aldebrand, his mother (and a minor noble), comes home from a trip to find a note from her son saying that he traveled to Sycamore Crossing to confirm the location of the tome. Yendra goes to the sheriff of Yrunby in a panic, afraid that her son would go after “that damned book of his” on his own and get himself killed. The sheriff hires the PCs (on Yendra’s behalf) to go to Sycamore Crossing to make sure Rinus stays safe. One of the Aldebrand servants told Yendra that Rinus left two days ago."
+									]
+								},
+								"The sheriff describes Rinus’ horse as a dappled chestnut mare named Vossi, and he notes that the horse knows her name. Sycamore Crossing is a day’s travel from Yrunby (or whatever starting location you choose)."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Sycamore Crossing",
+							"page": 49,
+							"entries": [
+								"The PCs arrive in Sycamore Crossing searching for Rinus. Unbeknownst to them, the village’s cultists have kidnapped the man and are currently taking him to the woods north of town.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Talking With Villagers",
+											"entries": [
+												"All villagers are reluctant to speak with the PCs—and refuse if they ask about recent visitors, indicating that they don’t appreciate strangers poking their noses into their business. While only a few villagers participated in the kidnapping, the rest don’t want to risk the cultists’ ire. If threatened, the villagers tell the PCs that if they want to know more they’ll need to talk to the sheriff."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Searching the Village",
+											"entries": [
+												"With a successful DC 11 Intelligence ({@skill Investigation}) check, the PCs find Rinus’ dappled chestnut steed comfortably stabled by the village’s tavern. If the horse’s name (Vossi) is spoken aloud, the mare turns to look at the speaker and flicks her head upward as if saying hello.",
+												"If the PCs fail that check and don’t otherwise make their way to the tavern, a young woman holding a handful of flowers offers one to a PC and discretely informs them that a visitor came to Sycamore Crossing last night and booked lodging at the tavern; she moves away quickly before she can answer any questions (whispering “Please, I can’t!”) and refuses to say more if followed."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "The Tavern",
+											"entries": [
+												"Sycamore Crossing’s sole tavern doesn’t have a name. It serves green anise liquor and red wine sweetened with beet sugar. Patrons can order a thick garlicky parsnip stew with occasional chunks of mutton that become stuck in their teeth.",
+												"The bartender, Lenka (CG human {@creature commoner}), is a large brunette woman who looks like she once knew her way around a donnybrook. Though she’s tough, she’s in her middle years now and no hero; she’s frightened of the sheriff and hasn’t been brave enough to cross him, even though she finds what he’s doing repugnant.",
+												"When the PCs come in and start asking questions, she initially thinks that they’re secretly working for Ialos, to see if any in the town are disloyal to the sheriff. Whenever anyone voiced any objection to the sheriff ’s plan, he warned that everyone had better stay in line if they know what’s good for them, and that if anyone dared betray him, he’d know who was responsible.",
+												"As a result, when questioned, Lenka attempts to deflect, claiming to know nothing, having never heard of any Rinus. She’s not sure who that mare belongs to, telling them they would have to ask the stableboy, but he’s out trying to fetch a horse that ran off.",
+												"A successful DC 10 Wisdom ({@skill Insight}) check sees through Lenka’s deceptions. If the PCs get angry with her or attempt any kind of intimidation, she panics and leans forward, saying quietly, “Please, please. I’m loyal, I swear. I just . . . I’m no good at . . . this kind of thing. You can tell the sheriff I’m steadfast. I promise.”",
+												"At this point, if the PCs are honest with her about why they’re there, her eyes get big, and she looks like her salvation is at hand. She asks them to come into the backroom with her so they can talk freely. She calls over to her barmaid and asks her to watch the bar. “Hurry,” she whispers, “{@i we might still be able to save him}.”"
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "What Lenna Knows",
+									"page": 50,
+									"entries": [
+										"Lenka can provide the following information:",
+										{
+											"type": "list",
+											"items": [
+												"The local farmers all fear that this year’s crop will fail, which would spell disaster for Sycamore Crossing.",
+												"Sheriff Ialos said they could improve the crop by “offering sacrifices to the land.” She’s not sure what he meant by “sacrifices to the land” exactly. But there were a couple of folks who came to town recently who disappeared and never came back.",
+												"A month ago, a fast-talking gnome came to town. He talked a big game all night in the bar, then never came down from his room. She went up to find it empty, but with his belongings still there. No one ever saw him again. Shortly after that, the crop began to improve.",
+												"Then, about two weeks ago, there was a dragonborn with cold eyes who looked like he slit your throat sooner than he’d give a smile. After that one disappeared, the crop rebounded even more strongly.",
+												"All along, the main resistance against the sheriff came from Lenka; the local druid, Broshod; and the priest, Andel. After the crops started doing well, Broshod convinced herself that this was all part of the natural order, and Andel said that no matter how vile, ultimately it would save more lives than it cost. Leaving Lenka seemingly as the lone voice of dissent.",
+												"In the time that’s passed since the last sacrifice, the crop has begun to falter again.",
+												"Last night, Ialos concocted some charge as a pretext to arrest Rinus shortly after his arrival in town. She saw the sheriff dragging the young man away with his hands bound.",
+												"Lenka heard Broshod talking about the old standing stones in the woods north of town and thinks that must be where the sheriff is doing his foul deeds.",
+												"Only one path leads to the woods in the north; Lenka can direct the PCs to it.",
+												"If asked about the sheriff, Lenka says that he’s been sheriff for twenty years or more. Always been a good sort until recently, when all this unpleasantness started. She doesn’t have any idea what might have happened to change him."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Sheriff Ialos's Awakening",
+							"page": 52,
+							"entries": [
+								"Ialos takes his prisoners to a sycamore grove in the forest north of town. While chasing a bandit out of town, he discovered a {@creature tripwire patch|ToB3} in the center of the standing stones that have stood there in that grove for as long as anyone could remember. Everyone always avoided the stones out of superstition, but when he was chasing the bandit the tripwire patch swallowed them both. For some reason, however, the plant later regurgitated Ialos alive.",
+								"While in the patch’s gullet, Ialos had a religious awakening and came to believe that the plant had chosen him as its servant. His fervent belief soon manifested itself in the ability to cast divine spells.",
+								"Over the last several years, Ialos has returned regularly to the grove to commune with his master, bringing with him another sacrifice, such as a common criminal or other ne’er-do-well. He noticed long ago that everything in the area—from birches to beets to barley—grows better after a sacrifice.",
+								"Ialos viewed the village’s recent agricultural issues as the opportunity to go public about his beliefs. The sheriff has subsequently recruited several villagers into his now-burgeoning cult.",
+								"If the PCs are to save Rinus, time is of the essence; so tarrying on the trail—or taking any kind of rest—almost certainly results in his demise.",
+								{
+									"type": "image",
+									"href": {
+										"type": "external",
+										"url": "https://raw.githubusercontent.com/Spappz/homebrew/tob3-lairs/_img/ToB3-Lairs/map/8_DM.webp"
+									},
+									"imageType": "map"
+								},
+								"{@note An unlabelled version of the map can be found {@link here|https://raw.githubusercontent.com/Spappz/homebrew/tob3-lairs/_img/ToB3-Lairs/map/8.jpg}.}",
+								{
+									"type": "entries",
+									"name": "1. Entrance",
+									"id": "8.1",
+									"page": 52,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Well-worn ruts in the road cut a clear path north from Sycamore Crossing, weaving between the gentle sloping hills outside the village. The path ends near a narrow, treelined trail. By the entrance, a small hickory wagon rests, seemingly abandoned."
+											]
+										},
+										"Ialos brought Rinus north in a hickory wagon that is drawn by a small {@creature draft horse}. Ialos parked the wagon here, inviting Andel and six devoted cultists to witness the ceremony. The {@creature draft horse} is now devouring a bag of oats hung around its neck.",
+										"PCs who succeed on a DC 10 Wisdom ({@skill Animal Handling}) check can approach the {@creature draft horse} without spooking it. If the check succeeds by 2 or more, upon examining the animal, the PC also determines that the {@creature draft horse} stopped pulling the wagon within the last fifteen minutes."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "2. Open Trail",
+									"id": "8.2",
+									"page": 52,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"On the trail, the foliage begins to grow thicker, casting ominous shadows. Birds sing a throaty, legato melody, breaking the near-silence of any footfalls. Oak and sycamore trees line the entrance to the lair. The deep wagon wheel ruts in the road come to an end here, though a single narrow wheel rut continues ahead along a new path."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"PCs who succeed on DC 13 Wisdom ({@skill Perception}) checks notice three ravens sitting high in an oak tree. The ravens are friends of Broshod and watch for trespassers for the druid. If the birds spot the PCs, the ravens alert Broshod about the incoming intruders by emitting a series of loud caws.",
+												"A successful group DC 14 Dexterity ({@skill Stealth}) check allows the PCs to move through the area without detection."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "3. The Druid's Grotto",
+									"id": "8.3",
+									"page": 52,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The path ahead turns briefly east before quickly curving north once more, bending around a low, rocky hill; as it does so, the mouth of a small, earthen grotto dug into a hillside comes into view, opening along the western edge of the path."
+											]
+										},
+										"After learning of Ialos’ scheme, Broshod took up residence in this grotto so that she could monitor his activities; while the druid has rationalized the sheriff’s actions as aligning with the natural order, Broshod fears that such fervor will lead to unnecessary sacrifices.",
+										"A successful group DC 15 Dexterity ({@skill Stealth}) check allows the PCs to move without being detected through this area; this check is made with disadvantage if the ravens in {@area 2|8.2|u} noticed the PCs and called out their alarm.",
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Broshod (N human {@creature druid}) and two {@creature giant badger||giant badgers} are in the grotto."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Tactics",
+											"entries": [
+												"The badgers move to confront the PCs outside the grotto, while Broshod stays back. She tries to remain at range, but if the PCs engage her in melee combat, she casts {@spell thunderwave} to try to push them away. Because the grotto doesn’t have any other exits, the druid and her badgers fight to the death."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Searching the grotto uncovers an {@item herbalism kit|phb}, two {@item potion of healing||potions of healing}, and a {@item potion of animal friendship}."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Development",
+											"entries": [
+												"If Broshod casts {@spell thunderwave}, it causes the sheriff and his cultists in {@area 5|8.5|u} to go on high alert; if they see the PCs, they attack them on sight."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "4. The Divide",
+									"id": "8.4",
+									"page": 53,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Beyond the grotto, the path continues north; 70 feet ahead, it continues further north, but also branches off to the east."
+											]
+										},
+										"Upon reaching the divide, the PCs must decide whether to continue north or veer to the east. Any PC may make a Wisdom ({@skill Survival}) or Intelligence ({@skill Investigation}) check; consult the “Inspecting the Tracks” table to determine what they learn:",
+										{
+											"type": "table",
+											"page": 53,
+											"caption": "Inspecting the Tracks",
+											"colStyles": [
+												"col-1",
+												"col-11"
+											],
+											"colLabels": [
+												"DC",
+												"Information Learned"
+											],
+											"rows": [
+												[
+													"8",
+													"A number of boot prints have gone through this area recently, to the north, the east, and back south."
+												],
+												[
+													"13",
+													"Nine or ten sets of boot prints came through this intersection recently. More than half of them headed east."
+												],
+												[
+													"18",
+													"The boot prints heading north look like they’re sunk deeper into the earth, suggesting the people might have been carrying something heavy."
+												]
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "5. The Shrine",
+									"id": "8.5",
+									"page": 53,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The path here opens into a wide, oblong clearing approximately 50 feet in diameter. To the southwest, near the edge of the woods, is a small shrine. As you look around, five figures rush into the glade from the southeast. Four are dressed as farmers and carry pitchforks, while the fifth walks with the air of legal authority."
+											]
+										},
+										"Perhaps as a way to assuage his guilt, Andel built a shrine to the god of life in honor of those sacrificed for the greater good.",
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Ialos (NE human {@creature cult fanatic}) is the sheriff of Sycamore Crossing. He is accompanied by his deputy, Edmon (NE human {@creature bandit captain}), and four human {@creature cultist||cultists}. The cultists wield {@item pitchfork|ToB3-Lairs|pitchforks} instead of {@item scimitar|phb|scimitars}; use the same statblock for {@item scimitar|phb}, except change the damage type to piercing.",
+												"Ialos knows the PCs are outsiders who must not interrupt the sacrifice. If he was alerted by Broshod’s {@spell thunderwave} from {@area 3|8.3|u}, he attacks on sight. If he wasn’t alerted by the {@spell thunderwave}, he doesn’t attack immediately; instead, he tries to get the PCs to leave, saying “This isn’t your concern, strangers. If you leave now, no harm will come to you.” A successful DC 14 Wisdom ({@skill Insight}) check reveals that this is a lie; in truth, if the PCs leave, Ialos sends Edmon and four {@creature cultist||cultists} to follow after them, as they’ve already seen too much."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Tactics",
+											"entries": [
+												"Ialos orders Edmon and the {@creature cultist||cultists} into melee and uses {@spell hold person} on his first turn to incapacitate the most dangerous-looking PC. Here in the clearing, Ialos, Edmon, and the {@creature cultist||cultists} fight to the death. A single {@creature cultist} may surrender—but only after Ialos and their other companions are dead."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Inspecting Ialos’ body discovers a {@item periapt of wound closure}. The sheriff took this from Rinus and hasn’t yet attuned to the item. If he survives, Rinus gifts this item to the PCs."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Development",
+											"entries": [
+												"If the PCs take a {@creature cultist} prisoner, they warn that their fellows are about to sacrifice Rinus to the land. If the {@creature cultist} has 4 or fewer hit points remaining, they also warn them of the random nature of the rune in {@area 6|8.6|u}."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "6. The Rune",
+									"id": "8.6",
+									"page": 53,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"A soft, glowing blue-colored light looms ahead on the path. As you approach, you see, drawn into the ground, a large, strange rune. The lines of the rune look to be filled with some kind of powder, from which the glimmer emanates. It shifts and changes shape as you look at it, transforming from one character to another."
+											]
+										},
+										"Years ago, Ialos had a wizard etch this rune into the ground outside the grove. The sheriff hoped the rune would discourage any trespassers from proceeding further.",
+										{
+											"type": "entries",
+											"name": "Compulsion",
+											"entries": [
+												"A creature that moves within 15 feet of the rune must succeed on a DC 12 Wisdom saving throw or be forced to examine the rune more closely. On a success, the creature is immune to this effect for 10 minutes; the creature may still choose to examine the rune."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "The Rune’s Magic",
+											"entries": [
+												"If a creature examines the rune closely, it becomes subject to a random effect that is determined by rolling a {@dice d6} on the “Rune Effects” table.",
+												{
+													"type": "table",
+													"caption": "Rune Effects",
+													"page": 53,
+													"colLabels": [
+														"{@dice d6}",
+														"Effect"
+													],
+													"colStyles": [
+														"col-1",
+														"col-11"
+													],
+													"rows": [
+														[
+															"1",
+															{
+																"type": "entries",
+																"name": "Faerie Mark",
+																"entries": [
+																	"A creature that reads the rune must succeed on a DC 12 Dexterity saving throw or become subject to the effects of the {@spell faerie fire} spell, but only to creatures with the Plant type; a creature of any other type confers no benefit from the {@spell faerie fire}. This effect lasts for 1 hour."
+																]
+															}
+														],
+														[
+															"2–5",
+															{
+																"type": "entries",
+																"name": "Unsettling Mark",
+																"entries": [
+																	"A creature that reads the rune must succeed on a DC 12 Wisdom saving throw. On a failure, the creature is turned for 1 minute or until it takes any damage. This effect works like the cleric’s {@classFeature Channel Divinity: Turn Undead|Cleric||2||Turn Undead} class feature, except it can affect any creature type, and it treats the {@creature tripwire patch|ToB3} in {@area 10|8.10|u} as the origin of the effect."
+																]
+															}
+														],
+														[
+															"6",
+															{
+																"type": "entries",
+																"name": "Reviving Mark",
+																"entries": [
+																	"A creature that reads the rune gains 5 ({@dice 1d10}) temporary hit points; at the same moment, a nearby plant withers and dies. A creature can only be benefit from this mark once per long rest."
+																]
+															}
+														]
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "7. The Boulder",
+									"id": "8.7",
+									"page": 54,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The trail north curves east after 80 feet. A large gray boulder sits in the center of the path."
+											]
+										},
+										"There are no signs of recent disturbance of the trees nearby, so the PCs can easily determine that the boulder has been where it is for a very long time; it perhaps once rolled down from some not-too-distant mountain and has remained there ever since. It’s completely innocuous—it’s just a big rock—but PCs may be suspicious of it, and this distraction may cause them to be less cautious when approaching {@area 8|8.8|u}."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "8. The Trap",
+									"id": "8.8",
+									"page": 54,
+									"entries": [
+										"To thwart or slow any do-gooders like the PCs from interfering with their sacrifices, the cultists placed a pit here where the path narrows just past {@area 7|8.7|u}.",
+										{
+											"type": "entries",
+											"name": "Pit Trap",
+											"entries": [
+												"This simple pit trap is a 10-foot-square, 10-foot-deep hole dug in the ground. The hole is covered by canvas anchored on the pit’s edge and camouflaged with dirt, leaves, and other debris. Spotting the trap requires a successful DC 12 Wisdom ({@skill Perception}) check. When a creature enters the trap area, it must succeed on a DC 12 Dexterity saving throw to avoid falling into the pit.",
+												"A creature falling into the pit takes 3 ({@damage 1d6}) piercing damage from the few hastily carved wooden spikes at the bottom, plus 3 ({@damage 1d6}) bludgeoning damage from the 10-foot fall. To climb out of the pit, a PC must succeed on a DC 12 Strength ({@skill Athletics}) check; using ropes or other climbing gear grants advantage on the roll.",
+												"If the PCs detect the trap, they can easily move around it, either by skirting the edge of it on the path or moving through the trees."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "9. Trail's End",
+									"id": "8.9",
+									"page": 55,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"As you continue south, the foliage grows thicker and thicker the farther you progress. About halfway down this spur, the ground becomes covered with thorns, burs, and pricker bushes. From the south, you hear the faint sounds of chanting, which is then followed by what can only be the muffled cry of a person in distress."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Bramble Hazard",
+											"entries": [
+												"The last 70 feet of this southern part of the trail is covered in thorny plants and brambles. If a creature moves at half speed, it can traverse the path normally.",
+												"To move at full speed, a creature must succeed on a DC 12 Dexterity saving throw every 10 feet or take 1 piercing damage from the thorns and brambles. A creature wearing no armor and/or boots has disadvantage on the saving throw; a creature wearing boots and heavy armor automatically succeeds."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "10. The Standing Stones",
+									"id": "8.10",
+									"page": 55,
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Six sycamore trees are interspersed throughout this broad clearing, and the trees lining the outer edge slant away from the center, as if they are giving something within a wide berth. Seven standing stones are arranged in the center of the grove. There, a priest stands, in the midst of offering a muttered prayer as he lowers an {@condition unconscious} body to the ground. Two cultists stand near the body, one of them cutting the palm of their right hand with a knife. As the blood drips onto the ground at their feet, thick vines on the ground start to rustle and writhe."
+											]
+										},
+										"By the time the PCs arrive at {@area 10|8.10|u}, the {@creature cultist||cultists} have carried Rinus’ {@condition unconscious} form to the center of the standing stones.",
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Upon seeing the PCs enter the area, {@creature Andel|ToB3-Lairs} (NG human {@creature acolyte}, with {@spell command} prepared instead of {@spell sanctuary}) raises his hands in a “hold” gesture—in the hopes of finding a peaceful solution to the current situation.",
+												"The two {@creature cultist||cultists}, meanwhile, raise their {@item pitchfork|ToB3-Lairs|pitchfork} to fight. The {@creature cultist||cultists} wield {@item pitchfork|ToB3-Lairs|pitchforks} instead of {@item scimitar|phb|scimitars}; use the same statblock for {@item scimitar|phb}, except change the damage type to piercing.",
+												"The {@creature tripwire patch|ToB3}—which is located at the center of the standing stones—is alert and ready to eat."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "The Priest",
+											"entries": [
+												"{@creature Andel|ToB3-Lairs} attempts to parley with the PCs, trying to convince them that the people of Sycamore Crossing had no choice and that what they’ve done is the lesser of two evils; he truly believes this, and that his god—the god of life—has endorsed this action (in this, however, he is misguided). If the PCs are not persuaded by his words, he offers to give them the treasure noted below."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Tactics",
+											"entries": [
+												"Once combat ensues, the {@creature tripwire patch|ToB3} uses one Tripwire Vine attack to grapple Rinus and flails the other toward a creature at random (choosing from any creature within range, not just the PCs). It uses Drag to pull any creature it grapples toward its maw so that it can use its Bite to devour its prey.",
+												"If the patch bites an NPC, they are killed instantly. If that happens, unless the PCs continue to attack, the patch returns to its slumber and digests its food. {@creature Andel|ToB3-Lairs} won’t attack with violence, but if a PC draws a weapon and/or makes a hostile move toward him or one of the cultists, he casts {@spell command}; the command he gives is “flee.”",
+												"If {@creature Andel|ToB3-Lairs} or either of the {@creature cultist||cultists} take damage, the wounded creature attempts to flee."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"{@creature Andel|ToB3-Lairs} carries two {@item potion of greater healing||potions of greater healing} and a {@item robe of useful items} tucked into his satchel."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Lore",
+											"entries": [
+												"If a PC spends 10 minutes examining the area, a successful DC 14 Intelligence ({@skill History} or {@skill Religion}) check determines that the standing stones have been in this location for hundreds—perhaps thousands—of years; there are also a number of markings (unreadable now due to the ravages of time) that suggest an older culture may have worshipped this creature if anything the villagers believed about it is true."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Concluding the Adventure",
+							"page": 55,
+							"entries": [
+								"If the PCs save Rinus, he thanks them profusely. From there, the PCs can return him to the sheriff of Yrunby, and then otherwise proceed as the adventure hook you used suggests.",
+								"If the PCs didn’t encounter the sheriff in {@area 5|8.5|u}, the PCs find Ialos and the four cultists in {@area 1|8.1|u}, waiting for {@creature Andel|ToB3-Lairs|Andel’s} signal that the sacrifice has begun. Ialos and the four {@creature cultist||cultists} attack Rinus and the PCs on sight. The sheriff orders his minions to make nonlethal attacks to ensure replacement sacrifices; if the PCs point out that the {@creature tripwire patch|ToB3} is dead, he says “Then you’ve doomed us all” and attempts to run. If he’s captured, the PCs can reasonably conclude that (also) taking him to the sheriff of Yrunby is the proper action. Ialos also flees the battle if he starts his turn at 11 hit points or fewer, commandeering the wagon if possible. The {@creature cultist||cultists} fight to the death unless Ialos flees; if he does, they too attempt to run."
+							]
+						}
 					]
 				},
 				{
