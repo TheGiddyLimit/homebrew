@@ -1,5 +1,4 @@
 {
-    "$schema": "../_schema-fast/homebrew.json",
     "_meta": {
         "sources": [
             {
@@ -10,24 +9,24 @@
                 "authors": [
                     "hakr14"
                 ],
-                "version": "1.0.2"
+                "version": "1.1"
             }
         ],
         "dateAdded": 1662156010,
-        "dateLastModified": 1667539141
+        "dateLastModified": 1678329046
     },
     "item": [
         {
             "source": "karoitem",
             "name": "Gutroot",
-            "rarity": "unknown (magic)",
+            "rarity": "very rare",
             "type": "G",
             "poison": true,
             "poisonTypes": [
                 "ingested"
             ],
             "entries": [
-                "A creature subjected to this poison must succeed on a DC 17 Constitution saving throw or become {@condition poisoned} for 15 minutes. If the creature remains poisoned for the entire duration, it takes {@damage 1d2} necrotic damage at the end of each of its turns for the next hour. This damage cannot be reduced in any way, and can only be removed with the use of {@spell remove curse} or similar spells."
+                "A creature subjected to this poison must succeed on a DC 17 Constitution saving throw or become {@condition poisoned} for 15 minutes. If the creature remains poisoned for the entire duration, it takes {@damage 1d2} necrotic damage at the end of each of its turns for the next hour. This damage cannot be reduced in any way. This effect can only be removed with the use of {@spell remove curse} or similar magic."
             ],
             "fluff": {
                 "entries": [
@@ -36,7 +35,13 @@
                     "Gutroot was used in this way to assassinate a diplomat rather dramatically at a public dinner party. While it was already an illegal substance, this event caused local authorities to put heavy surveillance in and around the Reflecting Woods."
                 ]
             },
-            "hasFluff": true
+            "hasFluff": true,
+            "foundrySystem": {
+                "save.ability": "con",
+                "save.dc": 17,
+                "save.scaling": "flat"
+            },
+            "foundryImg": "icons/consumables/mushrooms/convex-green-brown.webp"
         },
         {
             "source": "karoitem",
@@ -58,7 +63,7 @@
                 "revivify"
             ],
             "charges": 1,
-            "recharge": "dawn",
+            "recharge": "special",
             "entries": [
                 "The hilt of this shortsword is ornately carved with a relief of a winged figure kneeling down to help a wounded soldier.",
                 "This shortsword has 1 charge. As an action, you can expend a charge to cast {@spell revivify}. When cast this way, the spell does not consume its material component.",
@@ -77,7 +82,7 @@
 			"entries": [
 				"These leg wrappings have 5 charges, and regain all expended charges each dawn. When you use the {@action Dash} action, you can expend a charge to also gain the benefits of the {@action Disengage} action."
 			],
-			"foundryData": {
+			"foundrySystem": {
 				"activation.type": "special",
 				"activation.condition": "When you use the Dash action"
 			},
@@ -88,6 +93,7 @@
             "name": "Crested Bluehawk Feather",
             "rarity": "uncommon",
             "wondrous": true,
+            "type": "$",
             "charges": 1,
             "recharge": "dawn",
             "reqAttune": true,
@@ -96,7 +102,7 @@
                 "While attuned to this item, when you have a flying speed, that flying speed is increased by 10 feet.",
                 "Additionally, once per day, you can grant yourself a flying speed of 10 feet for 1 minute. This flying speed cannot benefit from the bonus speed this item grants."
             ],
-            "foundryData": {
+            "foundrySystem": {
                 "activation.type": "none",
                 "duration.value": 1,
                 "duration.units": "minute"
@@ -121,6 +127,7 @@
             "name": "Sleepless Serandite",
             "rarity": "uncommon",
             "wondrous": true,
+            "type": "$",
             "entries": [
                 "A muted pink gemstone. The gemstone flashes bright white when a creature within 5 feet moves away from it.",
                 "When this happens, you may use your reaction to make an opportunity attack against this creature. You do not need to be able to see the creature to do this.",
@@ -136,14 +143,13 @@
             "reqAttune": "by a creature with the ability to summon another creature",
             "entries": [
                 "A thick tome. Most of the text within is indecipherable, but a passage detailing a way to take advantage of the energy transfer of summoning stands out.",
-                "When you summon a creature, each creature of your choice within 5 feet of the summon must make a DC 14 Constitution saving throw. On a failure, the creature takes {@damage 1d6} necrotic damage, and the damage dealt is returned as temporary hit points either to you or to the summoned creature."
+                "When you summon a creature, a creature of your choice within 5 feet of the summon must make a DC 14 Constitution saving throw. On a failure, the creature takes {@damage 1d10} necrotic damage, and the damage dealt is returned as temporary hit points either to you or to the summoned creature."
             ],
-            "foundryData": {
+            "foundrySystem": {
                 "activation.type": "special",
                 "activation.condition": "When you summon a creature",
                 "target.value": 5,
                 "target.units": "ft",
-                "target.type": "rad",
                 "actionType": "save",
                 "damage.parts": [
                     [
@@ -169,9 +175,54 @@
                 "While attuned to this pauldron, your weapon attacks score a critical hit on a roll of 19 or 20."
             ],
             "foundryFlags": {
-                "flags.dnd5e.weaponCriticalThreshold": true
+                "flags.dnd5e.weaponCriticalThreshold": 19
             },
             "foundryImg": "icons/equipment/shoulder/pauldron-purple-worn.webp"
+        },
+        {
+            "source": "karoitem",
+            "name": "Talespinner",
+            "rarity": "artifact",
+            "wondrous": true,
+            "type": "$",
+            "entries": [
+                "Despite holding powerful magic, Talespinner takes the appearance of an plain, dark grey spinning top with no decoration.",
+                "When spun normally, the top spins as normal, with no magical effects.",
+                "When spun on a flat surface while speaking the command word (as an action), the top instead spins indefinitely, and projects a powerful illusion.",
+                "All points of the illusion must have direct line of sight to the Talespinner (though can be \"blocked\" by creatures and other points of the illusion), and the furthest points of the illusion can be no further than 200 feet from the top. The illusion has no other constraints, and can have visual and auditory components of arbitrary complexity. The illusion can include illusory creatures that the spinner of the top can control."
+            ],
+            "foundrySystem": {
+                "activation.cost": 1,
+                "activation.type": "action",
+                "duration.units": "perm",
+                "range.value": 200,
+                "range.units": "ft"
+            },
+            "foundryImg": "icons/tools/laboratory/funnel-steel-grey.webp"
+        },
+        {
+            "source": "karoitem",
+            "name": "The Same Coin",
+            "rarity": "artifact",
+            "wondrous": true,
+            "type": "$",
+            "weight": 0.02,
+            "charges": 1,
+            "recharge": "dawn",
+            "entries": [
+                "Of only slightly differing dimensions and identical weight to a standard coin, The Same Coin is a mostly ordinary looking gold coin, save for the embossed designs: a spiral on one side, and a cogwheel on the other.",
+                "There are two of these coins in all of existence; one in the Feywild, the other in the Shadowfell. Both are effectively trapped in their respective plane, and are otherwise identical.",
+                "Any attempt to transport either of the coins to another plane will automatically fail.",
+                "As an action, you can flip the coin. The coin only has a magical effect if the coin is flipped randomly. The coin has an effect depending on the result, which can be determined by rolling {@dice 2d100}.",
+                "On a result of 2 or 200, all creatures within 15 feet of the flipped coin are instantly teleported to a random location on the Material Plane.",
+                "Otherwise, roll a {@dice d2}. On a 1, all creatures within 15 feet of the coin in the Feywild are teleported to the location of the coin in the Shadowfell. On a 2, all creatures within 15 feet of the coin in the Shadowfell are teleported to the location of the coin in the Feywild.",
+                "No matter the result, neither coin is teleported and both instantly become inactive, and cannot be used again this way until the next dawn."
+            ],
+            "foundrySystem": {
+                "activaiton.type": "action",
+                "formula": "2d100 + 1d2"
+            },
+            "foundryImg": "icons/commodities/currency/coin-inset-swirl-gold.webp"
         }
     ]
 }
