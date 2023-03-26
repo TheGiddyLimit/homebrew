@@ -115,7 +115,7 @@ An example homebrew file might contain the following information in it's `_meta`
             {
                 "mode": "replaceArr",
                 "replace": "Mace",
-                "with": {
+                "items": {
                     "name": "Staff",
                     "entries": [
                         "{@atk mw} {@hit 8} to hit, reach5 ft., ..."
@@ -476,7 +476,7 @@ Add a scalar to `@dc` tags in a statblock
 
 #### maxSize
 
-Set a statblock's `size` to the maximum of the present value and the value provided.
+Set a statblock's `size` to the minimum of the present value and the value provided.
 
 ```jsonc
 {
