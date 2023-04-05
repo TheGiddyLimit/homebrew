@@ -115,7 +115,7 @@ An example homebrew file might contain the following information in it's `_meta`
             {
                 "mode": "replaceArr",
                 "replace": "Mace",
-                "with": {
+                "items": {
                     "name": "Staff",
                     "entries": [
                         "{@atk mw} {@hit 8} to hit, reach5 ft., ..."
