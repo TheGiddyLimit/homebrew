@@ -9,12 +9,13 @@
 					"LaserLlama"
 				],
 				"convertedBy": [
-					"ProfForp#0242"
+					"ProfForp#0242",
+					"hakr14"
 				],
 				"color": "ba0bba",
-				"version": "1.0",
+				"version": "1.0.0",
 				"url": "https://www.gmbinder.com/share/-NN-4ej_kwDJyO0_98BM",
-				"targetSchema": "1.0"
+				"targetSchema": "1.10.8"
 			}
 		],
 		"dependencies": {
@@ -25,8 +26,7 @@
 			]
 		},
 		"dateAdded": 1681740408,
-		"dateLastModified": 1681740408,
-		"_dateLastModifiedHash": "7f2f39c08e"
+		"dateLastModified": 0
 	},
 	"class": [
 		{
@@ -175,46 +175,56 @@
 				{
 					"name": "Magical Secrets",
 					"known": {
-						"3": [
-							{
-								"choose": "level=1"
-							},
-							{
-								"choose": "level=1"
+						"3": {
+							"daily": {
+								"1e": [
+									{
+										"choose": "level=1",
+										"count": 2
+									}
+								]
 							}
-						],
-						"6": [
-							{
-								"choose": "level=1;2"
-							},
-							{
-								"choose": "level=1;2"
+						},
+						"6": {
+							"daily": {
+								"1e": [
+									{
+										"choose": "level=1;2",
+										"count": 2
+									}
+								]
 							}
-						],
-						"10": [
-							{
-								"choose": "level=1;2;3"
-							},
-							{
-								"choose": "level=1;2;3"
+						},
+						"10": {
+							"daily": {
+								"1e": [
+									{
+										"choose": "level=1;2;3",
+										"count": 2
+									}
+								]
 							}
-						],
-						"14": [
-							{
-								"choose": "level=1;2;3;4"
-							},
-							{
-								"choose": "level=1;2;3;4"
+						},
+						"14": {
+							"daily": {
+								"1e": [
+									{
+										"choose": "level=1;2;3;4",
+										"count": 2
+									}
+								]
 							}
-						],
-						"18": [
-							{
-								"choose": "level=1;2;3;4;5"
-							},
-							{
-								"choose": "level=1;2;3;4;5"
+						},
+						"18": {
+							"daily": {
+								"1e": [
+									{
+										"choose": "level=1;2;3;4;5",
+										"count": 2
+									}
+								]
 							}
-						]
+						}
 					}
 				}
 			],
@@ -683,7 +693,36 @@
 				"Synaptic Static|XGE",
 				"Rary's Telepathic Bond",
 				"Teleportation Circle"
-			]
+			],
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"title": "Bardic Inspiration Die",
+					"configuration": {
+						"identifier": "bardic-inspiration",
+						"type": "dice",
+						"scale": {
+							"1": {
+								"n": 1,
+								"die": 6
+							},
+							"5": {
+								"n": 1,
+								"die": 8
+							},
+							"11": {
+								"n": 1,
+								"die": 10
+							},
+							"17": {
+								"n": 1,
+								"die": 12
+							}
+						}
+					}
+				}
+			],
+			"foundryImg": "icons/skills/toxins/cup-goblet-poisoned-spilled.webp"
 		}
 	],
 	"classFeature": [
@@ -697,7 +736,24 @@
 				"Starting at 1st level, you can inspire heroism with your words and music. When you, or a creature within 60 feet that can hear you makes an ability check, attack roll, or saving throw, you can use a reaction to expend a use of Bardic Inspiration, roll your Bardic Inspiration die, and add it to the result of its roll. You can use this reaction after the creature rolls, but before you know if the roll results in a success or a failure.",
 				"Your Bardic Inspiration die begins as a {@dice d6}, and increases in size when you reach certain levels in this class, as shown in the Bardic Inspiration column of the Bard table above.",
 				"You have a number of uses of Bardic Inspiration equal to 1 + your Charisma modifier (minimum of 1), and you regain all of your expended uses when you finish a short or long rest."
-			]
+			],
+			"foundrySystem": {
+				"actionType": "util",
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"condition": "When you, or a creature within 60 feet that can hear you makes an ability check, attack roll, or saving throw"
+				},
+				"formula": "@scale.bard-alternate.bardic-inspiration",
+				"range": {
+					"value": 60,
+					"units": "ft"
+				},
+				"uses": {
+					"max": "max(0, @abilities.cha.mod) + 1",
+					"per": "sr"
+				}
+			}
 		},
 		{
 			"name": "Folklore",
@@ -710,7 +766,13 @@
 				"If you were not already, you gain the chosen proficiency, or learn to speak, read, and write that language. If you choose a skill or tool you are already proficient in, you gain a bonus to your checks equal to one roll of your Bardic Inspiration die.",
 				"At certain Bard levels, you pick up additional talents and skills. Another Bard skill, instrument, or language of your choice gains this benefit at 7th, 10th, 14th, and 20th level.",
 				"Once you gain a Bardic Inspiration die bonus to a skill or tool from this feature, you can't select that proficiency again."
-			]
+			],
+			"foundrySystem": {
+				"actionType": "util",
+				"activation.type": "special",
+				"formula": "@scale.bard-alternate.bardic-inspiration"
+			},
+			"foundryImg": "icons/sundries/documents/document-official-brownl.webp"
 		},
 		{
 			"name": "Song of Rest",
@@ -720,7 +782,20 @@
 			"level": 2,
 			"entries": [
 				"Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points at the end of the short rest by spending one or more Hit Dice, each of those creatures regains additional hit points equal to one roll of your Bardic Inspiration Die."
-			]
+			],
+			"foundrySystem": {
+				"actionType": "heal",
+				"activation": {
+					"type": "special",
+					"condition": "At the end of a short rest"
+				},
+				"damage.parts": [
+					[
+						"@scale.bard-alternate.bardic-inspiration",
+						"healing"
+					]
+				]
+			}
 		},
 		{
 			"name": "Spellcasting",
@@ -789,7 +864,17 @@
 						"You use your varied knowledge to cast the ritual version of any Bard spell you know so long as it has the ritual tag."
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"actionType": "",
+				"activation.type": "",
+				"uses": {
+					"value": "",
+					"max": "",
+					"per": ""
+				}
+			},
+			"foundryImg": "icons/magic/symbols/runes-carved-stone-yellow.webp"
 		},
 		{
 			"name": "Bardic Tradition",
@@ -800,7 +885,8 @@
 			"entries": [
 				"At 3rd level, you choose the Bardic Tradition to represent the various skills and knowledge you have gained in your travels: Fool, Loremaster, or Skald.",
 				"Your Bardic Tradition grants you features at 3rd level, and again when you reach 5th, 11th, and 15th level in this class."
-			]
+			],
+			"foundryImg": "icons/tools/instruments/lute-gold-brown.webp"
 		},
 		{
 			"name": "Magical Secrets",
@@ -813,7 +899,16 @@
 				"You can cast each of your Magical Secret spells once, at its lowest level, without expending a spell slot, and you regain all expended uses when you finish a long rest. You can also cast Magical Secrets spells with any spell slots you have.",
 				"You learn two additional Magical Secrets spells of your choice when you reach 6th level, and again at 10th level, 14th level, and 18th level in this class. Any Magical Secret spells you learn must be of a level for which you have spell slots as shown on the Bard table.",
 				"You can't change these spells when you gain a level."
-			]
+			],
+			"foundrySystem": {
+				"actionType": "",
+				"activation.type": "",
+				"uses": {
+					"value": "",
+					"max": "",
+					"per": ""
+				}
+			}
 		},
 		{
 			"name": "Ability Score Improvement",
@@ -844,7 +939,11 @@
 			"entries": [
 				"Starting at 6th level, you can use the magical power of your bardic performances to disrupt enemy spellcasting. When a creature you can hear within 60 feet casts a spell with a verbal component, you can use your reaction to perform a discordant tone, expending one or more uses of Bardic Inspiration, and attempt to disrupt the creature's spell.",
 				"Roll a number of Bardic Inspiration Dice equal to the uses you expended, and add your Charisma modifier to the result. If the total is equal to, or higher than, 8 + the level of the spell, it fails and has no effect."
-			]
+			],
+			"consumes": {
+				"name": "Bardic Inspiration"
+			},
+			"foundryImg": "icons/tools/instruments/harp-gold-glowing.webp"
 		},
 		{
 			"name": "Magical Secrets",
@@ -865,7 +964,8 @@
 			"entries": [
 				"At 7th level, you choose another of Bard class skill, {@item musical instrument|PHB}, or language. If you were not already, you gain the chosen proficiency, or learn to speak, read, and write that language. If you choose a skill or tool you are already proficient in, you gain a bonus to your checks equal to one roll of your Bardic Inspiration die.",
 				"Once you gain a Bardic Inspiration die bonus to a skill or tool from this feature, you can't select that proficiency again."
-			]
+			],
+			"foundryImg": "icons/sundries/documents/document-official-brownl.webp"
 		},
 		{
 			"name": "Font of Inspiration",
@@ -897,7 +997,13 @@
 			"entries": [
 				"The song of creation propels your performative abilities to supernatural heights. Starting at 9th level, you add double your proficiency bonus to any ability check you make that uses a musical instrument you are proficient with.",
 				"Also, when you roll initiative and have no uses of your Bardic Inspiration left, you instantly regain one use."
-			]
+			],
+			"expertise": [
+				{
+					"musical instrument": true
+				}
+			],
+			"foundryImg": "icons/sundries/documents/document-symbol-rune-tan.webp"
 		},
 		{
 			"name": "Folklore",
@@ -908,7 +1014,8 @@
 			"entries": [
 				"At 10th level, you choose another of Bard class skill, {@item musical instrument|PHB}, or language. If you were not already, you gain the chosen proficiency, or learn to speak, read, and write that language. If you choose a skill or tool you are already proficient in, you gain a bonus to your checks equal to one roll of your Bardic Inspiration die.",
 				"Once you gain a Bardic Inspiration die bonus to a skill or tool from this feature, you can't select that proficiency again."
-			]
+			],
+			"foundryImg": "icons/sundries/documents/document-official-brownl.webp"
 		},
 		{
 			"name": "Magical Secrets",
@@ -949,7 +1056,8 @@
 			"entries": [
 				"At 14th level, you choose another of Bard class skill, {@item musical instrument|PHB}, or language. If you were not already, you gain the chosen proficiency, or learn to speak, read, and write that language. If you choose a skill or tool you are already proficient in, you gain a bonus to your checks equal to one roll of your Bardic Inspiration die.",
 				"Once you gain a Bardic Inspiration die bonus to a skill or tool from this feature, you can't select that proficiency again."
-			]
+			],
+			"foundryImg": "icons/sundries/documents/document-official-brownl.webp"
 		},
 		{
 			"name": "Magical Secrets",
@@ -1010,7 +1118,8 @@
 			"entries": [
 				"At 20th level, you choose another of Bard class skill, {@item musical instrument|PHB}, or language. If you were not already, you gain the chosen proficiency, or learn to speak, read, and write that language. If you choose a skill or tool you are already proficient in, you gain a bonus to your checks equal to one roll of your Bardic Inspiration die.",
 				"Once you gain a Bardic Inspiration die bonus to a skill or tool from this feature, you can't select that proficiency again."
-			]
+			],
+			"foundryImg": "icons/sundries/documents/document-official-brownl.webp"
 		},
 		{
 			"name": "Mythic Performance",
@@ -1020,7 +1129,8 @@
 			"level": 20,
 			"entries": [
 				"At 20th level, your words and song inspire legendary feats of heroism. If you begin your turn with no uses of your Bardic Inspiration left, you instantly regain one expended use."
-			]
+			],
+			"foundryImg": "icons/tools/instruments/harp-yellow-teal.webp"
 		}
 	],
 	"subclass": [
@@ -1035,7 +1145,8 @@
 				"Sharp Wit|Bard (Alternate)|LaserLlamaAlternateBard|Fool|LaserLlamaAlternateBard|5|LaserLlamaAlternateBard",
 				"Wondrous Tumbler|Bard (Alternate)|LaserLlamaAlternateBard|Fool|LaserLlamaAlternateBard|11|LaserLlamaAlternateBard",
 				"Fool's Luck|Bard (Alternate)|LaserLlamaAlternateBard|Fool|LaserLlamaAlternateBard|15|LaserLlamaAlternateBard"
-			]
+			],
+			"foundryImg": "icons/svg/card-joker.svg"
 		},
 		{
 			"name": "Loremaster",
@@ -1053,34 +1164,55 @@
 				{
 					"name": "Magical Secrets",
 					"known": {
-						"3": [
-							{
-								"choose": "level=1"
+						"3": {
+							"daily": {
+								"1e": [
+									{
+										"choose": "level=1"
+									}
+								]
 							}
-						],
-						"6": [
-							{
-								"choose": "level=1;2"
+						},
+						"6": {
+							"daily": {
+								"1e": [
+									{
+										"choose": "level=1;2"
+									}
+								]
 							}
-						],
-						"10": [
-							{
-								"choose": "level=1;2;3"
+						},
+						"10": {
+							"daily": {
+								"1e": [
+									{
+										"choose": "level=1;2;3"
+									}
+								]
 							}
-						],
-						"14": [
-							{
-								"choose": "level=1;2;3;4"
+						},
+						"14": {
+							"daily": {
+								"1e": [
+									{
+										"choose": "level=1;2;3;4"
+									}
+								]
 							}
-						],
-						"18": [
-							{
-								"choose": "level=1;2;3;4;5"
+						},
+						"18": {
+							"daily": {
+								"1e": [
+									{
+										"choose": "level=1;2;3;4;5"
+									}
+								]
 							}
-						]
+						}
 					}
 				}
-			]
+			],
+			"foundryImg": "icons/sundries/scrolls/scroll-rolled-worn.webp"
 		},
 		{
 			"name": "Skald",
@@ -1094,7 +1226,8 @@
 				"Gallant Charge|Bard (Alternate)|LaserLlamaAlternateBard|Skald|LaserLlamaAlternateBard|5|LaserLlamaAlternateBard",
 				"Ringing Strikes|Bard (Alternate)|LaserLlamaAlternateBard|Skald|LaserLlamaAlternateBard|11|LaserLlamaAlternateBard",
 				"Heroic Ballad|Bard (Alternate)|LaserLlamaAlternateBard|Skald|LaserLlamaAlternateBard|15|LaserLlamaAlternateBard"
-			]
+			],
+			"foundryImg": "icons/tools/instruments/horn-white-gray.webp"
 		}
 	],
 	"subclassFeature": [
@@ -1135,7 +1268,33 @@
 			"entries": [
 				"{@i 3rd-level Fool Tradition feature}",
 				"You gain the skills to pass as a bumbling nincompoop. You gain proficiency in {@skill Acrobatics} and {@skill Sleight of Hand}. If you are already proficient in either of these skills you instead gain proficiency in another skill from the Bard skill list."
-			]
+			],
+			"skillProficiencies": [
+				{
+					"acrobatics": true,
+					"sleight of hand": true
+				},
+				{
+					"choose": {
+						"from": [
+							"acrobatics",
+							"arcana",
+							"deception",
+							"history",
+							"insight",
+							"investigation",
+							"perception",
+							"performance",
+							"persuasion",
+							"religion",
+							"sleight of hand",
+							"stealth"
+						],
+						"count": 2
+					}
+				}
+			],
+			"foundryImg": "icons/equipment/head/mask-carved-scream-tan.webp"
 		},
 		{
 			"name": "Cutting Words",
@@ -1149,7 +1308,23 @@
 			"entries": [
 				"{@i 3rd-level Fool Tradition feature}",
 				"You know just the right thing to say to distract, confuse, and sap the confidence of others. When a creature that can hear you within 60 feet makes an ability check, attack roll, or rolls for damage, you can use a reaction to expend a use of Bardic Inspiration, roll your Bardic Inspiration Die, and subtract it from the creature's roll. You can use this reaction after the creature rolls, but before it is determined if its roll succeeds or fails, or the creature deals its damage."
-			]
+			],
+			"consumes": {
+				"name": "Bardic Inspiration"
+			},
+			"foundrySystem": {
+				"actionType": "util",
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"condition": "When a creature that can hear you within 60 feet makes an ability check, attack roll, or rolls for damage"
+				},
+				"formula": "@scale.bard-alternate.bardic-inspiration",
+				"range": {
+					"value": 60,
+					"units": "ft"
+				}
+			}
 		},
 		{
 			"name": "Tumbling Fool",
@@ -1172,7 +1347,11 @@
 						"You reduce falling damage you take by an amount equal to your level + your Charisma modifier (minimum of 1)."
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"formula": "max(1, @details.level + @mod)"
+			},
+			"foundryImg": "icons/skills/movement/arrow-upward-white.webp"
 		},
 		{
 			"name": "Sharp Wit",
@@ -1187,7 +1366,21 @@
 				"{@i 5th-level Fool Tradition feature}",
 				"You can use sarcasm and wit to distract those who would do you harm. When a creature you can see within 60 feet targets you with an attack, you can use your Cutting Words reaction without expending a use of your Bardic Inspiration.",
 				"Also, whenever you use your Cutting Words reaction, and it causes the creature to miss with an attack that would have hit, or fail an ability check that would have succeeded, it takes psychic damage equal to a roll of your Bardic Inspiration die."
-			]
+			],
+			"foundrySystem": {
+				"actionType": "other",
+				"activation": {
+					"type": "special",
+					"condition": "Whenever you use your Cutting Words reaction, and it causes the creature to miss with an attack that would have hit, or fail an ability check that would have succeeded"
+				},
+				"damage.parts": [
+					[
+						"@scale.bard-alternate.bardic-inspiration",
+						"psychic"
+					]
+				]
+			},
+			"foundryImg": "icons/weapons/swords/sword-simple-white.webp"
 		},
 		{
 			"name": "Wondrous Tumbler",
@@ -1200,12 +1393,12 @@
 			"header": 2,
 			"entries": [
 				"{@i 11th-level Fool Tradition feature}",
-				"You can embellish your natural acrobatic talents with bardic magic. When you take the Dash action, you can expend a use of Bardic Inspiration to gain one of the following benefits:",
+				"You can embellish your natural acrobatic talents with bardic magic. When you take the {@action Dash} action, you can expend a use of Bardic Inspiration to gain one of the following benefits:",
 				{
 					"type": "entries",
 					"name": "Disappearing Act",
 					"entries": [
-						"You turn invisible and can move about without making a sound for 10 minutes. This invisibility ends early if you attack or force a creature to make a saving throw."
+						"You turn {@condition invisible} and can move about without making a sound for 10 minutes. This invisibility ends early if you attack or force a creature to make a saving throw."
 					]
 				},
 				{
@@ -1215,7 +1408,15 @@
 						"You disappear, only to instantly reappear in an unoccupied space that you can see within 30 feet."
 					]
 				}
-			]
+			],
+			"consumes": {
+				"name": "Bardic Inspiration",
+				"amount": 1
+			},
+			"foundrySystem": {
+				"activation.condition": "When you take the Dash action"
+			},
+			"foundryImg": "icons/skills/movement/ball-spinning-blue.webp"
 		},
 		{
 			"name": "Fool's Luck",
@@ -1230,7 +1431,18 @@
 				"{@i 15th-level Fool Tradition feature}",
 				"You can capitalize on comical failures to regain some of your bardic magic. Whenever you fail an ability check, attack roll, or saving throw, you can choose to fail in comical fashion and regain one expended use of your Bardic Inspiration.",
 				"When you choose to fail in this way, the consequences of your failure should be mildly worse, at the discretion of the DM."
-			]
+			],
+			"consumes": {
+				"name": "Bardic Inspiration",
+				"amount": -1
+			},
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "Whenever you fail an ability check, attack roll, or saving throw"
+				}
+			},
+			"foundryImg": "icons/magic/symbols/clover-luck-white-green.webp"
 		},
 		{
 			"name": "Loremaster",
@@ -1281,6 +1493,19 @@
 				"{@i 3rd-level Loremaster Tradition feature}",
 				"In your many wanderings you have learned much about many things. You can add half your proficiency bonus to any ability check you make that doesn't include your proficiency bonus.",
 				"In addition, you gain proficiency in two of the following skills of your choice: {@skill Arcana}, {@skill History}, {@skill Nature}, or {@skill Religion}."
+			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"arcana",
+							"history",
+							"nature",
+							"religion"
+						],
+						"count": 2
+					}
+				}
 			]
 		},
 		{
@@ -1296,7 +1521,8 @@
 				"{@i 5th-level Loremaster Tradition feature}",
 				"Whenever you cast a Bard spell that deals thunder or psychic damage, or restores hit points to a creature, you can add your Charisma modifier (minimum of +1) to the damage roll or the number of hit points restored by the spell.",
 				"Moreover, whenever you roll a Bardic Inspiration die, you can roll it twice and use the higher result."
-			]
+			],
+			"foundryImg": "icons/magic/light/explosion-beam-impact-silhouette.webp"
 		},
 		{
 			"name": "Wondrous Success",
@@ -1319,7 +1545,11 @@
 						"Remember, characters should only make ability checks when the DM calls for an ability check, and ability checks should not be called for unless there is a chance, however small, of a successful result."
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation.condition": "When you use your Bardic Inspiration reaction to add to an ability check"
+			},
+			"foundryImg": "icons/magic/light/explosion-star-glow-silhouette.webp"
 		},
 		{
 			"name": "Burst of Inspiration",
@@ -1333,7 +1563,18 @@
 			"entries": [
 				"{@i 15th-level Loremaster Tradition feature}",
 				"Your speech and song are laced with powerful bardic magic, inspiring all who hear you. When you use your Bardic Inspiration reaction on a creature other than yourself, creatures of your choice within 10 feet of your target can add one roll of your Bardic Inspiration die to the first ability check, attack roll, or saving throw they make before the beginning of your next turn."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you use your Bardic Inspiration reaction on a creature other than yourself"
+				},
+				"range": {
+					"value": 10,
+					"units": "ft"
+				}
+			},
+			"foundryImg": "icons/magic/light/beams-explosion-blue.webp"
 		},
 		{
 			"name": "Skald",
@@ -1369,7 +1610,19 @@
 				"{@i 3rd-level Skald Tradition feature}",
 				"In your desire to stand among the heroes of legend you have learned to hold your own in battle. You gain proficiency with {@filter martial weapons|items|type=martial weapon}, {@item shield|PHB|shields}, and {@filter heavy armor|items|type=heavy armor}.",
 				"Also, when you are wielding a weapon or shield in both of your hands, your voice counts as a musical instrument for the purposes of casting Bard spells or using other Bard features."
-			]
+			],
+			"armorProficiencies": [
+				{
+					"heavy": true,
+					"shield|phb": true
+				}
+			],
+			"weaponProficiencies": [
+				{
+					"martial": true
+				}
+			],
+			"foundryImg": "icons/tools/instruments/rattle-gourd-glowing-teal.webp"
 		},
 		{
 			"name": "Combat Inspiration",
@@ -1383,7 +1636,24 @@
 			"entries": [
 				"{@i 3rd-level Skald Tradition feature}",
 				"You use your bardic magic to inspire feats of valor in battle. When you or a creature that can hear you within 60 feet hits a creature with a weapon attack, you can use your reaction to expend one use of your Bardic Inspiration, roll your Bardic Inspiration die, and add the result to the damage roll."
-			]
+			],
+			"consumes": {
+				"name": "Bardic Inspiration"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"condition": "When you or a creature that can hear you within 60 feet hits a creature with a weapon attack"
+				},
+				"damage.parts": [
+					[
+						"@scale.bard-alternate.bardic-inspiration",
+						""
+					]
+				]
+			},
+			"foundryImg": "icons/skills/melee/swords-parry-block-blue.webp"
 		},
 		{
 			"name": "Extra Attack",
@@ -1412,7 +1682,22 @@
 				"{@i 5th-level Skald Tradition feature}",
 				"When you roll initiative, you can expend a use of your Bardic Inspiration to rally a heroic charge. You, and any creatures of your choice within 15 feet that can hear you gain a bonus to their initiative rolls equal to a roll of your Bardic Inspiration.",
 				"You can't use this feature when {@condition incapacitated} or {@quickref surprise|PHB|3|0|surprised}."
-			]
+			],
+			"consumes": {
+				"name": "Bardic Inspiration"
+			},
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you roll initiative"
+				},
+				"formula": "@scale.bard-alternate.bardic-inspiration",
+				"range": {
+					"value": 15,
+					"units": "ft"
+				}
+			},
+			"foundryImg": "icons/weapons/axes/axe-battle-orange.webp"
 		},
 		{
 			"name": "Ringing Strikes",
@@ -1427,7 +1712,20 @@
 				"{@i 11th-level Skald Tradition feature}",
 				"You empower your strikes with bardic magic. Whenever you hit a creature with a weapon attack, you deal bonus thunder damage equal to one roll of your Bardic Inspiration die.",
 				"Also, you can choose for your Combat Inspiration bonus damage to be thunder in place of the weapon's damage type."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "speical",
+					"condition": "Whenever you hit a creature with a weapon attack"
+				},
+				"damage.parts": [
+					[
+						"@scale.bard-alternate.bardic-inspiration",
+						"thunder"
+					]
+				]
+			},
+			"foundryImg": "icons/skills/melee/shield-block-gray-yellow.webp"
 		},
 		{
 			"name": "Heroic Ballad",
@@ -1441,7 +1739,22 @@
 			"entries": [
 				"{@i 15th-level Skald Tradition feature}",
 				"Your words motivate others to ever greater feats of gallantry. When you use Combat Inspiration you can also grant the target temporary hit points equal to one roll of your Bardic Inspiration die + your Charisma modifier (minimum of 1)."
-			]
+			],
+			"foundrySystem": {
+				"ability": "cha",
+				"actionType": "heal",
+				"activation": {
+					"type": "special",
+					"condition": "When you use Combat Inspiration"
+				},
+				"damage.parts": [
+					[
+						"@scale.bard-alternate.bardic-inspiration + max(1, @mod)",
+						"temphp"
+					]
+				]
+			},
+			"foundryImg": "icons/tools/instruments/drum-hand-tan.webp"
 		}
 	],
 	"spell": [
@@ -1493,7 +1806,8 @@
 			],
 			"savingThrow": [
 				"wisdom"
-			]
+			],
+			"foundryImg": "icons/consumables/drinks/alcohol-beer-mug-yellow.webp"
 		},
 		{
 			"name": "Glitterbeam",
@@ -1563,7 +1877,8 @@
 			],
 			"areaTags": [
 				"ST"
-			]
+			],
+			"foundryImg": "icons/magic/light/beam-rays-yellow-blue.webp"
 		},
 		{
 			"name": "Vicious Mockery",
@@ -1628,7 +1943,8 @@
 			],
 			"savingThrow": [
 				"wisdom"
-			]
+			],
+			"foundryImg": "icons/creatures/magical/spirit-poison-smoke-green.webp"
 		},
 		{
 			"name": "Inspiring Melody",
@@ -1672,7 +1988,11 @@
 			"source": "LaserLlamaAlternateBard",
 			"components": {
 				"v": true,
-				"m": "a {@item musical instrument|PHB} worth at least 1 gp"
+				"m": {
+					"text": "a {@item musical instrument|PHB} worth at least 1 gp",
+					"cost": 100,
+					"consume": false
+				}
 			},
 			"entriesHigherLevel": [
 				{
@@ -1690,7 +2010,14 @@
 			"miscTags": [
 				"THP",
 				"UBA"
-			]
+			],
+			"foundrySystem": {
+				"materials": {
+					"cost": 1,
+					"value": "a musical instrument worth at least 1 gp"
+				}
+			},
+			"foundryImg": "icons/tools/instruments/harp-red.webp"
 		},
 		{
 			"name": "Song of Confidence",
@@ -1734,7 +2061,11 @@
 			"source": "LaserLlamaAlternateBard",
 			"components": {
 				"v": true,
-				"m": "a {@item musical instrument|PHB} worth at least 1 gp"
+				"m": {
+					"text": "a {@item musical instrument|PHB} worth at least 1 gp",
+					"cost": 100,
+					"consume": false
+				}
 			},
 			"entriesHigherLevel": [
 				{
@@ -1750,7 +2081,14 @@
 			],
 			"miscTags": [
 				"UBA"
-			]
+			],
+			"foundrySystem": {
+				"materials": {
+					"cost": 1,
+					"value": "a musical instrument worth at least 1 gp"
+				}
+			},
+			"foundryImg": "icons/tools/instruments/drum-snare-red.webp"
 		},
 		{
 			"name": "Heroic Anthem",
@@ -1794,7 +2132,11 @@
 			"source": "LaserLlamaAlternateBard",
 			"components": {
 				"v": true,
-				"m": "a {@item musical instrument|PHB} worth at least 1 gp"
+				"m": {
+					"text": "a {@item musical instrument|PHB} worth at least 1 gp",
+					"cost": 100,
+					"consume": false
+				}
 			},
 			"entriesHigherLevel": [
 				{
@@ -1811,7 +2153,14 @@
 			"miscTags": [
 				"UBA",
 				"AAD"
-			]
+			],
+			"foundrySystem": {
+				"materials": {
+					"cost": 1,
+					"value": "a musical instrument worth at least 1 gp"
+				}
+			},
+			"foundryImg": "icons/tools/instruments/harp-gold-glowing.webp"
 		},
 		{
 			"name": "Sonic Wave",
@@ -1869,7 +2218,8 @@
 			],
 			"areaTags": [
 				"N"
-			]
+			],
+			"foundryImg": "icons/magic/sonic/explosion-shock-sound-wave.webp"
 		},
 		{
 			"name": "Revitalizing Hymn",
@@ -1913,7 +2263,11 @@
 			"source": "LaserLlamaAlternateBard",
 			"components": {
 				"v": true,
-				"m": "a {@item musical instrument|PHB} worth at least 1 gp"
+				"m": {
+					"text": "a {@item musical instrument|PHB} worth at least 1 gp",
+					"cost": 100,
+					"consume": false
+				}
 			},
 			"entriesHigherLevel": [
 				{
@@ -1929,7 +2283,14 @@
 			],
 			"miscTags": [
 				"UBA"
-			]
+			],
+			"foundrySystem": {
+				"materials": {
+					"cost": 1,
+					"value": "a musical instrument worth at least 1 gp"
+				}
+			},
+			"foundryImg": "icons/tools/instruments/harp-lap-brown.webp"
 		},
 		{
 			"name": "Legendary Ballad",
@@ -1973,13 +2334,71 @@
 			"source": "LaserLlamaAlternateBard",
 			"components": {
 				"v": true,
-				"m": "a {@item musical instrument|PHB} worth at least 1 gp"
+				"m": {
+					"text": "a {@item musical instrument|PHB} worth at least 1 gp",
+					"cost": 100,
+					"consume": false
+				}
 			},
 			"miscTags": [
 				"UBA"
 			],
 			"areaTags": [
 				"S"
+			],
+			"foundrySystem": {
+				"materials": {
+					"cost": 1,
+					"value": "a musical instrument worth at least 1 gp"
+				}
+			},
+			"foundryImg": "icons/tools/instruments/harp-yellow-teal.webp"
+		}
+	],
+	"foundrySubclassFeature": [
+		{
+			"name": "Tumbling Fool",
+			"source": "LaserLlamaAlternateBard",
+			"className": "Bard (Alternate)",
+			"classSource": "LaserLlamaAlternateBard",
+			"subclassShortName": "Fool",
+			"subclassSource": "LaserLlamaAlternateBard",
+			"level": 3,
+			"effects": [
+				{
+					"name": "Climbing Speed",
+					"disabled": true,
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.climb",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Jack of All Trades",
+			"source": "LaserLlamaAlternateBard",
+			"className": "Bard (Alternate)",
+			"classSource": "LaserLlamaAlternateBard",
+			"subclassShortName": "Loremaster",
+			"subclassSource": "LaserLlamaAlternateBard",
+			"level": 3,
+			"effects": [
+				{
+					"name": "Jack of All Trades",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "flags.dnd5e.jackOfAllTrades",
+							"mode": "OVERRIDE",
+							"value": true
+						}
+					]
+				}
 			]
 		}
 	]
