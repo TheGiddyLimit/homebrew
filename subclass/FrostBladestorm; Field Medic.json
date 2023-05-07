@@ -4,7 +4,7 @@
 			{
 				"json": "cgtsmedic",
 				"abbreviation": "CGtS:FM",
-				"full": "Complete Guide to Sanctum : Field Medic",
+				"full": "Complete Guide to Sanctum: Field Medic",
 				"authors": [
 					"FrostBladestorm"
 				],
@@ -12,34 +12,31 @@
 					"hakr14"
 				],
 				"version": "1.0",
-				"url": "https://www.gmbinder.com/share/-MdFixnKhFB10neMU6G6",
-				"targetSchema": "1.0.1"
+				"url": "https://www.gmbinder.com/share/-MdFixnKhFB10neMU6G6"
 			}
 		],
 		"dateAdded": 1634229171,
-		"dateLastModified": 1634415429,
-		"_dateLastModifiedHash": "9c2ed04948"
+		"dateLastModified": 1683400472
 	},
 	"subclass": [
 		{
 			"name": "Field Medic",
-			"shortName": "Field Medic",
 			"source": "cgtsmedic",
+			"shortName": "Field Medic",
+			"className": "Rogue",
+			"classSource": "PHB",
 			"subclassFeatures": [
 				"Field Medic|Rogue||Field Medic|cgtsmedic|3",
 				"Emergency Reflexes|Rogue||Field Medic|cgtsmedic|9",
 				"Forensic Examination|Rogue||Field Medic|cgtsmedic|13",
 				"Improved Patches|Rogue||Field Medic|cgtsmedic|17"
-			],
-			"className": "Rogue",
-			"classSource": "PHB"
+			]
 		}
 	],
 	"subclassFeature": [
 		{
 			"name": "Field Medic",
 			"source": "cgtsmedic",
-			"page": 1,
 			"className": "Rogue",
 			"classSource": "PHB",
 			"subclassShortName": "Field Medic",
@@ -60,6 +57,13 @@
 		},
 		{
 			"name": "Combat Medic Training",
+			"source": "cgtsmedic",
+			"className": "Rogue",
+			"classSource": "PHB",
+			"subclassShortName": "Field Medic",
+			"subclassSource": "cgtsmedic",
+			"level": 3,
+			"header": 1,
 			"entries": [
 				"When you choose this archetype at 3rd level, you gain proficiency in {@skill Medicine}. If you already have this proficiency, you can choose {@item Alchemist's Supplies|phb}, a {@item Herbalism Kit|phb}, or one other Wisdom skill and gain proficiency in that instead.",
 				"Furthermore, you gain the following benefits:",
@@ -72,34 +76,66 @@
 					]
 				}
 			],
+			"skillProficiencies": [
+				{
+					"medicine": true
+				},
+				{
+					"choose": {
+						"from": [
+							"animal handling",
+							"insight",
+							"medicine",
+							"perception",
+							"survival"
+						],
+						"count": 1
+					}
+				}
+			],
+			"foundryImg": "icons/skills/toxins/poison-bottle-open-blood-red.webp"
+		},
+		{
+			"name": "Responder's Aid",
 			"source": "cgtsmedic",
-			"page": 1,
 			"className": "Rogue",
 			"classSource": "PHB",
 			"subclassShortName": "Field Medic",
 			"subclassSource": "cgtsmedic",
 			"level": 3,
-			"header": 1
-		},
-		{
-			"name": "Responder's Aid",
+			"header": 1,
 			"entries": [
 				"Also at 3rd level, you can use your knowledge of medicine to provide relief to the injured. Over the course of a long rest, you can create a number of medicinal patches equal to your Wisdom modifier (minimum 1). A patch represents a series of bandages, pain relief, and natural remedies that help to close wounds. These patches last until your next long rest.",
 				"As an action, you can apply a patch to a creature within 5-feet of you. When you do so, roll your {@classFeature Sneak Attack|Rogue||1} dice, and add your Wisdom modifier. The creature regains hit points equal to the total (minimum 1 hit point)."
 			],
-			"source": "cgtsmedic",
-			"page": 1,
-			"className": "Rogue",
-			"classSource": "PHB",
-			"subclassShortName": "Field Medic",
-			"subclassSource": "cgtsmedic",
-			"level": 3,
-			"header": 1
+			"foundrySystem": {
+				"ability": "wis",
+				"actionType": "heal",
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"damage.parts": [
+					[
+						"max(1, @scale.rogue.sneak-attack + @mod)",
+						"healing"
+					]
+				],
+				"range": {
+					"value": 5,
+					"units": "ft"
+				},
+				"target.type": "creature",
+				"uses": {
+					"max": "max(1, @abilities.wis.mod)",
+					"per": "lr"
+				}
+			},
+			"foundryImg": "icons/commodities/cloth/cloth-roll-gold-green.webp"
 		},
 		{
 			"name": "Emergency Reflexes",
 			"source": "cgtsmedic",
-			"page": 1,
 			"className": "Rogue",
 			"classSource": "PHB",
 			"subclassShortName": "Field Medic",
@@ -109,12 +145,19 @@
 			"entries": [
 				"Starting at 9th level, you can quickly close the gap to your allies. When an ally you can see or hear is reduced to 0 hit points and falls {@condition unconscious}, you can use your reaction to move up to your speed without provoking {@action opportunity attack|phb|opportunity attacks}. You must end this move closer to your ally than you started.",
 				"Also, your speed isn't halved when you are dragging or carrying an unconscious creature who is the same size as you or smaller."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"condition": "When an ally you can see or hear is reduced to 0 hit points and falls unconscious"
+				}
+			},
+			"foundryImg": "icons/skills/movement/arrow-upward-blue.webp"
 		},
 		{
 			"name": "Forensic Examination",
 			"source": "cgtsmedic",
-			"page": 1,
 			"className": "Rogue",
 			"classSource": "PHB",
 			"subclassShortName": "Field Medic",
@@ -132,12 +175,18 @@
 						"Roughly how old the creature was when it died."
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "minute"
+				}
+			},
+			"foundryImg": "icons/tools/scribal/magnifying-glass.webp"
 		},
 		{
 			"name": "Improved Patches",
 			"source": "cgtsmedic",
-			"page": 1,
 			"className": "Rogue",
 			"classSource": "PHB",
 			"subclassShortName": "Field Medic",
@@ -154,7 +203,14 @@
 						"You can end either one disease or one condition afflicting the target. The condition can be {@condition Blinded}, {@condition Deafened}, {@condition Paralyzed}, {@condition Poisoned}, or {@condition Stunned}."
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you apply a patch to a creature"
+				}
+			},
+			"foundryImg": "icons/magic/life/heart-area-circle-red-green.webp"
 		}
 	]
 }
