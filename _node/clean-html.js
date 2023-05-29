@@ -8,18 +8,11 @@ class BrewCleanerHtml {
 
 	static _OPTS_SANITIZE = {
 		allowedTags: [
-			"span",
-			"style",
-
 			// region Custom things which look like tags
 			"<$name$>",
 			// endregion
 		],
-		allowedAttributes: {
-			"span": ["class"],
-			"style": [],
-		},
-		allowVulnerableTags: true, // squash warnings about `<style>`
+		allowedAttributes: {},
 	};
 
 	static async _pUpdateDir (dir) {
