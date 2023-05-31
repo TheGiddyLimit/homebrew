@@ -42,6 +42,25 @@
 	},
 	"item": [
 		{
+			"name": "Runic Staff",
+			"source": "ToB3-Lairs",
+			"page": 99,
+			"baseItem": "quarterstaff|phb",
+			"type": "M",
+			"rarity": "unknown (magic)",
+			"weight": 4,
+			"weaponCategory": "simple",
+			"property": [
+				"V"
+			],
+			"dmg1": "1d6",
+			"dmgType": "B",
+			"dmg2": "1d8",
+			"entries": [
+				"A runic staff is a magic {@item quarterstaff|phb} that deals an additional {@damage 1d8} lightning damage on a hit once per short rest."
+			]
+		},
+		{
 			"name": "Terror Melon",
 			"source": "ToB3-Lairs",
 			"page": 65,
@@ -50,6 +69,26 @@
 			"entries": [
 				"Terror melons are 5-inch-diameter psychotropic fruits from the fey realms. They can be dropped onto intruders by making a ranged weapon attack.",
 				"On a hit, the melon explodes, spraying mind-warping juice in a 5-foot radius. Each creature in the area must succeed on a DC 11 Constitution saving throw or drop whatever it is holding and become {@condition frightened} for 1 minute. While {@condition frightened}, a creature must take the {@action Dash} action and move away from the point of impact on each of its turns. A {@condition frightened} creature can repeat the save at the end of each of its turns, ending the effect on a success."
+			]
+		},
+		{
+			"name": "Sealskin Coldsuit",
+			"source": "ToB3-Lairs",
+			"page": 90,
+			"rarity": "unknown",
+			"type": "OTH",
+			"entries": [
+				"This coldsuit grants its wearer a swimming speed of 20 feet."
+			]
+		},
+		{
+			"name": "Glowmold Globe",
+			"source": "ToB3-Lairs",
+			"page": 90,
+			"rarity": "unknown",
+			"type": "G",
+			"entries": [
+				"This small crystal sphere is filled with a type of molded flower pollen that when shaken vigorously luminesces to roughly the brightness and radius of a normal {@item torch|phb}. The glow lasts 2 ({@dice 1d4}) hours before it begins to fade. The globes are airtight, water and pressure proof, and come in several popular colors. A glowmold globe contains enough bioluminescent mold to be used 6 times."
 			]
 		}
 	],
@@ -74,6 +113,129 @@
 		}
 	],
 	"monster": [
+		{
+			"name": "Orc Veteran",
+			"source": "ToB3-Lairs",
+			"page": 98,
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"orc"
+				]
+			},
+			"_copy": {
+				"name": "Veteran",
+				"source": "MM"
+			},
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The veteran makes two battleaxe attacks. If it has a handaxe drawn, it can also make a handaxe attack."
+					]
+				},
+				{
+					"name": "Battleaxe",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage, or 8 ({@damage 1d10 + 3}) slashing damage if used with two hands."
+					]
+				},
+				{
+					"name": "Handaxe",
+					"entries": [
+						"{@atk mw,rw } {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
+					]
+				},
+				{
+					"name": "Heavy Crossbow",
+					"entries": [
+						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. {@h}6 ({@damage 1d10 + 1}) piercing damage."
+					]
+				}
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW",
+				"THW"
+			]
+		},
+		{
+			"name": "Monstrous Crab",
+			"source": "ToB3-Lairs",
+			"page": 94,
+			"_copy": {
+				"name": "Chuul",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "removeArr",
+						"names": "Sense Magic"
+					}
+				}
+			},
+			"type": "monstrosity",
+			"int": 8,
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The crab makes two pincer attacks."
+					]
+				},
+				{
+					"name": "Pincer",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d6 + 4}) bludgeoning damage. The target is {@condition grappled} (escape {@dc 14}) if it is a Large or smaller creature and the crab doesn't have two other creatures {@condition grappled}. Any creature {@condition grappled} by the crab is also {@condition restrained}."
+					]
+				}
+			],
+			"languages": [
+				"Aquan"
+			],
+			"languageTags": [
+				"AQ"
+			]
+		},
+		{
+			"name": "Aquatic Basilisk",
+			"source": "ToB3-Lairs",
+			"page": 93,
+			"_copy": {
+				"name": "Basilisk",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Amphibious",
+							"entries": [
+								"The basilisk can breathe air and water."
+							]
+						}
+					}
+				}
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 20
+			},
+			"traitTags": [
+				"Amphibious"
+			],
+			"tokenUrl": "/img/MM/Basilisk.png",
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "internal",
+							"path": "bestiary/MM/Basilisk.jpg"
+						}
+					}
+				]
+			}
+		},
 		{
 			"name": "Serene Lily Aspirant",
 			"source": "ToB3-Lairs",
@@ -1072,7 +1234,7 @@
 					"headers": [
 						"Adventure Background",
 						"Adventure Hook",
-						"Wracwater Cove",
+						"Wrackwater Cove",
 						"The Lighthouse",
 						{
 							"depth": 1,
@@ -1096,7 +1258,7 @@
 						},
 						{
 							"depth": 1,
-							"header": "6. Widows Walk"
+							"header": "6. Widow's Walk"
 						},
 						{
 							"depth": 1,
@@ -1121,7 +1283,7 @@
 						},
 						{
 							"depth": 1,
-							"header": "5. Bilge Gremling Berthing"
+							"header": "5. Bilge Gremlin Berthing"
 						},
 						{
 							"depth": 1,
@@ -1179,7 +1341,7 @@
 						},
 						{
 							"depth": 1,
-							"header": "7. Prison Holding Area"
+							"header": "7. Prisoner Holding Area"
 						},
 						{
 							"depth": 1,
@@ -8050,7 +8212,603 @@
 								]
 							]
 						},
-						"{@note Coming soon!}"
+						{
+							"type": "entries",
+							"page": 88,
+							"name": "Adventure Background",
+							"entries": [
+								"Far along the cold, rocky coastline lay the oft-fogbound port of Wrackwater Cove. Once a tiny frontier furrier outpost, Wrackwater has grown to become a burgeoning trade port. So when the town’s lighthouse beacon inexplicably goes out during the month in which the season’s first merchant ships are due to arrive, the townsfolk deployed maintenance teams immediately . . . who never returned.",
+								"Now, a fortnight later, three search parties and multiple individuals remain missing or confirmed dead. Moreover, due to the unlit beacon, a merchant ship is believed to have already been lost to the infamous fog and rocks outside Wrackwater Cove.",
+								"The sounds of shrieks and crashes, aggressive flocks of unfamiliar seabirds, and strange lights and inhuman shapes cavorting atop the darkened lighthouse are being reported regularly. This, combined with the townsfolk already dead or missing, has made the locals understandably fearful.",
+								"With local authorities and a citizenry demoralized, ill-equipped, and too thinly stretched to do anything more, the hue and cry for help went out. Across the region, messengers, signal fires, and courier birds carry news of a desperate populace . . . and of the urgent danger and exotic rewards that await at Wrackwater Cove."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Adventure Hook",
+							"page": 88,
+							"entries": [
+								"Wrackwater can be located in any rugged, isolated coastal region prone to significant trade and travel hazards like treacherous currents reefs and/or fog.",
+								"The following hooks can used to start the PCs on this adventure. The PCs:",
+								{
+									"type": "list",
+									"items": [
+										"Are wearily traveling back to civilization from exploits even further afield than Wrackwater Cove and stop there for supplies.",
+										"Have associates, relatives, or business interests aboard the missing ship or elsewhere in Wrackwater’s vicinity.",
+										"Heard word of the incident via couriers sent seeking aid, local rumors, or other means.",
+										"Hear of a “haunted” lighthouse in a desolate area and of the town now threatened by it."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Wrackwater Cove",
+							"page": 88,
+							"entries": [
+								"Following news of the PCs arrival, town council members approach them regarding Wrackwater’s plight. The councilmembers wish to employ the PCs to search the lighthouse for evidence of the missing townsfolk and to ensure that the lighthouse is cleared of whatever “spooks and specters” are now occupying it. The beacon must also be relit immediately; the town relies on trade to survive, and with the lighthouse not functioning, the very continued existence of the town is threatened.",
+								"If the PCs are willing to take the job, the council offers them 1,200 gp in ermine fox and beaver pelts, plus another 900 gp in raw copper abalone shells and coldwater pearls.",
+								"Additionally, the council offers each PC: 1 {@item sealskin coldsuit|ToB3-Lairs} (which grants the wearer a swimming speed of 20 feet) and 2 {@item glowmold globe|ToB3-Lairs|glowmold globes}."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "The Lighthouse",
+							"page": 90,
+							"entries": [
+								"The mile-long approach to the lighthouse winds along a rocky promontory. As the PCs draw near, they discern sundry piles of garbage, broken furniture and tableware, wine casks, and much more of the same. It all appears to have been scattered about the structure’s base, seemingly thrown willy-nilly from broken-out windows above. The lighthouse exterior also appears somewhat worse for wear, its outer walls streaked with bright stains of unknown origin.",
+								"Once the PCs approach within 300 feet of the lighthouse, they easily spot several malformed, winged shapes taking flight from one of the lighthouse windows ({@area 4|14.4|u}).",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Flying toward the PCs are six {@creature gullkin|ToB3}. The {@creature gullkin|ToB3} don’t reply if any attempt is made to converse. Once the PCs get to about 150 feet of the island, the {@creature gullkin|ToB3} attack. Their shrieking calls summon two swarms of maddened sea birds (use statistics for {@creature swarm of ravens}) en route. The swarms fight to the death. Once there are only two {@creature gullkin|ToB3} remaining, they retreat to {@area 4|14.4|u}."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Making an Entrance",
+											"entries": [
+												"Upon arriving at the lighthouse, the PCs find it has been barricaded, battered down, and then re-barricaded. Breaking through the boarded-up doorway (or the western window) requires a successful DC 12 Strength ({@skill Athletics}) check.",
+												"Carefully removing the boards and entering quietly requires the PCs to work at it for 5 minutes and to make a successful DC 14 Dexterity ({@skill Stealth}) check to do so without making noise; a PC proficient with {@item carpenter's tools|phb} makes the check with advantage."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Dozing Dangers",
+											"entries": [
+												"On the building’s western face, a single salt-crusted window that has been nailed shut looks into a darkened, recently ransacked bunkroom. Forced entry via this window or the main entrance awakens the creatures in {@area 3|14.3|u}, alerting them to intruders."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Down to the Depths",
+											"entries": [
+												"Diving off the western side of the island and swimming 30 feet down leads to {@area Sea Caves Area 9|14.sc9|x}, though the cave opening is in no way visible from land."
+											]
+										}
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "external",
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB3-Lairs/map/14_DM.webp"
+									},
+									"imageType": "map"
+								},
+								"{@note An unlabelled version of the map can be found {@link here|https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB3-Lairs/map/14.jpg}.}",
+								{
+									"type": "entries",
+									"page": 90,
+									"name": "1. Main Storeroom",
+									"id": "14.1",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This supply room has been thoroughly ransacked and is in a complete shambles. Heaps of shattered crates and barrels, rotting foodstuffs, broken lenses, tools, and other refuse litter the floor. The northern wall is dominated by a narrow staircase leading upward. The door to the west stands ajar and has clearly been forced open. The closed door to the south appears to be the only thing in the area that has escaped vandalism."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Difficult Terrain",
+											"entries": [
+												"The heaps of refuse in this room make it difficult terrain."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Out of Place",
+											"entries": [
+												"A successful DC 14 Intelligence ({@skill Investigation}) check reveals several items—such as a damaged block and tackle, stacks of ruined sail cloths, tar barrels, etc.—that are far more nautical in nature than would be required in any lighthouse. All of these items show signs of lengthy (and recent) exposure to sea water."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 91,
+									"name": "2. Lighthouse Keeper's Quarters",
+									"id": "14.2",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This apparently vacant living area shares the storeroom’s pillaged and vandalized condition. Overturned beds, broken dishes, and other day-to-day items lay strewn about. A peat stove squats near a west-facing window."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Secret Cache",
+											"entries": [
+												"A successful DC 16 Wisdom ({@skill Perception}) check notices a bloody hand smear on the wall behind the stove that reveals the location of a hidden compartment."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Inside the compartment is a small lockbox, which can be picked open with a successful DC 17 Dexterity check using {@item thieves' tools|phb}; it contains 13 cp, 8 sp, 22 gp. In a leather case on top of the lockbox is a small, waterproof magnetic navigators’ compass (worth 175 gp). A chest on the floor next to the stove has had its contents strewn about the room and is empty."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 91,
+									"name": "3. Workroom",
+									"id": "14.3",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"A workbench stands against the southern wall of what is obviously a workroom. Visible here are tool chests, spare window panes, beacon mirrors, painting supplies, and similar maintenance and repair items as one might expect to find in a lighthouse. While it has been well-plundered, the room has suffered comparatively little of the wanton defacement seen elsewhere."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"If the PCs have not already encountered them, two {@creature bilge gremlin|ToB3|bilge gremlins} and two {@creature bilge gremlin bosun|ToB3|bilge gremlin bosuns} are napping here, hidden inside a crude hunter’s blind formed of stacked crates, rope coils, and barrels. While in the blind, the gremlins have full cover, but the soft sounds of them snoring can be detected with a successful DC 14 Wisdom ({@skill Perception}) check."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Sea Cave Access",
+											"entries": [
+												"The blind also conceals access to the sea caves below, from which the gremlins tunneled up into the lighthouse; it can easily be located with even a cursory investigation of the room. Descending down into the sea caves takes the PCs to {@area Sea Caves Area 1|14.sc1|x}.",
+												{
+													"type": "insetReadaloud",
+													"entries": [
+														"Behind the blind, you see a rough-hewn floor breach that peers down into a dark, dripping tidal tunnel running eastwest beneath the lighthouse. Five small grappling hooks ring the aperture, their knotted hemp cords dangling into the damp darkness below."
+													]
+												}
+											]
+										},
+										{
+											"type": "inset",
+											"name": "Bilge Gremlin Tactics",
+											"entries": [
+												"{@creature bilge gremlin|ToB3|Bilge gremlins} (and {@creature bilge gremlin bosun|ToB3|bosuns}) are wily and slippery foes. They rely on their evasiveness to be effective, and so they take full advantage of {@footnote their ability to cast {@spell misty step} at will|Neither {@creature bilge gremlin|ToB3|bilge gremlins} nor {@creature bilge gremlin bosuns|ToB3|bosuns} can do this.}, rarely ending a turn adjacent to an enemy if at all possible. Likewise, whenever they detect danger, they make frequent use of {@footnote their at-will {@spell invisibility}|Neither {@creature bilge gremlin|ToB3|bilge gremlins} nor {@creature bilge gremlin bosuns|ToB3|bosuns} can do this.} to spring ambushes."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 92,
+									"name": "4. Lower Landing",
+									"id": "14.4",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"As you ascend the stairs and cross onto the next level of the lighthouse, you see that the floor here is similarly strewn with detritus—a squalid, one-foot-deep mixture of kelp, trash, tree branches, torn clothing, and soiled bedding. As you take it all in, the dull white of bone catches your eye, and a quick assessment flags it as a human femur."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Three {@creature giant flea|ToB3|giant fleas} have infested this batch of detritus. They immediately attack any living, warm-blooded creatures that move more than 10 feet into the chamber."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"If the PCs spend 5 minutes or more searching the offal and debris in this area, determine what they find by having one PC make an Intelligence ({@skill Investigation}) check. Once you have the result, consult the “Trash or Treasure?” table to determine what they find; a higher result finds the items from lower results as well.",
+												{
+													"type": "table",
+													"caption": "Trash of Treasure?",
+													"page": 92,
+													"colLabels": [
+														"DC",
+														"Treasure Found"
+													],
+													"colStyles": [
+														"col-1",
+														"col-11"
+													],
+													"rows": [
+														[
+															"12",
+															"A miniature, antique spyglass (worth 400 gp)."
+														],
+														[
+															"14",
+															"A half-eaten human arm, its bloody sleeve still bearing the insignia of a Wrackwater sergeant-at-arms."
+														],
+														[
+															"16",
+															"A collection of international coinage and broken jewelry (worth 80 gp total)."
+														],
+														[
+															"18",
+															"A bolt case with 3 {@item +2 crossbow bolt||+2 crossbow bolts} in it."
+														]
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Stairs",
+											"entries": [
+												"The stairs continue upward to a second dimlylit landing. The landing and nesting area above Area 4 is currently unoccupied; however, its normal attendants ({@dice 1d4 + 1} {@creature gullkin|ToB3}) won’t be gone long. Roll {@dice 1d6} and consult the “Gullkin Return” table to determine when the creatures return.",
+												{
+													"type": "table",
+													"caption": "Gullkin Return",
+													"page": 92,
+													"colLabels": [
+														"d6",
+														"Result"
+													],
+													"colStyles": [
+														"col-1",
+														"col-11"
+													],
+													"rows": [
+														[
+															"1–2",
+															"Gullkin arrive at {@area 5|14.5|u} while the PCs are fighting the {@creature giant flea|ToB3|giant fleas} in Area 4; the {@creature gullkin|ToB3} screech and join the combat."
+														],
+														[
+															"3–4",
+															"{@creature Gullkin|ToB3} arrive at {@area Area 5’s|14.5|x} window while the PCs are ascending/descending from Area 4."
+														],
+														[
+															"5–6",
+															"{@creature Gullkin|ToB3} arrive while the PCs are searching Area 4."
+														]
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 92,
+									"name": "5. Upper Landing",
+									"id": "14.5",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This area resembles the lower landing, but contains a crowded nest for what looks like a half-dozen creatures. A glint of light catches your eye on the seaward windowsill, and you see two handheld sailor’s signal mirrors resting there."
+											]
+										},
+										"The next flight of stairs winds another 40 feet up, terminating at an unlocked, wooden ceiling hatch.",
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"If the PCs search the nest area, a successful DC 14 Intelligence ({@skill Investigation}) check discovers a bag containing 4 rings of gold and silver and a broken necklace studded with fine gems (worth 140 gp total). There is also a matching pair of 2-inch-wide bracelets that are magical and function as {@item bracers of defense}."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 92,
+									"name": "6. Widow's Walk",
+									"id": "14.6",
+									"entries": [
+										"To enter this area, the PCs must open the wooden ceiling hatch where the stairs end. It is likely that lifting the hatch immediately initiates combat with the creatures in this area, but if the PCs have been particularly stealthy, it’s possible that the creatures are unaware of their presence and could be surprised.",
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"As you open the hatch, you can see a strange gathering. A gremlin stands beside a sahuagin, both in conversation with a fierce-looking gullkin."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Stubbe (a {@creature bilge gremlin bosun|ToB3}) stands beside a {@creature sahuagin}, speaking with Laridaena (a {@creature gullkin hunter|ToB3}); the {@creature gullkin hunter|ToB3|gullkin} clutches a nautical signal mirror and a logbook in her claws. The {@creature bilge gremlin bosun|ToB3|bosun} and {@creature sahuagin} both carry crude spyglasses. Behind Stubbe stand two bilge gremlins, and beside Laridaena stands one {@creature gullkin|ToB3}."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Argument",
+											"entries": [
+												"A successful DC 13 Wisdom ({@skill Insight}) check determines an argument is underway in the {@language primordial||Aquan} language. If the PCs understand {@language primordial||Aquan}, they deduce that the {@creature sahuagin} is an ambassador, up from the sea caves, and seems to be arguing about some sort of loot-sharing agreement with Laridaena, who is queen mother of the gullkin tribe."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "The Hatch",
+											"entries": [
+												"Climbing up through the hatch and onto the widow’s walk for Medium or larger creatures is considered difficult terrain due to the awkwardness of the narrow staircase and tight quarters."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Tactics",
+											"entries": [
+												"The {@creature gullkin|ToB3} take flight and attack from the air. The {@creature bilge gremlin bosun|ToB3|gremlins} and {@creature sahuagin} charge the hatch. If Laridaena is reduced to below half her hit point maximum, she and her {@creature gullkin|ToB3} compatriot flee the area and do not return."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Logbook",
+											"entries": [
+												"The logbook is a standardized instruction manual on sending and translating maritime code. Scrawled on the inside cover is a crude diagram detailing routes to here (Lighthouse Area 6) from {@area Sea Caves Area 8|14.sc8|x}."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 92,
+									"name": "7. Beacon House",
+									"id": "14.7",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Through the windows of the beacon house, you can see Wrackwater’s extinguished beacon—and all around its base, an enormous nesting pile."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Restoring the Beacon",
+											"entries": [
+												"If there no enemies harrying the PCs, it is a simple matter to relight the beacon brazier, but one of the mirrors of the mirror array is cracked. It can be repaired with a spell such as {@spell mending} or using one of the beacon mirrors in {@area 3|14.3|u}. Replacing the mirror manually requires a successful DC 14 Dexterity check using {@item thieves' tools|phb}, {@item tinker's tools|phb}, {@item jeweler's tools|phb}, or {@item glassblower's tools|phb}; a creature using {@item glassblower's tools|phb} makes the roll with advantage."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"With a successful DC 12 Intelligence ({@skill Investigation}) check, searching the refuse discovers a coral ocarina adorned in pearls and agate (worth 375 gp) amid the bones and offal of what must be some of the missing Wrackwater townsfolk."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"page": 93,
+							"name": "The Sea Caves",
+							"entries": [
+								"The submerged grottoes beneath the lighthouse are tidally cleansed (except {@area 5|14.sc5|u}), maintaining water clarity and visibility if sufficiently illuminated. Natural surfaces throughout the sea caves are encrusted with countless forms of sea life (nudibranchs, crustaceans, seaweeds, etc.). It is chilly and dark, and swimming is occasionally difficult (due to tidal flow).",
+								{
+									"type": "entries",
+									"page": 93,
+									"name": "1. Access Tunnels",
+									"id": "14.sc1",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"You drop down through the hole in the lighthouse floor and find yourselves inside a naturally formed cavern—and in almost complete darkness save for the faintly glimmering light provided by a distant bioluminescent glow coming from the east. At the western terminus is a sinkhole filled with seawater that heaves and ebbs in time with the distantly crashing waves."
+											]
+										},
+										"This tunnel runs east, widening after 40 feet into {@area 2|14.sc2|u}. Diving down into the sinkhole to the west ({@area 3|14.sc3|u}) leads to {@area 7|14.sc7|u}."
+									]
+								},
+								{
+									"type": "entries",
+									"page": 93,
+									"name": "2. Cargo Grotto",
+									"id": "14.sc2",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The tunnel widens into a large water-filled grotto. Bioluminescent plants and invertebrates thrive along the walls above and below the waterline. You stand on a gravelly beach littered with mostly empty or ruined barrels and crates—and a crude, but sturdily built raft equipped with homemade oars and loaded with water-logged cargo that’s been pulled up onto the beach of this enormous subterranean tide pool. A small rock islet, also piled with rubbish and damaged cargo, lies fifteen feet ahead."
+											]
+										},
+										"The raft measures 10 feet by 10 feet and is seaworthy; it safely accommodates 4 Medium creatures with gear."
+									]
+								},
+								{
+									"type": "entries",
+									"page": 93,
+									"name": "3. Sinkhole Tube",
+									"id": "14.sc3",
+									"entries": [
+										"This twisting sinkhole tube descends 15 feet before widening into an underwater cavern."
+									]
+								},
+								{
+									"type": "entries",
+									"page": 93,
+									"name": "4. Rock Islet",
+									"id": "14.sc4",
+									"entries": [
+										"Piled with more cast-off cargo (making it difficult terrain), this stone islet affords PCs some level solid footing, partial cover, and a dry spot to rest.",
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Spending 10 minutes or more searching through the refuse uncovers 3 cp, 4 sp, and a small leather bag containing 13 fangs and 11 claws from assorted beasts."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 93,
+									"name": "5. Bilge Gremlin Berthing",
+									"id": "14.sc5",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Ambush",
+											"entries": [
+												"If the PCs attempt to pass the island (either by raft or swimming), moving within 5 feet of its eastern edge triggers an ambush from below."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Six {@creature bilge gremlin|ToB3|bilge gremlins} surge up from the shallows and attack. If the PCs slay three or more of the gremlins, they call out for help. The following round, one {@creature bilge gremlin|ToB3} arrives (on the other {@creature bilge gremlin|ToB3|bilge gremlins’} initiative count), riding an {@creature aquatic basilisk|ToB3-Lairs} (use statistics for {@creature basilisk}, adding the Amphibious trait and a 20-foot swimming speed)."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Sea Bottom",
+											"entries": [
+												"The bottom of this gigantic tide pool is akin to an underwater junkyard, with piles of cargo junk and debris everywhere."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 93,
+									"name": "6. Cargo Hold",
+									"id": "14.sc6",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Clumps of garbage float nearby the corpse of a skinned and decapitated harbor seal that’s half-beached on the ground here. Numerous crates and barrels line the walls."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Various crates contain 4 sets of {@item painter’s supplies|phb}, 10 yards of silk (worth 100 gp), and 50 lbs. of salt (worth 3 gp)."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 93,
+									"name": "7. Lower Depths",
+									"id": "14.sc7",
+									"entries": [
+										"The sinkhole in {@area 3|14.sc3|u} descends 15 feet through a narrow channel before opening up into a fully submerged cavern that branches off to the east."
+									]
+								},
+								{
+									"type": "entries",
+									"page": 93,
+									"name": "8. Brig",
+									"id": "14.sc8",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Ahead, a large cavern opens before you. A gremlin swims beside two merrow and an enormous, serpentine yellow eel covered in dark spots."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"A {@creature bilge gremlin bosun|ToB3} leads two {@creature merrow} and a {@creature muraenid|ToB3} around this area."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Prisoner",
+											"entries": [
+												"With a successful DC 14 Wisdom ({@skill Perception}) check a PCs detects a captured {@creature merfolk} scout named Minn’Vyr who is shackled and concealed inside an alcove to the southeast. She can be freed with a successful DC 16 Dexterity check using {@item thieves' tools|phb}. If freed, Minn’Vyr tells the PCs that she was captured while witnessing a ship go down weeks ago. She has limited information but says that a sudden radical uptick in {@creature bilge gremlin|ToB3} salvage operations—and there has been an increasingly strange stream of assorted creatures passing through the region that normally don’t consort with each other."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 94,
+									"name": "9. Tidal Cave",
+									"id": "14.sc9",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This chamber contains more pilfered, piled-up cargo. To the west, the cave mouth opens up to the sea."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Chief Bosun Chark (a {@creature bilge gremlin bosun|ToB3}) is here separating out metal and valuables from common cargo and wreckage. He gives direction to a {@creature monstrous crab|ToB3-Lairs} with tentacles coming out of its maw (use statistics for {@creature chuul} with the changes noted below); it displays keen intelligence for a crab, and its pincers root through and tear into piles of scavenged wreckage with alarming efficiency. Two {@creature sahuagin} swim alongside the {@creature bilge gremlin bosun|ToB3|bosun}, observing operations.",
+												"If combat ensues in {@area 8|14.sc8|u}, all but the {@creature monstrous crab|ToB3-Lairs} move into the northern alcove behind piled cargo to ambush the PCs. The {@creature monstrous crab|ToB3-Lairs} moves to the southeastern part of the chamber and burrows partially down into the sand, camouflaging itself with the copious kelp in the area; it can be spotted with a successful DC 16 Wisdom ({@skill Perception}) check."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creature Change",
+											"entries": [
+												"The {@creature monstrous crab|ToB3-Lairs|monstrous crab’s} creature type is monstrosity; it only understands {@language primordial||Aquan}; its Intelligence is 8; and it does not have the Sense Magic trait or the Tentacles action. Any creature {@condition grappled} by its Pincer attack is also {@condition restrained}."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Three casks of rum (worth 100 gp total); various gems and jewelry, holy symbols (worth 295 gp total); and a chest filled with bars of silver (worth 300 gp total)."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 94,
+									"name": "10. Aquatic Stable",
+									"id": "14.sc10",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"As you swim down this winding cavern heading southeast, you notice the abundance of seaweed increasing as you descend the twisting tunnel. Flourishing kelp soon stretches from floor to ceiling, thickening to a jungle-like density, reducing visibility to five feet. You can’t see it due to the low visibility, but, after traveling twenty to twenty-five feet, you sense the tunnel widening into a larger cavern."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Two {@creature aquatic basilisk|ToB3-Lairs|aquatic basilisks} (use statistics for {@creature basilisk}, adding the Amphibious trait and a 20-foot swim speed) and three {@creature hunter shark||hunter sharks} used for mounts are stabled here. There are also 2 {@creature giant sea horse||giant sea horses} here, but they are non-hostile and tame."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Concluding the Adventure",
+							"page": 94,
+							"entries": [
+								"Upon the PCs’ triumphant return to Wrackwater, a reclamation/repair team is immediately assembled and sent to the lighthouse. The PCs can confirm that no missing Wrackwater citizens remain alive (near the lighthouse) and that a ship indeed must have gone down somewhere outside the cove that was being scavenged from by gremlins below the lighthouse.",
+								"If you wish to further explore any of the plot threads of this adventure, “Incident at Wrackwater” can be played as a direct lead-in to “{@adventure The Salons of Mother Celeste|ToB3-Lairs|18}\"."
+							]
+						}
 					]
 				},
 				{
@@ -8069,7 +8827,524 @@
 								]
 							]
 						},
-						"{@note Coming soon!}"
+						{
+							"type": "entries",
+							"name": "Adventure Background",
+							"page": 95,
+							"entries": [
+								"High in an alpine forest lie the remains of a temple that was dedicated to dwarven gods of fire and forge. The site was abandoned by its creators after a horrific dragon attack which left most of the stone walls devastated by dragon fire. The dwarves felt the place had been cursed, and so this site became known as “The Lost Forge” by the local villagers who have long spun stories of the dwarven ghosts that haunt it.",
+								"More recently the twin warlords Kadal and Valgred have taken over the ruins with their band of orcs and ogres and made it the base of operations for their conquest of the region. Kadal quickly awoke the Lost Forge and began using it to make armor and weapons for their followers, while Valgred communed with the spirits of the ruins to gather what secrets they held. The twins then began raiding small villages in the mountains and attacking trade caravans. The local villagers pray that their homes won’t be next."
+							]
+						},
+						{
+							"type": "entries",
+							"page": 95,
+							"name": "Adventure Hook",
+							"entries": [
+								"The following can used to start the PCs on this adventure:",
+								{
+									"type": "list",
+									"items": [
+										"{@b {@i Ale Aid.}} While traveling through a mountain forest, the PCs come across a frantic and desperate dwarf guard named Jaster (N dwarf guard), who is a survivor of a dwarven ale caravan that was recently attacked. He’s tracked the culprits and found where the survivors of the attack who were captured have been taken. He pleads for the PCs to aid them.",
+										"{@b {@i Village Protectors.}} While stopping to rest at a mountain village, the PCs are approached by the folk who live there and offered 100 gp each to put a stop to the twin warlords before their village is pillaged."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Sibling Disagreements",
+							"page": 95,
+							"entries": [
+								"Twins Kadal (LE {@creature thursir armorer|ToB3|thursir armorer giant}) and Valgred (LE {@creature thursir hearth priestess|ToB3|thursir hearth priestess giant}) have been frequently arguing as of late—over how to proceed with their continuing conquest of the mountains. Kadal believes they should push forward with more raids, while Valgred believes they need to be more reserved and strategic with their attacks. The continual arguments have split their followers into two factions. Those who follow Valgred wear blue headbands and those that follow Kadal decorate their armor with animal skulls.",
+								"PCs who spend some time observing the occupants of the encampment quickly pick up on the tension between the two groups, though if none of them speak {@language orc||Orcish} or {@language Giant} they might not learn the specifics."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Ruins of the Lost Forge",
+							"page": 96,
+							"entries": [
+								"The encampment is surrounded by a fifteen-foot-tall palisade that collapsed in a few places in the past and has been hastily patched more recently. Dark scorch marks and slashes from powerful claws are obvious on most defensive surfaces that haven’t collapsed or been covered over by vines. The sounds of a loud argument in {@area 6|15.6|u}—which might eventually erupt into a fight—cover much of the noise the PCs might make while infiltrating the camp.",
+								"Aside from {@area 6|15.6|u} (which is lit by a campfire) and {@area 15|15.15|u} (which is lit by the forge), all other areas of the camp are quite dark.",
+								"For creatures who are noted as being asleep, have the PCs roll a group Dexterity ({@skill Stealth}) check against the creature’s passive {@skill Perception}.",
+								{
+									"type": "inset",
+									"name": "Kadal's Craftsmanship",
+									"page": 95,
+									"entries": [
+										"Any of the weapons and armor crafted by Kadal are of extremely high quality and can be sold for three times their normal listed price. The {@creature orc||orcs} all carry {@item greataxe|phb|greataxes}, and the {@creature veteran||veterans} carry a {@item battleaxe|phb} and a {@item handaxe|phb}, all crafted by Kadal."
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "external",
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB3-Lairs/map/15_DM.webp"
+									},
+									"imageType": "map"
+								},
+								"{@note An unlabelled version of the map can be found {@link here|https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB3-Lairs/map/15.jpg}.}",
+								{
+									"type": "entries",
+									"page": 96,
+									"name": "1. South Wall",
+									"id": "15.1",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Vines rise from the forest floor to cover much of a fifteen-foot-high wooden palisade. A stone building marred by large swaths of scorch marks stands at one corner of the wall. The center of the palisade in this area collapsed sometime in the distant past and has been more recently filled with stone boulders that are stacked ten feet high. Two orcs wearing blue headbands crouch near the pile of boulders playing a game of dice."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Getting Through",
+											"entries": [
+												"The PCs can attempt to get through this section of the structure by scaling the palisade with a successful DC 14 Strength ({@skill Athletics}) check or squeezing past the boulder barrier with a successful DC 14 Dexterity ({@skill Acrobatics}) check; a failure by 5 or more alerts the creatures in {@area 6|15.6|u} who come to investigate the source of the noise."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Two {@creature orc||orcs} have been assigned as lookouts in this area outside the palisade, but both are currently playing a game of dice by the boulder barrier to pass the time. They wear blue headbands. If they see any trouble, they attempt to run to the main gate in {@area 3|15.3|u} to warn the camp."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Hostilities",
+											"entries": [
+												"An orc with skulls adorning the pauldrons of his armor approaches after the most recent round of dice has completed to ask (in {@language orc||Orcish}) for a report of any sightings. During the interaction, PCs can make a successful DC 12 Wisdom ({@skill Insight}) check to discern that the new orc is not welcomed by the others and there is a sense of hostility between them."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 96,
+									"name": "2. Ogre Sleeping Area",
+									"id": "15.2",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"A 25-foot-tall stone building forms one side of the gate complex of this encampment. The floor is covered in with hay and detritus, and the air is stagnant with the strong odors of rotting food. The tattered remains of dwarven banners still adorn the walls, now too damaged and worn with age to read."
+											]
+										},
+										"The building can only be entered from within the encampment. A successful DC 12 Intelligence check using {@item mason's tools|phb} or {@race dwarf||Dwarven} Stonecunning determines that though the structure presently shows significant signs of wear and neglect, it was once very well-crafted and suffered an attack sometime in the past.",
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Two {@creature ogre||ogres} are currently napping in this chamber, one wears a blue headband and the other has a single pauldron decorated with the skull of a large bird. They have a passive {@skill Perception} of 8."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 96,
+									"name": "3. Front Gate and Ruined Building",
+									"id": "15.3",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The front wooden gate is 15 feet tall and shows signs of recent repair work done by unskilled hands. The connected stone building north of the gate is missing a corner and shows signs of being burned. The inside is a mess of blackened, damaged rubble. A set of double wooden doors is the only exit from this ruined building, which leads into the encampment."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Getting Through",
+											"entries": [
+												"The front gate and the ruined building’s double doors are both barricaded from the inside, requiring a successful DC 20 Strength ({@skill Athletics}) check to break through."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Hunting Traps",
+											"entries": [
+												"A poison-laced hunting trap has been hidden in the rubble of the ruined tower. A creature that steps onto the trap must succeed on a DC 13 Dexterity saving throw or take {@damage 1d4} piercing damage and {@damage 1d6} poison damage. A successful DC 15 Wisdom ({@skill Perception}) check reveals the hidden trap."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "The Ancient Attacker",
+											"entries": [
+												"A successful DC 15 Intelligence ({@skill Investigation} or {@skill Nature}) check reveals the damage marks on the inside are claw marks. A success by 5 or more also reveals the claw marks and burnt stones were caused by a dragon (probably red, given the burn marks)."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 98,
+									"name": "4. Fallen Watch Tower",
+									"id": "15.4",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The remains of a stone tower are strewn across this area. The wooden palisade to the east of the once-imposing tower has a large gap that has been plugged by a wagon flipped onto its side."
+											]
+										},
+										{"type": "entries",
+											"name": "Difficult Sneaky Terrain",
+											"entries": [
+												"Walking through the fallen tower remains is considered difficult terrain and due to the stone debris, all Dexterity ({@skill Stealth}) checks are made with disadvantage."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Two {@creature orc||orcs} wearing armor decorated with animal skulls stand guard between the wagon and fallen tower on the outside of the palisade. They talk (in {@language orc||Orcish}) about how Valgred needs to stop getting in the way of Kadal’s plans."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 98,
+									"name": "5. Ruined Building",
+									"id": "15.5",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This large stone building is mostly destroyed, with one side completely collapsed. Dark scorch marks mar what is left of the structure. To the west of the remains there is a gap in the wooden palisade that has been hastily repaired with an overturned wagon."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Hunting Traps",
+											"entries": [
+												"There is a poisoned hunting trap (see {@area 3|15.3|u}) hidden in the debris of the ruined building."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 98,
+									"name": "6. Firepit Lounge",
+									"id": "15.6",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Three large logs surround a firepit which is the only light source in the encampment. Nearby rests a haphazard stack of wooden barrels, some open, some intact, and others smashed."
+											]
+										},
+										"If the creatures in this area have not been already alerted to investigate {@area 1|15.1|u}, also read the following:",
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The occupants of the firepit are embroiled in a loud argument. Four orcs, each wearing armor decorated with animal skulls, square off against one towering ogre in a blue headband who looks to be on the edge of violence."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Three {@creature orc||orcs} and one {@creature orc veteran|ToB3-Lairs|veteran (orc)}—all followers of Kadal—are arguing loudly with an {@creature ogre} (obviously drunk) who is aligned with Valgred. The {@creature ogre} is suffering from the {@condition poisoned} condition due to his overindulgence of dwarven ale."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creature Change",
+											"entries": [
+												"For the {@creature veteran}, replace all mentions of “{@item longsword|phb}” with “{@item battleaxe|phb}” and “{@item shortsword|phb}” with “{@item handaxe|phb}.”"
+											]
+										},
+										{
+											"type": "entries",
+											"name": "They Just Keep Coming",
+											"entries": [
+												"If battle begins in this area and lasts longer than 2 rounds, Nogg from {@area 7|15.7|u} is alerted and joins the combat.",
+												"After 4 rounds of combat, Valgred hears the commotion and comes outside of her chamber in {@area 8|15.8|u} to join the battle. Any creatures with blue headbands (potentially two {@creature ogre||ogres} and one {@creature orc}) within range act as her allies for the purposes of her special ability Call for Aid.",
+												"After 1 round of combat, the orc in {@area 9|15.9|u} (loyal to Valgred) awakens and joins the fray."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Hostilities",
+											"entries": [
+												"Roll a {@dice d20} when the PCs move within sight of this area. On a 1–10 the argument continues as it is. On an 11–20 the {@creature ogre} bellows with rage and attacks the {@creature orc||orcs}. If the {@creature ogre} attacks and the PCs do not intervene, Nogg emerges from {@area 7|15.7|u} to break up the fight after 2 rounds."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 99,
+									"name": "7. Prisoner Holding Area",
+									"id": "15.7",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This stone building is one of the least damaged in the encampment. The structure has been converted to a holding area for prisoners, with chains anchored into the western wall and the eastern portion being used as storage for recently acquired supplies."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Nogg (CE {@creature alleybasher ogre|ToB3|ogre alleybasher}), is guarding the dwarven prisoners and boxing with some empty wooden crates in the middle of the building. Nogg wears a blue headband and is itching for a fight. If she notices the PCs approach, she consumes a {@item potion of speed} that Valgred gave her."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Rallying the Troops",
+											"entries": [
+												"Ruby Runemaker (LN {@creature pike guard captain|ToB3|dwarf pike guard captain}) and six {@creature pike guard|ToB3|dwarf pike guards} are chained together on the western side of the building. If the {@creature pike guard|ToB3|dwarf pike guards} are freed, Ruby and her people are more than happy to bring the fight to the forces of the twin warlords. If the GM and/or the PCs prefer, the dwarves can head to other areas of the camp to clean up groups of enemies the PCs have not engaged yet rather than having them travel with the PCs."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Stolen Supplies",
+											"entries": [
+												"The crates in this area contain 3 {@item potion of healing||potions of healing}, a crate of salted jerky that counts as thirty days of {@item rations (1 day)|phb|rations}, and various spices and cooking herbs (worth 100 gp total)."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 99,
+									"name": "8. Valgred's Chamber",
+									"id": "15.8",
+									"entries": [
+										"A squat stone building stands relatively intact at the center of the encampment, though it too bears weathered scorch marks.",
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The walls of this room are decorated with tapestries, and a bed piled high with animal skins of various types takes up the southeast corner of the room. On the east side of the room, there are stacks of tomes and maps of the region spread over a table."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Valgred, a {@creature thursir hearth priestess|ToB3}, is here studying maps of the region and plotting out the locations of nearby villages and towns they might raid next.",
+												"If a fight ensues in Area 6 and lasts more than 4 rounds, Valgred realizes it might be more than just the usual tussling amongst the troops and joins the battle when she sees the PCs."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Bonded in Loyalty",
+											"entries": [
+												"Any of Valgred’s allies that wear blue headbands count as thursir giants for her Call for Aid ability."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Valgred wears {@item hide armor|phb} (sized for a Large creature) and carries a {@item wand of binding}. Her {@item runic staff|ToB3-Lairs} is a magic quarterstaff that deals an additional {@damage 1d8} lightning damage on a hit once per short rest."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 100,
+									"name": "9. Outhouses",
+									"id": "15.9",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Two stone outhouses stand in a state of disrepair along the southern palisade with the wooden doors of both displaying indications of advanced rot."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"One {@creature orc} wearing a blue headband is currently napping on the western side of the outhouses. The {@creature orc} has a passive {@skill Perception} of 10. If a battle takes place in {@area 6|15.6|u}, he wakes and joins after 1 round."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 100,
+									"name": "10. Converted Stables",
+									"id": "15.10",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"An expansive stone building with two solid wooden doors still stands strong despite the scars from the destructive attack in the past. The floor is covered in hay, and it’s clear it was once a stable, but now it’s been converted into a makeshift living space. A desk stands against the southern wall, and a worn wooden sits on the floor between a pair of bunk beds against the eastern wall."
+											]
+										},
+										"This large stone building was used as a stable by the dwarves, but it’s now being used as sleeping quarters by followers of Kadal. Once the occupants are dealt with, this room can be used by the PCs to safely have a short rest if the doors are barricaded.",
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Four {@creature orc||orcs} and one {@creature orc veteran|ToB3-Lairs|veteran (orc)} are currently slumbering."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creature Change",
+											"entries": [
+												"For the {@creature veteran}, replace all mentions of “{@item longsword|phb}” with “{@item battleaxe|phb}” and “{@item shortsword|phb}” with “{@item handaxe|phb}.”"
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Entering the Room",
+											"entries": [
+												"The {@creature orc||orcs} have a passive {@skill Perception} of 10; the {@creature orc veteran|ToB3-Lairs|orc veteran’s} is 12. If a PC attempts to open the door quietly, their Dexterity ({@skill Stealth}) check is made with disadvantage due to the doors creaking loudly when they open. If the PCs just open the door without any concern for quietness, the guards awaken, but are surprised for the first round."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"The chest contains a pouch of eight rubies (worth 200 gp total) and a silver chalice (worth 45 gp)."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 100,
+									"name": "11. Lost Forge Entry",
+									"id": "15.11",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The entrance of this towering stone building has two heavy stone doors etched with depictions of dwarven blacksmiths kneeling before the sky. Two stone statues flank the doorway. The statue on the left is an armored dwarf with a maul raised to the sky; the head of this statue has been crudely removed and lies on the ground nearby. The statue on the right has been partially melted by an intense source of heat."
+											]
+										},
+										"The two statues once bore the likenesses of the dwarven deities of the forge; the one to the north was destroyed during the dragon attack long ago, and the one to the south has been defaced by the followers of the twin warlords. The double doors are currently shut, but not locked."
+									]
+								},
+								{
+									"type": "entries",
+									"page": 100,
+									"name": "12. Chamber of Armor",
+									"id": "15.12",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Unlike what you’ve seen elsewhere in the encampment, this chamber is spotless and kept in a state of impeccable repair. Eight stands holding armor forged of dark metal and adorned with skulls line the walls in rows as straight as the finest honed edge. There are no light sources in this darkened chamber, except for a glowing light—and oppressive heat—straight ahead coming from the forge. You also hear the ringing sounds of someone hammering on metal."
+											]
+										},
+										"Kadal prefers a clean workplace and has his followers routinely clean the building to his standards.",
+										{
+											"type": "entries",
+											"name": "Forging in Progress",
+											"entries": [
+												"When the PCs enter this area, Kadal is standing north of the forge, by the anvil (see {@area 15|15.15|u}), hammering out a {@item greatsword|phb} blade. He is initially just out of view, though the PCs can see the end of the anvil and the sparks flying off of it as the hammer comes down. Due to the hammering, it’s possible Kadal won’t notice the PCs until they get quite close."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"The suits of armor lining the hall are 8 suits of {@item splint armor|phb|splint mail} adorned with skulls, forged by Kadal and sized for 9-foot-tall (Large) creatures; it weighs twice as much as regular {@item splint armor|phb|splint mail}."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 101,
+									"name": "13. Kadal's Chamber",
+									"id": "15.13",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This room contains a large bed piled with bear furs in the western corner. Two heavy iron chests stand against the northern wall."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"The iron chests are filled with plunder from recent raids and require either a successful DC 18 Dexterity check with {@item thieves' tools|phb} or a successful DC 20 Strength ({@skill Athletics}) check to break them open. One contains 1,100 gp and 4 bloodstone gems (worth 200 gp total). The other contains 175 cp, 1,700 sp, and 2 moonstones (worth 100 gp total)."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 101,
+									"name": "14. Blacksmith Storage",
+									"id": "15.14",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This is a simple room occupied mostly by crates of copper ore. A stack of dusty blacksmithing molds and an impressive collection of blacksmithing tools clutter a sturdy workbench along the eastern wall."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"There are enough tools in this room to make three complete sets of {@item smith's tools|phb}. There are 7 crates of copper ore (worth 35 gp total), but each one is extremely heavy, weighing several hundred pounds each."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 101,
+									"name": "15. The Lost Forge",
+									"id": "15.15",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This large chamber with a vaulted ceiling is lit by the Lost Forge. A smelting area, a massive dark-iron anvil, and a huge worktable dominate much of the room. Atop the tables are immense blacksmithing tools that look as if made for the hands of giants."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Kadal, a {@creature thursir armorer|ToB3|thursir giant armorer}, is currently working angrily at the forge after a recent argument with his sister. As the PCs approach, four small creatures emerge from the forge—these four {@creature magma mephit||magma mephits} follow Kadal and aid him with his work. Kadal stops working when he discovers intruders in the forge and immediately grabs his {@item battleaxe|phb} and {@item shield|phb} to deal with them."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Power of the Lost Forge",
+											"entries": [
+												"The magical forge emits an aura in the chamber that powers the heating of metal, which effects the {@creature magma mephit||magma mephits} by replacing their Innate Spellcasting ability from (1/Day) to {@recharge 5}."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Kadal’s {@item battleaxe|phb} and {@item shield|phb}, which he crafted himself, are a {@item vicious battleaxe||vicious axe} and a {@item +1 shield}. His armor is non-magical, but crafted with his expert smithing hand."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Concluding the Adventure",
+							"page": 101,
+							"entries": [
+								"With the twin warlords defeated, any remaining followers flee into the mountains to find other employment. If Ruby Runemaker survives being prisoner, she offers a favor to the PCs if they should ever need it, along with a barrel of their finest dwarven ale, as thanks. The local villages see the PCs as their saviors, and they are offered free lodging and meals whenever they travel through.",
+								"After seeing that the magic of The Lost Forge has been rekindled, Ruby Runemaker brings word to her people, and the dwarves begin the process of rebuilding the walls to once again use the forge for making armor and weapons for the defense of the surrounding lands.",
+								"The thursir giant conclave where the twins came from hear of their defeat will someday come seeking vengeance for their fallen kin."
+							]
+						}
 					]
 				},
 				{
