@@ -42,6 +42,26 @@
 	},
 	"item": [
 		{
+			"name": "Plant Eradicator",
+			"source": "ToB3-Lairs",
+			"page": 111,
+			"wondrous": true,
+			"rarity": "uncommon",
+			"entries": [
+				"As an action, you can pour this acrid, viscous, deepgreen liquid on a 10-foot square; any ordinary plant matter in the square is destroyed. Also as an action, you can throw this flask up to 20 feet, shattering it on impact. Make a ranged attack against a creature. On a hit, the target takes {@damage 1d6} poison damage. If the target is a plant, it instead takes {@damage 4d6} poison damage, which bypasses any resistances to poison and treats immunity to poison as resistance."
+			]
+		},
+		{
+			"name": "Plant Revivifier",
+			"source": "ToB3-Lairs",
+			"page": 111,
+			"wondrous": true,
+			"rarity": "uncommon",
+			"entries": [
+				"As an action, you can pour this clear, green liquid smelling of loam on the ground, causing any plants or plant creatures in a 20-foot radius to regain {@dice 4d4} hit points. Alternately, you can cause all of the plants in a 20-foot radius to benefit from the effects of the {@spell plant growth} spell."
+			]
+		},
+		{
 			"name": "Runic Staff",
 			"source": "ToB3-Lairs",
 			"page": 99,
@@ -113,6 +133,30 @@
 		}
 	],
 	"monster": [
+		{
+			"name": "Vine-Covered Owlbear",
+			"source": "ToB3-Lairs",
+			"page": 110,
+			"_copy": {
+				"name": "Owlbear",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Entangle (Recharges after a Short or Long Rest)",
+							"entries": [
+								"The vines covering the creature shoots out to the point within 20 feet to create the effect similar to the {@spell entangle} spell (spell save {@dc 13}), except it requires no concentration."
+							]
+						}
+					}
+				}
+			},
+			"miscTags": [
+				"MW",
+				"AOE"
+			]
+		},
 		{
 			"name": "Orc Veteran",
 			"source": "ToB3-Lairs",
@@ -9747,7 +9791,456 @@
 								]
 							]
 						},
-						"{@note Coming soon!}"
+						{
+							"type": "entries",
+							"name": "Adventure Background",
+							"page": 108,
+							"entries": [
+								"The halfling Zelen Barishka adventured during most of her early adulthood, growing in power as a druid as she traveled the world and fought monsters. Her true passion involved the study of plants, and she had occasion to note unusual species thriving in hidden locations or driven to near extinction because of the danger they posed to nearby settlements. She cataloged these plants’ locations and vowed to return to retrieve, rescue, and study them.",
+								"When she retired, she used her accumulated wealth to build a hidden sanctuary where she could store and examine these notable plants. She also procured a strange golem capable of gathering and safely storing her prizes. Still afflicted with some wanderlust, Zelen also journeyed to recover plants herself. On her final trip, she fell to her death attempting to collect a cliff-dwelling shrub. Meanwhile, her golem assistant arrived from its latest assignment to obtain the fruit from a plant the halfling knows as an alaguara and now awaits Zelen’s return so it can release its bounty."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Adventure Hook",
+							"page": 108,
+							"entries": [
+								"The following can used to start the PCs on this adventure:",
+								{
+									"type": "list",
+									"items": [
+										"{@b {@i Botanist Check-in.}} One of Zelen’s botanist colleagues has been expecting to receive an alaguara seed from the druid to assist in the plant’s study, and its delivery is now considerably past due. The botanist offers the PCs a reward to travel to Zelen’s sanctum to check in with her.",
+										"{@b {@i Fashioning a Cure.}} The PCs may require the alaguara plant held by the golem to fashion a cure for a disease or other malady afflicting one of their number, an important NPC, or an entire settlement."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "The Green Sanctum",
+							"page": 108,
+							"entries": [
+								{
+									"type": "insetReadaloud",
+									"entries": [
+										"Ahead, the trees thin, providing better access to the river flowing through the forest and revealing a stone structure nestled on an island about thirty feet from the bank. Two clear glass domes top the vine-covered building."
+									]
+								},
+								"Granite forms the basis of the island supporting the stone building, allowing Zelen to comfortably commission the material used for the building’s construction without fear of it sinking. Narrow slits in the walls allow ample light to penetrate the building while keeping out all but the smallest creatures. During the day, bright light fills the building except where noted, but, at night, darkness engulfs the building, as there are no continuous light sources. Contrasting with the stone walls, wooden doors allow access to the sanctum’s inner chambers.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Twelve {@creature dust mephit||dust mephits} serve Zelen by carrying out mundane tasks and warding off intruders while she is away. When the PCs enter any room except {@area 16|17.16|u}, they have a chance to encounter the creatures. Roll a {@dice d10}; on a roll of 1, they encounter two {@creature dust mephit||mephits}, or on a roll of 2–4, they encounter one. Each {@creature dust mephit} can use its action to activate the entangling roots growing beneath the sanctum. These roots can only be activated once per day in each area and reset at dawn."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Entangling Roots",
+											"entries": [
+												"Thanks to the druid’s coaxing, dozens of roots grow from the riverbed and symbiotically intertwine with the granite to create one of the sanctum’s defense measures. Roots snake through holes in the floor in a 15-foot radius centered on a designated point for 1 minute. For the duration, that area is treated as difficult terrain for creatures other than plants. In addition, each creature in that area must succeed on a DC 12 Strength saving throw or become {@condition restrained}. A creature can use its action to make a DC 12 Strength check, freeing itself or another entangled creature within reach on a success."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Fire Suppression System",
+											"entries": [
+												"Another magical defense system counters the threat fire poses to the sanctum’s rare specimens. After a creature uses magic or an effect that deals fire damage, the sanctum—as if it were a creature using its reaction—douses any fire caused by the effect, and the creature responsible, using the following attack:",
+												{
+													"type": "entries",
+													"name": "Freezing Spray",
+													"entries": [
+														"{@atk rs} {@hit +4} to hit, one target. {@h}4 ({@damage 1d8}) cold damage and douses any nonmagical flames on the target."
+													]
+												},
+												"The fire suppression system can also target an ongoing spell that deals fire damage, such as {@spell flaming sphere}, as if it cast {@spell dispel magic} ({@d20 +4} bonus on the ability check). The sanctum gets its reaction back on initiative count 20."
+											]
+										}
+									]
+								},
+								{
+									"type": "image",
+									"href": {
+										"type": "external",
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB3-Lairs/map/17_DM.webp"
+									},
+									"imageType": "map"
+								},
+								"{@note An unlabelled version of the map can be found {@link here|https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB3-Lairs/map/17.jpg}.}",
+								{
+									"type": "entries",
+									"page": 110,
+									"name": "1. Beach Landing",
+									"id": "17.1",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The wide river separating the banks from this modest island in its center proves easy to navigate. Thorny grasses cover much of the sandy soil surrounding the building."
+											]
+										},
+										"The island stands 30 feet from the nearest bank and the water reaches a maximum depth of 15 feet halfway between the bank and the island. Near the island, the depth varies from 5 to 7 feet. Zelen left the native grasses alone apart from those she cleared prior to the sanctum’s construction.",
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Two {@creature vine-covered owlbear|ToB3-Lairs|vine-covered owlbears}, trained and altered by Zelen, patrol the beach. Without hearing the proper series of whistles known only to the druid, the {@creature vine-covered owlbear|ToB3-Lairs|owlbears} attack any creatures that set foot on the beach. They do not pursue creatures that move more than 10 feet from the beach."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creature Change",
+											"entries": [
+												"Once per short or long rest, the {@creature owlbear||owlbears} can use their action to produce an effect similar to the {@spell entangle} spell (spell save DC 13). It has a range of only 20 feet, but requires no concentration. The vines covering the creatures shoot out to the point within range to create the effect."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 110,
+									"name": "2. Sanctum Entrance",
+									"id": "17.2",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"As you enter the sanctum, you see a long hallway stretching ahead north; in the immediate vicinity, to the east and west are closed wooden doors. The flooring is cool to the touch and looks to be natural stone, polished mostly smooth."
+											]
+										},
+										"If the PCs arrive during the day, the light that shines through the dome in {@area 6|17.6|u} provides enough illumination through the Observation Pane ({@area 3|17.3|u}) to be notable even from the entrance."
+									]
+								},
+								{
+									"type": "entries",
+									"page": 110,
+									"name": "3. Observation Pane",
+									"id": "17.3",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The hallway ends at a large, frigid, ice-rimed glass pane through which one can view the plants contained within a glass dome. At the southern end of the hall, closed doors lead to the east and west."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Glass Pane",
+											"entries": [
+												"The glass pane has AC 15, 30 hit points, a damage threshold of 10, and immunity to piercing, slashing, poison, and psychic damage. Destroying the pane attracts the attention of {@dice 1d4 + 1} {@creature dust mephit||dust mephits}, which arrive in 2 rounds to attack the offenders."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 110,
+									"name": "4. Zelen's Living Quarters",
+									"id": "17.4",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This spare living space contains a neatly made bed, a small wooden table with numerous ring stains from mugs and tankards, a writing desk with an open leather-bound book, and a wardrobe."
+											]
+										},
+										"The desk is clear of items except for Zelen’s journal open to its final entry, dated three weeks ago; the entry reads: “I’ve sent my assistant to find one of the last known specimens of the alaguara, which has faced eradication from people unkindly disposed to its invasive qualities. While he is out on his mission, I shall undertake my own quest to retrieve a rare flowering plant that climbs the Blackrock Cliffs.” The journal spans a month prior to the last date and features discussions about a species of orchid that spits poisonous thorns and a plan to seek out the flower later.",
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"A set of {@item goggles of night} hang from a hook behind a heavy cloak in the wardrobe."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 110,
+									"name": "5. Plant-Lined Hallway",
+									"id": "17.5",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Numerous flowering shrubs and bushes thrive in this hallway and fill it with sweet fragrances. The temperature drops significantly as the hallway proceeds north."
+											]
+										},
+										"As the corridor turns east, a set of double doors on the eastern wall stand open (to {@area 6|17.6|u}); opposite that, on the western wall, is a closed single door (to {@area 7|17.7|u}).",
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"Two {@creature alpine creeper|ToB3|alpine creepers}, which typically dwell in the arctic sanctum, lurk in the colder northern section of this hall, just south of the doors leading to {@area 6|17.6|u}. The plants ignore the {@creature dust mephit||dust mephits}, but they attack anyone else, fighting to the death."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 111,
+									"name": "6. Arctic Sanctum",
+									"id": "17.6",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"A blast of cold hits you as you enter this room. Ice coats most of this domed, circular room’s surfaces, but the plants within clearly thrive here. The frost on the dome above dims the light shining through it."
+											]
+										},
+										"Permanent magic keeps this chamber’s temperature at just below the freezing point. A successful {@spell dispel magic} (DC 17) ends the magic; if dispelled, the room warms to match the ambient temperature after four hours, causing most of the plants located here to wither and die.",
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"An {@creature ice willow|ToB3} stands along the room’s southeastern arc. It waits until prey draws close enough for it to unleash its spray of ice shards with greatest effect. The willow fights until reduced to 20 hit points, at which point it attempts to retreat as far as it can within {@area 6|17.6|u} and cowers, saying in {@language Sylvan} “was scared”, “no kill” or the like. If the PCs seem determined to kill it, however, it continues fighting to the death."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 111,
+									"name": "7. Storage Shed",
+									"id": "17.7",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Gardening tools—trowels, shovels, rakes, and the like—haphazardly fill this shed and clutter the workbench along the northwestern wall. Though disorganized and well-used, the tools show no sign of disrepair and are free of dirt and rust."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"A successful DC 12 Intelligence ({@skill Investigation}) check finds 4 flasks packed away under the workbench. Two of the flasks contain {@item plant eradicator|ToB3-Lairs} and two contain {@item plant revivifier|ToB3-Lairs}."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 111,
+									"name": "8. Tucked-Away Shrine",
+									"id": "17.8",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The corridor ends at a wall ahead, at the foot of which is a shrine enshrouded in ferns and flowers."
+											]
+										},
+										"The shrine is anointed to various nature deities to whom Zelen gave prayers while she adventured.",
+										{
+											"type": "entries",
+											"name": "Secret Door",
+											"entries": [
+												"A successful DC 17 Wisdom ({@skill Perception}) check discovers a faint crack in the wall, revealing a door that pushes inward to {@area 15|17.15|u}."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 111,
+									"name": "9. Vine-Covered Trellises",
+									"id": "17.9",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Wooden frames covered with climbers line the north and south walls of this short hallway."
+											]
+										},
+										"The vines react to vibrations, including footsteps, by shuddering in response, though they pose no danger."
+									]
+								},
+								{
+									"type": "entries",
+									"page": 112,
+									"name": "10. Meeting Room",
+									"id": "17.10",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"A grand oak table surrounded by mahogany chairs fills most of this square chamber."
+											]
+										},
+										"A single sheet of paper as well as a cup that once contained coffee are on the table; the paper seems to be notes from a meeting, from one druid to another. The room is empty apart from the table and chairs."
+									]
+								},
+								{
+									"type": "entries",
+									"page": 112,
+									"name": "11. Moss-Coated Hallway",
+									"id": "17.11",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Different strains of moss and lichen fill every inch of this hallway, including the ceiling and floor, deadening sound within it. The plants glow with blue and green iridescence when blocked from sunlight."
+											]
+										},
+										"These plants are all just common mosses and lichen."
+									]
+								},
+								{
+									"type": "entries",
+									"page": 112,
+									"name": "12. Dark Room",
+									"id": "17.12",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"A riot of fungi covers a table along the southern wall of this lightless chamber. Shelf fungus covers most of the northern wall."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"A {@creature shrieker} lurks among the other fungus here. If it raises its alarm, it draws {@dice 1d4 + 1} {@creature dust mephit||dust mephits} to the chamber 1 round later."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 112,
+									"name": "13. Storage Room",
+									"id": "17.13",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"Neatly stacked piles of books and papers cover the floor."
+											]
+										},
+										"The material in this chamber contains mundane details about nature and plants.",
+										{
+											"type": "entries",
+											"name": "Secret Door",
+											"entries": [
+												"A successful DC 17 Wisdom ({@skill Perception}) check detects the seams of the door."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 112,
+									"name": "14. Research Vault",
+									"id": "17.14",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"The secret door opens to reveal a dark, cool chamber. Against the north wall stands a table, against the west wall a bookcase. Numerous tomes fill the bookshelf, and the desk has an array of journals and papers arrayed across it."
+											]
+										},
+										"Zelen stored important correspondence, research tomes, and her own journal in this secret room.",
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Zelen’s journals contain an array of information useful for those who study plants (worth 150 gp total to the right buyer). A creature who spends a month studying the research gains proficiency in Intelligence ({@skill Nature}) checks; if they are already proficient, their proficiency bonus is doubled for any Intelligence ({@skill Nature}) check.",
+												"The journals also contain instructions for operating the {@creature ice golem|ToB3} in {@area 16|17.16|u}, including the command words necessary to activate and deactivate the construct. A PC can locate that information without spending days reading through all of the journals with a successful DC 15 Intelligence ({@skill Investigation} or {@skill Nature}) check; a {@class druid} makes this check with advantage."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 113,
+									"name": "15. Laboratory",
+									"id": "17.15",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This oddly shaped chamber holds a handful of tables laden with beakers, mortars and pestles, and tools used for the fine manipulation of herbs and reagents. A door provides the only entryway to a circular chamber contained within this laboratory."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Lab Purpose",
+											"entries": [
+												"If a PC spends 10 minutes or more examining the notes and equipment in the lab, with a successful DC 18 Intelligence ({@skill Investigation} or {@skill Nature}) check, they determine that Zelen used this lab to study harmful and dangerous plants to make them more harmonious with their surroundings, including the alaguara fruit. She wished to preserve its healing properties in a hybrid that wouldn’t wipe out competing plants."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Locked and Trapped Door",
+											"entries": [
+												"A successful DC 15 Dexterity check using {@item thieves' tools|phb} picks the lock. Electricity charges the door when opened and every creature within 10 feet of the door must make a DC 17 Dexterity saving throw, taking 21 ({@damage 6d6}) lightning damage on a failed save or half as much damage on a successful one."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Prevention",
+											"entries": [
+												"A successful DC 17 Intelligence ({@skill Investigation}) check while inspecting the door finds nearly imperceptible runes carved in the wood. A spell or other effect that can sense the presence of magic, such as {@spell detect magic}, reveals an aura of evocation magic on the door. A successful {@spell dispel magic} (DC 14) cast on the door deactivates the trap. The trap can be disarmed with a successful DC 17 Dexterity check using {@item thieves' tools|phb}. Failing this check by 5 or more discharges the trap and causes the PC to have disadvantage on the resulting saving throw."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"Three {@item herbalism kit|phb|herbalism kits} can be collected from the equipment on the various tables. There are also 3 {@item potion of healing||potions of healing} and a {@item potion of greater healing}."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"page": 113,
+									"name": "16. Inner Sanctum",
+									"id": "17.16",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"entries": [
+												"This domed chamber houses several strange trees and flowering plants, some of which seemingly move independently. A metal humanoid standing along the eastern wall seems incongruous to the greenery."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Creatures",
+											"entries": [
+												"A {@creature shambling mound} guards this sanctum and attacks anyone other than Zelen who enters, fighting to the death.",
+												"Zelen’s {@creature ice golem|ToB3} stands beside the eastern wall. It seeks only to protect the plant within its chest cavity, so it only attacks any creatures that move within its reach, targets it with ranged attacks, or uses spells or effects targeting it. If the proper command words found in Zelen’s journals in {@area 14|17.14|u} are spoken, they deactivate the {@creature ice golem|ToB3|golem} and command it to release the alaguara fruit held in its chest cavity.",
+												"Attempting to forcibly remove the alaguara fruit causes the {@creature ice golem|ToB3|golem} to go berserk. In this state, the {@creature ice golem|ToB3|golem} attacks the nearest creature it can see, excluding the {@creature shambling mound}, even pursuing targets outside this area. It remains in this state until it is destroyed or deactivated.",
+												"If the PCs successfully navigate the {@creature ice golem|ToB3} without having to fight it, but you would like there to be more of a challenge to this final encounter, you can add additional {@filter plant creatures|bestiary|type=plant} to this combat—of which there are nearly {@filter two dozen in {@i Tome of Beasts 3}|bestiary|source=ToB3|type=plant}."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure",
+											"entries": [
+												"The {@creature ice golem|ToB3} holds the alaguara fruit in stasis inside its chest cavity. There are no other objects of value in this room, but the plants growing here are almost all extremely rare or unique specimens of considerable value to those searching for or studying such plants."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Concluding the Adventure",
+							"page": 113,
+							"entries": [
+								"If the PCs retrieve the alaguara fruit, they receive a reward commensurate with the adventure hook you chose.",
+								"Another druid or scholar with an interest in Zelen’s studies may eventually take up residence in the Green Sanctum and contact the PCs to share information about the location’s denizens and traps.",
+								"If the PCs retrieved Zelen’s journals, interested groups may contact them and ask about obtaining the journals and their secrets for a price.",
+								"The PCs may also receive a request to find Zelen’s remains so she can receive a proper burial."
+							]
+						}
 					]
 				},
 				{
