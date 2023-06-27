@@ -1,5 +1,4 @@
 {
-	"$schema": "https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew-fast/homebrew.json",
 	"_meta": {
 		"sources": [
 			{
@@ -11,12 +10,13 @@
 				],
 				"convertedBy": [
 					"ProfForp#0242",
-					"Dazzle#9021"
+					"Dazzle#9021",
+					"hakr14"
 				],
 				"color": "35EF78",
 				"version": "5.6.0",
 				"url": "https://www.gmbinder.com/share/-M-6Rt87VW4p1cfPpPWO",
-				"targetSchema": "1.1.0"
+				"targetSchema": "1.10.9"
 			},
 			{
 				"json": "LLSH:E",
@@ -26,12 +26,13 @@
 					"LaserLlama"
 				],
 				"convertedBy": [
-					"Dazzle#9021"
+					"Dazzle#9021",
+					"hakr14"
 				],
 				"version": "5.6.0",
 				"color": "316167",
-				"url": "https://www.gmbinder.com/share/-MyVERQKKbawlJLVjpyo",
-				"targetSchema": "1.2"
+				"url": "https://www.gmbinder.com/share/-N6Oo4k2AJmkFG06__DB",
+				"targetSchema": "1.10.9"
 			}
 		],
 		"dependencies": {
@@ -47,11 +48,14 @@
 			"LL:GTM": "Greater Totem",
 			"LL:SF": "Sacred Focus",
 			"LL:TTM": "Totem",
-			"LL:TWS": "Totemic Weapon Spirit"
+			"LL:TWS": "Totemic Weapon Spirit",
+			"LL:EM": "Elemental Mastery",
+			"LL:ES": "Elementalist Spell",
+			"LL:EI": "Elemental Investiture",
+			"LL:EGT": "Elemental Greater Totem"
 		},
 		"dateAdded": 1658237901,
-		"dateLastModified": 1686754541,
-		"_dateLastModifiedHash": "2299c953a2"
+		"dateLastModified": 1687816514
 	},
 	"class": [
 		{
@@ -473,20 +477,6 @@
 				12,
 				12
 			],
-			"spellsKnownProgressionFixedByLevel": {
-				"11": {
-					"6": 1
-				},
-				"13": {
-					"7": 1
-				},
-				"15": {
-					"8": 1
-				},
-				"17": {
-					"9": 1
-				}
-			},
 			"classSpells": [
 				"Blade Ward",
 				"Chill Touch",
@@ -615,6 +605,51 @@
 				"Skill Empowerment|XGE",
 				"Spiritual Sundering|LLSH",
 				"Wrath of Nature|XGE"
+			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Totem",
+					"featureType": [
+						"LL:TTM"
+					],
+					"progression": {
+						"1": 2,
+						"4": 3,
+						"6": 4,
+						"9": 5,
+						"12": 6,
+						"15": 7,
+						"18": 8
+					}
+				}
+			],
+			"foundryAdvancement": [
+				{
+					"name": "Totemic Assault Damage",
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "totemic-assault",
+						"type": "dice",
+						"scale": {
+							"1": {
+								"n": 1,
+								"die": 8
+							},
+							"5": {
+								"n": 2,
+								"die": 8
+							},
+							"11": {
+								"n": 3,
+								"die": 8
+							},
+							"17": {
+								"n": 4,
+								"die": 8
+							}
+						}
+					}
+				}
 			]
 		}
 	],
@@ -650,7 +685,8 @@
 						}
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/holy/meditation-chi-focus-blue.webp"
 		},
 		{
 			"name": "Totems",
@@ -673,14 +709,31 @@
 					]
 				},
 				{
-					"type": "entries",
-					"name": "Totemic Assault",
-					"entries": [
-						"You can temporarily unleash the primal spirits bound within your Totems to assault your foes. While you are holding one of your Totems, you can use your action to force one creature you can see within 60 feet to make a Charisma saving throw. On a failed save, the creature takes {@dice 1d8} necrotic damage.",
-						"At certain Shaman levels, this damage increases: at 5th level ({@dice 2d8}), at 11th level ({@dice 3d8}), and at 17th level ({@dice 4d8})."
-					]
+					"type": "refClassFeature",
+					"classFeature": "Totemic Assault|Shaman|LLSH|1"
 				}
 			]
+		},
+		{
+			"name": "Totemic Assault",
+			"source": "LLSH",
+			"page": 4,
+			"className": "Shaman",
+			"classSource": "LLSH",
+			"level": 1,
+			"entries": [
+				"You can temporarily unleash the primal spirits bound within your Totems to assault your foes. While you are holding one of your Totems, you can use your action to force one creature you can see within 60 feet to make a Charisma saving throw. On a failed save, the creature takes {@dice 1d8} necrotic damage.",
+				"At certain Shaman levels, this damage increases: at 5th level ({@dice 2d8}), at 11th level ({@dice 3d8}), and at 17th level ({@dice 4d8})."
+			],
+			"foundrySystem": {
+				"damage.parts": [
+					[
+						"@scale.shaman.totemic-assault",
+						"necrotic"
+					]
+				]
+			},
+			"foundryImg": "icons/creatures/unholy/demons-horned-glowing-pink.webp"
 		},
 		{
 			"name": "Primal Magic",
@@ -749,7 +802,16 @@
 						"You channel spiritual power through your mind, manipulating the You can use any Totem to which you have bound a spirit as the spellcasting focus for your Shaman spells. See the Totem feature for a description of what can be used as a Totem."
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation.type": "",
+				"uses": {
+					"value": "",
+					"max": "",
+					"per": ""
+				}
+			},
+			"foundryImg": "icons/magic/symbols/mask-yellow-orange.webp"
 		},
 		{
 			"name": "Spirituality",
@@ -791,7 +853,8 @@
 			"level": 5,
 			"entries": [
 				"You have gained greater control over the spirit world. Starting at 5th level, at the end of a long rest, you can replace a {@filter Totem|optionalfeatures|feature type=LL:TTM} you know with another Totem of your choice."
-			]
+			],
+			"foundryImg": "icons/magic/symbols/circle-ouroboros.webp"
 		},
 		{
 			"name": "Spirituality Feature",
@@ -882,7 +945,16 @@
 						}
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation.type": "",
+				"uses": {
+					"value": "",
+					"max": "",
+					"per": ""
+				}
+			},
+			"foundryImg": "icons/magic/unholy/orb-contained-pink.webp"
 		},
 		{
 			"name": "Ability Score Improvement",
@@ -905,7 +977,16 @@
 			"level": 13,
 			"entries": [
 				"At 13th level, you may cast the 7th-level spell granted to you by your chosen Greater Totem Spirit once, at its lowest level, without expending a spell slot. Once you do so you must finish a long rest before you can cast that spell again."
-			]
+			],
+			"foundrySystem": {
+				"activation.type": "",
+				"uses": {
+					"value": "",
+					"max": "",
+					"per": ""
+				}
+			},
+			"foundryImg": "icons/magic/unholy/orb-contained-pink.webp"
 		},
 		{
 			"name": "Spirituality Feature",
@@ -927,7 +1008,16 @@
 			"level": 15,
 			"entries": [
 				"At 15th level, you may cast the 8th-level spell granted to you by your chosen Greater Totem Spirit once, at its lowest level, without expending a spell slot. Once you do so you must finish a long rest before you can cast that spell again."
-			]
+			],
+			"foundrySystem": {
+				"activation.type": "",
+				"uses": {
+					"value": "",
+					"max": "",
+					"per": ""
+				}
+			},
+			"foundryImg": "icons/magic/unholy/orb-contained-pink.webp"
 		},
 		{
 			"name": "Ability Score Improvement",
@@ -950,7 +1040,16 @@
 			"level": 17,
 			"entries": [
 				"At 17th level, you may cast the 9th-level spell granted to you by your chosen Greater Totem Spirit once, without expending a spell slot. Once you do so you must finish a long rest before you can cast that spell again."
-			]
+			],
+			"foundrySystem": {
+				"activation.type": "",
+				"uses": {
+					"value": "",
+					"max": "",
+					"per": ""
+				}
+			},
+			"foundryImg": "icons/magic/unholy/orb-contained-pink.webp"
 		},
 		{
 			"name": "Ability Score Improvement",
@@ -972,11 +1071,19 @@
 			"classSource": "LLSH",
 			"level": 20,
 			"entries": [
-				"You have transcended the need for a corporeal form. At 20th level, your physical body no longer ages, and you are immune to all disease, the poisoned condition, and poison damage.",
+				"You have transcended the need for a corporeal form. At 20th level, your physical body no longer ages, and you are immune to all disease, the {@condition poisoned} condition, and poison damage.",
 				"When you finish a long rest, you can choose to reduce your number of Bound Totems by one to create a special Totem that is attuned to your soul. Should you die, that Totem grows into an exact replica of your body, though it lacks a soul.",
-				"When you die, you become an incorporeal spirit, unable to interact with the world around you. If you can return to the replica of your body, you return to life at the following dawn",
+				"When you die, you become an incorporeal spirit, unable to interact with the world around you. If you can return to the replica of your body, you return to life at the following dawn.",
 				"If you do not return to the replica of your body, you die at the following dawn."
-			]
+			],
+			"conditionImmune": [
+				"disease",
+				"poisoned"
+			],
+			"immune": [
+				"poison"
+			],
+			"foundryImg": "icons/magic/unholy/projectile-fireball-agile-purple.webp"
 		}
 	],
 	"subclass": [
@@ -1002,6 +1109,37 @@
 				"Phantasmal Killer",
 				"Contagion",
 				"Enervation|XGE"
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"Blindness/Deafness",
+							"Ray of Enfeeblement"
+						],
+						"5": [
+							"Bestow Curse",
+							"Vampiric Touch"
+						],
+						"7": [
+							"Blight",
+							"Phantasmal Killer"
+						],
+						"9": [
+							"Contagion",
+							"Enervation|XGE"
+						]
+					},
+					"innate": {
+						"14": {
+							"daily": {
+								"1": [
+									"create undead"
+								]
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -1026,6 +1164,28 @@
 				"Staggering Smite",
 				"Contact Other Plane",
 				"Steel Wind Strike|XGE"
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"Magic Weapon",
+							"Spiritual Weapon"
+						],
+						"5": [
+							"Clairvoyance",
+							"Spirit Shroud|TCE"
+						],
+						"7": [
+							"Guardian of Faith",
+							"Staggering Smite"
+						],
+						"9": [
+							"Contact Other Plane",
+							"Steel Wind Strike|XGE"
+						]
+					}
+				}
 			]
 		},
 		{
@@ -1050,6 +1210,41 @@
 				"Locate Creature",
 				"Hold Monster",
 				"Tree Stride"
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"Animal Messenger",
+							"Beast Sense"
+						],
+						"5": [
+							"Conjure Animals",
+							"Fear"
+						],
+						"7": [
+							"Dominate Beast",
+							"Locate Creature"
+						],
+						"9": [
+							"Hold Monster",
+							"Tree Stride"
+						]
+					}
+				}
+			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Bestial Adaptations",
+					"featureType": [
+						"LL:BA"
+					],
+					"progression": {
+						"3": 1,
+						"6": 2,
+						"10": 3
+					}
+				}
 			]
 		},
 		{
@@ -1075,6 +1270,52 @@
 				"Death Ward",
 				"Creation",
 				"Greater Restoration"
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"Lesser Restoration",
+							"Warding Bond"
+						],
+						"5": [
+							"Beacon of Hope",
+							"Revivify"
+						],
+						"7": [
+							"Aura of Life",
+							"Death Ward"
+						],
+						"9": [
+							"Creation",
+							"Greater Restoration"
+						]
+					}
+				}
+			],
+			"foundryAdvancement": [
+				{
+					"name": "Totemic Blessing Uses",
+					"type": "ScaelValue",
+					"congfiguration": {
+						"identifier": "totemic-blessing",
+						"type": "number",
+						"scale": {
+							"3": {
+								"value": 1
+							},
+							"6": {
+								"value": 2
+							},
+							"12": {
+								"value": 3
+							},
+							"18": {
+								"value": 4
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -1119,7 +1360,40 @@
 					"ice storm",
 					"cone of cold"
 				]
-			}
+			},
+			"optionalfeatureProgression": [
+				{
+					"name": "Elemental Mastery",
+					"featureType": [
+						"LL:EM"
+					],
+					"progression": {
+						"3": 1
+					}
+				},
+				{
+					"name": "Elementalist Progression",
+					"featureType": [
+						"LL:EM",
+						"LL:ES"
+					],
+					"progression": {
+						"6": 1,
+						"10": 2
+					}
+				},
+				{
+					"name": "Elemental Ascension",
+					"featureType": [
+						"LL:EM",
+						"LL:EI",
+						"LL:EGT"
+					],
+					"progression": {
+						"14": 1
+					}
+				}
+			]
 		},
 		{
 			"name": "Far Seer",
@@ -1143,6 +1417,56 @@
 				"divination",
 				"contact other plane",
 				"scrying"
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"augury",
+							"detect thoughts"
+						],
+						"5": [
+							"clairvoyance",
+							"tongues"
+						],
+						"7": [
+							"arcane eye",
+							"divination"
+						],
+						"9": [
+							"contact other plane",
+							"scrying"
+						]
+					}
+				}
+			],
+			"foundryAdvancement": [
+				{
+					"name": "Spirits of Fate",
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "spirits-of-fate",
+						"type": "dice",
+						"scale": {
+							"3": {
+								"n": 2,
+								"die": 4
+							},
+							"6": {
+								"n": 2,
+								"die": 6
+							},
+							"10": {
+								"n": 2,
+								"die": 8
+							},
+							"14": {
+								"n": 2,
+								"die": 12
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -1167,6 +1491,28 @@
 				"guardian of faith",
 				"arcane hand",
 				"wall of light|XGE"
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"spritual weapon",
+							"warding bond"
+						],
+						"5": [
+							"blink",
+							"spirit guardians"
+						],
+						"7": [
+							"death ward",
+							"guardian of faith"
+						],
+						"9": [
+							"arcane hand",
+							"wall of light|xge"
+						]
+					}
+				}
 			]
 		},
 		{
@@ -1191,6 +1537,28 @@
 				"polymorph",
 				"geas",
 				"summon draconic spirit|FTD"
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"dragon's breath|XGE",
+							"suggestion"
+						],
+						"5": [
+							"fear",
+							"fly"
+						],
+						"7": [
+							"dominate beast",
+							"polymorph"
+						],
+						"9": [
+							"geas",
+							"summon draconic spirit|FTD"
+						]
+					}
+				}
 			]
 		}
 	],
@@ -1267,7 +1635,8 @@
 				"{@i 3rd-level Curse Binder feature}",
 				"You can curse with a glance. As a reaction, when a creature you can see within 60 feet makes an ability check, attack roll, or saving throw, you can impose disadvantage on its roll.",
 				"You can use this reaction a number of times equal to your Wisdom modifier (a minimum of once), and you regain all expended uses when you finish a long rest."
-			]
+			],
+			"foundryImg": "icons/magic/perception/eye-slit-pink.webp"
 		},
 		{
 			"name": "Totemic Curse",
@@ -1290,7 +1659,14 @@
 					]
 				},
 				"The conditions inflicted by this feature can be ended early with {@spell lesser restoration} or {@spell remove curse}. The afflicted creature can repeat the saving throw as an action on its turn, ending the effect on a success."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When a creature fails its saving throw against Totemic Assault"
+				}
+			},
+			"foundryImg": "icons/magic/control/debuff-chains-purple.webp"
 		},
 		{
 			"name": "Sinister Spellcasting",
@@ -1305,7 +1681,8 @@
 			"entries": [
 				"{@i 6th-level Curse Binder feature}",
 				"Dark spirits empower your magic. When you deal damage to a creature with a shaman cantrip or Totemic Assault, you add your Wisdom modifier (minimum of +1) to your damage roll."
-			]
+			],
+			"foundryImg": "icons/magic/symbols/runes-star-magenta.webp"
 		},
 		{
 			"name": "Shamanistic Ward",
@@ -1321,7 +1698,8 @@
 				"{@i 10th-level Curse Binder feature}",
 				"Sinister spirits ward you against elemental assaults. At the end of each long rest, choose either acid, cold, fire, lightning, necrotic, poison, psychic, radiant, or thunder. Until the end of your next long rest, you are resistant to that damage.",
 				"When you take damage of a type that you resist, you can use Totemic Assault as a reaction, targeting your attacker."
-			]
+			],
+			"foundryImg": "icons/magic/defensive/shield-barrier-blades-teal.webp"
 		},
 		{
 			"name": "Foul Conjuration",
@@ -1337,7 +1715,19 @@
 				"{@i 14th-level Curse Binder feature}",
 				"You have reached the apex of sinister shamanism, the ability to create corporeal bodies for the spirits you conjure. As an action on your turn, you can cast {@spell create undead} at 6th-level, without expending a spell slot or the material components.",
 				"Once you cast create undead in this way, you must finish a long rest before you can cast it in this way again."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": "",
+					"type": ""
+				},
+				"uses": {
+					"value": "",
+					"max": "",
+					"per": ""
+				}
+			},
+			"foundryImg": "icons/magic/death/hand-undead-skeleton-fire-green.webp"
 		},
 		{
 			"name": "Spirit Warrior",
@@ -1410,7 +1800,18 @@
 			"entries": [
 				"{@i 3rd-level Spirit Warrior feature}",
 				"When you adopt this Spirituality, spirits of ancient warriors grant you their lifetimes' worth of combat experience. You gain proficiency with medium armor and all martial weapons."
-			]
+			],
+			"armorProficiencies": [
+				{
+					"medium": true
+				}
+			],
+			"weaponProficiencies": [
+				{
+					"martial": true
+				}
+			],
+			"foundryImg": "icons/sundries/books/book-backed-wood-tan.webp"
 		},
 		{
 			"name": "Totemic Weapon",
@@ -1443,7 +1844,8 @@
 						}
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/skills/melee/strike-morningstar-gray.webp"
 		},
 		{
 			"name": "Extra Attack",
@@ -1473,7 +1875,19 @@
 			"entries": [
 				"{@i 10th-level Spirit Warrior feature}",
 				"You can offer your very life force to the spirit realm to resist the grasp of death. When you are reduced to 0 hit points but not killed outright, you can expend one of your Hit Dice to drop to 1 hit point instead of falling to 0."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you are reduced to 0 hit points but not killed outright"
+				},
+				"consume": {
+					"amount": 1,
+					"type": "hitDice",
+					"target": "smallest"
+				}
+			},
+			"foundryImg": "icons/magic/unholy/strike-body-life-soul-purple.webp"
 		},
 		{
 			"name": "Spiritual Champion",
@@ -1497,7 +1911,8 @@
 					]
 				},
 				"Once you use this feature you must finish a short or long rest before you can use it again. If you have no uses left, you can expend a Primal Magic slot to use this feature again."
-			]
+			],
+			"foundryImg": "icons/magic/control/silhouette-hold-change-blue.webp"
 		},
 		{
 			"name": "Wild Heart",
@@ -1577,7 +1992,6 @@
 				"You gain another Adaptation at 6th level and 10th level.",
 				{
 					"type": "options",
-					"count": 1,
 					"entries": [
 						{
 							"type": "refOptionalfeature",
@@ -1593,7 +2007,8 @@
 						}
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/creatures/abilities/bull-head-horns-glowing.webp"
 		},
 		{
 			"name": "Totemic Wild Shape",
@@ -1620,7 +2035,8 @@
 					]
 				},
 				"Your Great Beast form lasts for 1 hour. You then revert to your normal form unless you expend another Primal Magic slot to extend the duration of your transformation. You can also revert to your normal form as a bonus action."
-			]
+			],
+			"foundryImg": "icons/creatures/abilities/wolf-heads-swirl-purple.webp"
 		},
 		{
 			"name": "Bestial Traits",
@@ -1684,7 +2100,8 @@
 						}
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/creatures/abilities/paw-print-yellow.webp"
 		},
 		{
 			"name": "Savage Strikes",
@@ -1699,7 +2116,8 @@
 			"entries": [
 				"{@i 6th-level Wild Heart feature}",
 				"When you are in Great Beast form and you take the Bite or Claw action, you can make one additional Bite or Claw attack as part of that action. Attacks in your Great Beast form also count as magical for overcoming resistances and immunities."
-			]
+			],
+			"foundryImg": "icons/creatures/abilities/paw-print-pair-purple.webp"
 		},
 		{
 			"name": "Fury of the Wild",
@@ -1715,7 +2133,8 @@
 				"{@i 10th-level Wild Heart feature}",
 				"You can draw upon your pain to fuel your drive. As a bonus action, you can expend a Hit Die to regain hit points equal to your Hit Die roll + your Wisdom modifier (minimum of 1).",
 				"Any hit points you regain from this feature that exceed your maximum hit points become temporary hit points for you."
-			]
+			],
+			"foundryImg": "icons/creatures/abilities/fang-tooth-blood-red.webp"
 		},
 		{
 			"name": "Apex Predator",
@@ -1731,7 +2150,8 @@
 				"{@i 14th-level Wild Heart feature}",
 				"Your Great Beast stands as a legendary guardian of the wild. When you transform into your Great Beast form, its Strength, Dexterity, and Constitution scores are all increased by 2, to a maximum of 20 (this increases both the attack and a damage bonus of the Great Beast's Bite and Claw attack by 1).",
 				"Also, the damage of its Bite and Claw increase by {@dice 1d6}."
-			]
+			],
+			"foundryImg": "icons/creatures/abilities/fangs-teeth-bite.webp"
 		},
 		{
 			"name": "Witch Doctor",
@@ -1805,7 +2225,18 @@
 				"{@i 3rd-level Witch Doctor feature}",
 				"You can channel spirits of abundance and life to heal others. As an action, you can touch a creature and cause it to regain hit points equal to {@dice 1d8} + your Wisdom modifier. This feature has no effect on undead creatures or constructs.",
 				"You can use this feature a number of times equal to your level, and you regain all uses when you finish a long rest."
-			]
+			],
+			"foundrySystem": {
+				"actionType": "heal",
+				"damage.parts": [
+					[
+						"1d8 + @mod",
+						"healing"
+					]
+				],
+				"uses.max": "@details.level"
+			},
+			"foundryImg": "icons/magic/life/heart-cross-strong-flame-blue.webp"
 		},
 		{
 			"name": "Totemic Blessing",
@@ -1822,7 +2253,12 @@
 				"You can also bind Totems to your allies, allowing them to make use of their mystical power. At the end of a long rest, you can bind one of your Bound Totems to a willing creature you touch, losing the Totem abilities for yourself. The Totem remains bound to the creature until the end of your next long rest, at which point the power of the Totem returns to you.",
 				"At certain shaman levels, the number of Totems you can bind to other creatures increases: at 6th level (2 Totems), at 12th level (3 Totems), and finally 18th level (4 Totems).",
 				"A single Totem can only be bound to one creature at a time, and a creature can only have a single Totem bound to them."
-			]
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"uses.max": "@scale.witch-doctor.totemic-blessing"
+			},
+			"foundryImg": "icons/magic/holy/chalice-glowing-gold.webp"
 		},
 		{
 			"name": "Mystical Focus",
@@ -1837,7 +2273,14 @@
 			"entries": [
 				"{@i 6th-level Witch Doctor feature}",
 				"You work in tandem with the spirits bound to you, drawing out more of their power. When you use your action to cast one of your Witch Doctor spells, or to restore hit points to a creature, you can use Totemic Assault as a bonus action on that turn."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": "",
+					"type": ""
+				}
+			},
+			"foundryImg": "icons/magic/holy/prayer-hands-glowing-yellow-green.webp"
 		},
 		{
 			"name": "Empowered Blessing",
@@ -1853,7 +2296,14 @@
 				"{@i 10th-level Witch Doctor feature}",
 				"Your allies can channel the spiritual power within your Totems. As an action on its turn, a creature that has one of your Totems bound to it can use Totemic Assault, using your Totemic save DC.",
 				"Other creatures only gain the benefits from Totems that improve Totemic Assault if they are bound to the Totem that grants those benefits."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": "",
+					"type": ""
+				}
+			},
+			"foundryImg": "icons/magic/holy/prayer-hands-glowing-yellow.webp"
 		},
 		{
 			"name": "Selfless Ward",
@@ -1869,7 +2319,8 @@
 				"{@i 10th-level Witch Doctor feature}",
 				"Your spirit is invigorated by the binding of Totems to your allies. You gain a +1 bonus to all saving throws for each of the Totems that you bind to another creature.",
 				"This includes any death saving throws you make."
-			]
+			],
+			"foundryImg": "icons/magic/holy/barrier-shield-winged-blue.webp"
 		},
 		{
 			"name": "Spiritual Awakening",
@@ -1886,7 +2337,16 @@
 				"Your spiritual practice has filled you with an abundance of life-giving energy. As a reaction when a creature you can see makes a death saving throw, you can move up to your full speed and touch the creature, imbuing it with life-giving energy. The creature instantly regains hit points equal to your Shaman level + your Wisdom modifier and can stand up.",
 				"You can use this feature on yourself, without requiring your reaction, when you are forced to make a death saving throw.",
 				"Once you use this feature, you can't use it again until you finish a long rest. When you have no uses remaining, you can expend a Primal Magic spell slot to use this feature again."
-			]
+			],
+			"foundrySystem": {
+				"damage.parts": [
+					[
+						"@classes.shaman.levels + @mod",
+						"healing"
+					]
+				]
+			},
+			"foundryImg": "icons/magic/life/heart-hand-gold-green-light.webp"
 		},
 		{
 			"name": "Elementalist",
@@ -2031,7 +2491,8 @@
 						"Your Totemic Assault deals cold damage in place of necrotic damage, and when you use Totemic Assault you can target two creatures that are within 5 feet of each other."
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/symbols/elements-air-earth-fire-water.webp"
 		},
 		{
 			"name": "Greater Mastery",
@@ -2053,7 +2514,8 @@
 					]
 				},
 				"Also, whenever you cast a Shaman spell or use a Shaman feature that deals the damage type of any element you have mastered, you add your Wisdom modifier to the damage roll."
-			]
+			],
+			"foundryImg": "icons/magic/symbols/ring-circle-smoke-blue.webp"
 		},
 		{
 			"name": "Primal Conduit",
@@ -2076,7 +2538,8 @@
 					]
 				},
 				"Additionally, whenever you cast a Shaman spell of 1st-level or higher that deals the damage type of any element you have mastered, you gain temporary hit points equal to the level of the spell slot you expended + your Wisdom modifier"
-			]
+			],
+			"foundryImg": "icons/magic/symbols/cross-circle-blue.webp"
 		},
 		{
 			"name": "Elemental Ascension",
@@ -2099,7 +2562,8 @@
 						"If you have mastered only one element, you gain all the benefits of the Greater Totem Spirit of the element: Air (Storm), Earth (Fissure), Fire (Inferno), or Water (Sea). This Greater Totem Spirit doesn't count against the total number of Greater Totem Spirits you can have bound at one time."
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/symbols/star-inverted-yellow.webp"
 		},
 		{
 			"name": "Far Seer",
@@ -2173,7 +2637,8 @@
 				"{@i 3rd-level Far Seer feature}",
 				"You can draw on the power within your Totems to enhance your ritual magic. When you cast the ritual version of a spell, you can use a Totem in place of the material components of that spell. When you do, the ritual version of that spell only takes 1 additional minute to cast instead of 10 minutes.",
 				"Also, when you cast a divination spell and use a Totem as your spellcasting focus, it can replace material components with a gold value so long as they are not consumed."
-			]
+			],
+			"foundryImg": "icons/commodities/wood/wood-carved-runes.webp"
 		},
 		{
 			"name": "Spirits of Fate",
@@ -2186,8 +2651,12 @@
 			"level": 3,
 			"entries": [
 				"{@i 3rd-level Far Seer feature}",
-				"You have learned to bind minor spirits of Fate and unleash them to influence the world around you in minor ways. Each time you finish a short or long rest, roll two d4s and record the numbers you rolled. When you or a creature you can see within 60 feet makes an ability check, attack roll, or saving throw, you can use your reaction to apply one of these Fate rolls to the triggering roll, adding or subtracting it from the result. You can use this reaction after you know the result of the roll, but before you know if the roll succeeds or fails. Each of your Fate rolls can be used only once. When you finish a short or long rest, you lose any unused Fate rolls. At certain levels in this class, the dice you roll for these Fate rolls increase in size: at 6th level (d6s), at 10th level (d8s), and finally at 14th level (d12s)."
-			]
+				"You have learned to bind minor spirits of Fate and unleash them to influence the world around you in minor ways. Each time you finish a short or long rest, roll two {@dice d4}s and record the numbers you rolled. When you or a creature you can see within 60 feet makes an ability check, attack roll, or saving throw, you can use your reaction to apply one of these Fate rolls to the triggering roll, adding or subtracting it from the result. You can use this reaction after you know the result of the roll, but before you know if the roll succeeds or fails. Each of your Fate rolls can be used only once. When you finish a short or long rest, you lose any unused Fate rolls. At certain levels in this class, the dice you roll for these Fate rolls increase in size: at 6th level ({@dice d6}s), at 10th level ({@dice d8}s), and finally at 14th level ({@dice d12}s)."
+			],
+			"foundrySystem": {
+				"formula": "@scale.far-seer.spirits-of-fate"
+			},
+			"foundryImg": "icons/magic/control/debuff-energy-snare-brown.webp"
 		},
 		{
 			"name": "Ascended Awareness",
@@ -2200,8 +2669,9 @@
 			"level": 6,
 			"entries": [
 				"{@i 6th-level Far Seer feature}",
-				"The spirits of Fate constantly whisper their secrets to you. You cannot be surprised while you are conscious, and you gain a bonus to your initiative rolls equal to your Wisdom modifier (minimum of +1), so long as you are conscious."
-			]
+				"The spirits of Fate constantly whisper their secrets to you. You cannot be {@quickref surprise|phb|3||surprised} while you are conscious, and you gain a bonus to your initiative rolls equal to your Wisdom modifier (minimum of +1), so long as you are conscious."
+			],
+			"foundryImg": "icons/magic/perception/eye-ringed-green.webp"
 		},
 		{
 			"name": "Certain Fate",
@@ -2216,7 +2686,15 @@
 			"entries": [
 				"{@i 10th-level Far Seer feature}",
 				"The future is fickle and constantly changing, but once you glimpse something, it nearly always comes to pass. When you use your reaction to add a Fate die to a roll and it does not change the outcome of that roll, the die is not expended."
-			]
+			],
+			"foundrySystem": {
+				"acitvation": {
+					"cost": "",
+					"type": "",
+					"condition": ""
+				}
+			},
+			"foundryImg": "icons/magic/control/debuff-energy-hold-levitate-yellow.webp"
 		},
 		{
 			"name": "Tip the Scales",
@@ -2232,7 +2710,11 @@
 				"{@i 14th-level Far Seer feature}",
 				"You can effect Fate in ways that rival the greatest spirits of the multiverse, if only for a moment. When a creature you can see within 60 feet finishes its turn, you can use your reaction to expend one of your Fate dice, and force that creature to repeat its turn exactly as it did before.",
 				"Anything the creature did on that turn is undone, and it must repeat its turn exactly, taking the same exact course of action, but it any dice rolled on that turn are rolled again, and all creatures must use the new results."
-			]
+			],
+			"foundrySystem": {
+				"activation.condition": "When a creature you can see within 60 feet finishes its turn"
+			},
+			"foundryImg": "icons/sundries/gaming/dice-pair-white-green.webp"
 		},
 		{
 			"name": "Spirit Guide",
@@ -2300,12 +2782,20 @@
 			"level": 3,
 			"entries": [
 				"{@i 3rd-level Spirit Guide feature}",
-				"You have bound your soul with a unique spirit known as a Geist. You determine its spectral appearance, but the choice has no effect on its game statistics. Your Geist is friendly to you and your allies, and it obeys your commands. It uses the Geist stat block on the following page, its abilities use your Totemic Save DC, and it uses your proficiency bonus (PB).",
-				"In combat, the Giest acts during your turn. It can move and use its reaction on its own, but it only takes the Dodge action unless you use a bonus action to command it to take one of the actions listed in its stat block, or another action",
+				"You have bound your soul with a unique spirit known as a Geist. You determine its spectral appearance, but the choice has no effect on its game statistics. Your Geist is friendly to you and your allies, and it obeys your commands. It uses the {@creature Geist|LLSH:E} stat block on the following page, its abilities use your Totemic Save DC, and it uses your proficiency bonus (PB).",
+				"In combat, the Giest acts during your turn. It can move and use its reaction on its own, but it only takes the {@action Dodge} action unless you use a bonus action to command it to take one of the actions listed in its stat block, or another action",
 				"At the end of a long rest, you can choose for any Totems you know to be bound to your Giest in place of you. You lose any benefits from those Totems and the Giest gains them.",
 				"If your Giest is reduced to 0 hit points it is banished back to the Outer Planes. As an action, you can expend a Primal Magic spell slot to conjure the Giest in an unoccupied space within 5 feet of you, restoring it to its full hit points.",
 				"At the end of each long rest the Giest is restored to full hit points, and reappears next to you if it had been banished."
-			]
+			],
+			"foundrySystem": {
+				"consume": {
+					"amount": 1,
+					"target": "spells.pact.value",
+					"type": "attribute"
+				}
+			},
+			"foundryImg": "icons/creatures/magical/spirit-undead-ghost-purple.webp"
 		},
 		{
 			"name": "Spectral Empowerment",
@@ -2319,8 +2809,16 @@
 			"entries": [
 				"{@i 6th-level Spirit Guide feature}",
 				"You can infuse your Giest with spiritual power. As an action, you can expend a Primal Magic spell slot to empower it. For 1 minute, the Giest gains resistance to bludgeoning, piercing, and slashing damage from nonsilvered attacks, and can move through creatures and objects as if they were difficult terrain.",
-				"If the Giest ends its turn inside a creature or object, it is instantly shunted to the nearest unoccupied space and takes 1d10 force damage for every 5 feet it was forced to travel."
-			]
+				"If the Giest ends its turn inside a creature or object, it is instantly shunted to the nearest unoccupied space and takes {@damage 1d10} force damage for every 5 feet it was forced to travel."
+			],
+			"foundrySystem": {
+				"consume": {
+					"amount": 1,
+					"target": "spells.pact.value",
+					"type": "attribute"
+				}
+			},
+			"foundryImg": "icons/creatures/magical/spirit-mischief-fire-ice-blue.webp"
 		},
 		{
 			"name": "Soul Bond",
@@ -2336,7 +2834,15 @@
 				"{@i 10th-level Spirit Guide feature}",
 				"The bond between kindred soul and spirit empowers your resolve. When a creature you can see hits you with an attack, and the Giest is within 30 feet of you, you can use a reaction to instantly switch places with the Giest, causing it to become the target of the triggering attack in your place.",
 				"The Giest can also use this same reaction when it is hit by an attack to instantly switch places with you."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"condition": "When a creature you can see hits you with an attack, and the Giest is within 30 feet of you"
+				}
+			},
+			"foundryImg": "icons/creatures/magical/spirit-fire-orange.webp"
 		},
 		{
 			"name": "Ghastly Strikes",
@@ -2352,7 +2858,8 @@
 				"{@i 14th-level Spirit Guide feature}",
 				"The spiritual bond between you and the Giest has reached its full potential. Whenever you command the Giest to use its Spectral Touch, it can use its Spectral Touch action twice.",
 				"Also, the Giest permanently gains the benefits of Spectral Empowerment, and you can expend a Primal Magic spell slot to gain the benefits of Spectral Empowerment yourself."
-			]
+			],
+			"foundryImg": "icons/magic/death/undead-ghost-strike-white.webp"
 		},
 		{
 			"name": "Wyrmbound",
@@ -2425,7 +2932,7 @@
 			"entries": [
 				"{@i 3rd-level Wyrmbound feature}",
 				"You draw on draconic power to transform for a short time. As a bonus action, you can transform into a Spirit Dragon.",
-				"While transformed, you use the Spirit Dragon stat block. It uses your Totemic save DC and proficiency bonus (PB) in several places. You determine the appearance of your Spirit Dragon form, but this has no effect on its abilities. For the duration of your transformation, the following rules apply:",
+				"While transformed, you use the {@creature Spirit Dragon|LLSH:E} stat block. It uses your Totemic save DC and proficiency bonus (PB) in several places. You determine the appearance of your Spirit Dragon form, but this has no effect on its abilities. For the duration of your transformation, the following rules apply:",
 				{
 					"type": "list",
 					"items": [
@@ -2438,7 +2945,8 @@
 				},
 				"Your transformation lasts for 1 minute, and it ends early if you use a bonus action to revert to your normal form.",
 				"Once you transform you must finish a short or long rest before you can do so again. When you have no uses left, you can expend a Primal Magic spell slot to transform again."
-			]
+			],
+			"foundryImg": "icons/creatures/reptiles/dragon-horned-blue.webp"
 		},
 		{
 			"name": "Totemic Conduit",
@@ -2451,8 +2959,14 @@
 			"level": 3,
 			"entries": [
 				"{@i 3rd-level Wyrmbound feature}",
-				"The draconic spirit bound to your soul grants you ambient power. You can speak, read, and write Draconic. Whenever you make a Charisma check to interact with dragons, you gain a bonus to your roll equal to your Wisdom modifier."
-			]
+				"The draconic spirit bound to your soul grants you ambient power. You can speak, read, and write {@language Draconic}. Whenever you make a Charisma check to interact with dragons, you gain a bonus to your roll equal to your Wisdom modifier."
+			],
+			"languageProficiencies": [
+				{
+					"draconic": true
+				}
+			],
+			"foundryImg": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp"
 		},
 		{
 			"name": "Savage Strikes",
@@ -2466,7 +2980,8 @@
 			"entries": [
 				"{@i 6th-level Wyrmbound feature}",
 				"The ferocity of your draconic spirit has grown. When you are in Spirit Dragon form and you take the Spectral Slash action, you can make two Spectral Slash attacks. Also, your attacks in Spirit Dragon form also count as magical for overcoming resistance and immunity to nonmagical attacks and damage"
-			]
+			],
+			"foundryImg": "icons/creatures/claws/claw-scaled-red.webp"
 		},
 		{
 			"name": "Serpentine Speed",
@@ -2480,9 +2995,10 @@
 			"header": 2,
 			"entries": [
 				"{@i 10th-level Wyrmbound feature}",
-				"Your movements are enhanced by the power of your draconic spirit. You can take the Dash action as a bonus action on your turn, and when you do so, all opportunity attacks against you have disadvantage until the end of your current turn.",
+				"Your movements are enhanced by the power of your draconic spirit. You can take the {@action Dash} action as a bonus action on your turn, and when you do so, all opportunity attacks against you have disadvantage until the end of your current turn.",
 				"Moreover, when you transform into your Spirit Dragon form, you can choose to become Large in size, causing your Spirit Dragon form to double in length, much like a snake"
-			]
+			],
+			"foundryImg": "icons/creatures/reptiles/serpent-horned-green.webp"
 		},
 		{
 			"name": "Ascended Conduit",
@@ -2496,9 +3012,10 @@
 			"header": 2,
 			"entries": [
 				"{@i 14th-level Wyrmbound feature}",
-				"TYour physical form can handle the full might of your draconic spirit. When you are in Spirit Dragon form you retain your ability to cast spells as if you were in your normal form.",
-				"In addition, Your Spirit Dragon's Spirit Breath no longer requires you to expend a Primal Magic spell slot in order to use it. Instead, once you use it, you roll a d6 at the start of each of your turns. On a roll of 5 or 6, you regain the use of the Spirit Dragon's Spirit Breath ability."
-			]
+				"Your physical form can handle the full might of your draconic spirit. When you are in Spirit Dragon form you retain your ability to cast spells as if you were in your normal form.",
+				"In addition, Your Spirit Dragon's Spirit Breath no longer requires you to expend a Primal Magic spell slot in order to use it. Instead, once you use it, you roll a {@dice d6} at the start of each of your turns. On a roll of 5 or 6, you regain the use of the Spirit Dragon's Spirit Breath ability."
+			],
+			"foundryImg": "icons/creatures/reptiles/dragon-winged-blue.webp"
 		}
 	],
 	"spell": [
@@ -2569,7 +3086,8 @@
 			],
 			"areaTags": [
 				"ST"
-			]
+			],
+			"foundryImg": "icons/magic/unholy/hand-light-green.webp"
 		},
 		{
 			"name": "Seance",
@@ -2611,7 +3129,8 @@
 						"Ley lines within range briefly reveal themselves as they flicker with otherworldly light."
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/perception/orb-crystal-ball-scrying-blue.webp"
 		},
 		{
 			"name": "Ghastly Flight",
@@ -2662,7 +3181,8 @@
 			],
 			"areaTags": [
 				"L"
-			]
+			],
+			"foundryImg": "icons/magic/death/undead-ghost-scream-teal.webp"
 		},
 		{
 			"name": "Totemic Cowl",
@@ -2708,7 +3228,8 @@
 						"When you cast this spell using a spell slot of 3rd-level or higher, the damage reduction from the cowl increases by 1 for each slot level above 2nd."
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/defensive/barrier-shield-dome-blue-purple.webp"
 		},
 		{
 			"name": "Dire Wail",
@@ -2761,7 +3282,8 @@
 			],
 			"areaTags": [
 				"MT"
-			]
+			],
+			"foundryImg": "icons/magic/sonic/scream-wail-shout-teal.webp"
 		},
 		{
 			"name": "Spectral Passage",
@@ -2813,7 +3335,8 @@
 			],
 			"areaTags": [
 				"ST"
-			]
+			],
+			"foundryImg": "icons/magic/movement/trail-streak-impact-blue.webp"
 		},
 		{
 			"name": "Spiritual Sundering",
@@ -2855,7 +3378,8 @@
 			],
 			"areaTags": [
 				"S"
-			]
+			],
+			"foundryImg": "icons/magic/control/silhouette-hold-beam-blue.webp"
 		}
 	],
 	"optionalfeature": [
@@ -2868,7 +3392,21 @@
 			],
 			"entries": [
 				"Your speed, long jump, and high jump distances increase by 10 feet, and you can ignore the effects of all difficult terrain."
-			]
+			],
+			"foundryEffects": [
+				{
+					"name": "Speed Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.all",
+							"mode": "CUSTOM",
+							"value": "+10"
+						}
+					]
+				}
+			],
+			"foundryImg": "icons/skills/movement/figure-running-gray.webp"
 		},
 		{
 			"name": "Alpine Adaptation",
@@ -2879,7 +3417,21 @@
 			],
 			"entries": [
 				"You gain a climbing speed equal to your walking speed, and you can climb difficult surfaces, including sheer surfaces and upside down on ceilings, without making an ability check."
-			]
+			],
+			"foundryEffects": [
+				{
+					"name": "Climbing Speed",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.climb",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
+				}
+			],
+			"foundryImg": "icons/skills/movement/arrows-up-trio-red.webp"
 		},
 		{
 			"name": "Aquatic Adaptation",
@@ -2890,7 +3442,21 @@
 			],
 			"entries": [
 				"You gain a swimming speed equal to your walking speed, and while you are underwater you can take the {@action Dash} action as a bonus action, and you can hold your breath for up to 1 hour."
-			]
+			],
+			"foundryEffects": [
+				{
+					"name": "Swimming Speed",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.swim",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
+				}
+			],
+			"foundryImg": "icons/magic/water/bubbles-air-water-blue.webp"
 		},
 		{
 			"name": "Aggressive",
@@ -2901,7 +3467,8 @@
 			],
 			"entries": [
 				"As a bonus action, the Great Beast can move up to its speed toward a hostile creature that it can see, hear, or smell."
-			]
+			],
+			"foundryImg": "icons/creatures/abilities/bear-roar-bite-brown.webp"
 		},
 		{
 			"name": "Amphibious",
@@ -2912,7 +3479,21 @@
 			],
 			"entries": [
 				"The Great Beast gains a swimming speed equal to its walking speed, and it can breathe both air and water."
-			]
+			],
+			"foundryEffects": [
+				{
+					"name": "Swimming Speed",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.swim",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
+				}
+			],
+			"foundryImg": "icons/creatures/amphibians/frog-water-teal.webp"
 		},
 		{
 			"name": "Charge",
@@ -2923,7 +3504,18 @@
 			],
 			"entries": [
 				"When the Great Beast moves at least 20 feet in a straight line toward a target and hits it with a Claw attack it deals an extra {@dice 1d6} damage. A creature that is the Great Beast's size, or smaller, must make a Strength saving throw or fall {@condition prone}."
-			]
+			],
+			"foundrySystem": {
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"1d6",
+						""
+					]
+				],
+				"save.ability": "str"
+			},
+			"foundryImg": "icons/creatures/mammals/ox-bull-horned-glowing-orange.webp"
 		},
 		{
 			"name": "Keen Senses",
@@ -2934,7 +3526,8 @@
 			],
 			"entries": [
 				"The Great Beast has advantage on Wisdom ({@skill Perception}) or Wisdom ({@skill Survival}) checks that rely on its hearing or smell."
-			]
+			],
+			"foundryImg": "icons/creatures/eyes/lizard-single-slit-blue.webp"
 		},
 		{
 			"name": "Large",
@@ -2945,7 +3538,8 @@
 			],
 			"entries": [
 				"The Great Beast becomes a Large creature. If it is ridden as a mount, the Great Beast can act independently of its rider."
-			]
+			],
+			"foundryImg": "icons/magic/control/silhouette-grow-shrink-tan.webp"
 		},
 		{
 			"name": "Light Step",
@@ -2956,7 +3550,8 @@
 			],
 			"entries": [
 				"The Great Beast has advantage on Dexterity ({@skill Stealth}) checks while it is lightly obscured by natural foliage or weather."
-			]
+			],
+			"foundryImg": "icons/skills/movement/feet-winged-boots-brown.webp"
 		},
 		{
 			"name": "Pack Tactics",
@@ -2967,7 +3562,8 @@
 			],
 			"entries": [
 				"The Great Beast has advantage on attack rolls against any target that has one of its conscious allies within 5 feet of it."
-			]
+			],
+			"foundryImg": "icons/creatures/mammals/wolf-shadow-black.webp"
 		},
 		{
 			"name": "Powerful Build",
@@ -2978,7 +3574,8 @@
 			],
 			"entries": [
 				"The Great Beast counts as one size larger when determining creatures it can grapple, and the weight it can move or lift."
-			]
+			],
+			"foundryImg": "icons/creatures/mammals/bull-horns-eyes-glowin-orange.webp"
 		},
 		{
 			"name": "Vicious Bite",
@@ -2989,7 +3586,8 @@
 			],
 			"entries": [
 				"If the Great Beast hits a creature equal to its size or smaller with a Bite attack, it can grapple the target. Until the grapple ends, the target is {@condition restrained}, and the Great Beast cannot Bite targets other than the creature it is currently grappling."
-			]
+			],
+			"foundryImg": "icons/creatures/abilities/fangs-teeth-bite.webp"
 		},
 		{
 			"name": "Savage Grip",
@@ -2999,8 +3597,22 @@
 				"LL:BT"
 			],
 			"entries": [
-				"The Great Beast gains a climbing speed equal to its walking speed, and it can climb sheer surfaces and upside down on ceilings without making an ability check. The Great Beast also has advantage on saving throws to resist being moved against its will, grappled, {@condition restrained}, or knocked {@condition prone}."
-			]
+				"The Great Beast gains a climbing speed equal to its walking speed, and it can climb sheer surfaces and upside down on ceilings without making an ability check. The Great Beast also has advantage on saving throws to resist being moved against its will, {@condition grappled}, {@condition restrained}, or knocked {@condition prone}."
+			],
+			"foundryEffects": [
+				{
+					"name": "Climbing Speed",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.climb",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
+				}
+			],
+			"foundryImg": "icons/creatures/abilities/paw-print-orange.webp"
 		},
 		{
 			"name": "Standing Leap",
@@ -3011,7 +3623,8 @@
 			],
 			"entries": [
 				"The Great Beast has a minimum long jump of 15 feet, and a minimum high jump of 10 feet, even without a running start."
-			]
+			],
+			"foundryImg": "icons/skills/movement/arrow-upward-yellow.webp"
 		},
 		{
 			"name": "Greater Spirit of Death",
@@ -3052,6 +3665,40 @@
 							"{@spell power word kill}"
 						]
 					]
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"11": {
+							"daily": {
+								"1": [
+									"flesh to stone"
+								]
+							}
+						},
+						"13": {
+							"daily": {
+								"1": [
+									"finger of death"
+								]
+							}
+						},
+						"15": {
+							"daily": {
+								"1": [
+									"abi-dalzim's horrid wilting|XGE"
+								]
+							}
+						},
+						"17": {
+							"daily": {
+								"1": [
+									"power word kill"
+								]
+							}
+						}
+					}
 				}
 			]
 		},
@@ -3095,6 +3742,40 @@
 						]
 					]
 				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"11": {
+							"daily": {
+								"1": [
+									"heal"
+								]
+							}
+						},
+						"13": {
+							"daily": {
+								"1": [
+									"regenerate"
+								]
+							}
+						},
+						"15": {
+							"daily": {
+								"1": [
+									"holy aura"
+								]
+							}
+						},
+						"17": {
+							"daily": {
+								"1": [
+									"power word heal"
+								]
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -3136,6 +3817,40 @@
 							"{@spell astral projection}"
 						]
 					]
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"11": {
+							"daily": {
+								"1": [
+									"primordial ward|XGE"
+								]
+							}
+						},
+						"13": {
+							"daily": {
+								"1": [
+									"reverse gravity"
+								]
+							}
+						},
+						"15": {
+							"daily": {
+								"1": [
+									"antimagic field"
+								]
+							}
+						},
+						"17": {
+							"daily": {
+								"1": [
+									"astral projection"
+								]
+							}
+						}
+					}
 				}
 			]
 		},
@@ -3179,6 +3894,40 @@
 						]
 					]
 				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"11": {
+							"daily": {
+								"1": [
+									"sunbeam"
+								]
+							}
+						},
+						"13": {
+							"daily": {
+								"1": [
+									"resurrection"
+								]
+							}
+						},
+						"15": {
+							"daily": {
+								"1": [
+									"sunburst"
+								]
+							}
+						},
+						"17": {
+							"daily": {
+								"1": [
+									"true resurrection"
+								]
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -3213,13 +3962,47 @@
 						],
 						[
 							"15th",
-							"{@spell maddenning darkness|XGE}"
+							"{@spell maddening darkness|XGE}"
 						],
 						[
 							"17th",
 							"{@spell psychic scream|XGE}"
 						]
 					]
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"11": {
+							"daily": {
+								"1": [
+									"soul cage|XGE"
+								]
+							}
+						},
+						"13": {
+							"daily": {
+								"1": [
+									"prismatic spray"
+								]
+							}
+						},
+						"15": {
+							"daily": {
+								"1": [
+									"maddening darkness|XGE"
+								]
+							}
+						},
+						"17": {
+							"daily": {
+								"1": [
+									"psychic scream|XGE"
+								]
+							}
+						}
+					}
 				}
 			]
 		},
@@ -3229,7 +4012,8 @@
 			"page": 5,
 			"foundryImg": "icons/magic/earth/lava-explosion-orange.webp",
 			"featureType": [
-				"LL:GTM"
+				"LL:GTM",
+				"LL:EGT"
 			],
 			"entries": [
 				"Spirits of Fissure are conjured from the realms on the Plane of Earth. They lend Shamans the unyielding power of stone.",
@@ -3263,6 +4047,40 @@
 						]
 					]
 				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"11": {
+							"daily": {
+								"1": [
+									"bones of the earth|XGE"
+								]
+							}
+						},
+						"13": {
+							"daily": {
+								"1": [
+									"symbol"
+								]
+							}
+						},
+						"15": {
+							"daily": {
+								"1": [
+									"earthquake"
+								]
+							}
+						},
+						"17": {
+							"daily": {
+								"1": [
+									"invulnerability|XGE"
+								]
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -3271,7 +4089,8 @@
 			"page": 5,
 			"foundryImg": "icons/magic/fire/flame-burning-creature-skeleton.webp",
 			"featureType": [
-				"LL:GTM"
+				"LL:GTM",
+				"LL:EGT"
 			],
 			"entries": [
 				"Spirits of the Inferno are summoned from the great Plane of Fire. They grant Shamans overwhelming destructive power.",
@@ -3305,6 +4124,40 @@
 						]
 					]
 				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"11": {
+							"daily": {
+								"1": [
+									"investiture of flame|XGE"
+								]
+							}
+						},
+						"13": {
+							"daily": {
+								"1": [
+									"fire storm"
+								]
+							}
+						},
+						"15": {
+							"daily": {
+								"1": [
+									"incendiary cloud"
+								]
+							}
+						},
+						"17": {
+							"daily": {
+								"1": [
+									"meteor swarm"
+								]
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -3313,7 +4166,8 @@
 			"page": 5,
 			"foundryImg": "icons/magic/water/projectile-water-rings.webp",
 			"featureType": [
-				"LL:GTM"
+				"LL:GTM",
+				"LL:EGT"
 			],
 			"entries": [
 				"Spirits of the Sea are called up from the depths of the Plane of Water. They bestow Shamans with frigid ethereal magics.",
@@ -3331,7 +4185,7 @@
 					"rows": [
 						[
 							"11th",
-							"{@spell freezing sphere}"
+							"{@spell otiluke's freezing sphere|phb|freezing sphere}"
 						],
 						[
 							"13th",
@@ -3343,9 +4197,43 @@
 						],
 						[
 							"17th",
-							"{@spell invulnerability}"
+							"{@spell invulnerability|xge}"
 						]
 					]
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"11": {
+							"daily": {
+								"1": [
+									"otiluke's freezing sphere"
+								]
+							}
+						},
+						"13": {
+							"daily": {
+								"1": [
+									"etherealness"
+								]
+							}
+						},
+						"15": {
+							"daily": {
+								"1": [
+									"tsunami"
+								]
+							}
+						},
+						"17": {
+							"daily": {
+								"1": [
+									"invulnerability|xge"
+								]
+							}
+						}
+					}
 				}
 			]
 		},
@@ -3355,7 +4243,8 @@
 			"page": 5,
 			"foundryImg": "icons/magic/lightning/bolts-salvo-clouds-sky.webp",
 			"featureType": [
-				"LL:GTM"
+				"LL:GTM",
+				"LL:EGT"
 			],
 			"entries": [
 				"Spirits of the Storm are drawn from the great tempests of the Plane of Air. They lend Shamans the wild magic of storms.",
@@ -3377,7 +4266,7 @@
 						],
 						[
 							"13th",
-							"{@spell whirlwind}"
+							"{@spell whirlwind|xge}"
 						],
 						[
 							"15th",
@@ -3388,6 +4277,40 @@
 							"{@spell storm of vengeance}"
 						]
 					]
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"11": {
+							"daily": {
+								"1": [
+									"chain lightning"
+								]
+							}
+						},
+						"13": {
+							"daily": {
+								"1": [
+									"whirlwind|xge"
+								]
+							}
+						},
+						"15": {
+							"daily": {
+								"1": [
+									"control weather"
+								]
+							}
+						},
+						"17": {
+							"daily": {
+								"1": [
+									"storm of vengeance"
+								]
+							}
+						}
+					}
 				}
 			]
 		},
@@ -3400,7 +4323,21 @@
 			],
 			"entries": [
 				"You channel spiritual power through your body, bending the spirits to your will with physical might. When you choose this Sacred Focus your hit point maximum increases by 1, and it increases by 1 again each time you gain a level in this class."
-			]
+			],
+			"foundryEffects": [
+				{
+					"name": "HP Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.hp.bonuses.level",
+							"mode": "ADD",
+							"value": "+1"
+						}
+					]
+				}
+			],
+			"foundryImg": "icons/magic/life/ankh-shadow-green.webp"
 		},
 		{
 			"name": "Heart",
@@ -3410,8 +4347,9 @@
 				"LL:SF"
 			],
 			"entries": [
-				"You channel spiritual power into your heart and overwhelm spirits with powerful emotions. When you are forced to make a saving throw to resist the charmed or frightened condition, you gain a bonus to your roll equal to your Wisdom modifier"
-			]
+				"You channel spiritual power into your heart and overwhelm spirits with powerful emotions. When you are forced to make a saving throw to resist the {@condition charmed} or {@condition frightened} condition, you gain a bonus to your roll equal to your Wisdom modifier"
+			],
+			"foundryImg": "icons/magic/life/heart-glowing-red.webp"
 		},
 		{
 			"name": "Mind",
@@ -3422,7 +4360,26 @@
 			],
 			"entries": [
 				"You channel spiritual power through your mind, manipulating the spirits with your wit. When you make an ability check or saving throw that uses your Intelligence, you gain a bonus to your roll equal to your Wisdom modifier."
-			]
+			],
+			"foundryEffects": [
+				{
+					"name": "Intelligence Check/Save Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.abilities.int.bonuses.check",
+							"mode": "ADD",
+							"value": "+@abilities.wis.mod"
+						},
+						{
+							"key": "system.abilities.int.bonuses.save",
+							"mode": "ADD",
+							"value": "+@abilities.wis.mod"
+						}
+					]
+				}
+			],
+			"foundryImg": "icons/commodities/biological/organ-brain-pink.webp"
 		},
 		{
 			"name": "Soul",
@@ -3433,7 +4390,26 @@
 			],
 			"entries": [
 				"You channel spiritual power through your soul, your inner serenity soothes wild spirits and wards you from harm. While not wearing armor or wielding a shield, your Armor Class equals 10 + your Dexterity modifier + your Wisdom modifier."
-			]
+			],
+			"foundryEffects": [
+				{
+					"name": "Unarmored Defense",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.ac.formula",
+							"mode": "OVERRIDE",
+							"value": "10 + @abilities.dex.mod + @abilities.wis.mod"
+						},
+						{
+							"key": "system.attributes.ac.calc",
+							"mode": "OVERRIDE",
+							"value": "custom"
+						}
+					]
+				}
+			],
+			"foundryImg": "icons/creatures/magical/spirit-mischief-fire-blue.webp"
 		},
 		{
 			"name": "Totem of the Bear",
@@ -3444,8 +4420,24 @@
 				"LL:TTM"
 			],
 			"entries": [
-				"You bind a minor bestial spirit that grants you the ferocity of a bear. As a bonus action, you can grow claws from your fingers. With your claws, your unarmed strikes deal magical slashing damage equal to {@dice 1d6} + your Strength modifier on hit. If you have two free hands, the d6 becomes a d8. You can use another bonus action to cause your claws to disappear."
-			]
+				"You bind a minor bestial spirit that grants you the ferocity of a bear. As a bonus action, you can grow claws from your fingers. With your claws, your unarmed strikes deal magical slashing damage equal to {@dice 1d6} + your Strength modifier on hit. If you have two free hands, the d6 becomes a {@dice d8}. You can use another bonus action to cause your claws to disappear."
+			],
+			"foundrySystem": {
+				"actionType": "mwak",
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"damage": {
+					"parts": [
+						[
+							"1d6",
+							"slashing"
+						]
+					],
+					"versatile": "1d8"
+				}
+			}
 		},
 		{
 			"name": "Totem of the Crossroads",
@@ -3477,6 +4469,11 @@
 			],
 			"entries": [
 				"You bind a minor bestial spirit that grants you the sight of an eagle. You gain proficiency in {@skill Perception}, and you have advantage on Wisdom ({@skill Perception}) checks that rely on sight."
+			],
+			"skillProficiencies": [
+				{
+					"perception": true
+				}
 			]
 		},
 		{
@@ -3490,7 +4487,20 @@
 			"entries": [
 				"You bind a spirit of earth that grants you destructive power. Once per turn when you hit with a melee weapon attack, you can deal an additional {@dice 1d6} damage of your weapon's type.",
 				"This damage bonus increases as you gain shaman levels; at 6th level ({@dice 1d8}), 11th level ({@dice 1d10}), and 17th level ({@dice 1d12})."
-			]
+			],
+			"foundrySystem": {
+				"actionType": "util",
+				"activation": {
+					"type": "special",
+					"condition": "Once per turn when you hit with a melee weapon attack"
+				},
+				"damage.parts": [
+					[
+						"1d(2 * floor(min((@classes.shaman.levels + 14) / 5, (@classes.shaman.levels + 19) / 6)))",
+						""
+					]
+				]
+			}
 		},
 		{
 			"name": "Totem of the Harvest",
@@ -3522,6 +4532,11 @@
 			],
 			"entries": [
 				"You bind a minor bestial spirit that grants you the senses of a hound. You gain proficiency in {@skill Survival} and have advantage on Wisdom ({@skill Survival}) checks while in natural environments."
+			],
+			"skillProficiencies": [
+				{
+					"survival": true
+				}
 			]
 		},
 		{
@@ -3541,6 +4556,24 @@
 						"Body Sacred Focus"
 					]
 				}
+			],
+			"foundryEffects": [
+				{
+					"name": "Unarmored Defense",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.ac.formula",
+							"mode": "OVERRIDE",
+							"value": "max(13, 13 + @abilities.con.mod)"
+						},
+						{
+							"key": "system.attributes.ac.calc",
+							"mode": "OVERRIDE",
+							"value": "custom"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -3553,6 +4586,11 @@
 			],
 			"entries": [
 				"You bind a minor bestial spirit that grants you the steps of a panther. You gain proficiency in {@skill Stealth}, and have advantage on Dexterity ({@skill Stealth}) checks to hide in natural environments."
+			],
+			"skillProficiencies": [
+				{
+					"stealth": true
+				}
 			]
 		},
 		{
@@ -3596,6 +4634,10 @@
 			],
 			"entries": [
 				"You bind a minor spirit of water that washes poison away like rain. You gain resistance to acid and poison damage, and you have advantage on saving throws to resist being {@condition poisoned}."
+			],
+			"resist": [
+				"acid",
+				"poison"
 			]
 		},
 		{
@@ -3609,6 +4651,11 @@
 			"entries": [
 				"You bind a minor spirit of darkness that grants you enhanced sight in the shadows. You gain {@sense Darkvision} out to a radius of 120 feet, within which you can see in dim light as if it were bright light, and in darkness as if it were dim light.",
 				"Starting at 9th level, you can see in magical darkness."
+			],
+			"senses": [
+				{
+					"darkvision": 120
+				}
 			]
 		},
 		{
@@ -3622,7 +4669,18 @@
 			"entries": [
 				"You bind a minor spirit of water that allows you to shift like the sea. As a reaction when you take a critical hit, you can to turn it into a normal hit. Once you use this feature you must finish a short or long rest before you can do so again.",
 				"When you reach 12th level in this class, you can use this reaction twice between each short or long rest."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"condition": "When you take a critical hit"
+				},
+				"uses": {
+					"max": "1 + (@classes.shaman.levels >= 12)",
+					"per": "sr"
+				}
+			}
 		},
 		{
 			"name": "Totem of the Whirlwind",
@@ -3634,7 +4692,14 @@
 			],
 			"entries": [
 				"You bind a minor spirit of air that speeds your strikes. When you score a critical hit with a melee weapon attack, you can use your reaction to make another attack against that target."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"condition": "When you score a critical hit with a melee weapon attack"
+				}
+			}
 		},
 		{
 			"name": "Totem of the Winds",
@@ -3647,6 +4712,20 @@
 			"entries": [
 				"You bind a minor spirit of the air which lends speed to your steps with a gust of mighty wind. Your walking speed increases by 5 feet.",
 				"This bonus to your speed increases as you gain shaman levels; at 5th level (10 feet), 11th level (15 feet), and finally at 17th level (20 feet)."
+			],
+			"foundryEffects": [
+				{
+					"name": "Walking Speed",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.walk",
+							"mode": "ADD",
+							"value": "+ 5 * floor((@classes.shaman.levels + 7) / 6)",
+							"priority": 3
+						}
+					]
+				}
 			]
 		},
 		{
@@ -3676,6 +4755,19 @@
 						"Soul Sacred Focus"
 					]
 				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"rest": {
+								"1": [
+									"plant growth"
+								]
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -3701,7 +4793,25 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"actionType": "other",
+				"activation": {
+					"type": "special",
+					"condition": "When you hit a creature with a melee weapon attack"
+				},
+				"consume": {
+					"amount": 1,
+					"target": "spells.pact.value",
+					"type": "attribute"
+				},
+				"damage.parts": [
+					[
+						"(@spells.pact.level)d8",
+						""
+					]
+				]
+			}
 		},
 		{
 			"name": "Totem of Growth",
@@ -3729,7 +4839,18 @@
 						"Body Sacred Focus"
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "bonus"
+				},
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "sr"
+				}
+			}
 		},
 		{
 			"name": "Totem of the Grave",
@@ -3751,6 +4872,19 @@
 							"name": "Shaman",
 							"source": "LLSH",
 							"visible": true
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"_": {
+							"daily": {
+								"1": [
+									"animate dead"
+								]
+							}
 						}
 					}
 				}
@@ -3778,7 +4912,21 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"ability": "wis",
+				"actionType": "heal",
+				"activation": {
+					"type": "special",
+					"condition": "When you cast a spell of 1st-level or higher that restores hit points to a creature other then yourself"
+				},
+				"damage.parts": [
+					[
+						"@mod",
+						"temphp"
+					]
+				]
+			}
 		},
 		{
 			"name": "Totem of the Mirth",
@@ -3805,7 +4953,25 @@
 						"Heart Sacred Focus"
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"actionType": "heal",
+				"activation": {
+					"cost": 1,
+					"type": "bonus"
+				},
+				"damage.parts": [
+					[
+						"@classes.shaman.levels",
+						"temphp"
+					]
+				],
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "lr"
+				}
+			}
 		},
 		{
 			"name": "Totem of the Mystic",
@@ -3833,6 +4999,19 @@
 						"Mind Sacred Focus"
 					]
 				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"rest": {
+								"1": [
+									"detect thoughts"
+								]
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -3857,7 +5036,15 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"actionType": "save",
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"save.ability": "con"
+			}
 		},
 		{
 			"name": "Totem of the Wild",
@@ -3879,6 +5066,19 @@
 							"name": "Shaman",
 							"source": "LLSH",
 							"visible": true
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1": [
+									"summon beast|tce"
+								]
+							}
 						}
 					}
 				}
@@ -3930,7 +5130,13 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "Once per turn, if your target is within 5 feet of one of your allies."
+				}
+			}
 		},
 		{
 			"name": "Totem of the Ooze",
@@ -3954,7 +5160,13 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "bonus"
+				}
+			}
 		},
 		{
 			"name": "Totem of the River",
@@ -3977,6 +5189,19 @@
 							"visible": true
 						}
 					}
+				}
+			],
+			"foundryEffects": [
+				{
+					"name": "Swimming Speed",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.swim",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
 				}
 			]
 		},
@@ -4001,6 +5226,11 @@
 							"visible": true
 						}
 					}
+				}
+			],
+			"senses": [
+				{
+					"tremorsense": 30
 				}
 			]
 		},
@@ -4051,6 +5281,19 @@
 						}
 					}
 				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1": [
+									"summon fey|tce"
+								]
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -4077,7 +5320,16 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you fail a saving throw"
+				},
+				"uses": {
+					"max": "1 + (@classes.shaman.levels >= 15)"
+				}
+			}
 		},
 		{
 			"name": "Totem of the Vine",
@@ -4099,6 +5351,15 @@
 							"source": "LLSH",
 							"visible": true
 						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"ensnaring strike"
+						]
 					}
 				}
 			]
@@ -4125,7 +5386,23 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"consume": {
+					"amount": -1,
+					"target": "spells.pact.value",
+					"type": "attribute"
+				},
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "lr"
+				}
+			}
 		},
 		{
 			"name": "Totem of the Eclipse",
@@ -4174,6 +5451,19 @@
 						}
 					}
 				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"rest": {
+								"1": [
+									"summon elemental|tce"
+								]
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -4199,7 +5489,21 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"ability": "wis",
+				"actionType": "heal",
+				"activation": {
+					"type": "special",
+					"condition": "At the start of each of your turns, so long as you have no more than half of your hit points left."
+				},
+				"damage.parts": [
+					[
+						"@mod",
+						"healing"
+					]
+				]
+			}
 		},
 		{
 			"name": "Totem of the Skies",
@@ -4223,6 +5527,19 @@
 						}
 					}
 				}
+			],
+			"foundryEffects": [
+				{
+					"name": "Flying Speed",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.fly",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -4235,7 +5552,15 @@
 			],
 			"entries": [
 				"You bind a minor spirit of death that comes with the changing of the seasons. When you hit a creature with an attack, you can force it to make a Constitution saving throw. On a failed save, it can't regain hit points until the start of your next turn."
-			]
+			],
+			"foundrySystem": {
+				"actionType": "save",
+				"activation": {
+					"type": "special",
+					"condition": "When you hit a creature with an attack"
+				},
+				"save.ability": "con"
+			}
 		},
 		{
 			"name": "Totem of Drought",
@@ -4366,7 +5691,7 @@
 				"LL:TTM"
 			],
 			"entries": [
-				"You bind a sinister spirit which you can call to you. You can cast summon shadowspawn at the level of your Primal Magic slots, without expending a spell slot or material components. Once you cast summon shadowspawn this way, you must finish a long rest before you can cast it in this way again."
+				"You bind a sinister spirit which you can call to you. You can cast {@spell summon shadowspawn|tce} at the level of your Primal Magic slots, without expending a spell slot or material components. Once you cast summon shadowspawn this way, you must finish a long rest before you can cast it in this way again."
 			],
 			"prerequisite": [
 				{
@@ -4376,6 +5701,19 @@
 							"name": "Shaman",
 							"source": "LLSH",
 							"visible": true
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1": [
+									"summon shadowspawn|tce"
+								]
+							}
 						}
 					}
 				}
@@ -4390,7 +5728,8 @@
 			],
 			"entries": [
 				"This spirit compels your foes to stand and fight against you. When you hit a creature with an attack with this weapon, it has disadvantage on any attacks it makes against creatures other than you until the beginning of your next turn."
-			]
+			],
+			"foundryImg": "icons/magic/symbols/runes-etched-steel-blade.webp"
 		},
 		{
 			"name": "Spirit of Draining",
@@ -4401,7 +5740,8 @@
 			],
 			"entries": [
 				"This spirit siphons the life force of other creatures to restore you. Once per turn when you hit a creature with this weapon, you can cause the damage of the attack to be necrotic, and you gain temporary hit points equal to your Wisdom modifier."
-			]
+			],
+			"foundryImg": "icons/skills/melee/strike-sword-blood-red.webp"
 		},
 		{
 			"name": "Spirit of Might",
@@ -4413,7 +5753,472 @@
 			"entries": [
 				"This spirit draws out the full potential of your body. While wielding this weapon you gain a bonus to Strength checks and saving throws equal to your Wisdom modifier.",
 				"Moreover, you have advantage on attack rolls with this weapon against any creature that is grappled by you."
-			]
+			],
+			"foundryEffects": [
+				{
+					"name": "Strength Check/Save Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.abilities.str.bonuses.check",
+							"mode": "ADD",
+							"value": "+@abilities.wis.mod"
+						},
+						{
+							"key": "system.abilities.str.bonuses.save",
+							"mode": "ADD",
+							"value": "+@abilities.wis.mod"
+						}
+					]
+				}
+			],
+			"foundryImg": "icons/magic/control/buff-strength-muscle-damage-red.webp"
+		},
+		{
+			"name": "Mastery of Air",
+			"source": "LLSH:E",
+			"featureType": [
+				"LL:EM"
+			],
+			"entries": [
+				"This mastery grants you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain resistance to thunder damage.",
+						"Your {@classFeature Totemic Assault|Shaman|LLSH|1} deals thunder damage in place of necrotic damage, and on a failed save, a Large or smaller creature is moved 5 feet in a direction of your choice.",
+						{
+							"type": "entries",
+							"entries": [
+								"You gain the Spirituality Spells from the table below. When you gain a level in this class, you can replace one spell from this feature with another spell of the same level from any spell list that deals only the damage type of its element.",
+								"Alternatively, you can replace the spell with another spell of a similar elemental theme at the discretion of your DM.",
+								{
+									"type": "table",
+									"colLabels": [
+										"Shaman Level",
+										"Spells"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-10"
+									],
+									"rows": [
+										[
+											"3rd",
+											"{@spell thunderwave}, {@spell shatter}"
+										],
+										[
+											"5th",
+											"{@spell lightning bolt}"
+										],
+										[
+											"7th",
+											"{@spell storm sphere|xge}"
+										],
+										[
+											"9th",
+											"{@spell control winds|xge}"
+										]
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"thunderwave",
+							"shatter"
+						],
+						"5": [
+							"lightning bolt"
+						],
+						"7": [
+							"storm sphere|xge"
+						],
+						"9": [
+							"control winds|xge"
+						]
+					}
+				}
+			],
+			"resist": [
+				"thunder"
+			],
+			"foundryImg": "icons/magic/air/wind-vortex-swirl-blue-purple.webp"
+		},
+		{
+			"name": "Mastery of Earth",
+			"source": "LLSH:E",
+			"featureType": [
+				"LL:EM"
+			],
+			"entries": [
+				"This mastery grants you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain resistance to bludgeoning damage.",
+						"Your {@classFeature Totemic Assault|Shaman|LLSH|1} deals magical bludgeoning damage in place of necrotic damage, and on a failed save, a Large or smaller creature is knocked {@condition prone} in its space.",
+						{
+							"type": "entries",
+							"entries": [
+								"You gain the Spirituality Spells from the table below. When you gain a level in this class, you can replace one spell from this feature with another spell of the same level from any spell list that deals only the damage type of its element.",
+								"Alternatively, you can replace the spell with another spell of a similar elemental theme at the discretion of your DM.",
+								{
+									"type": "table",
+									"colLabels": [
+										"Shaman Level",
+										"Spells"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-10"
+									],
+									"rows": [
+										[
+											"3rd",
+											"{@spell earth tremor|xge}, {@spell earthen grasp|xge}"
+										],
+										[
+											"5th",
+											"{@spell erupting earth|xge}"
+										],
+										[
+											"7th",
+											"{@spell stone shape}"
+										],
+										[
+											"9th",
+											"{@spell wall of stone}"
+										]
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"earth tremor|xge",
+							"earthen grasp|xge"
+						],
+						"5": [
+							"erupting earth|xge"
+						],
+						"7": [
+							"stone shape"
+						],
+						"9": [
+							"wall of stone"
+						]
+					}
+				}
+			],
+			"resist": [
+				"bludgeoning"
+			],
+			"foundryImg": "icons/magic/earth/explosion-lava-stone-green.webp"
+		},
+		{
+			"name": "Mastery of Fire",
+			"source": "LLSH:E",
+			"featureType": [
+				"LL:EM"
+			],
+			"entries": [
+				"This mastery grants you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain resistance to fire damage.",
+						"Your {@classFeature Totemic Assault|Shaman|LLSH|1} deals fire damage in place of necrotic damage, and the damage dice you roll for Totemic Assault become {@dice d12}s (instead of the normal {@dice d8}s).",
+						{
+							"type": "entries",
+							"entries": [
+								"You gain the Spirituality Spells from the table below. When you gain a level in this class, you can replace one spell from this feature with another spell of the same level from any spell list that deals only the damage type of its element.",
+								"Alternatively, you can replace the spell with another spell of a similar elemental theme at the discretion of your DM.",
+								{
+									"type": "table",
+									"colLabels": [
+										"Shaman Level",
+										"Spells"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-10"
+									],
+									"rows": [
+										[
+											"3rd",
+											"{@spell burning hands}, {@spell flaming sphere}"
+										],
+										[
+											"5th",
+											"{@spell fireball}"
+										],
+										[
+											"7th",
+											"{@spell wall of fire}"
+										],
+										[
+											"9th",
+											"{@spell immolation|xge}"
+										]
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"burning hands",
+							"flaming sphere"
+						],
+						"5": [
+							"fireball"
+						],
+						"7": [
+							"wall of fire"
+						],
+						"9": [
+							"immolation|xge"
+						]
+					}
+				}
+			],
+			"resist": [
+				"fire"
+			],
+			"foundryImg": "icons/magic/fire/barrier-shield-explosion-yellow.webp"
+		},
+		{
+			"name": "Mastery of Water",
+			"source": "LLSH:E",
+			"featureType": [
+				"LL:EM"
+			],
+			"entries": [
+				"This mastery grants you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain resistance to cold damage.",
+						"Your {@classFeature Totemic Assault|Shaman|LLSH|1} deals cold damage in place of necrotic damage, and when you use Totemic Assault you can target two creatures that are within 5 feet of each other.",
+						{
+							"type": "entries",
+							"entries": [
+								"You gain the Spirituality Spells from the table below. When you gain a level in this class, you can replace one spell from this feature with another spell of the same level from any spell list that deals only the damage type of its element.",
+								"Alternatively, you can replace the spell with another spell of a similar elemental theme at the discretion of your DM.",
+								{
+									"type": "table",
+									"colLabels": [
+										"Shaman Level",
+										"Spells"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-10"
+									],
+									"rows": [
+										[
+											"3rd",
+											"{@spell ice knife|xge}, {@spell snowball storm|xge}"
+										],
+										[
+											"5th",
+											"{@spell tidal wave|xge}"
+										],
+										[
+											"7th",
+											"{@spell ice storm}"
+										],
+										[
+											"9th",
+											"{@spell cone of cold}"
+										]
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"ice knife|xge",
+							"snowball storm|xge"
+						],
+						"5": [
+							"tidal wave|xge"
+						],
+						"7": [
+							"ice storm"
+						],
+						"9": [
+							"cone of cold"
+						]
+					}
+				}
+			],
+			"resist": [
+				"cold"
+			],
+			"foundryImg": "icons/magic/water/wave-water-teal.webp"
+		},
+		{
+			"name": "Elementalist Spell",
+			"source": "LLSH:E",
+			"featureType": [
+				"LL:ES"
+			],
+			"entries": [
+				"You can cast one Elementalist Spell at the level of your Primal Magic spell slots, without expending a spell slot. Once you do so, you must finish a long rest before you can cast an Elementalist spell in this way again. If you chose this feature previously you can cast two spells in this way."
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1": [
+									{
+										"choose": "subclass=shaman: elementalist (llsh:e), fire;shaman: elementalist (llsh:e), water;shaman: elementalist (llsh:e), air;shaman: elementalist (llsh:e), earth"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"foundryImg": "icons/magic/symbols/runes-star-orange-purple.webp"
+		},
+		{
+			"name": "Air Ascension",
+			"source": "LLSH:E",
+			"featureType": [
+				"LL:EI"
+			],
+			"entries": [
+				"You learn the spell {@spell Investiture of Wind|xge}. The spell counts as a Shaman spell for you, but does not count against your number of Spells Known. Once per long rest, you can cast it without expending a spell slot."
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"_": [
+							"investiture of wind|xge"
+						]
+					},
+					"innate": {
+						"_": {
+							"daily": {
+								"1": [
+									"investiture of wind|xge"
+								]
+							}
+						}
+					}
+				}
+			],
+			"foundryImg": "icons/skills/trades/music-singing-voice-blue.webp"
+		},
+		{
+			"name": "Earth Ascension",
+			"source": "LLSH:E",
+			"featureType": [
+				"LL:EI"
+			],
+			"entries": [
+				"You learn the spell {@spell Investiture of Stone|xge}. The spell counts as a Shaman spell for you, but does not count against your number of Spells Known. Once per long rest, you can cast it without expending a spell slot."
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"_": [
+							"investiture of stone|xge"
+						]
+					},
+					"innate": {
+						"_": {
+							"daily": {
+								"1": [
+									"investiture of stone|xge"
+								]
+							}
+						}
+					}
+				}
+			],
+			"foundryImg": "icons/magic/earth/construct-stone-long-arms.webp"
+		},
+		{
+			"name": "Fire Ascension",
+			"source": "LLSH:E",
+			"featureType": [
+				"LL:EI"
+			],
+			"entries": [
+				"You learn the spell {@spell Investiture of Flame|xge}. The spell counts as a Shaman spell for you, but does not count against your number of Spells Known. Once per long rest, you can cast it without expending a spell slot."
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"_": [
+							"investiture of flame|xge"
+						]
+					},
+					"innate": {
+						"_": {
+							"daily": {
+								"1": [
+									"investiture of flame|xge"
+								]
+							}
+						}
+					}
+				}
+			],
+			"foundryImg": "icons/magic/fire/elemental-fire-humanoid.webp"
+		},
+		{
+			"name": "Water Ascension",
+			"source": "LLSH:E",
+			"featureType": [
+				"LL:EI"
+			],
+			"entries": [
+				"You learn the spell {@spell Investiture of Ice|xge}. The spell counts as a Shaman spell for you, but does not count against your number of Spells Known. Once per long rest, you can cast it without expending a spell slot."
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"_": [
+							"investiture of ice|xge"
+						]
+					},
+					"innate": {
+						"_": {
+							"daily": {
+								"1": [
+									"investiture of ice|xge"
+								]
+							}
+						}
+					}
+				}
+			],
+			"foundryImg": "icons/magic/water/elemental-water.webp"
 		}
 	],
 	"monster": [
@@ -4488,7 +6293,7 @@
 		},
 		{
 			"name": "Giest",
-			"source": "LLSH",
+			"source": "LLSH:E",
 			"page": 8,
 			"summonedByClass": "Shaman|LLSH",
 			"size": [
@@ -4555,7 +6360,7 @@
 		},
 		{
 			"name": "Spirit Dragon",
-			"source": "LLSH",
+			"source": "LLSH:E",
 			"page": 8,
 			"summonedByClass": "Shaman|LLSH",
 			"size": [
@@ -4613,6 +6418,30 @@
 					"name": "Spirit Breath",
 					"entries": [
 						"The Spirit Dragon can expend a Primal Magic spell slot to exhale pure spiritual energy in a 30 ft. cone, forcing creatures in that area to make a Dexterity saving throw. They take necrotic damage equal to twice the damage of your Totemic Assault on a failed save, and half as much on a success."
+					]
+				}
+			]
+		}
+	],
+	"foundrySubclassFeature": [
+		{
+			"name": "Ascended Awareness",
+			"source": "LLSH:E",
+			"className": "Shaman",
+			"classSource": "LLSH",
+			"subclassShortName": "Far Seer",
+			"subclassSource": "LLSH:E",
+			"level": 6,
+			"effects": [
+				{
+					"name": "Initiative Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.init.bonus",
+							"mode": "ADD",
+							"value": "+@abilities.wis.mod"
+						}
 					]
 				}
 			]
