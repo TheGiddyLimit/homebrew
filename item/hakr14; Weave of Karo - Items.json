@@ -9,12 +9,12 @@
 				"authors": [
 					"hakr14"
 				],
-				"version": "1.2"
+				"version": "1.2.1"
 			}
 		],
 		"dateAdded": 1662156010,
-		"dateLastModified": 1687470349,
-		"_dateLastModifiedHash": "c05379f905"
+		"dateLastModified": 1687555673,
+		"_dateLastModifiedHash": "965b27be20"
 	},
 	"item": [
 		{
@@ -244,13 +244,31 @@
 			"wondrous": true,
 			"type": "OTH",
 			"charges": 5,
-			"recharge": "dawn",
-			"reqAttune": "by a creature with access to a natural weapon or magic that can grant them a natural weapon",
+			"recharge": "restLong",
+			"reqAttune": "by a creature proficient with {@item alchemist's supplies|phb}",
 			"entries": [
 				"A clear solution in a vial. This solution reacts with organic material, imbuing it with elemental magic for a short time.",
-				"After coating a natural weapon in the salve as a bonus action (expending a charge), your next attack with that natural weapon can deal acid, cold, fire, lightning, or thunder damage.",
-				"This item has 5 charges and regains {@dice 1d2} charges each dawn."
+				"As a bonus action on your turn, you can expend a charge to coat a natural weapon on you or a creature within 5 feet. The next attack with this natural weapon that hits within the next minute has its damage type changed to acid, cold, fire, lightning, or thunder (your choice when you coat the weapon). The attack also deals extra damage of the chosen damage type equal to your proficiency bonus.",
+				"This item has 5 charges. Over the course of a long rest, you can use your {@item alchemist's supplies|phb} to restore charges to the item. If the item has no charges remaining, it regains 1 charge. If the item has any charges remaining, it instead regains {@dice 1d4} charges."
 			],
+			"foundrySystem": {
+				"actionType": "util",
+				"activation": {
+					"cost": 1,
+					"type": "bonus"
+				},
+				"damage.parts": [
+					[
+						"@prof",
+						""
+					]
+				],
+				"duration": {
+					"value": 1,
+					"units": "minute"
+				},
+				"uses.recovery": "1d4"
+			},
 			"foundryImg": "icons/consumables/potions/vial-cork-empty.webp"
 		}
 	],
