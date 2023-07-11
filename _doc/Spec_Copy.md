@@ -306,6 +306,18 @@ Remove named or plain items from an array.
 }
 ```
 
+#### setProp
+
+Set a property on an object. Note that use of a more specific `mode` is preferred, as these will generally be more resilient against future schema changes.
+
+```jsonc
+{
+    "mode": "setProp",
+    "prop": "hp.formula",
+    "value": "2d10+2"
+}
+```
+
 #### calculateProp
 
 Calculate a property, and add it to an object.
