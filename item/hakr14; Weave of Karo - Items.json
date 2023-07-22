@@ -9,12 +9,12 @@
 				"authors": [
 					"hakr14"
 				],
-				"version": "1.1.1"
+				"version": "1.2.1"
 			}
 		],
 		"dateAdded": 1662156010,
-		"dateLastModified": 1679637254,
-		"_dateLastModifiedHash": "7a0d8b82eb"
+		"dateLastModified": 1687555673,
+		"_dateLastModifiedHash": "965b27be20"
 	},
 	"item": [
 		{
@@ -176,9 +176,19 @@
 				"A single, well-loved pauldron.",
 				"While attuned to this pauldron, your weapon attacks score a critical hit on a roll of 19 or 20."
 			],
-			"foundryFlags": {
-				"flags.dnd5e.weaponCriticalThreshold": 19
-			},
+			"foundryEffects": [
+				{
+					"transfer": true,
+					"changes": [
+						{
+							"key": "flags.dnd5e.weaponCriticalThreshold",
+							"mode": "OVERRIDE",
+							"value": 19,
+							"priority": 1
+						}
+					]
+				}
+			],
 			"foundryImg": "icons/equipment/shoulder/pauldron-purple-worn.webp"
 		},
 		{
@@ -221,10 +231,45 @@
 				"No matter the result, neither coin is teleported and both instantly become inactive, and cannot be used again this way until the next dawn."
 			],
 			"foundrySystem": {
-				"activaiton.type": "action",
+				"actionType": "other",
+				"activation.type": "action",
 				"formula": "2d100 + 1d2"
 			},
 			"foundryImg": "icons/commodities/currency/coin-inset-swirl-gold.webp"
+		},
+		{
+			"source": "karoitem",
+			"name": "Elemental Salve",
+			"rarity": "uncommon",
+			"wondrous": true,
+			"type": "OTH",
+			"charges": 5,
+			"recharge": "restLong",
+			"reqAttune": "by a creature proficient with {@item alchemist's supplies|phb}",
+			"entries": [
+				"A clear solution in a vial. This solution reacts with organic material, imbuing it with elemental magic for a short time.",
+				"As a bonus action on your turn, you can expend a charge to coat a natural weapon on you or a creature within 5 feet. The next attack with this natural weapon that hits within the next minute has its damage type changed to acid, cold, fire, lightning, or thunder (your choice when you coat the weapon). The attack also deals extra damage of the chosen damage type equal to your proficiency bonus.",
+				"This item has 5 charges. Over the course of a long rest, you can use your {@item alchemist's supplies|phb} to restore charges to the item. If the item has no charges remaining, it regains 1 charge. If the item has any charges remaining, it instead regains {@dice 1d4} charges."
+			],
+			"foundrySystem": {
+				"actionType": "util",
+				"activation": {
+					"cost": 1,
+					"type": "bonus"
+				},
+				"damage.parts": [
+					[
+						"@prof",
+						""
+					]
+				],
+				"duration": {
+					"value": 1,
+					"units": "minute"
+				},
+				"uses.recovery": "1d4"
+			},
+			"foundryImg": "icons/consumables/potions/vial-cork-empty.webp"
 		}
 	],
 	"magicvariant": [
