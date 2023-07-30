@@ -1,0 +1,103 @@
+const URL_BREW = "assets/homebrew/Middle Finger of Vecna; Binder(FoundryFriendly).json";
+let targetactor = token.actor;
+  let targetitems = targetactor.items;
+  if (!targetactor.system.scale.binder)
+  {
+      ui.notifications.error("Binder scale not detected...Is this actor a Binder?");  
+      return;
+  }
+  let vestigelevel = targetactor.system.scale.binder['vestige-level'].value;
+
+  async function showDialog() {
+    return new Promise((resolve) => {
+        const findVestige = (item) => item.flags && item.flags.bindervestige;
+      const foundVestige = targetitems.filter(findVestige);
+  
+      // Generate the list of options
+      const options = foundVestige.map((item) => {
+        return {
+          label: item.name,
+          value: item.id,
+        };
+      });
+  
+      new Dialog({
+        title: "Bound Vestige Menu",
+        content: `
+          <div>
+            <label for="options">Bound Vestiges (Select to dispel):</label>
+            <select id="options" name="options" multiple>
+              ${options.map((option) => `<option value="${option.value}">${option.label}</option>`)}
+            </select>
+          </div>
+          <div>
+            <label for="number">Vestige Level (Input to overwrite):</label>
+            <input type="number" id="number" name="number" value=${vestigelevel}>
+          </div>
+        `,
+        buttons: {
+          ok: {
+            label: "Import Vestiges",
+            callback: (html) => {
+              const selectedOptions = Array.from(html.find('#options')[0].selectedOptions).map((option) => option.value);
+              const numberValue = parseInt(html.find('#number')[0].value);
+  
+              removeVestiges(selectedOptions);
+              importVestiges(numberValue);
+              resolve();
+            },
+          },
+          cancel: {
+            label: "Cancel",
+            callback: () => {
+              resolve();
+            },
+          },
+        },
+      }).render(true);
+    });
+  }
+  
+  function removeVestiges(options) {
+    options.forEach((option) => {
+        let removearray = targetactor.items.get(option).flags.bindervestige.grantedfeats;
+    
+        removearray.forEach((item) => {
+            if (targetactor.items.getName(item))
+            {
+        targetactor.items.getName(item).delete()
+            }
+        });
+        targetitems.get(option).delete()
+    });
+  }
+    //Thanks to TheGiddyLimit for writing this
+  function importVestiges(number) {
+    (async () => {
+      const ACTOR = targetactor;
+      const ENTITY_PROP = "optionalfeature";
+      const REQUIRED_TYPE_SET = new Set();
+
+      for (let i = 1; i <= number; i++) {
+        const value = `VS${i}`;
+        REQUIRED_TYPE_SET.add(value);
+      }
+  
+      // Load the brew
+      const [brewDoc] = await BrewUtil2.pAddBrewFromUrl(URL_BREW);
+      const sources = new Set(brewDoc.body._meta.sources.map(it => it.json));
+      const content = (await DataLoader.pCacheAndGetAllBrew(ENTITY_PROP))
+          .filter(it => sources.has(it.source));
+  
+      // Filter down to the desired feature types
+      const contentFilt = content
+          .filter(it => it.featureType.some(ft => REQUIRED_TYPE_SET.has(ft)));
+  
+      // Load the importer
+      const importer = await game.modules.get("plutonium").api.importer.pGetImporter({prop: ENTITY_PROP, actor: ACTOR});
+      await importer.pInit();
+      await importer.pSetContent({optionalfeature: contentFilt});
+       importer.render(true);
+  })()
+  }
+  await showDialog();
