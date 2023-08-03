@@ -76,7 +76,7 @@
         {
             "name": "Angulotl Blade",
             "source": "FleeMortals",
-            "page": 0,
+            "page": 28,
             "size": [
                 "S"
             ],
@@ -793,9 +793,11 @@
                 {
                     "name": "Signature Attack (Poison Knife)",
                     "entries": [
-                        "{@atk mw,rw} +3 plus PB to hit, reach 5 ft. or range 20/60 ft., one target. {@h}{@dice 1d4} plus PB piercing damage plus 7 ({@damage 2d6}) poison damage. Beginning at 7th level, the yegg can make this attack twice, instead of once, when they take the Attack action on their turn."
+                        "{@atk mw,rw} +3 plus PB to hit, reach 5 ft. or range 20/60 ft., one target. {@h}{@damage 1d4} plus PB piercing damage plus 7 ({@damage 2d6}) poison damage. Beginning at 7th level, the yegg can make this attack twice, instead of once, when they take the Attack action on their turn."
                     ]
-                },
+                }
+            ],
+            "action": [
                 {
                     "name": "3rd Level: Death from Above! (3/Day)",
                     "entries": [
@@ -877,7 +879,7 @@
                 "perception": "+0 plus PB",
                 "stealth": "+1 plus PB"
             },
-            "passive": null,
+            "passive": "10 plus PB",
             "pbNote": "equals the caregiver's bonus",
             "trait": [
                 {
@@ -891,7 +893,7 @@
                 {
                     "name": "Signature Attack (Bite)",
                     "entries": [
-                        "{@atk mw} +3 plus PB to hit, reach 5 ft., one target. {@h}{@dice 1d6} plus PB piercing damage."
+                        "{@atk mw} +3 plus PB to hit, reach 5 ft., one target. {@h}{@damage 1d6} plus PB piercing damage."
                     ]
                 },
                 {
@@ -940,7 +942,6 @@
             "name": "Bear",
             "source": "FleeMortals",
             "page": 35,
-            "cr": "2",
             "size": [
                 "L"
             ],
@@ -961,17 +962,17 @@
                     ]
                 }
             ],
-            "hp":{
-                "formula": "5d10 + 15",
-                "average": 42
+            "hp": {
+                "average": 42,
+                "formula": "5d10 + 15"
             },
             "speed": {
                 "walk": 40,
                 "swim": 30
             },
             "str": 19,
-            "con": 10,
-            "dex": 17,
+            "dex": 10,
+            "con": 17,
             "int": 8,
             "wis": 12,
             "cha": 7,
@@ -980,6 +981,7 @@
                 "survival": "+3"
             },
             "passive": 13,
+            "cr": "2",
             "trait": [
                 {
                     "name": "Exceptional Smell",
@@ -1004,7 +1006,7 @@
                 {
                     "name": "Bite",
                     "entries": [
-                        "{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) piercing damage. If the target is Medium or smaller, they are {@condition grappled} (escape {@dc 14}). Until this grapple ends, the bear can’t use their Bite attack on another target."
+                        "{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) piercing damage. If the target is Medium or smaller, they are {@condition grappled} (escape {@dc 14}). Until this grapple ends, the bear can't use their Bite attack on another target."
                     ]
                 },
                 {
@@ -1014,18 +1016,28 @@
                     ]
                 },
                 {
-                    "name": "Powerful Swipe (Recharge 6)",
+                    "name": "Powerful Swipe {@recharge}",
                     "entries": [
-                        "{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}10 ({@damage 1d12 + 4}) bludgeoning damage. If the target is Medium or smaller,  they are shoved up to 10 feet away and knocked {@condition prone}. If the target hits a solid surface, they take an extra 7 ({@damage 2d6}) bludgeoning damage."
+                        "{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}10 ({@damage 1d12 + 4}) bludgeoning damage. If the target is Medium or smaller, they are shoved up to 10 feet away and knocked {@condition prone}. If the target hits a solid surface, they take an extra 7 ({@damage 2d6}) bludgeoning damage."
                     ]
                 }
+            ],
+            "actionTags": [
+                "Multiattack"
+            ],
+            "damageTags": [
+                "B",
+                "P",
+                "S"
+            ],
+            "miscTags": [
+                "MW"
             ]
         },
         {
             "name": "Little Bear",
             "source": "FleeMortals",
             "page": 36,
-            "cr": "1",
             "size": [
                 "S",
                 "M"
@@ -1047,17 +1059,17 @@
                     ]
                 }
             ],
-            "hp":{
-                "formula": "4d8 + 12",
-                "average": 30
+            "hp": {
+                "average": 30,
+                "formula": "4d8 + 12"
             },
             "speed": {
                 "walk": 40,
                 "swim": 20
             },
             "str": 16,
-            "con": 13,
-            "dex": 16,
+            "dex": 13,
+            "con": 16,
             "int": 8,
             "wis": 12,
             "cha": 7,
@@ -1066,6 +1078,7 @@
                 "survival": "+3"
             },
             "passive": 13,
+            "cr": "1",
             "trait": [
                 {
                     "name": "Exceptional Smell",
@@ -1090,16 +1103,26 @@
                 {
                     "name": "Swat",
                     "entries": [
-                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) slashing or bludgeoning damage, and the target must succeed on a {@dc 13} Strength saving throw or be knocked {@condition prone}."
+                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) slashing or bludgeoning damage (bear's choice), and the target must succeed on a {@dc 13} Strength saving throw or be knocked {@condition prone}."
                     ]
                 }
+            ],
+            "damageTags": [
+                "B",
+                "P",
+                "S"
+            ],
+            "miscTags": [
+                "MW"
+            ],
+            "conditionInflict": [
+                "prone"
             ]
         },
         {
             "name": "Bird of Prey",
             "source": "FleeMortals",
             "page": 37,
-            "cr": "1/2",
             "size": [
                 "T",
                 "S"
@@ -1113,18 +1136,20 @@
             "alignment": [
                 "U"
             ],
-            "ac": [13],
-            "hp":{
-                "formula": "4d6 + 4",
-                "average": 18
+            "ac": [
+                13
+            ],
+            "hp": {
+                "average": 18,
+                "formula": "4d6 + 4"
             },
             "speed": {
                 "walk": 10,
                 "fly": 80
             },
             "str": 11,
-            "con": 16,
-            "dex": 12,
+            "dex": 16,
+            "con": 12,
             "int": 4,
             "wis": 12,
             "cha": 5,
@@ -1133,6 +1158,7 @@
                 "perception": "+5"
             },
             "passive": 15,
+            "cr": "1/2",
             "trait": [
                 {
                     "name": "Exceptional Vision",
@@ -1143,7 +1169,7 @@
                 {
                     "name": "Flyby",
                     "entries": [
-                        "The bird doesn’t provoke opportunity attacks when they fly out of an enemy’s reach."
+                        "The bird doesn't provoke opportunity attacks when they fly out of an enemy's reach."
                     ]
                 },
                 {
@@ -1163,7 +1189,7 @@
                 {
                     "name": "Talons",
                     "entries": [
-                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d4 + 3}) slashing damage. If the target is a Tiny creature, they are grappled (escape {@dc 12}). If the target is a Small or larger creature, the bird attaches to them. While attached, the bird’s Beak attacks against that target are made with advantage, and the bird can’t attack another target. The target or a creature who can reach them can attempt to detach the bird as an action by making a {@dc 12} Strength (Athletics) check. On a failed check, the attached target takes 2 ({@damage 1d4}) slashing damage. On a successful check, the attached target takes 2 ({@damage 1d4}) slashing damage and is no longer attached. The bird can detach by spending 5 feet of their movement."
+                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d4 + 3}) slashing damage. If the target is a Tiny creature, they are {@condition grappled} (escape {@dc 12}). If the target is a Small or larger creature, the bird attaches to them. While attached, the bird's Beak attacks against that target are made with advantage, and the bird can't attack another target. The target or a creature who can reach them can attempt to detach the bird as an action by making a {@dc 12} Strength (Athletics) check. On a failed check, the attached target takes 2 ({@damage 1d4}) slashing damage. On a successful check, the attached target takes 2 ({@damage 1d4}) slashing damage and is no longer attached. The bird can detach by spending 5 feet of their movement."
                     ]
                 }
             ],
@@ -1174,13 +1200,22 @@
                         "The bird makes a Wisdom (Perception) check."
                     ]
                 }
+            ],
+            "traitTags": [
+                "Flyby"
+            ],
+            "damageTags": [
+                "P",
+                "S"
+            ],
+            "miscTags": [
+                "MW"
             ]
         },
         {
             "name": "Dire Bird of Prey",
             "source": "FleeMortals",
             "page": 37,
-            "cr": "3",
             "size": [
                 "M",
                 "L"
@@ -1197,20 +1232,22 @@
             "ac": [
                 {
                     "ac": 15,
-                    "from": ["natural armor"]
+                    "from": [
+                        "natural armor"
+                    ]
                 }
             ],
-            "hp":{
-                "formula": "8d10 + 24",
-                "average": 68
+            "hp": {
+                "average": 68,
+                "formula": "8d10 + 24"
             },
             "speed": {
                 "walk": 20,
                 "fly": 90
             },
             "str": 17,
-            "con": 15,
-            "dex": 16,
+            "dex": 15,
+            "con": 16,
             "int": 6,
             "wis": 12,
             "cha": 5,
@@ -1219,6 +1256,7 @@
                 "perception": "+5"
             },
             "passive": 15,
+            "cr": "3",
             "trait": [
                 {
                     "name": "Exceptional Vision",
@@ -1229,7 +1267,7 @@
                 {
                     "name": "Flyby",
                     "entries": [
-                        "The bird doesn’t provoke opportunity attacks when they fly out of an enemy’s reach."
+                        "The bird doesn't provoke opportunity attacks when they fly out of an enemy's reach."
                     ]
                 },
                 {
@@ -1249,19 +1287,19 @@
                 {
                     "name": "Heavy Beak",
                     "entries": [
-                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage. On a critical hit, the target is {@condition dazed|FleeMortals} until the start of the bird’s next turn."
+                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage. On a critical hit, the target is {@condition dazed|FleeMortals} until the start of the bird's next turn."
                     ]
                 },
                 {
                     "name": "Rending Talons",
                     "entries": [
-                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage. If the target is Medium or smaller, they are {@condition grappled} (escape {@dc 13}). While grappling a target, the bird’s Beak attacks against that target are made with advantage, and the bird can’t attack another target. Each time the target makes a check to end the grapple, the target takes 4 ({@damage 1d8}) slashing damage."
+                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage. If the target is Medium or smaller, they are {@condition grappled} (escape {@dc 13}). While grappling a target, the bird's Beak attacks against that target are made with advantage, and the bird can't attack another target. Each time the target makes a check to end the grapple, the target takes 4 ({@damage 1d8}) slashing damage."
                     ]
                 },
                 {
                     "name": "Crushing Grip",
                     "entries": [
-                        "The bird’s powerful talons crush a {@condition grappled} target. The target must make a {@dc 13} Strength saving throw, taking 17 ({@damage 5d6}) bludgeoning damage on a failed save, or half as much damage on a successful one. If the target fails the save by 5 or more, they are also {@condition dazed|FleeMortals} until the end of their next turn."
+                        "The bird's powerful talons crush a {@condition grappled} target. The target must make a {@dc 13} Strength saving throw, taking 17 ({@damage 5d6}) bludgeoning damage on a failed save, or half as much damage on a successful one. If the target fails the save by 5 or more, they are also {@condition dazed|FleeMortals} until the end of their next turn."
                     ]
                 }
             ],
@@ -1272,13 +1310,26 @@
                         "The bird makes a Wisdom (Perception) check."
                     ]
                 }
+            ],
+            "traitTags": [
+                "Flyby"
+            ],
+            "actionTags": [
+                "Multiattack"
+            ],
+            "damageTags": [
+                "B",
+                "P",
+                "S"
+            ],
+            "miscTags": [
+                "MW"
             ]
         },
         {
             "name": "Camel",
             "source": "FleeMortals",
             "page": 39,
-            "cr": "1/2",
             "size": [
                 "L"
             ],
@@ -1291,17 +1342,19 @@
             "alignment": [
                 "U"
             ],
-            "ac": [11],
-            "hp":{
-                "formula": "3d10 + 12",
-                "average": 28
+            "ac": [
+                11
+            ],
+            "hp": {
+                "average": 28,
+                "formula": "3d10 + 12"
             },
             "speed": {
                 "walk": 50
             },
             "str": 17,
-            "con": 13,
-            "dex": 19,
+            "dex": 13,
+            "con": 19,
             "int": 4,
             "wis": 12,
             "cha": 5,
@@ -1310,6 +1363,7 @@
                 "con": "+6"
             },
             "passive": 11,
+            "cr": "1/2",
             "trait": [
                 {
                     "name": "Beast of Burden",
@@ -1320,7 +1374,7 @@
                 {
                     "name": "Desert Dweller",
                     "entries": [
-                        "The camel ignores difficult terrain created by dirt or sand. They can tolerate temperatures as high as 120° Fahrenheit."
+                        "The camel ignores difficult terrain created by dirt or sand. They can tolerate temperatures as high as 120° Fahrenheit"
                     ]
                 },
                 {
@@ -1346,18 +1400,28 @@
             ],
             "bonus": [
                 {
-                    "name": "Bilious Spit (Recharge 5–6)",
+                    "name": "Bilious Spit {@recharge 5}",
                     "entries": [
-                        "The camel vomits bile onto a creature they can see within 10 feet of them. The target must succeed on a {@dc 14} Constitution saving throw or be {@condition poisoned} for 1 minute (save ends at end of turn). If the target fails the save by 5 or more, they are also {@condition blinded} while poisoned in this way."
+                        "The camel vomits bile onto a creature they can see within 10 feet of them. The target must succeed on a {@dc 14} Constitution saving throw or be {@condition poisoned} for 1 minute (save ends at end of turn). If the target fails the save by 5 or more, they are also {@condition blinded} while {@condition poisoned} in this way."
                     ]
                 }
+            ],
+            "damageTags": [
+                "B"
+            ],
+            "miscTags": [
+                "MW"
+            ],
+            "conditionInflict": [
+                "blinded",
+                "poisoned",
+                "prone"
             ]
         },
         {
             "name": "Deathhawk",
             "source": "FleeMortals",
             "page": 39,
-            "cr": "4",
             "size": [
                 "M"
             ],
@@ -1373,20 +1437,22 @@
             "ac": [
                 {
                     "ac": 13,
-                    "from": ["natural armor"]
+                    "from": [
+                        "natural armor"
+                    ]
                 }
             ],
-            "hp":{
-                "formula": "8d8 + 32",
-                "average": 68
+            "hp": {
+                "average": 68,
+                "formula": "8d8 + 32"
             },
             "speed": {
                 "walk": 10,
                 "fly": 60
             },
             "str": 18,
-            "con": 15,
-            "dex": 19,
+            "dex": 15,
+            "con": 19,
             "int": 11,
             "wis": 10,
             "cha": 9,
@@ -1397,6 +1463,10 @@
             "skill": {
                 "perception": "+4"
             },
+            "senses": [
+                "darkvision 120 ft."
+            ],
+            "passive": 14,
             "immune": [
                 "necrotic",
                 "poison"
@@ -1404,13 +1474,10 @@
             "conditionImmune": [
                 "poisoned"
             ],
-            "senses": [
-                "darkvision 120 ft."
-            ],
-            "passive": 14,
             "languages": [
                 "understands Common but can't speak it"
             ],
+            "cr": "4",
             "trait": [
                 {
                     "name": "Corpse Sense",
@@ -1421,7 +1488,7 @@
                 {
                     "name": "Flyby",
                     "entries": [
-                        "The deathhawk doesn’t provoke opportunity attacks when they fly out of an enemy’s reach."
+                        "The deathhawk doesn't provoke opportunity attacks when they fly out of an enemy's reach."
                     ]
                 }
             ],
@@ -1441,25 +1508,44 @@
                 {
                     "name": "Wounding Talons",
                     "entries": [
-                        "{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) slashing damage.  If the target is a creature who isn’t a Construct or an Undead, they gain a bleeding wound that lasts until they regain at least 1 hit point. A bleeding creature loses 5 ({@damage 1d10}) hit points for each bleeding wound they have at the start of their turn. Any creature who can reach the target can use an action to stanch all the target’s wounds, ending the effect."
+                        "{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) slashing damage. If the target is a creature who isn't a Construct or an Undead, they gain a bleeding wound that lasts until they regain at least 1 hit point. A bleeding creature loses 5 ({@damage 1d10}) hit points for each bleeding wound they have at the start of their turn. Any creature who can reach the target can use an action to stanch all the target's wounds, ending the effect."
                     ]
                 }
             ],
             "bonus": [
                 {
-                    "name": "Bloodcurdling Shriek (Recharge 6)",
+                    "name": "Bloodcurdling Shriek {@recharge 6}",
                     "entries": [
-                        "The deathhawk shrieks, and each enemy within 300 feet of the deathhawk who can hear them must make a {@dc 14} Wisdom saving throw. Creatures who are immune to the {@condition frightened} condition automatically succeed on this saving throw. On a failed save, a creature is horrified for 1 minute (save ends at end of turn). While horrified, each time the creature makes an attack roll or a saving throw, they must roll a d4 and subtract the number rolled from the attack roll or saving throw.",
-                        "If a creature’s saving throw is successful or the effect ends for them, they are immune to the Bloodcurdling Shriek of all deathhawks for the next 24 hours."
+                        "The deathhawk shrieks, and each enemy within 300 feet of the deathhawk who can hear them must make a {@dc 14} Wisdom saving throw. Creatures who are immune to the {@condition frightened} condition automatically succeed on this saving throw. On a failed save, a creature is horrified for 1 minute (save ends at end of turn). While horrified, each time the creature makes an attack roll or a saving throw, they must roll a {@damage d4} and subtract the number rolled from the attack roll or saving throw.",
+                        "If a creature's saving throw is successful or the effect ends for them, they are immune to the Bloodcurdling Shriek of all deathhawks for the next 24 hours."
                     ]
                 }
+            ],
+            "traitTags": [
+                "Flyby"
+            ],
+            "senseTags": [
+                "SD"
+            ],
+            "actionTags": [
+                "Multiattack"
+            ],
+            "languageTags": [
+                "C",
+                "CS"
+            ],
+            "damageTags": [
+                "P",
+                "S"
+            ],
+            "miscTags": [
+                "MW"
             ]
         },
         {
             "name": "Lightning Eel",
             "source": "FleeMortals",
             "page": 40,
-            "cr": "2",
             "size": [
                 "M"
             ],
@@ -1475,20 +1561,22 @@
             "ac": [
                 {
                     "ac": 15,
-                    "from": ["natural armor"]
+                    "from": [
+                        "natural armor"
+                    ]
                 }
             ],
-            "hp":{
-                "formula": "7d8 + 14",
-                "average": 45
+            "hp": {
+                "average": 45,
+                "formula": "7d8 + 14"
             },
             "speed": {
                 "walk": 15,
                 "swim": 30
             },
             "str": 12,
-            "con": 15,
-            "dex": 14,
+            "dex": 15,
+            "con": 14,
             "int": 5,
             "wis": 10,
             "cha": 4,
@@ -1499,10 +1587,11 @@
                 "acrobatics": "+6",
                 "perception": "+2"
             },
+            "passive": 12,
             "immune": [
                 "lightning"
             ],
-            "passive": 12,
+            "cr": "2",
             "trait": [
                 {
                     "name": "Amphibious",
@@ -1527,25 +1616,25 @@
                 {
                     "name": "Electric Pulse",
                     "entries": [
-                        "The eel channels energy toward a creature within 20 feet of them. The target must make a {@dc 12} Constitution saving throw, made with disadvantage if the target is touching the eel. On a failed save, a creature takes 18 ({@damage 4d8}) lightning damage and is {@condition dazed|FleeMortals} until the end of their next turn. On a successful save, a creature takes half as much damage and isn’t dazed."
+                        "The eel channels energy toward a creature within 20 feet of them. The target must make a {@dc 12} Constitution saving throw, made with disadvantage if the target is touching the eel. On a failed save, a creature takes 18 ({@damage 4d8}) lightning damage and is {@condition dazed|FleeMortals} until the end of their next turn. On a successful save, a creature takes half as much damage and isn't dazed."
                     ]
                 }
             ],
-            "bonus": [
-                {
-                    "name": "Bloodcurdling Shriek (Recharge 6)",
-                    "entries": [
-                        "The deathhawk shrieks, and each enemy within 300 feet of the deathhawk who can hear them must make a {@dc 14} Wisdom saving throw. Creatures who are immune to the {@condition frightened} condition automatically succeed on this saving throw. On a failed save, a creature is horrified for 1 minute (save ends at end of turn). While horrified, each time the creature makes an attack roll or a saving throw, they must roll a d4 and subtract the number rolled from the attack roll or saving throw.",
-                        "If a creature’s saving throw is successful or the effect ends for them, they are immune to the Bloodcurdling Shriek of all deathhawks for the next 24 hours."
-                    ]
-                }
+            "traitTags": [
+                "Amphibious"
+            ],
+            "damageTags": [
+                "L",
+                "P"
+            ],
+            "miscTags": [
+                "MW"
             ]
         },
         {
             "name": "Ancient Lightning Eel",
             "source": "FleeMortals",
             "page": 40,
-            "cr": "12",
             "size": [
                 "G"
             ],
@@ -1561,32 +1650,35 @@
             "ac": [
                 {
                     "ac": 17,
-                    "from": ["natural armor"]
+                    "from": [
+                        "natural armor"
+                    ]
                 }
             ],
-            "hp":{
-                "formula": "14d20 + 56",
-                "average": 203
+            "hp": {
+                "average": 203,
+                "formula": "14d20 + 56"
             },
             "speed": {
                 "walk": 20,
                 "swim": 50
             },
             "str": 21,
-            "con": 15,
-            "dex": 18,
+            "dex": 15,
+            "con": 18,
             "int": 7,
             "wis": 13,
             "cha": 6,
             "save": {
                 "str": "+9",
-                "dex": "+4"
+                "dex": "+6"
             },
             "skill": {
                 "acrobatics": "+10",
                 "athletics": "+9",
                 "perception": "+9"
             },
+            "passive": 19,
             "resist": [
                 "cold",
                 "thunder"
@@ -1594,7 +1686,7 @@
             "immune": [
                 "lightning"
             ],
-            "passive": 19,
+            "cr": "12",
             "trait": [
                 {
                     "name": "Amphibious",
@@ -1605,7 +1697,7 @@
                 {
                     "name": "Foudroyant Majesty (3/Day)",
                     "entries": [
-                        "When the eel fails a saving throw, they can succeed instead. When they do, they can’t take the Multiattack action on their next turn."
+                        "When the eel fails a saving throw, they can succeed instead. When they do, they can't take the Multiattack action on their next turn."
                     ]
                 },
                 {
@@ -1619,33 +1711,6 @@
                     "entries": [
                         "Other lightning eels within 30 feet of the ancient eel deal an extra 4 ({@damage 1d8}) lightning damage with their weapon attacks and Electric Pulse."
                     ]
-                },
-                {
-                    "name": "Villain Actions",
-                    "entries": [
-                        "The eel has three villain actions. They can take each action once during an encounter after an enemy’s turn. They can take these actions in any order but can use only one per round.",
-                        {
-                            "type": "entries",
-                            "name": "Action 1:  Call to the Storm",
-                            "entries": [
-                                "Every other lightning eel within 30 feet of the ancient eel can use their Electric Pulse action as a reaction."
-                            ]
-                        },
-                        {
-                            "type": "entries",
-                            "name": "Action 2: Electric Rush",
-                            "entries": [
-                                "The eel surges with lightning, moves up to their speed, then makes a Bite attack. On a hit, the Bite attack deals an extra 18 ({@damage 4d8}) lightning damage. A creature who hits the eel with a melee attack during this movement takes 9 ({@damage 2d8}) lightning damage."
-                            ]
-                        },
-                        {
-                            "type": "entries",
-                            "name": "Action 3: Fulminous Wave",
-                            "entries": [
-                                "The eel releases a crackling wave of electricity and uses Electric Pulse against each enemy within 30 feet of them."
-                            ]
-                        }
-                    ]
                 }
             ],
             "action": [
@@ -1658,13 +1723,13 @@
                 {
                     "name": "Bite",
                     "entries": [
-                        "{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}12 ({@damage 2d6 + 5}) piercing damage  plus 9 ({@damage 2d8}) lightning damage, and the target is {@condition grappled} (escape {@dc 17}). While grappled, the target is {@damage restrained} and the eel can’t make a Bite attack against another target."
+                        "{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}12 ({@damage 2d6 + 5}) piercing damage plus 9 ({@damage 2d8}) lightning damage, and the target is {@condition grappled} (escape {@dc 17}). While {@condition grappled}, the target is {@condition restrained} and the eel can't make a Bite attack against another target."
                     ]
                 },
                 {
                     "name": "Electric Pulse",
                     "entries": [
-                        "The eel channels energy toward a creature within 60 feet of them. The target must make a {@dc 16} Constitution saving throw, made with disadvantage if the target is touching the eel. On a failed save, a creature takes 27 ({@damage 6d8}) lightning damage and is {@condition dazed|FleeMortals} until the end of their next turn. On a successful save, a creature takes half as much damage and isn’t dazed."
+                        "The eel channels energy toward a creature within 60 feet of them. The creature must make a {@dc 16} Constitution saving throw, made with disadvantage if the target is touching the eel. On a failed save, a creature takes 27 ({@damage 6d8}) lightning damage and is {@condition dazed|FleeMortals} until the end of their next turn. On a successful save, a creature takes half as much damage and isn't {@condition dazed|FleeMortals}."
                     ]
                 }
             ],
@@ -1683,13 +1748,52 @@
                         "When another lightning eel that the ancient eel can see within 30 feet of them is reduced to 0 hit points, the ancient eel releases a crackling filament of lightning in their direction. The target is restored to life with 10 hit points. Each lighting eel can be restored to life only once with this reaction."
                     ]
                 }
+            ],
+            "legendaryHeader": [
+                "The eel has three villain actions. They can take each action once during an encounter after an enemy's turn. They can take these actions in any order but can use only one per round."
+            ],
+            "legendary": [
+                {
+                    "name": "Action 1: Call to the Storm",
+                    "entries": [
+                        "Every other lightning eel within 30 feet of the ancient eel can use their Electric Pulse action as a reaction."
+                    ]
+                },
+                {
+                    "name": "Action 2: Electric Rush",
+                    "entries": [
+                        "The eel surges with lightning, moves up to their speed, then makes a Bite attack. On a hit, the Bite attack deals an extra 18 ({@damage 4d8}) lightning damage. A creature who hits the eel with a melee attack during this movement takes 9 ({@damage 2d8}) lightning damage."
+                    ]
+                },
+                {
+                    "name": "Action 3: Fulminous Wave",
+                    "entries": [
+                        "The eel releases a crackling wave of electricity and uses Electric Pulse against each enemy within 30 feet of them."
+                    ]
+                }
+            ],
+            "traitTags": [
+                "Amphibious"
+            ],
+            "actionTags": [
+                "Multiattack"
+            ],
+            "damageTags": [
+                "L",
+                "P"
+            ],
+            "miscTags": [
+                "MW"
+            ],
+            "conditionInflict": [
+                "grappled",
+                "restrained"
             ]
         },
         {
             "name": "Snowfox",
             "source": "FleeMortals",
             "page": 41,
-            "cr": "1/4",
             "size": [
                 "T"
             ],
@@ -1705,9 +1809,9 @@
             "ac": [
                 13
             ],
-            "hp":{
-                "formula": "3d4 + 6",
-                "average": 13
+            "hp": {
+                "average": 13,
+                "formula": "3d4 + 6"
             },
             "speed": {
                 "walk": 30,
@@ -1715,24 +1819,25 @@
                 "fly": 30
             },
             "str": 5,
-            "con": 16,
-            "dex": 14,
+            "dex": 16,
+            "con": 14,
             "int": 6,
             "wis": 12,
             "cha": 10,
             "skill": {
-                "perception": "+2",
+                "perception": "+5",
                 "stealth": "+5",
                 "survival": "+3"
             },
-            "resist": [
-                "cold"
-            ],
             "senses": [
                 "darkvision 120 ft.",
                 "tremorsense 15 ft."
             ],
             "passive": 15,
+            "resist": [
+                "cold"
+            ],
+            "cr": "1/4",
             "trait": [
                 {
                     "name": "Natural Camouflage",
@@ -1743,7 +1848,7 @@
                 {
                     "name": "Nimble Escape",
                     "entries": [
-                        "The snowfox doesn’t provoke opportunity attacks when they leave an enemy’s reach."
+                        "The snowfox doesn't provoke opportunity attacks when they leave an enemy's reach."
                     ]
                 }
             ],
@@ -1751,13 +1856,13 @@
                 {
                     "name": "Bite",
                     "entries": [
-                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h} ({@damage 4}) piercing damage, and the snowfox attaches to the target. While attached, the snowfox’s Claw attacks against that target are made with advantage, and the snowfox can’t attack another target. The target or a creature who can reach them can detach the snowfox as an action with a successful {@dc 13} Strength (Athletics) check. The snowfox can detach by spending 5 feet of their movement."
+                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}4 piercing damage, and the snowfox attaches to the target. While attached, the snowfox's Claw attacks against that target are made with advantage, and the snowfox can't attack another target. The target or a creature who can reach them can detach the snowfox as an action with a successful {@dc 13} Strength (Athletics) check. The snowfox can detach by spending 5 feet of their movement."
                     ]
                 },
                 {
                     "name": "Claw",
                     "entries": [
-                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h} ({@damage 4}) slashing damage."
+                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}4 slashing damage."
                     ]
                 }
             ],
@@ -1774,18 +1879,28 @@
                         "The snowfox makes a Wisdom (Perception) check."
                     ]
                 }
+            ],
+            "senseTags": [
+                "SD",
+                "T"
+            ],
+            "damageTags": [
+                "P",
+                "S"
+            ],
+            "miscTags": [
+                "MW"
             ]
         },
         {
             "name": "Swarm of Insects",
             "source": "FleeMortals",
             "page": 41,
-            "cr": "1/2",
             "size": [
                 "M"
             ],
             "type": {
-                "type": "beast",
+                "type": "beasts",
                 "swarmSize": "T",
                 "tags": [
                     "Soldier"
@@ -1797,20 +1912,24 @@
             "ac": [
                 12
             ],
-            "hp":{
-                "formula": "4d8",
-                "average": 18
+            "hp": {
+                "average": 18,
+                "formula": "4d8"
             },
             "speed": {
                 "walk": 20,
                 "climb": 20
             },
             "str": 3,
-            "con": 14,
-            "dex": 10,
+            "dex": 14,
+            "con": 10,
             "int": 2,
             "wis": 9,
             "cha": 2,
+            "senses": [
+                "blindsight 10 ft."
+            ],
+            "passive": 9,
             "resist": [
                 "bludgeoning",
                 "piercing",
@@ -1828,21 +1947,18 @@
                 "restrained",
                 "stunned"
             ],
-            "senses": [
-                "blindsight 10 ft."
-            ],
-            "passive": 9,
+            "cr": "1/2",
             "trait": [
                 {
                     "name": "Multitudinous",
                     "entries": [
-                        "The swarm has advantage on opportunity attacks, and creatures provoke opportunity attacks from the swarm even if they take the Disengage action before leaving the swarm’s reach."
+                        "The swarm has advantage on opportunity attacks, and creatures provoke opportunity attacks from the swarm even if they take the Disengage action before leaving the swarm's reach."
                     ]
                 },
                 {
                     "name": "Swarm",
                     "entries": [
-                        "The swarm can occupy another creature’s space and vice versa, and the swarm can move through any opening large enough for a Tiny insect. The swarm can’t regain hit points or gain temporary hit points."
+                        "The swarm can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny insect. The swarm can't regain hit points or gain temporary hit points."
                     ]
                 }
             ],
@@ -1856,21 +1972,29 @@
                 {
                     "name": "Distracting Buzz",
                     "entries": [
-                        "If the swarm has at least half their hit points remaining, they emit an annoying drone, buzz, or skittering sound. Until the start of the swarm’s next turn, creatures within 15 feet of the swarm who can hear them have disadvantage on attack rolls against creatures other than the swarm."
+                        "If the swarm has at least half their hit points remaining, they emit an annoying drone, buzz, or skittering sound. Until the start of the swarm's next turn, creatures within 15 feet of the swarm who can hear them have disadvantage on attack rolls against creatures other than the swarm."
                     ]
                 }
+            ],
+            "senseTags": [
+                "B"
+            ],
+            "damageTags": [
+                "P"
+            ],
+            "miscTags": [
+                "MW"
             ]
         },
         {
             "name": "Swarm of Spiders",
             "source": "FleeMortals",
             "page": 42,
-            "cr": "1/2",
             "size": [
                 "M"
             ],
             "type": {
-                "type": "beast",
+                "type": "beasts",
                 "swarmSize": "T",
                 "tags": [
                     "Controller"
@@ -1882,20 +2006,25 @@
             "ac": [
                 12
             ],
-            "hp":{
-                "formula": "4d8",
-                "average": 18
+            "hp": {
+                "average": 18,
+                "formula": "4d8"
             },
             "speed": {
                 "walk": 20,
                 "climb": 20
             },
             "str": 3,
-            "con": 14,
-            "dex": 10,
+            "dex": 14,
+            "con": 10,
             "int": 2,
             "wis": 9,
             "cha": 2,
+            "senses": [
+                "blindsight 10 ft.",
+                "darkvision 30 ft."
+            ],
+            "passive": 9,
             "resist": [
                 "bludgeoning",
                 "piercing",
@@ -1913,11 +2042,7 @@
                 "restrained",
                 "stunned"
             ],
-            "senses": [
-                "blindsight 10 ft.",
-                "darkvision 30 ft."
-            ],
-            "passive": 9,
+            "cr": "1/2",
             "trait": [
                 {
                     "name": "Spider Climb",
@@ -1928,7 +2053,7 @@
                 {
                     "name": "Swarm",
                     "entries": [
-                        "The swarm can occupy another creature’s space and vice versa, and the swarm can move through any opening large enough for a Tiny spider. The swarm can’t regain hit points or gain temporary hit points."
+                        "The swarm can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny spider. The swarm can't regain hit points or gain temporary hit points."
                     ]
                 },
                 {
@@ -1942,23 +2067,37 @@
                 {
                     "name": "Bite",
                     "entries": [
-                        "{@atk mw} {@hit 4} to hit, reach 0 ft., one target in the swarm's space. {@h}5 ({@damage 2d4}) piercing damage plus 4 ({@damage 1d8}) poison damage, or 4 ({@damage 1d8}) piercing damage plus 3 ({@damage 1d6}) if the swarm has half their hit points or fewer."
+                        "{@atk mw} {@hit 4} to hit, reach 0 ft., one target in the swarm's space. {@h}5 ({@damage 2d4}) piercing damage plus 4 ({@damage 1d8}) poison damage, or 2 ({@damage 1d4}) piercing damage plus 3 ({@damage 1d6}) poison damage if the swarm has half their hit points or fewer."
                     ]
                 },
                 {
                     "name": "Too Many Legs",
                     "entries": [
                         "The swarm mobs a creature in their space and attaches to them. When the swarm takes damage other than psychic damage, the attached creature also takes half as much damage. The attached creature has disadvantage on attacks against creatures other than the swarm, and attacks against the attached creature have advantage.",
-                        "While attached, the swarm can’t attack another target. The attached creature or another creature who can reach them can shake off the swarm and detach them as an action. The swarm can detach by spending 5 feet of their movement."
+                        "While attached, the swarm can't attack another target. The attached creature or another creature who can reach them can shake off the swarm and detach them as an action. The swarm can detach by spending 5 feet of their movement."
                     ]
                 }
+            ],
+            "traitTags": [
+                "Spider Climb",
+                "Web Walker"
+            ],
+            "senseTags": [
+                "B",
+                "D"
+            ],
+            "damageTags": [
+                "I",
+                "P"
+            ],
+            "miscTags": [
+                "MW"
             ]
         },
         {
             "name": "Wildcat",
             "source": "FleeMortals",
             "page": 43,
-            "cr": "1",
             "size": [
                 "M",
                 "L"
@@ -1975,19 +2114,21 @@
             "ac": [
                 {
                     "ac": 13,
-                    "from": ["natural armor"]
+                    "from": [
+                        "natural armor"
+                    ]
                 }
             ],
-            "hp":{
-                "formula": "5d10 + 10",
-                "average": 37
+            "hp": {
+                "average": 37,
+                "formula": "5d10 + 10"
             },
             "speed": {
                 "walk": 60
             },
             "str": 17,
-            "con": 15,
-            "dex": 14,
+            "dex": 15,
+            "con": 14,
             "int": 6,
             "wis": 14,
             "cha": 8,
@@ -1999,11 +2140,12 @@
                 "darkvision 60 ft."
             ],
             "passive": 16,
+            "cr": "1",
             "trait": [
                 {
                     "name": "Hunter's Pounce",
                     "entries": [
-                        "If the wildcat hits a Large or smaller target and had advantage on the attack roll, the target is {@condition grappled} (escape {@dc 13}). While grappling the target in this way, the wildcat can’t attack another creature."
+                        "If the wildcat hits a Large or smaller target and had advantage on the attack roll, the target is {@condition grappled} (escape {@dc 13}). While grappling the target in this way, the wildcat can't attack another creature."
                     ]
                 },
                 {
@@ -2023,7 +2165,7 @@
                 {
                     "name": "Bite",
                     "entries": [
-                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage,  plus an extra 3 ({@damage 1d6}) piercing damage if the target is {@condition grappled} or {@condition restrained}."
+                        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage, plus an extra 3 ({@damage 1d6}) piercing damage if the target is {@condition grappled} or {@condition restrained}."
                     ]
                 },
                 {
@@ -2040,13 +2182,25 @@
                         "The wildcat takes the Hide action."
                     ]
                 }
+            ],
+            "senseTags": [
+                "D"
+            ],
+            "damageTags": [
+                "P",
+                "S"
+            ],
+            "miscTags": [
+                "MW"
+            ],
+            "conditionInflict": [
+                "grappled"
             ]
         },
         {
             "name": "Little Wildcat",
             "source": "FleeMortals",
             "page": 43,
-            "cr": "1/2",
             "size": [
                 "T",
                 "S"
@@ -2063,20 +2217,22 @@
             "ac": [
                 {
                     "ac": 13,
-                    "from": ["natural armor"]
+                    "from": [
+                        "natural armor"
+                    ]
                 }
             ],
-            "hp":{
-                "formula": "4d6 + 4",
-                "average": 18
+            "hp": {
+                "average": 18,
+                "formula": "4d6 + 4"
             },
             "speed": {
                 "walk": 40,
                 "climb": 30
             },
             "str": 8,
-            "con": 15,
-            "dex": 12,
+            "dex": 15,
+            "con": 12,
             "int": 6,
             "wis": 14,
             "cha": 8,
@@ -2089,17 +2245,18 @@
                 "darkvision 60 ft."
             ],
             "passive": 16,
+            "cr": "1/2",
             "trait": [
                 {
                     "name": "Agile Landing",
                     "entries": [
-                        "The wildcat takes no damage from falling 40 feet or less, provided they aren’t {@condition incapacitated}."
+                        "The wildcat takes no damage from falling 40 feet or less, provided they aren't {@condition incapacitated}."
                     ]
                 },
                 {
                     "name": "Hunter's Pounce",
                     "entries": [
-                        "If the wildcat hits a Small or smaller target and had advantage on the attack roll, the target is {@condition grappled} (escape {@dc 12}). While grappling the target in this way, the wildcat can’t attack another creature."
+                        "If the wildcat hits a Small or smaller target and had advantage on the attack roll, the target is {@condition grappled} (escape {@dc 12}). While grappling the target in this way, the wildcat can't attack another creature."
                     ]
                 },
                 {
@@ -2119,7 +2276,7 @@
                 {
                     "name": "Bite",
                     "entries": [
-                        "{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage,  plus an extra 2 ({@damage 1d4}) piercing damage if the target is {@condition grappled} or {@condition restrained}."
+                        "{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage, plus an extra 2 ({@damage 1d4}) piercing damage if the target is {@condition grappled} or {@condition restrained}."
                     ]
                 },
                 {
@@ -2136,6 +2293,19 @@
                         "The wildcat takes the Hide action."
                     ]
                 }
+            ],
+            "senseTags": [
+                "D"
+            ],
+            "damageTags": [
+                "P",
+                "S"
+            ],
+            "miscTags": [
+                "MW"
+            ],
+            "conditionInflict": [
+                "grappled"
             ]
         },
         {
@@ -2146,7 +2316,7 @@
                 "L"
             ],
             "type": {
-                "type": "Beast",
+                "type": "beast",
                 "tags": [
                     "Companion"
                 ]
@@ -2186,7 +2356,7 @@
                 {
                     "name": "Exceptional Smell",
                     "entries": [
-                        "The bear’s proficiency bonus is doubled for Wisdom (Perception) checks that rely on smell, and they can smell creatures even through dirt, snow, and water."
+                        "The bear's proficiency bonus is doubled for Wisdom (Perception) checks that rely on smell, and they can smell creatures even through dirt, snow, and water."
                     ]
                 },
                 {
@@ -2200,23 +2370,23 @@
                 {
                     "name": "Signature Attack (Bite or Claw)",
                     "entries": [
-                        "{@atk mw} {@hit +3 plus PB} to hit, reach 5 ft., one target. {@h} ({@damage 1d6 + PB}) piercing damage (Bite) or slashing damage (Claw)."
+                        "{@atk mw} +3 plus PB to hit, reach 5 ft., one target. {@h}{@damage 1d6} plus PB piercing damage (Bite) or slashing damage (Claw)."
                     ]
                 },
                 {
-                    "name": "1st Level: Tenacious Strike (2 Ferocity)",
+                    "name": "1st Level: Tenacious Strike (2 Ferocity).",
                     "entries": [
                         "The bear makes a signature attack. On a hit, the attack deals an extra PB damage. On a miss, the bear deals PB slashing damage to the target and gains 2 ferocity."
                     ]
                 },
                 {
-                    "name": "3rd Level: Pummel (5 Ferocity)",
+                    "name": "3rd Level: Pummel (5 Ferocity).",
                     "entries": [
-                        "The bear makes a signature attack. On a hit, the target is also {@condition grappled} (escape {@dc 10+PB|10 plus PB}). While grappled in this way, the bear’s attacks (including the triggering attack) deal an extra PB damage, the target is {@condition restrained} if they are Large or smaller, and the bear can’t make a signature attack against another target."
+                        "The bear makes a signature attack. On a hit, the target is also {@condition grappled} (escape {@dc 10 plus PB}). While {@condition grappled} in this way, the bear's attacks (including the triggering attack) deal an extra PB damage, the target is {@condition restrained} if they are Large or smaller, and the bear can't make a signature attack against another target."
                     ]
                 },
                 {
-                    "name": "5th Level: Clawing Frenzy (8 Ferocity)",
+                    "name": "5th Level: Clawing Frenzy (8 Ferocity).",
                     "entries": [
                         "The bear makes a signature Claw attack against PB creatures of their choice within 5 feet of them. At the end of their turn, the bear gains 1 ferocity for every attack that missed."
                     ]
@@ -2229,19 +2399,17 @@
                         "The bear detects the location of each living creature within 10 × PB feet of them, unless the creature is hiding their scent by supernatural means."
                     ]
                 }
+            ],
+            "miscTags": [
+                "MW"
+            ],
+            "conditionInflict": [
+                "grappled",
+                "restrained"
             ]
         },
         {
             "name": "Blood Hawk Companion",
-            "size": [
-                "S"
-            ],
-            "type": {
-                "type": "Beast",
-                "tags": [
-                    "Companion"
-                ]
-            },
             "source": "FleeMortals",
             "otherSources": [
                 {
@@ -2251,6 +2419,15 @@
             ],
             "page": 45,
             "tokenUrl": "https://i.imgur.com/rKDT1Ku.png",
+            "size": [
+                "S"
+            ],
+            "type": {
+                "type": "beast",
+                "tags": [
+                    "Companion"
+                ]
+            },
             "alignment": [
                 "U"
             ],
@@ -2281,9 +2458,6 @@
             },
             "passive": "12 plus PB",
             "pbNote": "equals the caregiver's bonus",
-            "damageTags": [
-                "P"
-            ],
             "trait": [
                 {
                     "name": "Keen Sight",
@@ -2296,7 +2470,7 @@
                 {
                     "name": "Signature Attack (Beak)",
                     "entries": [
-                        "{@atk mw} {@hit +3 plus PB} to hit, reach 5 ft., one target, {@h} {@damage 1d6+PB|1d6 plus PB} piercing damage."
+                        "{@atk mw} +3 plus PB to hit, reach 5 ft., one target. {@h}{@damage 1d6} plus PB piercing damage."
                     ]
                 },
                 {
@@ -2308,13 +2482,13 @@
                 {
                     "name": "3rd Level: Swooping Attack (5 Ferocity)",
                     "entries": [
-                        "The hawk moves up to their speed without provoking opportunity attacks. During or at the end of this move, they can make a signature attack against one target. On a hit, the target must succeed on a {@dc 10 + PB|10 plus PB} Strength saving throw or drop one item they are holding."
+                        "The hawk moves up to their speed without provoking opportunity attacks. During or after this move, they can make a signature attack against one target. On a hit, the target must succeed on a {@dc 10 plus PB} Strength saving throw or drop one item they are holding."
                     ]
                 },
                 {
                     "name": "5th Level: Storm of Talons (8 Ferocity)",
                     "entries": [
-                        "The hawk moves up to their speed without provoking opportunity attacks, then  they can dive onto one creature within 5 feet of them. The target must make a {@dc 10 + PB|10 plus PB} Dexterity saving throw. On a failure, the target takes {@damage (PB)d10} slashing damage and is {@condition blinded} until the end of the hawk's next turn. On a success, the target takes half as much damage and is not blinded."
+                        "The hawk moves up to their speed without provoking opportunity attacks, then they can dive onto one creature within 5 feet of them. The target must make a {@dc 10 plus PB} Dexterity saving throw. On a failed save, the target takes PBd10 slashing damage and is {@condition blinded} until the end of the hawk's next turn. On a successful save, the target takes half as much damage and isn't {@condition blinded}."
                     ]
                 }
             ],
@@ -2322,9 +2496,21 @@
                 {
                     "name": "Swoop In (Recharges after a Long Rest)",
                     "entries": [
-                        "When the hawk’s caregiver is hit with an attack while the hawk is within 30 feet of them, the hawk moves up to their speed without provoking opportunity attacks. If the hawk ends this movement within 5 feet of the caregiver, the hawk becomes the target of the triggering attack instead, and the attack deals half as much damage."
+                        "When the hawk's caregiver is hit with an attack while the hawk is within 30 feet of them, the hawk moves up to their speed without provoking opportunity attacks. If the hawk ends this movement within 5 feet of the caregiver, the hawk becomes the target of the triggering attack instead, and the attack deals half as much damage."
                     ]
                 }
+            ],
+            "traitTags": [
+                "Keen Senses"
+            ],
+            "damageTags": [
+                "S"
+            ],
+            "miscTags": [
+                "MW"
+            ],
+            "conditionInflict": [
+                "blinded"
             ]
         },
         {
@@ -2335,7 +2521,7 @@
                 "L"
             ],
             "type": {
-                "type": "Beast",
+                "type": "beast",
                 "tags": [
                     "Companion"
                 ]
@@ -2398,7 +2584,7 @@
                 {
                     "name": "Tall and Narrow",
                     "entries": [
-                        "If the camel’s caregiver is Medium or smaller, the caregiver can occupy the camel’s space and vice versa, and it doesn’t count as difficult terrain for them."
+                        "If the camel's caregiver is Medium or smaller, the caregiver can occupy the camel's space and vice versa, and it doesn't count as difficult terrain for them."
                     ]
                 }
             ],
@@ -2406,25 +2592,26 @@
                 {
                     "name": "Signature Attack (Bite or Kick)",
                     "entries": [
-                        "{@atk mw} {@hit +3 plus PB} to hit, reach 5 ft., one target. {@h} ({@damage 1d6 + PB}) piercing damage (Bite) or bludgeoning damage (Kick)."
+                        "Melee Weapon Attack:",
+                        "+3 plus PB to hit, reach 5 ft., one target. {@h}{@damage 1d6} plus PB piercing damage (Bite) or bludgeoning damage (Kick)."
                     ]
                 },
                 {
                     "name": "1st Level: Bilious Spit (2 Ferocity)",
                     "entries": [
-                        "The camel spits at a creature they can see within 10 feet of them. The target must succeed on a {@dc 10 plus PB} Constitution saving throw or be {@condition poisoned} until the start of the camel’s next turn."
+                        "The camel spits at a creature they can see within 10 feet of them. The target must succeed on a {@dc 10 plus PB} Constitution saving throw or be {@condition poisoned} until the start of the camel's next turn."
                     ]
                 },
                 {
                     "name": "3rd Level: Punishing Shake (5 Ferocity)",
                     "entries": [
-                        "The camel moves up to their speed and makes a signature Bite attack against one target. If the attack hits and the target is Medium or smaller, the camel also shakes and flings them up to 10 feet away horizontally. If the target hits a solid surface, they are knocked {@condition prone} and take an extra {@damage PB} bludgeoning damage."
+                        "The camel moves up to their speed and makes a signature Bite attack against one target. If the attack hits and the target is Medium or smaller, the camel also shakes and flings them up to 10 feet away horizontally. If the target hits a solid surface, they are knocked {@condition prone} and take an extra PB bludgeoning damage."
                     ]
                 },
                 {
                     "name": "5th Level: Trample (8 Ferocity)",
                     "entries": [
-                        "The camel moves up to their speed. During this move, they can move through other creature’s spaces. Each Large or smaller creature whose space the camel passes through must make a {@dc 10 plus PB} Strength saving throw. On a failed save, a creature takes {@damage (PB)d6} bludgeoning damage and is knocked {@condition prone}. On a successful save, a creature takes half as much damage and isn’t knocked prone."
+                        "The camel moves up to their speed. During this move, they can move through other creature's spaces. Each Large or smaller creature whose space the camel passes through must make a {@dc 10 plus PB} Strength saving throw. On a failed save, a creature takes PBd6 bludgeoning damage and is knocked {@condition prone}. On a successful save, a creature takes half as much damage and isn't knocked {@condition prone}."
                     ]
                 }
             ],
@@ -2432,9 +2619,16 @@
                 {
                     "name": "Ungulate Urgency",
                     "entries": [
-                        "If the camel’s caretaker falls {@condition prone} and the camel can see them, the camel moves up to their speed toward their caregiver. If they end this movement in the same space as their caregiver, attacks against the caregiver have disadvantage until either the caregiver is no longer prone, the caregiver is no longer in the same space as the camel, or the start of the camel’s next turn, whichever comes first."
+                        "If the camel's caretaker falls {@condition prone} and the camel can see them, the camel moves up to their speed toward their caregiver. If they end this movement in the same space as their caregiver, attacks against the caregiver have disadvantage until either the caregiver is no longer {@condition prone}, the caregiver is no longer in the same space as the camel, or the start of the camel's next turn, whichever comes first."
                     ]
                 }
+            ],
+            "damageTags": [
+                "B"
+            ],
+            "conditionInflict": [
+                "poisoned",
+                "prone"
             ]
         },
         {
@@ -2446,7 +2640,7 @@
                 "L"
             ],
             "type": {
-                "type": "Beast",
+                "type": "beast",
                 "tags": [
                     "Companion"
                 ]
@@ -2492,9 +2686,9 @@
                     ]
                 },
                 {
-                    "name": "Predator’s Grab (Recharges after a Short or Long Rest)",
+                    "name": "Predator's Grab (Recharges after a Short or Long Rest)",
                     "entries": [
-                        "When the wildcat hits a creature with an opportunity attack, the creature is also {@condition grappled} (escape DC 10 plus PB)."
+                        "When the wildcat hits a creature with an opportunity attack, the creature is also {@condition grappled} (escape {@dc 10 plus PB})."
                     ]
                 },
                 {
@@ -2508,29 +2702,37 @@
                 {
                     "name": "Signature Attack (Bite or Claw)",
                     "entries": [
-                        "{@atk mw} {@hit +3 plus PB} to hit, reach 5 ft., one target. {@h} ({@damage 1d6 + PB}) piercing damage (Bite) or slashing damage (Claw)."
+                        "Melee Weapon Attack:",
+                        "+3 plus PB to hit, reach 5 ft., one target. {@h}{@damage 1d6} plus PB piercing damage (Bite) or slashing damage (Claw)."
                     ]
                 },
                 {
                     "name": "1st Level: Crushing Jaws (2 Ferocity)",
                     "entries": [
-                        "The wildcat makes a signature Bite attack, dealing an extra {@damage PB} bludgeoning damage on a hit, or an extra {@damage 2 × PB} bludgeoning damage to a target they are grappling."
+                        "The wildcat makes a signature Bite attack, dealing an extra PB bludgeoning damage on a hit, or an extra 2 × PB bludgeoning damage to a target they are grappling."
                     ]
                 },
                 {
                     "name": "3rd Level: Pounce (5 Ferocity)",
                     "entries": [
-                        "The wildcat moves up to their speed and makes a signature attack against one target, dealing an extra {@damage PB} damage on a hit. If the target is Large or smaller, they are {@condition grappled} (escape {@dc 10 plus PB}), and the wildcat can’t attack another creature until the grapple ends."
+                        "The wildcat moves up to their speed and makes a signature attack against one target, dealing an extra PB damage on a hit. If the target is Large or smaller, they are {@condition grappled} (escape {@dc 10 plus PB}), and the wildcat can't attack another creature until the grapple ends."
                     ]
                 },
                 {
-                    "name": "5th Level: Shredding Claw (8 Ferocity)",
+                    "name": "5th Level: Shredding Claws (8 Ferocity)",
                     "entries": [
                         "The wildcat makes three signature Claw attacks against the same target. The target must succeed on a {@dc 10 plus PB} Charisma saving throw or be {@condition frightened} of the wildcat for 1 minute (save ends at end of turn)."
                     ]
                 }
+            ],
+            "senseTags": [
+                "D"
+            ],
+            "conditionInflict": [
+                "frightened",
+                "grappled"
             ]
-        }
+        }        
     ],
     "condition": [
         {
