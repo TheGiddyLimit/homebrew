@@ -8739,6 +8739,29 @@
 													]
 												}
 											]
+										},
+										{
+											"type": "entries",
+											"name": "Eye Devil",
+											"page": 194,
+											"entries": [
+												"Oracles of the Court of Seven Cities, the eye devils are inward-looking prophets. They speak in riddles, and only the Cult of the Mirrored Eye can decipher the proclamations of the Eyes of Hell.",
+												"An eye devil attacks from above, casting {@spell dominate monster} to bring the best melee combatant among its foes to its side, followed by {@spell incendiary cloud} on the fiend's second turn. Since the devil's Multiattack action allows it to cast spells and make attacks, it uses Flame Jet and Incinerate to attack enemies that can reach it. The devil uses Malvision on the first turn of combat, hoping to create maximum chaos among its enemies during the battle.",
+												"After casting its most powerful spells, the eye devil targets flying or ranged characters that can threaten it with the {@spell eyebite} spell. The eye devil concentrates attacks on one at a time, methodically bringing down threats.",
+												"{@creature Eye Devil|KaW}",
+												{
+													"type": "entries",
+													"name": "Pharyon, Prince of Dis",
+													"page": 194,
+													"entries": [
+														"Once again, the power of Dis rises and the City of Lies rules over Hell. Dispater dispatches his newest lieutenant, Pharyon the Edictor, Revelator, Lord of Answers, Oracle to the Court.",
+														"For the first time in the (admittedly now ruined) lists of Hell, an eye devil leads the Court of Seven Cities, and the devil's dark portents guide the unholy court. The eye devils' power to see past, future, and alternate realities makes them rather unpredictable on the battlefield, but Pharyon is even more cryptic and inward-looking than most of his kin.",
+														"Pharyon carries the {@item Omega Toll|KaW}, the Bell of Light's End. When it sounds its thunderous knell, the old epoch ends. What comes after...even Prince Pharyon can't see.",
+														"In combat, Pharyon flies to avoid melee and uses Malvision followed by Multiattack to attack with Flame Jet and a spell, typically {@spell dominate monster}, {@spell incendiary cloud}, {@spell delayed blast fireball}, or {@spell eyebite}. When a creature hits Pharyon with an attack, he uses his Look Again reaction, provided the attacker is in a relatively safe spot and not surrounded by the devil's foes.",
+														"{@creature Pharyon, Prince of Dis}"
+													]
+												}
+											]
 										}
 									]
 								}
@@ -18603,6 +18626,533 @@
 			"savingThrowForced": [
 				"constitution",
 				"dexterity"
+			]
+		},
+		{
+			"name": "Eye Devil",
+			"source": "KaW",
+			"page": 195,
+			"size": [
+				"H"
+			],
+			"type": {
+				"type": "fiend",
+				"tags": [
+					"devil"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 262,
+				"formula": "21d12 + 126"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 20,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 26,
+			"dex": 12,
+			"con": 22,
+			"int": 25,
+			"wis": 26,
+			"cha": 22,
+			"save": {
+				"str": "+14",
+				"con": "+12",
+				"wis": "+14",
+				"cha": "+12"
+			},
+			"skill": {
+				"insight": "+14",
+				"perception": "+14"
+			},
+			"senses": [
+				"truesight 120 ft."
+			],
+			"passive": 24,
+			"resist": [
+				"cold",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": [
+				"fire",
+				"poison"
+			],
+			"vulnerable": [
+				"lightning"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"frightened",
+				"poisoned",
+				"prone"
+			],
+			"languages": [
+				"Common",
+				"Infernal",
+				"telepathy 120 ft."
+			],
+			"cr": "18",
+			"spellcasting": [
+				{
+					"type": "spellcasting",
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The devil's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). The devil can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell detect thoughts}",
+						"{@spell telekinesis}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell delayed blast fireball}",
+							"{@spell eyebite}"
+						],
+						"1e": [
+							"{@spell dominate monster}",
+							"{@spell incendiary cloud}",
+							"{@spell plane shift}"
+						]
+					},
+					"footerEntries": [
+						"In addition, the devil can concentrate on two spells at once."
+					],
+					"ability": "cha"
+				}
+			],
+			"trait": [
+				{
+					"name": "Limited Prescience",
+					"entries": [
+						"The devil can't be surprised, and has advantage on initiative rolls."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The devil has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Malvision (1/Day)",
+					"entries": [
+						"As a bonus action, the devil gazes into the looming horrors of the future and witnesses a vision of doom, imposing it on reality.",
+						"One creature that the devil can see within 30 feet of it becomes the subject of an ill omen, and they foresee themselves suffering a terrible fate. At the end of the target's next turn, it is inflicted with a curse. It doesn't know the nature, which is decided from the following options at random:",
+						{
+							"type": "list",
+							"items": [
+								"The target begins to age rapidly, as each day for them becomes a year.",
+								"The target's luck runs out; they now automatically fail all saving throws.",
+								"The target is doomed. If they are reduced to 0 hit points, they instantly die.",
+								"The target must roll a {@dice d20}. On a roll of 1, they die instantly with no chance of resurrection."
+							]
+						},
+						"A creature can't be affected by the same curse twice.",
+						"To avoid the effects of the impending curse, a target can use their bonus action to pass their fate to an ally they can see within 60 feet. After transferring the curse in this way, the infliction of the curse resets to now take place at the end of the new target's next turn. An impending curse can't be transferred back to a creature who has already been targeted with it. If the devil is destroyed before the curse takes effect, the creature is unaffected by the curse.",
+						"A curse can only be lifted by a solar's Healing Touch. It can also be suppressed, but not broken permanently, by wearing an amulet featuring the {@condition petrified} eye of an eye devil."
+					]
+				},
+				{
+					"name": "Soul-Scorching",
+					"entries": [
+						"Fire damage dealt by the devil ignores resistance and immunity to fire damage."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The devil makes four attacks. It can cast a spell in place of one of these attacks."
+					]
+				},
+				{
+					"name": "Incinerate",
+					"entries": [
+						"{@atk ms} {@hit 12} to hit, reach 10 ft., one target. {@h}28 ({@damage 8d6}) fire damage."
+					]
+				},
+				{
+					"name": "Flame Jet",
+					"entries": [
+						"{@atk rs} {@hit 12} to hit, range 60 ft., one target. {@h}14 ({@damage 4d6}) fire damage."
+					]
+				},
+				{
+					"name": "Winged Embrace",
+					"entries": [
+						"The devil encloses itself and one other creature within 5 feet of it within its wings. The creature must succeed on a {@dc 20} Dexterity saving throw or become {@condition grappled} (escape {@dc 20}). While {@condition grappled}, the target is {@condition restrained}. The devil can only grapple one creature at a time.",
+						"While grappling a creature, the devil is guarded from damage by its wings, which can be attacked (AC 18; 50 hit points). When reduced to 0 hit points, the wings fall apart, releasing the trapped creature inside.",
+						"If the devil's wings are destroyed, it reforms them at the start of its next turn."
+					]
+				},
+				{
+					"name": "Teleport",
+					"entries": [
+						"The devil magically teleports, along with any equipment it is wearing or carrying, up to 120 feet to an unoccupied space it can see."
+					]
+				}
+			],
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"U"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Teleport"
+			],
+			"languageTags": [
+				"C",
+				"I",
+				"TP"
+			],
+			"damageTags": [
+				"F"
+			],
+			"damageTagsSpell": [
+				"F"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled",
+				"restrained"
+			],
+			"conditionInflictSpell": [
+				"charmed",
+				"frightened",
+				"restrained",
+				"unconscious"
+			],
+			"savingThrowForced": [
+				"dexterity"
+			],
+			"savingThrowForcedSpell": [
+				"dexterity",
+				"wisdom"
+			]
+		},
+		{
+			"name": "Pharyon, Prince of Dis",
+			"isNamedCreature": true,
+			"source": "KaW",
+			"page": 196,
+			"size": [
+				"H"
+			],
+			"type": {
+				"type": "fiend",
+				"tags": [
+					"devil"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 325,
+				"formula": "26d12 + 156"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 20,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 26,
+			"dex": 12,
+			"con": 22,
+			"int": 25,
+			"wis": 26,
+			"cha": 22,
+			"save": {
+				"str": "+14",
+				"con": "+12",
+				"wis": "+14",
+				"cha": "+12"
+			},
+			"skill": {
+				"deception": "+12",
+				"insight": "+14",
+				"perception": "+14",
+				"persuasion": "+12"
+			},
+			"senses": [
+				"truesight 120 ft."
+			],
+			"passive": 24,
+			"resist": [
+				"cold",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": [
+				"fire",
+				"poison"
+			],
+			"vulnerable": [
+				"lightning"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"frightened",
+				"poisoned",
+				"prone"
+			],
+			"languages": [
+				"Common",
+				"Infernal",
+				"telepathy 120 ft."
+			],
+			"cr": "20",
+			"spellcasting": [
+				{
+					"type": "spellcasting",
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Pharyon's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). Pharyon can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell detect thoughts}",
+						"{@spell telekinesis}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell delayed blast fireball}",
+							"{@spell eyebite}"
+						],
+						"1e": [
+							"{@spell dominate monster}",
+							"{@spell incendiary cloud}",
+							"{@spell plane shift}"
+						]
+					},
+					"footerEntries": [
+						"In addition, Pharyon can concentrate on up to four spells at once."
+					],
+					"ability": "cha"
+				}
+			],
+			"trait": [
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"If Pharyon fails a saving throw, he can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"Pharyon has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Malvision (3/Day)",
+					"entries": [
+						"As a bonus action, Pharyon gazes into the looming horrors of the future and witnesses a vision of doom.",
+						"One creature that Pharyon can see within 60 feet of him becomes the subject of an ill omen and they foresee themselves suffering a terrible fate. At the end of the target's next turn, it is inflicted with a curse. It doesn't know the nature, which is decided from the following options at random:",
+						{
+							"type": "list",
+							"items": [
+								"The creature begins to age rapidly, as each second for them becomes a year.",
+								"The target's luck runs out; they now automatically fail all saving throws.",
+								"The target is doomed. If they are reduced to 0 hit points, they instantly die.",
+								"The target must roll a {@dice d20}. On a roll of 1, they die instantly with no chance of resurrection."
+							]
+						},
+						"A creature can't be affected by the same curse twice.",
+						"To avoid the effects of the impending curse, a target can use their bonus action to pass their fate to an ally they can see within 60 feet. An impending curse can't be transferred back to a creature who has already been targeted with it. If Pharyon is destroyed before the curse takes effect, the creature is unaffected by the curse.",
+						"A curse can only be lifted by a solar's Healing Touch. It can also be suppressed, but not broken permanently, by wearing an amulet featuring the {@condition petrified} eye of an eye devil."
+					]
+				},
+				{
+					"name": "Soul-Scorching",
+					"entries": [
+						"Fire damage dealt by Pharyon ignores resistance and immunity to fire damage."
+					]
+				},
+				{
+					"name": "True Name",
+					"entries": [
+						"Pharyon's true name must be hummed, whistled, or played on an instrument at the table for the reading to be legitimate!",
+						{
+							"type": "image",
+							"href": {
+								"type": "external",
+								"url": "https://i.imgur.com/wymvBoI.png"
+							}
+						}
+					]
+				},
+				{
+					"name": "True Prescience",
+					"entries": [
+						"Pharyon can't be surprised, always acts first in the initiative order, and attacks against him can't be made with advantage."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Pharyon makes four attacks. He can cast a spell in place of one of these attacks."
+					]
+				},
+				{
+					"name": "Flame Jet",
+					"entries": [
+						"{@atk rs} {@hit 12} to hit, range 60 ft., one target. {@h}21 ({@damage 6d6}) fire damage."
+					]
+				},
+				{
+					"name": "Incinerate",
+					"entries": [
+						"{@atk ms} {@hit 12} to hit, reach 10 ft., one target. {@h}28 ({@damage 8d6}) fire damage."
+					]
+				},
+				{
+					"name": "Winged Embrace",
+					"entries": [
+						"Pharyon encloses himself and one other creature within 5 feet of him within his wings. The creature must succeed on a {@dc 20} Dexterity saving throw or become {@condition grappled} (escape {@dc 20}). While {@condition grappled}, the target is {@condition restrained}. Pharyon can only grapple one creature at a time.",
+						"While grappling a creature, Pharyon is guarded from damage by his wings, which can be attacked (AC 18; 50 hit points). When reduced to 0 hit points, the wings fall apart, releasing the trapped creature inside.",
+						"If Pharyon's wings are destroyed, he reforms them at the start of his next turn."
+					]
+				},
+				{
+					"name": "Teleport",
+					"entries": [
+						"Pharyon magically teleports, along with any equipment he is wearing or carrying, up to 120 feet to an unoccupied space he can see."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Look Again",
+					"entries": [
+						"When a creature hits Pharyon with an attack, he can swap positions with the attacker. The attacker targets itself and not Pharyon with the attack."
+					]
+				}
+			],
+			"legendaryHeader": [
+				"Pharyon has three villain actions. He can take each action once during an encounter after an enemy creature's turn. He takes villain action 1 during the first round of combat, villain action 2 during the second round, and villain action 3 during the third round."
+			],
+			"legendary": [
+				{
+					"name": "Villain Action 1: Time Is But a Loop",
+					"entries": [
+						"Pharyon reverses the effects of the last creature's turn, uses Teleport, and then the last creature's turn plays out again as it did before. Any attacks or spells cast that turn that targeted Pharyon are still made and cast, but simply target the space Pharyon left. If the attack or spell requires a creature as a target, the attack automatically misses and the spell automatically fails."
+					]
+				},
+				{
+					"name": "Villain Action 2: I Have Seen Your End",
+					"entries": [
+						"If Pharyon already has a creature {@condition grappled}, he makes four Incinerate attacks against that creature. Otherwise, Pharyon uses Teleport and then Winged Embrace."
+					]
+				},
+				{
+					"name": "Villain Action 3: Eye of the Inferno",
+					"entries": [
+						"Pharyon opens all of his eyes at once, igniting a swirling firestorm that rages around him. Creatures within 60 feet of Pharyon must make a {@dc 20} Dexterity saving throw, taking 70 ({@damage 20d6}) fire damage on a failed save, or half as much on a successful one. Thereafter, at the start of each of Pharyon's turns, each creature within 60 feet of him takes 10 ({@damage 3d6}) fire damage, and flammable objects in the area that aren't being worn or carried ignite. Creatures and objects within 10 feet of Pharyon stand in the eye of the storm and avoid all damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances",
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"U"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Teleport"
+			],
+			"languageTags": [
+				"C",
+				"I",
+				"TP"
+			],
+			"damageTags": [
+				"F"
+			],
+			"damageTagsSpell": [
+				"F"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"AOE",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled",
+				"restrained"
+			],
+			"conditionInflictSpell": [
+				"charmed",
+				"frightened",
+				"restrained",
+				"unconscious"
+			],
+			"savingThrowForced": [
+				"dexterity"
+			],
+			"savingThrowForcedSpell": [
+				"dexterity",
+				"wisdom"
 			]
 		}
 	]
