@@ -33,7 +33,7 @@
 			}
 		],
 		"dateAdded": 1671361149,
-		"dateLastModified": 1693671517,
+		"dateLastModified": 1698825429,
 		"spellSchools": {
 			"AR": {
 				"full": "Arte",
@@ -41,7 +41,7 @@
 				"color": "f96c0b"
 			}
 		},
-		"_dateLastModifiedHash": "2069472c07"
+		"_dateLastModifiedHash": "50105ba180"
 	},
 	"book": [
 		{
@@ -374,7 +374,7 @@
 				}
 			],
 			"entries": [
-				"You channel a curse into your weapon that fills the target's mind with fury directed exclusively at you. Make a melee weapon attack as part of using this arte. On a hit, the target has disadvantage on attack rolls against targets other than you until the start of your next turn.",
+				"You channel a curse into your weapon that fills the target's mind with fury directed exclusively at you. Make a melee weapon attack as part of using this arte. On a hit, the target suffers the weapon attack's normal effects and has disadvantage on attack rolls against targets other than you until the start of your next turn.",
 				"Starting at 5th level, this arte's weapon attack deals an additional {@damage 1d6} psychic damage. This arte's psychic damage increases by {@dice 1d6} at 11th level ({@damage 2d6}) and again at 17th level ({@damage 3d6})."
 			],
 			"scalingLevelDice": [
@@ -449,7 +449,7 @@
 				}
 			],
 			"entries": [
-				"Your attack summons spectral chains that coil around your target's body and hold them in place. Make a weapon attack as part of using this arte. If the target is Large or smaller, on a hit, the target's movement range becomes limited. Until the end of the target's next turn, if it moves more than 15 feet from its space when this arte was used, it takes {@damage 1d6} force damage and is unable to move further.",
+				"Your attack summons spectral chains that coil around your target's body and hold them in place. Make a weapon attack as part of using this arte. On a hit, the target suffers the weapon attack's normal effects and if the target is Large or smaller, it's movement range becomes limited. Until the end of the target's next turn, if it moves more than 15 feet from its space when this arte was used, it takes {@damage 1d6} force damage and is unable to move further.",
 				"This arte's damage increases by {@dice 1d6} when you reach 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6})."
 			],
 			"scalingLevelDice": [
@@ -1306,7 +1306,7 @@
 				}
 			],
 			"range": {
-				"type": "radius",
+				"type": "point",
 				"distance": {
 					"type": "feet",
 					"amount": 15
@@ -1525,10 +1525,9 @@
 				}
 			],
 			"range": {
-				"type": "radius",
+				"type": "point",
 				"distance": {
-					"type": "feet",
-					"amount": 15
+					"type": "self"
 				}
 			},
 			"components": {
@@ -1912,7 +1911,7 @@
 				}
 			],
 			"range": {
-				"type": "radius",
+				"type": "point",
 				"distance": {
 					"type": "feet",
 					"amount": 5
@@ -2124,7 +2123,7 @@
 				}
 			],
 			"range": {
-				"type": "radius",
+				"type": "point",
 				"distance": {
 					"type": "feet",
 					"amount": 15
@@ -2638,7 +2637,24 @@
 				}
 			],
 			"entries": [
-				"You extend your hand and point a finger at a target in range. Your arte grants you a brief insight into the target's defenses. You gain advantage on your next attack roll against the target until the end of your next turn."
+				"You extend your hand and point a finger at a target in range. Your arte grants you a brief insight into the target's defenses. Until the end of your next turn, you gain advantage on your next weapon attack roll against the target. On a hit, the target suffers the weapon attack's normal effects and takes an additional {@damage 1d8} damage of your weapon's type.",
+				"Additionally, your next weapon attack ignores the disadvantage from attacking a heavily obscured target.",
+				"This arte's damage increases by {@dice 1d8} when you reach 5th level ({@damage 2d8}), 11th level ({@damage 3d8}), and 17th level ({@damage 4d8})."
+			],
+			"scalingLevelDice": [
+				{
+					"label": "weapon damage",
+					"scaling": {
+						"1": "1d8",
+						"5": "2d8",
+						"11": "3d8",
+						"17": "4d8"
+					}
+				}
+			],
+			"miscTags": [
+				"ADV",
+				"SCL"
 			],
 			"areaTags": [
 				"ST"
@@ -2649,14 +2665,9 @@
 				"activation.type": "special",
 				"target.value": "1",
 				"target.units": "0",
-				"target.type": "creature",
-				"range.value": "30",
-				"range.units": "ft"
+				"target.type": "creature"
 			},
-			"foundryImg": "icons/skills/ranged/target-bullseye-archer-orange.webp",
-			"miscTags": [
-				"ADV"
-			]
+			"foundryImg": "icons/skills/ranged/target-bullseye-archer-orange.webp"
 		},
 		{
 			"name": "Tundral Slam",
@@ -4828,7 +4839,7 @@
 				}
 			],
 			"range": {
-				"type": "point",
+				"type": "cube",
 				"distance": {
 					"type": "feet",
 					"amount": 5
@@ -4902,7 +4913,7 @@
 				}
 			],
 			"range": {
-				"type": "radius",
+				"type": "point",
 				"distance": {
 					"type": "feet",
 					"amount": 15
