@@ -16,11 +16,13 @@
 					"Jarett R.",
 					"maybejake",
 					"DrGoo282",
-					"dazzle.account"
+					"Crazy Ivan#3242",
+					"dazzle.account",
+					"hakr14"
 				],
 				"version": "4.7.1",
 				"url": "https://www.gmbinder.com/share/-M0ZVK6ndhFyImQPF_aJ",
-				"targetSchema": "1.2.8"
+				"targetSchema": "1.10.16"
 			},
 			{
 				"json": "LLSavE",
@@ -30,22 +32,25 @@
 					"/u/laserllama"
 				],
 				"convertedBy": [
-					"Crazy Ivan#3242"
+					"Crazy Ivan#3242",
+					"hakr14"
 				],
 				"version": "4.7.1",
 				"color": "eaab30",
 				"url": "https://www.gmbinder.com/share/-MzD8t8Wt2S232M_WBVC",
-				"targetSchema": "1.2"
+				"targetSchema": "1.10.16"
 			}
 		],
 		"optionalFeatureTypes": {
 			"LL:SP": "Scholarly Pursuits",
 			"LL:Runes": "Runes",
-			"LL:CP": "Creature Recipes"
+			"LL:CP": "Creature Recipes",
+			"LL:SWSP": "Student of War Scholarly Pursuits",
+			"LL:SLSP": "Student of Logic Scholarly Pursuits"
 		},
 		"dateAdded": 1549715846,
-		"dateLastModified": 1688332431,
-		"_dateLastModifiedHash": "614a30884e"
+		"dateLastModified": 1699305056,
+		"_dateLastModifiedHash": "4ed25720ff"
 	},
 	"class": [
 		{
@@ -146,20 +151,31 @@
 					},
 					{
 						"a": [
-							"light crossbow",
-							"bolts|phb"
+							"light crossbow|phb",
+							"crossbow bolts (20)|phb"
 						],
 						"b": [
-							"dagger|phb"
+							{
+								"item": "dagger|phb",
+								"quantity": 2
+							}
 						]
 					},
 					{
-						"_": []
+						"_": [
+							{
+								"equipmentType": "toolArtisan"
+							}
+						]
 					},
 					{
-						"_": []
+						"_": [
+							"leather armor|phb",
+							"scholar's pack|phb"
+						]
 					}
-				]
+				],
+				"goldAlternative": "{@dice 5d4*10|5d4 × 10|Starting Gold}"
 			},
 			"optionalfeatureProgression": [
 				{
@@ -189,6 +205,34 @@
 						6,
 						6
 					]
+				}
+			],
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"title": "Intellect Die",
+					"configuration": {
+						"identifier": "intellect-die",
+						"type": "dice",
+						"scale": {
+							"1": {
+								"n": 1,
+								"die": 6
+							},
+							"5": {
+								"n": 1,
+								"die": 8
+							},
+							"10": {
+								"n": 1,
+								"die": 10
+							},
+							"15": {
+								"n": 1,
+								"die": 12
+							}
+						}
+					}
 				}
 			],
 			"classTableGroups": [
@@ -415,7 +459,8 @@
 						}
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/sundries/scrolls/scroll-yellow-teal.webp"
 		}
 	],
 	"classFeature": [
@@ -438,7 +483,21 @@
 						"The creature remains your Mark indefinitely. This Mark ends early if the creature is Hidden from you, if you lose your concentration, or if you use this feature on another creature."
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"target": {
+					"value": 1,
+					"type": "creature"
+				},
+				"range": {
+					"value": 60,
+					"units": "ft"
+				}
+			},
+			"foundryFlags": {
+				"concentrationnotifier.data.requiresConcentration": true
+			},
+			"foundryImg": "icons/skills/targeting/crosshair-bars-yellow.webp"
 		},
 		{
 			"name": "Predictive Defense",
@@ -450,7 +509,8 @@
 				"{@i 1st-level Savant class feature}",
 				"Your observant way of fighting allows you to anticipate and dodge attacks. When calculating your Armor Class you can use your Intelligence modifier, in place of your Dexterity.",
 				"Moreover, so long as you are not incapacitated, your Mark has disadvantage on any attack roll it makes against you."
-			]
+			],
+			"foundryImg": "icons/equipment/shield/heater-steel-boss-red.webp"
 		},
 		{
 			"name": "Scholarly Pursuits",
@@ -462,7 +522,8 @@
 				"{@i 2nd-level Savant class feature}",
 				"Never satisfied with your current knowledge you are always looking to expand your horizons. You master two Scholarly Pursuits of your choice from the list at end of this class.",
 				"When you reach certain levels in this class, as indicated in the Scholarly Pursuits column of the Savant table above, you master additional Scholarly Pursuits of your choice."
-			]
+			],
+			"foundryImg": "icons/sundries/books/book-tooled-gold-brown.webp"
 		},
 		{
 			"name": "Wondrous Intellect",
@@ -475,7 +536,16 @@
 				"Your mind is capable of wondrous bursts of intuition. When you make an ability check or saving throw that uses Wisdom or Intelligence, or when you make a damage roll against your Mark, you add your Intellect Die, which is a d6, to the roll.",
 				"Moreover, when a creature that can see or hear you hits your Mark with an attack, you can use your reaction to grant it a bonus to its damage roll equal to your Intellect Die.",
 				"At certain savant levels, your Intellect Die increases: at 5th level (d8), at 10th level (d10), and at 15th level (d12)."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": "",
+					"type": "special",
+					"condition": "When you make an ability check or saving throw that uses Wisdom or Intelligence, or when you make a damage roll against your Mark, or as a reaction when a creature that can see or hear you hits your Mark with an attack"
+				},
+				"formula": "@scale.savant.intellect-die"
+			},
+			"foundryImg": "icons/sundries/gaming/dice-runed-brown.webp"
 		},
 		{
 			"name": "Academic Discipline",
@@ -587,7 +657,8 @@
 				"{@i 5th-level Savant class feature}",
 				"Your ability to process and react to your surroundings is near supernatural. You gain a bonus to initiative rolls equal to your Intelligence modifier, and you gain a second reaction you can take each round. A single effect can only trigger one reaction.",
 				"When you reach 17th level in this class, you gain another reaction you can use each round (for a total of 3 reactions)."
-			]
+			],
+			"foundryImg": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp"
 		},
 		{
 			"name": "Quick Study",
@@ -599,7 +670,41 @@
 				"{@i 5th-level Savant class feature}",
 				"You are able to gain a working knowledge of new concepts exceptionally fast. You gain proficiency with one skill, tool, or weapon, or learn to speak one language of your choice.",
 				"Over the course of 1 hour, which can be during a short or long rest, you can replace this proficiency or language with another proficiency or language of your choice, so long as you have an example to learn from. Examples include a willing teacher, a book in another language, or a tool set manual."
-			]
+			],
+			"skillProficiencies": [
+				{},
+				{
+					"any": 1
+				}
+			],
+			"toolProficiencies": [
+				{},
+				{
+					"any": 1
+				}
+			],
+			"weaponProficiencies": [
+				{},
+				{
+					"choose": {
+						"count": 1,
+						"fromFilter": "type=melee weapon;ranged weapon|miscellaneous=mundane"
+					}
+				}
+			],
+			"languageProficiencies": [
+				{},
+				{
+					"any": 1
+				}
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "hour"
+				}
+			},
+			"foundryImg": "icons/sundries/books/book-red-exclamation.webp"
 		},
 		{
 			"name": "Keen Awareness",
@@ -613,12 +718,20 @@
 				{
 					"type": "list",
 					"items": [
-						"Use Adroit Analysis to Mark a creature you can see.",
+						"Use {@classFeature Adroit Analysis|Savant|LLSav|1} to Mark a creature you can see.",
 						"Make an Intelligence ability check to recall information.",
-						"Take either the Help, Ready, or Search action."
+						"Take either the {@action Help}, {@action Ready}, or {@action Search} action."
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"condition": "When you roll initiative"
+				}
+			},
+			"foundryImg": "icons/magic/perception/eye-ringed-glow-angry-teal.webp"
 		},
 		{
 			"name": "Flash of Brilliance",
@@ -630,7 +743,20 @@
 				"{@i 9th-level Savant class feature}",
 				"As a reaction when a creature within 30 feet makes a saving throw, you can shout a snippet of potent advice, granting it a bonus to its roll equal to one roll of your Intellect Die.",
 				"The creature must be able to hear you to gain this benefit."
-			]
+			],
+			"foundrySystem": {
+				"activation.condition": "When a creature within 30 feet makes a saving throw",
+				"target": {
+					"value": 1,
+					"type": "creature"
+				},
+				"range": {
+					"value": 30,
+					"units": "ft"
+				},
+				"formula": "@scale.savant.intellect-die"
+			},
+			"foundryImg": "icons/magic/light/orb-lightbulb-gray.webp"
 		},
 		{
 			"name": "Predictive Expert",
@@ -641,7 +767,8 @@
 			"entries": [
 				"{@i 10th-level Savant class feature}",
 				"You always seem to be one step ahead of your foes. So long as you aren't incapacitated, you have advantage on any ability checks or saving throws that your Mark forces you to make."
-			]
+			],
+			"foundryImg": "icons/skills/targeting/target-strike-gray.webp"
 		},
 		{
 			"name": "Potent Observation",
@@ -653,7 +780,17 @@
 				"{@i 11th-level Savant class feature}",
 				"You are able to identify even the smallest weaknesses and exploit them with ruthless efficiency. You can use a reaction to add a roll of your Intellect Die to any damage roll, so long as you can see the target and the attacker can hear you.",
 				"Also, whenever you use your reaction to add an Intellect Die to another creature's damage roll against your Mark, you can roll your Intellect Die twice and use the higher result."
-			]
+			],
+			"foundrySystem": {
+				"activation.condition": "",
+				"damage.parts": [
+					[
+						"@scale.savant.intellect-die",
+						""
+					]
+				]
+			},
+			"foundryImg": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp"
 		},
 		{
 			"name": "Unyielding Will",
@@ -665,7 +802,19 @@
 				"{@i 14th-level Savant class feature}",
 				"You gain proficiency in Charisma saving throws. Whenever you are forced make a Charisma saving throw you gain a bonus to your roll equal to one roll of your Intellect Die.",
 				"Also, when an effect allows you to make an Intelligence, Wisdom, or Charisma saving throw to avoid damage, you take no damage on a successful save and half on a failure."
-			]
+			],
+			"savingThrowProficiencies": [
+				{
+					"cha": true
+				}
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When an effect allows you to make an Intelligence, Wisdom, or Charisma saving throw to avoid damage"
+				}
+			},
+			"foundryImg": "icons/magic/control/buff-flight-wings-runes-blue.webp"
 		},
 		{
 			"name": "Profound Insight",
@@ -676,7 +825,8 @@
 			"entries": [
 				"As an action, you can predict your Mark's next move and alert your allies to its plans. Until the start of your next turn, your Mark has disadvantage on all ability checks, attack rolls, and saving throws, and creatures of your choice have advantage on any saving throw your Mark forces them to make.",
 				"Once you use this feature you must finish a short or long rest before you can use it again."
-			]
+			],
+			"foundryImg": "icons/skills/targeting/target-strike-triple-blue.webp"
 		},
 		{
 			"name": "Undisputed Genius",
@@ -686,10 +836,38 @@
 			"level": 20,
 			"entries": [
 				"You realize your true genius potential. Your Intelligence score increases by 4, up to a maximum of 24. Also, when you roll an Intellect Die and roll lower than your Intelligence modifier, you can replace the roll with your Intelligence modifier."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"consition": "When you roll an Intellect Die and roll lower than your Intelligence modifier"
+				},
+				"formula": "@abilities.int.mod"
+			},
+			"foundryImg": "icons/skills/wounds/anatomy-organ-brain-pink-red.webp"
 		}
 	],
 	"subclassFeature": [
+		{
+			"name": "Archaeologist",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Archaeologist",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"Specializing in the study of forgotten civilizations, uncharted lands, and ancient places, Archaeologists bring the light of knowledge to the dark and deadly places of the world. Doing their best to uncover the wisdom of ages long past, they often tend to feel a sad kinship with the civilizations they study and go to great lengths not to destroy or offend their memory.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Student of History|Savant|LLSav|Archaeologist|LLSav|3|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Adventuring Academic|Savant|LLSav|Archaeologist|LLSav|3|LLSav"
+				}
+			]
+		},
 		{
 			"name": "Student of History",
 			"source": "LLSav",
@@ -698,12 +876,24 @@
 			"subclassShortName": "Archaeologist",
 			"subclassSource": "LLSav",
 			"level": 3,
-			"header": 2,
 			"entries": [
 				"{@i 3rd-level Archaeologist feature}",
 				"You gain proficiency in {@skill History} and {@skill Investigation}, and your proficiency bonus is doubled for any check you make with either skill. If you are already proficient in these skills you gain proficiency in another skill from the savant skill list.",
 				"Also, if you spend 1 minute examining an object you are holding, you can ascertain its value, origin, and age. If it has magic properties, you learn them as if you had cast {@spell identify}."
-			]
+			],
+			"expertise": [
+				{
+					"history": true,
+					"investigation": true
+				}
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "minute"
+				}
+			},
+			"foundryImg": "icons/sundries/books/book-worn-purple.webp"
 		},
 		{
 			"name": "Adventuring Academic",
@@ -713,7 +903,6 @@
 			"subclassShortName": "Archaeologist",
 			"subclassSource": "LLSav",
 			"level": 3,
-			"header": 2,
 			"entries": [
 				"{@i 3rd-level Archaeologist feature}",
 				"The places you explore have honed your instincts and given you insights into ancient items. You gain the benefits below:",
@@ -723,10 +912,11 @@
 						"You gain a climbing speed equal to your walking speed.",
 						"You ignore class, race, and alignment requirements for attunement and use of magic items, scrolls, and potions.",
 						"You count as a spellcaster for the purposes of attuning to magic items, using Intelligence as your spellcasting ability.",
-						"When you use your action to Use an Object, scroll, potion, or magic item, you can make one attack as a bonus action."
+						"When you use your action to {@action Use an Object}, scroll, potion, or magic item, you can make one attack as a bonus action."
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/sundries/documents/document-symbol-triangle-pink.webp"
 		},
 		{
 			"name": "Daring Determination",
@@ -741,7 +931,16 @@
 				"{@i 6th-level Archaeologist feature}",
 				"You are well acquainted with danger. Your Wondrous Intellect bonus applies to Dexterity ability checks and saving throws.",
 				"In addition, when you are forced to make a saving throw to resist the effects of a trap, you gain a bonus to your roll equal to your Intelligence modifier (minimum of +1). If a trap allows you to take only half damage on a success, you instead take no damage if you succeed, and only half damage if you fail."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you are forced to make a saving throw to resist the effects of a trap"
+				},
+				"actionType": "util",
+				"formula": "max(1, @abilities.int.mod)"
+			},
+			"foundryImg": "icons/skills/movement/figure-running-gray.webp"
 		},
 		{
 			"name": "Lore Master",
@@ -754,9 +953,11 @@
 			"header": 2,
 			"entries": [
 				"{@i 13th-level Archaeologist feature}",
-				"You constantly study every myth, legend, and folk tale you come across. If you observe a person, place, or object for at least 1 hour, you can mystically recall information about it as if it were the target of a {@spell legend lore} spell. The target of this feature does not need to be of legendary importance in order for you to gain information. Though, if there is no relevant lore about the target you learn nothing.",
+				"You constantly study every myth, legend, and folk tale you come across. If you observe a person, place, or object for at least 1 hour, you can mystically recall information about it as if it were the target of a {@spell legend lore} spell.",
+				"The target of this feature does not need to be of legendary importance in order for you to gain information. Though, if there is no relevant lore about the target you learn nothing.",
 				"Finally, when you use a magic item, its save DC is equal to 8 + your proficiency bonus + your Intelligence modifier."
-			]
+			],
+			"foundryImg": "icons/sundries/books/book-clasp-spiral-green.webp"
 		},
 		{
 			"name": "Master Archaeologist",
@@ -771,6 +972,34 @@
 				"{@i 17th-level Archaeologist feature}",
 				"Your exposure to ancient magics has caused you to develop an innate ward. You gain resistance to damage from spells.",
 				"In addition, each time you finish a short rest, you can cause a magic item you are attuned to to regain expended charges equal to your Intelligence modifier (minimum of 1 charge)."
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "Each time you finish a short rest"
+				},
+				"formula": "max(1, @abilities.int.mod)"
+			},
+			"foundryImg": "icons/magic/defensive/shield-barrier-flaming-pentagon-purple-orange.webp"
+		},
+		{
+			"name": "Investigator",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Investigator",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"Excelling at unraveling mysteries, conspiracies, and secrets, Investigators possess an uncanny ability to read the intent of others. They often spend their lives working to thwart those who deceive the innocent and take advantage of the common trust. Their considerable minds and eye for the truth stand in the way of thieves, shapeshifters, and corrupt politicians.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Student of Truth|Savant|LLSav|Investigator|LLSav|3|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Rough & Tumble|Savant|LLSav|Investigator|LLSav|3|LLSav"
+				}
 			]
 		},
 		{
@@ -782,17 +1011,24 @@
 			"subclassSource": "LLSav",
 			"level": 3,
 			"entries": [
-				"You gain proficiency in Insight and Investigation, and your proficiency bonus is doubled for any check you make with either skill. If you are already proficient in these skills you gain proficiency in another skill from the savant skill list.",
+				"You gain proficiency in {@skill Insight} and {@skill Investigation}, and your proficiency bonus is doubled for any check you make with either skill. If you are already proficient in these skills you gain proficiency in another skill from the savant skill list.",
 				"Your intuitive nature grants you the following benefits:",
 				{
 					"type": "list",
 					"items": [
-						"Whenever you would make a Wisdom (Insight) check, you can make an Intelligence (Insight) check instead.",
+						"Whenever you would make a Wisdom ({@skill Insight}) check, you can make an Intelligence ({@skill Insight}) check instead.",
 						"You have advantage on any ability check you make to detect illusions, shapeshifters, or if a creature is lying.",
 						"You gain a bonus to your Passive Perception equal to your Intelligence modifier (minimum of +1)."
 					]
 				}
-			]
+			],
+			"expertise": [
+				{
+					"insight": true,
+					"investigation": true
+				}
+			],
+			"foundryImg": "icons/sundries/books/book-eye-purple.webp"
 		},
 		{
 			"name": "Rough & Tumble",
@@ -812,9 +1048,25 @@
 						"int"
 					]
 				},
-				"On a failure, your Mark is blinded, deafened, or silenced (your choice) for 1 minute. It can repeat the saving throw at the start of each of its turns, ending the effect on a success.",
+				"On a failure, your Mark is {@condition blinded}, {@condition deafened}, or silenced (your choice) for 1 minute. It can repeat the saving throw at the start of each of its turns, ending the effect on a success.",
 				"Should you score a critical hit against your Mark and use this feature, it has disadvantage on its initial saving throw."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "Once per turn when you hit your Mark with a weapon attack, instead of adding your Intellect Die to the damage roll of the attack"
+				},
+				"actionType": "save",
+				"save": {
+					"ability": "con",
+					"scaling": "int"
+				},
+				"duration": {
+					"value": 1,
+					"units": "minute"
+				}
+			},
+			"foundryImg": "icons/skills/movement/ball-spinning-blue.webp"
 		},
 		{
 			"name": "Astute Defense",
@@ -824,11 +1076,31 @@
 			"subclassShortName": "Investigator",
 			"subclassSource": "LLSav",
 			"level": 6,
+			"header": 2,
 			"entries": [
 				"Your wondrous intuition grants you a heightened sense for danger. When a creature that you can see targets you with a melee attack and misses, you can force it to make a Dexterity saving throw against your Investigator save DC as a reaction.",
-				"On a failed save, you can cause the creature to be blinded, deafened, or silenced until the start of your next turn, or if the creature is Large or smaller, you can knock it prone instead.",
+				"On a failed save, you can cause the creature to be {@condition blinded}, {@condition deafened}, or silenced until the start of your next turn, or if the creature is Large or smaller, you can knock it {@condition prone} instead.",
 				"If you use this reaction against your Mark, it also takes bludgeoning damage equal to your Intellect Die on a failure."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"Condition": "When a creature that you can see targets you with a melee attack and misses"
+				},
+				"actionType": "save",
+				"save": {
+					"ability": "dex",
+					"scaling": "int"
+				},
+				"damage.parts": [
+					[
+						"@scale.savant.intellect-die",
+						"bludgeoning"
+					]
+				]
+			},
+			"foundryImg": "icons/magic/defensive/shield-barrier-glowing-triangle-orange.webp"
 		},
 		{
 			"name": "Ear to the Ground",
@@ -838,11 +1110,29 @@
 			"subclassShortName": "Investigator",
 			"subclassSource": "LLSav",
 			"level": 6,
+			"header": 2,
 			"entries": [
-				"Your line of work has granted you a unique familiarity with the underbelly of civilized society. You learn to speak, read, decipher, and write in Thieves' Cant.",
+				"Your line of work has granted you a unique familiarity with the underbelly of civilized society. You learn to speak, read, decipher, and write in {@language Thieves' Cant}.",
 				"Also, once you spend a long rest in a settlement, you have advantage on any ability checks you make to gather information on that settlement and its culture, active factions, or important figures.",
 				"Finally, if you spend at least 10 minutes talking with your Mark, you can force it to (unknowingly) make a Wisdom saving throw against your Investigator save DC. On a failed save, your Mark cannot willingly lie to you for the remainder of that conversation."
-			]
+			],
+			"languageProficiencies": [
+				{
+					"thieves' cant": true
+				}
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 10,
+					"type": "minute"
+				},
+				"actionType": "save",
+				"save": {
+					"ability": "wis",
+					"sacling": "int"
+				}
+			},
+			"foundryImg": "icons/environment/settlement/house-city.webp"
 		},
 		{
 			"name": "Peerless Focus",
@@ -852,10 +1142,12 @@
 			"subclassShortName": "Investigator",
 			"subclassSource": "LLSav",
 			"level": 13,
+			"header": 2,
 			"entries": [
 				"Your gaze uncovers even the most well-hidden secrets and weaknesses. You instantly detect the presence of shapeshifters and illusions, and your weapon attacks against your Mark are a critical hit on rolls of 18-20 on the d20.",
-				"In addition, if your Mark fails its saving throw against your Rough & Tumble feautre, you can choose for it to be stunned instead of being blinded, deafened, or silenced."
-			]
+				"In addition, if your Mark fails its saving throw against your {@subclassFeature Rough & Tumble|Savant|LLSav|Investigator|LLSav|3|LLSav} feautre, you can choose for it to be {@condition stunned} instead of being {@condition blinded}, {@condition deafened}, or silenced."
+			],
+			"foundryImg": "icons/magic/perception/eye-ringed-glow-angry-small-red.webp"
 		},
 		{
 			"name": "Master Investigator",
@@ -865,10 +1157,44 @@
 			"subclassShortName": "Investigator",
 			"subclassSource": "LLSav",
 			"level": 17,
+			"header": 2,
 			"entries": [
-				"Your sense for the truth has reached near- supernatural levels. You gain Truesight in a 60-foot radius. Though, your Truesight from this feature cannot see into the Ethereal Plane.",
+				"Your sense for the truth has reached near-supernatural levels. You gain {@sense Truesight} in a 60-foot radius. Though, your Truesight from this feature cannot see into the Ethereal Plane.",
 				"Also, when you, or a creature you can see, hits your Mark with a weapon attack, you can use your reaction to turn that attack into an automatic critical hit.",
 				"Once you use this feature to turn a hit into a critical hit, you must finish a short or long rest before you can use it again."
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"condition": "When you, or a creature you can see, hits your Mark with a weapon attack"
+				},
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "sr"
+				}
+			},
+			"foundryImg": "icons/magic/perception/eye-ringed-glow-angry-large-red.webp"
+		},
+		{
+			"name": "Naturalist",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Naturalist",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"The Naturalist's classroom begins at the edges of civilization. They study the natural balance of ecosystems and will go to any lengths to maintain that balance. A true Naturalist is a protector of the wild and an expert at predicting the weather, identifying toxic and medicinal plants, and tracking animals.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Student of Nature|Savant|LLSav|Naturalist|LLSav|3|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Survivalist|Savant|LLSav|Naturalist|LLSav|3|LLSav"
+				}
 			]
 		},
 		{
@@ -880,16 +1206,29 @@
 			"subclassSource": "LLSav",
 			"level": 3,
 			"entries": [
-				"You gain proficiency in both Nature and Survival, and your proficiency bonus is doubled for any check you make with either skill. If you are already proficient in these skills you gain proficiency in another skill from the savant skill list.",
+				"You gain proficiency in both {@skill Nature} and {@skill Survival}, and your proficiency bonus is doubled for any check you make with either skill. If you are already proficient in these skills you gain proficiency in another skill from the savant skill list.",
 				"Your study of nature also grants you the benefits below:",
 				{
 					"type": "list",
 					"items": [
-						"Whenever you would make a Wisdom (Survival) check, you can make an Intelligence (Survival) check instead.",
+						"Whenever you would make a Wisdom ({@skill Survival}) check, you can make an Intelligence ({@skill Survival}) check instead.",
 						"Over the course of 1 hour, which can be during a short or long rest, you can study and take notes on the current environment. So long as you have access to these notes, you have advantage on any Intelligence checks you make related to its native flora, fauna, weather, and ecosystems."
 					]
 				}
-			]
+			],
+			"expertise": [
+				{
+					"nature": true,
+					"survival": true
+				}
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "hour"
+				}
+			},
+			"foundryImg": "icons/sundries/books/book-leaves-circle.webp"
 		},
 		{
 			"name": "Survivalist",
@@ -900,8 +1239,8 @@
 			"subclassSource": "LLSav",
 			"level": 3,
 			"entries": [
-				"You have the knowledge to thrive in the wild. Over the course of 1 hour, which can be during your short or long rests, you can gather natural material to create one of the following objects: 10 feet of rope, a club, a javelin, 1d4 darts, or a net. To do so, you need a dagger or the appropriate set of tools.",
-				"You have also learned to set hidden Snares. As an action, you can use 10 feet of rope or a net to set a hidden Snare in an adjacent and unoccupied 5-foot space. The first creature that moves into the space must succeed on a Dexterity saving throw against your Naturalist save DC or become restrained.",
+				"You have the knowledge to thrive in the wild. Over the course of 1 hour, which can be during your short or long rests, you can gather natural material to create one of the following objects: 10 feet of rope, a {@item club|phb}, a {@item javelin|phb}, {@dice 1d4} {@item dart|phb|darts}, or a {@item net|phb}. To do so, you need a {@item dagger|phb} or the appropriate set of {@table tools|phb}.",
+				"You have also learned to set hidden Snares. As an action, you can use 10 feet of rope or a net to set a hidden Snare in an adjacent and unoccupied 5-foot space. The first creature that moves into the space must succeed on a Dexterity saving throw against your Naturalist save DC or become {@condition restrained}.",
 				{
 					"type": "abilityDc",
 					"name": "Naturalist",
@@ -909,8 +1248,9 @@
 						"int"
 					]
 				},
-				"As an action, a restrained creature can make a Strength saving throw against your Naturalist save DC, escaping on a success. A creature can detect the presence of your hidden Snares by succeeding on an Intelligence (Investigation) or Wisdom (Perception) check against your Naturalist save DC."
-			]
+				"As an action, a restrained creature can make a Strength saving throw against your Naturalist save DC, escaping on a success. A creature can detect the presence of your hidden Snares by succeeding on an Intelligence ({@skill Investigation}) or Wisdom ({@skill Perception}) check against your Naturalist save DC."
+			],
+			"foundryImg": "icons/skills/trades/farming-sickle-harvest-wheat.webp"
 		},
 		{
 			"name": "Adapt & Overcome",
@@ -920,19 +1260,45 @@
 			"subclassShortName": "Naturalist",
 			"subclassSource": "LLSav",
 			"level": 6,
+			"header": 2,
 			"entries": [
 				"You lead others to survive in the wild. Each time you finish a short or long rest, you, plus a number of creatures that can hear you equal to your Intelligence modifier, gain one of the features below until the end of your next short or long rest:",
 				{
-					"type": "list",
-					"items": [
-						"{@b Concealment Training.} In natural environments, you have advantage on Dexterity (Stealth) checks and move stealthily at a normal pace.",
-						"{@b Diver Training.} You gain a swimming speed equal to your walking speed, and you can hold your breath underwater for a total number of minutes equal to your Constitution modifier + the Naturalist's Intelligence modifier.",
-						"{@b Endurance Training.} You ignore the effects of difficult terrain imposed by natural environments, and you have advantage on and saving throws you make to avoid exhaustion.",
-						"{@b Mountaineer Training.} You gain a climbing speed equal to your walking speed and reduce any falling damage by an amount equal to your level.",
-						"{@b Resilience Training.} You have advantage on saving throws to resist the effects of extreme environments, and you gain resistance to one of the following damage types: cold, fire, poison, or thunder."
-					]
+					"type": "item",
+					"name": "Concealment Training",
+					"entry": "In natural environments, you have advantage on Dexterity ({@skill Stealth}) checks and move stealthily at a normal pace."
+				},
+				{
+					"type": "item",
+					"name": "Diver Training",
+					"entry": "You gain a swimming speed equal to your walking speed, and you can hold your breath underwater for a total number of minutes equal to your Constitution modifier + the Naturalist's Intelligence modifier."
+				},
+				{
+					"type": "item",
+					"name": "Endurance Training",
+					"entry": "You ignore the effects of difficult terrain imposed by natural environments, and you have advantage on and saving throws you make to avoid {@condition exhaustion}."
+				},
+				{
+					"type": "item",
+					"name": "Mountaineer Training",
+					"entry": "You gain a climbing speed equal to your walking speed and reduce any falling damage by an amount equal to your level."
+				},
+				{
+					"type": "item",
+					"name": "Resilience Training",
+					"entry": "You have advantage on saving throws to resist the effects of extreme environments, and you gain resistance to one of the following damage types: cold, fire, poison, or thunder."
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation.condition": "Each time you finish a short or long rest",
+				"uses": {
+					"value": "",
+					"max": "",
+					"per": ""
+				},
+				"description.value": "You lead others to survive in the wild. Each time you finish a short or long rest, you, plus a number of creatures that can hear you equal to your Intelligence modifier, gain one of the features below until the end of your next short or long rest:Concealment Training. In natural environments, you have advantage on Dexterity (@skill[Stealth]) checks and move stealthily at a normal pace.Diver Training. You gain a swimming speed equal to your walking speed, and you can hold your breath underwater for a total number of minutes equal to your Constitution modifier + the Naturalist's Intelligence modifier.Endurance Training. You ignore the effects of difficult terrain imposed by natural environments, and you have advantage on and saving throws you make to avoid @condition[exhaustion].Mountaineer Training. You gain a climbing speed equal to your walking speed and reduce any falling damage by an amount equal to your level.Resilience Training. You have advantage on saving throws to resist the effects of extreme environments, and you gain resistance to one of the following damage types: cold, fire, poison, or thunder."
+			},
+			"foundryImg": "icons/skills/melee/unarmed-punch-fist.webp"
 		},
 		{
 			"name": "Call of the Wild",
@@ -942,13 +1308,26 @@
 			"subclassShortName": "Naturalist",
 			"subclassSource": "LLSav",
 			"level": 13,
+			"header": 2,
 			"entries": [
-				"As an action on your turn, you can force one beast, plant, or monstrosity within 30 feet to make a Wisdom saving throw against your Naturalist save DC, so long as it can hear you. On a failure, the creature is charmed by you for 1 hour.",
+				"As an action on your turn, you can force one beast, plant, or monstrosity within 30 feet to make a Wisdom saving throw against your Naturalist save DC, so long as it can hear you. On a failure, the creature is {@condition charmed} by you for 1 hour.",
 				"While charmed, this creature is friendly to you and your allies. As a bonus action, you can issue a verbal command to the creature, which it does its best to obey on its next turn. Once the creature completes your command it will defend itself to the best of its ability until you command it again.",
 				"Each time the creature takes damage, it can repeat the Wisdom saving throw, ending the charm on a success. If you are within 30 feet of the creature and it can hear you, you can use your reaction to impose disadvantage on its saving throw.",
 				"You can only have one creature charmed in this way at a time, and attempting to charm a second creature instantly ends this charm effect for any other creatures.",
 				"You can use this feature a number of times equal to your Intelligence modifier (minimum of once), and you regain all expended uses when you finish a long rest. At the end of the duration of this charm effect, you can expend another use of this feature to extend its duration by an additional hour for that creature, (no save required)."
-			]
+			],
+			"foundrySystem": {
+				"actionType": "save",
+				"save": {
+					"ability": "wis",
+					"scaling": "int"
+				},
+				"uses": {
+					"max": "max(1, @abilities.int.mod)",
+					"per": "lr"
+				}
+			},
+			"foundryImg": "icons/magic/nature/beam-hand-leaves-green.webp"
 		},
 		{
 			"name": "Master Naturalist",
@@ -958,16 +1337,38 @@
 			"subclassShortName": "Naturalist",
 			"subclassSource": "LLSav",
 			"level": 17,
+			"header": 2,
 			"entries": [
 				"Your knowledge of the natural world surpasses that of nearly all other scholars. You gain the benefits below:",
 				{
 					"type": "list",
 					"items": [
-						"When you make an Intelligence check related to an environment that you have studied as part of Student of Nature, you can substitute the d20 roll with your level in this class.",
-						"You are always under the benefits of all five of the Adapt & Overcome features, and at the end of a short or long rest, you can grant one of these benefits to a total number of creatures equal to your savant level.",
-						"Any beast, plant, or monstrosity with a CR that is lower than, or equal to your Intelligence modifier automatically fails its initial saving throw against Call of the Wild, and has disadvantage on all other saving throws to resist this feature.",
+						"When you make an Intelligence check related to an environment that you have studied as part of {@subclassFeature Student of Nature|Savant|LLSav|Naturalist|LLSav|3|LLSav}, you can substitute the d20 roll with your level in this class.",
+						"You are always under the benefits of all five of the {@subclassFeature Adapt & Overcome|Savant|LLSav|Naturalist|LLSav|6|LLSav} features, and at the end of a short or long rest, you can grant one of these benefits to a total number of creatures equal to your savant level.",
+						"Any beast, plant, or monstrosity with a CR that is lower than, or equal to your Intelligence modifier automatically fails its initial saving throw against {@subclassFeature Call of the Wild|Savant|LLSav|Naturalist|LLSav|13|LLSav}, and has disadvantage on all other saving throws to resist this feature.",
 						"The duration of your charm from Call of the Wild increases to 24 hours."
 					]
+				}
+			],
+			"foundryImg": "icons/magic/nature/leaf-hand-green.webp"
+		},
+		{
+			"name": "Physician",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Physician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"Physicians use their considerable intellect to heal the sick and tend to the wounded. They spend their life studying anatomy and the inner workings of mortal creatures, and use this knowledge to keep their allies in top shape. Using their medical training, they offer aid to those who don't have access to the luxury of divine or arcane healing magic.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Student of Medicine|Savant|LLSav|Physician|LLSav|3|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Combat Medic|Savant|LLSav|Physician|LLSav|3|LLSav"
 				}
 			]
 		},
@@ -980,17 +1381,24 @@
 			"subclassSource": "LLSav",
 			"level": 3,
 			"entries": [
-				"You gain proficiency in Medicine and the herbalism kit, and your proficiency bonus is doubled for any check that uses either proficiency. If you are already proficient in Medicine, you gain proficiency in another skill from the savant list.",
+				"You gain proficiency in {@skill Medicine} and the {@item herbalism kit|phb}, and your proficiency bonus is doubled for any check that uses either proficiency. If you are already proficient in Medicine, you gain proficiency in another skill from the savant list.",
 				"Moreover, your studies grant you the following benefits:",
 				{
 					"type": "list",
 					"items": [
-						"Whenever you would make a Wisdom (Medicine) check, you can make an Intelligence (Medicine) check instead.",
-						"Whenever you would make aIf you spend at least 1 minute examining a creature, you can identify any disease, poison, or curse affecting it.Wisdom (Medicine) check, you can make an Intelligence (Medicine) check instead.",
+						"Whenever you would make a Wisdom ({@skill Medicine}) check, you can make an Intelligence ({@skill Medicine}) check instead.",
+						"If you spend at least 1 minute examining a creature, you can identify any disease, poison, or curse affecting it.",
 						"Once per turn when you hit your Mark with a weapon attack, you can reduce its speed by a number of feet equal to 5 times your Intelligence modifier (minimum of 5 feet). This speed reduction lasts until the start of your next turn."
 					]
 				}
-			]
+			],
+			"expertise": [
+				{
+					"medicine": true,
+					"herbalism kit": true
+				}
+			],
+			"foundryImg": "icons/sundries/books/book-red-cross.webp"
 		},
 		{
 			"name": "Combat Medic",
@@ -1003,15 +1411,114 @@
 			"entries": [
 				"You can administer aid in the midst of combat. As an action on your turn, you can use any of the following abilities:",
 				{
-					"type": "list",
-					"items": [
-						"{@b Adrenaline Jolt.} A creature you touch can instantly repeat a saving throw to end the blinded, charmed, deafened, frightened, or poisoned condition, or one disease, and it gains a bonus to its saving throw equal to your Intelligence modifier (minimum of +1).",
-						"{@b Dress Wounds.} A creature you touch gains temporary hit points equal to one roll of your Intellect Die. Tthe temporary hit points from this feature cannot exceed the creature's maximum hit points.",
-						"{@b Healing Surge.} A creature you touch can immediately expend one of its Hit Dice to regain a number of hit points equal to its Hit Die roll + its Constitution modifier + your Intelligence modifier.",
-						"{@b Stabilize.} You touch a living creature that has 0 hit points, instantly stabilizing it. The creature can then immediately expend one of its Hit Dice to regain a number of hit points equal to the maximum value of that Hit Die + its Constitution modifier."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Adrenaline Jolt|Savant|LLSav|Physician|LLSav|3|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Dress Wounds|Savant|LLSav|Physician|LLSav|3|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Healing Surge|Savant|LLSav|Physician|LLSav|3|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Stabilize|Savant|LLSav|Physician|LLSav|3|LLSav"
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation.type": ""
+			},
+			"foundryImg": "icons/magic/life/crosses-trio-red.webp"
+		},
+		{
+			"name": "Adrenaline Jolt",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Physician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"A creature you touch can instantly repeat a saving throw to end the {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, or {@condition poisoned} condition, or one disease, and it gains a bonus to its saving throw equal to your Intelligence modifier (minimum of +1)."
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"actionType": "util",
+				"formula": "max(1, @abilities.int.mod)"
+			},
+			"foundryImg": "icons/magic/symbols/symbol-lightning-bolt.webp"
+		},
+		{
+			"name": "Dress Wounds",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Physician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"A creature you touch gains temporary hit points equal to one roll of your Intellect Die. Tthe temporary hit points from this feature cannot exceed the creature's maximum hit points."
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"actionType": "heal",
+				"damage.parts": [
+					[
+						"@scale.savant.intellect-die",
+						"temphp"
+					]
+				]
+			},
+			"foundryImg": "icons/commodities/cloth/cloth-roll-gold-green.webp"
+		},
+		{
+			"name": "Healing Surge",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Physician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"A creature you touch can immediately expend one of its Hit Dice to regain a number of hit points equal to its Hit Die roll + its Constitution modifier + your Intelligence modifier."
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"actionType": "heal",
+				"formula": "@abilities.int.mod"
+			},
+			"foundryImg": "icons/magic/life/heart-glowing-red.webp"
+		},
+		{
+			"name": "Stabilize",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Physician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"You touch a living creature that has 0 hit points, instantly stabilizing it. The creature can then immediately expend one of its Hit Dice to regain a number of hit points equal to the maximum value of that Hit Die + its Constitution modifier."
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"actionType": "heal"
+			},
+			"foundryImg": "icons/magic/life/heart-cross-blue.webp"
 		},
 		{
 			"name": "Field Doctor",
@@ -1021,10 +1528,18 @@
 			"subclassShortName": "Physician",
 			"subclassSource": "LLSav",
 			"level": 6,
+			"header": 2,
 			"entries": [
-				"You have learned to move across the battlefield unscathed. When you use your action to stabilize, restore hit points, or grant temporary hit points to another creature, you gain the benefits of the Dodge action until the start of your next turn.",
-				"Additionally, when you use a Combat Medic action on your turn, you can make a single weapon attack as a bonus action."
-			]
+				"You have learned to move across the battlefield unscathed. When you use your action to stabilize, restore hit points, or grant temporary hit points to another creature, you gain the benefits of the {@action Dodge} action until the start of your next turn.",
+				"Additionally, when you use a {@subclassFeature Combat Medic|Savant|LLSav|Physician|LLSav|3|LLSav} action on your turn, you can make a single weapon attack as a bonus action."
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you use your action to stabilize, restore hit points, or grant temporary hit points to another creature, or as a bonus action when you use a Combat Medic action on your turn"
+				}
+			},
+			"foundryImg": "icons/skills/movement/feet-winged-boots-brown.webp"
 		},
 		{
 			"name": "Expert Medic",
@@ -1034,17 +1549,108 @@
 			"subclassShortName": "Physician",
 			"subclassSource": "LLSav",
 			"level": 13,
+			"header": 2,
 			"entries": [
 				"You use your knowledge of medicine to perform wondrous feats. As an action, you can touch a creature and use one of the abilities below. You can use these abilities a combined number of times equal to your Intelligence modifier, and you regain all expended uses when you finish a long rest.",
 				{
-					"type": "list",
-					"items": [
-						"{@b Regeneration.} The creature instantly regains hit points equal to four rolls of your Intellect Die. If the creature has a severed body part, you can reattach it as part of this action.",
-						"{@b Restoration.} You instantly end one of the following conditions currently affecting the target: blinded, charmed, deafened, frightened, paralyzed, poisoned, a reduction to an ability score or its hit point maximum, or you reduce its level of exhaustion by 1.",
-						"{@b Resuscitation.} You instantly return a creature to life that has died within the last minute. You cannot bring back a creature that died of old age, nor can this restore any of the creature's missing parts."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Regeneration|Savant|LLSav|Physician|LLSav|13|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Restoration|Savant|LLSav|Physician|LLSav|13|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Resuscitation|Savant|LLSav|Physician|LLSav|13|LLSav"
 				}
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": "@abilities.int.mod",
+					"per": "lr"
+				},
+				"activation.type": ""
+			},
+			"foundryImg": "icons/magic/life/cross-yellow-green.webp"
+		},
+		{
+			"name": "Regeneration",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Physician",
+			"subclassSource": "LLSav",
+			"level": 13,
+			"entries": [
+				"The creature instantly regains hit points equal to four rolls of your Intellect Die. If the creature has a severed body part, you can reattach it as part of this action."
+			],
+			"consumes": {
+				"amount": 1,
+				"name": "Expert Medic"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"actionType": "heal",
+				"damage.parts": [
+					[
+						"@scale.savant.intellect-die + @scale.savant.intellect-die + @scale.savant.intellect-die + @scale.savant.intellect-die",
+						"healing"
+					]
+				]
+			},
+			"foundryImg": "icons/magic/life/cross-flared-green.webp"
+		},
+		{
+			"name": "Restoration",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Physician",
+			"subclassSource": "LLSav",
+			"level": 13,
+			"entries": [
+				"You instantly end one of the following conditions currently affecting the target: {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition paralyzed}, {@condition poisoned}, a reduction to an ability score or its hit point maximum, or you reduce its level of {@condition exhaustion} by 1."
+			],
+			"consumes": {
+				"amount": 1,
+				"name": "Expert Medic"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"actionType": "heal"
+			},
+			"foundryImg": "icons/magic/nature/leaf-oak-wreath-glow-green.webp"
+		},
+		{
+			"name": "Resuscitation",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Physician",
+			"subclassSource": "LLSav",
+			"level": 13,
+			"entries": [
+				"You instantly return a creature to life that has died within the last minute. You cannot bring back a creature that died of old age, nor can this restore any of the creature's missing parts."
+			],
+			"consumes": {
+				"amount": 1,
+				"name": "Expert Medic"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"actionType": "heal"
+			},
+			"foundryImg": "icons/magic/life/heart-hand-gold-green.webp"
 		},
 		{
 			"name": "Master Physician",
@@ -1054,9 +1660,31 @@
 			"subclassShortName": "Physician",
 			"subclassSource": "LLSav",
 			"level": 17,
+			"header": 2,
 			"entries": [
 				"Your knowledge of medicine is without peer. Whenever you restore hit points or grant temporary hit points, the target gains the maximum amount of hit points in place of rolling.",
 				"Also, any creature that expends a Hit Die while within 30 feet of you treats their Hit Dice as its maximum possible roll."
+			],
+			"foundryImg": "icons/magic/life/heart-red-blue.webp"
+		},
+		{
+			"name": "Tactician",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Tactician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"All successful monarchs, conquerors, and revolutions have a master strategist that is responsible for their success in war. Known as Tacticians, these intelligent leaders are always one step ahead of their foes and have a plan for every eventuality. They know the strategies that lead to victory, and those that end in ruin. Alone, a Tactician is no threat, but with powerful allies, they become a force capable of toppling an empire.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Student of War|Savant|LLSav|Tactician|LLSav|3|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tactical Commander|Savant|LLSav|Tactician|LLSav|3|LLSav"
+				}
 			]
 		},
 		{
@@ -1068,16 +1696,29 @@
 			"subclassSource": "LLSav",
 			"level": 3,
 			"entries": [
-				"You gain proficiency in History and Persuasion, and your proficiency bonus is doubled for any check you make with either skill. If you are already proficient in these skills you gain proficiency with another skill of your choice from the savant skill list.",
+				"You gain proficiency in {@skill History} and {@skill Persuasion}, and your proficiency bonus is doubled for any check you make with either skill. If you are already proficient in these skills you gain proficiency with another skill of your choice from the savant skill list.",
 				"Your training in the art and science of war also grants you the benefits below:",
 				{
 					"type": "list",
 					"items": [
 						"You gain proficiency with shields and medium armor.",
-						"You master your choice of the Fencing, Marksmanship, or Traditions Scholarly Pursuit, but it doesn't count against your total number of Scholarly Pursuits you can master for your savant level."
+						"You master your choice of the {@optfeature Fencing|LLSav}, {@optfeature Marksmanship|LLSav}, or {@optfeature Traditions|LLSav} Scholarly Pursuit, but it doesn't count against your total number of Scholarly Pursuits you can master for your savant level."
 					]
 				}
-			]
+			],
+			"expertise": [
+				{
+					"history": true,
+					"persuasion": true
+				}
+			],
+			"armorProficiencies": [
+				{
+					"shield|phb": true,
+					"medium": true
+				}
+			],
+			"foundryImg": "icons/sundries/books/book-symbol-axe-brown.webp"
 		},
 		{
 			"name": "Tactical Commander",
@@ -1090,15 +1731,139 @@
 			"entries": [
 				"You use your knowledge of warfare to direct your allies on the field of battle. As an action on your turn, you can issue one of the Orders detailed below to a willing creature that can see or hear you within 60 feet. A creature can only benefit from one Order at a time, and you can't issue an Order to yourself.",
 				{
-					"type": "list",
-					"items": [
-						"{@b Attack Order:} The next time the target of this Order takes the Attack action before the start of your next turn, it can make one additional weapon attack as part of its Attack action.",
-						"{@b Defensive Order:} Until the start of your next turn, the target of this Order gains an Armor Class bonus equal to your Intelligence modifier.",
-						"{@b Maneuvering Order:} The target of this Order can use its reaction to move up to its full movement speed without provoking opportunity attacks.",
-						"{@b Steadfast Order:} Until the beginning of your next turn, the target of this Order add your Intelligence modifier to any Strength, Dexterity, and Constitution ability checks and saving throws it makes."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Attack Order|Savant|LLSav|Tactician|LLSav|3|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Defensive Order|Savant|LLSav|Tactician|LLSav|3|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Maneuvering Order|Savant|LLSav|Tactician|LLSav|3|LLSav"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Steadfast Order|Savant|LLSav|Tactician|LLSav|3|LLSav"
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation.type": ""
+			},
+			"foundryImg": "icons/environment/people/charge.webp"
+		},
+		{
+			"name": "Attack Order",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Tactician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"The next time the target of this Order takes the {@action Attack} action before the start of your next turn, it can make one additional weapon attack as part of its Attack action."
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"range": {
+					"value": 60,
+					"units": "ft"
+				},
+				"target": {
+					"value": 1,
+					"type": "willing"
+				}
+			},
+			"foundryImg": "icons/skills/melee/weapons-crossed-swords-black.webp"
+		},
+		{
+			"name": "Defensive Order",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Tactician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"Until the start of your next turn, the target of this Order gains an Armor Class bonus equal to your Intelligence modifier."
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"range": {
+					"value": 60,
+					"units": "ft"
+				},
+				"target": {
+					"value": 1,
+					"type": "willing"
+				},
+				"formula": "@abilities.int.mod",
+				"actionType": "util"
+			},
+			"foundryImg": "icons/skills/melee/shield-block-bash-blue.webp"
+		},
+		{
+			"name": "Maneuvering Order",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Tactician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"The target of this Order can use its reaction to move up to its full movement speed without provoking opportunity attacks."
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"range": {
+					"value": 60,
+					"units": "ft"
+				},
+				"target": {
+					"value": 1,
+					"type": "willing"
+				},
+				"actionType": "util"
+			},
+			"foundryImg": "icons/skills/movement/arrows-up-trio-red.webp"
+		},
+		{
+			"name": "Steadfast Order",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Tactician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"entries": [
+				"Until the beginning of your next turn, the target of this Order add your Intelligence modifier to any Strength, Dexterity, and Constitution ability checks and saving throws it makes."
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"range": {
+					"value": 60,
+					"units": "ft"
+				},
+				"target": {
+					"value": 1,
+					"type": "willing"
+				},
+				"formula": "@abilities.int.mod",
+				"actionType": "util"
+			},
+			"foundryImg": "icons/magic/control/buff-flight-wings-runes-purple.webp"
 		},
 		{
 			"name": "Unwavering",
@@ -1108,10 +1873,15 @@
 			"subclassShortName": "Tactician",
 			"subclassSource": "LLSav",
 			"level": 6,
+			"header": 2,
 			"entries": [
-				"Your position doesn't allow you to succumb to base instincts. You have advantage on saving throws to resist enchantment spells, and you are immune to the frightened condition.",
+				"Your position doesn't allow you to succumb to base instincts. You have advantage on saving throws to resist enchantment spells, and you are immune to the {@condition frightened} condition.",
 				"In addition, when you use your action to issue an Order, you can make one weapon attack as a bonus action."
-			]
+			],
+			"conditionImmune": [
+				"frightened"
+			],
+			"foundryImg": "icons/magic/control/control-influence-rally-purple.webp"
 		},
 		{
 			"name": "Strategic Genius",
@@ -1121,9 +1891,21 @@
 			"subclassShortName": "Tactician",
 			"subclassSource": "LLSav",
 			"level": 13,
+			"header": 2,
 			"entries": [
 				"Your genius allows you to coordinate multiple allies. When you use an action to issue an Order, you can issue the same Order to another willing creature within range."
-			]
+			],
+			"foundrySystem": {
+				"range": {
+					"value": 60,
+					"units": "ft"
+				},
+				"target": {
+					"value": 1,
+					"type": "willing"
+				}
+			},
+			"foundryImg": "icons/skills/social/diplomacy-unity-alliance.webp"
 		},
 		{
 			"name": "Master Tactician",
@@ -1133,9 +1915,44 @@
 			"subclassShortName": "Tactician",
 			"subclassSource": "LLSav",
 			"level": 17,
+			"header": 2,
 			"entries": [
 				"Your Orders inspire heroic action in your allies. When you issue an Order to a creature it gains temporary hit points equal to your Intelligence modifier (minimum of 1).",
 				"Also, when you use your action to issue an Order, you can target up to three creatures in range with the same Order."
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you issue an Order to a creature"
+				},
+				"actionType": "heal",
+				"damage.parts": [
+					[
+						"max(1, @abilities.int.mod)",
+						"temphp"
+					]
+				]
+			},
+			"foundryImg": "icons/environment/people/infantry-army.webp"
+		},
+		{
+			"name": "Culinarian",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Culinarian",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"The savants known as Culinarians put their great intellects to work in the science of food and drink. Ever the adventurer, they leave their kitchens behind, venturing out into the world in a lifelong search for new wondrous and exotic ingredients. What strange and exciting recipes will you come to discover?",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Student of Flavor|Savant|LLSav|Culinarian|LLSavE|3|LLSavE"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Adventurer's Cook Book|Savant|LLSav|Culinarian|LLSavE|3|LLSavE"
+				}
 			]
 		},
 		{
@@ -1147,9 +1964,19 @@
 			"subclassSource": "LLSavE",
 			"level": 3,
 			"entries": [
-				"You gain proficiency in Nature and with cook's utensils, and your proficiency bonus is doubled for any check that uses either proficiency. If you're already proficient in Nature, you gain proficiency in another skill from the savant skill list.",
+				"You gain proficiency in {@skill Nature} and with {@item cook's utensils|phb}, and your proficiency bonus is doubled for any check that uses either proficiency. If you're already proficient in Nature, you gain proficiency in another skill from the savant skill list.",
 				"In addition, when you have access to cook's utensils and ingredients, creatures that expend a Hit Die to regain hit points during a short rest with you regain additional hit points equal to one roll of your Intellect Die."
-			]
+			],
+			"expertise": [
+				{
+					"nature": true,
+					"cook's utensils": true
+				}
+			],
+			"foundrySystem": {
+				"formula": "@scale.savant.intellect-die"
+			},
+			"foundryImg": "icons/sundries/books/book-embossed-clasp-gold-brown.webp"
 		},
 		{
 			"name": "Adventurer's Cook Book",
@@ -1160,7 +1987,7 @@
 			"subclassSource": "LLSavE",
 			"level": 3,
 			"entries": [
-				"You have begun to compile a Cook Book containing the exotic and wondrous Recipes you create during your adventures:",
+				"You have begun to compile a Cook Book containing the exotic and wondrous {@filter Recipes|optionalfeatures|feature type=ll:cp} you create during your adventures:",
 				{
 					"type": "entries",
 					"name": "Recipes Known.",
@@ -1202,7 +2029,18 @@
 						"If your Cook Book is lost or destroyed, you must reacquire fresh Samples of each creature type in order to create any Recipes you once knew. You can create a copy of your Cook Book by spending 1 hour copying each Recipe."
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"uses": {
+					"max": "max(1, @abilities.int.mod)",
+					"per": "sr"
+				}
+			},
+			"foundryImg": "icons/sundries/books/book-mimic.webp"
 		},
 		{
 			"name": "A Cut Above",
@@ -1212,9 +2050,12 @@
 			"subclassShortName": "Culinarian",
 			"subclassSource": "LLSavE",
 			"level": 6,
+			"header": 2,
 			"entries": [
-				"As an action, you can touch one of your prepared Morsels and change it to a Morsel of another recipe. Also, when you eat or feed a Morsel to a creature, you can make one weapon attack as a bonus action on that turn."
-			]
+				"As an action, you can touch one of your prepared Morsels and change it to a Morsel of another recipe.",
+				"Also, when you eat or feed a Morsel to a creature, you can make one weapon attack as a bonus action on that turn."
+			],
+			"foundryImg": "icons/weapons/daggers/knife-green.webp"
 		},
 		{
 			"name": "Improved Recipes",
@@ -1224,9 +2065,20 @@
 			"subclassShortName": "Culinarian",
 			"subclassSource": "LLSavE",
 			"level": 13,
+			"header": 2,
 			"entries": [
 				"Your Recipes invigorate your allies along with their normal benefits. A creature that eats one of your Morsels also gains temporary hit points equal to your savant level."
-			]
+			],
+			"foundrySystem": {
+				"actionType": "heal",
+				"damage.parts": [
+					[
+						"@classes.savant.levels",
+						"temphp"
+					]
+				]
+			},
+			"foundryImg": "icons/consumables/food/bowl-stew-tofu-potato-red.webp"
 		},
 		{
 			"name": "Master Culinarian",
@@ -1236,16 +2088,41 @@
 			"subclassShortName": "Culinarian",
 			"subclassSource": "LLSavE",
 			"level": 17,
+			"header": 2,
 			"entries": [
 				"You are a master monster chef and can cook with anything, anywhere. During the course of a long rest, you can use your cook's utensils to prepare a monstrous feast for yourself and a number of creatures equal to your savant level.",
 				"Any creature that eats a portion of this meal gains the benefits listed below until the end of their next long rest:",
 				{
 					"type": "list",
 					"items": [
-						"It is instantly cured of any poisons or disease and is immune to the poisoned and frightened conditions.",
+						"It is instantly cured of any poisons or disease and is immune to the {@condition poisoned} and {@condition frightened} conditions.",
 						"Its hit point maximum increases by an amount equal to one roll of your Intellect Die + your Intelligence modifier.",
 						"It gains a bonus to any Wisdom saving throw it makes equal to your Intelligence modifier (minimum of +1)."
 					]
+				}
+			],
+			"foundrySystem": {
+				"formula": "@scale.savant.intellect-die + @abilities.int.mod"
+			},
+			"foundryImg": "icons/consumables/food/plate-steak-grilled-brown-green.webp"
+		},
+		{
+			"name": "Philosopher",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Philosopher",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"Philosophy is considered by many to be the purest Discipline a savant can pursue. They expend their genius pondering the deep questions of existence; the purpose of life, the nature of the planes, and the relationship between mortals and gods. Through the study of the multiverse, Philosophers try to perfect their knowledge of the multiverse.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Student of Thought|Savant|LLSav|Philosopher|LLSavE|3|LLSavE"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Words of Power|Savant|LLSav|Philosopher|LLSavE|3|LLSavE"
 				}
 			]
 		},
@@ -1258,16 +2135,23 @@
 			"subclassSource": "LLSavE",
 			"level": 3,
 			"entries": [
-				"You gain proficiency in Arcana and Religion, and your proficiency bonus is doubled for any check you make with either skill. If you are already proficient in these skills you gain proficiency in a skill of your choice from the Savant skill list.",
+				"You gain proficiency in {@skill Arcana} and {@skill Religion}, and your proficiency bonus is doubled for any check you make with either skill. If you are already proficient in these skills you gain proficiency in a skill of your choice from the Savant skill list.",
 				"Your understanding of the higher levels of reality also grants you the benefits listed below:",
 				{
 					"type": "list",
 					"items": [
 						"When you make an ability check to communicate with or recall information about, a creature from another plane, you gain a bonus to the roll equal to one roll of your Intellect Die.",
-						"You can use Adroit Analysis to learn additional characteristics about a creature: its alignment, its spellcasting ability (if it has one), the highest level spell it can cast, or its native plane."
+						"You can use {@classFeature Adroit Analysis|Savant|LLSav|1} to learn additional characteristics about a creature: its alignment, its spellcasting ability (if it has one), the highest level spell it can cast, or its native plane."
 					]
 				}
-			]
+			],
+			"expertise": [
+				{
+					"arcana": true,
+					"religion": true
+				}
+			],
+			"foundryImg": "icons/sundries/books/book-purple-glyph.webp"
 		},
 		{
 			"name": "Words of Power",
@@ -1279,48 +2163,235 @@
 			"level": 3,
 			"entries": [
 				"Through years of study, you have uncovered Words of Power that were used in shaping the multiverse. As an action, you can speak aloud one of the Words of Power below, focusing on a creature that can hear you within 30 feet, forcing it to make a saving throw, against your Philosopher save DC:",
+				{
+					"type": "abilityDc",
+					"name": "Philosopher",
+					"attributes": [
+						"int"
+					]
+				},
 				"You can speak these Words a combined number of times equal to your Intelligence modifier (minimum of once). You regain all expended uses when you finsih a short or long rest.",
 				{
-					"type": "entries",
-					"name": "Confound",
-					"page": 1,
-					"entries": [
-						"You force the target to make an Intelligence saving throw. On a failure, it subtracts your Intelligence modifier from the first attack roll it makes each turn for 1 minute. It can repeat this saving throw at the end of each of its turns to end the effect."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Confound|Savant|LLSav|Philosopher|LLSavE|3|LLSavE"
 				},
 				{
-					"type": "entries",
-					"name": "Disorient",
-					"page": 1,
-					"entries": [
-						"You force the target to make a Wisdom saving throw. On a failed save, it must subtract your Intelligence modifier from the next saving throw it is forced to make."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Disorient|Savant|LLSav|Philosopher|LLSavE|3|LLSavE"
 				},
 				{
-					"type": "entries",
-					"name": "Fear",
-					"page": 1,
-					"entries": [
-						"You force the target to make a Wisdom saving throw. On a failed save, it is frightened of a creature of your choice that it can see for 1 minute. It can repeat this saving throw at the end of each turn, ending the effect on a success."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Fear|Savant|LLSav|Philosopher|LLSavE|3|LLSavE"
 				},
 				{
-					"type": "entries",
-					"name": "Halt",
-					"page": 1,
-					"entries": [
-						"You force the target to make a Strength saving throw. On a failed save, its speed is reduced to 0 for 1 minute. The target can repeat this saving throw at the end of each of its turns, ending the effect on a success."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Halt|Savant|LLSav|Philosopher|LLSavE|3|LLSavE"
 				},
 				{
-					"type": "entries",
-					"name": "Shift",
-					"page": 1,
-					"entries": [
-						"You force two creatures of your choice to make a Charisma saving throw. Should both targets fail their saving throws, they instantly switch places. A creature can willingly fail.."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Shift|Savant|LLSav|Philosopher|LLSavE|3|LLSavE"
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": "",
+					"type": ""
+				},
+				"uses": {
+					"max": "max(1, @abilities.int.mod)",
+					"per": "sr"
+				}
+			},
+			"foundryImg": "icons/magic/symbols/runes-triangle-blue.webp"
+		},
+		{
+			"name": "Confound",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Philosopher",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"You force the target to make an Intelligence saving throw. On a failure, it subtracts your Intelligence modifier from the first attack roll it makes each turn for 1 minute. It can repeat this saving throw at the end of each of its turns to end the effect."
+			],
+			"consumes": {
+				"name": "Words of Power"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"target": {
+					"value": 1,
+					"type": "creature"
+				},
+				"range": {
+					"value": 30,
+					"units": "ft"
+				},
+				"actionType": "save",
+				"save": {
+					"ability": "int",
+					"scaling": "int"
+				},
+				"duration": {
+					"value": 1,
+					"units": "minute"
+				},
+				"formula": "@abilities.int.mod"
+			},
+			"foundryImg": "icons/magic/control/hypnosis-mesmerism-swirl.webp"
+		},
+		{
+			"name": "Disorient",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Philosopher",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"You force the target to make a Wisdom saving throw. On a failed save, it must subtract your Intelligence modifier from the next saving throw it is forced to make."
+			],
+			"consumes": {
+				"name": "Words of Power"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"target": {
+					"value": 1,
+					"type": "creature"
+				},
+				"range": {
+					"value": 30,
+					"units": "ft"
+				},
+				"actionType": "save",
+				"save": {
+					"ability": "wis",
+					"scaling": "int"
+				},
+				"formula": "@abilities.int.mod"
+			},
+			"foundryImg": "icons/magic/control/hypnosis-mesmerism-eye.webp"
+		},
+		{
+			"name": "Fear",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Philosopher",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"You force the target to make a Wisdom saving throw. On a failed save, it is {@condition frightened} of a creature of your choice that it can see for 1 minute. It can repeat this saving throw at the end of each turn, ending the effect on a success."
+			],
+			"consumes": {
+				"name": "Words of Power"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"target": {
+					"value": 1,
+					"type": "creature"
+				},
+				"range": {
+					"value": 30,
+					"units": "ft"
+				},
+				"actionType": "save",
+				"save": {
+					"ability": "wis",
+					"scaling": "int"
+				},
+				"duration": {
+					"value": 1,
+					"units": "minute"
+				}
+			},
+			"foundryImg": "icons/magic/control/fear-fright-white.webp"
+		},
+		{
+			"name": "Halt",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Philosopher",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"You force the target to make a Strength saving throw. On a failed save, its speed is reduced to 0 for 1 minute. The target can repeat this saving throw at the end of each of its turns, ending the effect on a success."
+			],
+			"consumes": {
+				"name": "Words of Power"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"target": {
+					"value": 1,
+					"type": "creature"
+				},
+				"range": {
+					"value": 30,
+					"units": "ft"
+				},
+				"actionType": "save",
+				"save": {
+					"ability": "str",
+					"scaling": "int"
+				},
+				"duration": {
+					"value": 1,
+					"units": "minute"
+				}
+			},
+			"foundryImg": "icons/magic/control/debuff-energy-snare-purple-blue.webp"
+		},
+		{
+			"name": "Shift",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Philosopher",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"You force two creatures of your choice to make a Charisma saving throw. Should both targets fail their saving throws, they instantly switch places. A creature can willingly fail."
+			],
+			"consumes": {
+				"name": "Words of Power"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"target": {
+					"value": 2,
+					"type": "creature"
+				},
+				"range": {
+					"value": 30,
+					"units": "ft"
+				},
+				"actionType": "save",
+				"save": {
+					"ability": "cha",
+					"scaling": "int"
+				}
+			},
+			"foundryImg": "icons/magic/movement/trail-streak-zigzag-yellow.webp"
 		},
 		{
 			"name": "Unwavering Will",
@@ -1330,10 +2401,23 @@
 			"subclassShortName": "Philosopher",
 			"subclassSource": "LLSavE",
 			"level": 6,
+			"header": 2,
 			"entries": [
-				"Your sense of purpose and willpower are unyielding. When fail a saving throw and become either charmed, frightened, or stunned, you can choose to succeed instead.",
+				"Your sense of purpose and willpower are unyielding. When fail a saving throw and become either {@condition charmed}, {@condition frightened}, or {@condition stunned}, you can choose to succeed instead.",
 				"Once you use this feature you must finish a short or long rest before you can use it again."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When fail a saving throw and become either charmed, frightened, or stunned"
+				},
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "sr"
+				}
+			},
+			"foundryImg": "icons/magic/control/silhouette-hold-beam-blue.webp"
 		},
 		{
 			"name": "Supreme Understanding",
@@ -1343,25 +2427,118 @@
 			"subclassShortName": "Philosopher",
 			"subclassSource": "LLSavE",
 			"level": 13,
+			"header": 2,
 			"entries": [
 				"You have learned to manipulate the world with more potent Words of Power. You learn the greater Words of Power listed below. You must concentrate on the effects of these Words of Power as if you were concentrating on a spell. You can speak each of these Words once, and then you must finish a short or long rest before you can speak that Word it again.",
 				{
-					"type": "entries",
-					"name": "Banish",
-					"page": 1,
-					"entries": [
-						"You force a target to make a Charisma saving throw. On a failed save, it is banished for up to 1 minute. If it is native to your current plane, it is banished to a harmless demiplane. If it is native to another plane, it is banished to its native plane. The target can repeat its saving throw at the end of each turn. On a success, it returns to an unoccupied space nearest to the place it was originally banished from."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Banish|Savant|LLSav|Philosopher|LLSavE|13|LLSavE"
 				},
 				{
-					"type": "entries",
-					"name": "Enfeeble",
-					"page": 1,
-					"entries": [
-						"You force a target to make an Intelligence saving throw. On a failed save, it is stunned for 1 minute. The target can repeat this saving throw at the start of each turn, and each time it takes damage, ending the effect on a success."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Enfeeble|Savant|LLSav|Philosopher|LLSavE|13|LLSavE"
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": "",
+					"type": ""
+				},
+				"uses": {
+					"value": "",
+					"max": "",
+					"per": ""
+				}
+			},
+			"foundryImg": "icons/magic/symbols/runes-star-blue.webp"
+		},
+		{
+			"name": "Banish",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Philosopher",
+			"subclassSource": "LLSavE",
+			"level": 13,
+			"entries": [
+				"You force a target to make a Charisma saving throw. On a failed save, it is banished for up to 1 minute. If it is native to your current plane, it is banished to a harmless demiplane. If it is native to another plane, it is banished to its native plane. The target can repeat its saving throw at the end of each turn. On a success, it returns to an unoccupied space nearest to the place it was originally banished from."
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"target": {
+					"value": 1,
+					"type": "creature"
+				},
+				"range": {
+					"value": 30,
+					"units": "ft"
+				},
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "sr"
+				},
+				"actionType": "save",
+				"save": {
+					"ability": "cha",
+					"scaling": "int"
+				},
+				"duration": {
+					"value": 1,
+					"units": "minute"
+				}
+			},
+			"foundryFlags": {
+				"concentrationnotifier.data.requiresConcentration": true
+			},
+			"foundryImg": "icons/magic/control/debuff-chains-orb-movement-blue.webp"
+		},
+		{
+			"name": "Enfeeble",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Philosopher",
+			"subclassSource": "LLSavE",
+			"level": 13,
+			"entries": [
+				"You force a target to make an Intelligence saving throw. On a failed save, it is {@condition stunned} for 1 minute. The target can repeat this saving throw at the start of each turn, and each time it takes damage, ending the effect on a success."
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"target": {
+					"value": 1,
+					"type": "creature"
+				},
+				"range": {
+					"value": 30,
+					"units": "ft"
+				},
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "sr"
+				},
+				"actionType": "save",
+				"save": {
+					"ability": "int",
+					"scaling": "int"
+				},
+				"duration": {
+					"value": 1,
+					"units": "minute"
+				}
+			},
+			"foundryFlags": {
+				"concentrationnotifier.data.requiresConcentration": true
+			},
+			"foundryImg": "icons/magic/control/debuff-energy-hold-levitate-teal-blue.webp"
 		},
 		{
 			"name": "Master Philosopher",
@@ -1371,9 +2548,40 @@
 			"subclassShortName": "Philosopher",
 			"subclassSource": "LLSavE",
 			"level": 17,
+			"header": 2,
 			"entries": [
-				"Your willpower rivals that of powerful extraplanar beings. You are always under the effect of protection from evil and good.",
+				"Your willpower rivals that of powerful extraplanar beings. You are always under the effect of {@spell protection from evil and good}.",
 				"Moreover, when an aberration, celestial, elemental, fey, fiend, or undead creature forces you to make a saving throw, you gain a bonus to your roll equal to your Intellect Die."
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When an aberration, celestial, elemental, fey, fiend, or undead creature forces you to make a saving throw"
+				},
+				"actionType": "util",
+				"formula": "@scale.savant.intellect-die"
+			},
+			"foundryImg": "icons/magic/defensive/illusion-evasion-echo-purple.webp"
+		},
+		{
+			"name": "Orator",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Orator",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"Orators are true masters of linguistics and the spoken word. These wordsmiths use nothing but their wit and mastery of rhetoric to rebuff their foes and empower their allies. With utmost confidence, they stride boldly into hostile situations, confident that they can win anyone with their eloquence.",
+				"Unlike others who rely on their charm to cajole, Orators are able to embolden their allies and win over their foes with nothing but well-reasoned logic and convincing rhetoric.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Student of Logic|Savant|LLSav|Orator|LLSavE|3|LLSavE"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Rhetoric|Savant|LLSav|Orator|LLSavE|3|LLSavE"
+				}
 			]
 		},
 		{
@@ -1385,16 +2593,23 @@
 			"subclassSource": "LLSavE",
 			"level": 3,
 			"entries": [
-				"You gain proficiency in Deception and Persuasion, and your proficiency bonus is doubled for any check you make with either skill. If you are already proficient in these skills you gain proficiency in another skill from the savant skill list.",
+				"You gain proficiency in {@skill Deception} and {@skill Persuasion}, and your proficiency bonus is doubled for any check you make with either skill. If you are already proficient in these skills you gain proficiency in another skill from the savant skill list.",
 				"You studies also gain for you the following benefits:",
 				{
 					"type": "list",
 					"items": [
-						"Whenever you would make a Charisma (Deception) or Charisma (Persuasion) check, you make an Intelligence (Deception) or Intelligence (Persuasion) check instead.",
-						"You master your choice of the Linguistics, Riddles, or Traditions Pursuit, but it does not count against the total number of Pursuits you can master for your savant level."
+						"Whenever you would make a Charisma ({@skill Deception}) or Charisma ({@skill Persuasion}) check, you make an Intelligence ({@skill Deception}) or Intelligence ({@skill Persuasion}) check instead.",
+						"You master your choice of the {@optfeature Linguistics|LLSav}, {@optfeature Riddles|LLSav}, or {@optfeature Traditions|LLSav} Pursuit, but it does not count against the total number of Pursuits you can master for your savant level."
 					]
 				}
-			]
+			],
+			"expertise": [
+				{
+					"deception": true,
+					"persuasion": true
+				}
+			],
+			"foundryImg": "icons/sundries/books/book-red-square.webp"
 		},
 		{
 			"name": "Rhetoric",
@@ -1406,48 +2621,179 @@
 			"level": 3,
 			"entries": [
 				"Your mastery over the spoken word allows you to dominate, inspire, and cajole other creatures who can understand and hear you. You gain the rhetorical abilities listed below. If one of these abilities requires a creature to make a saving throw, the saving throw DC is calculated as follows:",
+				{
+					"type": "abilityDc",
+					"name": "Orator",
+					"attributes": [
+						"int"
+					]
+				},
 				"You can use these abilities a combined number of times equal to your Intelligence modifier (minimum of once). You regain all expended uses when you finsih a short or long rest.",
 				{
-					"type": "entries",
-					"name": "Convincing Dialog",
-					"page": 1,
-					"entries": [
-						"If you spend at least 1 minute talking to a creature that is not currently hostile toward you, you can choose to charm it for up to 1 hour. This charm effect ends early if you or your allies do anything harmful to the creature."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Convincing Dialog|Savant|LLSav|Orator|LLSavE|3|LLSavE"
 				},
 				{
-					"type": "entries",
-					"name": "Distracting Retort",
-					"page": 1,
-					"entries": [
-						"When a creature that can hear you within 30 feet of you attacks a creature, you can use your reaction to force the attacker to make a Wisdom saving throw. On a failed save, it must subtract a roll of your Intellect Die from its attack roll."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Distracting Retort|Savant|LLSav|Orator|LLSavE|3|LLSavE"
 				},
 				{
-					"type": "entries",
-					"name": "Inspiring Word",
-					"page": 1,
-					"entries": [
-						"As an action, you can grant a creature within 30 feet that can hear you temporary hit points equal to your Intellect Die roll."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Inspiring Word|Savant|LLSav|Orator|LLSavE|3|LLSavE"
 				},
 				{
-					"type": "entries",
-					"name": "Soothing Speech",
-					"page": 1,
-					"entries": [
-						"As an action, you can force a creature within 30 feet to make a Charisma saving throw. On a failure, it becomes indifferent toward creatures of your choice that it was hostile toward for 1 minute. The effect ends if you or an ally harm the creature."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Soothing Speech|Savant|LLSav|Orator|LLSavE|3|LLSavE"
 				},
 				{
-					"type": "entries",
-					"name": "Uplifting Remark",
-					"page": 1,
-					"entries": [
-						"As a reaction when a creature within 30 feet that can hear you makes an Intelligence, Wisdom, or Charisma saving throw, you can add one roll of your Intellect Die to its roll."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Uplifting Remark|Savant|LLSav|Orator|LLSavE|3|LLSavE"
 				}
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": "max(1, @abilities.int.mod)",
+					"per": "sr"
+				}
+			},
+			"foundryImg": "icons/tools/scribal/ink-quill-red.webp"
+		},
+		{
+			"name": "Convincing Dialog",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Orator",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"If you spend at least 1 minute talking to a creature that is not currently hostile toward you, you can choose to {@condition charmed|phb|charm} it for up to 1 hour. This charm effect ends early if you or your allies do anything harmful to the creature."
+			],
+			"consumes": {
+				"name": "Rhetoric"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "minute",
+					"condition": "Talking to a creature that is not currently hostile toward you"
+				}
+			},
+			"foundryImg": "icons/skills/social/diplomacy-handshake.webp"
+		},
+		{
+			"name": "Distracting Retort",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Orator",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"When a creature that can hear you within 30 feet of you attacks a creature, you can use your reaction to force the attacker to make a Wisdom saving throw. On a failed save, it must subtract a roll of your Intellect Die from its attack roll."
+			],
+			"consumes": {
+				"name": "Rhetoric"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"condition": "When a creature that can hear you within 30 feet of you attacks a creature"
+				},
+				"range": {
+					"value": 30,
+					"units": "ft"
+				},
+				"actionType": "save",
+				"save": {
+					"ability": "wis",
+					"scaling": "int"
+				},
+				"formula": "@scale.savant.intellect-die"
+			},
+			"foundryImg": "icons/magic/time/arrows-circling-pink.webp"
+		},
+		{
+			"name": "Inspiring Word",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Orator",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"As an action, you can grant a creature within 30 feet that can hear you temporary hit points equal to your Intellect Die roll."
+			],
+			"consumes": {
+				"name": "Rhetoric"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"actionType": "heal",
+				"damage.parts": [
+					[
+						"@scale.savant.intellect-die",
+						"temphp"
+					]
+				]
+			},
+			"foundryImg": "icons/magic/life/cross-explosion-burst-green.webp"
+		},
+		{
+			"name": "Soothing Speech",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Orator",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"As an action, you can force a creature within 30 feet to make a Charisma saving throw. On a failure, it becomes indifferent toward creatures of your choice that it was hostile toward for 1 minute. The effect ends if you or an ally harm the creature."
+			],
+			"consumes": {
+				"name": "Rhetoric"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"actionType": "save",
+				"save": {
+					"ability": "cha",
+					"scaling": "int"
+				}
+			},
+			"foundryImg": "icons/magic/control/hypnosis-mesmerism-pendulum.webp"
+		},
+		{
+			"name": "Uplifting Remark",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Orator",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"As a reaction when a creature within 30 feet that can hear you makes an Intelligence, Wisdom, or Charisma saving throw, you can add one roll of your Intellect Die to its roll."
+			],
+			"consumes": {
+				"name": "Rhetoric"
+			},
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"condition": "When a creature within 30 feet that can hear you makes an Intelligence, Wisdom, or Charisma saving throw"
+				},
+				"actionType": "util",
+				"formula": "@scale.savant.intellect-die"
+			},
+			"foundryImg": "icons/magic/control/buff-luck-fortune-gold.webp"
 		},
 		{
 			"name": "Logical Mind",
@@ -1457,10 +2803,21 @@
 			"subclassShortName": "Orator",
 			"subclassSource": "LLSavE",
 			"level": 6,
+			"header": 2,
 			"entries": [
-				"Your masterful grasp of logic allows you to better resist all but the strongest mind-altering effects. You have advantage on any saving throws to resist enchantment spells, and you are immune to the charmed condition.",
+				"Your masterful grasp of logic allows you to better resist all but the strongest mind-altering effects. You have advantage on any saving throws to resist enchantment spells, and you are immune to the {@condition charmed} condition.",
 				"Additionally, when you use your action to use a rhetorical ability, you can make one weapon attack as a bonus action."
-			]
+			],
+			"conditionImmune": [
+				"charmed"
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "bonus"
+				}
+			},
+			"foundryImg": "icons/magic/control/silhouette-hold-change-green.webp"
 		},
 		{
 			"name": "Peerless Rhetoric",
@@ -1470,26 +2827,82 @@
 			"subclassShortName": "Orator",
 			"subclassSource": "LLSavE",
 			"level": 13,
+			"header": 2,
 			"entries": [
 				"You are able to bend the masses to your will with nothing more than words. You learn the rhetorical abilities listed below. You can use each of these abilities once, and then you must finish a short or long rest before you can use it again.",
 				{
-					"type": "entries",
-					"name": "Motivational Address",
-					"page": 1,
-					"entries": [
-						"Over the course of 1 minute, you can speak to a number of creatures of your choice equal to your savant level that can hear and understand you. The creatures gain temporary hit points equal to your savant level, and while the temporary hit points remain, they have advantage on saving throws to resist enchantment spells and they are immune to being frightened."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Motivational Address|Savant|LLSav|Orator|LLSavE|13|LLSavE"
 				},
 				{
-					"type": "entries",
-					"name": "Definitive Argument",
-					"page": 1,
-					"entries": [
-						"As an action, you speak to a number of creatures who can hear and understand you equal to your savant level. They must succeed on a Wisdom saving throw or be charmed by you for the next 24 hours as if by mass suggestion. This charm effect ends if you harm the creature.",
-						"If you were speaking to any of the creatures for at least 1 minute before using this action, and they were not hostile towards you, they have disadvantage on their saving throw."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Definitive Argument|Savant|LLSav|Orator|LLSavE|13|LLSavE"
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": "",
+					"type": ""
+				},
+				"uses": {
+					"value": "",
+					"max": "",
+					"per": ""
+				}
+			},
+			"foundryImg": "icons/tools/scribal/ink-quill-pink.webp"
+		},
+		{
+			"name": "Motivational Address",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Orator",
+			"subclassSource": "LLSavE",
+			"level": 13,
+			"entries": [
+				"Over the course of 1 minute, you can speak to a number of creatures of your choice equal to your savant level that can hear and understand you. The creatures gain temporary hit points equal to your savant level, and while the temporary hit points remain, they have advantage on saving throws to resist enchantment spells and they are immune to being {@condition frightened}."
+			],
+			"foundrySystem": {
+				"actionType": "heal",
+				"activation": {
+					"cost": 1,
+					"type": "minute"
+				},
+				"damage.parts": [
+					[
+						"@classes.savant.levels",
+						"temphp"
+					]
+				],
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "sr"
+				}
+			},
+			"foundryImg": "icons/skills/social/wave-halt-stop.webp"
+		},
+		{
+			"name": "Definitive Argument",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Orator",
+			"subclassSource": "LLSavE",
+			"level": 13,
+			"entries": [
+				"As an action, you speak to a number of creatures who can hear and understand you equal to your savant level. They must succeed on a Wisdom saving throw or be {@condition charmed} by you for the next 24 hours as if by {@spell mass suggestion}. This charm effect ends if you harm the creature.",
+				"If you were speaking to any of the creatures for at least 1 minute before using this action, and they were not hostile towards you, they have disadvantage on their saving throw."
+			],
+			"foundrySystem": {
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "sr"
+				}
+			},
+			"foundryImg": "icons/magic/control/mouth-smile-deception-purple.webp"
 		},
 		{
 			"name": "Master Orator",
@@ -1499,8 +2912,30 @@
 			"subclassShortName": "Orator",
 			"subclassSource": "LLSavE",
 			"level": 17,
+			"header": 2,
 			"entries": [
 				"Your absolute mastery over the spoken word allows you to bend all but the strongest creatures to your will. When you force a creature to make a saving throw to resist a rhetorical ability, it has disadvantage on the roll if both its Intelligence and Wisdom scores are lower than your Intelligence score."
+			],
+			"foundryImg": "icons/magic/sonic/scream-wail-shout-teal.webp"
+		},
+		{
+			"name": "Rune Scribe",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Rune Scribe",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"entries": [
+				"Legends say that rune magic is the most ancient arcane art to be mastered by mortals. Savants who dedicate their lives to the study of these Runes are known as Rune Scribes. They learn all they can about these ancient sigils that embody the fundamental magic of creation. The magic of Runes is rarely used, and jealously guarded by those who can wield its power.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Student of Runes|Savant|LLSav|Rune Scribe|LLSavE|3|LLSavE"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Runes of Power|Savant|LLSav|Rune Scribe|LLSavE|3|LLSavE"
+				}
 			]
 		},
 		{
@@ -1512,9 +2947,30 @@
 			"subclassSource": "LLSavE",
 			"level": 3,
 			"entries": [
-				"You gain proficiency in History and calligrapher's supplies, and your proficiency bonus is doubled for any check that uses either proficiency. If you're already proficient in History you gain proficiency in another skill from the savant skill list.",
-				"You can also speak, read, and write two of the following Runic Languages, which are used to inscribe the Runes you learn: Draconic, Druidic, Dwarvish, Giant, or Primordial."
-			]
+				"You gain proficiency in {@skill History} and {@item calligrapher's supplies|phb}, and your proficiency bonus is doubled for any check that uses either proficiency. If you're already proficient in History you gain proficiency in another skill from the savant skill list.",
+				"You can also speak, read, and write two of the following Runic Languages, which are used to inscribe the Runes you learn: {@language Draconic}, {@language Druidic}, {@language Dwarvish}, {@language Giant}, or {@language Primordial}."
+			],
+			"expertise": [
+				{
+					"history": true,
+					"calligrapher's supplies": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"choose": {
+						"count": 2,
+						"from": [
+							"draconic",
+							"druidic",
+							"dwarvish",
+							"giant",
+							"primordial"
+						]
+					}
+				}
+			],
+			"foundryImg": "icons/sundries/books/book-worn-blue.webp"
 		},
 		{
 			"name": "Runes of Power",
@@ -1525,11 +2981,10 @@
 			"subclassSource": "LLSavE",
 			"level": 3,
 			"entries": [
-				"You have begun to compile a Cook Book containing the exotic and wondrous Recipes you create during your adventures:",
+				"You have learned the artful and ancient magic of {@filter Runes|optionalfeatures|feature type=ll:runes}.",
 				{
 					"type": "entries",
 					"name": "Runes Known",
-					"page": 1,
 					"entries": [
 						"You know two Runes of your choice from the list at the end of this Discipline. Some Runes have a level prerequisite, which you can learn when you meet that level.",
 						"You learn one additional Rune of your choice when you reach 6th, 10th, 13th, and 17th level in this class.",
@@ -1539,7 +2994,6 @@
 				{
 					"type": "entries",
 					"name": "Inscribing Runes",
-					"page": 1,
 					"entries": [
 						"During the course of a long rest, you can spend 1-hour using calligrapher's supplies to inscribe a Rune you know onto a non-magical object, inscribing it in a Runic Languages you know. A creature that bears an object inscribed with a Rune gains the passive benefit of that Rune for as long as they wear or wield the inscribed object.",
 						"A Rune you know can only be inscribed in one object at a time, and inscribing it into another object causes the magic of any previous inscriptions of that Rune to instantly dispel."
@@ -1547,8 +3001,7 @@
 				},
 				{
 					"type": "entries",
-					"name": "Preparing a Morsel.",
-					"page": 1,
+					"name": "Invoking Runes",
 					"entries": [
 						"A creature that bears an object inscribed with one of your Runes can use an action to invoke the Rune. A creature must be able to speak the Runic Language of the Rune's inscription in order to invoke the Rune's effect.",
 						"Once a Rune has been invoked, it cannot be invoked again until the Rune Scribe that inscribed it finishes a long rest."
@@ -1556,13 +3009,27 @@
 				},
 				{
 					"type": "entries",
-					"name": "Serving Morsels.",
-					"page": 1,
+					"name": "Runic Casting Modifier",
 					"entries": [
-						"Intelligence is your Runic casting ability for your Runes, as you unlocked their power through years of research. You use Intelligence when a Rune refers to your Runic casting ability, when you set the saving throw DC, or when you make an attack roll with one of your Runes."
+						"Intelligence is your Runic casting ability for your Runes, as you unlocked their power through years of research. You use Intelligence when a Rune refers to your Runic casting ability, when you set the saving throw DC, or when you make an attack roll with one of your Runes.",
+						{
+							"type": "abilityDc",
+							"name": "Rune",
+							"attributes": [
+								"int"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "Rune",
+							"attributes": [
+								"int"
+							]
+						}
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/symbols/rune-sigil-black-pink.webp"
 		},
 		{
 			"name": "Ancient Magics",
@@ -1572,10 +3039,19 @@
 			"subclassShortName": "Rune Scribe",
 			"subclassSource": "LLSavE",
 			"level": 6,
+			"header": 2,
 			"entries": [
 				"The innate power of your Runes has grown. Any object you inscribe with one of your Runes counts as magical for as long as the magic of the inscribed Rune lasts.",
 				"Also, during the course of a short rest, you can perform a short 10-minute ritual to reawaken the magic of a Rune that has already been invoked for the day, allowing it to be invoked one additional time before the end of your next long rest."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 10,
+					"type": "minute",
+					"condition": "During the course of a short rest"
+				}
+			},
+			"foundryImg": "icons/magic/holy/meditation-chi-focus-blue.webp"
 		},
 		{
 			"name": "Runic Ward",
@@ -1585,10 +3061,23 @@
 			"subclassShortName": "Rune Scribe",
 			"subclassSource": "LLSavE",
 			"level": 13,
+			"header": 2,
 			"entries": [
 				"Your Runes offer a measure of protection to those that bear them. Any creature that bears an object inscribed with one of your Runes gain a bonus to their saving throws equal to your Intelligence modifier (minimum of +1).",
 				"Moreover, each time you finish a long rest, you can replace one Rune you know with another Rune of your choice."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": "",
+					"type": ""
+				},
+				"uses": {
+					"value": "",
+					"max": "",
+					"per": ""
+				}
+			},
+			"foundryImg": "icons/magic/defensive/shield-barrier-blades-teal.webp"
 		},
 		{
 			"name": "Master Rune Scribe",
@@ -1598,33 +3087,40 @@
 			"subclassShortName": "Rune Scribe",
 			"subclassSource": "LLSavE",
 			"level": 17,
+			"header": 2,
 			"entries": [
 				"You can draw on the magic of your Runes to protect yourself in times of great need. When you are reduced to 0 hit points but not killed outright, you can draw on the latent power of one of your inscribed Runes, instantly dispelling the Rune and any of its effects, to fall to 1 hit point instead."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you are reduced to 0 hit points but not killed outright"
+				}
+			},
+			"foundryImg": "icons/magic/symbols/runes-star-pentagon-orange.webp"
 		}
 	],
 	"subclass": [
 		{
 			"name": "Archaeologist",
 			"shortName": "Archaeologist",
-			"page": 5,
 			"subclassFeatures": [
-				"Student of History|Savant|LLSav|Archaeologist|LLSav|3|LLSav",
-				"Adventuring Academic|Savant|LLSav|Archaeologist|LLSav|3|LLSav",
+				"Archaeologist|Savant|LLSav|Archaeologist|LLSav|3|LLSav",
 				"Daring Determination|Savant|LLSav|Archaeologist|LLSav|6||LLSav",
 				"Lore Master|Savant|LLSav|Archaeologist|LLSav|13|LLSav|",
 				"Master Archaeologist|Savant|LLSav|Archaeologist|LLSav|17|LLSav"
 			],
 			"source": "LLSav",
 			"className": "Savant",
-			"classSource": "LLSav"
+			"classSource": "LLSav",
+			"spellcastingAbility": "int",
+			"foundryImg": "icons/skills/trades/academics-study-archaeology-bones.webp"
 		},
 		{
 			"name": "Investigator",
 			"shortName": "Investigator",
 			"subclassFeatures": [
-				"Student of Truth|Savant|LLSav|Investigator|LLSav|3|LLSav",
-				"Rough & Tumble|Savant|LLSav|Investigator|LLSav|3|LLSav",
+				"Investigator|Savant|LLSav|Investigator|LLSav|3|LLSav",
 				"Astute Defense|Savant|LLSav|Investigator|LLSav|6|LLSav",
 				"Ear to the Ground|Savant|LLSav|Investigator|LLSav|6|LLSav",
 				"Peerless Focus|Savant|LLSav|Investigator|LLSav|13|LLSav",
@@ -1632,105 +3128,154 @@
 			],
 			"source": "LLSav",
 			"className": "Savant",
-			"classSource": "LLSav"
+			"classSource": "LLSav",
+			"foundryImg": "icons/skills/trades/academics-investigation-study-blue.webp"
 		},
 		{
 			"name": "Naturalist",
 			"shortName": "Naturalist",
 			"subclassFeatures": [
-				"Student of Nature|Savant|LLSav|Naturalist|LLSav|3|LLSav",
-				"Survivalist|Savant|LLSav|Naturalist|LLSav|3|LLSav",
+				"Naturalist|Savant|LLSav|Naturalist|LLSav|3|LLSav",
 				"Adapt & Overcome|Savant|LLSav|Naturalist|LLSav|6|LLSav",
 				"Call of the Wild|Savant|LLSav|Naturalist|LLSav|13|LLSav",
 				"Master Naturalist|Savant|LLSav|Naturalist|LLSav|17|LLSav"
 			],
 			"source": "LLSav",
 			"className": "Savant",
-			"classSource": "LLSav"
+			"classSource": "LLSav",
+			"foundryImg": "icons/environment/wilderness/tree-ash.webp"
 		},
 		{
 			"name": "Physician",
 			"shortName": "Physician",
 			"subclassFeatures": [
-				"Student of Medicine|Savant|LLSav|Physician|LLSav|3|LLSav",
-				"Combat Medic|Savant|LLSav|Physician|LLSav|3|LLSav",
+				"Physician|Savant|LLSav|Physician|LLSav|3|LLSav",
 				"Field Doctor|Savant|LLSav|Physician|LLSav|6|LLSav",
 				"Expert Medic|Savant|LLSav|Physician|LLSav|13|LLSav",
 				"Master Physician|Savant|LLSav|Physician|LLSav|17|LLSav"
 			],
 			"source": "LLSav",
 			"className": "Savant",
-			"classSource": "LLSav"
+			"classSource": "LLSav",
+			"foundryImg": "icons/consumables/potions/potion-bottle-labeled-medicine-capped-red-black.webp"
 		},
 		{
 			"name": "Tactician",
 			"shortName": "Tactician",
 			"subclassFeatures": [
-				"Student of War|Savant|LLSav|Tactician|LLSav|3|LLSav",
-				"Tactical Commander|Savant|LLSav|Tactician|LLSav|3|LLSav",
+				"Tactician|Savant|LLSav|Tactician|LLSav|3|LLSav",
 				"Unwavering|Savant|LLSav|Tactician|LLSav|6|LLSav",
 				"Strategic Genius|Savant|LLSav|Tactician|LLSav|13|LLSav",
 				"Master Tactician|Savant|LLSav|Tactician|LLSav|17|LLSav"
 			],
 			"source": "LLSav",
 			"className": "Savant",
-			"classSource": "LLSav"
+			"classSource": "LLSav",
+			"optionalfeatureProgression": [
+				{
+					"name": "Student of War",
+					"featureType": [
+						"LL:SWSP"
+					],
+					"progression": {
+						"3": 1
+					}
+				}
+			],
+			"foundryImg": "icons/skills/trades/academics-merchant-scribe.webp"
 		},
 		{
 			"name": "Culinarian",
 			"shortName": "Culinarian",
 			"subclassFeatures": [
-				"Student of Flavor|Savant|LLSav|Culinarian|LLSavE|3|LLSavE",
-				"Adventurer's Cook Book|Savant|LLSav|Culinarian|LLSavE|3|LLSavE",
+				"Culinarian|Savant|LLSav|Culinarian|LLSavE|3|LLSavE",
 				"A Cut Above|Savant|LLSav|Culinarian|LLSavE|6|LLSavE",
 				"Improved Recipes|Savant|LLSav|Culinarian|LLSavE|13|LLSavE",
 				"Master Culinarian|Savant|LLSav|Culinarian|LLSavE|17|LLSavE"
 			],
-			"source": "LLSav",
+			"source": "LLSavE",
 			"className": "Savant",
-			"classSource": "LLSav"
+			"classSource": "LLSav",
+			"optionalfeatureProgression": [
+				{
+					"name": "Recipes",
+					"featureType": [
+						"LL:CP"
+					],
+					"progression": {
+						"3": 2
+					}
+				}
+			],
+			"foundryImg": "icons/consumables/food/bowl-stew-tofu-potato-red.webp"
 		},
 		{
 			"name": "Orator",
 			"shortName": "Orator",
 			"subclassFeatures": [
-				"Student of Logic|Savant|LLSav|Orator|LLSavE|3|LLSavE",
-				"Rhetoric|Savant|LLSav|Orator|LLSavE|3|LLSavE",
+				"Orator|Savant|LLSav|Orator|LLSavE|3|LLSavE",
 				"Logical Mind|Savant|LLSav|Orator|LLSavE|6|LLSavE",
 				"Peerless Rhetoric|Savant|LLSav|Orator|LLSavE|13|LLSavE",
 				"Master Orator|Savant|LLSav|Orator|LLSavE|17|LLSavE"
 			],
-			"source": "LLSav",
+			"source": "LLSavE",
 			"className": "Savant",
-			"classSource": "LLSav"
+			"classSource": "LLSav",
+			"optionalfeatureProgression": [
+				{
+					"name": "Student of Logic",
+					"featureType": [
+						"LL:SLSP"
+					],
+					"progression": {
+						"3": 1
+					}
+				}
+			],
+			"foundryImg": "icons/skills/social/diplomacy-writing-letter.webp"
 		},
 		{
 			"name": "Philosopher",
 			"shortName": "Philosopher",
 			"subclassFeatures": [
-				"Student of Thought|Savant|LLSav|Philosopher|LLSavE|3|LLSavE",
-				"Words of Power|Savant|LLSav|Philosopher|LLSavE|3|LLSavE",
+				"Philosopher|Savant|LLSav|Philosopher|LLSavE|3|LLSavE",
 				"Unwavering Will|Savant|LLSav|Philosopher|LLSavE|6|LLSavE",
 				"Supreme Understanding|Savant|LLSav|Philosopher|LLSavE|13|LLSavE",
 				"Master Philosopher|Savant|LLSav|Philosopher|LLSavE|17|LLSavE"
 			],
-			"source": "LLSav",
+			"source": "LLSavE",
 			"className": "Savant",
-			"classSource": "LLSav"
+			"classSource": "LLSav",
+			"foundryImg": "icons/skills/trades/academics-study-reading-book.webp"
 		},
 		{
 			"name": "Rune Scribe",
 			"shortName": "Rune Scribe",
 			"subclassFeatures": [
-				"Student of Runes|Savant|LLSav|Rune Scribe|LLSavE|3|LLSavE",
-				"Runes of Power|Savant|LLSav|Rune Scribe|LLSavE|3|LLSavE",
+				"Rune Scribe|Savant|LLSav|Rune Scribe|LLSavE|3|LLSavE",
 				"Ancient Magics|Savant|LLSav|Rune Scribe|LLSavE|6|LLSavE",
 				"Runic Ward|Savant|LLSav|Rune Scribe|LLSavE|13|LLSavE",
 				"Master Rune Scribe|Savant|LLSav|Rune Scribe|LLSavE|17|LLSavE"
 			],
-			"source": "LLSav",
+			"source": "LLSavE",
 			"className": "Savant",
-			"classSource": "LLSav"
+			"classSource": "LLSav",
+			"optionalfeatureProgression": [
+				{
+					"name": "Runes of Power",
+					"featureType": [
+						"LL:Runes"
+					],
+					"progression": {
+						"3": 2,
+						"6": 3,
+						"10": 4,
+						"13": 5,
+						"17": 6
+					}
+				}
+			],
+			"foundryImg": "icons/magic/symbols/runes-carved-stone-red.webp"
 		}
 	],
 	"optionalfeature": [
@@ -1741,9 +3286,17 @@
 				"LL:SP"
 			],
 			"entries": [
-				"You are a student of star charts and constellations, and can use the movements of celestial bodies to predict the future. During a long rest when you can see the night sky, roll one d20 and record the number you rolled. You can replace any attack roll, saving throw, or ability check you make with this foretelling roll. You must use this feature before you roll.",
+				"You are a student of star charts and constellations, and can use the movements of celestial bodies to predict the future. During a long rest when you can see the night sky, roll one {@dice d20} and record the number you rolled. You can replace any attack roll, saving throw, or ability check you make with this foretelling roll. You must use this feature before you roll.",
 				"Your foretelling roll can be used only once. If you do not use this roll before the end of your next long rest it is lost."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "During a long rest when you can see the night sky"
+				},
+				"formula": "d20"
+			},
+			"foundryImg": "icons/skills/trades/academics-astronomy-navigation-purple.webp"
 		},
 		{
 			"name": "Falconry",
@@ -1752,43 +3305,87 @@
 				"LL:SP"
 			],
 			"entries": [
-				"You have spent many months learning to train birds of prey. You gain a Falcon companion which uses the Hawk statblock from the Player's Handbook, but it has an Intelligence score of 8. You and your Falcon can communicate simple ideas with each other using simple gestures and sounds. Your Falcon is unwaveringly loyal to you and obeys your commands.",
-				"In combat, your Falcon shares your initiative and acts on your turn. It can move and use its reaction on its own, but it only takes the Dodge action unless you use a bonus action to command it to take an action from its stat block, or another action. If you are incapacitated, your Falcon acts on its own.",
+				"You have spent many months learning to train birds of prey. You gain a Falcon companion which uses the {@creature Hawk} statblock from the Player's Handbook, but it has an Intelligence score of 8. You and your Falcon can communicate simple ideas with each other using simple gestures and sounds. Your Falcon is unwaveringly loyal to you and obeys your commands.",
+				"In combat, your Falcon shares your initiative and acts on your turn. It can move and use its reaction on its own, but it only takes the {@action Dodge} action unless you use a bonus action to command it to take an action from its stat block, or another action. If you are {@condition incapacitated}, your Falcon acts on its own.",
 				"If your Falcon falls to 0 hit points it makes death saving throws as a player character would. Should your Falcon die, your special skills allow you to track and train another Falcon over the course of an 8 hour period using 5 gp worth of bait."
-			]
+			],
+			"foundryImg": "icons/creatures/birds/raptor-hawk-flying.webp"
 		},
 		{
 			"name": "Fencing",
 			"source": "LLSav",
 			"featureType": [
-				"LL:SP"
+				"LL:SP",
+				"LL:SWSP"
 			],
 			"entries": [
-				"You gain proficiency with long swords, rapiers, and scimitars.",
+				"You gain proficiency with {@item longsword|phb|long swords}, {@item rapier|phb|rapiers}, and {@item scimitar|phb|scimitars}.",
 				"When a creature you can see targets you with a melee attack while you are wielding one of these weapons, you can use your reaction to roll your Intellect Die and add it to your Armor class against the attack. If it misses, you can make one melee weapon attack against it as part of the same reaction."
-			]
+			],
+			"weaponProficiencies": [
+				{
+					"longsword|phb": true,
+					"rapier|phb": true,
+					"scimitar|phb": true
+				}
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "reaction",
+					"condition": "When a creature you can see targets you with a melee attack while you are wielding a longsword, rapier, or scimitar"
+				},
+				"formula": "@scale.savant.intellect-die"
+			},
+			"foundryImg": "icons/skills/melee/weapons-crossed-swords-white-blue.webp"
 		},
 		{
 			"name": "Marksmanship",
 			"source": "LLSav",
 			"featureType": [
-				"LL:SP"
+				"LL:SP",
+				"LL:SWSP"
 			],
 			"entries": [
-				"You gain proficiency with all martial ranged weapons. When you make a ranged weapon attack, you can use your Intellect Die in place of the weapon's damage die.",
-				"Moreover, if your setting includes firearms, and your savant has been exposed to the inner workings of such devices, they are considered to be proficient with all simple and martial firearms."
-			]
+				"You gain proficiency with all {@filter martial ranged weapons|items|type=martial weapon;ranged weapon=u~u~sand|miscellaneous=mundane}. When you make a ranged weapon attack, you can use your Intellect Die in place of the weapon's damage die.",
+				"Moreover, if your setting includes {@filter firearms|items|type=firearm|miscellaneous=mundane}, and your savant has been exposed to the inner workings of such devices, they are considered to be proficient with all simple and martial firearms."
+			],
+			"weaponProficiencies": [
+				{
+					"blowgun|phb": true,
+					"hand crossbow|phb": true,
+					"heavy crossbow|phb": true,
+					"longbow|phb": true,
+					"net|phb": true,
+					"firearms": true
+				}
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you make a ranged weapon attack"
+				},
+				"formula": "@scale.savant.intellect-die"
+			},
+			"foundryImg": "icons/weapons/guns/gun-pistol-flintlock.webp"
 		},
 		{
 			"name": "Linguistics",
 			"source": "LLSav",
 			"featureType": [
-				"LL:SP"
+				"LL:SP",
+				"LL:SLSP"
 			],
 			"entries": [
 				"You learn to speak, read, and write a number of languages equal to your Intelligence modifier.",
-				"Whenever you make a Charisma (Persuasion) check while speaking with a creature in its native tongue (other than Common) you can treat a roll of 9 or lower on the d20 as a 10."
-			]
+				"Whenever you make a Charisma ({@skill Persuasion}) check while speaking with a creature in its native tongue (other than Common) you can treat a roll of 9 or lower on the d20 as a 10."
+			],
+			"languageProficiencies": [
+				{
+					"any": 0
+				}
+			],
+			"foundryImg": "icons/sundries/scrolls/scroll-runed-worn-brown.webp"
 		},
 		{
 			"name": "Perfect Recall",
@@ -1798,18 +3395,32 @@
 			],
 			"entries": [
 				"You can recall picture-perfect details from things that you commit to memory. If you spend at least 1 minute observing an object or creature, you can perfectly recall any observable information about that creature or object point in the future, without requiring a successful Intelligence check."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "minute"
+				}
+			},
+			"foundryImg": "icons/tools/scribal/lens-blue.webp"
 		},
 		{
 			"name": "Riddles",
 			"source": "LLSav",
 			"featureType": [
-				"LL:SP"
+				"LL:SP",
+				"LL:SLSP"
 			],
 			"entries": [
 				"You have spent a great deal of time pondering and pouring over riddles and rhymes. When you speak, you can choose to speak in Riddles. When you do so, you appear to be speaking normally, but there are hidden messages laced in your words.",
 				"Over a period of 1 hour, which can be during the course of a short or long rest, you can teach a creature to understand your Riddles. A creature with an Intelligence of 13 or higher that understands your Riddles can respond to you in Riddles."
-			]
+			],
+			"languageProficiencies": [
+				{
+					"other": true
+				}
+			],
+			"foundryImg": "icons/magic/symbols/question-stone-yellow.webp"
 		},
 		{
 			"name": "Secrets & Whispers",
@@ -1821,7 +3432,14 @@
 				"You have a way of finding out news and gathering rumors, even from distant lands. Each time you finish a long rest in a city, town, or settlement, you learn of a one important event that has taken place within the past week.",
 				"Moreover, when you spend a long rest in a town, city, or settlement, you can spend 5 gp to gather news and rumors, including knowledge of secret events, related to that town.",
 				"For example, you may learn of a conversation between conspirators or the location of a thieves' guild meeting."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you spend a long rest in a town, city, or settlement"
+				}
+			},
+			"foundryImg": "icons/environment/settlement/watchtower-moonlit-blue.webp"
 		},
 		{
 			"name": "Skill Mastery",
@@ -1832,18 +3450,29 @@
 			"entries": [
 				"You have spent significant time, effort, and research honing a singular skill. Choose a skill or tool that you are proficient with. When you make an ability check that uses the chosen skill or tool proficiency, you can treat a roll of 7 or lower on the d20 as an 8.",
 				"You can master this Scholarly Pursuit more than once, but you must choose a different proficiency each time."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you make an ability check that uses the chosen skill or tool proficiency"
+				},
+				"formula": 8
+			},
+			"foundryImg": "icons/magic/symbols/star-rising-purple.webp"
 		},
 		{
 			"name": "Traditions",
 			"source": "LLSav",
 			"featureType": [
-				"LL:SP"
+				"LL:SP",
+				"LL:SWSP",
+				"LL:SLSP"
 			],
 			"entries": [
-				"You are a student of culture, politics, and traditions. When you make an Intelligence (History) check related to a local custom, culture, or tradition, you have advantage on the roll.",
+				"You are a student of culture, politics, and traditions. When you make an Intelligence ({@skill History}) check related to a local custom, culture, or tradition, you have advantage on the roll.",
 				"This eclectic knowledge of local customs and traditions also makes you an excellent ambassador. The first time you meet a leader or otherwise important local figure, you have advantage on any Charisma checks you make."
-			]
+			],
+			"foundryImg": "icons/sundries/documents/document-letter-blue.webp"
 		},
 		{
 			"name": "Agriculture",
@@ -1852,9 +3481,10 @@
 				"LL:SP"
 			],
 			"entries": [
-				"You have a keen interest in all growing things. Whenever you make an Intelligence (Nature) check related to Plants, farms, agriculture, or gardening you have advantage on your roll.",
-				"In addition, if you spend 8 hours tending to crops, plants, or other farmland, the 8-hour version of plant growth spell takes effect on any land you attended to during that period."
-			]
+				"You have a keen interest in all growing things. Whenever you make an Intelligence ({@skill Nature}) check related to Plants, farms, agriculture, or gardening you have advantage on your roll.",
+				"In addition, if you spend 8 hours tending to crops, plants, or other farmland, the 8-hour version of {@spell plant growth} spell takes effect on any land you attended to during that period."
+			],
+			"foundryImg": "icons/skills/trades/farming-plant-seeds-gray.webp"
 		},
 		{
 			"name": "Craftsmanship",
@@ -1863,9 +3493,21 @@
 				"LL:SP"
 			],
 			"entries": [
-				"You are a student of fine creation. You gain proficiency with jeweler's tools, and you add double your proficiency bonus to any check you make that uses your jeweler's tools.",
+				"You are a student of fine creation. You gain proficiency with {@item jeweler's tools|phb}, and you add double your proficiency bonus to any check you make that uses your jeweler's tools.",
 				"Also, while you are in sunlight, you can spend 1 hour using jewler's tools to modify a gem you touch so that it absorbs the radiant light of the sun. As an action, you can release the sunlight bound within the gem, causing it to emit bright light in a 30-foot radius and dim light 30 feet beyond that. After 24 hours, gems modified in this way return to normal."
-			]
+			],
+			"expertise": [
+				{
+					"jeweler's tools": true
+				}
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "hour"
+				}
+			},
+			"foundryImg": "icons/commodities/gems/pearl-fire-swirl.webp"
 		},
 		{
 			"name": "Equestrianism",
@@ -1874,9 +3516,31 @@
 				"LL:SP"
 			],
 			"entries": [
-				"You have developed a great love for the care of horses. You gain proficiency in Animal Handling. Whenever you would make a Wisdom (Animal Handling) check, you can make an Intelligence (Animal Handling) check instead. Also, when you make an Animal Handling check related to caring for, riding, or breeding of horses, you have advantage on your roll.",
+				"You have developed a great love for the care of horses. You gain proficiency in {@skill Animal Handling}. Whenever you would make a Wisdom ({@skill Animal Handling}) check, you can make an Intelligence ({@skill Animal Handling}) check instead. Also, when you make an {@skill Animal Handling} check related to caring for, riding, or breeding of horses, you have advantage on your roll.",
 				"Finally, while mounted, you add your Intelligence modifier to any ability check or saving throw your mount makes."
-			]
+			],
+			"skillProficiencies": [
+				{
+					"animal handling": true
+				}
+			],
+			"foundryEffects": [
+				{
+					"name": "Intelligence (Animal Handling)",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.skills.ani.ability",
+							"mode": "OVERRIDE",
+							"value": "int"
+						}
+					]
+				}
+			],
+			"foundrySystem": {
+				"formula": "@abilities.int.mod"
+			},
+			"foundryImg": "icons/sundries/misc/horseshoe-iron.webp"
 		},
 		{
 			"name": "Instruction",
@@ -1886,7 +3550,14 @@
 			],
 			"entries": [
 				"You have dedicated a significant amount of your studies to the art of education. At the end of a long rest, you can teach a creature that can hear you one proficiency or language you know. Until the end of your next long rest, that creature gains proficiency in one tool, skill, or weapon of your choice, or learns to speak and understand one language of your choice."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "At the end of a long rest"
+				}
+			},
+			"foundryImg": "icons/sundries/documents/document-official-capital.webp"
 		},
 		{
 			"name": "Navigation",
@@ -1895,9 +3566,17 @@
 				"LL:SP"
 			],
 			"entries": [
-				"You gain proficiency with cartographer's tools, navigator's tools, and vehicles (water). Whenever you make an ability check that uses these tools, you always use your Intelligence score, and you add double your proficiency bonus to your roll.",
+				"You gain proficiency with {@item cartographer's tools|phb}, {@item navigator's tools|phb}, and vehicles (water). Whenever you make an ability check that uses these tools, you always use your Intelligence score, and you add double your proficiency bonus to your roll.",
 				"In addition, you can never become lost, even by magical means, so long as you can see the night sky or have a map."
-			]
+			],
+			"expertise": [
+				{
+					"carpenter's tools": true,
+					"navigator's tools": true,
+					"vehicles (water)": true
+				}
+			],
+			"foundryImg": "icons/tools/navigation/compass-brass-blue-red.webp"
 		},
 		{
 			"name": "Meditation",
@@ -1908,7 +3587,11 @@
 			"entries": [
 				"You make time each day to clear your mind and keep it sharp. Whenever you roll an Intellect Die and you roll a 1, you can re-roll that Intellect Die until you roll a result greater than 1.",
 				"You can master this Pursuit up to three times, increasing the number you re-roll by one each time. For example, the second time you master this Pursuit you re-roll 1's and 2's."
-			]
+			],
+			"foundrySystem": {
+				"formula": "(@scale.savant.intellect-die)rr<=1"
+			},
+			"foundryImg": "icons/magic/holy/prayer-hands-glowing-yellow-green.webp"
 		},
 		{
 			"name": "Musicianship",
@@ -1917,8 +3600,32 @@
 				"LL:SP"
 			],
 			"entries": [
-				"You have an ear for music and song. You gain proficiency in Performance and three musical instruments of your choice. Whenever you make a Charisma (Performance) check, or an ability check that uses a musical instrument proficiency, you gain a bonus to the roll equal to your Intelligence modifier."
-			]
+				"You have an ear for music and song. You gain proficiency in {@skill Performance} and three musical instruments of your choice. Whenever you make a Charisma ({@skill Performance}) check, or an ability check that uses a musical instrument proficiency, you gain a bonus to the roll equal to your Intelligence modifier."
+			],
+			"skillProficiencies": [
+				{
+					"performance": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"anyMusicalInstrument": 3
+				}
+			],
+			"foundryEffects": [
+				{
+					"name": "Performance Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.skills.prf.bonuses.check",
+							"mode": "OVERRIDE",
+							"value": "+ @abilities.int.mod"
+						}
+					]
+				}
+			],
+			"foundryImg": "icons/skills/trades/music-notes-sound-blue.webp"
 		},
 		{
 			"name": "Theology",
@@ -1927,9 +3634,20 @@
 				"LL:SP"
 			],
 			"entries": [
-				"You are a devoted student of the divine. You learn to speak, read, and write Celestial and gain proficiency in Religion.",
-				"Whenever you make an Intelligence (Religion) check to recall religious devotions, rituals, or customs, or a Charisma check to interact with a Celestial, or another servant of the divine, you can treat a roll of 9 or lower on the d20 as a 10."
-			]
+				"You are a devoted student of the divine. You learn to speak, read, and write {@language Celestial} and gain proficiency in {@skill Religion}.",
+				"Whenever you make an Intelligence ({@skill Religion}) check to recall religious devotions, rituals, or customs, or a Charisma check to interact with a Celestial, or another servant of the divine, you can treat a roll of 9 or lower on the d20 as a 10."
+			],
+			"languageProficiencies": [
+				{
+					"celestial": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"religion": true
+				}
+			],
+			"foundryImg": "icons/magic/holy/saint-glass-portrait-halo.webp"
 		},
 		{
 			"name": "Beast, Air",
@@ -1946,7 +3664,8 @@
 			],
 			"entries": [
 				"A creature that eats this Morsel gains a bonus to initiative rolls equal to your Intelligence modifier for 1 hour."
-			]
+			],
+			"foundryImg": "icons/creatures/birds/dove-pigeon-flying-white.webp"
 		},
 		{
 			"name": "Beast, Cave",
@@ -1962,8 +3681,9 @@
 				}
 			],
 			"entries": [
-				"A creature that eats this Morsel gains darkvision out to a 60-foot radius for 1 hour."
-			]
+				"A creature that eats this Morsel gains {@sense darkvision} out to a 60-foot radius for 1 hour."
+			],
+			"foundryImg": "icons/creatures/mammals/bat-movement-flying-purple.webp"
 		},
 		{
 			"name": "Beast, Land",
@@ -1980,7 +3700,17 @@
 			],
 			"entries": [
 				"A creature that eats this Morsel regains hit points equal to your Intellect Die + your Intelligence modifier."
-			]
+			],
+			"foundrySystem": {
+				"actionType": "heal",
+				"damage.parts": [
+					[
+						"@scale.savant.intellect-die + @abilities.int.mod",
+						"healing"
+					]
+				]
+			},
+			"foundryImg": "icons/creatures/mammals/deer-antlers-blue.webp"
 		},
 		{
 			"name": "Beast, Sea",
@@ -1997,7 +3727,8 @@
 			],
 			"entries": [
 				"A creature that eats this Morsel gains a swimming speed equal to its walking speed for 1 hour."
-			]
+			],
+			"foundryImg": "icons/creatures/fish/fish-marlin-swordfight-blue.webp"
 		},
 		{
 			"name": "Monstrosity",
@@ -2013,8 +3744,9 @@
 				}
 			],
 			"entries": [
-				"A creature that eats this Morsel gains the benefits of alter self for 1 hour. It must concentrate on this effect to maintain it."
-			]
+				"A creature that eats this Morsel gains the benefits of {@spell alter self} for 1 hour. It must concentrate on this effect to maintain it."
+			],
+			"foundryImg": "icons/creatures/abilities/mouth-teeth-lamprey-red.webp"
 		},
 		{
 			"name": "Plant",
@@ -2030,8 +3762,9 @@
 				}
 			],
 			"entries": [
-				"A creature that eats this Morsel is instantly cured of one of the following conditions currently affecting it: blinded, deafened, paralyzed, petrified, poisoned, or their level of exhaustion is reduced by 1 (maximum once per day)."
-			]
+				"A creature that eats this Morsel is instantly cured of one of the following conditions currently affecting it: {@condition blinded}, {@condition deafened}, {@condition paralyzed}, {@condition petrified}, {@condition poisoned}, or their level of {@condition exhaustion} is reduced by 1 (maximum once per day)."
+			],
+			"foundryImg": "icons/creatures/magical/spirit-undead-ghost-tan-teal.webp"
 		},
 		{
 			"name": "Aberration",
@@ -2049,7 +3782,8 @@
 			],
 			"entries": [
 				"A creature that eats this Morsel can telepathically speak to creatures within 30 feet for 1 hour. A target must be able to understand at least one language to understand its telepathy."
-			]
+			],
+			"foundryImg": "icons/creatures/magical/humanoid-silhouette-green.webp"
 		},
 		{
 			"name": "Dragon",
@@ -2068,7 +3802,8 @@
 			"entries": [
 				"The creature that eats this Morsel gains resistance to the damage type dealt by the breath weapon of the dragon used in the creation of this Recipe.",
 				"You can create a separate Recipe in your Cook Book for each type of Dragon you have harvested a sample of."
-			]
+			],
+			"foundryImg": "icons/creatures/reptiles/dragon-horned-blue.webp"
 		},
 		{
 			"name": "Giant",
@@ -2087,7 +3822,8 @@
 			"entries": [
 				"A creature that eats this Morsel grows to become the size of the Giant used in the creation of this Recipe for 1 hour. While it is enlarged in this way, the creature must concentrate on this effect as if it were concentrating on a spell, and it gains a bonus to any Strength checks and Strength saving throws equal to your Intelligence modifier.",
 				"You can create a separate Recipe in your Cook Book for each size of Giant you have harvested a sample of."
-			]
+			],
+			"foundryImg": "icons/creatures/magical/construct-iron-stomping-yellow.webp"
 		},
 		{
 			"name": "Ooze",
@@ -2105,7 +3841,8 @@
 			],
 			"entries": [
 				"A creature that eats this Morsel reduces any lightning or slashing damage it takes by an amount equal to your Intelligence modifier for 1 hour."
-			]
+			],
+			"foundryImg": "icons/creatures/slimes/slime-giant-face-eyes.webp"
 		},
 		{
 			"name": "Celestial",
@@ -2123,7 +3860,8 @@
 			],
 			"entries": [
 				"A creature that eats this Morsel manifests a pair of ethereal angelic wings and gains a 30-foot flying speed for 1 hour."
-			]
+			],
+			"foundryImg": "icons/magic/holy/angel-winged-humanoid-blue.webp"
 		},
 		{
 			"name": "Elemental, Air",
@@ -2140,8 +3878,9 @@
 				}
 			],
 			"entries": [
-				"A creature that eats this Morsel can take the Dash action as a bonus action, and hold its breath indefinitely for 1 hour."
-			]
+				"A creature that eats this Morsel can take the {@action Dash} action as a bonus action, and hold its breath indefinitely for 1 hour."
+			],
+			"foundryImg": "icons/magic/air/fog-gas-smoke-swirling-gray.webp"
 		},
 		{
 			"name": "Elemental, Earth",
@@ -2158,8 +3897,9 @@
 				}
 			],
 			"entries": [
-				"A creature that eats this Morsel gains tremorsense out to a 15-foot radius, and gains resistance to non-magical bludgeoning, piercing, and slashing damage for 1 hour."
-			]
+				"A creature that eats this Morsel gains {@sense tremorsense} out to a 15-foot radius, and gains resistance to non-magical bludgeoning, piercing, and slashing damage for 1 hour."
+			],
+			"foundryImg": "icons/magic/earth/construct-stone-long-arms.webp"
 		},
 		{
 			"name": "Elemental, Fire",
@@ -2176,8 +3916,9 @@
 				}
 			],
 			"entries": [
-				"A creature that eats this Morsel gains immunity to both the charmed and frightened conditions for 1 hour."
-			]
+				"A creature that eats this Morsel gains immunity to both the {@condition charmed} and {@condition frightened} conditions for 1 hour."
+			],
+			"foundryImg": "icons/magic/fire/elemental-fire-humanoid.webp"
 		},
 		{
 			"name": "Elemental, Water",
@@ -2195,7 +3936,8 @@
 			],
 			"entries": [
 				"A creature that eats this Morsel can breathe both air and water, gains a 30-foot swimming speed, and can use its reaction to turn a critical hit into a normal hit for 1 hour."
-			]
+			],
+			"foundryImg": "icons/magic/water/elemental-water.webp"
 		},
 		{
 			"name": "Fey",
@@ -2213,7 +3955,8 @@
 			],
 			"entries": [
 				"For 1 hour, a creature that eats this Morsel can use a bonus action on each of its turns to teleport to an unoccupied space it can see within 30 feet."
-			]
+			],
+			"foundryImg": "icons/creatures/magical/fae-fairy-winged-glowing-green.webp"
 		},
 		{
 			"name": "Fiend",
@@ -2231,7 +3974,8 @@
 			],
 			"entries": [
 				"A creature that eats this Morsel has advantage on all saving throws it is forced to make to resist spells and other magic effects for 1 hour."
-			]
+			],
+			"foundryImg": "icons/creatures/unholy/demon-horned-winged-laughing.webp"
 		},
 		{
 			"name": "Rune of Enchantment",
@@ -2248,8 +3992,16 @@
 			],
 			"entries": [
 				"Creatures will treat the bearer of this Runic object one stage friendlier than they normally would. For example, a neutral creature would feel compelled to view the bearer as a friend, and a hostile creature would view the bearer neutrally. This treatment instatnly ends if the bearer attacks the creature.",
-				"The bearer can invoke this Rune to cast its choice of the calm emotions, charm person, or command spell, targeting a total number of creatures equal to your proficiency bonus."
-			]
+				"The bearer can invoke this Rune to cast its choice of the {@spell calm emotions}, {@spell charm person}, or {@spell command} spell, targeting a total number of creatures equal to your proficiency bonus."
+			],
+			"foundrySystem": {
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "lr"
+				}
+			},
+			"foundryImg": "icons/magic/symbols/rune-sigil-green.webp"
 		},
 		{
 			"name": "Rune of Evocation",
@@ -2267,7 +4019,21 @@
 			"entries": [
 				"When you inscribe this Rune choose acid, cold, fire, poison, or lighting damage. When the bearer hits a creature with an attack with this Runic weapon, it deals additional damage of the chosen type equal to one roll of your Intellect Die.",
 				"When the bearer of this Rune hits with an attack or casts a spell that deals the inscribed damage, it can invoke this Rune to cause a target to take maximum damage instead of rolling."
-			]
+			],
+			"foundrySystem": {
+				"damage.parts": [
+					[
+						"@scale.savant.intellect-die",
+						""
+					]
+				],
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "lr"
+				}
+			},
+			"foundryImg": "icons/magic/symbols/circled-gem-pink.webp"
 		},
 		{
 			"name": "Rune of Illusion",
@@ -2284,9 +4050,17 @@
 			],
 			"entries": [
 				"The bearer of this Runic object can use an action to change its appearance, including height and weight, though it cannot change their size. It can appear as another race, but it must adopt a form that it has seen before. Its clothing, including the Runic object, and equipment do not change.",
-				"These changes can be detected by a successful Intelligence (Investigation) check made against your Runic save DC.",
-				"The bearer can invoke this Rune to turn invisible for up to 10 minutes. This invisibility instantly ends if they attack a creature or force a creature to make a saving throw."
-			]
+				"These changes can be detected by a successful Intelligence ({@skill Investigation}) check made against your Runic save DC.",
+				"The bearer can invoke this Rune to turn {@condition invisible} for up to 10 minutes. This invisibility instantly ends if they attack a creature or force a creature to make a saving throw."
+			],
+			"foundrySystem": {
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "lr"
+				}
+			},
+			"foundryImg": "icons/magic/symbols/rune-sigil-rough-white-teal.webp"
 		},
 		{
 			"name": "Rune of Necromancy",
@@ -2304,7 +4078,21 @@
 			"entries": [
 				"The bearer of this Runic object can use its bonus action to grant itself temporary hit points equal to your Intelligence modifier (minimum of 1 temporary hit point).",
 				"When the bearer of this Rune is reduced to 0 hit points but is not killed, it can invoke the Rune to fall to 1 hit point."
-			]
+			],
+			"foundrySystem": {
+				"damage.parts": [
+					[
+						"max(1, @abilities.int.mod)",
+						"temphp"
+					]
+				],
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "lr"
+				}
+			},
+			"foundryImg": "icons/magic/symbols/rune-sigil-horned-white-purple.webp"
 		},
 		{
 			"name": "Rune of Abjuration",
@@ -2322,8 +4110,16 @@
 			],
 			"entries": [
 				"Once per turn, the bearer of this Runic object can reduce the damage they take from a spell or another magical effect by an amount equal to your Intelligence modifier (minimum of 1).",
-				"The bearer can invoke this Rune to cast counterspell (as a reaction) or dispel magic at a level equal to your proficiency bonus, using your Intelligence as the spellcasting ability."
-			]
+				"The bearer can invoke this Rune to cast {@spell counterspell} (as a reaction) or {@spell dispel magic} at a level equal to your proficiency bonus, using your Intelligence as the spellcasting ability."
+			],
+			"foundrySystem": {
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "lr"
+				}
+			},
+			"foundryImg": "icons/magic/symbols/rune-sigil-horned-blue.webp"
 		},
 		{
 			"name": "Rune of Conjuration",
@@ -2343,7 +4139,15 @@
 				"The bearer of this Runic object can use its action to expend any amount of its remaining speed to instatnly teleport to an unoccupied space of its choice that it can see within that distance, without provoking opportunity attacks.",
 				"The bearer can invoke this Rune to conjure a creature of its choice that it has seen before with a CR equal to half your proficiency bonus or lower. The creature shares the bearer's initiative in combat and acts immediately after it. The bearer can use its bonus action to command the creature to move and take an action from its stat block. The conjured creature remains for 1 minute or until it is reduced to 0 hit points.",
 				"While this creature is conjured, the bearer of this object must concentrate on it as if it were concentrating on a spell."
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "lr"
+				}
+			},
+			"foundryImg": "icons/magic/symbols/rune-sigil-hook-white-red.webp"
 		},
 		{
 			"name": "Rune of Divination",
@@ -2360,8 +4164,362 @@
 				}
 			],
 			"entries": [
-				"The bearer of this Runic object can cast identify and detect magic as rituals. It also gains a bonus to Wisdom (Insight) checks equal to your Intelligence modifier (minimum of +1)",
-				"When you inscribe this Rune you roll a d20 and record the result. When a creature within 30 feet of the bearer makes an attack roll, ability check, or saving throw, the bearer can use its reaction to invoke this Rune and replace the creature's d20 roll with the result of the d20 roll you recorded while. The creature can use this reaction after the creature rolls, but before it knows if the target succeeds or fails."
+				"The bearer of this Runic object can cast {@spell identify} and {@spell detect magic} as rituals. It also gains a bonus to Wisdom ({@skill Insight}) checks equal to your Intelligence modifier (minimum of +1)",
+				"When you inscribe this Rune you roll a {@dice d20} and record the result. When a creature within 30 feet of the bearer makes an attack roll, ability check, or saving throw, the bearer can use its reaction to invoke this Rune and replace the creature's d20 roll with the result of the d20 roll you recorded while. The creature can use this reaction after the creature rolls, but before it knows if the target succeeds or fails."
+			],
+			"foundrySystem": {
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "lr"
+				}
+			},
+			"foundryImg": "icons/magic/symbols/cross-circle-blue.webp"
+		},
+		{
+			"name": "Rune of Transmutation",
+			"source": "LLSavE",
+			"featureType": [
+				"LL:Runes"
+			],
+			"prerequisite": [
+				{
+					"level": 13,
+					"feature": [
+						"Item: bracelet, diadem, ring, or necklace"
+					]
+				}
+			],
+			"entries": [
+				"The bearer of this Runic object gains one of the following features: a 30-foot swimming speed, a 30-foot climbing speed, or their walking speed increases by 10 feet. They can use a bonus action to switch between these three features, but they can only benefit from one of these features at a time.",
+				"The bearer can invoke this Rune to transform into a beast with a CR equal to your savant level or lower for 1 hour, or until they use an action to revert to their normal form. They take on the beast's statistics and hit points, but they retain their mental ability scores, alignment, and personality. They are limited in the actions they can perform by the nature of their new form, and their gear melds into their new form.",
+				"When they revert to their normal form, they return to the number of hit points they had before they transformed. If they revert as a result of falling to 0 hit points, any excess damage carries over to their normal form."
+			],
+			"foundrySystem": {
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "lr"
+				}
+			}
+		}
+	],
+	"foundryClassFeature": [
+		{
+			"name": "Predictive Defense",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"level": 1,
+			"effects": [
+				{
+					"name": "AC Adjustment",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.ac.formula",
+							"mode": "OVERRIDE",
+							"value": "@attributes.ac.armor + @abilities.int.mod"
+						},
+						{
+							"key": "system.attributes.ac.calc",
+							"mode": "OVERRIDE",
+							"value": "custom"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Wondrous Intellect",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"level": 2,
+			"effects": [
+				{
+					"name": "Intelligence and Wisdom Check and Save Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.abilities.int.bonuses.check",
+							"mode": "ADD",
+							"value": "+ @scale.savant.intellect-die"
+						},
+						{
+							"key": "system.abilities.int.bonuses.save",
+							"mode": "ADD",
+							"value": "+ @scale.savant.intellect-die"
+						},
+						{
+							"key": "system.abilities.wis.bonuses.check",
+							"mode": "ADD",
+							"value": "+ @scale.savant.intellect-die"
+						},
+						{
+							"key": "system.abilities.wis.bonuses.save",
+							"mode": "ADD",
+							"value": "+ @scale.savant.intellect-die"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Accelerated Reflexes",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"level": 5,
+			"effects": [
+				{
+					"name": "Initiative Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.init.bonus",
+							"mode": "ADD",
+							"value": "+ @abilities.int.mod"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Unyielding Will",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"level": 14,
+			"effects": [
+				{
+					"name": "Charisma Saving Throw Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.abilities.cha.bonuses.save",
+							"mode": "ADD",
+							"value": "+ @scale.savant.intellect-die"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Undisputed Genius",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"level": 20,
+			"effects": [
+				{
+					"name": "Intelligence Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.abilities.int.max",
+							"mode": "UPGRADE",
+							"value": 24,
+							"priority": 0
+						},
+						{
+							"key": "system.abilities.int.value",
+							"mode": "ADD",
+							"value": "+4",
+							"priority": 1
+						}
+					]
+				}
+			]
+		}
+	],
+	"foundrySubclassFeature": [
+		{
+			"name": "Adventuring Academic",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Archaeologist",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"effects": [
+				{
+					"name": "Climbing Speed",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.climb",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Daring Determination",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Archaeologist",
+			"subclassSource": "LLSav",
+			"level": 6,
+			"effects": [
+				{
+					"name": "Dexterity Check and Save Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.abilities.dex.bonuses.check",
+							"mode": "ADD",
+							"value": "+ @scale.savant.intellect-die"
+						},
+						{
+							"key": "system.abilities.dex.bonuses.save",
+							"mode": "ADD",
+							"value": "+ @scale.savant.intellect-die"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Student of Truth",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Investigator",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"effects": [
+				{
+					"name": "Intelligence (Insight)",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.skills.ins.ability",
+							"mode": "OVERRIDE",
+							"value": "int"
+						}
+					]
+				},
+				{
+					"name": "Passive Perception Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.skills.prc.bonuses.passive",
+							"mode": "ADD",
+							"value": "+ max(1, @abilities.int.mod)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Student of Nature",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Naturalist",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"effects": [
+				{
+					"name": "Intelligence (Survival)",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.skills.sur.ability",
+							"mode": "OVERRIDE",
+							"value": "int"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Adapt & Overcome",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Naturalist",
+			"subclassSource": "LLSav",
+			"level": 6,
+			"effects": [
+				{
+					"name": "Swimming Speed",
+					"transfer": true,
+					"disabled": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.swim",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
+				},
+				{
+					"name": "Climbing Speed",
+					"transfer": true,
+					"disabled": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.climb",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Student of Medicine",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Physician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"effects": [
+				{
+					"name": "Intelligence (Medicine)",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.skills.med.ability",
+							"mode": "OVERRIDE",
+							"value": "int"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Student of Logic",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Orator",
+			"subclassSource": "LLSavE",
+			"level": 3,
+			"effects": [
+				{
+					"name": "Intelligence (Deception) & (Persuasion)",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.skills.dec.ability",
+							"mode": "OVERRIDE",
+							"value": "int"
+						},
+						{
+							"key": "system.skills.per.ability",
+							"mode": "OVERRIDE",
+							"value": "int"
+						}
+					]
+				}
 			]
 		}
 	]
