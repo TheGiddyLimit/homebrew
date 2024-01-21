@@ -1,6 +1,6 @@
 # JSON `"_copy"` Spec
 
-The copy system allows an existing creature, item, or other implemented data-type to be copied, with modifications, to create a new creature.
+The copy system allows an existing creature, item, or other implemented data-type to be copied, with modifications, to create a new creature, item, etc..
 
 ## Homebrew Metadata
 
