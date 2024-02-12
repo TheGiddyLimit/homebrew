@@ -136,10 +136,12 @@ An example homebrew file might contain the following information in it's `_meta`
 
     // other properties, which depend on the data type (key of the array containing the object), e.g. ...
     // implementation is specific to whatever is intended to use the data
-    "_trait": {
-        "name": "Awakened",
-        "source": "PHB"
-    }
+    "_templates": [
+        {
+            "name": "Awakened",
+            "source": "PHB"
+        }
+    ]
 }
 ```
 
@@ -335,7 +337,7 @@ Note that these are calculated using the current object values. The order of ope
 
 - (Copy original object)
 - Apply root properties
-- (Any other required steps, e.g. `_trait`s are applied)
+- (Any other required steps, e.g. `_templates`s are applied)
 - Sequentially apply `_mod`s, in order of appearance
 
 Available variables are:
