@@ -3,10 +3,13 @@
 	"version": "1.0.0",
 	"description": "5etools homebrew",
 	"type": "module",
+	"private": true,
 	"scripts": {
 		"build": "npm run build:clean && npm run build:index",
 		"build:index": "node _node/generate-index.js",
-		"build:clean": "node _node/clean-and-test.js",
+		"build:clean": "npm run build:clean:base",
+		"build:clean:base": "node _node/clean-and-test.js",
+		"build:clean:html": "node _node/clean-html.js",
 		"test:json": "test-json-brew",
 		"test:tags": "node _test/test-tags.js",
 		"test:file-locations": "test-file-locations",
@@ -24,7 +27,9 @@
 	},
 	"homepage": "https://github.com/TheGiddyLimit/homebrew#readme",
 	"devDependencies": {
-		"5etools-utils": "^0.8.2",
-		"commander": "^9.4.1"
+		"5etools-utils": "^0.9.44",
+		"commander": "^9.4.1",
+		"he": "^1.2.0",
+		"sanitize-html": "^2.10.0"
 	}
 }

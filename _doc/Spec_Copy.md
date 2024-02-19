@@ -41,15 +41,15 @@ An example homebrew file might contain the following information in it's `_meta`
 "dependencies": {
     "monster": [    // Use the property name first
         "MM",       // Then the source ID
-        "TDCSR"     // Homebrew sources can also be used, but must be stored in the repo
+        "GHPG"      // Homebrew sources can also be used, but must be stored in the repo
     ],
     "monsterFluff": [
         "MM",
-        "TDCSR"
+        "GHPG"
     ],
     "subclass": [
         "fighter",  // Note the use of the class name for (sub)class(Feature) dependencies
-        "TDCSR"     // Homebrew (sub)class(Feature) dependencies use the normal source
+        "GHPG"      // Homebrew (sub)class(Feature) dependencies use the normal source
     ]
 },
 "internalCopies": [ // A list of properties from the current document that are copied
@@ -58,7 +58,7 @@ An example homebrew file might contain the following information in it's `_meta`
 ],
 "includes": {       // A map of properties to be loaded from sources
     "spell": [
-        "TDCSR"
+        "GHPG"
     ]
 }
 ```
@@ -303,6 +303,18 @@ Remove named or plain items from an array.
     ],
     // optional "-f" flag to avoid throwing errors on missing items -- useful for e.g. creature traits
     "force": true
+}
+```
+
+#### setProp
+
+Set a property on an object. Note that use of a more specific `mode` is preferred, as these will generally be more resilient against future schema changes.
+
+```jsonc
+{
+    "mode": "setProp",
+    "prop": "hp.formula",
+    "value": "2d10+2"
 }
 ```
 

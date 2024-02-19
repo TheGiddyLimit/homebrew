@@ -1,0 +1,1 @@
+This directory corresponds to a homebrew which has since been ingested into the main 5etools data corpus. It should be deleted at or after a "reasonable period." Arbitrarily: 6 months from time of ingestion, therefore, roughly, the 20th February 2024.
