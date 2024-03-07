@@ -330,8 +330,7 @@ Calculate a property, and add it to an object.
 {
     "mode": "calculateProp",
     "prop": "stealth",
-    // formula gets eval'd
-    "formula": "let v = (<$prof_bonus$> * 2) + <$dex_mod$>; v >= 0 ? `+${v}` : `-${v}`"
+    "formula": "(<$prof_bonus$> * 2) + <$dex_mod$>"
 }
 ```
 
@@ -344,10 +343,10 @@ Note that these are calculated using the current object values. The order of ope
 
 Available variables are:
 
-|Var|Notes|
-|---|---|
-|`prof_bonus`|Calculated from creature's CR
-|`dex_mod`|
+| Var          | Notes                         |
+|--------------|-------------------------------|
+| `prof_bonus` | Calculated from creature's CR |
+| `dex_mod`    |                               |
 
 ---
 
