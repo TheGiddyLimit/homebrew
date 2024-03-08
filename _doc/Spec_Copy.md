@@ -1,6 +1,6 @@
-# Bestiary JSON `"_copy"` Spec
+# JSON `"_copy"` Spec
 
-The copy system allows an existing creature to be copied, with modifications, to create a new creature.
+The copy system allows an existing creature, item, or other implemented data-type to be copied, with modifications, to create a new creature, item, etc..
 
 ## Homebrew Metadata
 
@@ -66,79 +66,83 @@ An example homebrew file might contain the following information in it's `_meta`
 ## Usage of `"_copy"`
 
 ```jsonc
-// replace values from the copy with values specified in the root
-// (N.B. these are kept in the root to ease external tooling, instead of doing e.g.:
-//    `name = name || _copy._set.name` we should always have basic info at the root level)
-"name": "New Name",
-"source": "New Source",
-"page": 123,
-"int": 10
+{
+    // replace values from the copy with values specified in the root
+    // (N.B. these are kept in the root to ease external tooling, instead of doing e.g.:
+    //    `name = name || _copy._set.name` we should always have basic info at the root level)
+    "name": "New Name",
+    "source": "New Source",
+    "page": 123,
+    "int": 10,
 
-"_copy": {
-    "name": "Name of original",
-    "source": "Source of original",
+    "_copy": {
+        "name": "Name of original",
+        "source": "Source of original",
 
-    // modify existing properties
-    // key dictates the data to modify
-    // values can be:
-    // - a string operation (e.g. "remove")
-    // - an object operation (e.g. a "replaceTxt" operation with various options)
-    // - an array containing either/both of the above
-    "_mod": {
+        // modify existing properties
+        // key dictates the data to modify
+        // values can be:
+        // - a string operation (e.g. "remove")
+        // - an object operation (e.g. a "replaceTxt" operation with various options)
+        // - an array containing either/both of the above
+        "_mod": {
 
-        // apply to all text properties
-        // text properties are: "action", "reaction", "trait", "legendary", "variant", and "spellcasting"
-        "*": [
-            {
-                "mode": "replaceTxt", // replace text
+            // apply to all text properties
+            // text properties are: "action", "reaction", "trait", "legendary", "variant", and "spellcasting"
+            "*": [
+                {
+                    "mode": "replaceTxt", // replace text
+                    "replace": "the captain",
+                    "with": "Embric",
+                    "flags": "i"
+                }
+            ],
+            // alternate single-operation version
+            "*": {
+                "mode": "replaceTxt",
                 "replace": "the captain",
                 "with": "Embric",
                 "flags": "i"
-            }
-        ],
-        // alternate single-operation version
-        "*": {
-             "mode": "replaceTxt",
-             "replace": "the captain",
-             "with": "Embric",
-             "flags": "i"
+            },
+
+            // apply to _no_ properties (used for "special" operations which have their own specific implementations)
+            "_": {
+                "mode": "addSenses",
+                "senses": []
+            },
+
+            "action": [
+                // more on this syntax can be found later in the spec
+                {
+                    "mode": "replaceArr",
+                    "replace": "Mace",
+                    "items": {
+                        "name": "Staff",
+                        "entries": [
+                            "{@atk mw} {@hit 8} to hit, reach5 ft., ..."
+                        ]
+                    }
+                }
+            ],
+
+            "variant": "remove" // remove a property
         },
 
-        // apply to _no_ properties (used for "special" operations which have their own specific implementations)
-        "_": {
-            "mode": "addSenses",
-            "senses": []
-        }
 
-        "action": [
-            // more on this syntax can be found later in the spec
+        // some properties are removed by default (e.g. page) since they don't make sense on modified copies
+        // this can be used to override that behaviour
+        "_preserve": {
+            "page": true
+        },
+
+        // other properties, which depend on the data type (key of the array containing the object), e.g. ...
+        // implementation is specific to whatever is intended to use the data
+        "_templates": [
             {
-                "mode": "replaceArr",
-                "replace": "Mace",
-                "items": {
-                    "name": "Staff",
-                    "entries": [
-                        "{@atk mw} {@hit 8} to hit, reach5 ft., ..."
-                    ]
-                }
+                "name": "Awakened",
+                "source": "PHB"
             }
-        ],
-
-        "variant": "remove" // remove a property
-    },
-
-
-    // some properties are removed by default (e.g. page) since they don't make sense on modified copies
-    // this can be used to override that behaviour
-    "_preserve": {
-        "page": true
-    },
-
-    // other properties, which depend on the data type (key of the array containing the object), e.g. ...
-    // implementation is specific to whatever is intended to use the data
-    "_traits": {
-        "name": "Awakened",
-        "source": "PHB"
+        ]
     }
 }
 ```
@@ -240,7 +244,7 @@ If the item does not have a name, this falls back on trying to replace string li
 {
     "regex": "a*b",
     "flags": "i"
-}
+},
 // or
 {
     "replace": {
@@ -295,7 +299,7 @@ Remove named or plain items from an array.
 {
     "mode": "removeArr",
     // name/array of names of item to remove
-    "names": "Mace"
+    "names": "Mace",
     // alternatively, if string items are to be removed
     "items": [
       "fire",
@@ -326,8 +330,7 @@ Calculate a property, and add it to an object.
 {
     "mode": "calculateProp",
     "prop": "stealth",
-    // formula gets eval'd
-    "formula": "let v = (<$prof_bonus$> * 2) + <$dex_mod$>; v >= 0 ? `+${v}` : `-${v}`"
+    "formula": "(<$prof_bonus$> * 2) + <$dex_mod$>"
 }
 ```
 
@@ -335,15 +338,15 @@ Note that these are calculated using the current object values. The order of ope
 
 - (Copy original object)
 - Apply root properties
-- (Any other required steps, e.g. `_traits` are applied)
+- (Any other required steps, e.g. `_templates`s are applied)
 - Sequentially apply `_mod`s, in order of appearance
 
 Available variables are:
 
-|Var|Notes|
-|---|---|
-|`prof_bonus`|Calculated from creature's CR
-|`dex_mod`|
+| Var          | Notes                         |
+|--------------|-------------------------------|
+| `prof_bonus` | Calculated from creature's CR |
+| `dex_mod`    |                               |
 
 ---
 
