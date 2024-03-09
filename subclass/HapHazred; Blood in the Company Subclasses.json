@@ -23,6 +23,19 @@
 	},
 	"subclass": [
 		{
+			"name": "Circle of Absurd",
+			"shortName": "Absurd",
+			"source": "BITCSubclasses",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassFeatures": [
+				"Circle of Absurd|Druid|PHB|Absurd|BITCSubclasses|2|BITCSubclasses",
+				"Unnatural Alteration|Druid|PHB|Absurd|BITCSubclasses|6|BITCSubclasses",
+				"Siphoning Wild Shape|Druid|PHB|Absurd|BITCSubclasses|10|BITCSubclasses",
+				"Dimensional Wild Shape|Druid|PHB|Absurd|BITCSubclasses|14|BITCSubclasses"
+			]
+		},
+		{
 			"name": "College of Colours",
 			"shortName": "Colours",
 			"source": "BITCSubclasses",
@@ -621,6 +634,141 @@
 				},
 				"actionType": "save"
 			}
+		},
+		{
+			"name": "Circle of Absurd",
+			"source": "BITCSubclasses",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Absurd",
+			"subclassSource": "BITCSubclasses",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Druids who are a member of the Circle of Absurd originate from regions and places touched by truly eldritch and incomprehensible forces; places where the laws of reality are altered in ways few can comprehend. The magic harnessed by these druids alters the very constants of the world. Druids from this circle aim not just to protect these pockets of absurdity, but also to keep the realms of reality safe from their mayhem.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bend Reality|Druid|PHB|Absurd|BITCSubclasses|2|BITCSubclasses"
+				}
+			]
+		},
+		{
+			"name": "Bend Reality",
+			"source": "BITCSubclasses",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Absurd",
+			"subclassSource": "BITCSubclasses",
+			"level": 2,
+			"header": 2,
+			"entries": [
+				"At 2nd level, you become imbued with reality-warping powers. You have a pool of Warp magic represented by a number of {@dice d6|d6s} equal to your Wisdom modifier.",
+				"As a reaction, when you see a creature within 60 ft. of you make an ability check, saving throw, or attack roll, you can choose to add or subtract one of your Warp Die from the roll. You can do this after the roll is made but before the results are announced. When you use this ability, roll on the following table.",
+				{
+					"type": "statblock",
+					"tag": "table",
+					"source": "BITCSubclasses",
+					"name": "Reality Warp"
+				}
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "reaction"
+				},
+				"target": {
+					"value": 1,
+					"type": "creature"
+				},
+				"range": {
+					"units": "ft",
+					"value": 60
+				}
+			}
+		},
+		{
+			"name": "Unnatural Alteration",
+			"source": "BITCSubclasses",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Absurd",
+			"subclassSource": "BITCSubclasses",
+			"level": 6,
+			"header": 1,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"At 6th level, you can use your {@classFeature Wild Shape|Druid|PHB|2} to alter the forms of those around you. By expending a use of your {@classFeature Wild Shape|Druid|PHB|2}, you can choose a willing creature you touch other than yourself, and roll on the following table. The creature will have the following effect for the next ten minutes:",
+				{
+					"type": "statblock",
+					"tag": "table",
+					"source": "BITCSubclasses",
+					"name": "Unnatural Alteration Table"
+				}
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "action"
+				},
+				"target": {
+					"value": 1,
+					"type": "creature"
+				},
+				"range": {
+					"units": "touch"
+				}
+			}
+		},
+		{
+			"name": "Siphoning Wild Shape",
+			"source": "BITCSubclasses",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Absurd",
+			"subclassSource": "BITCSubclasses",
+			"level": 10,
+			"header": 1,
+			"entries": [
+				"At 10th level, when you use your druid {@classFeature Wild Shape|Druid|PHB|2} feature to transform into a creature, the damage type of your attacks is changed to force. Additionally, when you deal damage, once per turn you can grant a creature you can see other than yourself within 30ft temporary hit points equal to your proficiency modifier. These hit points last until the start of your next turn."
+			],
+			"foundrySystem": {
+				"activation": {
+					"condition": "When you deal damage while in Wild Shape",
+					"type": "none"
+				},
+				"target": {
+					"value": 1,
+					"type": "creature"
+				},
+				"range": {
+					"units": "ft",
+					"value": 30
+				},
+				"damage": {
+					"parts": [
+						[
+							"@prof",
+							"temphp"
+						]
+					]
+				},
+				"actionType": "heal"
+			}
+		},
+		{
+			"name": "Dimensional Wild Shape",
+			"source": "BITCSubclasses",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Absurd",
+			"subclassSource": "BITCSubclasses",
+			"level": 14,
+			"header": 1,
+			"entries": [
+				"At 14th level, your {@classFeature Wild Shape|Druid|PHB|2|PHB|Wild Shapes} begin to draw from the {@homebrew myriad|myrial} universes you have been in contact with. You are no longer restricted to only beasts when selecting a form to {@classFeature Wild Shape|Druid|PHB|2} into. You may choose any creature that is not undead or humanoid to use as your {@classFeature Wild Shape|Druid|PHB|2}, so long as it is still of the appropriate CR. You must have seen the creature at least once (or otherwise have strong familiarity with it) in order to {@classFeature Wild Shape|Druid|PHB|2} into it."
+			]
 		},
 		{
 			"name": "Destiny Warrior",
@@ -1923,6 +2071,82 @@
 				[
 					"17th",
 					"{@spell summon draconic spirit|FTD}, {@spell dominate person|PHB}"
+				]
+			]
+		},
+		{
+			"name": "Reality Warp",
+			"source": "BITCSubclasses",
+			"colLabels": [
+				"d6",
+				"Effect"
+			],
+			"colStyles": [
+				"col-1 text-center",
+				"col-11"
+			],
+			"rows": [
+				[
+					"1",
+					"You switch places with a creature you see within 60 ft. of you. This does not provoke {@action opportunity attack|PHB|opportunity attacks}."
+				],
+				[
+					"2",
+					"Choose a creature you can see within 60 ft. of you. This creature gains advantage on attack rolls until the beginning of your next turn. Attacks against this creature have advantage until the beginning of your next turn."
+				],
+				[
+					"3",
+					"You gain a flying speed of 30ft until the end of your next turn."
+				],
+				[
+					"4",
+					"You become {@condition invisible} until the end of your next turn."
+				],
+				[
+					"5",
+					"You vanish until the end of your next turn."
+				],
+				[
+					"6",
+					"You choose a creature you can see within 60 ft. of you. This creature can can use its reaction to take an action at the end of your turn. On the start of its next turn, can only take an action or a bonus action."
+				]
+			]
+		},
+		{
+			"name": "Unnatural Alteration Table",
+			"source": "BITCSubclasses",
+			"colLabels": [
+				"d6",
+				"Effect"
+			],
+			"colStyles": [
+				"col-1 text-center",
+				"col-11"
+			],
+			"rows": [
+				[
+					"1",
+					"The creature's attacks do an additional {@damage 1d10} force damage"
+				],
+				[
+					"2",
+					"The creature grows a pair of misshapen wings and gains a flying speed of 60ft."
+				],
+				[
+					"3",
+					"The creature gains resistance to piercing, slashing, and bludgeoning damage."
+				],
+				[
+					"4",
+					"The creature grows a third arm. They can now make an additional attack when taking the {@action Attack} action. This attack can either be an unarmed strike, or a weapon attack should the creature be capable of equipping a weapon."
+				],
+				[
+					"5",
+					"At the end of their turn, they can choose to switch places with a willing creature within 30ft. of them."
+				],
+				[
+					"6",
+					"The creature can fire beams of light from their eyes. They can make a ranged attack at a creature within 120 ft. using their Wisdom modifier that deals {@damage 2d6} radiant damage as an action."
 				]
 			]
 		}
