@@ -209,9 +209,312 @@
 				"Draconic Form|Paladin|PHB|Dragons|BITCSubclasses|15|BITCSubclasses",
 				"Dragon Ascendancy|Paladin|PHB|Dragons|BITCSubclasses|20|BITCSubclasses"
 			]
+		},
+		{
+			"name": "Path of the Spore",
+			"shortName": "Spore",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassFeatures": [
+				"Path of the Spore|Barbarian|PHB|Spore|BITCSubclasses|3|BITCSubclasses",
+				"Frenzied Abuse|Barbarian|PHB|Spore|BITCSubclasses|6|BITCSubclasses",
+				"Poison Blood|Barbarian|PHB|Spore|BITCSubclasses|10|BITCSubclasses",
+				"Mix and Match|Barbarian|PHB|Spore|BITCSubclasses|14|BITCSubclasses"
+			]
 		}
 	],
 	"subclassFeature": [
+		{
+			"name": "Path of the Spore",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Barbarians draw power from many sources; anger, fanaticism, their ancestors. Some draw supernatural strength from substances they process and prepare, both to alter their minds as well as give them powerful advantages in battle. To use such things does not come without risk, and the barbarians of the Path of the Spore hone their bodies and build their tolerances for their entire life in order to inhale the toxic and mind{@homebrew -}bending spores of cultivated underground mushrooms. These spores are prepared as part of a long rest.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spore Inhalation|Barbarian|PHB|Spore|BITCSubclasses|3|BITCSubclasses"
+				}
+			]
+		},
+		{
+			"name": "Black Rotter",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"You take {@damage 6d6} poison damage immediately that cannot be reduced in any way. If this damage should reduce your hit points to 0, you do not fall {@condition unconscious}, but instead you are reduced to {@homebrew one Hit Point|1hp} and your melee {@homebrew weapon} attacks gain an additional {@damage 6d6} damage. If you are not reduced to {@homebrew zero Hit Points|0hp}, you instead only gain a bonus of {@damage 2d6} damage to {@homebrew your|their} melee {@homebrew weapon} attacks. This bonus ends either once the {@classFeature Rage|Barbarian|PHB|1|PHB} ends, or if you regain at least 10 hit points."
+			],
+			"foundrySystem": {
+				"activation": {
+					"condition": "When you Rage",
+					"type": "none"
+				},
+				"target": {
+					"type": "self"
+				},
+				"damage": {
+					"parts": [
+						[
+							"6d6",
+							"poison"
+						]
+					]
+				},
+				"actionType": "util"
+			}
+		},
+		{
+			"name": "Dark Tube",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"You are coated with an adhesive substance. You gain a climbing speed equal to your movement speed. When you hit a creature with an unarmed attack, their movement speed is reduced by 10 ft. until the end of their next turn as they become coated with the sticky substance. A target hit by an attack has disadvantage on {@skill acrobatics} checks until the end of your next turn."
+			]
+		},
+		{
+			"name": "Koboldcap",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"You regain {@dice 8d6} hit points. If you are restored to full hit points by this, you are {@condition poisoned} until the end of the {@classFeature Rage|Barbarian|PHB|1|PHB}, regardless of whether you are immune to the {@condition poisoned} condition or not."
+			],
+			"foundrySystem": {
+				"damage": {
+					"parts": [
+						[
+							"8d6",
+							"healing"
+						]
+					]
+				},
+				"actionType": "heal"
+			}
+		},
+		{
+			"name": "Red Belch",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"You acquire a breath weapon for the duration of the {@classFeature Rage|Barbarian|PHB|1|PHB} that can be used as a bonus action during your {@classFeature Rage|Barbarian|PHB|1|PHB} a number of times equal to your Constitution modifier. When you use your breath weapon, each creature in a 15 ft. line must make a {@homebrew Dexterity|DEX} saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes {@damage 2d6} fire damage on a failed save, and half as much damage on a successful one."
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"condition": "while raging",
+					"type": "bonus"
+				},
+				"target": {
+					"value": 15,
+					"units": "ft",
+					"type": "line"
+				},
+				"damage": {
+					"parts": [
+						[
+							"2d6",
+							"fire"
+						]
+					]
+				},
+				"save": {
+					"ability": "dex",
+					"dc": 16,
+					"scaling": "con"
+				},
+				"ability": "con",
+				"actionType": "save"
+			}
+		},
+		{
+			"name": "Spore Inhalation",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 3,
+			"toolProficiencies": [
+				{
+					"poisoner's kit": true
+				}
+			],
+			"header": 2,
+			"entries": [
+				"When you choose this path at 3rd level, you begin to inhale powerful mushroom spores that have been treated and prepared in order to go into a rage. You gain proficiency with {@item poisoner's kit|PHB|poisoner's kits}. Additionally, when you take the {@classFeature Rage|Barbarian|PHB|1|PHB} bonus action, you choose a type of spore to inhale; each one has a different effect. This effect lasts until the end of your rage.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Black Rotter|Barbarian|PHB|Spore|BITCSubclasses|3|BITCSubclasses"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Whimsical Cap|Barbarian|PHB|Spore|BITCSubclasses|3|BITCSubclasses"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Dark Tube|Barbarian|PHB|Spore|BITCSubclasses|3|BITCSubclasses"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Red Belch|Barbarian|PHB|Spore|BITCSubclasses|3|BITCSubclasses"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Venom Stalk|Barbarian|PHB|Spore|BITCSubclasses|3|BITCSubclasses"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Koboldcap|Barbarian|PHB|Spore|BITCSubclasses|3|BITCSubclasses"
+				}
+			]
+		},
+		{
+			"name": "Venom Stalk",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"The first character to hit you on a turn with a melee attack{@homebrew |s} must take a {@dc 12} Constitution save or suffer {@damage 2d4} poison damage, or half as much on a successful save."
+			],
+			"foundrySystem": {
+				"damage": {
+					"parts": [
+						[
+							"2d4",
+							"poison"
+						]
+					]
+				},
+				"save": {
+					"ability": "con",
+					"dc": 12,
+					"scaling": "flat"
+				},
+				"actionType": "save"
+			}
+		},
+		{
+			"name": "Whimsical Cap",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"You no longer provoke {@action opportunity attack|PHB|opportunity attacks}, and gain 15 ft. to your movement speed. {@homebrew Implemented as walking speed only in Foundry, needs clarification.}"
+			]
+		},
+		{
+			"name": "Frenzied Abuse",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 6,
+			"header": 1,
+			"entries": [
+				"Beginning at 6th level, you can switch between different spores quickly. As an action, you can switch from one spore effect to another without ending your {@classFeature Rage|Barbarian|PHB|1|PHB}. When you do this, you take {@damage 1d6} poison damage that cannot be reduced in any way, and you gain 10 temporary hitpoints that disappear at the start of your next turn. For each subsequent use of this ability during a single {@classFeature Rage|Barbarian|PHB|1|PHB}, you take an additional {@damage 1d6} damage."
+			],
+			"foundrySystem": {
+				"damage": {
+					"parts": [
+						[
+							"10",
+							"temphp"
+						],
+						[
+							"1d6",
+							"poison"
+						]
+					]
+				},
+				"actionType": "heal"
+			}
+		},
+		{
+			"name": "Poison Blood",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 10,
+			"header": 1,
+			"entries": [
+				"At 10th level, your blood becomes so toxic that it has the capacity to harm others who come in contact with it. When taking over 10 damage in melee whilst raging, as a reaction you can cause every creature within 5 ft. to {@homebrew make|take} a constitution save. The DC is equal to 8 + your proficiency modifier + your constitution modifier. On a failed save, the creature is {@condition poisoned} until the end of their next turn.",
+				"When you are reduced to 0 hit points, the gasses in your body escape and cause {@damage 2d12} acid damage to all creatures within 20 ft. of you, excluding yourself."
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "reaction",
+					"cost": 1,
+					"condition": "When you take more than 10 damage whilst raging"
+				},
+				"save": {
+					"ability": "con",
+					"dc": 16,
+					"scaling": "con"
+				},
+				"range": {
+					"value": 5,
+					"units": "ft"
+				},
+				"damage": {
+					"parts": [
+						[
+							"2d12",
+							"acid"
+						]
+					]
+				},
+				"ability": "con",
+				"actionType": "save"
+			}
+		},
+		{
+			"name": "Mix and Match",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 14,
+			"header": 1,
+			"entries": [
+				"At level 14, when you enter a {@classFeature Rage|Barbarian|PHB|1|PHB}, you are now able to combine two different spore effects. When you enter a {@classFeature Rage|Barbarian|PHB|1|PHB}, choose two spore types rather than one. When using the {@subclassFeature Frenzied Abuse|Barbarian|PHB|Spore|BITCSubclasses|6|BITCSubclasses} feature, you can only change one of the effects at a time."
+			]
+		},
 		{
 			"name": "College of Colours",
 			"source": "BITCSubclasses",
@@ -487,7 +790,7 @@
 			"level": 14,
 			"header": 1,
 			"entries": [
-				"{@homebrew At 14th level,} your Imbued Images become more powerful. As an action, you can expend a bardic inspiration die to cause an imbued image to perform one of the following actions:",
+				"At 14th level, your Imbued Images become more powerful. As an action, you can expend a bardic inspiration die to cause an imbued image to perform one of the following actions:",
 				{
 					"type": "refSubclassFeature",
 					"subclassFeature": "Paralyzing Undulation|Bard|PHB|Colours|BITCSubclasses|14|BITCSubclasses"
@@ -1590,6 +1893,87 @@
 		}
 	],
 	"foundrySubclassFeature": [
+		{
+			"name": "Black Rotter",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 15,
+			"effects": [
+				{
+					"name": "Black Rotter: Damage (2d6)",
+					"transfer": true,
+					"disabled": true,
+					"changes": [
+						{
+							"key": "system.bonuses.mwak.damage",
+							"mode": "ADD",
+							"value": "6d6"
+						}
+					]
+				},
+				{
+					"name": "Black Rotter: Damage (6d6)",
+					"transfer": true,
+					"disabled": true,
+					"changes": [
+						{
+							"key": "system.bonuses.mwak.damage",
+							"mode": "ADD",
+							"value": "6d6"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Dark Tube",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 15,
+			"effects": [
+				{
+					"name": "Dark Tube: Climbing Speed",
+					"transfer": true,
+					"disabled": true,
+					"changes": [
+						{
+							"key": "data.attributes.movement.climb",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Whimsical Cap",
+			"source": "BITCSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Spore",
+			"subclassSource": "BITCSubclasses",
+			"level": 15,
+			"effects": [
+				{
+					"name": "Whimsical Cap: Additional Speed",
+					"transfer": true,
+					"disabled": true,
+					"changes": [
+						{
+							"key": "data.attributes.movement.walk",
+							"mode": "ADD",
+							"value": "15"
+						}
+					]
+				}
+			]
+		},
 		{
 			"name": "Force of Ego",
 			"source": "BITCSubclasses",
