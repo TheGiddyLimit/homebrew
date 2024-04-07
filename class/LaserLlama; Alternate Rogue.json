@@ -167,6 +167,32 @@
 					},
 					"title": "Exploit Dice"
 				},
+                {
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "exploit-dice-roll",
+						"type": "dice",
+						"scale": {
+							"2": {
+								"n": 1,
+								"die": 4
+							},
+							"5": {
+								"n": 1,
+								"die": 6
+							},
+                            "11": {
+								"n": 1,
+								"die": 8
+							},
+                            "17": {
+								"n": 1,
+								"die": 10
+							}
+						}
+					},
+					"title": "Exploit Die"
+                },
 				{
 					"type": "ScaleValue",
 					"configuration": {
@@ -178,7 +204,7 @@
 								"die": 6
 							},
 							"3": {
-								"n": 23,
+								"n": 2,
 								"die": 6
 							},
 							"5": {
@@ -205,7 +231,7 @@
 								"n": 9,
 								"die": 6
 							},
-                            "17": {
+                            "19": {
 								"n": 10,
 								"die": 6
 							}
@@ -7882,7 +7908,12 @@
             "level": 2,
             "system": {
                         "uses.per": "sr",
-                        "uses.max": "@scale.alternate-rogue.exploit-dice"
+                        "uses.max": "@scale.alternate-rogue.exploit-dice",
+                        "damage.parts": [
+                            [
+                                "@scale.alternate-rogue.exploit-dice-roll"
+                            ]
+                        ]
 
             }
         },
