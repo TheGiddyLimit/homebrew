@@ -282,7 +282,33 @@
 						}
 					},
 					"title": "Exploit Dice"
-				}
+				},
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "exploit-dice-roll",
+						"type": "dice",
+						"scale": {
+							"2": {
+								"n": 1,
+								"die": 6
+							},
+							"5": {
+								"n": 1,
+								"die": 8
+							},
+                            "11": {
+								"n": 1,
+								"die": 10
+							},
+                            "17": {
+								"n": 1,
+								"die": 12
+							}
+						}
+					},
+					"title": "Exploit Die"
+                }
 				],
 			"classTableGroups": [
 				{
@@ -10194,10 +10220,15 @@
 				"classSource": "LLAF",
 				"level": 2,
 				"system": {
-							"uses.per": "sr",
-							"uses.max": "@scale.alternate-fighter.exploit-dice"
+					"uses.per": "sr",
+					"uses.max": "@scale.alternate-fighter.exploit-dice",
+					"damage.parts": [
+						[
+							"@scale.alternate-fighter.exploit-dice-roll"
+						]
+					]
 
-				}
+		}
 			}
 	]
 }
