@@ -259,7 +259,33 @@
 						}
 					},
 					"title": "Exploit Dice"
-				}
+				},
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "exploit-dice-roll",
+						"type": "dice",
+						"scale": {
+							"2": {
+								"n": 1,
+								"die": 4
+							},
+							"5": {
+								"n": 1,
+								"die": 6
+							},
+                            "11": {
+								"n": 1,
+								"die": 8
+							},
+                            "17": {
+								"n": 1,
+								"die": 10
+							}
+						}
+					},
+					"title": "Exploit Die"
+                }
 				],
 			"startingEquipment": {
 				"default": [
@@ -7693,10 +7719,15 @@
         "classSource": "LLAB",
         "level": 2,
         "system": {
-                    "uses.per": "sr",
-                    "uses.max": "@scale.alternate-barbarian.exploit-dice"
+			"uses.per": "sr",
+			"uses.max": "@scale.alternate-barbarian.exploit-dice",
+			"damage.parts": [
+				[
+					"@scale.alternate-barbarian.exploit-dice-roll"
+				]
+			]
 
-        }
+}
     },
     {
         "name": "Rage",
