@@ -162,6 +162,32 @@
 					},
 					"title": "Exploit Dice"
 				},
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "exploit-dice-roll",
+						"type": "dice",
+						"scale": {
+							"2": {
+								"n": 1,
+								"die": 4
+							},
+							"5": {
+								"n": 1,
+								"die": 6
+							},
+                            "11": {
+								"n": 1,
+								"die": 8
+							},
+                            "17": {
+								"n": 1,
+								"die": 10
+							}
+						}
+					},
+					"title": "Exploit Die"
+                },
                 {
 					"type": "ScaleValue",
 					"configuration": {
@@ -3666,21 +3692,40 @@
 			"classSource": "LLAW",
 			"level": 2,
 			"system": {
-						"uses.per": "sr",
-						"uses.max": "@scale.warlord.exploit-dice"
-	
-			}
+				"uses.per": "sr",
+				"uses.max": "@scale.warlord.exploit-dice",
+				"damage.parts": [
+					[
+						"@scale.warlord.exploit-dice-roll"
+					]
+				]
+
+	}
 		},
         {
 			"name": "Inspiring Word",
 			"source": "LLAW",
 			"className": "Warlord",
 			"classSource": "LLAW",
-			"level": 2,
+			"level": 1,
 			"system": {
 						"uses.per": "sr",
 						"uses.max": "@scale.warlord.inspiring-word"
 	
+			}
+		},
+		{
+            "name": "Exploit Dice",
+            "source": "LLAW",
+            "className": "Warlord",
+            "classSource": "LLAW",
+            "level": 2,
+			"system": {
+				"damage.parts": [
+					[
+						"@scale.warlord.exploit-dice-roll"
+					]
+				]
 			}
 		}
 	]
