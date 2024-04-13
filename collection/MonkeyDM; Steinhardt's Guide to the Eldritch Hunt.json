@@ -89,6 +89,20 @@
 	],
 	"item": [
 		{
+			"name": "Bead of Forbiddance",
+			"source": "SGttEH",
+			"page": 470,
+			"rarity": "unknown (magic)",
+			"wondrous": true,
+			"charges": 2,
+			"entries": [
+				"A creature holding the bead can use its action to release the {@spell forbiddance} spell within, which considers this creature as the caster. The bead cracks after the first use, and it shatters and disappears after the second."
+			],
+			"attachedSpells": [
+				"forbiddance"
+			]
+		},
+		{
 			"name": "Deadly Potion of Poison",
 			"source": "SGttEH",
 			"page": 436,
@@ -3165,6 +3179,118 @@
 			]
 		}
 	],
+	"monster": [
+		{
+			"name": "Lost Ones",
+			"source": "SGttEH",
+			"page": 472,
+			"size": [
+				"G"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				10
+			],
+			"hp": {
+				"average": 1000,
+				"formula": "1000"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"cr": "???",
+			"trait": [
+				{
+					"name": "Eldritch Resilience",
+					"entries": [
+						"The swarm has advantage on saving throws against spells and magical effects."
+					]
+				},
+				{
+					"name": "Litany's Influence",
+					"entries": [
+						"At the start of each of the swarm's turns, each character within 60 feet of it must make a {@dc 15} Wisdom saving throw. On a failure, the character takes psychic damage equal to the swarm's hit points divided by 20, rounded down, (e.g., 50 psychic damage at 1000 hit points) and cannot take reactions until the start of their next turn. On a success, they take half as much damage and are unaffected by the reaction restriction."
+					]
+				},
+				{
+					"name": "Swarm Movement",
+					"entries": [
+						"The swarm moves as a single entity, occupying a 25-foot by 25-foot space. For every 200 hit points the horde loses, each side of its area shrinks by 5 feet."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The swarm makes four Melee attacks."
+					]
+				},
+				{
+					"name": "Melee",
+					"entries": [
+						"Use a single attack roll with an attack bonus equal to the swarm's hit points divided by 70, rounded down (e.g., {@hit 14} at 1000 hit points), range: 15 ft., one target. {@h}({@dice 10d6}) bludgeoning damage. This damage is reduced by {@dice 1d6} for each 100 hit points the swarm has lost."
+					]
+				},
+				{
+					"name": "Overwhelm",
+					"entries": [
+						"If the swarm has more than half of its hit points remaining, it can use its action to attempt to overwhelm a character. The target must make a Strength ({@skill Athletics}) check contested by the swarm's Strength ({@skill Athletics}) check, with a bonus equal to the swarm's hit points divided by 50, rounded down (e.g., {@skillCheck athletics 20} at 1000 hit points). On a failure, the target is {@condition grappled} (escape {@dc 20})."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B",
+				"Y"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"savingThrowForced": [
+				"wisdom"
+			],
+			"fluff": {
+				"_monsterFluff": {
+					"name": "Lost Ones",
+					"source": "SGttEH"
+				}
+			}
+		}
+	],
+	"monsterFluff": [
+		{
+			"name": "Lost Ones",
+			"source": "SGttEH",
+			"entries": [
+				{
+					"type": "insetReadaloud",
+					"page": 472,
+					"entries": [
+						"A horde of deformed humanoid figures writhes in a huddled mass as they lift their voices in a haunting melody. Their bodies are covered in markings that shift and pulsate in response to their sinister litany. The intensity increases as you come into sight, and the horde swarms toward you!"
+					]
+				}
+			]
+		}
+	],
 	"legendaryGroup": [
 		{
 			"name": "Eldritch Temple",
@@ -3194,6 +3320,81 @@
 							"name": "The Edge of Madness",
 							"entries": [
 								"The veil between the Material Plane and a Nightmare Realm has become thin in this location, and echoes reverberate to those in tune. The total number of madness effects a creature suffers reduces its Proficiency Bonus by the same amount (this penalty can't reduce its Proficiency Bonus below +0)."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Orr, The Grieving Rebirth (First Form)",
+			"source": "SGttEH",
+			"page": 479,
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), the child-god takes a lair action to cause one of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						{
+							"type": "item",
+							"name": "Eldritch Summoning",
+							"entries": [
+								"The child-god summons {@dice 1d4+2} {@creature geist|SGttEH|geists} {@homebrew |(Page 313)} or {@dice 1d2+1} {@creature wraith|MM|wraiths} to fight for it. These creatures act on their own initiative and disappear when the child-god is defeated or when they reach 0 hit points."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Warped Reality",
+							"entries": [
+								"The child-god warps the fabric of reality in a 20-foot radius centered on a point it can see within 60 feet. The area becomes {@quickref difficult terrain||3}, and any creature that starts its turn in the area or enters it for the first time on its turn must succeed on a {@dc 18} Intelligence saving throw or be {@condition stunned} until the end of its next turn."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Cosmic Wave",
+							"entries": [
+								"All creatures must succeed on a {@dc 22} Charisma saving throw or be displaced throughout the arena. The child-god chooses a point on the ground where they reappear. On a success, a creature isn't displaced. If it succeeds by 5 or more, the target can choose to teleport to a point that it can see instead."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Orr, The Grieving Rebirth (Second Form)",
+			"source": "SGttEH",
+			"page": 490,
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), the child-god takes a lair action to cause one of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						{
+							"type": "item",
+							"name": "Eldritch Summoning",
+							"entries": [
+								"The child-god summons {@dice 1d4+2} {@creature geist|SGttEH|geists} {@homebrew |(Page 313)} or {@dice 1d2+1} {@creature wraith|MM|wraiths} to fight for it. These creatures act on their own initiative and disappear when the child-god is defeated or when they reach 0 hit points."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Warped Reality",
+							"entries": [
+								"The child-god warps the fabric of reality in a 20-foot radius centered on a point it can see within 60 feet. The area becomes {@quickref difficult terrain||3}, and any creature that starts its turn in the area or enters it for the first time on its turn must succeed on a {@dc 18} Intelligence saving throw or be {@condition stunned} until the end of its next turn."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Cosmic Wave",
+							"entries": [
+								"All creatures must succeed on a {@dc 22} Charisma saving throw or be displaced throughout the arena. The child-god chooses a point on the ground where they reappear. On a success, a creature isn't displaced. If it succeeds by 5 or more, the target can choose to teleport to a point that it can see instead."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Eldritch Eruption",
+							"entries": [
+								"Each round, at the end of the child-god's turn, a random 10-foot-square area on the battlefield erupts in a geyser of eldritch energy that reaches 40-feet high. Creatures within the affected area must succeed on a {@dc 20} Constitution saving throw or take 22 ({@damage 4d10}) necrotic damage and become {@condition stunned} until the end of their next turn. On a successful save, the creature takes half as much damage and isn't {@condition stunned}."
 							]
 						}
 					]
@@ -3921,6 +4122,74 @@
 			]
 		},
 		{
+			"name": "Frozen Wraithlands Encounters",
+			"source": "SGttEH",
+			"page": 467,
+			"colLabels": [
+				"d10",
+				"Location",
+				"Encounter"
+			],
+			"colStyles": [
+				"col-2 text-center",
+				"col-5",
+				"col-5"
+			],
+			"rows": [
+				[
+					"1",
+					"{@area City Streets|D-FWL-1|x}",
+					"{@area Communion of the Ravenous|D-FWE-1|x}"
+				],
+				[
+					"2",
+					"{@area Meat Market|D-FWL-2|x}",
+					"{@area Blood of the Forsaken|D-FWE-2|x}"
+				],
+				[
+					"3",
+					"{@area Sanguine River|D-FWL-3|x}",
+					"{@area Litany of the Lost|D-FWE-3|x}"
+				],
+				[
+					"4",
+					"{@area Clock Tower|D-FWL-4|x}",
+					"{@area Benediction of the Void|D-FWE-4|x}"
+				],
+				[
+					"5",
+					"{@area Arctic Plaza|D-FWL-5|x}",
+					"{@area Path of the Forgotten|D-FWE-5|x}"
+				],
+				[
+					"6",
+					"{@area Dark Library|D-FWL-6|x}",
+					"{@area The Bloodied Grove|D-FWE-6|x}"
+				],
+				[
+					"7",
+					"{@area Cursed Cathedral|D-FWL-7|x}",
+					"{@area Weeping Child's Lament|D-FWE-7|x}"
+				],
+				[
+					"8",
+					"{@area Shattered Sewers|D-FWL-8|x}",
+					"{@area Fractured Reflections|D-FWE-8|x}"
+				],
+				[
+					"9",
+					"{@area Fallen Fortress|D-FWL-9|x}",
+					"{@area The Sacrifice of Solace|D-FWE-9|x}"
+				],
+				[
+					"10",
+					"{@area Eternal Blizzard|D-FWL-10|x}",
+					"{@area The Frozen Testaments|D-FWE-10|x}"
+				]
+			],
+			"isNameGenerator": true
+		},
+		{
 			"name": "Gothic Horror; Grand Cathedral District",
 			"source": "SGttEH",
 			"page": 22,
@@ -4360,6 +4629,181 @@
 			]
 		},
 		{
+			"name": "Market Curses",
+			"source": "SGttEH",
+			"page": 468,
+			"colLabels": [
+				"d10",
+				"Curse"
+			],
+			"colStyles": [
+				"col-2 text-center",
+				"col-10"
+			],
+			"rows": [
+				[
+					"1",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Tongue Tied",
+								"page": 468,
+								"entries": [
+									"The character becomes mute and cannot speak."
+								]
+							}
+						]
+					}
+				],
+				[
+					"2",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Disoriented",
+								"page": 468,
+								"entries": [
+									"The character becomes disoriented and gains disadvantage on Dexterity checks and saving throws."
+								]
+							}
+						]
+					}
+				],
+				[
+					"3",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Mental Wounds",
+								"page": 468,
+								"entries": [
+									"The character's mind weakens, and they take an additional 5 ({@damage 1d10}) psychic damage each time they take damage."
+								]
+							}
+						]
+					}
+				],
+				[
+					"4",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Mind Warp",
+								"page": 468,
+								"entries": [
+									"The character gains disadvantage on Wisdom saving throws."
+								]
+							}
+						]
+					}
+				],
+				[
+					"5",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Foul Stench",
+								"page": 468,
+								"entries": [
+									"The character emits a terrible odor and gains disadvantage on Charisma checks."
+								]
+							}
+						]
+					}
+				],
+				[
+					"6",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Hunger",
+								"page": 468,
+								"entries": [
+									"The character feels like they're starving and gains disadvantage on Constitution saving throws."
+								]
+							}
+						]
+					}
+				],
+				[
+					"7",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Blurred Vision",
+								"page": 468,
+								"entries": [
+									"The character's vision becomes blurry, gaining disadvantage on attack rolls and {@skill Perception} checks that rely on sight."
+								]
+							}
+						]
+					}
+				],
+				[
+					"8",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Frenzy",
+								"page": 468,
+								"entries": [
+									"The character becomes panicked and gains disadvantage on Intelligence and Wisdom saving throws."
+								]
+							}
+						]
+					}
+				],
+				[
+					"9",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Weakened",
+								"page": 468,
+								"entries": [
+									"The character gains disadvantage on Strength and Dexterity checks and saving throws."
+								]
+							}
+						]
+					}
+				],
+				[
+					"10",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Fatigued",
+								"page": 468,
+								"entries": [
+									"The character gains 1 level of {@condition exhaustion}."
+								]
+							}
+						]
+					}
+				]
+			]
+		},
+		{
 			"name": "Noteworthy Locations; Grand Cathedral",
 			"source": "SGttEH",
 			"page": 40,
@@ -4747,6 +5191,117 @@
 			]
 		},
 		{
+			"name": "Sewer Diseases",
+			"source": "SGttEH",
+			"page": 470,
+			"colLabels": [
+				"d6",
+				"Effect"
+			],
+			"colStyles": [
+				"col-2 text-center",
+				"col-10"
+			],
+			"rows": [
+				[
+					"1",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "{@disease Sewer Plague|DMG}",
+								"page": 470,
+								"entries": [
+									"The character gains disadvantage on Constitution checks and saving throws for the next 24 hours."
+								]
+							}
+						]
+					}
+				],
+				[
+					"2",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "{@disease Filth Fever|SGttEH}",
+								"page": 470,
+								"entries": [
+									"The character's speed is halved, and they gain disadvantage on all attack rolls, ability checks, and saving throws for the next 24 hours."
+								]
+							}
+						]
+					}
+				],
+				[
+					"3",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Muscle Rot",
+								"page": 470,
+								"entries": [
+									"The character's hit point maximum is reduced by 10 + their Constitution modifier for the next 24 hours."
+								]
+							}
+						]
+					}
+				],
+				[
+					"4",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Red Ache",
+								"page": 470,
+								"entries": [
+									"The character takes 5 ({@damage 1d10}) fire damage every hour for the next 24 hours."
+								]
+							}
+						]
+					}
+				],
+				[
+					"5",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "{@disease Slimy Doom|PHB}",
+								"page": 470,
+								"entries": [
+									"The character's movement speed is reduced by 10 feet, and they have disadvantage on Dexterity checks and saving throws for the next 24 hours."
+								]
+							}
+						]
+					}
+				],
+				[
+					"6",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "{@disease Sight Rot|DMG}",
+								"page": 470,
+								"entries": [
+									"The character gains disadvantage on Wisdom ({@skill Perception}) checks that rely on sight and suffers disadvantage on ranged attacks from blurred vision for the next 24 hours."
+								]
+							}
+						]
+					}
+				]
+			]
+		},
+		{
 			"name": "Shrouded District Diseases",
 			"source": "SGttEH",
 			"page": 42,
@@ -4789,6 +5344,181 @@
 				[
 					"{@disease Rotgut|SGttEH}",
 					"The symptoms begin as a queasy feeling and painful stomach cramps before devolving into more severe colics. The creature suffers a \u22121 penalty to ability checks and attack rolls. This penalty increases by 1 every 24 hours. If the penalty reaches \u22128, the creature dies."
+				]
+			]
+		},
+		{
+			"name": "Spell Effects",
+			"source": "SGttEH",
+			"page": 469,
+			"colLabels": [
+				"d10",
+				"Effect"
+			],
+			"colStyles": [
+				"col-2 text-center",
+				"col-10"
+			],
+			"rows": [
+				[
+					"1",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Backlash",
+								"page": 468,
+								"entries": [
+									"The caster takes 5 ({@damage 1d10}) force damage."
+								]
+							}
+						]
+					}
+				],
+				[
+					"2",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Amplified",
+								"page": 468,
+								"entries": [
+									"The spell's effects (damage, radius, and duration) increase by 50 percent."
+								]
+							}
+						]
+					}
+				],
+				[
+					"3",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Diminished",
+								"page": 468,
+								"entries": [
+									"The spell's effects (damage, radius, and duration) are halved."
+								]
+							}
+						]
+					}
+				],
+				[
+					"4",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Reversed",
+								"page": 468,
+								"entries": [
+									"The spell has the opposite effect (for example, healing instead of damaging, dealing cold damage instead of fire damage, or slowing instead of hasting)."
+								]
+							}
+						]
+					}
+				],
+				[
+					"5",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Split",
+								"page": 468,
+								"entries": [
+									"The spell is split into two weaker versions of itself (see Diminished effect), and the GM chooses a second target."
+								]
+							}
+						]
+					}
+				],
+				[
+					"6",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Delayed",
+								"page": 468,
+								"entries": [
+									"The spell's effects are delayed by 1 round."
+								]
+							}
+						]
+					}
+				],
+				[
+					"7",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Contagious",
+								"page": 468,
+								"entries": [
+									"The spell affects one additional target of the caster's choice."
+								]
+							}
+						]
+					}
+				],
+				[
+					"8",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Unstable",
+								"page": 468,
+								"entries": [
+									"The spell's effects are unstable, and the duration is reduced by {@dice 1d4} rounds (minimum of 1), or the damage die is reduced by {@damage 1d4} (minimum of 1), as appropriate."
+								]
+							}
+						]
+					}
+				],
+				[
+					"9",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Boomerang",
+								"page": 468,
+								"entries": [
+									"The spell affects the caster instead of the intended target."
+								]
+							}
+						]
+					}
+				],
+				[
+					"10",
+					{
+						"type": "entries",
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Cursed",
+								"page": 468,
+								"entries": [
+									"The caster suffers a random curse from the {@table Market Curses|SGttEH} table {@homebrew |(page 468)}."
+								]
+							}
+						]
+					}
 				]
 			]
 		},
@@ -4906,6 +5636,24 @@
 	],
 	"disease": [
 		{
+			"name": "Blood Corruption",
+			"source": "SGttEH",
+			"page": 468,
+			"entries": [
+				"A creature entering or ending its turn in the water must make a {@dc 18} Constitution saving throw or contract blood corruption. Blood corruption has the following effects:",
+				{
+					"type": "list",
+					"page": 468,
+					"items": [
+						"An infected creature takes 9 ({@damage 2d8}) necrotic damage every 30 minutes.",
+						"An infected creature suffers a \u22121 penalty on all saving throws and ability checks.",
+						"An infected creature must succeed on a {@dc 18} Constitution saving throw each hour or become further corrupted, suffering an extra {@damage 1d8} necrotic damage every 30 minutes and a \u22121 penalty on all saving throws and ability checks. This damage and penalty are cumulative."
+					]
+				},
+				"Blood corruption can be cured with a {@spell greater restoration} spell."
+			]
+		},
+		{
 			"name": "Coal Plague",
 			"source": "SGttEH",
 			"page": 42,
@@ -4970,6 +5718,24 @@
 			]
 		},
 		{
+			"name": "Frostbite",
+			"source": "SGttEH",
+			"page": 468,
+			"entries": [
+				"Characters must make a {@dc 10} Constitution saving throw each hour spent in the plaza or suffer from frostbite. Frostbite has the following effects:",
+				{
+					"type": "list",
+					"page": 468,
+					"items": [
+						"The character's speed is reduced by 10 feet.",
+						"The character has disadvantage on all Dexterity checks and saving throws.",
+						"While suffering from this frostbite, the character's hit point maximum is reduced by 15 per hour until cured."
+					]
+				},
+				"The only way to cure this frostbite is a {@spell lesser restoration} spell or by completing a short rest in a warm location."
+			]
+		},
+		{
 			"name": "Lung Fire",
 			"source": "SGttEH",
 			"page": 42,
@@ -5031,6 +5797,24 @@
 						"The Shrouded District is rife with various diseases. A creature exposed for a prolonged duration to an environment or another creature hosting this disease must succeed on a {@dc 12} Constitution saving throw or contract it. The affliction lasts for {@dice 3d4} days or until cured by a {@spell lesser restoration} spell or similar magic."
 					]
 				}
+			]
+		},
+		{
+			"name": "Temporal Distortion",
+			"source": "SGttEH",
+			"page": 468,
+			"entries": [
+				"Characters entering the tower's area must make a {@dc 18} Wisdom saving throw every 30 minutes spent in the area or suffer from Temporal Distortion. Temporal Distortion has the following effects:",
+				{
+					"type": "list",
+					"page": 468,
+					"items": [
+						"The character's speed is halved.",
+						"The character has disadvantage on all attack rolls, ability checks, and saving throws.",
+						"The character's spells have a 50% chance of failing, wasting the spell slot."
+					]
+				},
+				"The only way to cure Temporal Distortion is to leave the Clock Tower's area."
 			]
 		}
 	],
@@ -5379,7 +6163,59 @@
 					"name": "Templum Praeteritum",
 					"headers": [
 						"General Features",
-						"Keyed Locations"
+						"Keyed Locations",
+						{
+							"header": "1. River Entrance",
+							"depth": 1
+						},
+						{
+							"header": "2. Kennel",
+							"depth": 1
+						},
+						{
+							"header": "3. Legacy of Pain",
+							"depth": 1
+						},
+						{
+							"header": "4. The Stage",
+							"depth": 1
+						},
+						{
+							"header": "5. The Bonefield",
+							"depth": 1
+						},
+						{
+							"header": "6. Collapsed Chamber",
+							"depth": 1
+						},
+						{
+							"header": "7. Heart Well",
+							"depth": 1
+						},
+						{
+							"header": "8. Excavated Altar",
+							"depth": 1
+						},
+						{
+							"header": "9. Bridge of Blood",
+							"depth": 1
+						},
+						{
+							"header": "10. Door of Despair",
+							"depth": 1
+						},
+						{
+							"header": "11. Mind Well",
+							"depth": 1
+						},
+						{
+							"header": "12. Eldritch Dragon's Lair",
+							"depth": 1
+						},
+						{
+							"header": "13. First Carving",
+							"depth": 1
+						}
 					]
 				},
 				{
@@ -5438,7 +6274,1438 @@
 					"name": "Deicide",
 					"page": 463,
 					"entries": [
-						"#TODO"
+						"{@i By TJ Phoenix and MonkeyDM}",
+						"{@i Deicide} is a 5th Edition adventure optimized for {@b four characters with an average party level (APL) of 20}. Unravel the tragic tale of a fallen goddess and her corrupted eldritch child in the Frozen Wraithlands, where fear and despair reign supreme. The characters must confront chilling mysteries, impure reflections, and madness-inducing horrors to save the city of Luyarnha from the cursed Glacial Moon.",
+						{
+							"type": "image",
+							"href": {
+								"type": "external",
+								"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11881.webp"
+							},
+							"credit": "Marcelo Orsi Blanco"
+						},
+						{
+							"type": "section",
+							"name": "Background",
+							"page": 463,
+							"entries": [
+								"In the days of old, the villagers of Luyarnha worshiped Lirwen, a minor elven goddess of fertility and harvest. The years of bountiful crops and mild weather reflected her warm, nurturing nature. But as the village grew and became a city invested in technological advancements, Lirwen's influence waned, and she faded from the citizens' minds and hearts.",
+								"The goddess was furious at the mortals who cast her aside in favor of their machines. Her once warm heart turned cold as she was forgotten by the people she once watched over so carefully. Not even when the eldritch scourge swept through the city did they think to call out to the goddess for help, and Lirwen sank into complete obscurity and utter despair. That despair grew into a furious hatred for the mortals who so callously turned their backs on her.",
+								"In this state of woe, a Great One: The Whispering Darkness, The Crawling Insanity, came to Lirwen, whispering promises of power beyond the limited scope of mortal worship. Desperate to live free from the whims of mortals, Lirwen agreed to bear The Crawling Insanity's child in exchange for this renewed strength.",
+								"But The Crawling Insanity's true intentions were revealed when the child was born. The creature was ripped from Lirwen's womb, slaying the goddess. Lirwen's dying breath, a curse that reflected the coldness in her heart, turned the moon to an unnatural state\u2014a {@card Glacial Moon|Eldritch Moons Deck|SGttEH}. The cursed moon rose above Luyarnha, bringing an eternal frost that threatened to freeze the city and starve its people.",
+								"The child, gestated from a mother who bore only hatred in her heart and a father who crawled through chaos, was left as a broken godling. The twisted child was both divine and corrupted, and cursed by its very existence. The godling was quickly discarded by The Whispering Darkness and left to die in the Frozen Wraithlands, a frozen hellscape reflecting the eternal winter that Lirwen's curse brought upon humanity. The child, mired in madness and despair, mourned the loss of its mother, and its eldritch-infused screams spread pain and suffering throughout the Frozen Wraithlands.",
+								"On the Material Plane, the goddess' body washed ashore in Luyarnha, serving as a gateway to the Frozen Wraithlands. Those who dare to touch her frozen form are consumed by the realm of depraved nightmares, lost to the madness that permeates its icy landscape. Winter is crushing Luyarnha, and only the death of the cursed child will free the city from its deadly grasp.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "The Verdant Mother",
+											"page": 463,
+											"entries": [
+												"Lirwen, the goddess of fertility and harvest known as the Verdant Mother, was a being full of life and compassion whose very presence brought forth bountiful harvests that the people of Luyarnha depended upon. Her tall and slender form, draped in emerald robes, and her ever-present motherly smile were the stuff of legends, and her benevolent nature was felt by all who worshiped her.",
+												"To the early settlers of Luyarnha, Lirwen was more than just a goddess. She was a protector, a guardian, and a bringer of life. They offered her their prayers, devotion, and harvests for her blessings and she ensured the prosperity of their village.",
+												"But as Luyarnha grew, its people slowly shifted their attention to machines and industry, gradually forgetting the gods that had long sustained them. They stopped offering their tribute to Lirwen, stopped heeding her wisdom, and began to forget how much they once depended on her benevolence. This rejection dimmed the goddess' once bright light, breaking her heart. The Whispering Darkness saw her pain and twisted it to manipulate her to his malicious purposes, resulting in her death and the birth of a horror."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "section",
+							"name": "Adventure Summary",
+							"page": 463,
+							"entries": [
+								"Lirwen's wintery curse has enveloped Luyarnha, and the {@card Glacial Moon|Eldritch Moons Deck|SGttEH} shines above a city encased in ice and snow. The corpse of the once-revered goddess lies draped across the frozen riverbank, a baleful glare still burning in her dead eyes. Citizens who touched the rotting body were transported to the Frozen Wraithlands, an arctic nightmare realm where horrors become real and torture the unfortunate souls trapped within. The party follows suit, discovering the demiplane is a corrupted reflection of Luyarnha filled with horrors. Here, the party must navigate the frozen streets, where every step could lead to their demise. Along the way, they battle sullied reflections of themselves, dark memories come to life, and attempt to rescue innocents doomed to endless suffering at the whims of eldritch creatures.",
+								"As the party progresses through the time-warped realm, they find shards of the dead goddess' essence that guide them through the madness to her once-beautiful flower garden\u2014now a field of madness holding the rotting corpse of the goddess. Once they reach the garden, the characters engage in a final battle against the accursed child-god in a nightmarish arena, where the powerful half-eldritch, half-divine being can manipulate reality as it pleases. Only by defeating the cursed child can Luyarnha be freed from the bitter grip of the {@card Glacial Moon|Eldritch Moons Deck|SGttEH}, or else its curse will spread and sheath the city in eternal ice.",
+								{
+									"type": "entries",
+									"name": "Adventure Hooks",
+									"page": 464,
+									"entries": [
+										"Here are a few ways to get your characters hooked into this adventure:",
+										{
+											"type": "entries",
+											"name": "Stranger in a Strange Land",
+											"page": 464,
+											"entries": [
+												"The party seeks shelter from the strange winter gripping the land by entering the cursed city of Luyarnha. Desperate townsfolk beg for help to stop the unending winter threatening to kill them. They say that it all began when the corpse of the goddess Lirwen washed ashore and believe the answer lies with those who disappeared when they touched her divine flesh."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Bathed in Blood",
+											"page": 464,
+											"entries": [
+												"The Obitus Scholare has chosen the characters as their instrument of chaos, charging them with a dark task that could grant them power beyond their wildest dreams. Armed with the {@item Épée Solaire|SGttEH} {@homebrew |(see page 238)}, the party must enter the Frozen Wraithlands and bathe its blade in the blood of the eldritch child of the dead goddess Lirwen. However, unbeknownst to all, once the weapon's true power is unleashed and the child's corpse is retrieved, it will call the Great Ones' attention, bringing doom to Luyarnha."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "To Kill a God",
+											"page": 464,
+											"entries": [
+												"As legendary hunters, the party has faced many horrors in their time, but none quite like the eldritch nightmares that have overtaken Luyarnha. Drawn by the promise of adventure and the hope of ridding the city of this scourge, they learn of the disappearance of those who touch the corpse of a dead goddess. Rumors circulate that the eternal winter that grips the city is somehow connected to both the disappearances and whatever creature was strong enough to slay a goddess."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "section",
+							"name": "Running this Adventure",
+							"page": 464,
+							"entries": [
+								"When running an adventure for 20th-level characters, it's important to remember that the adventurers are some of the most powerful beings in your world. As such, the challenges and encounters they face should be suitably epic and awe-inspiring. Additionally, the characters have access to an incredible range of abilities and resources, so be prepared to run the encounters provided in the adventure text in such a way that your party finds them engaging and challenging. Be prepared for the unexpected and remain flexible, as high-level characters have a knack for surprising even the most experienced GM.",
+								{
+									"type": "entries",
+									"name": "Starting the Adventure",
+									"page": 464,
+									"entries": [
+										"The adventure starts in Luyarnha under the effects of the {@card Glacial Moon|Eldritch Moons Deck|SGttEH} {@homebrew |(Page 289)}. Citizens have disappeared after coming into contact with Lirwen's corpse, and the party has determined they will also touch her to follow them.",
+										"Read aloud or paraphrase the following to kick off this adventure:",
+										{
+											"type": "insetReadaloud",
+											"page": 464,
+											"entries": [
+												"You stand in the heart of Luyarnha, a once bustling city now shrouded in a thick layer of ice and snow. The buildings loom overhead with rooftops covered in frost and icicles. The frozen wood creaks loudly, along with the howling of the frigid wind.",
+												"The smell of decay grows thicker the closer you get to the riverbank until you finally arrive. And there, washed ashore like a piece of flotsam, lies a bloated corpse of a celestial woman wrapped in the remains of a green robe. Her once beautiful features are married with torn flesh and covered in frozen rime. Her swollen tongue lolls out of a mouth now home to a family of hermit crabs, and her milky white eyes glare blankly into the distance. The air is infused with a sense of dread, as if the cold that has infected the world is coming from this corpse. You cannot help but wonder what sort of cursed fate could have befallen such a divine being."
+											]
+										},
+										"The corpse itself is immune to any magical analysis done by the party. A small group of Luyarnhians stands in the cold to weep for those who disappeared, and a small group of soldiers from the Radiant Order stand watch to keep others away. The characters must bribe the twelve guards (10 gp each) or persuade them to let them through. A character who succeeds on a {@dc 18} Charisma ({@skill Intimidation} or {@skill Persuasion}) check convinces them to give the characters some space and keep the rest of the civilians away while they handle the corpse.",
+										"Once the characters touch Lirwen's remains, read aloud the following and proceed to the Frozen Wraithlands section below:",
+										{
+											"type": "insetReadaloud",
+											"page": 465,
+											"entries": [
+												"An overwhelming surge of energy courses through your body the moment you touch the frozen corpse. The world distorts as strange sounds and colors blast into your eyes and ears. Time and space twist and warp as tendrils of shadow worm their way through your skin and mind.",
+												"Finally, as the chaotic energy subsides, a cold wind whips around you as a frozen city reminiscent of Luyarnha comes into view. The sky above is a putrid shade of green, and the ground is slick with foul-smelling snow. Everything is covered in frost and bathed in unnatural light or distorted shadows.",
+												"The buildings' once-beautiful facades are now warped and corrupted, and the frozen streets are empty, save for the occasional deformed creature that shuffles by in the frigid darkness."
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "The Frozen Wraithlands",
+					"page": 465,
+					"entries": [
+						"Amidst the many planes of the multiverse lies a nightmarish demiplane of eldritch horrors known as the Frozen Wraithlands. Here, the chilling embrace of a frozen hellscape holds sway over all who dare to tread upon its icy domain. This unnerving version of Luyarnha exists as a twisted reflection of the actual city, where distances and time are bent, and the very nature of reality is upended. Here, the curse of the murdered elven fertility goddess rages as an unrelenting blizzard. Her anguished child mourns her death and punishes all who enter the Frozen Wraithlands by flaying their souls with a cold, merciless touch. Only the bravest and most foolhardy of adventurers dare to venture into this realm, where the unyielding grasp of the Frozen Wraithlands threatens the very fabric of existence.",
+						"Those who delve deeper into the Frozen Wraithlands quickly discover that the terrors of this demiplane extend far beyond the biting cold and impure landscapes. The very laws of nature are subverted and contorted in ways that can make even the mightiest of adventurers tremble.",
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Ever-Shifting Terrain",
+											"page": 465,
+											"entries": [
+												"The city of Luyarnha within the Frozen Wraithlands is an unsettling mockery of its true self. Streets shift and change with every passing moment, buildings twist and bend like living organisms, and horrors lurk around every corner. This ever-shifting city traps its victims in a treacherous labyrinth that no one can escape."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Stuff of Chaos",
+											"page": 465,
+											"entries": [
+												"The Frozen Wraithlands is a unique shard of depraved reality, born from the nightmares of gods and elder beings. Its inherently chaotic nature creates a barrier against certain kinds of spells and effects. These protections include the following properties:",
+												{
+													"type": "list",
+													"page": 465,
+													"items": [
+														"The edges of the demiplane appear as a distinct barrier of foggy darkness that blocks vision (including {@sense darkvision} and {@optfeature devil's sight}), filled with moving shadows that never quite form into a recognizable shape. A creature touching the barrier must succeed on a {@dc 25} Intelligence saving throw or have its mind pulled into the shadows and die instantly with its soul trapped in the darkness. Only a {@spell wish} spell or {@classFeature divine intervention|Cleric|PHB|10} can bring the soul back.",
+														"Sensors created by divination spells can't appear inside the plane.",
+														"Divination spells can't target creatures in the Frozen Wraithlands.",
+														"Teleportation, including planar travel, into or out of the Frozen Wraithlands is blocked other than through touching the corpse of Lirwen.",
+														"Whenever a character fails a saving throw from an effect not caused directly by a creature (such as a spell or an ability), they must make a Wisdom saving throw of the same DC as the one they just failed. On a failure, the creature gains a {@table short-term madness|SGttEH} effect {@homebrew |(see \"Steinhardt's Madness System\")}."
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Flight Restrictions",
+											"page": 465,
+											"entries": [
+												"Flight spells, such as {@spell fly} or {@spell levitate}, are unreliable in the Frozen Wraithlands due to the constantly shifting nature of the demiplane. Whenever a creature attempts to use such a spell, roll a {@dice d20}. On a roll of 1\u201310, the spell fails. On a roll of 11\u201319, the spell works, but the character's flying speed and the spell's duration are halved. On a roll of 20, the spell works normally. Additionally, when a creature uses a magical item, ability, or effect that provides flight, roll a {@dice d4}. On a roll of 1\u20133, it fails to work, and the creature can't use it again for the next 10 minutes."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Nightmares",
+											"page": 465,
+											"entries": [
+												"The Frozen Wraithlands is a realm where the party's deepest fears and anxieties manifest as physical threats. Whenever the party takes a long rest in the Frozen Wraithlands, they must make a group {@dc 15} Wisdom saving throw. On a failure, the party suffers from a shared nightmare, where their deepest fears manifest as an enemy they must defeat together. At the GM's discretion, this nightmare can be against a creature using level-appropriate statistics, such as a {@creature purple worm} or an {@creature iron golem}. Alternatively, instead of combat, use a skill challenge using group {@dc 20} Constitution, Wisdom, or Charisma checks or saving throws with two successes out of three needed for the characters to overcome the challenge. Those who fail to defeat the nightmare wake up without the benefits of the long rest and suffer 1 level of {@condition exhaustion}."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "General Features",
+							"page": 466,
+							"entries": [
+								"Unless otherwise noted in the area descriptions, these general features are prominent throughout the Frozen Wraithlands.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Buildings",
+											"page": 466,
+											"entries": [
+												"The city's architecture is twisted and distorted, with warped wooden floors and walls constantly changing. The ice-covered structures bend at impossible angles, and shadows flit past darkened windows."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Lights",
+											"page": 466,
+											"entries": [
+												"The Frozen Wraithlands is perpetually dark and without natural light sources. Spells and effects that generate magical light, such as {@spell light} or {@spell continual flame}, have their range reduced by half within the demiplane."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Frozen Climate",
+											"page": 466,
+											"entries": [
+												"The Frozen Wraithlands is an icy hellscape with biting winds and icy temperatures that can quickly lead to frostbite or hypothermia. Fire-based spells and effects are weakened in the Frozen Wraithlands, dealing only half damage."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Time Dilation",
+											"page": 466,
+											"entries": [
+												"As the characters explore the frozen city of Luyarnha within the Frozen Wraithlands, time passes quickly. For every 1 hour spent exploring the city, 2 hours pass on the Material Plane. This time dilation impacts the magic in odd ways, and spell's durations are halved."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Exploring the City",
+							"page": 466,
+							"entries": [
+								"Luyarnha within the Frozen Wraithlands is a twisting labyrinth that reflects the chaotic mind of the cursed child-god at its heart. This chaos is best reflected in how travel takes place in the Frozen Wraithlands. As the characters move through the city streets, they shift to lead to the different locations detailed in the Frozen Wraithlands Encounters below, regardless of the perceived distance between them. The party can be next to the river in one encounter and find themselves inside the cathedral's walls the next. The travel between locations takes {@dice 1d4+1} hours to complete.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "The Lost",
+													"page": 466,
+													"entries": [
+														"As the party delves further into the Frozen Wraithlands, they discover tortured prisoners within the eldritch nightmare. Many of them are innocent citizens of Luyarnha, while others are former devotees of Lirwen who turned their backs on the goddess. The child-god has trapped these poor souls in endless personal hell loops within the Frozen Wraithlands, feeding off the energy created by their misery and despair."
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Frozen Wraithlands Encounters",
+							"page": 466,
+							"entries": [
+								"Time and space act differently inside the Frozen Wraithlands as the characters move through the city, making navigation difficult and almost impossible using standard methods. Regardless of the direction the party intends to travel, they can only successfully navigate with the assistance of celestial reliquaries scattered throughout the city; normal movement otherwise brings the party to random locations.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Celestial Reliquaries",
+													"page": 466,
+													"entries": [
+														"Specific Frozen Wraithlands Encounters include an object known as a celestial reliquary. These objects take different forms and hold a touch of the goddess Lirwen's essence. A character analyzing the reliquary who succeeds on a {@dc 15} Intelligence ({@skill Religion}) check recognizes the object is holding a breath of the dead goddess' power. Touching the reliquary causes the Frozen Wraithlands to pulse briefly, and the character feels a slight pull on their soul as if guiding them in a direction. This pull grows stronger with each reliquary the party finds.",
+														"Once the party has gathered three reliquaries or completed eight available encounters, the city shifts to bring them to where the child-god weeps over its mother's corpse. When the party is ready, proceed to the {@adventure Garden of Mourning|SGttEH-D|1|Garden of Mourning} section {@homebrew |(page 479)} for the final confrontation."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Encounter Locations",
+													"page": 466,
+													"entries": [
+														"The ever-changing landscape of the Frozen Wraithlands allow the party to participate in various events at any location throughout the city. To determine an encounter and its location, roll twice on the Frozen Wraithlands Encounters table, once for Encounter and once for Location, rerolling duplicates once each Encounter or Location is used. Follow the text of the rolled encounter, incorporating the listed features of the location as a backdrop. Alternatively, choose a location or encounter that the party has yet to visit or experience to create a unique experience.",
+														{
+															"type": "statblock",
+															"tag": "table",
+															"source": "SGttEH",
+															"name": "Frozen Wraithlands Encounters",
+															"page": 467
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "section",
+							"name": "Locations",
+							"page": 467,
+							"entries": [
+								"Each location in the Frozen Wraithlands Luyarnha is filled with unique obstacles and hazards, adding to the difficulty of the characters' encounters. Use the following information to enhance or alter each encounter to create an unforgettable experience for the party that challenges their skill sets.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "1. City Streets: Twisted Architecture",
+											"page": 467,
+											"id": "D-FWL-1",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 467,
+													"entries": [
+														"The frozen buildings on these city streets are shattered, with bits of architecture drifting in mid-air."
+													]
+												},
+												"The buildings' twisted nature hints at the warped gravity that pervades this location. Every 10 minutes, a gravity surge affects the characters, pulling them towards walls, causing them to feel heavier or even become suspended in the air. Each character must make a {@dc 15} Strength saving throw when a surge occurs to maintain their balance. On a failed save, their movement speed is halved, and they have disadvantage on Dexterity checks and saving throws until the end of their next turn.",
+												{
+													"type": "gallery",
+													"images": [
+														{
+															"type": "image",
+															"href": {
+																"type": "external",
+																"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11984-38x59.webp"
+															},
+															"title": "City Streets",
+															"credit": "{@link CZEPEKU|https://www.czepeku.com/slum-district/winter-night}",
+															"imageType": "map",
+															"id": "D-FWL-1M"
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "2. Meat Market: Eldritch Curses",
+											"page": 467,
+											"id": "D-FWL-2",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 467,
+													"entries": [
+														"The stench of blood and rot fills your nostrils as you enter this macabre marketplace. The ice-laden empty stalls display freshly harvested chunks of hooked meat and other body parts."
+													]
+												},
+												"The depraved curses of the Meat Market can have unpredictable effects on the characters. When they enter the market, and again at the beginning of each hour spent here, characters must succeed on a {@dc 18} Wisdom saving throw or suffer from a random curse for 1 hour. Roll a {@dice d10} and consult the table below to determine what curse affects them:",
+												{
+													"type": "statblock",
+													"tag": "table",
+													"source": "SGttEH",
+													"name": "Market Curses",
+													"page": 468
+												},
+												"A {@spell remove curse} spell or similar effect can remove these curses."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "3. Sanguine River: Blood Corruption",
+											"page": 468,
+											"id": "D-FWL-3",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 468,
+													"entries": [
+														"The snow-covered landscape gives way to a steaming river of blood, its surface rippling with shadowy forms and shapes moving just beneath the surface."
+													]
+												},
+												"The blood of the Sanguine River corrupts creatures who come into contact with it. Enemies in this location know of the water's danger and attempt to shove or throw characters into the river. A creature entering or ending its turn in the water must make a {@dc 18} Constitution saving throw or contract {@disease blood corruption|SGttEH}. {@disease Blood corruption|SGttEH} has the following effects:",
+												{
+													"type": "list",
+													"page": 468,
+													"items": [
+														"An infected creature takes 9 ({@damage 2d8}) necrotic damage every 30 minutes.",
+														"An infected creature suffers a \u22121 penalty on all saving throws and ability checks.",
+														"An infected creature must succeed on a {@dc 18} Constitution saving throw each hour or become further corrupted, suffering an extra {@damage 1d8} necrotic damage every 30 minutes and a \u22121 penalty on all saving throws and ability checks. This damage and penalty are cumulative."
+													]
+												},
+												"{@disease Blood corruption|SGttEH} can be cured with a {@spell greater restoration} spell.",
+												{
+													"type": "gallery",
+													"images": [
+														{
+															"type": "image",
+															"href": {
+																"type": "external",
+																"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/12026-33x46.webp"
+															},
+															"title": "Sanguine River",
+															"credit": "{@link CZEPEKU|https://www.czepeku.com/jungle-temple-entrance/open-blood-river}",
+															"imageType": "map",
+															"id": "D-FWL-3M"
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "4. Clock Tower: Temporal Distortion",
+											"page": 468,
+											"id": "D-FWL-4",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 468,
+													"entries": [
+														"A massive clock tower looms before you, its gears grinding and filling the air with a deafening noise. As you approach, the structure appears to unnaturally twist and distort, as if being viewed through a watery veil."
+													]
+												},
+												"The distortion of time and space that plagues the Frozen Wraithlands is thick here. Characters entering the tower's area must make a {@dc 18} Wisdom saving throw every 30 minutes spent in the area or suffer from {@disease Temporal Distortion|SGttEH}. {@disease Temporal Distortion|SGttEH} has the following effects:",
+												{
+													"type": "list",
+													"page": 468,
+													"items": [
+														"The character's speed is halved.",
+														"The character has disadvantage on all attack rolls, ability checks, and saving throws.",
+														"The character's spells have a 50% chance of failing, wasting the spell slot."
+													]
+												},
+												"The only way to cure {@disease Temporal Distortion|SGttEH} is to leave the Clock Tower's area."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "5. Arctic Plaza: Frostbite",
+											"page": 468,
+											"id": "D-FWL-5",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 468,
+													"entries": [
+														"The biting cold sweeping through this plaza makes breathing difficult. Thick ice covers the ground in slippery sheets."
+													]
+												},
+												"The biting cold of the Arctic Plaza can lead to {@disease frostbite|SGttEH}. Characters must make a {@dc 10} Constitution saving throw each hour spent in the plaza or suffer from {@disease frostbite|SGttEH}. {@disease Frostbite|SGttEH} has the following effects:",
+												{
+													"type": "list",
+													"page": 468,
+													"items": [
+														"The character's speed is reduced by 10 feet.",
+														"The character has disadvantage on all Dexterity checks and saving throws.",
+														"While suffering from this {@disease frostbite|SGttEH}, the character's hit point maximum is reduced by 15 per hour until cured."
+													]
+												},
+												"The only way to cure this {@disease frostbite|SGttEH} is a {@spell lesser restoration} spell or by completing a short rest in a warm location."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "6. Dark Library: Cursed Tomes",
+											"page": 469,
+											"id": "D-FWL-6",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 469,
+													"entries": [
+														"Rows of frost-covered shelves stuffed full of books whose covers hint at forbidden knowledge fill this dark library. Strange whispers and eerie moans drift on a cool breeze between the stacks."
+													]
+												},
+												"The cursed whispers in the library have been imbued with eldritch power and can cause unpredictable effects. For every 10 minutes a character spends in the library, they must succeed on a {@dc 15} Wisdom saving throw or suffer a {@table short-term madness|SGttEH} effect {@homebrew |(see \"Steinhardt's Madness System\")}. Additionally, characters attempting to read any book sees only impure writing that appears to crawl over the pages, and they must succeed on a {@dc 20} Wisdom saving throw or suffer a {@table short-term madness|SGttEH} effect. However, on a success, the characters learn that artifacts called \"Celestial Reliquaries\" have been infused with the goddess Lirwen's essence and scattered throughout the Frozen Wraithlands. Once enough have been gathered, they can be used to gain an audience with the goddess. Given her current condition, they instead bring the party to her corpse."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "7. Cursed Cathedral: Corrupted Magic",
+											"page": 469,
+											"id": "D-FWL-7",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 469,
+													"entries": [
+														"This cathedral's once-beautiful stained glass windows are now shattered holes letting in the snow and wind. The twisted and distorted pews sit under bloody sigils painted across the walls."
+													]
+												},
+												"The corruption inside the cathedral causes unpredictable effects on spells. Characters casting spells within the location must first succeed on a {@dc 15} Intelligence ({@skill Arcana}) check. On a failure, the spell has a random effect determined by rolling {@dice 1d10} on the table below:",
+												{
+													"type": "statblock",
+													"tag": "table",
+													"source": "SGttEH",
+													"name": "Spell Effects",
+													"page": 469
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "8. Shattered Sewers: Diseased Filth",
+											"page": 470,
+											"id": "D-FWL-8",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 470,
+													"entries": [
+														"These sewers are a maze of dark, twisting tunnels filled with the stench of raw sewage. The walls are slick with slime, and the sound of running water echoes all around."
+													]
+												},
+												"While traveling the sewers, characters risk contracting a disease from the putrid filth when injured. When a character takes piercing, slashing, or bludgeoning damage in the sewers, they must make a {@dc 15} Constitution saving throw or contract a random disease from the table below:",
+												{
+													"type": "statblock",
+													"tag": "table",
+													"source": "SGttEH",
+													"name": "Sewer Diseases",
+													"page": 470
+												},
+												"A {@spell cure wounds|PHB|cure disease} or {@spell lesser restoration} spell can cure these diseases."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "9. Fallen Fortress: Unstable Ground",
+											"page": 470,
+											"id": "D-FWL-9",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 470,
+													"entries": [
+														"This ice-covered fortress lies in ruins, its crumbling walls barely supporting its toppling towers. Strange creaking and groaning noises are the only warning before bits of ice and debris fall to shatter across the ground."
+													]
+												},
+												"The unstable walls of the fortress can collapse at any moment, and the shifting ground is considered {@quickref difficult terrain||3}. Characters who make sudden movements (such as {@action Dash|PHB|Dashing} or other enhanced movement abilities) must first succeed on a {@dc 15} Dexterity saving throw or have their movement reduced to 0 for that round and fall {@condition prone}.",
+												"For every 10 minutes the characters spend in the area, roll a {@dice d6}. On a roll of 5 or 6, a section of the wall collapses near a randomly chosen character. That character must succeed on a {@dc 15} Dexterity saving throw to avoid being crushed by the falling debris, taking 14 ({@damage 4d6}) bludgeoning damage on a failed save, or half as much damage on a successful one. The collapsed section also creates a 15-foot-tall, 5-foot-wide pile."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "10. Eternal Blizzard: Hypothermia",
+											"page": 470,
+											"id": "D-FWL-10",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 470,
+													"entries": [
+														"The city fades away in a blur of snow and ice, whipping around at impossible speeds. The temperature drops rapidly, and the frigid wind howls like a banshee."
+													]
+												},
+												"The bitter cold of the blizzard can lead to hypothermia. For each hour the characters spend in the blizzard, they succeed on a {@dc 10} Constitution saving throw or suffer from hypothermia. Hypothermia has the following effects:",
+												{
+													"type": "list",
+													"page": 470,
+													"items": [
+														"The character's movement speed is halved.",
+														"The character suffers disadvantage on all attack rolls and Strength checks.",
+														"The character takes an additional 7 ({@damage 2d6}) cold damage when taking damage."
+													]
+												},
+												"The only way to cure hypothermia is to complete a short rest in a warm location.",
+												{
+													"type": "entries",
+													"entries": [
+														{
+															"type": "entries",
+															"name": "Bead of Forbiddance",
+															"page": 470,
+															"entries": [
+																"A character with a passive Wisdom ({@skill Perception}) of 20 or higher can notice a glowing mote amidst the ice and snow. It's a {@item bead of forbiddance|SGttEH}. A creature holding the bead can use its action to release the {@spell forbiddance} spell within, which considers this creature as the caster. The bead cracks after the first use, and it shatters and disappears after the second."
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "section",
+							"name": "Encounters",
+							"page": 471,
+							"entries": [
+								"The following Frozen Wraithlands encounters can occur in any location spread across the city. Five encounters include an opportunity for the party to gain control of a celestial reliquary. Once the characters have three reliquaries, or completed eight of the encounters, proceed to the {@adventure Garden of Mourning|SGttEH-D|1|Garden of Mourning} section {@homebrew |(page 479)} for the final confrontation with the child-god.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "1. Communion of the Ravenous",
+											"page": 471,
+											"id": "D-FWE-1",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 471,
+													"entries": [
+														"A bitterly cold wind carries the stench of decay and blood. The crunch of snow mixes with agonized moans echoing around. A delicious-looking feast sits stacked on crooked tables, surrounded by a dozen gaunt, hollow-eyed figures attempting to eat. With each touch, the food instantly rots in their hands. The figures stare hungrily at each other before lunging to rip into their neighbor's flesh, their mouths stained crimson."
+													]
+												},
+												"To help the cursed people (twenty commoners), the party must find a way to satiate their hunger without causing further harm. The characters must navigate the situation carefully, as physical contact with the cursed individuals poses a significant hazard. Whenever a cursed person touches a living creature, it must succeed on a {@dc 17} Constitution saving throw or gain 1 level of {@condition exhaustion} due to the eldritch corruption draining its life force. If a cursed individual is slain, they explode in a roiling miasma of darkness in a 10-foot radius sphere. Living creatures in the affected area must succeed on a {@dc 17} Dexterity saving throw to avoid the cloud, or suffer 2 levels of {@condition exhaustion} from the released corruption.",
+												{
+													"type": "entries",
+													"name": "Corrupted Feast",
+													"page": 471,
+													"entries": [
+														"A creature eating the food on the table is {@condition poisoned} for 1 hour and must make a {@dc 18} Constitution saving throw. On a failure, the creature becomes afflicted with the same curse as the starving people, causing any food or drink that passes their lips to rot and spoil. A cursed character can only be cured by a {@spell greater restoration} spell or similar effect."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Feed the Masses",
+													"page": 471,
+													"entries": [
+														"The characters can attempt to help the starving individuals by providing real or magically conjured food, such as that created by the {@spell create food and water} or {@spell heroes' feast} spells. This food can temporarily satiate the cursed individuals without causing further decay, but the corruption remains. However, the party must be cautious; attempting to cast {@spell remove curse} or similar spells on the afflicted results in their immediate death, as their bodies can't withstand the sudden separation from the eldritch corruption. If all of the afflicted are killed in this manner, the food and table crumble to dust, leaving nothing behind."
+													]
+												},
+												"The corruption cannot be cured, as it has eaten away at the people gathered here to the point they are sustained only by its power. The only option to release them from their torment is to end their suffering permanently. It is up to the characters to decide to leave them to this fate or free them."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "2. Blood of the Forsaken",
+											"page": 471,
+											"id": "D-FWE-2",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 471,
+													"entries": [
+														"Agonized cries ring out from an emaciated figure bound to a dark altar that is covered in a network of pulsating, cursed veins that snake across the ground, pulsing with every heartbeat. Grotesque, malformed creatures covered in bony protrusions feast on the flowing blood, filling the air with the sound of slurping."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Encounter: Sanguine Feast",
+													"page": 471,
+													"entries": [
+														"Four {@creature cloistered maiden|SGttEH|cloistered maidens} {@homebrew |(see page 341)} are conducting a ritual using a bound captive chained to a dark altar. The drained blood forms a web of cursed rivulets along the ground, pulsating with an eldritch power that threatens to corrupt everything it touches."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Chains",
+													"page": 471,
+													"entries": [
+														"The captive is held in place by chains imbued with dark magic (AC 18, 25 hit points, and resistance to nonmagical damage). Any nonmagical weapon made of metal that hits the chains corrodes and takes a permanent and cumulative \u22121 penalty to damage rolls. If its penalty drops to \u22125, the weapon is destroyed."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Hazard: Cursed Blood & Altar",
+													"page": 472,
+													"entries": [
+														"A web of blood flows from the altar in a 40-foot radius along the ground. A character that touches the veins must succeed on a {@dc 18} Constitution saving throw or take 7 ({@damage 2d6}) necrotic damage and become {@condition poisoned} for 1 minute. A {@condition poisoned} creature takes 7 ({@damage 2d6}) necrotic damage at the start of each of its turns.",
+														"The altar emanates a twisted aura that causes confusion and disorientation. Characters that enter within 20 feet of the altar must succeed on a {@dc 17} Wisdom saving throw or be subject to the {@spell confusion} spell for one round. Destroying the altar (AC 18, 50 hit points, damage threshold of 10, and immunity to nonmagical damage) or using a {@spell remove curse} spell of 5th level or higher or similar effect destroys the aura."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Celestial Reliquary",
+													"page": 472,
+													"entries": [
+														"If the captive (an emaciated half-elf) is freed from the chains, their body glows with a blinding light that fades to reveal a corroded gold chalice where the body was bound. The chalice is a celestial reliquary (see {@adventure Celestial Reliquaries|SGttEH-D|1|Celestial Reliquaries}, page 466) that holds a fragment of the dead goddess Lirwen's essence. If this is the third reliquary the party has found, proceed to the {@adventure Garden of Mourning|SGttEH-D|1|Garden of Mourning} {@homebrew |(page 479)}."
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "3. Litany of the Lost",
+											"page": 472,
+											"id": "D-FWE-3",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 472,
+													"entries": [
+														"A horde of deformed humanoid figures writhes in a huddled mass as they lift their voices in a haunting melody. Their bodies are covered in markings that shift and pulsate in response to their sinister litany. The intensity increases as you come into sight, and the horde swarms toward you!"
+													]
+												},
+												"The party comes across a massive group of corrupted people known as the lost, trapped in a state of endless torment as they sing a horrifying song in their madness. These individuals, once innocent Luyarnians, have been warped into monstrous beings, their minds held captive by the eldritch corruption of the Frozen Wraithlands.",
+												{
+													"type": "entries",
+													"name": "The Litany",
+													"page": 472,
+													"entries": [
+														"A successful {@dc 20} Wisdom ({@skill Perception}) check allows the characters to discern that the litany is both a form of control over the Lost and a source of their anguish. The characters could attempt to disrupt the song by creating a loud noise or counter-melody with a successful {@dc 22} Charisma ({@skill Performance}) check. On a success, the lost horde is {@condition stunned} until the start of its next turn, giving the characters a chance to escape."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Encounter: The Lost",
+													"page": 472,
+													"entries": [
+														"One hundred people are in the lost swarm held thrall by the madness. They attack en masse as a single entity that uses the Lost Ones statistics.",
+														{
+															"type": "statblock",
+															"tag": "creature",
+															"source": "SGttEH",
+															"name": "Lost Ones",
+															"page": 472,
+															"style": "inset"
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "4. Benediction of the Void",
+											"page": 472,
+											"id": "D-FWE-4",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 472,
+													"entries": [
+														"An impassioned sermon rings through the air, mingling with the cries of an enthusiastic congregation. An elven cleric preaches to a small crowd as she adds another incision to the crimson cuts covering her body. Her audience stands in rapt attention, their limbs twisted into odd angles as they huddle together. The black-eyed gaze of the cleric fixates on you as she lifts her hands and cries, \"Join us, travelers! Embrace the void and be freed from your suffering!\""
+													]
+												},
+												"The characters stumble upon a congregation of corrupted souls, captivated by the words of a mad elven cleric named Seraphine. Cuts mar her oncegraceful features, and her black gaze is void-like. She preaches about the \"Benediction of the Void,\" promising her followers freedom from suffering if they sacrifice their blood to the great beings of the void.",
+												{
+													"type": "entries",
+													"name": "The Sermon",
+													"page": 473,
+													"entries": [
+														"Characters who spend more than 1 minute listening to Seraphine's sermon must make a {@dc 17} Wisdom saving throw. On a failure, they suffer a {@table short-term madness|SGttEH} effect {@homebrew |(see \"Steinhardt's Madness System\")}."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "The Mad Cleric",
+													"page": 473,
+													"entries": [
+														"If the characters approach Seraphine and engage her in conversation, she reveals that she was once a devoted follower of the goddess Lirwen. However, one day, the Frozen Wraithlands pulled her and her congregation into its nightmare realm. When it became clear the goddess abandoned them, she turned to the whispers in the darkness to escape the torment. She believes that only by embracing the void can one be truly free."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Skill Challenge",
+													"page": 473,
+													"entries": [
+														"To break Seraphine's hold on the congregation, the party must succeed on any three of the following five skill checks:",
+														{
+															"type": "list",
+															"page": 473,
+															"items": [
+																{
+																	"type": "item",
+																	"name": "{@dc 30} Charisma ({@skill Persuasion}):",
+																	"entries": [
+																		"Convince the congregation that Seraphine's teachings will only lead them further into despair."
+																	]
+																},
+																{
+																	"type": "item",
+																	"name": "{@dc 20} Intelligence ({@skill Religion}):",
+																	"entries": [
+																		"Debunk the impure theology of Seraphine's sermon by recalling and presenting the true teachings of Lirwen."
+																	]
+																},
+																{
+																	"type": "item",
+																	"name": "{@dc 22} Wisdom ({@skill Insight}):",
+																	"entries": [
+																		"Discern the fears and doubts of the congregation members and address them directly to sway them away from Seraphine."
+																	]
+																},
+																{
+																	"type": "item",
+																	"name": "{@dc 27} Charisma ({@skill Intimidation}):",
+																	"entries": [
+																		"Instill fear in the congregation about the consequences of following Seraphine's dark path."
+																	]
+																},
+																{
+																	"type": "item",
+																	"name": "{@dc 25} Charisma ({@skill Performance}):",
+																	"entries": [
+																		"Deliver an impassioned speech to inspire hope and courage in the congregation."
+																	]
+																}
+															]
+														}
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Success",
+													"page": 473,
+													"entries": [
+														"If the characters break Seraphine's hold, the mob screeches to attack the cleric, tearing her limb from limb before scattering into the Frozen Wraithlands."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Failure",
+													"page": 473,
+													"entries": [
+														"If the characters fail the skill challenge, members of the congregation (five {@creature skulking shade|SGttEH|skulking shades}, page 337), driven mad by Seraphine's influence, turn against the party and attack. Seraphine's body morphs and twists into a {@creature soul-snatching aranea|SGttEH} {@homebrew |(page 367)}."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Celestial Reliquary",
+													"page": 473,
+													"entries": [
+														"Once Seraphine is killed, her body rots and crumbles away, leaving behind a deformed silver medallion depicting a crescent moon cradling a sheaf of wheat. The {@item holy symbol|PHB} is a celestial reliquary (see {@adventure Celestial Reliquaries|SGttEH-D|1|Celestial Reliquaries}, page 466) that holds a fragment of the dead goddess Lirwen's essence. If this is the third reliquary the party has found, proceed to the {@adventure Garden of Mourning|SGttEH-D|1|Garden of Mourning} {@homebrew |(page 479)}."
+													]
+												},
+												{
+													"type": "image",
+													"href": {
+														"type": "external",
+														"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/12062.webp"
+													},
+													"credit": "Roman Kuzmin"
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "5. Path of the Forgotten",
+											"page": 473,
+											"id": "D-FWE-5",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 473,
+													"entries": [
+														"A sinister darkness suddenly rises from the ground to form shifting obsidian walls. Shadowy tendrils weave and twist around stone archways that mark a path forward. The oppressive atmosphere bears down, making breathing difficult, while an inexplicable sense of loss tugs at your heart. The scent of rot fills the frigid air, a reminder of the corruption that permeates this place. The ground beneath you feels strangely unstable like the earth is threatening to swallow you whole."
+													]
+												},
+												"The Path of the Forgotten is a sullied route that appears randomly throughout the Frozen Wraithlands, creating a warped labyrinth that overrides whatever location the party enters. Marked by ancient stone archways entwined with dark tendrils of corruption, it exudes an aura of madness. Whispers of lost secrets and pained cries echo through the area.",
+												{
+													"type": "entries",
+													"name": "Walking the Path",
+													"page": 474,
+													"entries": [
+														"The path engulfs the party once they enter the location, and they must succeed on three group {@dc 22} Wisdom ({@skill Survival}) checks to escape it successfully. On a failed check, each creature on the path must make a {@dc 18} Dexterity saving throw to avoid being ensnared by the corrupting tendrils that lie in wait for the unwary. On a failed save, they become {@condition grappled} and take 27 ({@damage 6d8}) psychic damage as the eldritch corruption invades their minds. Additionally, the tendrils feed off memories and emotions, and a {@condition grappled} creature must succeed on a {@dc 18} Wisdom saving throw at the start of its turns or sacrifice a cherished memory or part of its identity to the eldritch powers. This decision may have lasting consequences and affect characters' relationships and sense of self. Roll on the table below to determine a random sacrifice or allow the creature to choose its own. A {@condition grappled} creature can use its action to make a {@dc 18} Strength ({@skill Athletics}) check, freeing itself on a success.",
+														{
+															"type": "table",
+															"page": 474,
+															"colLabels": [
+																"d10",
+																"Sacrifice"
+															],
+															"colStyles": [
+																"col-2 text-center",
+																"col-10"
+															],
+															"rows": [
+																[
+																	"1",
+																	"The memory of a beloved family member or close friend, causing the character to forget their existence and shared experiences."
+																],
+																[
+																	"2",
+																	"The ability to speak or understand a specific language, leaving the character unable to communicate in that tongue."
+																],
+																[
+																	"3",
+																	"A significant moment of personal triumph, such as a hard-fought victory or significant achievement, erasing the pride and growth it provided."
+																],
+																[
+																	"4",
+																	"The ability to play a musical instrument or perform a specific art form, stripping the character of a creative outlet and source of joy."
+																],
+																[
+																	"5",
+																	"The memory of a moral lesson learned, potentially causing the character to revert to a previous behavioral pattern or risk making similar mistakes."
+																],
+																[
+																	"6",
+																	"A cherished keepsake or heirloom, causing the character to lose all emotional attachment and recollection of its origin or significance."
+																],
+																[
+																	"7",
+																	"A deeply held belief or conviction, leaving the character questioning their values and potentially altering their alignment."
+																],
+																[
+																	"8",
+																	"A unique skill or proficiency, such as a specific tool, weapon, or armor proficiency, causing the character to lose the ability to use it effectively."
+																],
+																[
+																	"9",
+																	"A fondly remembered place, such as a childhood home or favorite sanctuary, causing the character to forget its existence and associated memories."
+																],
+																[
+																	"10",
+																	"A meaningful relationship or bond with an NPC or other character, erasing the shared history and emotional connection between them."
+																]
+															]
+														}
+													]
+												},
+												{
+													"type": "image",
+													"href": {
+														"type": "external",
+														"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/01716.webp"
+													},
+													"credit": "Nele Diel"
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "6. The Bloodied Grove",
+											"page": 474,
+											"id": "D-FWE-6",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 474,
+													"entries": [
+														"A freezing wind rustles through the twisted branches of three massive trees, their bark slick with blood. The sickly-sweet stench of death fills the air as the grotesque sight of corpses entwined in the trees' limbs comes into focus. Shadowy tendrils slither around the roots of each tree, spreading corruption and malice wherever they touch. With creaks and groans, the trees shift, revealing themselves to be treants, now warped by dark energies. The treants' mournful gazes are chilling, their once proud stances marred by the oozing corruption."
+													]
+												},
+												"The party comes across a horrifying scene: three massive trees, their bark slick with blood, entwined with corpses among their twisted branches. These once-noble treants have been altered by the Frozen Wraithlands's dark energies, using the entangled bodies as grisly projectiles to defend themselves. Tendrils of eldritch corruption slither around the trees' roots, spreading their malevolent influence.",
+												{
+													"type": "entries",
+													"name": "Encounter: Corrupted Treants",
+													"page": 474,
+													"entries": [
+														"The corrupted treants have the statistics of standard treants with the following modifications: #TAG",
+														{
+															"type": "list",
+															"page": 474,
+															"items": [
+																{
+																	"type": "item",
+																	"name": "Damage Resistances:",
+																	"entries": [
+																		"necrotic"
+																	]
+																},
+																{
+																	"type": "item",
+																	"name": "Damage Immunities:",
+																	"entries": [
+																		"poison"
+																	]
+																},
+																{
+																	"type": "item",
+																	"name": "Condition Immunities:",
+																	"entries": [
+																		"poisoned"
+																	]
+																},
+																{
+																	"type": "item",
+																	"name": "Languages:",
+																	"entries": [
+																		"understand Common, Elvish, and Sylvan, but cannot speak"
+																	]
+																},
+																{
+																	"type": "item",
+																	"name": "New Ability:",
+																	"entries": [
+																		{
+																			"type": "entries",
+																			"name": "Corpse Bombardment",
+																			"page": 475,
+																			"entries": [
+																				"As an action, a corrupted treant can pull a corpse from its branches and hurl it at a target within 60 feet. The target must make a {@dc 15} Dexterity saving throw, taking 33 ({@damage 6d10}) necrotic damage on a failed save or half as much damage on a successful one. Each creature within 10 feet of the target must also make a {@dc 15} Dexterity saving throw, taking 22 ({@damage 4d10}) necrotic damage on a failed save or half as much on a successful one."
+																			]
+																		}
+																	]
+																},
+																"Corrupted treants don't have the Animate Trees ability."
+															]
+														}
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Cleansing the Corruption",
+													"page": 475,
+													"entries": [
+														"To cleanse a treant, the characters must first destroy the six tendrils of eldritch corruption that surround its roots. Each tendril has AC 15, 20 hit points, and immunity to poison and psychic damage. After all six tendrils are destroyed, a character can attempt to cleanse a treant by casting a spell such as {@spell greater restoration} or {@spell remove curse} with an additional {@dc 18} spellcasting ability check. On a success, the treant is cleansed, regains its original form, and becomes an ally. On a failure, the treant lashes out in pain and continues to attack."
+													]
+												},
+												"If the characters succeed in cleansing the treants, they learn that the trees were once devoted to Lirwen and guardians of her sacred grove. A cleansed treant can provide the following information:",
+												{
+													"type": "list",
+													"page": 475,
+													"items": [
+														"They know Lirwen was murdered by a dark being and forced to give birth to a monster that cursed the Frozen Wraithlands. However, they don't know the location of her celestial corpse or child.",
+														"There are sacred artifacts called celestial reliquaries hidden deep within the Frozen Wraithlands that can be used to find Lirwen.",
+														"They can hold back the corruption enough to provide safety to take a short rest without suffering the effects of the current location. If all three treants were cleansed, this is enough time to safely take a long rest."
+													]
+												},
+												"Soon after the party gathers this information, the treants' strength fades. They wither and crumble to dust, thanking the party for freeing them. The space around their corpses turns into fresh blades of grass, pushing back the corruption briefly.",
+												{
+													"type": "entries",
+													"name": "Celestial Reliquary",
+													"page": 475,
+													"entries": [
+														"Once the treants are defeated or cleansed, their bodies crumble away, leaving behind a rotten staff of black oak. The staff is a celestial reliquary (see {@adventure Celestial Reliquaries|SGttEH-D|1|Celestial Reliquaries}, page 466) that holds a fragment of the dead goddess Lirwen's essence. If this is the third reliquary the party has found, proceed to the {@adventure Garden of Mourning|SGttEH-D|1|Garden of Mourning} {@homebrew |(page 479)}."
+													]
+												},
+												{
+													"type": "image",
+													"href": {
+														"type": "external",
+														"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/12133.webp"
+													},
+													"credit": "Ryan Bittner"
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "7. Weeping Child's Lament",
+											"page": 475,
+											"id": "D-FWE-7",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 475,
+													"entries": [
+														"The sound of a crying child cuts through the air, drifting from behind thick ice walls that divide the area into a maze. Shadows swirl under each frozen surface, revealing faces peering out. They're contorted in terror, trapped within the icy prison. The sound of weeping starts to grow fainter."
+													]
+												},
+												"While traveling the Frozen Wraithlands, the party hears the faint sound of a child weeping in the distance. The sound leads them to a maze of twisting ice walls holding swirling darkness and people frozen in terror.",
+												{
+													"type": "entries",
+													"name": "Navigation",
+													"page": 475,
+													"entries": [
+														"If the characters attempt to follow the sound of the weeping child, it leads the party deeper into the maze. Navigating the maze requires three successful {@dc 20} Wisdom ({@skill Survival}) checks. The DC increases by 1 for each subsequent check as the maze twists and shifts around the party. However, no child can be found\u2014this maze is a trap designed to lure and torment anyone who enters. The sound is an echo of the child-god's weeping (see {@adventure Garden of Mourning|SGttEH-D|1|Garden of Mourning}) echoing around the frigid maze and refracting off the ice walls.",
+														"Each failed check to navigate the maze results in a psychic assault from the eldritch powers flowing through the ice. Each character must succeed on a {@dc 18} Wisdom saving throw or take 11 ({@damage 2d10}) psychic damage and gain one {@table short-term madness|SGttEH} effect {@homebrew |(see \"Steinhardt's Madness System\")}."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Frozen Victims",
+													"page": 475,
+													"entries": [
+														"Attempting to thaw a person trapped in the ice releases a {@creature penitent|SGttEH} {@homebrew |(Page 460)} that attacks the party."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Treasure",
+													"page": 475,
+													"entries": [
+														"If the party manages to succeed on all three {@skill Survival} checks while navigating the maze, they find a {@item phantasmal executioner|SGttEH} frozen in a wall and gripped in the hand of a warrior {@homebrew |(Page 247)}."
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "8. Fractured Reflections",
+											"page": 475,
+											"id": "D-FWE-8",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 475,
+													"entries": [
+														"The blizzard rages especially hard here, and the temperature drops drastically. Fractures shimmer mid-air, warping the surrounding area like a kaleidoscope. Each mirror-like sliver reveals your corrupted reflection, with twisted faces glaring back with obsidian eyes filled with malicious intent. Their mouths suddenly twist into maniacal smiles as the reflections step out of the rifts and into the snow."
+													]
+												},
+												"The characters enter an area that appears distorted and fractured. The blizzard rages around them, obscuring their vision and adding to the difficulty of discerning reality. The fractures that distort and reflect the area result from the corruption within the Frozen Wraithlands.",
+												{
+													"type": "entries",
+													"name": "Hazard: Reflective Fractures",
+													"page": 476,
+													"entries": [
+														"The reflective fractures in this area distort vision, making it difficult to discern reality from reflection. Creatures entering the area must succeed on a {@dc 22} Wisdom saving throw or gain disadvantage on all {@skill Perception} checks, saving throws, and attacks that require sight while in this location. An affected creature can spend an action at the start of its turn to repeat this saving throw, ending the effect on themselves with a success."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Hazard: Blizzard",
+													"page": 476,
+													"entries": [
+														"If this encounter occurs in the {@area Eternal Blizzard|D-FWL-10|x} location, the mechanics listed below are in addition to those listed in the location description. The raging blizzard blows through this area, reducing visibility and creating {@quickref difficult terrain||3}. The following additional effects apply:",
+														{
+															"type": "list",
+															"page": 476,
+															"items": [
+																{
+																	"type": "item",
+																	"name": "Vision:",
+																	"entries": [
+																		"The heavy snowfall reduces visibility to 30 feet. Characters suffer disadvantage on Wisdom ({@skill Perception}) checks that rely on sight."
+																	]
+																},
+																{
+																	"type": "item",
+																	"name": "Movement:",
+																	"entries": [
+																		"The ice and snow create {@quickref difficult terrain||3} across the entire location."
+																	]
+																},
+																{
+																	"type": "item",
+																	"name": "Strong Winds:",
+																	"entries": [
+																		"The strong winds impose disadvantage on ranged attack rolls and Wisdom ({@skill Perception}) checks that rely on sight and hearing. Flying speeds are halved in this location."
+																	]
+																}
+															]
+														}
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Encounter: Corrupted Reflections",
+													"page": 476,
+													"entries": [
+														"The reflection creatures (1 per character) climb out of the fractures to attack the party. Each resembles an exact copy of the characters, and they whisper the characters' darkest fears to them when they attack. They have entirely black eyes, manic smiles plastered onto their faces, and bodies covered in thick, black veins. While the reflections' gear looks exactly like the party's, each uses assassin statistics with the following modifications: #TAG",
+														{
+															"type": "list",
+															"page": 476,
+															"items": [
+																"They are Aberrations.",
+																"They have the same movement speeds and speak the same languages as the character they resemble.",
+																{
+																	"type": "item",
+																	"name": "New Trait: Eldritch Resistance",
+																	"entries": [
+																		"The reflection has advantage on saving throws against spells and magical effects."
+																	]
+																},
+																{
+																	"type": "item",
+																	"name": "New Trait: Eldritch Regeneration",
+																	"entries": [
+																		"The reflection regenerates 10 hit points at the start of its turn if it has at least 1 hit point remaining. If the reflection takes radiant damage, this trait doesn't function at the start of its next turn. The reflection dies only if it starts its turn with 0 hit points and doesn't regenerate."
+																	]
+																},
+																{
+																	"type": "item",
+																	"name": "New Trait: Maddening Gaze",
+																	"entries": [
+																		"As an action, the reflection can target the creature it resembles if it can see it and it is within 10 feet. The targeted creature must succeed on a {@dc 16} Intelligence saving throw or become affected by a {@table short-term madness|SGttEH} effect {@homebrew |(see \"Steinhardt's Madness System\")}. This effect doesn't count towards gaining long-term or indefinite madness. A creature can only be affected by this effect once per 24 hours."
+																	]
+																}
+															]
+														}
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Celestial Reliquary",
+													"page": 476,
+													"entries": [
+														"Once the reflections have been defeated, their bodies shatter into shards of colored glass that appear to be from a broken stained glass window. The largest shard emits a soft glow and depicts a portion of a crescent moon cradling a sheaf of wheat: the symbol of Lirwen. The shard is a celestial reliquary (see {@adventure Celestial Reliquaries|SGttEH-D|1|Celestial Reliquaries}, page 466) that holds a fragment of the dead goddess Lirwen's essence. If this is the third reliquary the party has found, proceed to the {@adventure Garden of Mourning|SGttEH-D|1|Garden of Mourning} {@homebrew |(page 479)}."
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "9. The Sacrifice of Solace",
+											"page": 476,
+											"id": "D-FWE-9",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 476,
+													"entries": [
+														"A weary group of civilians huddles around a fire near a makeshift altar. Their breath mists in the freezing air, and fear clings to them like the snow covering the ground. Each bears the mark of an odd corruption, such as twisted limbs, patches of scaly flesh, or faintly glowing eyes. Their leader, a gaunt woman with haunted eyes, regards your approach with a mix of disbelief and caution."
+													]
+												},
+												"The party discovers a small camp of desperate Luyarnhian citizens (numbering 1.5 times the party's size, rounded up) who have banded together to survive the harsh environment. They each touched the corpse of Lirwen in the city and became trapped in the Frozen Wraithlands. The group found solace in this location after whispers from the shadows taught them a ritual that temporarily protected them from the eldritch horrors and the blizzard's bite. This ritual, however, comes at a terrible cost: one of their members must willingly allow themselves to be sacrificed and consumed by an eldritch entity.",
+												{
+													"type": "entries",
+													"name": "Hazard: Eldritch Aura",
+													"page": 476,
+													"entries": [
+														"The entire location is affected by an eldritch aura that dampens the cold, keeps other eldritch creatures at bay, and negates the listed effects of the location where this encounter occurs. However, this aura also has a corrupting influence on those who stay within it for too long. For every hour a creature spends within the aura, they must make a {@dc 15} Wisdom saving throw or suffer from a minor eldritch corruption. The corruptions manifest as unsettling physical or behavioral changes, such as unnaturally colored eyes, an eerie aura, or uncontrollable shivering. The GM chooses the specific manifestation. While not directly harmful, these changes can cause unease and mistrust among NPCs or other party members. The corruptions can be removed by completing a long rest or with a {@spell lesser restoration} spell."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Survivors",
+													"page": 477,
+													"entries": [
+														"The group consists of a dozen haggard Luyarnhians (a mix of human, elf, and dwarf commoners) suffering from various degrees of madness, starvation, and exhaustion. Their clothes are ragged, hanging loose on their emaciated bodies, and their faces are etched with the pain of constant suffering. Most are too intimidated by the characters to discuss anything with them and rely on their leader to speak for them as a group.",
+														"The group leader, a middle-aged half-elf named Elara (noble), has striking silver hair and piercing blue eyes. Her face is gaunt, and her once-fine clothes hang loosely around her emaciated frame. Though she appears fragile, the strength of her will is evident in the way she carries herself. She firmly believes that the ritual is the only way to survive, fearing that the entity will otherwise kill them all if they try to leave. #TAG",
+														"A young human named Caelum (commoner) stands out among the group. His golden hair is unkempt, and his green eyes are filled with fear and uncertainty. His slender form is wrapped in a simple, tattered brown cloak, and his delicate features are twisted by the anguish of knowing he is the next sacrifice. The rest of the group looks at Caelum with pity and determination, understanding the gravity of the situation and the choice they have made. Characters observing the group who succeed on a {@dc 16} Wisdom ({@skill Perception}) check notice that the more starved members also appear to be looking at the half-elf with clear hunger in their eyes, hinting at the ultimate fate of the sacrificed. #TAG"
+													]
+												},
+												{
+													"type": "entries",
+													"name": "The Ritual",
+													"page": 477,
+													"entries": [
+														"The ritual the group performs is simple: a person is sacrificed on a nearby stone altar covered in runes and blood. A character inspecting the runes must succeed on a {@dc 20} Wisdom saving throw or suffer a {@table short-term madness|SGttEH} effect {@homebrew |(see \"Steinhardt's Madness System\")}. Once sacrificed, a small rift to the void opens above the altar, and the sacrifice is pulled into the darkness with an ear-splitting scream that cuts to the soul of anyone hearing it."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Stopping the Ritual",
+													"page": 477,
+													"entries": [
+														"The ritual, set to occur in 1 hour with Caelum as the sacrifice, forces the party to choose between letting it proceed or persuading the group to stop. The civilians are hesitant to follow the characters and are loyal to Elara, who argues against leaving the camp. She is adamant that the protection will vanish if the ritual isn't performed on time and should continue because the way home is still unknown.",
+														"If the party decides to persuade the group to abandon the ritual, they must use a convincing argument and succeed on a series of {@dc 16} skill checks. The party can use {@skill Persuasion}, {@skill Intimidation}, {@skill Performance}, or {@skill Deception} checks to make their case. They need a total of three successful checks before they accumulate three failures. If they succeed, the group abandons the ritual and begs the party's help to find an alternative way to survive. Otherwise, the group proceeds with the ritual. If the party attempts to intervene, Caelum attempts to sacrifice himself on the altar to save the rest of the group. If the characters stop Caelum and the sacrifice isn't performed at the appointed time, the altar cracks, the aura dissipates, and the group scatters back into the frozen city in despair."
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "10. The Frozen Testaments",
+											"page": 477,
+											"id": "D-FWE-10",
+											"entries": [
+												{
+													"type": "insetReadaloud",
+													"page": 477,
+													"entries": [
+														"The scent of decay drifts along the frigid air, with the howling wind filling the silence. Standing before you are statues cast in ice depicting familiar faces from the past. Whispers of despair drift through the air, barely audible but impossible to ignore."
+													]
+												},
+												{
+													"type": "image",
+													"href": {
+														"type": "external",
+														"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/07149.webp"
+													},
+													"credit": "Ryan Bittner"
+												},
+												"As the characters navigate the icy streets or frozen wilderness of the Frozen Wraithlands, they come across a cluster of lifelike ice statues resembling people from their past, tied to a horrible memory. These statues are trapped in moments of horror, despair, or loss. The eldritch magic responsible for the statues has also imbued them with memories that the characters relive in their minds.",
+												{
+													"type": "entries",
+													"name": "Haunting Memories",
+													"page": 478,
+													"entries": [
+														"Each statue represents a specific memory from the character's past, focusing on dark secrets or moments of personal tragedy. The GM should customize these memories based on the characters' backstories and relationships. Some examples of memories that could be used are as follows:",
+														{
+															"type": "list",
+															"page": 478,
+															"items": [
+																"The death of a loved one, where the character failed to protect them from a terrible fate.",
+																"A betrayal by a trusted friend or ally that led to devastating consequences for the character and those around them.",
+																"A moment of cowardice, where the character abandoned their comrades in the heat of battle, resulting in their capture or death.",
+																"The character succumbing to a dark temptation or making a pact with an eldritch being, resulting in the corruption or destruction of something precious to them."
+															]
+														}
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Curse of the Heartbroken",
+													"page": 478,
+													"entries": [
+														"When a character comes within 10 feet of their statue, they must succeed on a {@dc 18} Wisdom saving throw or be cursed with an effect related to the memory. The curse lasts until it is removed with powerful magic, such as a {@spell wish} spell or other method determined by the GM. The GM should customize the curse to relate to the character's memory. A few examples of curses are as follows:",
+														{
+															"type": "list",
+															"page": 478,
+															"items": [
+																"The character has disadvantage on Charisma checks when interacting with loved ones or allies.",
+																"The character has disadvantage on attack rolls made against enemies within 5 feet of allies.",
+																"The character has their movement speed halved due to the weight of their guilt.",
+																"The character suffers a \u22122 loss of an ability score related to the character's memory."
+															]
+														}
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Redemption",
+													"page": 478,
+													"entries": [
+														"Characters inspecting the statues who succeed on a {@dc 18} Intelligence ({@skill Investigation}) or Wisdom ({@skill Perception}) check notice writing on each statue in an ancient, eldritch script. Characters proficient in both {@language Abyssal} and {@language Infernal} or who succeed on a {@dc 22} Intelligence ({@skill Arcana}) check can decipher the message. On a success, the message reveals a simple ritual that will release the memories trapped within the statues, but at a cost.",
+														"The ritual includes a heartfelt acknowledgment by the character of their memory and splashing their statue with some of their blood. In addition, the ritual requires the characters to sacrifice a portion of their own life force or a random ability score. Characters must choose to either reduce their maximum hit points by an amount equal to their character level or suffer a \u22122 penalty to a random ability score (roll a {@dice d6} to determine which ability is affected). If they choose to perform the ritual, the pain of the memories is released, and those afflicted by the curse are freed from its effects. However, the hit points or ability score sacrificed can only be regained with a {@spell wish} spell or {@classFeature divine intervention|Cleric|PHB|10}."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Celestial Reliquary",
+													"page": 478,
+													"entries": [
+														"Once the ritual has been completed, the statues melt away, leaving behind a wilted white rose with rot-tinged petals. The rose is a celestial reliquary (see {@adventure Celestial Reliquaries|SGttEH-D|1|Celestial Reliquaries}, page 466) that holds a fragment of the dead goddess Lirwen's essence. If this is the third reliquary the party has found, proceed to the {@adventure Garden of Mourning|SGttEH-D|1|Garden of Mourning}."
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "section",
+							"name": "Garden of Mourning",
+							"page": 479,
+							"entries": [
+								"The Garden of Mourning is a distorted reflection of Lirwen's divine garden and lies in a folded space of time at the heart of the Frozen Wraithlands. The eldritch child-god's power hides the sacred space. The party can only discover it upon retrieving three celestial reliquaries (see {@adventure Celestial Reliquaries|SGttEH-D|1|Celestial Reliquaries}, page 466) or completing eight encounters throughout Luyarnha's dark reflection. Here, the accursed child-god weeps over the celestial corpse of its mother amidst the remains of her once-shining garden. The child-god can warp reality in this space, unleashing horrors upon the party while in the throes of its grief.",
+								"Once the party is pulled into the Garden of Mourning, read aloud the following:",
+								{
+									"type": "insetReadaloud",
+									"page": 479,
+									"entries": [
+										"Space and time twist and grab ahold of you, pulling you through a hole while shadows press ominously around you. The pressure lasts for a moment that feels like a lifetime before melting away an instant later. You now stand at the edge of a field of beautiful white flowers that clash with the stench of decay permeating the air. In the center of the field is the same celestial corpse that transported you to this realm. Thick vines pulsing with an obsidian ooze wrap around its limbs and writhe as if trying to bring it back to life.",
+										"Hovering above the body is a weeping nightmarish figure, its body an unholy fusion of divine and eldritch elements. Shifting tendrils of darkness extend from its hunched form, writhing in tandem with its anguished cries. Glimpses of celestial beauty flicker beneath the horror, yet its tormented gaze is fixated upon the lifeless body. The very fabric of reality around the being warps and distorts."
+									]
+								},
+								"The child-god, while powerful, does not have the capability or desire to engage with the party in conversation\u2014its grief is all-encompassing. In addition to the monsters the creature summons, the party has to contend with the corrupted environment itself, as the vines feeding on the dead flesh of the goddess lash out against the characters.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Hazard: Eldritch Growth",
+													"page": 479,
+													"entries": [
+														"The eldritch-infused vines infest the area around the corpse in a 30-foot radius. Characters that start their turn in the affected area, or enter it for the first time on their turn, must succeed on a {@dc 18} Dexterity saving throw to avoid the lashing vines or take 11 ({@damage 2d10}) necrotic damage and become {@condition restrained}. A creature {@condition restrained} in this manner takes an additional 5 ({@damage 1d10}) necrotic damage at the start of each of its turns. The {@condition restrained} creature can use its action to make a {@dc 18} Strength ({@skill Athletics}) check to break free from the entangling vines. Alternatively, to release a {@condition restrained} creature, the restricting vine can be destroyed (AC 15, 20 hit points, immunity to necrotic, poison, and psychic damage, and vulnerability to radiant damage).",
+														"The vines are empowered by the child-god and cannot be completely destroyed until the creature is defeated. However, the vines can be suppressed using spells or abilities that counteract necrotic energy, deal radiant damage, or control plant life. For example, a strategically placed {@spell Antimagic Field|PHB|anti-magic field} spell negates the vines for its duration."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Encounter: The Corrupted Child",
+													"page": 479,
+													"entries": [
+														"The corrupted child-god ({@creature Orr, the Grieving Rebirth|SGttEH}, Page 372) is in a constant state of madness and grief, unable to articulate or speak with the characters. Each time it opens its mouth, it releases a debilitating scream backed by its blend of eldritch and divine powers. It uses its screams to weaken the characters and uses the Eldritch Summoning lair action (see below) to mold creatures out of the darkness to overwhelm the party. The child-god knows only pain and is without fear, fighting to the death in its rage and utter despair."
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "statblock",
+									"tag": "legroup",
+									"source": "SGttEH",
+									"name": "Orr, the Grieving Rebirth (First Form)",
+									"page": 479
+								},
+								{
+									"type": "entries",
+									"name": "Phased Fight",
+									"page": 480,
+									"entries": [
+										"When the child-god is reduced to 0 hit points, it enters the second phase of the fight. Read aloud the following when this happens:",
+										{
+											"type": "insetReadaloud",
+											"page": 480,
+											"entries": [
+												"As the child-god's form shudders with pain, its anguished cries intensify, causing the very fabric of reality to tremble. The twisted vines crackle with newfound energy, and the flowers around the battlefield erupt into violent whirlwinds of razorsharp petals."
+											]
+										},
+										"In the second phase, the following additional hazard manifests, and the child-god gains an additional lair action:",
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Hazard: Razor Petal Storm",
+													"page": 480,
+													"entries": [
+														"A whirling, 15-foot-wide, 40-foot-high vortex of razor-sharp petals appears in the center of the battlefield. At the beginning of the childgod's turn, the vortex moves 30 feet in a random direction (roll a {@dice 1d4} to decide north, south, east, or west). Any creature that starts its turn within 10 feet of the vortex or that comes within 10 feet of the vortex for the first time on its turn must make a {@dc 20} Dexterity saving throw, taking 18 ({@damage 4d8}) slashing damage on a failed save or half as much damage on a successful one."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Lair Action: Eldritch Eruption",
+													"page": 480,
+													"entries": [
+														"Each round, at the end of the child-god's turn, a random 10-foot-square area on the battlefield erupts in a geyser of eldritch energy that reaches 40-feet high. Creatures within the affected area must succeed on a {@dc 20} Constitution saving throw or take 22 ({@damage 4d10}) necrotic damage and become {@condition stunned} until the end of their next turn. On a successful save, the creature takes half as much damage and isn't {@condition stunned}."
+													]
+												}
+											]
+										},
+										{
+											"type": "gallery",
+											"images": [
+												{
+													"type": "image",
+													"href": {
+														"type": "external",
+														"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/12235-29x55.webp"
+													},
+													"title": "Garden of Mourning",
+													"credit": "{@link CZEPEKU|https://www.czepeku.com/cave-temple/winter}",
+													"imageType": "map",
+													"id": "D-GM"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Defeating the God-Child",
+									"page": 480,
+									"entries": [
+										"As the child-god's body trembles and dissolves into ooze and shadow, the corruption it had wrought upon the Garden of Mourning begins to fade. The tendrils of darkness retract from its body, allowing the last vestiges of its divine nature to shine through before finally extinguishing like a fading star, leaving nothing behind.",
+										{
+											"type": "insetReadaloud",
+											"page": 480,
+											"entries": [
+												"The flowers bloom with renewed vibrancy, their petals shimmering with a soft, divine glow. The field, no longer a macabre testament to the eldritch creature's grief and corruption, has returned to its original state as a reflection of Lirwen's divine garden. The oppressive atmosphere of despair lifts, replaced by peace and tranquility. Though the celestial corpse still rests at the center of the garden, the vines that had once fed upon it now seem to gently cradle the body, as if in a final act of reverence."
+											]
+										},
+										"The goddess's corpse eventually shimmers with the final vestiges of divinity remaining. It crumbles away, revealing a radiant rift leading to the safety of the Material Plane and the city of Luyarnha."
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Conclusion",
+					"page": 481,
+					"entries": [
+						"When the characters return to Luyarnha, they discover the {@card Glacial Moon|Eldritch Moons Deck|SGttEH} has dissipated, and the city is thawing from its wintery state. The corpse of Lirwen has disappeared, and those previously trapped in the Frozen Wraithlands are found huddled upon the riverbanks. Their experiences in the nightmare realm have scarred them physically and mentally. The bodies of those who perished at the hands of the characters also return, allowing their loved ones the opportunity to mourn and bury their dead.",
+						{
+							"type": "entries",
+							"name": "Bathed in Blood",
+							"page": 481,
+							"entries": [
+								"Once the child-god has been defeated, its ooze and ash-covered remains can be brought to the Obitus Scholare to complete the ritual to awaken the {@item Épée Solaire|SGttEH} {@homebrew |(see page 238)}. However, tapping into the eldritch-corrupted corpse sends resonations through the void and directly toward the Great Ones. The ancient beings follow the tenuous threads directly back to Luyarnha, and a new wave of despair falls as madness incarnate arrives to feast upon the city."
+							]
+						},
+						{
+							"type": "inset",
+							"page": 481,
+							"name": "Maps:",
+							"entries": [
+								"{@link Click here to download all the maps|https://drive.google.com/drive/folders/1ePkzhN9p5fGNc7bGbmz3Ny6ia3cNA7OI?usp=share_link}",
+								"{@note You're better off using the maps provided in this conversion, either imported through Plutonium, or as standalone images.}"
+							]
+						}
 					]
 				}
 			]
