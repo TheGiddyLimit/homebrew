@@ -22,6 +22,71 @@
 		"dateAdded": 1711491440,
 		"dateLastModified": 1711491440
 	},
+	"reward": [
+		{
+			"name": "Body of the Dark Heart",
+			"source": "SGttEH",
+			"page": 454,
+			"type": "Boon",
+			"entries": [
+				"This eldritch boon grants a +2 bonus to AC while not wearing armor, and the creature is vulnerable to psychic damage. This boon can't be removed by anything short of a {@spell wish} spell."
+			],
+			"foundryEffects": [
+				{
+					"name": "Body of the Dark Heart AC",
+					"disabled": true,
+					"changes": [
+						{
+							"key": "system.attributes.ac.bonus",
+							"mode": "ADD",
+							"value": "2"
+						}
+					]
+				},
+				{
+					"name": "Body of the Dark Heart Vulnerability",
+					"changes": [
+						{
+							"key": "system.traits.dv.value",
+							"mode": "ADD",
+							"value": "psychic"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mind of the Dark Heart",
+			"source": "SGttEH",
+			"page": 458,
+			"type": "Boon",
+			"entries": [
+				"A permanent boon that grants it immunity to being magically {@condition charmed} and a \u22121 penalty to its Strength and Dexterity scores. This boon can't be removed by anything short of a {@spell wish} spell."
+			],
+			"foundryEffects": [
+				{
+					"name": "Mind of the Dark Heart",
+					"changes": [
+						{
+							"key": "system.traits.ci.value",
+							"mode": "ADD",
+							"value": "psychic"
+						},
+						{
+							"key": "system.abilities.str.value",
+							"mode": "ADD",
+							"value": "-1"
+						},
+						{
+							"key": "system.abilities.dex.value",
+							"mode": "ADD",
+							"value": "-1"
+						}
+					]
+				}
+			]
+		}
+	],
 	"item": [
 		{
 			"name": "Deadly Potion of Poison",
@@ -34,6 +99,63 @@
 				"{@note This \"deadly\" variant deals twice the amount of poison damage as a regular {@item potion of poison}.}",
 				"This concoction looks, smells, and tastes like a {@item potion of healing} or other beneficial potion. However, it is actually poison masked by illusion magic. An {@spell identify} spell reveals its true nature.",
 				"If you drink it, you take {@damage 6d6} poison damage, and you must succeed on a {@dc 13} Constitution saving throw or be {@condition poisoned}. At the start of each of your turns while you are {@condition poisoned} in this way, you take {@damage 6d6} poison damage. At the end of each of your turns, you can repeat the saving throw. On a successful save, the poison damage you take on your subsequent turns decreases by {@dice 1d6}. The poison ends when the damage decreases to 0."
+			]
+		},
+		{
+			"name": "Heart of Darkness",
+			"source": "SGttEH",
+			"page": 455,
+			"type": "FD",
+			"rarity": "unknown (magic)",
+			"entries": [
+				"A heart of darkness is a humanoid heart that has crystallized and absorbed enough eldritch energy to become a physical manifestation of pure chaos. Inside the thin crystal exterior is a rotten, fleshy heart that still beats and pulses with heat. A creature with the heart in its possession must succeed on a {@dc 10} Wisdom saving throw at the end of each hour or be {@condition charmed} by the heart for 1 minute. A creature {@condition charmed} in this way has an insatiable desire to devour the heart of darkness.",
+				"If eaten during the tempering ceremonies in {@adventure areas 7 and 11|SGttEH-EoM|1|7. Heart Well}, the heart's energy strengthens the volunteer's mind or body (the boons are described in their respective areas). Otherwise, the heart of darkness grants a random permanent benefit and consequence if ingested. Nothing short of a {@spell wish} spell can remove these effects. Roll a {@dice d4} on each of the following lists to determine what those are:",
+				{
+					"type": "list",
+					"style": "list-decimal",
+					"page": 455,
+					"name": "Benefits:",
+					"items": [
+						"The creature gains immunity to psychic damage, as the chaotic energy protects its mind from psychic attacks.",
+						"The creature gains the ability to teleport to an unoccupied space it can see within 15 feet of itself as a bonus action, as it has tapped into the power of chaos to bend space and time.",
+						"The creature can spend its hit dice as an action instead of at the end of a short rest, allowing it to heal more frequently and during combat.",
+						"The creature gains proficiency in Constitution saving throws, as its increased durability and resilience allow it to resist effects that would normally debilitate it completely. If the creature is already proficient, it gains a +2 bonus to Constitution saving throws."
+					]
+				},
+				{
+					"type": "list",
+					"style": "list-decimal",
+					"page": 455,
+					"name": "Consequences:",
+					"items": [
+						"The creature suffers disadvantage on Wisdom saving throws, as the constant hallucinations and visions cause it to mentally become weaker.",
+						"The creature becomes vulnerable to force damage, as the eldritch energy rejects arcane force, disrupting the body.",
+						"The creature gains a random temporary negative effect that changes at the end of each day, chosen by the GM, as the crystal heart's energy is unstable and causes unpredictable side effects.",
+						"The creature suffers disadvantage on ability checks involving Intelligence and Charisma as the eldritch energy dulls its cognitive faculties."
+					]
+				}
+			],
+			"fluff": {
+				"_itemFluff": {
+					"name": "Heart of Darkness",
+					"source": "SGttEH"
+				}
+			}
+		}
+	],
+	"itemFluff": [
+		{
+			"name": "Heart of Darkness",
+			"source": "SGttEH",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "external",
+						"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11741.webp"
+					},
+					"credit": "Roman Kuzmin"
+				}
 			]
 		}
 	],
@@ -4547,6 +4669,45 @@
 			]
 		},
 		{
+			"name": "Random Chaos Events",
+			"source": "SGttEH",
+			"page": 451,
+			"colLabels": [
+				"d6",
+				"EVENT"
+			],
+			"colStyles": [
+				"col-2 text-center",
+				"col-10"
+			],
+			"rows": [
+				[
+					"1",
+					"The characters hear ghostly whispering from the darkness from a group of {@dice 1d4+1} {@creature geist|SGttEH|geists} of victims killed in the cavern. The geists are hostile and will attack the party if they are not placated with a successful {@dc 15} Charisma ({@skill Persuasion}) check."
+				],
+				[
+					"2",
+					"Geometric patterns and shapes seem to ebb and flow in silvery lines across the surface of the walls. Creatures feel drawn to them, and attempts to read them must succeed on a {@dc 15} Wisdom saving throw or gain a {@table short-term madness|SGttEH} effect {@homebrew |(see the \"Steinhardt's Madness System\" chapter in Steinhardt's Guide to the Eldritch Hunt)}. The patterns disappear after 1 minute."
+				],
+				[
+					"3",
+					"The characters see {@dice 1d4+1} {@creature gargoyle} statues etched into niches in the room's upper walls. The statues are hostile and attack the party, but a {@dc 15} Intelligence ({@skill Religion}) check reveals that they can be instantly deactivated by reciting an ancient prayer inscribed on one of the statues."
+				],
+				[
+					"4",
+					"The sound of a child weeping can be heard from the next room. The sound continues to come from a distance, no matter which direction the characters move. The sound lasts 30 minutes before it ends with a choked-off scream of terror."
+				],
+				[
+					"5",
+					"The cave floor gives way beneath a random character, and they must succeed on a {@dc 15} Dexterity saving throw or fall 20 feet down into a pit filled with {@dice 1d4+1} {@creature giant centipede|MM|giant centipedes}. The {@creature giant centipede|MM|centipedes} are hostile and attack the party."
+				],
+				[
+					"6",
+					"A wave of eldritch energy washes over the party, and each character must make a {@dc 15} Constitution saving throw. On a failed save, the character's mouth begins to melt and flow into a solid piece of smooth flesh (or metal), and they cannot speak. This effect lasts for 10 minutes or until removed by a '{@spell remove curse}' spell or similar effect."
+				]
+			]
+		},
+		{
 			"name": "Random Encounters",
 			"source": "SGttEH",
 			"page": 439,
@@ -5097,7 +5258,39 @@
 					},
 					"headers": [
 						"General Features",
-						"Keyed Locations"
+						"Keyed Locations",
+						{
+							"header": "1. Storage Shack",
+							"depth": 1
+						},
+						{
+							"header": "2. Meat Locker",
+							"depth": 1
+						},
+						{
+							"header": "3. Death Docks",
+							"depth": 1
+						},
+						{
+							"header": "4. Hunter's Hut",
+							"depth": 1
+						},
+						{
+							"header": "5. Vulgar Temple",
+							"depth": 1
+						},
+						{
+							"header": "6. Feeding Pen",
+							"depth": 1
+						},
+						{
+							"header": "7. Charnel House",
+							"depth": 1
+						},
+						{
+							"header": "8. Foul Lodge",
+							"depth": 1
+						}
 					]
 				},
 				{
@@ -5107,7 +5300,36 @@
 						"identifier": 2
 					},
 					"headers": [
-						"General Features"
+						"General Features",
+						"Keyed Locations",
+						{
+							"header": "1. Landing",
+							"depth": 1
+						},
+						{
+							"header": "2. Corrupted Tree",
+							"depth": 1
+						},
+						{
+							"header": "3. Feeding Grounds",
+							"depth": 1
+						},
+						{
+							"header": "4. Broken Bridge",
+							"depth": 1
+						},
+						{
+							"header": "5. Pitfall",
+							"depth": 1
+						},
+						{
+							"header": "6. The Cage",
+							"depth": 1
+						},
+						{
+							"header": "7. Mage's Tower",
+							"depth": 1
+						}
 					]
 				},
 				{
@@ -5156,7 +5378,8 @@
 				{
 					"name": "Templum Praeteritum",
 					"headers": [
-						"General Features"
+						"General Features",
+						"Keyed Locations"
 					]
 				},
 				{
@@ -5166,7 +5389,7 @@
 		},
 		{
 			"name": "Deicide",
-			"id": "SGttEH-EoM",
+			"id": "SGttEH-D",
 			"source": "SGttEH",
 			"parentSource": "SGttEH",
 			"group": "homebrew",
@@ -5206,6 +5429,1530 @@
 		}
 	],
 	"adventureData": [
+		{
+			"id": "SGttEH-D",
+			"source": "SGttEH",
+			"data": [
+				{
+					"type": "section",
+					"name": "Deicide",
+					"page": 463,
+					"entries": [
+						"#TODO"
+					]
+				}
+			]
+		},
+		{
+			"id": "SGttEH-EoM",
+			"source": "SGttEH",
+			"data": [
+				{
+					"type": "section",
+					"name": "Echoes of Madness",
+					"page": 447,
+					"entries": [
+						"{@i By TJ Phoenix and MonkeyDM}",
+						"{@i Echoes of Madness} is a Fifth Edition adventure designed for {@b three to five characters of 11th to 12th level} and optimized for {@b four characters with an average party level (APL) of 12}. The original site of the Obitus Scholare's communion with their god turned into a horror-filled temple of abominations. The Church sealed their past away, but it was only a matter of time before others discovered the darkness lurking beneath Luyarnha. Now the eldritch creatures are making their way out into the world, and the religious group's dark past is laid bare.",
+						"This adventure takes place beneath the city of Luyarnha in Steinhardt's Guide to the Eldritch Hunt. It can be modified to fit any horror campaign with a secret religious sect that deals with eldritch beings.",
+						{
+							"type": "inset",
+							"page": 447,
+							"name": "GM Note",
+							"entries": [
+								"This adventure references powerful, ambiguous eldritch beings with motivations and methods that no one truly understands."
+							]
+						},
+						{
+							"type": "image",
+							"href": {
+								"type": "external",
+								"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11539.webp"
+							},
+							"credit": "Maximiliano Moretto"
+						},
+						{
+							"type": "section",
+							"name": "Background",
+							"page": 447,
+							"entries": [
+								"When the first acolytes of the Obitus Scholare cried out to the heavens in search of answers, a being of light came to them in their dreams. The being promised them answers to their prayers and beckoned them deep underground to a place of power. As they struggled through the darkness, the acolytes found a being of pure light and fell to their knees to bask in its splendor. They built their temple secretly, learning from the \"Radiant One\" and establishing a church in his name. They did not know that this being was not their god\u2014he was the God-Shaped Hole, a powerful eldritch entity pretending to be their dead deity.",
+								"The God-Shaped Hole lured the acolytes to a place where the veil between worlds was thin, and he could reach across to influence this world away from the prying eyes of the other Great Ones. He decided to test the acolytes' resolve through trials of blood and pain. When they begged him for salvation from the Southern armies, the \"Radiant One\" sent even more creatures to them in trials by combat.",
+								"The acolytes discovered they could enhance themselves with serums made from these creatures' cerebral fluids, giving birth to the superhuman monster hunters known as Jaegers. With this power, the church grew in strength and numbers, coming to dominate the First War. But the eldritch gods soon took notice and corrupted those that bore eldritch power in their veins, transforming them into twisted creatures cursed with madness.",
+								"And so the Obitus Scholare cried out to their god once more for answers. The God-Shaped Hole responded with yet more blood and darkness. Before their eyes, he took their leader with his power, twisting his body and tearing it apart to form His word carved into the temple floor. He taught the acolytes to inscribe these Eldritch Carvings into their flesh to grant them new powers. He left the leader in the temple stones, where he continues to suffer eternal agony.",
+								"The newly carved members of the Obitus Scholare fought back against the scourge of monsters as they hid that their hubris created them. Soon after, the God-Shaped Hole disappeared, and the church was left in darkness once more. New eldritch creatures, born of twisted flesh and dark experiments, emerged in the underground temple.",
+								"Without the guidance of their \"god\" and fearing the influx of monsters escaping into the world, the Obitus Scholare sealed the first temple\u2014now called the Templum Praeteritum\u2014to hide their dark past. Years passed, but the creatures remained, and what was once sealed has been uncovered again. An ocean of madness threatens to drown the world as echoes of the past scream into the present."
+							]
+						},
+						{
+							"type": "section",
+							"name": "Adventure Summary",
+							"page": 447,
+							"entries": [
+								"The characters enter the Templum Praeteritum, either with purpose or on accident, and discover a dark pit of despair. They find remnants and clues about the Obitus Scholare's past as they roam the sulfur-filled halls. Percival, an arcane scientist from the Scions, a newer faction within Luyarnha, wants help restoring constructs gone wild, but that's the least of the party's concerns. As they fight against the increasing madness and abominations in the underground temple, they learn the secrets of the branch of the Radiant Church and the history of their powers. In the end, they face an eldritch dragon that guards the gates to the heart of the church itself.",
+								{
+									"type": "entries",
+									"name": "Adventure Hooks",
+									"page": 448,
+									"entries": [
+										"Here are a few ways to introduce your characters to exploring the Templum Praeteritum:",
+										{
+											"type": "entries",
+											"name": "Down the Rabbit Hole",
+											"page": 448,
+											"entries": [
+												"The party is just finishing a long and hard-fought battle in the city of Luyarnha when their luck runs out. An earthquake rolls through the very spot they are standing, and the ground splits open to swallow them whole. They tumble deep into the earth, landing in a heap in a cavern with no way back to the surface. The only way to escape is to seek further into the whispering darkness."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "A River Runs Through",
+											"page": 448,
+											"entries": [
+												"The river running through Luyarnha has provided a stable water source for its residents since its founding. Since the quarantine stopped trading vessels from accessing the docks, it's become more common to see bodies instead of ships floating downstream. Reports have started circulating of creatures emerging from a new sinkhole that appeared near the riverbank, and local guards sent to investigate have vanished into its depths. Residents call for someone to end whatever horrors lie within before it's too late."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Bones of the Scions",
+											"page": 448,
+											"entries": [
+												"The Scions are arcane scientists on the cutting edge of fusing arcane and machine. Their experiments have led to the creation of constructs and devices used to combat the cursed monsters, leading to the birth of Manikins. Constantly searching for new material for their designs, they stumbled upon an entrance to the Templum Praeteritum and the secrets hidden within its dark chambers. An excavation site has been erected, but the mechanical custodians sent into the darkness did not return. The Scions require experts to explore the depths in exchange, and they've reached out to the party with an offer of a tidy sum of gold."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "section",
+							"name": "Running the Adventure",
+							"page": 448,
+							"entries": [
+								"The party starts in different locations in the temple, depending on how they kick things off. The following introductions use the hooks provided above.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "The Rabbit Hole",
+													"page": 448,
+													"entries": [
+														"The characters start the adventure in the Collapsed Chamber (see {@area area 6|EoM-1-6|x}, page 449). Read aloud the following and then proceed to the location.",
+														{
+															"type": "insetReadaloud",
+															"page": 448,
+															"entries": [
+																"Victorious from the hard-fought battle, you take a deep breath, feeling the weight of exhaustion lifted from your shoulders. But before you can fully relax, the ground begins to shake. The earth trembles, rattling your bones and causing the nearby structures to quiver. The ground beneath you collapses completely, and you're falling, tumbling into the unknown depths of the earth.",
+																"But, by some stroke of luck, you're unharmed as you hit the bottom and roll across a rocky surface. You're disheveled and dazed but alive. The air around you is thick with the acrid smell of sulfur, burning your eyes and making it hard to breathe. It feels like you're deep underground, in the depths of the earth. The ground is littered with bones, and as the dust settles, you see there is no going back the way you arrived."
+															]
+														}
+													]
+												},
+												{
+													"type": "entries",
+													"name": "The River",
+													"page": 448,
+													"entries": [
+														"The characters start the adventure in the Sinkhole Entrance (see {@area area 1|EoM-1-1|x}, page 449). Read aloud the following and then proceed to the location.",
+														{
+															"type": "insetReadaloud",
+															"page": 448,
+															"entries": [
+																"As you trudge through the riverbank mud for hours, your eyes catch a small hole in the ground. It's barely big enough for a single person to fit through, but it's surrounded by a gruesome scene: the earth is slick with blood, and scraps of flesh are scattered around it. The stench of death is overwhelming, and it seems like the source of it is coming from the hole.",
+																"As you stand near the pit, you feel the ground below you suddenly give way, and you fall into the darkness. The cavity collapses into a sinkhole, and you tumble into an underground cavern as the tunnel seals itself off completely, trapping you deep underground."
+															]
+														}
+													]
+												},
+												{
+													"type": "entries",
+													"name": "The Scions",
+													"page": 450,
+													"entries": [
+														"The characters start the adventure in the Excavated Altar (see {@area area 8|EoM-1-8|x}, page 449). Read aloud the following and then proceed to the location.",
+														{
+															"type": "insetReadaloud",
+															"page": 450,
+															"entries": [
+																"After answering a local faction of arcane engineers' request for experienced adventurers, you meet with a station director of the Scions. The eclectic group is known for creating mechanical Manikins, multiple firearms, and other inventions.",
+																"The director is an older man named Marcus with liver-spotted hands permanently stained with machine oil and other substances, and one of his arms appears to be completely mechanical. In contrast, his gray and black robes are spotless and neatly pressed. \"The task is simple,\" he says. \"Clear out the cavern ruins of the monstrous threats so that we may explore the ruins below. 1000 gold reward for each of you if you succeed.\" He nods to a thick iron door guarded by a group of constructs. \"Behind that door you'll meet one of our junior engineers who will explain things further. Good luck!\"",
+																"He waits until you're ready to enter the tunnel before closing the door firmly behind you with an ominous bang."
+															]
+														}
+													]
+												},
+												{
+													"type": "image",
+													"href": {
+														"type": "external",
+														"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11579.webp"
+													},
+													"credit": "Nele Diel"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Templum Praeteritum",
+					"page": 450,
+					"entries": [
+						"The Templum Praeteritum\u2014Temple of the Past\u2014is a winding underground cavern infused with eldritch essence. To this day, the founders of the Obitus Scholare do not know who they were dealing with when they tried to build this temple for their god. The remnants of their attempts to construct a holy site lay scattered throughout the temple amongst the bones of victims dragged here by the creatures trapped underground.",
+						"The bones of an unknown giant are lodged within the cavern's walls and absorb light, creating an impenetrable darkness. Nightmarish abominations\u2014 twisted remnants of fallen priests and those who foolishly stumbled their way here\u2014roam the halls in search of blood and fresh victims. The stench of death fills the air along with the sulfurous fumes of tainted hot springs.",
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Scion Custodians",
+									"page": 450,
+									"entries": [
+										"The former main entrance to the temple was discovered by the arcane scientists known as the Scions. They attempted to clear the creatures inside using their {@creature blue flame custodian|SGttEH|blue flame custodians} {@homebrew |(page 352)}, but they failed. The custodians were ill-suited to this task, as their fleshy parts fell under the eldritch influences within the temple. The characters can attempt to convince the Scion Percival Stanway (see {@area area 8|EoM-1-8|x}) to lend them a custodian to assist in their exploration; those they come across in the depths have otherwise already gone feral."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Cursed Bones",
+									"page": 450,
+									"entries": [
+										"The ancient bones infused into the walls have been soaked in the eldritch essence. A non-construct creature touching the bones must make a {@dc 15} Wisdom saving throw as it is bombarded with a litany of horrific mental images, taking 14 ({@damage 4d6}) psychic damage on a failed save, or half as much damage on a successful one."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Unholy Darkness",
+									"page": 450,
+									"entries": [
+										"An unnatural darkness fills the temple, reducing the ranges of normal and magical lights by half. The range of {@sense darkvision} is reduced in half and cannot pierce dim light."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Tainted Pools",
+									"page": 450,
+									"entries": [
+										"Sulfuric hot springs are prevalent throughout the cavern, as noted on the provided map (the red goo). A creature entering or starting its turn in the waters must succeed on a {@dc 13} Constitution saving throw due to the boiling water, taking 14 ({@damage 4d6}) fire damage on a failed save, or half as much damage on a successful one. Additionally, the creature must succeed on a {@dc 15} Wisdom saving throw or suffer a {@table short-term madness|SGttEH} effect {@homebrew |(see the \"Steinhardt's Madness System\" chapter in Steinhardt's Guide to the Eldritch Hunt)}."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Random Events",
+									"page": 450,
+									"entries": [
+										"For every 30 minutes the party spends exploring the temple, roll a {@dice d20}, and on a roll of 18 or higher, roll on the {@table Random Chaos Events|SGttEH} table. Use this to determine a random event or choose one that you feel would best work in the party's location. Have these events occur between combat to have the most impact and encourage the party not to sit still too long.",
+										{
+											"type": "statblock",
+											"tag": "table",
+											"source": "SGttEH",
+											"name": "Random Chaos Events",
+											"page": 451
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "section",
+							"name": "General Features",
+							"page": 451,
+							"entries": [
+								"These general features are prominent throughout Templum Praeteritum unless otherwise noted in the area descriptions.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Ceilings and Floors",
+													"page": 451,
+													"entries": [
+														"The cavern ceilings range from 10 to 15 feet high, except {@area areas 8|EoM-1-8|x} and {@area 12|EoM-1-12|x}, where they reach 30 feet high. The connecting passages are 8 feet high. Stalactites hang from above like the fangs of a great beast, and the sound of water dripping off them echoes in the darkness. Due to seismic activity, the cavern floors are rough and uneven in most places. Scattered rubble makes it difficult to run through most spaces without falling."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Walls",
+													"page": 451,
+													"entries": [
+														"The cavern's walls are a rough black stone that looks wet and feels oily to the touch. Most are covered in murals and bas-reliefs from the Radiant Church's attempts to transform the space into a true temple. The bones of an ancient creature (see \"{@adventure Cursed Bones|SGttEH-EoM|1|Cursed Bones}\" section above) are infused with the stone, creating pillars and arches that support the ceiling."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Lights",
+													"page": 451,
+													"entries": [
+														"The cavern has no natural light sources, and the provided descriptions assume the characters have a light source or assisted vision."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Extreme Climates",
+													"page": 451,
+													"entries": [
+														"When the party first enters the cavern, they discover it is under the effects of {@hazard extreme heat|DMG} conditions. However, the conditions change between {@hazard extreme heat|DMG} and {@hazard extreme cold|DMG} without warning. At the end of every hour the party spends in the cavern, roll a {@dice d20}. On a roll of 18 or higher, the conditions swap. The creatures in the cavern have adapted to these changes and automatically succeed on their Constitution saving throw.",
+														"While extremely hot, the temperature is at or above 100 degrees Fahrenheit (40 degrees Celsius), and a creature exposed to the heat and without access to drinkable water must succeed on a Constitution saving throw at the end of each hour or gain one level of {@condition exhaustion}. The DC is 5 for the first hour and increases by 1 for each additional hour.",
+														"While extremely cold, the temperature is at or below 0 degrees Fahrenheit (\u221220 degrees Celsius), and a creature exposed to the cold must succeed on a {@dc 10} Constitution saving throw at the end of each hour or gain one level of {@condition exhaustion}. Creatures with immunity or resistance to cold damage, wearing {@item Clothing, cold weather|IDRotF|cold-weather gear}, or adapted to cold climates automatically succeed in their saving throw."
+													]
+												},
+												{
+													"type": "image",
+													"href": {
+														"type": "external",
+														"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11628.webp"
+													},
+													"credit": "Nele Diel"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "section",
+							"name": "Keyed Locations",
+							"page": 452,
+							"entries": [
+								"The following descriptions correspond to the keyed locations on the provided map of the Templum Praeteritum.",
+								{
+									"type": "gallery",
+									"images": [
+										{
+											"type": "image",
+											"href": {
+												"type": "external",
+												"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11597-39x57.webp"
+											},
+											"title": "Map 1. Templum Praeteritum",
+											"credit": "{@link CZEPEKU|https://www.czepeku.com/elder-brain-sacrum-shrine/gore}",
+											"imageType": "map",
+											"id": "EoM-1",
+											"mapRegions": [
+												{
+													"area": "EoM-1-1",
+													"points": [
+														[
+															12,
+															6218
+														],
+														[
+															12,
+															7228
+														],
+														[
+															606,
+															7228
+														],
+														[
+															606,
+															6218
+														]
+													]
+												},
+												{
+													"area": "EoM-1-2",
+													"points": [
+														[
+															545,
+															4135
+														],
+														[
+															43,
+															4354
+														],
+														[
+															43,
+															5825
+														],
+														[
+															831,
+															5825
+														],
+														[
+															1182,
+															5302
+														],
+														[
+															1191,
+															4603
+														],
+														[
+															743,
+															4135
+														]
+													]
+												},
+												{
+													"area": "EoM-1-3",
+													"points": [
+														[
+															1865,
+															3532
+														],
+														[
+															1449,
+															3683
+														],
+														[
+															1305,
+															4203
+														],
+														[
+															1668,
+															4569
+														],
+														[
+															1849,
+															4508
+														],
+														[
+															1892,
+															4345
+														],
+														[
+															2298,
+															4215
+														],
+														[
+															2083,
+															3631
+														]
+													]
+												},
+												{
+													"area": "EoM-1-4",
+													"points": [
+														[
+															1006,
+															2231
+														],
+														[
+															1486,
+															2495
+														],
+														[
+															1594,
+															2788
+														],
+														[
+															1711,
+															3308
+														],
+														[
+															1360,
+															3511
+														],
+														[
+															502,
+															3785
+														],
+														[
+															286,
+															3668
+														],
+														[
+															49,
+															2803
+														],
+														[
+															382,
+															2366
+														]
+													]
+												},
+												{
+													"area": "EoM-1-5",
+													"points": [
+														[
+															458,
+															720
+														],
+														[
+															114,
+															1489
+														],
+														[
+															114,
+															2138
+														],
+														[
+															1000,
+															2160
+														],
+														[
+															1662,
+															2292
+														],
+														[
+															1748,
+															1812
+														],
+														[
+															1695,
+															917
+														],
+														[
+															1394,
+															646
+														],
+														[
+															951,
+															886
+														]
+													]
+												},
+												{
+													"area": "EoM-1-6",
+													"points": [
+														[
+															2185,
+															7172
+														],
+														[
+															1951,
+															6886
+														],
+														[
+															1575,
+															6794
+														],
+														[
+															1403,
+															7754
+														],
+														[
+															1982,
+															7932
+														],
+														[
+															2369,
+															7929
+														],
+														[
+															2708,
+															7803
+														],
+														[
+															2858,
+															7462
+														],
+														[
+															2582,
+															7172
+														]
+													]
+												},
+												{
+													"area": "EoM-1-6a",
+													"points": [
+														[
+															2800,
+															5812
+														],
+														[
+															3172,
+															5911
+														],
+														[
+															3040,
+															6437
+														],
+														[
+															2585,
+															6742
+														],
+														[
+															2394,
+															6711
+														],
+														[
+															2255,
+															6431
+														],
+														[
+															2557,
+															6157
+														]
+													]
+												},
+												{
+													"area": "EoM-1-7",
+													"points": [
+														[
+															1634,
+															5338
+														],
+														[
+															2169,
+															5132
+														],
+														[
+															2612,
+															5514
+														],
+														[
+															2486,
+															6037
+														],
+														[
+															1892,
+															6246
+														],
+														[
+															1542,
+															5889
+														]
+													]
+												},
+												{
+													"area": "EoM-1-8",
+													"points": [
+														[
+															3877,
+															4849
+														],
+														[
+															3877,
+															6825
+														],
+														[
+															4535,
+															6825
+														],
+														[
+															4828,
+															6243
+														],
+														[
+															4828,
+															5545
+														],
+														[
+															4434,
+															4868
+														]
+													]
+												},
+												{
+													"area": "EoM-1-8a",
+													"points": [
+														[
+															5000,
+															5348
+														],
+														[
+															5000,
+															6455
+														],
+														[
+															5446,
+															6455
+														],
+														[
+															5446,
+															5348
+														]
+													]
+												},
+												{
+													"area": "EoM-1-9",
+													"points": [
+														[
+															4403,
+															2126
+														],
+														[
+															5320,
+															2514
+														],
+														[
+															5188,
+															3991
+														],
+														[
+															4375,
+															4483
+														],
+														[
+															4083,
+															4065
+														],
+														[
+															3738,
+															2926
+														]
+													]
+												},
+												{
+													"area": "EoM-1-9a",
+													"points": [
+														[
+															4566,
+															1695
+														],
+														[
+															5055,
+															1668
+														],
+														[
+															5415,
+															2265
+														],
+														[
+															5338,
+															2483
+														],
+														[
+															4403,
+															2095
+														],
+														[
+															4388,
+															1902
+														]
+													]
+												},
+												{
+													"area": "EoM-1-10",
+													"points": [
+														[
+															1975,
+															2932
+														],
+														[
+															2018,
+															3465
+														],
+														[
+															3044,
+															3465
+														],
+														[
+															3351,
+															3975
+														],
+														[
+															3717,
+															3815
+														],
+														[
+															3548,
+															2932
+														]
+													]
+												},
+												{
+													"area": "EoM-1-11",
+													"points": [
+														[
+															2462,
+															3502
+														],
+														[
+															2234,
+															3969
+														],
+														[
+															2492,
+															4437
+														],
+														[
+															3012,
+															4431
+														],
+														[
+															3298,
+															3966
+														],
+														[
+															3012,
+															3502
+														]
+													]
+												},
+												{
+													"area": "EoM-1-12",
+													"points": [
+														[
+															1880,
+															775
+														],
+														[
+															1880,
+															2732
+														],
+														[
+															3625,
+															2732
+														],
+														[
+															3625,
+															775
+														]
+													]
+												},
+												{
+													"area": "EoM-1-12a",
+													"points": [
+														[
+															2378,
+															102
+														],
+														[
+															2378,
+															535
+														],
+														[
+															3246,
+															535
+														],
+														[
+															3246,
+															102
+														]
+													]
+												},
+												{
+													"area": "EoM-1-13",
+													"points": [
+														[
+															4055,
+															594
+														],
+														[
+															3895,
+															1203
+														],
+														[
+															4132,
+															1711
+														],
+														[
+															4554,
+															1665
+														],
+														[
+															5043,
+															1622
+														],
+														[
+															5252,
+															1505
+														],
+														[
+															5342,
+															766
+														],
+														[
+															4963,
+															49
+														],
+														[
+															4406,
+															28
+														]
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "1. River Entrance",
+									"page": 452,
+									"id": "EoM-1-1",
+									"entries": [
+										"This location connects to a collapsed sinkhole that can lead to the riverbanks inside the city of Luyarnha or another location at the GM's discretion. Read aloud the following when the characters first approach this area:",
+										{
+											"type": "insetReadaloud",
+											"page": 452,
+											"entries": [
+												"This cave is filled with the stench of sulfur and the sound of bubbling water. In one corner is a pool of shimmering red water, which seems to be glowing from within. You can feel the heat emanating from the pool and hear the faint sound of sizzling like something is cooking below the surface.",
+												"A broken statue of an angel is carved into the northern wall, its wings smashed and its face twisted in a scream. Crimson tears stream down its face, hissing as they hit the waters below."
+											]
+										},
+										"If the party starts the adventure in this location, characters with a passive Wisdom ({@skill Perception}) score of 14 or higher can hear the {@creature reviled hound|SGttEH|reviled hounds} in {@area area 2|EoM-1-2|x} snapping and snarling as they eat.",
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Trap: Weeping Angel",
+													"page": 452,
+													"entries": [
+														"The statue (marked with an X on the provided map) is weeping tears of acid that spray in a 10-foot cone when a creature moves within 5 feet of it. Creatures in the affected area must make a {@dc 15} Dexterity saving throw, taking 14 ({@damage 4d6}) acid damage on a failed save, or half as much damage on a successful one."
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "2. Kennel",
+									"page": 452,
+									"id": "EoM-1-2",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"page": 452,
+											"entries": [
+												"Corpses are scattered everywhere, piled against the walls and strewn about the cave floor. The remains are in various states of decay, some nothing more than skeletons, while others are fresh kills, their blood still wet and sticky.",
+												"You hear a low growling and the sound of flesh being ripped apart, and you see a pack of dog-like creatures covered in gore, feasting on the corpses. The creatures are huge and twisted, their fur matted and filthy, and their eyes glow with an otherworldly light. They're so focused on their meal that they don't notice you!"
+											]
+										},
+										"This chamber is filled with the bodies of victims pulled through the collapsed sinkhole in {@area area 1|EoM-1-1|x}.",
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Encounter: Reviled Pack",
+													"page": 452,
+													"entries": [
+														"Three {@creature reviled hound|SGttEH|reviled hounds} {@homebrew |(page 325)} are feasting on the remains of locals they brought here. The hounds focus on taking down single targets together, using Tentacles and Eldritch Tethers to {@action grapple} and lock down spell casters."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Treasure",
+													"page": 452,
+													"entries": [
+														"A character spending 10 minutes searching the remains uncovers the following:",
+														{
+															"type": "list",
+															"page": 452,
+															"items": [
+																"A small satchel filled with 35 gp and 100 sp, along with a sheaf of papers that have been too damaged by blood to read.",
+																"A silver locket (5 gp) with a family portrait inside.",
+																"A bloodstained canvas pouch filled with 30 sp and a collection of a dozen withered human fingers strung into a necklace.",
+																"A leatherbound journal, written by hand by Margot Theriot, with entries that give a glimpse into her daily life, struggles, hopes, and fears."
+															]
+														}
+													]
+												},
+												{
+													"type": "image",
+													"href": {
+														"type": "external",
+														"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11660.webp"
+													},
+													"credit": "Roman Kuzmin"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "3. Legacy of Pain",
+									"page": 453,
+									"id": "EoM-1-3",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"page": 453,
+											"entries": [
+												"A half-ruined bas-relief sits crumbling along the easternmost wall. The carvings show priests bowing before a great being of light and then receiving scars on their bodies, ascending to the heavens as if they became angels.",
+												"The rubble on the floor crunches beneath your feet as you move deeper into the cave, and you spot on the westernmost wall some inscriptions that depict more of the story of the priests and the great being. It tells of a time of peace and prosperity, where the priests would lead the people in worshiping the light, and they would receive blessings in the form of powers to protect their land."
+											]
+										},
+										"A character proficient in {@skill Religion} or who succeeds on a {@dc 18} Intelligence ({@skill Religion}) check recognizes the scenes as the origin story of the Obitus Scholare's initial meeting with the \"Radiant One\". The scenes depicting the scars on the priests are new and previously unknown.",
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Treasure",
+													"page": 453,
+													"entries": [
+														"A character with a passive Wisdom ({@skill Perception}) score of 15 or higher or who succeeds on a {@dc 15} Wisdom ({@skill Perception}) check while searching the area finds a {@item heart of darkness|SGttEH} (see \"{@adventure Heart of Darkness|SGttEH-EoM|1|Heart of Darkness}\" sidebar, page 455) sitting in a niche in the wall. This crystallized heart can be eaten directly or used in the ceremony for the Mind Well ({@area area 11|EoM-1-11|x}) or the Heart Well ({@area area 7|EoM-1-7|x})."
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "4. The Stage",
+									"page": 453,
+									"id": "EoM-1-4",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"page": 453,
+											"entries": [
+												"As you move deeper into the cave, you notice the smell of decay mixed with the metallic scent of blood. The cave floor is slick with it and other unidentifiable fluids. The overwhelming stench makes breathing difficult, but it's not as bad as the feeling of being watched.",
+												"A dozen skeletons hang suspended from chains in a ring around the cave walls. They are dressed in ragged priest garments, and all face towards a rune-etched brazier in the center of the cave. Muttered whispers echo from the darkness within their yellowed skulls, but you can't make out what they're saying."
+											]
+										},
+										"This chamber was used to safely restrain priests while they underwent the ceremony to receive their eldritch carvings (see \"{@book Eldritch Carvings|SGttEH|19|Eldritch Carvings}\" chapter in Steinhardt's Guide to the Eldritch Hunt). The last ceremony was interrupted by a monster who slaughtered both the carvers and the carved, leaving their skeletons in a state of cursed limbo.",
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Hazard: Whispered Warnings",
+													"page": 453,
+													"entries": [
+														"A creature that spends more than 10 minutes in this area must succeed on a {@dc 15} Wisdom saving throw or gain a {@table short-term madness|SGttEH} as the skeletons' whispers invade its mind. A creature already living in the temple automatically succeeds on this saving throw. Affected creatures suffer disadvantage on {@skill Perception} checks that rely on hearing as they hear constant whispered warnings to run and hide in their mind."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Trap: Soul Brazier",
+													"page": 453,
+													"entries": [
+														"A creature with proficiency in {@skill Arcana} or who succeeds on a {@dc 17} Intelligence ({@skill Arcana}) check can read the runes emblazoned on the brazier that read, \"Light the path for the Radiant One and bask in His Glory.\" Lighting the brazier results in an instant bonfire of purple flame as the runes flare with eldritch light. Each skeleton glows with ethereal energy as its screaming soul is pulled into the fire to be consumed by chaos. Creatures within 20 feet of the brazier must make a {@dc 15} Wisdom saving throw, taking 28 ({@damage 8d6}) psychic damage on a failed save, or half as much damage on a successful one. The screaming alerts the {@creature dreadcrow|SGttEH|dreadcrows} in {@area area 5|EoM-1-5|x} to the party's presence, and they screech in response as they rush toward the cave."
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "5. The Bonefield",
+									"page": 453,
+									"id": "EoM-1-5",
+									"entries": [
+										"This crumbling cave is supported solely by massive ancient bones (see {@adventure Cursed Bones|SGttEH-EoM|1|Cursed Bones}, page 450) arching across the ceiling. A large, tainted hot spring covers the western portion of the room, with a scorched rock jutting from its center. A skeleton wrapped in a leather cloak rests atop the rock and clutches a gem-studded longsword. The longsword is worthless, and the gems are cheap glass imitations.",
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Encounter: Watchers Above",
+													"page": 453,
+													"entries": [
+														"A pair of {@creature dreadcrow|SGttEH|dreadcrows} {@homebrew |(page 338)} are hiding in the shadows of the ceiling and enjoying the ambient heat of the hot spring. If not already alerted to the party's presence by the soul brazier in {@area area 4|EoM-1-4|x}, they attempt to ambush the party from above using their fear-inducing abilities."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Bone Carvings",
+													"page": 453,
+													"entries": [
+														"A character inspecting the ancient bones finds worn etchings, and if they succeed on a {@dc 15} Intelligence ({@skill History}) check, they discern a priest carved them over a decade ago. The ramblings speak of fear and terror of the skittering darkness and ask the \"Radiant One\" to save them all from the nightmares. They also tell of a ceremony that can be performed in the \"Pools beneath the Watchers\" after consuming a \"Heart of Darkness.\" The etchings refer to the ceremonies that can be performed in the Mind Well ({@area area 11|EoM-1-11|x}) and Heart Well ({@area area 7|EoM-1-7|x})."
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "6. Collapsed Chamber",
+									"page": 545,
+									"id": "EoM-1-6",
+									"entries": [
+										"This location is the site of a collapsed sinkhole that can be used as the party's entry point into the temple (see \"{@adventure The Rabbit Hole|SGttEH-EoM|0|The Rabbit Hole}\" section, page 448). When the characters explore this area for the first time, read aloud or paraphrase the following:",
+										{
+											"type": "insetReadaloud",
+											"page": 454,
+											"entries": [
+												"Rubble and debris litter the ground of this small cave, the evidence of a recent cave-in sitting underneath an ancient arch made of bone. A shattered altar holding a small brazier covered in bloodstains and runic carvings sits near the southern wall. The smell of blood and death is thick in the air."
+											]
+										},
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Sacrificial Altar",
+													"page": 454,
+													"entries": [
+														"A creature touching the altar has its mind filled with the screams and pleas of those once sacrificed here. The creature must succeed on a {@dc 13} Wisdom saving throw or take 5 ({@damage 1d10}) psychic damage and be affected by a {@table short-term madness|SGttEH} effect {@homebrew |(see the \"Steinhardt's Madness System\" chapter in Steinhardt's Guide to the Eldritch Hunt)}."
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "6a. Desiccated Priest",
+											"page": 454,
+											"id": "EoM-1-6a",
+											"entries": [
+												"Tucked against the wall is the desiccated corpse of a priest named Rakhum of the Obitus Scholare, who died of natural causes. His body can be found with a casual search of the area and a successful {@dc 12} Wisdom ({@skill Perception}) check. Around his finger is a {@item ring of psychic resistance}. Around the priest's neck is a golden Radiant Church {@item holy symbol|PHB} (5 gp) that is enchanted to vibrate when near the keys hidden in the Mind Well ({@area area 11|EoM-1-11|x}) and the Heart Well ({@area area 7|EoM-1-7|x}). The priest was in charge of the keys and enchanted his {@item holy symbol|PHB} to act as a fail-safe in case they were lost. A leatherbound journal in his belt pouch explains this information in one of the few readable passages."
+											]
+										},
+										{
+											"type": "image",
+											"href": {
+												"type": "external",
+												"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11712.webp"
+											},
+											"credit": "Nele Diel"
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "7. Heart Well",
+									"page": 454,
+									"id": "EoM-1-7",
+									"entries": [
+										"Gravity is doubled in this location, causing the following effects:",
+										{
+											"type": "list",
+											"page": 454,
+											"items": [
+												"The area is considered {@quickref difficult terrain||3}.",
+												"Strength and Constitution checks and saving throws are made with disadvantage while in this room."
+											]
+										},
+										{
+											"type": "insetReadaloud",
+											"page": 454,
+											"entries": [
+												"As you tread into this star-shaped sanctuary, you are greeted by statues of celestial figures, each carved with impeccable craftsmanship and standing guard at each of the six points. At the center of the chamber, a pool of red water beckons, pulsating with an ethereal light that resembles a beating heart. The chamber is still, but echoes of ethereal hymns can be heard as if coming from beyond the statues, and the aroma of burning incense permeates the air, partially masking the ever-present scent of decay."
+											]
+										},
+										"This chamber was used in ceremonies to strengthen the body of acolytes and enhance their bodies to withstand the claws and fangs of the monsters they hunted. The well in the center of the room is fed by the underground tainted hot springs (see {@adventure Tainted Pools|SGttEH-EoM|1|Tainted Pools}, page 450). Creatures with a passive {@skill Perception} of 16 or higher will notice that the flickering glow of the pool seems to originate from something below the water.",
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Tempering Ceremony",
+													"page": 454,
+													"entries": [
+														"A creature that immerses itself in the well after eating a {@item heart of darkness|SGttEH} (see sidebar, found in {@area areas 3|EoM-1-3|x} and {@area 9|EoM-1-9|x}) for 18 consecutive seconds and survives the damage must succeed on a {@dc 20} Wisdom saving throw or gain a {@table long-term madness|SGttEH} {@homebrew |(see the \"Steinhardt's Madness System\" chapter in Steinhardt's Guide to the Eldritch Hunt)}. In addition, at the end of the 18 seconds, eldritch tendrils erupt from the mouths of the surrounding statues to wrap around the creature in the pool. The creature then gains the '{@reward body of the dark heart|SGttEH}'. This eldritch boon grants a +2 bonus to AC while not wearing armor, and the creature is vulnerable to psychic damage. This boon can't be removed by anything short of a {@spell wish} spell."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Treasure",
+													"page": 455,
+													"entries": [
+														"A creature that puts its head under the water will see a black stone key with a ruby embedded in its handle at the bottom of the 20-foot-deep well. This key is one of two used to open the Door of Despair ({@area area 10|EoM-1-10|x}). The other lies at the bottom of the Mind Well ({@area area 11|EoM-1-11|x})."
+													]
+												},
+												{
+													"type": "statblock",
+													"tag": "item",
+													"source": "SGttEH",
+													"name": "Heart of Darkness",
+													"page": 455,
+													"style": "inset"
+												},
+												{
+													"type": "image",
+													"href": {
+														"type": "external",
+														"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11741.webp"
+													},
+													"credit": "Roman Kuzmin"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "8. Excavated Altar",
+									"page": 455,
+									"id": "EoM-1-8",
+									"entries": [
+										"This location is the entrance the Scions excavated and can be used as the party's entry point into the temple (see \"{@adventure Bones of the Scions|SGttEH-EoM|0|Bones of the Scions}\" section, page 448). A Scion named Percival Stanway is repairing a {@creature blue flame custodian|SGttEH|custodian} and can provide the party with limited information.",
+										"When the party enters this area for the first time, read aloud the following:",
+										{
+											"type": "insetReadaloud",
+											"page": 455,
+											"entries": [
+												"Twin spires of bone stretch across the bottom of a deep pit in this massive cavern. Every inch of ivory is etched with sigils and glyphs, some of which appear to flow and move of their own accord. A set of stairs leads down from a crumbling platform that dominates the western side of the chamber. Standing atop the platform is a young man wearing a military-style haircut and a long, leather trench coat. A pair of brass goggles dangle around his neck as he uses tools to work on the mechanical arm of a massive construct. With a grunt and twist of his tool, blue flames suddenly flare to life within the machine, and it screeches to life."
+											]
+										},
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Hazard: Blinding Bones",
+													"page": 456,
+													"entries": [
+														"The engraved ancient bones (see {@adventure Cursed Bones|SGttEH-EoM|1|Cursed Bones}, page 450) sit at the bottom of a 10-foot-deep pit. In addition to the usual effects, when a creature touches these bones, it must make a {@dc 15} Constitution saving throw. On a failed save, the creature takes 7 ({@damage 2d6}) necrotic damage and is cursed for 1 hour. A cursed creature is {@condition blinded}, and the affliction can only be removed with a {@spell remove curse} spell or similar effect. On a successful save, the creature takes half as much damage and is not {@condition blinded}."
+													]
+												}
+											]
+										},
+										"Percival Stanway is finishing repairs on a {@creature blue flame custodian|SGttEH} {@homebrew |(page 352)} and is surprised to see the party in the temple. If the Scions sent the characters here, he greets them warmly and answers any questions they might have. Otherwise, he treats them suspiciously at first, wondering how they got into the temple.",
+										"Percival knows the following useful information:",
+										{
+											"type": "list",
+											"page": 456,
+											"items": [
+												"The underground complex has an oppressive darkness that seems to absorb light.",
+												"There are missing constructs, like the one he is working on, that need to be dismantled.",
+												"Monsters roam in the shadows, and it is a good idea to keep an eye on the ceiling.",
+												"The Scions don't know much about the temple, as they first sent their custodians in to clean out the monsters."
+											]
+										},
+										"If the Scions didn't already hire the characters, Percival offers the party a sum of gold to hunt down and deactivate the missing custodian (see {@area area 9|EoM-1-9|x}). He wants the characters to \"deactivate\" them so he can bring them back under the Scions' control. In addition, clearing out the rest of the monsters in the temple would get the characters in the Scions' good graces and earn them an extra reward in the form of a {@item Scionic Armament|SGttEH|Scionic weapon} of their choice {@homebrew |(page 230)}.",
+										"The characters can attempt to convince Percival to let them utilize the newly repaired {@creature blue-flame custodian|SGttEH} with a successful {@dc 20} Charisma ({@skill Persuasion}) check. However, this comes with its own set of problems (see the \"{@adventure Scion Custodians|SGttEH-EoM|1|Scion Custodians}\" section, page 450). Either way, Percival leaves through the Scion Entrance ({@area area 8a|EoM-1-8a|x}) to wait for the characters' return.",
+										{
+											"type": "inset",
+											"page": 456,
+											"name": "Percival Stanway",
+											"entries": [
+												"Percival (LN human mage) is an arcane scientist and has been with the Scions for three years. He is an expert in the magical and alchemical arts, focusing on studying arcane constructs. He is an accomplished inventor, instrumental in the advancements made on the {@creature blue-flame custodian|SGttEH|blue-flame custodians}. He is often seen experimenting with new spells and enchantments, as well as researching ancient texts in search of lost knowledge. While his research has yielded some impressive results, he rarely reveals his findings to the public, preferring to stay anonymous. He is not pleased to be here in the temple and only came because the custodians were disappearing. #TAG",
+												{
+													"type": "entries",
+													"name": "Personality Trait",
+													"page": 456,
+													"entries": [
+														"\"I'm always tinkering with something new, even if I don't know what it is yet.\""
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Ideal",
+													"page": 456,
+													"entries": [
+														"\"Knowledge is power, and I strive to uncover secrets that others have overlooked.\""
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Bond",
+													"page": 456,
+													"entries": [
+														"\"I am devoted to my research and the Scions, and will do whatever it takes to help them succeed.\""
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Flaw",
+													"page": 456,
+													"entries": [
+														"\"My curiosity often gets the better of me, leading me to take risks that may be too great.\""
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Quote",
+													"page": 456,
+													"entries": [
+														"\"It's not enough to know something; you must understand it.\""
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "8a. Scion Entrance",
+											"page": 457,
+											"id": "EoM-1-8a",
+											"entries": [
+												"The excavation into this area uncovered a small tunnel large enough for a Medium creature to enter easily. The Scions have closed this entrance with a magically sealed vault door that blocks magical teleportation.",
+												"The entrance leads to the heavily guarded basement of the Scions headquarters in Luyarnha. It's protected by four {@creature blue-flame custodian|SGttEH|blue-flame custodians} to ensure the creatures inside do not escape into the city."
+											]
+										},
+										{
+											"type": "image",
+											"href": {
+												"type": "external",
+												"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11765.webp"
+											},
+											"credit": "Ryan Bittner"
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "9. Bridge of Blood",
+									"page": 457,
+									"id": "EoM-1-9",
+									"entries": [
+										{
+											"type": "insetReadaloud",
+											"page": 457,
+											"entries": [
+												"A creature made of metal and blue flame kneels before a hooded and hunched figure in the center of a stone bridge. The stink of sulfur rolls out of the chamber on a wave of oppressive heat."
+											]
+										},
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Hazard: Tainted River",
+													"page": 457,
+													"entries": [
+														"The underground river is tainted like the hot springs (see {@adventure Tainted Pools|SGttEH-EoM|1|Tainted Pools}, page 450). A creature entering or starting its turn in this river takes acid damage instead of fire. In addition, it must succeed on a {@dc 15} Constitution saving throw or become {@condition poisoned} for 1 round. A creature becomes immune to the river's poison for 24 hours on a successful save."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Encounter: The Penitent One",
+													"page": 457,
+													"entries": [
+														"A {@creature blue-flame custodian|SGttEH} {@homebrew |(page 352)} is being corrupted by a {@creature penitent|SGttEH} {@homebrew |(page 360)} in the center of the stone bridge. If undisturbed, the {@creature penitent|SGttEH} completes the ritual in 1 round, using its action and bonus action, and the {@creature blue-flame custodian|SGttEH|custodian} falls under its control. Otherwise, it takes 2 rounds using its bonus action twice before the change occurs. The {@creature blue-flame custodian|SGttEH|custodian} becomes inert if the {@creature penitent|SGttEH} is defeated before the change finishes."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Treasure",
+													"page": 457,
+													"entries": [
+														"Searching the penitent's basket uncovers a {@item heart of darkness|SGttEH} (see \"{@adventure Heart of Darkness|SGttEH-EoM|1|Heart of Darkness}\" sidebar, page 455) amongst the rotting, severed body parts. This can be eaten directly or used in the ceremony for the Mind Well ({@area area 11|EoM-1-11|x}) or the Heart Well ({@area area 7|EoM-1-7|x})."
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "9a. Secret Tunnel",
+											"page": 457,
+											"id": "EoM-1-9a",
+											"entries": [
+												"The walls of this area are lined with bones etched with teeth marks from the penitent's victims. A casual search of the area reveals a small crack in the northern wall in a pool of tainted river water (see above). The thin crevasse is large enough for a Small creature to squeeze through with a successful {@dc 17} Dexterity ({@skill Acrobatics}) check. A Tiny creature can navigate the passage easily."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "10. Door of Despair",
+									"page": 457,
+									"id": "EoM-1-10",
+									"entries": [
+										"The door blocking the way into {@area area 12|EoM-1-12|x} appears as a solid black rectangle with no visible seams or handles. Its surface is smooth and cold to the touch, like a sheet of ice. Etched into the door are strange symbols that seem to shift and move when looked upon for too long. The door radiates an otherworldly aura, and a creature who touches it\u2014including to use a key\u2014must succeed on a {@dc 14} Constitution saving throw or take 14 ({@damage 4d6}) necrotic damage and become {@condition poisoned} for 1 minute.",
+										"The puzzle to open the door is hidden within the temple\u2014a pair of keys must be found and placed into two keyholes on either side of the door to unlock it. The left keyhole is formed from a ruby (50 gp), and the right from an emerald (50 gp). Once both keys are used, the symbols etched onto the door glow brightly before slowly fading away as the door opens. The keys are located at the bottom of the Mind Well ({@area area 11|EoM-1-11|x}) and the Heart Well ({@area area 7|EoM-1-7|x}).",
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Eldritch Protection",
+													"page": 457,
+													"entries": [
+														"The door is protected by divine-level magic that cannot be harmed or bypassed outside of a {@spell wish} spell. If a creature attempts to damage or threaten the door, the door can attack using shadowy tendrils that emerge from its surface. These tendrils have an AC of 18, 30 hit points, a {@hit 5} bonus to attack rolls and cannot be harmed by nonmagical weapons. Upon contact, they deal 14 ({@damage 4d6}) necrotic damage and {@action grapple} (escape {@dc 14}) a creature in their grasp. A {@condition grappled} creature takes 14 ({@damage 4d6}) bludgeoning damage from being crushed by the tendril at the start of its turn. The door can have up to five active tendrils at one time and replenishes each tendril when one dies."
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "11. Mind Well",
+									"page": 457,
+									"id": "EoM-1-11",
+									"entries": [
+										"This location has been soaked in eldritch energy that twists the mind, causing the following effects:",
+										{
+											"type": "list",
+											"page": 457,
+											"items": [
+												"The room is under the effects of a permanent {@spell silence} spell.",
+												"Intelligence and Wisdom checks and saving throws are made with disadvantage while in this room."
+											]
+										},
+										{
+											"type": "insetReadaloud",
+											"page": 457,
+											"entries": [
+												"Ominous, twisted statues adorn the walls of this star-shaped chamber, and their eyes seem to follow your every move. The statues are made of dark stone, and upon closer inspection, you realize that they are intricately carved to depict demonic figures with nightmarish faces full of fangs.",
+												"In the center of the room is a shimmering pool of red water. The pool flickers with an eerie glow, casting an unsteady light on the statues, making them appear even more unsettling. The water is inscrutable, and it's impossible to tell how deep it goes.",
+												"Next to the water, you notice a half melted corpse. It's twisted and contorted, as if it were trying to reach for something below the waters. The fiendish statues seem to be watching the corpse with a twisted sense of satisfaction, as if they had played a role in its demise."
+											]
+										},
+										"This chamber was used in ceremonies meant to strengthen the minds of acolytes and enhance their ability to withstand the mental attacks of the monsters they hunted. The well in the center of the room is fed by the tainted hot springs (see {@adventure Tainted Pools|SGttEH-EoM|1|Tainted Pools}, page 450). A creature that immerses itself in the well after eating a {@item heart of darkness|SGttEH} (see \"{@adventure Heart of Darkness|SGttEH-EoM|1|Heart of Darkness}\" sidebar on page 455, found in {@area areas 3|EoM-1-3|x} and {@area 9|EoM-1-9|x}) for 18 consecutive seconds and survives the damage must succeed on a {@dc 20} Wisdom saving throw or gain a {@table long-term madness|SGttEH} {@homebrew |(see the \"Steinhardt's Madness System\" chapter in Steinhardt's Guide to the Eldritch Hunt)}. In addition, at the end of the 18 seconds, eldritch tendrils erupt from the mouths of the surrounding statues to wrap around the creature in the pool. The creature then gains the '{@reward mind of the dark heart|SGttEH}', a permanent boon that grants it immunity to being magically {@condition charmed} and a \u22121 penalty to its Strength and Dexterity scores. This boon can't be removed by anything short of a {@spell wish} spell.",
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Treasure",
+													"page": 458,
+													"entries": [
+														"At the bottom of the 20-foot-deep well is a black stone key with an emerald embedded in its handle. The key is one of two used to open the Door of Despair ({@area area 10|EoM-1-10|x}), with the other being at the bottom of the Heart Well ({@area area 7|EoM-1-7|x})."
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "12. Eldritch Dragon's Lair",
+									"page": 458,
+									"id": "EoM-1-12",
+									"entries": [
+										{
+											"type": "image",
+											"href": {
+												"type": "external",
+												"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/09645.webp"
+											},
+											"credit": "Maximiliano Moretto"
+										},
+										"{@creature Ectellax, The Flayed|SGttEH} One, was just an eldritch wyrmling when the God-Shaped Hole sent him to the Templum Praeteritum as a test for the mortal priests. He was the last of the tests before the \"Radiant One\" vanished. Unlike the other eldritch sacrifices, Ectellax defeated the priests in the temple by directly tapping into the God-Shaped Hole's power through the original eldritch carving (see {@area area 13|EoM-1-13|x}). The exposure to this raw energy tore the flesh from his body, flaying him alive and leaving him in a constant state of agony.",
+										"As the Obitus Scholare retreated and sealed the horrors away, the dragon devoured the eldritch energy and grew faster than he would have otherwise. Now an adult, Ectellax is ready to break through the sealed door leading to the Grand Cathedral District and waits patiently for his opportunity.",
+										{
+											"type": "insetReadaloud",
+											"page": 459,
+											"entries": [
+												"This massive hall is an imposing space dominated by six giant pillars that reach up to the high, vaulted ceiling. Streams of red hot springs flow throughout the room, creating a grid that crisscrosses the floor.",
+												"At the far end of the room is a solid black door framed by a wall of yellowed bone. The door is massive and flickering patterns move across the slick surface. Seated in front of the door is a twisted and gnarled horror that is both terrifying and pitiable. Its flesh has been flayed from its body, leaving only exposed bones and tendons twisted in impossible angles. The exposed veins and nerves pulse with otherworldly power, and the creature's eyes glow with insanity. The stench of decaying flesh mixed with the sickly sweet smell of rot fills the air, making it difficult to breathe."
+											]
+										},
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Hazard: Blood & Bone",
+													"page": 459,
+													"entries": [
+														"The streams of sulfur and ancient bones (as shown on the provided map) in this area do double the normal damage (see {@adventure Cursed Bones|SGttEH-EoM|1|Cursed Bones} and {@adventure Tainted Pools|SGttEH-EoM|1|Tainted Pools}, page 450)."
+													]
+												},
+												{
+													"type": "entries",
+													"name": "Encounter: The Flayed One",
+													"page": 459,
+													"entries": [
+														"The {@creature Ectellax, The Flayed|SGttEH|adult eldritch dragon} {@homebrew |(page 370)} Ectellax has been trapped in this underground temple and forced to live as a parasite, feeding on the eldritch carving's energy to stay alive. Trapped in this chamber between the seals the Radiant Church placed on the temple, Ectellax has gone insane and cannot be reasoned with. He still has the mind of a wyrmling, but his thoughts are clouded by the constant state of pain and nightmares of the \"Radiant One.\" He was a dragon meant to lead hordes, not to \"crawl in the dust of a forgotten basement.\" Ectellax immediately goes into a blind rage if he sees a Radiant Church {@item holy symbol|PHB} (such as the one in {@area area 6a|EoM-1-6a|x}), focusing his attention on that individual."
+													]
+												},
+												{
+													"type": "image",
+													"href": {
+														"type": "external",
+														"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11831.webp"
+													},
+													"credit": "Carl Hassler"
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "12a. Asylum Door",
+											"page": 459,
+											"id": "EoM-1-12a",
+											"entries": [
+												"This massive door has the same eldritch protection as the one in {@area area 10|EoM-1-10|x}, except this doorway does not have any obvious way of being opened. What lies beyond is a path leading to the heart of the Radiant Church and more of its dark secrets, but that lies outside the scope of this adventure. See the \"{@adventure Conclusion|SGttEH-EoM|2}\" section at the end of the adventure for further information."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "13. First Carving",
+									"page": 459,
+									"id": "EoM-1-13",
+									"entries": [
+										"If the characters enter this chamber from {@area area 9a|EoM-1-9a|x} before engaging with the eldritch dragon in {@area area 12|EoM-1-12|x}, the Eldritch Carving cannot communicate due to the dragon's presence. Otherwise, the priest's eyes are open and seem to be pleading, begging for release from his suffering.",
+										{
+											"type": "insetReadaloud",
+											"page": 459,
+											"entries": [
+												"The ceiling in this cavern is held up by what appears to be the oldest of the ancient bones in this temple, and crimson sulphuric springs ring the edges of the walls. The heat is intense, and the air is thick with the smell of sulfur. A desiccated body lies spread eagle across the center of the floor, its desiccated flesh warped and its intestines on full display. It's clear that the body is still alive and in immense pain, but it can't move or speak.",
+												"The body is embedded directly into the cavern floor as if carved from the stone itself. The sight is gruesome, and it's clear they were used in some sort of ritual or sacrifice. The position of the body and the forceful way it's implanted into the stone seems to form a ceremonial shape."
+											]
+										},
+										"The former priest is protected by the eldritch magic flowing through its flesh by the God-Shaped Hole. The body doesn't age, require food, air, or sleep, and is in an eternal state of pain. The priest is immortal and immovable, short of deity-level power, a {@spell wish} spell, or a {@item heart of darkness|SGttEH} (see Freeing the Priest below).",
+										{
+											"type": "entries",
+											"entries": [
+												{
+													"type": "entries",
+													"name": "Hazard: Eldritch Carving",
+													"page": 459,
+													"entries": [
+														"As soon as a creature comes within 5 feet of the priest, a 20-foot radius wave of intense psychic energy emanates from the body's flesh. Any creature within this wave who sees the body must succeed on a {@dc 15} Wisdom saving throw or be overwhelmed with feelings of dread, despair, and horror, and the creature becomes {@condition frightened}, its speed is halved for 1 minute, and it suffers a {@table short-term madness|SGttEH} effect {@homebrew |(see the \"Steinhardt's Madness System\" chapter in Steinhardt's Guide to the Eldritch Hunt)}.",
+														"Additionally, every 10 minutes, creatures within 10 feet of the body must make a {@dc 10} Wisdom saving throw or take 15 ({@damage 6d4}) psychic damage as the body's screams of agony echo in its mind. If a character attempts to interact physically with the body, the DC for the saving throws increases to 18."
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Studying the Scars",
+											"page": 459,
+											"entries": [
+												"A character who spends an hour studying the priest and succeeds on a {@dc 20} Intelligence ({@skill Religion}) check can commit the shape to memory. Any Eldritch Carvings (see \"{@book Eldritch Carvings|SGttEH|19|Eldritch Carvings}\" chapter in Steinhardt's Guide to the Eldritch Hunt) the character performs on another being grants the recipient a +2 bonus to their Constitution saving throw."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Freeing the Priest",
+											"page": 460,
+											"entries": [
+												"The priest can be freed from his prison of pain and torment by being fed a {@item heart of darkness|SGttEH} (see \"{@adventure Heart of Darkness|SGttEH-EoM|1|Heart of Darkness}\" sidebar on page 455, found in {@area areas 3|EoM-1-3|x} and {@area 9|EoM-1-9|x}). This flood of chaos and eldritch energy combine to create an immense mix of powers that causes the body to erupt into chaotic flames. The body cracks with energy 10 seconds after being fed the heart. Any creature within 30 feet of the body must make a {@dc 20} Wisdom saving throw as it explodes in a blast of immense psychic energy, taking 70 ({@damage 20d6}) psychic damage and suffering a permanent \u22121 penalty to its Intelligence score on a failed save, or half as much damage and receiving no penalty to Intelligence on a successful one."
+											]
+										},
+										{
+											"type": "image",
+											"href": {
+												"type": "external",
+												"url": "https://raw.githubusercontent.com/revilowaldow/homebrew/SGttEH/_img/SGttEH/SGttEH/11847.webp"
+											},
+											"credit": "Carl Hassler"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Conclusion",
+					"page": 460,
+					"entries": [
+						"After defeating Ectellax and the other abominations in the temple, the party has no choice but to leave the temple through the route created by the Scions ({@area area 8a|EoM-1-8a|x}). The faction pays the party their promised reward, including a 500 gold bonus, if they disable the rogue {@creature blue-flame custodian|SGttEH} in {@area area 9|EoM-1-9|x}. They are quick to usher the party away from the complex afterward and begin their preparations to delve into it themselves.",
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Eldritch Carvings",
+									"page": 461,
+									"entries": [
+										"The location of the original First Carving has been closely guarded among the Radiant Church's leadership and was considered lost. Other factions may find the information interesting, and the characters find they are in possession of valuable\u2014 and dangerous\u2014information. The Church and other factions may attempt to pay the party for what they know, while others are more than willing to kill them to keep it from spreading to others."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "The Asylum Door",
+									"page": 461,
+									"entries": [
+										"The Obitus Scholare's past is filled with darkness and despair, as displayed throughout the temple. On the other side of this door is a path leading from their past into their present. A former church-owned underground research facility, the Asylum, is located there. Even though few, if any, can recall it, it was the place where the first jaegers were born, but after the gruesome experiments taking place there were made public, the location was abandoned and shut down.",
+										"After their failed attempts in Jägerweiler, the Obitus Scholare allegedly repaired the facility and are now utilizing it to carry out their eldritch experiments covertly. This information may already have reached higher levels of the church."
+									]
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"page": 461,
+							"name": "Maps:",
+							"entries": [
+								"{@link Click here to download all the maps|https://drive.google.com/drive/folders/1U-pP2mNbP25WO3VtyBZDq3fYVGNiJ4Iu?usp=share_link}",
+								"{@note You're better off using the maps provided in this conversion, either imported through Plutonium, or as standalone images.}"
+							]
+						}
+					]
+				}
+			]
+		},
 		{
 			"id": "SGttEH-SoT",
 			"source": "SGttEH",
