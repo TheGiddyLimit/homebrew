@@ -2314,6 +2314,72 @@
 	],
 	"spell": [
 		{
+			"name": "Amputate",
+			"source": "SGttEH",
+			"page": 202,
+			"level": 7,
+			"school": "V",
+			"subschools": [
+				"osteomancy"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You coat your hand with vicious osteomancy. Make a melee spell attack against a creature within your reach. On a hit, you deal {@damage 10d8} slashing damage. In addition, you rip off one of the creature's limbs (leg, arm, or other similar appendage).",
+				"A creature is immune to this effect if it is immune to slashing damage, has legendary actions, or the GM decides that the creature is too big for its limbs to be cut off with this spell. Such a creature takes an extra {@damage 5d8} slashing damage instead."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 8th level or higher, the initial damage increases by {@dice 4d8}, and the alternative damage by {@dice 2d8}, for each slot level above 7th."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"damageInflict": [
+				"slashing"
+			],
+			"spellAttack": [
+				"M"
+			]
+		},
+		{
 			"name": "Ancestral Bond",
 			"source": "SGttEH",
 			"page": 198,
@@ -2458,6 +2524,61 @@
 			"miscTags": [
 				"FMV",
 				"HL"
+			]
+		},
+		{
+			"name": "Aspect of Death",
+			"source": "SGttEH",
+			"page": 203,
+			"level": 9,
+			"school": "C",
+			"subschools": [
+				"osteomancy"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "the skull of a fallen hero, embedded with jewels worth at least 4,000 gp",
+					"cost": 400000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"You focus threads of magical energy around you which coalesce into the aspect of death, an avatar made of bones, which surrounds you and fights on your behalf. The avatar is Large, is centered on you, and moves with you. While it is summoned, it protects you from foes; you are considered behind three-quarters cover at all times, have resistance to all damage, are immune to being {@condition grappled}, and no other creature can enter the space of the avatar.",
+				"In addition, while active, you gain a +1 bonus to spell attack rolls and saving throws, and when you cast a spell that deals bludgeoning, piercing or slashing damage, it is cast with a spell slot 2 levels higher than the one expended (to a maximum of 9th level)."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			},
+			"conditionImmune": [
+				"grappled"
 			]
 		},
 		{
@@ -2950,6 +3071,84 @@
 			}
 		},
 		{
+			"name": "Boneyard",
+			"source": "SGttEH",
+			"page": 202,
+			"level": 7,
+			"school": "N",
+			"subschools": [
+				"osteomancy"
+			],
+			"time": [
+				{
+					"number": 24,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "enchanted bones, incense, and herbs worth at least 1000 gp, which the spell consumes",
+					"consume": true,
+					"cost": 100000
+				}
+			},
+			"duration": [
+				{
+					"type": "permanent",
+					"ends": [
+						"dispel"
+					]
+				}
+			],
+			"entries": [
+				"You touch a point and infuse an area around it with osteomancy. The area can have a radius of up to 120 feet, and the spell fails if the radius includes an area already under the effect of a {@spell boneyard|SGttEH} or {@spell hallow} spell.",
+				"The affected area is subject to the following effects.",
+				{
+					"type": "list",
+					"style": "list-no-bullets",
+					"items": [
+						"First, you know the exact location and hear the thoughts (if any) of any undead creature within the area, and you know if they are under someone's control.",
+						"Second, all creatures within the area lose resistance and immunity to necrotic and piercing damage.",
+						"Finally, as a reaction whenever a non-undead creature dies within the area, you can choose to rip its skeleton from its flesh and force it to rise again under your control. If you do, the creature is resurrected with 1 hit point, its creature type becomes undead, it becomes immune to all damage, it loses access to any legendary actions it had (if any), and you can mentally command its actions. At the end of its next turn, it dies and cannot be resurrected by any means short of a {@spell wish} spell."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"fluff": {
+				"_spellFluff": {
+					"name": "Boneyard",
+					"source": "SGttEH"
+				}
+			}
+		},
+		{
 			"name": "Brittle Bone Throw",
 			"source": "SGttEH",
 			"page": 187,
@@ -3012,6 +3211,81 @@
 			"miscTags": [
 				"SCL"
 			]
+		},
+		{
+			"name": "Bury",
+			"source": "SGttEH",
+			"page": 203,
+			"level": 8,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"You dramatically increase the pull of gravity in a 30-foot-radius, 300-foot-high cylinder centered on a point on the ground within range. Creatures in this area are knocked {@condition prone} and cannot lose this condition while there. A creature that enters the area for the first time on a turn or starts its turn there is knocked {@condition prone} and takes {@damage 4d6} bludgeoning damage. A flying creature in the area immediately falls to the ground and is knocked {@condition prone}. A creature must succeed on a Strength saving throw to move or perform any action. Each foot of movement while in the area costs a creature 3 extra feet.",
+				"A {@condition prone} creature that ends its turn in the cylinder must succeed on a Strength saving throw or be forced into the ground as gravity pulls it down. It is {@condition restrained} and {@condition incapacitated} by the crushing pressure and the ground around it, but it gains the benefits of three-quarters cover, as only the upper part of their body is visible. A creature can repeat the saving throw at the end of each of its turns, freeing itself from the ground on a success.",
+				"If the spell lasts for its full duration, the ground cracks under the tremendous weight generated and becomes {@quickref difficult terrain||3}. Each 5-foot-square area requires at least 1 minute to clear by hand to remove the {@quickref difficult terrain||3}."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"damageInflict": [
+				"bludgeoning"
+			],
+			"conditionInflict": [
+				"incapacitated",
+				"prone",
+				"restrained"
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"miscTags": [
+				"DFT"
+			],
+			"fluff": {
+				"_spellFluff": {
+					"name": "Bury",
+					"source": "SGttEH"
+				}
+			}
 		},
 		{
 			"name": "Calcified Memories",
@@ -3183,6 +3457,76 @@
 			],
 			"miscTags": [
 				"SCL"
+			]
+		},
+		{
+			"name": "Crush",
+			"source": "SGttEH",
+			"page": 202,
+			"level": 7,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "bone powder"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You attempt to trap one creature you can see within range in a field of gravity that compresses and folds in on itself. The target must succeed on a Strength saving throw or take {@damage 12d10} bludgeoning damage and be {@condition stunned} until the start of your next turn as it reels from the pain."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 8th level or higher, you can target one additional creature for each slot level above 7th."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"damageInflict": [
+				"bludgeoning"
+			],
+			"conditionInflict": [
+				"stunned"
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"miscTags": [
+				"SGT"
 			]
 		},
 		{
@@ -3361,6 +3705,149 @@
 			]
 		},
 		{
+			"name": "Divine Order: Sacrifice",
+			"source": "SGttEH",
+			"page": 204,
+			"level": 9,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"When you cast this spell, you create a crack in the world, letting the will of a Great One smother a creature of your choice within range. The direct contact with the eldritch being causes the target to take {@damage 8d6} psychic damage, and it must make a Charisma saving throw. On a failure, the creature is pulled in through the tear to the cosmos. On a success, it isn't pulled but gains a {@table long-term madness|SGttEH}, and the spell ends.",
+				"While in the cosmos, the target is {@condition incapacitated}. At the beginning of each of its turns while there, it takes {@damage 3d6} cold damage, {@damage 3d6} psychic damage, and must succeed on a {@dc 20} Intelligence saving throw or gain a {@table short-term madness|SGttEH}.",
+				"When the spell ends, if the target is still alive, it reappears in the space it left or in the nearest unoccupied space if that space is occupied. If the creature is killed while in the void, its corpse never returns. A body that disappears in this way can never be recovered, not even with a {@spell wish} spell.",
+				"If your {@status concentration} on the spell ends early, you must succeed on a {@dc 20} Intelligence saving throw or gain a {@table long-term madness|SGttEH} as the eldritch whispers revolt and assault your mind.",
+				"When the spell ends, roll a {@dice d100}. On a 1, the breach doesn't close and instead only expands, threatening to absorb the entire world."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			},
+			"damageInflict": [
+				"cold",
+				"psychic"
+			],
+			"conditionInflict": [
+				"incapacitated"
+			],
+			"savingThrow": [
+				"charisma",
+				"intelligence"
+			]
+		},
+		{
+			"name": "Divine Order: Transcend",
+			"source": "SGttEH",
+			"page": 202,
+			"level": 7,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				},
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1,
+						"upTo": true
+					}
+				}
+			],
+			"entries": [
+				"You call upon the power of the Great Ones, seeking their guidance. Until the spell ends, you gain the ability to cast {@filter any spell from the warlock spell list of 5th level or lower|spells|source=|level=0;1;2;3;4;5|class=warlock} without expending a spell slot or needing to prepare the spell. As part of casting this spell, you can cast {@filter a spell with a casting time of an action from your newfound spell list|spells|source=|level=0;1;2;3;4;5|class=warlock|cast time=action}. However, the cost of using this power is steep. At the end of each of your turns, you must succeed on a {@dc 18} Intelligence saving throw or take {@damage 2d10} psychic damage. If you fail this saving throw two times, the spell ends early and you gain a {@table short-term madness|SGttEH}."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 9th level, it no longer requires {@status concentration}, though you can choose to end the spell whenever."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			},
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			]
+		},
+		{
 			"name": "Dread Scarecrow",
 			"source": "SGttEH",
 			"page": 196,
@@ -3496,6 +3983,79 @@
 			"savingThrow": [
 				"constitution"
 			]
+		},
+		{
+			"name": "Erupting Lightning",
+			"source": "SGttEH",
+			"page": 200,
+			"level": 6,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "the vertebrae of a Lightning Vessel barbarian"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You slam the ground with the palm of your hand, causing pillars of lightning to erupt from the ground beneath your foes. The area of lightning consists of up to seven 5-foot cubes, which you can arrange as you wish. Each cube must have at least one face adjacent to the face of another cube. Each creature in the area must make a Dexterity saving throw. It takes {@damage 7d10} lightning damage and falls {@condition prone} on a failed save, or half as much damage and doesn't fall {@condition prone} on a successful one."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 7th level or higher, you can generate two additional 5-foot cubes of lightning for each slot level above 6th."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"damageInflict": [
+				"lightning"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"fluff": {
+				"_spellFluff": {
+					"name": "Erupting Lightning",
+					"source": "SGttEH"
+				}
+			}
 		},
 		{
 			"name": "Fall",
@@ -4789,6 +5349,59 @@
 			]
 		},
 		{
+			"name": "Osteophagia",
+			"source": "SGttEH",
+			"page": 204,
+			"level": 9,
+			"school": "C",
+			"subschools": [
+				"osteomancy"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"The most lethal osteomantic power. You can cause the skeleton of a creature to liquefy in a matter of seconds, causing the body to collapse in on itself. Choose a creature within your reach; it must succeed on a Constitution saving throw or die.",
+				"A successful save prevents the death by skeletal collapse, but the creature still takes {@damage 10d6} necrotic damage. Creatures without bones and creatures whose CR or character level is equal to or higher than the caster's CR or character level are immune to this spell."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
+			]
+		},
+		{
 			"name": "Otherworldly Gaze",
 			"source": "SGttEH",
 			"page": 192,
@@ -5709,6 +6322,65 @@
 			]
 		},
 		{
+			"name": "Unbound Chamber",
+			"source": "SGttEH",
+			"page": 200,
+			"level": 6,
+			"school": "T",
+			"time": [
+				{
+					"number": 10,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 500
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Using a ritual of ancient magic, you distort the gravitational balance of an enclosed space of your choice for the duration. The chamber can be of any shape up to 200 feet wide, 200 feet tall, and 200 feet long. While in the chamber, a creature doesn't take falling damage, has its jump distance tripled, has a flying speed equal to its walking speed, and can hover.",
+				"Casting this spell on the same spot every day for a year makes this effect permanent."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"miscTags": [
+				"PRM"
+			]
+		},
+		{
 			"name": "Vanishing Step",
 			"source": "SGttEH",
 			"page": 198,
@@ -5763,6 +6435,143 @@
 			],
 			"miscTags": [
 				"SGT"
+			]
+		},
+		{
+			"name": "Void Walk",
+			"source": "SGttEH",
+			"page": 200,
+			"level": 6,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"You touch a willing creature. For the duration, it gains a flying speed equal to its walking speed and can hover."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 7th level or higher, you can target one additional creature for each slot level above 6th."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Wall of Bones",
+			"source": "SGttEH",
+			"page": 201,
+			"level": 6,
+			"school": "C",
+			"subschools": [
+				"osteomancy"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a calcified egg shell"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"A grim wall of fractured bones appears at a point you choose within range. The wall appears in any orientation you choose: horizontally, vertically, or diagonally. It must rest on a solid surface. The wall can be up to 60 feet long, 10 feet high, and 5 feet thick. The wall blocks line of sight, and creatures can't pass through it. The wall is an object, and has AC 15, 150 hit points, immunity to poison and psychic damage, and vulnerability to bludgeoning damage. Reducing it to 0 hit points destroys it.",
+				"When the wall appears, each creature in its space is pushed out of it by the shortest route and must make a Dexterity saving throw. On a failed save, a creature takes {@damage 4d8} bludgeoning damage, or half as much damage on a successful save.",
+				"Until the spell ends, and as long as the wall has sufficient hit points, you can use an action to sacrifice 20 hit points from the wall to summon a {@creature minotaur skeleton} that has murderous killing intent. The creature appears in an unoccupied space of your choice adjacent to the wall. When you summon a {@creature minotaur skeleton} in this way, designate a creature you can see within 60 feet of it; that creature becomes the sole enemy of the summoned creature. The {@creature minotaur skeleton} ignores any orders you give, tries to kill its target by any means, and is immune to being {@condition charmed}. Once its target is dead, it vanishes in a pile of dust.",
+				"You can have a maximum of three creatures summoned by this spell at a time."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"damageInflict": [
+				"bludgeoning"
+			],
+			"conditionInflict": [
+				"charmed"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
 			]
 		},
 		{
@@ -5828,6 +6637,48 @@
 		}
 	],
 	"spellFluff": [
+		{
+			"name": "Boneyard",
+			"source": "SGttEH",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "external",
+						"url": "https://raw.githubusercontent.com/revilowaldow/homebrew-img/SGttEH/img/SGttEH/SGttEH/04924.webp"
+					},
+					"credit": "Ari Ibarra"
+				}
+			]
+		},
+		{
+			"name": "Bury",
+			"source": "SGttEH",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "external",
+						"url": "https://raw.githubusercontent.com/revilowaldow/homebrew-img/SGttEH/img/SGttEH/SGttEH/04966.webp"
+					},
+					"credit": "Caio Santos"
+				}
+			]
+		},
+		{
+			"name": "Erupting Lightning",
+			"source": "SGttEH",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "external",
+						"url": "https://raw.githubusercontent.com/revilowaldow/homebrew-img/SGttEH/img/SGttEH/SGttEH/04908.webp"
+					},
+					"credit": "Roman Kuzmin"
+				}
+			]
+		},
 		{
 			"name": "Forest of Dread",
 			"source": "SGttEH",
