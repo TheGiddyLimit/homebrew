@@ -37,6 +37,7 @@ There are a few conventions used which should be followed when creating homebrew
  - Use `https://github.com/TheGiddyLimit/homebrew` as the source URL for sources without one.
  - Only include content authors in the source `"author"` field; conversion credit should be given in a `"convertedBy"` field (with the same format).
  - Include a `"dateAdded"` property in file metadata, which is a Unix timestamp (in seconds) at which the file was added. See [here](https://github.com/TheGiddyLimit/homebrew/blob/master/spell/Sample%20-%20Giddy%3B%20Assorted%20Marginalia.json#L29) for an example of the structure; an example timestamp would be `1537874753`. You can view and copy the current Unix time [here](https://www.epochconverter.com/).
+ - Images (and similar assets, e.g. character sheet PDFs) should be added to the [homebrew image repository](https://github.com/TheGiddyLimit/homebrew-img)
 
 #### Useful links
 
