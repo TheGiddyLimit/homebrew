@@ -2564,7 +2564,7 @@
 		},
 		{
 			"name": "The Cursed",
-			"page": 6,
+			"page": 8,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2582,7 +2582,7 @@
 		},
 		{
 			"name": "Malignant Aura",
-			"page": 6,
+			"page": 8,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2591,15 +2591,33 @@
 			"level": 1,
 			"header": 2,
 			"entries": [
-				"{@i 1st-level Cursed Spirit feature}",
-				"The aura of the Cursed Spirit sealed within your soul bleeds into your personality. You learn to speak {@language Abyssal} or {@language Infernal}.",
-				"You also gain proficiency in Deception or Intimidation, and whenever you make an ability check with either skill you can treat a roll of 7 or lower on the d20 as an 8.",
+				"The aura of the Cursed Spirit sealed within your soul bleeds into your personality. You learn to speak {@language Abyssal} or {@language Infernal}. You also gain proficiency in {@skill Deception} or {@skill Intimidation}, and whenever you make an ability check with either skill you can treat a roll of 7 or lower on the {@dice d20} as an 8.",
 				"Finally, your Iridescent Strikes deal fire damage on hit."
+			],
+			"languageProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"abyssal",
+							"infernal"
+						]
+					}
+				}
+			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"deception",
+							"intimidation"
+						]
+					}
+				}
 			]
 		},
 		{
 			"name": "Cursed Spells",
-			"page": 6,
+			"page": 8,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2608,11 +2626,10 @@
 			"level": 2,
 			"header": 2,
 			"entries": [
-				"{@i 2nd-level Cursed Spirit feature}",
 				"You learn the spells at the Vessel levels noted in the table below. These don't count against your total number of Spells Known and cannot be switched out when you gain a level.",
 				{
 					"type": "table",
-					"page": 6,
+					"page": 8,
 					"colLabels": [
 						"Vessel Level",
 						"Spells"
@@ -2624,23 +2641,23 @@
 					"rows": [
 						[
 							"2nd",
-							"{@spell cause fear|XGE},{@spell hellish rebuke}"
+							"{@spell cause fear|XGE}, {@spell hellish rebuke}"
 						],
 						[
 							"5th",
-							"{@spell flame whip|LLVessel},{@spell scorching ray}"
+							"{@spell flame whip|llspell}, {@spell scorching ray}"
 						],
 						[
 							"9th",
-							"{@spell fireball},{@spell vampiric touch}"
+							"{@spell fireball}, {@spell vampiric touch}"
 						],
 						[
 							"13th",
-							"{@spell dominate beast},{@spell wall of fire}"
+							"{@spell dominate beast}, {@spell wall of fire}"
 						],
 						[
 							"17th",
-							"{@spell flame strike},{@spell insect plague}"
+							"{@spell flame strike}, {@spell insect plague}"
 						]
 					]
 				}
@@ -2648,7 +2665,7 @@
 		},
 		{
 			"name": "Cursed Archon",
-			"page": 6,
+			"page": 8,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2657,13 +2674,19 @@
 			"level": 3,
 			"header": 2,
 			"entries": [
-				"{@i 3rd-level Cursed Spirit feature}",
-				"You can take on a sinister form wreathed in the dark flame and shadow of your Cursed Spirit. When you transform into Archon Form, you use the {@creature Cursed Archon|LLVessel} stat block."
+				"You can take on a sinister form wreathed in the dark flame and shadow of your Cursed Spirit. When you transform into Archon Form, you use the Cursed Archon stat block below:",
+				{
+					"type": "statblock",
+					"tag": "creature",
+					"name": "Cursed Archon",
+					"source": "LLVessel",
+					"style": "inset"
+				}
 			]
 		},
 		{
 			"name": "Hellfire",
-			"page": 7,
+			"page": 9,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2672,13 +2695,12 @@
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"{@i 6th-level Cursed Spirit feature}",
 				"You can access the true power of the dark Spirit imprisoned within, conjuring cursed infernal flames. When you deal fire damage to a creature with a Vessel spell or another Vessel feature, you ignore the target's fire resistance, and you treat the target's immunity to fire damage as resistance."
 			]
 		},
 		{
 			"name": "Infernal Claws",
-			"page": 7,
+			"page": 9,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2687,13 +2709,12 @@
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"{@i 6th-level Cursed Spirit feature}",
-				"The twisted power of your Archon Form increases, granting you the following benefits while you are transformed:",
+				"The twisted power of your {@classFeature Archon Form|Vessel|LLVessel|3} increases, granting you the following benefits while you are transformed:",
 				{
 					"type": "list",
 					"items": [
 						"You can climb difficult surfaces, including sheer walls, and upside down on ceilings, without making an ability check.",
-						"When you make an Athletics check to shove or grapple a target, you treat a roll of 7 or lower on the d20 as an 8.",
+						"When you make an {@skill Athletics} check to {@action shove} or {@action grapple} a target, you treat a roll of 7 or lower on the {@dice d20} as an 8.",
 						"You count as one size larger for the purpose of grappling."
 					]
 				}
@@ -2701,7 +2722,7 @@
 		},
 		{
 			"name": "Dark Sacrifice",
-			"page": 7,
+			"page": 9,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2710,14 +2731,13 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"{@i 14th-level Cursed Spirit feature}",
 				"You can sacrifice your own life force to your Cursed Spirit in return for more power. As a bonus action, you can regain one of your expended Vessel Magic spell slots by reducing both your current and maximum hit points by an amount equal to twice the level of the spell slot you regain. This reduction to your hit points cannot be lessened in any way.",
 				"At the end of your next long rest any reduction to your hit point maximum from this feature returns to normal."
 			]
 		},
 		{
 			"name": "Lord of Darkness",
-			"page": 7,
+			"page": 9,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2726,14 +2746,13 @@
 			"level": 20,
 			"header": 2,
 			"entries": [
-				"{@i 20th-level Cursed Spirit feature}",
-				"Your power allows your Spirit to walk in the material world once again. Your Archon Form gains the following benefits:",
+				"Your power allows your Spirit to walk in the material world once again. Your {@classFeature Archon Form|Vessel|LLVessel|3} gains the following benefits:",
 				{
 					"type": "list",
 					"items": [
 						"You assume the true appearance of your Cursed Spirit.",
 						"You are immune to the {@condition charmed}, {@condition frightened}, and {@condition poisoned} conditions, and to both poison and fire damage.",
-						"When you hit a creature with an Iridescent Strike, you can force it to make a Wisdom saving throw. On a failure, it is {@condition frightened} of you until the start of your next turn. You can only force a creature to make this save once per turn."
+						"When you hit a creature with an {@classFeature Iridescent Strike|Vessel|LLVessel|1}, you can force it to make a Wisdom saving throw. On a failure, it is {@condition frightened} of you until the start of your next turn. You can only force a creature to make this save once per turn."
 					]
 				}
 			]
@@ -3330,6 +3349,34 @@
 					}
 				]
 			}
+		},
+		{
+			"name": "Malignant Aura",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"subclassShortName": "Cursed",
+			"subclassSource": "LLVessel",
+			"level": 1,
+			"subEntities": {
+				"item": [
+					{
+						"name": "Iridescent Strike",
+						"type": "M",
+						"weaponCategory": "simple",
+						"foundrySystem": {
+							"ability": "cha",
+							"equipped": true,
+							"damage.parts": [
+								[
+									"@scale.vessel.iridescent-strike + @mod",
+									"fire"
+								]
+							]
+						}
+					}
+				]
+			}
 		}
 	],
 	"monster": [
@@ -3692,12 +3739,17 @@
 		{
 			"name": "Cursed Archon",
 			"source": "LLVessel",
-			"page": 7,
-			"summonedByClass": "Vessel|LLVessel",
+			"page": 8,
+			"summonedByClass": "Vessel (Cursed)|LLVessel",
 			"size": [
 				"M"
 			],
-			"type": "Fiend (Shapechanger)",
+			"type": {
+				"type": "fiend",
+				"tags": [
+					"shapechanger"
+				]
+			},
 			"ac": [
 				{
 					"special": "13 + your Charisma modifier"
@@ -3722,17 +3774,20 @@
 				"Infernal",
 				"and any languages you know"
 			],
+			"languageTags": [
+				"I"
+			],
 			"trait": [
 				{
 					"name": "Infernal Drain",
 					"entries": [
-						"Once per turn when the Archon hits a creature with an Iridescent Strike, its temporary hit points are increased by an amount equal to half the damage dealt. This has no effect on undead targets."
+						"Once per turn when the Archon hits a creature with an {@classFeature Iridescent Strike|Vessel|LLVessel|1}, its temporary hit points are increased by an amount equal to half the damage dealt. This has no effect on undead targets."
 					]
 				},
 				{
 					"name": "Savage Strikes",
 					"entries": [
-						"When the Archon uses its action to make an Iridescent Strike, it can make one additional Iridescent Strike attack as part of that same action."
+						"When the Archon uses its action to make an {@classFeature Iridescent Strike|Vessel|LLVessel|1}, it can make one additional Iridescent Strike attack as part of that same action."
 					]
 				}
 			]
