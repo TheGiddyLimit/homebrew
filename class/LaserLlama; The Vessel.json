@@ -168,7 +168,7 @@
 				"Polymorph",
 				"Shadow of Moil|XGE",
 				"Sickening Radiance|XGE",
-				"Arcane Hand",
+				"Bigby's Hand",
 				"Circle of Power",
 				"Cloudkill",
 				"Contact Other Plane",
@@ -486,6 +486,47 @@
 							},
 							"7": {
 								"value": 2
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Spell Slots",
+					"configuration": {
+						"identifier": "slots",
+						"type": "numeric",
+						"scale": {
+							"2": {
+								"value": 2
+							},
+							"15": {
+								"value": 3
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Slot Level",
+					"configuration": {
+						"identifier": "level",
+						"type": "numeric",
+						"scale": {
+							"2": {
+								"value": 1
+							},
+							"5": {
+								"value": 2
+							},
+							"9": {
+								"value": 3
+							},
+							"13": {
+								"value": 4
+							},
+							"17": {
+								"value": 5
 							}
 						}
 					}
@@ -926,6 +967,31 @@
 							"key": "system.attributes.ac.calc",
 							"mode": "OVERRIDE",
 							"value": "custom"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Vessel Magic",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"level": 2,
+			"effects": [
+				{
+					"name": "Vessel Magic",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.spells.pact.level",
+							"mode": "UPGRADE",
+							"value": "@scale.vessel.level"
+						},
+						{
+							"key": "system.spells.pact.max",
+							"mode": "UPGRADE",
+							"value": "@scale.vessel.slots"
 						}
 					]
 				}
@@ -1598,6 +1664,24 @@
 				"Potent Magicks|Vessel|LLVessel|Ascended|LLVessel|6|LLVessel",
 				"Ascended Arcanum|Vessel|LLVessel|Ascended|LLVessel|14|LLVessel",
 				"Archmage Reborn|Vessel|LLVessel|Ascended|LLVessel|20|LLVessel"
+			],
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"title": "Ascended Arcanum 7th Level Spell Slot",
+					"configuration": {
+						"identifier": "ascended7",
+						"type": "numeric",
+						"scale": {
+							"14": {
+								"value": 0
+							},
+							"20": {
+								"value": 1
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -1643,7 +1727,7 @@
 							}
 						],
 						"17": [
-							"arcane hand",
+							"bigby's hand",
 							{
 								"choose": "level=1;2;3;4;5|damage type=thunder",
 								"count": 1
@@ -1686,7 +1770,7 @@
 							}
 						],
 						"17": [
-							"arcane hand",
+							"bigby's hand",
 							{
 								"choose": "level=1;2;3;4;5|damage type=bludgeoning",
 								"count": 1
@@ -1729,7 +1813,7 @@
 							}
 						],
 						"17": [
-							"arcane hand",
+							"bigby's hand",
 							{
 								"choose": "level=1;2;3;4;5|damage type=fire",
 								"count": 1
@@ -1772,7 +1856,7 @@
 							}
 						],
 						"17": [
-							"arcane hand",
+							"bigby's hand",
 							{
 								"choose": "level=1;2;3;4;5|damage type=thunder",
 								"count": 1
@@ -1786,7 +1870,7 @@
 				"enlarge/reduce",
 				"fly",
 				"summon elemental",
-				"arcane hand"
+				"bigby's hand"
 			],
 			"subclassFeatures": [
 				"The Cataclysm|Vessel|LLVessel|Cataclysm|LLVessel|1|LLVessel",
@@ -2077,7 +2161,7 @@
 	"subclassFeature": [
 		{
 			"name": "The Ascended",
-			"page": 4,
+			"page": 5,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2095,7 +2179,7 @@
 		},
 		{
 			"name": "Ancient Knowledge",
-			"page": 4,
+			"page": 5,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2104,15 +2188,13 @@
 			"level": 1,
 			"header": 2,
 			"entries": [
-				"{@i 1st-level Ascended Spirit feature}",
-				"The ascended mage bound to your soul grants you access to its esoteric knowledge. Whenever you make an Intelligence check, you gain a bonus to your roll equal to your Charisma modifier (minimum of +1).",
-				"You also learn the {@spell prestidigitation} cantrip, and Charisma is your spellcasting modifier for it.",
-				"Finally, your Iridescent Strikes deal force damage on hit."
+				"The ascended mage bound to your soul grants you access to its esoteric knowledge. Whenever you make an Intelligence check, you gain a bonus to your roll equal to your Charisma modifier (minimum of +1). You also learn the {@spell prestidigitation} cantrip, and Charisma is your spellcasting modifier for it.",
+				"Finally, your {@classFeature Iridescent Strike|Vessel|LLVessel|1||Iridescent Strikes} deal force damage on hit."
 			]
 		},
 		{
 			"name": "Ascended Spells",
-			"page": 4,
+			"page": 5,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2121,7 +2203,6 @@
 			"level": 2,
 			"header": 2,
 			"entries": [
-				"{@i 2nd-level Ascended Spirit feature}",
 				"You learn the spells at the Vessel levels noted in the table below. These don't count against your total number of Spells Known and cannot be switched out when you gain a level.",
 				{
 					"type": "table",
@@ -2137,23 +2218,23 @@
 					"rows": [
 						[
 							"2nd",
-							"{@spell magic missile},{@spell shield}"
+							"{@spell magic missile}, {@spell shield}"
 						],
 						[
 							"5th",
-							"{@spell detect thoughts},{@spell levitate}"
+							"{@spell detect thoughts}, {@spell levitate}"
 						],
 						[
 							"9th",
-							"{@spell clairvoyance},{@spell counterspell}"
+							"{@spell clairvoyance}, {@spell counterspell}"
 						],
 						[
 							"13th",
-							"{@spell arcane eye},{@spell otiluke's resilient sphere|PHB|resilient sphere}"
+							"{@spell arcane eye}, {@spell otiluke's resilient sphere|PHB|resilient sphere}"
 						],
 						[
 							"17th",
-							"{@spell legend lore},{@spell wall of force}"
+							"{@spell legend lore}, {@spell wall of force}"
 						]
 					]
 				}
@@ -2161,7 +2242,7 @@
 		},
 		{
 			"name": "Ascended Archon",
-			"page": 4,
+			"page": 5,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2170,13 +2251,19 @@
 			"level": 3,
 			"header": 2,
 			"entries": [
-				"{@i 3rd-level Ascended Spirit feature}",
-				"You take on the luminous form of the ancient spellcaster that is bound to you. Your Archon Form uses the {@creature Ascended Archon|LLVessel} stat block."
+				"You take on the luminous form of the ancient spellcaster that is bound to you. Your Archon Form uses the stat block below:",
+				{
+					"type": "statblock",
+					"tag": "creature",
+					"name": "Ascended Archon",
+					"source": "LLVessel",
+					"style": "inset"
+				}
 			]
 		},
 		{
 			"name": "Potent Magicks",
-			"page": 5,
+			"page": 6,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2185,14 +2272,12 @@
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"{@i 6th-level Ascended Spirit feature}",
-				"The ambient magic of the Ascended being within your soul empowers your magic with a fraction of its power.",
-				"Once per turn when you damage a creature with a Vessel spell or an Iridescent Strike, you can roll a d8 and add the result to the damage roll of the Vessel spell or Iridescent Strike attack."
+				"The ambient magic of the Ascended being within your soul empowers your magic with a fraction of its power. Once per turn when you damage a creature with a Vessel spell or an Iridescent Strike, you can roll a {@dice d8} and add the result to the damage roll of the Vessel spell or {@classFeature Iridescent Strike|Vessel|LLVessel|1} attack."
 			]
 		},
 		{
 			"name": "Ascended Arcanum",
-			"page": 5,
+			"page": 6,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2201,15 +2286,13 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"{@i 14th-level Ascended Spirit feature}",
-				"You are able to wrest even greater magics from the Ascended mage imprisoned within you. You gain a single 6th-level spell slot which you can use to cast your Vessel spells.",
-				"Unlike your other Vessel Magic spell slots, you only regain the use of this special Arcanum spell slot when you finish a long rest.",
+				"You are able to wrest even greater magics from the Ascended mage imprisoned within you. You gain a single 6th-level spell slot which you can use to cast your Vessel spells. Unlike your other Vessel Magic spell slots, you only regain the use of this special Arcanum spell slot when you finish a long rest.",
 				"At 20th level, you gain a 7th-level Arcanum spell slot."
 			]
 		},
 		{
 			"name": "Archmage Reborn",
-			"page": 5,
+			"page": 6,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2218,14 +2301,13 @@
 			"level": 20,
 			"header": 2,
 			"entries": [
-				"{@i 20th-level Ascended Spirit feature}",
-				"Your soul is able to channel the full power of the Ascended Spirit bound to your mortal flesh, if only temporarily. When you are in your Archon Form you gain the benefits below:",
+				"Your soul is able to channel the full power of the Ascended Spirit bound to your mortal flesh, if only temporarily. When you are in your {@classFeature Archon Form|Vessel|LLVessel|3} you gain the benefits below:",
 				{
 					"type": "list",
 					"items": [
 						"You assume the appearance The Ascended had in life.",
 						"You gain resistance to all damage from spells.",
-						"If you use your action to cast a Vessel spell of 1st-level or higher you can make a single Iridescent Strike or use Arcane Blast as a bonus action on that turn.",
+						"If you use your action to cast a Vessel spell of 1st-level or higher you can make a single {@classFeature Iridescent Strike|Vessel|LLVessel|1} or use Arcane Blast as a bonus action on that turn.",
 						"You can use Astral Step to teleport up to 60 feet."
 					]
 				}
@@ -2233,7 +2315,7 @@
 		},
 		{
 			"name": "The Cataclysm",
-			"page": 5,
+			"page": 6,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2251,7 +2333,7 @@
 		},
 		{
 			"name": "Elemental Affinity",
-			"page": 5,
+			"page": 6,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2260,12 +2342,11 @@
 			"level": 1,
 			"header": 2,
 			"entries": [
-				"{@i 1st-level Cataclysm Spirit feature}",
 				"Within you is bound an ancient elemental Spirit of overwhelming power. Choose the type of Elemental Spirit bound to you: Air, Earth, Fire, or Water. This choice grants you an Affinity with certain damage:",
 				{
 					"type": "table",
 					"caption": "Elemental Affinity Table",
-					"page": 7,
+					"page": 6,
 					"colLabels": [
 						"Air",
 						"Earth",
@@ -2287,11 +2368,11 @@
 						]
 					]
 				},
-				"You gain resistance to your Affinity damage type, and your Iridescent Strikes deal your Elemental Affinity damage type on hit. The damage of your Iridescent Strikes is magical, regardless of the damage type.",
+				"You gain resistance to your Affinity damage type, and your {@classFeature Iridescent Strike|Vessel|LLVessel|1||Iridescent Strikes} deal your Elemental Affinity damage type on hit. The damage of your Iridescent Strikes is magical, regardless of the damage type.",
 				"Finally, you learn to manifest a small amount of your Spirit's Elemental power. You learn the following spell associated with your Elemental Affinity, Charisma is your spellcasting modifier for it, and you can cast it as an action or a bonus action on each of your turns:",
 				{
 					"type": "table",
-					"page": 5,
+					"page": 6,
 					"colLabels": [
 						"Air",
 						"Earth",
@@ -2317,7 +2398,7 @@
 		},
 		{
 			"name": "Cataclysm Spells",
-			"page": 5,
+			"page": 6,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2326,12 +2407,11 @@
 			"level": 2,
 			"header": 2,
 			"entries": [
-				"{@i 2nd-level Cataclysm Spirit feature}",
 				"You learn the spells at the Vessel levels noted in the table below. These don't count against your total number of Spells Known and cannot be switched out when you gain a level.",
 				"For each spell level, you learn a single affinity spell. This affinity spell should be chosen from spells that deal the same damage type as your Elemental Affinity. Alternatively, you can talk with your DM and decide on an alternate thematic spell.",
 				{
 					"type": "table",
-					"page": 5,
+					"page": 6,
 					"colLabels": [
 						"Vessel Level",
 						"Spells"
@@ -2343,23 +2423,23 @@
 					"rows": [
 						[
 							"2nd",
-							"{@spell absorb elements|XGE},{@i affinity spell}"
+							"{@spell absorb elements|XGE}, {@i affinity spell}"
 						],
 						[
 							"5th",
-							"{@spell enlarge/reduce},{@i affinity spell}"
+							"{@spell enlarge/reduce}, {@i affinity spell}"
 						],
 						[
 							"9th",
-							"{@spell fly},{@i affinity spell}"
+							"{@spell fly}, {@i affinity spell}"
 						],
 						[
 							"13th",
-							"{@spell summon elemental|TCE},{@i affinity spell}"
+							"{@spell summon elemental|TCE}, {@i affinity spell}"
 						],
 						[
 							"17th",
-							"{@spell bigby's hand|PHB|arcane hand},{@i affinity spell}"
+							"{@spell bigby's hand|PHB|arcane hand}, {@i affinity spell}"
 						]
 					]
 				},
@@ -2368,14 +2448,14 @@
 					"name": "A Guide to Thematic Affinity Spells",
 					"entries": [
 						"While some spells may not deal the damage type associated with your Elemental Affinity, they may still be appropriate picks for an affinity spell.",
-						"For example, despite not dealing any damage, a spell like earthbind would be an excellent choice as an Earth affinity spell. Likewise, the tidal wave spell would be a good choice for a Water affinity spell."
+						"For example, despite not dealing any damage, a spell like {@spell earthbind|xge} would be an excellent choice as an Earth affinity spell. Likewise, the tidal wave spell would be a good choice for a Water affinity spell."
 					]
 				}
 			]
 		},
 		{
 			"name": "Cataclysm Archon",
-			"page": 5,
+			"page": 7,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2384,30 +2464,47 @@
 			"level": 3,
 			"header": 2,
 			"entries": [
-				"{@i 3rd-level Cataclysm Spirit feature}",
-				"You can take on a form of pure elemental power, wreathed in storms, flames, stone, or waves. When you transform into your Archon Form, you use the Cataclysm Archon stat block that corresponds to the Elemental Affinity you chose at 1st level:",
+				"You can take on a form of pure elemental power, wreathed in storms, flames, stone, or waves. When you transform into your Archon Form, you use the Cataclysm Archon stat block below that corresponds to the Elemental Affinity you chose at 1st level:",
 				{
 					"type": "table",
 					"caption": "Archon Form Table",
-					"page": 5,
-					"colLabels": [
-						"Air",
-						"Earth",
-						"Fire",
-						"Water"
-					],
+					"page": 7,
 					"colStyles": [
-						"col-3 text-center",
-						"col-3 text-center",
-						"col-3 text-center",
-						"col-3 text-center"
+						"col-6 text-center",
+						"col-6 text-center"
 					],
 					"rows": [
 						[
-							"{@creature Air Archon|LLVessel}",
-							"{@creature Earth Archon|LLVessel}",
-							"{@creature Fire Archon|LLVessel}",
-							"{@creature Water Archon|LLVessel}"
+							{
+								"type": "statblock",
+								"tag": "creature",
+								"name": "Air Archon",
+								"source": "LLVessel",
+								"style": "inset"
+							},
+							{
+								"type": "statblock",
+								"tag": "creature",
+								"name": "Fire Archonn",
+								"source": "LLVessel",
+								"style": "inset"
+							}
+						],
+						[
+							{
+								"type": "statblock",
+								"tag": "creature",
+								"name": "Earth Archon",
+								"source": "LLVessel",
+								"style": "inset"
+							},
+							{
+								"type": "statblock",
+								"tag": "creature",
+								"name": "Water Archon",
+								"source": "LLVessel",
+								"style": "inset"
+							}
 						]
 					]
 				}
@@ -2415,7 +2512,7 @@
 		},
 		{
 			"name": "Elder Power",
-			"page": 6,
+			"page": 8,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2424,14 +2521,13 @@
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"{@i 6th-level Cataclysm Spirit feature}",
 				"The natural elements present in the material plane are but a pale imitation of your Spirit's primordial power. When you cast a Vessel spell or use a feature that deals your Elemental Affinity damage type, you can treat a roll of 1 or 2 on any of the damage dice you roll for that spell or feature as a 3.",
 				"Also, whenever you deal your Elemental Affinity damage type to a creature, you can ignore resistance to that damage, and you treat immunity to that damage type as resistance."
 			]
 		},
 		{
 			"name": "Elemental Eruption",
-			"page": 6,
+			"page": 8,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2440,14 +2536,13 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"{@i 14th-level Cataclysm Spirit feature}",
 				"Raw primordial energies erupt from your Spirit. When you cast a Vessel spell or use a feature that deals your Elemental Affinity damage type, you can choose for that spell or effect to deal the maximum possible damage, in place of rolling.",
 				"Once you use this feature you must finish a short or long rest before you can maximize damage in this way again."
 			]
 		},
 		{
 			"name": "Cataclysm Reborn",
-			"page": 6,
+			"page": 8,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -2456,8 +2551,7 @@
 			"level": 20,
 			"header": 2,
 			"entries": [
-				"{@i 20th-level Cataclysm Spirit feature}",
-				"You wield the full power of a primordial elemental force, and the raw elements of the planes bend to your will. When you are in your Archon Form you gain the following benefits:",
+				"You wield the full power of a primordial elemental force, and the raw elements of the planes bend to your will. When you are in your {@classFeature Archon Form|Vessel|LLVessel|3} you gain the following benefits:",
 				{
 					"type": "list",
 					"items": [
@@ -3140,6 +3234,104 @@
 			]
 		}
 	],
+	"foundrySubclassFeature": [
+		{
+			"name": "Ancient Knowledge",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"subclassShortName": "Ascended",
+			"subclassSource": "LLVessel",
+			"level": 1,
+			"effects": [
+				{
+					"name": "Intelligence Check Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.abilities.int.bonuses.check",
+							"mode": "ADD",
+							"value": "+max(1, @abilities.cha.mod)"
+						}
+					]
+				}
+			],
+			"subEntities": {
+				"item": [
+					{
+						"name": "Iridescent Strike",
+						"type": "M",
+						"weaponCategory": "simple",
+						"foundrySystem": {
+							"ability": "cha",
+							"equipped": true,
+							"damage.parts": [
+								[
+									"@scale.vessel.iridescent-strike + @mod",
+									"force"
+								]
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Ascended Arcanum",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"subclassShortName": "Ascended",
+			"subclassSource": "LLVessel",
+			"level": 14,
+			"effects": [
+				{
+					"name": "Ascended Arcanum",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.spells.spell6.max",
+							"mode": "ADD",
+							"value": "+1"
+						},
+						{
+							"key": "system.spells.spell7.max",
+							"mode": "ADD",
+							"value": "+@scale.the-ascended.ascended7"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Affinity",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"subclassShortName": "Cataclysm",
+			"subclassSource": "LLVessel",
+			"level": 1,
+			"subEntities": {
+				"item": [
+					{
+						"name": "Iridescent Strike",
+						"type": "M",
+						"weaponCategory": "simple",
+						"foundrySystem": {
+							"ability": "cha",
+							"equipped": true,
+							"damage.parts": [
+								[
+									"@scale.vessel.iridescent-strike + @mod",
+									""
+								]
+							]
+						}
+					}
+				]
+			}
+		}
+	],
 	"monster": [
 		{
 			"name": "Spirit Familiar",
@@ -3216,12 +3408,17 @@
 		{
 			"name": "Ascended Archon",
 			"source": "LLVessel",
-			"page": 4,
-			"summonedByClass": "Vessel|LLVessel",
+			"page": 5,
+			"summonedByClass": "Vessel (Ascended)|LLVessel",
 			"size": [
 				"M"
 			],
-			"type": "Humanoid (Shapechanger)",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"shapechanger"
+				]
+			},
 			"ac": [
 				{
 					"special": "10 + your Charisma modifier"
@@ -3244,6 +3441,9 @@
 				"Primordial",
 				"and any languages you know"
 			],
+			"languageTags": [
+				"P"
+			],
 			"trait": [
 				{
 					"name": "Astral Step",
@@ -3262,7 +3462,7 @@
 				{
 					"name": "Arcane Blast",
 					"entries": [
-						"As an action, the Archon can choose a point it can see within 60 feet and force all creatures within 5 feet of that point to make a Dexterity saving throw. On a failed save, creatures take damage as if they had been hit by an Iridescent Strike attack."
+						"As an action, the Archon can choose a point it can see within 60 feet and force all creatures within 5 feet of that point to make a Dexterity saving throw. On a failed save, creatures take damage as if they had been hit by an {@classFeature Iridescent Strike|Vessel|LLVessel|1} attack."
 					]
 				}
 			]
@@ -3270,12 +3470,17 @@
 		{
 			"name": "Air Archon",
 			"source": "LLVessel",
-			"page": 6,
-			"summonedByClass": "Vessel|LLVessel",
+			"page": 7,
+			"summonedByClass": "Vessel (Cataclysm)|LLVessel",
 			"size": [
 				"M"
 			],
-			"type": "Elemental (Shapechanger)",
+			"type": {
+				"type": "elemental",
+				"tags": [
+					"shapechanger"
+				]
+			},
 			"ac": [
 				{
 					"special": "10 + your Charisma modifier"
@@ -3298,6 +3503,9 @@
 				"Auran",
 				"and any languages you know"
 			],
+			"languageTags": [
+				"AU"
+			],
 			"trait": [
 				{
 					"name": "Air Form",
@@ -3308,7 +3516,7 @@
 				{
 					"name": "Bluster",
 					"entries": [
-						"Once per turn when the Archon hits a target with an Iridescent Strike, it can force it to make a Strength saving throw. On a failed save, it is pushed away from you in a straight line up to 15 feet. Any creature that is more than one size larger than the Archon has advantage on its Strength saving throw."
+						"Once per turn when the Archon hits a target with an {@classFeature Iridescent Strike|Vessel|LLVessel|1}, it can force it to make a Strength saving throw. On a failed save, it is pushed away from you in a straight line up to 15 feet. Any creature that is more than one size larger than the Archon has advantage on its Strength saving throw."
 					]
 				}
 			]
@@ -3316,12 +3524,17 @@
 		{
 			"name": "Earth Archon",
 			"source": "LLVessel",
-			"page": 6,
-			"summonedByClass": "Vessel|LLVessel",
+			"page": 7,
+			"summonedByClass": "Vessel (Cataclysm)|LLVessel",
 			"size": [
 				"M"
 			],
-			"type": "Elemental (Shapechanger)",
+			"type": {
+				"type": "elemental",
+				"tags": [
+					"shapechanger"
+				]
+			},
 			"ac": [
 				{
 					"special": "15 + your Charisma modifier"
@@ -3333,7 +3546,7 @@
 				"burrow": 10
 			},
 			"senses": [
-				"tremmorsense 60 ft."
+				"tremorsense 60 ft."
 			],
 			"skill": {
 				"survival": "+PB",
@@ -3347,17 +3560,20 @@
 				"Terran",
 				"and any languages you know"
 			],
+			"languageTags": [
+				"T"
+			],
 			"trait": [
 				{
 					"name": "Rock Solid",
 					"entries": [
-						"Once per turn when the Archon hits a creature with an Iridescent Strike it can force it to make a Constitution saving throw. On a failed save, its speed is halved until the start of your next turn."
+						"Once per turn when the Archon hits a creature with an {@classFeature Iridescent Strike|Vessel|LLVessel|1} it can force it to make a Constitution saving throw. On a failed save, its speed is halved until the start of your next turn."
 					]
 				},
 				{
 					"name": "Siege Monster",
 					"entries": [
-						"The Archon's Iridescent Strikes deal the maximum possible damage against nonmagical objects and structures instead of rolling."
+						"The Archon's {@classFeature Iridescent Strike|Vessel|LLVessel|1||Iridescent Strikes} deal the maximum possible damage against nonmagical objects and structures instead of rolling."
 					]
 				}
 			],
@@ -3368,12 +3584,17 @@
 		{
 			"name": "Fire Archon",
 			"source": "LLVessel",
-			"page": 6,
-			"summonedByClass": "Vessel|LLVessel",
+			"page": 7,
+			"summonedByClass":  "Vessel (Cataclysm)|LLVessel",
 			"size": [
 				"M"
 			],
-			"type": "Elemental (Shapechanger)",
+			"type": {
+				"type": "elemental",
+				"tags": [
+					"shapechanger"
+				]
+			},
 			"ac": [
 				{
 					"special": "11 + your Charisma modifier"
@@ -3394,11 +3615,14 @@
 				"Ignan",
 				"and any languages you know"
 			],
+			"languageTags": [
+				"I"
+			],
 			"trait": [
 				{
 					"name": "Ignite",
 					"entries": [
-						"Once per turn when the Archon hits a target with an Iridescent Strike, it can choose to light the target on fire, if it is flammable. The target must then make a Dexterity saving throw at the start of each of its turns. On a failed save, it takes damage as if hit by another Iridescent Strike. On a success, the flames are extinguished and it takes no additional damage."
+						"Once per turn when the Archon hits a target with an {@classFeature Iridescent Strike|Vessel|LLVessel|1}, it can choose to light the target on fire, if it is flammable. The target must then make a Dexterity saving throw at the start of each of its turns. On a failed save, it takes damage as if hit by another Iridescent Strike. On a success, the flames are extinguished and it takes no additional damage."
 					]
 				},
 				{
@@ -3412,12 +3636,17 @@
 		{
 			"name": "Water Archon",
 			"source": "LLVessel",
-			"page": 6,
-			"summonedByClass": "Vessel|LLVessel",
+			"page": 7,
+			"summonedByClass":  "Vessel (Cataclysm)|LLVessel",
 			"size": [
 				"M"
 			],
-			"type": "Elemental (Shapechanger)",
+			"type": {
+				"type": "elemental",
+				"tags": [
+					"shapechanger"
+				]
+			},
 			"ac": [
 				{
 					"special": "11 + your Charisma modifier"
@@ -3441,6 +3670,9 @@
 			"languages": [
 				"Aquan",
 				"and any languages you know"
+			],
+			"languageTags": [
+				"AQ"
 			],
 			"trait": [
 				{
