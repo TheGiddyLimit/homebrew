@@ -415,8 +415,14 @@
 					"gainSubclassFeature": true
 				},
 				"Unsealed Aspects|Vessel|LLVessel|1|LLVessel",
-				"Vessel Magic|Vessel|LLVessel|2|LLVessel",
-				"Archon Form|Vessel|LLVessel|3|LLVessel",
+				{
+					"classFeature": "Vessel Magic|Vessel|LLVessel|2|LLVessel",
+					"gainSubclassFeature": true
+				},
+				{
+					"classFeature": "Archon Form|Vessel|LLVessel|3|LLVessel",
+					"gainSubclassFeature": true
+				},
 				"Ability Score Improvement|Vessel|LLVessel|4|LLVessel",
 				"Extra Attack|Vessel|LLVessel|5|LLVessel",
 				{
@@ -440,7 +446,51 @@
 					"gainSubclassFeature": true
 				}
 			],
-			"subclassTitle": "Sealed Spirit"
+			"subclassTitle": "Sealed Spirit",
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"title": "Iridescent Strike",
+					"configuration": {
+						"identifier": "iridescent-strike",
+						"type": "dice",
+						"scale": {
+							"1": {
+								"n": 1,
+								"die": 6
+							},
+							"5": {
+								"n": 1,
+								"die": 8
+							},
+							"11": {
+								"n": 1,
+								"die": 10
+							},
+							"17": {
+								"n": 1,
+								"die": 12
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Archon Form Uses",
+					"configuration": {
+						"identifier": "archon-uses",
+						"type": "numeric",
+						"scale": {
+							"3": {
+								"value": 1
+							},
+							"7": {
+								"value": 2
+							}
+						}
+					}
+				}
+			]
 		}
 	],
 	"classFluff": [
@@ -498,7 +548,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 1,
+			"page": 2,
 			"level": 1,
 			"entries": [
 				"In you is sealed a spiritual being of great power. At 1st level, choose your Sealed Spirit: The Ascended, The Cataclysm, The Cursed, The Fallen, The Formless, or The Trickster.",
@@ -506,20 +556,20 @@
 				{
 					"type": "entries",
 					"name": "Sealed Spirit Goals",
-					"page": 1,
+					"page": 2,
 					"entries": [
-						"Sealed Spirits are bound within a mortal Vessel for many reasons, and many of these spiritual beings have goals of their own apart from their mortal host. To decide on a goal for your Spirit, you can either choose your own or roll a d6.",
+						"Sealed Spirits are bound within a mortal Vessel for many reasons, and many of these spiritual beings have goals of their own apart from their mortal host. To decide on a goal for your Spirit, you can either choose your own or roll a {@dice d6}.",
 						{
 							"type": "table",
 							"caption": "Spirit Goal",
 							"page": 9,
 							"colLabels": [
-								"d6",
+								"{@dice d6}",
 								"Sealed Spirit Goal"
 							],
 							"colStyles": [
-								"col-0-5 text-center",
-								"col-11-5 text-left"
+								"col-1 text-center",
+								"col-11 text-left"
 							],
 							"rows": [
 								[
@@ -551,31 +601,48 @@
 					]
 				},
 				{
-					"type": "entries",
-					"name": "Iridescent Strike",
-					"page": 2,
-					"entries": [
-						"You can draw on the Spirit sealed in you to strike with otherworldly power. When you make an unarmed strike, you can cloak the strike in spiritual power and use your Charisma, in place of Strength, for the attack and damage rolls. On hit, these special unarmed strikes deal 1d6 damage of a type determined by your Sealed Spirit.",
-						"The damage die of these strikes increases at certain Vessel levels: 5th level (1d8), 11th level (1d10), and 17th level (1d12)."
-					]
+					"type": "refClassFeature",
+					"classFeature": "Iridescent Strike|Vessel|LLVessel|1|LLVessel"
 				},
 				{
-					"type": "entries",
-					"name": "Spiritual Defense",
-					"page": 2,
-					"entries": [
-						"You can innately draw on your Sealed Spirit's instinct for selfpreservation to shield yourself with its power. So long as you are not wearing armor or a shield your Armor Class is equal to 10 + your Dexterity modifier + your Charisma modifier."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Unsealed Aspects",
-					"page": 2,
-					"entries": [
-						"You are able to exert limited control over the Spirit bound to your soul and can partially release its power. At 1st level, you master one {@filter Unsealed Aspect|optionalfeatures|feature type=LL:UA} of your choice from the list at the end of this class.",
-						"When you gain certain Vessel levels, you master additional Aspects of your choice, as indicated in the Unsealed Aspects column of the Vessel table. If an Aspect has a prerequisite, like another Unsealed Aspect or a certain Vessel level, you must meet those prerequisites to master it."
-					]
+					"type": "refClassFeature",
+					"classFeature": "Spiritual Defense|Vessel|LLVessel|1|LLVessel"
 				}
+				
+			]
+		},
+		{
+			"name": "Iridescent Strike",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"page": 3,
+			"level": 1,
+			"entries": [
+				"You can draw on the Spirit sealed in you to strike with otherworldly power. When you make an unarmed strike, you can cloak the strike in spiritual power and use your Charisma, in place of Strength, for the attack and damage rolls. On hit, these special unarmed strikes deal {@damage 1d6} damage of a type determined by your Sealed Spirit",
+				"The damage die of these strikes increases at certain Vessel levels: 5th level ({@damage 1d8}), 11th level ({@damage 1d10}), and 17th level ({@damage 1d12})."
+			]
+		},
+		{
+			"name": "Spiritual Defense",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"page": 3,
+			"level": 1,
+			"entries": [
+				"You can innately draw on your Sealed Spirit's instinct for self-preservation to shield yourself with its power. So long as you are not wearing armor or a shield your Armor Class is equal to 10 + your Dexterity modifier + your Charisma modifier."
+			]
+		},
+		{
+			"name": "Unsealed Aspects",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"page": 3,
+			"level": 1,
+			"entries": [
+				"You are able to exert limited control over the Spirit bound to your soul and can partially release its power. At 1st level, you master one Unsealed Aspect of your choice from the list at the end of this class. When you gain certain Vessel levels, you master additional Aspects of your choice, as indicated in the Unsealed Aspects column of the Vessel table. If an Aspect has a prerequisite, like another Unsealed Aspect or a certain Vessel level, you must meet those prerequisites to master it."
 			]
 		},
 		{
@@ -583,14 +650,14 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 2,
+			"page": 3,
 			"level": 2,
 			"entries": [
 				"Also at 2nd level, you learn to draw upon the immense power of the Sealed Spirit bound within your soul to produce spells, much like a Warlock does. You gain the following features:",
 				{
 					"type": "entries",
 					"name": "Spell Slots",
-					"page": 2,
+					"page": 3,
 					"entries": [
 						"The Vessel table above shows how many spell slots you have to cast your Vessel spells and the level of those spell slots. All of your spell slots are the same level. To cast a Vessel spell of 1st-level or higher, you must expend a spell slot. You regain all of your spell slots when you finish a short or long rest."
 					]
@@ -600,7 +667,8 @@
 					"name": "Spells Known of 1st-level and Higher",
 					"page": 3,
 					"entries": [
-						"At 2nd level, you learn two 1st-level spells of your choice from the Vessel Spell List at the end of this class description. The Spells Known column of the Vessel table shows when you learn additional Vessel spells of 1st-level and higher. Any spell you choose must be of a level no higher than what's shown in the table's Slot Level column for your Vessel level.",
+						"At 2nd level, you learn two 1st-level spells of your choice from the Vessel Spell List at the end of this class description.",
+						"The Spells Known column of the Vessel table shows when you learn additional Vessel spells of 1st-level and higher. Any spell you choose must be of a level no higher than what's shown in the table's Slot Level column for your Vessel level.",
 						"When you gain a Vessel level, you can replace one Vessel spell you know with a Vessel spell of your choice, which also must be of a level for which you have spell slots."
 					]
 				},
@@ -639,7 +707,7 @@
 					"name": "Spellcasting Focus",
 					"page": 3,
 					"entries": [
-						"Since your magic is drawn from the Spirit sealed within you, your body is the spellcasting focus for your Vessel spells. You must have at least one free hand to cast spells that require somatic or material components, and you must still provide material components that are consumed or have a gold cost"
+						"Since your magic is drawn from the Spirit sealed within you, your body is the spellcasting focus for your Vessel spells. You must have at least one free hand to cast spells that require somatic or material components, and you must still provide material components that are consumed or have a gold cost."
 					]
 				}
 			]
@@ -649,7 +717,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 3,
+			"page": 4,
 			"level": 3,
 			"entries": [
 				"Beginning at 3rd level, you can transform into a creature that resembles the true form of the Spirit within you. As a bonus action, you can transform into your Archon Form, which uses the Archon stat block in your Sealed Spirit description. This stat block uses your proficiency bonus (PB) in several places and uses your Vessel Spellcasting modifier and save DC.",
@@ -669,8 +737,7 @@
 					"type": "inset",
 					"name": "Archon Form Appearance",
 					"entries": [
-						"You determine your Archon's appearance, but this has no effect on its abilities",
-						"Most are ethereal in appearance, but all Archons are vaguely humanoid in shape and share a resemblance with your Spirit."
+						"You determine your Archon's appearance, but this has no effect on its abilities. Most are ethereal in appearance, but all Archons are vaguely humanoid in shape and share a resemblance with your Spirit."
 					]
 				}
 			]
@@ -680,7 +747,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 3,
+			"page": 2,
 			"level": 6,
 			"entries": [
 				"At 6th level, you gain a feature granted by your Sealed Spirit."
@@ -691,7 +758,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 3,
+			"page": 2,
 			"level": 14,
 			"entries": [
 				"At 14th level, you gain a feature granted by your Sealed Spirit."
@@ -702,7 +769,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 3,
+			"page": 2,
 			"level": 18,
 			"entries": [
 				"At 18th level, you gain a feature granted by your Sealed Spirit."
@@ -713,7 +780,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 3,
+			"page": 4,
 			"level": 5,
 			"entries": [
 				"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
@@ -724,7 +791,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 3,
+			"page": 4,
 			"level": 4,
 			"entries": [
 				"When you reach 4th level, you can increase one ability score of your choice by 2, or two ability scores by 1. As normal, you can't increase one of your ability scores above 20 using this feature.",
@@ -736,7 +803,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 3,
+			"page": 4,
 			"level": 8,
 			"entries": [
 				"When you reach 8th level, you can increase one ability score of your choice by 2, or two ability scores by 1. As normal, you can't increase one of your ability scores above 20 using this feature.",
@@ -748,7 +815,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 3,
+			"page": 4,
 			"level": 12,
 			"entries": [
 				"When you reach 12th level, you can increase one ability score of your choice by 2, or two ability scores by 1. As normal, you can't increase one of your ability scores above 20 using this feature.",
@@ -760,7 +827,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 3,
+			"page": 4,
 			"level": 16,
 			"entries": [
 				"When you reach 16th level, you can increase one ability score of your choice by 2, or two ability scores by 1. As normal, you can't increase one of your ability scores above 20 using this feature.",
@@ -772,7 +839,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 3,
+			"page": 4,
 			"level": 19,
 			"entries": [
 				"When you reach 19th level, you can increase one ability score of your choice by 2, or two ability scores by 1. As normal, you can't increase one of your ability scores above 20 using this feature.",
@@ -784,7 +851,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 3,
+			"page": 4,
 			"level": 7,
 			"entries": [
 				"You have gained a deep understanding of your Sealed Spirit and greater control over your Archon Form. Beginning at 7th level, your Archon Form transformation lasts for 10 minutes, and it only ends early if you are reduced to 0 hit points, or if you use a bonus action to revert to your normal form.",
@@ -796,7 +863,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 3,
+			"page": 4,
 			"level": 10,
 			"entries": [
 				"Upon reaching 10th level, the Spirit bound to you grants you a portion of its ancient and vast mental fortitude. When you are forced to make an Intelligence, Wisdom, or Charisma saving throw, or a Constitution saving throw to maintain your concentration on a Vessel spell, you can add your Charisma modifier (minimum of +1) to the result of your saving throw.",
@@ -808,7 +875,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 4,
+			"page": 5,
 			"level": 11,
 			"entries": [
 				"You can unleash a greater amount of your Sealed Spirit's true power. Beginning at 11th level, when you transform into your Archon Form, you can cast a Vessel Spell you know that has a casting time of one action or one bonus action, as part of the same bonus action without expending a spell slot.",
@@ -820,7 +887,7 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 4,
+			"page": 5,
 			"level": 18,
 			"entries": [
 				"You and the Spirit bound to your soul merge and become an entirely new and distinct creature. Beginning at 18th level, your Archon Form transformation lasts indefinitely and only ends if you are killed or if you use a bonus action to end it."
@@ -831,10 +898,37 @@
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
-			"page": 4,
+			"page": 2,
 			"level": 20,
 			"entries": [
 				"At 20th level, you gain a feature granted by your Sealed Spirit."
+			]
+		}
+	],
+	"foundryClassFeature": [
+		{
+			"name": "Spiritual Defense",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"level": 1,
+			"effects": [
+				{
+					"name": "Unarmored Defense",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.ac.formula",
+							"mode": "OVERRIDE",
+							"value": "10 + @abilities.dex.mod + @abilities.cha.mod"
+						},
+						{
+							"key": "system.attributes.ac.calc",
+							"mode": "OVERRIDE",
+							"value": "custom"
+						}
+					]
+				}
 			]
 		}
 	],
@@ -842,72 +936,125 @@
 		{
 			"name": "Disarming Voice",
 			"source": "LLVessel",
-			"page": 11,
+			"page": 12,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"Your speech is enhanced by your Spirit. You gain proficiency in Deception or Persuasion, and you learn the {@spell Friends} spell."
+				"Your speech is enhanced by your Spirit. You gain proficiency in {@skill Deception} or {@skill Persuasion}, and you learn the {@spell friends} spell."
+			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"deception",
+							"persuasion"
+						]
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"_": [
+							"friends"
+						]
+					}
+				}
 			]
 		},
 		{
 			"name": "Ethereal Tendril",
-			"source": "LLVessel",
-			"page": 11,
-			"featureType": [
-				"LL:UA"
-			],
-			"entries": [
-				"As a bonus action, you can manifest an ethereal tendril from any point on your body. It has a reach of 10 feet and it has a Strength score equal to your Charisma score. It cannot use weapons or shields, but it can manipulate simple objects and be used to make Iridescent Strikes, {@action shove}, and {@action grapple}.",
-				"You can only have a single ethereal tendril manifested at a time, and the tendril can be attacked as if it were part of you."
-			]
-		},
-		{
-			"name": "Minor Magicks",
-			"source": "LLVessel",
-			"page": 11,
-			"featureType": [
-				"LL:UA"
-			],
-			"entries": [
-				"You can draw out small amounts of your Spirit's power.",
-				"You learn two of the following cantrips of your choice: {@spell Dancing Lights}, {@spell Mage Hand}, {@spell Message}, {@spell Minor Illusion}, or {@spell Thaumaturgy}, and Charisma is your spellcasting ability for these cantrips."
-			]
-		},
-		{
-			"name": "Spirit Sense",
-			"source": "LLVessel",
-			"page": 11,
-			"featureType": [
-				"LL:UA"
-			],
-			"entries": [
-				"The Spirit bound to you allows you to sense similar beings.",
-				"When you see a Celestial, Elemental, Fey, or Fiend with a CR equal to your Vessel level or lower, you learn its creature type, its spellcasting ability, and the level of its highest spell."
-			]
-		},
-		{
-			"name": "Uncanny Strength",
-			"source": "LLVessel",
-			"page": 11,
-			"featureType": [
-				"LL:UA"
-			],
-			"entries": [
-				"The spiritual power you harbor within your body grants you inordinate bodily strength.",
-				"You gain proficiency in Athletics, and whenever you would make a Strength (Athletics) check you can make a Charisma (Athletics) check instead."
-			]
-		},
-		{
-			"name": "Iridescent Shield",
 			"source": "LLVessel",
 			"page": 12,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"You can draw out spiritual power to deflect attacks.",
-				"When a creature you can see targets you, or a creature within 5 feet of you with an attack, you can use your reaction to project a shield of spirit from an empty hand and add your Charisma modifier to the target's Armor Class against that attack."
+				"As a bonus action, you can manifest an ethereal tendril from any point on your body. It has a reach of 10 feet and it has a Strength score equal to your Charisma score. It cannot use weapons or shields, but it can manipulate simple objects and be used to make {@classFeature Iridescent Strike|Vessel|LLVessel|1||Iridescent Strikes}, {@action shove}, and {@action grapple}. You can only have a single ethereal tendril manifested at a time, and the tendril can be attacked as if it were part of you."
+			]
+		},
+		{
+			"name": "Minor Magicks",
+			"source": "LLVessel",
+			"page": 12,
+			"featureType": [
+				"LL:UA"
+			],
+			"entries": [
+				"You can draw out small amounts of your Spirit's power. You learn two of the following cantrips of your choice: {@spell dancing lights}, {@spell mage hand}, {@spell message}, {@spell minor illusion}, or {@spell thaumaturgy}, and Charisma is your spellcasting ability for these cantrips."
+			],
+			"additionalSpells": [
+				{
+					"ability": "cha",
+					"known": {
+						"_": [
+							{
+								"choose": {
+									"from": [
+										"dancing lights",
+										"mage hand",
+										"message",
+										"minor illusion",
+										"thaumaturgy"
+									],
+									"count": 2
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Spirit Sense",
+			"source": "LLVessel",
+			"page": 12,
+			"featureType": [
+				"LL:UA"
+			],
+			"entries": [
+				"The Spirit bound to you allows you to sense similar beings. When you see a Celestial, Elemental, Fey, or Fiend with a CR equal to your Vessel level or lower, you learn its creature type, its spellcasting ability, and the level of its highest spell."
+			]
+		},
+		{
+			"name": "Uncanny Strength",
+			"source": "LLVessel",
+			"page": 12,
+			"featureType": [
+				"LL:UA"
+			],
+			"entries": [
+				"The spiritual power you harbor within your body grants you inordinate bodily strength. You gain proficiency in {@skill Athletics}, and whenever you would make a Strength ({@skill Athletics}) check you can make a Charisma ({@skill Athletics}) check instead."
+			],
+			"skillProficiencies": [
+				{
+					"athletics": true
+				}
+			],
+			"foundryEffects": [
+				{
+					"name": "Charisma (Athletics)",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.skills.ath.ability",
+							"mode": "OVERRIDE",
+							"value": "cha"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Iridescent Shield",
+			"source": "LLVessel",
+			"page": 13,
+			"featureType": [
+				"LL:UA"
+			],
+			"entries": [
+				"You can draw out spiritual power to deflect attacks. When a creature you can see targets you, or a creature within 5 feet of you with an attack, you can use your reaction to project a shield of spirit from an empty hand and add your Charisma modifier to the target's Armor Class against that attack."
 			],
 			"prerequisite": [
 				{
@@ -925,13 +1072,12 @@
 		{
 			"name": "Opalescent Armor",
 			"source": "LLVessel",
-			"page": 12,
+			"page": 13,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"You draw on the fortitude of your Spirit to protect you.",
-				"When you have temporary hit points, you gain resistance to all bludgeoning, piercing, and slashing damage from nonmagical and non-silvered attacks."
+				"You draw on the fortitude of your Spirit to protect you. When you have temporary hit points, you gain resistance to all bludgeoning, piercing, and slashing damage from nonmagical and non-silvered attacks."
 			],
 			"prerequisite": [
 				{
@@ -944,18 +1090,51 @@
 						}
 					}
 				}
+			],
+			"foundryEffects": [
+				{
+					"name": "Physical Resistances",
+					"transfer": true,
+					"disabled": true,
+					"changes": [
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "bludgeoning"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "piercing"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "slashing"
+						},
+						{
+							"key": "system.traits.dr.bypasses",
+							"mode": "CUSTOM",
+							"value": "mgc"
+						},
+						{
+							"key": "system.traits.dr.bypasses",
+							"mode": "CUSTOM",
+							"value": "sil"
+						}
+					]
+				}
 			]
 		},
 		{
 			"name": "Otherworldly Maw",
 			"source": "LLVessel",
-			"page": 12,
+			"page": 13,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"You can channel the hunger of your Spirit to fuel your life force.",
-				"Once per turn when you hit a creature with a melee Iridescent Strike, you can force it to make a Charisma saving throw in place of dealing damage. On a failure, it takes 2d6 necrotic damage, and your temporary hit points increase by an amount equal to half the damage dealt."
+				"You can channel the hunger of your Spirit to fuel your life force. Once per turn when you would make a melee {@classFeature Iridescent Strike|Vessel|LLVessel|1}, you can instead force a creature within range of your strike to make a Charisma saving throw. On a failure, it takes {@damage 2d6} necrotic damage, and your temporary hit points increase by an amount equal to half the damage dealt."
 			],
 			"prerequisite": [
 				{
@@ -973,13 +1152,12 @@
 		{
 			"name": "Shimmering Lance",
 			"source": "LLVessel",
-			"page": 12,
+			"page": 13,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"You learn to project your spiritual strikes at great distance.",
-				"Whenever you make an Iridescent Strike, you can choose for it to become a ranged spell attack with a range of 30 feet."
+				"You learn to project your spiritual strikes at great distance. Whenever you make an {@classFeature Iridescent Strike|Vessel|LLVessel|1}, you can choose for it to become a ranged spell attack with a range of 30 feet."
 			],
 			"prerequisite": [
 				{
@@ -997,13 +1175,12 @@
 		{
 			"name": "Vexing Strike",
 			"source": "LLVessel",
-			"page": 12,
+			"page": 13,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"The overwhelming spiritual magnetism of your Spirit draws in your foes.",
-				"When you hit a creature with a melee Iridescent Strike, it has disadvantage on attack rolls against targets other than you until the beginning of your next turn."
+				"The overwhelming spiritual magnetism of your Spirit draws in your foes. When you hit a creature with a melee {@classFeature Iridescent Strike|Vessel|LLVessel|1}, it has disadvantage on attack rolls against targets other than you until the beginning of your next turn."
 			],
 			"prerequisite": [
 				{
@@ -1026,8 +1203,8 @@
 				"LL:UA"
 			],
 			"entries": [
-				"You can tap into the primordial stature of your Spirit. When you transform into your Archon Form, you can choose for it to grow by one size category if there is room. For example, the Archon Form might grow from Medium to Large.",
-				"For each size category it is above Medium, the reach of its melee attacks grows by 5 feet, its melee attacks deal an additional 1d4 damage, and its Armor Class increases by 1."
+				"You can tap into the primordial stature of your Spirit. When you transform into your {@classFeature Archon Form|Vessel|LLVessel|3}, you can choose for it to grow by one size category if there is room. For example, the Archon Form might grow from Medium to Large.",
+				"For each size category it is above Medium, the reach of its melee attacks grows by 5 feet, its melee attacks deal an additional {@damage 1d4} damage, and its Armor Class increases by 1."
 			],
 			"prerequisite": [
 				{
@@ -1045,13 +1222,12 @@
 		{
 			"name": "Ethereal Grasp",
 			"source": "LLVessel",
-			"page": 12,
+			"page": 13,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"You can seize the spirits of others with your own enhanced spiritual power.",
-				"When you initiate a grapple with a Charisma (Athletics) check, the creature must succeed on a Charisma (Acrobatics) or a Charisma (Athletics) check against your Charisma (Athletics) check to escape from the grapple."
+				"You can seize the spirits of others with your own enhanced spiritual power. When you initiate a {@action grapple} with a Charisma ({@skill Athletics}) check, the creature must succeed on a Charisma ({@skill Acrobatics}) or a Charisma ({@skill Athletics}) check against your Charisma ({@skill Athletics}) check to escape from the grapple."
 			],
 			"prerequisite": [
 				{
@@ -1072,14 +1248,20 @@
 		{
 			"name": "Evoke Spirit",
 			"source": "LLVessel",
-			"page": 12,
+			"page": 13,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"You can release a minor form of the Spirit sealed within you.",
-				"You learn the find familiar spell, it counts as a Vessel spell for you, but it does not count against your total Spells Known.",
-				"When you cast find familiar it resembles a tiny version of your Sealed Spirit, shares the creature type of your Archon, can attack on its turn, and uses the {@creature Spirit Familiar|LLVessel} stat block:"
+				"You can release a minor form of the Spirit sealed within you. You learn the {@spell find familiar} spell, it counts as a Vessel spell for you, but it does not count against your total Spells Known.",
+				"When you cast find familiar it resembles a tiny version of your Sealed Spirit, shares the creature type of your Archon, can attack on its turn, and uses the Spirit Familiar stat block:",
+				{
+					"type": "statblock",
+					"tag": "creature",
+					"name": "Spirit Familiar",
+					"source": "LLVessel",
+					"style": "inset"
+				}
 			],
 			"prerequisite": [
 				{
@@ -1092,18 +1274,26 @@
 						}
 					}
 				}
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"_": [
+							"find familiar"
+						]
+					}
+				}
 			]
 		},
 		{
 			"name": "Piercing Gaze",
 			"source": "LLVessel",
-			"page": 13,
+			"page": 14,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"Your enhanced eyes can see the absolute truth of the world around you.",
-				"You gain a bonus to any Wisdom (Perception) checks you make equal to your Charisma modifier.",
+				"Your enhanced eyes can see the absolute truth of the world around you. You gain a bonus to any Wisdom ({@skill Perception}) checks you make equal to your Charisma modifier.",
 				"You can also see through magical darkness, and you can instantly detect the presence of illusions and shapeshifters."
 			],
 			"prerequisite": [
@@ -1125,13 +1315,12 @@
 		{
 			"name": "Vengeful Spirit",
 			"source": "LLVessel",
-			"page": 13,
+			"page": 14,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"The Spirit within you drives you to revenge.",
-				"When you use Iridescent Shield and the triggering attack misses its target, you can make a single Iridescent Strike against the attacker as part of the same reaction if the attacker is within range."
+				"The Spirit within you drives you to revenge. When you use {@optfeature Iridescent Shield|LLVessel} and the triggering attack misses its target, you can make a single {@classFeature Iridescent Strike|Vessel|LLVessel|1} against the attacker as part of the same reaction if the attacker is within range."
 			],
 			"prerequisite": [
 				{
@@ -1152,17 +1341,14 @@
 		{
 			"name": "Dazzling Burst",
 			"source": "LLVessel",
-			"page": 13,
+			"page": 14,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"You can project immense power.",
-				"When you turn an Iridescent Strike into a ranged spell attack the range becomes 120 feet.",
-				"Moreover, when you hit a target with a ranged Iridescent Strike, you can expend a Vessel Magic spell slot to create an explosion of spiritual power at the point of impact.",
-				"Creatures within 30 feet of the point must make Dexterity saving throw.",
-				"They take 6d6 damage of the type of your Iridescent Strike on a failed save, and half as much damage on a success.",
-				"As you gain Vessel levels the damage of the explosion on impact increases: at 13th level (7d6) and 17th level (8d6)"
+				"You can project immense power. When you turn an {@classFeature Iridescent Strike|Vessel|LLVessel|1} into a ranged spell attack the range becomes 120 feet.",
+				"Moreover, when you hit a target with a ranged Iridescent Strike, you can expend a Vessel Magic spell slot to create an explosion of spiritual power at the point of impact. Creatures within 30 feet of the point must make Dexterity saving throw. They take {@damage 6d6} damage of the type of your Iridescent Strike on a failed save, and half as much damage on a success.",
+				"As you gain Vessel levels the damage of the explosion on impact increases: at 13th level ({@damage 7d6}) and 17th level ({@damage 8d6})"
 			],
 			"prerequisite": [
 				{
@@ -1178,17 +1364,25 @@
 						"Shimmering Lance"
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"damage.parts": [
+					[
+						"floor((@classes.vessel.levels + 15) / 4)d6",
+						""
+					]
+				]
+			}
 		},
 		{
 			"name": "Perilous Visage",
 			"source": "LLVessel",
-			"page": 13,
+			"page": 14,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"You can reveal a fraction of your Sealed Spirit's true power, horrifying all who behold it. When you transform into Archon Form, you can force creatures of your choice that can see you within 60 feet to make a Wisdom saving throw. On a failure, creatures are frightened of you for 1 minute.",
+				"You can reveal a fraction of your Sealed Spirit's true power, horrifying all who behold it. When you transform into {@classFeature Archon Form|Vessel|LLVessel|3}, you can force creatures of your choice that can see you within 60 feet to make a Wisdom saving throw. On a failure, creatures are {@condition frightened} of you for 1 minute.",
 				"A creature can repeat this saving throw at the end of each of its turns, ending the effect on a success. If the creature is still able to see you it has disadvantage on its saving throw."
 			],
 			"prerequisite": [
@@ -1207,15 +1401,13 @@
 		{
 			"name": "Primeval Thirst",
 			"source": "LLVessel",
-			"page": 13,
+			"page": 14,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"The ancient being within you can absorb magic to restore its vitality.",
-				"When you are in Archon Form and a creature that you can see within 60 feet casts a spell, you can expend a Vessel Magic spell slot as a reaction to attempt to absorb the spell.",
-				"The caster of the triggering spell must immediately make a saving throw using its spellcasting ability.",
-				"On a failed save, its spell is dispelled as if by {@spell counterspell}, and if it was cast using a spell slot of a level equal to your Vessel Magic spell slots or higher, you regain one expended Vessel Magic spell slot."
+				"The ancient being within you can absorb magic to restore its vitality. When you are in Archon Form and a creature that you can see within 60 feet casts a spell, you can expend a Vessel Magic spell slot as a reaction to attempt to absorb the spell.",
+				"The caster of the triggering spell must immediately make a saving throw using its spellcasting ability. On a failed save, its spell is dispelled as if by {@spell counterspell}, and if it was cast using a spell slot of a level equal to your Vessel Magic spell slots or higher, you regain one expended Vessel Magic spell slot."
 			],
 			"prerequisite": [
 				{
@@ -1236,14 +1428,12 @@
 		{
 			"name": "Sundering Strike",
 			"source": "LLVessel",
-			"page": 13,
+			"page": 14,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"Your strikes assault the body and soul of your foes.",
-				"When you hit a creature with two Iridescent Strikes in one turn, you can force it to make a Charisma saving throw.",
-				"On a failed save, it cannot cast spells or use any other magical features, as if it were in an {@spell antimagic field} until the start of your next turn."
+				"Your strikes assault the body and soul of your foes. When you hit a creature with two {@classFeature Iridescent Strike|Vessel|LLVessel|1||Iridescent Strikes} in one turn, you can force it to make a Charisma saving throw. On a failed save, it cannot cast spells or use any other magical features, as if it were in an {@spell antimagic field} until the start of your next turn."
 			],
 			"prerequisite": [
 				{
@@ -1261,13 +1451,12 @@
 		{
 			"name": "Aether Wings",
 			"source": "LLVessel",
-			"page": 13,
+			"page": 14,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"You can manifest spectral wings reminiscent of the Sealed Spirit bound to your soul.",
-				"Both you and your Archon Form gain a 60-foot flying speed and can hover while flying."
+				"You can manifest spectral wings reminiscent of the Sealed Spirit bound to your soul. Both you and your {@classFeature Archon Form|Vessel|LLVessel|3} gain a 60-foot flying speed and can hover while flying."
 			],
 			"prerequisite": [
 				{
@@ -1280,18 +1469,35 @@
 						}
 					}
 				}
+			],
+			"foundryEffects": [
+				{
+					"name": "Flying Speed",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.fly",
+							"mode": "UPGRADE",
+							"value": 60
+						},
+						{
+							"key": "system.attributes.movement.hover",
+							"mode": "CUSTOM",
+							"value": 1
+						}
+					]
+				}
 			]
 		},
 		{
 			"name": "Primordial Bulwark",
 			"source": "LLVessel",
-			"page": 13,
+			"page": 14,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"You draw forth the primordial defensive power of the ancient Spirit that dwells in you.",
-				"Your Archon Form gains resistance to all damage except for force, psychic, and radiant damage."
+				"You draw forth the primordial defensive power of the ancient Spirit that dwells in you. Your {@classFeature Archon Form|Vessel|LLVessel|3} gains resistance to all damage except for force, psychic, and radiant damage."
 			],
 			"prerequisite": [
 				{
@@ -1312,14 +1518,12 @@
 		{
 			"name": "Titanic Archon",
 			"source": "LLVessel",
-			"page": 13,
+			"page": 14,
 			"featureType": [
 				"LL:UA"
 			],
 			"entries": [
-				"The appearance of your Archon Form inspires legends and myths.",
-				"When you transform into your Archon Form, it can become Huge in size if there is room for it to do so.",
-				" It gains all the benefits to its reach, melee damage, and Armor Class from Dire Stature when it transforms in this way."
+				"The appearance of your Archon Form inspires legends and myths. When you transform into your {@classFeature Archon Form|Vessel|LLVessel|3}, it can become Huge in size if there is room for it to do so. It gains all the benefits to its reach, melee damage, and Armor Class from {@optfeature Dire Stature|LLVessel} when it transforms in this way."
 			],
 			"prerequisite": [
 				{
@@ -1341,7 +1545,7 @@
 	"subclass": [
 		{
 			"name": "The Ascended",
-			"page": 4,
+			"page": 5,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -1349,20 +1553,28 @@
 			"additionalSpells": [
 				{
 					"known": {
+						"1": [
+							"prestidigitation"
+						],
 						"2": [
-							"magic missile, shield"
+							"magic missile",
+							"shield"
 						],
 						"5": [
-							"detect thoughts, levitate"
+							"detect thoughts",
+							"levitate"
 						],
 						"9": [
-							"clairvoyance, counterspell"
+							"clairvoyance",
+							"counterspell"
 						],
 						"13": [
-							"arcane eye, resilient sphere"
+							"arcane eye",
+							"otiluke's resilient sphere"
 						],
 						"17": [
-							"legend lore, wall of force"
+							"legend lore",
+							"wall of force"
 						]
 					}
 				}
@@ -1375,7 +1587,7 @@
 				"clairvoyance",
 				"counterspell",
 				"arcane eye",
-				"resilient sphere",
+				"otiluke's resilient sphere",
 				"legend lore",
 				"wall of force"
 			],
@@ -1390,28 +1602,181 @@
 		},
 		{
 			"name": "The Cataclysm",
-			"page": 5,
+			"page": 6,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
 			"shortName": "Cataclysm",
 			"additionalSpells": [
 				{
+					"name": "Air",
 					"known": {
+						"1": [
+							"gust|xge"
+						],
 						"2": [
-							"absorb elements, affinity spell"
+							"absorb elements",
+							{
+								"choose": "level=1|damage type=thunder",
+								"count": 1
+							}
 						],
 						"5": [
-							"enlarge/reduce, affinity spell"
+							"enlarge/reduce",
+							{
+								"choose": "level=1;2|damage type=thunder",
+								"count": 1
+							}
 						],
 						"9": [
-							"fly, affinity spell"
+							"fly",
+							{
+								"choose": "level=1;2;3|damage type=thunder",
+								"count": 1
+							}
 						],
 						"13": [
-							"summon elemental|TCE, affinity spell"
+							"summon elemental|TCE",
+							{
+								"choose": "level=1;2;3;4|damage type=thunder",
+								"count": 1
+							}
 						],
 						"17": [
-							"arcane hand, affinity spell"
+							"arcane hand",
+							{
+								"choose": "level=1;2;3;4;5|damage type=thunder",
+								"count": 1
+							}
+						]
+					}
+				},
+				{
+					"name": "Earth",
+					"known": {
+						"1": [
+							"mold earth|xge"
+						],
+						"2": [
+							"absorb elements",
+							{
+								"choose": "level=1|damage type=bludgeoning",
+								"count": 1
+							}
+						],
+						"5": [
+							"enlarge/reduce",
+							{
+								"choose": "level=1;2|damage type=bludgeoning",
+								"count": 1
+							}
+						],
+						"9": [
+							"fly",
+							{
+								"choose": "level=1;2;3|damage type=bludgeoning",
+								"count": 1
+							}
+						],
+						"13": [
+							"summon elemental|TCE",
+							{
+								"choose": "level=1;2;3;4|damage type=bludgeoning",
+								"count": 1
+							}
+						],
+						"17": [
+							"arcane hand",
+							{
+								"choose": "level=1;2;3;4;5|damage type=bludgeoning",
+								"count": 1
+							}
+						]
+					}
+				},
+				{
+					"name": "Fire",
+					"known": {
+						"1": [
+							"control flames|xge"
+						],
+						"2": [
+							"absorb elements",
+							{
+								"choose": "level=1|damage type=fire",
+								"count": 1
+							}
+						],
+						"5": [
+							"enlarge/reduce",
+							{
+								"choose": "level=1;2|damage type=fire",
+								"count": 1
+							}
+						],
+						"9": [
+							"fly",
+							{
+								"choose": "level=1;2;3|damage type=fire",
+								"count": 1
+							}
+						],
+						"13": [
+							"summon elemental|TCE",
+							{
+								"choose": "level=1;2;3;4|damage type=fire",
+								"count": 1
+							}
+						],
+						"17": [
+							"arcane hand",
+							{
+								"choose": "level=1;2;3;4;5|damage type=fire",
+								"count": 1
+							}
+						]
+					}
+				},
+				{
+					"name": "Water",
+					"known": {
+						"1": [
+							"shape water|xge"
+						],
+						"2": [
+							"absorb elements",
+							{
+								"choose": "level=1|damage type=cold",
+								"count": 1
+							}
+						],
+						"5": [
+							"enlarge/reduce",
+							{
+								"choose": "level=1;2|damage type=cold",
+								"count": 1
+							}
+						],
+						"9": [
+							"fly",
+							{
+								"choose": "level=1;2;3|damage type=cold",
+								"count": 1
+							}
+						],
+						"13": [
+							"summon elemental|TCE",
+							{
+								"choose": "level=1;2;3;4|damage type=cold",
+								"count": 1
+							}
+						],
+						"17": [
+							"arcane hand",
+							{
+								"choose": "level=1;2;3;4;5|damage type=thunder",
+								"count": 1
+							}
 						]
 					}
 				}
@@ -1434,7 +1799,7 @@
 		},
 		{
 			"name": "The Cursed",
-			"page": 7,
+			"page": 8,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -1443,27 +1808,32 @@
 				{
 					"known": {
 						"2": [
-							"cause fear|XGE, hellish rebuke"
+							"cause fear|XGE",
+							"hellish rebuke"
 						],
 						"5": [
-							"flame whip|LLVessel , scorching ray"
+							"flame whip|llspell",
+							"scorching ray"
 						],
 						"9": [
-							"fireball, vampiric touch"
+							"fireball",
+							"vampiric touch"
 						],
 						"13": [
-							"dominate beast, wall of fire"
+							"dominate beast",
+							"wall of fire"
 						],
 						"17": [
-							"flame strike, insect plague"
+							"flame strike",
+							"insect plague"
 						]
 					}
 				}
 			],
 			"subclassSpells": [
-				"cause fear",
+				"cause fear|xge",
 				"hellish rebuke",
-				"flame whip",
+				"flame whip|llspell",
 				"scorching ray",
 				"fireball",
 				"vampiric touch",
@@ -1484,7 +1854,7 @@
 		},
 		{
 			"name": "The Fallen",
-			"page": 8,
+			"page": 9,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -1493,19 +1863,24 @@
 				{
 					"known": {
 						"2": [
-							"guiding bolt, shield of faith"
+							"guiding bolt",
+							"shield of faith"
 						],
 						"5": [
-							"branding smite, spiritual weapon"
+							"branding smite",
+							"spiritual weapon"
 						],
 						"9": [
-							"revivify, spirit shroud|TCE"
+							"revivify",
+							"spirit shroud|TCE"
 						],
 						"13": [
-							"banishment, guardian of faith"
+							"banishment",
+							"guardian of faith"
 						],
 						"17": [
-							"flame strike, summon celestial|TCE"
+							"flame strike",
+							"summon celestial|TCE"
 						]
 					}
 				}
@@ -1529,11 +1904,32 @@
 				"Condemnation|Vessel|LLVessel|Fallen|LLVessel|6|LLVessel",
 				"Heavenly Warrior|Vessel|LLVessel|Fallen|LLVessel|14|LLVessel",
 				"Divine Revelation|Vessel|LLVessel|Fallen|LLVessel|20|LLVessel"
+			],
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"title": "Condemnation Crit Range",
+					"configuration": {
+						"identifier": "condemnation",
+						"type": "numeric",
+						"scale": {
+							"6": {
+								"value": 19
+							},
+							"14": {
+								"value": 18
+							},
+							"20": {
+								"value": 17
+							}
+						}
+					}
+				}
 			]
 		},
 		{
 			"name": "The Formless",
-			"page": 9,
+			"page": 10,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -1542,25 +1938,30 @@
 				{
 					"known": {
 						"2": [
-							"tasha's caustic brew|TCE|caustic brew, entangle"
+							"tasha's caustic brew|TCE",
+							"entangle"
 						],
 						"5": [
-							"ray of enfeeblement, web"
+							"ray of enfeeblement",
+							"web"
 						],
 						"9": [
-							"life transference|XGE, slow"
+							"life transference|XGE",
+							"slow"
 						],
 						"13": [
-							"grasping vine, vitriolic sphere|XGE"
+							"grasping vine",
+							"vitriolic sphere|XGE"
 						],
 						"17": [
-							"contagion, hold monster"
+							"contagion",
+							"hold monster"
 						]
 					}
 				}
 			],
 			"subclassSpells": [
-				"tasha's caustic brew|TCE|caustic brew",
+				"tasha's caustic brew|TCE",
 				"entangle",
 				"ray of enfeeblement",
 				"web",
@@ -1578,11 +1979,43 @@
 				"Consume Vitality|Vessel|LLVessel|Formless|LLVessel|6|LLVessel",
 				"Consume Strike|Vessel|LLVessel|Formless|LLVessel|14|LLVessel",
 				"Primordial Hunger|Vessel|LLVessel|Formless|LLVessel|20|LLVessel"
+			],
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"title": "Consume Vitality Damage",
+					"configuration": {
+						"identifier": "consume-vitality",
+						"type": "dice",
+						"scale": {
+							"6": {
+								"n": 2,
+								"die": 8
+							},
+							"9": {
+								"n": 3,
+								"die": 8
+							},
+							"13": {
+								"n": 4,
+								"die": 8
+							},
+							"17": {
+								"n": 5,
+								"die": 8
+							},
+							"20": {
+								"n": 6,
+								"die": 8
+							}
+						}
+					}
+				}
 			]
 		},
 		{
 			"name": "The Trickster",
-			"page": 10,
+			"page": 11,
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -1591,19 +2024,29 @@
 				{
 					"known": {
 						"2": [
-							"charm person, disguise self"
+							"charm person",
+							"disguise self"
 						],
 						"5": [
-							"invisibility, misty step"
+							"invisibility",
+							"misty step"
 						],
 						"9": [
-							"hypnotic pattern, summon fey|TCE"
+							"hypnotic pattern",
+							"summon fey|TCE"
 						],
 						"13": [
-							"charm monster|XGE, greater invisibility"
+							"charm monster|XGE",
+							"greater invisibility"
 						],
 						"17": [
-							"dream, mislead"
+							"dream",
+							"mislead"
+						]
+					},
+					"innate": {
+						"6": [
+							"disguise self"
 						]
 					}
 				}
@@ -2701,7 +3144,7 @@
 		{
 			"name": "Spirit Familiar",
 			"source": "LLVessel",
-			"page": 12,
+			"page": 13,
 			"summonedByClass": "Vessel|LLVessel",
 			"size": [
 				"T"
@@ -2736,7 +3179,7 @@
 				{
 					"name": "Hit Dice",
 					"entries": [
-						"The Spirit Familiar has a number of d4 Hit Dice equal to your Vessel level. It also gains all the normal benefits of both short and long rests."
+						"The Spirit Familiar has a number of {@dice d4} Hit Dice equal to your Vessel level. It also gains all the normal benefits of both short and long rests."
 					]
 				},
 				{
@@ -2756,14 +3199,13 @@
 				{
 					"name": "Invisible",
 					"entries": [
-						"The Spirit Familiar magically turns {@condition invisible} until it attacks, or until its concentration ends (as if concentrating on a spell).",
-						"Any equipment the Spirit Familiar is wearing or carrying is invisible with it."
+						"The Spirit Familiar magically turns {@condition invisible} until it attacks, or until its {@status concentration} ends (as if concentrating on a spell). Any equipment the Spirit Familiar is wearing or carrying is invisible with it."
 					]
 				},
 				{
 					"name": "Spirit Strike",
 					"entries": [
-						"{@atk ms} Your Spell Attack Modifier to hit, reach 5 ft., one target. {@h}{@damage 1d4 + 3} damage of the same type as your Iridescent Strike."
+						"{@atk ms} {@hitYourSpellAttack} to hit, reach 5 ft., one target. {@h}{@damage 1d4 + 3} damage of the same type as your Iridescent Strike."
 					]
 				}
 			],
