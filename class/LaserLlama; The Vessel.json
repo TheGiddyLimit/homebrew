@@ -416,8 +416,14 @@
 				},
 				"Iridescent Strike|Vessel|LLVessel|1|LLVessel",
 				"Spiritual Defense|Vessel|LLVessel|1|LLVessel",
-				"Vessel Magic|Vessel|LLVessel|2|LLVessel",
-				"Archon Form|Vessel|LLVessel|3|LLVessel",
+				{
+					"classFeature": "Vessel Magic|Vessel|LLVessel|2|LLVessel",
+					"gainSubclassFeature": true
+				},
+				{
+					"classFeature": "Archon Form|Vessel|LLVessel|3|LLVessel",
+					"gainSubclassFeature": true
+				},
 				"Ability Score Improvement|Vessel|LLVessel|4|LLVessel",
 				"Extra Attack|Vessel|LLVessel|5|LLVessel",
 				{
@@ -544,6 +550,9 @@
 						"identifier": "slots",
 						"type": "numeric",
 						"scale": {
+							"1": {
+								"value": 0
+							},
 							"2": {
 								"value": 2
 							},
@@ -560,6 +569,9 @@
 						"identifier": "level",
 						"type": "numeric",
 						"scale": {
+							"1": {
+								"value": 0
+							},
 							"2": {
 								"value": 1
 							},
@@ -578,7 +590,8 @@
 						}
 					}
 				}
-			]
+			],
+			"foundryImg": "icons/magic/control/silhouette-hold-change-green.webp"
 		}
 	],
 	"classFluff": [
@@ -632,6 +645,30 @@
 									]
 								}
 							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"foundryClass": [
+		{
+			"name": "Vessel",
+			"source": "LLVessel",
+			"effects": [
+				{
+					"name": "Vessel Magic",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.spells.pact.level",
+							"mode": "UPGRADE",
+							"value": "@scale.vessel.level"
+						},
+						{
+							"key": "system.spells.pact.max",
+							"mode": "UPGRADE",
+							"value": "@scale.vessel.slots"
 						}
 					]
 				}
@@ -709,7 +746,12 @@
 			"entries": [
 				"You can draw on the Spirit sealed in you to strike with otherworldly power. When you make an unarmed strike, you can cloak the strike in spiritual power and use your Charisma, in place of Strength, for the attack and damage rolls. On hit, these special unarmed strikes deal {@damage 1d6} damage of a type determined by your Sealed Spirit",
 				"The damage die of these strikes increases at certain Vessel levels: 5th level ({@damage 1d8}), 11th level ({@damage 1d10}), and 17th level ({@damage 1d12})."
-			]
+			],
+			"foundrySystem": {
+				"actionType": null,
+				"damage.parts": []
+			},
+			"foundryImg": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp"
 		},
 		{
 			"name": "Spiritual Defense",
@@ -721,7 +763,8 @@
 			"header": 2,
 			"entries": [
 				"You can innately draw on your Sealed Spirit's instinct for self-preservation to shield yourself with its power. So long as you are not wearing armor or a shield your Armor Class is equal to 10 + your Dexterity modifier + your Charisma modifier."
-			]
+			],
+			"foundryImg": "icons/magic/defensive/barrier-shield-dome-pink.webp"
 		},
 		{
 			"name": "Unsealed Aspects",
@@ -945,7 +988,20 @@
 			"entries": [
 				"You have gained a deep understanding of your Sealed Spirit and greater control over your {@classFeature Archon Form|Vessel|LLVessel|3}. Beginning at 7th level, your Archon Form transformation lasts for 10 minutes, and it only ends early if you are reduced to 0 hit points, or if you use a bonus action to revert to your normal form.",
 				"Finally, you can transform into your Archon Form twice without expending a Vessel Magic spell slot, and you regain all expended uses when you finish a short or long rest."
-			]
+			],
+			"foundrySystem": {
+				"actionType": null,
+				"activation": {
+					"cost": null,
+					"type": null
+				},
+				"uses": {
+					"value": null,
+					"max": null,
+					"per": null
+				}
+			},
+			"foundryImg": "icons/magic/control/silhouette-hold-beam-blue.webp"
 		},
 		{
 			"name": "Twin Consciousness",
@@ -957,7 +1013,13 @@
 			"entries": [
 				"Upon reaching 10th level, the Spirit bound to you grants you a portion of its ancient and vast mental fortitude. When you are forced to make an Intelligence, Wisdom, or Charisma saving throw, or a Constitution saving throw to maintain your concentration on a Vessel spell, you can add your Charisma modifier (minimum of +1) to the result of your saving throw.",
 				"You can do so a number of times equal to your Charisma modifier (a minimum of once), and you regain all expended uses of this feature when you complete a long rest."
-			]
+			],
+			"foundrySystem": {
+				"activation.condition": "When you are forced to make an Intelligence, Wisdom, or Charisma saving throw, or a Constitution saving throw to maintain your concentration on a Vessel spell",
+				"formula": "max(1, @abilities.cha.mod)",
+				"uses.max": "max(1, @abilities.cha.mod)"
+			},
+			"foundryImg": "icons/magic/control/energy-stream-link-large-orange.webp"
 		},
 		{
 			"name": "Unchained Power",
@@ -969,7 +1031,15 @@
 			"entries": [
 				"You can unleash a greater amount of your Sealed Spirit's true power. Beginning at 11th level, when you transform into your {@classFeature Archon Form|Vessel|LLVessel|3}, you can cast a Vessel Spell you know that has a casting time of one action or one bonus action, as part of the same bonus action without expending a spell slot.",
 				"If you are the only target of the spell and it has a duration of 1 minute or longer, it instead lasts until you revert to your normal form, and your concentration cannot be broken on it."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": null,
+					"type": "special",
+					"condition": "When you transform into your Archon Form"
+				}
+			},
+			"foundryImg": "icons/skills/melee/strike-blade-hooked-green-purple.webp"
 		},
 		{
 			"name": "Twin Soul",
@@ -980,7 +1050,14 @@
 			"level": 18,
 			"entries": [
 				"You and the Spirit bound to your soul merge and become an entirely new and distinct creature. Beginning at 18th level, your Archon Form transformation lasts indefinitely and only ends if you are killed or if you use a bonus action to end it."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": null,
+					"type": null
+				}
+			},
+			"foundryImg": "icons/magic/unholy/projectiles-binary-pink.webp"
 		},
 		{
 			"name": "Sealed Spirit Feature",
@@ -1015,31 +1092,6 @@
 							"key": "system.attributes.ac.calc",
 							"mode": "OVERRIDE",
 							"value": "custom"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Vessel Magic",
-			"source": "LLVessel",
-			"className": "Vessel",
-			"classSource": "LLVessel",
-			"level": 2,
-			"effects": [
-				{
-					"name": "Vessel Magic",
-					"transfer": true,
-					"changes": [
-						{
-							"key": "system.spells.pact.level",
-							"mode": "UPGRADE",
-							"value": "@scale.vessel.level"
-						},
-						{
-							"key": "system.spells.pact.max",
-							"mode": "UPGRADE",
-							"value": "@scale.vessel.slots"
 						}
 					]
 				}
@@ -1730,7 +1782,8 @@
 						}
 					}
 				}
-			]
+			],
+			"foundryImg": "icons/magic/defensive/illusion-evasion-echo-purple.webp"
 		},
 		{
 			"name": "The Cataclysm",
@@ -1747,7 +1800,7 @@
 							"gust|xge"
 						],
 						"2": [
-							"absorb elements",
+							"absorb elements|xge",
 							{
 								"choose": "level=1|damage type=thunder",
 								"count": 1
@@ -1790,7 +1843,7 @@
 							"mold earth|xge"
 						],
 						"2": [
-							"absorb elements",
+							"absorb elements|xge",
 							{
 								"choose": "level=1|damage type=bludgeoning",
 								"count": 1
@@ -1833,7 +1886,7 @@
 							"control flames|xge"
 						],
 						"2": [
-							"absorb elements",
+							"absorb elements|xge",
 							{
 								"choose": "level=1|damage type=fire",
 								"count": 1
@@ -1876,7 +1929,7 @@
 							"shape water|xge"
 						],
 						"2": [
-							"absorb elements",
+							"absorb elements|xge",
 							{
 								"choose": "level=1|damage type=cold",
 								"count": 1
@@ -1914,7 +1967,7 @@
 				}
 			],
 			"subclassSpells": [
-				"absorb elements",
+				"absorb elements|xge",
 				"enlarge/reduce",
 				"fly",
 				"summon elemental",
@@ -1927,7 +1980,8 @@
 				"Elder Power|Vessel|LLVessel|Cataclysm|LLVessel|6|LLVessel",
 				"Elemental Eruption|Vessel|LLVessel|Cataclysm|LLVessel|14|LLVessel",
 				"Cataclysm Reborn|Vessel|LLVessel|Cataclysm|LLVessel|20|LLVessel"
-			]
+			],
+			"foundryImg": "icons/magic/air/wind-tornado-wall-blue.webp"
 		},
 		{
 			"name": "The Cursed",
@@ -1982,7 +2036,8 @@
 				"Infernal Claws|Vessel|LLVessel|Cursed|LLVessel|6|LLVessel",
 				"Dark Sacrifice|Vessel|LLVessel|Cursed|LLVessel|14|LLVessel",
 				"Lord of Darkness|Vessel|LLVessel|Cursed|LLVessel|20|LLVessel"
-			]
+			],
+			"foundryImg": "icons/creatures/unholy/demon-horned-winged-laughing.webp"
 		},
 		{
 			"name": "The Fallen",
@@ -2057,7 +2112,8 @@
 						}
 					}
 				}
-			]
+			],
+			"foundryImg": "icons/magic/holy/angel-wings-gray.webp"
 		},
 		{
 			"name": "The Formless",
@@ -2238,7 +2294,8 @@
 			"entries": [
 				"The ascended mage bound to your soul grants you access to its esoteric knowledge. Whenever you make an Intelligence check, you gain a bonus to your roll equal to your Charisma modifier (minimum of +1). You also learn the {@spell prestidigitation} cantrip, and Charisma is your spellcasting modifier for it.",
 				"Finally, your {@classFeature Iridescent Strike|Vessel|LLVessel|1||Iridescent Strikes} deal force damage on hit."
-			]
+			],
+			"foundryImg": "icons/sundries/books/book-embossed-jewel-silver-green.webp"
 		},
 		{
 			"name": "Ascended Spells",
@@ -2286,7 +2343,8 @@
 						]
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/symbols/runes-triangle-orange-purple.webp"
 		},
 		{
 			"name": "Ascended Archon",
@@ -2307,7 +2365,11 @@
 					"source": "LLVessel",
 					"style": "inset"
 				}
-			]
+			],
+			"foundrySystem": {
+				"uses.max": "@scale.vessel.archon-uses"
+			},
+			"foundryImg": "icons/creatures/magical/humanoid-silhouette-green.webp"
 		},
 		{
 			"name": "Potent Magicks",
@@ -2320,8 +2382,21 @@
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"The ambient magic of the Ascended being within your soul empowers your magic with a fraction of its power. Once per turn when you damage a creature with a Vessel spell or an Iridescent Strike, you can roll a {@dice d8} and add the result to the damage roll of the Vessel spell or {@classFeature Iridescent Strike|Vessel|LLVessel|1} attack."
-			]
+				"The ambient magic of the Ascended being within your soul empowers your magic with a fraction of its power. Once per turn when you damage a creature with a Vessel spell or an {@classFeature Iridescent Strike|Vessel|LLVessel|1}, you can roll a {@dice d8} and add the result to the damage roll of the Vessel spell or Iridescent Strike attack."
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "Once per turn when you damage a creature with a Vessel spell or an Iridescent Strike"
+				},
+				"damage.parts": [
+					[
+						"d8",
+						""
+					]
+				]
+			},
+			"foundryImg": "icons/magic/unholy/hands-circle-light-green.webp"
 		},
 		{
 			"name": "Ascended Arcanum",
@@ -2336,7 +2411,16 @@
 			"entries": [
 				"You are able to wrest even greater magics from the Ascended mage imprisoned within you. You gain a single 6th-level spell slot which you can use to cast your Vessel spells. Unlike your other Vessel Magic spell slots, you only regain the use of this special Arcanum spell slot when you finish a long rest.",
 				"At 20th level, you gain a 7th-level Arcanum spell slot."
-			]
+			],
+			"foundrySystem": {
+				"activation.type": null,
+				"uses": {
+					"value": null,
+					"max": null,
+					"per": null
+				}
+			},
+			"foundryImg": "icons/magic/symbols/squares-3d-green.webp"
 		},
 		{
 			"name": "Archmage Reborn",
@@ -2359,7 +2443,14 @@
 						"You can use Astral Step to teleport up to 60 feet."
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": null,
+					"type": null
+				}
+			},
+			"foundryImg": "icons/magic/symbols/star-rising-purple.webp"
 		},
 		{
 			"name": "The Cataclysm",
@@ -2442,7 +2533,26 @@
 						]
 					]
 				}
-			]
+			],
+			"resist": [
+				{
+					"choose": {
+						"from": [
+							"thunder",
+							"bludgeoning",
+							"fire",
+							"cold"
+						]
+					}
+				}
+			],
+			"foundrySystem": {
+				"activation": {
+					"cost": null,
+					"type": null
+				}
+			},
+			"foundryImg": "icons/magic/symbols/elements-air-earth-fire-water.webp"
 		},
 		{
 			"name": "Cataclysm Spells",
@@ -2499,7 +2609,8 @@
 						"For example, despite not dealing any damage, a spell like {@spell earthbind|xge} would be an excellent choice as an Earth affinity spell. Likewise, the tidal wave spell would be a good choice for a Water affinity spell."
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/air/wind-tornado-spiral-brown.webp"
 		},
 		{
 			"name": "Cataclysm Archon",
@@ -2555,7 +2666,11 @@
 						]
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"uses.max": "@scale.vessel.archon-uses"
+			},
+			"foundryImg": "icons/magic/fire/elemental-fire-flying.webp"
 		},
 		{
 			"name": "Elder Power",
@@ -2570,7 +2685,8 @@
 			"entries": [
 				"The natural elements present in the material plane are but a pale imitation of your Spirit's primordial power. When you cast a Vessel spell or use a feature that deals your Elemental Affinity damage type, you can treat a roll of 1 or 2 on any of the damage dice you roll for that spell or feature as a 3.",
 				"Also, whenever you deal your Elemental Affinity damage type to a creature, you can ignore resistance to that damage, and you treat immunity to that damage type as resistance."
-			]
+			],
+			"foundryImg": "icons/magic/earth/construct-stone.webp"
 		},
 		{
 			"name": "Elemental Eruption",
@@ -2585,7 +2701,8 @@
 			"entries": [
 				"Raw primordial energies erupt from your Spirit. When you cast a Vessel spell or use a feature that deals your Elemental Affinity damage type, you can choose for that spell or effect to deal the maximum possible damage, in place of rolling.",
 				"Once you use this feature you must finish a short or long rest before you can maximize damage in this way again."
-			]
+			],
+			"foundryImg": "icons/magic/earth/lava-explosion-orange.webp"
 		},
 		{
 			"name": "Cataclysm Reborn",
@@ -2607,7 +2724,8 @@
 						"As an action, you can force targets of your choice within 20 feet to make a Dexterity saving throw. On a failure, targets take {@damage 6d6} damage of your Elemental Affinity type."
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/water/vortex-water-whirlpool.webp"
 		},
 		{
 			"name": "The Cursed",
@@ -2660,7 +2778,8 @@
 						]
 					}
 				}
-			]
+			],
+			"foundryImg": "icons/magic/unholy/barrier-fire-pink.webp"
 		},
 		{
 			"name": "Cursed Spells",
@@ -2708,7 +2827,8 @@
 						]
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/unholy/orb-hands-pink.webp"
 		},
 		{
 			"name": "Cursed Archon",
@@ -2729,7 +2849,11 @@
 					"source": "LLVessel",
 					"style": "inset"
 				}
-			]
+			],
+			"foundrySystem": {
+				"uses.max": "@scale.vessel.archon-uses"
+			},
+			"foundryImg": "icons/creatures/unholy/demon-fanged-horned-yellow.webp"
 		},
 		{
 			"name": "Hellfire",
@@ -2743,7 +2867,8 @@
 			"header": 2,
 			"entries": [
 				"You can access the true power of the dark Spirit imprisoned within, conjuring cursed infernal flames. When you deal fire damage to a creature with a Vessel spell or another Vessel feature, you ignore the target's fire resistance, and you treat the target's immunity to fire damage as resistance."
-			]
+			],
+			"foundryImg": "icons/magic/fire/flame-burning-earth-orange.webp"
 		},
 		{
 			"name": "Infernal Claws",
@@ -2765,7 +2890,8 @@
 						"You count as one size larger for the purpose of grappling."
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/fire/flame-burning-hand-purple.webp"
 		},
 		{
 			"name": "Dark Sacrifice",
@@ -2780,7 +2906,11 @@
 			"entries": [
 				"You can sacrifice your own life force to your Cursed Spirit in return for more power. As a bonus action, you can regain one of your expended Vessel Magic spell slots by reducing both your current and maximum hit points by an amount equal to twice the level of the spell slot you regain. This reduction to your hit points cannot be lessened in any way.",
 				"At the end of your next long rest any reduction to your hit point maximum from this feature returns to normal."
-			]
+			],
+			"foundrySystem": {
+				"formula": "2 * @spell.pact.level"
+			},
+			"foundryImg": "icons/skills/wounds/injury-hand-blood-red.webp"
 		},
 		{
 			"name": "Lord of Darkness",
@@ -2802,7 +2932,8 @@
 						"When you hit a creature with an {@classFeature Iridescent Strike|Vessel|LLVessel|1}, you can force it to make a Wisdom saving throw. On a failure, it is {@condition frightened} of you until the start of your next turn. You can only force a creature to make this save once per turn."
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/creatures/unholy/demon-fire-horned-winged-roar.webp"
 		},
 		{
 			"name": "The Fallen",
@@ -2845,7 +2976,8 @@
 				{
 					"martial": true
 				}
-			]
+			],
+			"foundryImg": "icons/magic/holy/projectiles-blades-salvo-yellow.webp"
 		},
 		{
 			"name": "Celestial Sight",
@@ -2870,7 +3002,8 @@
 				{
 					"celestial": true
 				}
-			]
+			],
+			"foundryImg": "icons/magic/perception/eye-winged-pink.webp"
 		},
 		{
 			"name": "Fallen Spells",
@@ -2918,7 +3051,8 @@
 						]
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/holy/prayer-hands-glowing-yellow-white.webp"
 		},
 		{
 			"name": "Fallen Archon",
@@ -2939,7 +3073,11 @@
 					"source": "LLVessel",
 					"style": "inset"
 				}
-			]
+			],
+			"foundrySystem": {
+				"uses.max": "@scale.vessel.archon-uses"
+			},
+			"foundryImg": "icons/magic/holy/angel-winged-humanoid-blue.webp"
 		},
 		{
 			"name": "Condemnation",
@@ -2952,9 +3090,10 @@
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"Your Spirit burns to mark foes for divine judgment. When you deal radiant damage to a creature while in your {@classFeature Archon Form|Vessel|LLVessel|3}, you can mark it as Condemned until the end of your current transformation. A Condemned creature must expend two feet of movement for every foot it wishes to move away from you, and your Blades of Judgment score a critical hit against the Condemned on a roll of 19 or 20 on the {@dice d20}.",
+				"Your Spirit burns to mark foes for divine judgment. When you deal radiant damage to a creature while in your {@classFeature Archon Form|Vessel|LLVessel|3}, you can mark it as Condemned until the end of your current transformation. A Condemned creature must expend two feet of movement for every foot it wishes to move away from you, and your {@subclassFeature Blades of Judgment|Vessel|LLVessel|Fallen|LLVessel|1} score a critical hit against the Condemned on a roll of 19 or 20 on the {@dice d20}.",
 				"You can only mark a creature in this way once per Archon Form transformation. It ends early if you or the creature die."
-			]
+			],
+			"foundryImg": "icons/skills/targeting/target-glowing-yellow.webp"
 		},
 		{
 			"name": "Heavenly Warrior",
@@ -2968,8 +3107,9 @@
 			"header": 2,
 			"entries": [
 				"Your Fallen Spirit compels you to slay all who stand against you. If a {@subclassFeature Condemnation|Vessel|LLVessel|Fallen|LLVessel|6||Condemned} creature dies, you can use your reaction to Condemn another creature that you can see within 30 feet.",
-				"Also, your Blades of Judgment score a critical hit on a roll of 18-20 on the {@dice d20} against Condemned creatures."
-			]
+				"Also, your {@subclassFeature Blades of Judgment|Vessel|LLVessel|Fallen|LLVessel|1} score a critical hit on a roll of 18-20 on the {@dice d20} against Condemned creatures."
+			],
+			"foundryImg": "icons/skills/melee/weapons-crossed-swords-teal.webp"
 		},
 		{
 			"name": "Divine Revelation",
@@ -2992,7 +3132,8 @@
 						"When you hit a creature with your Blade of Judgment it must succeed on a Constitution saving throw or become {@condition blinded} and {@condition deafened} until the start of your next turn. A creature can only make this saving throw once per turn."
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/holy/saint-glass-portrait-halo.webp"
 		},
 		{
 			"name": "The Formless",
@@ -3355,6 +3496,7 @@
 				"item": [
 					{
 						"name": "Iridescent Strike",
+						"source": "LLVessel",
 						"type": "M",
 						"weaponCategory": "simple",
 						"foundrySystem": {
@@ -3366,10 +3508,56 @@
 									"force"
 								]
 							]
-						}
+						},
+						"foundryImg": "icons/magic/unholy/hand-light-pink.webp"
 					}
 				]
 			}
+		},
+		{
+			"name": "Ascended Archon",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"subclassShortName": "Ascended",
+			"subclassSource": "LLVessel",
+			"level": 3,
+			"entries": [
+				"Beginning at 3rd level, you can transform into a creature that resembles the true form of the Spirit within you. As a bonus action, you can transform into your Archon Form, which uses the Archon stat block in your Sealed Spirit description. This stat block uses your proficiency bonus (PB) in several places and uses your Vessel Spellcasting modifier and save DC.",
+				"You can maintain your Archon Form for 1 minute. You then revert to your normal form unless you use a bonus action to expend a Vessel Magic spell slot to extend the transformation by 1 minute. You also revert to your normal form if you fall unconscious, or use a bonus action on your turn to do so.",
+				"While in your Archon Form, the following rules apply:",
+				{
+					"type": "list",
+					"items": [
+						"Your game statistics are replaced by the statistics in the Archon Form stat block, but you retain your alignment, personality, ability scores, and hit points. You also retain all of your skill and saving throw proficiencies, in addition to gaining those of your Archon. If your Archon has the same proficiency as you, use the higher bonus.",
+						"When you transform, you gain temporary hit points equal to your twice your Vessel level. Any temporary hit points you gain during this transformation are instantly dispelled if you revert to your normal form.",
+						"You retain the benefits of any features from the Vessel class, your race, and any other source, and you can use them if your Archon Form is capable of doing so, including casting spells with Vessel Magic.",
+						"When you transform, you choose whether your equipment falls to the ground in your space, merges into your Archon Form, or is worn by it. Worn equipment functions as normal, but your DM can decide whether it is practical for your Archon to use it. Your equipment doesn't change size or shape to match your Archon Form, and any equipment that your Archon can't wear must either fall to the ground or merge with it. Equipment that merges with your Archon has no effect until you leave the Form."
+					]
+				},
+				"You can transform into your Archon Form once, and you regain the ability to transform again when you finish a short or long rest. If you have no uses left, you can expend a Vessel Magic spell slot to transform into your Archon Form again.",
+				{
+					"type": "inset",
+					"name": "Archon Form Appearance",
+					"entries": [
+						"You determine your Archon's appearance, but this has no effect on its abilities. Most are ethereal in appearance, but all Archons are vaguely humanoid in shape and share a resemblance with your Spirit."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Ascended Archon",
+					"entries": [
+						"You take on the luminous form of the ancient spellcaster that is bound to you. Your Archon Form uses the stat block below:",
+						{
+							"type": "statblock",
+							"tag": "creature",
+							"name": "Ascended Archon",
+							"source": "LLVessel",
+							"style": "inset"
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Ascended Arcanum",
@@ -3410,6 +3598,7 @@
 				"item": [
 					{
 						"name": "Iridescent Strike",
+						"source": "LLVessel",
 						"type": "M",
 						"weaponCategory": "simple",
 						"foundrySystem": {
@@ -3421,10 +3610,91 @@
 									""
 								]
 							]
-						}
+						},
+						"foundryImg": "icons/magic/lightning/fist-unarmed-strike-blue.webp"
 					}
 				]
 			}
+		},
+		{
+			"name": "Cataclysm Archon",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"subclassShortName": "Cataclysm",
+			"subclassSource": "LLVessel",
+			"level": 3,
+			"entries": [
+				"Beginning at 3rd level, you can transform into a creature that resembles the true form of the Spirit within you. As a bonus action, you can transform into your Archon Form, which uses the Archon stat block in your Sealed Spirit description. This stat block uses your proficiency bonus (PB) in several places and uses your Vessel Spellcasting modifier and save DC.",
+				"You can maintain your Archon Form for 1 minute. You then revert to your normal form unless you use a bonus action to expend a Vessel Magic spell slot to extend the transformation by 1 minute. You also revert to your normal form if you fall unconscious, or use a bonus action on your turn to do so.",
+				"While in your Archon Form, the following rules apply:",
+				{
+					"type": "list",
+					"items": [
+						"Your game statistics are replaced by the statistics in the Archon Form stat block, but you retain your alignment, personality, ability scores, and hit points. You also retain all of your skill and saving throw proficiencies, in addition to gaining those of your Archon. If your Archon has the same proficiency as you, use the higher bonus.",
+						"When you transform, you gain temporary hit points equal to your twice your Vessel level. Any temporary hit points you gain during this transformation are instantly dispelled if you revert to your normal form.",
+						"You retain the benefits of any features from the Vessel class, your race, and any other source, and you can use them if your Archon Form is capable of doing so, including casting spells with Vessel Magic.",
+						"When you transform, you choose whether your equipment falls to the ground in your space, merges into your Archon Form, or is worn by it. Worn equipment functions as normal, but your DM can decide whether it is practical for your Archon to use it. Your equipment doesn't change size or shape to match your Archon Form, and any equipment that your Archon can't wear must either fall to the ground or merge with it. Equipment that merges with your Archon has no effect until you leave the Form."
+					]
+				},
+				"You can transform into your Archon Form once, and you regain the ability to transform again when you finish a short or long rest. If you have no uses left, you can expend a Vessel Magic spell slot to transform into your Archon Form again.",
+				{
+					"type": "inset",
+					"name": "Archon Form Appearance",
+					"entries": [
+						"You determine your Archon's appearance, but this has no effect on its abilities. Most are ethereal in appearance, but all Archons are vaguely humanoid in shape and share a resemblance with your Spirit."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Cataclysm Archon",
+					"entries": [
+						"You can take on a form of pure elemental power, wreathed in storms, flames, stone, or waves. When you transform into your Archon Form, you use the Cataclysm Archon stat block below that corresponds to the Elemental Affinity you chose at 1st level:",
+						{
+							"type": "table",
+							"page": 7,
+							"colStyles": [
+								"col-6",
+								"col-6"
+							],
+							"rows": [
+								[
+									{
+										"type": "statblock",
+										"tag": "creature",
+										"name": "Air Archon",
+										"source": "LLVessel",
+										"style": "inset"
+									},
+									{
+										"type": "statblock",
+										"tag": "creature",
+										"name": "Fire Archon",
+										"source": "LLVessel",
+										"style": "inset"
+									}
+								],
+								[
+									{
+										"type": "statblock",
+										"tag": "creature",
+										"name": "Earth Archon",
+										"source": "LLVessel",
+										"style": "inset"
+									},
+									{
+										"type": "statblock",
+										"tag": "creature",
+										"name": "Water Archon",
+										"source": "LLVessel",
+										"style": "inset"
+									}
+								]
+							]
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Malignant Aura",
@@ -3438,6 +3708,7 @@
 				"item": [
 					{
 						"name": "Iridescent Strike",
+						"source": "LLVessel",
 						"type": "M",
 						"weaponCategory": "simple",
 						"foundrySystem": {
@@ -3449,13 +3720,59 @@
 									"fire"
 								]
 							]
-						}
+						},
+						"foundryImg": "icons/magic/fire/flame-burning-fist-strike.webp"
 					}
 				]
 			}
 		},
 		{
-			"name": "Blades of Judgement",
+			"name": "Cursed Archon",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"subclassShortName": "Cursed",
+			"subclassSource": "LLVessel",
+			"level": 3,
+			"entries": [
+				"Beginning at 3rd level, you can transform into a creature that resembles the true form of the Spirit within you. As a bonus action, you can transform into your Archon Form, which uses the Archon stat block in your Sealed Spirit description. This stat block uses your proficiency bonus (PB) in several places and uses your Vessel Spellcasting modifier and save DC.",
+				"You can maintain your Archon Form for 1 minute. You then revert to your normal form unless you use a bonus action to expend a Vessel Magic spell slot to extend the transformation by 1 minute. You also revert to your normal form if you fall unconscious, or use a bonus action on your turn to do so.",
+				"While in your Archon Form, the following rules apply:",
+				{
+					"type": "list",
+					"items": [
+						"Your game statistics are replaced by the statistics in the Archon Form stat block, but you retain your alignment, personality, ability scores, and hit points. You also retain all of your skill and saving throw proficiencies, in addition to gaining those of your Archon. If your Archon has the same proficiency as you, use the higher bonus.",
+						"When you transform, you gain temporary hit points equal to your twice your Vessel level. Any temporary hit points you gain during this transformation are instantly dispelled if you revert to your normal form.",
+						"You retain the benefits of any features from the Vessel class, your race, and any other source, and you can use them if your Archon Form is capable of doing so, including casting spells with Vessel Magic.",
+						"When you transform, you choose whether your equipment falls to the ground in your space, merges into your Archon Form, or is worn by it. Worn equipment functions as normal, but your DM can decide whether it is practical for your Archon to use it. Your equipment doesn't change size or shape to match your Archon Form, and any equipment that your Archon can't wear must either fall to the ground or merge with it. Equipment that merges with your Archon has no effect until you leave the Form."
+					]
+				},
+				"You can transform into your Archon Form once, and you regain the ability to transform again when you finish a short or long rest. If you have no uses left, you can expend a Vessel Magic spell slot to transform into your Archon Form again.",
+				{
+					"type": "inset",
+					"name": "Archon Form Appearance",
+					"entries": [
+						"You determine your Archon's appearance, but this has no effect on its abilities. Most are ethereal in appearance, but all Archons are vaguely humanoid in shape and share a resemblance with your Spirit."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Cursed Archon",
+					"entries": [
+						"You can take on a sinister form wreathed in the dark flame and shadow of your Cursed Spirit. When you transform into Archon Form, you use the Cursed Archon stat block below:",
+						{
+							"type": "statblock",
+							"tag": "creature",
+							"name": "Cursed Archon",
+							"source": "LLVessel",
+							"style": "inset"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Blades of Judgment",
 			"source": "LLVessel",
 			"className": "Vessel",
 			"classSource": "LLVessel",
@@ -3466,6 +3783,7 @@
 				"item": [
 					{
 						"name": "Iridescent Strike",
+						"source": "LLVessel",
 						"type": "M",
 						"weaponCategory": "simple",
 						"foundrySystem": {
@@ -3477,7 +3795,8 @@
 									"radiant"
 								]
 							]
-						}
+						},
+						"foundryImg": "icons/magic/light/hand-sparks-smoke-teal.webp"
 					}
 				]
 			}
@@ -3505,6 +3824,51 @@
 			]
 		},
 		{
+			"name": "Fallen Archon",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"subclassShortName": "Fallen",
+			"subclassSource": "LLVessel",
+			"level": 3,
+			"entries": [
+				"Beginning at 3rd level, you can transform into a creature that resembles the true form of the Spirit within you. As a bonus action, you can transform into your Archon Form, which uses the Archon stat block in your Sealed Spirit description. This stat block uses your proficiency bonus (PB) in several places and uses your Vessel Spellcasting modifier and save DC.",
+				"You can maintain your Archon Form for 1 minute. You then revert to your normal form unless you use a bonus action to expend a Vessel Magic spell slot to extend the transformation by 1 minute. You also revert to your normal form if you fall unconscious, or use a bonus action on your turn to do so.",
+				"While in your Archon Form, the following rules apply:",
+				{
+					"type": "list",
+					"items": [
+						"Your game statistics are replaced by the statistics in the Archon Form stat block, but you retain your alignment, personality, ability scores, and hit points. You also retain all of your skill and saving throw proficiencies, in addition to gaining those of your Archon. If your Archon has the same proficiency as you, use the higher bonus.",
+						"When you transform, you gain temporary hit points equal to your twice your Vessel level. Any temporary hit points you gain during this transformation are instantly dispelled if you revert to your normal form.",
+						"You retain the benefits of any features from the Vessel class, your race, and any other source, and you can use them if your Archon Form is capable of doing so, including casting spells with Vessel Magic.",
+						"When you transform, you choose whether your equipment falls to the ground in your space, merges into your Archon Form, or is worn by it. Worn equipment functions as normal, but your DM can decide whether it is practical for your Archon to use it. Your equipment doesn't change size or shape to match your Archon Form, and any equipment that your Archon can't wear must either fall to the ground or merge with it. Equipment that merges with your Archon has no effect until you leave the Form."
+					]
+				},
+				"You can transform into your Archon Form once, and you regain the ability to transform again when you finish a short or long rest. If you have no uses left, you can expend a Vessel Magic spell slot to transform into your Archon Form again.",
+				{
+					"type": "inset",
+					"name": "Archon Form Appearance",
+					"entries": [
+						"You determine your Archon's appearance, but this has no effect on its abilities. Most are ethereal in appearance, but all Archons are vaguely humanoid in shape and share a resemblance with your Spirit."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Fallen Archon",
+					"entries": [
+						"You take on a form wreathed in rings of fire or a humanoid that radiates golden light. When you transform into your Archon Form, you use the Fallen Archon stat block below:",
+						{
+							"type": "statblock",
+							"tag": "creature",
+							"name": "Fallen Archon",
+							"source": "LLVessel",
+							"style": "inset"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Amorphous Shape",
 			"source": "LLVessel",
 			"className": "Vessel",
@@ -3516,6 +3880,7 @@
 				"item": [
 					{
 						"name": "Iridescent Strike",
+						"source": "LLVessel",
 						"type": "M",
 						"weaponCategory": "simple",
 						"foundrySystem": {
@@ -3533,6 +3898,51 @@
 			}
 		},
 		{
+			"name": "Formless Archon",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"subclassShortName": "Formless",
+			"subclassSource": "LLVessel",
+			"level": 3,
+			"entries": [
+				"Beginning at 3rd level, you can transform into a creature that resembles the true form of the Spirit within you. As a bonus action, you can transform into your Archon Form, which uses the Archon stat block in your Sealed Spirit description. This stat block uses your proficiency bonus (PB) in several places and uses your Vessel Spellcasting modifier and save DC.",
+				"You can maintain your Archon Form for 1 minute. You then revert to your normal form unless you use a bonus action to expend a Vessel Magic spell slot to extend the transformation by 1 minute. You also revert to your normal form if you fall unconscious, or use a bonus action on your turn to do so.",
+				"While in your Archon Form, the following rules apply:",
+				{
+					"type": "list",
+					"items": [
+						"Your game statistics are replaced by the statistics in the Archon Form stat block, but you retain your alignment, personality, ability scores, and hit points. You also retain all of your skill and saving throw proficiencies, in addition to gaining those of your Archon. If your Archon has the same proficiency as you, use the higher bonus.",
+						"When you transform, you gain temporary hit points equal to your twice your Vessel level. Any temporary hit points you gain during this transformation are instantly dispelled if you revert to your normal form.",
+						"You retain the benefits of any features from the Vessel class, your race, and any other source, and you can use them if your Archon Form is capable of doing so, including casting spells with Vessel Magic.",
+						"When you transform, you choose whether your equipment falls to the ground in your space, merges into your Archon Form, or is worn by it. Worn equipment functions as normal, but your DM can decide whether it is practical for your Archon to use it. Your equipment doesn't change size or shape to match your Archon Form, and any equipment that your Archon can't wear must either fall to the ground or merge with it. Equipment that merges with your Archon has no effect until you leave the Form."
+					]
+				},
+				"You can transform into your Archon Form once, and you regain the ability to transform again when you finish a short or long rest. If you have no uses left, you can expend a Vessel Magic spell slot to transform into your Archon Form again.",
+				{
+					"type": "inset",
+					"name": "Archon Form Appearance",
+					"entries": [
+						"You determine your Archon's appearance, but this has no effect on its abilities. Most are ethereal in appearance, but all Archons are vaguely humanoid in shape and share a resemblance with your Spirit."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Formless Archon",
+					"entries": [
+						"You morph into a shapeless form of slime or an unspeakable flowing mass of opaque ooze. When you transform into your Archon Form you use the Formless Archon stat block below:",
+						{
+							"type": "statblock",
+							"tag": "creature",
+							"name": "Formless Archon",
+							"source": "LLVessel",
+							"style": "inset"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Seeds of Chaos",
 			"source": "LLVessel",
 			"className": "Vessel",
@@ -3544,6 +3954,7 @@
 				"item": [
 					{
 						"name": "Iridescent Strike",
+						"source": "LLVessel",
 						"type": "M",
 						"weaponCategory": "simple",
 						"foundrySystem": {
@@ -3559,6 +3970,51 @@
 					}
 				]
 			}
+		},
+		{
+			"name": "Trickster Archon",
+			"source": "LLVessel",
+			"className": "Vessel",
+			"classSource": "LLVessel",
+			"subclassShortName": "Trickster",
+			"subclassSource": "LLVessel",
+			"level": 3,
+			"entries": [
+				"Beginning at 3rd level, you can transform into a creature that resembles the true form of the Spirit within you. As a bonus action, you can transform into your Archon Form, which uses the Archon stat block in your Sealed Spirit description. This stat block uses your proficiency bonus (PB) in several places and uses your Vessel Spellcasting modifier and save DC.",
+				"You can maintain your Archon Form for 1 minute. You then revert to your normal form unless you use a bonus action to expend a Vessel Magic spell slot to extend the transformation by 1 minute. You also revert to your normal form if you fall unconscious, or use a bonus action on your turn to do so.",
+				"While in your Archon Form, the following rules apply:",
+				{
+					"type": "list",
+					"items": [
+						"Your game statistics are replaced by the statistics in the Archon Form stat block, but you retain your alignment, personality, ability scores, and hit points. You also retain all of your skill and saving throw proficiencies, in addition to gaining those of your Archon. If your Archon has the same proficiency as you, use the higher bonus.",
+						"When you transform, you gain temporary hit points equal to your twice your Vessel level. Any temporary hit points you gain during this transformation are instantly dispelled if you revert to your normal form.",
+						"You retain the benefits of any features from the Vessel class, your race, and any other source, and you can use them if your Archon Form is capable of doing so, including casting spells with Vessel Magic.",
+						"When you transform, you choose whether your equipment falls to the ground in your space, merges into your Archon Form, or is worn by it. Worn equipment functions as normal, but your DM can decide whether it is practical for your Archon to use it. Your equipment doesn't change size or shape to match your Archon Form, and any equipment that your Archon can't wear must either fall to the ground or merge with it. Equipment that merges with your Archon has no effect until you leave the Form."
+					]
+				},
+				"You can transform into your Archon Form once, and you regain the ability to transform again when you finish a short or long rest. If you have no uses left, you can expend a Vessel Magic spell slot to transform into your Archon Form again.",
+				{
+					"type": "inset",
+					"name": "Archon Form Appearance",
+					"entries": [
+						"You determine your Archon's appearance, but this has no effect on its abilities. Most are ethereal in appearance, but all Archons are vaguely humanoid in shape and share a resemblance with your Spirit."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Trickster Archon",
+					"entries": [
+						"You take on a form that is elegant, whimsical, and terrifying, much like the powerful faerie. When you transform into your Archon Form you use the Trickster Archon stat block below:",
+						{
+							"type": "statblock",
+							"tag": "creature",
+							"name": "Trickster Archon",
+							"source": "LLVessel",
+							"style": "inset"
+						}
+					]
+				}
+			]
 		}
 	],
 	"monster": [
