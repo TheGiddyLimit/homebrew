@@ -1127,7 +1127,8 @@
 						]
 					}
 				}
-			]
+			],
+			"foundryImg": "icons/magic/sonic/scream-wail-shout-teal.webp"
 		},
 		{
 			"name": "Ethereal Tendril",
@@ -1138,7 +1139,8 @@
 			],
 			"entries": [
 				"As a bonus action, you can manifest an ethereal tendril from any point on your body. It has a reach of 10 feet and it has a Strength score equal to your Charisma score. It cannot use weapons or shields, but it can manipulate simple objects and be used to make {@classFeature Iridescent Strike|Vessel|LLVessel|1||Iridescent Strikes}, {@action shove}, and {@action grapple}. You can only have a single ethereal tendril manifested at a time, and the tendril can be attacked as if it were part of you."
-			]
+			],
+			"foundryImg": "icons/creatures/tentacles/tentacle-earth-green.webp"
 		},
 		{
 			"name": "Minor Magicks",
@@ -1170,7 +1172,8 @@
 						]
 					}
 				}
-			]
+			],
+			"foundryImg": "icons/magic/air/air-smoke-casting.webp"
 		},
 		{
 			"name": "Spirit Sense",
@@ -1181,7 +1184,14 @@
 			],
 			"entries": [
 				"The Spirit bound to you allows you to sense similar beings. When you see a Celestial, Elemental, Fey, or Fiend with a CR equal to your Vessel level or lower, you learn its creature type, its spellcasting ability, and the level of its highest spell."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you see a Celestial, Elemental, Fey, or Fiend with a CR equal to your Vessel level or lower"
+				}
+			},
+			"foundryImg": "icons/magic/perception/eye-slit-pink.webp"
 		},
 		{
 			"name": "Uncanny Strength",
@@ -1210,7 +1220,8 @@
 						}
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/control/buff-strength-muscle-damage-orange.webp"
 		},
 		{
 			"name": "Iridescent Shield",
@@ -1233,7 +1244,12 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"ability": "cha",
+				"forumla": "@mod"
+			},
+			"foundryImg": "icons/magic/defensive/shield-barrier-blue.webp"
 		},
 		{
 			"name": "Opalescent Armor",
@@ -1290,7 +1306,8 @@
 						}
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/equipment/hand/gauntlet-plate-steel-grey.webp"
 		},
 		{
 			"name": "Otherworldly Maw",
@@ -1313,7 +1330,8 @@
 						}
 					}
 				}
-			]
+			],
+			"foundryImg": "icons/creatures/abilities/mouth-teeth-rows-needles-purple.webp"
 		},
 		{
 			"name": "Shimmering Lance",
@@ -1336,7 +1354,19 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"actionType": "rsak",
+				"activation": {
+					"type": "special",
+					"condition": "Whenever you make an Iridescent Strike"
+				},
+				"range": {
+					"value": 30,
+					"units": "ft"
+				}
+			},
+			"foundryImg": "icons/weapons/polearms/spear-flared-silver-pink.webp"
 		},
 		{
 			"name": "Vexing Strike",
@@ -1359,7 +1389,14 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you hit a creature with a melee Iridescent Strike"
+				}
+			},
+			"foundryImg": "icons/skills/melee/swords-parry-block-yellow.webp"
 		},
 		{
 			"name": "Dire Stature",
@@ -1383,7 +1420,8 @@
 						}
 					}
 				}
-			]
+			],
+			"foundryImg": "icons/magic/control/silhouette-grow-shrink-tan.webp"
 		},
 		{
 			"name": "Ethereal Grasp",
@@ -1409,7 +1447,8 @@
 						"Uncanny Strength"
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/unholy/hand-claw-glow-orange.webp"
 		},
 		{
 			"name": "Evoke Spirit",
@@ -1449,7 +1488,8 @@
 						]
 					}
 				}
-			]
+			],
+			"foundryImg": "icons/creatures/magical/spirit-fire-orange.webp"
 		},
 		{
 			"name": "Piercing Gaze",
@@ -1476,7 +1516,21 @@
 						"Spirit Sense"
 					]
 				}
-			]
+			],
+			"foundryEffects": [
+				{
+					"name": "Perception Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.skills.prc.bonuses.check",
+							"mode": "ADD",
+							"value": "@abilities.cha.mod"
+						}
+					]
+				}
+			],
+			"foundryImg": "icons/magic/perception/eye-ringed-glow-angry-teal.webp"
 		},
 		{
 			"name": "Vengeful Spirit",
@@ -1502,7 +1556,14 @@
 						"Iridescent Shield"
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you use Iridescent Shield and the triggering attack misses its target"
+				}
+			},
+			"foundryImg": "icons/creatures/magical/spirit-poison-smoke-green.webp"
 		},
 		{
 			"name": "Dazzling Burst",
@@ -1532,13 +1593,37 @@
 				}
 			],
 			"foundrySystem": {
+				"actionType": "save",
+				"activation": {
+					"type": "special",
+					"condition": "When you hit a target with a ranged Iridescent Strike"
+				},
+				"consume": {
+					"amount": 1,
+					"target": "spells.pact.value",
+					"type": "attribute"
+				},
 				"damage.parts": [
 					[
 						"floor((@classes.vessel.levels + 15) / 4)d6",
 						""
 					]
-				]
-			}
+				],
+				"range": {
+					"value": 120,
+					"units": "ft"
+				},
+				"save": {
+					"ability": "dex",
+					"scaling": "spell"
+				},
+				"target": {
+					"value": 30,
+					"units": "ft",
+					"type": "sphere"
+				}
+			},
+			"foundryImg": "icons/magic/light/projectile-beams-salvo-yellow.webp"
 		},
 		{
 			"name": "Perilous Visage",
@@ -1562,7 +1647,18 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you transform into Archon Form"
+				},
+				"range": {
+					"value": 60,
+					"units": "ft"
+				}
+			},
+			"foundryImg": "icons/magic/control/fear-fright-white.webp"
 		},
 		{
 			"name": "Primeval Thirst",
@@ -1589,7 +1685,15 @@
 						"Otherworldly Maw"
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"consume": {
+					"amount": 1,
+					"target": "spells.pact.value",
+					"type": "attribute"
+				}
+			},
+			"foundryImg": "icons/creatures/magical/spirit-earth-stone-magma-yellow.webp"
 		},
 		{
 			"name": "Sundering Strike",
@@ -1612,7 +1716,14 @@
 						}
 					}
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "When you hit a creature with two Iridescent Strikes in one turn"
+				}
+			},
+			"foundryImg": "icons/magic/control/sihouette-hold-beam-green.webp"
 		},
 		{
 			"name": "Aether Wings",
@@ -1653,7 +1764,8 @@
 						}
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/creatures/abilities/wing-batlike-white-blue.webp"
 		},
 		{
 			"name": "Primordial Bulwark",
@@ -1679,7 +1791,8 @@
 						"Opalescent Armor"
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/defensive/armor-shield-barrier-steel.webp"
 		},
 		{
 			"name": "Titanic Archon",
@@ -1705,7 +1818,8 @@
 						"Dire Stature"
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/creatures/magical/humanoid-silhouette-glowing-pink.webp"
 		}
 	],
 	"subclass": [
@@ -2199,7 +2313,8 @@
 						}
 					}
 				}
-			]
+			],
+			"foundryImg": "icons/creatures/slimes/slime-movement-swirling-blue.webp"
 		},
 		{
 			"name": "The Trickster",
@@ -2259,7 +2374,8 @@
 				"Illusory Strikes|Vessel|LLVessel|Trickster|LLVessel|6|LLVessel",
 				"Fey Retribution|Vessel|LLVessel|Trickster|LLVessel|14|LLVessel",
 				"Lord of Mischief|Vessel|LLVessel|Trickster|LLVessel|20|LLVessel"
-			]
+			],
+			"foundryImg": "icons/creatures/magical/fae-fairy-winged-glowing-green.webp"
 		}
 	],
 	"subclassFeature": [
@@ -3109,7 +3225,7 @@
 				"Your Fallen Spirit compels you to slay all who stand against you. If a {@subclassFeature Condemnation|Vessel|LLVessel|Fallen|LLVessel|6||Condemned} creature dies, you can use your reaction to Condemn another creature that you can see within 30 feet.",
 				"Also, your {@subclassFeature Blades of Judgment|Vessel|LLVessel|Fallen|LLVessel|1} score a critical hit on a roll of 18-20 on the {@dice d20} against Condemned creatures."
 			],
-			"foundryImg": "icons/skills/melee/weapons-crossed-swords-teal.webp"
+			"foundryImg": "icons/skills/melee/weapons-crossed-swords-white-blue.webp"
 		},
 		{
 			"name": "Divine Revelation",
@@ -3170,7 +3286,8 @@
 			"resist": [
 				"acid",
 				"poison"
-			]
+			],
+			"foundryImg": "icons/creatures/slimes/slime-face-melting-green.webp"
 		},
 		{
 			"name": "Formless Spells",
@@ -3218,7 +3335,8 @@
 						]
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/creatures/slimes/bubbling-purple.webp"
 		},
 		{
 			"name": "Formless Archon",
@@ -3239,7 +3357,11 @@
 					"source": "LLVessel",
 					"style": "inset"
 				}
-			]
+			],
+			"foundrySystem": {
+				"uses.max": "@scale.vessel.archon-uses"
+			},
+			"foundryImg": "icons/creatures/slimes/slime-face-hollow-green.webp"
 		},
 		{
 			"name": "Consume Vitality",
@@ -3254,7 +3376,16 @@
 			"entries": [
 				"When you are in Archon Form, you can use a bonus action to force any creature grappled by you to make a Constitution saving throw. On a failure, they take {@damage 2d8} acid damage and your current temporary hit points increase by an amount equal to half of the acid damage dealt to all creatures.",
 				"This acid damage increases at certain Vessel levels: at 9th ({@damage 3d8}), 13th ({@damage 4d8}), 17th ({@damage 5d8}), and 20th level ({@damage 6d8})."
-			]
+			],
+			"foundrySystem": {
+				"damage.parts": [
+					[
+						"@scale.the-formless.consume-vitality",
+						"acid"
+					]
+				]
+			},
+			"foundryImg": "icons/creatures/slimes/slime-face-teeth-purple.webp"
 		},
 		{
 			"name": "Consume Strike",
@@ -3267,8 +3398,9 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"Your Formless Spirit hungers for the power of your foes. When you are hit by an attack while you are in your {@classFeature Archon Form|Vessel|LLVessel|3}, you can use your reaction to temporarily consume the memory of the attack. The first Iridescent Strike you make before the end of your next turn morphs into a gelatinous mockery of the attack you consumed, and on hit, it deals the damage of the consumed attack along with any of its effects."
-			]
+				"Your Formless Spirit hungers for the power of your foes. When you are hit by an attack while you are in your {@classFeature Archon Form|Vessel|LLVessel|3}, you can use your reaction to temporarily consume the memory of the attack. The first {@classFeature Iridescent Strike|Vessel|LLVessel|1} you make before the end of your next turn morphs into a gelatinous mockery of the attack you consumed, and on hit, it deals the damage of the consumed attack along with any of its effects."
+			],
+			"foundryImg": "icons/creatures/slimes/slime-movement-swirling-green.webp"
 		},
 		{
 			"name": "Primordial Hunger",
@@ -3290,7 +3422,8 @@
 						"You gain the benefits of the {@spell freedom of movement} spell."
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/creatures/slimes/slime-giant-face-eyes.webp"
 		},
 		{
 			"name": "The Trickster",
@@ -3333,7 +3466,8 @@
 						]
 					}
 				}
-			]
+			],
+			"foundryImg": "icons/skills/social/intimidation-impressing.webp"
 		},
 		{
 			"name": "Trickster Spells",
@@ -3381,7 +3515,8 @@
 						]
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/control/hypnosis-mesmerism-swirl.webp"
 		},
 		{
 			"name": "Trickster Archon",
@@ -3402,7 +3537,8 @@
 					"source": "LLVessel",
 					"style": "inset"
 				}
-			]
+			],
+			"foundryImg": "icons/creatures/magical/humanoid-silhouette-dashing-blue.webp"
 		},
 		{
 			"name": "Illusory Appearance",
@@ -3416,7 +3552,8 @@
 			"header": 2,
 			"entries": [
 				"You can change your appearance to better sow chaos. You can cast {@spell disguise self} at will, without expending a spell slot. This spell can change the appearance of your Archon Form."
-			]
+			],
+			"foundryImg": "icons/creatures/eyes/human-single-brown.webp"
 		},
 		{
 			"name": "Illusory Strikes",
@@ -3430,7 +3567,18 @@
 			"header": 2,
 			"entries": [
 				"You can project potent illusions to attack your foes. Once per turn when you make an {@classFeature Iridescent Strike|Vessel|LLVessel|1}, you can create an illusory copy of yourself in an unoccupied space you can see within 30 feet. The illusory copy immediately makes a single Iridescent Strike against a target in range and disappears."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special",
+					"condition": "Once per turn when you make an  Iridescent Strike"
+				},
+				"range": {
+					"value": 30,
+					"units": "ft"
+				}
+			},
+			"foundryImg": "icons/skills/melee/weapons-crossed-swords-teal.webp"
 		},
 		{
 			"name": "Fey Retribution",
@@ -3445,7 +3593,8 @@
 			"entries": [
 				"The power of the Trickster can reflect the magic of foes back onto them. If you succeed on a saving throw against a spell, you can use your reaction to force the spellcaster to make a Wisdom saving throw. On a failure, the target is {@condition charmed} by you as if by the {@spell charm person} or {@spell charm monster|XGE} spell.",
 				"Once a creature is charmed by you in this way, it cannot be charmed by this feature again until the following dawn."
-			]
+			],
+			"foundryImg": "icons/magic/defensive/shield-barrier-deflect-gold.webp"
 		},
 		{
 			"name": "Lord of Mischief",
@@ -3467,7 +3616,8 @@
 						"When you hit a creature with an Iridescent Strike it has disadvantage on the next Wisdom saving throw it makes."
 					]
 				}
-			]
+			],
+			"foundryImg": "icons/magic/control/mouth-smile-deception-purple.webp"
 		}
 	],
 	"foundrySubclassFeature": [
@@ -3892,7 +4042,8 @@
 									"acid"
 								]
 							]
-						}
+						},
+						"foundryImg": "icons/creatures/slimes/slime-movement-dripping-pseudopods-green.webp"
 					}
 				]
 			}
@@ -3966,7 +4117,8 @@
 									"psychic"
 								]
 							]
-						}
+						},
+						"foundryImg": "icons/magic/unholy/strike-hand-glow-pink.webp"
 					}
 				]
 			}
