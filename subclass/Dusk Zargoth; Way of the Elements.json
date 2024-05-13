@@ -1,0 +1,1025 @@
+{
+	"_meta": {
+		"sources": [
+			{
+				"json": "DZC:4ELE",
+				"abbreviation": "DZC:4ELE",
+				"full": "Way of the Elements",
+				"authors": [
+					"Dusk Zargoth"
+				],
+				"convertedBy": [
+					"Dusk Zargoth"
+				],
+				"version": "1.0.1",
+				"color": "DC3636",
+				"url": "https://homebrewery.naturalcrit.com/share/PSkVJHKOeItK"
+			}
+		],
+		"dateAdded": 1714939216,
+		"dateLastModified": 1714939216,
+		"optionalFeatureTypes": {
+			"DZC:MA": "Monk Rework; Martial Arts",
+			"DZC:MA:MS": "Monk Rework; Martial Arts: Mixed Style",
+			"DZC:MA:GS": "Monk Rework; Martial Arts: Grappling Style",
+			"DZC:MA:US": "Monk Rework; Martial Arts: Unarmed Style",
+			"DZC:MA:WS": "Monk Rework; Martial Arts: Weapon Style",
+			"DZC:EA": "Monk Rework; Elemental Arts",
+			"DZC:EA:A": "Monk Rework; Elemental Arts: Air",
+			"DZC:EA:E": "Monk Rework; Elemental Arts: Earth",
+			"DZC:EA:F": "Monk Rework; Elemental Arts: Fire",
+			"DZC:EA:W": "Monk Rework; Elemental Arts: Water",
+			"DZC:EA:ES": "Monk Rework; Elemental Arts: Elemental Strike",
+			"DZC:EA:EM": "Monk Rework; Elemental Arts: Elemental Manifestation",
+			"DZC:EA:PS": "Monk Rework; Elemental Arts: Primal Stances",
+			"DZC:EA:SS": "Monk Rework; Elemental Arts: Step Shift",
+			"DZC:EA:EMa": "Monk Rework; Elemental Arts: Elemental Mastery",
+			"DZC:KF": "Monk Rework; Ki Features",
+			"DZC:KF:O": "Monk Rework; Ki Features; Offense",
+			"DZC:KF:D": "Monk Rework; Ki Features; Defense",
+			"DZC:KF:U": "Monk Rework; Ki Features; Utility"
+		},
+		"_dateLastModifiedHash": "48b386ad26"
+	},
+	"subclass": [
+		{
+			"name": "Way of the Elements",
+			"foundryImg": "icons/magic/symbols/elements-air-earth-fire-water.webp",
+			"shortName": "Elements",
+			"source": "DZC:4ELE",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 1,
+			"subclassFeatures": [
+				"Way of the Elements|Monk||Elements|DZC:4ELE|3",
+				"Primal Stances|Monk||Elements|DZC:4ELE|6",
+				"Step Shift|Monk||Elements|DZC:4ELE|11",
+				"Elemental Mastery|Monk||Elements|DZC:4ELE|17"
+			]
+		}
+	],
+	"optionalfeature": [
+		{
+			"name": "Thunderous Strike",
+			"foundryImg": "icons/magic/air/wind-tornado-funnel-gray.webp",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"consumes": {
+				"name": "Ki",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:A",
+				"DZC:EA:ES"
+			],
+			"entries": [
+				"A bubble of compressed air burst from your attack, sending your enemy flying away. If the target is a creature or an unsecured object that is no more than one size larger than you, then you can push it up to 10 feet away from you."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "Once on your turn, when you hit with a weapon attack",
+				"activation.cost": 1,
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"@scale.monk.die",
+						"thunder"
+					]
+				]
+			}
+		},
+		{
+			"name": "Rocky Strike",
+			"foundryImg": "icons/magic/earth/projectile-boulder-dust.webp",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"consumes": {
+				"name": "Ki",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:E",
+				"DZC:EA:ES"
+			],
+			"entries": [
+				"A thick layer of stones forms around your attack, making it so heavy it temporarily disorientates your enemy. The target has disadvantage on the next attack roll it makes before the start of your next turn."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "Once on your turn, when you hit with a weapon attack",
+				"activation.cost": 1,
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"@scale.monk.die + @abilities.wis.mod"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Your choice of bludgeoning, piercing, or slashing"
+			}
+		},
+		{
+			"name": "Igneous Strike",
+			"foundryImg": "icons/magic/fire/projectile-smoke-swirl-red.webp",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"consumes": {
+				"name": "Ki",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:F",
+				"DZC:EA:ES"
+			],
+			"entries": [
+				"A short lived blaze sparks from your attack, hot enough to burn through flesh. You add your Wisdom modifier to the extra damage of this strike."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "Once on your turn, when you hit with a weapon attack",
+				"activation.cost": 1,
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"@scale.monk.die + @abilities.wis.mod",
+						"fire"
+					]
+				]
+			}
+		},
+		{
+			"name": "Gelid Strike",
+			"foundryImg": "icons/magic/water/projectile-ice-snowball.webp",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"consumes": {
+				"name": "Ki",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:W",
+				"DZC:EA:ES"
+			],
+			"entries": [
+				"You cover your attacks with freezing water that hinders your enemy's movement. The target's speed is reduced by 15 feet until the start of your next turn."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "Once on your turn, when you hit with a weapon attack",
+				"activation.cost": 1,
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"@scale.monk.die",
+						"cold"
+					]
+				]
+			}
+		},
+		{
+			"name": "Wind Blast",
+			"foundryImg": "icons/magic/air/wind-tornado-funnel-gray.webp",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"consumes": {
+				"name": "Ki",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:A",
+				"DZC:EA:EM"
+			],
+			"entries": [
+				"A line of compressed air 30 feet long and 5 feet wide blasts from you in a direction you choose. Each creature in that area must succeed on a Constitution saving throw or take thunder damage equal to one roll of your Martial Arts die and be pushed up to 10 feet away from you in a direction following the line.",
+				"Unsecured objects that are completely within the area of effect are automatically pushed 10 feet away from you by the feature's effect."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "Spend 1 ki to replace an attack from the Attack action",
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"@scale.monk.die",
+						"thunder"
+					]
+				],
+				"save.ability": "con",
+				"save.scaling": "wis"
+			}
+		},
+		{
+			"name": "Stone Boulder",
+			"foundryImg": "icons/magic/earth/projectile-boulder-dust.webp",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"consumes": {
+				"name": "Ki",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:E",
+				"DZC:EA:EM"
+			],
+			"entries": [
+				"You hurl a Medium rock against a creature you can see within 30 feet from you. The creature must succeed on a Strength saving throw or take bludgeoning damage equal to one roll of your Martial Arts die and be knocked prone."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "Spend 1 ki to replace an attack from the Attack action",
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"@scale.monk.die",
+						"bludgeoning"
+					]
+				],
+				"save.ability": "str",
+				"save.scaling": "wis"
+			}
+		},
+		{
+			"name": "Flaming Blast",
+			"foundryImg": "icons/magic/fire/projectile-smoke-swirl-red.webp",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"consumes": {
+				"name": "Ki",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:F",
+				"DZC:EA:EM"
+			],
+			"entries": [
+				"You shoot a fire projectile towards a point you choose that you can see within 30 feet from you. The projectile explodes when it reaches its destination or impacts against a solid surface. Each creature within 5 feet of the point where the projectile explodes must make a Dexterity saving throw, taking fire damage equal to two rolls of your Martial Arts die on a failed save.",
+				"The explosion damages objects in the area that aren't being worn or carried."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "Spend 1 ki to replace an attack from the Attack action",
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"2@scale.monk.die",
+						"fire"
+					]
+				],
+				"save.ability": "dex",
+				"save.scaling": "wis"
+			}
+		},
+		{
+			"name": "Water Swirl",
+			"foundryImg": "icons/magic/water/projectile-ice-snowball.webp",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"consumes": {
+				"name": "Ki",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:W",
+				"DZC:EA:EM"
+			],
+			"entries": [
+				"A pillar of swirling water appears in a point you can see within 30 feet from you. Each creature in a 10-foot-radius, 15-foot-high cylinder centered on a point within range must make a Strength saving throw. On a failed save, a creature takes cold damage equal to one roll of your Martial Arts die and is pushed 5 feet in any direction you choose."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "Spend 1 ki to replace an attack from the Attack action",
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"@scale.monk.die",
+						"cold"
+					]
+				],
+				"save.ability": "con",
+				"save.scaling": "wis"
+			}
+		},
+		{
+			"name": "Wind Stance",
+			"foundryImg": "icons/magic/air/wind-tornado-funnel-gray.webp",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"consumes": {
+				"name": "Ki",
+				"amount": 2
+			},
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:A",
+				"DZC:EA:PS"
+			],
+			"entries": [
+				"Soft currents move you out of harms way. When you take the Disengage or Dodge action, until the start of your next turn you gain a bonus to your AC and Dexterity saving throws equal to half your Wisdom modifier (rounded up) against attacks and effects you can see. You don't benefit from this stance while your speed is 0."
+			]
+		},
+		{
+			"name": "Mountain Stance",
+			"foundryImg": "icons/magic/earth/projectile-boulder-dust.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"consumes": {
+				"name": "Ki",
+				"amount": 2
+			},
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:E",
+				"DZC:EA:PS"
+			],
+			"entries": [
+				"Your skin adopts the sturdiness of the rock. Bludgeoning, piercing and slashing damage that you take is reduced by an amount equal to twice your Wisdom modifier."
+			]
+		},
+		{
+			"name": "Flame Stance",
+			"foundryImg": "icons/magic/fire/projectile-smoke-swirl-red.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"consumes": {
+				"name": "Ki",
+				"amount": 2
+			},
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:F",
+				"DZC:EA:PS"
+			],
+			"entries": [
+				"Your limbs become wreathed in flames. You gain a bonus to melee weapon attack rolls, grapple and shove checks equal to half your Wisdom modifier (rounded up). Creatures take fire damage equal to that bonus when you hit them with a melee weapon attack, or you successfully grapple or shove them."
+			]
+		},
+		{
+			"name": "River Stance",
+			"foundryImg": "icons/magic/water/projectile-ice-snowball.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"consumes": {
+				"name": "Ki",
+				"amount": 2
+			},
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:W",
+				"DZC:EA:PS"
+			],
+			"entries": [
+				"Water tendrils sprout from your limbs. The range of your melee weapon attacks, grapples, and shoves increases by a number of feet equal to five times your Wisdom modifier. In addition, when you hit a creature with a melee weapon attack, the target's speed is reduced by 10 feet until the start of your next turn."
+			]
+		},
+		{
+			"name": "Aerial Lift",
+			"foundryImg": "icons/magic/air/wind-tornado-funnel-gray.webp",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:A",
+				"DZC:EA:SS"
+			],
+			"entries": [
+				"Soft currents move you out of harms way. When you take the Disengage or Dodge action, until the start of your next turn you gain a bonus to your AC and Dexterity saving throws equal to half your Wisdom modifier (rounded up) against attacks and effects you can see. You don't benefit from this stance while your speed is 0."
+			]
+		},
+		{
+			"name": "Rock Walk",
+			"foundryImg": "icons/magic/earth/projectile-boulder-dust.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:E",
+				"DZC:EA:SS"
+			],
+			"entries": [
+				"With solid footing you can stride through any terrain. You ignore difficult terrain on solid surfaces. You also gain a climbing speed equal to your walking speed. If a vertical surface is made of soil or rock, you don't need your hands to climb."
+			]
+		},
+		{
+			"name": "Jet Burst",
+			"foundryImg": "icons/magic/fire/projectile-smoke-swirl-red.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:F",
+				"DZC:EA:SS"
+			],
+			"entries": [
+				"Your fire can propel you to new heights. Once on your turn, you can move up to 30 feet in a straight line in any direction you choose. If you are grappled or restrained, you can instead forgo this movement to attempt to escape the effect or creature causing the condition, as long as it asks for a successful Strength check or saving throw to escape."
+			]
+		},
+		{
+			"name": "Underwater Adaptations",
+			"foundryImg": "icons/magic/water/projectile-ice-snowball.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:W",
+				"DZC:EA:SS"
+			],
+			"entries": [
+				"Your body becomes one with the ocean. You gain a swimming speed equal to your walking speed and you can breath normally underwater."
+			]
+		},
+		{
+			"name": "Air Master",
+			"foundryImg": "icons/magic/air/wind-tornado-funnel-gray.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:A",
+				"DZC:EA:EMa"
+			],
+			"entries": [
+				"Once on your turn, when you use your Thunderous Strike or Wind Blast, you can spend up to 3 additional ki points on it to increase its damage by one roll of your Martial Arts die per ki point spent."
+			],
+			"prerequisite": [
+				{
+					"feature": [
+						"Four Air Arts"
+					]
+				}
+			]
+		},
+		{
+			"name": "Earth Master",
+			"foundryImg": "icons/magic/earth/projectile-boulder-dust.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:E",
+				"DZC:EA:EMa"
+			],
+			"entries": [
+				"Once on your turn, when you use your Rocky Strike or Stone Boulder, you can spend up to 3 additional ki points on it to increase its damage by one roll of your Martial Arts die per ki point spent."
+			],
+			"prerequisite": [
+				{
+					"feature": [
+						"Four Earth Arts"
+					]
+				}
+			]
+		},
+		{
+			"name": "Fire Master",
+			"foundryImg": "icons/magic/fire/projectile-smoke-swirl-red.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:F",
+				"DZC:EA:EMa"
+			],
+			"entries": [
+				"Once on your turn, when you use your Igneous Strike or Flaming Blast, you can spend up to 3 additional ki points on it to increase the damage by one roll of your Martial Arts die per ki point spent."
+			],
+			"prerequisite": [
+				{
+					"feature": [
+						"Four Fire Arts"
+					]
+				}
+			]
+		},
+		{
+			"name": "Water Master",
+			"foundryImg": "icons/magic/water/projectile-ice-snowball.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:W",
+				"DZC:EA:EMa"
+			],
+			"entries": [
+				"Once on your turn, when you use your Gelid Strike or Water Swirl, you can spend up to 3 additional ki points on it to increase the damage by one roll of your Martial Arts die per ki point spent."
+			],
+			"prerequisite": [
+				{
+					"feature": [
+						"Four Water Arts"
+					]
+				}
+			]
+		},
+		{
+			"name": "Lightning Adept",
+			"foundryImg": "icons/magic/lightning/bolt-strike-sparks-blue.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:A",
+				"DZC:EA:EMa"
+			],
+			"consumes": {
+				"name": "Ki",
+				"amount": 1
+			},
+			"entries": [
+				"You can spend 1 ki point when you take the Dash or Disengage action to charge yourself with electricity. Until the end of your turn, a creature takes lightning damage equal to 5 + your Wisdom modifier the first time you move within 5 feet from it."
+			],
+			"prerequisite": [
+				{
+					"feature": [
+						"Two or more Air Arts"
+					]
+				}
+			]
+		},
+		{
+			"name": "Acid Adept",
+			"foundryImg": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:E",
+				"DZC:EA:EMa"
+			],
+			"consumes": {
+				"name": "Ki",
+				"amount": 1
+			},
+			"entries": [
+				"You can spend 1 ki point when you take the Dodge action to protect yourself with acid. Until the start of your next turn, a creature that hits you with a melee weapon attack takes acid damage equal to 5 + your Wisdom modifier."
+			],
+			"prerequisite": [
+				{
+					"feature": [
+						"Two or more Earth Arts"
+					]
+				}
+			]
+		},
+		{
+			"name": "Light Adept",
+			"foundryImg": "icons/magic/light/beam-rays-orange-large.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:F",
+				"DZC:EA:EMa"
+			],
+			"consumes": {
+				"name": "Ki",
+				"amount": 1
+			},
+			"entries": [
+				"You can spend 1 ki point when you take the Attack action to engulf your arms in radiance. Until the end of your turn, your melee weapon attacks deal extra radiant damage equal to your Wisdom modifier."
+			],
+			"prerequisite": [
+				{
+					"feature": [
+						"Two or more Fire Arts"
+					]
+				}
+			]
+		},
+		{
+			"name": "Heal Adept",
+			"foundryImg": "icons/magic/life/heart-cross-blue.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:W",
+				"DZC:EA:EMa"
+			],
+			"consumes": {
+				"name": "Ki",
+				"amount": 1
+			},
+			"entries": [
+				"Immediatly after you take the Help action on your turn, you can spend 1 ki point to heal a creature you can touch. That creature can spend up to a number of Hit Die equal to your Wisdom modifier to heal itself."
+			],
+			"prerequisite": [
+				{
+					"feature": [
+						"Two or more Water Arts"
+					]
+				}
+			]
+		},
+		{
+			"name": "Nature's Vessel",
+			"foundryImg": "icons/magic/control/silhouette-hold-change-green.webp",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"featureType": [
+				"DZC:EA",
+				"DZC:EA:A",
+				"DZC:EA:E",
+				"DZC:EA:F",
+				"DZC:EA:W",
+				"DZC:EA:EMa"
+			],
+			"consumes": {
+				"name": "Ki",
+				"amount": 3
+			},
+			"entries": [
+				"When you finish a long rest, you can replace one of the elemental arts that you know with another one from the same element. In addition, you can spend 3 ki points to enter your Primal Stance. When you do so, you gain the benefits of two different stance options that you know."
+			],
+			"prerequisite": [
+				{
+					"feature": [
+						"One Art in Each Element"
+					]
+				}
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Way of the Elements",
+			"source": "DZC:4ELE",
+			"page": 1,
+			"foundryImg": "icons/magic/symbols/elements-air-earth-fire-water.webp",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Elements",
+			"subclassSource": "DZC:4ELE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Monks of the Way of the Inner Strength are dedicated to cultivating the true potential of ki. They take on a path of diligent meditation and self discovery, searching for the mysteries that dwelve deep within them, rather than those of the universe around them.",
+				"More often than not, practicioners of this tradition isolate themselves for long periods of time, disconnecting their terrenal senses in order to heighten their spiritual eye. Only a few can endure this journey, and even less monks can achieve the state of true enlightenment.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Elemental Arts|Monk||Elements|DZC:4ELE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Elemental Strike|Monk||Elements|DZC:4ELE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Elemental Manifestation|Monk||Elements|DZC:4ELE|3"
+				}
+			]
+		},
+		{
+			"name": "Elemental Arts",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"foundryImg": "icons/magic/nature/beam-hand-leaves-green.webp",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Elements",
+			"subclassSource": "DZC:4ELE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Each element is contained within a field of study, known as {@filter Elemental Arts|optionalfeatures|feature type=DZC:EA}. Each elemental art has its own set of abilities, reflected as options within the features of this subclass. Whenever you gain a feature from this subclass you learn one of its options, each associated to an elemental art ({@filter air|optionalfeatures|feature type=DZC:EA:A}, {@filter earth|optionalfeatures|feature type=DZC:EA:E}, {@filter fire|optionalfeatures|feature type=DZC:EA:F}, and {@filter water|optionalfeatures|feature type=DZC:EA:W}).",
+				"Another property of these arts is that each has associated damage types, as shown in the Elemental Arts Damage table. Whenever a feature in this subclass refers to the damage of your elemental art, it refers to the ones in the table.",
+				{
+					"type": "table",
+					"caption": "Elemental Arts Damage",
+					"colLabels": [
+						"Elemental Art",
+						"Maximum Ki Points for a Spell"
+					],
+					"colStyles": [
+						"col-5 text-center",
+						"col-9 text-left"
+					],
+					"rows": [
+						[
+							"Air",
+							"Thunder"
+						],
+						[
+							"Earth",
+							"Bludgeoning, Piercing, Slashing"
+						],
+						[
+							"Fire",
+							"Fire"
+						],
+						[
+							"Water",
+							"Cold"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Strike",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"foundryImg": "icons/magic/fire/flame-burning-fist-strike.webp",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Elements",
+			"subclassSource": "DZC:4ELE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Starting when you choose this tradition at 3rd level, you learn to release elemental energy from your attacks. Once on your turn, when you hit a target with a weapon attack, you can spend 1 ki point to use an {@filter Elemental Strike|optionalfeature|feature type=DZC:EA:ES} option you know, dealing extra damage equal to one roll of your Martial Arts die, choosing from one of the damage types of its associated art. Each option has additional effect you can apply with it.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Thunderous Strike|DZC:4ELE",
+							"name": "Thunderous Strike (Air Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Rocky Strike|DZC:4ELE",
+							"name": "Rocky Strike (Earth Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Igneous Strike|DZC:4ELE",
+							"name": "Igneous Strike (Fire Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Gelid Strike|DZC:4ELE",
+							"name": "Gelid Strike (Water Art)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Manifestation",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"foundryImg": "icons/magic/earth/projectile-stone-boulder-brown.webp",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Elements",
+			"subclassSource": "DZC:4ELE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Also at 3rd level, you learn to shape the elements' energy into different effects. Once on your turn, you can spend 1 ki point to replace an attack from the Attack action with an {@filter Elemental Manifestation|optionalfeature|feature type=DZC:EA:EM} option you know.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Wind Blast|DZC:4ELE",
+							"name": "Wind Blast (Air Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Stone Boulder|DZC:4ELE",
+							"name": "Stone Boulder (Earth Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Flaming Blast|DZC:4ELE",
+							"name": "Flaming Blast (Fire Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Water Swirl|DZC:4ELE",
+							"name": "Water Swirl (Water Art)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Primal Stances",
+			"source": "DZC:4ELE",
+			"page": 6,
+			"foundryImg": "icons/magic/water/elemental-water.webp",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Elements",
+			"subclassSource": "DZC:4ELE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"At 6th level, you learn to infuse yourself with elemental energy. As a bonus action, you can spend 2 ki points to enter a {@filter Primal Stance|optionalfeature|feature type=DZC:EA:PS} option you know for 1 minute. For the duration, you gain the benefits of the chosen option. Your Primal Stance ends early if you are knocked unconscious, if you end it as a bonus action, or until you use this feature again.",
+				"Alternatively, you can learn an additional option from one of your previous features.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Wind Stance|DZC:4ELE",
+							"name": "Wind Stance (Air Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mountain Stance|DZC:4ELE",
+							"name": "Mountain Stance (Earth Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Flame Stance|DZC:4ELE",
+							"name": "Flame Stance (Fire Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "River Stance|DZC:4ELE",
+							"name": "River Stance (Water Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Wind Blast|DZC:4ELE",
+							"name": "Wind Blast (Air Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Stone Boulder|DZC:4ELE",
+							"name": "Stone Boulder (Earth Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Flaming Blast|DZC:4ELE",
+							"name": "Flaming Blast (Fire Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Water Swirl|DZC:4ELE",
+							"name": "Water Swirl (Water Art)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Step Shift",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"foundryImg": "icons/creatures/abilities/wings-birdlike-blue.webp",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Elements",
+			"subclassSource": "DZC:4ELE",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"At 11th level, you learn how to move as one with the elements. Choose one of the {@filter Step Shift|optionalfeature|feature type=DZC:EA:SS}",
+				"Alternatively, you can learn an additional option from one of your previous features.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Aerial Lift|DZC:4ELE",
+							"name": "Aerial Lift (Air Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Rock Walk|DZC:4ELE",
+							"name": "Rock Walk (Earth Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Jet Burst|DZC:4ELE",
+							"name": "Jet Burst (Fire Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Underwater Adaptations|DZC:4ELE",
+							"name": "Underwater Adaptations (Water Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Wind Stance|DZC:4ELE",
+							"name": "Wind Stance (Air Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mountain Stance|DZC:4ELE",
+							"name": "Mountain Stance (Earth Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Flame Stance|DZC:4ELE",
+							"name": "Flame Stance (Fire Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "River Stance|DZC:4ELE",
+							"name": "River Stance (Water Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Wind Blast|DZC:4ELE",
+							"name": "Wind Blast (Air Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Stone Boulder|DZC:4ELE",
+							"name": "Stone Boulder (Earth Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Flaming Blast|DZC:4ELE",
+							"name": "Flaming Blast (Fire Art)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Water Swirl|DZC:4ELE",
+							"name": "Water Swirl (Water Art)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Mastery",
+			"source": "DZC:4ELE",
+			"page": 7,
+			"foundryImg": "icons/magic/nature/explosion-flame-blue.webp",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Elements",
+			"subclassSource": "DZC:4ELE",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"At 17th level, you have perfected the primal arts, learning to shape them in special ways. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"Once on your turn, when you hit a target with a weapon attack, you can deal extra damage equal to one roll of your Martial Arts die, choosing from one of the damage types of an elemental art you know.",
+						"You gain resistance to one of the damage types of an elemental art you know. If you have four arts in a single element, you ignore resistance to that damage."
+					]
+				},
+				"You also gain one of the following {@filter Elemental Mastery|optionalfeatures|feature type=DZC:EA:EMa} options of your choice. You must know the amount of elemental arts shown in parenthesis in order to take it.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Air Master|DZC:4ELE",
+							"name": "Air Master (Four Air Arts)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Earth Master|DZC:4ELE",
+							"name": "Earth Master (Four Earth Arts)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Fire Master|DZC:4ELE",
+							"name": "Fire Master (Four Fire Arts)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Water Master|DZC:4ELE",
+							"name": "Water Master (Four Water Arts)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Lightning Adept|DZC:4ELE",
+							"name": "Lightning Adept (Two or more Air Arts)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Acid Adept|DZC:4ELE",
+							"name": "Acid Adept (Two or more Earth Arts)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Light Adept|DZC:4ELE",
+							"name": "Light Adept (Two or more Fire Arts)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Heal Adept|DZC:4ELE",
+							"name": "Heal Adept (Two or more Water Arts)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Nature's Vessel|DZC:4ELE",
+							"name": "Nature's Vessel (One Art in each Elemental)"
+						}
+					]
+				}
+			]
+		}
+	]
+}
