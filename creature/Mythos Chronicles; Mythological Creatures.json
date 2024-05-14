@@ -624,7 +624,7 @@
 					"items": [
 						"{@b Aetherial Storm:} A storm of chaotic energy forms in a 40- foot radius centered on a point Progenitus can see within 150 feet. Each creature in that area must make a {@dc 18} Dexterity saving throw, taking 14 (4d6) force damage on a failed save, or half as much damage on a successful one. The storm disrupts magic, dispelling spells of 3rd level or lower in the area as per the dispel magic spell.",
                         "{@b Creation’s Call:} Progenitus emits a powerful roar that resonates with the essence of creation, compelling its monstrous offspring within 1000 feet to converge towards it. Each monstrosity that hears the call must immediately expend its reaction (if available) to move up to its speed towards Progenitus without provoking opportunity attacks.",
-                        "{@b Monstrous Adaptation:} Progenitus adapts, rolling once on the {@table Progenitus Creature Adaptions|MythologicalCreatures} Table. The effect lasts until the next initiative count 20."
+                        "{@b Monstrous Adaptation:} Progenitus adapts, rolling once on the {@table Progenitus Creature Adaptations|MythologicalCreatures} Table. The effect lasts until the next initiative count 20."
 					]
 				}
 			],
@@ -633,7 +633,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@b Adaptive Genesis:} Any monstrosity that is summoned, spawned, or enters the area within 10 miles of Progenitus for the first time must roll once on the {@table Progenitus Creature Adaptions|MythologicalCreatures} Table.",
+						"{@b Adaptive Genesis:} Any monstrosity that is summoned, spawned, or enters the area within 10 miles of Progenitus for the first time must roll once on the {@table Progenitus Creature Adaptations|MythologicalCreatures} Table.",
                         "{@b Primal Weather:} The weather within 10 miles of Progenitus is subject to sudden and severe changes, influenced by its chaotic energy. Clear skies may abruptly give way to tempestuous storms, and calm nights can suddenly be lit by auroras of unnatural colors. These weather patterns can change without warning, occurring within minutes and lasting for hours or days.",
                         "{@b Veil of Mists:} Thick, unnatural mists blanket the land within 5 miles of Progenitus. These mists distort perceptions and obscure sight, imposing disadvantage on Wisdom (Perception) checks.",
                         "{@b Emanations of Vitality:} Plants and natural features within 10 miles of Progenitus grow with unnerving vigor and sometimes manifest monstrous traits. Trees might have bark that resembles scales, and flowers could bloom with eyes that follow movement."
@@ -43934,6 +43934,96 @@
             ]
         },
         {
+            "name": "War Chariot",
+            "source": "MythologicalCreatures",
+            "page": 310,
+            "size": [
+                "L"
+            ],
+            "type": "vehicle",
+            "ac": [
+                {
+                    "ac": 15,
+                    "from": [
+                        "wooden body with reinforced metal"
+                    ]
+                }
+            ],
+            "hp": {
+                "special": "60 (damage threshold 10, mishap threshold 20)"
+            },
+            "speed": {
+                "walk": {
+                    "number": 100,
+                    "condition": "(pulled by two {@creature War Camel|MythologicalCreatures}})"
+                }
+            },
+            "str": 16,
+            "dex": 10,
+            "immune": [
+                "poison",
+                "psychic"
+            ],
+            "conditionImmune": [
+                "all conditions creature"
+            ],
+            "trait": [
+                {
+                    "name": "Carrying Capacity",
+                    "entries": [
+                        "2 Medium creatures & 400lb cargo"
+                    ]
+                },
+                {
+                    "name": "Half Speed on Damaged Camel",
+                    "entries": [
+                        "If a War Camel pulling the War Chariot dies, its speed is reduced by half. If both War Camels die, the War Chariot can't move.",
+                        "Action Stations"
+                    ]
+                },
+                {
+                    "name": "Mishaps",
+                    "entries": [
+                        "If the War Chariot takes more than 20 damage from a single source if suffers a mishap. Roll on the {@table War Chariot Mishaps|MythologicalCreatures} table to determine what goes wrong."
+                    ]
+                }
+            ],
+            "action": [
+                {
+                    "name": "Rapid Fire Arrows (Requires Archer Position)",
+                    "entries": [
+                        "{@atk rw} +4 to hit, range 150/600 ft. The archer makes two attacks in quick succession. {@h}8 ({@damage 1d8 + 4}) piercing damage per arrow."
+                    ]
+                },
+                {
+                    "name": "Helm (Requires 1 Crew)",
+                    "entries": [
+                        "Drive and steer the War Chariot."
+                    ]
+                },
+                {
+                    "name": "Archer Position (Requires 1 Crew)",
+                    "entries": [
+                        "Use ranged weapons to attack from the chariot."
+                    ]
+                }
+            ],
+            "reaction": [
+                {
+                    "name": "Quick Maneuver",
+                    "entries": [
+                        "If the War Chariot is able to move, the driver can use its reaction to grant the War Chariot advantage on a Dexterity saving throw."
+                    ]
+                }
+            ],
+            "damageTags": [
+                "P"
+            ],
+            "miscTags": [
+                "RW"
+            ]
+        },        
+        {
             "name": "Petsuchos",
             "source": "MythologicalCreatures",
             "page": 311,
@@ -50857,6 +50947,40 @@
                     "20",
                     "Dimensional Step",
                     "Can teleport up to 30 ft. to an unoccupied space it can see as a bonus action."
+                ]
+            ]
+        },
+        {
+            "name": "War Chariot Mishaps",
+            "source": "MythologicalCreatures",
+            "intro": [
+                "The War Chariot represents a significant advancement in ancient warfare, particularly utilized by the Medjay Guards and, on rare occasions, by Egyptian Nomads. Constructed with a sturdy wooden body reinforced with metal, it is designed to withstand the rigors of combat while providing a mobile platform for archers. Pulled by two powerful War Camels, the chariot boasts an impressive speed, allowing for rapid movement across the battlefield."
+            ],
+            "caption": "Use the table to determine what mishap occours to a War Chariot",
+            "colLabels": [
+                "{@dice d4}",
+                "Mishap"
+            ],
+            "colStyles": [
+                "col-1 text-center",
+                "col-11"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "{@b Broken Axle:} One of the chariot's axles snaps, causing it to lurch violently. The chariot's speed is halved, and it cannot make sharp turns until repaired."
+                ],
+                [
+                    "2",
+                    "{@b Wheel Damage:} A wheel of the chariot is damaged, making steering difficult. The driver must make a {@dc 12} Dexterity check at the start of its turn to maintain control. On a failure, the chariot veers off in a random direction."
+                ],
+                [
+                    "3",
+                    "{@b Reins Snapped:} The reins used to control the War Camel snap. The driver loses control of the chariot, which continues moving in a straight line and cannot change direction or speed until the reins are fixed."
+                ],
+                [
+                    "4",
+                    "{@b Camel Panic:} One of the war camels panics, making it unruly. The chariot behaves erratically, moving in a random direction at half speed each turn until the camel is calmed with a successful {@dc 15} Wisdom (Animal Handling) check."
                 ]
             ]
         }
