@@ -1,0 +1,2878 @@
+{
+	"_meta": {
+		"sources": [
+			{
+				"json": "DZC:ANA:F",
+				"abbreviation": "DZC:ANA:F",
+				"full": "Fighter Rework",
+				"authors": [
+					"Dusk Zargoth"
+				],
+				"convertedBy": [
+					"Dusk Zargoth"
+				],
+				"version": "1.0.1",
+				"color": "DC3636",
+				"url": "https://homebrewery.naturalcrit.com/share/IgYlBcKRHPOG"
+			}
+		],
+		"dateAdded": 1714935701,
+		"dateLastModified": 1714935701,
+		"optionalFeatureTypes": {
+			"DZC:CS": "Fighter Rework; Combat Specialization",
+			"DZC:CS:WS": "Fighter Rework; Combat Specialization: Weapon Specialization",
+			"DZC:CS:AS": "Fighter Rework; Combat Specialization: Armor Specialization",
+			"DZC:CS:PS": "Fighter Rework; Combat Specialization: Physical Specialization",
+			"DZC:M": "Fighter Rework; Maneuvers",
+			"DZC:IC": "Fighter Rework; Improved Critical",
+			"DZC:WB": "Fighter Rework; Weapon Bond",
+			"DZC:MT": "DZC: Martial Techniques"
+		},
+		"_dateLastModifiedHash": "53f62715d4"
+	},
+	"class": [
+		{
+			"name": "Fighter Rework",
+			"source": "DZC:ANA:F",
+			"foundryImg": "https://raw.githubusercontent.com/5etools-mirror-2/5etools-img/main/classes/PHB/Fighter.webp",
+			"page": 1,
+			"hd": {
+				"number": 1,
+				"faces": 10
+			},
+			"proficiency": [
+				"str",
+				"con"
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					"heavy",
+					"{@item shield|phb|shields}"
+				],
+				"weapons": [
+					"simple",
+					"martial"
+				],
+				"tools": [
+					"Choose one type of {@item artisan's tools|phb} or one kind of {@item vehicle|phb}"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"acrobatics",
+								"animal handling",
+								"athletics",
+								"history",
+								"insight",
+								"intimidation",
+								"perception",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item chain mail|phb} or (b) {@item leather armor|phb}, {@item longbow}, {@item quiver}, and {@item arrows (20)|phb|20 arrows}",
+					"(a) {@filter martial weapon|items|source=phb|category=basic|type=martial weapon} and a {@item shield|phb} or (b) two {@filter martial weapons|items|source=phb|category=basic|type=martial weapon}",
+					"(a) a {@item light crossbow|phb}, a {@item crossbow bolt case|phb} and {@item crossbow bolts (20)|phb|20 bolts} or (b) two {@item simple weapons|items|source=phb|category=basic|type=simple wepaon}",
+					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}"
+				],
+				"defaultData": [
+					{
+						"a": [
+							"chain mail|phb"
+						],
+						"b": [
+							"leather armor|phb",
+							"longbow|phb",
+							"quiver|phb",
+							"arrows (20)|phb"
+						]
+					},
+					{
+						"a": [
+							{
+								"equipmentType": "weaponMartial"
+							},
+							"shield|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponMartial",
+								"quantity": 2
+							}
+						]
+					},
+					{
+						"a": [
+							"light crossbow|phb",
+							"crossbow bolt case|phb",
+							"crossbow bolts (20)|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple",
+								"quantity": 2
+							}
+						]
+					},
+					{
+						"a": [
+							"dungeoneer's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
+					}
+				]
+			},
+			"optionalfeatureProgression": [
+				{
+					"name": "Maneuvers",
+					"featureType": [
+						"DZC:M"
+					],
+					"progression": [
+						0,
+						3,
+						3,
+						3,
+						4,
+						4,
+						5,
+						5,
+						6,
+						6,
+						7,
+						7,
+						8,
+						8,
+						9,
+						9,
+						9,
+						10,
+						10,
+						10
+					]
+				},
+				{
+					"name": "Warrior's Training",
+					"featureType": [
+						"DZC:CS"
+					],
+					"progression": {
+						"1": 2,
+						"9": 3,
+						"13": 4
+					}
+				},
+				{
+					"name": "Improved Critical",
+					"featureType": [
+						"DZC:IC"
+					],
+					"progression": {
+						"3": 19,
+						"7": 18,
+						"15": 17,
+						"18": 16
+					}
+				}
+			],
+			"foundryAdvancement": [
+				{
+					"title": "Improved Critical",
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "imp-crit",
+						"type": "numeric",
+						"scale": {
+							"3": {
+								"value": 19
+							},
+							"7": {
+								"value": 18
+							},
+							"15": {
+								"value": 17
+							},
+							"18": {
+								"value": 16
+							}
+						}
+					}
+				}
+			],
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"Superiority Pool",
+						"Superiority Dice",
+						"Maneuvers"
+					],
+					"rows": [
+						[
+							0,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							},
+							0
+						],
+						[
+							4,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							},
+							3
+						],
+						[
+							4,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							},
+							3
+						],
+						[
+							5,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							},
+							3
+						],
+						[
+							5,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							},
+							4
+						],
+						[
+							5,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 8
+									}
+								]
+							},
+							4
+						],
+						[
+							6,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 8
+									}
+								]
+							},
+							5
+						],
+						[
+							6,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 8
+									}
+								]
+							},
+							5
+						],
+						[
+							6,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 8
+									}
+								]
+							},
+							6
+						],
+						[
+							7,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 8
+									}
+								]
+							},
+							6
+						],
+						[
+							7,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 10
+									}
+								]
+							},
+							7
+						],
+						[
+							7,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 10
+									}
+								]
+							},
+							7
+						],
+						[
+							8,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 10
+									}
+								]
+							},
+							8
+						],
+						[
+							8,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 10
+									}
+								]
+							},
+							8
+						],
+						[
+							8,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 10
+									}
+								]
+							},
+							9
+						],
+						[
+							9,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 12
+									}
+								]
+							},
+							9
+						],
+						[
+							9,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 12
+									}
+								]
+							},
+							9
+						],
+						[
+							9,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 12
+									}
+								]
+							},
+							10
+						],
+						[
+							10,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 12
+									}
+								]
+							},
+							10
+						],
+						[
+							10,
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 12
+									}
+								]
+							},
+							10
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Warrior's Training|Fighter Rework|DZC:ANA:F|1",
+				"Pump Action|Fighter Rework|DZC:ANA:F|1",
+				"Combat Superiority|Fighter Rework|DZC:ANA:F|2",
+				"Determination|Fighter Rework|DZC:ANA:F|2",
+				{
+					"classFeature": "Martial Archetype|Fighter Rework|DZC:ANA:F|3",
+					"gainSubclassFeature": true
+				},
+				"Know Your Enemy|Fighter Rework|DZC:ANA:F|3",
+				"Ability Score Improvement|Fighter Rework|DZC:ANA:F|4",
+				"Extra Attack|Fighter Rework|DZC:ANA:F|5",
+				"Combat Expertise|Fighter Rework|DZC:ANA:F|5",
+				"Ability Score Improvement|Fighter Rework|DZC:ANA:F|6",
+				{
+					"classFeature": "Martial Archetype feature|Fighter Rework|DZC:ANA:F|7",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Fighter Rework|DZC:ANA:F|8",
+				"Warrior's Training improvement|Fighter Rework|DZC:ANA:F|9",
+				"Determination improvement|Fighter Rework|DZC:ANA:F|9",
+				"Ability Score Improvement|Fighter Rework|DZC:ANA:F|10",
+				"Extra Attack (2)|Fighter Rework|DZC:ANA:F|11",
+				"Ability Score Improvement|Fighter Rework|DZC:ANA:F|12",
+				"Warrior's Training improvement|Fighter Rework|DZC:ANA:F|13",
+				"Relentless|Fighter Rework|DZC:ANA:F|14",
+				{
+					"classFeature": "Martial Archetype feature|Fighter Rework|DZC:ANA:F|15",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Fighter Rework|DZC:ANA:F|16",
+				"Extra Attack (3)|Fighter Rework|DZC:ANA:F|17",
+				{
+					"classFeature": "Martial Archetype feature|Fighter Rework|DZC:ANA:F|18",
+					"gainSubclassFeature": true
+				},
+				"Knowledge Advantage|Fighter Rework|DZC:ANA:F|19",
+				"Ability Score Improvement|Fighter Rework|DZC:ANA:F|20",
+				"Legendary Warrior|Fighter Rework|DZC:ANA:F|20"
+			],
+			"subclassTitle": "Martial Archetype",
+			"multiclassing": {
+				"requirements": {
+					"or": [
+						{
+							"str": 13,
+							"dex": 13
+						}
+					],
+					"con": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light",
+						"medium",
+						"{@item shield|phb|shields}"
+					],
+					"weapons": [
+						"simple",
+						"martial"
+					]
+				}
+			},
+			"hasFluff": true
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Warrior's Training",
+			"source": "DZC:ANA:F",
+			"foundryImg": "icons/skills/melee/sword-shield-stylized-white.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 3,
+			"level": 1,
+			"entries": [
+				"At 1st level, you take upon a training regime in order to cultivate your fighting prowess, which takes on the form of a {@filter Combat Specialization|optionalfeatures|feature type=DZC:CS}, each one is described below.",
+				"You learn two features of your choice from any Combat Specialization. When you reach 9th and 13th level in this class, you learn an additional feature of your choice from any specialization.",
+				{
+					"type": "entries",
+					"name": "Weapon Specialization",
+					"page": 3,
+					"entries": [
+						"To overwhelm your opponent, to skillfully wield your weapons in different ways to use them in unique ways, that is the key to success in the battlefield."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Armor Specialization",
+					"page": 3,
+					"entries": [
+						"Those foolish enough will say that the best defense is the best offense, however, the best defense is that which allows you to fight longer."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Physical Specialization",
+					"page": 3,
+					"entries": [
+						"Your body takes the major part of the work load, making it the most important part to train."
+					]
+				},
+				{
+					"type": "inset",
+					"name": "Changes to Unarmed Strikes and the Finesse Property",
+					"entries": [
+						"In this compendium unarmed strikes and the finesse property suffer important changes meant to keep balance in check.",
+						{
+							"type": "entries",
+							"name": "Finesse Property",
+							"page": 14,
+							"entries": [
+								"The property now allows to choose between your Strength or Dexterity modifier only for the attack roll with the weapon, but not for the damage roll. For the damage roll you still have to use your Strength modifier for melee weapon attacks or your Dexterity modifier for ranged weapon attacks."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Unarmed Strikes",
+							"page": 14,
+							"entries": [
+								"Unarmed strikes are now considered to have the finesse and light properties."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Warrior's Training improvement",
+			"source": "DZC:ANA:F",
+			"foundryImg": "icons/skills/melee/sword-shield-stylized-white.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 3,
+			"level": 9,
+			"entries": [
+				"At 9th level, you learn an additional {@filter Combat Specialization|optionalfeatures|feature type=DZC:CS} of your choice from any specialization."
+			]
+		},
+		{
+			"name": "Warrior's Training improvement",
+			"source": "DZC:ANA:F",
+			"foundryImg": "icons/skills/melee/sword-shield-stylized-white.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 3,
+			"level": 13,
+			"entries": [
+				"At 13th level, you learn an additional {@filter Combat Specialization|optionalfeatures|feature type=DZC:CS} of your choice from any specialization."
+			]
+		},
+		{
+			"name": "Pump Action",
+			"source": "DZC:ANA:F",
+			"foundryImg": "icons/skills/social/intimidation-impressing.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 3,
+			"level": 1,
+			"entries": [
+				"At 1st level, on your turn, you can forgo your bonus action and your reaction to take an additional action this turn."
+			],
+			"foundrySystem": {
+				"activation.type": "bonus action"
+			}
+		},
+		{
+			"name": "Combat Superiority",
+			"source": "DZC:ANA:F",
+			"foundryImg": "icons/magic/fire/dagger-rune-enchant-flame-strong-blue-yellow.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 3,
+			"level": 2,
+			"entries": [
+				"Starting at 2nd level, you learn {@filter Maneuvers|optionalfeatures|feature type=DZC:M} that are fueled by special dice called superiority dice.",
+				{
+					"type": "entries",
+					"name": "Maneuvers",
+					"page": 3,
+					"entries": [
+						"You learn three {@filter maneuvers|optionalfeatures|feature type=DZC:M} of your choice. Your maneuvers are detailed at the end of the class description. When you gain certain fighter levels, you gain additional maneuvers of your choice, as shown in the Maneuvers Known column of the Fighter table.",
+						"Whenever you gain a level in this class, you can replace a maneuver you know with another one."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Superiority Dice",
+					"page": 3,
+					"entries": [
+						"You have a special die called Superiority Dice, as shown in the Superiority Dice column of the Fighter table. You have a pool of these die available, as shown in the Superiority Pool column of said table. Whenever you use a maneuver, you spend a Superiority Dice. You regain all of your expended die when you finish a short or long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Saving Throws",
+					"page": 3,
+					"entries": [
+						"Some of your maneuvers require your target to make a saving throw to resist the maneuver's effects. The saving throw DC is calculated as follows:",
+						{
+							"type": "abilityDc",
+							"name": "Maneuver",
+							"attributes": [
+								"str",
+								"dex"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Determination",
+			"source": "DZC:ANA:F",
+			"foundryImg": "icons/magic/fire/flame-burning-fist-strike.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 3,
+			"level": 2,
+			"entries": [
+				"You can't fail, not when everyone depends on you. At 2nd level, you can cancel the disadvantage or a penalty to an attack roll, ability check, or saving throw you make. You can cancel a penalty of up to -5 with this feature.",
+				"You can use this feature three times. You regain all expended uses after you finish a short or long rest.",
+				"Starting at 9th level, you can cancel both a disadvantage and a penalty to one of the listed rolls you make with a single use of this feature."
+			]
+		},
+		{
+			"name": "Determination improvement",
+			"source": "DZC:ANA:F",
+			"foundryImg": "icons/magic/fire/flame-burning-fist-strike.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 3,
+			"level": 9,
+			"entries": [
+				"Starting at 9th level, you can cancel both a disadvantage and a penalty to one of the listed rolls you make with a single use of this feature."
+			]
+		},
+		{
+			"name": "Know Your Enemy",
+			"source": "DZC:ANA:F",
+			"foundryImg": "icons/sundries/books/symbol-axe-gold-grey.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 3,
+			"level": 3,
+			"entries": [
+				"At 3rd level, if you spend at least 10 minutes examinating a creature through observation, interaction, or combat, you can collect certain information about its capabilities or demeanors. Make a DC 10 Insight check. If you succeed on the check, you learn one of the following creature's characteristics of your choice:",
+				{
+					"type": "list",
+					"items": [
+						"If one of its ability scores is equal, superior, or inferior to yours.",
+						"If its Armor Class and hit point maximum is equal, superior, or inferior to yours.",
+						"Your choice of one skill, tool, saving throw, or weapon proficiency it has if its total modifier is equal, superior, or inferior to yours.",
+						"Vulnerability, resistance, or immunity to a damage type you choose.",
+						"Any demeanor, tic, and vocal inflection it has along with their meaning, if it has one.",
+						"What causes it to shift to a friendly, indifferent, or hostile attitude."
+					]
+				},
+				"You learn an additional characteristic of your choice for every 5 points you get with your check above the DC. You can choose to learn an ability score or proficiency it has multiple times in this way.",
+				"Once you use this feature on a creature, you can't use it on it again for the next hour."
+			]
+		},
+		{
+			"name": "Martial Archetype",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 3,
+			"entries": [
+				"At 3rd level, you choose an archetype that you strive to emulate in your combat style and techniques, all detailed at the end of the class description. Your archetype grants you features at 3rd level and again at 7th, 15th, and 18th level."
+			]
+		},
+		{
+			"name": "Martial Archetype feature",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 7,
+			"entries": [
+				"At 7th level, you gain a feature granted by your Martial Archetype."
+			]
+		},
+		{
+			"name": "Martial Archetype feature",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 15,
+			"entries": [
+				"At 15th level, you gain a feature granted by your Martial Archetype."
+			]
+		},
+		{
+			"name": "Martial Archetype feature",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 18,
+			"entries": [
+				"At 18th level, you gain a feature granted by your Martial Archetype."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 4,
+			"entries": [
+				"When you reach 4th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+				"If your DM allows the use of feats, you may instead take a {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 6,
+			"entries": [
+				"When you reach 6th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+				"If your DM allows the use of feats, you may instead take a {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 8,
+			"entries": [
+				"When you reach 8th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+				"If your DM allows the use of feats, you may instead take a {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 10,
+			"entries": [
+				"When you reach 10th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+				"If your DM allows the use of feats, you may instead take a {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 12,
+			"entries": [
+				"When you reach 12th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+				"If your DM allows the use of feats, you may instead take a {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 16,
+			"entries": [
+				"When you reach 16th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+				"If your DM allows the use of feats, you may instead take a {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 20,
+			"entries": [
+				"When you reach 20th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
+				"If your DM allows the use of feats, you may instead take a {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"foundryImg": "icons/skills/melee/spear-tips-triple-orange.webp",
+			"page": 4,
+			"level": 5,
+			"entries": [
+				"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn.",
+				"The number of attacks increases to three when you reach 11th level in this class and to four when you reach 17th level in this class."
+			]
+		},
+		{
+			"name": "Extra Attack (2)",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"foundryImg": "icons/skills/melee/spear-tips-triple-orange.webp",
+			"page": 4,
+			"level": 11,
+			"entries": [
+				"At 11th level, you can attack three times whenever you take the {@action Attack} action on your turn."
+			]
+		},
+		{
+			"name": "Extra Attack (3)",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"foundryImg": "icons/skills/melee/spear-tips-quintuple-orange.webp",
+			"page": 4,
+			"level": 17,
+			"entries": [
+				"At 17th level, you can attack three times whenever you take the {@action Attack} action on your turn."
+			]
+		},
+		{
+			"name": "Combat Expertise",
+			"source": "DZC:ANA:F",
+			"foundryImg": "icons/skills/melee/hand-grip-staff-teal.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 5,
+			"entries": [
+				"You learn the strengths and weaknesses of your combat style. At 5th level, whenever you make a contested check using Strength, Dexterity, or Constitution, you have advantage on that check.",
+				"You also become a freak for the history of anything combat related. Whenever you make an Intelligence (History) check related to combat or adventuring, you are considered proficient in that skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus."
+			]
+		},
+		{
+			"name": "Relentless",
+			"source": "DZC:ANA:F",
+			"foundryImg": "icons/skills/wounds/injury-pain-body-orange.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 14,
+			"entries": [
+				"Starting at 14th level, when you roll initiative and have no superiority dice remaining, you regain 1 superiority die. You also regain a superiority die when you or an ally score a critical hit or you succeed on a saving throw."
+			]
+		},
+		{
+			"name": "Knowledge Advantage",
+			"source": "DZC:ANA:F",
+			"foundryImg": "icons/magic/perception/eye-ringed-glow-angry-red.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 19,
+			"entries": [
+				"They say knowing is half the battle, but only a few can use their knowledge to their advantage. At 19th level, when you use your {@classFeature Know Your Enemy|Fighter Rework|DZC:ANA:F|3|DZC:ANA:F}, you can designate the target as your Main Target for the next 8 hours. For the duration, you have advantage on ability checks to recall information about them, and your target can't make an attack roll, ability check, or saving throw with advantage against you.",
+				"A creature is no longer your Main Target if you see its corpse or if you designate a different creature as your Main Target."
+			]
+		},
+		{
+			"name": "Legendary Warrior",
+			"source": "DZC:ANA:F",
+			"foundryImg": "icons/skills/melee/weapons-crossed-swords-purple.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"level": 20,
+			"entries": [
+				"You have reached the peak of your career, becoming an adventurer like no other ever seen. At 20th level, whenever you spend a Superiority Dice, you gain a +5 bonus to the roll you used it for and 5 temporary hit points.",
+				"In addition, when you finish a long rest, you can choose one of the maneuvers you know and replace it with a different one."
+			]
+		}
+	],
+	"optionalfeature": [
+		{
+			"name": "Swift Hands",
+			"source": "DZC:ANA:F",
+			"page": 0,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"featureType": [
+				"DZC:MT"
+			],
+			"entries": [
+				"You can take an additional object interaction, which you can use exclusively to draw, seathe, or store a weapon."
+			]
+		},
+		{
+			"name": "Crushing Blow",
+			"source": "DZC:ANA:F",
+			"page": 0,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"featureType": [
+				"DZC:MT"
+			],
+			"entries": [
+				"When you hit a creature with a weapon attack that deals bludgeoning damage, you can impose a Strength saving throw on the target. The save DC equals 8 + your proficiency bonus + your Strength modifier. On a failed save, the creature is knocked {@condition prone}.",
+				"You can use this technique a number of times equal to your proficiency bonus. You regain all expended uses after you finish a short or long rest."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack that deals bludgeoning damage",
+				"activation.cost": 1,
+				"uses.per": "sr",
+				"uses.max": "@prof",
+				"uses.value": 1,
+				"actionType": "save",
+				"save.ability": "str",
+				"save.scaling": "str"
+			}
+		},
+		{
+			"name": "Poker",
+			"source": "DZC:ANA:F",
+			"page": 0,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"featureType": [
+				"DZC:MT"
+			],
+			"entries": [
+				"When you hit a creature with a weapon that deals piercing damage, you can impose that creature to have disadvantage on attack rolls until the end of their next turn.",
+				"You can use this technique a number of times equal to your proficiency bonus. You regain all expended uses after you finish a short or long rest."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack that deals piercing damage",
+				"activation.cost": 1,
+				"uses.per": "sr",
+				"uses.max": "@prof",
+				"uses.value": 1
+			}
+		},
+		{
+			"name": "Bleeding",
+			"source": "DZC:ANA:F",
+			"page": 0,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"featureType": [
+				"DZC:MT"
+			],
+			"entries": [
+				"When you hit a creature with a weapon attack that deals slashing damage, you can cause the creature to bleed until the start of its next turn, where it takes slashing damage equal to one roll of your Technical Dice. The next healing the creature receives stops the bleeding, but regains no hit points from it. This technique has no effect on constructs and undeads.",
+				"You can use this technique a number of times equal to your proficiency bonus. You regain all expended uses after you finish a short or long rest."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack that deals slashing damage",
+				"activation.cost": 1,
+				"uses.per": "sr",
+				"uses.max": "@prof",
+				"uses.value": 1,
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"1d(2 + (ceil(@classes.fighter-rework.levels / 4) * 2))",
+						"slashing"
+					]
+				]
+			}
+		},
+		{
+			"name": "Changing Weapons",
+			"source": "DZC:ANA:F",
+			"page": 3,
+			"foundryImg": "modules/plutonium/media/icon/skills.svg",
+			"featureType": [
+				"DZC:CS",
+				"DZC:CS:WS"
+			],
+			"entries": [
+				"You learn the {@optfeature Swift Hands|DZC:ANA:F} technique.",
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Swift Hands|DZC:ANA:F"
+				}
+			]
+		},
+		{
+			"name": "Bludgeoning Weapons",
+			"source": "DZC:ANA:F",
+			"page": 3,
+			"foundryImg": "modules/plutonium/media/icon/skills.svg",
+			"featureType": [
+				"DZC:CS",
+				"DZC:CS:WS"
+			],
+			"entries": [
+				"You learn the {@optfeature Crushing Blow|DZC:ANA:F} technique.",
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Crushing Blow|DZC:ANA:F"
+				}
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack that deals bludgeoning damage",
+				"activation.cost": 1,
+				"uses.per": "sr",
+				"uses.max": "@prof",
+				"uses.value": 1,
+				"actionType": "save",
+				"save.ability": "str",
+				"save.scaling": "str"
+			}
+		},
+		{
+			"name": "Piercing Weapons",
+			"source": "DZC:ANA:F",
+			"page": 3,
+			"foundryImg": "modules/plutonium/media/icon/skills.svg",
+			"featureType": [
+				"DZC:CS",
+				"DZC:CS:WS"
+			],
+			"entries": [
+				"You learn the {@optfeature Poker|DZC:ANA:F} technique.",
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Poker|DZC:ANA:F"
+				}
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack that deals piercing damage",
+				"activation.cost": 1,
+				"uses.per": "sr",
+				"uses.max": "@prof",
+				"uses.value": 1
+			}
+		},
+		{
+			"name": "Slashing Weapons",
+			"source": "DZC:ANA:F",
+			"page": 3,
+			"foundryImg": "modules/plutonium/media/icon/skills.svg",
+			"featureType": [
+				"DZC:CS",
+				"DZC:CS:WS"
+			],
+			"entries": [
+				"You learn the {@optfeature Bleeding|DZC:ANA:F} technique.",
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Bleeding|DZC:ANA:F"
+				}
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack that deals slashing damage",
+				"activation.cost": 1,
+				"uses.per": "sr",
+				"uses.max": "@prof",
+				"uses.value": 1,
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"1d(2 + (ceil(@classes.fighter-rework.levels / 4) * 2))",
+						"slashing"
+					]
+				]
+			}
+		},
+		{
+			"name": "Shield",
+			"source": "DZC:ANA:F",
+			"page": 3,
+			"foundryImg": "modules/plutonium/media/icon/skills.svg",
+			"featureType": [
+				"DZC:CS",
+				"DZC:CS:AS"
+			],
+			"entries": [
+				"You can equip a shield the moment you roll initiative (no action required) at the cost of a -3 penalty to your initiative roll."
+			]
+		},
+		{
+			"name": "Light Armor",
+			"source": "DZC:ANA:F",
+			"page": 3,
+			"foundryImg": "modules/plutonium/media/icon/skills.svg",
+			"featureType": [
+				"DZC:CS",
+				"DZC:CS:AS"
+			],
+			"entries": [
+				"If you were to be hit by a critical attack, or were to take damage that would reduce you to 0 hit points, you can choose to destroy the light armor you're wearing, reducing that instance of damage to 0."
+			]
+		},
+		{
+			"name": "Medium Armor",
+			"source": "DZC:ANA:F",
+			"page": 3,
+			"foundryImg": "modules/plutonium/media/icon/skills.svg",
+			"featureType": [
+				"DZC:CS",
+				"DZC:CS:AS"
+			],
+			"entries": [
+				"You increase by 1 the maximum Dexterity modifier you can add to your AC while wearing medium armor."
+			]
+		},
+		{
+			"name": "Heavy Armor",
+			"source": "DZC:ANA:F",
+			"page": 3,
+			"foundryImg": "modules/plutonium/media/icon/skills.svg",
+			"featureType": [
+				"DZC:CS",
+				"DZC:CS:AS"
+			],
+			"entries": [
+				"While wearing heavy armor, the bludgeoning, piercing, and slashing damage that you take is reduced by 3."
+			]
+		},
+		{
+			"name": "Durability",
+			"source": "DZC:ANA:F",
+			"page": 3,
+			"foundryImg": "modules/plutonium/media/icon/skills.svg",
+			"featureType": [
+				"DZC:CS",
+				"DZC:CS:PS"
+			],
+			"entries": [
+				"At the start of your turn, if you have less than your maximum hit points, you can take a deep breath to regain your strength. When you do so, you gain a number of temporary hit points equal to 1d10 + your Constitution modifier (minimum of 1).",
+				"Once you use this feature, you can't use it again until you finish a short or long rest."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "At the start of your turn, if you have less than your maximum hit points",
+				"activation.cost": 1,
+				"actionType": "healing",
+				"damage.parts": [
+					[
+						"1d10 + @abilities.con.mod",
+						"temphp"
+					]
+				]
+			}
+		},
+		{
+			"name": "Perseverance",
+			"source": "DZC:ANA:F",
+			"page": 3,
+			"foundryImg": "modules/plutonium/media/icon/skills.svg",
+			"featureType": [
+				"DZC:CS",
+				"DZC:CS:PS"
+			],
+			"entries": [
+				"With enough time, you can carve a path through the mightiest mountain. Standing up from {@condition prone} only costs you 10 feet of movement."
+			]
+		},
+		{
+			"name": "Stamina",
+			"source": "DZC:ANA:F",
+			"page": 3,
+			"foundryImg": "modules/plutonium/media/icon/skills.svg",
+			"featureType": [
+				"DZC:CS",
+				"DZC:CS:PS"
+			],
+			"entries": [
+				"You can momentarily ignore the fatigue of your body. When you roll initiative, if you have the {@condition exhaustion} condition, you can choose to reduce its level by one for the duration of the combat, or until you are knocked unconscious.",
+				"Once you use this feature, you can't use it again until you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Unyielding",
+			"source": "DZC:ANA:F",
+			"page": 3,
+			"foundryImg": "modules/plutonium/media/icon/skills.svg",
+			"featureType": [
+				"DZC:CS",
+				"DZC:CS:PS"
+			],
+			"entries": [
+				"If you start your turn at 0 hit points, you can choose to regain 1 hit point at the cost of one level of {@condition exhaustion}."
+			]
+		},
+		{
+			"name": "Ambush",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you make a Dexterity ({@skill Stealth}) check or an initiative roll, you can expend one superiority die and add the die to the roll, provided you aren't {@condition incapacitated}."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you make a Dexterity (Stealth) check or an initiative roll",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to skill check"
+			}
+		},
+		{
+			"name": "Bait and Switch",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you're within 5 feet of a creature on your turn, you can expend one superiority die and switch places with that creature, provided you spend at least 5 feet of movement and the creature is willing and isn't {@condition incapacitated}. This movement doesn't provoke opportunity attacks.",
+				"Roll the superiority die. Until the start of your next turn, you or the other creature (your choice) gains a bonus to AC equal to the number rolled."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you're within 5 feet of a creature on your turn",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to AC"
+			}
+		},
+		{
+			"name": "Brace",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When a creature you can see moves into the reach you have with the melee weapon you're wielding, you can use your reaction to expend one superiority die and make one attack against the creature, using that weapon. If the attack hits, add the superiority die to the weapon's damage roll."
+			],
+			"foundrySystem": {
+				"activation.type": "reaction",
+				"activation.condition": "When a creature you can see moves into your reach",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll"
+			}
+		},
+		{
+			"name": "Commanding Presence",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you make a Charisma ({@skill Intimidation}), a Charisma ({@skill Performance}), or a Charisma ({@skill Persuasion}) check, you can expend one superiority die and add the superiority die to the ability check."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you make a Charisma (Intimidation), a Charisma (Performance), or a Charisma (Persuasion) check",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to skill check"
+			}
+		},
+		{
+			"name": "Commander's Strike",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you take the Attack action on your turn, you can forgo one of your attacks and use a bonus action to direct one of your companions to strike. When you do so, choose a friendly creature who can see or hear you and expend one superiority die. That creature can immediately use its reaction to make one weapon attack, adding the superiority die to the attack's damage roll."
+			],
+			"foundrySystem": {
+				"activation.type": "bonus action",
+				"activation.condition": "When you take the Attack action on your turn and forgo one attack",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll"
+			}
+		},
+		{
+			"name": "Disarming Attack",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to disarm the target, forcing it to drop one item of your choice that it's holding. You add the superiority die to the attack's damage roll, and the target must make a Strength saving throw. On a failed save, it drops the object you choose. The object lands at its feet."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack",
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll",
+				"save.ability": "str"
+			}
+		},
+		{
+			"name": "Distracting Strike",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you hit a creature with a weapon attack, you can expend one superiority die to distract the creature, giving your allies an opening. You add the superiority die to the attack's damage roll. The next attack roll against the target by an attacker other than you has advantage if the attack is made before the start of your next turn."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll"
+			}
+		},
+		{
+			"name": "Evasive Footwork",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you move, you can expend one superiority die, rolling the die and adding the number rolled to your AC until you stop moving."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you move",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to AC"
+			}
+		},
+		{
+			"name": "Feinting Attack",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"You can expend one superiority die and use a bonus action on your turn to feint, choosing one creature within 5 feet of you as your target. You have advantage on your next attack roll against that creature this turn. If that attack hits, add the superiority die to the attack's damage roll."
+			],
+			"foundrySystem": {
+				"activation.type": "bonus action",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll"
+			}
+		},
+		{
+			"name": "Goading Attack",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to goad the target into attacking you. You add the superiority die to the attack's damage roll, and the target must make a Wisdom saving throw. On a failed save, the target has disadvantage on all attack rolls against targets other than you until the end of your next turn."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack",
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll",
+				"save.ability": "wis"
+			}
+		},
+		{
+			"name": "Grappling Attack",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"Immediately after you hit a creature with a melee attack on your turn, you can expend one superiority die and then try to grapple the target as a bonus action. Add the superiority die to your Strength ({@skill Athletics}) check."
+			],
+			"foundrySystem": {
+				"activation.type": "bonus action",
+				"activation.condition": "Immediately after you hit a creature with a melee attack on your turn",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to skill check"
+			}
+		},
+		{
+			"name": "Lunging Attack",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you make a melee weapon attack on your turn, you can expend one superiority die to increase your reach for that attack by 5 feet. If you hit, you add the superiority die to the attack's damage roll."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll"
+			}
+		},
+		{
+			"name": "Maneuvering Attack",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you hit a creature with a weapon attack, you can expend one superiority die to maneuver one of your comrades into a more advantageous position. You add the superiority die to the attack's damage roll, and you choose a friendly creature who can see or hear you. That creature can use its reaction to move up to half its speed without provoking opportunity attacks from the target of your attack."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll"
+			}
+		},
+		{
+			"name": "Menacing Attack",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to frighten the target. You add the superiority die to the attack's damage roll, and the target must make a Wisdom saving throw. On a failed save, it is {@condition frightened} of you until the end of your next turn."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack",
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll",
+				"save.ability": "wis"
+			}
+		},
+		{
+			"name": "Indomitable",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you fail a saving throw, you can use your reaction and expend one superiority die to add it to the roll, potentially causing the save to succeed."
+			],
+			"foundrySystem": {
+				"activation.type": "reaction",
+				"activation.condition": "When you fail a saving throw",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to saving throw"
+			}
+		},
+		{
+			"name": "Parry",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When another creature damages you with a melee attack, you can use your reaction and expend one superiority die to reduce the damage by the number you roll on your superiority die + your Dexterity modifier."
+			],
+			"foundrySystem": {
+				"activation.type": "reaction",
+				"activation.condition": "When another creature damages you with a melee attack",
+				"actionType": "healing",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2)) + @abilities.dex.mod",
+						"healing"
+					]
+				]
+			}
+		},
+		{
+			"name": "Precision Attack",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you make a weapon attack roll against a creature, you can expend one superiority die to add it to the roll."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you make a weapon attack roll against a creature",
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon attack roll"
+			}
+		},
+		{
+			"name": "Pushing Attack",
+			"source": "DZC:ANA:F",
+			"page": 7,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you hit with a weapon attack a creature no more than one size larger than you, you can expend one superiority die to attempt to drive the target back. You add the superiority die to the attack's damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you push the target up to 10 feet away from you."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack",
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll",
+				"save.ability": "str"
+			}
+		},
+		{
+			"name": "Quick Toss",
+			"source": "DZC:ANA:F",
+			"page": 8,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"As a bonus action, you can expend one superiority die and make a ranged attack with a weapon that has the thrown property. You can draw the weapon as part of making this attack. If you hit, add the superiority die to the weapon's damage roll."
+			],
+			"foundrySystem": {
+				"activation.type": "bonus action",
+				"activation.cost": 1,
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll"
+			}
+		},
+		{
+			"name": "Rally",
+			"source": "DZC:ANA:F",
+			"page": 8,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"On your turn, you can use a bonus action and expend one superiority die to bolster the resolve of one of your companions. When you do so, choose a friendly creature who can see or hear you. That creature gains temporary hit points equal to the superiority die roll + your Charisma modifier."
+			],
+			"foundrySystem": {
+				"activation.type": "bonus action",
+				"activation.cost": 1,
+				"actionType": "healing",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2)) + @abilities.cha.mod",
+						"temphp"
+					]
+				]
+			}
+		},
+		{
+			"name": "Riposte",
+			"source": "DZC:ANA:F",
+			"page": 8,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When a creature misses you with a melee attack, you can use your reaction and expend one superiority die to make a melee weapon attack against the creature. If you hit, you add the superiority die to the attack's damage roll."
+			],
+			"foundrySystem": {
+				"activation.type": "reaction",
+				"activation.condition": "When a creature misses you with a melee attack",
+				"activation.cost": 1,
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll"
+			}
+		},
+		{
+			"name": "Slowing Attack",
+			"source": "DZC:ANA:F",
+			"page": 8,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to reduce that creature's speed. Roll your superiority die. The creature must succeed on a Constitution saving throw or have its speed reduced an ammount in feet equal to 5 times the number rolled on your superiority die. This effect lasts until the start of your next turn. If the maneuver reduces a creature's speed to 0, it becomes {@condition restrained} for the duration."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a melee weapon attack",
+				"activation.cost": 1,
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"5*1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Speed reduced in feet",
+				"save.ability": "con"
+			}
+		},
+		{
+			"name": "Sweeping Attack",
+			"source": "DZC:ANA:F",
+			"page": 8,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you hit a creature with a melee weapon attack, you can expend one superiority die to attempt to damage another creature with the same attack. Choose another creature within 5 feet of the original target and within your reach. If the original attack roll would hit the second creature, it takes damage equal to the number you roll on your superiority die. The damage is of the same type dealt by the original attack."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a melee weapon attack",
+				"activation.cost": 1,
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Weapon damage roll"
+			}
+		},
+		{
+			"name": "Tactical Assessment",
+			"source": "DZC:ANA:F",
+			"page": 8,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you make an Intelligence ({@skill Investigation}), an Intelligence ({@skill History}), or a Wisdom ({@skill Insight}) check, you can expend one superiority die and add the superiority die to the ability check."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you make an Intelligence (Investigation), an Intelligence (History), or a Wisdom (Insight) check",
+				"activation.cost": 1,
+				"actionType": "other",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to skill check"
+			}
+		},
+		{
+			"name": "Trip Attack",
+			"source": "DZC:ANA:F",
+			"page": 8,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"consumes": {
+				"name": "Superiority Die",
+				"amount": 1
+			},
+			"featureType": [
+				"DZC:M"
+			],
+			"entries": [
+				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to knock the target down. You add the superiority die to the attack's damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you knock the target {@condition prone}."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you hit a creature with a weapon attack",
+				"actionType": "save",
+				"damage.parts": [
+					[
+						"1d(4 + (ceil(@classes.fighter-rework.levels / 5) * 2))"
+					]
+				],
+				"rsr5e.quickDamage.context.0": "Bonus to weapon damage roll",
+				"save.ability": "dex"
+			}
+		},
+		{
+			"name": "Abjuration",
+			"source": "DZC:ANA:F",
+			"page": 5,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"featureType": [
+				"DZC:WB"
+			],
+			"entries": [
+				"A creature can't be disarmed of this weapon against its will."
+			]
+		},
+		{
+			"name": "Conjuration",
+			"source": "DZC:ANA:F",
+			"page": 5,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"featureType": [
+				"DZC:WB"
+			],
+			"entries": [
+				"You can summon your bonded weapons to your hands as a bonus action, causing it to teleport instantly to your hand."
+			],
+			"foundrySystem": {
+				"activation.type": "bonus action"
+			}
+		},
+		{
+			"name": "Divination",
+			"source": "DZC:ANA:F",
+			"page": 5,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"featureType": [
+				"DZC:WB"
+			],
+			"entries": [
+				"When you roll a 1 on an attack roll using your bonded weapons, you can reroll the die. You must use the new result."
+			]
+		},
+		{
+			"name": "Enchantment",
+			"source": "DZC:ANA:F",
+			"page": 5,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"featureType": [
+				"DZC:WB"
+			],
+			"entries": [
+				"If you hit a creature with your bonded weapons, it has disadvantage on the next saving throw it makes against being {@condition charmed} or {@condition frightened} by a spell you cast before the end of your next turn."
+			]
+		},
+		{
+			"name": "Evocation",
+			"source": "DZC:ANA:F",
+			"page": 5,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"featureType": [
+				"DZC:WB"
+			],
+			"entries": [
+				"When you make an attack with your bonded weapon, you can change its damage type to acid, cold, fire, lightning, or thunder."
+			]
+		},
+		{
+			"name": "Illusion",
+			"source": "DZC:ANA:F",
+			"page": 5,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"featureType": [
+				"DZC:WB"
+			],
+			"entries": [
+				"The first time you attack with each of your bonded weapons on each of your turns, you create a mirage of your attack that gives you advantage on the attack roll. A creature is unaffected by this feature if it can't see, if it relies on senses other than sight, or if it can perceive illusions as false."
+			]
+		},
+		{
+			"name": "Necromancy",
+			"source": "DZC:ANA:F",
+			"page": 6,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"featureType": [
+				"DZC:WB"
+			],
+			"entries": [
+				"When you reduce a creature to 0 hit points with an attack made with your bonded weapons, you gain a number of temporary hit points equal to your Intelligence modifier (minimum of 1)."
+			],
+			"foundrySystem": {
+				"activation.type": "special",
+				"activation.condition": "When you reduce a creature to 0 hit points with an attack made with your bonded weapons",
+				"actionType": "healing",
+				"damage.parts": [
+					[
+						"@abilities.int.mod",
+						"temphp"
+					]
+				]
+			}
+		},
+		{
+			"name": "Transmutation",
+			"source": "DZC:ANA:F",
+			"page": 6,
+			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
+			"featureType": [
+				"DZC:WB"
+			],
+			"entries": [
+				"As a bonus action, you can turn your light bonded weapons into heavy weapons, and viceversa. Alternatively, you can add or remove the property into your bonded weapons if it didn't have it initially."
+			],
+			"foundrySystem": {
+				"activation.type": "bonus action"
+			}
+		}
+	],
+	"subclass": [
+		{
+			"name": "Champion",
+			"shortName": "Champion",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 4,
+			"foundryImg": "icons/skills/melee/strike-sword-slashing-red.webp",
+			"subclassFeatures": [
+				"Champion|Fighter Rework|DZC:ANA:F|Champion|DZC:ANA:F|3",
+				"Remarkable Athlete|Fighter Rework|DZC:ANA:F|Champion|DZC:ANA:F|7",
+				"Improved Critical|Fighter Rework|DZC:ANA:F|Champion|DZC:ANA:F|7",
+				"Diamond Body|Fighter Rework|DZC:ANA:F|Champion|DZC:ANA:F|15",
+				"Improved Critical|Fighter Rework|DZC:ANA:F|Champion|DZC:ANA:F|15",
+				"Survivor|Fighter Rework|DZC:ANA:F|Champion|DZC:ANA:F|18",
+				"Improved Critical|Fighter Rework|DZC:ANA:F|Champion|DZC:ANA:F|18"
+			]
+		},
+		{
+			"name": "Arcane Knight",
+			"shortName": "Arcane Knight",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"page": 5,
+			"foundryImg": "icons/magic/unholy/hand-weapon-glow-black-green.webp",
+			"spellcastingAbility": "int",
+			"casterProgression": "1/3",
+			"preparedSpells": "<$level$>/3 + <$int_mod$>",
+			"cantripProgression": [
+				0,
+				0,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4
+			],
+			"subclassSpells": [
+				{
+					"className": "Fighter",
+					"classSource": "PHB",
+					"subclassName": "Eldritch Knight",
+					"subclassSource": "PHB"
+				}
+			],
+			"additionalSpells": [
+				{
+					"expanded": {
+						"3": [
+							{
+								"all": "level=0|class=Wizard"
+							},
+							{
+								"all": "level=1|class=Wizard"
+							}
+						],
+						"7": [
+							{
+								"all": "level=2|class=Wizard"
+							}
+						],
+						"13": [
+							{
+								"all": "level=3|class=Wizard"
+							}
+						],
+						"19": [
+							{
+								"all": "level=4|class=Wizard"
+							}
+						]
+					}
+				}
+			],
+			"subclassTableGroups": [
+				{
+					"subclasses": [
+						{
+							"name": "Eldritch Knight",
+							"source": "PHB"
+						}
+					],
+					"colLabels": [
+						"{@filter Cantrips Known|spells|level=0|subclass=Fighter Rework: Arcane Knight}"
+					],
+					"rows": [
+						[
+							0
+						],
+						[
+							0
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						]
+					]
+				},
+				{
+					"title": "Spell Slots per Spell Level",
+					"subclasses": [
+						{
+							"name": "Arcane Knight",
+							"source": "DZC:ANA:F"
+						}
+					],
+					"colLabels": [
+						"{@filter 1st|spells|level=1|subclass=Fighter: Eldritch Knight}",
+						"{@filter 2nd|spells|level=2|subclass=Fighter: Eldritch Knight}",
+						"{@filter 3rd|spells|level=3|subclass=Fighter: Eldritch Knight}",
+						"{@filter 4th|spells|level=4|subclass=Fighter: Eldritch Knight}"
+					],
+					"rowsSpellProgression": [
+						[
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							1
+						]
+					]
+				}
+			],
+			"subclassFeatures": [
+				"Arcane Knight|Fighter Rework|DZC:ANA:F|Arcane Knight|DZC:ANA:F|3",
+				"War Magic|Fighter Rework|DZC:ANA:F|Arcane Knight|DZC:ANA:F|7",
+				"Arcane Charge|Fighter Rework|DZC:ANA:F|Arcane Knight|DZC:ANA:F|15",
+				"War Magic improvement|Fighter Rework|DZC:ANA:F|Arcane Knight|DZC:ANA:F|18"
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Champion",
+			"source": "DZC:ANA:F",
+			"page": 4,
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Champion",
+			"subclassSource": "DZC:ANA:F",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"A champion is the first thing that comes to mind when anyone thinks of a fighter, a hero who has defeated great foes by overwhelming them with their physical superiority. These fighters lack any special ability, so they train nonstop to bring their bodies to reach limits beyond what is humanly possible.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Improved Critical|Fighter Rework|DZC:ANA:F|Champion|DZC:ANA:F|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Physical Expertise|Fighter Rework|DZC:ANA:F|Champion|DZC:ANA:F|3"
+				}
+			]
+		},
+		{
+			"name": "Improved Critical",
+			"source": "DZC:ANA:F",
+			"page": 4,
+			"foundryImg": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Champion",
+			"subclassSource": "DZC:ANA:F",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Starting at 3rd level, your weapon attacks also score a critical hit on a roll of 19. They also score a critical hit on a roll of 18 at 7th level, 17 at 15th, and 16 at 18th."
+			]
+		},
+		{
+			"name": "Improved Critical",
+			"source": "DZC:ANA:F",
+			"page": 4,
+			"foundryImg": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Champion",
+			"subclassSource": "DZC:ANA:F",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Starting at 7th level, your weapon attacks score a critical hit on a roll of 18-20."
+			]
+		},
+		{
+			"name": "Improved Critical",
+			"source": "DZC:ANA:F",
+			"page": 4,
+			"foundryImg": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Champion",
+			"subclassSource": "DZC:ANA:F",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Starting at 15th level, your weapon attacks score a critical hit on a roll of 17-20."
+			]
+		},
+		{
+			"name": "Improved Critical",
+			"source": "DZC:ANA:F",
+			"page": 4,
+			"foundryImg": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Champion",
+			"subclassSource": "DZC:ANA:F",
+			"level": 18,
+			"header": 2,
+			"entries": [
+				"Starting at 18th level, your weapon attacks score a critical hit on a roll of 16-20."
+			]
+		},
+		{
+			"name": "Physical Expertise",
+			"source": "DZC:ANA:F",
+			"page": 4,
+			"foundryImg": "icons/magic/control/silhouette-grow-shrink-tan.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Champion",
+			"subclassSource": "DZC:ANA:F",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Also at 3rd level, your dedicated physical training bears fruit. You gain proficiency in Acrobatics and Athletics if you don't already have them. Your proficiency bonus is doubled for any ability check you make that uses these skills.",
+				"In addition, your jumping distance increases by a number of feet equal to five times your proficiency bonus."
+			],
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"acrobatics": true
+				}
+			]
+		},
+		{
+			"name": "Remarkable Athlete",
+			"source": "DZC:ANA:F",
+			"page": 4,
+			"foundryImg": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Champion",
+			"subclassSource": "DZC:ANA:F",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"At 7th level, you can add half your proficiency bonus (rounded up) to any Strength, Dexterity, or Constitution check you make that doesn't already use your proficiency bonus.",
+				"In addition, climbing and swimming doesn't cost you extra movement."
+			]
+		},
+		{
+			"name": "Diamond Body",
+			"source": "DZC:ANA:F",
+			"page": 4,
+			"foundryImg": "icons/magic/control/encase-creature-humanoid-hold.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Champion",
+			"subclassSource": "DZC:ANA:F",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"At 15th level, your body can whitstand terrible attacks. When a creature scores a critical hit against you, you can use your reaction to turn it into a normal hit.",
+				"Once you use this feature, you can't use it again until you finish a short or long rest."
+			],
+			"foundrySystem": {
+				"activation.type": "reaction",
+				"activation.condition": "When a creature scores a critical hit against you",
+				"activation.cost": 1,
+				"uses.per": "sr",
+				"uses.max": "1"
+			}
+		},
+		{
+			"name": "Survivor",
+			"source": "DZC:ANA:F",
+			"page": 5,
+			"foundryImg": "icons/magic/life/heart-glowing-red.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Champion",
+			"subclassSource": "DZC:ANA:F",
+			"level": 18,
+			"header": 2,
+			"entries": [
+				"At 18th level, you attain the pinnacle of resilience in battle. At the start of each of your turns, you regain hit points equal to 5 + your Constitution modifier if you have no more than half of your hit points left. You don't gain this benefit if you have 0 hit points."
+			]
+		},
+		{
+			"name": "Arcane Knight",
+			"source": "DZC:ANA:F",
+			"page": 5,
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Arcane Knight",
+			"subclassSource": "DZC:ANA:F",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Some fighters incorporate magic into their studies, becoming arcane knights. Thus they enlist to wizard academies or take a wizard as an instructor. An arcane knight studies magic to expand their repertoir of abilities in order to increase both their adaptability and versatility. However, given the secondary the priority of their magical studies are, they opt for an intensive rather than extensive approach. Hence why they only pick a few schools of magic to learn and then memorize a few spells from these.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Schools of Magic|Fighter Rework|DZC:ANA:F|Arcane Knight|DZC:ANA:F|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spellcasting|Fighter Rework|DZC:ANA:F|Arcane Knight|DZC:ANA:F|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Weapon Bond|Fighter Rework|DZC:ANA:F|Arcane Knight|DZC:ANA:F|3"
+				}
+			]
+		},
+		{
+			"name": "Schools of Magic",
+			"source": "DZC:ANA:F",
+			"page": 5,
+			"foundryImg": "icons/skills/trades/academics-book-study-purple.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Arcane Knight",
+			"subclassSource": "DZC:ANA:F",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"When you choose this tradition you must choose the two schools of magic that your character will study. The schools are {@filter Abjuration|spells|subclass=Fighter: Eldritch Knight|school=a}, {@filter Conjuration|spells|subclass=Fighter: Eldritch Knight|school=c}, {@filter Divination|spells|subclass=Fighter: Eldritch Knight|school=d}, {@filter Enchantment|spells|subclass=Fighter: Eldritch Knight|school=e}, {@filter Evocation|spells|subclass=Fighter: Eldritch Knight|school=v}, {@filter Illusion|spells|subclass=Fighter: Eldritch Knight|school=i}, {@filter Necromancy|spells|subclass=Fighter: Eldritch Knight|school=n}, and {@filter Transmutation|spells|subclass=Fighter: Eldritch Knight|school=t}. Whenever a feature in this subclass refers to your schools of magic, it refers to the ones you chose."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "DZC:ANA:F",
+			"page": 5,
+			"foundryImg": "icons/magic/light/beam-rays-teal-large.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Arcane Knight",
+			"subclassSource": "DZC:ANA:F",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"When you reach 3rd level, you augment your martial prowess with the ability to cast spells.",
+				{
+					"type": "entries",
+					"name": "Cantrips",
+					"page": 5,
+					"entries": [
+						"You learn three cantrips of your choice from your schools of magic on the wizard spell list. You learn an additional cantrip of your choice with the same restrictions at 10th level."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spell Slots",
+					"page": 5,
+					"entries": [
+						"The Arcane Knight Spellcasting table shows how many spell slots you have to cast your wizard spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spells Known",
+					"page": 5,
+					"entries": [
+						"You know a number of wizard spells of your choice that are available for you to cast. The spells you choose must be from your schools of magic on the wizard spell list. The number of wizard spells you know is equal to your Intelligence modifier + a third of your fighter level (minimum of one spell).",
+						"Whenever you gain a level in this class, you can replace one of the wizard spells you know with another one of your choice with the same restrictions."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spells Known",
+					"page": 5,
+					"entries": [
+						"Intelligence is your spellcasting ability for your wizard spells, since you learn your spells through study and memorization. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.",
+						{
+							"type": "abilityDc",
+							"name": "Spell",
+							"attributes": [
+								"int"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "Spell",
+							"attributes": [
+								"int"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Weapon Bond",
+			"source": "DZC:ANA:F",
+			"page": 5,
+			"foundryImg": "icons/magic/fire/dagger-rune-enchant-flame-strong-teal.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Arcane Knight",
+			"subclassSource": "DZC:ANA:F",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"At 3rd level, you learn a ritual that creates a magical bond between yourself and one weapon. You perform the ritual over the course of 1 hour, which can be done during a short rest. The weapon must be within your reach throughout the ritual, at the conclusion of which you touch the weapon and forge the bond.",
+				"Once you have bonded a weapon to yourself, it counts as an arcane focus to you and it gains special properties depending on your schools of magic, each described below, as long as it is on the same plane of existence as you. These properties end if your weapon is no longer bonded to you or if you are unconscious.",
+				"You can have up to two bonded weapons. If you attempt to bond with a third weapon, you must break the bond with one of the other two.",
+				{
+					"type": "options",
+					"count": 2,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Abjuration|DZC:ANA:F"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Conjuration|DZC:ANA:F"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Divination|DZC:ANA:F"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Enchantment|DZC:ANA:F"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Evocation|DZC:ANA:F"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Illusion|DZC:ANA:F"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Necromancy|DZC:ANA:F"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Transmutation|DZC:ANA:F"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "War Magic",
+			"source": "DZC:ANA:F",
+			"page": 6,
+			"foundryImg": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Arcane Knight",
+			"subclassSource": "DZC:ANA:F",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Beginning at 7th level, when you use your action to cast a cantrip, you can make one weapon attack as a bonus action. At 18th level, you can make this special attack when you use your action to cast any spell."
+			]
+		},
+		{
+			"name": "War Magic improvement",
+			"source": "DZC:ANA:F",
+			"page": 6,
+			"foundryImg": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Arcane Knight",
+			"subclassSource": "DZC:ANA:F",
+			"level": 18,
+			"header": 2,
+			"entries": [
+				"At 18th level, you can make this special attack when you use your action to cast any spell."
+			]
+		},
+		{
+			"name": "Arcane Charge",
+			"source": "DZC:ANA:F",
+			"page": 6,
+			"foundryImg": "icons/skills/ranged/projectile-explosion-black-orange.webp",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"subclassShortName": "Arcane Knight",
+			"subclassSource": "DZC:ANA:F",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"At 15th level, you learn how to store residual magic inside of you, known as Arcane Charge. If you hit a creature with a weapon attack you can spend your Arcane Charge for one of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"The creature has disadvantage on the next saving throw it makes against a spell before the end of your next turn.",
+						"You can teleport up to 30 feet to an unoccupied space you can see, gaining advantage on your next weapon attack before the end your turn."
+					]
+				}
+			],
+			"foundrySystem": {
+				"uses.per": "sr",
+				"uses.max": "1"
+			}
+		}
+	],
+	"foundryClassFeature": [
+		{
+			"name": "Warrior's Training",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"level": 1,
+			"subEntities": {
+				"item": [
+					{
+						"name": "Unarmed Strike",
+						"source": "DZC:ANA:F",
+						"page": 1,
+						"type": "M",
+						"rarity": "none",
+						"weaponCategory": "simple",
+						"foundrySystem": {
+							"equipped": true,
+							"damage.parts": [
+								[
+									"1 + @abilities.str.mod",
+									"bludgeoning"
+								]
+							],
+							"ability": "default",
+							"properties": [
+								"fin",
+								"lgt"
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Combat Superiority",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"level": 2,
+			"system": {
+				"uses.per": "sr",
+				"uses.max": "ceil(@classes.fighter-rework.levels/3) + 3"
+			}
+		},
+		{
+			"name": "Improved Critical",
+			"source": "DZC:ANA:F",
+			"className": "Fighter Rework",
+			"classSource": "DZC:ANA:F",
+			"level": 3,
+			"effects": [
+				{
+					"name": "Improved Critical",
+					"changes": [
+						{
+							"key": "flags.dnd5e.weaponCriticalThreshold",
+							"mode": "OVERRIDE",
+							"value": "@scale.fighter-rework.imp-crit"
+						}
+					],
+					"transfer": true
+				}
+			]
+		}
+	],
+	"classFluff": [
+		{
+			"name": "Fighter Rework",
+			"source": "DZC:ANA:F",
+			"entries": [
+				{
+					"type": "section",
+					"name": "Fighter",
+					"page": 1,
+					"source": "DZC:ANA:F",
+					"entries": [
+						"A stunning half-orc completely covered in metal armor stands tall next to her partners, rising her shield to protect them. Positioning herself in front of them, she prevents the ice mephits from freezing her allies by absorbing the most damage she can. She hopes that with this act of sacrifice she achieves the recognition of the knights order and win the grace of a noble family.",
+						"At first glance he looks nothing much other than a plain thug, the drow sits at the bar, glancing over the people gathered in the stablishment, finding the meanest looking mercenaries, observing their every move. When they take notice they decide they don't like the fella spying on them, so it's time to take it outside. What they failed to realize was that the elf was studying their every weakness, which would bring forth their demise.",
+						"An expreinced general directs the actions of his squad during a battle, maneuvering their positioning, coordinating their attacks, and protecting from most danger, so that they can be as efficient as possible. He was chosen not for his skills in combat, but for being an expert in the field of leadership, tactical genius, and succeeding in wars that seemed impossible to win.",
+						"All of these epic warriors are fighters, one of the most versatile combatants in the world. Since they lack any super natural powers, they cultivate their martial talents in order to surpass mortal limits, to the point they are known for their high competence in any field of combat, wether it's about wielding a weapon for destructive purposses or by learning the weak points of an enemy.",
+						{
+							"type": "entries",
+							"name": "Well-Rounded Specialist",
+							"page": 1,
+							"entries": [
+								"Fighters learn the basics of all combat styles. Every fighter can swing an axe, fence with a rapier, wield a longsword or a greatsword, use a bow, and even trap foes in a net with some degree of skill. Likewise, a fighter is adept with shields and every form of armor. Beyond that basic degree of familiarity, each fighter specializes in a certain style of combat, defined by the path they took to become one. Some concentrate on archery, some on ambushing unsuspecting victims, and some on augmenting their martial skills with magic. This combination of broad general ability and extensive specialization makes fighters superior combatants on battlefields and in dungeons alike."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Trained for Danger",
+							"page": 1,
+							"entries": [
+								"Not every member of the city watch, the village militia, or the queen's army is a fighter. Most of these troops are relatively untrained soldiers with only the most basic combat knowledge. Veteran soldiers, military officers, trained bodyguards, dedicated knights, and similar figures are fighters. However, anyone with the right set of skills and mindset can develop their talents to become a fighter.",
+								"Some fighters feel drawn to use their training as adventurers. The dungeon delving, monster slaying, and other dangerous work common among adventurers is second nature for a fighter, not all that different from the life they left behind. There are greater risks, perhaps, but also much greater rewards\u2014few fighters in the city watch have the opportunity to discover a magic flame tongue sword, for example."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Fighter",
+							"page": 2,
+							"entries": [
+								"As you build your fighter, think about two related elements of your character's background: Where did you get your combat training, and what set you apart from the mundane warriors around you? Were you particularly ruthless? Did you get extra help from a mentor, perhaps because of your exceptional dedication? What drove you to this training in the first place? A threat to your homeland, a thirst for revenge, or a need to prove yourself might all have been factors.",
+								"You might have enjoyed formal training in a noble's army or in a local militia. Perhaps you trained in a war academy, learning strategy, tactics, and military history. Or you might be self-taught\u2014unpolished but well tested. Did you take up the sword as a way to escape the limits of life on a farm, or are you following a proud family tradition? Where did you acquire your weapons and armor? They might have been military issue or family heirlooms, or perhaps you scrimped and saved for years to buy them. Your armaments are now among your most important possessions\u2014the only things that stand between you and death's embrace."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Quick Build",
+							"page": 2,
+							"entries": [
+								"You can make a fighter quickly by following these suggestions. First, make Strength or Dexterity your highest ability score, depending on whether you want to focus on melee or ranged weapons. Your next highest score should be Constitution, or Intelligence if you plan to adopt a magical subclass. Second, choose the {@background soldier} background.",
+								{
+									"type": "inset",
+									"name": "Can I add this Bonus?",
+									"entries": [
+										"Sometimes an ability, feature, or spell allows you to add a bonus to an attack roll, ability check, or saving throw, such as the bard's Bardic Inspiration, a war cleric's  Channel Divinity: Guided Strike, the *bless* spell, the martial technique boost offensive, and many others. Other abilities allow you to reroll the die for those die rolls, such as the drunken master monk's Drunkard's Luck. There is another type of abilities, much rarer than the others, ones that allow you to add special effects to your actions, reactions, die rolls, etc., such as the monk's Evasion ki feature. These abilities have in common the lack of key words for its trigger, such as hit, succeed, miss, or fail, which is why you can choose to use these after seeing the roll, but before the DM says wether the roll succeeds or fails."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
