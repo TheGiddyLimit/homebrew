@@ -4,7 +4,7 @@ const _TIME_TAG = "\tRun duration";
 const _ALLOWLIST_DIRS = new Set([
 	// TODO dump from `_img` dir at freeze date
 ]);
-const _ENABLE_AT = 1715860800000; // Thursday, 16 May 2024 12:00:00 UTC
+const _ENABLE_AT = 1718539200000; // 16 June 2024 12:00:00 UTC
 
 async function main () {
 	if (Date.now() < _ENABLE_AT) {

@@ -18,8 +18,8 @@
 			}
 		],
 		"dateAdded": 1713674892,
-		"dateLastModified": 1714158302,
-		"_dateLastModifiedHash": "a2ee718288"
+		"dateLastModified": 1715773085,
+		"_dateLastModifiedHash": "e4ae6a62f6"
 	},
 	"spell": [
 		{
@@ -2552,7 +2552,7 @@
 			"foundryImg": "icons/magic/fire/beam-jet-stream-trails-orange.webp"
 		},
 		{
-			"name": "Locate",
+			"name": "Locate Creature (Alternate)",
 			"source": "llspell",
 			"level": 2,
 			"school": "D",
@@ -2613,23 +2613,54 @@
 				}
 			],
 			"entries": [
-				"Describe an object that you have seen within 30 feet at least once, or describe a particular kind of object, like a book, key, or sword. If it is within 1000 feet, the material component of this spell points to it as if it were a compass. If the object is in motion, it points to it for as long as it remains within range.",
-				"This spell can't locate its target if any amount of lead or a body of running water blocks a straight line to the target."
+				"Describe or name a specific kind of beast or plant. It can be a specific creature known to you, or the nearest creature of a specific kind (such as a bear, oak, or horse), so long as you have seen such a creature within 30 feet at least once.",
+				"If one is within 1 mile, the material component of this spell points to it as if it were a compass. If the target is in motion, it points to it for as long as it remains in range. If the creature is in a different form, such as under the effect of the polymorph spell, this spell doesn't locate the creature.",
+				"This spell can't locate its target if any thickness of lead or 10 feet of running water blocks a straight line to the target."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd-level or higher, the range of this spell increases by 1000 feet for each spell slot level above 2nd.",
-						"If you cast this spell with a spell slot of 4th-level or higher, you can describe a specific creature you have seen or a type of creature, in place of an object, tracking it in the same way."
+						"When you cast this spell using a spell slot of 3rd-level or higher, the range and the type of creature you can locate increase as show in the table below:",
+						{
+							"type": "table",
+							"caption": "Locate Creature",
+							"colLabels": [
+								"Slot Level",
+								"Range",
+								"Creature Types"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-5",
+								"col-5"
+							],
+							"rows": [
+								[
+									"3rd",
+									"2 miles",
+									"Dragon, Giant, Humanoid, Monstrosity, Ooze"
+								],
+								[
+									"4th",
+									"3 miles",
+									"Aberration, Construct, Undead"
+								],
+								[
+									"5th",
+									"5 miles",
+									"Celestial, Elemental, Fey, Fiend"
+								]
+							]
+						}
 					]
 				}
 			],
 			"foundrySystem": {
 				"target": {
 					"value": 1,
-					"type": "object"
+					"type": "creature"
 				}
 			},
 			"foundryImg": "icons/magic/perception/orb-crystal-ball-scrying-blue.webp"
@@ -2829,12 +2860,16 @@
 			"foundryImg": "icons/magic/nature/stealth-hide-beast-eyes-green.webp"
 		},
 		{
-			"name": "Purify",
+			"name": "Restoration",
 			"source": "llspell",
 			"level": 2,
 			"school": "A",
 			"classes": {
 				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
 					{
 						"name": "Cleric",
 						"source": "PHB"
@@ -2861,14 +2896,13 @@
 			],
 			"range": {
 				"distance": {
-					"type": "self"
+					"type": "touch"
 				},
 				"type": "point"
 			},
 			"components": {
 				"v": true,
-				"s": true,
-				"m": "a consecrated piece of clear glass"
+				"s": true
 			},
 			"duration": [
 				{
@@ -2876,16 +2910,45 @@
 				}
 			],
 			"entries": [
-				"As an action, you open your senses and become aware of the presence and locations of any of the following within 30 feet: poisons, diseases, creatures capable of inflicting the {@condition blinded}, {@condition deafened}, {@condition paralyzed}, or {@condition poisoned} condition, or any disease, or creatures suffering from a disease or the conditions above.",
-				"You also identify the kind of poison, disease, creature, or the specific condition or disease a creature is suffering from.",
-				"As part of this action, you can instantly cure one creature in range of a disease or end the blinded, deafened, paralyzed, or poisoned condition for it, or remove all poison and disease from a 5-foot cube of food and drink within this range."
+				"You touch a willing creature and instantly end one disease or one of the following conditions currently afflicting it: blinded, deafened, frightened, paralyzed, or poisoned."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd-level or higher, you can end one additional disease or condition affecting a creature in range, or remove poison and disease from an additional 5-foot cube of food and drink within range, for each slot level above 2nd."
+						"When you cast this spell using a spell slot of 3rd-level or higher, the conditions and effects you can end increase, but the spell requires you to expend diamond dust of a certain value, which is consumed during casting:",
+						{
+							"type": "table",
+							"caption": "Restoration",
+							"colLabels": [
+								"Slot Level",
+								"Value",
+								"Conditions/Effects"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-5",
+								"col-5"
+							],
+							"rows": [
+								[
+									"3rd",
+									"10 gp",
+									"Charmed, Exhaustion (1 level)"
+								],
+								[
+									"4th",
+									"50 gp",
+									"Reduction to one Ability Score or Hit Point Maximum"
+								],
+								[
+									"5th",
+									"100 gp",
+									"Petrified, One Curse, or Attunement to a Cursed Item"
+								]
+							]
+						}
 					]
 				}
 			],
