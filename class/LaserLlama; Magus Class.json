@@ -15,7 +15,7 @@
 					"ACOG_Muffin",
 					"hakr14"
 				],
-				"version": "4.2.0",
+				"version": "4.2.1",
 				"color": "025b79",
 				"url": "https://www.gmbinder.com/share/-Mslo6ktmq1Yg5WTSjDQ"
 			},
@@ -29,13 +29,13 @@
 				"convertedBy": [
 					"hakr14"
 				],
-				"version": "4.2.0",
+				"version": "4.2.1",
 				"color": "025b79",
 				"url": "https://www.gmbinder.com/share/-Nvnfwvps1zOqpIGK-5B"
 			}
 		],
 		"dateAdded": 1647980495,
-		"dateLastModified": 1715291226,
+		"dateLastModified": 1717424329,
 		"dependencies": {
 			"spell": [
 				"llspell"
@@ -45,7 +45,7 @@
 				"LLAF:E"
 			]
 		},
-		"_dateLastModifiedHash": "cfff4c75dc"
+		"_dateLastModifiedHash": "7c91f4325f"
 	},
 	"class": [
 		{
@@ -1784,7 +1784,7 @@
 			"shortName": "Spellsword",
 			"subclassFeatures": [
 				"Order of Spellswords|Magus|LLMC|Spellsword|LLMC:E|3",
-				"Mystic Strikes|Magus|LLMC|Spellsword|LLMC:E|7",
+				"Mystic Precision|Magus|LLMC|Spellsword|LLMC:E|7",
 				"Ethereal Warrior|Magus|LLMC|Spellsword|LLMC:E|15",
 				"Arcane Blademaster|Magus|LLMC|Spellsword|LLMC:E|20"
 			],
@@ -3304,8 +3304,9 @@
 			"subclassSource": "LLMC:E",
 			"level": 3,
 			"entries": [
-				"As a bonus action, you can summon any number of the melee weapons within your {@classFeature Arcane Armory|Magus|LLMC|1}, causing them to levitate around you within your space. You must {@status concentration||concentrate} on this effect, and if it ends, your weapons return to your Armory.",
-				"While levitating, these weapons have the Thrown (20/60) property, and you use your Intelligence, in place of Strength or Dexterity for their attack and damage rolls. Whenever you could normally make an attack, you can make an attack with one of these levitating blades, after which it instantly returns to levitate within your space regardless if it hits or misses."
+				"As a bonus action, you can summon any number of the one-handed melee weapons within your {@classFeature Arcane Armory|Magus|LLMC|1}, causing them to levitate around you in your space. This requires your concentration. If it ends, the weapons return to your Armory.",
+				"While levitating, these weapons have the Thrown (20/60) property, you use your Intelligence, in place of your Strength or Dexterity for their attack and damage rolls, and you are considered to be wielding the weapons one-handed. You can only attack with each levitating blade once per turn.",
+				"Whenever you can normally make an attack, you can make an attack with one of these levitating blades, then it instantly returns to levitate in your space regardless of a hit or miss."
 			],
 			"foundryImg": "icons/weapons/thrown/shuriken-triple-purple.webp"
 		},
@@ -3335,7 +3336,7 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"You can strike with all of your levitating weapons at once. As an action, while your {@subclassFeature Awakened Armory|Magus|LLMC|Armorer|LLMC:E|3} is active, you force a creature you can see within 20 feet for each of the levitating weapons you have to make a Dexterity saving throw against your Spell save DC. Creatures take {@damage 2d10} damage on a failed save, and half as much on a success. This damage must be a type dealt by one of your Arcane Armory weapons.",
+				"You can strike with all of your levitating weapons at once. As an action, you can force a number of creatures within 20 feet equal to your number of levitating blades to make a Dexterity saving throw against your Spell save DC. Targets take {@damage 2d10} damage on a failure, and half that on a success. This damage matches the damage dealt by the levitating blade you used to force each creature to make this saving throw.",
 				"The damage dealt by this feature increases to {@damage 3d10} at 14th level and increases again to {@damage 4d10} when you reach 20th level."
 			],
 			"foundrySystem": {
@@ -3359,11 +3360,10 @@
 			"level": 15,
 			"header": 2,
 			"entries": [
-				"Your talent with your Arcane Armory increases your defense. When you are hit by an attack while your {@subclassFeature Awakened Armory|Magus|LLMC|Armorer|LLMC:E|3} is active, you can add your Intelligence modifier (a minimum of +1) to your Armor Class against that attack as a reaction."
+				"As a bonus action, you can place one of your levitating blades in a defensive posture, and add your Intelligence modifier to your Armor Class until the start of your next turn. You cannot make attacks with this levitating blade for the duration."
 			],
 			"foundrySystem": {
 				"ability": "int",
-				"activation.condition": "When you are hit by an attack while your Awakened Armory is active",
 				"formula": "max(1, @mod)"
 			},
 			"foundryImg": "icons/skills/melee/swords-parry-block-yellow.webp"
@@ -3672,22 +3672,22 @@
 			"subclassSource": "LLMC:E",
 			"level": 3,
 			"entries": [
-				"You use the sinister magic of your Order to place fell curses on your foes. You cannot replace {@spell hex} with another spell when you gain a Magus level, but, you gain the following additional benefits against creatures under the effects of your hex:",
+				"You use the sinister magic of your Order to place fell curses on your foes. You cannot replace {@spell hex} with another spell when you gain a Magus level, but, you gain the following additional benefits against hostile creatures under the effects of hex:",
 				{
 					"type": "list",
 					"items": [
-						"Your weapon and spell attack rolls against the creature score a critical hit on a roll of 19 or 20 on the {@dice d20}.",
+						"Your weapon and spell attack rolls against the creature score a critical hit on a roll of 19 or 20 on the d20.",
 						"Once per turn when you deal necrotic damage to it, you can use a free hand to siphon its life-essence and gain temporary hit points equal to half the necrotic damage dealt. This has no effect on Constructs or Undead."
 					]
 				},
-				"When you cast hex, your {@status concentration} cannot be broken unless you willingly end it. Finally, once per long rest, you can cast hex without expending a spell slot at a level equal to your highest level slot, as shown on the Magus class table."
+				"When you cast hex, your concentration cannot be broken unless you willingly end it. Finally, once between each short or long rest, you can cast hex at 1st-level, without expending a spell slot."
 			],
 			"foundrySystem": {
 				"activation.type": "special",
 				"uses": {
 					"value": 1,
 					"max": 1,
-					"per": "lr"
+					"per": "sr"
 				}
 			},
 			"foundryImg": "icons/magic/control/voodoo-doll-pain-damage-purple.webp"
@@ -3703,7 +3703,7 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"You can store the life-essence of your foes in your {@classFeature Arcane Armory|Magus|LLMC|1}. When you drain life-essence from a creature with your {@subclassFeature Malevolent Hex|Magus|LLMC|Hexblade|LLMC:e|3}, you can store that energy within your Arcane Armory in place of gaining temporary hit points.",
+				"You can store the life-essence of your foes in your Arcane Armory. When you drain life-essence from a creature with your Malevolent Hex, you can store that life-essence, equal to the temporary hit points that you would have gained, within your Arcane Armory in place of gaining those temporary hit points yourself.",
 				"Your Arcane Armory can hold an amount of life-essence equal to ten times your Intelligence modifier (minimum of 10 life-essence), which is used to fuel the features below:",
 				{
 					"type": "refSubclassFeature",
@@ -3734,7 +3734,7 @@
 			"subclassSource": "LLMC:E",
 			"level": 7,
 			"entries": [
-				"When the creature under the effects of your hex spell forces you to make a saving throw, you can draw 10 life-essence from your {@classFeature Arcane Armory|Magus|LLMC|1}, expending it to gain advantage on your saving throw. You must choose to use this feature before you roll the {@dice d20}."
+				"When the creature under the effects of your hex spell forces you to make a saving throw, you can draw 10 life-essence from your Arcane Armory, expending it to gain advantage on your saving throw. You must choose to use this feature before you roll the d20."
 			],
 			"consumes": {
 				"name": "Accursed Armory",
@@ -3796,7 +3796,7 @@
 					"type": "entries",
 					"name": "Mental Bond",
 					"entries": [
-						"While you hold the weapon in your hand, it lends you its mental abilities. You can {@status concentration||concentrate} on {@spell hex} and another spell of your choice (other than hex). However, if you make a Constitution saving throw to maintain your concentration, you make one saving throw for both spells."
+						"While you hold the weapon in your hand, it lends you its mental abilities. You can concentrate on hex and another spell of your choice (other than hex). If you do so, your concentration on hex still cannot be broken."
 					]
 				}
 			],
@@ -3973,7 +3973,7 @@
 			"foundryImg": "icons/skills/melee/weapons-crossed-swords-black-gray.webp"
 		},
 		{
-			"name": "Mystic Strikes",
+			"name": "Mystic Precision",
 			"source": "LLMC:E",
 			"className": "Magus",
 			"classSource": "LLMC",
@@ -3983,8 +3983,8 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"Your style of fighting leaves foes exposed to your magic, allowing you to make the most of each spell that you cast. When you hit a creature with a weapon attack, it has disadvantage on the first saving throw that you force it to make against a Magus spell before the end of your next turn. This includes spells cast through {@classFeature Spellstrike|Magus|LLMC|2}.",
-				"However, weapon attacks that are made as part of a Spellstrike do not provide the benefits of this feature."
+				"The magic you channel through your weapon attacks supernaturally increases your accuracy. Whenever you make a Spellstrike attack, you can add the level of the spell slot you expend (0 for Cantrips) to all attack rolls you make with that weapon until the end of your turn.",
+				"In addition, when you gain the Spellsunder feature at 9th level, you also gain a bonus to any weapon attack (minimum of 0) you make as part of Spellsunder equal to the level of the spell slot expend (minimum of +1)."
 			],
 			"foundryImg": "icons/skills/melee/strike-blade-knife-white-red.webp"
 		},
@@ -4200,7 +4200,7 @@
 				"Your Future Self shares your initiative in combat and acts immediately after you. They act independently and will aid you to the best of their abilities. Your Future Self has a total number of hit points equal to your maximum hit points and they use your ability scores. They share features from your race, class, and other sources, including independent uses of {@subclassFeature Temporal Shift|Magus|LLMC|Traveler|LLMC:E|3}. However, you share your spell slots.",
 				"You can ask your Future Self one question concerning the future, and they answer you using the guidelines provided in the {@spell commune} spell. Their knowledge is limited to things that you may know in the future as determined by the DM.",
 				"The time your Future Self remains depends on the spell slot you expended: 3rd-level (1 minute), 4th-level (1 hour), or 5th-level (8 hours). They return to their time at the end of the duration, or sooner if they are reduced to 0 hit points.",
-				"You can only have one version of your Future Self in this time at once. Conjuring a second version causes the current Future Self present with you to instantly return to their time."
+				"There can only ever be one version of your Future Self in your current time at once. Conjuring a second Future Self causes any others to instantly return to their time."
 			],
 			"foundryImg": "icons/magic/control/energy-stream-link-teal.webp"
 		},
@@ -4580,8 +4580,8 @@
 				{
 					"type": "list",
 					"items": [
-						"When you can see or hear a creature within the reach of a melee weapon you are wielding cast a spell, you can make an opportunity attack against it. On hit, the creature must succeed on a Constitution saving throw as if it were doing so to maintain {@status concentration}. On a failure, its spell fails to take effect, and its slot or use of that ability is wasted.",
-						"When you damage a creature that is concentrating on a spell, that creature has disadvantage on the Constitution saving throw it makes to maintain its concentration.",
+						"When you can see or hear a creature within the reach of a melee weapon you are wielding cast a spell, you can make an opportunity attack against it. On hit, the creature must succeed on a Constitution saving throw as if it were doing so to maintain concentration. On a failure, its spell fails to take effect, and its slot or use of that ability is wasted.",
+						"If you damage a creature concentrating on a spell, it has disadvantage on its Constitution saving throw to maintain its concentration. This does not stack with the first bullet.",
 						"You have advantage on saving throws against spells cast by creatures you can see or hear within 5 feet of you."
 					]
 				}
@@ -4601,7 +4601,7 @@
 				{
 					"type": "list",
 					"items": [
-						"When you make a Constitution saving throw to maintain your {@status concentration} on a spell, you can choose to make this saving throw with your Spellcasting ability instead.",
+						"When you make a Constitution saving throw to maintain {@status concentration} on a spell, you can use a reaction to add your Spellcasting modifier (minimum of +0) to your roll.",
 						"You can perform the somatic components of spells even when you have weapons or shields in one or both hands.",
 						"When you make an opportunity attack, you can cast a spell instead. It must have a casting time of 1 action or 1 attack, and this spell can only target that creature.",
 						"When you hit a creature with an opportunity attack, you can cast a spell with a casting time of On Hit."
@@ -4621,31 +4621,27 @@
 					]
 				}
 			],
-			"entries": [
-				"You have trained to combine minor magic with weapon attacks. You learn one of the Cantrips listed below:",
+			"ability": [
 				{
-					"type": "table",
-					"colStyles": [
-						"col-6 text-center",
-						"col-6 text-center"
-					],
-					"rows": [
-						[
-							"{@spell acid splash}",
-							"{@spell glitterbeam|llspell}"
+					"choose": {
+						"from": [
+							"str",
+							"dex",
+							"con"
 						],
-						[
-							"{@spell fire bolt||firebolt}",
-							"{@spell ray of frost}"
-						],
-						[
-							"{@spell frostbite|xge}",
-							"{@spell shocking grasp}"
-						]
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You have trained to combine your minor magics with weapon attacks. You gain the benefits listed below:",
+				{
+					"type": "list",
+					"items": [
+						"You learn two Cantrips of your choice from the Magus spell list, choosing Intelligence, Wisdom, or Charisma as your spellcasting ability for these Magus Cantrips. At least one of these Cantrips must deal damage.",
+						"Once on each of your turns when you make a melee weapon attack, you can imbue the magic of a Cantrip you know into your attack. On hit, you do not deal the normal damage of the Cantrip along with the damage of your weapon attack. Instead, your weapon attack deals the damage type dealt by the Cantrip, and it applies the additional effects of the Cantrip on hit."
 					]
-				},
-				"Choose either Intelligence, Wisdom, or Charisma as the spellcasting modifier for this Cantrip. Once on each of your turns when you make a melee weapon attack, you can imbue the magic of one Cantrip you know into your weapon attack.",
-				"However, you do not deal the damage of the Cantrip along with the damage of your weapon attack. Instead, your weapon attack deals the damage type dealt by the Cantrip and applies the Cantrip's additional effects, other than damage, on hit."
+				}
 			],
 			"additionalSpells": [
 				{
@@ -4662,11 +4658,26 @@
 								"choose": {
 									"from": [
 										"acid splash",
-										"fire bolt",
+										"blade ward",
+										"booming blade (alternate)|llspell",
+										"chill touch",
+										"dancing lights",
+										"firebolt",
 										"frostbite|xge",
 										"glitterbeam|llspell",
+										"green-flame blade (alternate)|llspell",
+										"light",
+										"lightning lure|tce",
+										"mage hand",
+										"minor illusion",
+										"poison spray",
+										"prestidigitation",
+										"resistance",
 										"ray of frost",
-										"shocking grasp"
+										"shocking grasp",
+										"sword burst|tce",
+										"tempestuous blade|llspell",
+										"true strike (alternate)|llspell"
 									]
 								}
 							}
