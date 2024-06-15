@@ -3,7 +3,7 @@
 		"sources": [
 			{
 				"json": "DZC:ANA:M",
-				"abbreviation": "DZC:ANA:M",
+				"abbreviation": "DZC:ANA",
 				"full": "Monk Rework",
 				"authors": [
 					"Dusk Zargoth"
@@ -17,7 +17,7 @@
 			}
 		],
 		"dateAdded": 1714935701,
-		"dateLastModified": 1714935701,
+		"dateLastModified": 1716449458,
 		"optionalFeatureTypes": {
 			"DZC:MA": "Monk Rework; Martial Arts",
 			"DZC:MA:MS": "Monk Rework; Martial Arts: Mixed Style",
@@ -39,7 +39,7 @@
 			"DZC:KF:D": "Monk Rework; Ki Features; Defense",
 			"DZC:KF:U": "Monk Rework; Ki Features; Utility"
 		},
-		"_dateLastModifiedHash": "ae3009c314"
+		"_dateLastModifiedHash": "cd369d235f"
 	},
 	"class": [
 		{
@@ -66,6 +66,14 @@
 				],
 				"tools": [
 					"Choose one type of {@item artisan's tools|phb} or one {@item musical instrument|phb}"
+				],
+				"toolProficiencies": [
+					{
+						"anyArtisansTool": 1
+					},
+					{
+						"anyMusicalInstrument": 1
+					}
 				],
 				"skills": [
 					{
@@ -125,6 +133,17 @@
 			},
 			"optionalfeatureProgression": [
 				{
+					"name": "Martial Arts",
+					"featureType": [
+						"DZC:MA"
+					],
+					"progression": {
+						"1": 2,
+						"9": 3,
+						"18": 4
+					}
+				},
+				{
 					"name": "Ki Features",
 					"featureType": [
 						"DZC:KF"
@@ -151,17 +170,6 @@
 						10,
 						10
 					]
-				},
-				{
-					"name": "Martial Arts",
-					"featureType": [
-						"DZC:MA"
-					],
-					"progression": {
-						"1": 2,
-						"9": 3,
-						"18": 4
-					}
 				}
 			],
 			"classTableGroups": [
@@ -615,38 +623,6 @@
 					"page": 3,
 					"entries": [
 						"You are capable of wielding a larger variety of weapons, specially for defensive movements. Your monk weapons are longbows and any weapon that doesn't have the heavy, two-handed, or special property."
-					]
-				},
-				{
-					"type": "inset",
-					"name": "Changes to Unarmed Strikes and the Finesse Property",
-					"entries": [
-						"In this compendium unarmed strikes and the finesse property suffer important changes meant to keep balance in check.",
-						{
-							"type": "entries",
-							"name": "Finesse Property",
-							"page": 14,
-							"entries": [
-								"The property now allows to choose between your Strength or Dexterity modifier only for the attack roll with the weapon, but not for the damage roll. For the damage roll you still have to use your Strength modifier for melee weapon attacks or your Dexterity modifier for ranged weapon attacks."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Unarmed Strikes",
-							"page": 14,
-							"entries": [
-								"Unarmed strikes are now considered to have the finesse and light properties."
-							]
-						}
-					]
-				},
-				{
-					"type": "inset",
-					"name": "Unarmored Defense",
-					"entries": [
-						"Some characters have access to a specialized form of defense called Unarmored Defense. If your character has proficiency with it, your AC equals to 10 + your Dexterity modifier + your ability modifier listed in parenthesis, while you aren't wearing armor. You also lose this benefit if you wield a shield and lack proficiency with it.",
-						"If you have proficiency in this trait with different abilities, you can only benefit from one at the time.",
-						"Each ability offers a different interpretation of this trait. For instance, Wisdom allows you to predict attacks and increases your overall awareness of your surroundings; Constitution prevents harm by increasing your studiness; and Charisma makes your presence tangible to others, making them think twice before laying a finger on you."
 					]
 				}
 			]
@@ -2104,7 +2080,7 @@
 				"DZC:KF:O"
 			],
 			"entries": [
-				"As a bonus action, you can spend 1 ki point to grant your unarmed strikes a +1 bonus to attack and damage rolls for 10 minutes. This benefit ends early if you are incapacitated."
+				"As a bonus action, you can spend 1 ki point to grant your unarmed strikes a +1 bonus to attack and damage rolls for 10 minutes. This benefit ends early if you are {@condition incapacitated}."
 			],
 			"prerequisite": [
 				{
@@ -3037,7 +3013,7 @@
 				"DZC:KF:U"
 			],
 			"entries": [
-				"At the start of your turn, you can spend 1 ki point to double the movement speed bonus from your {@optfeature Unarmored Movement|DZC:ANA:M} feature for 10 minutes and you ignore difficult terrain for the duration. This benefit ends early if you are incapacitated."
+				"At the start of your turn, you can spend 1 ki point to double the movement speed bonus from your {@optfeature Unarmored Movement|DZC:ANA:M} feature for 10 minutes and you ignore difficult terrain for the duration. This benefit ends early if you are {@condition incapacitated}."
 			]
 		},
 		{
@@ -3424,7 +3400,7 @@
 			]
 		},
 		{
-			"name": "Emptry Body",
+			"name": "Empty Body",
 			"source": "DZC:ANA:M",
 			"page": 14,
 			"foundryImg": "systems/dnd5e/icons/svg/items/feature.svg",
@@ -4141,7 +4117,7 @@
 									"bludgeoning"
 								]
 							],
-							"ability": "default",
+							"ability": "",
 							"properties": [
 								"fin",
 								"lgt"
@@ -4228,6 +4204,80 @@
 			}
 		}
 	],
+	"action": [
+		{
+			"source": "DZC:ANA:M",
+			"name": "Convince",
+			"page": 0,
+			"entries": [
+				"As an action, you attempt to manipulate a creature into thinking what you want it to think. Choose a creature within 30 feet from you that can see or hear you. Make a Charisma ({@skill Persuasion}) or Charisma ({@skill Deception}) check (your choice) contested by the target's Wisdom ({@skill Insight}) check. If you have done anything harmful to the creature within the last minute, you have disadvantage on your check. If you succeed, the creature will be swayed to your point of view to a reasonable degree. This can also cause the creature to turn friendly, indifferent, or hostile towards certain creatures, either of your or the DM's choice. Your DM has the final judgement on what the creature will do or how it will behave."
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			]
+		},
+		{
+			"source": "DZC:ANA:M",
+			"name": "Disable",
+			"page": 0,
+			"entries": [
+				"As an action, you attempt to momentarily disable one of a creature's senses, be it throwing debris at its eyes, making a deafening noise next to its ears, or dishing out a dirty attack to its eyes or ears. Choose a creature within your reach that is no more than one size larger than you. You can either target its eyes or ears, if it has any. The creature must succeed on a DC 10 Dexterity or Constitution saving throw (its choice) or become {@condition blinded} or {@condition deafened} until the start of your next turn, if you targeted the eyes or ears, respectively."
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			]
+		},
+		{
+			"source": "DZC:ANA:M",
+			"name": "Distract",
+			"page": 0,
+			"entries": [
+				"As an action, you do everything you can to distract one creature that you can see. Until the start of your next turn, while that creature is within 5 feet from you and you aren't {@condition incapacitated}, your target has disadvantage on attack rolls against targets other than you, and disadvantage on {@skill Perception} checks."
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			]
+		},
+		{
+			"source": "DZC:ANA:M",
+			"name": "Intimidate",
+			"page": 0,
+			"entries": [
+				"As an action, you attempt to intimidate a creature. Choose a creature within 30 feet from you that can see or hear you. Make a Charisma ({@skill Intimidation}) check contested by the target's Wisdom ({@skill Insight}) check. If you succeed, the target is {@condition frightened} of you until the start of your next turn."
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			]
+		},
+		{
+			"source": "DZC:ANA:M",
+			"name": "Steal",
+			"page": 0,
+			"entries": [
+				"As an action, you try to take a Small object without being noticed, which usually requires at least one free hand. The object you are trying to steal can be unsecured, worn or carried, but it can't weight more than half a pound, and it mustn't be extremely noticeable or difficult to remove (like worn clothes or armor, or wielded objects).",
+				"To steal an object you must make a Dexterity ({@skill Sleight of Hands}) check against the Wisdom ({@skill Perception}) check of any observer in the area (passive Perception if they aren't in combat or alert), including the creature you are trying to steal from (if any). An observer sees you if it succeeds on the check. If the object is unsecured, you take it regardless of this result. If you fail on the check against the creature you are trying to steal from, you also fail to take the object. You also automatically fail the check against the creature you are trying to steal from if it's in combat or alert.",
+				"If the object is closely guarded (like inside a pocket or a sheathed weapon), you take a penalty to your Sleight of Hands check, usually a -5 penalty."
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			]
+		}
+	],
 	"classFluff": [
 		{
 			"name": "Monk Rework",
@@ -4284,6 +4334,34 @@
 									"name": "Can I add this Bonus?",
 									"entries": [
 										"Sometimes an ability, feature, or spell allows you to add a bonus to an attack roll, ability check, or saving throw, such as the bard's Bardic Inspiration, a war cleric's  Channel Divinity: Guided Strike, the *bless* spell, the martial technique boost offensive, and many others. Other abilities allow you to reroll the die for those die rolls, such as the drunken master monk's Drunkard's Luck. There is another type of abilities, much rarer than the others, ones that allow you to add special effects to your actions, reactions, die rolls, etc., such as the monk's Evasion ki feature. These abilities have in common the lack of key words for its trigger, such as hit, succeed, miss, or fail, which is why you can choose to use these after seeing the roll, but before the DM says wether the roll succeeds or fails."
+									]
+								},
+								{
+									"type": "inset",
+									"name": "Changes to Unarmed Strikes and the Finesse Property",
+									"entries": [
+										"In this compendium unarmed strikes and the finesse property suffer important changes meant to keep balance in check.",
+										{
+											"type": "entries",
+											"name": "Finesse Property",
+											"entries": [
+												"The property now allows to choose between your Strength or Dexterity modifier only for the attack roll with the weapon, but not for the damage roll. For the damage roll you still have to use your Strength modifier for melee weapon attacks or your Dexterity modifier for ranged weapon attacks."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Unarmed Strikes",
+											"entries": [
+												"Unarmed strikes are now considered to have the finesse and light properties."
+											]
+										}
+									]
+								},
+								{
+									"type": "inset",
+									"name": "Additional Actions",
+									"entries": [
+										"You can incorporate the following actions into your game: {@action Convince|DZC:ANA:M}, {@action Disable|DZC:ANA:M}, {@action Distract|DZC:ANA:M}, {@action Intimidate|DZC:ANA:M}, and {@action Steal|DZC:ANA:M}"
 									]
 								}
 							]
