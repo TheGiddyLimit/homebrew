@@ -310,6 +310,21 @@ Remove named or plain items from an array.
 }
 ```
 
+#### renameArr
+
+Rename named items in an array.
+
+```jsonc
+{
+    "mode": "renameArr",
+    // renames can be an item or an array of items
+    "renames": {
+        "rename": "Mace (Powered Form Only)",
+        "with": "Mace"
+    }
+}
+```
+
 #### setProp
 
 Set a property on an object. Note that use of a more specific `mode` is preferred, as these will generally be more resilient against future schema changes.
