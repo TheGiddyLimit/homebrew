@@ -21,7 +21,8 @@
 		"dateAdded": 1718934188,
 		"dateLastModified": 1718934188,
 		"optionalFeatureTypes": {
-			"Class Kit": "Class Kit"
+			"Class Kit": "Class Kit",
+			"Mal. Curse": "Maledictor's Curse"
 		}
 	},
 	"book": [
@@ -2859,6 +2860,121 @@
 	],
 	"monster": [
 		{
+			"source": "CoH-CAPG",
+			"page": 3,
+			"name": "Mana Spirit",
+			"summonedByClass": "Druid|PHB",
+			"size": [
+				"S"
+			],
+			"type": "elemental",
+			"ac": [
+				{
+					"special": "13 + SL (natural armor)"
+				}
+			],
+			"hp": {
+				"special": "5 + five times the slot's level (SL)"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 10,
+			"dex": 14,
+			"con": 14,
+			"int": 13,
+			"wis": 15,
+			"cha": 11,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 12,
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": [
+				"force"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"grappled",
+				"prone",
+				"restrained"
+			],
+			"pbNote": "equals your bonus",
+			"trait": [
+				{
+					"name": "Amorphous Form",
+					"entries": [
+						"The spirit can move through a space as narrow as 1 inch wide without squeezing."
+					]
+				},
+				{
+					"name": "Antimagic Vulnerability",
+					"entries": [
+						"The spirit is {@condition incapacitated} while in the area of an {@spell antimagic field}. If targeted by {@spell dispel magic}, the spirit must succeed on a Constitution saving throw against the caster's spell save DC or disappear."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The spirit has advantage on saving throws against spells and other magical effects."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The spirit makes a number of force slam attacks equal to half the SL (rounded down)."
+					]
+				},
+				{
+					"name": "Force Slam",
+					"entries": [
+						"{@atk mw} {@hitYourSpellAttack} to hit, reach 5ft., one target. {@h}{@damage 1d6 + summonSpellLevel} force damage."
+					]
+				},
+				{
+					"name": "Unleash Wild Magic {@recharge}",
+					"entries": [
+						"The spirit unleashes chaotic arcane energy. Each creature within 10 feet of the spirit must succeed on a Dexterity saving throw against your spell save DC, or roll at the {@class sorcerer||sorcerer's} {@table Wild Magic Surge|PHB} table to create a random magical effect."
+					]
+				}
+			],
+			"traitTags": [
+				"Amorphous",
+				"Magic Resistance"
+			],
+			"damageTags": [
+				"O"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			]
+		},
+		{
 			"name": "Manaforged Golem",
 			"source": "CoH-CAPG",
 			"page": 26,
@@ -3260,6 +3376,187 @@
 		}
 	],
 	"optionalfeature": [
+		{
+			"name": "Curse of Bleeding",
+			"source": "CoH-CAPG",
+			"page": 5,
+			"featureType": [
+				"Mal. Curse"
+			],
+			"entries": [
+				"At the start of each of its turns while its current hit points are below its hit point maximum, the target must make a Constitution saving throw. On a failed save, its current hit points are reduced by an amount equal to {@dice 1d4} + your Charisma modifier and it can't regain hit points until the start of its next turn.",
+				{
+					"type": "entries",
+					"name": "Empowered",
+					"entries": [
+						"When you empower this curse, the hit point reduction increases by {@scaledice 2d4|1-4|1d4} per level of the spell slot."
+					]
+				}
+			]
+		},
+		{
+			"name": "Curse of Fatigue",
+			"source": "CoH-CAPG",
+			"page": 5,
+			"featureType": [
+				"Mal. Curse"
+			],
+			"entries": [
+				"When you curse the target and at the start of each of the target's turns, the target must make a Constitution saving throw. On a failed save it suffers the effects of one level of {@condition exhaustion} until the start of its next turn.",
+				{
+					"type": "entries",
+					"name": "Empowered",
+					"entries": [
+						"When you empower this curse, the target suffers the effects of one additional level of {@condition exhaustion} for a 3rd or 4th-level spell slot, and the effects of two additional levels of {@condition exhaustion} for a 5th-level or higher spell slot."
+					]
+				}
+			]
+		},
+		{
+			"name": "Curse of Feebleness",
+			"source": "CoH-CAPG",
+			"page": 5,
+			"featureType": [
+				"Mal. Curse"
+			],
+			"entries": [
+				"When you curse the target and at the start of each of the target's turns, the target must make a Constitution saving throw. On a failed save, it takes a −1 penalty to all attack and damage rolls it makes until the start of its next turn.",
+				{
+					"type": "entries",
+					"name": "Empowered",
+					"entries": [
+						"When you empower this curse, the penalty to attack and damage rolls increases by 1 per level of the spell slot."
+					]
+				}
+			]
+		},
+		{
+			"name": "Curse of Fury",
+			"source": "CoH-CAPG",
+			"page": 5,
+			"featureType": [
+				"Mal. Curse"
+			],
+			"entries": [
+				"At the start of each of the target's turn, it must make a Wisdom saving throw. On a failed save, it must use its reaction to make a melee attack against the closest creature it can reach, using its movement to reach it if it has to (as part of this reaction). If two or more creatures have the same distance from the cursed target, the GM determines which creature is attacked, randomly.",
+				{
+					"type": "entries",
+					"name": "Empowered",
+					"entries": [
+						"When you empower this curse, the attack the target is forced to make when it fails its saving throw deals an extra {@scaledamage 1d6|1-4|1d6} necrotic damage per level of the spell slot on a hit."
+					]
+				}
+			]
+		},
+		{
+			"name": "Curse of Infatuation",
+			"source": "CoH-CAPG",
+			"page": 5,
+			"featureType": [
+				"Mal. Curse"
+			],
+			"entries": [
+				"When you curse the target, it must make a Wisdom saving throw. On a successful save, the curse fails to affect the target. On a failed save, the target is {@condition charmed} by you while the curse lasts or until you or your companions do anything harmful to it. The {@condition charmed} creature regards you as a friendly acquaintance and will act to the best of its ability according to its nature in order to please you (GM's discretion) .",
+				{
+					"type": "entries",
+					"name": "Empowered",
+					"entries": [
+						"When you empower this curse, the curse lasts for 1 hour per level of the spell slot, instead of its normal duration."
+					]
+				}
+			]
+		},
+		{
+			"name": "Curse of Lethargy",
+			"source": "CoH-CAPG",
+			"page": 5,
+			"featureType": [
+				"Mal. Curse"
+			],
+			"entries": [
+				"When you curse the target and at the start of each of the target's turns, the target must make a Wisdom saving throw. On a failed save, its speed is reduced by 10 feet, it takes a −2 penalty to AC and it becomes unable to take reactions until the start of its next turn.",
+				{
+					"type": "entries",
+					"name": "Empowered",
+					"entries": [
+						"When you empower this curse, the speed reduction increases by 10 feet per level of the spell slot."
+					]
+				}
+			]
+		},
+		{
+			"name": "Curse of Lifestealing",
+			"source": "CoH-CAPG",
+			"page": 5,
+			"featureType": [
+				"Mal. Curse"
+			],
+			"entries": [
+				"The first time on a turn that you deal damage to the target, it takes extra necrotic damage equal to {@damage 1d4} + your Charisma modifier and you gain temporary hit points equal to half the amount of necrotic damage dealt.",
+				{
+					"type": "entries",
+					"name": "Empowered",
+					"entries": [
+						"When you empower this curse, the damage increases by {@scaledamage 2d4|1-4|1d4} per level of the spell slot."
+					]
+				}
+			]
+		},
+		{
+			"name": "Curse of Madness",
+			"source": "CoH-CAPG",
+			"page": 5,
+			"featureType": [
+				"Mal. Curse"
+			],
+			"entries": [
+				"When you curse the target and the start of each of the target's turns, it must make a Wisdom saving throw. On a failed save, it must use its action on that turn to cackles, cries or screams maniacally. If it is unable to do so due to not being able to take an action, it becomes {@condition incapacitated} until the start of its next turn.",
+				{
+					"type": "entries",
+					"name": "Empowered",
+					"entries": [
+						"When you empower this curse, the target takes {@scaledamage 1d6|1-4|1d6} psychic damage per level of the spell slot each time it fails its saving throw."
+					]
+				}
+			]
+		},
+		{
+			"name": "Curse of Misfortune",
+			"source": "CoH-CAPG",
+			"page": 5,
+			"featureType": [
+				"Mal. Curse"
+			],
+			"entries": [
+				"Choose the target's attack rolls, ability checks or saving throws. Whenever the target makes a roll of the chosen type, it must roll a {@dice d4} and subtract the number rolled from the total.",
+				{
+					"type": "entries",
+					"name": "Empowered",
+					"entries": [
+						"When you empower this curse, the die the target rolls increases by one size per level of the spell slot, up to a {@dice d12} (for example, if you empower the curse with a 1st-level spell slot, the die's size increases from a {@dice d4} to a {@dice d6})."
+					]
+				}
+			]
+		},
+		{
+			"name": "Curse of Thorns",
+			"source": "CoH-CAPG",
+			"page": 5,
+			"featureType": [
+				"Mal. Curse"
+			],
+			"entries": [
+				"Shadowy vines full of thorns engulf the target. When you curse the target, and at the start of each of the target's turns, it must make a Strength saving throw. On a failed save it becomes {@condition grappled} by the vines until the start of its next turn.",
+				"While {@condition grappled} by the vines, the target can use its action to make a Strength ({@skill Athletics}) check against your warlock spell save DC. If it succeeds, it takes piercing damage equal to {@damage 1d4} + your Charisma modifier and the grapple ends.",
+				{
+					"type": "entries",
+					"name": "Empowered",
+					"entries": [
+						"When you empower this curse, the damage increases by {@scaledamage 2d4|1-4|1d4} per level of the spell slot."
+					]
+				}
+			]
+		},
 		{
 			"name": "Concealed Names",
 			"source": "CoH-CAPG",
