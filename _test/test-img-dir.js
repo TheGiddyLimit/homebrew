@@ -144,6 +144,11 @@ const _ALLOWLIST_DIRS = new Set([
 async function main () {
 	console.time(_TIME_TAG);
 
+	if (!fs.existsSync("_img")) {
+		console.timeEnd(_TIME_TAG);
+		return;
+	}
+
 	const extraDirs = fs.readdirSync("_img")
 		.filter(dir => !_ALLOWLIST_DIRS.has(dir));
 
