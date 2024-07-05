@@ -20,8 +20,9 @@ class BrewCleanerHtml {
 			.forEach(file => {
 				const fileData = Uf.readJsonSync(file);
 
-				const _meta = fileData._meta;
+				const {_meta, _test} = fileData;
 				delete fileData._meta;
+				delete fileData._test;
 
 				const fileOut = ObjectWalker.walk({
 					obj: fileData,
@@ -43,7 +44,7 @@ class BrewCleanerHtml {
 					isModify: true,
 				});
 
-				const out = {$schema: fileOut.$schema, _meta};
+				const out = {$schema: fileOut.$schema, _meta, _test};
 				Object.assign(out, fileOut);
 
 				fs.writeFileSync(file, getCleanJson(out));
