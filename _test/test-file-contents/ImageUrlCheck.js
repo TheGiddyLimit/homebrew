@@ -19,7 +19,8 @@ export class ImageUrlCheck extends DataTesterBase {
 		super();
 		this._sources = new Set(
 			(contents._meta?.sources?.map(src => src?.json) || [])
-				.filter(Boolean),
+				.filter(Boolean)
+				.map(srcJson => srcJson.replace(/:/g, "")),
 		);
 	}
 
