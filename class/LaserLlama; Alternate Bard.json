@@ -13,7 +13,7 @@
 					"hakr14"
 				],
 				"color": "ba0bba",
-				"version": "2.0.0",
+				"version": "1.2.0",
 				"url": "https://www.gmbinder.com/share/-NN-4ej_kwDJyO0_98BM"
 			}
 		],
@@ -363,7 +363,7 @@
 							"-",
 							"-",
 							"{@dice d4}",
-							"0"
+							"-"
 						],
 						[
 							"2",
@@ -653,7 +653,7 @@
 				"Sending",
 				"Slow",
 				"Sonic Wave|llspell",
-				"Tiny Hut|llspell",
+				"Tiny Hut (Alternate)|llspell",
 				"Tongues",
 				"Banishment",
 				"Charm Monster|XGE",
@@ -833,7 +833,7 @@
 					"type": "entries",
 					"name": "Cantrips",
 					"entries": [
-						"You learn two cantrips of your choice from the {@filter Bard spell list|spells|level=0|class=bard (llab)}. You learn an additional Bard cantrip at 4th and 10th level, as shown in the Cantrips Known column of the Bard table."
+						"You learn two cantrips of your choice from the {@filter Bard spell list|spells|level=0|class=alternate bard (LLABrd)}. You learn an additional Bard cantrip at 4th and 10th level, as shown in the Cantrips Known column of the Bard table."
 					]
 				},
 				{
@@ -1222,7 +1222,7 @@
 			"classSource": "LLABrd",
 			"level": 13,
 			"entries": [
-				"At 13th level, you learn two additional Magical Secrets spells of your choice. These spells must be of {@filter 4th level or lower|spells|level=4}."	
+				"At 13th level, you learn two additional Magical Secrets spells of your choice. These spells must be of {@filter 4th level|spells|level=4}."	
 				]
 		},
 		{
@@ -1253,8 +1253,7 @@
 			"classSource": "LLABrd",
 			"level": 17,
 			"entries": [
-				"At 17th level, you learn two additional Magical Secrets spells of your choice. These spells must be of {@filter 5th level or lower|spells|level=1;2;3;4;5}.",
-				"Unlike your other Bard spells, any Bard spells that you learn as a Magical Secret through this feature cannot be switched out for another Bard spell when you gain a level in this class."
+				"At 17th level, you learn two additional Magical Secrets spells of your choice. These spells must be of {@filter 5th level|spells|level=5}."
 			]
 		},
 		{
@@ -1342,6 +1341,15 @@
 				"Tumbling Strike|Alternate Bard|LLABrd|Fool|LLABrd|5|LLABrd",
 				"Wondrous Tumbler|Alternate Bard|LLABrd|Fool|LLABrd|11|LLABrd",
 				"Fool's Luck|Alternate Bard|LLABrd|Fool|LLABrd|15|LLABrd"
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"vicious mockery (alternate)|LLABrd"
+						]
+					}
+				}
 			],
 			"foundryImg": "icons/svg/card-joker.svg"
 		},
@@ -1681,7 +1689,7 @@
 			"entries": [
 				"{@i 3rd-level Fool Tradition feature}",
 				"You have learned to move about in a strange yet entertaining manner. You gain proficiency in one of the following skills of your choice: Acrobatics, Performance, or Sleight of Hand.",
-				"You also learn the vicious mockery Cantrip, but it doesn't count against your Cantrips Known. If you already know this Cantrip you learn another Bard Cantrip of your choice."
+				"You also learn the {@spell vicious mockery (alternate)|llspell} Cantrip, but it doesn't count against your Cantrips Known. If you already know this Cantrip you learn another Bard Cantrip of your choice."
 			],
 			"foundryImg": "icons/equipment/head/mask-carved-scream-tan.webp"
 		},
@@ -1883,6 +1891,9 @@
 				"{@i 11th-level Loremaster Tradition feature}",
 				"Your wide-ranging knowledge and talents with bardic magic allow you to turn your failures into success. When you miss with an attack roll, or fail an ability check or saving throw, you can expend a Bardic Inspiration Die, roll it, and add it to the result of your roll, possibly turning failure into success."
 			],
+			"consumes": {
+				"name": "Bardic Inspiration"
+			},
 			"foundrySystem": {
 				"activation.condition": "When you miss with an attack roll, or fail an ability check or saving throw"
 			},
@@ -2395,6 +2406,9 @@
 				"You can distract attackers with your whimsical bardic magics. When a creature who can see you hits you with an attack, you can expend a Bardic Inspiration Die as your reaction, roll it, and add the result to your Armor Class against that attack.",
 				"When your Glamorous Mantle is active, you can use this reaction at will, without expending a Bardic Inspiration Die to use it."
 			],
+			"consumes": {
+				"name": "Bardic Inspiration"
+			},
 			"foundrySystem": {
 				"formula": "@scale.alternate-bard.bardic-inspiration"
 			},
@@ -2437,6 +2451,9 @@
 				"The powerful enchantment magics you use have given you a lovely, yet fierce appearance, much like the powerful Archfey. When you cast an enchantment spell on a creature that can see you within 30 feet, you can expend a Bardic Inspiration Die and force it to make its saving throw with disadvantage.",
 				"If your Glamorous Mantle is active, you can use this feature without expending your Bardic Inspiration Die."
 			],
+			"consumes": {
+				"name": "Bardic Inspiration"
+			},
 			"foundryImg": "icons/magic/light/explosion-star-glow-silhouette.webp"
 		},
 		{
@@ -3344,7 +3361,7 @@
 				}
 			],
 			"hp": {
-				"special": "6 + 5 + five times your Bard level"
+				"special": "5 + five times your Bard level"
 			},
 			"speed": {
 				"walk": 30,
@@ -3391,7 +3408,7 @@
 			],
 			"action": [
 				{
-					"name": "Battleaxe",
+					"name": "Slam",
 					"entries": [
 						"{@atk mw} + CHA + PB to hit, reach 5 ft., one target. On hit: magical bludgeoning damage equal to a roll of your Bardic Inspiration Die + CHA."
 					]
