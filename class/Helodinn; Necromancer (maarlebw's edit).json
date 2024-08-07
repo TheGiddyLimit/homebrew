@@ -543,7 +543,33 @@
 					"(a) a {@item Dungeoneer's Pack|PHB} or (b) a {@item Explorer's Pack|PHB}"
 				],
 				"additionalFromBackground": true,
-				"goldAlternative": "{@dice 4d4 × 10}"
+				"goldAlternative": "{@dice 4d4 × 10}",
+				"defaultData": [
+					{
+						"a": [
+							"shortsword|phb"
+						],
+						"b": [
+							"sickle|phb"
+						]
+					},
+					{
+						"a": [
+							"component pouch|phb"
+						],
+						"b": [
+							"arcane focus|phb"
+						]
+					},
+					{
+						"a": [
+							"dungeoneer's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
+					}
+				]
 			},
 			"casterProgression": "full",
 			"spellcastingAbility": "int",
@@ -1081,7 +1107,132 @@
 			],
 			"subclassTitle": "Deadly Path",
 			"hasFluff": true,
-			"hasFluffImages": true
+			"hasFluffImages": true,
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "necrotic-points",
+						"type": "number",
+						"scale": {
+							"1": {
+								"value": 1
+							},
+							"2": {
+								"value": 2
+							},
+							"3": {
+								"value": 3
+							},
+							"4": {
+								"value": 4
+							},
+							"5": {
+								"value": 5
+							},
+							"6": {
+								"value": 6
+							},
+							"7": {
+								"value": 7
+							},
+							"8": {
+								"value": 8
+							},
+							"9": {
+								"value": 9
+							},
+							"10": {
+								"value": 10
+							},
+							"11": {
+								"value": 12
+							},
+							"12": {
+								"value": 14
+							},
+							"13": {
+								"value": 16
+							},
+							"14": {
+								"value": 18
+							},
+							"15": {
+								"value": 20
+							},
+							"16": {
+								"value": 22
+							},
+							"17": {
+								"value": 24
+							},
+							"18": {
+								"value": 26
+							},
+							"19": {
+								"value": 28
+							},
+							"20": {
+								"value": 30
+							}
+						}
+					},
+					"title": "Necrotic Points"
+				},
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "life-syphon",
+						"type": "dice",
+						"scale": {
+							"1": {
+								"n": 1,
+								"die": 6
+							},
+							"5": {
+								"n": 2
+							},
+							"11": {
+								"n": 3
+							},
+							"17": {
+								"n": 4
+							}
+						},
+						"title": "Life Syphon"
+					}
+				}
+			]
+		}
+	],
+	"foundryClassFeature": [
+		{
+			"name": "Negative Energy",
+			"source": "Helodinn-Necromancer",
+			"className": "Necromancer",
+			"classSource": "Helodinn-Necromancer",
+			"level": 1,
+			"system": {
+				"uses.per": "lr",
+				"uses.max": "@scale.necromancer.necrotic-points"
+			}
+		},
+		{
+			"name": "Life Syphon",
+			"source": "Helodinn-Necromancer",
+			"className": "Necromancer",
+			"classSource": "Helodinn-Necromancer",
+			"level": 1,
+			"system": {
+				"uses.per": "lr",
+				"uses.max": "@abilities.int.mod",
+				"damage.parts": [
+					[
+						"@scale.necromancer.life-syphon + @abilities.int.mod",
+						"necrotic"
+					]
+				]
+			}
 		}
 	],
 	"classFeature": [
@@ -1214,6 +1365,10 @@
 			"classSource": "Helodinn-Necromancer",
 			"page": 4,
 			"level": 1,
+			"foundrySystem": {
+				"uses.per": "lr",
+				"uses.max": "@scale.necromancer.necrotic-points"
+			},
 			"entries": [
 				"At 1st level, you tap into a deep wellspring of negative energy within yourself. This wellspring is represented by necrotic points, which allow you to use the necromancer abilities.",
 				{
@@ -1457,6 +1612,9 @@
 			"level": 5,
 			"entries": [
 				"Beginning at 5th level, the time you've spent using negative energy has begun to affect your soul. Your age only increases by 1 year for every 10 years that pass. You have resistance to necrotic damage and your hit point maximum cannot be reduced (such as by a {@creature wight||Wight's} \"Life Drain\" ability). At 10th level, this feature extends to any undead under your control."
+			],
+			"resist": [
+				"necrotic"
 			]
 		},
 		{
