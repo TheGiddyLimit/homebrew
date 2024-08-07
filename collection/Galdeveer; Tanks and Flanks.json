@@ -15,7 +15,7 @@
 		],
 		"dateAdded": 1720008672,
 		"dateLastModified": 1720008672,
-		"_dateLastModifiedHash": "daba7d2ebc"
+		"_dateLastModifiedHash": "1630d4224c"
 	},
 	"monster": [
 		{
@@ -2921,8 +2921,8 @@
 				}
 			],
 			"entries": [
-				"You summon the protective presence of a Celestial spirit, which manifests as a pillar of divine light that shines in a 10-foot-radius, 40- foot-high Cylinder centered on a point within range. Until the spell ends, Bright Light fills the Cylinder, and when you Move on your turn, you can also move the Cylinder up to 30 feet. When a creature enters the Cylinder for the first time on a turn or starts its turn there, you can bathe that creature in one of the following lights:",
-				"Healing Light. The creature that isn't an Undead or a Construct regains Hit Points equal to {@dice 4d12} plus your spellcasting modifier. A creature can be healed by this light only once per casting of this spell.",
+				"You summon the protective presence of a Celestial spirit, which manifests as a pillar of divine light that shines in a 10-foot-radius, 40-foot-high Cylinder centered on a point within range. Until the spell ends, Bright Light fills the Cylinder, and when you Move on your turn, you can also move the Cylinder up to 30 feet. When a creature enters the Cylinder for the first time on a turn or starts its turn there, you can bathe that creature in one of the following lights:",
+				"Healing Light. The creature that isn't an Undead or a Construct regains Hit Points equal to {@dice 4d12} plus your spellcasting ability modifier. A creature can be healed by this light only once per casting of this spell.",
 				"Searing Radiance. The creature must make a Dexterity saving throw, taking {@damage 8d12} Radiant damage on a failed save or half as much damage on a successful one. A creature can be damaged by this light only once per casting of this spell."
 			],
 			"entriesHigherLevel": [
@@ -4164,16 +4164,10 @@
 			]
 		},
 		{
-			"name": "Cure Wounds",
+			"name": "Cure Injury",
 			"source": "GaldeveerTanksandFlanks",
 			"page": "Revised Spells",
 			"basicRules": true,
-			"otherSources": [
-				{
-					"source": "RMR",
-					"page": 52
-				}
-			],
 			"level": 1,
 			"school": "A",
 			"time": [
@@ -4194,18 +4188,30 @@
 			},
 			"duration": [
 				{
-					"type": "instant"
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					}
 				}
 			],
 			"entries": [
-				"A creature you touch regains a number of Hit Points equal to {@dice 2d8} plus your spellcasting ability modifier. This spell has no effect on Constructs and Undead."
+				"A creature you touch regains a number of Hit Points equal to {@dice 2d4}. This spell has no effect on Constructs and Undead. Choose one of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Arm: Once within the next minute before they hit or miss with a weapon attack they can choose to deal extra damage. On a hit, they deal extra damage of the weapon's damage type equal to the amount they were healed plus your spellcasting ability modifier.",
+						"Leg: Once within the next minute they can increase their movement speed by an amount equal to the amount they were healed plus your spellcasting ability modifier until the start of their next turn.",
+						"Head: Once within the next minute when they take damage they can reduce the damage by an amount equal to the amount they were healed plus your spellcasting ability modifier."
+					]
+				}
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of level 2 or higher, the healing increases by {@scaledice 2d8|1-9|2d8} for each slot level above 1."
+						"When you cast this spell using a spell slot of level 2 or higher, the healing increases by {@scaledice 2d4|1-9|2d4} for each slot level above 1."
 					]
 				}
 			],
@@ -4471,7 +4477,7 @@
 			]
 		},
 		{
-			"name": "Mass Cure Wounds",
+			"name": "Mass Cure Injury",
 			"source": "GaldeveerTanksandFlanks",
 			"page": "Revised Spells",
 			"basicRules": true,
@@ -4496,18 +4502,30 @@
 			},
 			"duration": [
 				{
-					"type": "instant"
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					}
 				}
 			],
 			"entries": [
-				"A wave of healing energy washes out from a point of your choice within range. Choose up to six creatures in a 30-foot-radius sphere centered on that point. Each target regains hit points equal to {@dice 5d8} + your spellcasting ability modifier. This spell has no effect on undead or constructs."
+				"A wave of healing energy washes out from a point of your choice within range. Choose up to six creatures in a 30-foot-radius sphere centered on that point. Each target regains hit points equal to {@dice 5d4}. This spell has no effect on undead or constructs. Choose one of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Arm: Once within the next minute before they hit or miss with a weapon attack they can choose to deal extra damage. On a hit, they deal extra damage of the weapon's damage type equal to the amount they were healed plus your spellcasting ability modifier.",
+						"Leg: Once within the next minute they can increase their movement speed by an amount equal to the amount they were healed plus your spellcasting ability modifier until the start of their next turn.",
+						"Head: Once within the next minute when they take damage they can reduce the damage by an amount equal to the amount they were healed plus your spellcasting ability modifier."
+					]
+				}
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 6th level or higher, the healing increases by {@scaledice 3d8|5-9|1d8} for each slot level above 5th."
+						"When you cast this spell using a spell slot of 6th level or higher, the healing increases by {@scaledice 3d4|5-9|1d4} for each slot level above 5th."
 					]
 				}
 			],
@@ -5541,7 +5559,7 @@
 			],
 			"entries": [
 				"You cast this spell as a bonus action after you hit with an attack roll. A writhing mass of thorny vines grows from the wound, and the target must succeed on a Strength saving throw or be {@condition restrained} by the magical vines until the spell ends. A Large or larger creature has advantage on this saving throw and a small or smaller creature has disadvantage. If the target succeeds on the save, the vines shrivel away.",
-				"While {@condition restrained} by this spell, at the start of each of its turns the target takes {@damage 1d6} piercing damage then can reroll the saving throw. On a success, they are freed. "
+				"While {@condition restrained} by this spell, at the start of each of its turns the target takes {@damage 1d6} piercing damage then can reroll the saving throw. On a success, they are freed. A creature that can touch the target can spend its action to make the target reroll its saving throw."
 			],
 			"entriesHigherLevel": [
 				{
@@ -6429,7 +6447,7 @@
 			},
 			"entries": [
 				"Squirming, ebony tentacles fill a 20-foot square on ground that you can see within range. For the duration, flat surfaces in the area are {@quickref difficult terrain||3}.",
-				"Creatures in the affected area must succeed on a Strength saving throw or take {@damage 3d6} bludgeoning damage and be {@condition restrained} by the tentacles until the start of their next turn. When a creature makes the saving throw they don't need to do so again until the start of their next turn. If the creature leaves the area, they are no longer {@condition restrained}. The creature can use their action to make the saving throw again. On a success they are no longer {@condition restrained}."
+				"Creatures in the affected area must succeed on a Strength saving throw or take {@damage 3d6} bludgeoning damage and be {@condition restrained} by the tentacles until the start of their next turn. When a creature makes the saving throw they don't need to do so again until the start of their next turn. If the creature leaves the area, they are no longer {@condition restrained}. At the start of each of its turns and as an action the creature can reroll the saving throw, breaking free on a success."
 			],
 			"conditionInflict": [
 				"restrained"
@@ -6440,12 +6458,6 @@
 			"source": "GaldeveerTanksandFlanks",
 			"page": "Revised Spells",
 			"basicRules": true,
-			"otherSources": [
-				{
-					"source": "RMR",
-					"page": 61
-				}
-			],
 			"level": 2,
 			"school": "C",
 			"time": [
@@ -6555,7 +6567,8 @@
 			"entries": [
 				"You conjure a mass of thick, sticky webbing at a point of your choice within range. The webs fill a 20-foot cube for the duration. The webs are difficult terrain and lightly obscure their area.",
 				"If the webs aren't anchored between two solid masses (such as walls or trees) or layered across a floor, wall, or ceiling, the conjured web collapses on itself, and the spell ends at the start of your next turn.",
-				"Creatures in the affected area must succeed on a Dexterity saving throw or be {@condition restrained} by the webs until the start of their next turn. When a creature makes the saving throw they don't need to do so again until the start of their next turn. If the creature leaves the area, they are no longer {@condition restrained}. The creature can use their action to make the saving throw again. On a success they are no longer {@condition restrained}.",
+				"Creatures in the affected area must succeed on a Dexterity saving throw or be {@condition restrained} by the webs until the start of their next turn. After a creature makes the saving throw they don't need to do so again until the start of their next turn. If the creature leaves the area, they are no longer {@condition restrained}.",
+				"At the start of each of its turns and as an action by a creature that can touch them the creature can make the saving throw again. On a success they are no longer {@condition restrained}.",
 				"If the webs are exposed to fire they all burn. Any creature that is {@condition restrained} by the webs while they are burning takes {@damage 2d4} fire damage. Once they take this damage they cannot take it again until the start of their next turn. After 1 round of burning, all the webs are burned away and the spell ends."
 			],
 			"conditionInflict": [
@@ -6597,7 +6610,7 @@
 			],
 			"entries": [
 				"Grasping weeds and vines sprout from the ground in a 20-foot square starting from a point within range. For the duration, these plants turn the ground in the area into difficult terrain.",
-				"Creatures in the area when you cast the spell must succeed on a Strength saving throw or be {@condition restrained} by the entangling plants until the spell ends. At the start of its turn the creature can repeat the saving throw, breaking free on a success. If the creature leaves the area, they are no longer {@condition restrained}. The creature can use their action to make the saving throw again. On a success they are no longer {@condition restrained}.",
+				"Creatures in the area when you cast the spell must succeed on a Strength saving throw or be {@condition restrained} by the entangling plants until the spell ends. At the start of its turn and as an action the creature can repeat the saving throw, breaking free on a success. If the creature leaves the area, they are no longer {@condition restrained}.",
 				"When the spell ends, the conjured plants wilt away."
 			],
 			"conditionInflict": [
@@ -6854,107 +6867,6 @@
 				{
 					"name": "Drow High Magic",
 					"source": "XGE"
-				}
-			]
-		},
-		{
-			"name": "Tasha's Mind Whip",
-			"source": "GaldeveerTanksandFlanks",
-			"page": "Revised Spells",
-			"level": 2,
-			"school": "E",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "feet",
-					"amount": 15
-				}
-			},
-			"components": {
-				"v": true
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "round",
-						"amount": 1
-					}
-				}
-			],
-			"entries": [
-				"You psychically lash out at one creature you can see within range. The target must make an Intelligence saving throw. On a failed save, the target takes {@damage 3d6} psychic damage, and becomes Dazed until the start of their next turn. On a successful save, the target takes half as much damage."
-			],
-			"damageInflict": [
-				"psychic"
-			],
-			"savingThrow": [
-				"intelligence"
-			],
-			"miscTags": [
-				"SGT"
-			],
-			"areaTags": [
-				"ST"
-			],
-			"hasFluffImages": true,
-			"classes": {
-				"fromClassListVariant": [
-					{
-						"name": "Sorcerer",
-						"source": "PHB",
-						"definedInSource": "TCE"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB",
-						"definedInSource": "TCE"
-					}
-				],
-				"fromSubclass": [
-					{
-						"class": {
-							"name": "Fighter",
-							"source": "PHB"
-						},
-						"subclass": {
-							"name": "Eldritch Knight",
-							"shortName": "Eldritch Knight",
-							"source": "PHB"
-						}
-					},
-					{
-						"class": {
-							"name": "Rogue",
-							"source": "PHB"
-						},
-						"subclass": {
-							"name": "Arcane Trickster",
-							"shortName": "Arcane Trickster",
-							"source": "PHB"
-						}
-					}
-				]
-			},
-			"feats": [
-				{
-					"name": "Adept of the Black Robes",
-					"source": "DSotDQ"
-				}
-			],
-			"entriesHigherLevel": [
-				{
-					"type": "entries",
-					"name": "At Higher Levels",
-					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd. The additional targets do not need to be in range. Instead, pick each additional target one at a time. Each time you choose a target it must be within 10 ft of the original target or a previously chosen target."
-					]
 				}
 			]
 		},
@@ -7884,7 +7796,7 @@
 				}
 			],
 			"entries": [
-				"A creature you can see within 90 ft must succeed on a constitution saving throw or fall {@condition unconscious} for the duration. At the end of each of their turns they can repeat the saving throw, waking up on a success.The sleeping creature wakes up if they take damage or someone uses an action to shake or slap them awake. Undead and creatures immune to being {@condition charmed} aren't affected by this spell. "
+				"A creature you can see within 90 ft must succeed on a constitution saving throw or fall {@condition unconscious} for the duration. At the end of each of their turns they can repeat the saving throw, waking up on a success. The sleeping creature wakes up if they take damage or someone uses an action to shake or slap them awake. Undead and creatures immune to being {@condition charmed} aren't affected by this spell. "
 			],
 			"entriesHigherLevel": [
 				{
@@ -10193,8 +10105,7 @@
 				}
 			],
 			"entries": [
-				"You attempt to compel a creature into a duel. One creature that you can see within range must make a Wisdom saving throw. On a failed save, the creature is drawn to you, compelled by your divine demand. For the duration, it has disadvantage on attack rolls against creatures other than you, and can't move away from you.",
-				"The spell ends if a creature friendly to you damages the target or casts a harmful spell on it, or if you end your turn more than 30 feet away from the target."
+				"One creature that you can see within range must make a Wisdom saving throw. On a failed save, the creature gains the angered condition against you for 1 minute."
 			],
 			"savingThrow": [
 				"wisdom"
@@ -10251,7 +10162,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell at a higher level you can target one additional creature for each additional spell level."
+						"When you cast this spell at a higher level, you can target one additional creature for each additional level."
 					]
 				}
 			]
@@ -11496,7 +11407,7 @@
 				]
 			},
 			"entries": [
-				"You push a piece of shrapnel into each wound where they melt into golden light. Heal the target {@dice 2d2} + your spellcasting modifier."
+				"You push a piece of shrapnel into each wound where they melt into golden light. Heal the target {@dice 2d2} + your spellcasting ability modifier."
 			],
 			"source": "GaldeveerTanksandFlanks",
 			"page": "New Spells",
@@ -15706,7 +15617,7 @@
 				}
 			],
 			"entries": [
-				"The caster makes a constitution saving throw. They can choose to fail. Add half the level your casting this spell at rounded up and subtract the level of the spell you're reflecting from your Spell Save DC. On a failure, you reflect the spell. If the spell targeted you, change the target to a creature you can see within the spell's range. If the spell is a line area of effect, change its direction starting at a point on the line you can touch."
+				"The opposing caster makes a constitution saving throw. They can choose to fail. Add half the level your casting this spell at rounded up and subtract the level of the spell you're reflecting from your Spell Save DC. On a failure, you reflect the spell. If the spell targeted you, change the target to a creature you can see within the spell's range. If the spell is a line area of effect, change its direction starting at a point on the line you can touch."
 			],
 			"miscTags": [
 				"SGT"
@@ -15736,7 +15647,12 @@
 						"Special (see description)"
 					]
 				}
-			]
+			],
+			"fluff": {
+				"entries": [
+					"Its debatable whether a spell like this should even exist. I'll remove it if it gets out of hand. Its a lot more difficult to pull off than counterspell and only changes one of the targets so I can imagine it actually being worse that counterspell."
+				]
+			}
 		},
 		{
 			"name": "Mage Hand",
@@ -16542,6 +16458,425 @@
 					"source": "DSotDQ"
 				}
 			]
+		},
+		{
+			"name": "Tasha's Mind Whip",
+			"source": "GaldeveerTanksandFlanks",
+			"page": "Revised Spells",
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You psychically lash out at one creature you can see within range. The target must make an Intelligence saving throw. On a failed save, the target takes {@damage 3d6} psychic damage, and it can't take a reaction until the end of its next turn. Moreover, on its next turn, it must choose whether it gets a move, an action, or a bonus action; it gets only one of the three. On a successful save, the target takes half as much damage and suffers none of the spell's other effects."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd. The creatures must be within 30 feet of each other when you target them."
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"hasFluffImages": true,
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Fighter",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Eldritch Knight",
+							"shortName": "Eldritch Knight",
+							"source": "PHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Rogue",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Arcane Trickster",
+							"shortName": "Arcane Trickster",
+							"source": "PHB"
+						}
+					}
+				]
+			},
+			"feats": [
+				{
+					"name": "Adept of the Black Robes",
+					"source": "DSotDQ"
+				}
+			]
+		},
+		{
+			"name": "Cure Wounds",
+			"source": "GaldeveerTanksandFlanks",
+			"page": "Revised Spells",
+			"basicRules": true,
+			"level": 1,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"A creature you touch regains a number of hit points equal to {@dice 2d8} + your spellcasting ability modifier. This spell has no effect on undead or constructs."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 2nd level or higher, the healing increases by {@scaledice 2d8|1-9|2d8} for each slot level above 1st."
+					]
+				}
+			],
+			"affectsCreatureType": [
+				"aberration",
+				"beast",
+				"celestial",
+				"dragon",
+				"elemental",
+				"fey",
+				"fiend",
+				"giant",
+				"humanoid",
+				"monstrosity",
+				"ooze",
+				"plant"
+			],
+			"miscTags": [
+				"HL"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Life Domain",
+							"shortName": "Life",
+							"source": "PHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Druid",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Circle of Wildfire",
+							"shortName": "Wildfire",
+							"source": "TCE"
+						}
+					},
+					{
+						"class": {
+							"name": "Sorcerer",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Divine Soul",
+							"shortName": "Divine Soul",
+							"source": "XGE"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "The Celestial",
+							"shortName": "Celestial",
+							"source": "XGE"
+						}
+					}
+				]
+			},
+			"races": [
+				{
+					"name": "Halfling (Mark of Healing)",
+					"source": "ERLW",
+					"baseName": "Halfling",
+					"baseSource": "PHB"
+				}
+			],
+			"backgrounds": [
+				{
+					"name": "Witherbloom Student",
+					"source": "SCC"
+				}
+			],
+			"feats": [
+				{
+					"name": "Artificer Initiate",
+					"source": "TCE"
+				},
+				{
+					"name": "Divinely Favored",
+					"source": "DSotDQ"
+				},
+				{
+					"name": "Gift of the Metallic Dragon",
+					"source": "FTD"
+				},
+				{
+					"name": "Magic Initiate",
+					"source": "PHB"
+				},
+				{
+					"name": "Strixhaven Initiate",
+					"source": "SCC"
+				}
+			]
+		},
+		{
+			"name": "Mass Cure Wounds",
+			"source": "GaldeveerTanksandFlanks",
+			"page": "Revised Spells",
+			"basicRules": true,
+			"level": 5,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"A wave of healing energy washes out from a point of your choice within range. Choose up to six creatures in a 30-foot-radius sphere centered on that point. Each target regains hit points equal to {@dice 5d8} + your spellcasting ability modifier. This spell has no effect on undead or constructs."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 6th level or higher, the healing increases by {@scaledice 3d8|5-9|1d8} for each slot level above 5th."
+					]
+				}
+			],
+			"affectsCreatureType": [
+				"aberration",
+				"beast",
+				"celestial",
+				"dragon",
+				"elemental",
+				"fey",
+				"fiend",
+				"giant",
+				"humanoid",
+				"monstrosity",
+				"ooze",
+				"plant"
+			],
+			"miscTags": [
+				"HL"
+			],
+			"areaTags": [
+				"MT",
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Artificer",
+							"source": "TCE"
+						},
+						"subclass": {
+							"name": "Battle Smith",
+							"shortName": "Battle Smith",
+							"source": "TCE"
+						}
+					},
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Life Domain",
+							"shortName": "Life",
+							"source": "PHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Solidarity Domain (PSA)",
+							"shortName": "Solidarity (PSA)",
+							"source": "PSA"
+						}
+					},
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Community Domain",
+							"shortName": "Community",
+							"source": "HWCS"
+						}
+					},
+					{
+						"class": {
+							"name": "Druid",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Circle of Wildfire",
+							"shortName": "Wildfire",
+							"source": "TCE"
+						}
+					},
+					{
+						"class": {
+							"name": "Sorcerer",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Divine Soul",
+							"shortName": "Divine Soul",
+							"source": "XGE"
+						}
+					}
+				]
+			}
 		}
 	],
 	"feat": [
@@ -18255,7 +18590,7 @@
 			],
 			"entries": [
 				"{@italic 1st-level feat}",
-				"Choose a class that has a spell list. Learn 2 cantrips from that class's spell list. Use that class's spellcasting modifier as your spellcasting modifier for these spells. Whenever you gain a level you can replace one of these cantrips. "
+				"Choose a class that has a spell list. Learn 2 cantrips from that class's spell list. Use that class's spellcasting ability as your spellcasting ability for these spells. Whenever you gain a level you can replace one of these cantrips. "
 			]
 		},
 		{
@@ -18420,7 +18755,7 @@
 						{
 							"type": "item",
 							"name": "Two Cantrips",
-							"entry": "Learn two cantrips from a class of your choice. Your spellcasting modifier for these cantrips is the spellcasting modifier of that class. You can replace these cantrips when you gain a level in the class that granted you this feat."
+							"entry": "Learn two cantrips from a class of your choice. Your spellcasting ability for these cantrips is the spellcasting ability of that class. You can replace these cantrips when you gain a level in the class that granted you this feat."
 						}
 					]
 				}
