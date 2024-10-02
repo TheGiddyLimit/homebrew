@@ -1,7 +1,7 @@
 Some files in this directory correspond to a homebrew which has been overhauled. New files have been placed in the `homebrew-img` repo. The below files and subdirectories should be deleted at or after a "reasonable period."
 
 ### Subdirectories
-- N/A
+- Arcadia Issue 2 Images
 
 ### Root Files
 - Coverpage.png
