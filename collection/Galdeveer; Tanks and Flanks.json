@@ -80,12 +80,6 @@
 					"entries": [
 						"The familiar can breathe air and water."
 					]
-				},
-				{
-					"name": "Extradimensional Escape (Recharges after a Long Rest)",
-					"entries": [
-						"When the familiar would drop to 0 Hit Points, it instead drops to 1 Hit Point and vanishes into an extradimensional space, leaving behind anything it was wearing or carrying. It remains there for 1 hour or until you summon it as a Magic action, and then it reappears in your space."
-					]
 				}
 			],
 			"traitTags": [
@@ -104,9 +98,12 @@
 				{
 					"name": "Deliver Spell",
 					"entries": [
-						"When you cast a spell with a range of touch, the familiar can deliver the spell with its touch. To do so, the familiar must be within 120 feet of you."
+						"When you cast a spell with a range of touch, the familiar can deliver the spell with its touch. To do so, the familiar must be within 120 feet of you. It can do this a number of times equal to half the spell's level rounded up and regains all uses on a long rest."
 					]
 				}
+			],
+			"miscTags": [
+				"MA"
 			]
 		},
 		{
@@ -241,6 +238,7 @@
 				}
 			],
 			"miscTags": [
+				"MA",
 				"MLW"
 			],
 			"bonus": [
@@ -253,7 +251,7 @@
 				{
 					"name": "Biblical Glare (Biblical Only; Recharges after a Long Rest)",
 					"entries": [
-						"Numerous eyes open as it targets one creature it can perceive up to 60 feet away. The target must succeed on a Wisdom saving throw against your Spell Save DC or have the Frightened condition until the end of your next turn."
+						"Numerous eyes open as it targets one creature it can perceive up to 60 feet away. The target must succeed on a Wisdom saving throw against your Spell Save DC or have the {@condition Frightened|XPHB} condition for one minute. They can repeat the saving throw at the end of each of their turns."
 					]
 				},
 				{
@@ -267,9 +265,12 @@
 				{
 					"name": "Life Bond",
 					"entries": [
-						"When you regain Hit Points from a spell of 1st level or higher, the steed regains the same number of Hit Points if you're within 5 feet of it."
+						"When you regain Hit Points from a level 1+ spell, the steed regains the same number of Hit Points if you're within 5 feet of it."
 					]
 				}
+			],
+			"conditionInflict": [
+				"frightened"
 			]
 		}
 	],
@@ -2062,7 +2063,7 @@
 			]
 		},
 		{
-			"name": "Find Familiar",
+			"name": "Find Familiar [DELETE ME]",
 			"source": "GaldeveerTanksandFlanks",
 			"page": "Revised Spells",
 			"level": 1,
@@ -15634,7 +15635,7 @@
 				}
 			],
 			"entries": [
-				"You summon an otherworldly being that appears as a loyal steed in an unoccupied space of your choice within range. The steed resembles a Large, rideable animal of your choice, such as a horse, a camel, a dire wolf, or an elk. If you already have a steed from this spell, the steed is replaced by the new one. When you prepare this spell, choose the steed's creature type—Celestial, Fey, or Fiend. You can prepare this spell multiple times as long as you pick a different option each time. This creature uses the {@creature Otherworldly Steed|XPHB} stat block. When you cast the spell, choose the steed's archetype—Idyllic, Biblical, or Exalted—which determines certain traits in the stat block. The steed is your ally and obeys all of your commands. See the NPC Allies document for more information.",
+				"You summon an otherworldly being that appears as a loyal steed in an unoccupied space you can see within range. The steed resembles a Large, rideable animal of your choice, such as a horse, a camel, a dire wolf, or an elk. If you already have a steed from this spell, the steed is replaced by the new one. When you prepare this spell, choose the steed's creature type—Celestial, Fey, or Fiend. You can prepare this spell multiple times as long as you pick a different option each time. This creature uses the {@creature Otherworldly Steed|GaldeveerTanksAndFlanks} stat block. When you cast the spell, choose the steed's archetype—Idyllic, Biblical, or Exalted—which determines certain traits in the stat block. The steed is your ally and obeys all of your commands. See the NPC Allies document for more information.",
 				{
 					"type": "entries",
 					"name": "Disappearance of the Steed",
@@ -15664,6 +15665,264 @@
 					}
 				]
 			}
+		},
+		{
+			"name": "Find Steed",
+			"source": "GaldeveerTanksandFlanks",
+			"page": 272,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"You summon an otherworldly being that appears as a loyal steed in an unoccupied space you can see within range. The steed resembles a Large, rideable animal of your choice, such as a horse, a camel, a dire wolf, or an elk. If you already have a steed from this spell, the steed is replaced by the new one. When you prepare this spell, choose the steed's creature type—Celestial, Fey, or Fiend. You can prepare this spell multiple times as long as you pick a different option each time. This creature uses the {@creature Otherworldly Steed|GaldeveerTanksAndFlanks} stat block. When you cast the spell, choose the steed's archetype—Idyllic, Biblical, or Exalted—which determines certain traits in the stat block. The steed is your ally and obeys all of your commands. See the NPC Allies document for more information.",
+				{
+					"type": "entries",
+					"name": "Disappearance of the Steed",
+					"entries": [
+						"The steed disappears if it drops to 0 {@variantrule Hit Points|XPHB} or if you die. When it disappears, it leaves behind anything it was wearing or carrying. If you cast this spell again, you decide whether you summon the steed that disappeared or a different one."
+					]
+				}
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "Using a Higher-Level Spell Slot",
+					"entries": [
+						"Use the spell slot's level for the spell's level in the stat block."
+					]
+				}
+			],
+			"miscTags": [
+				"PRM",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Paladin",
+						"source": "XPHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Find Familiar",
+			"source": "GaldeveerTanksandFlanks",
+			"page": 272,
+			"level": 1,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "burning incense worth 10+ GP, which the spell consumes",
+					"cost": 1000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"You gain the service of a familiar, an otherworldly spirit which manifests as a little animal in an unoccupied space you can see within range. This creature uses the {@creature Otherworldly Familiar|GaldeveerTanksAndFlanks} stat block. If you already have a familiar from this spell, the familiar is replaced by the new one.",
+				"When you prepare the spell, choose the familiar's creature type: Celestial, Fey, or Fiend. You can prepare this spell multiple times as long as you select a different creature type each time. Whenever you cast the spell, choose the familiar's environment: Air, Land, or Water. The familiar resembles a Tiny animal of your choice—such as an owl, a cat, or a frog—that is native to the chosen environment. Both choices—creature type and environment—determine certain traits in the stat block. The familiar is your ally and obeys all of your commands.",
+				{
+					"type": "entries",
+					"name": "Remote Scouting",
+					"entries": [
+						"As a {@variantrule Bonus Action|XPHB}, you can see through the familiar's eyes and hear what it hears while it is within 120 ft of you until the start of your next turn, gaining the benefits of any special senses it has."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Disappearance of the familiar",
+					"entries": [
+						"The familiar disappears if it drops to 0 hit points or if you die. When it does, it leaves behind anything it was wearing or carrying. If you cast this spell again, you decide whether you summon the familiar that disappeared or a different one."
+					]
+				}
+			],
+			"miscTags": [
+				"PRM",
+				"SMN"
+			],
+			"hasFluffImages": true,
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "XPHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Bard",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "College of Lore",
+							"shortName": "Lore",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Fighter",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "Eldritch Knight",
+							"shortName": "Eldritch Knight",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Rogue",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "Arcane Trickster",
+							"shortName": "Arcane Trickster",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Fighter",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Eldritch Knight",
+							"shortName": "Eldritch Knight",
+							"source": "PHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Rogue",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Arcane Trickster",
+							"shortName": "Arcane Trickster",
+							"source": "PHB"
+						}
+					}
+				]
+			},
+			"optionalfeatures": [
+				{
+					"name": "Book of Ancient Secrets",
+					"source": "PHB",
+					"featureType": [
+						"EI"
+					]
+				},
+				{
+					"name": "Pact of the Chain",
+					"source": "PHB",
+					"featureType": [
+						"PB"
+					]
+				},
+				{
+					"name": "Pact of the Chain",
+					"source": "XPHB",
+					"featureType": [
+						"EI"
+					]
+				},
+				{
+					"name": "Pact of the Tome",
+					"source": "XPHB",
+					"featureType": [
+						"EI"
+					]
+				}
+			],
+			"feats": [
+				{
+					"name": "Magic Initiate",
+					"source": "PHB"
+				},
+				{
+					"name": "Ritual Caster",
+					"source": "PHB"
+				},
+				{
+					"name": "Magic Initiate",
+					"source": "XPHB"
+				},
+				{
+					"name": "Ritual Caster",
+					"source": "XPHB"
+				},
+				{
+					"name": "Quicksmithing",
+					"source": "PSK"
+				},
+				{
+					"name": "Servo Crafting",
+					"source": "PSK"
+				},
+				{
+					"name": "Strixhaven Initiate",
+					"source": "SCC"
+				},
+				{
+					"name": "Strixhaven Mascot",
+					"source": "SCC"
+				}
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Use the spell slot's level for the spell's level in the stat block."
+					]
+				}
+			]
 		}
 	],
 	"feat": [
