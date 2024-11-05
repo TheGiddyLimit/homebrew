@@ -18,8 +18,13 @@ export class ImageUrlCheck extends DataTesterBase {
 	constructor ({contents}) {
 		super();
 		this._sources = new Set(
-			(contents._meta?.sources?.map(src => src?.json) || [])
-				.filter(Boolean),
+			[
+				...(contents._meta?.sources?.map(src => src?.json) || [])
+					.filter(Boolean)
+					.map(srcJson => srcJson.replace(/:/g, "")),
+				...(contents._test?.additionalImageSources || [])
+					.map(srcJson => srcJson.replace(/:/g, "")),
+			],
 		);
 	}
 
@@ -48,6 +53,6 @@ export class ImageUrlCheck extends DataTesterBase {
 		const {source, type} = mPath.groups;
 		if (this._sources.has(source)) return;
 
-		this.constructor._addMessage(`Image source part "${source}" in "homebrew-img" ${type} URL did not match sources found in file "_meta" in file "${filePath}": "${url}"\n`);
+		this.constructor._addMessage(`Image source part "${source}" in "homebrew-img" ${type} URL did not match sources found in file "_meta" or "_test" in file "${filePath}": "${url}"\n`);
 	}
 }
