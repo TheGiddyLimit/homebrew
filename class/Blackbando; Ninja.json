@@ -1,0 +1,2682 @@
+{
+	"_meta": {
+		"sources": [
+			{
+				"json": "BBNinja",
+				"abbreviation": "Ninja",
+				"full": "Ninja",
+				"authors": [
+					"Blackbando"
+				],
+				"convertedBy": [
+					"Spappz"
+				],
+				"version": "2024-08-29",
+				"color": "474646",
+				"url": "https://blackbandos-homebrew.fandom.com/wiki/Ninja_(5e_Class)"
+			}
+		],
+		"status": "ready",
+		"dateAdded": 1724972106,
+		"dateLastModified": 1729630006,
+		"optionalFeatureTypes": {
+			"Con. Tools": "Concealed Tools",
+			"FS:N": "Fighting Stance; Ninja"
+		},
+		"_dateLastModifiedHash": "7e1a646a4e",
+		"edition": "classic"
+	},
+	"item": [
+		{
+			"name": "Concealed Tool Component",
+			"source": "BBNinja",
+			"weight": 0.01,
+			"rarity": "none",
+			"value": 5,
+			"entries": [
+				"{@note This item is used to craft {@filter Concealed Tool|optionalfeatures|type=Concealed Tools} using the {@class ninja|BBNinja|ninja's} {@classFeature Concealed Tools|ninja|BBNinja|2|BBninja} feature.}"
+			]
+		}
+	],
+	"optionalfeature": [
+		{
+			"name": "Bear Stance",
+			"source": "BBNinja",
+			"featureType": [
+				"FS:N"
+			],
+			"entries": [
+				"When you make a melee attack, and have at least one hand free, you may use your bonus action to shove a creature within 5 feet of yourself. You may make an {@skill Acrobatics} (DEX) check instead of an {@skill Athletics} (STR) check when you attempt to shove the creature."
+			]
+		},
+		{
+			"name": "Cheetah Stance",
+			"source": "BBNinja",
+			"featureType": [
+				"FS:N"
+			],
+			"entries": [
+				"You have advantage on initiative rolls, and cannot be surprised."
+			]
+		},
+		{
+			"name": "Cobra Stance",
+			"source": "BBNinja",
+			"featureType": [
+				"FS:N"
+			],
+			"entries": [
+				"When you make a melee attack, and have at least one hand free, you may use your bonus action to make an unarmed attack. If you hit, your target must make a CON save (DC = 8 + your INT modifier + your proficiency bonus) or take an additional {@dice 1d4} × your Proficiency bonus poison damage (half as much on a successful save)."
+			],
+			"foundrySystem": {
+				"actionType": "mwak",
+				"damage.parts": [
+					[
+						"(1d4) * @prof",
+						"poison"
+					]
+				],
+				"activation.type": "bonus",
+				"activation.value": 1,
+				"save.ability": "con",
+				"save.scaling": "int"
+			}
+		},
+		{
+			"name": "Eagle Stance",
+			"source": "BBNinja",
+			"featureType": [
+				"FS:N"
+			],
+			"entries": [
+				"You gain proficiency in {@filter martial ranged weapons|items|source=phb|category=basic|type=martial weapon;ranged weapon}, and a +1 bonus to attack rolls you make with all ranged weapons. This does not stack with the {@optfeature Archery|PHB} Fighting Style."
+			],
+			"weaponProficiencies": [
+				{
+					"martial": true
+				}
+			]
+		},
+		{
+			"name": "Eel Stance",
+			"source": "BBNinja",
+			"featureType": [
+				"FS:N"
+			],
+			"entries": [
+				"{@action opportunity attack||Attacks of opportunity} against you are made at disadvantage."
+			]
+		},
+		{
+			"name": "Mantis Stance",
+			"source": "BBNinja",
+			"featureType": [
+				"FS:N"
+			],
+			"entries": [
+				"When you engage in {@action two-weapon fighting}, you can add your ability modifier to damage rolls."
+			]
+		},
+		{
+			"name": "Turtle Stance",
+			"source": "BBNinja",
+			"featureType": [
+				"FS:N"
+			],
+			"entries": [
+				"As a reaction to being targeted by a weapon attack that is not an {@action opportunity attack||attack of opportunity}, you can spend 1 chakra to increase your armor class by an amount equal to your Proficiency bonus for the next three weapon attacks or until the start of your next turn, whichever comes first."
+			],
+			"consumes": {
+				"amount": 1,
+				"name": "Spellcasting"
+			},
+			"foundrySystem": {
+				"activation.type": "reaction",
+				"activation.cost": 1,
+				"target.type": "self"
+			}
+		},
+		{
+			"name": "Starfish Stance",
+			"source": "BBNinja",
+			"featureType": [
+				"FS:N"
+			],
+			"entries": [
+				"As an Action, you may spend 1 chakra to roll a number of {@dice 1d4} equal to your proficiency bonus and heal that amount."
+			],
+			"consumes": {
+				"amount": 1,
+				"name": "Spellcasting"
+			},
+			"foundrySystem": {
+				"actionType": "heal",
+				"damage.parts": [
+					[
+						"(@prof)d4",
+						"healing"
+					]
+				],
+				"activation.type": "action",
+				"activation.cost": 1,
+				"target.type": "self"
+			}
+		},
+		{
+			"name": "Caltrops",
+			"source": "BBNinja",
+			"featureType": [
+				"Con. Tools"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "1 component",
+						"entrySummary": "1 component"
+					}
+				}
+			],
+			"entries": [
+				"As an {@action Attack} action, a handful of sharp and angular spikes can be thrown up to 30 ft and cover a 10-foot radius. The area becomes difficult terrain, and any creature in the area takes {@damage 1d4} piercing damage for each 5 feet traveled.",
+				"Upon reaching 10th level, the damage increases to {@damage 1d6} for each 5 feet traveled and the area covered increases to a 15-foot radius.",
+				"Upon reaching 16th level, the damage increases to {@damage 1d8} for each 5 feet traveled, and the area covered increases to a 20-foot radius."
+			],
+			"foundrySystem": {
+				"activation.type": "action",
+				"activation.cost": 1,
+				"damage.parts": [
+					[
+						"@scale.ninja.caltrops-damage",
+						"piercing"
+					]
+				],
+				"target.type": "radius",
+				"target.units": "ft",
+				"target.value": 10
+			}
+		},
+		{
+			"name": "Chloroform",
+			"source": "BBNinja",
+			"featureType": [
+				"Con. Tools"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "5 components",
+						"entrySummary": "5 components"
+					}
+				}
+			],
+			"entries": [
+				"You may attempt to render a creature unconscious. If you are hidden from a creature, you can approach it and cover at least one of its breathing holes with a chloroform-soaked rag. The creature must succeed on a CON saving throw (DC10 + your proficiency bonus) or fall {@condition unconscious} for {@dice 1d4} hours. If the creature is in combat, it has advantage on the saving throw. If the creature is aware of you, you must succeed on a grapple check against it before applying the chloroform (this grapple check does not cost an additional action, but otherwise follows the normal rules of grappling). If the target takes damage while {@condition unconscious}, they make the CON saving throw again, waking up on a success. Creatures that do not have to breathe are immune."
+			],
+			"foundrySystem": {
+				"activation.type": "action",
+				"activation.cost": 1,
+				"duration.units": "hour",
+				"duration.value": 2.5,
+				"save.ability": "con",
+				"save.scaling": "flat",
+				"target.type": "creature",
+				"target.value": 1
+			}
+		},
+		{
+			"name": "Firebomb",
+			"source": "BBNinja",
+			"featureType": [
+				"Con. Tools"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "2 components",
+						"entrySummary": "2 components"
+					}
+				}
+			],
+			"entries": [
+				"As an {@action Attack} action, you throw a vial filled with a thick, sticky, flammable fluid up to 30 feet. When thrown or crushed, the firebomb explodes, spraying flaming goo over a 15-foot diameter, setting the area aflame for 1 minute. Each creature that enters into or starts its turn within the flames must succeed on a DEX saving throw (DC10 + your proficiency bonus) or be set on fire for 1 minute. Any creature who succeeds on the save takes no damage. On a fail, the afflicted creature takes {@damage 2d8} fire damage at the beginning of each of its turns until the effect ends. As an action, the creature may reroll their saving throw in order to attempt to extinguish themselves.",
+				"Upon reaching 10th level, the fire damage increases to {@damage 3d8}.",
+				"Upon reaching 16th level, the radius increases to 20 feet and the fire damage increases to {@damage 4d8}."
+			],
+			"foundrySystem": {
+				"activation.type": "action",
+				"activation.cost": 1,
+				"damage.parts": [
+					[
+						"@scale.ninja.firebomb",
+						"fire"
+					]
+				],
+				"save.ability": "dex",
+				"save.scaling": "flat",
+				"target.type": "radius",
+				"target.units": "ft",
+				"target.value": 7.5,
+				"duration.units": "minute",
+				"duration.value": 1
+			}
+		},
+		{
+			"name": "Fireworks",
+			"source": "BBNinja",
+			"featureType": [
+				"Con. Tools"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "2 components",
+						"entrySummary": "2 components"
+					}
+				}
+			],
+			"entries": [
+				"You light a bundle of cartridges containing saltpeter and various chemicals that launches itself quietly in any direction you choose at a range of up to 100 feet, then bursts into a harmless shower of color and sound. Every creature within 400 feet of the fireworks' explosion sees and hears it.",
+				"Upon reaching 10th level, the range increases to 150 feet.",
+				"Upon reaching 16th level, the range increases to 200 feet. "
+			],
+			"foundrySystem": {
+				"activation.type": "action",
+				"activation.cost": 1,
+				"range.units": "ft",
+				"range.value": 100,
+				"range.long": 100
+			}
+		},
+		{
+			"name": "Gas Mask",
+			"source": "BBNinja",
+			"featureType": [
+				"Con. Tools"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "3 components",
+						"entrySummary": "3 components"
+					}
+				}
+			],
+			"entries": [
+				"When wearing this item over your face, you are able to breathe normally and take no damage from noxious atmospheres. This tool is effective for 8 hours, before the valve inside it loses efficacy and a new one must be crafted."
+			],
+			"foundrySystem": {
+				"activation.type": "none",
+				"duration.units": "hour",
+				"duration.value": 8
+			}
+		},
+		{
+			"name": "Improvised Firearm",
+			"source": "BBNinja",
+			"featureType": [
+				"Con. Tools"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "5 components",
+						"entrySummary": "5 components"
+					}
+				}
+			],
+			"entries": [
+				"A stout bamboo pole wrapped in leather and packed with saltpeter, rocks, and nails. As an {@action Attack} action, you light a fuse at the back of this pole to cause all enemies in a 15-foot cone to take {@damage 3d8} bludgeoning damage, be pushed back 5 feet from you, and make a DEX saving throw (DC10 + your proficiency bonus) or be knocked {@condition prone}. Additionally, you and all creatures within 20 feet of you are {@condition deafened} for 1 minute. Lastly, you are also pushed backwards 5 feet (after the firearm discharges), and then must also make the same DEX saving throw or be knocked {@condition prone}. You do not take {@action opportunity attack||attacks of opportunity} from being pushed back in this manner. You may only carry one Improvised Firearm at any time.",
+				"Upon reaching 10th level, the damage increases to {@damage 4d8} bludgeoning damage and the area increases to a 20-foot cone.",
+				"Upon reaching 16th level, the damage increases to {@damage 5d8} bludgeoning damage and the area increases to a 25-foot cone."
+			],
+			"foundrySystem": {
+				"activation.type": "action",
+				"activation.cost": 1,
+				"damage.parts": [
+					[
+						"@scale.ninja.improvised-firearm-damage",
+						"bludgeoning"
+					]
+				],
+				"target.type": "cone",
+				"target.units": "ft",
+				"target.value": "@scale.ninja.improvised-firearm-area",
+				"save.ability": "dex",
+				"save.scaling": "flat"
+			}
+		},
+		{
+			"name": "Metsubishi",
+			"source": "BBNinja",
+			"featureType": [
+				"Con. Tools"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "2 components",
+						"entrySummary": "2 components"
+					}
+				}
+			],
+			"entries": [
+				"As an {@action Attack} action, you throw a hollowed-out chicken's egg filled with a powder made of ashes, ground pepper, flour, and finely ground glass up to 30 feet. When crushed or thrown, the powder is released into a 20 foot diameter. All creatures within the area of effect must immediately make an INT saving throw (DC10 + your proficiency bonus), or be {@condition blinded} until the end of their next turn. The powder remains suspended in the air for 30 seconds unless dispersed by a strong wind. If a creature enters or starts its turn within the area of effect, they must also succeed on the saving throw, potentially resetting the duration of their blindness if they have already been affected.",
+				"Upon reaching 10th level, creatures that fail the saving throw are {@condition blinded} for 2 turns.",
+				"Upon reaching 16th level, creatures that fail the saving throw are {@condition blinded} for 3 turns."
+			],
+			"foundrySystem": {
+				"activation.type": "action",
+				"activation.cost": 1,
+				"duration.units": "turn",
+				"duration.value": "@scale.ninja.metsubishi",
+				"save.ability": "int",
+				"save.scaling": "flat"
+			}
+		},
+		{
+			"name": "Oil Slick",
+			"source": "BBNinja",
+			"featureType": [
+				"Con. Tools"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "2 components",
+						"entrySummary": "2 components"
+					}
+				}
+			],
+			"entries": [
+				"As an {@action Attack} action, you throw a single bottle of oil up to 30 feet, which shatters and covers a 15-foot radius in oil. All creatures that start their turn or enter the affected area must make a DEX saving throw (DC10 + your proficiency bonus). If they fail, they will slip and become {@condition prone}. If they succeed, they avoid slipping. A creature can walk through the area of oil treating it as difficult terrain with no penalty, treating it as difficult terrain. They may also try to move at normal speed, but for every 5 feet moved inside the oil slick, they will need to succeed on another DEX saving throw or fall {@condition prone}. Dashing creatures make this DEX save at disadvantage. The oil is flammable and will combust if exposed to flames, burning for 1 minute, after which both the flames and the oil dissipate. If a creature begins its turn in or enters into the burning oil's radius, they take {@damage 1d10} fire damage. This damage stacks with any damage caused by your firebombs.",
+				"Upon reaching 10th level, you may throw the bottle as a bonus action and the burning damage increases to {@damage 2d10}.",
+				"Upon reaching 16th level, the radius increases to 20 feet, and the burning damage increases to {@damage 3d10}."
+			],
+			"foundrySystem": {
+				"activation.type": "action",
+				"activation.cost": 1,
+				"target.type": "radius",
+				"target.units": "ft",
+				"target.value": 15,
+				"damage.parts": [
+					[
+						"@scale.ninja.oil-slick-damage",
+						"fire"
+					]
+				],
+				"save.ability": "dex",
+				"save.scaling": "flat"
+			}
+		},
+		{
+			"name": "Poison Darts",
+			"source": "BBNinja",
+			"featureType": [
+				"Con. Tools"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "3 components",
+						"entrySummary": "3 components"
+					}
+				}
+			],
+			"entries": [
+				"A bundle of 3 darts crafted from twigs and green grung poison. As an {@action Attack} action, you can throw a single dart (range 20/60) or shoot it from a {@item blowgun|PHB} (range 25/100) using normal ranged attack modifiers. On a successful hit, the targeted creature takes damage equal to {@damage 1d10} + your dexterity modifier piercing damage and makes a CON saving throw (DC10 + your proficiency bonus). If the target fails the saving throw, it takes {@damage 1d8} poison damage at the beginning of its next turn, is {@condition poisoned} (disadvantage on attack rolls and ability checks), and cannot move except to climb or make standing jumps. If the creature has flying, it can't take any actions or reactions unless it lands. At the end of each of its turns, the creature may repeat the saving throw at disadvantage, ending the effect on a successful throw. Otherwise, this effect lasts for 3 rounds.",
+				"Upon reaching 10th level, you have incorporated orange grung poison into your darts; when a creature is under the effects of your poison dart, it is afraid of its allies in addition to the dart's other effects. In addition, the poison's damage increases to {@damage 2d8} per turn, and the duration of the effect increases to 4 rounds.",
+				"Upon reaching 16th level, you have incorporated white grung poison into your darts; when a creature is under the effects of your poison dart, it cannot take reactions in addition to the dart's other effects. In addition, the poison's damage increases to {@damage 3d8} per turn, and the duration of the effect increases to 5 rounds."
+			],
+			"foundrySystem": {
+				"activation.cost": 1,
+				"activation.type": "action",
+				"duration.type": "rounds",
+				"duration.value": "@scale.ninja.poison-darts-duration",
+				"range.long": 100,
+				"range.units": "ft",
+				"range.value": 25,
+				"save.ability": "con",
+				"save.scaling": "flat",
+				"damage.parts": [
+					[
+						"@scale.ninja.poison-darts-poison-damage + @abilities.dex.mod",
+						"poison"
+					]
+				]
+			}
+		},
+		{
+			"name": "Shuriken",
+			"source": "BBNinja",
+			"featureType": [
+				"Con. Tools"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "1 component",
+						"entrySummary": "1 component"
+					}
+				}
+			],
+			"entries": [
+				"A stack of 5 flat, aerodynamic blades. As an {@action Attack} action, up to 2 shuriken can be thrown at once at up to 2 different creatures of your choosing, using normal ranged attack modifiers. Make an attack roll for each shuriken. Each thrown shuriken deals {@damage 1d8} + your dexterity modifier slashing damage at a range of 30/120.",
+				"Upon reaching 10th level, the number of shuriken thrown increases to 3 and the range increases to 35/125.",
+				"Upon reaching 16th level, the number of shuriken thrown increases to 4 and the range increases to 40/130. Furthermore, your shuriken count as magical for the purposes of overcoming resistance and immunity to non magical attacks and damage."
+			],
+			"foundrySystem": {
+				"activation.cost": 1,
+				"activation.type": "action",
+				"damage.parts": [
+					[
+						"1d8 + @abilities.dex.mod",
+						"slashing"
+					]
+				],
+				"range.long": 120,
+				"range.units": "ft",
+				"range.value": 30
+			}
+		},
+		{
+			"name": "Smoke Bomb",
+			"source": "BBNinja",
+			"featureType": [
+				"Con. Tools"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "2 components",
+						"entrySummary": "2 components"
+					}
+				}
+			],
+			"entries": [
+				"A small tube of black, flammable material that you can crush or throw at a range of 10 feet, whereupon it ignites and spews a thick cloud of harmless grey-black smoke into a 15 foot diameter that dissipates at the beginning of your next turn. Creatures cannot see into or out of the smoke, the area within the smoke is heavily obscured, and all attacks within the smoke are made at disadvantage. While within the area of effect, creatures may not take {@action opportunity attack||opportunity attacks} against you (but they may against other creatures) and you may attempt to {@action hide} as a bonus action, making the {@skill stealth} check at advantage.",
+				"Upon reaching 10th level, the diameter increases to 20 feet and the smoke lasts for an additional turn.",
+				"Upon reaching 16th level, the diameter increases to 25 feet."
+			],
+			"foundrySystem": {
+				"activation.cost": 1,
+				"activation.type": "action",
+				"duration.units": "turn",
+				"duration.value": "@scale.ninja.smoke-bomb-duration",
+				"range.units": "ft",
+				"range.value": 10,
+				"target.type": "radius",
+				"target.units": "ft",
+				"target.value": "@scale.ninja.smoke-bomb-radius"
+			}
+		},
+		{
+			"name": "Snorkel",
+			"source": "BBNinja",
+			"featureType": [
+				"Con. Tools"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "3 components",
+						"entrySummary": "3 components"
+					}
+				}
+			],
+			"entries": [
+				"A simple tube of hollow reeds. With this item in your mouth, you can swim submerged 1 ft underwater, negating the need to come up for air."
+			],
+			"foundrySystem": {
+				"activation.type": "none"
+			}
+		}
+	],
+	"class": [
+		{
+			"name": "Ninja",
+			"source": "BBNinja",
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"proficiency": [
+				"dex",
+				"con"
+			],
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"Sneak Attack"
+					],
+					"rows": [
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 2,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 2,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 3,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 3,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 4,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 4,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 5,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 5,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 6,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 6,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 7,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 7,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 8,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 8,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 9,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 9,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 10,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 10,
+										"faces": 6
+									}
+								],
+								"rollable": true
+							}
+						]
+					]
+				},
+				{
+					"colLabels": [
+						"Chakra"
+					],
+					"rows": [
+						[
+							"\u2014"
+						],
+						[
+							2
+						],
+						[
+							3
+						],
+						[
+							4
+						],
+						[
+							5
+						],
+						[
+							6
+						],
+						[
+							7
+						],
+						[
+							8
+						],
+						[
+							9
+						],
+						[
+							10
+						],
+						[
+							11
+						],
+						[
+							12
+						],
+						[
+							13
+						],
+						[
+							14
+						],
+						[
+							15
+						],
+						[
+							16
+						],
+						[
+							17
+						],
+						[
+							18
+						],
+						[
+							19
+						],
+						[
+							20
+						]
+					]
+				},
+				{
+					"colLabels": [
+						"Spells Known"
+					],
+					"rows": [
+						[
+							"\u2014"
+						],
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							3
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							5
+						],
+						[
+							5
+						],
+						[
+							6
+						],
+						[
+							6
+						],
+						[
+							7
+						],
+						[
+							7
+						],
+						[
+							8
+						],
+						[
+							8
+						],
+						[
+							9
+						],
+						[
+							9
+						],
+						[
+							10
+						],
+						[
+							10
+						],
+						[
+							11
+						],
+						[
+							12
+						]
+					]
+				},
+				{
+					"colLabels": [
+						"Max Spell Level"
+					],
+					"rows": [
+						[
+							"\u2014"
+						],
+						[
+							"1st"
+						],
+						[
+							"1st"
+						],
+						[
+							"1st"
+						],
+						[
+							"2nd"
+						],
+						[
+							"2nd"
+						],
+						[
+							"2nd"
+						],
+						[
+							"3rd"
+						],
+						[
+							"3rd"
+						],
+						[
+							"3rd"
+						],
+						[
+							"4th"
+						],
+						[
+							"4th"
+						],
+						[
+							"4th"
+						],
+						[
+							"4th"
+						],
+						[
+							"4th"
+						],
+						[
+							"5th"
+						],
+						[
+							"5th"
+						],
+						[
+							"5th"
+						],
+						[
+							"6th"
+						],
+						[
+							"6th"
+						]
+					]
+				}
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light"
+				],
+				"weapons": [
+					"simple",
+					"martial melee weapons"
+				],
+				"tools": [
+					"{@item poisoner's kit|PHB}",
+					"{@item thieves' tools|PHB}"
+				],
+				"skills": [
+					{
+						"choose": {
+							"count": 4,
+							"from": [
+								"acrobatics",
+								"athletics",
+								"deception",
+								"investigation",
+								"perception",
+								"performance",
+								"persuasion",
+								"sleight of hand",
+								"stealth"
+							]
+						}
+					}
+				]
+			},
+			"optionalfeatureProgression": [
+				{
+					"name": "Fighting Stance",
+					"featureType": [
+						"FS:N"
+					],
+					"progression": {
+						"1": 1,
+						"5": 2,
+						"13": 3,
+						"17": 4
+					}
+				}
+			],
+			"startingEquipment": {
+				"default": [
+					"(a) a {@filter martial weapon|items|source=phb|category=basic|type=martial weapon} or (b) two {@item shortsword|PHB|shortswords}",
+					"(a) 5 {@item dagger|PHB|daggers} or (b) a {@item shortbow|PHB} & {@item arrows (20)|PHB|20 arrows}",
+					"{@item leather armor|PHB} & a {@item monster hunter's pack|VRGR}"
+				],
+				"additionalFromBackground": true,
+				"defaultData": [
+					{
+						"a": [
+							{
+								"equipmentType": "weaponMartial"
+							}
+						],
+						"b": [
+							{
+								"item": "shortsword|PHB",
+								"quantity": 2
+							}
+						]
+					},
+					{
+						"a": [
+							{
+								"item": "dagger|PHB",
+								"quantity": 5
+							}
+						],
+						"b": [
+							"shortbow|PHB",
+							"arrows (20)|PHB"
+						]
+					},
+					{
+						"_": [
+							"leather armor|PHB",
+							"monster hunter's pack|VRGR"
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"dex": 13,
+					"int": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light"
+					],
+					"weapons": [
+						"simple",
+						"martial"
+					]
+				}
+			},
+			"hasFluff": true,
+			"subclassTitle": "Shadow",
+			"classFeatures": [
+				"Deadly Handling|Ninja|BBNinja|1|BBNinja",
+				"Fighting Stance|Ninja|BBNinja|1|BBNinja",
+				"Unarmored Defense|Ninja|BBNinja|1|BBNinja",
+				"Spellcasting|Ninja|BBNinja|2|BBNinja",
+				"Concealed Tools|Ninja|BBNinja|2|BBNinja",
+				{
+					"classFeature": "Shinobi's Shadow|Ninja|BBNinja|3|BBNinja",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Increase|Ninja|BBNinja|4|BBNinja",
+				"Rapid Throw|Ninja|BBNinja|4|BBNinja",
+				"Extra Attack|Ninja|BBNinja|5|BBNinja",
+				"Fighting Stance|Ninja|BBNinja|5|BBNinja",
+				{
+					"classFeature": "Shadow Feature|Ninja|BBNinja|6|BBNinja",
+					"gainSubclassFeature": true
+				},
+				"Unnatural Agility|Ninja|BBNinja|6|BBNinja",
+				"Evasion|Ninja|BBNinja|7|BBNinja",
+				"Ability Score Increase|Ninja|BBNinja|8|BBNinja",
+				"Shadowmeld|Ninja|BBNinja|9|BBNinja",
+				"Burning Soul|Ninja|BBNinja|10|BBNinja",
+				"Ability Score Increase|Ninja|BBNinja|10|BBNinja",
+				"Unarmored Defense Improvement|Ninja|BBNinja|10|BBNinja",
+				{
+					"classFeature": "Shadow Feature|Ninja|BBNinja|11|BBNinja",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Increase|Ninja|BBNinja|12|BBNinja",
+				"Fighting Stance|Ninja|BBNinja|13|BBNinja",
+				"Unseen By All|Ninja|BBNinja|14|BBNinja",
+				"Nightcrawler|Ninja|BBNinja|15|BBNinja",
+				"Ability Score Increase|Ninja|BBNinja|16|BBNinja",
+				"Fighting Stance|Ninja|BBNinja|17|BBNinja",
+				{
+					"classFeature": "Shadow Feature|Ninja|BBNinja|18|BBNinja",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Increase|Ninja|BBNinja|19|BBNinja",
+				"Master Shinobi|Ninja|BBNinja|20|BBNinja"
+			],
+			"spellcastingAbility": "int",
+			"spellsKnownProgressionFixed": [
+				0,
+				2,
+				2,
+				3,
+				4,
+				4,
+				5,
+				5,
+				6,
+				6,
+				7,
+				7,
+				8,
+				8,
+				9,
+				9,
+				10,
+				10,
+				11,
+				12
+			],
+			"classSpells": [
+				"Tenser's transformation|XGE",
+				"Blink",
+				"Freedom of movement",
+				"Greater invisibility",
+				"Darkness",
+				"Invisibility",
+				"Gaseous form",
+				"Mislead",
+				"Darkvision",
+				"Haste",
+				"Steel wind strike|XGE",
+				"Feather fall",
+				"Hunter's mark",
+				"Disguise self"
+			],
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"title": "Sneak Attack",
+					"configuration": {
+						"identifier": "sneak-attack",
+						"type": "dice",
+						"scale": {
+							"1": {
+								"n": 1,
+								"die": 6
+							},
+							"3": {
+								"n": 2,
+								"die": 6
+							},
+							"5": {
+								"n": 3,
+								"die": 6
+							},
+							"7": {
+								"n": 4,
+								"die": 6
+							},
+							"9": {
+								"n": 5,
+								"die": 6
+							},
+							"11": {
+								"n": 6,
+								"die": 6
+							},
+							"13": {
+								"n": 7,
+								"die": 6
+							},
+							"15": {
+								"n": 8,
+								"die": 6
+							},
+							"17": {
+								"n": 9,
+								"die": 6
+							},
+							"19": {
+								"n": 10,
+								"die": 6
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Caltrops (Damage)",
+					"configuration": {
+						"identifier": "caltrops-damage",
+						"type": "dice",
+						"scale": {
+							"2": {
+								"n": 1,
+								"die": 4
+							},
+							"10": {
+								"n": 1,
+								"die": 6
+							},
+							"16": {
+								"n": 1,
+								"die": 8
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Caltrops (Radius)",
+					"configuration": {
+						"identifier": "caltrops-radius",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 10
+							},
+							"10": {
+								"value": 15
+							},
+							"16": {
+								"value": 20
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Firebomb",
+					"configuration": {
+						"identifier": "firebomb",
+						"type": "dice",
+						"scale": {
+							"2": {
+								"n": 2,
+								"die": 8
+							},
+							"10": {
+								"n": 3,
+								"die": 8
+							},
+							"16": {
+								"n": 4,
+								"die": 8
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Fireworks",
+					"configuration": {
+						"identifier": "fireworks",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 100
+							},
+							"10": {
+								"value": 150
+							},
+							"16": {
+								"value": 200
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Improvised Firearm (Damage)",
+					"configuration": {
+						"identifier": "improvised-firearm-damage",
+						"type": "dice",
+						"scale": {
+							"2": {
+								"n": 3,
+								"die": 8
+							},
+							"10": {
+								"n": 4,
+								"die": 8
+							},
+							"16": {
+								"n": 5,
+								"die": 8
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Improvised Firearm (Area)",
+					"configuration": {
+						"identifier": "improvised-firearm-area",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 15
+							},
+							"10": {
+								"value": 20
+							},
+							"16": {
+								"value": 25
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Metsubishi",
+					"configuration": {
+						"identifier": "metsubishi",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 1
+							},
+							"10": {
+								"value": 2
+							},
+							"16": {
+								"value": 3
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Oil Slick (Damage)",
+					"configuration": {
+						"identifier": "oil-slick-damage",
+						"type": "dice",
+						"scale": {
+							"2": {
+								"n": 1,
+								"die": 10
+							},
+							"10": {
+								"n": 2,
+								"die": 10
+							},
+							"16": {
+								"n": 3,
+								"die": 10
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Oil Slick (Radius)",
+					"configuration": {
+						"identifier": "oil-slick-radius",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 15
+							},
+							"16": {
+								"value": 20
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Poison Darts (Poison Damage)",
+					"configuration": {
+						"identifier": "poison-darts-poison-damage",
+						"type": "dice",
+						"scale": {
+							"2": {
+								"n": 1,
+								"die": 8
+							},
+							"10": {
+								"n": 2,
+								"die": 8
+							},
+							"16": {
+								"n": 3,
+								"die": 8
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Poison Darts (Duration)",
+					"configuration": {
+						"identifier": "poison-darts-duration",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 3
+							},
+							"10": {
+								"value": 4
+							},
+							"16": {
+								"value": 5
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Shuriken Range",
+					"configuration": {
+						"identifier": "shuriken-range",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 30
+							},
+							"10": {
+								"value": 35
+							},
+							"16": {
+								"value": 40
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Smoke Bomb (Radius)",
+					"configuration": {
+						"identifier": "smoke-bomb-radius",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 7.5
+							},
+							"10": {
+								"value": 10
+							},
+							"16": {
+								"value": 12.5
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Smoke Bomb (Duration)",
+					"configuration": {
+						"identifier": "smoke-bomb-duration",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 1
+							},
+							"10": {
+								"value": 2
+							}
+						}
+					}
+				}
+			]
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Ability Score Increase",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 4,
+			"entries": [
+				"When you reach 4th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+			]
+		},
+		{
+			"name": "Ability Score Increase",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 8,
+			"entries": [
+				"When you reach 8th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+			]
+		},
+		{
+			"name": "Ability Score Increase",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 10,
+			"entries": [
+				"When you reach 10th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+			]
+		},
+		{
+			"name": "Ability Score Increase",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 12,
+			"entries": [
+				"When you reach 12th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+			]
+		},
+		{
+			"name": "Ability Score Increase",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 16,
+			"entries": [
+				"When you reach 16th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+			]
+		},
+		{
+			"name": "Ability Score Increase",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 19,
+			"entries": [
+				"When you reach 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+			]
+		},
+		{
+			"name": "Shinobi's Shadow",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 3,
+			"entries": [
+				"At 3rd level, you commit yourself to following a specific way of the ninja, emulating the Shadows of the original ninjas. Choose from the Shadow of Death, the Shadow of Magic, the Shadow of Seduction, and the Shadow of the Flock, all at the bottom of this page. Your choice grants you features at 3rd, 6th, 11th, and 18th levels. "
+			]
+		},
+		{
+			"name": "Shadow Feature",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 6,
+			"entries": [
+				"At 6th level, you gain a feature from your Shadow."
+			]
+		},
+		{
+			"name": "Shadow Feature",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 11,
+			"entries": [
+				"At 11th level, you gain a feature from your Shadow."
+			]
+		},
+		{
+			"name": "Shadow Feature",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 18,
+			"entries": [
+				"At 18th level, you gain a feature from your Shadow."
+			]
+		},
+		{
+			"name": "Fighting Stance",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 1,
+			"entries": [
+				"Your style of fighting relates to a powerful beast of the world, with you mimicking it to supplement your own prowess. Choose one of the following options. You can't take a Fighting Stance option more than once, even if you later get to choose again.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Bear Stance|BBNinja"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Cheetah Stance|BBNinja"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Cobra Stance|BBNinja"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Eagle Stance|BBNinja"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Eel Stance|BBNinja"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mantis Stance|BBNinja"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Turtle Stance|BBNinja"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Starfish Stance|BBNinja"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Fighting Stance",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 5,
+			"entries": [
+				"{@note {@b Converter's Note.} The class doesn't explicitly say that you gain any additional {@classFeature Fighting Stance|Ninja|BBNinja|1|BBNinja|Fighting Stances}, but it is implied from the class table. Use at your discretion.}"
+			]
+		},
+		{
+			"name": "Fighting Stance",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 13,
+			"entries": [
+				"{@note {@b Converter's Note.} The class doesn't explicitly say that you gain any additional {@classFeature Fighting Stance|Ninja|BBNinja|1|BBNinja|Fighting Stances}, but it is implied from the class table. Use at your discretion.}"
+			]
+		},
+		{
+			"name": "Fighting Stance",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 17,
+			"entries": [
+				"{@note {@b Converter's Note.} The class doesn't explicitly say that you gain any additional {@classFeature Fighting Stance|Ninja|BBNinja|1|BBNinja|Fighting Stances}, but it is implied from the class table. Use at your discretion.}"
+			]
+		},
+		{
+			"name": "Unarmored Defense",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 1,
+			"entries": [
+				"At first level, you have been trained to anticipate your enemy's moves. Beginning at 1st level, while you are wearing no armor and not wielding a shield, your AC equals 10 + your Dexterity modifier + your Intelligence modifier when you can see your enemy. At level 10, you no longer need to see your enemy to receive this bonus."
+			]
+		},
+		{
+			"name": "Unarmored Defense Improvement",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 10,
+			"entries": [
+				"At level 10, you no longer need to see your enemy to benefit from your {@classFeature Unarmored Defense|Ninja|BBNinja|1|BBNinja}."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 2,
+			"entries": [
+				"Starting at 2nd level, your training allows you to harness the mystic energy of chakra to cast spells. Your access to this energy is represented by a number of chakra points. Your ninja level determines the number of points you have, as shown in the chakra column of the Ninja table, in addition to your INT modifier. You can spend these points to cast spells and fuel various features. You regain one chakra point when you do one of the following with a weapon attack: 1) deal a killing stroke (reduce any creature to zero hit points) or 2) score a critical hit. After a long rest, you regain all expended chakra. After a short rest, you may use hit dice to regain expended chakra as you would hit points. In either case, you must spend at least 30 minutes of the rest meditating to regain your chakra points. You cannot cast spells or use chakra features if you are wearing armor that is not light or wielding a shield. Some of your chakra features require your target to make a saving throw to resist the feature's effects, or for you to make a spell attack. The saving throw DC and spell attack modifier is calculated as follows:",
+				{
+					"type": "abilityDc",
+					"name": "Spell save",
+					"attributes": [
+						"int"
+					]
+				},
+				{
+					"type": "abilityAttackMod",
+					"name": "Spell attack",
+					"attributes": [
+						"int"
+					]
+				},
+				"You immediately learn two 1st-level spells of your choice from the {@filter ninja spell list|spells|class=Ninja (BBNinja)} below, and as you level up in the ninja class, you learn more spells of higher levels as shown in the Spells Known column of the Ninja table. To {@action cast a spell}, you expend a number of chakra equal to the spell's level, and can cast spells at a higher level up to your Maximum Spell Level as shown on the Ninja Table. When you level up in the Ninja class, you can replace a spell you know with a different one from the ninja spell list. When you {@action cast a spell}, you do not need to provide any material components, regardless of cost. Furthermore, none of your spells require verbal components, regardless of the spell description.",
+				{
+					"type": "inset",
+					"name": "Converter's Note",
+					"entries": [
+						"The following spells can only be cast targetting yourself: {@spell darkvision}, {@spell gaseous form}, {@spell haste}, {@spell invisibility}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Rapid Throw",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 4,
+			"entries": [
+				"Starting at 4th level, you have trained to draw and throw your shuriken at lightning speed. As a bonus action, you can spend one chakra to throw one shuriken at a creature within range.",
+				"Upon reaching 10th level, the number of shuriken increases to 2.",
+				"Upon reaching 16th level, the number of shuriken increases to 3."
+			],
+			"consumes": {
+				"name": "Spellcasting",
+				"amount": 1
+			},
+			"foundrySystem": {
+				"activation.type": "bonus",
+				"activation.cost": 1
+			}
+		},
+		{
+			"name": "Extra Attack",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 5,
+			"entries": [
+				"Starting at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn. This includes concealed tools that use an {@action Attack} action."
+			]
+		},
+		{
+			"name": "Unnatural Agility",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 6,
+			"entries": [
+				"When you reach 6th level, due to your intense training and unnatural control over your body, you can run along walls as if they were the floor, for up to half your movement, with no movement penalty and without having to have free hands nor to find holds in the wall to climb with.",
+				"Alternately, if you have an innate climbing speed (e.g. granted by a racial trait, but not an item), you may instead increase both your movement and climbing speed by 10 feet."
+			]
+		},
+		{
+			"name": "Evasion",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 7,
+			"entries": [
+				"By 7th level, your instinctive agility lets you dodge out of the way of certain area effects, such as a blue dragon's lightning breath or a {@spell fireball} spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail."
+			]
+		},
+		{
+			"name": "Shadowmeld",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 9,
+			"entries": [
+				"Beginning at 9th level, as an action, you attempt to melt into the shadow of a creature up to your size or larger that has 1 or more hit points for up to 8 hours. If you attempt this on a creature that is aware of you, it may make a CHA saving throw (DC = 8 + your Proficiency bonus) at advantage, denying you access to their shadow on a success. If the creature is unaware of you, you automatically succeed. While in a shadow, you inhabit the Border Ethereal of the Ethereal Plane. You can see and hear what the host of your shadow sees and hears. If their shadow moves, you move with it, but you cannot move of your own volition. As a bonus action, you can exit the shadow, appearing within 5 feet of the host. If their shadow disappears (for example, in total darkness), you can no longer hear and see what your host does. If the host drops to 0 hit points at any time, you are immediately ejected from their shadow, regardless of whether they actually have one or not at the time. You may use this ability an amount of times equal to your Proficiency bonus per long rest."
+			],
+			"foundrySystem": {
+				"activation.type": "action",
+				"activation.value": 1,
+				"duration.units": "hour",
+				"duration.value": 8,
+				"save.ability": "cha",
+				"save.scaling": "flat",
+				"target.type": "creature",
+				"target.value": 1
+			}
+		},
+		{
+			"name": "Burning Soul",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 10,
+			"entries": [
+				"Beginning at 10th level, you can draw on your chakra to infuse your spirit with power. As a bonus action, you can expend 2 chakra to add your proficiency bonus to all checks and rolls you make for the next 30 seconds. You must finish a short or long rest before using this feature again."
+			],
+			"consumes": {
+				"name": "Spellcasting",
+				"amount": 2
+			},
+			"foundrySystem": {
+				"activation.type": "bonus",
+				"activation.cost": 1,
+				"duration.units": "second",
+				"duration.value": 30,
+				"uses.max": 1,
+				"users.per": "sr",
+				"target.type": "self"
+			}
+		},
+		{
+			"name": "Unseen By All",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 14,
+			"entries": [
+				"At 14th level, you are almost undetectable when you are hiding. When you fail a {@skill Stealth} check, you can expend 1 chakra to re-roll the check. You must take the new result. Additionally, you can no longer be detected by divination magic."
+			],
+			"consumes": {
+				"name": "Spellcasting",
+				"amount": 1
+			},
+			"foundrySystem": {
+				"activation.type": "none",
+				"target.type": "self"
+			}
+		},
+		{
+			"name": "Nightcrawler",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 15,
+			"entries": [
+				"Starting at 15th level, the night seems to let you ride on it. When traveling for an hour or more during the night, your group's movement speed is doubled."
+			]
+		},
+		{
+			"name": "Master Shinobi",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 20,
+			"entries": [
+				"By 20th level, you have mastered the arts of the ninja. All of your Ninja features and Jutsu that expend chakra now consume 1 less chakra, to a minimum of 1 chakra spent."
+			]
+		},
+		{
+			"name": "Deadly Handling",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 1,
+			"entries": [
+				"Due to your training as a ninja, you have learned to wield most weapons with the agility others wield {@item dagger|PHB|daggers}. When making an unarmed attack, or when wielding a melee weapon you are proficient with in one hand and it lacks the {@i heavy} and {@i two handed} properties, you may substitute your DEX modifier for your STR modifier when attacking.",
+				"Additionally, you draw and sheathe weapons as a free action."
+			]
+		},
+		{
+			"name": "Concealed Tools",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 2,
+			"entries": [
+				"Beginning at level 2, you are able to fully and completely conceal half your level rounded down + your INT modifier of unique tiny tools and weapons on your person. If you are stripped completely nude, you can only conceal half as many (minimum of 1). You can buy {@item concealed tool component|BBNinja|Concealed Tool components} to build your Concealed Tools at any general store. The number of components needed are listed after each {@filter Concealed Tool|optionalfeatures|type=Concealed Tools} below. Each component costs five copper and weighs 1/100th of a pound. Every Concealed Tool can only be used once after being crafted. Unless indicated otherwise, each Concealed Tool costs an action to use. Starting at level 5, you may use any combination of Concealed Tools that require an {@action Attack} action and/or weapon attacks when you perform an {@classFeature Extra Attack|ninja|BBNinja|5|BBNinja}. During a short rest, you may craft a number of Concealed Tools equal to your proficiency bonus. During a long rest, you may entirely replenish your stock of Concealed Tools. Regardless of whether you craft during a short or long rest, you need to spend at least 30 minutes crafting, during which time you enter a meditative state and are mostly unaware of your surroundings.",
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Caltrops|BBNinja"
+				},
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Chloroform|BBNinja"
+				},
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Firebomb|BBNinja"
+				},
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Fireworks|BBNinja"
+				},
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Gas Mask|BBNinja"
+				},
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Improvised Firearm|BBNinja"
+				},
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Metsubishi|BBNinja"
+				},
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Oil Slick|BBNinja"
+				},
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Poison Darts|BBNinja"
+				},
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Shuriken|BBNinja"
+				},
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Smoke Bomb|BBNinja"
+				},
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Snorkel|BBNinja"
+				}
+			]
+		}
+	],
+	"foundryClassFeature": [
+		{
+			"name": "Fighting Stance",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 1,
+			"isIgnored": true
+		},
+		{
+			"name": "Fighting Stance",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 5,
+			"isIgnored": true
+		},
+		{
+			"name": "Fighting Stance",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 13,
+			"isIgnored": true
+		},
+		{
+			"name": "Fighting Stance",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 17,
+			"isIgnored": true
+		},
+		{
+			"name": "Unarmored Defense Improvement",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 10,
+			"isIgnored": true
+		},
+		{
+			"name": "Spellcasting",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"level": 2,
+			"system": {
+				"activation.type": "none",
+				"uses.per": "lr",
+				"uses.max": "@classes.ninja.levels"
+			}
+		}
+	],
+	"subclass": [
+		{
+			"name": "Shadow of Death",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"shortName": "Death",
+			"subclassFeatures": [
+				"Shadow of Death|Ninja|BBNinja|Death|BBNinja|3|BBNinja",
+				"False Grave|Ninja|BBNinja|Death|BBNinja|6|BBNinja",
+				"Target Weakness|Ninja|BBNinja|Death|BBNinja|11|BBNinja",
+				"Lethality|Ninja|BBNinja|Death|BBNinja|18|BBNinja"
+			],
+			"subclassSpells": [
+				"Destructive wave",
+				"Spirit shroud|TCE",
+				"Disintegrate",
+				"Zephyr strike|XGE",
+				"Shadow of Moil|XGE",
+				"Misty step"
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/BBNinja/death.webp"
+						},
+						"title": "\"Stand still. You're already dead, so don't bother struggling.\""
+					}
+				]
+			}
+		},
+		{
+			"name": "Shadow of Magic",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"shortName": "Magic",
+			"subclassFeatures": [
+				"Shadow of Magic|Ninja|BBNinja|Magic|BBNinja|3|BBNinja",
+				"Manabending|Ninja|BBNinja|Magic|BBNinja|6|BBNinja",
+				"Arcane Knowledge|Ninja|BBNinja|Magic|BBNinja|11|BBNinja",
+				"Forbidden Jutsu|Ninja|BBNinja|Magic|BBNinja|18|BBNinja"
+			],
+			"subclassSpells": [
+				"Lightning bolt",
+				"Blight",
+				"Control water",
+				"Wall of force",
+				"Ice storm",
+				"Polymorph",
+				"Bigby's hand",
+				"Cone of cold",
+				"Conjure volley",
+				"Arcane gate",
+				"Hold monster",
+				"Fireball",
+				"Thunderwave",
+				"Conjure barrage",
+				"Color spray",
+				"Entangle",
+				"Hellish rebuke",
+				"Ice knife|XGE",
+				"Spiritual weapon",
+				"Magic missile",
+				"Silence",
+				"Scorching ray",
+				"Shield",
+				"Destructive wave",
+				"Spirit shroud|TCE",
+				"Disintegrate",
+				"Zephyr strike|XGE",
+				"Shadow of Moil|XGE",
+				"Misty step",
+				"Dominate person",
+				"Tasha's hideous laughter",
+				"Mass suggestion",
+				"Fast friends|AI",
+				"Enthrall",
+				"Dominate beast",
+				"Suggestion",
+				"Vampiric touch",
+				"Charm person",
+				"Speak with animals",
+				"Levitate",
+				"Giant insect",
+				"Insect plague",
+				"Summon shadowspawn|TCE",
+				"Dissonant whispers",
+				"Conjure fey",
+				"Conjure animals",
+				"Animal messenger"
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/BBNinja/magic.webp"
+						},
+						"title": "\"I need not my blade, for magic is what will strike you down!\""
+					}
+				]
+			}
+		},
+		{
+			"name": "Shadow of Seduction",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"shortName": "Seduction",
+			"subclassFeatures": [
+				"Shadow of Seduction|Ninja|BBNinja|Seduction|BBNinja|3|BBNinja",
+				"Love's True Kiss|Ninja|BBNinja|Seduction|BBNinja|6|BBNinja",
+				"Object of Affection|Ninja|BBNinja|Seduction|BBNinja|11|BBNinja",
+				"Forced Friendship|Ninja|BBNinja|Seduction|BBNinja|18|BBNinja"
+			],
+			"subclassSpells": [
+				"Dominate person",
+				"Tasha's hideous laughter",
+				"Mass suggestion",
+				"Fast friends|AI",
+				"Enthrall",
+				"Dominate beast",
+				"Suggestion",
+				"Vampiric touch",
+				"Charm person"
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/BBNinja/seduction.webp"
+						},
+						"title": "\"Aww, c'mon, I swear I don't bite!\""
+					}
+				]
+			}
+		},
+		{
+			"name": "Shadow of the Flock",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"shortName": "Flock",
+			"subclassFeatures": [
+				"Shadow of the Flock|Ninja|BBNinja|Flock|BBNinja|3|BBNinja",
+				"Dark Strike|Ninja|BBNinja|Flock|BBNinja|6|BBNinja",
+				"One of Shadows|Ninja|BBNinja|Flock|BBNinja|11|BBNinja",
+				"Gift of Wings|Ninja|BBNinja|Flock|BBNinja|18|BBNinja"
+			],
+			"subclassSpells": [
+				"Speak with animals",
+				"Levitate",
+				"Giant insect",
+				"Insect plague",
+				"Summon shadowspawn|TCE",
+				"Dissonant whispers",
+				"Conjure fey",
+				"Conjure animals",
+				"Animal messenger"
+			],
+			"fluff": {
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/BBNinja/flock.webp"
+						},
+						"title": "\"Only birds understand me... The world, they outcast me, but the birds, they understand me. They know me.\""
+					}
+				]
+			}
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Shadow of Death",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Death",
+			"subclassSource": "BBNinja",
+			"level": 3,
+			"entries": [
+				"The Shadow of Death is the most iconic of the traditional ways a ninja can emulate, focusing less on manipulating chakra and more on martial arts and assassination. The bodies and minds of ninjas of the Shadow of Death are augmented to resemble those of the dead, and at your option, you can roll on the table below for a unique quirk.",
+				{
+					"type": "table",
+					"colLabels": [
+						"d6",
+						"Quirk"
+					],
+					"colStyles": [
+						"col-1 text-center",
+						"col-11"
+					],
+					"rows": [
+						[
+							"1",
+							"Your heart beats so rarely that it almost scares you when it does."
+						],
+						[
+							"2",
+							"The skin on your body has become so thin that your bones are visible when directly in light."
+						],
+						[
+							"3",
+							"Your irises have turned an inky black, giving you a haunting visage."
+						],
+						[
+							"4",
+							"When you do not clean yourself for a while, you smell like a rotting corpse."
+						],
+						[
+							"5",
+							"Your shadow resembles that of a wraith, instead of your actual body."
+						],
+						[
+							"6",
+							"You have an irrational fear of crosses and other holy symbols."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Assassinate|Ninja|BBNinja|Death|BBNinja|3|BBNinja"
+				}
+			]
+		},
+		{
+			"name": "Assassinate",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Death",
+			"subclassSource": "BBNinja",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Starting at 3rd level, when you choose this Shadow, you are at your deadliest when you get the drop on your enemies. You have advantage on attack rolls against any creature that hasn't taken a turn in the combat yet. In addition, any hit you score against the creature is a critical hit. If the creature was surprised, you can apply sneak attack damage, listed in the ninja table above."
+			],
+			"foundrySystem": {
+				"damage.parts": [
+					[
+						"@scale.ninja.sneak-attack",
+						""
+					]
+				]
+			}
+		},
+		{
+			"name": "False Grave",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Death",
+			"subclassSource": "BBNinja",
+			"level": 6,
+			"entries": [
+				"Beginning at 6th level, you have made so many corpses that you can emulate them exactly in order to fool your foes. As a reaction to taking damage, you can expend 2 chakra points to halve that damage, fall {@condition prone}, and appear to be dead for a number of hours equal to your level. You are motionless, lack a pulse, do not breathe, and show no signs of life, but can still see, hear, and use your other senses as normal. Spells that target corpses, such as {@spell animate dead}, do not treat you as a corpse. As a free Action, you can end the effects of this ability at any time. You may also use this ability at will as an Action. You must finish a short or long rest before using this ability again. "
+			],
+			"consumes": {
+				"name": "Spellcasting",
+				"amount": 2
+			},
+			"foundrySystem": {
+				"activation.type": "reaction",
+				"activation.cost": 1,
+				"duration.units": "hour",
+				"duration.value": "@classes.ninja.levels",
+				"uses.max": 1,
+				"users.per": "sr",
+				"target.type": "self"
+			}
+		},
+		{
+			"name": "Target Weakness",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Death",
+			"subclassSource": "BBNinja",
+			"level": 11,
+			"entries": [
+				"Starting at 11th level, you have extensively studied how weak spots of your enemies can be exploited in close combat. When you hit an enemy in melee combat with a non-offhand weapon, your weapon attacks score a critical hit on a roll of 19 or 20. "
+			]
+		},
+		{
+			"name": "Lethality",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Death",
+			"subclassSource": "BBNinja",
+			"level": 18,
+			"entries": [
+				"Starting at 18th level, you become a master of instant death. Once per round, when you score a critical hit on an enemy in melee combat with a non-offhand weapon, you may force it to make a Constitution saving throw against your spell save DC. On a failed save, roll quadruple (instead of double) the amount of dice for weapon damage of your attack against the creature.",
+				"Furthermore, when you hit an enemy in melee combat with a non-offhand weapon, your weapon attacks score a critical hit on a roll of 18, 19, or 20. "
+			]
+		},
+		{
+			"name": "Shadow of Magic",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Magic",
+			"subclassSource": "BBNinja",
+			"level": 3,
+			"entries": [
+				"Those who follow under the route of the Shadow of Magic teach themselves to harness their Jutsu to be more concentrated and powerful, manipulating it far better than they could manipulate their own bodies. The bodies and minds of ninjas of the Shadow of Magic are changed to be more arcane, and at your option, you can roll on the table below for a unique quirk.",
+				{
+					"type": "table",
+					"colLabels": [
+						"d6",
+						"Quirk"
+					],
+					"colStyles": [
+						"col-1 text-center",
+						"col-11"
+					],
+					"rows": [
+						[
+							"1",
+							"Your eyes change to be one color of the rainbow, and swap once every hour."
+						],
+						[
+							"2",
+							"Arcane sigils form on your body, like tattoos, and cannot be removed."
+						],
+						[
+							"3",
+							"You very dimly glow a dark blue or purple color."
+						],
+						[
+							"4",
+							"Your forehead has a third, un-working eye."
+						],
+						[
+							"5",
+							"Whenever you speak, your voice always has a faint echo to it."
+						],
+						[
+							"6",
+							"You swear that it actually hurts you to be in an {@spell antimagic field}, or to be affected by a {@spell dispel magic} spell."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Powerful Mind|Ninja|BBNinja|Magic|BBNinja|3|BBNinja"
+				}
+			]
+		},
+		{
+			"name": "Powerful Mind",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Magic",
+			"subclassSource": "BBNinja",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"When you choose this archetype, at 3rd level, the vastness of your mind lets you store more chakra. Your maximum chakra points increase by an amount equal to your intelligence modifier (min +1). These additional chakra points are only restored from a long rest. Furthermore, you may use ALL spells from the ninja spell list, including those that would normally be exclusive to other Shadows."
+			]
+		},
+		{
+			"name": "Manabending",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Magic",
+			"subclassSource": "BBNinja",
+			"level": 6,
+			"entries": [
+				"Starting at 6th level, you can change how your jutsu conjures up forces, to your will. When you cast a jutsu and the jutsu deals acid, cold, fire, lightning, necrotic, poison, radiant, or thunder damage, you can substitute that damage type with one other type from that list (you can change only one damage type per casting of a jutsu)."
+			]
+		},
+		{
+			"name": "Arcane Knowledge",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Magic",
+			"subclassSource": "BBNinja",
+			"level": 11,
+			"entries": [
+				"Beginning at 11th level, your mind grants you knowledge that only the most ancient spellcasters would know. You gain proficiency in the {@skill Arcana} skill, if you were not already proficient, and your proficiency bonus is doubled to {@skill Arcana} checks involving spells."
+			],
+			"skillProficiencies": [
+				{
+					"arcana": true
+				}
+			]
+		},
+		{
+			"name": "Forbidden Jutsu",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Magic",
+			"subclassSource": "BBNinja",
+			"level": 18,
+			"entries": [
+				"At 18th level, you have tapped into the realms of spells that ninjas are not supposed to cast. Your maximum spell level increases to 8, and you learn one 7th and one 8th level spell of your choice from any class list. You can change these like any other spells when you level up, and replace them with spells of the same level."
+			]
+		},
+		{
+			"name": "Shadow of Seduction",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Seduction",
+			"subclassSource": "BBNinja",
+			"level": 3,
+			"entries": [
+				"While an art that has been unknown to many throughout history, the Shadow of Seduction way of being a ninja is quite a potent one, as it feeds off of the deceptive skills of the ninja, and the natural lust of their targets. The bodies and minds of ninjas of the Shadow of Seduction tend to develop more 'attractive' traits, and at your option, you can roll on the table below for a unique quirk.",
+				{
+					"type": "table",
+					"colLabels": [
+						"d6",
+						"Quirk"
+					],
+					"colStyles": [
+						"col-1 text-center",
+						"col-11"
+					],
+					"rows": [
+						[
+							"1",
+							"You are extremely agitated when there isn't at least one person fawning over you at all times."
+						],
+						[
+							"2",
+							"Your irises have changed to be a heart shape."
+						],
+						[
+							"3",
+							"You have a tendency to be too intimate, hugging people instead of shaking their hands."
+						],
+						[
+							"4",
+							"You naturally walk like a model on a runway."
+						],
+						[
+							"5",
+							"Every single chance you get to flirt, you do."
+						],
+						[
+							"6",
+							"Your hair is always perfect, even if you are extremely dirty. "
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Convincing Body|Ninja|BBNinja|Seduction|BBNinja|3|BBNinja"
+				}
+			]
+		},
+		{
+			"name": "Convincing Body",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Seduction",
+			"subclassSource": "BBNinja",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"When you choose this archetype, at 3rd level, you have learned an art of charming and seduction. You gain the Heart's Desire jutsu, which does not count as one of your jutsu known. When you cast Heart's Desire, you can choose for the creature to see you as an object of affection. Once a creature has been affected by Heart's Desire cast in this way, you cannot cast it on them in this way again."
+			]
+		},
+		{
+			"name": "Love's True Kiss",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Seduction",
+			"subclassSource": "BBNinja",
+			"level": 6,
+			"entries": [
+				"Starting at 6th level, the powers of the succubi have come to you, allowing you to drain the life of those whom you kiss. As an action, you expend 3 chakra points and kiss a creature that is {@condition grappled} by you, {@condition charmed} by you, willing, or {@condition incapacitated}. The creature must make a Constitution saving throw, taking {@damage 3d10} psychic damage on a failed saving throw, or half on a success. You gain temporary hit points equal to the amount of psychic damage dealt. "
+			],
+			"consumes": {
+				"name": "Spellcasting",
+				"amount": 3
+			},
+			"foundrySystem": {
+				"activation.type": "action",
+				"activation.cost": 1,
+				"damage.parts": [
+					[
+						"3d10",
+						"psychic"
+					]
+				],
+				"save.ability": "con",
+				"save.scaling": "int",
+				"target.type": "creature",
+				"target.value": 1
+			}
+		},
+		{
+			"name": "Object of Affection",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Seduction",
+			"subclassSource": "BBNinja",
+			"level": 11,
+			"entries": [
+				"Beginning at 11th level, the skills you possess allow you to appear how those you attempt to seduce wish you did. As a 1-minute ritual, you can change your body to appear exactly like what a humanoid that you have spoken to for at least 10 minutes would find the most attractive. This changes your body physically, similarly to an {@spell alter self} spell, and can be ended as a bonus action."
+			]
+		},
+		{
+			"name": "Forced Friendship",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Seduction",
+			"subclassSource": "BBNinja",
+			"level": 18,
+			"entries": [
+				"By 18th level, your ability to charm others transcends their own desires. You can use your action to touch an {@condition incapacitated} humanoid. That creature is then {@condition charmed} by you until a {@spell remove curse} spell is cast on it, the {@condition charmed} condition is removed from it, or you use this feature again."
+			],
+			"foundrySystem": {
+				"activation.type": "action",
+				"activation.cost": 1,
+				"range.units": "touch",
+				"target.type": "creature",
+				"target.value": 1
+			}
+		},
+		{
+			"name": "Shadow of the Flock",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Flock",
+			"subclassSource": "BBNinja",
+			"level": 3,
+			"entries": [
+				"Many ways that ninjas learn to grow and develop as ninjas are from ancient methods, passed down from master to student, however those that listen to the avian creatures of the world learn alternate methods, ones that only the birds can teach. The bodies and minds of ninjas of the Shadow of the Flock resemble that of birds, and at your option, you can roll on the table below for a unique quirk.",
+				{
+					"type": "table",
+					"colLabels": [
+						"d6",
+						"Quirk"
+					],
+					"colStyles": [
+						"col-1 text-center",
+						"col-11"
+					],
+					"rows": [
+						[
+							"1",
+							"When you are angry, you can only speak in squawks."
+						],
+						[
+							"2",
+							"You seem to have a thin layer of feathers on your body."
+						],
+						[
+							"3",
+							"Birds seem to swarm around you, and insects seem to fear you."
+						],
+						[
+							"4",
+							"When you wake up, you enjoy screeching at the sun."
+						],
+						[
+							"5",
+							"Scarecrows are your worst nightmare."
+						],
+						[
+							"6",
+							"You are most comfortable when not on the ground."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Flying Friend|Ninja|BBNinja|Flock|BBNinja|3|BBNinja"
+				}
+			]
+		},
+		{
+			"name": "Flying Friend",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Flock",
+			"subclassSource": "BBNinja",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"When you choose this archetype, at 3rd level, one specific bird has chosen to imprint on you. Choose from the following beasts; {@creature bat}, {@creature eagle}, {@creature hawk}, {@creature owl}, {@creature raven}, and {@creature vulture}. A copy of that beast, made of pure darkness, constantly follows you, typically sitting on your shoulder. The beast acts on your initiative, but it cannot take any actions except for the {@action Dash}, {@action Disengage}, or {@action Hide} actions. As a bonus action, you can choose to perceive through its senses, or switch back to your own senses. While perceiving through its senses, you have {@sense darkvision} with a range of 60 feet, and advantage on {@skill Perception} checks relying on sight, but are unaware of your own body's. If your beast is killed, you can bring it back to life with a 1-hour ritual, in which you place either fur (for a {@creature bat}) or feathers (for any other bird) in a pile, giving it a new body of darkness."
+			]
+		},
+		{
+			"name": "Dark Strike",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Flock",
+			"subclassSource": "BBNinja",
+			"level": 6,
+			"entries": [
+				"Starting at 6th level, your flying friend can act like a weapon, and aid you in fights. As a bonus action, when your feathered friend is within 5 feet of you, you can force it to make a ranged weapon attack that uses your Dexterity modifier and Proficiency bonus, instead of its own, on a creature within 30 feet of yourself. On a hit, the creature takes necrotic damage equal to {@damage 1d10} plus your Dexterity modifier."
+			]
+		},
+		{
+			"name": "One of Shadows",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Flock",
+			"subclassSource": "BBNinja",
+			"level": 11,
+			"entries": [
+				"Beginning at 11th level, you can choose to change your eyes to perceive the shadow realm, as a bonus action. While perceiving in the shadow realm, you see shadow monsters as their original selves, and see beasts as shadowy versions of themselves. You can communicate to beasts that are shadowy, and they can communicate with you. However, while perceiving in the shadow realm, you cannot communicate with anything that is not a shadow monster or beast, and do not understand any languages not spoken by shadow monsters."
+			]
+		},
+		{
+			"name": "Gift of Wings",
+			"source": "BBNinja",
+			"className": "Ninja",
+			"classSource": "BBNinja",
+			"subclassShortName": "Flock",
+			"subclassSource": "BBNinja",
+			"level": 18,
+			"entries": [
+				"At 18th level, you gain the ability to sprout a pair of black feathered wings from your back, gaining a flying speed equal to your current speed. You can create these wings as a bonus action on your turn. They last until you dismiss them as a bonus action on your turn. You can't manifest your wings while wearing armor unless the armor is made to accommodate them, and clothing not made to accommodate your wings might be destroyed when you manifest them."
+			]
+		}
+	],
+	"classFluff": [
+		{
+			"name": "Ninja",
+			"source": "BBNinja",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "external",
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/BBNinja/ninja.webp"
+					},
+					"title": "\"I am the last thing you will ever see.\""
+				}
+			],
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"The unseen blade is the deadliest."
+					],
+					"by": "Zed",
+					"from": "one of the most infamous followers of the Shadow of Death"
+				},
+				"Murders of crows fly overhead a large mansion estate in the dead of night, filled to the brim with knights and archers, all defending a single sleeping noble. A figure clad in dark clothing leaps from the birds, on top of a knight, breaking the skull of the knight on impact, and throwing a dagger into the throat of an archer nearby. As others hear him, he melts into the shadows of the corpses below him, and when they pass, he sneaks into the noble's room, slitting his throat with ease. The man then sprouts black wings, and heads back into the murder of crows, escaping without even a scratch.",
+				"A laughing man, with a large beard and mustache, has attractive women wearing masks on both sides of him, his arms around them, holding them close. One of the two whisper to him, and he greedily smiles, lifting her mask slightly, pulling her into a kiss. As he does so, the life slowly drains from him, until he is nothing more than a shell, the woman pulling the corpse off of herself, and quickly knocks the other woman unconscious. She changes her appearance to appear completely differently than she currently did, and leaves, a smirk on her face.",
+				"Ninjas are related to the powerful masters of martial arts, the monks, but while monks focus their knowledge of martial arts on perfecting their own bodies, ninjas use their training to allow them to become masters of stealth, magic called Jutsu, and assassinations. They are enigmatic by trade, skilled from training, and every last one of them are exceedingly deadly in numerous ways.",
+				{
+					"type": "entries",
+					"name": "Creating a Ninja",
+					"entries": [
+						"When creating a ninja character, think about the clan that trained your character. Was your character born into the clan, or did they choose later in life to join it? Were they always aware that they would be shedding blood for their clan, or did they only learn this later on? Ask your GM how powerful noble families and clans are in your campaign world, and if there are any specific clans you could be a part of.",
+						{
+							"type": "entries",
+							"name": "Quick Build",
+							"entries": [
+								"You can make a Ninja quickly by following these suggestions. First, put your highest ability score in Dexterity, followed by intelligence. Second, choose the {@background criminal} or {@background noble} background. Finally, choose a {@item longsword|PHB} and 5 {@item dagger|PHB|daggers}."
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

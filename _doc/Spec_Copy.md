@@ -149,15 +149,19 @@ An example homebrew file might contain the following information in it's `_meta`
 
 ---
 
-### Note: Monster "traits" JSON Spec
+### Note: "<prop>Template" JSON Spec
 
 Essentially the same as the `"_copy"`, with the information encapsulated in an `"apply"` property. Here, `"_root"` is used as an equivalent for values which would be held in the root for a normal copy object.
 
 ---
 
-### Modes
+## Modes
 
-Modifiers have modes, these are:
+Modifiers have modes, as listed below.
+
+### General Modes
+
+These modes are generally useful across all entity types.
 
 #### replaceTxt
 
@@ -391,6 +395,23 @@ Multiply a number or number-like property by a scalar
 }
 ```
 
+#### prefixSuffixStringProp
+
+Prefix/suffix a string or string-like property. Either or both of "prefix" and "suffix" may be specified.
+
+```jsonc
+{
+    "mode": "prefixSuffixStringProp",
+    "prop": "formula",
+    "prefix": "2 * (",
+    "suffix": ") + 10"
+}
+```
+
+### Entity-Specific Modes
+
+These modes are narrower in scope, usually targeting `"monster"` data, although may function for similar data structures.
+
 #### addSenses
 
 Add senses to a statblock. If the creature has greater range in the same senses as those that would be added, no changes are made.
@@ -405,6 +426,31 @@ Add senses to a statblock. If the creature has greater range in the same senses 
 }
 ```
 
+#### addSaves
+
+Add saves to a statblock. If the creature has greater save for the same attribute, no changes are made.
+
+```jsonc
+{
+    "mode": "addSaves",
+    "saves": {
+        "str": 1, // "1" is "proficient"
+        "dex": 2 // "2" is "expertise"
+    }
+}
+```
+
+### addAllSaves
+
+As per `addSaves`, but for all saving throws.
+
+```jsonc
+{
+    "mode": "addAllSaves",
+    "saves": 2 // "2" is "expertise"
+}
+```
+
 #### addSkills
 
 Add skills to a statblock. If the creature has greater skill bonuses in the same skills as those that would be added, no changes are made.
@@ -416,6 +462,17 @@ Add skills to a statblock. If the creature has greater skill bonuses in the same
         "perception": 1, // "1" is "proficient"
         "stealth": 2 // "2" is "expertise"
     }
+}
+```
+
+### addAllSkills
+
+As per `addSkills`, but for all skills.
+
+```jsonc
+{
+    "mode": "addAllSkills",
+    "skills": 2 // "2" is "expertise"
 }
 ```
 

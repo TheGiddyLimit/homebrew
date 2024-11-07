@@ -11,7 +11,8 @@
 				"convertedBy": [
 					"MrVauxs",
 					"dmsguild",
-					"foreveryone"
+					"foreveryone",
+					"hakr14"
 				],
 				"version": "3.5.2",
 				"url": "http://www.dmsguild.com/product/184921/the-Pugilist-Class",
@@ -25,7 +26,8 @@
 					"Benjamin Huffman"
 				],
 				"convertedBy": [
-					"cam443"
+					"cam443",
+					"hakr14"
 				],
 				"version": "1.0.0",
 				"url": "https://www.patreon.com/m/272280/posts?filters[tag]=the%20Pugilist",
@@ -33,8 +35,9 @@
 			}
 		],
 		"dateAdded": 1516994880,
-		"dateLastModified": 1713958692,
-		"_dateLastModifiedHash": "1f16d2dd98"
+		"dateLastModified": 1729630006,
+		"_dateLastModifiedHash": "28258085db",
+		"edition": "classic"
 	},
 	"class": [
 		{
@@ -425,7 +428,75 @@
 				}
 			},
 			"subclassTitle": "Fight Club",
-			"hasFluff": true
+			"hasFluff": true,
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"title": "Fisticuffs Damage Die",
+					"configuration": {
+						"identifier": "fisticuffs",
+						"type": "dice",
+						"scale": {
+							"1": {
+								"n": 1,
+								"die": 6
+							},
+							"5": {
+								"n": 1,
+								"die": 8
+							},
+							"11": {
+								"n": 1,
+								"die": 10
+							},
+							"17": {
+								"n": 1,
+								"die": 12
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Moxie Points",
+					"configuration": {
+						"identifier": "moxie",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 2
+							},
+							"4": {
+								"value": 3
+							},
+							"6": {
+								"value": 4
+							},
+							"8": {
+								"value": 5
+							},
+							"10": {
+								"value": 6
+							},
+							"12": {
+								"value": 7
+							},
+							"14": {
+								"value": 8
+							},
+							"16": {
+								"value": 9
+							},
+							"18": {
+								"value": 10
+							},
+							"20": {
+								"value": 12
+							}
+						}
+					}
+				}
+			]
 		}
 	],
 	"itemProperty": [
@@ -2770,7 +2841,7 @@
 	"magicvariant": [
 		{
 			"name": "Punchdrunk Punters",
-			"type": "GV",
+			"type": "GV|DMG",
 			"requires": [
 				{
 					"name": "Knuckle Knives"
@@ -2797,7 +2868,7 @@
 		},
 		{
 			"name": "Penitent Pummelers",
-			"type": "GV",
+			"type": "GV|DMG",
 			"entries": [
 				"These weapons are made of gold and etched with a holy symbol over each knuckle. You gain a +1 to attack and damage rolls with this magic weapon. When you hit a fiend or undead creature, that creature takes an extra {@dice 1d6} radiant damage."
 			],
@@ -2872,7 +2943,7 @@
 							"equipped": true,
 							"damage.parts": [
 								[
-									"1d(4 + ceil((@classes.pugilist.levels + 2) / 6) * 2) + @mod",
+									"@scale.pugilist.fisticuffs + @mod",
 									"bludgeoning"
 								]
 							],
@@ -2889,10 +2960,11 @@
 			"classSource": "SterlingVermin",
 			"level": 3,
 			"system": {
+				"ability": "con",
 				"actionType": "heal",
 				"damage.parts": [
 					[
-						"@classes.pugilist.levels + @abilities.con.mod",
+						"@classes.pugilist.levels + @mod",
 						"temphp"
 					]
 				],
@@ -2910,14 +2982,15 @@
 			"classSource": "SterlingVermin",
 			"level": 2,
 			"system": {
+				"ability": "con",
 				"uses": {
 					"value": 1,
-					"max": "(@classes.pugilist.levels > 19 ? 12 : @classes.pugilist.levels > 17 ? 10 : @classes.pugilist.levels > 15 ? 9 : @classes.pugilist.levels > 13 ? 8 : @classes.pugilist.levels > 11 ? 7 : @classes.pugilist.levels > 9 ? 6 : @classes.pugilist.levels > 7 ? 5 : @classes.pugilist.levels > 5 ? 4 : @classes.pugilist.levels > 3 ? 3 : 2)",
+					"max": "@scale.pugilist.moxie",
 					"per": "sr"
 				},
 				"damage.parts": [
 					[
-						"1d(4 + ceil((@classes.pugilist.levels + 2) / 6) + @classes.pugilist.levels + @abilities.con.mod",
+						"@scale.pugilist.fisticuffs + @classes.pugilist.levels + @mod",
 						"temphp"
 					]
 				]
@@ -3041,7 +3114,7 @@
 			"system": {
 				"uses": {
 					"value": 1,
-					"max": "(@classes.pugilist.levels > 10 ? 2 : 1)",
+					"max": "@scale.street-saint.channel-divinity",
 					"per": "sr"
 				}
 			}
@@ -3077,9 +3150,10 @@
 					"per": "lr"
 				},
 				"actionType": "heal",
+				"ability": "con",
 				"damage.parts": [
 					[
-						"(@abilities.con.mod + @classes.pugilist.levels)",
+						"@mod + @classes.pugilist.levels",
 						"temphp"
 					]
 				]
@@ -3221,9 +3295,10 @@
 			"subclassSource": "SterlingVermin",
 			"level": 3,
 			"system": {
+				"ability": "cha",
 				"damage.parts": [
 					[
-						"1d(4 + ceil((@classes.pugilist.levels + 2) / 6) + @abilities.cha.mod",
+						"@scale.pugilist.fisticuffs + @mod",
 						"psychic"
 					]
 				],
@@ -3527,7 +3602,25 @@
 			"source": "SterlingVermin:Patreon",
 			"shortName": "Street Saint",
 			"className": "Pugilist",
-			"classSource": "SterlingVermin"
+			"classSource": "SterlingVermin",
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"title": "Channel Divinity Uses",
+					"configuration": {
+						"identifier": "channel-divinity",
+						"type": "numeric",
+						"scale": {
+							"3": {
+								"value": 1
+							},
+							"11": {
+								"value": 2
+							}
+						}
+					}
+				}
+			]
 		}
 	],
 	"classFluff": [

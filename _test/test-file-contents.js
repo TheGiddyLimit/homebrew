@@ -2,6 +2,7 @@ import fs from "fs";
 import {DataTester, BraceCheck, EscapeCharacterCheck} from "5etools-utils";
 import * as Uf from "5etools-utils/lib/UtilFs.js";
 import {ImageUrlCheck} from "./test-file-contents/ImageUrlCheck.js";
+import {CopySourceCheck} from "./test-file-contents/CopySourceCheck.js";
 
 const TIME_TAG = "\tRun duration";
 console.time(TIME_TAG);
@@ -11,6 +12,7 @@ async function main () {
 		BraceCheck,
 		EscapeCharacterCheck,
 		ImageUrlCheck,
+		CopySourceCheck,
 	];
 	DataTester.register({ClazzDataTesters});
 
