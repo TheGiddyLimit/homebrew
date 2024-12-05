@@ -12727,6 +12727,7 @@
 		},
 		{
 			"name": "Ash",
+			"isNamedCreature": true,
 			"source": "TLotRR",
 			"page": 200,
 			"_copy": {
@@ -12778,6 +12779,7 @@
 				"type": "external",
 				"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TLotRR/bestiary/tokens/Balin, Son of Fundin.webp"
 			},
+			"hasFluff": true,
 			"hasFluffImages": true
 		},
 		{
@@ -13123,6 +13125,7 @@
 				"type": "external",
 				"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TLotRR/bestiary/tokens/Bilbo Baggins.webp"
 			},
+			"hasFluff": true,
 			"hasFluffImages": true
 		},
 		{
@@ -13419,6 +13422,7 @@
 			"languageTags": [
 				"XX"
 			],
+			"hasFluff": true,
 			"hasFluffImages": true
 		},
 		{
@@ -13777,6 +13781,7 @@
 			"languageTags": [
 				"XX"
 			],
+			"hasFluff": true,
 			"hasFluffImages": true
 		},
 		{
@@ -13809,7 +13814,8 @@
 						"Grim, Wary"
 					]
 				}
-			]
+			],
+			"hasFluff": true
 		},
 		{
 			"name": "Goblin Archer",
@@ -13995,7 +14001,8 @@
 			],
 			"languageTags": [
 				"XX"
-			]
+			],
+			"hasFluff": true
 		},
 		{
 			"name": "Great Cave-troll",
@@ -14686,6 +14693,40 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Jalin",
+			"source": "TLotRR",
+			"page": 227,
+			"_copy": {
+				"name": "Southerner Champion",
+				"source": "TLotRR",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the Southerner Champion",
+						"with": "Jalin",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Anguished",
+							"entries": [
+								"Jalin is {@condition miserable|TLotRR}, and has disadvantage on all ability checks, attack rolls, and saving throws.",
+								"If a Jalin's {@dice d20} roll is a 1 or 2, the roll is a failure regardless of the DC for any ability check, attack roll, or saving throw."
+							]
+						}
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"hasFluff": true
+		},
+		{
 			"name": "John Ferny",
 			"isNamedCreature": true,
 			"source": "TLotRR",
@@ -14733,16 +14774,31 @@
 			"isNamedCreature": true,
 			"source": "TLotRR",
 			"page": 228,
-			"size": [
-				"M"
-			],
-			"type": "undead",
-			"ac": [
-				13
-			],
-			"hp": {
-				"average": 26,
-				"formula": "4d8 + 8"
+			"_copy": {
+				"name": "Fell Wraith",
+				"source": "TLotRR",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the Fell Wraith",
+						"with": "Lady Elwen",
+						"flags": "i"
+					},
+					"_": [
+						{
+							"mode": "addSkills",
+							"skills": {
+								"intimidation": 1,
+								"perception": 1
+							}
+						}
+					],
+					"languages": {
+						"mode": "replaceArr",
+						"replace": "Black Speech",
+						"items": "Sindarin"
+					}
+				}
 			},
 			"speed": {
 				"walk": 0,
@@ -14753,111 +14809,11 @@
 				"canHover": true
 			},
 			"str": 2,
-			"dex": 16,
 			"con": 15,
-			"int": 10,
 			"wis": 13,
 			"cha": 15,
-			"skill": {
-				"intimidation": "+4",
-				"perception": "+3",
-				"stealth": "+7"
-			},
-			"senses": [
-				"truesight 120 ft."
-			],
 			"passive": 13,
-			"resist": [
-				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from weapons that aren't enchanted with spells for the bane of the undead",
-					"cond": true
-				}
-			],
-			"immune": [
-				"cold",
-				"necrotic",
-				"poison"
-			],
-			"vulnerable": [
-				"radiant"
-			],
-			"conditionImmune": [
-				"charmed",
-				"exhaustion",
-				"grappled",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"restrained"
-			],
-			"languages": [
-				"Sindarin",
-				"Westron"
-			],
-			"cr": "1",
-			"trait": [
-				{
-					"name": "Deathless",
-					"entries": [
-						"If damage reduces Lady Elwen to 0 hit points, she must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant, from a critical hit, or from a weapon enchanted with spells for the Bane of the Undead. On a success, Lady Elwen drops to 1 hit point instead."
-					]
-				},
-				{
-					"name": "Sunlight Weakness",
-					"entries": [
-						"While in sunlight, Lady Elwen has disadvantage on ability checks, attack rolls, and saving throws."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Lady Elwen can use her Strike Fear. She then makes one melee attack."
-					]
-				},
-				{
-					"name": "Sword",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage, or 7 ({@damage 1d8 + 3}) slashing damage if used with two hands to make a melee attack."
-					]
-				},
-				{
-					"name": "Stike Fear",
-					"entries": [
-						"Each non-undead creature of Lady Elwen's choice that is within 60 feet of Lady Elwen and aware of her gains 1 Shadow point from Dread, resisted by a {@dc 12} Charisma saving throw. On a failed save, a target becomes {@condition frightened} for 1 minute. If the save fails by 5 or more, the target is also {@condition stunned} while {@condition frightened} in this way. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to Lady Elwen's Strike Fear for the next 24 hours."
-					]
-				}
-			],
-			"attachedItems": [
-				"sword|tlotrr"
-			],
-			"senseTags": [
-				"U"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"damageTags": [
-				"S"
-			],
-			"miscTags": [
-				"MLW",
-				"MW"
-			],
-			"conditionInflict": [
-				"frightened",
-				"stunned"
-			],
-			"savingThrowForced": [
-				"charisma"
-			],
+			"tokenHref": null,
 			"hasFluff": true
 		},
 		{
@@ -15667,6 +15623,25 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Sabian",
+			"isNamedCreature": true,
+			"source": "TLotRR",
+			"page": 230,
+			"_copy": {
+				"name": "Highway Robber",
+				"source": "TLotRR",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the highway robber",
+						"with": "Sabian",
+						"flags": "i"
+					}
+				}
+			},
+			"hasFluff": true
+		},
+		{
 			"name": "Southerner Champion",
 			"source": "TLotRR",
 			"page": 149,
@@ -16279,6 +16254,7 @@
 			"languageTags": [
 				"XX"
 			],
+			"hasFluff": true,
 			"hasFluffImages": true
 		},
 		{
@@ -16526,6 +16502,58 @@
 		{
 			"name": "Balin, Son of Fundin",
 			"source": "TLotRR",
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"...there was a very old-looking Dwarf on the step with a white beard and a scarlet hood; and he too hopped inside as soon as the door was open, just as if he had been invited."
+					],
+					"style": "quote-pull",
+					"skipMarks": true
+				},
+				"Born in the year 2763 of the Third Age, Balin is the eldest son of Fundin, one of Durin's Folk. He and his younger brother Dwalin are of royal blood, as they count King Náin II among their ancestors. A venerable Dwarf, Balin has seen much, including the death of too many allies and dear friends. He fought the Orcs when his father died defending Moria, was there when Thráin disappeared in Mirkwood, and was with Thorin Oakenshield on the quest that ended with the liberation of Erebor and the death of the Dragon.",
+				"For decades, Balin was Thorin's counsellor, and now serves Dáin Ironfoot, the King Under the Mountain. One of Dáin's most trusted officers, he is an adventurer at heart, and rarely remains at court for long periods of time. Despite his status among his kin, he is surprisingly humble and polite. While still doughty, Balin's age is beginning to show. He sometimes mutters to himself and dodders as if every day of his years presses upon him.",
+				{
+					"type": "entries",
+					"name": "Encountering Balin",
+					"page": 211,
+					"id": "340",
+					"entries": [
+						"According to his nature as a wanderer and his duty as a messenger of Dáin, Balin is often on the road, travelling across Wilderland and Eriador. He sometimes journeys with {@creature Gandalf the Grey|TLotRR|Gandalf}, to suit his own or the Wizard's purposes. Balin enjoys his visits to the Shire to see his dear old friend Bilbo Baggins, and out of a general fondness for Hobbits and their excellent hospitality. He also goes to the Blue Mountains regularly, to work with the Dwarves residing there.",
+						"Balin is unusually woodcrafty for a Dwarf, adept at tracking, fire-making, and pathfinding. He often serves as a lookout and takes pride in his acute sight. Balin knows well the regions he traverses when he journeys from Erebor to the Blue Mountains, having made the trip several times, though he prefers not to cross Mirkwood, even to this day.",
+						"One might encounter Balin in a small inn along the way between Erebor and the Blue Mountains, camping in the wild near the road, or sharing a {@item pipe|TLotRR} with old friends. He is generous to a fault, kind of spirit, and easily the wisest and best of those who reclaimed the Lonely Mountain. He may accompany a group of adventurers if their purposes align, or even for a while if they are going roughly in the same direction."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Balin as a Patron",
+					"page": 211,
+					"id": "341",
+					"entries": [
+						"Unlike many Dwarves, Balin is genuinely interested in other folks and takes kindly to Hobbits especially. Of the Dwarves of Thorin's Company, Balin is the only one still associating with Gandalf long after the death of Smaug, as he shares the Wizard's concern about the growing Shadow.",
+						"In addition to that, Balin aims to restore the strength and prominence of the Dwarves in Eriador, whether through direct action, or by setting into motion agents who might affect the change he wishes to see. Like all his folk, he hates Orcs and their ilk, and seeks in every way to drive them back wherever he can. His adventuring has made him wiser and more cautious though, and he often counsels patience and observation as a tactic, versus rash or violent action.",
+						"Balin is eager to know anything that can be learned regarding Dwarf-holds fallen to the Enemy, and actively encourages his allies to scout those places or rid them of any foul denizens therein. In particular, Balin is interested to find out all he can about Moria, where his father was slain. Together with two of his fellow survivors of Thorin's company\u2014Ori and Óin\u2014he speaks often about entering Khazad-dûm and exploring it. So far, King Dáin of Erebor has cautioned them against such an endeavour, though it is clear that they are not to be dissuaded.",
+						{
+							"type": "table",
+							"page": 211,
+							"colLabels": [
+								"Fellowship Bonus",
+								"Advantage: Balin's Counsel"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"+1",
+									"You can spend a Fellowship point to roll an additional {@dice d20} after an attack roll (but before the outcome is determined), and choose which of the {@dice 2d20|d20s} is used."
+								]
+							]
+						}
+					]
+				}
+			],
 			"images": [
 				{
 					"type": "image",
@@ -16592,6 +16620,68 @@
 		{
 			"name": "Bilbo Baggins",
 			"source": "TLotRR",
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"...he looked and behaved exactly like a second edition of his solid and comfortable father, got something a bit queer in his make-up from the Took side, something that only waited for a chance to come out."
+					],
+					"style": "quote-pull",
+					"skipMarks": true
+				},
+				"In the year 2965, Bilbo is a vigorous Hobbit\u2014At seventy-five he is very much the same as he was at fifty, at the time of his remarkable disappearance and surprising return. On the surface, the son of Bungo Baggins and Belladonna Took is a prime example of a respectable Hobbit. He is a great lover of pipe-weed, good food, and fine waistcoats, and lives in one of the cosiest Hobbit-holes in the Shire. But this is not all there is to Mr Baggins.",
+				"Bilbo's unexpected journey with Thorin Oakenshield and company changed him profoundly, setting him apart from his fellow countrymen. Perhaps that adventure provided a spark that ignited his Tookish and more adventurous side, and he certainly returned from Erebor a wealthier Hobbit. All this estranged him from much of the (admittedly tedious) Shire society, leading him to focus on his own, peculiar lifestyle, the company of friends, and working on his diary.",
+				"Twenty years after his great adventure, Bilbo remains curious about news from outside the Shire, and is always gathering rumours and bits of lore to add to his personal records\u2014he is planning to turn his private diary into a real book.",
+				{
+					"type": "entries",
+					"name": "Encountering Bilbo",
+					"page": 212,
+					"id": "343",
+					"entries": [
+						"The Bagginses have lived in the neighbourhood of The Hill from time out of mind, and Bilbo has no desire to break that long-standing tradition. His address is at Bag End, Underhill, Hobbiton, and it's at Bag End that the Hobbit is likely to be found, probably having tea, or standing at the door, smoking a {@item pipe|TLotRR}. That said, his experiences with Thorin's Company and a Dragon have awakened in him a certain appetite for adventure, and sometimes he stays away from home for much longer than is considered appropriate in the Shire. When travelling further away than Buckland, or Michel Delving, he is often in the company of Dwarves.",
+						"If encountered outside the Shire, Bilbo might carry his Elf-dagger, Sting, sheathed at his side. But he has yet to encounter a danger that might require him to use it\u2014if threatened, the Hobbit displays an uncanny ability to disappear almost instantly, a talent far outstripping the normal Hobbitish affinity for escaping notice. He always remembers to bring a {@item pocket-handkerchief|TLotRR} along."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Bilbo as a Patron",
+					"page": 212,
+					"id": "344",
+					"entries": [
+						"Unbeknownst to his fellow Hobbits who just consider him to be strange, if not completely mad, Bilbo knows a lot about the world outside the Shire, and is well aware of its dangers. He keeps himself as informed as he can, exchanging tidings with travellers and by writing and receiving letters. When he learns about potential threats that might affect the Shire, he does what he can to enlist the help of anyone who might do something about it.",
+						"Being a Hobbit of considerable means, Bilbo is all too happy to arrange hospitality, finance expeditions, and to generally encourage those who would dare to go out and have adventures. He provides support merely in return for a good story and perhaps a souvenir or keepsake\u2014he is especially interested in maps, and geographical lore in general, which he uses to amend his own charts.",
+						"Contrary to this inclination towards hosting a veritable rogues gallery of guests from far afield, he is growing increasingly isolated when it comes to his fellow Hobbits. He finds them staid, close-minded, and demonstrates little patience for their shenanigans and petty foibles. To the eyes of the Shire-folk, Bilbo is becoming more and more an eccentric recluse.",
+						{
+							"type": "table",
+							"page": 213,
+							"colLabels": [
+								"Fellowship Bonus",
+								"Advantage: Bilbo's Hospitality"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"+2",
+									"By choosing the {@action Meet Patron|TLotRR} undertaking to visit Bilbo you additionally raise the Fellowship rating by +1 until the next Fellowship Phase."
+								]
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Bilbo's Magic Ring",
+							"page": 212,
+							"id": "345",
+							"entries": [
+								"Bilbo found many valuable things in the course of his last adventure, but the greatest treasure he brought back is one he doesn't know much about. It's the magic ring he found in an underground cave, under the Misty Mountains, and that he has kept a great secret. To him, it's a precious commodity, as wearing it makes him {@condition invisible}\u2014a quality that Bilbo finds invaluable when unpleasant callers come looking for him.",
+								"This ring has been in Bilbo's possession for more than twenty years now, and what in the beginning seemed nothing more than a curiosity to the Hobbit is slowly developing a growing hold over his mind. He keeps it in the pocket of his waistcoat upon a fine silver chain at all times, and has developed the habit of slipping a finger or two in the pocket to touch it, as if to reassure himself that it's still there."
+							]
+						}
+					]
+				}
+			],
 			"images": [
 				{
 					"type": "image",
@@ -16645,6 +16735,56 @@
 		{
 			"name": "Círdan the Shipwright",
 			"source": "TLotRR",
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"As they came to the gates Círdan the Shipwright came forth to greet them. Very tall he was, and his beard was long, and he was grey and old, save that his eyes were keen as stars..."
+					],
+					"style": "quote-pull",
+					"skipMarks": true
+				},
+				"Círdan is perhaps the most ancient Elf still living in Middle-earth. He has witnessed three ages of the world, and has been given many titles. Today, he is mostly known as the Shipwright, and the Master of the Grey Havens. He is accounted among the Wise and the Great, and has served as a member of the White Council for many long centuries. For a time, he was the keeper of one of the three Elven Rings of Power, for he bore Narya, the Ring of Fire, until he gave it to {@creature Gandalf the Grey|TLotRR}.",
+				"Círdan is currently the chief of all Elves residing west of the Blue Mountains, in Lindon. He has been leading them since Gil-galad died fighting Sauron in the War of the Last Alliance. Many consider him to possess the greatest gift of foresight, and thus to be able to see further and deeper than any other in Middle-earth. That is perhaps why the task of preparing the ships that all Elves board when leaving Middle-earth to cross the sea to Valinor is appointed to him.",
+				{
+					"type": "entries",
+					"name": "Encountering Círdan",
+					"page": 214,
+					"id": "347",
+					"entries": [
+						"Círdan dwells with his people at the great port of Mithlond, on the banks of the Gulf of Lune. He rarely ventures forth from the Grey Havens, but all who are of good spirit and come in peace are welcome to come and see him there. Galdor of the Havens is his herald and envoy, and often travels across Middle-earth representing the Shipwright wherever needed, and speaking with his full authority.",
+						"In person, Círdan is very tall, even for an Elf. His appearance is that of a grey but vigorous individual, with a long, silver beard, a rarity among the Fair Folk. He is gracious and hospitable, receiving all guests with full courtesy and kindness. His bright eyes are keen, yet profound\u2014If anyone was to look into them for a few moments, they would see a deep well of memory and experience, telling of the countless things that Círdan has accomplished over his long lifetime."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Círdan as a Patron",
+					"page": 214,
+					"id": "348",
+					"entries": [
+						"Círdan knows that the Grey Havens play a role of primary importance in the war against the Shadow. The Five Wizards landed here when they came to Middle-earth almost two thousand years ago, and it is here that many great fleets armed for the defeat of Sauron found safe harbourage. In the twilight of the Third Age, Mithlond serves as the last refuge for those who desire to leave Middle-earth, and Círdan considers it his duty to ensure that their passage is made as safely as possible.",
+						"The Grey Havens also guard a great wealth of knowledge. Círdan's memory goes back to a time before the light of the Sun and Moon, and his knowledge rivals that of Elrond, greatest of lore-masters. The Lord of the Havens and that of Imladris seek the counsel of one another, and their messengers can be often found on the great East Road on errands from their masters.",
+						{
+							"type": "table",
+							"page": 215,
+							"colLabels": [
+								"Fellowship Bonus",
+								"Advantage: The Shipwright's Foresight"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"+1",
+									"You can spend a Fellowship point to roll an additional {@dice d20} after an ability check (but before the outcome is determined), and choose which of the d20s is used. By choosing the {@action Meet Patron|TLotRR} undertaking to go and see Círdan you additionally receive a rumour from the Loremaster."
+								]
+							]
+						}
+					]
+				}
+			],
 			"images": [
 				{
 					"type": "image",
@@ -16739,6 +16879,59 @@
 		{
 			"name": "Gandalf the Grey",
 			"source": "TLotRR",
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"At the end of the second week in September a cart came in through Bywater from the direction of the Brandywine Bridge in broad daylight. An old man was driving it all alone. He wore a tall pointed blue hat, a long grey cloak, and a silver scarf."
+					],
+					"style": "quote-pull",
+					"skipMarks": true
+				},
+				"To the Hobbits of the Shire, Gandalf the Grey is just a pilgrim, a wanderer without a home. He says he's a Wizard, but the extent of his magical skill seems to be limited to his wonderful fireworks and to the prodigious smoke-rings he produces with his {@item pipe|TLotRR}. But the wanderings of Gandalf have brought him much farther than his beloved Shire, to lands where he is known by different names: to the Elves he is Mithrandir, Tharkûn is how the Dwarves know him, and Men in the South call him Gandalf Greyhame. In these countries, Gandalf is not always welcome\u2014indeed, some call him a bringer of ill-news, as he often comes when a threat is near.",
+				"In truth, Gandalf is the greatest enemy of Sauron in the Third Age. Few among the Wise know that the Wizards first came to Middle-earth out of the Uttermost West almost two thousand years ago, on a mission to thwart the Dark Lord's machinations. Gandalf's appointed task is to bolster the hearts of those who would fight against evil everywhere, and that's what he has done for centuries now, counselling Dwarves, Elves, and Men, always bringing light where darkness lies.",
+				"Gandalf is the secret bearer of Narya, the Ring of Fire, the third Elven-ring created by Celebrimbor of Eregion. It was given to him for safekeeping and for his own use by Círdan the Shipwright. Narya is an invaluable aid to Gandalf in his mission to inspire others in their struggles against the Shadow. If pressed into combat, the Grey Pilgrim unsheaths Glamdring, an ancient Elven blade, forged in Gondolin for the Goblin-wars.",
+				{
+					"type": "entries",
+					"name": "Encountering Gandalf",
+					"page": 215,
+					"id": "34b",
+					"entries": [
+						"Gandalf can be encountered almost anywhere\u2014riding across the countryside on horseback, walking alone or in the company of friends or allies, or even in the seat of a horse-drawn cart. He may not show up when called but often appears when needed. Gandalf holds a particular fondness for the Hobbits of the Shire and when he is meeting someone in Eriador, he will always choose the inn in Bree as a meeting place.",
+						"When encountered along the road, the Grey Wizard may appear just as an old man, with a long white beard and carrying a staff that he sometimes leans upon as he walks. But when he sits in council, his white hair and piercing dark eyes make him look like a wise king from some ancient legend.",
+						"Gandalf does not resort to using magic lightly, as he fears it would betray his presence to the eyes of the Enemy. When he does, he displays a mastery of fire and smoke, a reflection of his personality. Seemingly irascible, the old Wizard is also just as quick to burst into warm laughter. He might gently chide a friend, offer words of reassurance, then wax wroth at those who fail to show him due respect."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Gandalf as a Patron",
+					"page": 217,
+					"id": "34c",
+					"entries": [
+						"Once, {@creature Círdan the Shipwright|TLotRR|Círdan} of the Havens said that the Grey Wanderer's mission is to 'rekindle hearts in a world that grows chill'. In accordance with this mandate, Gandalf labours to inspire all individuals into action, and set events in motion that will eventually spiral into greater consequences. The Quest of Erebor is an example of how Gandalf acts\u2014helping Thorin Oakenshield to reclaim his lost kingdom led to the elimination of a Dragon that could have become a terrible weapon in the hands of the Enemy.",
+						"Unlike the head of his order, Saruman, who deals in devices and instruments from his high tower in Isengard, Gandalf moves among those who oppose Sauron, listening to their pleas and providing help when emergencies occur. This has made Gandalf welcome in most places, despite his reputation as a troublemaker.",
+						"A member of the White Council, Gandalf is the one among the Wise that is most likely to act promptly. While the others may counsel patience and caution, Gandalf moves decisively, putting himself in danger, infiltrating the lairs of the Enemy, and facing evil without hesitation. His goal is to lead the Free Peoples by example, encouraging them to set aside ancient rivalries and petty disputes, and to work together in defence of all that is good and worth keeping.",
+						{
+							"type": "table",
+							"page": 217,
+							"colLabels": [
+								"Fellowship Bonus",
+								"Advantage: The Wisdom of the Grey Pilgrim"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"+2",
+									"You can spend a Fellowship point to roll an additional {@dice d20} after a saving throw (but before the outcome is determined), and choose which of the d20s is used."
+								]
+							]
+						}
+					]
+				}
+			],
 			"images": [
 				{
 					"type": "image",
@@ -16757,6 +16950,61 @@
 					},
 					"width": 1700,
 					"height": 2090
+				}
+			]
+		},
+		{
+			"name": "Gilraen the Fair",
+			"source": "TLotRR",
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"After a few years Gilraen took leave of Elrond and returned to her own people in Eriador, and lived alone..."
+					],
+					"style": "quote-pull",
+					"skipMarks": true
+				},
+				"A woman of noble lineage, Gilraen is the mother of Aragorn, the current chieftain of the Rangers of the North and Heir of Isildur. She was quite young when she married, and became a widow soon after she gave birth to her son. When that came to pass, Elrond took her and her newborn to dwell with him in Rivendell, and he raised Aragorn as a son of his own\u2014Aragorn was called 'Estel' in Imladris ({@language Sindarin|TLotRR} for 'Hope'), to conceal his lineage and true name from his enemies.",
+				"In the year 2965, Gilraen is not yet sixty years old. Being one of the long lived Dúnedain, she is in the fullness of her strength of body and mind, and possesses a measure of the foresight of her people. When her son left Rivendell to seek adventure a few years ago, Gilraen decided to remain in Imladris. She often leaves the Last Homely House on short trips, to visit her own people in Eriador and confer with the captains of the Rangers of the North, in the absence of their chieftain.",
+				{
+					"type": "entries",
+					"page": 217,
+					"name": "Encountering Gilraen",
+					"id": "34e",
+					"entries": [
+						"Gilraen is accorded great respect among the Dúnedain of Eriador as the widow of Arathorn, their previous chieftain, and as the mother of the Heir of Isildur. She is also deemed to be foresighted, having inherited that gift from Ivorwen, her mother. Many captains of the Rangers seek her advice, knowing her to be a wise and prudent counsellor.",
+						"Anyone who meets her will find Gilraen to be a tall and slender woman, her demeanour marked by sorrow, but who refuses to be bent under the weight of her misfortune.",
+						"Gilraen can be met in the company of small bands of Rangers, along the many paths trod by her folk in the vicinity of Rivendell, or in the Weather Hills and the North Downs. She never stays away for more than a few weeks at a time though, always returning to the safety of the house of Elrond to rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Gilraen as a Patron",
+					"page": 218,
+					"id": "34f",
+					"entries": [
+						"Having lost her husband Arathorn to an Orc-arrow, and his father Arador to the ferocity of Hill-Trolls in the Coldfells, Gilraen has experienced personally the hatred of the Enemy for her folk. She knows full well that the Dúnedain of the North and the entire region of Eriador will never be safe if evil creatures are allowed to prowl undisturbed. In the absence of her son the chieftain, Gilraen makes sure that the Rangers don't forsake their duty as guardians of the land of old Arnor and the borders of the Bree-land and the Shire. In this, she has found a staunch ally in the Wizard {@creature Gandalf the Grey|TLotRR|Gandalf}. When she is in Rivendell, she never misses a chance to encourage the sons of Elrond to go out and hunt all monstrous creatures.",
+						"Adventurers worthy of Gilraen's trust find themselves enjoying the respect of the Rangers of the North. When out in the wild, they can count on the help of many scouts, and are provided directions to find their hidden refuges and caches of supplies.",
+						{
+							"type": "table",
+							"page": 218,
+							"colLabels": [
+								"Fellowship Bonus",
+								"Advantage: Gilraen's Folk"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"0",
+									"At the start of a journey, you can spend a Fellowship point. During that journey, as long as you are within the territory that once was the old realm of Arnor, you can roll a {@dice d20} after each roll on the {@table Journey Events table|TLotRR}, and choose whether the Loremaster uses their roll or yours. By choosing the {@action Meet Patron|TLotRR} undertaking to go and see Gilraen you additionally receive a rumour from the Loremaster."
+								]
+							]
+						}
+					]
 				}
 			]
 		},
@@ -16817,6 +17065,62 @@
 						"type": "external",
 						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TLotRR/bestiary/Goblin Archer.webp"
 					}
+				}
+			]
+		},
+		{
+			"name": "Goldberry",
+			"source": "TLotRR",
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"Tom Bombadil is the Master. No one has ever caught old Tom walking in the forest, wading in the water, leaping on the hill-tops under light and shadow. He has no fear. Tom Bombadil is master."
+					],
+					"style": "quote-pull"
+				},
+				"Old Tom Bombadil roamed all over Eriador, when the woods that today are called the Old Forest reached Dunland in the south. As the forest shrunk, so did his domain. He is a strange creature, known by many names\u2014to the Elves he is Iarwain Ben-adar ('oldest and fatherless'), a name that attempts to define him. For he is ancient even for the long-lived Elves, and they don't know whence he came. He was there before the Dark Lord arrived, he welcomed the first rivers and trees, and his life is tied inextricably to that of his land.",
+				"Tom appears as a red-cheeked man with curly brown hair, wrinkles around his eyes etched deep from mirth, usually clad in a blue coat and yellow boots. He is often engaged in seemingly frivolous activities, like picking water-lilies, as if he hasn't a care in the whole of Middle-earth. In truth, the opposite is true: Tom cares about all living things, so much so that he cannot distinguish the worth of one life over another.",
+				"Bombadil shares his life with Goldberry, the River-woman's daughter. She is a lady as fair as an Elf-maiden, and she is as enigmatic as her companion. Just standing in her presence provokes a marvellous delight in those who enter the house of Tom Bombadil, a joy that is felt deeply in their hearts.",
+				{
+					"type": "entries",
+					"name": "Encountering Tom and Goldberry",
+					"page": 218,
+					"id": "351",
+					"entries": [
+						"The house of Tom Bombadil is found just beyond the Old Forest to the east, where the Withywindle runs down from its spring in the Barrow-downs. Under Tom's roof and at his table, guests will find their heart contented with peaceful slumber, fine company, joyous song, and all the simple pleasures that come with a humble heart.",
+						"Bombadil is known to journey into the Old Forest and the Barrow-downs, having no fear of Old Man Willow nor the wight-haunted hills. With a laugh and a wink, Tom charms all he encounters, singing the fierce to sleep and rousing the rest with a song and a merry dance.",
+						"Goldberry can be found anywhere along the course of the Withywindle, braiding daisies or water-lilies, or singing to the gurgling waters. She acts as if there is no menace in the world worth her concern, as she knows that Tom will come running if ever she needs him. The two are friendly to strangers but are no less strange to their friends, and they open their doors to any who they meet."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tom and Goldberry as Patrons",
+					"page": 220,
+					"id": "352",
+					"entries": [
+						"Though Tom's power is as deep as the earth is old, his mastery seems to be limited to his little land, within bounds that he has set. Within those bounds he fears nothing, and he is seemingly unconquerable, but he won't step beyond them for any reason. Adventurers winning his friendship and that of Goldberry will find that when called, they appear almost instantly anywhere within their domain. Even the weather itself seems to behave according to their needs and whims.",
+						"Tom knows all the ways and the lore of the Old Forest, and he can speak at length about all manner of such things, for there is little in his realm that he does not understand fully. He tells many remarkable stories, speaking softly or even singing, inspiring strange flights of fancy, vistas of untold history and of things forgotten, both majestic and meagre.",
+						"Tom asks little of his friends directly, but he might point them in the direction of a problem that needs solving, whether it's an unruly Wight from the Barrow-downs or a calf lost within the Old Forest. Goldberry seems to have no need of anything beyond what she has, but she might call upon a Company of well-meaning heroes to aid others in need.",
+						{
+							"type": "table",
+							"page": 220,
+							"colLabels": [
+								"Fellowship Bonus",
+								"Advantage: Master of Wood, Water and Hill"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"+2",
+									"Spend all your remaining Fellowship to call Tom or Goldberry's intervention anywhere in Tom's country."
+								]
+							]
+						}
+					]
 				}
 			]
 		},
@@ -17015,6 +17319,13 @@
 			]
 		},
 		{
+			"name": "Jalin",
+			"source": "TLotRR",
+			"entries": [
+				"{@creature Jalin|TLotRR}, a lunatic Dwarf of Narag-Nâla, sometimes comes to dwell in the ruins. An outcast from his own people, he lives off rats and other disgusting things. Jalin's dreams are haunted by the spirit of Elwen, as he feels a mix of love and fear for her. He will try to kill or drag into a trap any trespassers in \"his city\". Use the stats for a {@creature Southerner Champion|TLotRR} with the {@condition anguished|TLotRR} condition."
+			]
+		},
+		{
 			"name": "John Ferny",
 			"source": "TLotRR",
 			"entries": [
@@ -17031,7 +17342,14 @@
 						"Once a valorous Dúnadan noble lady, but when her city fell, she survived, only to be slowly consumed by grief and by the curse of the Chief of the Ringwraiths\u2014Lady Elwen is now a Fell Wraith, bound to roam the ruins of her castle.",
 						"As a Fell Wraith, she appears as a crooked hag, wrapped in tatters hiding her spectral features. Her flesh is almost transparent, and her eyes glow like embers. Thin strands of white hair escape her hood."
 					]
-				}
+				},
+				{
+					"type": "quote",
+					"entries": [
+						"Why have you come? There's nothing here, only death. Leave this place, or join me in my torment!"
+					]
+				},
+				"She is armed with a pitted sword, the weapon she used to defend her city and fortress."
 			]
 		},
 		{
@@ -17414,6 +17732,21 @@
 			]
 		},
 		{
+			"name": "Sabian",
+			"source": "TLotRR",
+			"entries": [
+				"The brigands are being manipulated by a group of Men from Umbar, who seem to have an interest in exploring the ruins of Cardolan and Eriador. They have infiltrated the group of robbers, and are slowly taking the lead among them. {@creature Sabian|TLotRR} is among them, a Southron mariner who now is leading the band operating beyond the Brandywine river. He is a spy, using the brigands' activities as cover to explore Eriador and its ruins.",
+				{
+					"type": "list",
+					"page": 230,
+					"items": [
+						"How to employ {@creature Sabian|TLotRR} is up to the Loremaster. He is stealthy and clever, and can hide easily, unless the Player-heroes make capturing him their primary goal. {@creature Sabian|TLotRR} can spring traps on the Player-heroes, or sabotage their plans. If left to his own devices, {@creature Sabian|TLotRR} will eventually leave the ruins, and join the brigands outside (see {@book Trapped!|TLotRR|9|Trapped!}, below).",
+						"{@creature Sabian|TLotRR} is a {@creature Highway Robber|TLotRR}."
+					]
+				}
+			]
+		},
+		{
 			"name": "Southerner Champion",
 			"source": "TLotRR",
 			"entries": [
@@ -17572,6 +17905,10 @@
 		{
 			"name": "Tom Bombadil",
 			"source": "TLotRR",
+			"_copy": {
+				"name": "Goldberry",
+				"source": "TLotRR"
+			},
 			"images": [
 				{
 					"type": "image",
@@ -31123,6 +31460,7 @@
 						{
 							"type": "section",
 							"name": "Patrons",
+							"page": 209,
 							"id": "33d",
 							"entries": [
 								{
@@ -31137,15 +31475,17 @@
 								"In time, the Player-heroes are bound to meet several such individuals throughout their career, but may designate only one of them as their main Patron at any time\u2014a Company enjoys exclusively the Fellowship Bonus and advantages related to the Patron they choose as their main one.",
 								{
 									"type": "inset",
+									"page": 210,
 									"id": "33e",
 									"entries": [
-										"The Player-heroes designate their main Patron when they are in the same place as the selected individual during a Fellowship Phase, by choosing the Meet Patron undertaking (see {@book Chapter 6|TLotRR|5|Meet Patron})."
+										"The Player-heroes designate their main Patron when they are in the same place as the selected individual during a Fellowship Phase, by choosing the {@action Meet Patron|TLotRR} undertaking."
 									]
 								},
 								"The following section presents some of the most influential individuals living at the end of the Third Age who may act as Patrons for the Company.",
 								{
 									"type": "entries",
 									"name": "Balin, Son of Fundin",
+									"page": 210,
 									"id": "33f",
 									"entries": [
 										{
@@ -31153,7 +31493,8 @@
 											"entries": [
 												"...there was a very old-looking Dwarf on the step with a white beard and a scarlet hood; and he too hopped inside as soon as the door was open, just as if he had been invited."
 											],
-											"style": "quote-pull"
+											"style": "quote-pull",
+											"skipMarks": true
 										},
 										"Born in the year 2763 of the Third Age, Balin is the eldest son of Fundin, one of Durin's Folk. He and his younger brother Dwalin are of royal blood, as they count King Náin II among their ancestors. A venerable Dwarf, Balin has seen much, including the death of too many allies and dear friends. He fought the Orcs when his father died defending Moria, was there when Thráin disappeared in Mirkwood, and was with Thorin Oakenshield on the quest that ended with the liberation of Erebor and the death of the Dragon.",
 										{
@@ -31169,22 +31510,25 @@
 										{
 											"type": "statblock",
 											"name": "Balin, Son of Fundin",
+											"page": 211,
 											"source": "TLotRR",
 											"tag": "creature"
 										},
 										{
 											"type": "entries",
 											"name": "Encountering Balin",
+											"page": 211,
 											"id": "340",
 											"entries": [
-												"According to his nature as a wanderer and his duty as a messenger of Dáin, Balin is often on the road, travelling across Wilderland and Eriador. He sometimes journeys with Gandalf, to suit his own or the Wizard's purposes. Balin enjoys his visits to the Shire to see his dear old friend Bilbo Baggins, and out of a general fondness for Hobbits and their excellent hospitality. He also goes to the Blue Mountains regularly, to work with the Dwarves residing there.",
+												"According to his nature as a wanderer and his duty as a messenger of Dáin, Balin is often on the road, travelling across Wilderland and Eriador. He sometimes journeys with {@creature Gandalf the Grey|TLotRR|Gandalf}, to suit his own or the Wizard's purposes. Balin enjoys his visits to the Shire to see his dear old friend Bilbo Baggins, and out of a general fondness for Hobbits and their excellent hospitality. He also goes to the Blue Mountains regularly, to work with the Dwarves residing there.",
 												"Balin is unusually woodcrafty for a Dwarf, adept at tracking, fire-making, and pathfinding. He often serves as a lookout and takes pride in his acute sight. Balin knows well the regions he traverses when he journeys from Erebor to the Blue Mountains, having made the trip several times, though he prefers not to cross Mirkwood, even to this day.",
-												"One might encounter Balin in a small inn along the way between Erebor and the Blue Mountains, camping in the wild near the road, or sharing a pipe with old friends. He is generous to a fault, kind of spirit, and easily the wisest and best of those who reclaimed the Lonely Mountain. He may accompany a group of adventurers if their purposes align, or even for a while if they are going roughly in the same direction."
+												"One might encounter Balin in a small inn along the way between Erebor and the Blue Mountains, camping in the wild near the road, or sharing a {@item pipe|TLotRR} with old friends. He is generous to a fault, kind of spirit, and easily the wisest and best of those who reclaimed the Lonely Mountain. He may accompany a group of adventurers if their purposes align, or even for a while if they are going roughly in the same direction."
 											]
 										},
 										{
 											"type": "entries",
 											"name": "Balin as a Patron",
+											"page": 211,
 											"id": "341",
 											"entries": [
 												"Unlike many Dwarves, Balin is genuinely interested in other folks and takes kindly to Hobbits especially. Of the Dwarves of Thorin's Company, Balin is the only one still associating with Gandalf long after the death of Smaug, as he shares the Wizard's concern about the growing Shadow.",
@@ -31192,6 +31536,7 @@
 												"Balin is eager to know anything that can be learned regarding Dwarf-holds fallen to the Enemy, and actively encourages his allies to scout those places or rid them of any foul denizens therein. In particular, Balin is interested to find out all he can about Moria, where his father was slain. Together with two of his fellow survivors of Thorin's company\u2014Ori and Óin\u2014he speaks often about entering Khazad-dûm and exploring it. So far, King Dáin of Erebor has cautioned them against such an endeavour, though it is clear that they are not to be dissuaded.",
 												{
 													"type": "table",
+													"page": 211,
 													"colLabels": [
 														"Fellowship Bonus",
 														"Advantage: Balin's Counsel"
@@ -31203,7 +31548,7 @@
 													"rows": [
 														[
 															"+1",
-															"You can spend a Fellowship point to roll an additional {@dice d20} after an attack roll (but before the outcome is determined), and choose which of the d20s is used."
+															"You can spend a Fellowship point to roll an additional {@dice d20} after an attack roll (but before the outcome is determined), and choose which of the {@dice 2d20|d20s} is used."
 														]
 													]
 												}
@@ -31214,6 +31559,7 @@
 								{
 									"type": "entries",
 									"name": "Bilbo Baggins",
+									"page": 211,
 									"id": "342",
 									"entries": [
 										{
@@ -31221,7 +31567,8 @@
 											"entries": [
 												"...he looked and behaved exactly like a second edition of his solid and comfortable father, got something a bit queer in his make-up from the Took side, something that only waited for a chance to come out."
 											],
-											"style": "quote-pull"
+											"style": "quote-pull",
+											"skipMarks": true
 										},
 										"In the year 2965, Bilbo is a vigorous Hobbit\u2014At seventy-five he is very much the same as he was at fifty, at the time of his remarkable disappearance and surprising return. On the surface, the son of Bungo Baggins and Belladonna Took is a prime example of a respectable Hobbit. He is a great lover of pipe-weed, good food, and fine waistcoats, and lives in one of the cosiest Hobbit-holes in the Shire. But this is not all there is to Mr Baggins.",
 										"Bilbo's unexpected journey with Thorin Oakenshield and company changed him profoundly, setting him apart from his fellow countrymen. Perhaps that adventure provided a spark that ignited his Tookish and more adventurous side, and he certainly returned from Erebor a wealthier Hobbit. All this estranged him from much of the (admittedly tedious) Shire society, leading him to focus on his own, peculiar lifestyle, the company of friends, and working on his diary.",
@@ -31238,21 +31585,24 @@
 										{
 											"type": "statblock",
 											"name": "Bilbo Baggins",
+											"page": 212,
 											"source": "TLotRR",
 											"tag": "creature"
 										},
 										{
 											"type": "entries",
 											"name": "Encountering Bilbo",
+											"page": 212,
 											"id": "343",
 											"entries": [
-												"The Bagginses have lived in the neighbourhood of The Hill from time out of mind, and Bilbo has no desire to break that long-standing tradition. His address is at Bag End, Underhill, Hobbiton, and it's at Bag End that the Hobbit is likely to be found, probably having tea, or standing at the door, smoking a pipe. That said, his experiences with Thorin's Company and a Dragon have awakened in him a certain appetite for adventure, and sometimes he stays away from home for much longer than is considered appropriate in the Shire. When travelling further away than Buckland, or Michel Delving, he is often in the company of Dwarves.",
-												"If encountered outside the Shire, Bilbo might carry his Elf-dagger, Sting, sheathed at his side. But he has yet to encounter a danger that might require him to use it\u2014if threatened, the Hobbit displays an uncanny ability to disappear almost instantly, a talent far outstripping the normal Hobbitish affinity for escaping notice. He always remembers to bring a pocket-handkerchief along."
+												"The Bagginses have lived in the neighbourhood of The Hill from time out of mind, and Bilbo has no desire to break that long-standing tradition. His address is at Bag End, Underhill, Hobbiton, and it's at Bag End that the Hobbit is likely to be found, probably having tea, or standing at the door, smoking a {@item pipe|TLotRR}. That said, his experiences with Thorin's Company and a Dragon have awakened in him a certain appetite for adventure, and sometimes he stays away from home for much longer than is considered appropriate in the Shire. When travelling further away than Buckland, or Michel Delving, he is often in the company of Dwarves.",
+												"If encountered outside the Shire, Bilbo might carry his Elf-dagger, Sting, sheathed at his side. But he has yet to encounter a danger that might require him to use it\u2014if threatened, the Hobbit displays an uncanny ability to disappear almost instantly, a talent far outstripping the normal Hobbitish affinity for escaping notice. He always remembers to bring a {@item pocket-handkerchief|TLotRR} along."
 											]
 										},
 										{
 											"type": "entries",
 											"name": "Bilbo as a Patron",
+											"page": 212,
 											"id": "344",
 											"entries": [
 												"Unbeknownst to his fellow Hobbits who just consider him to be strange, if not completely mad, Bilbo knows a lot about the world outside the Shire, and is well aware of its dangers. He keeps himself as informed as he can, exchanging tidings with travellers and by writing and receiving letters. When he learns about potential threats that might affect the Shire, he does what he can to enlist the help of anyone who might do something about it.",
@@ -31260,6 +31610,7 @@
 												"Contrary to this inclination towards hosting a veritable rogues gallery of guests from far afield, he is growing increasingly isolated when it comes to his fellow Hobbits. He finds them staid, close-minded, and demonstrates little patience for their shenanigans and petty foibles. To the eyes of the Shire-folk, Bilbo is becoming more and more an eccentric recluse.",
 												{
 													"type": "table",
+													"page": 213,
 													"colLabels": [
 														"Fellowship Bonus",
 														"Advantage: Bilbo's Hospitality"
@@ -31271,13 +31622,14 @@
 													"rows": [
 														[
 															"+2",
-															"By choosing the Meet Patron undertaking to visit Bilbo you additionally raise the Fellowship rating by +1 until the next Fellowship Phase."
+															"By choosing the {@action Meet Patron|TLotRR} undertaking to visit Bilbo you additionally raise the Fellowship rating by +1 until the next Fellowship Phase."
 														]
 													]
 												},
 												{
 													"type": "inset",
 													"name": "Bilbo's Magic Ring",
+													"page": 212,
 													"id": "345",
 													"entries": [
 														"Bilbo found many valuable things in the course of his last adventure, but the greatest treasure he brought back is one he doesn't know much about. It's the magic ring he found in an underground cave, under the Misty Mountains, and that he has kept a great secret. To him, it's a precious commodity, as wearing it makes him {@condition invisible}\u2014a quality that Bilbo finds invaluable when unpleasant callers come looking for him.",
@@ -31291,6 +31643,7 @@
 								{
 									"type": "entries",
 									"name": "Círdan the Shipwright",
+									"page": 213,
 									"id": "346",
 									"entries": [
 										{
@@ -31298,9 +31651,10 @@
 											"entries": [
 												"As they came to the gates Círdan the Shipwright came forth to greet them. Very tall he was, and his beard was long, and he was grey and old, save that his eyes were keen as stars..."
 											],
-											"style": "quote-pull"
+											"style": "quote-pull",
+											"skipMarks": true
 										},
-										"Círdan is perhaps the most ancient Elf still living in Middle-earth. He has witnessed three ages of the world, and has been given many titles. Today, he is mostly known as the Shipwright, and the Master of the Grey Havens. He is accounted among the Wise and the Great, and has served as a member of the White Council for many long centuries. For a time, he was the keeper of one of the three Elven Rings of Power, for he bore Narya, the Ring of Fire, until he gave it to Gandalf the Grey.",
+										"Círdan is perhaps the most ancient Elf still living in Middle-earth. He has witnessed three ages of the world, and has been given many titles. Today, he is mostly known as the Shipwright, and the Master of the Grey Havens. He is accounted among the Wise and the Great, and has served as a member of the White Council for many long centuries. For a time, he was the keeper of one of the three Elven Rings of Power, for he bore Narya, the Ring of Fire, until he gave it to {@creature Gandalf the Grey|TLotRR}.",
 										{
 											"type": "image",
 											"href": {
@@ -31314,12 +31668,14 @@
 										{
 											"type": "statblock",
 											"name": "Círdan the Shipwright",
+											"page": 214,
 											"source": "TLotRR",
 											"tag": "creature"
 										},
 										{
 											"type": "entries",
 											"name": "Encountering Círdan",
+											"page": 214,
 											"id": "347",
 											"entries": [
 												"Círdan dwells with his people at the great port of Mithlond, on the banks of the Gulf of Lune. He rarely ventures forth from the Grey Havens, but all who are of good spirit and come in peace are welcome to come and see him there. Galdor of the Havens is his herald and envoy, and often travels across Middle-earth representing the Shipwright wherever needed, and speaking with his full authority.",
@@ -31329,12 +31685,14 @@
 										{
 											"type": "entries",
 											"name": "Círdan as a Patron",
+											"page": 214,
 											"id": "348",
 											"entries": [
 												"Círdan knows that the Grey Havens play a role of primary importance in the war against the Shadow. The Five Wizards landed here when they came to Middle-earth almost two thousand years ago, and it is here that many great fleets armed for the defeat of Sauron found safe harbourage. In the twilight of the Third Age, Mithlond serves as the last refuge for those who desire to leave Middle-earth, and Círdan considers it his duty to ensure that their passage is made as safely as possible.",
 												"The Grey Havens also guard a great wealth of knowledge. Círdan's memory goes back to a time before the light of the Sun and Moon, and his knowledge rivals that of Elrond, greatest of lore-masters. The Lord of the Havens and that of Imladris seek the counsel of one another, and their messengers can be often found on the great East Road on errands from their masters.",
 												{
 													"type": "table",
+													"page": 215,
 													"colLabels": [
 														"Fellowship Bonus",
 														"Advantage: The Shipwright's Foresight"
@@ -31346,13 +31704,14 @@
 													"rows": [
 														[
 															"+1",
-															"You can spend a Fellowship point to roll an additional {@dice d20} after an ability check (but before the outcome is determined), and choose which of the d20s is used. By choosing the {@book Meet Patron undertaking|TLotRR|5|Meet Patron} to go and see Círdan you additionally receive a rumour from the Loremaster."
+															"You can spend a Fellowship point to roll an additional {@dice d20} after an ability check (but before the outcome is determined), and choose which of the d20s is used. By choosing the {@action Meet Patron|TLotRR} undertaking to go and see Círdan you additionally receive a rumour from the Loremaster."
 														]
 													]
 												},
 												{
 													"type": "inset",
 													"name": "The Elendil Stone",
+													"page": 214,
 													"id": "349",
 													"entries": [
 														"Círdan and the Elves of Lindon guard one of the seven \"seeing stones\" brought to Middle-earth from Númenor by Elendil. It is locked away in the tower of Elostirion, in the Tower Hills. Also known as a {@i palantír}, this stone is a perfectly smooth globe, made of a dark, glassy material, about a foot in diameter. According to old lore, the {@i palantíri} allowed their owners to see things from a distance, and could communicate with each other. Only a few among the Wise know whether the Elendil Stone is still capable of revealing any vision, as the other stones are deemed lost, or destroyed."
@@ -31374,6 +31733,7 @@
 								{
 									"type": "entries",
 									"name": "Gandalf the Grey",
+									"page": 215,
 									"id": "34a",
 									"entries": [
 										{
@@ -31381,14 +31741,16 @@
 											"entries": [
 												"At the end of the second week in September a cart came in through Bywater from the direction of the Brandywine Bridge in broad daylight. An old man was driving it all alone. He wore a tall pointed blue hat, a long grey cloak, and a silver scarf."
 											],
-											"style": "quote-pull"
+											"style": "quote-pull",
+											"skipMarks": true
 										},
-										"To the Hobbits of the Shire, Gandalf the Grey is just a pilgrim, a wanderer without a home. He says he's a Wizard, but the extent of his magical skill seems to be limited to his wonderful fireworks and to the prodigious smoke-rings he produces with his pipe. But the wanderings of Gandalf have brought him much farther than his beloved Shire, to lands where he is known by different names: to the Elves he is Mithrandir, Tharkûn is how the Dwarves know him, and Men in the South call him Gandalf Greyhame. In these countries, Gandalf is not always welcome\u2014indeed, some call him a bringer of ill-news, as he often comes when a threat is near.",
+										"To the Hobbits of the Shire, Gandalf the Grey is just a pilgrim, a wanderer without a home. He says he's a Wizard, but the extent of his magical skill seems to be limited to his wonderful fireworks and to the prodigious smoke-rings he produces with his {@item pipe|TLotRR}. But the wanderings of Gandalf have brought him much farther than his beloved Shire, to lands where he is known by different names: to the Elves he is Mithrandir, Tharkûn is how the Dwarves know him, and Men in the South call him Gandalf Greyhame. In these countries, Gandalf is not always welcome\u2014indeed, some call him a bringer of ill-news, as he often comes when a threat is near.",
 										"In truth, Gandalf is the greatest enemy of Sauron in the Third Age. Few among the Wise know that the Wizards first came to Middle-earth out of the Uttermost West almost two thousand years ago, on a mission to thwart the Dark Lord's machinations. Gandalf's appointed task is to bolster the hearts of those who would fight against evil everywhere, and that's what he has done for centuries now, counselling Dwarves, Elves, and Men, always bringing light where darkness lies.",
 										"Gandalf is the secret bearer of Narya, the Ring of Fire, the third Elven-ring created by Celebrimbor of Eregion. It was given to him for safekeeping and for his own use by Círdan the Shipwright. Narya is an invaluable aid to Gandalf in his mission to inspire others in their struggles against the Shadow. If pressed into combat, the Grey Pilgrim unsheaths Glamdring, an ancient Elven blade, forged in Gondolin for the Goblin-wars.",
 										{
 											"type": "statblock",
 											"name": "Gandalf the Grey",
+											"page": 215,
 											"source": "TLotRR",
 											"tag": "creature"
 										},
@@ -31404,6 +31766,7 @@
 										{
 											"type": "entries",
 											"name": "Encountering Gandalf",
+											"page": 215,
 											"id": "34b",
 											"entries": [
 												"Gandalf can be encountered almost anywhere\u2014riding across the countryside on horseback, walking alone or in the company of friends or allies, or even in the seat of a horse-drawn cart. He may not show up when called but often appears when needed. Gandalf holds a particular fondness for the Hobbits of the Shire and when he is meeting someone in Eriador, he will always choose the inn in Bree as a meeting place.",
@@ -31414,16 +31777,18 @@
 										{
 											"type": "entries",
 											"name": "Gandalf as a Patron",
+											"page": 217,
 											"id": "34c",
 											"entries": [
-												"Once, Círdan of the Havens said that the Grey Wanderer's mission is to 'rekindle hearts in a world that grows chill'. In accordance with this mandate, Gandalf labours to inspire all individuals into action, and set events in motion that will eventually spiral into greater consequences. The Quest of Erebor is an example of how Gandalf acts\u2014helping Thorin Oakenshield to reclaim his lost kingdom led to the elimination of a Dragon that could have become a terrible weapon in the hands of the Enemy.",
+												"Once, {@creature Círdan the Shipwright|TLotRR|Círdan} of the Havens said that the Grey Wanderer's mission is to 'rekindle hearts in a world that grows chill'. In accordance with this mandate, Gandalf labours to inspire all individuals into action, and set events in motion that will eventually spiral into greater consequences. The Quest of Erebor is an example of how Gandalf acts\u2014helping Thorin Oakenshield to reclaim his lost kingdom led to the elimination of a Dragon that could have become a terrible weapon in the hands of the Enemy.",
 												"Unlike the head of his order, Saruman, who deals in devices and instruments from his high tower in Isengard, Gandalf moves among those who oppose Sauron, listening to their pleas and providing help when emergencies occur. This has made Gandalf welcome in most places, despite his reputation as a troublemaker.",
 												"A member of the White Council, Gandalf is the one among the Wise that is most likely to act promptly. While the others may counsel patience and caution, Gandalf moves decisively, putting himself in danger, infiltrating the lairs of the Enemy, and facing evil without hesitation. His goal is to lead the Free Peoples by example, encouraging them to set aside ancient rivalries and petty disputes, and to work together in defence of all that is good and worth keeping.",
 												{
 													"type": "table",
+													"page": 217,
 													"colLabels": [
 														"Fellowship Bonus",
-														"Advantage:The Wisdom of the Grey Pilgrim"
+														"Advantage: The Wisdom of the Grey Pilgrim"
 													],
 													"colStyles": [
 														"col-2 text-center",
@@ -31452,6 +31817,7 @@
 								{
 									"type": "entries",
 									"name": "Gilraen the Fair",
+									"page": 217,
 									"id": "34d",
 									"entries": [
 										{
@@ -31459,12 +31825,14 @@
 											"entries": [
 												"After a few years Gilraen took leave of Elrond and returned to her own people in Eriador, and lived alone..."
 											],
-											"style": "quote-pull"
+											"style": "quote-pull",
+											"skipMarks": true
 										},
-										"A woman of noble lineage, Gilraen is the mother of Aragorn, the current chieftain of the Rangers of the North and Heir of Isildur. She was quite young when she married, and became a widow soon after she gave birth to her son. When that came to pass, Elrond took her and her newborn to dwell with him in Rivendell, and he raised Aragorn as a son of his own\u2014Aragorn was called 'Estel' in Imladris (Sindarin for 'Hope'), to conceal his lineage and true name from his enemies.",
+										"A woman of noble lineage, Gilraen is the mother of Aragorn, the current chieftain of the Rangers of the North and Heir of Isildur. She was quite young when she married, and became a widow soon after she gave birth to her son. When that came to pass, Elrond took her and her newborn to dwell with him in Rivendell, and he raised Aragorn as a son of his own\u2014Aragorn was called 'Estel' in Imladris ({@language Sindarin|TLotRR} for 'Hope'), to conceal his lineage and true name from his enemies.",
 										"In the year 2965, Gilraen is not yet sixty years old. Being one of the long lived Dúnedain, she is in the fullness of her strength of body and mind, and possesses a measure of the foresight of her people. When her son left Rivendell to seek adventure a few years ago, Gilraen decided to remain in Imladris. She often leaves the Last Homely House on short trips, to visit her own people in Eriador and confer with the captains of the Rangers of the North, in the absence of their chieftain.",
 										{
 											"type": "entries",
+											"page": 217,
 											"name": "Encountering Gilraen",
 											"id": "34e",
 											"entries": [
@@ -31472,6 +31840,7 @@
 												{
 													"type": "statblock",
 													"name": "Gilraen the Fair",
+													"page": 217,
 													"source": "TLotRR",
 													"tag": "creature"
 												},
@@ -31482,12 +31851,14 @@
 										{
 											"type": "entries",
 											"name": "Gilraen as a Patron",
+											"page": 218,
 											"id": "34f",
 											"entries": [
-												"Having lost her husband Arathorn to an Orc-arrow, and his father Arador to the ferocity of Hill-Trolls in the Coldfells, Gilraen has experienced personally the hatred of the Enemy for her folk. She knows full well that the Dúnedain of the North and the entire region of Eriador will never be safe if evil creatures are allowed to prowl undisturbed. In the absence of her son the chieftain, Gilraen makes sure that the Rangers don't forsake their duty as guardians of the land of old Arnor and the borders of the Bree-land and the Shire. In this, she has found a staunch ally in the Wizard Gandalf. When she is in Rivendell, she never misses a chance to encourage the sons of Elrond to go out and hunt all monstrous creatures.",
+												"Having lost her husband Arathorn to an Orc-arrow, and his father Arador to the ferocity of Hill-Trolls in the Coldfells, Gilraen has experienced personally the hatred of the Enemy for her folk. She knows full well that the Dúnedain of the North and the entire region of Eriador will never be safe if evil creatures are allowed to prowl undisturbed. In the absence of her son the chieftain, Gilraen makes sure that the Rangers don't forsake their duty as guardians of the land of old Arnor and the borders of the Bree-land and the Shire. In this, she has found a staunch ally in the Wizard {@creature Gandalf the Grey|TLotRR|Gandalf}. When she is in Rivendell, she never misses a chance to encourage the sons of Elrond to go out and hunt all monstrous creatures.",
 												"Adventurers worthy of Gilraen's trust find themselves enjoying the respect of the Rangers of the North. When out in the wild, they can count on the help of many scouts, and are provided directions to find their hidden refuges and caches of supplies.",
 												{
 													"type": "table",
+													"page": 218,
 													"colLabels": [
 														"Fellowship Bonus",
 														"Advantage: Gilraen's Folk"
@@ -31499,7 +31870,7 @@
 													"rows": [
 														[
 															"0",
-															"At the start of a journey, you can spend a Fellowship point. During that journey, as long as you are within the territory that once was the old realm of Arnor, you can roll a {@dice d20} after each roll on the Journey Events table (see {@book Chapter 5|TLotRR|4|Journey Events Table:}), and choose whether the Loremaster uses their roll or yours. By choosing the {@book Meet Patron undertaking|TLotRR|5|Meet Patron} to go and see Gilraen you additionally receive a rumour from the Loremaster."
+															"At the start of a journey, you can spend a Fellowship point. During that journey, as long as you are within the territory that once was the old realm of Arnor, you can roll a {@dice d20} after each roll on the {@table Journey Events table|TLotRR}, and choose whether the Loremaster uses their roll or yours. By choosing the {@action Meet Patron|TLotRR} undertaking to go and see Gilraen you additionally receive a rumour from the Loremaster."
 														]
 													]
 												}
@@ -31510,12 +31881,13 @@
 								{
 									"type": "entries",
 									"name": "Tom Bombadil and Lady Goldberry",
+									"page": 218,
 									"id": "350",
 									"entries": [
 										{
 											"type": "quote",
 											"entries": [
-												"'Tom Bombadil is the Master. No one has ever caught old Tom walking in the forest, wading in the water, leaping on the hill-tops under light and shadow. He has no fear. Tom Bombadil is master.'"
+												"Tom Bombadil is the Master. No one has ever caught old Tom walking in the forest, wading in the water, leaping on the hill-tops under light and shadow. He has no fear. Tom Bombadil is master."
 											],
 											"style": "quote-pull"
 										},
@@ -31525,18 +31897,21 @@
 										{
 											"type": "entries",
 											"name": "Encountering Tom and Goldberry",
+											"page": 218,
 											"id": "351",
 											"entries": [
 												"The house of Tom Bombadil is found just beyond the Old Forest to the east, where the Withywindle runs down from its spring in the Barrow-downs. Under Tom's roof and at his table, guests will find their heart contented with peaceful slumber, fine company, joyous song, and all the simple pleasures that come with a humble heart.",
 												{
 													"type": "statblock",
 													"name": "Tom Bombadil",
+													"page": 218,
 													"source": "TLotRR",
 													"tag": "creature"
 												},
 												{
 													"type": "statblock",
 													"name": "Goldberry",
+													"page": 218,
 													"source": "TLotRR",
 													"tag": "creature"
 												},
@@ -31547,6 +31922,7 @@
 										{
 											"type": "entries",
 											"name": "Tom and Goldberry as Patrons",
+											"page": 220,
 											"id": "352",
 											"entries": [
 												"Though Tom's power is as deep as the earth is old, his mastery seems to be limited to his little land, within bounds that he has set. Within those bounds he fears nothing, and he is seemingly unconquerable, but he won't step beyond them for any reason. Adventurers winning his friendship and that of Goldberry will find that when called, they appear almost instantly anywhere within their domain. Even the weather itself seems to behave according to their needs and whims.",
@@ -31554,6 +31930,7 @@
 												"Tom asks little of his friends directly, but he might point them in the direction of a problem that needs solving, whether it's an unruly Wight from the Barrow-downs or a calf lost within the Old Forest. Goldberry seems to have no need of anything beyond what she has, but she might call upon a Company of well-meaning heroes to aid others in need.",
 												{
 													"type": "table",
+													"page": 220,
 													"colLabels": [
 														"Fellowship Bonus",
 														"Advantage: Master of Wood, Water and Hill"
@@ -31587,6 +31964,7 @@
 						{
 							"type": "section",
 							"name": "Landmarks",
+							"page": 220,
 							"id": "353",
 							"entries": [
 								{
@@ -31594,7 +31972,8 @@
 									"entries": [
 										"Not far ahead were dreary hills, rising higher and higher, dark with trees. On some of them were old castles with an evil look, as if they had been built by wicked people."
 									],
-									"style": "quote-pull"
+									"style": "quote-pull",
+									"skipMarks": true
 								},
 								"A look at the map of Eriador shows how northwestern Middle-earth is a vast region, seemingly empty for the most part. What the map cannot reveal is the long history of this area, the borders of the many kingdoms that rose and fell in centuries long past.",
 								"The land still bears many traces of that long history\u2014ruins dot the countryside, broken towers and walls that the current denizens of Eriador use as landmarks to find their bearings, or to delineate the boundaries of their fields, or even quarry to build their modest houses.",
@@ -31602,11 +31981,13 @@
 								{
 									"type": "entries",
 									"name": "There and Back Again",
+									"page": 220,
 									"id": "354",
 									"entries": [
 										"In the course of the game, the Player-heroes learn of the existence of landmarks by gathering rumours, small snippets of legends and hearsay, speaking of frightening creatures and hidden treasure (see {@book Chapter 6|TLotRR|5|Gather Rumours}). When they decide to explore them during an Adventuring Phase, the Loremaster uses the rules for journeys to get the Company there, and then refers to the description of the landmark to play out its exploration.",
 										{
 											"type": "inset",
+											"page": 220,
 											"id": "355",
 											"entries": [
 												"In brief, landmarks allow the players and the Loremaster to play open-ended, self-contained scenarios, complete with the description of locations, denizens, and events. What they don't provide is a predetermined plot, articulated in orderly scenes."
@@ -31619,12 +32000,14 @@
 								{
 									"type": "entries",
 									"name": "Structure of Landmarks",
+									"page": 221,
 									"id": "356",
 									"entries": [
 										"All landmarks presented for the game will follow the same structure of presentation. Loremasters can use this information to create their own adventure locations.",
 										{
 											"type": "entries",
 											"name": "1. Name",
+											"page": 221,
 											"id": "357",
 											"entries": [
 												"Generally, this is the name that local superstition or legend gives the place ('Deadmen's Dyke', 'Norbury of the Kings', 'Moria', etc.)"
@@ -31633,6 +32016,7 @@
 										{
 											"type": "entries",
 											"name": "2. Rumour",
+											"page": 221,
 											"id": "358",
 											"entries": [
 												"A rumour is the piece of information about the place that the Player-heroes pick up while adventuring or during the Fellowship Phase. It might contain a mix of true and false information, filtered through local prejudices, superstitions, etc.",
@@ -31643,7 +32027,8 @@
 														{
 															"type": "item",
 															"name": "Old Lore:",
-															"entry": "Further information available to Player-heroes who research the landmark, while adventuring or during the Fellowship Phase. Generally, Old Lore has more precise and truthful information that can be obtained with a successful Intelligence ({@skill Old Lore|TLotRR}) check (DC 15 or higher)."
+															"page": 221,
+															"entry": "Further information available to Player-heroes who research the landmark, while adventuring or during the Fellowship Phase. Generally, Old Lore has more precise and truthful information that can be obtained with a successful Intelligence ({@skill Old Lore|TLotRR}) check ({@dc 15} or higher)."
 														}
 													]
 												}
@@ -31652,6 +32037,7 @@
 										{
 											"type": "entries",
 											"name": "3. Background",
+											"page": 221,
 											"id": "359",
 											"entries": [
 												"This is an overview of the place for the Loremaster, summarising its main features and relating why it is interesting or dangerous.",
@@ -31663,6 +32049,7 @@
 														{
 															"type": "item",
 															"name": "Journey Events:",
+															"page": 221,
 															"entry": "This section relates information useful to set up potential accidents or other noteworthy events that might occur when the Company is approaching the landmark."
 														}
 													]
@@ -31672,6 +32059,7 @@
 										{
 											"type": "entries",
 											"name": "4. Map",
+											"page": 221,
 											"id": "35a",
 											"entries": [
 												"A drawing illustrating the landmark in as much detail as possible. It may be a map or cutout, always keyed to the descriptions given in the {@book Locations|TLotRR|9|Locations} section (see below)."
@@ -31680,6 +32068,7 @@
 										{
 											"type": "entries",
 											"name": "5. Locations",
+											"page": 221,
 											"id": "35b",
 											"entries": [
 												"A number of paragraphs describing the place in detail, including information on Treasure, or potential encounters with denizens and nonplayer characters. Some encounters may be connected to the {@book Schemes and Trouble|TLotRR|9|Schemes and Trouble} section (see below)."
@@ -31688,6 +32077,7 @@
 										{
 											"type": "entries",
 											"name": "6. Schemes and Trouble",
+											"page": 221,
 											"id": "35c",
 											"entries": [
 												"This final section describes how external forces can interfere with the exploration of the site. Also, here are listed potential self-contained events and accidents that may occur in the course of the Adventuring Phase.",
@@ -31695,6 +32085,7 @@
 												{
 													"type": "inset",
 													"name": "A note about rules presentation in landmarks",
+													"page": 221,
 													"id": "35d",
 													"entries": [
 														"Landmarks offer descriptions that are as simple and to the point as possible. The text assumes that the Loremaster is able to direct the Adventuring Phase conforming to the decisions of the playing group, and can adjudicate all situations by simply applying the rules as presented in the game.",
@@ -31712,6 +32103,7 @@
 						{
 							"type": "section",
 							"name": "The Star of the Mist",
+							"page": 222,
 							"id": "35e",
 							"entries": [
 								{
@@ -31719,31 +32111,31 @@
 									"entries": [
 										"...the Witch-king came down upon Arthedain before winter was ended."
 									],
-									"style": "quote-pull"
+									"style": "quote-pull",
+									"skipMarks": true
 								},
 								{
 									"type": "entries",
 									"name": "Rumour",
+									"page": 222,
 									"id": "35f",
 									"entries": [
 										{
 											"type": "quote",
 											"entries": [
 												"There's an ancient tower in the easternmost foothills of the southern Ered Luin, what remains of a powerful castle from the time of the Kings. Wanderers speak of an eerie blue light that sometimes can be seen even from Sarn Ford, like a star shining above the river mists. No one goes there, and recently people have started to disappear in its vicinity."
-											],
-											"skipMarks": true
+											]
 										},
 										{
 											"type": "entries",
-											"name": "Old Lore (DC 15)",
+											"name": "{@skill Old Lore|TLotRR} ({@dc 15})",
 											"id": "360",
 											"entries": [
 												{
 													"type": "quote",
 													"entries": [
 														"The tower is what is left of a fortress built at the time of the North Kingdom of Arnor. It was built atop a Dwarven subterranean ruin. It was besieged at the time of the war with Angmar, and fell after a long resistance. Some say that treasonous Dwarves betrayed the Dúnedain, allowing the forces of the Witch-king to enter the castle by secret ways."
-													],
-													"skipMarks": true
+													]
 												}
 											]
 										}
@@ -31752,6 +32144,7 @@
 								{
 									"type": "entries",
 									"name": "Background",
+									"page": 222,
 									"id": "361",
 									"entries": [
 										"There was once a fortified town in the foothills of the southern Ered Luin, in what was the kingdom of Arthedain. It had been built above an abandoned Dwarven city, an underground complex extending for miles into the roots of the mountains. The castle was the seat of a valorous Dúnadan lord who fiercely resisted the Witch-king in the time of the wars with Angmar.",
@@ -31764,12 +32157,13 @@
 											"width": 850,
 											"height": 1302
 										},
-										"Eventually, the fortress was put under siege, and the lord captured alive during a sortie. He was tortured in sight of the castle's battlements, before the eyes of his spouse. She was a valiant warrior herself, a daughter of sea-kings, and she continued to defend the castle, despite her grievous loss. Eventually, the stronghold fell to black treachery, and both the castle and the surrounding town were razed, the ruins cursed by the Lord of the Ringwraiths himself. The noblewoman was consumed by grief, and with the passing of the years she became a Fell Wraith, while her followers degenerated into horrible, almost deathless creatures.",
+										"Eventually, the fortress was put under siege, and the lord captured alive during a sortie. He was tortured in sight of the castle's battlements, before the eyes of his spouse. She was a valiant warrior herself, a daughter of sea-kings, and she continued to defend the castle, despite her grievous loss. Eventually, the stronghold fell to black treachery, and both the castle and the surrounding town were razed, the ruins cursed by the Lord of the Ringwraiths himself. The noblewoman was consumed by grief, and with the passing of the years she became a {@creature Fell Wraith|TLotRR}, while her followers degenerated into horrible, almost deathless creatures.",
 										"What remains of the fortress and town today is a tower in the midst of ruins. The area can be accessed only by finding the entrance to an underground guard post, and by a bridge crossing a narrow but deep ravine.",
 										"The entrance is currently used by a band of brigands as their base of operations. Influenced by evil men from the south, they are responsible for the disappearances of several wanderers in the area.",
 										{
 											"type": "inset",
 											"name": "Journey Events",
+											"page": 223,
 											"id": "362",
 											"entries": [
 												"Once the Company gets to Sarn Ford, at sunset they spot a faint luminescence to the west, and can follow it easily, like a beacon. As they head in its direction, they can find traces of the presence of a large band of brigands operating in the area\u2014they find the remnants of their camps, and may even hear stories about them told by a lonely wanderer or two.",
@@ -31781,6 +32175,7 @@
 								{
 									"type": "entries",
 									"name": "Locations",
+									"page": 223,
 									"id": "363",
 									"entries": [
 										"Advancing towards the southern Ered Luin, the Company sees the distant mountains rise steadily, like a high wall lining the horizon from north to south. But even closer to them are mountains running away from the main range, forming an eastward arm. When twilight comes, the light that guides them appears at the feet of that arm. It's a land of bleak hills, and deep valleys filled with turbulent waters, running to join the river to the south.",
@@ -31788,20 +32183,23 @@
 										{
 											"type": "entries",
 											"name": "1. The Brigands' Camp",
+											"page": 223,
 											"id": "364",
 											"entries": [
 												"As they look for a passage across the ravine, the Player-heroes find the camp of the brigands. It is located in front of a small cave, near the edge of the chasm. This is easily spotted, as a plume of smoke can be seen rising from a distance.",
 												{
 													"type": "inset",
+													"page": 223,
 													"id": "365",
 													"entries": [
 														"The camp is garrisoned by a small group of brigands, composed of one {@creature Southerner Raider|TLotRR} for each Player-hero. The majority of the brigands are away, looking for unwary travellers to rob."
 													]
 												},
-												"The brigands look like a mix of southerners and mean-looking Men of Eriador, maybe coming from Tharbad. Among them is a short, wiry fellow by the name of Sabian, swarthy and dressed in black (see {@book below|TLotRR|9|Sabian, the Spy from Umbar}). When the Player-heroes get close enough to the brigand's camp, Sabian is seen emerging from the cave, telling the others to be alert, as 'she is unquiet'.",
+												"The brigands look like a mix of southerners and mean-looking Men of Eriador, maybe coming from Tharbad. Among them is a short, wiry fellow by the name of {@creature Sabian|TLotRR}, swarthy and dressed in black (see {@book below|TLotRR|9|Sabian, the Spy from Umbar}). When the Player-heroes get close enough to the brigand's camp, {@creature Sabian|TLotRR} is seen emerging from the cave, telling the others to be alert, as 'she is unquiet'.",
 												{
 													"type": "inset",
 													"name": "Tutorial\u2014Meeting the Brigands",
+													"page": 223,
 													"id": "366",
 													"entries": [
 														"A scene taking place at the Brigand's Camp is likely to concern the Company trying to ambush the garrison there. The precise circumstances are going to vary a lot though, based on what the Player-heroes have done so far. For example, the Player-heroes might have encountered the brigands on their way here, and maybe someone escaped to tell the others of the threat the Company poses. The Loremaster must take what happened before into due consideration, to make this new scene an ideal continuation of those that preceded it.",
@@ -31815,10 +32213,11 @@
 													"items": [
 														{
 															"type": "item",
+															"page": 224,
 															"name": "The Cave:",
 															"entries": [
 																"If the Player-heroes deal with the brigands they can enter the cave. Once inside, they discover that ancient steps cut into the rock lead underground to a stone bridge that once crossed the ravine.",
-																"The bridge is now broken, but a makeshift wooden ramp joins the two sides. If the Company attacks the brigands without denying them the ability to retreat into the cave, Sabian seeks refuge underground, and cuts the ropes that hold up the ramp, letting it fall into the seemingly bottomless crevice.",
+																"The bridge is now broken, but a makeshift wooden ramp joins the two sides. If the Company attacks the brigands without denying them the ability to retreat into the cave, {@creature Sabian|TLotRR} seeks refuge underground, and cuts the ropes that hold up the ramp, letting it fall into the seemingly bottomless crevice.",
 																"The distance separating the two sides of the bridge is 20 feet (probably too much to be jumped across by any Player-hero), and the fall seems very dangerous\u2014a noisy stream of water runs many yards below, among broken rocks. The Company will have to find a way to cross the chasm safely..."
 															]
 														}
@@ -31827,16 +32226,18 @@
 												{
 													"type": "inset",
 													"name": "Tutorial\u2014Setting up obstacles",
+													"page": 224,
 													"id": "367",
 													"entries": [
 														"Crossing the broken bridge is a good example of those obstacles that the Loremaster should use to challenge the players. The situation should lead them to discuss at length about how to overcome it\u2014when they have declared their intentions, the Loremaster translates their approach into game terms.",
 														"A few examples follow, referencing the rules used to set them up, just to give an idea on how to apply the rules to model the choice of the players:",
 														{
 															"type": "list",
+															"page": 224,
 															"items": [
-																"The Player-heroes try to build a ramp\u2014a DC 15 Dexterity check using carpenter's tools. On a failure, the ramp collapses as the Player-heroes cross it.",
-																"An Elf character jumps across, and then builds a rope bridge with the help of the others\u2014the Elf achieves a magical success on a Strength ({@skill Athletics}) check, then everyone else must succeed on a DC 10 Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check to get across.",
-																"The Company goes down into the ravine using ropes, and then climbs up on the other side\u2014a DC 15 Strength ({@skill Athletics}) check each."
+																"The Player-heroes try to build a ramp\u2014a {@dc 15} Dexterity check using {@item carpenter's tools|PHB}. On a failure, the ramp collapses as the Player-heroes cross it.",
+																"An Elf character jumps across, and then builds a rope bridge with the help of the others\u2014the Elf achieves a magical success on a Strength ({@skill Athletics}) check, then everyone else must succeed on a {@dc 10} Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check to get across.",
+																"The Company goes down into the ravine using ropes, and then climbs up on the other side\u2014a {@dc 15} Strength ({@skill Athletics}) check each."
 															]
 														},
 														"As a reward for passing this challenge, the Loremaster should award each Player-hero from 25 to 100 XP, depending on the chosen approach and how they fared."
@@ -31847,6 +32248,7 @@
 										{
 											"type": "entries",
 											"name": "2. The Dwarven Gate",
+											"page": 224,
 											"id": "368",
 											"entries": [
 												"This was one of the entrances that led to the Dwarven underground ruin. The Men of the West made it into a guard post. Now, the mostly empty room is littered with debris and refuse left by the brigands, as they use it as their sleeping quarters (not daring to go deeper into the ruins).",
@@ -31858,12 +32260,14 @@
 														{
 															"type": "item",
 															"name": "The Pantry:",
+															"page": 224,
 															"entry": "A small but deep niche on the west wall of the chamber was used as a pantry by the brigands. If the Player-heroes inspect the niche, they find that a small cache of stolen gold is hidden here, behind a supply of dry kindling, stale bread, and dried meat."
 														}
 													]
 												},
 												{
 													"type": "inset",
+													"page": 224,
 													"id": "369",
 													"entries": [
 														"The gold is worth a total of 3 ({@dice 1d6}) gold pieces."
@@ -31872,18 +32276,26 @@
 												"Among the gold are several personal items, that certainly belonged to the victims of the brigands:",
 												{
 													"type": "inset",
+													"page": 224,
 													"id": "36a",
 													"entries": [
-														"All Player-heroes who take a share of the gold gain 1 point of Shadow (DC 10 Wisdom saving throw to resist)."
+														"All Player-heroes who take a share of the gold gain 1 point of Shadow ({@dc 10} Wisdom saving throw to resist)."
 													]
 												},
 												{
 													"type": "inset",
+													"page": 224,
 													"name": "The Ruins of Narag-Nâla",
 													"id": "36b",
 													"entries": [
 														"The Dwarven underground complex is a small part of a Dwarven domain, the city of Narag-Nâla (Player-heroes paying attention to the runes inscribed on the walls and arches of the place discover the name quickly). It is a dark maze of narrow passages, often leading to empty rooms, corridors blocked by fallen rocks, and half-collapsed halls.",
-														"If the Player-heroes show an interest in exploring the various doors opening into the rooms shown in the Locations maps, the Loremaster must improvise the description of a seemingly endless labyrinth, or simply limit their exploration by describing how most passages lead to dead ends.",
+														{
+															"type": "inset",
+															"page": 224,
+															"entries": [
+																"If the Player-heroes show an interest in exploring the various doors opening into the rooms shown in the Locations maps, the Loremaster must improvise the description of a seemingly endless labyrinth, or simply limit their exploration by describing how most passages lead to dead ends."
+															]
+														},
 														"But the ruins are not entirely deserted. There are several Dwarves yet in Narag-Nâla who still draw breath...(see {@book Schemes and Trouble|TLotRR|9|Schemes and Trouble})."
 													]
 												}
@@ -31892,6 +32304,7 @@
 										{
 											"type": "entries",
 											"name": "3. The Flooded Chambers",
+											"page": 225,
 											"id": "36c",
 											"entries": [
 												"When the Player-heroes cross the threshold leading here, an inexplicable sense of dread falls over them. This pillared hall was once a Dwarven chamber of records, that was later adapted by the Arnorian lords to become their Hallows. The survivors of the siege were buried alive here. The Witch-king then flooded the area, and laid a curse on it.",
@@ -31909,18 +32322,20 @@
 												},
 												{
 													"type": "inset",
+													"page": 225,
 													"id": "36d",
 													"entries": [
-														"The air is unwholesome, and seems thick and stuffy, as if a weight is gradually oppressing the Player-heroes\u2014staying here causes all Player-heroes to gain 2 points of Shadow, resisted by a DC 10 Charisma saving throw."
+														"The air is unwholesome, and seems thick and stuffy, as if a weight is gradually oppressing the Player-heroes\u2014staying here causes all Player-heroes to gain 2 points of Shadow, resisted by a {@dc 10} Charisma saving throw."
 													]
 												},
 												"The hall is partially collapsed, and almost completely filled with muddy water, waist-high. The walls are decorated by Dwarven inscriptions and carvings (Dwarves of Durin's Folk recognise the art as typical of the houses that used to dwell in this area - probably the Firebeards). Opposite the entrance opens a passage leading to a flight of steps, going up to the surface (they lead to the Accursed Hallows).",
 												"A few minutes after the Company enters the Flooded Chambers, they notice someone, maybe a Dwarf, escaping into a side passage, and soon after they hear the deep toll of a bell. Moments later, a group of ghoulish creatures with sharp teeth and clawed hands emerge from the muddy waters of the chamber, and attack the Company!",
 												{
 													"type": "list",
+													"page": 225,
 													"items": [
 														"The {@creature Marsh-dwellers|TLotRR} are half the number of Player-heroes in the Company (rounded up).",
-														"The creatures concentrate their attacks on any Ranger of the North in the Company.",
+														"The creatures concentrate their attacks on any {@race Ranger of the North|TLotRR} in the Company.",
 														"Hobbits and Dwarves who confront the monsters while immersed in the water have disadvantage on attack rolls."
 													]
 												},
@@ -31932,6 +32347,7 @@
 														{
 															"type": "item",
 															"name": "The Sepulchres:",
+															"page": 225,
 															"entries": [
 																"In the central section of the hall are a series of stone sepulchres. Some are intact, while others look like they were damaged by violent upheavals of the earth. All are carved with a skill far surpassing that of most stonewrights living today\u2014that of the Men of the West.",
 																"Two sepulchres stand out for the exquisite detail of their carvings. The two marble slabs are shaped to represent a sleeping figure\u2014one shows a lord and the other a lady, composed in the sleep of death. Both sepulchres are empty.",
@@ -31943,12 +32359,34 @@
 												{
 													"type": "inset",
 													"name": "The House Records",
+													"page": 226,
 													"id": "36e",
 													"entries": [
-														"{@i \"Here is recorded the Fall of the House of Hadirion, and his wife Elwen. I, Angnir, steward and captain of the guards, write this record to preserve its memory. It was in the time of...\"}",
-														"{@i \"They built a wooden seat, in mockery of a throne, in plain sight of the castle walls. Then, they tied our lord Hadirion to it, to torment and ridicule him. They tortured him for hours...When the Orcs nailed an iron crown to his head, hailing Hadirion as the rightful ruler of the land, the lady Elwen summoned me, and asked me to prove my reputation as the best bowman of Arthedain. I chose an arrow from those that I received from my father, and he from his father before him. A white plumed, slender dart.\"}",
-														"{@i \"I bent my bow with all my strength, and the arrow flew straight, piercing the hand of a huge Orc who was tormenting Hadirion, and burying itself deep into the chest of my lord. I broke my bow after the deed...\"}",
-														"{@i The rest of the records chronicle the fall of the castle, in broken fragments\u2014treasonous Dwarves allowed the enemy to enter the castle undetected. Those who survived the onslaught fled underground, and were trapped. The lady Elwen disappeared}."
+														{
+															"type": "quote",
+															"entries": [
+																"Here is recorded the Fall of the House of Hadirion, and his wife Elwen. I, Angnir, steward and captain of the guards, write this record to preserve its memory. It was in the time of..."
+															]
+														},
+														{
+															"type": "quote",
+															"entries": [
+																"They built a wooden seat, in mockery of a throne, in plain sight of the castle walls. Then, they tied our lord Hadirion to it, to torment and ridicule him. They tortured him for hours...When the Orcs nailed an iron crown to his head, hailing Hadirion as the rightful ruler of the land, the lady Elwen summoned me, and asked me to prove my reputation as the best bowman of Arthedain. I chose an arrow from those that I received from my father, and he from his father before him. A white plumed, slender dart."
+															]
+														},
+														{
+															"type": "quote",
+															"entries": [
+																"I bent my bow with all my strength, and the arrow flew straight, piercing the hand of a huge Orc who was tormenting Hadirion, and burying itself deep into the chest of my lord. I broke my bow after the deed..."
+															]
+														},
+														{
+															"type": "quote",
+															"entries": [
+																"The rest of the records chronicle the fall of the castle, in broken fragments\u2014treasonous Dwarves allowed the enemy to enter the castle undetected. Those who survived the onslaught fled underground, and were trapped. The lady Elwen disappeared"
+															],
+															"skipMarks": true
+														}
 													]
 												},
 												{
@@ -31958,12 +32396,14 @@
 														{
 															"type": "item",
 															"name": "A Lesser Hoard:",
+															"page": 226,
 															"entry": "A small arched gate opens in the north-eastern corner of the chamber. Accessible easily only by Dwarves and Hobbits, it leads to a small room, where many precious things have been hoarded by the Marsh-dwellers."
 														}
 													]
 												},
 												{
 													"type": "inset",
+													"page": 226,
 													"id": "36f",
 													"entries": [
 														"The treasure chamber contains what amounts to a lesser Hoard (see {@book Chapter 7|TLotRR|6|Hoards} for the rules on Treasure)."
@@ -31974,6 +32414,7 @@
 										{
 											"type": "entries",
 											"name": "4. The Accursed Halls",
+											"page": 226,
 											"id": "370",
 											"entries": [
 												"Once they get back to the surface, the Player-heroes emerge among a vast expanse of ruins, floating in a sea of dense mist. It is dark, regardless of the hour of the day\u2014if morning or afternoon, the sun can be seen as a pale disc, incapable of penetrating the veil of fog.",
@@ -31991,30 +32432,33 @@
 												},
 												"Advancing among the rubble is difficult\u2014crumbling walls and pillars jut out from thick tangles of vegetation, and twisted and bare trees split ancient flagstones with their roots. Nothing rises for more than a few yards\u2014the city of Lord Hadirion and Lady Elwen was literally razed to the ground.",
 												"The exception to this is the Tower of the Star (see {@book below|TLotRR|9|5. The Tower of the Star}), and what appears to be an island of broken stonework, a cluster of ruins rising where once was a majestic palace. The shape of a main hall is still recognisable, a flight of wide, cracked steps leading to it. Its walls are covered in crude graffiti, probably drawn by Orcs.",
-												"Among the graffiti are mixed sentences composed using Elvish letters, of an ancient mode\u2014they are written with horrible care, using the Black Speech, to form the curse of the Witch-king.",
+												"Among the graffiti are mixed sentences composed using Elvish letters, of an ancient mode\u2014they are written with horrible care, using the {@language Black Speech|TLotRR}, to form the curse of the Witch-king.",
 												{
 													"type": "inset",
+													"page": 226,
 													"id": "371",
 													"entries": [
-														"Player-heroes who read the words gain 2 Shadow points resisted by a DC 15 Intelligence saving throw, regardless of whether they can read Elvish or understand the language of Mordor."
+														"Player-heroes who read the words gain 2 Shadow points resisted by a {@dc 15} Intelligence saving throw, regardless of whether they can read Elvish or understand the language of Mordor."
 													]
 												},
 												"Whoever succeeds on the saving throw learns the meaning of the curse\u2014it was laid by the Witch-king of Angmar himself, wroth at how strongly the Dúnedain opposed him. The ruins are bound to suffer from its effects, as long as the torment of Lord Hadirion continues (see {@book The Tower of the Star|TLotRR|9|5. The Tower of the Star}).",
 												{
 													"type": "inset",
 													"name": "Tutorial\u2014Expanding the Accursed Halls",
+													"page": 227,
 													"id": "372",
 													"entries": [
 														"The Accursed Halls are just a part of the vast ruins that once were a city of the Dúnedain. For the most part, they're just ancient, cold stones, but who can say what lurks there, in the shadow of the tormented spirit of Elwen?",
 														"If the players show an interest in exploring the place, the Loremaster can expand its description as they see fit. Here follow a number of ideas that can help the Loremaster in giving further substance to the ruins:",
 														{
 															"type": "list",
+															"page": 227,
 															"items": [
 																"An old well, covered by rotten planks. It is very deep, and at its bottom lies the skeleton of an exceptionally large Orc, a veritable monster. He was a lieutenant of the Witch-king, and died in the attack\u2014a Númenorean arrow still pierces his skull.",
 																"A wild apple tree, grown among the rocks. Anyone eating one of its sour apples and resting in its shade experiences strange visions belonging to the past of the city.",
-																"An enormous, leprous deer haunts the ruins. It is an eerie apparition and a sign of ill-omen. Player-heroes gain 1 point of Shadow, resisted by a DC 10 Charisma saving throw.",
-																"Beyond a rusty iron gate lies a patch of greenery, where the orchard of an herbalist once was. Several ancient and useful herbs still grow there, and can be gathered by a Player-hero proficient with the herbalism kit\u2014they grant advantage on Intelligence ({@skill Medicine}) checks, for {@dice 1d6} applications.",
-																"Jalin, a lunatic Dwarf of Narag-Nâla, sometimes comes to dwell in the ruins. An outcast from his own people, he lives off rats and other disgusting things. Jalin's dreams are haunted by the spirit of Elwen, as he feels a mix of love and fear for her. He will try to kill or drag into a trap any trespassers in \"his city\". Use the stats for a {@creature Southerner Champion|TLotRR} with the {@book anguished|TLotRR|7|Shadow Conditions} condition.",
+																"An enormous, leprous deer haunts the ruins. It is an eerie apparition and a sign of ill-omen. Player-heroes gain 1 point of Shadow, resisted by a {@dc 10} Charisma saving throw.",
+																"Beyond a rusty iron gate lies a patch of greenery, where the orchard of an herbalist once was. Several ancient and useful herbs still grow there, and can be gathered by a Player-hero proficient with the {@item herbalism kit|TLotRR}\u2014they grant advantage on Intelligence ({@skill Medicine}) checks, for {@dice 1d6} applications.",
+																"{@creature Jalin|TLotRR}, a lunatic Dwarf of Narag-Nâla, sometimes comes to dwell in the ruins. An outcast from his own people, he lives off rats and other disgusting things. Jalin's dreams are haunted by the spirit of Elwen, as he feels a mix of love and fear for her. He will try to kill or drag into a trap any trespassers in \"his city\". Use the stats for a {@creature Southerner Champion|TLotRR} with the {@condition anguished|TLotRR} condition.",
 																"The pieces of a battering ram forged in the smithies of Angmar lie among the fragments of a shattered gate. Its huge metal head is shaped like that of a monstrous Orc with a gaping maw. It is imbued with dark magic\u2014If the heroes touch it, the ground under their feet collapses, causing them to fall for several yards into a buried chamber below."
 															]
 														}
@@ -32038,6 +32482,7 @@
 														{
 															"type": "item",
 															"name": "The Coming of the Lady Elwen:",
+															"page": 228,
 															"entries": [
 																"Once the Company reaches the Accursed Halls, at a moment when the Loremaster considers it most appropriate, the Lady Elwen approaches. She was once a valorous Dúnadan noble lady, but when her city fell, she survived, only to be slowly consumed by grief and by the curse of the Chief of the Ringwraiths\u2014she is now a Fell Wraith, bound to roam the ruins of her castle.",
 																"As a Fell Wraith, she appears as a crooked hag, wrapped in tatters hiding her spectral features. Her flesh is almost transparent, and her eyes glow like embers. Thin strands of white hair escape her hood. She addresses the Company speaking in a hissing voice and strange accent:"
@@ -32049,19 +32494,20 @@
 													"type": "quote",
 													"entries": [
 														"Why have you come? There's nothing here, only death. Leave this place, or join me in my torment!"
-													],
-													"skipMarks": true
+													]
 												},
 												"She is armed with a pitted sword, the weapon she used to defend her city and fortress.",
 												{
 													"type": "statblock",
 													"name": "Lady Elwen - Fell Wraith",
+													"page": 228,
 													"source": "TLotRR",
 													"tag": "creature"
 												},
 												{
 													"type": "inset",
 													"name": "Tutorial\u2014Building up the Climax",
+													"page": 229,
 													"id": "373",
 													"entries": [
 														"The confrontation with Elwen can be run in many different ways, based on what the players choose to do. The Loremaster can have her appear as a ghost would, in the middle of the night while the Player-heroes are sleeping (hopefully with someone standing guard), or, they may spy her from afar, climbing down the stairs of the tower, and then turning towards them, slowly but inexorably. The ruins of the town offer many hiding places, should the Player-heroes choose to stay away from her, but they won't be able to get near the Tower without engaging her in combat. Moreover, she seems to possess an uncanny ability to sense where the Player-heroes hide."
@@ -32072,11 +32518,13 @@
 										{
 											"type": "entries",
 											"name": "The Curse of the Lady Elwen",
+											"page": 229,
 											"id": "374",
 											"entries": [
 												"The first time that Elwen is defeated, the Player-heroes will experience for a moment a vision of a high Númenorean lady, in full armour, beautiful but terrible\u2014she looks at the Player-heroes, then screams!",
 												{
 													"type": "inset",
+													"page": 229,
 													"id": "375",
 													"entries": [
 														"As they recover their senses a moment later, they discover that Elwen is gone, only to return at some point later, fully restored and ready to fight (when the Loremaster deems it most appropriate for dramatic effect)."
@@ -32085,6 +32533,7 @@
 												"During the time needed for her to return, the luminescence at the top of the Tower of the Star intensifies (it's the stone set on Hadirion's crown, the focus of the curse).",
 												{
 													"type": "inset",
+													"page": 229,
 													"id": "376",
 													"entries": [
 														"The Lady Elwen can be finally put to rest if the crown nailed to the head of Hadirion is removed (see below). When this happens, Elwen recovers her lost beauty for an instant\u2014then, her body crumbles to dust. The curse has been lifted."
@@ -32095,6 +32544,7 @@
 										{
 											"type": "entries",
 											"name": "5. The Tower of the Star",
+											"page": 229,
 											"id": "377",
 											"entries": [
 												"Beyond the Accursed Halls rises the Tower of the Star. Built of a harder and more ancient stone than the rest of the ruins, it proved impervious to the power that crushed this place centuries ago, and time itself was unable to cast it down. Only its highest floor was damaged in the war, and its jagged stonework makes it look like a hand with stunted fingers.",
@@ -32119,12 +32569,14 @@
 														{
 															"type": "item",
 															"name": "A Greater Hoard:",
+															"page": 229,
 															"entry": "Once the curse is lifted, the Player-heroes have time to search the ruins. On the ground floor of the tower, hidden by debris, is a trapdoor. This leads to an underground chamber, probably used as a dungeon once."
 														}
 													]
 												},
 												{
 													"type": "inset",
+													"page": 229,
 													"id": "378",
 													"entries": [
 														"The dungeon contains what amounts to a greater Hoard (see {@book Chapter 7|TLotRR|6|Hoards} for the rules on Treasure)."
@@ -32137,17 +32589,20 @@
 								{
 									"type": "entries",
 									"name": "Schemes and Trouble",
+									"page": 229,
 									"id": "379",
 									"entries": [
 										"This section presents events that can occur in the course of the Adventuring Phase session, based on the actions of the Player-heroes. How to employ them is up to the Loremaster.",
 										{
 											"type": "entries",
 											"name": "The Brigands",
+											"page": 229,
 											"id": "37a",
 											"entries": [
 												"The band of brigands sheltering in the area west of Sarn Ford is a large company of ruthless men. Driven by necessity and greed, they waylay those few travellers they meet on the road, and plunder the many ruins dotting the land, looking for treasure. They are careful to hide any proof of their misdeeds, to avoid raising the attention of the Rangers of the North\u2014so far their strategy is working.",
 												{
 													"type": "inset",
+													"page": 229,
 													"id": "37b",
 													"entries": [
 														"If the Company is not careful and the Loremaster deems it appropriate for the brigands to notice them, a group of bandits composed of one {@creature Southerner Raider|TLotRR} for each Player-hero tries to ambush them."
@@ -32158,14 +32613,16 @@
 										{
 											"type": "entries",
 											"name": "Sabian, the Spy from Umbar",
+											"page": 229,
 											"id": "37c",
 											"entries": [
-												"The brigands are being manipulated by a group of Men from Umbar, who seem to have an interest in exploring the ruins of Cardolan and Eriador. They have infiltrated the group of robbers, and are slowly taking the lead among them. Sabian is among them, a Southron mariner who now is leading the band operating beyond the Brandywine river. He is a spy, using the brigands' activities as cover to explore Eriador and its ruins.",
+												"The brigands are being manipulated by a group of Men from Umbar, who seem to have an interest in exploring the ruins of Cardolan and Eriador. They have infiltrated the group of robbers, and are slowly taking the lead among them. {@creature Sabian|TLotRR} is among them, a Southron mariner who now is leading the band operating beyond the Brandywine river. He is a spy, using the brigands' activities as cover to explore Eriador and its ruins.",
 												{
 													"type": "list",
+													"page": 230,
 													"items": [
-														"How to employ Sabian is up to the Loremaster. He is stealthy and clever, and can hide easily, unless the Player-heroes make capturing him their primary goal. Sabian can spring traps on the Player-heroes, or sabotage their plans. If left to his own devices, Sabian will eventually leave the ruins, and join the brigands outside (see {@book Trapped!|TLotRR|9|Trapped!}, below).",
-														"Sabian is a {@creature Highway Robber|TLotRR}."
+														"How to employ {@creature Sabian|TLotRR} is up to the Loremaster. He is stealthy and clever, and can hide easily, unless the Player-heroes make capturing him their primary goal. {@creature Sabian|TLotRR} can spring traps on the Player-heroes, or sabotage their plans. If left to his own devices, {@creature Sabian|TLotRR} will eventually leave the ruins, and join the brigands outside (see {@book Trapped!|TLotRR|9|Trapped!}, below).",
+														"{@creature Sabian|TLotRR} is a {@creature Highway Robber|TLotRR}."
 													]
 												}
 											]
@@ -32173,6 +32630,7 @@
 										{
 											"type": "entries",
 											"name": "Treacherous Dwarves",
+											"page": 230,
 											"id": "37d",
 											"entries": [
 												"A colony of Dwarves from the southern Ered Luin lives deep underground, far below the Flooded Chambers. They are the descendants of the Dwarves that betrayed Hadirion and Elwen, and they still pay the price for the misdeed of their ancestors: to this day, they haven't been able to reclaim the upper halls of their underground realm, as they are infested by the {@creature Marsh-dwellers|TLotRR}.",
@@ -32180,6 +32638,7 @@
 												"If the Company deals with the Marsh-dwellers efficiently, the Dwarves might stop harassing them, as they start to believe they might indeed be able to lift the curse once and for all.",
 												{
 													"type": "inset",
+													"page": 230,
 													"id": "37e",
 													"entries": [
 														"From time to time, the Loremaster should give the Player-heroes a chance to notice they are being spied upon from a distance, always by one single figure, perhaps a Dwarf, who immediately disappears when noticed."
@@ -32191,12 +32650,14 @@
 										{
 											"type": "entries",
 											"name": "Trapped!",
+											"page": 230,
 											"id": "37f",
 											"entries": [
 												"In all likelihood, the Player-heroes will spend the best part of their adventure inside the ruins, on the other side of the ravine. As they are busy dealing with the creatures haunting the place, the brigands will return to their refuge, and find out what happened to their garrison there.",
 												"In general terms, the brigands won't enter the accursed ruins, and will lay in wait for the Player-heroes to come back out.",
 												{
 													"type": "inset",
+													"page": 231,
 													"id": "380",
 													"entries": [
 														"They are too many for the Company to tackle head-on\u2014the Loremaster can consider them to be at least four times as numerous as the Player-heroes, counting among them an assortment of hostile southerners and ruffians (see {@book Chapter 8|TLotRR|7|Evil Men})."
@@ -32205,6 +32666,7 @@
 												"One way could be to search for another way out by exploring the Dwarven underground city. It seems very hard to navigate, and seems only to go deeper and deeper.",
 												{
 													"type": "inset",
+													"page": 231,
 													"id": "381",
 													"entries": [
 														"If the Player-heroes do so, the Loremaster can use the A Council Underground event, presented below."
@@ -32215,20 +32677,23 @@
 										{
 											"type": "entries",
 											"name": "A Council Underground",
+											"page": 231,
 											"id": "382",
 											"entries": [
 												"If the Company is determined to explore the underground city, they are eventually beset by fire-bearded, fierce Dwarven warriors, armed with great axes. They say that they cannot pass without leave from their lord, nor will they be able to find the way out without assistance\u2014do they wish to seek counsel with him?",
 												{
 													"type": "inset",
+													"page": 231,
 													"id": "383",
 													"entries": [
 														"If they ask to see their lord, an underground bell tolls, and a single female Dwarf shows up: \"You have asked to meet Veiko, lord of Narag-Nâla\" (the Black River)."
 													]
 												},
 												"All Player-heroes must accept being blindfolded. Then, they are led even deeper underground, to a dark hall resounding with the noise of running water.",
-												"Veiko is an ancient Dwarf, sitting on a crude throne of stone. She is blind, and speaks exclusively in the Dwarven speech, almost whispering\u2014her daughter, Ilmi, leans over to hear what she says, and translates. Her guard stands by, old, grizzled Dwarven warriors armed with axes. Between themselves, they speak using the secret sign-language of the Dwarves.",
+												"Veiko is an ancient Dwarf, sitting on a crude throne of stone. She is {@condition blinded||blind}, and speaks exclusively in the {@language Khuzdul|TLotRR|Dwarven speech}, almost whispering\u2014her daughter, Ilmi, leans over to hear what she says, and translates. Her guard stands by, old, grizzled Dwarven warriors armed with axes. Between themselves, they speak using the secret sign-language of the Dwarves.",
 												{
 													"type": "inset",
+													"page": 231,
 													"id": "384",
 													"entries": [
 														"The meeting with Veiko can be set up using the rules for {@book Councils|TLotRR|4|Council}, considering the audience as open. If the Player-heroes are only asking to be led out of the Dwarven city and nothing else, their request can be considered reasonable (1 success required) if they have lifted the curse, or bold (2 successes required) if they haven't."
@@ -32239,6 +32704,7 @@
 												{
 													"type": "inset",
 													"name": "Veiko's Tales",
+													"page": 231,
 													"id": "385",
 													"entries": [
 														"The following information can be used by the Loremaster in the course of the {@book Interaction|TLotRR|4|3. Interaction} stage of the council.",
@@ -32381,6 +32847,7 @@
 				{
 					"type": "section",
 					"name": "Character Sheet PDF",
+					"page": 233,
 					"entries": [
 						"{@link Download PDF|https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/pdf/TLotRR/lotrr-character-sheet.pdf}"
 					]
