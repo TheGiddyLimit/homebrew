@@ -48,7 +48,8 @@
 			"MysTattoo": "Mystical Tattoo",
 			"Eye Ray": "Eye Rays",
 			"UAH:PD": "Prophecy Domain: Oracle's Burden",
-			"Conc": "Concoction"
+			"Conc": "Concoction",
+			"Vile": "Vile Affliction"
 			
 		},
 		"dateAdded": 0,
@@ -366,9 +367,6 @@
 									]
 								}
 							]
-						},
-						{
-							"type": "hr"
 						},
 						{
 							"type": "entries",
@@ -21687,7 +21685,17 @@
 			"header": 2,
 			"entries": [
 				"At 6th level, you gain a pool of prodigy points equal to half your level in this class. You can spend prodigy points instead of sorcery points to activate {@filter Metamagic options|optionalfeatures|feature type=MM}. You regain all expended prodigy points when you finish a long rest."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "special"
+				},
+				"uses": {
+					"max": "floor(@classes.sorcerer.levels/2)",
+					"per": "lr",
+					"prompt": true
+				}
+			}
 		},
 		{
 			"name": "Dynamic Metamagic",
@@ -21813,34 +21821,24 @@
 			"entries": [
 				"At 1st level, you are afflicted with a grievous curse, but you have learned to suffer the curse's effects only when you want to make use of its power. Choose the nature of your curse from the following options.",
 				{
-					"type": "entries",
-					"name": "Mutation",
+					"type": "options",
+					"count": 1,
 					"entries": [
-						"You were once horrifically imbued with monstrous properties, which may have caused a complete transformation or may have only manifested under certain conditions, such as being exposed to the light of a full moon. As an action, you can use the magic of your curse to transform yourself, gaining the following changes:",
 						{
-							"type": "list",
-							"items": [
-								"You gain a +1 bonus to each ability check, attack roll, and saving throw you make that uses Strength, Dexterity, or Constitution.",
-								"You suffer a -1 penalty to each ability check, attack roll, and saving throw you make that uses Intelligence, Wisdom, or Charisma.",
-								"You have disadvantage on Constitution saving throws you make to maintain {@status Concentration}.",
-								"After at least 1 minute has passed, you can end the transformation on yourself as an action."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mutation|UltimateAdventurer",
+							"name": "Mutation"
 						},
-						"When you reach certain levels in this class, both the transformation's bonus and penalty increase: 9th level (+2/-2) and 17th level (+3/-3)."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Sickly",
-					"entries": [
-						"Your body was robbed of strength and vitality, causing you to almost constantly be sick and weak. Once during each of your turns when a spell you cast damages a creature that isn't an undead or construct, you can cause the creature's hit point maximum to be reduced by an amount equal to half the damage it took from the spell. It suffers the reduction until it finishes a long rest. When you do, you have disadvantage on Constitution saving throws and can't regain hit points until the end of your next turn."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Unlucky",
-					"entries": [
-						"You once suffered misfortune in all aspects of life, in which anything that could go wrong seemed to always do so. When a creature you can see within 60 feet of you makes an ability check or attack roll, you can use your reaction to roll a {@dice d6} and subtract it from the creature's result. When you do, subtract {@dice 1d6} from the next ability check, attack roll, or saving throw you make within the next minute. You can't use this ability again until a minute has passed or you subtract the die from one of your own rolls."
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Sickly|UltimateAdventurer",
+							"name": "Sickly"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Unlucky|UltimateAdventurer",
+							"name": "Unlucky"
+						}
 					]
 				}
 			]
@@ -21872,24 +21870,24 @@
 			"entries": [
 				"At 14th level, you gain an additional benefit based on the curse you chose as your {@subclassFeature Vile Affliction|Sorcerer||Cursed Existence|UltimateAdventurer|1}. Any spell you learn through this feature counts as a sorcerer spell for you.",
 				{
-					"type": "entries",
-					"name": "Mutation",
+					"type": "options",
+					"count": 1,
 					"entries": [
-						"You learn the {@spell alter self} spell. It doesn't count against the number of sorcerer spells you know, and you can cast it at will, without expending a spell slot."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Sickly",
-					"entries": [
-						"You learn the {@spell ray of enfeeblement} spell. It doesn't count against the number of sorcerer spells you know, and you can cast it at will, without expending a spell slot. Additionally, when you use your {@subclassFeature Vile Affliction|Sorcerer||Cursed Existence|UltimateAdventurer|1}, you can choose for the creature's hit point maximum to be reduced by an amount equal to the damage it took from the spell, instead of by half the damage."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Unlucky",
-					"entries": [
-						"You learn the bane spell. It doesn't count against your number of sorcerer spells you know, and you can cast it at will, without expending a spell slot. Additionally, when you use the reaction granted by your {@subclassFeature Vile Affliction|Sorcerer||Cursed Existence|UltimateAdventurer|1}, you can choose to roll a {@dice d10}, instead of a {@dice d6}. If you do, you subtract {@dice 1d10} from your next ability check, attack roll, or saving throw within the next minute, instead of {@dice 1d6}"
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mutation Advanced|UltimateAdventurer",
+							"name": "Mutation Advanced"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Sickly Advanced|UltimateAdventurer",
+							"name": "Sickly Advanced"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Unlucky Advanced|UltimateAdventurer",
+							"name": "Unlucky Advanced"
+						}
 					]
 				}
 			]
@@ -29669,6 +29667,103 @@
 			],
 			"entries": [
 				"A creature can drink a dose of this antidote, or administer it to a willing or {@condition unconscious} creature within 5 feet, with the Use an Object action. When it does, all poisons and non-magical diseases currently afflicting the creature immediately end. Additionally, for the next minute, the creature has resistance to poison damage and advantage on saving throws against poison."
+			]
+		},
+		{
+			"name": "Mutation",
+			"source": "UltimateAdventurer",
+			"page": 125,
+			"featureType": [
+				"Vile"
+			],			
+			"entries": [
+				"You were once horrifically imbued with monstrous properties, which may have caused a complete transformation or may have only manifested under certain conditions, such as being exposed to the light of a full moon. As an action, you can use the magic of your curse to transform yourself, gaining the following changes:",
+				{
+					"type": "list",
+					"items": [
+						"You gain a +1 bonus to each ability check, attack roll, and saving throw you make that uses Strength, Dexterity, or Constitution.",
+						"You suffer a -1 penalty to each ability check, attack roll, and saving throw you make that uses Intelligence, Wisdom, or Charisma.",
+						"You have disadvantage on Constitution saving throws you make to maintain {@status Concentration}.",
+						"After at least 1 minute has passed, you can end the transformation on yourself as an action."
+					]
+				},
+				"When you reach certain levels in this class, both the transformation's bonus and penalty increase: 9th level (+2/-2) and 17th level (+3/-3)."
+			]
+		},
+		{
+			"name": "Sickly",
+			"source": "UltimateAdventurer",
+			"page": 125,
+			"featureType": [
+				"Vile"
+			],			
+			"entries": [
+				"Your body was robbed of strength and vitality, causing you to almost constantly be sick and weak. Once during each of your turns when a spell you cast damages a creature that isn't an undead or construct, you can cause the creature's hit point maximum to be reduced by an amount equal to half the damage it took from the spell. It suffers the reduction until it finishes a long rest. When you do, you have disadvantage on Constitution saving throws and can't regain hit points until the end of your next turn."
+			]
+		},
+		{
+			"name": "Unlucky",
+			"source": "UltimateAdventurer",
+			"page": 125,
+			"featureType": [
+				"Vile"
+			],			
+			"entries": [
+				"You once suffered misfortune in all aspects of life, in which anything that could go wrong seemed to always do so. When a creature you can see within 60 feet of you makes an ability check or attack roll, you can use your reaction to roll a {@dice d6} and subtract it from the creature's result. When you do, subtract {@dice 1d6} from the next ability check, attack roll, or saving throw you make within the next minute. You can't use this ability again until a minute has passed or you subtract the die from one of your own rolls."
+			]
+		},
+		{
+			"name": "Mutation Advanced",
+			"source": "UltimateAdventurer",
+			"page": 126,
+			"featureType": [
+				"Vile"
+			],
+			"prerequisite": [
+				{
+					"feature": [
+						"Mutation"
+					]
+				}
+			],
+			"entries": [
+				"You learn the {@spell alter self} spell. It doesn't count against the number of sorcerer spells you know, and you can cast it at will, without expending a spell slot."
+			]
+		},
+		{
+			"name": "Sickly Advanced",
+			"source": "UltimateAdventurer",
+			"page": 125,
+			"featureType": [
+				"Vile"
+			],
+			"prerequisite": [
+				{
+					"feature": [
+						"Sickly"
+					]
+				}
+			],
+			"entries": [
+				"You learn the {@spell ray of enfeeblement} spell. It doesn't count against the number of sorcerer spells you know, and you can cast it at will, without expending a spell slot. Additionally, when you use your {@subclassFeature Vile Affliction|Sorcerer||Cursed Existence|UltimateAdventurer|1}, you can choose for the creature's hit point maximum to be reduced by an amount equal to the damage it took from the spell, instead of by half the damage."
+			]
+		},
+		{
+			"name": "Unlucky Advanced",
+			"source": "UltimateAdventurer",
+			"page": 126,
+			"featureType": [
+				"Vile"
+			],
+			"prerequisite": [
+				{
+					"feature": [
+						"Unlucky"
+					]
+				}
+			],
+			"entries": [
+				"You learn the bane spell. It doesn't count against your number of sorcerer spells you know, and you can cast it at will, without expending a spell slot. Additionally, when you use the reaction granted by your {@subclassFeature Vile Affliction|Sorcerer||Cursed Existence|UltimateAdventurer|1}, you can choose to roll a {@dice d10}, instead of a {@dice d6}. If you do, you subtract {@dice 1d10} from your next ability check, attack roll, or saving throw within the next minute, instead of {@dice 1d6}"
 			]
 		}
 	],	
