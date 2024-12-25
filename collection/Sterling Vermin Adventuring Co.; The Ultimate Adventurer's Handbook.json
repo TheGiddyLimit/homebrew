@@ -15405,6 +15405,9 @@
 			"subclassSource": "UltimateAdventurer",
 			"level": 9,
 			"header": 2,
+			"resist": [
+				"psychic"
+			],
 			"entries": [
 				"At 9th level, you're able to make certain upgrades to your {@subclassFeature Cerebral Helm|Artificer|TCE|Cognician|UltimateAdventurer|3||cognition enhancing helm}. While you are wearing it, you gain the following benefits:",
 				{
@@ -15428,7 +15431,19 @@
 						}
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+					"type": "bonus",
+					"cost": 1
+				},
+				"uses": {
+					"value": 1,
+					"max": "1",
+					"per": "lr",
+					"prompt": true
+				}
+			}
 		},
 		{
 			"name": "Surpass Cognitive Potential",
@@ -15590,7 +15605,41 @@
 						]
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+				"type": "action",
+				"cost": 1
+				},
+				"target": {
+					"value": "10",
+					"units": "ft",
+					"type": "sphere",
+					"prompt": true
+				},
+				"range": {
+					"value": 60,
+					"units": "ft"
+				},
+				"uses": {
+					"max": "ceil(@classes.artificer.levels / 2)",
+					"per": "lr",
+					"prompt": true
+				},
+				"actionType": "save",
+				"damage": {
+					"parts": [
+						[
+							"((floor((@classes.artificer.levels - 3)/6))+2)d6",
+							"force"
+						]
+					]
+				},
+				"save": {
+					"ability": "dex",
+					"scaling": "spell"
+				}
+			}
 		},
 		{
 			"name": "Bombs Away",
@@ -15654,7 +15703,41 @@
 			"entries": [
 				"Starting at 15th level, when you finish a {@quickref resting|phb|2|0|short rest}{@sup {@variantrule Short Rest|XPHB|'24}}, you can use {@item potter's tools|PHB}{@sup {@item potter's tools|XPHB|'24}} or {@item tinker's tools|PHB}{@sup {@item tinker's tools|XPHB|'24}} to magically create a number of explosive charges up to your Intelligence modifier (minimum 1).",
 				"Additionally, whenever you cast an {@filter artificer spell that deals damage in a sphere|spells|source=|class=artificer|components & miscellaneous==|area style=s}, you deal an additional {@damage 1d6} damage to each creature that takes damage from the spell this turn."
-			]
+			],
+			"foundrySystem": {
+				"activation": {
+				"type": "action",
+				"cost": 1
+				},
+				"target": {
+					"value": "10",
+					"units": "ft",
+					"type": "sphere",
+					"prompt": true
+				},
+				"range": {
+					"value": 60,
+					"units": "ft"
+				},
+				"uses": {
+					"max": "@abilities.int.mod",
+					"per": "sr",
+					"prompt": true
+				},
+				"actionType": "save",
+				"damage": {
+					"parts": [
+						[
+							"((floor((@classes.artificer.levels - 3)/6))+2)d6",
+							"force"
+						]
+					]
+				},
+				"save": {
+					"ability": "dex",
+					"scaling": "spell"
+				}
+			}
 		},
 		{
 			"name": "Mechanic",
@@ -31388,6 +31471,31 @@
 			]
 		}
 	],
+	"foundrySubclassFeature": [
+		{
+			"name": "Surpass Cognitive Potential",
+			"source": "UltimateAdventurer",
+			"className": "Artificer",
+			"classSource": "TCE",
+			"subclassShortName": "Cognician",
+			"subclassSource": "UltimateAdventurer",
+			"level": 15,
+			"effects": [
+				{
+					"name": "Surpass Cognitive Potential (Intelligence Bonus)",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.abilities.int.value",
+							"mode": 2,
+							"value": "2",
+							"priority": 20
+						}
+					]
+				}
+			]
+		}
+	],
 	"optionalfeature": [
 		{
 			"name": "Additional Appendage Apparatus",
@@ -35473,7 +35581,84 @@
                 "The inscribed object is imbued with a limited sentience that warns its user of danger. The inscribed object's wearer or wielder has advantage on initiative rolls, can't be surprised except by magical means, and is magically awoken if it is sleeping naturally when combat begins."
 			]
 		}
-	],	
+	],
+	"vehicle": [
+		{
+			"name": "Motor Bike (Land)",
+			"source": "UltimateAdventurer",
+			"page": 218,
+			"vehicleType": "INFWAR",
+			"size": "M",
+			"terrain": [
+				"land"
+			],
+			"capCreature": 1,
+			"speed": 60,
+			"str": 10,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"hp": {
+				"hp": 30,
+				"dt": 5,
+				"mt": 10
+			},
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"stunned",
+				"unconscious"
+			],
+			"trait": [
+				{
+					"name": "Jump",
+					"entries": [
+						"If the Devil's Ride moves at least 30 feet in a straight line, it can clear a distance of up to 60 feet when jumping over a chasm, ravine, or other gap. Each foot it clears on the jump costs a foot of movement."
+					]
+				},
+				{
+					"name": "Prone Deficiency",
+					"entries": [
+						"If the Devil's Ride falls {@condition prone}, it can't right itself and is {@condition incapacitated} until pulled upright."
+					]
+				},
+				{
+					"name": "Stunt",
+					"entries": [
+						"On its turn, the driver of the Devil's Ride can expend 10 feet of movement to perform one free vehicle stunt, such as a wheelie or a burnout. Before the stunt can be performed, the Devil's Ride must move at least 10 feet in a straight line. If the driver succeeds on a DC 10 Dexterity check using the bike's Dexterity, the stunt is successful. Otherwise, the driver is unable to perform the stunt and can't attempt another stunt until the start of its next turn. If the check fails by 5 or more, the Devil's Ride and all creatures riding it immediately fall {@condition prone} as the bike wipes out and comes to a dead stop."
+					]
+				}
+			],
+			"actionStation": [
+				{
+					"name": "Helm (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"Drive and steer the Devil's Ride."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"type": "entries",
+					"name": "Juke",
+					"entries": [
+						"If the Devil's Ride is able to move, the driver can use its reaction to grant the Devil's Ride advantage on a Dexterity saving throw."
+					]
+				}
+			]
+		}
+	],
 	"monster": [
 		{
 			"name": "Domesticated Ooze",
@@ -37540,6 +37725,181 @@
 			]
 		},
 		{
+			"name": "Enchanted Inks",
+			"source": "UltimateAdventurer",
+			"page": 287,
+			"type": "P",
+			"rarity": "varies",
+			"entries": [
+				"This set of inks can be used to make a single tattoo, which consumes the inks. When a creature is tattooed with enchanted inks, choose one spell. The spell's level cannot exceed the level determined by the rarity of the enchanted inks.",
+				"The tattooed creature can cast this spell, using the tattoo as a spellcasting focus. Constitution is the spellcasting ability for this spell. After casting the spell with the tattoo, the creature cannot cast the spell in this way again until it finishes a long rest.",
+				{
+					"type": "table",
+					"colLabels": [
+						"Rarity",
+						"Spell Level"
+					],
+					"colStyles": [
+						"col-4 text-left",
+						"col-8 text-left"
+					],
+					"rows": [
+						[
+							"{@item Enchanted Inks (Common)|UltimateAdventurer|Common}",
+							"1st"
+						],
+						[
+							"{@item Enchanted Inks (Uncommon)|UltimateAdventurer|Uncommon}",
+							"2nd"
+						],
+						[
+							"{@item Enchanted Inks (Rare)|UltimateAdventurer|Rare}",
+							"3rd"
+						],
+						[
+							"{@item Enchanted Inks (Very Rare)|UltimateAdventurer|Very Rare}",
+							"4th"
+						],
+						[
+							"{@item Enchanted Inks (Legendary)|UltimateAdventurer|Legendary}",
+							"5th"
+						]
+					]
+				}
+			],
+			"miscTags": [
+				"CNS"
+			]
+		},
+		{
+			"name": "Enchanted Inks (Common)",
+			"source": "UltimateAdventurer",
+			"page": 287,
+			"type": "P",
+			"rarity": "common",
+			"entries": [
+				"This set of inks can be used to make a single tattoo, which consumes the inks. When a creature is tattooed with enchanted inks, choose one 1st level spell.",
+				"The tattooed creature can cast this spell, using the tattoo as a spellcasting focus. Constitution is the spellcasting ability for this spell. After casting the spell with the tattoo, the creature cannot cast the spell in this way again until it finishes a long rest."
+			]
+		},
+		{
+			"name": "Enchanted Inks (Uncommon)",
+			"source": "UltimateAdventurer",
+			"page": 287,
+			"type": "P",
+			"rarity": "uncommon",
+			"entries": [
+				"This set of inks can be used to make a single tattoo, which consumes the inks. When a creature is tattooed with enchanted inks, choose one 2nd level spell.",
+				"The tattooed creature can cast this spell, using the tattoo as a spellcasting focus. Constitution is the spellcasting ability for this spell. After casting the spell with the tattoo, the creature cannot cast the spell in this way again until it finishes a long rest."
+			]
+		},
+		{
+			"name": "Enchanted Inks (Rare)",
+			"source": "UltimateAdventurer",
+			"page": 287,
+			"type": "P",
+			"rarity": "rare",
+			"entries": [
+				"This set of inks can be used to make a single tattoo, which consumes the inks. When a creature is tattooed with enchanted inks, choose one 3rd level spell.",
+				"The tattooed creature can cast this spell, using the tattoo as a spellcasting focus. Constitution is the spellcasting ability for this spell. After casting the spell with the tattoo, the creature cannot cast the spell in this way again until it finishes a long rest."
+			]
+		},
+		{
+			"name": "Enchanted Inks (Very Rare)",
+			"source": "UltimateAdventurer",
+			"page": 287,
+			"type": "P",
+			"rarity": "very rare",
+			"entries": [
+				"This set of inks can be used to make a single tattoo, which consumes the inks. When a creature is tattooed with enchanted inks, choose one 4th level spell.",
+				"The tattooed creature can cast this spell, using the tattoo as a spellcasting focus. Constitution is the spellcasting ability for this spell. After casting the spell with the tattoo, the creature cannot cast the spell in this way again until it finishes a long rest."
+			]
+		},
+		{
+			"name": "Enchanted Inks (Legendary)",
+			"source": "UltimateAdventurer",
+			"page": 287,
+			"type": "P",
+			"rarity": "legendary",
+			"entries": [
+				"This set of inks can be used to make a single tattoo, which consumes the inks. When a creature is tattooed with enchanted inks, choose one 5th level spell.",
+				"The tattooed creature can cast this spell, using the tattoo as a spellcasting focus. Constitution is the spellcasting ability for this spell. After casting the spell with the tattoo, the creature cannot cast the spell in this way again until it finishes a long rest."
+			]
+		},
+		{
+			"name": "Ensorcelled Blackpowder",
+			"source": "UltimateAdventurer",
+			"page": 287,
+			"rarity": "varies",
+			"entries": [
+				"This blackpowder has been imbued with magic to make it especially volatile. When you cast the {@spell chaos bolt|XGE} spell, you can choose to allow the spell to consume this spell catalyst. When you do, the chaotic energy automatically leaps to a number of different targets depending on the blackpowder's rarity, regardless of the results of the d8s. For each leap, you make a new attack and damage roll against the target, which could cause the chaotic energy to leap again.",
+				{
+					"type": "table",
+					"colLabels": [
+						"Rarity",
+						"# of Leaps"
+					],
+					"colStyles": [
+						"col-4 text-left",
+						"col-8 text-left"
+					],
+					"rows": [
+						[
+							"{@item Ensorcelled Blackpowder (Common)|UltimateAdventurer|Common}",
+							"One"
+						],
+						[
+							"{@item Ensorcelled Blackpowder (Uncommon)|UltimateAdventurer|Uncommon}",
+							"Two"
+						],
+						[
+							"{@item Ensorcelled Blackpowder (Rare)|UltimateAdventurer|Rare}",
+							"Three"
+						]
+					]
+				}
+			],
+			"attachedSpells": [
+				"chaos bolt|xge"
+			]
+		},
+		{
+			"name": "Ensorcelled Blackpowder (Uncommon)",
+			"source": "UltimateAdventurer",
+			"page": 287,
+			"rarity": "uncommon",
+			"entries": [
+				"This blackpowder has been imbued with magic to make it especially volatile. When you cast the {@spell chaos bolt|XGE} spell, you can choose to allow the spell to consume this spell catalyst. When you do, the chaotic energy automatically leaps once to a different target, regardless of the results of the d8s. For each leap, you make a new attack and damage roll against the target, which could cause the chaotic energy to leap again."
+			],
+			"attachedSpells": [
+				"chaos bolt|xge"
+			]
+		},
+		{
+			"name": "Ensorcelled Blackpowder (Rare)",
+			"source": "UltimateAdventurer",
+			"page": 287,
+			"rarity": "rare",
+			"entries": [
+				"This blackpowder has been imbued with magic to make it especially volatile. When you cast the {@spell chaos bolt|XGE} spell, you can choose to allow the spell to consume this spell catalyst. When you do, the chaotic energy automatically leaps twice to different targets, regardless of the results of the d8s. For each leap, you make a new attack and damage roll against the target, which could cause the chaotic energy to leap again."
+			],
+			"attachedSpells": [
+				"chaos bolt|xge"
+			]
+		},
+		{
+			"name": "Ensorcelled Blackpowder (Very Rare)",
+			"source": "UltimateAdventurer",
+			"page": 287,
+			"rarity": "very rare",
+			"entries": [
+				"This blackpowder has been imbued with magic to make it especially volatile. When you cast the {@spell chaos bolt|XGE} spell, you can choose to allow the spell to consume this spell catalyst. When you do, the chaotic energy automatically leaps three times to different targets, regardless of the results of the d8s. For each leap, you make a new attack and damage roll against the target, which could cause the chaotic energy to leap again."
+			],
+			"attachedSpells": [
+				"chaos bolt|xge"
+			]
+		},
+		{
 			"name": "Gem of Introspection",
 			"source": "UltimateAdventurer",
 			"page": 287,
@@ -37657,6 +38017,90 @@
 			]
 		},
 		{
+			"name": "Headband of the Sifu's Favor",
+			"source": "UltimateAdventurer",
+			"page": 289,
+			"rarity": "varies",
+			"wondrous": true,
+			"entries": [
+				"In dojos around the multiverse, martial arts sifus have been known to grant these headbands to their most promising students. Each headband bears the emblem and colors of the dojo to which it belongs.",
+				"Your unarmed strikes count as magical for the purposes of overcoming resistance and immunity to nonmagical attacks and damage. You have a bonus to the attack and damage rolls of your unarmed strikes. The bonus is determined by the wondrous item's rarity.",
+				{
+					"type": "table",
+					"colLabels": [
+						"Rarity",
+						"Bonus"
+					],
+					"colStyles": [
+						"col-4 text-left",
+						"col-8 text-left"
+					],
+					"rows": [
+						[
+							"{@item Headband of the Sifu's Favor (Uncommon)|UltimateAdventurer|Uncommon}",
+							"+0"
+						],
+						[
+							"{@item Headband of the Sifu's Favor (Rare)|UltimateAdventurer|Rare}",
+							"+1"
+						],
+						[
+							"{@item Headband of the Sifu's Favor (Very Rare)|UltimateAdventurer|Very Rare}",
+							"+2"
+						],
+						[
+							"{@item Headband of the Sifu's Favor (Legendary)|UltimateAdventurer|Legendary}",
+							"+3"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Headband of the Sifu's Favor (Uncommon)",
+			"source": "UltimateAdventurer",
+			"page": 289,
+			"rarity": "uncommon",
+			"wondrous": true,
+			"entries": [
+				"In dojos around the multiverse, martial arts sifus have been known to grant these headbands to their most promising students. Each headband bears the emblem and colors of the dojo to which it belongs.",
+				"Your unarmed strikes count as magical for the purposes of overcoming resistance and immunity to nonmagical attacks and damage. You have a +0 bonus to the attack and damage rolls of your unarmed strikes."
+			]
+		},
+		{
+			"name": "Headband of the Sifu's Favor (Rare)",
+			"source": "UltimateAdventurer",
+			"page": 289,
+			"rarity": "rare",
+			"wondrous": true,
+			"entries": [
+				"In dojos around the multiverse, martial arts sifus have been known to grant these headbands to their most promising students. Each headband bears the emblem and colors of the dojo to which it belongs.",
+				"Your unarmed strikes count as magical for the purposes of overcoming resistance and immunity to nonmagical attacks and damage. You have a +1 bonus to the attack and damage rolls of your unarmed strikes."
+			]
+		},
+		{
+			"name": "Headband of the Sifu's Favor (Very Rare)",
+			"source": "UltimateAdventurer",
+			"page": 289,
+			"rarity": "very rare",
+			"wondrous": true,
+			"entries": [
+				"In dojos around the multiverse, martial arts sifus have been known to grant these headbands to their most promising students. Each headband bears the emblem and colors of the dojo to which it belongs.",
+				"Your unarmed strikes count as magical for the purposes of overcoming resistance and immunity to nonmagical attacks and damage. You have a +2 bonus to the attack and damage rolls of your unarmed strikes."
+			]
+		},
+		{
+			"name": "Headband of the Sifu's Favor (Legendary)",
+			"source": "UltimateAdventurer",
+			"page": 289,
+			"rarity": "legendary",
+			"wondrous": true,
+			"entries": [
+				"In dojos around the multiverse, martial arts sifus have been known to grant these headbands to their most promising students. Each headband bears the emblem and colors of the dojo to which it belongs.",
+				"Your unarmed strikes count as magical for the purposes of overcoming resistance and immunity to nonmagical attacks and damage. You have a +3 bonus to the attack and damage rolls of your unarmed strikes."
+			]
+		},
+		{
 			"name": "Helm of Exsanguination",
 			"source": "UltimateAdventurer",
 			"page": 289,
@@ -37679,6 +38123,23 @@
 						"When you reduce your hit point maximum this way, your hit point maximum can't be restored to its normal value or increased until you finish a {@quickref resting||2|0|long rest}{@sup {@variantrule Long Rest|XPHB|'24}}, at which point it is restored to your normal hit point maximum."
 					]
 				}
+			]
+		},
+		{
+			"name": "High Noon Straightshooter",
+			"source": "UltimateAdventurer",
+			"page": 289,
+			"baseItem": "six shooter|UltimateAdventurer",
+			"type": "R",
+			"rarity": "legendary",
+			"reqAttune": true,
+			"weaponCategory": "martial",
+			"dmg1": "1d8",
+			"dmgType": "P",
+			"bonusWeapon": "+3",
+			"entries": [
+				"You have a +3 bonus to attack and damage rolls made with this magic weapon.",
+				"While you are attuned to this weapon and not in combat, you can use the command phrase (often something like, \"I'm calling you out\") and choose one enemy creature who can see and hear you. You and the chosen creature roll initiative for special round of combat, during which only the two of you get a turn. During your turn on this special round of combat, you have advantage on all attack rolls with this weapon against that creature. After this special round of combat, other creatures can join the combat as normal. You can't use this property again until 1 week has passed."
 			]
 		},
 		{
@@ -37998,6 +38459,71 @@
 			"wondrous": true,
 			"entries": [
 				"The costume is a set of plain black clothing. As an action while you wear the costume, you can change its style, material, coloring, cut, and length in any way you choose, though this in no way affects the clothing's statistics."
+			]
+		},
+		{
+			"name": "Phoenix Down Feather",
+			"source": "UltimateAdventurer",
+			"page": 295,
+			"rarity": "varies",
+			"wondrous": true,
+			"entries": [
+				"This phoenix feather counts as a diamond worth an amount of gold determined by its rarity for the purposes of the {@spell revivify}, {@spell raise dead}, and {@spell resurrection} spells. When you use this magic item as part of the material component to cast a spell, roll a {@dice d20}. On a result other than 1, the feather isn't consumed by the spell.",
+				{
+					"type": "table",
+					"colLabels": [
+						"Rarity",
+						"Value"
+					],
+					"colStyles": [
+						"col-4 text-left",
+						"col-8 text-left"
+					],
+					"rows": [
+						[
+							"{@item Phoenix Down Feather (Uncommon)|UltimateAdventurer|Uncommon}",
+							"300 GP"
+						],
+						[
+							"{@item Phoenix Down Feather (Rare)|UltimateAdventurer|Rare}",
+							"500 GP"
+						],
+						[
+							"{@item Phoenix Down Feather (Very Rare)|UltimateAdventurer|Very Rare}",
+							"1,000 GP"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Phoenix Down Feather (Uncommon)",
+			"source": "UltimateAdventurer",
+			"page": 295,
+			"rarity": "varies",
+			"wondrous": true,
+			"entries": [
+				"This phoenix feather counts as a diamond worth an amount of gold for the purposes of the {@spell revivify} spell. When you use this magic item as part of the material component to cast a spell, roll a {@dice d20}. On a result other than 1, the feather isn't consumed by the spell."
+			]
+		},
+		{
+			"name": "Phoenix Down Feather (Rare)",
+			"source": "UltimateAdventurer",
+			"page": 295,
+			"rarity": "varies",
+			"wondrous": true,
+			"entries": [
+				"This phoenix feather counts as a diamond worth an amount of gold for the purposes of the {@spell revivify} and {@spell raise dead} spells. When you use this magic item as part of the material component to cast a spell, roll a {@dice d20}. On a result other than 1, the feather isn't consumed by the spell."
+			]
+		},
+		{
+			"name": "Phoenix Down Feather (Very Rare)",
+			"source": "UltimateAdventurer",
+			"page": 295,
+			"rarity": "varies",
+			"wondrous": true,
+			"entries": [
+				"This phoenix feather counts as a diamond worth an amount of gold  for the purposes of the {@spell revivify}, {@spell raise dead}, and {@spell resurrection} spells. When you use this magic item as part of the material component to cast a spell, roll a {@dice d20}. On a result other than 1, the feather isn't consumed by the spell."
 			]
 		},
 		{
@@ -39027,6 +39553,21 @@
 			]
 		},
 		{
+			"name": "Firebelcher",
+			"source": "UltimateAdventurer",
+			"page": 287,
+			"baseItem": "boomstick|UltimateAdventurer",
+			"type": "R",
+			"rarity": "very rare",
+			"weaponCategory": "martial",
+			"dmg1": "2d6",
+			"dmgType": "F",
+			"bonusWeapon": "+2",
+			"entries": [
+				"You have a +2 bonus to attack and damage rolls made with this magic weapon. The damage done by this weapon is fire, rather than piercing. When you attack a creature with this magic weapon and roll a 20 on the {@dice d20}, the target and each creature within 5 feet of it must succeed on a DC 16 Dexterity saving throw or take {@damage 2d6} fire damage."
+			]
+		},
+		{
 			"name": "Flumph Tentacle",
 			"source": "UltimateAdventurer",
 			"page": 287,
@@ -39352,7 +39893,7 @@
 			"type": "SpellCata",
 			"rarity": "rare",
 			"entries": [
-				"A leafy branch from a tree that has provided shade for at least 100 years. When you cast the {@spell pass without trace} spell, you can choose to allow the spell to consume this spell catalyst. When you do, the spell lasts for its full duration without requiring you to main- tain {@status concentration}."
+				"A leafy branch from a tree that has provided shade for at least 100 years. When you cast the {@spell pass without trace} spell, you can choose to allow the spell to consume this spell catalyst. When you do, the spell lasts for its full duration without requiring you to maintain {@status concentration}."
 			],
 			"attachedSpells": [
 				"pass without trace"
@@ -39787,6 +40328,24 @@
 				],
 				"attachedSpells": [
 					"wish"
+				]
+			}
+		},
+		{
+			"name": "Firearm of Stopping",
+			"type": "GV|DMG",
+			"requires": [
+				{
+					"customProperties": "Blackpowder|UltimateAdventurer"
+				}
+			],
+			"inherits": {
+				"nameSuffix": " Firearm of Stopping",
+				"source": "UltimateAdventurer",
+				"page": 287,
+				"rarity": "rare",
+				"entries": [
+					"When you make a ranged weapon attack with this weapon, its thunderous boom is audible to double its normal range. If the attack hits, the target is pushed up to 10 feet away from you."
 				]
 			}
 		}
