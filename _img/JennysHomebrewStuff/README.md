@@ -4,6 +4,7 @@ Some files in this directory correspond to a homebrew which has been overhauled.
 - Arcadia Issue 2 Images
 - Arcadia Issue 4 Images
 - Arcadia Issue 5 Images
+- Arcadia Issue 6 Images
 
 ### Root Files
 - Coverpage.png
