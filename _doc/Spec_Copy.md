@@ -585,5 +585,3 @@ Multiply a creature's XP value by a scalar.
     "floor": true // if the resulting value should be floor'd (useful for division)
 }
 ```
-
-Hello world
