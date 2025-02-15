@@ -12,18 +12,17 @@
         "convertedBy": [
           "Lord Woolfy"
         ],
-        "version": "1.1"
+        "version": "1.2"
       }
     ],
     "optionalFeatureTypes": {
       "PaUs": "Patch Ups"
     },
     "dateAdded": 1737264644,
-    "dateLastModified": 1738667636,
+    "dateLastModified": 1739578459,
     "status": "ready",
     "edition": "classic"
   },
-  
   "race": [
       {
         "name": "Eventide",
@@ -3337,17 +3336,6 @@
       }
     }
   ],
-
-
-
-
-
-
-
-
-
-
-
   "subclass" : [
     {
       "name": "Path of the Inferno",
@@ -5918,46 +5906,80 @@
       "foundryImg": "icons/skills/targeting/crosshair-mark-rough-pink.webp"
     }
   ],
-  "classFeature": [
-    {
-      "name": "Spell Slayer",
-      "source": "WoBrCa",
-      "className": "Wizard",
-      "classSource": "PHB",
-      "level": 1,
-      "isClassFeatureVariant": true,
-      "entries": [
-        "{@i If DM allows it}",
-        "Instead of needing a scroll or other written form to add a spell into your spellbook, you may now gain inspiration when you slay a new creature. Whenever you slay a creature, you haven't fought before, of a CR equal to or higher than half your level (rounded up), you may collect materials from that creature. The materials collected should be worth around 50gp for each level of the spell, which may require you to slay multiple of the same creature.",
-        "After having collected the materials, you must spend 2 hours per spell level, to transform it into ink to copy a new spell into your spellbook. The DM decides what spell gets added, in a manner that seems thematically appropiate for that creature."
-      ],
-      "foundryImg": "icons/sundries/books/book-mimic.webp"
-    },
-    {
-      "name": "Spell Slayer",
-      "source": "WoBrCa",
-      "className": "Wizard",
-      "classSource": "XPHB",
-      "level": 1,
-      "isClassFeatureVariant": true,
-      "entries": [
-        "{@i If DM allows it}",
-        "Instead of needing a scroll or other written form to add a spell into your spellbook, you may now gain inspiration when you slay a new creature. Whenever you slay a creature, you haven't fought before, of a CR equal to or higher than half your level (rounded up), you may collect materials from that creature. The materials collected should be worth around 50gp for each level of the spell, which may require you to slay multiple of the same creature.",
-        "After having collected the materials, you must spend 2 hours per spell level, to transform it into ink to copy a new spell into your spellbook. The DM decides what spell gets added, in a manner that seems thematically appropiate for that creature."
-      ],
-      "foundryImg": "icons/sundries/books/book-mimic.webp"
-    }
-  ],
-
-
-
-
-
-
-
-
-
   "spell": [
+    {
+      "name": "Acid Rain",
+      "source": "WoBrCa",
+      "level": 5,
+      "school": "C",
+      "time": [
+        {
+          "number": 1,
+          "unit": "action"
+        }
+      ],
+      "range": {
+        "type": "cylinder",
+        "distance": {
+          "type": "feet",
+          "amount": 20
+        }
+      },
+      "components": {
+        "v": true,
+        "s": true
+      },
+      "duration": [
+        {
+          "type": "timed",
+          "duration": {
+            "type": "minute",
+            "amount": 1
+          },
+          "concentration": true
+        }
+      ],
+      "entries" : [
+        "You summon a 20-foot radius 5-foot thick cloud 90 feet above the ground. Any creature that enters the area below it for the first time, or starts its turn there must succeed a Constitution saving throw or take {@damage 5d8} Acid damage, as acid rains down on them. Half damage on a success.",
+        "In addition to that, any creature underneath the cloud has disadvantage on Wisdom (Perception) checks that rely on sight."
+      ],
+      "entriesHigherLevel": [
+        {
+          "type": "entries",
+          "name": "Using a Higher-Level Spell Slot",
+          "entries": [
+            "The extra damage increases by {@scaledamage 5d8|2-9|1d8} for each level after 5th."
+          ]
+        }
+      ],
+      "damageInflict": [
+        "acid"
+      ],
+      "savingThrow": [
+        "constitution"
+      ],
+      "classes": {
+        "fromClassList": [
+          {
+            "name": "Bard",
+            "source": "XPHB"
+          },
+          {
+            "name": "Cleric",
+            "source": "XPHB"
+          },
+          {
+            "name": "Druid",
+            "source": "XPHB"
+          },
+          {
+            "name": "Sorcerer",
+            "source": "XPHB"
+          }
+        ]
+      },
+      "foundryImg": "icons/magic/acid/dissolve-pool-bubbles.webp"
+    },
     {
       "name": "Ash Fall",
       "source": "WoBrCa",
@@ -6012,7 +6034,8 @@
           "baseName": "Genasi",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/magic/earth/explosion-lava-stone-red.webp"
     },
     {
       "name": "Boil Fluids",
@@ -6091,7 +6114,785 @@
           "baseName": "Genasi",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/magic/water/orb-water-bubbles-blue.webp"
+    },
+    {
+      "name": "Celestial Telegraphing",
+      "source": "WoBrCa",
+      "level": 3,
+      "school": "D",
+      "time": [
+        {
+          "number": 1,
+          "unit": "bonus"
+        }
+      ],
+      "range": {
+        "type": "point",
+        "distance": {
+          "type": "unlimited"
+        }
+      },
+      "components": {
+        "v": true,
+        "s": true,
+        "m": "A tin wire"
+      },
+      "duration": [
+        {
+          "type": "instant"
+        }
+      ],
+      "entries": [
+        "You utter five emotion filled words that you can send to up to 5 creatures with which you are familiar. These words must consist of a location (a location name counts as one word) and the reason for the emotion, such as danger, pain, or freedom. The final three words may be used for whatever you please.",
+        "Any creature with an intelligence score of 1 or higher can understand the meaning of the message.",
+        "You can send the message across any distance and even to other planes of existence, but if the target is on a different plane than you, there is a 5 percent chance that the message doesn't arrive."
+      ],
+      "classes": {
+        "fromClassList": [
+          {
+            "name": "Bard",
+            "source": "XPHB"
+          },
+          {
+            "name": "Cleric",
+            "source": "XPHB"
+          },
+          {
+            "name": "Wizard",
+            "source": "XPHB"
+          }
+        ],
+        "fromSubclass": [
+          {
+            "class": {
+              "name": "Bard",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "College of Lore",
+              "shortName": "Lore",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Cleric",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Peace Domain",
+              "shortName": "Peace",
+              "source": "TCE"
+            }
+          },
+          {
+            "class": {
+              "name": "Fighter",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Eldritch Knight",
+              "shortName": "Eldritch Knight",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Rogue",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Arcane Trickster",
+              "shortName": "Arcane Trickster",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Divine Soul",
+              "shortName": "Divine Soul",
+              "source": "XGE"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Aberrant Sorcery",
+              "shortName": "Aberrant",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Wizard",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Diviner",
+              "shortName": "Diviner",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Cleric",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Peace Domain",
+              "shortName": "Peace",
+              "source": "TCE"
+            }
+          },
+          {
+            "class": {
+              "name": "Fighter",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Eldritch Knight",
+              "shortName": "Eldritch Knight",
+              "source": "PHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Rogue",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Arcane Trickster",
+              "shortName": "Arcane Trickster",
+              "source": "PHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Divine Soul",
+              "shortName": "Divine Soul",
+              "source": "XGE"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Aberrant Mind",
+              "shortName": "Aberrant Mind",
+              "source": "TCE"
+            }
+          },
+          {
+            "class": {
+              "name": "Warlock",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "The Great Old One",
+              "shortName": "Great Old One",
+              "source": "PHB"
+            }
+          }
+        ]
+      },
+      "foundryImg": "icons/magic/symbols/rune-sigil-horned-blue.webp"
+    },
+    {
+      "name": "Conveying Earth",
+      "source": "WoBrCa",
+      "level": 3,
+      "school": "V",
+      "time": [
+        {
+          "number": 1,
+          "unit": "action"
+        }
+      ],
+      "range": {
+        "type": "point",
+        "distance": {
+          "type": "unlimited"
+        }
+      },
+      "components": {
+        "v": true,
+        "s": true,
+        "m": "Natural Earth"
+      },
+      "duration": [
+        {
+          "type": "instant"
+        }
+      ],
+      "entries": [
+        "You touch natural earth that is at least 1-cubic foot in volume and turn it into a window into another part of the universe. As you stare into the earth, utter the name or description of a creature with which you are familiar. This will create a connection with the closest natural earth to that creature. The creature, provided it has at least an intelligence score of 1 and is within 120-feet of the piece of natural earth, will hear your voice. During the 1 minute duration you and the creature can converse like normal.",
+        "You can create a window between two spaces across any distance and even to other planes of existence, but if the target is on a different plane than you, there is a 5 percent chance that the connection can't be established."
+      ],
+      "classes": {
+        "fromClassList": [
+          {
+            "name": "Bard",
+            "source": "XPHB"
+          },
+          {
+            "name": "Cleric",
+            "source": "XPHB"
+          },
+          {
+            "name": "Wizard",
+            "source": "XPHB"
+          }
+        ],
+        "fromSubclass": [
+          {
+            "class": {
+              "name": "Bard",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "College of Lore",
+              "shortName": "Lore",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Cleric",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Peace Domain",
+              "shortName": "Peace",
+              "source": "TCE"
+            }
+          },
+          {
+            "class": {
+              "name": "Fighter",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Eldritch Knight",
+              "shortName": "Eldritch Knight",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Rogue",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Arcane Trickster",
+              "shortName": "Arcane Trickster",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Divine Soul",
+              "shortName": "Divine Soul",
+              "source": "XGE"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Aberrant Sorcery",
+              "shortName": "Aberrant",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Wizard",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Diviner",
+              "shortName": "Diviner",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Cleric",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Peace Domain",
+              "shortName": "Peace",
+              "source": "TCE"
+            }
+          },
+          {
+            "class": {
+              "name": "Fighter",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Eldritch Knight",
+              "shortName": "Eldritch Knight",
+              "source": "PHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Rogue",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Arcane Trickster",
+              "shortName": "Arcane Trickster",
+              "source": "PHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Divine Soul",
+              "shortName": "Divine Soul",
+              "source": "XGE"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Aberrant Mind",
+              "shortName": "Aberrant Mind",
+              "source": "TCE"
+            }
+          },
+          {
+            "class": {
+              "name": "Warlock",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "The Great Old One",
+              "shortName": "Great Old One",
+              "source": "PHB"
+            }
+          }
+        ]
+      },
+      "foundryImg": "icons/magic/perception/eye-slit-red-orange.webp"
+    },
+    {
+      "name": "Conveying Fire",
+      "source": "WoBrCa",
+      "level": 3,
+      "school": "V",
+      "time": [
+        {
+          "number": 1,
+          "unit": "action"
+        }
+      ],
+      "range": {
+        "type": "point",
+        "distance": {
+          "type": "unlimited"
+        }
+      },
+      "components": {
+        "v": true,
+        "s": true,
+        "m": "Non-Magical Fire"
+      },
+      "duration": [
+        {
+          "type": "instant"
+        }
+      ],
+      "entries": [
+        "You touch non-magical fire that is at least 1-cubic foot in volume and turn it into a window into another part of the universe. As you stare into the fire, utter the name or description of a creature with which you are familiar. This will create a connection with the closest non-magical fire to that creature. The creature, provided it has at least an intelligence score of 1 and is within 120-feet of the fire, will hear your voice. During the 1 minute duration you and the creature can converse like normal.",
+        "You can create a window between two spaces across any distance and even to other planes of existence, but if the target is on a different plane than you, there is a 5 percent chance that the connection can't be established."
+      ],
+      "classes": {
+        "fromClassList": [
+          {
+            "name": "Bard",
+            "source": "XPHB"
+          },
+          {
+            "name": "Cleric",
+            "source": "XPHB"
+          },
+          {
+            "name": "Wizard",
+            "source": "XPHB"
+          }
+        ],
+        "fromSubclass": [
+          {
+            "class": {
+              "name": "Bard",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "College of Lore",
+              "shortName": "Lore",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Cleric",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Peace Domain",
+              "shortName": "Peace",
+              "source": "TCE"
+            }
+          },
+          {
+            "class": {
+              "name": "Fighter",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Eldritch Knight",
+              "shortName": "Eldritch Knight",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Rogue",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Arcane Trickster",
+              "shortName": "Arcane Trickster",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Divine Soul",
+              "shortName": "Divine Soul",
+              "source": "XGE"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Aberrant Sorcery",
+              "shortName": "Aberrant",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Wizard",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Diviner",
+              "shortName": "Diviner",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Cleric",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Peace Domain",
+              "shortName": "Peace",
+              "source": "TCE"
+            }
+          },
+          {
+            "class": {
+              "name": "Fighter",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Eldritch Knight",
+              "shortName": "Eldritch Knight",
+              "source": "PHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Rogue",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Arcane Trickster",
+              "shortName": "Arcane Trickster",
+              "source": "PHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Divine Soul",
+              "shortName": "Divine Soul",
+              "source": "XGE"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Aberrant Mind",
+              "shortName": "Aberrant Mind",
+              "source": "TCE"
+            }
+          },
+          {
+            "class": {
+              "name": "Warlock",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "The Great Old One",
+              "shortName": "Great Old One",
+              "source": "PHB"
+            }
+          }
+        ]
+      },
+      "foundryImg": "icons/magic/perception/eye-ringed-glow-angry-red.webp"
+    },
+    {
+      "name": "Conveying Water",
+      "source": "WoBrCa",
+      "level": 3,
+      "school": "V",
+      "time": [
+        {
+          "number": 1,
+          "unit": "action"
+        }
+      ],
+      "range": {
+        "type": "point",
+        "distance": {
+          "type": "unlimited"
+        }
+      },
+      "components": {
+        "v": true,
+        "s": true,
+        "m": "Natural Water"
+      },
+      "duration": [
+        {
+          "type": "instant"
+        }
+      ],
+      "entries": [
+        "You touch natural water that is at least 1-cubic foot in volume and turn it into a window into another part of the universe. As you stare into the water, utter the name or description of a creature with which you are familiar. This will create a connection with the closest natural water source to that creature. The creature, provided it has at least an intelligence score of 1 and is within 120-feet of the source of natural water, will hear your voice. During the 1 minute duration you and the creature can converse like normal.",
+        "You can create a window between two spaces across any distance and even to other planes of existence, but if the target is on a different plane than you, there is a 5 percent chance that the connection can't be established."
+      ],
+      "classes": {
+        "fromClassList": [
+          {
+            "name": "Bard",
+            "source": "XPHB"
+          },
+          {
+            "name": "Cleric",
+            "source": "XPHB"
+          },
+          {
+            "name": "Wizard",
+            "source": "XPHB"
+          }
+        ],
+        "fromSubclass": [
+          {
+            "class": {
+              "name": "Bard",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "College of Lore",
+              "shortName": "Lore",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Cleric",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Peace Domain",
+              "shortName": "Peace",
+              "source": "TCE"
+            }
+          },
+          {
+            "class": {
+              "name": "Fighter",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Eldritch Knight",
+              "shortName": "Eldritch Knight",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Rogue",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Arcane Trickster",
+              "shortName": "Arcane Trickster",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Divine Soul",
+              "shortName": "Divine Soul",
+              "source": "XGE"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Aberrant Sorcery",
+              "shortName": "Aberrant",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Wizard",
+              "source": "XPHB"
+            },
+            "subclass": {
+              "name": "Diviner",
+              "shortName": "Diviner",
+              "source": "XPHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Cleric",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Peace Domain",
+              "shortName": "Peace",
+              "source": "TCE"
+            }
+          },
+          {
+            "class": {
+              "name": "Fighter",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Eldritch Knight",
+              "shortName": "Eldritch Knight",
+              "source": "PHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Rogue",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Arcane Trickster",
+              "shortName": "Arcane Trickster",
+              "source": "PHB"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Divine Soul",
+              "shortName": "Divine Soul",
+              "source": "XGE"
+            }
+          },
+          {
+            "class": {
+              "name": "Sorcerer",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "Aberrant Mind",
+              "shortName": "Aberrant Mind",
+              "source": "TCE"
+            }
+          },
+          {
+            "class": {
+              "name": "Warlock",
+              "source": "PHB"
+            },
+            "subclass": {
+              "name": "The Great Old One",
+              "shortName": "Great Old One",
+              "source": "PHB"
+            }
+          }
+        ]
+      },
+      "foundryImg": "icons/magic/perception/orb-eye-scrying.webp"
     },
     {
       "name": "Dust Barrier",
@@ -6169,7 +6970,8 @@
           "baseName": "Genasi",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/magic/air/fog-gas-smoke-brown.webp"
     },
     {
       "name": "Earth Shaker",
@@ -6251,7 +7053,89 @@
           "baseName": "Kitsune",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/magic/earth/barrier-stone-explosion-debris.webp"
+    },
+    {
+      "name": "Elemental Messenger",
+      "source": "WoBrCa",
+      "level": 3,
+      "school": "C",
+      "time": [
+        {
+          "number": 10,
+          "unit": "minute"
+        }
+      ],
+      "range": {
+        "type": "point",
+        "distance": {
+          "type": "unlimited"
+        }
+      },
+      "components": {
+        "v": true,
+        "s": true,
+        "m": {
+          "text": "A piece of paper and magical ink worth 5+ GP.",
+          "cost": 500,
+          "consume": true
+        }
+      },
+      "duration": [
+        {
+          "type": "timed",
+          "duration": {
+            "type": "hour",
+            "amount": 24
+          }
+        }
+      ],
+      "entries" : [
+        "You summon forth a small elemental, taking a shape of your choice, and hand it a written  message, of 100 words or less. When you do so, utter a name or description of a creature with which you are familiar. The elemental messenger will try to deliver it to the creature. It will take the messenger at least 12 hours to locate the creature and deliver the message. Once the message has been delivered the creature can respond in a like manner immediately, but may choose to delay it. Either way it'll take at least 12 hours for a reply to arrive at the caster. The spell enables a creature with at least an intelligence score of 1 to understand the meaning of your message.",
+        "You can send the message across any distance and even to other planes of existence, but if the target is on a different plane than you, there is a 5 percent chance that the message doesn't arrive."
+      ],
+      "classes": {
+        "fromClassList": [
+          {
+            "name": "Sorcerer",
+            "source": "XPHB"
+          },
+          {
+            "name": "Druid",
+            "source": "XPHB"
+          },
+          {
+            "name": "Artificer",
+            "source": "TCE"
+          },
+          {
+            "name": "Bard",
+            "source": "XPHB"
+          },
+          {
+            "name": "Cleric",
+            "source": "XPHB"
+          },
+          {
+            "name": "Paladin",
+            "source": "XPHB"
+          },
+          {
+            "name": "Ranger",
+            "source": "XPHB"
+          },
+          {
+            "name": "Warlock",
+            "source": "XPHB"
+          },
+          {
+            "name": "Wizard",
+            "source": "XPHB"
+          }
+        ]
+      },
+      "foundryImg": "icons/creatures/magical/spirit-fire-yellow.webp"
     },
     {
       "name": "Ember Spray",
@@ -6325,7 +7209,8 @@
           "baseName": "Genasi",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/magic/earth/explosion-lava-stone-red.webp"
     },
     {
       "name": "False Note",
@@ -6396,7 +7281,8 @@
           "baseName": "Kitsune",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/magic/sonic/bell-alarm-red-purple.webp"
     },    
     {
       "name": "Fear Feed",
@@ -6425,7 +7311,7 @@
         }
       ],
       "entries" : [
-        "You can temporarily feel stronger when a creature becomes sad or {@condition Frightened|XPHB}. When a creature you can see within 30 feet, has been successfully Intimidated or has become {@condition Frightened|XPHB}, you gain {@variantrule Temporary Hit Points} equal to your level or 3, depending on which one is higher."
+        "You can temporarily feel stronger when a creature becomes sad or frightened. When a creature you can see within 30 feet, has been successfully Intimidated, using a Charisma (Intimidation) check or has gained the {@condition Frightened|XPHB} condition, you gain temporary hit points equal to your level or 3, depending on which one is higher."
       ],
       "classes": {
         "fromClassList": [
@@ -6450,7 +7336,72 @@
           "baseName": "Kitsune",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/magic/unholy/strike-body-life-soul-purple.webp"
+    },
+    {
+      "name": "Heal Minor Wounds",
+      "source": "WoBrCa",
+      "level": 2,
+      "school": "T",
+      "time": [
+        {
+          "number": 1,
+          "unit": "action"
+        }
+      ],
+      "range": {
+        "type": "point",
+        "distance": {
+          "type": "touch"
+        }
+      },
+      "components": {
+        "v": true,
+        "s": true,
+        "m": "A piece of cloth and a drop of alcohol"
+      },
+      "duration": [
+        {
+          "type": "instant"
+        }
+      ],
+      "entries" : [
+        "You touch a creature and make minor wounds and scars disappear. The creature regains {@damage 1d4} {@variantrule Hit Points|XPHB}, and up to two of its minor wounds disappear."
+      ],
+      "entriesHigherLevel": [
+        {
+          "type": "entries",
+          "name": "Using a Higher-Level Spell Slot",
+          "entries": [
+            "When you cast this spell using a spell slot of 3rd level or higher, the amount of wounds that can be cured increases by 1 for each spell slot level above 2nd."
+          ]
+        }
+      ],
+      "miscTags":[
+        "HL"
+      ],
+      "classes": {
+        "fromClassList": [
+          {
+            "name": "Bard",
+            "source": "XPHB"
+          },
+          {
+            "name": "Cleric",
+            "source": "XPHB"
+          },
+          {
+            "name": "Druid",
+            "source": "XPHB"
+          },
+          {
+            "name": "Paladin",
+            "source": "XPHB"
+          }
+        ]
+      },
+      "foundryImg": "icons/magic/life/heart-hand-gold-green.webp"
     },
     {
       "name": "Hurl Magma",
@@ -6479,7 +7430,7 @@
         }
       ],
       "entries" : [
-        "You summon forth magma in your hands which you then hurl up to 60 feet. Make a ranged spell attack, on a hit the target takes {@damage 2d6} fire and {@damage 1d6} Bludgeoning damage. As the magma cools and crystallises it will reduce the target’s speed by 5 feet, until they use an action to remove it."
+        "You summon forth magma in your hands which you then hurl up to 60 feet. Make a ranged spell attack, on a hit the target takes {@damage 2d6} Fire and {@damage 1d6} Bludgeoning damage. As the magma cools and crystallises it will reduce the target’s speed by 5 feet, until they use an action to remove it."
       ],
       "entriesHigherLevel": [
         {
@@ -6516,7 +7467,56 @@
           "baseName": "Genasi",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/magic/earth/orb-lava-orange.webp"
+    },
+    {
+      "name": "Locate Location",
+      "source": "WoBrCa",
+      "level": 4,
+      "school": "D",
+      "time": [
+        {
+          "number": 1,
+          "unit": "action"
+        }
+      ],
+      "range": {
+        "type": "point",
+        "distance": {
+          "type": "self"
+        }
+      },
+      "components": {
+        "v": true,
+        "s": true,
+        "m": "A bit of stone dust and vines"
+      },
+      "duration": [
+        {
+          "type": "instant"
+        }
+      ],
+      "meta": {
+        "ritual": true
+      },
+      "entries" : [
+        "Describe a location that is familiar to you, through either tales or because you have been there before. You can know the direction of that location, as long as it is within 50 miles from where you are. If the location looks different from what you had described, it will tell you.",
+        "This spell can locate a specific location, or the nearest one of its kind, like a tavern, a town. If the location is hidden from divination magic, it can’t be located using this spell."
+      ],
+      "classes": {
+        "fromClassList": [
+          {
+            "name": "Cleric",
+            "source": "XPHB"
+          },
+          {
+            "name": "Druid",
+            "source": "XPHB"
+          }
+        ]
+      },
+      "foundryImg": "icons/sundries/scrolls/scroll-yellow-teal.webp"
     },
     {
       "name": "Magma Skin",
@@ -6583,7 +7583,135 @@
           "baseName": "Genasi",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/magic/earth/laval-stone-orange.webp"
+    },
+    {
+      "name": "Mend Flesh and Bones",
+      "source": "WoBrCa",
+      "level": 5,
+      "school": "T",
+      "time": [
+        {
+          "number": 1,
+          "unit": "minute"
+        }
+      ],
+      "range": {
+        "type": "point",
+        "distance": {
+          "type": "touch"
+        }
+      },
+      "components": {
+        "v": true,
+        "s": true,
+        "m": {
+          "text": "Silver Dust worth 100+ GP, which the spell consumes",
+          "cost": 10000,
+          "consume": true
+        }
+      },
+      "duration": [
+        {
+          "type": "instant"
+        }
+      ],
+      "entries" : [
+        "You throw the silver dust in the air and it flows towards the injured creature of your choice within range. One injury that can be healed by this spell is healed for that creature. And it regains {@variantrule Hit Points|XPHB} equal to  {@dice 1d12} + your spellcasting modifiers."
+      ],
+      "entriesHigherLevel": [
+        {
+          "type": "entries",
+          "name": "Using a Higher-Level Spell Slot",
+          "entries": [
+            "You can target an additional creature and/or wound per spell level above 5th."
+          ]
+        }
+      ],
+      "miscTags":[
+        "HL"
+      ],
+      "classes": {
+        "fromClassList": [
+          {
+            "name": "Bard",
+            "source": "XPHB"
+          },
+          {
+            "name": "Cleric",
+            "source": "XPHB"
+          },
+          {
+            "name": "Druid",
+            "source": "XPHB"
+          },
+          {
+            "name": "Paladin",
+            "source": "XPHB"
+          }
+        ]
+      },
+      "foundryImg": "icons/magic/life/heart-hand-gold-green-light.webp"
+    },
+    {
+      "name": "Mind Mend",
+      "source": "WoBrCa",
+      "level": 3,
+      "school": "E",
+      "time": [
+        {
+          "number": 1,
+          "unit": "action"
+        }
+      ],
+      "range": {
+        "type": "point",
+        "distance": {
+          "type": "touch"
+        }
+      },
+      "components": {
+        "v": true,
+        "s": true,
+        "m": {
+          "text": "A small hand drill, and poppy seeds worth 50+ gp, which the spell consumes",
+          "cost": 5000,
+          "consume": true
+        }
+      },
+      "duration": [
+        {
+          "type": "instant"
+        }
+      ],
+      "entries" : [
+        "You touch a willing creature on their forehead while saying soothing words to them. As a consequence they take {@damage 2} points of psychic damage and regain {@dice 2} points of the Sanity score, but never higher than 10. This spell can also instantly cure the {@condition Frightened} condition, a Bout of Madness, and Long Term Madness effect."
+      ],
+      "damageInflict": [
+        "psychic"
+      ],
+      "classes": {
+        "fromClassList": [
+          {
+            "name": "Artificer",
+            "source": "TCE"
+          },
+          {
+            "name": "Cleric",
+            "source": "XPHB"
+          },
+          {
+            "name": "Bard",
+            "source": "XPHB"
+          },
+          {
+            "name": "Paladin",
+            "source": "XPHB"
+          }
+        ]
+      },
+      "foundryImg": "icons/magic/control/hypnosis-mesmerism-pendulum.webp"
     },
     {
       "name": "Minute Shift",
@@ -6645,7 +7773,120 @@
           "baseName": "Kitsune",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/magic/symbols/ring-circle-smoke-blue.webp"
+    },
+    {
+      "name": "Orb of Chaos",
+      "source": "WoBrCa",
+      "level": 9,
+      "school": "C",
+      "time": [
+        {
+          "number": 1,
+          "unit": "action"
+        }
+      ],
+      "range": {
+        "type": "point",
+        "distance": {
+          "type": "mile",
+          "amount": 1
+        }
+      },
+      "components": {
+        "v": true,
+        "s": true
+      },
+      "duration": [
+        {
+          "type": "timed",
+          "duration": {
+            "type": "minute",
+            "amount": 1
+          }
+        }
+      ],
+      "entries" : [
+        "You summon a giant orb in an unoccupied place you can see within 1 mile. When cast and at the start of each of your turns, any creature, except the caster, within 90 feet of the orb, must succeed a Dexterity saving throw or be bathed in a light radiating from the orb. Roll a {@dice 1d8} to see what light a creature is bathed in.",
+        {
+          "type": "table",
+          "caption": "Orb of Chaos",
+          "colStyles": [
+            "col-2 text-center",
+            "col-10"
+          ],
+          "colLabels": [
+            "1d8",
+            "Light Effect"
+          ],
+          "rows" : [
+            [
+              "1",
+              "{@b Red.} A red light that burns anyone and deals {@damage 6d6} Fire damage and puts the target on fire, dealing {@damage 3d6} Fire damage at the start of each of their turns, or only half as much damage on a success. A creature can use an action to douse themselves"
+            ],
+            [
+              "2",
+              "{@b Blue.} A blue light holds a creature stuck in place until the end of your next turn, the creature is {@condition Paralyzed|XPHB}."
+            ],
+            [
+              "3",
+              "{@b Yellow.} A yellow light crackles with energy and deals {@damage 6d6} Radiant damage and the target is {@condition Blinded} until the start of your next turn, or only half as much damage on a success."
+            ],
+            [
+              "4",
+              "{@b green.} A green light melts your skin off and deals {@damage 6d6} Acid damage and an additional {@damage 6d4} acid damage at the start of each of the creature's turns, or only half as much damage on a success. The creature can use an action to remove the acid."
+            ],
+            [
+              "5",
+              "{@b Orange.} An orange light confuses the target, like it is affected by the {@spell Confusion|XPHB} spell, until the end of its next turn."
+            ],
+            [
+              "6",
+              "{@b Purple.} A purple light {@condition Charmed|XPHB|Charms} anyone within it until the end of your next turn. The creature must obey your next one word command."
+            ],
+            [
+              "7",
+              "{@b Black.} A black light takes away your energy and deals {@damage 8d10} Necrotic damage, or half as much on a success."
+            ],
+            [
+              "8",
+              "{@b Multiple.} The creature is affected by two Light effects, roll two d8s. If you roll an 8 or the same number twice, reroll that die."
+            ]
+          ]
+        }
+      ],
+      "damageInflict": [
+        "fire",
+        "radiant",
+        "acid",
+        "necrotic"
+      ],
+      "conditionInflict": [
+        "paralyzed",
+        "blinded",
+        "charmed"
+      ],
+      "savingThrow": [
+        "dexterity"
+      ],
+      "classes": {
+        "fromClassList": [
+          {
+            "name": "Wizard",
+            "source": "XPHB"
+          },
+          {
+            "name": "Cleric",
+            "source": "XPHB"
+          },
+          {
+            "name": "Sorcerer",
+            "source": "XPHB"
+          }
+        ]
+      },
+      "foundryImg": "icons/commodities/gems/pearl-swirl-teal.webp"
     },
     {
       "name": "Spectral Form",
@@ -6706,7 +7947,8 @@
           "baseName": "Kitsune",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/creatures/magical/spirit-undead-ghost-blue.webp"
     },
     {
       "name": "Sticky Hold",
@@ -6776,7 +8018,8 @@
           "baseName": "Genasi",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/creatures/slimes/slime-movement-splashing-yellow.webp"
     },
     {
       "name": "Wave of Protection",
@@ -6831,7 +8074,8 @@
           "baseName": "Kitsune",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/magic/water/wave-water-teal.webp"
     },
     {
       "name": "Wind Burst",
@@ -6902,7 +8146,8 @@
           "baseName": "Kitsune",
           "baseSource": "WoBrCa"
         }
-      ]
+      ],
+      "foundryImg": "icons/magic/air/wind-stream-blue-gray.webp"
     }    
   ],
   "item": [
@@ -6941,7 +8186,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/gun-pistol-flintlock-metal.webp"
     },
     {
       "name": "Flintlock Pistol",
@@ -6971,7 +8217,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/gun-pistol-flintlock.webp"
     },
     {
       "name": "Flintlock Rifle",
@@ -7002,7 +8249,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/rifle-white.webp"
     },
     {
       "name": "Blunderbuss",
@@ -7041,7 +8289,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/gun-worn-steel.webp"
     },
     {
       "name": "Revolver",
@@ -7072,7 +8321,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/gun-wood.webp"
     },
     {
       "name": "Elemental Revolver",
@@ -7109,7 +8359,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/gun-wood.webp"
     },
     {
       "name": "Corroding Revolver",
@@ -7147,7 +8398,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/gun-wood.webp"
     },
     {
       "name": "Freezing Revolver",
@@ -7185,7 +8437,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/gun-wood.webp"
     },
     {
       "name": "Burning Revolver",
@@ -7223,7 +8476,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/gun-wood.webp"
     },
     {
       "name": "Arcing Revolver",
@@ -7261,7 +8515,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/gun-wood.webp"
     },
     {
       "name": "Booming Revolver",
@@ -7299,7 +8554,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/gun-wood.webp"
     },
     {
       "name": "Elemental Rifle",
@@ -7336,7 +8592,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/rifle-white.webp"
     },
     {
       "name": "Corroding Rifle",
@@ -7374,7 +8631,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/rifle-white.webp"
     },
     {
       "name": "Freezing Rifle",
@@ -7412,7 +8670,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/rifle-white.webp"
     },
     {
       "name": "Burning Rifle",
@@ -7450,7 +8709,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/rifle-white.webp"
     },
     {
       "name": "Arcing Rifle",
@@ -7488,7 +8748,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/rifle-white.webp"
     },
     {
       "name": "Booming Rifle",
@@ -7526,7 +8787,8 @@
             "A weapon with the loud property creates the sound of a thunderous boom when used, which can be heard up to 300 feet away."
           ]
         }
-      ]
+      ],
+      "foundryImg": "icons/weapons/guns/rifle-white.webp"
     },
     {
       "name": "Dynamite Stick",
@@ -7538,7 +8800,8 @@
         "An an {@variantrule Action|XPHB}, you can light a Dynamite Stick and throw it at a point up to 60 feet away, where it explodes. Additionally, you can connect it with a fuse you ignite from a safe distance. A black powder fuse will have a burn rate of 10ft/round. A dynamite plunger will ignite it instantly, no matter the distance.",
         "Each creature in a 5-foot-radius Sphere centered on that point must succeed a DC 8 + {@variantrule Proficiency|XPHB|Proficiency Bonus} + Dexterity Modifier (if thrown) or DC 8 + {@variantrule Proficiency|XPHB|Proficiency Bonus} + Intelligence/Wisdom Mod (if ignited with a fuse) Dexterity saving throw, taking {@damage 3d6} Force damage on a failed save or half as much damage on a successful one.",
         "It takes 1 minute to bind two or more Dynamite Sticks together so they explode at the same time. Each stick after the first increases the damage by {@damage 1d6} (to a maximum of {@damage 10d6}) and the effect's radius by 5 feet (to a maximum of 20 feet). It takes 1 minute to rig dynamite with a longer fuse so it explodes after a longer period of time, such as 1 minute or 10 minutes."
-      ]
+      ],
+      "foundryImg": "icons/weapons/thrown/dynamite-simple-brown.webp"
     },
     {
       "name": "Smoke Bomb",
@@ -7549,7 +8812,8 @@
       "entries": [
         "As an action, you can either throw a grenade at a point up to 60 feet away . The bomb explodes at that point, creating a particular effect in a 20-foot-radius sphere.",
         "The area of the sphere] is {@variantrule Heavily Obscured|XPHB} by smoke for 1 minute. A strong wind (such as the {@spell Gust of Wind|XPHB} spell) disperses the smoke."
-      ]
+      ],
+      "foundryImg": "icons/weapons/thrown/bomb-fuse-pink.webp"
     },
     {
       "name": "Black Powder (Pouch)",
@@ -7560,7 +8824,8 @@
       "entries": [
         "This amount of black powder can be spread out in a 10 feet long 1 inch line. ",
         "Once you have 12gp worth of black powder it can be used as an damaging explosive, dealing 1d6 fire damage to the 5ft square it is detonated in, provided it is in a closed container. At 24gp, it will deal {@damage 2d6} fire damage at a 5 foot radius emanation. At 36gp, it will deal {@damage 3d6} fire damage at a 10 foot radius emanation. A creature caught in the blast must succeed a DC 8 + {@variantrule Proficiency|XPHB|Proficiency Bonus} + Dexterity Modifier (if thrown) or DC 8 + {@variantrule Proficiency|XPHB|Proficiency Bonus} + Intelligence/Wisdom Mod (if ignited with a fuse) Dexterity saving throw. On a success they take half damage. The black powder container can be thrown up to 60 feet."
-      ]
+      ],
+      "foundryImg": "icons/containers/bags/coinpouch-simple-leather-brown.webp"
     },
     {
       "name": "Water Whip",
@@ -7568,7 +8833,7 @@
       "type": "M|XPHB",
       "rarity": "none",
       "weight": 3,
-      "value": 0,
+      "value": 1,
       "weaponCategory": "martial",
       "property": [
         "F|XPHB",
@@ -7581,7 +8846,8 @@
       "dmgType": "S",
       "entries": [
         "A weapon summoned by a {@class Ranger|XPHB|Wave Guard Ranger|Wave|WoBrCa}."
-      ]
+      ],
+      "foundryImg": "icons/magic/water/tendrils-ice-thorns.webp"
     }
   ],
   "feat": [
@@ -7609,6 +8875,348 @@
       ],
       "entries": [
           "Due to the magic stored inside your tails you may regain some spent spell slots. Once per {@variantrule Long Rest|XPHB}, you may spend 1 minute to regain spell slots with a combined level that equal to or less than half your tail amount (rounded up). "
+      ],
+      "foundryImg": "icons/commodities/materials/hair-tuft-blue.webp"
+    }
+  ],
+  "variantrule": [
+    {
+      "name": "Sanity",
+      "source": "WoBrCa",
+      "ruleType": "O",
+      "entries": [
+        "The sanity score represents how well your character can deal with situations that cannot be properly explained by the sane mind. Getting exposed to such a situation can both make you more accustomed to it or drive you insane.",
+        "The DM may ask you to use your Sanity ability for {@variantrule Ability Check|XPHB|Skill Checks}, instead of Intelligence, Wisdom, or Charisma, for these types of checks:",
+        {
+          "type": "list",
+          "items": [
+            "Checks to decipher alien texts, remembering stuff about unfathomable creatures that were mentioned between the lines of books you read, or making an accurate assessment about the creature's nature.",
+            "Perceiving a thing about, trying to befriend an unfathomable creature, or trying to determine such a creature's intentions.",
+            "Acting normally when facing an unfathomable creature or when already driven insane."
+          ]
+        },
+        "The Sanity {@variantrule Saving Throw|XPHB} will be rolled once a character tries to resist an effect that may potentially drive them mad. Such rolls may be asked in these situations:",
+        {
+          "type": "list",
+          "items": [
+            "When meeting an unfathomable creature for the first time.",
+            "When trying to resist an effect that directly affects your mental stability.",
+            "Passing through a realm created by an unfathomable creature or a humanoid under its control."
+          ]
+        },
+        "Whenever you fail a Sanity saving throw by five or more, you'll be affected by a temporary bout of madness (listed later in this section.)",
+        {
+          "type": "entries",
+          "name": "Increasing and Decreasing Sanity",
+          "entries": [
+            "A person dealing with the Occult will not remain as sane as the average individual forever. Every now and again their sanity score will change, which will impact how they behave themselves.",
+            "The Sanity Score of a character will only increase in the following ways:",
+            {
+              "type": "list",
+              "items": [
+                "Dealing with an unfathomable creature or getting through its realm without losing any Sanity. Usually you'll be awarded 2 Sanity for this.",
+                "Using a spell to restore sanity, such as {@spell Mind Mend|WoBrCa}.",
+                "Spending a week per Sanity recovering, preventing you from doing any other downtime activities. Your Sanity can never increase above 10 through this method."
+              ]
+            },
+            "Your Sanity is never able to exceed 20, unless another source of Sanity specifically states it bypasses this rule.",
+            "The Sanity Score of a character may decrease due to the following reasons:",
+            {
+              "type": "list",
+              "items": [
+                "Failing a Sanity {@variantrule Saving Throw|XPHB}. Usually this only reduces your Sanity score by 1.",
+                "Failing a Sanity {@variantrule Ability Check|XPHB} by five or more, which will only reduce your Sanity score by 1.",
+                "Using an Occult item, which will award you power in return for a bit of your sanity."
+              ]
+            },
+            "When your Sanity score is reduced to 0, your character is mechanically dead. They may instantly die of a heart attack or be driven so insane that they are unplayable. Reviving the character that died of a heart attack follows the normal rules, and will leave them with 1 Sanity when they come back. The other one can be brought back using a sanity restoring spell, such as mind mend."
+          ]
+        },
+        {
+          "type": "entries",
+          "name": "Tiers of Sanity",
+          "entries": [
+            "Your Sanity score doesn't just apply a bonus or penalty to saving throws, it will also have some other effects on you, as shown in the table below.",
+            {
+              "type": "statblock",
+              "tag": "table",
+              "name": "Tiers of Sanity",
+              "source": "WoBrCa",
+              "style": "inset"
+            }
+          ]
+        },
+        {
+          "type": "entries",
+          "name": "Bout of Madness",
+          "entries": [
+            "Whenever you fail a Sanity saving throw badly, you may temporarily go insane. When this happens, roll on the following table, to apply a form of insanity your character will adhere to for {@dice 1d10} minutes. Another creature can attempt to snap you out of your madness early, by using their action by making a Wisdom (Medicine) check (DC 15). On a success the creature is no longer affected by the Bout of Madness. On a failure that creature cannot attempt it again.",
+            {
+              "type": "statblock",
+              "tag": "table",
+              "name": "Bout of Madness",
+              "source": "WoBrCa",
+              "style": "inset"
+            }
+          ]
+        },
+        {
+          "type": "entries",
+          "name": "Long Term and Indefinite Madness",
+          "entries": [
+            "Whenever you become too insane you might need more than a Bout of Madness. Instead you'd get a Long Term or Indefinite Madness effect. A Long Term Madness effect is supposed to last between a day or a few weeks, while Indefinite Madness may be permanent, such as getting a new Phobia. There are no immediate cures for Long Term and Indefinite Madness.",
+            "In the table below you can see examples of Long Term Madness effects. You can roll a {@dice 1d100} to randomly decide which should apply.",
+            {
+              "type": "statblock",
+              "tag": "table",
+              "name": "Long Term Madness",
+              "source": "WoBrCa",
+              "style": "inset"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Injuries",
+      "source": "WoBrCa",
+      "ruleType": "O",
+      "entries": [
+        "Whenever you are reduced to 0 hit points or take damage equal to at least half your {@variantrule Hit Points|XPHB|Hit Point} Maximum from a single effect, you have a chance of obtaining an injury. Make a Constitution or Intelligence (if psychic damage) {@variantrule Saving Throw|XPHB} against a DC equal to 10 + half your level (round down). On a failure roll on the injury table from the {@variantrule Damage Types|XPHB|Damage Type} that dealt the most damage, to determine your injury.",
+        {
+          "type": "entries",
+          "name": "Injury Tables",
+          "entries": [
+            {
+              "type": "statblock",
+              "tag": "table",
+              "name": "Acid, Cold, Fire, Lightning, or Radiant Injury",
+              "source": "WoBrCa",
+              "style": "inset"
+            },
+            {
+              "type": "statblock",
+              "tag": "table",
+              "name": "Bludgeoning, Force, or Thunder Injury",
+              "source": "WoBrCa",
+              "style": "inset"
+            },
+            {
+              "type": "statblock",
+              "tag": "table",
+              "name": "Necrotic Injury",
+              "source": "WoBrCa",
+              "style": "inset"
+            },
+            {
+              "type": "statblock",
+              "tag": "table",
+              "name": "Piercing Injury",
+              "source": "WoBrCa",
+              "style": "inset"
+            },
+            {
+              "type": "statblock",
+              "tag": "table",
+              "name": "Poison Injury",
+              "source": "WoBrCa",
+              "style": "inset"
+            },
+            {
+              "type": "statblock",
+              "tag": "table",
+              "name": "Psychic Injury",
+              "source": "WoBrCa",
+              "style": "inset"
+            },
+            {
+              "type": "statblock",
+              "tag": "table",
+              "name": "Slashing Injury",
+              "source": "WoBrCa",
+              "style": "inset"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fate Dice",
+      "source": "WoBrCa",
+      "ruleType": "O",
+      "entries": [
+        "At the start of each session, fate coins will be distributed in the following way:",
+        "Each person rolls a straight d20, on a 1 to 9 the coin is added to the DM's pile. On a 10-20, the dice is added to the player's pile. When a coin is used, it will be moved to the other pile.",
+        "The players can use their coin in the following ways:",
+        {
+          "type": "list",
+          "items": [
+            "Players can add {@dice 1d6} to any {@variantrule D20 Test}. This dice can only be added before the roll is made.",
+            "Players can spend a coin to alter the effect of a spell or feature in a way it was not originally intended. After the player explains what they would like to do, the DM can say if it is possible and what alternatives are, if not. Additionally, the DM can say that it'll require more coins. Often this takes the form of a devil’s bargain.",
+            "Players can spend a coin to take an {@variantrule Action|XPHB} that would fit in a narrative way for the character, but which wouldn't normally be possible according to the rules. For example, a character who is reduced to 0 hp may spend a coin to use their {@variantrule Reaction|XPHB} to make one last {@variantrule Attack Roll|XPHB} or run away up to their speed, while they are struck down."
+          ]
+        },
+        "The DM can use their coin in the following ways:",
+        {
+          "type": "list",
+          "items": [
+            "The DM adds {@dice 1d6} to any {@variantrule Ability Check|XPHB} made by a creature. This dice must be added before the roll is made.",
+            "The DM spends a coin to change a situation to be more interesting. Usually this shows itself in the form of an additional complication, but it can also be used for a beneficial effect.",
+            "A powerful creature under the DM's control can have abilities that it can only use by spending a Fate Coin."
+          ]
+        }
+      ]
+    }
+  ],
+  "table": [
+    {
+      "name": "Tiers of Sanity",
+      "source": "WoBrCa",
+      "colLabels": ["Sanity Score", "Sanity Effect"],
+      "rows": [
+        [
+          "0", "Mechanical Death (completely insane or heart attack)."
+        ],
+        [
+          "1-5", "A long term or indefinite madness effect that seems fitting (Discuss it with your DM to make it fun for you as a player to deal with). This effect may last even after your score is restored above it, but only if the player wants it."
+        ],
+        [
+          "6-14", "No positive or negative effects."
+        ],
+        [
+          "15-19", "Extra failure condition of Sanity checks and saving throws becomes failing by 7 or more instead of 5."
+        ],
+        [
+          "20+", "Extra failure condition of Sanity checks and saving throws becomes failing by 10 or more instead of 5."
+        ]
+      ]
+    },
+    {
+      "name": "Bout of Madness",
+      "source": "WoBrCa",
+      "colLabels": ["D100", "Bout of Madness Effect"],
+      "rows": [
+        ["1-20", "{@b Cower.} Whenever you fail a Sanity saving throw badly, you may temporarily go insane. When this happens, roll on the following table, to apply a form of insanity your character will temporarily adhere to. Another creature can attempt to snap you out of your madness, by using their action by making a Wisdom (Medicine) check (DC 15). On a success the creature is no longer affected by the Bout of Madness. On a failure that creature cannot attempt it again."],
+        ["21-40", "{@b Freeze.} The character is unable to move from their spot by themselves. They can still take actions, if the player wants them to, provided they do not make the character move."],
+        ["41-60", "{@b Impulsive.} The character is unable to think strategically and acts impulsively, which may lead to situations where they, for example, use all their powerful abilities when they normally would conserve them. The player can choose in what way the character is negatively impacted by acting impulsively."],
+        ["61-80", "{b Aggression.} The character becomes very aggressive. This may out itself in attacking the closest creature, destroying objects, or any other way the player deems fitting."],
+        ["81-90", "{@b Hesitation.} The character is unsure of what to do in the current situation. Whenever the character wants to use their action for something, they must succeed on an Intelligence, Wisdom, or Charisma saving throw (DC 10), their choice. On a failure they must take any other action of their choice."],
+        ["91-100", "{@b Faint.} The character falls unconscious, until you take damage or someone uses their action to shake you awake. At the end of their turns, after awakening, your character must make an Intelligence, Wisdom, or Charisma saving throw (DC 15), their choice, as long as their source of madness is within sight. On a failure, they fall unconscious again."]
+      ]
+    },
+    {
+      "name": "Long Term Madness",
+      "source": "WoBrCa",
+      "colLabels": ["D100", "Long Term Madness Effect"],
+      "rows": [
+        ["1-20", "{@b Hide Away.} Your character may prefer not to move from a certain spot, believing they will get harmed if they do."],
+        ["21-40", "{@b Move On.} The character does not want to stop, believing that stopping will allow the danger to catch up."],
+        ["41-60", "{@b Hostility.} The character becomes hostile towards everyone. This might out itself as snapping at your allies or attacking anyone who gets too close."],
+        ["61-80", "{@b Drowsy.} The character thinks they can only escape the bad things in their dreams. They will seek to sleep as much as possible."],
+        ["81-90", "{@b Indecision.} The character cannot decide on the right course of action, believing danger could lurk behind either of the options."],
+        ["91-100", "{@b Hallucinations} The character sees the world in a different way to the rest. For example, they might think an enemy looks like a cute puppy."]
+      ]
+    },
+    {
+      "name": "Acid, Cold, Fire, Lightning, or Radiant Injury",
+      "source": "WoBrCa",
+      "colLabels": ["D20", "Injury"],
+      "rows": [
+        ["1", "{@b Popped Eye.} You have disadvantage on Wisdom (Perception) checks that rely on sight and ranged {@variantrule Attack Roll|XPHB|Attack Rolls}. This can be restored with the {@spell Regenerate|XPHB} spell."],
+        ["2-3", "{@b Burned Hand.} Each time you hold an item with that hand you must make a DC 15 Constitution saving throw or drop the item. All {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} made with that hand have disadvantage. This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Burn."],
+        ["4-5", "{@b Burned Foot.} Your movement speed is halved, and you have disadvantage on Strength {@variantrule Ability Check|XPHB|Ability Checks} if you have to use your foot for it. After ending your movement when you {@action Dash|XPHB} you fall {@condition Prone|XPHB}. This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Burn."],
+        ["6-7", "{@b Burned Leg.} Your movement speed is reduced by 5ft and you have disadvantage on {@variantrule Ability Check|XPHB|Ability Checks} if you use your leg for it. You must make a DC 10 Dexterity saving throw after ending your movement when you take the {@action Dash|XPHB} action This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Burn."],
+        ["8-9", "{@b Burned Arm.}  You have disadvantage on {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} you make using this arm. This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Burn."],
+        ["10-14", "{@b Major Burn.} You get burned in a place very visible to others. You have disadvantage on Charisma (Persuasion) and advantage on Charisma (Intimidation) checks. This can be removed with the {@spell Heal Minor Wounds|WoBrCa} spell."],
+        ["15-20", "{@b Minor Burn.} The burn doesn't have any adverse effect. This can be removed with the {@spell Heal Minor Wounds|WoBrCa} spell."]
+      ]
+    },
+    {
+      "name": "Bludgeoning, Force, or Thunder Injury",
+      "source": "WoBrCa",
+      "colLabels": ["D20", "Injury"],
+      "rows": [
+        ["1", "{@b Destroyed Eye.} You have disadvantage on Wisdom (Perception) checks that rely on sight and ranged {@variantrule Attack Roll|XPHB|Attack Rolls}. This can be restored with the {@spell Regenerate|XPHB} spell."],
+        ["2", "{@b Broken Arm or Hand.} You can no longer hold anything with two hands, and you can hold only a single object at a time. All {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} made with it have disadvantage. This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Bruise."],
+        ["3", "{@b Broken Foot or Leg.} Your speed on foot is halved, and you must use a cane or crutch to move. You fall {@condition Prone|XPHB} after ending your movement when using the {@action Dash|XPHB} action. All {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} made with it have disadvantage. This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Bruise."],
+        ["4-6", "{@b Internal Injury.} You have to move much more carefully when you take your actions. If you take both an action and bonus action on your turn or take a reaction, you lose {@variantrule Hit Points|XPHB} equal to your level. This reduction cannot be reduced. The internal injury can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks the Internal Injury will naturally heal."],
+        ["7-9", "{@b Broken Rib.} This has the same effect as the Internal Injury, but the damage you take is equal to half your level (round up)."],
+        ["10-12", "{@b Limp.} Your speed on foot is reduced by 5 feet. All {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} made with the foot have disadvantage. You must make a DC 10 Dexterity saving throw after ending your movement when you take the {@action Dash|XPHB} action. If you fail the save, you fall {@condition Prone|XPHB}. This can be healed with the {@spell Heal Minor Wounds|WoBrCa} spell."],
+        ["13-16", "{@b Major Bruise.} You get a bad bruise in a place very visible to others. You have disadvantage on Charisma (Persuasion) and advantage on Charisma (Intimidation) checks. This can be removed with the {@spell Heal Minor Wounds|WoBrCa} spell. After 1 week the Major Bruise will naturally heal."],
+        ["17-20", "{@b Bruises.} The bruise doesn't have any adverse effect. This can be removed with the {@spell Heal Minor Wounds|WoBrCa} spell. After 1 week the Bruise will naturally heal."]
+      ]
+    },
+    {
+      "name": "Necrotic Injury",
+      "source": "WoBrCa",
+      "colLabels": ["D20", "Injury"],
+      "rows": [
+        ["1", "{@b Withered Eye.} You have disadvantage on Wisdom (Perception) checks that rely on sight and ranged {@variantrule Attack Roll|XPHB|Attack Rolls}. This can be restored with the {@spell Regenerate|XPHB} spell."],
+        ["2", "{@b Withering Wound.}  Your hit point maximum is reduced by 2 every 24 hours the wound persists. If your hit point maximum drops to 0, you die. The wound heals with the {@spell Heal Minor Wounds|WoBrCa} spell. Alternatively, someone can tend to the wound and make a DC 15 Wisdom (Medicine) check once every 24 hours, preventing the loss of maximum {@variantrule Hit Points|XPHB}. After ten successes, the wound heals."],
+        ["3-4", "{@b Withered Hand.} Each time you hold an item with that hand you must make a DC 15 Constitution saving throw or drop the item. All {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} made with that hand have disadvantage. This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Wither Spot."],
+        ["5-6", "{@b Withered Foot.} Your movement speed is halved, and you have disadvantage on Strength {@variantrule Ability Check|XPHB|Ability Checks} if you have to use your foot for it. After ending your movement when you {@action Dash|XPHB}, you fall {@condition Prone|XPHB}. This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Wither Spot."],
+        ["7-8", "{@b Withered Arm.} You have disadvantage on {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} you make using this arm. This can be healed by the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Wither spot."],
+        ["9-10", "{@b Withered Leg.} Your speed on foot is reduced by 5 feet. All {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} made with the foot have disadvantage. You must make a DC 10 Dexterity saving throw after ending your movement when you take the {@action Dash|XPHB} action. If you fail the save, you fall {@condition Prone|XPHB}. This can be healed with the {@spell Heal Minor Wounds|WoBrCa} spell. After 2 weeks it becomes a Major Wither Spot."],
+        ["11-15", "{@b Major Wither Spot.} You get a huge wither spot in place very visible for others. You have disadvantage on Charisma (Persuasion) and advantage on Charisma (Intimidation) checks. This can be removed with the {@spell Heal Minor Wounds|WoBrCa} spell."],
+        ["16-20", "{@b Minor Wither Spot.} The wither spot doesn't have any adverse effect."]
+      ]
+    },
+    {
+      "name": "Piercing Injury",
+      "source": "WoBrCa",
+      "colLabels": ["D20", "Injury"],
+      "rows": [
+        ["1", "{@b Lose an Eye.} You have disadvantage on Wisdom (Perception) checks that rely on sight and ranged {@variantrule Attack Roll|XPHB|Attack Rolls}. This can be restored with the {@spell Regenerate|XPHB} spell."],
+        ["2", "{@b Blood Loss.} You lose maximum {@variantrule Hit Points|XPHB} equal to your level at the end of your turns. Casting {@spell Heal Minor Wounds|WoBrCa} or making a DC 15 Wisdom (medicine) check, using a charge of the healer’s kit, will stop the blood loss. Making a DC 15 Wisdom (medicine) check, without the use of a healer’s kit will stop the bleeding for an hour."],
+        ["3", "{@b Broken Arm or Hand.} You can no longer hold anything with two hands, and you can hold only a single object at a time. All {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} made with it have disadvantage. This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Cut scar."],
+        ["4", "{@b Broken Foot or Leg.} Your speed on foot is halved, and you must use a cane or crutch to move. You fall {@condition Prone|XPHB} after ending your movement when using the {@action Dash|XPHB} action. All {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} made with it have disadvantage. This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Cut scar."],
+        ["5-6", "{@b Internal Injury.} You have to move much more carefully when you take your actions. If you take both an action and bonus action on your turn or take a reaction, you lose {@variantrule Hit Points|XPHB} equal to your level. This health loss cannot be reduced. The internal injury can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks the Internal Injury will naturally heal."],
+        ["7-9", "{@b Broken Rib.} This has the same effect as the Internal Injury, but the damage you take is equal to half your level (round up)."],
+        ["10-12", "{@b Limp.} Your speed on foot is reduced by 5 feet. All {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} made with the foot have disadvantage. You must make a DC 10 Dexterity saving throw after ending your movement when you take the {@action Dash|XPHB} action. If you fail the save, you fall {@condition Prone|XPHB}. This can be healed with the {@spell Heal Minor Wounds|WoBrCa} spell."],
+        ["13-16", "{@b Major Cuts.} You get a bad cut in a place very visible to others. You have disadvantage on Charisma (Persuasion) and advantage on Charisma (Intimidation) checks. This can be removed with the {@spell Heal Minor Wounds|WoBrCa} spell. After 1 week the Major Cuts will naturally heal and turn into a scar, which has no adverse effects."],
+        ["17-20", "{@b Cuts.} The cuts don't have any adverse effect. This can be removed with the {@spell Heal Minor Wounds|WoBrCa} spell. After 1 week the cuts will naturally heal."]
+      ]
+    },
+    {
+      "name": "Poison Injury",
+      "source": "WoBrCa",
+      "colLabels": ["D20", "Injury"],
+      "rows": [
+        ["1", "{@b Poisoned Muscles.} You get disadvantage on all {@variantrule Ability Check|XPHB|Ability Checks}, {@variantrule Saving Throw|XPHB|Saving Throws}, and {@variantrule Attack Roll|XPHB|Attack Rolls}. This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes Major Poison Bumps."],
+        ["2", "{@b Poisoned Heart.} Your hit point maximum decreases by an amount equal to your level at the end of every day. If your hitpoint maximum drops to 0 you are {@condition Paralyzed|XPHB} but stable. This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell or by making a DC 15 Wisdom (medicine) check using a charge of a healer’s kit at the end of a Long Rest. Once it is healed you regain all your lost {@variantrule Hit Points|XPHB}."],
+        ["3-4", "Poisoned Lungs. When you use verbal components to cast a spell or speak during combat, you lose {@variantrule Hit Points|XPHB} equal to half your level (round up). This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it heals naturally."],
+        ["5-6", "{@b Poisoned Brain.} You get disadvantage on all Wisdom and Intelligence checks and saves. This can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it heals naturally."],
+        ["7-10", "{@b Poisoned Wound.} You become {@condition Poisoned|XPHB} for 1 hour. After that hour you get Poison Bumps."],
+        ["11-16", "{@b Major Poison Bumps.} You get many poison bumps in a place very visible for others. You have disadvantage on Charisma (Persuasion) and advantage on Charisma (Intimidation) checks. This can be removed with the {@spell Heal Minor Wounds|WoBrCa} spell."],
+        ["17-20", "{@b Minor Poison Bumps.} The poison bumps don't have any adverse effect. This can be removed with the {@spell Heal Minor Wounds|WoBrCa} spell."]
+      ]
+    },
+    {
+      "name": "Psychic Injury",
+      "source": "WoBrCa",
+      "colLabels": ["D20", "Injury"],
+      "rows": [
+        ["1-2", "{@b Mental Break.} Roll on the {@table Long Term Madness|WoBrCa} table, you gain that madness effect until you finish a {@variantrule Long Rest|XPHB}."],
+        ["3-7", "{@b Bout of Madness.} Roll on the {@table Bout of Madness|WoBrCa} table. You gain that bout for {@dice 1d10} minutes."],
+        ["8-10", "{@b Confusion.} You are under the effects of the {@spell Confusion|XPHB} spell for 1 minute."],
+        ["11-16", "{@b Mental Agony.} You take additional psychic damage equal to your level."],
+        ["17-20", "{@b Mental Pain.} You take additional psychic damage equal to half your level (round up)."]
+      ]
+    },
+    {
+      "name": "Slashing Injury",
+      "source": "WoBrCa",
+      "colLabels": ["D20", "Injury"],
+      "rows": [
+        ["1", "{@b Lose an Eye.} You have disadvantage on Wisdom (Perception) checks that rely on sight and ranged {@variantrule Attack Roll|XPHB|Attack Rolls}. This can be restored with the {@spell Regenerate|XPHB} spell."],
+        ["2", "{@b Blood Loss.} You lose maximum {@variantrule Hit Points|XPHB} equal to your level at the end of your turns. Casting {@spell Heal Minor Wounds|WoBrCa} or making a DC 15 Wisdom (medicine) check, using a charge of the healer’s kit, will stop the blood loss. Making a DC 15 Wisdom (medicine) check, without the use of a healer’s kit will stop the bleeding for an hour."],
+        ["3", "{@b Break/Lose Arm or Hand.} Make another Constitution saving throw against the Injury DC or lose a limb. On a success it is just broken. You can no longer hold anything with two hands, and you can hold only a single object at a time. All {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} made with it have disadvantage. A broken limb can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Cut scar. A lost limb can only be restored with the {@spell Regenerate|XPHB} spell or similar effect."],
+        ["4", "{@b Break/Lose Foot or Leg.} Make another Constitution saving throw against the Injury DC or lose a limb. On a success it is just broken. Your speed on foot is halved, and you must use a cane or crutch to move. You fall {@condition Prone|XPHB} after ending your movement when using the {@action Dash|XPHB} action. All {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} made with it have disadvantage. A broken limb can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks it becomes a Major Cut scar. A lost limb can only be restored with the {@spell Regenerate|XPHB} spell or similar effect."],
+        ["5-6", "{@b Internal Injury.} You have to move much more carefully when you take your actions. If you take both an action and bonus action on your turn or take a reaction, you lose {@variantrule Hit Points|XPHB} equal to your level. This health loss cannot be reduced. The internal injury can be healed with the {@spell Mend Flesh and Bones|WoBrCa} spell. After 2 weeks the Internal Injury will naturally heal."],
+        ["7-9", "{@b Broken Rib.} This has the same effect as the Internal Injury, but the damage you take is equal to half your level (round up)."],
+        ["10-12", "{@b Limp.} Your speed on foot is reduced by 5 feet. All {@variantrule Ability Check|XPHB|Ability Checks} and {@variantrule Attack Roll|XPHB|Attack Rolls} made with the foot have disadvantage. You must make a DC 10 Dexterity saving throw after ending your movement when you take the {@action Dash|XPHB} action. If you fail the save, you fall {@condition Prone|XPHB}. This can be healed with the {@spell Heal Minor Wounds|WoBrCa} spell."],
+        ["13-16", "{@b Major Cuts.} You get a bad cut in a place very visible to others. You have disadvantage on Charisma (Persuasion) and advantage on Charisma (Intimidation) checks. This can be removed with the {@spell Heal Minor Wounds|WoBrCa} spell. After 1 week the Major Cuts will naturally heal and turn into a scar, which has no adverse effects."],
+        ["17-20", "{@b Cuts.} The cuts don't have any adverse effect. This can be removed with the {@spell Heal Minor Wounds|WoBrCa} spell. After 1 week the cuts will naturally heal."]
       ]
     }
   ]
