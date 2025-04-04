@@ -12,7 +12,7 @@
         "convertedBy": [
           "Lord Woolfy"
         ],
-        "version": "1.0"
+        "version": "1.01"
       }
     ],
     "optionalFeatureTypes": {
@@ -22,7 +22,7 @@
       "monsterFluff"
     ],
     "dateAdded": 1742739164,
-    "dateLastModified": 1742739164,
+    "dateLastModified": 1743800638,
     "status": "ready",
     "edition": "one"
   },
@@ -1565,7 +1565,7 @@
       "subclassSource": "WoSpHa",
       "level": 3,
       "entries": [
-        "Your weapon or ammunition phases through the creature. Roll an attack roll against a second creature within 5 feet of the original target, to also deal the weapon’s damage to it. Hit or miss both creatures take 1d6 force damage."     
+        "Your weapon or ammunition phases through the creature. Roll an attack roll against a second creature within 5 feet of the original target, to also deal the weapon’s damage to it. Hit or miss both creatures take {@damage 1d6} Force damage."     
       ],
       "foundryImg": "icons/skills/melee/maneuver-greatsword-yellow.webp",
       "foundrySystem": {
@@ -1795,7 +1795,7 @@
       "subclassSource": "WoSpHa",
       "level": 3,
       "entries": [
-        "Also at 3rd  level, you can use a bonus action to spend 1 Focus Point to make your ancestors attack two creatures you can see within 30ft of you. Make a melee attack roll, using Wisdom, for each creature they attack. The damage is equal to your Martial Arts die + your Wisdom modifier."      
+        "Also at 3rd  level, you can use a bonus action to spend 1 Focus Point to make your ancestors attack two creatures you can see within 30ft of you. Make a melee attack roll, using Wisdom, for each creature they attack. The force damage is equal to your Martial Arts die + your Wisdom modifier."      
       ],
       "consumes": {
       "name": "Focus Point",
@@ -3010,7 +3010,7 @@
       "subclassSource": "WoSpHa",
       "level": 10,
       "entries": [
-        "When you use your bonus action for a Poltergeist Activity, you can instead use more objects in the same attack, to get one of the effects listed below. You only deal damage as if you hit with one of the objects.",
+        "When you use your {@variantrule Bonus Action|XPHB} for a Poltergeist Activity, you can instead use more objects in the same attack, to get one of the effects listed below. You only deal damage as if you hit with one of the objects.",
         {
           "type": "entries",
           "name": "Knock Down (2 Objects)",
@@ -4192,9 +4192,42 @@
       "className": "Spiritualist",
       "classSource": "WoSpHa",
       "level": 1,
+      "activities": [
+        {
+          "name": "Expend Séance",
+          "type": "utility",
+          "activation": {
+            "type": "bonus",
+            "value": 1
+          },
+          "duration": {
+            "value": "10",
+            "units": "minute"
+          },
+          "consumption": {
+            "targets": [
+              {
+                "type": "itemUses",
+                "value": "1"
+              }
+            ]
+          },
+          "target": {
+            "affects": {
+              "type": "self"
+            }
+          },
+          "effects": [
+            {
+              "foundryId": "seance"
+            }
+          ]
+        }
+      ],
       "effects": [
         {
           "name": "Séance",
+          "foundryId": "seance",
           "disabled": true,
           "changes": [
             {
@@ -4292,6 +4325,165 @@
     }
   ],
   "foundrySubclassFeature": [
+    {
+      "name": "Haunting Strike (Haunting Whispers)",
+      "source": "WoSpHa",
+      "className": "Fighter",
+      "classSource": "XPHB",
+      "subclassShortName": "Phantom",
+      "subclassSource": "WoSpHa",
+      "level": 3,
+      "activities": [
+        {
+          "name": "Charmed/Frightened Damage",
+          "type": "damage",
+          "activation": {
+            "type": ""
+          },
+          "damage": {
+            "critical": {
+              "allow": true
+            },
+            "parts": [
+              {
+                "custom": {
+                  "enabled": true,
+                  "formula": "3d6"
+                },
+                "types": [
+                  "fire"
+                ]
+              }
+            ]
+          },
+          "midiProperties": {
+            "otherActivityCompatible": false
+          }
+        },
+        {
+          "name": "Normal Damage",
+          "type": "damage",
+          "activation": {
+            "type": ""
+          },
+          "damage": {
+            "critical": {
+              "allow": true
+            },
+            "parts": [
+              {
+                "custom": {
+                  "enabled": true,
+                  "formula": "2d6"
+                },
+                "types": [
+                  "psychic"
+                ]
+              }
+            ]
+          },
+          "midiProperties": {
+            "otherActivityCompatible": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "Haunting Strike (Psychic Scream)",
+      "source": "WoSpHa",
+      "className": "Fighter",
+      "classSource": "XPHB",
+      "subclassShortName": "Phantom",
+      "subclassSource": "WoSpHa",
+      "level": 3,
+      "activities": [
+        {
+          "name": "Scream Save",
+          "type": "save",
+          "activation": {
+            "type": ""
+          },
+          "save": {
+            "ability": [
+              "wis"
+            ],
+            "dc": {
+              "calculation": "int"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ancestral Blow",
+      "source": "WoSpHa",
+      "className": "Monk",
+      "classSource": "XPHB",
+      "subclassShortName": "Ancestors",
+      "subclassSource": "WoSpHa",
+      "level": 3,
+      "activities": [
+        {
+          "name": "Ancestral Blow Attack",
+          "type": "attack",
+          "activation": {
+            "type": "bonus",
+            "value": 1
+          },
+          "range": {
+            "units": "ft",
+            "value": "30"
+          },
+          "attack": {
+            "type": {
+              "value": "melee",
+              "classification": "weapon"
+            }
+          },
+          "damage": {
+            "parts": [
+              {
+                "custom": {
+                  "enabled": true,
+                  "formula": "@scale.monk.die+@abilities.wis.mod"
+                },
+                "types": [
+                  "force"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ancestral Protection",
+      "source": "WoSpHa",
+      "className": "Monk",
+      "classSource": "XPHB",
+      "subclassShortName": "Ancestors",
+      "subclassSource": "WoSpHa",
+      "level": 3,
+      "activities": [
+        {
+          "name": "Temporary HP",
+          "type": "heal",
+          "activation": {
+            "type": "bonus",
+            "value": 1
+          },
+          "healing": {
+            "types": [
+              "temphp"
+            ],
+            "custom": {
+              "enabled": true,
+              "formula": "@scale.monk.die+@abilities.wis.mod"
+            }
+          }
+        }
+      ]
+    },
     {
       "name": "Ethereal Sight",
       "source": "WoSpHa",
@@ -4397,6 +4589,48 @@
       ]
     },
     {
+      "name": "Ghostly Presence",
+      "source": "WoSpHa",
+      "className": "Ranger",
+      "classSource": "XPHB",
+      "subclassShortName": "Ghost",
+      "subclassSource": "WoSpHa",
+      "level": 15,
+       "activities": [
+        {
+          "name": "Presence Damage",
+          "type": "save",
+          "activation": {
+            "type": ""
+          },
+          "damage": {
+            "critical": {
+              "allow": false
+            },
+            "parts": [
+              {
+                "custom": {
+                  "enabled": true,
+                  "formula": "2d10"
+                },
+                "types": [
+                  "cold", "necrotic", "radiant"
+                ]
+              }
+            ]
+          },
+          "save": {
+            "ability": [
+              "con"
+            ],
+            "dc": {
+              "calculation": "spellcasting"
+            }
+          }
+        }
+      ]
+    },
+    {
       "name": "Touch of the Veil",
       "source": "WoSpHa",
       "className": "Sorcerer",
@@ -4420,6 +4654,40 @@
       ]
     },
     {
+      "name": "Frigid Séance",
+      "source": "WoSpHa",
+      "className": "Spiritualist",
+      "classSource": "WoSpHa",
+      "subclassShortName": "Cryokinetic",
+      "subclassSource": "WoSpHa",
+      "level": 3,
+      "activities": [
+        {
+          "name": "Frigid Damage",
+          "type": "damage",
+          "activation": {
+            "type": ""
+          },
+          "damage": {
+            "critical": {
+              "allow": false
+            },
+            "parts": [
+              {
+                "custom": {
+                  "enabled": true,
+                  "formula": "(@scale.spiritualist.seance-bonus)d4"
+                },
+                "types": [
+                  "cold"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "name": "Electricity Field",
       "source": "WoSpHa",
       "className": "Spiritualist",
@@ -4439,6 +4707,82 @@
               "priority": 20
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "Scalding Séance",
+      "source": "WoSpHa",
+      "className": "Spiritualist",
+      "classSource": "WoSpHa",
+      "subclassShortName": "Pyrokinetic",
+      "subclassSource": "WoSpHa",
+      "level": 3,
+      "activities": [
+        {
+          "name": "Scalding Damage",
+          "type": "damage",
+          "activation": {
+            "type": ""
+          },
+          "damage": {
+            "critical": {
+              "allow": true
+            },
+            "parts": [
+              {
+                "custom": {
+                  "enabled": true,
+                  "formula": "(@scale.spiritualist.seance-bonus)d4"
+                },
+                "types": [
+                  "fire"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Levitating Séance",
+      "source": "WoSpHa",
+      "className": "Spiritualist",
+      "classSource": "WoSpHa",
+      "subclassShortName": "Telekinetic",
+      "subclassSource": "WoSpHa",
+      "level": 3,
+      "activities": [
+        {
+          "name": "Levitating Attack",
+          "type": "attack",
+          "activation": {
+            "type": "bonus",
+            "value": 1
+          },
+          "range": {
+            "units": "ft",
+            "value": "30"
+          },
+          "attack": {
+            "type": {
+              "value": "ranged",
+              "classification": "spell"
+            }
+          },
+          "damage": {
+            "parts": [
+              {
+                "custom": {
+                  "enabled": true,
+                  "formula": "1d4+@mod"
+                },
+                "types": [
+                  "bludgeoning"
+                ]
+              }
+            ]
+          }
         }
       ]
     }
