@@ -4379,7 +4379,19 @@
 				"◊ You have advantage on all saving throws.",
 				"◊ Whenever you successfully move a creature with your aura you can choose to deal {@damage 2d8} bludgeoning damage to it.",
 				"Once you use this bonus action, you can't use it again until you finish a long rest, unless you expend a 5th-level spell slot to use it again."
-			]
+			],
+            "foundrySystem": {
+                "uses": {
+                "spent": 0,
+                "recovery": [
+                    {
+                    "period": "lr",
+                    "type": "recoverAll"
+                    }
+                ],
+                "max": "1"
+                }
+            }
 		},
         {
 			"name": "Origami Mage",
@@ -4661,7 +4673,102 @@
 					}
 				}
             ]
-		}
+		},
+        {
+            "name": "Form of the River",
+			"source": "ObojimaTallGrass",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "River",
+			"subclassSource": "ObojimaTallGrass",
+			"level": 20,
+            "activities": [
+                {
+                    "name": "Activate Form",
+                    "type": "utility",
+                    "activation": {
+                        "type": "bonus"
+                    },
+                    "consumption": {
+                        "spellSlot": true,
+                        "targets": [
+                            {
+                                "type": "itemUses",
+                                "value": "1"
+                            },
+                            {
+                                "type": "spellSlots",
+                                "value": "1",
+                                "target": "5"
+                            }
+                        ]
+                    },
+                    "effects": [
+                    {
+                        "foundryId": "formRiver"
+                    }
+                    ],
+                    "range": {
+                        "units": "self"
+                    },
+                    "target": {
+                        "template": {
+                            "units": "ft"
+                        },
+                        "affects": {
+                            "type": "self"
+                        },
+                        "prompt": true
+                    }
+                },
+                {
+                    "type": "damage",
+                    "name": "Aura Damage",
+                    "activation": {
+                        "type": "special"
+                    },
+                    "damage": {
+                        "critical": {
+                            "allow": false
+                        },
+                        "parts": [
+                            {
+                                "number": 2,
+                                "denomination": 8,
+                                "types": [
+                                    "bludgeoning"
+                                ],
+                                "scaling": {
+                                    "number": 1
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "effects": [
+                {
+                    "foundryId": "formRiver",
+                    "changes": [
+                        {
+                        "key": "system.attributes.movement.swim",
+                        "mode": 2,
+                        "value": "60",
+                        "priority": 20
+                        },
+                        {
+                        "key": "system.attributes.movement.walk",
+                        "mode": 2,
+                        "value": "15",
+                        "priority": 20
+                        }
+                    ],
+                    "duration": {
+                        "seconds": 60
+                    }
+                }
+            ]
+        }
     ],
     "optionalfeature": [
 		{
