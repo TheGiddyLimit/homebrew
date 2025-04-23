@@ -2708,7 +2708,31 @@
 						}
 					}
 				]
-			}
+			},
+            "foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "herding-sheep",
+						"type": "number",
+						"scale": {
+							"1": {
+								"value": 1
+							},
+							"5": {
+								"value": 2
+							},
+							"10": {
+								"value": 3
+							},
+							"15": {
+								"value": 4
+							}
+						}
+					},
+					"title": "Herding Sheep"
+				}
+			]
 		},
         {
 			"name": "The Spirit-Fused",
@@ -3428,7 +3452,18 @@
 			"entries": [
 				"At 3rd level, you start to observe peculiar happenings within your own body. At times you notice that your limbs and torso exhibit independent movements, seemingly acting of their own volition.",
 				"When you make a Strength or Dexterity check, you can choose to replace the result with a number equal to 10 + your ranger level. You can wait until after you roll the d20 before deciding to use this feature, but must decide before the GM says whether the roll succeeds or fails. You can use this feature a number of times equal to half your proficiency bonus (rounded up), and you regain all expended uses when you finish a long rest."
-			]
+			],
+            "foundrySystem": {
+				"uses": {
+					"max": "ceil(@prof / 2)",
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
 		},
 		{
 			"name": "3rd Manifestation",
@@ -3441,9 +3476,24 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"Starting at 7th level, when you make a weapon attack against a creature, you can expend one curse marker to roll a d4 and add it to the attack roll. You can choose to use a curse marker in this way before or after making the attack roll. You can expend a curse marker in this way only once per turn.",
+				"Starting at 7th level, when you make a weapon attack against a creature, you can expend one curse marker to roll a {@dice d4} and add it to the attack roll. You can choose to use a curse marker in this way before or after making the attack roll. You can expend a curse marker in this way only once per turn.",
 				"Additionally, whenever you take damage, you can use your reaction to reduce the damage taken by an amount equal to your ranger level. Once you reduce damage in this way, you can't do so again until you finish a short or long rest."
-			]
+			],
+            "foundrySystem": {
+				"uses": {
+					"max": "1",
+					"recovery": [
+                        {
+							"period": "sr",
+							"type": "recoverAll"
+						},
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
 		},
 		{
 			"name": "4th Manifestation",
@@ -3480,7 +3530,22 @@
 					]
 				},
 				"Once you use this feature, you can't use it again until you finish a short or long rest."
-			]
+			],
+            "foundrySystem": {
+				"uses": {
+					"max": "1",
+					"recovery": [
+                        {
+							"period": "sr",
+							"type": "recoverAll"
+						},
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
 		},
 		{
 			"name": "5th Manifestation",
@@ -3493,10 +3558,21 @@
 			"level": 15,
 			"header": 2,
 			"entries": [
-				"Starting at 15th level, you gain the ability to call upon the Corruption which greatly alters your natural capabilities. As a bonus action, you can activate this feature, doubling your walking speed, increasing your AC by 2, and allowing you to make two additional attacks when taking the {@action Attack} action. In addition, all attacks are treated as if you have the maxi mum number of curse markers accumulated. The effects of this feature last until the start of your next turn. You can use this ability without negative effects once per long rest.",
+				"Starting at 15th level, you gain the ability to call upon the Corruption which greatly alters your natural capabilities. As a bonus action, you can activate this feature, doubling your walking speed, increasing your AC by 2, and allowing you to make two additional attacks when taking the {@action Attack} action. In addition, all attacks are treated as if you have the maximum number of curse markers accumulated. The effects of this feature last until the start of your next turn. You can use this ability without negative effects once per long rest.",
 				"If you use this feature a second time before finishing a long rest, in addition to the effects wearing off at the start of your next turn, you also suffer one level of {@condition exhaustion} and immediately drop to 1 hit point if you have more than 1 hit point at the start of your turn.",
 				"Once you use this feature a second time, you can't use it again until you finish a long rest."
-			]
+			],
+            "foundrySystem": {
+				"uses": {
+					"max": "1",
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
 		},
         {
 			"name": "Sheep Dragon Shepherd",
@@ -4704,9 +4780,9 @@
                         ]
                     },
                     "effects": [
-                    {
-                        "foundryId": "formRiver"
-                    }
+                        {
+                            "foundryId": "formRiver"
+                        }
                     ],
                     "range": {
                         "units": "self"
@@ -4751,20 +4827,130 @@
                     "foundryId": "formRiver",
                     "changes": [
                         {
-                        "key": "system.attributes.movement.swim",
-                        "mode": 2,
-                        "value": "60",
-                        "priority": 20
+                            "key": "system.attributes.movement.swim",
+                            "mode": 2,
+                            "value": "60",
+                            "priority": 20
                         },
                         {
-                        "key": "system.attributes.movement.walk",
-                        "mode": 2,
-                        "value": "15",
-                        "priority": 20
+                            "key": "system.attributes.movement.walk",
+                            "mode": 2,
+                            "value": "15",
+                            "priority": 20
                         }
                     ],
                     "duration": {
                         "seconds": 60
+                    }
+                }
+            ]
+        },
+        {
+			"name": "5th Manifestation",
+			"source": "ObojimaTallGrass",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Corrupted Ranger",
+			"subclassSource": "ObojimaTallGrass",
+			"level": 15,
+            "activities": [
+                {
+                    "name": "Activate Manifestation",
+                    "type": "utility",
+                    "activation": {
+                        "type": "bonus"
+                    },
+                    "consumption": {
+                        "targets": [
+                            {
+                                "type": "itemUses",
+                                "value": "1"
+                            }
+                        ]
+                    },
+                    "effects": [
+                        {
+                            "foundryId": "5thManifestation"
+                        }
+                    ],
+                    "range": {
+                        "units": "self"
+                    },
+                    "target": {
+                        "template": {
+                            "units": "ft"
+                        },
+                        "affects": {
+                            "type": "self"
+                        }
+                    }
+                }
+            ],
+            "effects": [
+                {
+                    "foundryId": "5thManifestation",
+                    "changes": [
+                        {
+                            "key": "system.attributes.movement.walk",
+                            "mode": 1,
+                            "value": "2",
+                            "priority": 20
+                        },
+                        {
+                            "key": "system.attributes.ac.bonus",
+                            "mode": 2,
+                            "value": "2",
+                            "priority": 20
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+			"name": "Herding Sheep",
+			"source": "ObojimaTallGrass",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassSource": "ObojimaTallGrass",
+			"subclassShortName": "Sheep Dragon Shepherd",
+			"level": 3,
+            "activities": [
+                {
+                    "name": "Activate",
+                    "type": "utility",
+                    "activation": {
+                        "type": "bonus"
+                    },
+                    "consumption": {
+                        "scaling": {
+                            "allowed": true,
+                            "max": "@scale.monk.focus"
+                        },
+                        "targets": [
+                            {
+								"type": "itemUses",
+								"value": "@scale.monk.focus",
+								"target": {
+									"prop": "classFeature",
+									"uid": "Monk's Focus|Monk|XPHB|2"
+								}
+							}
+                        ]
+                    },
+                    "range": {
+                        "value": "60",
+                        "units": "ft"
+                    },
+                    "target": {
+                        "template": {
+                            "units": "ft"
+                        },
+                        "affects": {
+                            "choice": false,
+                            "count": "@scale.sheep-dragon-shepherd.herding-sheep",
+                            "type": "willing"
+                        },
+                        "prompt": true
                     }
                 }
             ]
