@@ -24,7 +24,9 @@
         },
         "optionalFeatureTypes": {
 			"EssenceDice": "Essence Dice",
-			"ChannelingOption": "Channeling Option"
+			"ChannelingOption": "Channeling Option",
+            "Mask": "Craft Mask",
+            "Oaka": "Oaka Mark"
 		},
         "internalCopies": [
             "monsterFluff"
@@ -2351,6 +2353,42 @@
                     "entries": [
                         "Your ocular prowess doesn't stop at darkvision. Additionally, you can use an action to shift your sight into the ethereal, allowing you to see creatures on the Spirit Realm, which appear as glowing outlines of themselves. This effect lasts for 1 hour. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses of it when you finish a long rest."
                     ]
+                },
+                {
+                    "type": "options",
+                    "count": 1,
+                    "entries": [
+                        {
+                            "type": "refOptionalfeature",
+                            "optionalfeature": "Courage|ObojimaTallGrass",
+                            "name": "Courage"
+                        },
+                        {
+                            "type": "refOptionalfeature",
+                            "optionalfeature": "Fury|ObojimaTallGrass",
+                            "name": "Fury"
+                        },
+                        {
+                            "type": "refOptionalfeature",
+                            "optionalfeature": "Harmony|ObojimaTallGrass",
+                            "name": "Harmony"
+                        },
+                        {
+                            "type": "refOptionalfeature",
+                            "optionalfeature": "Nature|ObojimaTallGrass",
+                            "name": "Nature"
+                        },
+                        {
+                            "type": "refOptionalfeature",
+                            "optionalfeature": "Purity|ObojimaTallGrass",
+                            "name": "Purity"
+                        },
+                        {
+                            "type": "refOptionalfeature",
+                            "optionalfeature": "Selflessness|ObojimaTallGrass",
+                            "name": "Selflessness"
+                        }
+                    ]
                 }
             ],
             "hasFluff": true,
@@ -2712,6 +2750,20 @@
                 "Many-Masked Performance|Bard||Masks|ObojimaTallGrass|6",
                 "Gift of Theatre|Bard||Masks|ObojimaTallGrass|14"
             ],
+            "optionalfeatureProgression": [
+				{
+					"name": "Craft Mask",
+					"featureType": [
+						"Mask"
+					],
+					"progression": {
+                        "3": 2,
+						"7": 3,
+						"11": 4,
+						"15": 5
+					}
+				}
+			],
             "fluff":{
                 "images":[
                     {
@@ -3156,6 +3208,22 @@
 				"Origami Servant|Wizard||Origami Mage|ObojimaTallGrass|10",
 				"Arcane Refresh|Wizard||Origami Mage|ObojimaTallGrass|14"
 			],
+            "additionalSpells": [
+				{
+					"prepared": {
+						"2": [
+							"Find Familiar"
+						],
+						"10": [
+							"Unseen Servant"
+						]
+					}
+				}
+			],
+			"subclassSpells": [
+				"Find Familiar",
+                "Unseen Servant"
+			],
 			"fluff": {
 				"images": [
 					{
@@ -3286,8 +3354,7 @@
             "level":10,
             "header":2,
             "entries":[
-                "At 10th level, the ever-present concoction in your stomach is now so potent it grants you benefits even when you aren't raging.",
-                "When you finish a long rest, choose one of the following conditions: blinded, charmed, exhaustion, frightened, paralyzed, petrified, poisoned, prone, restrained, or stunned. You have advantage on saving throws against that condition until you choose a different one with this feature."
+                "When you finish a long rest, choose one of the following conditions: {@condition blinded}, {@condition charmed}, {@condition exhaustion}, {@condition frightened}, {@condition paralyzed}, {@condition petrified}, {@condition poisoned}, {@condition prone}, {@condition restrained}, or {@condition stunned}. You have advantage on saving throws against that condition until you choose a different one with this feature."
             ]
         },
         {
@@ -3356,7 +3423,7 @@
             "level":3,
             "header":2,
             "entries":[
-                "When you join the College of Masks at 3rd level, you gain the ability to weave arcane boons into theater masks, which grant you abilities while you wear them. You craft two masks of your choice, which are detailed under the “Masks” section below. You're able to craft one additional mask of your choice when you reach 7th, 11th, and 15th level in this class. Each time you craft a new mask, you can also replace one mask you've already crafted with a different one.",
+                "When you join the College of Masks at 3rd level, you gain the ability to weave arcane boons into theater masks, which grant you abilities while you wear them. You craft two masks of your choice, which are detailed under the “{@filter Masks|optionalfeatures|source=ObojimaTallGrass|feature type=Mask}” section below. You're able to craft one additional mask of your choice when you reach 7th, 11th, and 15th level in this class. Each time you craft a new mask, you can also replace one mask you've already crafted with a different one.",
                 "While wearing a mask you gain the abilities granted by it. You can don or swap masks as an action or bonus action. If an ability from a mask requires a saving throw, the DC is equal to your bard spell save DC."
             ]
         },
@@ -3712,8 +3779,7 @@
 					"type": "refSubclassFeature",
 					"subclassFeature": "Herding Sheep|Monk||Sheep Dragon Shepherd|ObojimaTallGrass|3|ObojimaTallGrass"
 				}
-			],
-			"foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/refs/heads/obo/img/ObojimaTallGrass/Subclasses/sheep-dragon-shepherd-monk.webp"
+			]
 		},
 		{
 			"name": "Herding Sheep",
@@ -3813,8 +3879,7 @@
 					"type": "refSubclassFeature",
 					"subclassFeature": "Object Channeling|Fighter||Spirit-Fused|ObojimaTallGrass|3|ObojimaTallGrass"
 				}
-			],
-			"foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/refs/heads/obo/img/ObojimaTallGrass/Subclasses/spirit-fused-fighter.webp"
+			]
 		},
 		{
 			"name": "Arcane Quirk",
@@ -5096,6 +5161,72 @@
         }
     ],
     "optionalfeature": [
+        {
+			"name": "Courage",
+			"source": "ObojimaTallGrass",
+			"page": 129,
+			"featureType": [
+				"Oaka"
+			],
+			"entries": [
+                "You know the {@spell Resistance} cantrip and can cast it without requiring material components. When you reach 3rd level, you can cast {@spell Heroism} as a 2nd-level spell once with this trait, and you regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
+			]
+		},
+        {
+			"name": "Fury",
+			"source": "ObojimaTallGrass",
+			"page": 129,
+			"featureType": [
+				"Oaka"
+			],
+			"entries": [
+                "You know the {@spell Sacred Flame} cantrip. When you reach 3rd level, you can cast {@spell Shatter} once with this trait, requiring no material components, and you regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
+			]
+		},
+        {
+			"name": "Harmony",
+			"source": "ObojimaTallGrass",
+			"page": 129,
+			"featureType": [
+				"Oaka"
+			],
+			"entries": [
+                "You know the {@spell Guidance} cantrip. When you reach 3rd level, you can cast {@spell Calm Emotions} once with this trait, and you regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
+			]
+		},
+        {
+			"name": "Nature",
+			"source": "ObojimaTallGrass",
+			"page": 129,
+			"featureType": [
+				"Oaka"
+			],
+			"entries": [
+                "You know the {@spell Dancing Lights} cantrip and can cast it without requiring material components. When you reach 3rd level, you can cast {@spell Animal Messenger} once with this trait, requiring no material components, and you regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
+			]
+		},
+        {
+			"name": "Purity",
+			"source": "ObojimaTallGrass",
+			"page": 129,
+			"featureType": [
+				"Oaka"
+			],
+			"entries": [
+                "You know the {@spell Spare the Dying} cantrip. When you reach 3rd level, you can cast {@spell Lesser Restoration} once with this trait, and you regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
+			]
+		},
+        {
+			"name": "Selflessness",
+			"source": "ObojimaTallGrass",
+			"page": 129,
+			"featureType": [
+				"Oaka"
+			],
+			"entries": [
+                "You know the {@spell Resilient Friendship|ObojimaTallGrass} cantrip. When you reach 3rd level, you can cast {@spell Gift|ObojimaTallGrass} once with this trait, and you regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
+			]
+		},
 		{
 			"name": "Ballooning Bag",
 			"source": "ObojimaTallGrass",
@@ -5194,6 +5325,197 @@
 			],
 			"entries": [
 				"As a bonus action, you spray a misty stream of water from a container on your person (such as a waterskin, soda can, squirt water bottle, or spray bottle). Doing so moves you 10 feet backwards in a straight line and grants you the benefits of the {@action Disengage} action."
+			]
+		},
+        {
+			"name": "Demon",
+			"source": "ObojimaTallGrass",
+			"page": 134,
+			"featureType": [
+				"Mask"
+			],
+            "prerequisite": [
+				{
+					"level": {
+						"level": 7,
+                        "class": {
+                            "name": "Bard"
+                        },
+						"subclass": {
+							"name": "College of Masks",
+							"source": "ObojimaTallGrass",
+                            "visible": true
+						}
+					}
+				}
+			],
+			"entries": [
+				"While wearing this mask you gain the abilities Arcane Memory and Demon Eye.",
+                {
+					"type": "list",
+					"items": [
+						{
+                            "type": "entries",
+                            "name": "Arcane Memory",
+                            "entries": [
+                                "While wearing this mask, you can use an action and expend a spell slot of 1st level or higher to magically learn whether a creature or object you specify has been within a 20-foot radius of your current location in the past 24 hours. If you expend a spell slot of 3rd level or higher, you get a brief vision of the creature or object while it was there, and you learn the exact time the crea- ture or object was present."
+                            ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "Demon Eye",
+                            "entries": [
+                                "As an action, you gain the ability to magi- cally see through solid objects to a range of 15 feet. Your vision penetrates most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt."
+                            ]
+                        }
+					]
+				}
+			]
+		},
+        {
+			"name": "Harpy",
+			"source": "ObojimaTallGrass",
+			"page": 135,
+			"featureType": [
+				"Mask"
+			],
+            "prerequisite": [
+				{
+					"level": {
+						"level": 11,
+                        "class": {
+                            "name": "Bard"
+                        },
+						"subclass": {
+							"name": "College of Masks",
+							"source": "ObojimaTallGrass",
+                            "visible": true
+						}
+					}
+				}
+			],
+			"entries": [
+				"While wearing this mask you have a flying speed of 30 feet and resistance to psychic damage."
+			]
+		},
+        {
+			"name": "Fish",
+			"source": "ObojimaTallGrass",
+			"page": 135,
+			"featureType": [
+				"Mask"
+			],
+			"entries": [
+				"While wearing this mask you gain a swimming speed equal to your walking speed and the ability to breathe underwater. Additionally, you know the {@spell Water Bullet|ObojimaTallGrass} and {@spell Whelm Weapon|ObojimaTallGrass} spells."
+			]
+		},
+        {
+			"name": "Fox",
+			"source": "ObojimaTallGrass",
+			"page": 135,
+			"featureType": [
+				"Mask"
+			],
+			"entries": [
+				"While wearing this mask, you can move through a hostile creature's space, regardless of its size, and another creature's space isn't {@quickref difficult terrain||3} for you. Additionally, your AC increases by 1 and when you make a Dexterity saving throw, you can use your reaction to gain advantage on the roll."
+			]
+		},
+        {
+			"name": "Golem",
+			"source": "ObojimaTallGrass",
+			"page": 135,
+			"featureType": [
+				"Mask"
+			],
+            "prerequisite": [
+				{
+					"level": {
+						"level": 7,
+                        "class": {
+                            "name": "Bard"
+                        },
+						"subclass": {
+							"name": "College of Masks",
+							"source": "ObojimaTallGrass",
+                            "visible": true
+						}
+					}
+				}
+			],
+			"entries": [
+				"While wearing this mask, your weapon attacks deal an extra {@damage 1d8} damage on a hit. If you are Small, you don't have disadvantage on your attack rolls with weapons as a result of {@itemProperty H||heavy}. In addition, your attacks and spells deal double damage to objects and structures."
+			]
+		},
+        {
+			"name": "Old Man",
+			"source": "ObojimaTallGrass",
+			"page": 135,
+			"featureType": [
+				"Mask"
+			],
+			"entries": [
+				"While wearing this mask, you can cast {@spell Detect Magic} and {@spell Identify} at will, without expending a spell slot or material components."
+			]
+		},
+        {
+			"name": "Protagonist",
+			"source": "ObojimaTallGrass",
+			"page": 135,
+			"featureType": [
+				"Mask"
+			],
+			"entries": [
+				"When you roll initiative while wearing this mask, you gain temporary hit points equal to half your bard level (rounded up). As a bonus action, you can mark a crea- ture as your antagonist for 1 minute. For the duration, you have advantage on ability checks involving your antagonist. Additionally, when you see your antagonist make an attack, you can use your reaction and expend a use of your Bardic Inspiration, rolling a Bardic Inspiration die to reduce the attack roll by the number rolled on the die."
+			]
+		},
+        {
+			"name": "Sea Urchin",
+			"source": "ObojimaTallGrass",
+			"page": 135,
+			"featureType": [
+				"Mask"
+			],
+			"entries": [
+				"While wearing this mask, you can use a bonus action and expend a use of your Bardic Inspiration, rolling a Bardic Inspiration die to heal yourself for a number of hit points equal to the number rolled plus half your bard level (rounded up).",
+                "Additionally, you can use an action to attempt to immobi- lize a creature you can see within 30 feet of you, injecting it with magical toxins. The target must succeed on a Consti- tution saving throw or become {@condition restrained} for 1 minute. At the end of each of its turns, the target can repeat the saving throw, ending the effect on itself on a success. You can use this ability a number of times equal to your proficiency bonus, and you regain all expended uses of it when you finish a long rest."
+			]
+		},
+        {
+			"name": "Spirit",
+			"source": "ObojimaTallGrass",
+			"page": 135,
+			"featureType": [
+				"Mask"
+			],
+            "prerequisite": [
+				{
+					"level": {
+						"level": 7,
+                        "class": {
+                            "name": "Bard"
+                        },
+						"subclass": {
+							"name": "College of Masks",
+							"source": "ObojimaTallGrass",
+                            "visible": true
+						}
+					}
+				}
+			],
+			"entries": [
+				"While wearing this mask, you know the {@spell Speak with Dead} spell. Additionally, you can expend a use of your Bardic Inspiration to temporarily move through the Spirit Realm. Whenever you would move, you instead step through the veil and into the Spirit Realm in the area where it overlaps with your current plane. You remain in the Spirit Realm until you stop moving or your turn ends. If you occupy the same spot as a solid object or creature when this happens, you are immediately shunted to the nearest unoccupied space that you can occupy and take {@damage 1d10} force damage.",
+                "While on the Spirit Realm, you can only affect and be affected by other creatures on that plane. Creatures that aren't in the Spirit Realm can't perceive you and can't interact with you, unless a special ability or magic has given them the ability to do so. You ignore all objects and effects that aren't on the Spirit Realm, allowing you to move through objects you perceive on the plane you originated from. This effect lasts until the end of your turn."
+			]
+		},
+        {
+			"name": "Stone Mask",
+			"source": "ObojimaTallGrass",
+			"page": 135,
+			"featureType": [
+				"Mask"
+			],
+			"entries": [
+				"While wearing this mask, you gain profi- ciency in the {@skill Athletics} skill and all bludgeoning, piercing, and slashing damage you take from nonmagical attacks is reduced by 2. Additionally, you have advantage on ability checks and saving throws against being pushed, pulled, or knocked {@condition prone} while wearing the mask."
 			]
 		}
 	],
@@ -5370,7 +5692,7 @@
 					"type": "list",
 					"items": [
 						"You gain proficiency in the {@skill Sleight of Hand} skill. If you already have proficiency, you gain expertise instead, which means your proficiency bonus is doubled for any ability check you make with it.",
-                        "When you succeed on a Dexterity ({@skill Sleight of Hand}) check to steal something, you can magically turn the object you stole {@condition invisible} as part of the same action, as if you had cast the Obscure Object spell. The object must be small enough to fit in the palm of your hand, and this effect lasts for 1 minute. You can use this ability a number of times per day equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+                        "When you succeed on a Dexterity ({@skill Sleight of Hand}) check to steal something, you can magically turn the object you stole {@condition invisible} as part of the same action, as if you had cast the {@spell Obscure Object|ObojimaTallGrass} spell. The object must be small enough to fit in the palm of your hand, and this effect lasts for 1 minute. You can use this ability a number of times per day equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
 					]
 				}
             ]
@@ -5507,14 +5829,14 @@
                             "type":"item",
                             "name":"One Handed",
                             "entries":[
-                                "While wielding a versatile weapon in one hand, your quick movements and agile defense allow you to regain ground even when your enemy advances. Once before the start of your next turn when you're missed by a melee attack from a creature within your reach, the attacker takes damage from your weapon equal to twice your proficiency bonus."
+                                "While wielding a {@itemProperty V||versatile} weapon in one hand, your quick movements and agile defense allow you to regain ground even when your enemy advances. Once before the start of your next turn when you're missed by a melee attack from a creature within your reach, the attacker takes damage from your weapon equal to twice your proficiency bonus."
                             ]
                         },
                         {
                             "type":"item",
                             "name":"Two Handed",
                             "entries":[
-                                "When wielding a versatile weapon in two hands, your powerful stance allows you to catch your target off guard. Whenever an enemy within your reach makes a melee weapon attack against you and misses, you can use your reaction to attempt to knock the attacker off balance. The target must succeed on a Dexterity saving throw (DC 8 + your Strength modifier + your proficiency bonus) or be knocked {@condition prone}."
+                                "When wielding a {@itemProperty V||versatile} weapon in two hands, your powerful stance allows you to catch your target off guard. Whenever an enemy within your reach makes a melee weapon attack against you and misses, you can use your reaction to attempt to knock the attacker off balance. The target must succeed on a Dexterity saving throw (DC 8 + your Strength modifier + your proficiency bonus) or be knocked {@condition prone}."
                             ]
                         }
                     ]
