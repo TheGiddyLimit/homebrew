@@ -3262,7 +3262,8 @@
 							"dancing lights",
 							"produce flame"
 						]
-					}
+					},
+                    "resourceName": "Wick Point"
 				}
 			],
 			"optionalfeatureProgression": [
@@ -3365,7 +3366,73 @@
                         "credit": "Alexander Cloos"
 					}
 				]
-			}
+			},
+            "foundryAdvancement": [
+                {
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "wax",
+						"type": "number",
+						"scale": {
+							"3": {
+								"value": 3
+							},
+							"4": {
+								"value": 4
+							},
+							"5": {
+								"value": 5
+							},
+							"6": {
+								"value": 6
+							},
+							"7": {
+								"value": 7
+							},
+							"8": {
+								"value": 8
+							},
+							"9": {
+								"value": 9
+							},
+							"10": {
+								"value": 10
+							},
+							"11": {
+								"value": 11
+							},
+							"12": {
+								"value": 12
+							},
+							"13": {
+								"value": 13
+							},
+							"14": {
+								"value": 14
+							},
+							"15": {
+								"value": 15
+							},
+							"16": {
+								"value": 16
+							},
+							"17": {
+								"value": 17
+							},
+							"18": {
+								"value": 18
+							},
+							"19": {
+								"value": 19
+							},
+							"20": {
+								"value": 20
+							}
+						}
+					},
+					"title": "Wick Points"
+				}
+            ]
 		}
     ],
     "subclassFeature":[
@@ -5066,7 +5133,7 @@
 					"type": "entries",
 					"name": "Saving Throws",
 					"entries": [
-						"Some of your enchantments require crea- tures to make a saving throw to resist the enchantment's effects. The saving throw DC is calculated as follows:",
+						"Some of your enchantments require creatures to make a saving throw to resist the enchantment's effects. The saving throw DC is calculated as follows:",
 						{
 							"type": "abilityDc",
 							"name": "Enchantment",
@@ -5082,7 +5149,7 @@
 					"name": "Wick Points",
 					"entries": [
 						"You have 3 wick points, which represent your current ability to harness the magic from the Spirit Realm. Manipulating the magic from another realm and pulling its energy into an object, even one as small and simple as a candle, can be both physically and mentally taxing. When you spend a wick point, it is unavailable until you finish a short or long rest, at the end of which you regain all of your expended wick points.",
-						"Whenever you gain a level in this class, you gain 1 addi- tional wick point."
+						"Whenever you gain a level in this class, you gain 1 additional wick point."
 					]
 				}
 			]
@@ -5477,6 +5544,89 @@
                             "type": "willing"
                         },
                         "prompt": true
+                    }
+                }
+            ]
+        },
+        {
+			"name": "Wax Enchantments",
+			"source": "ObojimaTallGrass",
+			"className": "Rogue",
+			"classSource": "PHB",
+			"subclassShortName": "Waxwork",
+			"subclassSource": "ObojimaTallGrass",
+			"level": 3,
+            "entryData": {
+				"resources": [
+					{
+						"name": "Wick Point",
+						"type": "pointPool",
+						"recharge": "restShort",
+						"count": "@scale.waxwork-rogue.wax"
+					}
+				]
+			}
+        },
+        {
+			"name": "Burn Cycle",
+			"source": "ObojimaTallGrass",
+			"className": "Rogue",
+			"classSource": "PHB",
+			"subclassShortName": "Waxwork",
+			"subclassSource": "ObojimaTallGrass",
+			"level": 9,
+            "activities": [
+                {
+                    "name": "Burn Damage",
+                    "type": "damage",
+                    "activation": {
+                        "type": "special"
+                    },
+                    "consumption": {
+                        "scaling": {
+                            "allowed": true,
+                            "max": "4"
+                        },
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": {
+                                "consumes": {
+                                    "name": "Wick Point"
+                                }  
+                            },
+                            "scaling": {
+                                "mode": "amount"
+                            }
+                        }
+                    ]
+                    },
+                    "duration": {
+                    "units": "inst"
+                    },
+                    "range": {
+                        "units": "any"
+                    },
+                    "target": {
+                        "prompt": true
+                    },
+                    "damage": {
+                        "parts": [
+                            {
+                                "custom": {
+                                    "enabled": true,
+                                    "formula": "(@scaling)d6"
+                                },
+                                "denomination": 6,
+                                "types": [
+                                    "fire"
+                                ],
+                                "scaling": {
+                                    "number": 1
+                                }
+                            }
+                        ]
                     }
                 }
             ]
@@ -5927,7 +6077,7 @@
 			]
 		},
 		{
-			"name": "Delicacy.",
+			"name": "Delicacy",
 			"source": "ObojimaTallGrass",
 			"page": 146,
 			"featureType": [
@@ -5994,7 +6144,7 @@
 				"WE"
 			],
 			"entries": [
-				"As an action, you can spend 1 wick point to melt and press the wax seal of iron onto any door or object with a lid. Once imbued with your seal, the object becomes magi- cally shut and can't be opened unless a creature makes a successful Strength ({@skill Athletics}) check against your Enchantment save DC, at which point the seal breaks. The iron seal lasts until it is broken or dispelled (as if it were a 1st-level spell). You can use an action to touch one of your iron seals and end its effects early."
+				"As an action, you can spend 1 wick point to melt and press the wax seal of iron onto any door or object with a lid. Once imbued with your seal, the object becomes magically shut and can't be opened unless a creature makes a successful Strength ({@skill Athletics}) check against your Enchantment save DC, at which point the seal breaks. The iron seal lasts until it is broken or dispelled (as if it were a 1st-level spell). You can use an action to touch one of your iron seals and end its effects early."
 			]
 		},
 		{
