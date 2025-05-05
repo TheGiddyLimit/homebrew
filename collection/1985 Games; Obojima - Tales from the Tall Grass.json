@@ -3832,6 +3832,9 @@
 				"When you make a Strength or Dexterity check, you can choose to replace the result with a number equal to 10 + your ranger level. You can wait until after you roll the d20 before deciding to use this feature, but must decide before the GM says whether the roll succeeds or fails. You can use this feature a number of times equal to half your proficiency bonus (rounded up), and you regain all expended uses when you finish a long rest."
 			],
             "foundrySystem": {
+                "activation": {
+					"type": "special"
+				},
 				"uses": {
 					"max": "ceil(@prof / 2)",
 					"recovery": [
@@ -3858,6 +3861,9 @@
 				"Additionally, whenever you take damage, you can use your reaction to reduce the damage taken by an amount equal to your ranger level. Once you reduce damage in this way, you can't do so again until you finish a short or long rest."
 			],
             "foundrySystem": {
+                "activation": {
+					"type": "reaction"
+				},
 				"uses": {
 					"max": "1",
 					"recovery": [
@@ -4853,15 +4859,17 @@
 				"Once you use this bonus action, you can't use it again until you finish a long rest, unless you expend a 5th-level spell slot to use it again."
 			],
             "foundrySystem": {
+                "activation": {
+					"type": "bonus"
+				},
                 "uses": {
-                "spent": 0,
-                "recovery": [
-                    {
-                    "period": "lr",
-                    "type": "recoverAll"
-                    }
-                ],
-                "max": "1"
+                    "recovery": [
+                        {
+                        "period": "lr",
+                        "type": "recoverAll"
+                        }
+                    ],
+                    "max": "1"
                 }
             }
 		},
@@ -6250,7 +6258,17 @@
             "page":162,
             "entries":[
                 "You have a peculiar way of fumbling through life that somehow always works out in your favor, succeeding in situations through what others might view as accidental luck. When you fail an ability check and roll a number on the die equal to half your level (rounded up) or lower, you can choose to replace the die roll with a 15 instead. You can use this ability three times, and you regain all expended uses when you finish a long rest."
-            ]
+            ],
+            "foundrySystem": {
+				"activation": {
+					"type": "special"
+				},
+				"uses": {
+					"max": "3",
+					"per": "lr",
+					"prompt": true
+				}
+			}
         },
         {
             "name":"Canden and Moon's Master Cut",
@@ -6489,8 +6507,7 @@
             ],
             "foundrySystem": {
 				"activation": {
-					"type": "special",
-					"cost": 1
+					"type": "special"
 				},
 				"uses": {
 					"max": "@prof",
@@ -6564,7 +6581,21 @@
                         "As a reaction, when you take damage, you can temporarily negate an amount of the damage equal to three times your level; you take any excess damage as normal. At the end of your next turn, you must make a Constitution saving throw, the DC of which is equal to 10 or one-third the damage you would have taken, whichever number is higher. On a failed save, you immediately take the negated damage. You must continue to make a Constitution saving throw at the end of each of your turns for 1 minute or until you fail the save, at which point you take the negated damage. Once you take this reaction, you can't do so again until you finish a long rest."
 					]
 				}
-            ]
+            ],
+            "foundrySystem": {
+                "activation": {
+					"type": "reaction"
+				},
+				"uses": {
+					"max": "1",
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
         },
         {
             "name":"Nakudama's Electric Bloodline",
@@ -6762,6 +6793,45 @@
                         "You gain a +2 bonus to attack rolls made against a target of the chosen creature type."
 					]
 				}
+            ]
+        }
+    ],
+    "foundryFeat": [
+        {
+            "name": "Canden and Moon's Master Cut",
+            "source": "ObojimaTallGrass",
+            "activities": [
+                {
+                    "name": "Activate Manifestation",
+                    "type": "utility",
+                    "activation": {
+                        "type": "bonus"
+                    },
+                    "consumption": {
+                        "targets": [
+                            {
+                                "type": "itemUses",
+                                "value": "1"
+                            }
+                        ]
+                    },
+                    "effects": [
+                        {
+                            "foundryId": "5thManifestation"
+                        }
+                    ],
+                    "range": {
+                        "units": "self"
+                    },
+                    "target": {
+                        "template": {
+                            "units": "ft"
+                        },
+                        "affects": {
+                            "type": "self"
+                        }
+                    }
+                }
             ]
         }
     ],
