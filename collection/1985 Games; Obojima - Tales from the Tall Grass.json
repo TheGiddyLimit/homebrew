@@ -6300,6 +6300,25 @@
                         "You learn the {@spell Fog Cloud} and {@spell Gust of Wind} spells, each of which you can cast once without expending a spell slot. You regain the ability to cast these two spells in this way when you finish a long rest. You can also cast the spells using spell slots you have of the appropriate level. Your spellcasting ability for this spell is Intelligence, Wisdom, or Charisma (your choice)."
 					]
 				}
+            ],
+            "additionalSpells": [
+                {
+                    "ability": {
+                        "choose": [
+                            "int", "wis", "cha"
+                        ]
+                    },
+                    "innate": {
+                        "_": {
+                            "daily": {
+                                "1e": [
+                                    "Fog Cloud",
+                                    "Gust of Wind"
+                                ]
+                            }
+                        }
+                    }
+                }
             ]
         },
         {
@@ -6309,6 +6328,36 @@
             "prerequisite":[
                 {
                     "other":"You must be a member of a witches coven"
+                }
+            ],
+            "ability": [
+                {
+                    "choose": {
+                        "from": [
+                            "int",
+                            "wis"
+                        ],
+                        "amount": 1
+                    }
+                }
+            ],
+            "additionalSpells": [
+                {
+                    "ability": "inherit",
+                    "innate": {
+                        "_": {
+                            "daily": {
+                                "1e": [
+                                    {
+                                        "choose": "level=1|school=D;C;T"
+                                    },
+                                    {
+                                        "choose": "level=1|school=D;C;T"
+                                    }
+                                ]
+                            }
+                        }
+                    }
                 }
             ],
             "entries":[
@@ -6328,6 +6377,16 @@
             "name":"Forager",
             "source":"ObojimaTallGrass",
             "page":162,
+            "ability": [
+                {
+                    "wis": 1
+                }
+            ],
+            "skillProficiencies": [
+                {
+                    "survival": true
+                }
+            ],
             "entries":[
                 "You've spent countless hours exploring the island searching for ingredients. You gain the following benefits:",
                 {
@@ -6344,6 +6403,14 @@
             "name":"Freediver",
             "source":"ObojimaTallGrass",
             "page":163,
+            "ability": [
+                {
+                    "con": 1
+                }
+            ],
+            "resist": [
+                "cold"
+            ],
             "entries":[
                 "You have undergone extensive underwater training. You gain the following benefits:",
                 {
@@ -6355,6 +6422,20 @@
                         "You gain resistance to cold damage."
 					]
 				}
+            ],
+            "foundryEffects":[
+                {
+                    "name":"Freediver",
+                    "transfer": true,
+                    "changes":[
+                        {
+                            "key": "system.attributes.movement.swim",
+                            "mode": 5,
+                            "value": "ceil((@abilities.con.value * 2) / 5) * 5",
+                            "priority": 20
+                        }
+                    ]
+                }
             ]
         },
         {
@@ -6394,6 +6475,11 @@
             "name":"Magically Mischievous",
             "source":"ObojimaTallGrass",
             "page":163,
+            "skillProficiencies": [
+                {
+                    "sleight of hand": true
+                }
+            ],
             "entries":[
                 "You've picked up a few magical tricks that assist your nefarious skills. You gain the following benefits:",
                 {
@@ -6403,7 +6489,18 @@
                         "When you succeed on a Dexterity ({@skill Sleight of Hand}) check to steal something, you can magically turn the object you stole {@condition invisible} as part of the same action, as if you had cast the {@spell Obscure Object|ObojimaTallGrass} spell. The object must be small enough to fit in the palm of your hand, and this effect lasts for 1 minute. You can use this ability a number of times per day equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
 					]
 				}
-            ]
+            ],
+            "foundrySystem": {
+				"activation": {
+					"type": "special",
+					"cost": 1
+				},
+				"uses": {
+					"max": "@prof",
+					"per": "lr",
+					"prompt": true
+				}
+			}
         },
         {
             "name":"Member of AHA",
@@ -6414,13 +6511,45 @@
                     "other":"You must be a member of AHA"
                 }
             ],
+            "ability": [
+                {
+                    "int": 1
+                }
+            ],
+            "additionalSpells": [
+                {
+                    "ability": "int",
+                    "innate": {
+                        "_": {
+                            "will": [
+                                "jolt|ObojimaTallGrass#c"
+                            ],
+                            "daily": {
+                                "1e": [
+                                    {
+                                        "choose": {
+                                            "from": [
+                                                "comprehend languages",
+                                                "detect magic",
+                                                "identify",
+                                                "illusory script"
+                                            ],
+                                            "count": 1
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ],
             "entries":[
                 "You have become an official member of AHA. You gain the following benefits:",
                 {
 					"type": "list",
 					"items": [
 						"Increase your Intelligence score by 1, to a maximum of 20.",
-                        "You learn the Jolt cantrip. You also learn one of the following spells of your choice: {@spell Comprehend Languages}, {@spell Detect Magic}, {@spell Identify}, or {@spell Illusory Script}. You can cast the chosen spell once without expending a spell slot, and you must finish a long rest before you can cast it in this way again. You can also cast the spell using any spell slots you have. Intelligence is your spellcasting ability for these spells."
+                        "You learn the {@spell Jolt|ObojimaTallGrass} cantrip. You also learn one of the following spells of your choice: {@spell Comprehend Languages}, {@spell Detect Magic}, {@spell Identify}, or {@spell Illusory Script}. You can cast the chosen spell once without expending a spell slot, and you must finish a long rest before you can cast it in this way again. You can also cast the spell using any spell slots you have. Intelligence is your spellcasting ability for these spells."
 					]
 				}
             ]
@@ -6450,6 +6579,9 @@
                     "other":"You must be a Nakudama"
                 }
             ],
+            "resist": [
+                "lightning"
+            ],
             "entries":[
                 "Although it's uncommon in today's day and age, some Nakudama are able to awaken the now dormant skills held by their warring ancestors. You gain the following benefits:",
                 {
@@ -6471,6 +6603,9 @@
                     "other":"You must be a Nakudama"
                 }
             ],
+            "resist": [
+                "poison"
+            ],
             "entries":[
                 "Although it's uncommon in today's day and age, some Nakudama are able to awaken the now dormant skills held by their warring ancestors. You gain the following benefits:",
                 {
@@ -6490,6 +6625,23 @@
             "prerequisite":[
                 {
                     "other":"You must be a member of the Courier Brigade"
+                }
+            ],
+            "ability": [
+                {
+                    "choose": {
+                        "from": [
+                            "con",
+                            "wis"
+                        ],
+                        "amount": 1
+                    }
+                }
+            ],
+            "skillProficiencies": [
+                {
+                    "athletics": true,
+                    "survival": true
                 }
             ],
             "entries":[
