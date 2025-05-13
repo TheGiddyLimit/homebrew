@@ -3286,7 +3286,7 @@
 					"subclasses": [
 						{
 							"name": "Waxwork Rogue",
-							"source": "ObojimaTallGras"
+							"source": "ObojimaTallGrass"
 						}
 					],
 					"colLabels": [
@@ -3476,7 +3476,7 @@
 					"type": "entries",
 					"name": "Combat",
 					"entries": [
-						"Your body undergoes a unique change which magically alters your physical form, giving it the characteristics of rubber. While in this elastic state, you can use your reaction when you are hit by a ranged attack, deflecting it with your belly. When you do so, the damage you take from the attack is reduced by 1d12 + your Constitution modifier + your barbarian level.",
+						"Your body undergoes a unique change which magically alters your physical form, giving it the characteristics of rubber. While in this elastic state, you can use your reaction when you are hit by a ranged attack, deflecting it with your belly. When you do so, the damage you take from the attack is reduced by {@dice 1d12} + your Constitution modifier + your barbarian level.",
 						"Additionally, immediately before you make a melee weapon attack on your turn, you can use your bonus action to stretch your arms, increasing your reach by 5 feet for the rest of the turn. The first time you hit while your arms are stretched in this way, the attack deals an extra {@dice 1d6} damage of the weapon's type."
 					]
 				},
@@ -3531,7 +3531,7 @@
 			"header": 2,
 			"entries": [
 				"Beginning at 6th level, you've learned how to better control the effects your belly concoction produces.",
-				"Choose a common potion that you would normally consume. You can activate the effects of the chosen potion as a bonus action. Once you activate it, you can't do so again until you finish a long rest. If the potion's effects require a saving throw, the DC equals 8 + your proficiency bonus + your Constitution modifier.",
+				"Choose a {@filter common potion|items|source=obojimatallgrass|type=potion|rarity=common} that you would normally consume. You can activate the effects of the chosen potion as a bonus action. Once you activate it, you can't do so again until you finish a long rest. If the potion's effects require a saving throw, the DC equals 8 + your proficiency bonus + your Constitution modifier.",
 				"Each time you gain a level in this class, you can swap your chosen potion with a different one.",
 				{
 					"type": "inset",
@@ -3566,7 +3566,7 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"Starting at 14th level, you learn an additional common potion as well as an uncommon potion, using your Quick Brew feature.",
+				"Starting at 14th level, you learn an additional {@filter common potion|items|source=obojimatallgrass|type=potion|rarity=common} as well as an {@filter uncommon potion|items|source=obojimatallgrass|type=potion|rarity=uncommon}, using your Quick Brew feature.",
 				"Each time you gain a level in this class, you can swap one of your chosen potions with a different one."
 			]
 		},
@@ -3737,7 +3737,7 @@
 						"Its hit points are equal to three times your druid level.",
 						"When it takes the attack action its attack modifier is equal to your spell attack modifier.",
 						"In addition to its walking speed, it has a flying speed of 20 feet and can hover.",
-						"It can move through the space of other creatures as if they were difficult terrain."
+						"It can move through the space of other creatures as if they were {@quickref difficult terrain||3}."
 					]
 				},
 				"The spirit appears in an unoccupied space of your choice within 30 feet of you and acts on your turn. The spirit can only take the Dash and Attack action. If the spirit is reduced to 0 hit points, it explodes in a stunning spectacle of cascading petals. Until the end of your next turn, all creatures within a 20-foot radius centered on the spirit are affected by the Faerie Fire spell. Alternatively, the spirit disappears after 1 minute or if you dismiss it early (no action required).",
@@ -5639,7 +5639,153 @@
 					}
 				}
 			]
-		}
+		},
+        {
+			"name": "Belly Concoction",
+			"source": "ObojimaTallGrass",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Belly Brewer",
+			"subclassSource": "ObojimaTallGrass",
+			"level": 3,
+            "system": {
+                "uses": {
+                "spent": 0,
+                "recovery": [],
+                "max": ""
+                }
+            },
+            "activities": [
+                {
+                    "name": "Combat (Damage Reduction)",
+                    "type": "heal",
+                    "activation": {
+                        "type": "reaction",
+                        "value": null,
+                        "override": false,
+                        "condition": "when you are hit by a ranged attack"
+                    },
+                    "range": {
+                        "units": "self"
+                    },
+                    "target": {
+                        "template": {
+                            "contiguous": false,
+                            "units": "ft",
+                            "type": ""
+                        },
+                        "affects": {
+                            "choice": false,
+                            "type": "self"
+                        },
+                        "prompt": true
+                    },
+                    "healing": {
+                        "number": 1,
+                        "denomination": 0,
+                        "types": [
+                            "healing"
+                        ],
+                        "custom": {
+                            "enabled": true,
+                            "formula": "1d12 + @abilities.con.mod + @classes.barbarian.levels"
+                        }
+                    }
+                },
+                {
+                    "name": "Utility",
+                    "type": "heal",
+                    "activation": {
+                        "type": "bonus",
+                        "condition": "consume any object you can fit in your mouth"
+                    },
+                    "consumption": {
+                        "targets": [
+                            {
+                                "type": "hitDice",
+                                "value": "1",
+                                "target": "largest"
+                            },
+                            {
+                                "type": "activityUses",
+                                "value": "1"
+                            }
+                        ]
+                    },
+                    "range": {
+                        "override": false,
+                        "units": "self"
+                    },
+                    "target": {
+                        "template": {
+                            "units": "ft",
+                            "type": ""
+                        },
+                        "affects": {
+                            "choice": false,
+                            "type": "self"
+                        },
+                        "prompt": true
+                    },
+                    "uses": {
+                        "recovery": [
+                            {
+                                "period": "lr",
+                                "type": "recoverAll"
+                            }
+                        ],
+                        "max": "@prof"
+                    },
+                    "healing": {
+                        "denomination": 0,
+                        "types": [
+                            "healing"
+                        ],
+                        "custom": {
+                            "enabled": true,
+                            "formula": "1d12 + @abilities.con.mod"
+                        }
+                    }
+                },
+                {
+                    "name": "Whimsy (Damage)",
+                    "type": "damage",
+                    "activation": {
+                        "type": "special"
+                    },
+                    "range": {
+                        "units": "self"
+                    },
+                    "target": {
+                        "template": {
+                            "contiguous": false,
+                            "units": "ft",
+                            "type": ""
+                        },
+                        "affects": {
+                            "choice": false,
+                            "type": "self",
+                            "special": ""
+                        },
+                        "prompt": true
+                    },
+                    "damage": {
+                        "critical": {
+                            "allow": false
+                        },
+                        "parts": [
+                            {
+                                "number": 1,
+                                "denomination": 4,
+                                "types": [
+                                    "necrotic"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
 	],
 	"optionalfeature": [
 		{
@@ -6233,6 +6379,183 @@
 			],
 			"entries": [
 				"As a bonus action, you can spend 3 wick points to ignite a 10-foot length of candlewick that has been soaking in the stomach acid of a dragon frog. The flames burn at an intense heat that warps the air around them, shedding {@quickref Vision and Light||2||bright light} in a 15-foot radius and {@quickref Vision and Light||2||dim light} for an additional 15 feet. The wick burns for 1 minute, during which you can use it as a melee weapon that you're considered proficient with. It deals {@damage 3d4} fire damage on a hit (adding your ability modifier to the damage roll as normal), and it has the finesse, light, and reach properties."
+			]
+		}
+	],
+	"foundryOptionalfeature": [
+		{
+			"name": "Fish",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Switch Mask (Action)",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"effects": [
+						{
+							"foundryId": "MaskFish"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"template": {
+							"units": "ft"
+						},
+						"affects": {
+							"type": "self"
+						},
+						"prompt": true
+					}
+				},
+				{
+					"name": "Switch Mask (Bonus)",
+					"type": "utility",
+					"activation": {
+						"type": "bonus"
+					},
+					"effects": [
+						{
+							"foundryId": "MaskFish"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"template": {
+							"units": "ft"
+						},
+						"affects": {
+							"type": "self"
+						},
+						"prompt": true
+					}
+				},
+				{
+					"type": "cast",
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true
+					},
+					"spell": {
+						"uuid": "@spell[Water Bullet|ObojimaTallGrass]",
+						"level": 1,
+						"properties": [
+							"vocal",
+							"somatic"
+						]
+					}
+				},
+				{
+					"type": "cast",
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true
+					},
+					"spell": {
+						"uuid": "@spell[Whelm Weapon|ObojimaTallGrass]",
+						"level": 1,
+						"properties": [
+							"vocal",
+							"somatic",
+							"material"
+						]
+					}
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "MaskFish",
+					"changes": [
+						{
+							"key": "system.attributes.movement.swim",
+							"mode": 2,
+							"value": "30",
+							"priority": 20
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Harpy",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Switch Mask (Action)",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"effects": [
+						{
+							"foundryId": "MaskHarpy"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"template": {
+							"units": "ft"
+						},
+						"affects": {
+							"type": "self"
+						},
+						"prompt": true
+					}
+				},
+				{
+					"name": "Switch Mask (Bonus)",
+					"type": "utility",
+					"activation": {
+						"type": "bonus"
+					},
+					"effects": [
+						{
+							"foundryId": "MaskHarpy"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"template": {
+							"units": "ft"
+						},
+						"affects": {
+							"type": "self"
+						},
+						"prompt": true
+					}
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "MaskHarpy",
+					"changes": [
+						{
+							"key": "system.attributes.movement.fly",
+							"mode": 2,
+							"value": "30",
+							"priority": 20
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": 2,
+							"value": "Psychic",
+							"priority": 20
+						}
+					]
+				}
 			]
 		}
 	],
@@ -6903,7 +7226,7 @@
 				}
 			],
 			"entries": [
-				"Up to five simple or martial weapons of your choice materialize in an unoccupied space you can see within range. The weapons are nonmagical, but they are well-made and stylistically look however you would like. The weapons vanish when the spell ends."
+				"Up to five {@filter simple or martial weapons|items|type=simple weapon;martial weapon|miscellaneous=mundane;!reprinted} of your choice materialize in an unoccupied space you can see within range. The weapons are nonmagical, but they are well-made and stylistically look however you would like. The weapons vanish when the spell ends."
 			],
 			"entriesHigherLevel": [
 				{
@@ -7048,7 +7371,7 @@
 			],
 			"entries": [
 				"This spell transforms a beast that you can see within range into a new humanoid form. An unwilling creature must succeed on a Wisdom saving throw to avoid the effect. The spell has no effect on a beast with 0 hit points.",
-				"The transformation lasts for the duration, or until the target drops to 0 hit points or dies. The new form has the appearance of a humanoid of any race you choose. The target's game statistics, excluding mental ability scores, are replaced by the statistics of a commoner. It retains its alignment and personality.",
+				"The transformation lasts for the duration, or until the target drops to 0 hit points or dies. The new form has the appearance of a humanoid of any race you choose. The target's game statistics, excluding mental ability scores, are replaced by the statistics of a {@creature commoner}. It retains its alignment and personality.",
 				"The target assumes the hit points of its commoner form. When it reverts to its normal form, the beast returns to the number of hit points it had before it transformed. If it reverts as a result of dropping to 0 hit points, any excess damage carries over to its normal form. As long as the excess damage doesn't reduce the beast's normal form to 0 hit points, it isn't knocked {@condition unconscious}.",
 				"The creature is limited in the actions it can perform by the nature of its new form."
 			],
@@ -7185,7 +7508,7 @@
 			],
 			"entries": [
 				"You create a chaotic cloud of butterflies in a 20-foot-radius sphere centered on a point you choose within range. The area is heavily obscured, and resting smoke or fog in the area is dispersed.",
-				"Creatures of your choice in the area when you cast this spell ignore the following effects. For the duration, the affected area is difficult terrain. When a creature attempts to leave the spell's area, it must make a Strength saving throw. On a failed save, it is pulled back to an unoccupied space closest to the center of the sphere."
+				"Creatures of your choice in the area when you cast this spell ignore the following effects. For the duration, the affected area is {@quickref difficult terrain||3}. When a creature attempts to leave the spell's area, it must make a Strength saving throw. On a failed save, it is pulled back to an unoccupied space closest to the center of the sphere."
 			],
 			"classes": {
 				"fromClassList": [
@@ -7317,7 +7640,7 @@
 				}
 			],
 			"entries": [
-				"Choose a beast that you can see within range. The beast is affected if it has a challenge rating of 2 or lower; otherwise, the spell fails. An affected creature must succeed on a Wisdom saving throw, or you take total and precise control of it, as your consciousness enters its body. While under the effect of this spell, you can see through the creature's eyes and hear what it hears, gaining the benefits of any special senses that the creature has. You can move and take actions as the creature and can perform tasks the creature could feasibly perform. During this time, your body is considered {@condition unconscious}; this doesn't affect your ability to concentrate on this spell.",
+				"Choose a beast that you can see within range. The beast is affected if it has a {@filter challenge rating of 2 or lower|bestiary|source=|Challenge Rating=[&0;&2]|type=beast}; otherwise, the spell fails. An affected creature must succeed on a Wisdom saving throw, or you take total and precise control of it, as your consciousness enters its body. While under the effect of this spell, you can see through the creature's eyes and hear what it hears, gaining the benefits of any special senses that the creature has. You can move and take actions as the creature and can perform tasks the creature could feasibly perform. During this time, your body is considered {@condition unconscious}; this doesn't affect your ability to concentrate on this spell.",
 				"If the creature takes damage, you must make a Wisdom ({@skill Animal Handling}) check, with a DC equal to 10 or half the damage it took, whichever number is higher. On a failure, the creature regains control of its body, and the spell ends."
 			],
 			"entriesHigherLevel": [
@@ -8448,7 +8771,7 @@
 			],
 			"entries": [
 				"A swarm of eight origami birds erupts from the stack of papers consumed in the casting of the spell and flies toward a creature you can see within range. If the target is within 30 feet of you when you cast the spell, the swarm collides with the target, dealing {@damage 8d6} slashing damage to it, and the birds disappear.",
-				"If the target is farther than 30 feet away from you when you cast the spell, the swarm travels at a rate of 30 feet per round in the direction of the target, ignoring difficult terrain and moving around creatures and other obstructions as needed. While the swarm is traveling, it obstructs a 5-foot-cube area as if it were a Medium creature.",
+				"If the target is farther than 30 feet away from you when you cast the spell, the swarm travels at a rate of 30 feet per round in the direction of the target, ignoring {@quickref difficult terrain||3} and moving around creatures and other obstructions as needed. While the swarm is traveling, it obstructs a 5-foot-cube area as if it were a Medium creature.",
 				"While the swarm is traveling, it can be attacked. It has an AC equal to your spell save DC. For every attack that hits the swarm, the number of birds in the swarm is reduced by one.",
 				"At the start of your turn on the round that the swarm reaches its target, the target takes {@damage 1d6} slashing damage for each bird remaining in the swarm. The birds then disappear."
 			],
@@ -8535,7 +8858,7 @@
 				}
 			],
 			"entries": [
-				"You attempt to pacify a creature you can see within range. The target must make a Wisdom saving throw. If it fails the save, it is pacified by you until the spell ends. A pacified creature can't attack, cast a spell that affects an enemy, or deal damage to another creature. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+				"You attempt to pacify a creature you can see within range. The target must make a Wisdom saving throw. If it fails the save, it is {@condition pacified|ObojimaTallGrass} by you until the spell ends. A pacified creature can't attack, cast a spell that affects an enemy, or deal damage to another creature. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 			],
 			"entriesHigherLevel": [
 				{
@@ -8617,7 +8940,7 @@
 				}
 			],
 			"entries": [
-				"You attempt to pacify a humanoid you can see within range. The target must make a Wisdom saving throw. If it fails the save, it is pacified by you until the spell ends. A pacified creature can't attack, cast a spell that affects an enemy, or deal damage to another creature. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+				"You attempt to pacify a humanoid you can see within range. The target must make a Wisdom saving throw. If it fails the save, it is {@condition pacified|ObojimaTallGrass} by you until the spell ends. A pacified creature can't attack, cast a spell that affects an enemy, or deal damage to another creature. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 			],
 			"entriesHigherLevel": [
 				{
@@ -8692,7 +9015,7 @@
 				}
 			],
 			"entries": [
-				"You swiftly stomp your foot, conjuring a pillar of wood  or stone that thrusts out from underneath your feet and towards a creature you can see within range. Make a ranged spell attack against the target. On a hit, the target takes {@damage 2d12} bludgeoning damage, and if the target is Huge or smaller, it is pushed 10 feet away from you. The ground in a straight line between you and your target becomes difficult terrain, with each 5-foot-square portion requiring at least 1 minute to clear by hand."
+				"You swiftly stomp your foot, conjuring a pillar of wood  or stone that thrusts out from underneath your feet and towards a creature you can see within range. Make a ranged spell attack against the target. On a hit, the target takes {@damage 2d12} bludgeoning damage, and if the target is Huge or smaller, it is pushed 10 feet away from you. The ground in a straight line between you and your target becomes {@quickref difficult terrain||3}, with each 5-foot-square portion requiring at least 1 minute to clear by hand."
 			],
 			"entriesHigherLevel": [
 				{
@@ -11986,7 +12309,7 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"The spirit can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
+						"The spirit can move through other creatures and objects as if they were {@quickref difficult terrain||3}. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
 					]
 				},
 				{
@@ -12094,7 +12417,7 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"The spirit can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
+						"The spirit can move through other creatures and objects as if they were {@quickref difficult terrain||3}. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
 					]
 				},
 				{
@@ -12589,7 +12912,7 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"The Akaobata can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
+						"The Akaobata can move through other creatures and objects as if they were {@quickref difficult terrain||3}. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
 					]
 				},
 				{
@@ -12710,7 +13033,7 @@
 				{
 					"name": "Aquatic Memory",
 					"entries": [
-						"The Bearracuda can move under and through heavy snow as if it weren't difficult terrain. While moving through snow, the Bearracuda has advantage on Dexterity ({@skill Stealth}) checks."
+						"The Bearracuda can move under and through heavy snow as if it weren't {@quickref difficult terrain||3}. While moving through snow, the Bearracuda has advantage on Dexterity ({@skill Stealth}) checks."
 					]
 				},
 				{
@@ -16038,7 +16361,7 @@
 					"name": "Collapse {@recharge 5}",
 					"entries": [
 						"The golem targets a 15-foot-diameter circle within 15 feet of itself. Each creature in the area must make a {@dc 17} Dexterity saving throw or be crushed as the golem leaps and lands in the designated location, turning into a shockwave of rubble and transforming into its rubble form. On a failed save, a creature takes 22 ({@damage 5d8}) bludgeoning damage and is knocked {@condition prone}. On a successful save, the creature takes half as much damage and isn't knocked {@condition prone}.",
-						"While the golem is in rubble form, the area of impact is considered difficult terrain, the golem is {@condition incapacitated} and has resistance to all damage, and it automatically fails Dexterity saving throws.",
+						"While the golem is in rubble form, the area of impact is considered {@quickref difficult terrain||3}, the golem is {@condition incapacitated} and has resistance to all damage, and it automatically fails Dexterity saving throws.",
 						"The golem returns to its original form at the start of its next turn, shunting any creature in its space to another unoccupied space within 5 feet of it."
 					]
 				}
@@ -16863,7 +17186,7 @@
 				{
 					"name": "Spew Magma {@recharge 5}",
 					"entries": [
-						"{@atk rw} {@hit 7} to hit, range 30/90 ft., three targets. {@h}18 ({@damage 2d12 + 5}) fire damage. Regardless of whether the attacks hit or miss, the area within 5 feet of each target is covered in lava. The lava is considered difficult terrain, and a creature that starts its turn in the lava takes 6 ({@damage 1d12}) fire damage. The lava cools and hardens after 1 minute, at which point it becomes harmless and is no longer difficult terrain."
+						"{@atk rw} {@hit 7} to hit, range 30/90 ft., three targets. {@h}18 ({@damage 2d12 + 5}) fire damage. Regardless of whether the attacks hit or miss, the area within 5 feet of each target is covered in lava. The lava is considered {@quickref difficult terrain||3}, and a creature that starts its turn in the lava takes 6 ({@damage 1d12}) fire damage. The lava cools and hardens after 1 minute, at which point it becomes harmless and is no longer {@quickref difficult terrain||3}."
 					]
 				},
 				{
@@ -17024,7 +17347,7 @@
 				{
 					"name": "Sticky",
 					"entries": [
-						"If the Yellow Slime doesn't move for a round, the space that it occupies becomes slathered in a sticky, acrid yellow coating. For all creatures except Oozes, the space is difficult terrain, and when the creature enters the space for the first time on a turn or starts its turn there, it must succeed on a {@dc 14} Constitution saving throw or take 4 ({@damage 1d8}) acid damage."
+						"If the Yellow Slime doesn't move for a round, the space that it occupies becomes slathered in a sticky, acrid yellow coating. For all creatures except Oozes, the space is {@quickref difficult terrain||3}, and when the creature enters the space for the first time on a turn or starts its turn there, it must succeed on a {@dc 14} Constitution saving throw or take 4 ({@damage 1d8}) acid damage."
 					]
 				}
 			],
@@ -17848,7 +18171,7 @@
 				{
 					"name": "Earth Aquatic",
 					"entries": [
-						"The stone whale can move through stone and earth as if they were difficult terrain."
+						"The stone whale can move through stone and earth as if they were {@quickref difficult terrain||3}."
 					]
 				},
 				{
@@ -18545,7 +18868,7 @@
 				{
 					"name": "Unruly Earth",
 					"entries": [
-						"The ground within a 15-foot radius centered on the Watchwood Tree is considered difficult terrain for all creatures besides the Watchwood Tree."
+						"The ground within a 15-foot radius centered on the Watchwood Tree is considered {@quickref difficult terrain||3} for all creatures besides the Watchwood Tree."
 					]
 				}
 			],
@@ -21603,7 +21926,7 @@
 					"type": "entries",
 					"name": "Special",
 					"entries": [
-						"As part of your movement, you can use the vaulter's axe to launch yourself 15 feet over a creature or obstacle. Using your movement in this way ignores nonmagical difficult terrain."
+						"As part of your movement, you can use the vaulter's axe to launch yourself 15 feet over a creature or obstacle. Using your movement in this way ignores nonmagical {@quickref difficult terrain||3}."
 					]
 				}
 			]
@@ -42380,7 +42703,7 @@
 												"{@b Air Traffic Control Tower.} The harpies make their lair in the abandoned air traffic control tower that looks out over the runway. The tower is approximately 50 feet tall, with a boxy control room perched at the top of a narrow metal frame, around which climbs the remnants of a broken ladder.",
 												"The interior of the control room is usually dimly lit with a few lamps. Empty bottles and small bones lay in scattered heaps, and the air is thick with cigar smoke. The central feature is a scuffed card table, where the harpies gather to gamble, drink, and share bawdy jokes. Their raucous laughter carries across the airfield nightly. There's a bank of busted up control panels against one of the walls, and a nearby cabinet contains old airplane plans that Phin would love to get his hands on.",
 												"{@b Hangars.} The airfield has a pair of modest hangars, one of which contains the {@i Menace} in all its half-built glory. Phin lives in this hangar in a ramshackle loft built from scaffolding. All kinds of tools can be found here (except for the ones stolen by the tiny spirit Plitsu). Anyone looking for Phin is likely to find him here if he's not actively testing one of his aircrafts.",
-												"The second hangar is a nest of old airplane parts, the order of which is known only to Phin. This is a great spot for adventurers to try out their salvage skill. For more on the salvage skill, see page 165.",
+												"The second hangar is a nest of old airplane parts, the order of which is known only to Phin. This is a great spot for adventurers to try out their {@skill salvage|ObojimaTallGrass} skill. For more on the salvage skill, see page 165.",
 												"Behind the hangars is a small garden where Phin grows cucumbers that he uses to make pickles."
 											]
 										},
@@ -44491,7 +44814,7 @@
 										"{@item Vertebrae Sword|ObojimaTallGrass}. The jagged vertebrae sword of a fishfolk warrior can barely be called a sword. Locals would say it's better described as a makeshift weapon crafted from a fish skeleton and sea trash. Its poor construction is the reason it's not often a weapon seen on land, though when used by a skilled fighter, it most certainly can be a formidable tool.",
 										"When you successfully hit a creature with a vertebrae sword, you can use a bonus action to rake and twist the weapon, breaking off some of the sword's boney barbs and dealing an extra 1d8 piercing damage. The vertebrae sword can only be used in this way 5 times before it becomes unusable as a weapon.",
 										"{@item Vaulter's Axe|ObojimaTallGrass}. The vaulter's axe was designed by the Rangers of the Greenward Path for exploring the Brackwater Wetlands. Its tall haft allows wielders of the axe to easily check water depths and vault over obstacles. To this day it's a useful tool for anyone exploring the eastern side of the island.",
-										"As part of your movement, you can use the vaulter's axe to launch yourself 15 feet over a creature or obstacle. Using your movement in this way ignores nonmagical difficult terrain."
+										"As part of your movement, you can use the vaulter's axe to launch yourself 15 feet over a creature or obstacle. Using your movement in this way ignores nonmagical {@quickref difficult terrain||3}."
 									]
 								}
 							]
@@ -44604,7 +44927,7 @@
 							"height": 2522,
 							"credit": "Alexander Cloos"
 						},
-						"On the world of Obojima, magic items are abundant and diverse, each possessing unique powers and abilities which are sought after by a wide variety of people from spirit merchants and ramen chefs, to witches and adventurers alike. Some magic items are imbued with the essence of elemental forces, such as fire, water, wind, and earth. Others may be relics of the First Age or gifts from elder spirits, each with its own mysterious origins and hidden potential. Whether it be a sword that bursts into flames with every swing or a magic bicycle that grants its rider the ability to soar through the skies, these magic items play a crucial role in shaping the fate of those who possess them on Obojima.",
+						"In the world of Obojima, magic items are abundant and diverse, each possessing unique powers and abilities which are sought after by a wide variety of people from spirit merchants and ramen chefs, to witches and adventurers alike. Some magic items are imbued with the essence of elemental forces, such as fire, water, wind, and earth. Others may be relics of the First Age or gifts from elder spirits, each with its own mysterious origins and hidden potential. Whether it be a sword that bursts into flames with every swing or a magic bicycle that grants its rider the ability to soar through the skies, these magic items play a crucial role in shaping the fate of those who possess them on Obojima.",
 						{
 							"type": "section",
 							"name": "{@font Mundane Magic Items|SneakerProMedium}",
