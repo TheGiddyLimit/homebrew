@@ -2913,6 +2913,31 @@
 						}
 					},
 					"title": "Essence Dice"
+				},
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "object-channeling",
+						"type": "number",
+						"scale": {
+							"3": {
+								"value": 1
+							},
+							"7": {
+								"value": 3
+							},
+							"9": {
+								"value": 4
+							},
+							"13": {
+								"value": 5
+							},
+							"17": {
+								"value": 6
+							}
+						}
+					},
+					"title": "Object Channeling"
 				}
 			],
 			"optionalfeatureProgression": [
@@ -3004,15 +3029,6 @@
 			],
 			"subclassSpells": [
 				"jolt|ObojimaTallGrass"
-			],
-			"additionalSpells": [
-				{
-					"innate": {
-						"7": [
-							"jolt|ObojimaTallGrass"
-						]
-					}
-				}
 			],
 			"fluff": {
 				"images": [
@@ -4119,7 +4135,7 @@
 			"header": 2,
 			"entries": [
 				"By the time you reach 11th level, you've mastered a unique technique that lets you glide on the wind, just like a majestic sheep dragon. When you use your Step of the Wind, you also gain a flying speed equal to your walking speed. This flying speed lasts until the end of your turn.",
-				"Additionally, when you use your Step of the Wind, you simultaneously take both the Disengage and Dash action."
+				"Additionally, when you use your Step of the Wind, you simultaneously take both the {@action Disengage} and {@action Dash} action."
 			]
 		},
 		{
@@ -4185,7 +4201,7 @@
 						"Spirits find your odor to be incredibly off-putting.",
 						"Spirits find your odor to be incredibly attractive.",
 						"When you are {@condition unconscious}, your body floats 1 foot off the ground and can be carried by the wind.",
-						"When you successfully land a critical hit on a creature, your head randomly transforms into a strange visage such as an anthropomorphic pig head, a crimson-skinned version of yourself with flaming locks, the face of an Urugama, or a CRT TV. This transformation lasts until you transform again or take a long rest."
+						"When you successfully land a critical hit on a creature, your head randomly transforms into a strange visage such as an anthropomorphic pig head, a crimson-skinned version of yourself with flaming locks, the face of an {@creature Urugama|ObojimaTallGrass}, or a {@item CRT TV & Chicken Timer|ObojimaTallGrass|CRT TV}. This transformation lasts until you transform again or take a long rest."
 					]
 				}
 			]
@@ -4289,7 +4305,22 @@
 						}
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": "@scale.the-spirit-fused.object-channeling",
+					"recovery": [
+						{
+							"period": "sr",
+							"type": "recoverAll"
+						},
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
 		},
 		{
 			"name": "Spirit Battery",
@@ -4324,7 +4355,7 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"At 7th level, you learn an additional Channeling Option, and you can now use your Object Channeling feature a number of times equal to your proficiency bonus. You regain all of the expended uses when you finish a short or long rest."
+				"At 7th level, you learn an additional Channeling Option, and you can now use your {@subclassFeature Object Channeling|Fighter||Spirit-Fused|ObojimaTallGrass|3} feature a number of times equal to your proficiency bonus. You regain all of the expended uses when you finish a short or long rest."
 			]
 		},
 		{
@@ -4352,7 +4383,7 @@
 			"level": 15,
 			"header": 2,
 			"entries": [
-				"At 15th level, you learn to draw on the spirit energy within you to gain a quick rush of energy. You gain an additional use of your Second Wind feature. When your hit points drop below your fighter level while you have a use of Second Wind, you can choose to expend a use of Second Wind immediately (no action required)."
+				"At 15th level, you learn to draw on the spirit energy within you to gain a quick rush of energy. You gain an additional use of your {@classFeature Second Wind|Fighter||1} feature. When your hit points drop below your fighter level while you have a use of {@classFeature Second Wind|Fighter||1}, you can choose to expend a use of {@classFeature Second Wind|Fighter||1} immediately (no action required)."
 			]
 		},
 		{
@@ -4366,8 +4397,8 @@
 			"level": 18,
 			"header": 2,
 			"entries": [
-				"Starting at 18th level, you gain an additional channeling option from the Object Channeling feature.",
-				"In addition, when you roll initiative and have no uses of your Object Channeling feature left, you regain two uses of that feature."
+				"Starting at 18th level, you gain an additional channeling option from the {@subclassFeature Object Channeling|Fighter||Spirit-Fused|ObojimaTallGrass|3} feature.",
+				"In addition, when you roll initiative and have no uses of your {@subclassFeature Object Channeling|Fighter||Spirit-Fused|ObojimaTallGrass|3} feature left, you regain two uses of that feature."
 			]
 		},
 		{
@@ -5431,6 +5462,54 @@
 			]
 		},
 		{
+			"name": "Shielding Spirit",
+			"source": "ObojimaTallGrass",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "River",
+			"subclassSource": "ObojimaTallGrass",
+			"level": 15,
+			"activities": [
+				{
+					"name": "Extend to Allies",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": true,
+							"max": "5"
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "spellSlots",
+								"value": "1",
+								"target": "1",
+								"scaling": {
+									"mode": "level",
+									"formula": ""
+								}
+							}
+						]
+					},
+					"range": {
+						"value": "10",
+						"units": "ft"
+					},
+					"target": {
+						"affects": {
+							"count": "@scaling",
+							"type": "creature"
+						},
+						"override": false,
+						"prompt": true
+					}
+				}
+			]
+		},
+		{
 			"name": "Form of the River",
 			"source": "ObojimaTallGrass",
 			"className": "Paladin",
@@ -5596,7 +5675,7 @@
 			"level": 3,
 			"activities": [
 				{
-					"name": "Activate",
+					"name": "Use",
 					"type": "utility",
 					"activation": {
 						"type": "bonus"
@@ -5609,10 +5688,11 @@
 						"targets": [
 							{
 								"type": "itemUses",
-								"value": "@scale.monk.focus",
+								"value": "@scaling",
 								"target": {
-									"prop": "classFeature",
-									"uid": "Monk's Focus|Monk|XPHB|2"
+									"consumes": {
+										"name": "Focus Point"
+									}
 								}
 							}
 						]
@@ -5629,6 +5709,177 @@
 							"choice": false,
 							"count": "@scale.sheep-dragon-shepherd.herding-sheep",
 							"type": "willing"
+						},
+						"prompt": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Wind Shot",
+			"source": "ObojimaTallGrass",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassSource": "ObojimaTallGrass",
+			"subclassShortName": "Sheep Dragon Shepherd",
+			"level": 6,
+			"activities": [
+				{
+					"name": "Attack",
+					"type": "attack",
+					"activation": {
+						"type": "special"
+					},
+					"range": {
+						"value": "60",
+						"units": "ft"
+					},
+					"attack": {
+						"critical": {
+							"threshold": null
+						},
+						"flat": false,
+						"type": {
+							"value": "ranged",
+							"classification": "weapon"
+						}
+					},
+					"damage": {
+						"includeBase": true,
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "@scale.monk.die + @mod"
+								},
+								"denomination": 0,
+								"types": [
+									"bludgeoning"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"name": "Save",
+					"type": "save",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Focus Point"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"override": false,
+						"value": "60",
+						"units": "ft",
+						"special": ""
+					},
+					"save": {
+						"ability": [
+							"str"
+						],
+						"dc": {
+							"calculation": "wis",
+							"formula": "8 + @mod + @prof"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Intercepting Maneuver",
+			"source": "ObojimaTallGrass",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassSource": "ObojimaTallGrass",
+			"subclassShortName": "Sheep Dragon Shepherd",
+			"level": 6,
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "reaction"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Focus Point"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"value": "10",
+						"units": "ft"
+					},
+					"target": {
+						"template": {
+							"units": "ft"
+						},
+						"prompt": true
+					},
+					"roll": {
+						"formula": "@scale.monk.die + @abilities.dex.mod"
+					}
+				}
+			]
+		},
+		{
+			"name": "Guide to the Herd",
+			"source": "ObojimaTallGrass",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassSource": "ObojimaTallGrass",
+			"subclassShortName": "Sheep Dragon Shepherd",
+			"level": 17,
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Focus Point"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"value": "30",
+						"units": "ft"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "creature"
 						},
 						"prompt": true
 					}
@@ -6044,6 +6295,176 @@
 							"optionalfeature": "Stone Mask|ObojimaTallGrass"
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Channel Essence",
+			"source": "ObojimaTallGrass",
+			"className": "Fighter",
+			"classSource": "PHB",
+			"subclassSource": "ObojimaTallGrass",
+			"subclassShortName": "Spirit-Fused",
+			"level": 3,
+			"activities": [
+				{
+					"name": "Expend Die (Attack)",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Channel Essence"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"units": "any"
+					},
+					"roll": {
+						"formula": "1d6"
+					}
+				},
+				{
+					"name": "Expend Die (Damage)",
+					"type": "damage",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Channel Essence"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"units": "any"
+					},
+					"damage": {
+						"parts": [
+							{
+								"number": 1,
+								"denomination": 6,
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Spirit Battery",
+			"source": "ObojimaTallGrass",
+			"className": "Fighter",
+			"classSource": "PHB",
+			"subclassSource": "ObojimaTallGrass",
+			"subclassShortName": "Spirit-Fused",
+			"level": 7,
+			"activities": [
+				{
+					"name": "Jolt",
+					"type": "cast",
+					"spell": {
+						"uuid": "@spell[Jolt|ObojimaTallGrass]",
+						"level": 0,
+						"properties": [
+							"vocal",
+							"somatic"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Improvised Armor",
+			"source": "ObojimaTallGrass",
+			"className": "Fighter",
+			"classSource": "PHB",
+			"subclassSource": "ObojimaTallGrass",
+			"subclassShortName": "Spirit-Fused",
+			"level": 10,
+			"activities": [
+				{
+					"name": "Expend Die",
+					"type": "utility",
+					"activation": {
+						"type": "reaction"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Channel Essence"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"units": "any"
+					},
+					"roll": {
+						"formula": "1d6"
+					}
+				}
+			]
+		},
+		{
+			"name": "Junk Master",
+			"source": "ObojimaTallGrass",
+			"className": "Fighter",
+			"classSource": "PHB",
+			"subclassSource": "ObojimaTallGrass",
+			"subclassShortName": "Spirit-Fused",
+			"level": 18,
+			"activities": [
+				{
+					"name": "Regain Object Channeling",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "-2",
+								"target": {
+									"consumes": {
+										"name": "Object Channeling"
+									}
+								}
+							}
+						]
+					}
 				}
 			]
 		}
@@ -6816,6 +7237,284 @@
 							"priority": 20
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Ballooning Bag",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "bonus"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Object Channeling"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Entangling Cord",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Attack",
+					"type": "attack",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Object Channeling"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"units": "any"
+					},
+					"attack": {
+						"type": {
+							"value": "melee",
+							"classification": "weapon"
+						},
+						"ability": "con"
+					}
+				}
+			]
+		},
+		{
+			"name": "Find the Thing",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Object Channeling"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "First Age Steed",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Object Channeling"
+									}
+								}
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "FirstAgeSteed"
+						}
+					]
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "FirstAgeSteed",
+					"changes": [
+					],
+					"duration": {
+						"seconds": 3600
+					}
+				}
+			]
+		},
+		{
+			"name": "Goggled Vision",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Object Channeling"
+									}
+								}
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "GoggledVision"
+						}
+					]
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "GoggledVision",
+					"changes": [
+					],
+					"duration": {
+						"seconds": 3600
+					}
+				}
+			]
+		},
+		{
+			"name": "Leaping Sneakers",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "bonus"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Object Channeling"
+									}
+								}
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "LeapingSneakers"
+						}
+					]
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "LeapingSneakers",
+					"changes": [
+					],
+					"duration": {
+						"seconds": 3600
+					}
+				}
+			]
+		},
+		{
+			"name": "Pocket Voice",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Object Channeling"
+									}
+								}
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "PocketVoice"
+						}
+					]
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "PocketVoice",
+					"changes": [
+					],
+					"duration": {
+						"seconds": 3600
+					}
+				}
+			]
+		},
+		{
+			"name": "Water Jettison",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "bonus"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Object Channeling"
+									}
+								}
+							}
+						]
+					}
 				}
 			]
 		}
@@ -34910,7 +35609,7 @@
 			"rarity": "uncommon",
 			"wondrous": true,
 			"entries": [
-				"While wearing these boots, you can move an additional 15 feet whenever you take the {@action DashB} action."
+				"While wearing these boots, you can move an additional 15 feet whenever you take the {@action Dash} action."
 			],
 			"fluff": {
 				"images": [
