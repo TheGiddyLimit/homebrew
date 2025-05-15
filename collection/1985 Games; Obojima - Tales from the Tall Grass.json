@@ -29635,7 +29635,8 @@
 			],
 			"foundrySystem": {
 				"uses": {
-					"max": 1
+					"max": 1,
+					"autoDestroy": false
 				}
 			},
 			"fluff": {
@@ -30864,7 +30865,8 @@
 			],
 			"foundrySystem": {
 				"uses": {
-					"max": 1
+					"max": 1,
+					"autoDestroy": false
 				}
 			},
 			"fluff": {
@@ -31064,7 +31066,8 @@
 			],
 			"foundrySystem": {
 				"uses": {
-					"max": 1
+					"max": 1,
+					"autoDestroy": false
 				}
 			},
 			"fluff": {
@@ -31145,7 +31148,8 @@
 			],
 			"foundrySystem": {
 				"uses": {
-					"max": 1
+					"max": 1,
+					"autoDestroy": false
 				}
 			},
 			"fluff": {
@@ -31225,7 +31229,8 @@
 			],
 			"foundrySystem": {
 				"uses": {
-					"max": 1
+					"max": 1,
+					"autoDestroy": false 
 				}
 			},
 			"fluff": {
@@ -31305,7 +31310,8 @@
 			],
 			"foundrySystem": {
 				"uses": {
-					"max": 1
+					"max": 1,
+					"autoDestroy": false
 				}
 			},
 			"fluff": {
@@ -37956,6 +37962,30 @@
 						},
 						"prompt": true
 					}
+				},
+				{
+					"name": "Breath",
+					"type": "damage",
+					"activation": {
+						"type": "reaction"
+					},
+					"damage": {
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"number": 1,
+								"denomination": 0,
+								"types": [
+									"lightning"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					}
 				}
 			],
 			"effects": [
@@ -39468,6 +39498,12 @@
 		{
 			"name": "Enhanced Static Shock",
 			"source": "ObojimaTallGrass",
+			"system": {
+				"description": {
+					"value": "<div class=\"rd__b  rd__b--2\"><p>This potion makes you feel tingly as it charges you up with static electricity. Immediately after a creature touches you or hits you with a melee attack made with a metal weapon in the next 24 hours, you can use your reaction to send a charge of static electricity back at that creature, dealing [[/damage 3d10 type=lightning]] damage to it. Once you do so, the effects of this potion end.</p><div class=\"rd__b ve-text-center rd__b--3\"><p><span class=\"ve-large\"><span style=\"font-family:'SneakerProMedium'\">14</span></span></p></div></div><section class=\"secret\" id=\"secret-PtUXhUXS84HSdaew\"><p><strong>Missing Functionality</strong></p><p>Not possible to implement this functionality. Only duration of potion is configured./p></section>",
+					"chat": ""
+				}
+			},
 			"activities": [
 				{
 					"name": "Use",
@@ -39499,21 +39535,39 @@
 						},
 						"prompt": true
 					}
+				},
+				{
+					"name": "Breath",
+					"type": "damage",
+					"activation": {
+						"type": "reaction"
+					},
+					"damage": {
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"number": 3,
+								"denomination": 0,
+								"types": [
+									"lightning"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					}
 				}
 			],
 			"effects": [
 				{
 					"foundryId": "EnhancedShock",
 					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": 2,
-							"value": "Piercing",
-							"priority": 20
-						}
 					],
 					"duration": {
-						"seconds": 60
+						"seconds": 86400
 					}
 				}
 			]
@@ -39551,22 +39605,6 @@
 							"type": "creature"
 						},
 						"prompt": true
-					}
-				}
-			],
-			"effects": [
-				{
-					"foundryId": "Invulnerability",
-					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": 2,
-							"value": "Piercing",
-							"priority": 20
-						}
-					],
-					"duration": {
-						"seconds": 60
 					}
 				}
 			]
@@ -39611,12 +39649,6 @@
 				{
 					"foundryId": "PumpkinGuard",
 					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": 2,
-							"value": "Piercing",
-							"priority": 20
-						}
 					],
 					"duration": {
 						"seconds": 60
@@ -39630,7 +39662,7 @@
 			"activities": [
 				{
 					"name": "Use",
-					"type": "utility",
+					"type": "save",
 					"activation": {
 						"type": "bonus",
 						"value": 1
@@ -39643,36 +39675,36 @@
 							}
 						]
 					},
-					"effects": [
-						{
-							"foundryId": "RespiratoryDis"
-						}
-					],
 					"range": {
-						"units": "touch"
+						"override": false,
+						"value": "60",
+						"units": "ft",
+						"special": ""
 					},
 					"target": {
-						"affects": {
-							"count": "1",
-							"type": "creature"
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"count": "",
+							"type": "sphere",
+							"size": "15"
 						},
+						"affects": {
+							"choice": false,
+							"count": "",
+							"type": "creature",
+							"special": ""
+						},
+						"override": false,
 						"prompt": true
-					}
-				}
-			],
-			"effects": [
-				{
-					"foundryId": "RespiratoryDis",
-					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": 2,
-							"value": "Piercing",
-							"priority": 20
+					},
+					"save": {
+						"ability": [
+							"con"
+						],
+						"dc": {
+							"formula": "15"
 						}
-					],
-					"duration": {
-						"seconds": 60
 					}
 				}
 			]
@@ -39720,12 +39752,18 @@
 						{
 							"key": "system.traits.dr.value",
 							"mode": 2,
-							"value": "Piercing",
+							"value": "Cold",
+							"priority": 20
+						},
+						{
+							"key": "system.attributes.ac.bonus",
+							"mode": 2,
+							"value": 1,
 							"priority": 20
 						}
 					],
 					"duration": {
-						"seconds": 60
+						"seconds": 3600
 					}
 				}
 			]
@@ -39773,7 +39811,43 @@
 						{
 							"key": "system.traits.dr.value",
 							"mode": 2,
+							"value": "Cold",
+							"priority": 20
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": 2,
+							"value": "Fire",
+							"priority": 20
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": 2,
+							"value": "Lightning",
+							"priority": 20
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": 2,
+							"value": "Slashing",
+							"priority": 20
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": 2,
 							"value": "Piercing",
+							"priority": 20
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": 2,
+							"value": "Bludgeoning",
+							"priority": 20
+						},
+						{
+							"key": "system.attributes.ac.bonus",
+							"mode": 2,
+							"value": 2,
 							"priority": 20
 						}
 					],
@@ -39789,7 +39863,7 @@
 			"activities": [
 				{
 					"name": "Use",
-					"type": "utility",
+					"type": "save",
 					"activation": {
 						"type": "bonus",
 						"value": 1
@@ -39802,36 +39876,41 @@
 							}
 						]
 					},
-					"effects": [
-						{
-							"foundryId": "EnhancedBomb"
-						}
-					],
 					"range": {
-						"units": "touch"
+						"value": "60",
+						"units": "ft"
 					},
 					"target": {
+						"template": {
+							"units": "ft",
+							"type": "square",
+							"size": "30"
+						},
 						"affects": {
-							"count": "1",
+							"choice": false,
 							"type": "creature"
 						},
 						"prompt": true
-					}
-				}
-			],
-			"effects": [
-				{
-					"foundryId": "EnhancedBomb",
-					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": 2,
-							"value": "Piercing",
-							"priority": 20
+					},
+					"damage": {
+						"parts": [
+							{
+								"number": 3,
+								"denomination": 8,
+								"types": [
+									"force"
+								]
+							}
+						],
+						"onSave": "half"
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"formula": "16"
 						}
-					],
-					"duration": {
-						"seconds": 60
 					}
 				}
 			]
@@ -39861,14 +39940,54 @@
 						}
 					],
 					"range": {
-						"units": "touch"
+						"units": "self"
 					},
 					"target": {
+						"affects": {
+							"type": "self"
+						},
+						"prompt": true
+					}
+				},
+				{
+					"name": "Exhale (Lightning Breath)",
+					"type": "save",
+					"activation": {
+						"type": "bonus"
+					},
+					"range": {
+						"value": "30",
+						"units": "ft"
+					},
+					"target": {
+						"template": {
+							"units": "ft"
+						},
 						"affects": {
 							"count": "1",
 							"type": "creature"
 						},
 						"prompt": true
+					},
+					"damage": {
+						"parts": [
+							{
+								"number": 3,
+								"denomination": 10,
+								"types": [
+									"lightning"
+								]
+							}
+						],
+						"onSave": "half"
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"formula": "16"
+						}
 					}
 				}
 			],
@@ -39876,15 +39995,9 @@
 				{
 					"foundryId": "EnhancedBreath",
 					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": 2,
-							"value": "Piercing",
-							"priority": 20
-						}
 					],
 					"duration": {
-						"seconds": 60
+						"seconds": 86400
 					}
 				}
 			]
@@ -39894,11 +40007,27 @@
 			"source": "ObojimaTallGrass",
 			"activities": [
 				{
-					"name": "Use",
-					"type": "utility",
+					"name": "Necrotic Damage",
+					"type": "damage",
 					"activation": {
-						"type": "bonus",
-						"value": 1
+						"type": "action"
+					},
+					"damage": {
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"number": 3,
+								"denomination": 6,
+								"types": [
+									"necrotic"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
 					},
 					"consumption": {
 						"targets": [
@@ -39908,13 +40037,9 @@
 							}
 						]
 					},
-					"effects": [
-						{
-							"foundryId": "LifeSteal"
-						}
-					],
 					"range": {
-						"units": "touch"
+						"value": "10",
+						"units": "ft"
 					},
 					"target": {
 						"affects": {
@@ -39922,22 +40047,6 @@
 							"type": "creature"
 						},
 						"prompt": true
-					}
-				}
-			],
-			"effects": [
-				{
-					"foundryId": "LifeSteal",
-					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": 2,
-							"value": "Piercing",
-							"priority": 20
-						}
-					],
-					"duration": {
-						"seconds": 60
 					}
 				}
 			]
@@ -39982,12 +40091,6 @@
 				{
 					"foundryId": "RapidWithdrawal",
 					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": 2,
-							"value": "Piercing",
-							"priority": 20
-						}
 					],
 					"duration": {
 						"seconds": 60
@@ -40035,12 +40138,630 @@
 				{
 					"foundryId": "WrathfulSpirit",
 					"changes": [
+					],
+					"duration": {
+						"seconds": 60
+					}
+				}
+			]
+		},
+		{
+			"name": "Astounding Vigor",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "AstoundingVigor"
+						}
+					],
+					"range": {
+						"units": "touch"
+					},
+					"target": {
+						"affects": {
+							"count": "1",
+							"type": "creature"
+						},
+						"prompt": true
+					}
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "AstoundingVigor",
+					"changes": [
+					],
+					"duration": {
+						"seconds": 86400
+					}
+				}
+			]
+		},
+		{
+			"name": "Epic Bottled Bomb",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "save",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"range": {
+						"value": "60",
+						"units": "ft"
+					},
+					"target": {
+						"template": {
+							"units": "ft",
+							"type": "sphere",
+							"size": "30"
+						},
+						"affects": {
+							"choice": false,
+							"type": "creature"
+						},
+						"prompt": true
+					},
+					"damage": {
+						"parts": [
+							{
+								"number": 20,
+								"denomination": 6,
+								"types": [
+									"force"
+								]
+							}
+						],
+						"onSave": "half"
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"formula": "19"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Many Hands",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "ManyHands"
+						}
+					],
+					"range": {
+						"units": "touch"
+					},
+					"target": {
+						"affects": {
+							"count": "1",
+							"type": "creature"
+						},
+						"prompt": true
+					}
+				},
+				{
+					"name": "Frighten",
+					"type": "save",
+					"activation": {
+						"type": "special"
+					},
+					"save": {
+						"ability": [
+							"wis"
+						],
+						"dc": {
+							"formula": "19"
+						}
+					}
+				},
+				{
+					"name": "Clawing",
+					"type": "save",
+					"activation": {
+						"type": "special"
+					},
+					"range": {
+						"value": "20",
+						"units": "ft"
+					},
+					"damage": {
+						"parts": [
+							{
+								"number": 10,
+								"denomination": 6,
+								"types": [
+									"necrotic"
+								]
+							}
+						],
+						"onSave": "half"
+					},
+					"save": {
+						"ability": [
+							"con"
+						],
+						"dc": {
+							"formula": "19"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Withered Will",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "WitheredWill"
+						}
+					],
+					"range": {
+						"units": "touch"
+					},
+					"target": {
+						"affects": {
+							"count": "1",
+							"type": "creature"
+						},
+						"prompt": true
+					}
+				},
+				{
+					"name": "Exhale",
+					"type": "save",
+					"activation": {
+						"type": "bonus"
+					},
+					"range": {
+						"value": "60",
+						"units": "ft"
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"count": "",
+							"type": "cone",
+							"size": "60"
+						},
+						"affects": {
+							"count": "1",
+							"type": "creature"
+						},
+						"prompt": true
+					},
+					"save": {
+						"ability": [
+							"con"
+						],
+						"dc": {
+							"formula": "17"
+						}
+					}
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "WitheredWill",
+					"changes": [
+					],
+					"duration": {
+						"seconds": 60
+					}
+				}
+			]
+		},
+		{
+			"name": "Carla Cackletooth's Corruption Cocktail",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "CarlaCackletooth"
+						}
+					],
+					"range": {
+						"units": "touch"
+					},
+					"target": {
+						"affects": {
+							"count": "1",
+							"type": "creature"
+						},
+						"prompt": true
+					}
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "CarlaCackletooth",
+					"changes": [
 						{
 							"key": "system.traits.dr.value",
 							"mode": 2,
 							"value": "Piercing",
 							"priority": 20
 						}
+					],
+					"duration": {
+						"seconds": 60
+					}
+				}
+			]
+		},
+		{
+			"name": "Dragon Frog Transmutation",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "FrogTransmutat"
+						}
+					],
+					"range": {
+						"units": "touch"
+					},
+					"target": {
+						"affects": {
+							"count": "1",
+							"type": "creature"
+						},
+						"prompt": true
+					}
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "FrogTransmutat",
+					"changes": [
+						{
+							"key": "system.traits.dr.value",
+							"mode": 2,
+							"value": "Piercing",
+							"priority": 20
+						}
+					],
+					"duration": {
+						"seconds": 60
+					}
+				}
+			]
+		},
+		{
+			"name": "Essence of Great Rivers",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "EssenceRivers"
+						}
+					],
+					"range": {
+						"units": "touch"
+					},
+					"target": {
+						"affects": {
+							"count": "1",
+							"type": "creature"
+						},
+						"prompt": true
+					}
+				},
+				{
+					"name": "Save Count",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "activityUses",
+								"value": "1",
+								"scaling": {}
+							}
+						]
+					},
+					"uses": {
+						"max": "3"
+					}
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "EssenceRivers",
+					"changes": [
+					],
+					"duration": {
+						"seconds": 86400
+					}
+				}
+			]
+		},
+		{
+			"name": "Hero's Blade",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "enchant",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "HerosBlade"
+						}
+					]
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "HerosBlade",
+					"type": "enchantment",
+					"changes": [
+						{
+							"key": "name",
+							"mode": 5,
+							"value": "Hero's Blade Enhanced {}",
+							"priority": 20
+						},
+						{
+							"key": "system.bonuses.mwak.attack",
+							"mode": 2,
+							"value": 3,
+							"priority": 20
+						},
+						{
+							"key": "system.bonuses.mwak.damage",
+							"mode": 2,
+							"value": 3,
+							"priority": 20
+						},
+						{
+							"key": "system.bonuses.msak.attack",
+							"mode": 2,
+							"value": 3,
+							"priority": 20
+						},
+						{
+							"key": "system.bonuses.msak.damage",
+							"mode": 2,
+							"value": 3,
+							"priority": 20
+						},
+						{
+							"key": "system.bonuses.rsak.attack",
+							"mode": 2,
+							"value": 3,
+							"priority": 20
+						},
+						{
+							"key": "system.bonuses.rsak.damage",
+							"mode": 2,
+							"value": 3,
+							"priority": 20
+						}
+					],
+					"duration": {
+						"seconds": 60
+					}
+				}
+			]
+		},
+		{
+			"name": "Hunter's Speed",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "HunterSpeed"
+						}
+					],
+					"range": {
+						"units": "touch"
+					},
+					"target": {
+						"affects": {
+							"count": "1",
+							"type": "creature"
+						},
+						"prompt": true
+					}
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "HunterSpeed",
+					"changes": [
+						{
+							"key": "system.attributes.movement.fly",
+							"mode": 5,
+							"value": 90,
+							"priority": 20
+						}
+					],
+					"duration": {
+						"seconds": 60
+					}
+				}
+			]
+		},
+		{
+			"name": "Severed Reaction",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "SeveredReaction"
+						}
+					],
+					"range": {
+						"units": "touch"
+					},
+					"target": {
+						"affects": {
+							"count": "1",
+							"type": "creature"
+						},
+						"prompt": true
+					}
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "SeveredReaction",
+					"changes": [
 					],
 					"duration": {
 						"seconds": 60
