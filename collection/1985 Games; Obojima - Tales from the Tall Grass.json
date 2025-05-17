@@ -28,7 +28,8 @@
 			"CO": "Channeling Option",
 			"Mask": "Craft Mask",
 			"Oaka": "Oaka Mark",
-			"WE": "Wax Enchantment"
+			"WE": "Wax Enchantment",
+			"4M": "4th Manifestation"
 		},
 		"internalCopies": [
 			"monsterFluff"
@@ -2804,6 +2805,30 @@
 				"4th Manifestation|Ranger|PHB|Corrupted Ranger|ObojimaTallGrass|11",
 				"5th Manifestation|Ranger|PHB|Corrupted Ranger|ObojimaTallGrass|15"
 			],
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "curse-marker",
+						"type": "number",
+						"scale": {
+							"3": {
+								"value": 2
+							},
+							"5": {
+								"value": 3
+							},
+							"11": {
+								"value": 4
+							},
+							"17": {
+								"value": 5
+							}
+						}
+					},
+					"title": "Curse Marker"
+				}
+			],
 			"fluff": {
 				"images": [
 					{
@@ -3910,7 +3935,13 @@
 				"Whenever you take damage, you also receive a curse marker; if the damage was from a critical hit, you receive two curse markers instead. These markers will remain active until the end of your next turn, and the maximum number of curse markers you can accumulate at a time is 2. When you hit a creature with a weapon attack, all the curse markers you have gained are instantly consumed, dealing an extra {@dice 1d4} necrotic damage to the target for each curse marker consumed.",
 				"Alternatively, you can use a bonus action to call upon your Corruption to immediately gain the maximum number of curse markers available to you. When you use this ability, you can't gain more than your maximum number of curse markers.",
 				"The number of curse markers you can accumulate at once increases when you reach certain levels in this class: 3 at 5th level, 4 at 11th level, and 5 at 17th level."
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+                  "max": "@scale.corrupted-ranger.curse-marker",
+                  "recovery": []
+				}
+			}
 		},
 		{
 			"name": "2nd Manifestation",
@@ -3987,42 +4018,27 @@
 			"entries": [
 				"At 11th level, your ailment is beginning to have side effects on your body. Gain one of the following ailments of your choice.",
 				{
-					"type": "entries",
-					"name": "Graying Vision",
+					"type": "options",
+					"count": 1,
 					"entries": [
-						"Your eyes weaken and the world around you begins to lose some of its colorful luster. To adjust to your slowly worsening vision, you've gained {@sense blindsight} out to a range of 15 feet. In addition, you automatically detect visual illusions if their Intelligence ({@skill Investigation}) check DC is less than or equal to your ranger spell save DC."
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Graying Vision|ObojimaTallGrass"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Failing Lungs|ObojimaTallGrass"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Losing Feeling|ObojimaTallGrass"
+						}
 					]
-				},
-				{
-					"type": "entries",
-					"name": "Failing Lungs",
-					"entries": [
-						"Your lungs have begun to ache and your days are filled with excessive coughing. At times you feel yourself gasping for air, and it's in those moments you've learned to steal another's breath. As an action, you pull your next breath from a creature you can see. The target falls {@condition prone} and can't take reactions until the start of your next turn. Additionally, all of your curse markers are consumed, dealing {@damage 1d4} necrotic damage to the creature for each marker consumed in this way.",
-						"Alternatively, you can give your breath to another creature. Whenever a creature you can see makes a Dexterity saving throw, you can use your reaction to give it advantage on the saving throw and increase its speed by 15 feet until the start of your next turn."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Losing Feeling",
-					"entries": [
-						"Numbness creeps into your muscles and bones and across your skin. The vibrancy of feeling gives way to a broad antagonism. Your hands and arms instead burn with a cold ethereal flame, which only you can see. As a bonus action, you can target a creature you can see within 60 feet of you, enveloping it with the same cursed flames. When you deal damage with your curse markers to a creature that has been enveloped by your flames, each curse marker deals an extra {@damage 1d6} necrotic damage, instead of {@dice 1d4}."
-					]
-				},
-				"Once you use this feature, you can't use it again until you finish a short or long rest."
+				}
 			],
 			"foundrySystem": {
 				"uses": {
-					"max": "1",
-					"recovery": [
-						{
-							"period": "sr",
-							"type": "recoverAll"
-						},
-						{
-							"period": "lr",
-							"type": "recoverAll"
-						}
-					]
+					"max": 0
 				}
 			}
 		},
@@ -5605,6 +5621,213 @@
 			]
 		},
 		{
+			"name": "1st Manifestation",
+			"source": "ObojimaTallGrass",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Corrupted Ranger",
+			"subclassSource": "ObojimaTallGrass",
+			"level": 3,
+			"activities": [
+				{
+					"name": "Curse Marker Damage",
+					"type": "damage",
+					"activation": {
+						"type": "special",
+						"condition": "when you hit a creature with a weapon attack"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "@item.uses.value",
+								"target": "",
+								"scaling": {}
+							}
+						]
+					},
+					"damage": {
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "(@item.uses.value)d4"
+								},
+								"number": 1,
+								"denomination": 4,
+								"bonus": "",
+								"types": [
+									"necrotic"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"name": "Gain 1 Curse Marker",
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "whenever you take damage"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "-1",
+								"target": "",
+								"scaling": {}
+							}
+						]
+					}
+				},
+				{
+					"name": "Gain Max Curse Markers",
+					"type": "utility",
+					"activation": {
+						"type": "bonus"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "-@item.uses.max",
+								"target": "",
+								"scaling": {}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "2nd Manifestation",
+			"source": "ObojimaTallGrass",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Corrupted Ranger",
+			"subclassSource": "ObojimaTallGrass",
+			"level": 3,
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "when you make a Strength or Dexterity check"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": "",
+								"scaling": {}
+							}
+						]
+					},
+					"roll": {
+						"prompt": false,
+						"visible": false,
+						"formula": "10 + @classes.ranger.levels"
+					}
+				}
+			]
+		},
+		{
+			"name": "3rd Manifestation",
+			"source": "ObojimaTallGrass",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Corrupted Ranger",
+			"subclassSource": "ObojimaTallGrass",
+			"level": 7,
+			"activities": [
+				{
+					"name": "Expend Curse Marker",
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "when you make a weapon attack"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "1st Manifestation"
+									}
+								},
+								"scaling": {}
+							}
+						]
+					},
+					"roll": {
+						"prompt": false,
+						"visible": false,
+						"name": "",
+						"formula": "1d4"
+					}
+				},
+				{
+					"name": "Reduce Damage",
+					"type": "utility",
+					"activation": {
+						"type": "reaction",
+						"condition": "whenever you take damage"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": "",
+								"scaling": {}
+							}
+						]
+					},
+					"roll": {
+						"prompt": false,
+						"visible": false,
+						"name": "",
+						"formula": "@classes.ranger.levels"
+					}
+				}
+			]
+		},
+		{
 			"name": "5th Manifestation",
 			"source": "ObojimaTallGrass",
 			"className": "Ranger",
@@ -5643,6 +5866,88 @@
 							"type": "self"
 						}
 					}
+				},
+				{
+					"name": "Activate Manifestation (Exhaustation)",
+					"type": "utility",
+					"_id": "TBmqA3jtJh6nQSzh",
+					"sort": 0,
+					"activation": {
+						"type": "bonus",
+						"value": null,
+						"override": false,
+						"condition": ""
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "activityUses",
+								"value": "1",
+								"scaling": {}
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "5thManifestation"
+						},
+						{
+							"foundryId": "5thManifestEx"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"template": {
+							"units": "ft"
+						},
+						"affects": {
+							"type": "self"
+						}
+					},
+					"uses": {
+						"recovery": [
+							{
+								"period": "lr",
+								"type": "recoverAll"
+							}
+						],
+						"max": "1"
+					}
+				},
+				{
+					"name": "Max Curse Marker Damage",
+					"type": "damage",
+					"activation": {
+						"type": "special"
+					},
+					"damage": {
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "(@scale.corrupted-ranger.curse-marker)d4"
+								},
+								"number": null,
+								"denomination": 0,
+								"bonus": "",
+								"types": [
+									"necrotic"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					}
 				}
 			],
 			"effects": [
@@ -5660,6 +5965,19 @@
 							"mode": 2,
 							"value": "2",
 							"priority": 20
+						}
+					],
+					"duration": {
+						"seconds": 6
+					}
+				},
+				{
+					"foundryId": "5thManifestEx",
+					"changes": [
+						{
+							"key": "system.attributes.exhaustion",
+							"mode": 2,
+							"value": "1"
 						}
 					]
 				}
@@ -7636,9 +7954,623 @@
 			"entries": [
 				"As a bonus action, you can spend 3 wick points to ignite a 10-foot length of candlewick that has been soaking in the stomach acid of a dragon frog. The flames burn at an intense heat that warps the air around them, shedding {@quickref Vision and Light||2||bright light} in a 15-foot radius and {@quickref Vision and Light||2||dim light} for an additional 15 feet. The wick burns for 1 minute, during which you can use it as a melee weapon that you're considered proficient with. It deals {@damage 3d4} fire damage on a hit (adding your ability modifier to the damage roll as normal), and it has the finesse, light, and reach properties."
 			]
+		},
+		{
+			"name": "Graying Vision",
+			"source": "ObojimaTallGrass",
+			"page": 144,
+			"featureType": [
+				"4M"
+			],
+			"entries": [
+				"Your eyes weaken and the world around you begins to lose some of its colorful luster. To adjust to your slowly worsening vision, you've gained {@sense blindsight} out to a range of 15 feet. In addition, you automatically detect visual illusions if their Intelligence ({@skill Investigation}) check DC is less than or equal to your ranger spell save DC."
+			],
+			"foundryEffects": [
+				{
+					"name": "Graying Vision",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.senses.blindsight",
+							"mode": 5,
+							"value": "15"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Failing Lungs",
+			"source": "ObojimaTallGrass",
+			"page": 144,
+			"featureType": [
+				"4M"
+			],
+			"entries": [
+				"Your lungs have begun to ache and your days are filled with excessive coughing. At times you feel yourself gasping for air, and it's in those moments you've learned to steal another's breath. As an action, you pull your next breath from a creature you can see. The target falls {@condition prone} and can't take reactions until the start of your next turn. Additionally, all of your curse markers are consumed, dealing {@damage 1d4} necrotic damage to the creature for each marker consumed in this way.",
+				"Alternatively, you can give your breath to another creature. Whenever a creature you can see makes a Dexterity saving throw, you can use your reaction to give it advantage on the saving throw and increase its speed by 15 feet until the start of your next turn."
+			]
+		},
+		{
+			"name": "Losing Feeling",
+			"source": "ObojimaTallGrass",
+			"page": 144,
+			"featureType": [
+				"4M"
+			],
+			"entries": [
+				"Numbness creeps into your muscles and bones and across your skin. The vibrancy of feeling gives way to a broad antagonism. Your hands and arms instead burn with a cold ethereal flame, which only you can see. As a bonus action, you can target a creature you can see within 60 feet of you, enveloping it with the same cursed flames. When you deal damage with your curse markers to a creature that has been enveloped by your flames, each curse marker deals an extra {@damage 1d6} necrotic damage, instead of {@dice 1d4}.",
+				"Once you use this feature, you can't use it again until you finish a short or long rest."
+			]
 		}
 	],
 	"foundryOptionalfeature": [
+		{
+			"name": "Blooming Light",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Wick Point"
+									}
+								}
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "Blooming"
+						}
+					]
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "Blooming",
+					"changes": [
+					],
+					"duration": {
+						"seconds": 3600
+					}
+				}
+			]
+		},
+		{
+			"name": "Bocha Glue Wax",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Wick Point"
+									}
+								}
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "Bocha"
+						}
+					]
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "Bocha",
+					"changes": [
+					],
+					"duration": {
+						"seconds": 86400
+					}
+				}
+			]
+		},
+		{
+			"name": "Burning Delay",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Use",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "3",
+								"target": {
+									"consumes": {
+										"name": "Wick Point"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Candle Pop",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Save (Intelligence)",
+					"foundryId": "6eauzasdfnKuZ6os",
+					"type": "save",
+					"activation": {
+						"type": "bonus"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "2",
+								"target": {
+									"consumes": {
+										"name": "Wick Point"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"override": false,
+						"units": "ft",
+						"special": "",
+						"value": "60"
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"type": ""
+						},
+						"affects": {
+							"choice": false,
+							"type": "creature",
+							"count": "1",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					}
+				},
+				{
+					"name": "Save (Charisma)",
+					"type": "save",
+					"foundryId": "6eauz5oGvnKuZ6os",
+					"activation": {
+						"type": "bonus"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "2",
+								"target": {
+									"consumes": {
+										"name": "Wick Point"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"override": false,
+						"units": "ft",
+						"special": "",
+						"value": "60"
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"type": ""
+						},
+						"affects": {
+							"choice": false,
+							"type": "creature",
+							"count": "1",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"calculation": "cha"
+						}
+					}
+				},
+				{
+					"name": "Save (Intelligence - Spirit Flame)",
+					"type": "forward",
+					"activity": {
+						"foundryId": "6eauzasdfnKuZ6os"
+					}
+				},
+				{
+					"name": "Save (Charisma - Spirit Flame)",
+					"type": "forward",
+					"activity": {
+						"foundryId": "6eauz5oGvnKuZ6os"
+					}
+				}
+			]
+		},
+		{
+			"name": "Consuming Flame",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Counterspell",
+					"type": "utility",
+					"activation": {
+						"type": "reaction"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "3",
+								"target": {
+									"consumes": {
+										"name": "Wick Point"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"override": false,
+						"units": "ft",
+						"special": "",
+						"value": "60"
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"type": ""
+						},
+						"affects": {
+							"choice": false,
+							"type": "creature",
+							"count": "1",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					}
+				},
+				{
+					"name": "Store Spell",
+					"type": "utility",
+					"activation": {
+						"type": "reaction"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "2",
+								"target": {
+									"consumes": {
+										"name": "Wick Point"
+									}
+								}
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "ConsumeFlame"
+						}
+					]
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "ConsumeFlame",
+					"changes": [
+					],
+					"duration": {
+						"seconds": 86400
+					}
+				}
+			]
+		},
+		{
+			"name": "Detonate",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Save (Intelligence)",
+					"type": "save",
+					"activation": {
+						"type": "action"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": true,
+							"max": "@scale.waxwork-rogue.wax"
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "3",
+								"target": {
+									"consumes": {
+										"name": "Wick Point"
+									}
+								},
+								"scaling": {
+									"mode": ""
+								}
+							},
+							{
+								"type": "itemUses",
+								"value": "0",
+								"target": {
+									"consumes": {
+										"name": "Wick Point"
+									}
+								},
+								"scaling": {
+									"mode": "amount",
+									"formula": ""
+								}
+							}
+						]
+					},
+					"range": {
+						"override": false,
+						"value": "60",
+						"units": "ft",
+						"special": ""
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"count": "",
+							"type": "circle",
+							"size": "20"
+						},
+						"affects": {
+							"choice": false,
+							"count": "",
+							"type": "creature",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					},
+					"damage": {
+						"parts": [
+							{
+								"custom": {
+									"enabled": false,
+									"formula": ""
+								},
+								"number": 2,
+								"denomination": 6,
+								"bonus": "",
+								"types": [
+									"fire"
+								],
+								"scaling": {
+									"mode": "",
+									"number": 1
+								}
+							},
+							{
+								"custom": {
+									"enabled": false,
+									"formula": ""
+								},
+								"number": 2,
+								"denomination": 8,
+								"bonus": "",
+								"types": [
+									"thunder"
+								],
+								"scaling": {
+									"mode": "",
+									"number": 1
+								}
+							},
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "(@scaling - 1)d6"
+								},
+								"number": 1,
+								"denomination": 0,
+								"bonus": "",
+								"types": [
+									"fire"
+								],
+								"scaling": {
+									"mode": "",
+									"number": 1
+								}
+							}
+						],
+						"onSave": "half"
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					}
+				},
+				{
+					"name": "Save (Charisma)",
+					"type": "save",
+					"activation": {
+						"type": "action"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": true,
+							"max": "@scale.waxwork-rogue.wax"
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "3",
+								"target": {
+									"consumes": {
+										"name": "Wick Point"
+									}
+								},
+								"scaling": {
+									"mode": ""
+								}
+							},
+							{
+								"type": "itemUses",
+								"value": "0",
+								"target": {
+									"consumes": {
+										"name": "Wick Point"
+									}
+								},
+								"scaling": {
+									"mode": "amount",
+									"formula": ""
+								}
+							}
+						]
+					},
+					"range": {
+						"override": false,
+						"value": "60",
+						"units": "ft",
+						"special": ""
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"count": "",
+							"type": "circle",
+							"size": "20"
+						},
+						"affects": {
+							"choice": false,
+							"count": "",
+							"type": "creature",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					},
+					"damage": {
+						"parts": [
+							{
+								"custom": {
+									"enabled": false,
+									"formula": ""
+								},
+								"number": 2,
+								"denomination": 6,
+								"bonus": "",
+								"types": [
+									"fire"
+								],
+								"scaling": {
+									"mode": "",
+									"number": 1
+								}
+							},
+							{
+								"custom": {
+									"enabled": false,
+									"formula": ""
+								},
+								"number": 2,
+								"denomination": 8,
+								"bonus": "",
+								"types": [
+									"thunder"
+								],
+								"scaling": {
+									"mode": "",
+									"number": 1
+								}
+							},
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "(@scaling - 1)d6"
+								},
+								"number": 1,
+								"denomination": 0,
+								"bonus": "",
+								"types": [
+									"fire"
+								],
+								"scaling": {
+									"mode": "",
+									"number": 1
+								}
+							}
+						],
+						"onSave": "half"
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"calculation": "cha"
+						}
+					}
+				}
+			]
+		},
 		{
 			"name": "Fish",
 			"source": "ObojimaTallGrass",
@@ -8085,6 +9017,165 @@
 									"consumes": {
 										"name": "Object Channeling"
 									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Failing Lungs",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Pull Breath",
+					"type": "damage",
+					"activation": {
+						"type": "action"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": true,
+							"max": "@scale.corrupted-ranger.curse-marker"
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "1st Manifestation"
+									}
+								},
+								"scaling": {
+									"mode": "amount",
+									"formula": ""
+								}
+							}
+						]
+					},
+					"damage": {
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "(@scaling)d4"
+								},
+								"number": null,
+								"denomination": 0,
+								"bonus": "",
+								"types": [
+									"necrotic"
+								],
+								"scaling": {
+									"mode": "",
+									"number": 1
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Losing Feeling",
+			"source": "ObojimaTallGrass",
+			"activities": [
+				{
+					"name": "Curse Marker Damage",
+					"type": "damage",
+					"activation": {
+						"type": "bonus"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": true,
+							"max": "@scale.corrupted-ranger.curse-marker"
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": "",
+								"scaling": {
+									"mode": ""
+								}
+							},
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "1st Manifestation"
+									}
+								},
+								"scaling": {
+									"mode": "amount",
+									"formula": ""
+								}
+							}
+						]
+					},
+					"description": {
+						"chatFlavor": ""
+					},
+					"duration": {
+						"units": "inst",
+						"concentration": false,
+						"override": false
+					},
+					"effects": [],
+					"range": {
+						"override": false,
+						"units": "ft",
+						"special": "",
+						"value": "60"
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"type": ""
+						},
+						"affects": {
+							"choice": false,
+							"type": "creature",
+							"count": "1",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					},
+					"uses": {
+						"spent": 0,
+						"recovery": [],
+						"max": ""
+					},
+					"damage": {
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "(@scaling)d6"
+								},
+								"number": null,
+								"denomination": 0,
+								"bonus": "",
+								"types": [
+									"necrotic"
+								],
+								"scaling": {
+									"mode": "",
+									"number": 1
 								}
 							}
 						]
@@ -44378,7 +45469,8 @@
 					"profiles": [
 						{
 							"name": "Water Elemental",
-							"uuid": "@creature[water elemental|xphb]"
+							"uuid": "@creature[water elemental|xmm]",
+							"count": "3"
 						}
 					]
 				}
@@ -49124,7 +50216,7 @@
 											"width": 850,
 											"height": 952
 										},
-										"Thirty years ago, enthusiasts of the world beneath the waves formed the Mariners' Guild to support submarine exploration. Under the leadership of its founder, {@area Captain Clintock|npc-captain|x}, the guild established four lodges\u2014one at each of the islands' cardinal directions. These lodges serve as both home and workshop for the divers of the guild, each equipped with a small boatyard and launch, where members can test their latest seagoing vessels.",
+										"Thirty years ago, enthusiasts of the world beneath the waves formed the Mariners' Guild to support sub-marine exploration. Under the leadership of its founder, {@area Captain Clintock|npc-captain|x}, the guild established four lodges\u2014one at each of the island's cardinal directions. These lodges serve as both home and workshop for the divers of the guild, each equipped with a small boatyard and launch, where members can test their latest seagoing vessels.",
 										"After an initial boom in popularity, the guild's membership has diminished over the decades. Of the four lodges, only the north and south ones remain in use, with Captain Clintock's two daughters, Holly and {@area Paloma|npc-paloma|x}, operating out of them respectively. The captain only rarely comes ashore, preferring to remain aboard the Pointue, his famous swordfish submersible.",
 										"Of late, {@area Captain Clintock|npc-captain|x}, his daughters, and the remaining members of the Mariners' Guild have all been working diligently to figure out how to fight back the Corruption that has emerged on the eastern side of the island. Most of their recent studies are regarding the Corruption's effects on the marine flora and fauna. In an expedition to the corrupted coastline, the captain's sub was damaged. His efforts to get to his daughter, Holly, a gifted engineer who could repair the Pointue, have been thwarted by the Lionfish King."
 									]
@@ -49400,7 +50492,7 @@
 									"name": "{@font The Brackwater Wetlands|RoglianoUltraBold}",
 									"page": 21,
 									"entries": [
-										"Aside from the peak of Mount Arbora, the soggy Brackwater Wetlands in the east of Obojima are the island's most sparsely populated region. The people here are accustomed to a hardscrabble life, and they have adapted to the swamp by building entire settlements on stilts. The region is known for its time honored tradition of mud eel fishing, though its greatest point of pride is that it is the home of the island-famous Hakumon's Ramen Shop. Of late, the treacherous wetlands have become even more dangerous, as a large swathe of it has been overrun by the mysterious Corruption that came from the sea only months ago.",
+										"Aside from the peak of Mount Arbora, the soggy Brackwater Wetlands in the east of Obojima is the island's most sparsely populated region. The people here are accustomed to a hardscrabble life, and they have adapted to the swamp by building entire settlements on stilts. The region is known for its time honored tradition of mud eel fishing, though its greatest point of pride is that it is the home of the island-famous Hakumon's Ramen Shop. Of late, the treacherous wetlands have become even more dangerous, as a large swathe of it has been overrun by the mysterious Corruption that came from the sea only months ago.",
 										"For more on the Brackwater Wetlands and the locations in it, see page 81."
 									]
 								},
@@ -49917,7 +51009,7 @@
 											"type": "insetReadaloud",
 											"name": "{@color {@font Tone/Vibe|SneakerProMedium}|3D89B8}",
 											"entries": [
-												"{@b Warm, comforting, familiar, charming, like home}"
+												"{@b Warm, Comforting, Familiar, Charming, Like home}"
 											]
 										},
 										{
@@ -50062,7 +51154,7 @@
 											"type": "insetReadaloud",
 											"name": "{@color {@font Tone/Vibe|SneakerProMedium}|3D89B8}",
 											"entries": [
-												"{@b Mysterious, ancient, hopeful, ominous}"
+												"{@b Mysterious, Ancient, Hopeful, Ominous}"
 											]
 										},
 										{
@@ -50173,7 +51265,7 @@
 											"name": "{@font NPCs|SneakerProMedium}",
 											"page": 35,
 											"entries": [
-												"{@b Zolde of the Midwives (female Nakudama).} Zolde is the de facto leader of the midwives currently living in the ruins at the lakeshore. She has a broad build and a perpetual scowl on her face, though she insists, \"it's just the way my face looks.\" She is gruff and leary of strangers, but is warm hearted. Before becoming a midwife, she was an adventurer in her own right, and she can still swing a sword. Zolde was not the leader when the group set out, but when Beatri went missing, the other midwives naturally looked to her.",
+												"{@b Zolde of the Midwives (female Nakudama).} Zolde is the de facto leader of the midwives currently living in the ruins at the lakeshore. She has a broad build and a perpetual scowl on her face, though she insists, \"it's just the way my face looks.\" She is gruff and leery of strangers, but is warm hearted. Before becoming a midwife, she was an adventurer in her own right, and she can still swing a sword. Zolde was not the leader when the group set out, but when Beatri went missing, the other midwives naturally looked to her.",
 												"{@b Voraro the Parasite (male Nakudama).} Voraro is an ancient Nakudama who has made the ziggurat his lair. He is a powerful warlock who remains tightly bound to his unnamed spirit patron. He is centuries old, his life sustained by dark magic. Since being sealed in the ziggurat, he has grown large and bloated, and he can no longer tolerate being outside of water. His primary focus is on finding more Nakudama for his patron to consume.",
 												{
 													"type": "image",
@@ -50193,7 +51285,7 @@
 											"name": "{@font Adventure Hooks|SneakerProMedium}",
 											"page": 35,
 											"entries": [
-												"{@b AHA Expedition.} Dini, a Nakudama member of AHA, enlists the adventurers to accompany them to Shoom as part of their field research on the Nakudama Age. Dini is unaware of midwives' expedition or of Voraro's presence in the ziggurat.",
+												"{@b AHA Expedition.} Dini, a Nakudama member of AHA, enlists the adventurers to accompany them to Shoom as part of their field research on the Nakudama Age. Dini is unaware of the midwives' expedition or of Voraro's presence in the ziggurat.",
 												"{@b The Royal Egg.} While exploring Shoom, the adventurers stumble across a single Nakudama egg that had been magically preserved within the ziggurat and miraculously left uneaten by Voraro and his patron spirit. If they share their discovery with anyone, such as the midwives, word spreads across the island. When word reaches the Lionfish King, he sends his minions to capture the egg for himself so he can assert a claim on the ancient title of monarch.",
 												"{@b Spellbound.} All at once, Nakudama from across the southern portion of the Gift of Shuritashi felt compelled to leave their homes and travel to Shoom. If asked about it, the traveling Nakudama explain it as an act of spontaneity. What they don't know is that Voraro is desperate to appease his spirit patron and has spent his powers to stretch his enthralling magic to reach Nakudama far and wide, pulling them to Shoom. Once there, Voraro plans to offer them up to be devoured by his patron spirit.",
 												"{@b Missing Midwife.} Midwife Beatri has gone missing. The other midwives are desperate to find her. They've searched the lakeshore and all over the top two tiers of the Ziggurat, but it's as though she disappeared. The last anyone saw of her, she had begun clearing the second tier."
@@ -50228,7 +51320,7 @@
 											"type": "insetReadaloud",
 											"name": "{@color {@font Tone/Vibe|SneakerProMedium}|3D89B8}",
 											"entries": [
-												"{@b Buzzing with energy, wondrous, competitive, artsy}"
+												"{@b Buzzing with energy, Wondrous, Competitive, Artsy}"
 											]
 										},
 										{
@@ -50253,7 +51345,7 @@
 											"name": "{@font Washing Up on Shore|SneakerProMedium}",
 											"page": 37,
 											"entries": [
-												"The other curiosity that attracts visitors to the Village of Sand is the peculiar regularity with which stuff seems to wash up on the beach here. Enormous bones from an unknown species, bits of a wrecked ship, and bottled maps are only the most recent arrivals. This detritus is so infused with the village's identity that some residents decorate their sand-build homes with the interesting items that wash up."
+												"The other curiosity that attracts visitors to the Village of Sand is the peculiar regularity with which stuff seems to wash up on the beach here. Enormous bones from an unknown species, bits of a wrecked ship, and bottled maps are only the most recent arrivals. This detritus is so infused with the village's identity that some residents decorate their sand-built homes with the interesting items that wash up."
 											]
 										},
 										{
@@ -50261,8 +51353,8 @@
 											"name": "{@font NPCs|SneakerProMedium}",
 											"page": 37,
 											"entries": [
-												"{@b Vorian, Apprentice Sand Sculptor (male elf).} The young elf is humble, shy, unsure of himself, and a perpetual mumbler\u2013everything their mentor, the Great Ferek, is not, including being a gifted sand sculptor. Vorian is the true genius, and it's been by his attention to detail and diligence that Ferek has come to enjoy his celebrity. Vorian has no interest in self-aggrandizement, preferring instead to continue his efforts to turn sand into works of art. When he's not running about the village on errands for his mentor, Vorian can often be found sitting outside, scribbling in his vast sketchbook spread across his lap. Vorian uses the {@creature commoner} stat block.",
-												"{@b Ulmat, The Pearl's Omenspeaker (female dara).} This dara is easily the tallest person in the village and possibly in the whole of the Gift of Shuritashi region. It falls to her to declare the omens she gleans from the pearl. Her voice carries with it an otherworldly quality that everything she says sounds like a dire omen, even when she's engaged in simple chitchat. She is the only acolyte who leaves the Tower of Glass with any regularity, and she can be spotted strolling in the sculpture park, admiring the latest iterations. Most folks give Ulmat a wide berth, but she delights in conversation, especially about art.",
+												"{@b Vorian, Apprentice Sand Sculptor (male elf).} The young elf is humble, shy, unsure of himself, and a perpetual mumbler\u2013everything his mentor, the Great Ferek, is not, including being a gifted sand sculptor. Vorian is the true genius, and it's been by his attention to detail and diligence that Ferek has come to enjoy his celebrity. Vorian has no interest in self-aggrandizement, preferring instead to continue his efforts to turn sand into works of art. When he's not running about the village on errands for his mentor, Vorian can often be found sitting outside, scribbling in his vast sketchbook spread across his lap. Vorian uses the {@creature commoner} stat block.",
+												"{@b Ulmat, The Pearl's Omenspeaker (female dara).} This dara is easily the tallest person in the village and possibly in the whole of the Gift of Shuritashi region. It falls to her to declare the omens she gleans from the pearl. Her voice carries with it an otherworldly quality so that everything she says sounds like a dire omen, even when she's engaged in simple chitchat. She is the only acolyte who leaves the Tower of Glass with any regularity, and she can be spotted strolling in the sculpture park, admiring the latest iterations. Most folks give Ulmat a wide berth, but she delights in conversation, especially about art.",
 												"{@b Gritty Groff, The Sand Witch (female human).} A strange and solitary witch who lives on the outskirts of the village, Gritty Groff prefers the company of her two giant sand fleas, Fleck and Speck. She has an abundance of knowledge about the Shallows, and it's even rumored that she once served as advisor to the Lionfish King. It's not true, of course, but it keeps most folks out of her way. Despite her antisocial nature, she remains near Tidewater because she believes it's her responsibility to protect the pearl housed in the Tower of Glass for reasons that are her own.",
 												"Gritty Groff is hard to locate at any given moment, for she lives in a mound of sand that migrates around the area. The interior of her mound remains solid and constant, even as it moves about the beach.",
 												"{@b Beachcomber Kids (humans).} Kenta, Kaz, and Kersh are three kids who live on their own on the outskirts of the village, making a living by combing the beach for valuable miscellany that washes up on shore and selling them to AHA or at the market in the village. When times are lean, they're not above pickpocketing. They have a small stash of treasure in their lair\u2014a ship buried in the sand.",
@@ -50350,7 +51442,7 @@
 											"page": 38,
 											"entries": [
 												"{@b Tower of Pearl and Glass.} At the center of the village stands its original marvel\u2014the tall fulgurite tower that holds the Pearl of Rongol. The tower's twisting form juts from the beach at an angle, looking like it's going to topple at any moment. Several branches splay out from the main structure, giving the tower a silhouette that resembles a deer's antler. At its highest point, it looms thirty feet above the sand.",
-												"Within the tower, acolytes, using the technique of sand sculpting, cut a network of chambers and tunnels that branch from the original chamber of the pearl, which formed when the tower first rose up around it. Though the tower leans, it can be described as having three levels. The bottom level contains the Chamber of Audience, a circular room with seating arranged around the edge. It's where people can come listen to the omenspeaker share what they have seen in the pearl. A tunnel leads from the Chamber of Audience to the acolytes' quarters. These are modest lodgings, for the tower's three acolytes. Another tunnel leads up to the Vault of the Pearl. Though it was formed naturally, the vault is a perfect three-sided pyramid. The pearl is kept here on a bed of sand. Only acolytes are allowed here.",
+												"Within the tower, acolytes, using the technique of sand sculpting, cut a network of chambers and tunnels that branch from the original chamber of the pearl, which formed when the tower first rose up around it. Though the tower leans, it can be described as having three levels. The bottom level contains the Chamber of Audience, a circular room with seating arranged around the edge. It's where people can come listen to the omenspeaker share what they have seen in the pearl. A tunnel leads from the Chamber of Audience to the acolytes' quarters. These are modest lodgings for the tower's three acolytes. Another tunnel leads up to the Vault of the Pearl. Though it was formed naturally, the vault is a perfect three-sided pyramid. The pearl is kept here on a bed of sand. Only acolytes are allowed here.",
 												"The four acolytes of the tower are:",
 												{
 													"type": "list",
@@ -50515,7 +51607,7 @@
 												{
 													"type": "inset",
 													"entries": [
-														"{@b The Talls Hats witch coven usually has one or more members in the village. They operate an apothecary and fortune-telling kiosk in the Plaza of Lanterns, and they help folks lost in the Spirit Realm return home. Though they are the only coven with a permanent presence in Uluwa, other witches on their own errands are common enough in the market.}"
+														"{@b The Talls Hats witch coven usually has one or more members in the village. They operate an apothecary and fortune-telling kiosk in the Plaza of Lanterns, and they help folks lost in the Spirit Realm to return home. Though they are the only coven with a permanent presence in Uluwa, other witches on their own errands are common enough in the market.}"
 													]
 												}
 											]
@@ -50626,7 +51718,7 @@
 											"name": "{@font {@style Vending Heaven|small}|RoglianoUltraBold}",
 											"page": 44,
 											"entries": [
-												"Being a relic of the First Age, Yatamon has the highest concentration of vending machines in all of Obojima, in fact, there are more vending machines here than perhaps all of the island. Because humans have lived here for centuries, all known vending machines have been claimed by wizards or spirits who sell or barter their wares for buds, flowers, petals, or other types of trade. Vending machines can contain anything from potion ingredients to strange items to snacks and drinks\u2014whatever a wizard wants to put inside\u2014but there are some vending machines that are as yet undiscovered, and they have items within them that are often from the time of the Nakudama or even the First Age."
+												"Being a relic of the First Age, Yatamon has the highest concentration of vending machines in all of Obojima, in fact, there are more vending machines here than anywhere else on the island. Because humans have lived here for centuries, all known vending machines have been claimed by wizards or spirits who sell or barter their wares for buds, flowers, petals, or other types of trade. Vending machines can contain anything from potion ingredients to strange items to snacks and drinks\u2014whatever a wizard wants to put inside\u2014but there are some vending machines that are as yet undiscovered, and they have items within them that are often from the time of the Nakudama or even the First Age."
 											]
 										},
 										{
@@ -50662,9 +51754,9 @@
 												"One of the Goro Goros is a Young Steward, {@b Mikiko (female human)}, who is a budding witch and who knows how to find the ingredients and make the pigment potion. Mikiko feels bad about what she and the gang are doing, but she desperately wants to fit in and thinks Tatsu is totally cool.",
 												"{@b Imelda (female elf).} Imelda is a thief who can find anything thanks to the discerning nose of her spirit companion, Choofi. Choofi is a floating, fur-covered spirit with a special sniffer that can discern what any object is by smell alone. Imelda moonlights as a package thief, sneaking up to an unattended Courier Brigade postal wagon and sending Choofi to snuffle through it. If Choofi smells something expensive, Imelda is not above stealing the package and then selling it to the highest bidder.",
 												"The more success Imelda gets using Choofi's magic nose, the more audacious she becomes. She's now designed her own calling card that she leaves at the scene of her crimes.",
-												"{@b Master Hu (male human).} Master Hu is a baker and the creator of the Happy Joy Cake. Master Hu is not only a firstrate baker but he is also a kind of a guru, his most famous quote being, \"As with all things, look to the cake and the answer will come\". Master Hu is an entertaining personality who is earnest in his love for making Happy Joy Cakes. Like he says, \"I put a bit of love and First Age magic into every one!\"",
+												"{@b Master Hu (male human).} Master Hu is a baker and the creator of the Happy Joy Cake. Master Hu is not only a firstrate baker but he is also a kind of a guru; his most famous quote being, \"As with all things, look to the cake and the answer will come\". Master Hu is an entertaining personality who is earnest in his love for making Happy Joy Cakes. Like he says, \"I put a bit of love and First Age magic into every one!\"",
 												"{@b Postmaster Miranda Escalante (female human).} Miranda Escalante is the current Postmaster of the Courier Brigade's Yatamon office, and is Postmaster General Drubal's right hand. Miranda oversees the training of every knight in the brigade, making sure that the recruits understand and respect their oath to the postal corps and are fully prepared for the challenges and trials ahead. She's generally very honest and forthcoming and, when she can, tries to make a good effort in helping those around her.",
-												"{@b Mr. Basingstoke (male human).} To ensure non-partiality, the Witchery (see the Witchery in the factions section below) is run by a warlock, Mr. Basingstoke, who is purposely not affiliated with any of the covens. Mr. Basingstoke is an intimidating man who runs the Witchery with austere efficiency. Mr. Basingstoke's spirit companion is a large disturbing octopus creature called \"Sorrow\". Sorrow moves in total silence, observing everything through its colorless eyes as it drifts down hallways and floats through walls, and, because of this, Sorrow has the unsettling habit of appearing suddenly and startling everyone in the room. Even though Sorrow's face is without expression, Mr. Basingstoke will often remark on how Sorrow is feeling, saying, \"Sorrow is quite displeased with you today\" or \"Sorrow thinks that you should reconsider\". Many of the witches at the Witchery speculate if Mr. Basingstoke is just having fun or if Sorrow does indeed have feelings, whatever the case may be, Sorrow's silent and ominous demeanor never betrays a single hint of emotion.",
+												"{@b Mr. Basingstoke (male human).} To ensure non-partiality, the Witchery (see the Witchery in the factions section below) is run by a warlock, Mr. Basingstoke, who is purposely not affiliated with any of the covens. Mr. Basingstoke is an intimidating man who runs the Witchery with austere efficiency. Mr. Basingstoke's spirit companion is a large disturbing octopus creature called \"Sorrow\". Sorrow moves in total silence, observing everything through its colorless eyes as it drifts down hallways and floats through walls, and, because of this, Sorrow has the unsettling habit of appearing suddenly and startling everyone in the room. Even though Sorrow's face is without expression, Mr. Basingstoke will often remark on how Sorrow is feeling, saying, \"Sorrow is quite displeased with you today\" or \"Sorrow thinks that you should reconsider\". Many of the witches at the Witchery speculate if Mr. Basingstoke is just having fun or if Sorrow does indeed have feelings. Whatever the case may be, Sorrow's silent and ominous demeanor never betrays a single hint of emotion.",
 												{
 													"type": "image",
 													"href": {
@@ -50699,7 +51791,7 @@
 													"width": 850,
 													"height": 738
 												},
-												"Although AHA's headquarters reside east of Yatamon in the Coastal Highlands, the city does house the organization's second largest outpost, which resides inside of a First Age library. The stacks, where hundreds of books used to be, are now filled with AHA research papers and equipment. Drawers, where Dewey decimal cards were once stored now, hold samples taken from the various sites that AHA is studying all over the island. Here in Yatamon, AHA members are studying the First Age in depth, as opportunity is abundant in the city. There are about 20 AHA members who work at the library outpost around the clock, one of them is {@b Mortimus Fids (human male)}, the head curator of this AHA office. Mortimus rules the AHA office with a sense of self-importance and snobbery that makes everyone loathe the sound of his voice. If Mortimus senses even the slightest bit that a piece of information he has is of significance to the adventurers, he will make them go through all manner of hoop jumping, ego-stroking, and groveling before letting it go.",
+												"Although AHA's headquarters reside east of Yatamon in the Coastal Highlands, the city does house the organization's second largest outpost, which resides inside of a First Age library. The stacks, where hundreds of books used to be, are now filled with AHA research papers and equipment. Drawers, where Dewey decimal cards were once stored now, hold samples taken from the various sites that AHA is studying all over the island. Here in Yatamon, AHA members are studying the First Age in depth, as opportunity is abundant in the city. There are about 20 AHA members who work at the library outpost around the clock. One of them is {@b Mortimus Fids (human male)}, the head curator of this AHA office. Mortimus rules the AHA office with a sense of self-importance and snobbery that makes everyone loathe the sound of his voice. If Mortimus senses even the slightest bit that a piece of information he has is of significance to the adventurers, he will make them go through all manner of hoop jumping, ego-stroking, and groveling before letting it go.",
 												"{@b AHA Underground Expedition.} Because of their interest in history, especially the giant mystery of the First Age, AHA has an ongoing archaeological dig led by Dr. Zalia Frond and her Nakudama colleague, Krocius, that has recently gone down into the sublayers of Yatamon to see if they can unearth more secrets of the First Age."
 											]
 										},
@@ -50790,7 +51882,7 @@
 											"name": "{@font Adventure Hooks|SneakerProMedium}",
 											"page": 47,
 											"entries": [
-												"{@b A Witch in Need.} A young witch needs to find her broom that flew off into the nearby woods and she desperately needs it to deliver the \"special parcel\" that she had tied to it. The special parcel was given to her by a \"strange spirit\" and she was to deliver it to Yatamon's clockmaker.",
+												"{@b A Witch in Need.} A young witch needs to find her broom that flew off into the nearby woods, and she desperately needs it to deliver the \"special parcel\" that she had tied to it. The special parcel was given to her by a \"strange spirit\" and she was to deliver it to Yatamon's clockmaker.",
 												"If found, the parcel contains a complex and magic clockwork device that needs to be properly reassembled before it will function again, whatever that function may be.",
 												"{@b Trouble Brewing.} An AHA ranger has come into town and is drawing a crowd by holding a jar of Corruption aloft and imploring everyone to pay attention and to beware because the Corruption is coming to Yatamon. The local town elders are displeased with the hubbub and don't like someone scaring townsfolk with these wild claims of Corruption and spreading their \"doomsaying\" about.",
 												"If approached, the AHA ranger will beseech any adventurers for help and will mention the plight of Polewater (see \"Polewater\" below). If there are any corrupted rangers in the party, the Corruption in the jar will suddenly be drawn to them, as if pulled by a magnet, and at the same time, their corrupted wounds will begin to throb painfully.",
@@ -50895,7 +51987,7 @@
 										},
 										"When following the Mosspot path up into the foothills of Mount Arbora, you'll arrive at Chisuay's Teahouse\u2014an",
 										"Obojiman Staple, run by the charismatic and eclectic tea master of the same name.",
-										"Chisuay's Teahouse is fairly well-known throughout Obojima, even merchants in distant villages sell some of Chisuay's heirloom teas. Each of Chisuay's delicious, fragrant, and refreshing varieties comes in its own unique and beautifully wrapped package. Many Obojiman households have a package of Chisuay's most famous blend known as Chisuay's Heavenly Tea. Obojimans love tea and will happily describe their favorite blend, talking at great length about its beneficial effects. A few tea lovers could point out the location of the teahouse on a map and there might be a handful of true aficionados who have personally made the pilgrimage, and those who have gush with rave reviews of the teahouse and Chisuay's hallmark charm.",
+										"Chisuay's Teahouse is fairly well-known throughout Obojima. Even merchants in distant villages sell some of Chisuay's heirloom teas. Each of Chisuay's delicious, fragrant, and refreshing varieties comes in its own unique and beautifully wrapped package. Many Obojiman households have a package of Chisuay's most famous blend known as Chisuay's Heavenly Tea. Obojimans love tea and will happily describe their favorite blend, talking at great length about its beneficial effects. A few tea lovers could point out the location of the teahouse on a map, and there might be a handful of true aficionados who have personally made the pilgrimage, and those who have gush with rave reviews of the teahouse and Chisuay's hallmark charm.",
 										{
 											"type": "insetReadaloud",
 											"name": "{@color {@font Tone/Vibe|SneakerProMedium}|3D89B8}",
@@ -50909,7 +52001,7 @@
 											"page": 49,
 											"entries": [
 												"The grounds that surround the teahouse are the perfect compliment to Chisuay's soothing tea blends. Those that approach the teahouse during the daytime, will hear the bees and instantly smell the adjacent herb garden with its network of pebble stone paths that twist and meander through a host of sweet and exotic smelling herbs, flowers, and spices. A clear stream runs next to the teahouse providing fresh, cool water for all Chisuay's offerings\u2014as Chisuay says, \"The water is the soul of the tea.\"",
-												"At night time, the teahouse and grounds are no less stunning, lit up with scores of paper lanterns and a host of fireflies that dance among the trees."
+												"At night time, the teahouse and grounds are no less stunning; lit up with scores of paper lanterns and a host of fireflies that dance among the trees."
 											]
 										},
 										{
@@ -50937,7 +52029,7 @@
 											"entries": [
 												"{@b Chisuay, The Tea Master (male human).} The proprietor, Chisuay (use the {@creature mage} or {@creature oni} stat block depending on what guise Chisuay is in), is a slender and dashing oni sorcerer who, has spent over a decade earning his title, Tea Master. Chisuay is very charismatic and a tad pompous at times, but he knows how to work a crowd, entertaining all who enter his teahouse.",
 												"When he isn't tending to customers or going over his inventory, Chisuay can be found tending to his expansive herb garden and tea plants. Chisuay knows almost everything there is to know about tea and its properties (or as he says, \"proper teas\").",
-												"{@b In the Know.} Chisuay seems to befriend everyone who is anyone on the island of Obojima. For adventurers, one of his favorite referrals is the herbalist healer, {@b Adira}, who runs the apothecary at Hogstone Hot Springs as she is Chisuay's go-to person for healing wounds and ailments from poisons to curses.",
+												"{@b In the Know.} Chisuay seems to befriend everyone who is anyone on the island of Obojima. For adventurers, one of his favorite referrals is the herbalist healer, {@b Adira}, who runs the apothecary at Hogstone Hot Springs, as she is Chisuay's go-to person for healing wounds and ailments from poisons to curses.",
 												"{@b The Dark Secret.} Despite his affable exterior, Chisuay has a secret\u2014his oni side\u2014that he never lets anyone see. In his quiet moments, away from the chatter and laughter of his customers, Chisuay wrestles with his urges that tempt him to fully embrace his oni powers. A struggle he's dealt with his entire life and one that would later divide him and his older brother Hakumon, the master ramen chef.",
 												{
 													"type": "inset",
@@ -51269,7 +52361,7 @@
 											"type": "insetReadaloud",
 											"name": "{@color {@font Tone/Vibe|SneakerProMedium}|3D89B8}",
 											"entries": [
-												"{@b Adventurous spirit, innovation all around, industriousness}"
+												"{@b Adventurous spirit, Innovation all around, Industriousness}"
 											]
 										},
 										"Sky Kite Valley is primarily known for its kites, gliders, and experimental flying machines. The people here are generally content to attend to their own affairs and see to their own projects. This might be due to the town's relative isolation, but whatever the reason, Sky Kite Valley remains fairly disconnected from the happenings of the rest of the island.",
@@ -51346,7 +52438,7 @@
 											"name": "{@font Airborne Dangers|SneakerProMedium}",
 											"page": 59,
 											"entries": [
-												"Near the town, danger from the sky is relatively rare, though it is not unheard of for malicious spirits or even daring air pirates to descend on vulnerable aeronauts and sightseers. Unpredictable winds and sudden storms pose additional risks. The region's wild creatures remain the most common danger, however. Among these are the vast groups of {@creature giant jellyfish|ObojimaTallGrass|giant floating jellyfish} that stream down from Mount Arbora from time to time. Avoiding them is easy, as their arrival is easily anticipated. However, their venomous tentacles make them quite dangerous for anyone caught among them. There are also {@creature hammer gull|ObojimaTallGrass|hammer gulls} that circle high overhead, ready to plunk someone with the stones they often carry in their talons. Another nuisance are vent vaulters, an ambush predator that rides thermal vents to pull birds out of the air. They usually avoid people, but can cause serious damage to gliders."
+												"Near the town, danger from the sky is relatively rare, though it is not unheard of for malicious spirits or even daring air pirates to descend on vulnerable aeronauts and sightseers. Unpredictable winds and sudden storms pose additional risks. The region's wild creatures remain the most common danger, however. Among these are the vast groups of {@creature giant jellyfish|ObojimaTallGrass|giant floating jellyfish} that stream down from Mount Arbora from time to time. Avoiding them is simple, as their arrival is easily anticipated. However, their venomous tentacles make them quite dangerous for anyone caught among them. There are also {@creature hammer gull|ObojimaTallGrass|hammer gulls} that circle high overhead, ready to plunk someone with the stones they often carry in their talons. Another nuisance are vent vaulters, an ambush predator that rides thermal vents to pull birds out of the air. They usually avoid people, but can cause serious damage to gliders."
 											]
 										},
 										{
@@ -51607,7 +52699,7 @@
 											"type": "insetReadaloud",
 											"name": "{@color {@font Tone/Vibe|SneakerProMedium}|3D89B8}",
 											"entries": [
-												"{@b Remote, cold and wintery, close-knit, and suspicious}"
+												"{@b Remote, Cold, Wintery, Close-knit, Suspicious}"
 											]
 										},
 										{
@@ -51631,7 +52723,7 @@
 											"name": "{@font The Watchers|SneakerProMedium}",
 											"page": 66,
 											"entries": [
-												"Protection of the Graysteps falls to a small guard force called the Watchers. Though their main purpose is keeping spirits away, they mostly spend their time driving off monsters that wander down from the mountain. There are six watchers, five to parallel the five statues that surround the village, and one captain."
+												"Protection of the Graysteps falls to a small guard force called the Watchers. Though their main purpose is keeping spirits away, they mostly spend their time driving off monsters that wander down from the mountain. There are six watchers; five to parallel the five statues that surround the village, and one captain."
 											]
 										},
 										{
@@ -51703,7 +52795,7 @@
 											"entries": [
 												"{@b The Way Gate.} Approaching the village from the mountain stair, travelers must first pass through the Way Gate, a tunnel that cuts straight through the rock face. The tunnel was bored by Nakudama in the time of the monarchs. Though its purpose has been lost to history, it remains a testament to the stonecarving prowess of that civilization, for within it, the walls and ceiling are all covered in a continuous bas-relief rendition of a royal procession through curling clouds.",
 												"The tunnel is approximately 120 feet long, and large enough for a cart pulled by two horses to pass through. The Watchers patrol the tunnel, but even so, monsters often nest here when the snow is deep outside.",
-												"{@b Murgin's Tavern and Inn.} The only tavern in the village is crowded most nights with locals. The occasional travelers that visit invariably end up here, and not only because it serves as the inn, but also because Murgin's is famous for its perfect baguettes. The tavern keeper, affectionately called \"the King '' by locals, makes the baguettes himself each night, and he likes seeing the delight on peoples faces as they enjoy the meal he's prepared.",
+												"{@b Murgin's Tavern and Inn.} The only tavern in the village is crowded most nights with locals. The occasional travelers that visit invariably end up here, and not only because it serves as the inn, but also because Murgin's is famous for its perfect baguettes. The tavern keeper, affectionately called \"the King '' by locals, makes the baguettes himself each night, and he likes seeing the delight on people's faces as they enjoy the meal he's prepared.",
 												"The tavern's main room has three hearths around which rustic wooden chairs are arranged. The place is often smokey and the air thick with the smell of earthy spices. A two-story wing branches off from the main room containing six rooms for guests."
 											]
 										},
@@ -53466,7 +54558,7 @@
 											"type": "insetReadaloud",
 											"name": "{@color {@font Tone/Vibe|SneakerProMedium}|3D89B8}",
 											"entries": [
-												"{@b Remote, tense, windswept}"
+												"{@b Remote, Tense, Windswept}"
 											]
 										},
 										{
@@ -53589,7 +54681,7 @@
 											"type": "insetReadaloud",
 											"name": "{@color {@font Tone/Vibe|SneakerProMedium}|3D89B8}",
 											"entries": [
-												"{@b Cluttered, busy, museum-like, academic}"
+												"{@b Cluttered, Busy, Museum-like, Academic}"
 											]
 										},
 										{
