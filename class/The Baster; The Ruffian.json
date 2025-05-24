@@ -21,8 +21,8 @@
 		"edition": "classic",
 		"status": "ready",
 		"dateAdded": 1742304373,
-		"dateLastModified": 1742304373,
-		"_dateLastModifiedHash": "c56875fdca"
+		"dateLastModified": 1743375869,
+		"_dateLastModifiedHash": "4e3fe5a9ce"
 	},
 	"class": [
 		{
@@ -139,6 +139,86 @@
 					]
 				}
 			},
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "grit-points-maximum",
+						"type": "number",
+						"scale": {
+							"1": {
+								"value": 4
+							},
+							"3": {
+								"value": 5
+							},
+							"5": {
+								"value": 6
+							},
+							"7": {
+								"value": 7
+							},
+							"9": {
+								"value": 8
+							},
+							"11": {
+								"value": 9
+							},
+							"13": {
+								"value": 10
+							},
+							"15": {
+								"value": 11
+							},
+							"17": {
+								"value": 12
+							}
+						}
+					},
+					"title": "Grit Points Maximum"
+				},
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "grit-damage-reduction",
+						"type": "number",
+						"scale": {
+							"1": {
+								"value": 1
+							},
+							"5": {
+								"value": 2
+							},
+							"10": {
+								"value": 3
+							},
+							"15": {
+								"value": 4
+							}
+						}
+					},
+					"title": "Grit Damage Reduction"
+				},
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "barrage-attacks",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 1
+							},
+							"9": {
+								"value": 2
+							},
+							"17": {
+								"value": 3
+							}
+						}
+					},
+					"title": "Barrage Attacks"
+				}
+			],
 			"classTableGroups": [
 				{
 					"colLabels": [
@@ -497,7 +577,19 @@
 			"entries": [
 				"A good fight is all you need. As combat rages arround you, your grit increases, allowing you remarkable bursts of strength and endurance. Your features let you gain Grit Points. You can have a maximum of four Grit Points. This maximum increases as you level up, as shown in the Ruffian class table. You lose all Grit Points during a short rest. Grit Points are used in a number of your class features.",
 				"Your Grit makes you remarkably resilient. Once between the start of your turn until the start of your next turn, after taking damage, you can reduce the damage by {@dice 1d8} + your ruffian level. If your reduction isn't enough to negate the damage completely, you gain one Grit Point. You can only do so, if your current Grit Points are below your Grit Point Maximum. Starting at 5th level, you can reduce damage twice for seperate attacks between your turns. As you level up, this is increased to thrice at 10th level, four times at 15th level and five times at 20th level."
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": "@scale.ruffian.grit-points-maximum",
+					"recovery": [
+						{
+							"period": "sr",
+							"type": "loseAll"
+						}
+					],
+					"value": 0
+				}
+			}
 		},
 		{
 			"name": "Intimidating Physique",
@@ -727,7 +819,18 @@
 			"entries": [
 				"At 17th level, your battle cries strike fear in the hearts of your enemies. As a bonus action, you can force any number of creatures within 60ft. of you, that can hear you, to make an intelligence saving throw against your {@classFeature Daunting Pressence|Ruffian|TheBasterTheRuffian|2} Save DC. Creatures that are fixated on you, make this saving throw with disadvantage. On a fail, a creatures movementspeed is reduced to 0, it makes all saving throws with disadvantage and has disadvantage on all attack rolls it makes until the start of your next turn.",
 				"You can use this feature a number of times equal to your charisma modifier (minimum of 1) per long rest."
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": "max(1, @abilities.cha.mod)",
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "loseAll"
+						}
+					]
+				}
+			}
 		},
 		{
 			"name": "Creed Feature",
@@ -771,7 +874,701 @@
 						"your movement can not be restricted in any way"
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": 1,
+					"recovery": [
+						{
+							"period": "sr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
+		}
+	],
+	"foundryClassFeature": [
+		{
+			"name": "Grit",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 1,
+			"activities": [
+				{
+					"name": "Grit Damage Reduction",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "activityUses",
+								"value": 1
+							}
+						]
+					},
+					"description": {
+						"chatFlavor": "Grit Damage Reduction"
+					},
+					"healing": {
+						"bonus": "@classes.ruffian.levels",
+						"denomination": "8",
+						"number": 1,
+						"types": [
+							"healing"
+						]
+					},
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"type": "self"
+						}
+					},
+					"uses": {
+						"max": "@scale.ruffian.grit-damage-reduction",
+						"recovery": [
+							{
+								"period": "turnStart",
+								"type": "recoverAll"
+							}
+						]
+					},
+					"type": "heal"
+				},
+				{
+					"name": "Gain Grit Point",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": -1
+							}
+						]
+					},
+					"description": {
+						"chatFlavor": "Gain Grit Point"
+					},
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"type": "self"
+						}
+					},
+					"type": "utility"
+				},
+				{
+					"name": "Quick Recovery",
+					"activation": {
+						"type": "turnStart"
+					},
+					"description": {
+						"chatFlavor": "Quick Recovery"
+					},
+					"healing": {
+						"custom": {
+							"enabled": true,
+							"formula": "@item.uses.value * @attributes.prof"
+						},
+						"types": [
+							"temphp"
+						]
+					},
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"type": "self"
+						}
+					},
+					"type": "heal"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Intimidating Physique",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 1,
+			"effects": [
+				{
+					"changes": [
+						{
+							"key": "system.skills.itm.value",
+							"mode": "UPGRADE",
+							"value": 1
+						},
+						{
+							"key": "system.skills.itm.bonuses.check",
+							"mode": "ADD",
+							"value": "@abilities.str.mod"
+						}
+					],
+					"transfer": true
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Daunting Pressence",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 2,
+			"activities": [
+				{
+					"activation": {
+						"type": "bonus"
+					},
+					"effects": [
+						{
+							"foundryId": "dauntingPresence"
+						}
+					],
+					"range": {
+						"units": "ft",
+						"value": 60
+					},
+					"save": {
+						"ability": [
+							"wis"
+						],
+						"dc": {
+							"calculation": "spellcasting"
+						}
+					},
+					"target": {
+						"affects": {
+							"type": "creature"
+						}
+					},
+					"type": "save"
+				},
+				{
+					"name": "Gain Grit Point",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"target": {
+									"consumes": {
+										"name": "Grit"
+									}
+								},
+								"value": -1
+							}
+						]
+					},
+					"description": {
+						"chatFlavor": "Gain Grit Point"
+					},
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"type": "self"
+						}
+					},
+					"type": "utility"
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "dauntingPresence",
+					"changes": [],
+					"duration": {
+						"rounds": 1
+					}
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Barrage",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 2,
+			"activities": [
+				{
+					"name": "Use",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": true,
+							"max": "@scale.ruffian.barrage-attacks"
+						},
+						"targets": [
+							{
+								"scaling": {
+									"formula": "2",
+									"mode": "amount"
+								},
+								"type": "itemUses",
+								"target": {
+									"consumes": {
+										"name": "Grit"
+									}
+								},
+								"value": "2"
+							}
+						]
+					},
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"type": "creature"
+						}
+					},
+					"type": "utility"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Counter",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 5,
+			"activities": [
+				{
+					"name": "Use",
+					"activation": {
+						"type": "reaction"
+					},
+					"target": {
+						"affects": {
+							"type": "creature"
+						}
+					},
+					"type": "utility"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Cooperation",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 5,
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Resistance",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 7,
+			"activities": [
+				{
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"target": {
+									"consumes": {
+										"name": "Grit"
+									}
+								},
+								"value": "2"
+							}
+						]
+					},
+					"type": "utility"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Pressure Forms Diamonds",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 7,
+			"activities": [
+				{
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"target": {
+									"consumes": {
+										"name": "Grit"
+									}
+								},
+								"value": "1"
+							}
+						]
+					},
+					"type": "utility"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Find Weakness",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 9,
+			"activities": [
+				{
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": true
+						}
+					},
+					"effects": [
+						{
+							"foundryId": "findWeakness"
+						}
+					],
+					"save": {
+						"ability": [
+							"con"
+						],
+						"dc": {
+							"formula": "@scaling"
+						}
+					},
+					"target": {
+						"affects": {
+							"type": "creature"
+						}
+					},
+					"type": "save"
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "findWeakness",
+					"changes": [],
+					"duration": {
+						"rounds": 1
+					}
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Brute Force",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 11,
+			"activities": [
+				{
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"target": {
+									"consumes": {
+										"name": "Grit"
+									}
+								},
+								"value": "6"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "bruteForce"
+						}
+					],
+					"save": {
+						"ability": [
+							"con"
+						],
+						"dc": {
+							"calculation": "str"
+						}
+					},
+					"target": {
+						"affects": {
+							"type": "creature"
+						}
+					},
+					"type": "save"
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "bruteForce",
+					"changes": [],
+					"duration": {
+						"seconds": 60
+					},
+					"flags": {
+						"dnd5e": {
+							"riders": {
+								"statuses": [
+									"unconscious"
+								]
+							}
+						}
+					}
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Grand Entrance",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 13,
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Last Stand",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 15,
+			"activities": [
+				{
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"type": "self"
+						}
+					},
+					"type": "heal"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Bloodcurling Cry",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 17,
+			"activities": [
+				{
+					"activation": {
+						"type": "bonus"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "bloodCurdling"
+						}
+					],
+					"save": {
+						"ability": [
+							"int"
+						],
+						"dc": {
+							"calculation": "spellcasting"
+						}
+					},
+					"range": {
+						"unit": "ft",
+						"value": 60
+					},
+					"target": {
+						"affects": {
+							"type": "creature"
+						}
+					},
+					"type": "save"
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "bloodCurdling",
+					"changes": [
+						{
+							"key": "system.attributes.movement.burrow",
+							"mode": "DOWNGRADE",
+							"value": 0
+						},
+						{
+							"key": "system.attributes.movement.climb",
+							"mode": "DOWNGRADE",
+							"value": 0
+						},
+						{
+							"key": "system.attributes.movement.fly",
+							"mode": "DOWNGRADE",
+							"value": 0
+						},
+						{
+							"key": "system.attributes.movement.swim",
+							"mode": "DOWNGRADE",
+							"value": 0
+						},
+						{
+							"key": "system.attributes.movement.walk",
+							"mode": "DOWNGRADE",
+							"value": 0
+						}
+					],
+					"duration": {
+						"rounds": 1
+					}
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
+		},
+		{
+			"name": "Unyielding",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"level": 20,
+			"activities": [
+				{
+					"activation": {
+						"type": "bonus"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": 1
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "unyieldingEffect"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"type": "self"
+						}
+					},
+					"type": "utility"
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "unyieldingEffect",
+					"changes": [
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "acid"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "bludgeoning"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "cold"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "fire"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "force"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "lightning"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "necrotic"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "piercing"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "poison"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "psychic"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "radiant"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "slashing"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "thunder"
+						}
+					],
+					"disabled": true,
+					"duration": {
+						"duration": 1,
+						"rounds": 1
+					},
+					"transfer": true
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/tortle.webp"
 		}
 	],
 	"subclassFeature": [
@@ -1070,7 +1867,749 @@
 			"header": 2,
 			"entries": [
 				"At 18th level, you can use your {@classFeature Last Stand|Ruffian|TheBasterTheRuffian|15} feature once per short rest without expending any {@classFeature Grit|Ruffian|TheBasterTheRuffian|1|TheBasterTheRuffian|Grit Points}. Additionally, when an ally within 60ft. of you would drop to 0 hit points, you may use your reaction to let them use your Last Stand feature instead of you."
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": "1",
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
+		}
+	],
+	"foundrySubclassFeature": [
+		{
+			"name": "Iron Fists",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Brawler",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 3,
+			"activities": [
+				{
+					"name": "Heavy Hitter",
+					"activation": {
+						"type": "none"
+					},
+					"description": {
+						"chatFlavor": "Heavy Hitter"
+					},
+					"effects": [
+						{
+							"foundryId": "ironFists"
+						}
+					],
+					"restrictions": {
+						"allowMagical": true
+					},
+					"type": "enchant"
+				}
+			],
+			"effects": [
+				{
+					"name": "Heavy Hitter",
+					"foundryId": "ironFists",
+					"changes": [
+						{
+							"key": "system.damage.base.custom.enabled",
+							"mode": "OVERRIDE",
+							"value": false
+						},
+						{
+							"key": "system.damage.base.number",
+							"mode": "OVERRIDE",
+							"value": "1"
+						},
+						{
+							"key": "system.damage.base.denomination",
+							"mode": "OVERRIDE",
+							"value": "6"
+						},
+						{
+							"key": "system.damage.bonus",
+							"mode": "ADD",
+							"value": "@attributes.prof"
+						}
+					],
+					"disabled": true,
+					"transfer": true,
+					"type": "enchantment"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/brawler.webp"
+		},
+		{
+			"name": "Heavy Hitter",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Brawler",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 3,
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/brawler.webp"
+		},
+		{
+			"name": "Bonus Unarmed Strike",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Brawler",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 3,
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/brawler.webp"
+		},
+		{
+			"name": "Duel",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Brawler",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 6,
+			"activities": [
+				{
+					"activation": {
+						"type": "bonus"
+					},
+					"effects": [
+						{
+							"foundryId": "duel"
+						}
+					],
+					"range": {
+						"units": "ft",
+						"value": 60
+					},
+					"save": {
+						"ability": [
+							"int"
+						],
+						"dc": {
+							"calculation": "spellcasting"
+						}
+					},
+					"target": {
+						"affects": {
+							"count": 1,
+							"type": "creature"
+						}
+					},
+					"type": "save"
+				},
+				{
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "hitDice",
+								"target": "largest",
+								"value": "1"
+							}
+						]
+					},
+					"healing": {
+						"custom": {
+							"enabled": true,
+							"formula": "1@attributes.hd.largestAvailable"
+						},
+						"types": [
+							"healing"
+						]
+					},
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"type": "self"
+						}
+					},
+					"type": "heal"
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "duel",
+					"changes": [],
+					"duration": {
+						"seconds": 60
+					}
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/brawler.webp"
+		},
+		{
+			"name": "Inexplicable Strength",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Brawler",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 6,
+			"activities": [
+				{
+					"activation": {
+						"type": "none"
+					},
+					"effects": [
+						{
+							"foundryId": "inexplicableStr"
+						}
+					],
+					"restrictions": {
+						"allowMagical": true
+					},
+					"type": "enchant"
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "inexplicableStr",
+					"changes": [
+						{
+							"key": "system.damage.base.types",
+							"mode": "ADD",
+							"value": "force"
+						}
+					],
+					"disabled": true,
+					"transfer": true,
+					"type": "enchantment"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/brawler.webp"
+		},
+		{
+			"name": "Dizzy",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Brawler",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 10,
+			"activities": [
+				{
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"target": {
+									"consumes": {
+										"name": "Grit"
+									}
+								},
+								"value": "2"
+							}
+						]
+					},
+					"save": {
+						"ability": [
+							"con"
+						],
+						"dc": {
+							"calculation": "str"
+						}
+					},
+					"target": {
+						"affects": {
+							"count": 1,
+							"type": "creature"
+						}
+					},
+					"type": "save"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/brawler.webp"
+		},
+		{
+			"name": "Swarm",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Brawler",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 14,
+			"activities": [
+				{
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"target": {
+									"consumes": {
+										"name": "Grit"
+									}
+								},
+								"value": "3"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "swarm"
+						}
+					],
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"calculation": "str"
+						}
+					},
+					"target": {
+						"affects": {
+							"count": 1,
+							"type": "creature"
+						}
+					},
+					"type": "save"
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "swarm",
+					"changes": [],
+					"duration": {
+						"rounds": 1
+					},
+					"flags": {
+						"dnd5e": {
+							"riders": {
+								"statuses": [
+									"dodging"
+								]
+							}
+						}
+					}
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/brawler.webp"
+		},
+		{
+			"name": "Cripple",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Brawler",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 18,
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/brawler.webp"
+		},
+		{
+			"name": "Protection",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Bodyguard",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 3,
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/bodyguard.webp"
+		},
+		{
+			"name": "Shield Bash",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Bodyguard",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 3,
+			"activities": [
+				{
+					"activation": {
+						"type": "bonus"
+					},
+					"save": {
+						"ability": [
+							"dex",
+							"str"
+						],
+						"dc": {
+							"calculation": "str"
+						}
+					},
+					"target": {
+						"affects": {
+							"count": 1,
+							"type": "creature"
+						}
+					},
+					"type": "save"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/bodyguard.webp"
+		},
+		{
+			"name": "Get Behind Me",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Bodyguard",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 6,
+			"activities": [
+				{
+					"activation": {
+						"type": "special"
+					},
+					"target": {
+						"affects": {
+							"count": 1,
+							"type": "creature"
+						}
+					},
+					"type": "utility"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/bodyguard.webp"
+		},
+		{
+			"name": "Meat Shield",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Bodyguard",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 10,
+			"activities": [
+				{
+					"activation": {
+						"type": "bonus"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"target": {
+									"consumes": {
+										"name": "Grit"
+									}
+								},
+								"value": "4"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "meatShield"
+						}
+					],
+					"target": {
+						"affects": {
+							"count": 1,
+							"type": "creature"
+						}
+					},
+					"type": "utility"
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "meatShield",
+					"changes": [
+						{
+							"key": "system.attributes.ac.bonus",
+							"mode": "ADD",
+							"value": 5
+						},
+						{
+							"key": "system.abilities.dex.bonuses.save",
+							"mode": "ADD",
+							"value": 5
+						}
+					],
+					"duration": {
+						"rounds": 1
+					}
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/bodyguard.webp"
+		},
+		{
+			"name": "Drawing Attention",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Bodyguard",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 14,
+			"activities": [
+				{
+					"activation": {
+						"type": "turnEnd"
+					},
+					"effects": [
+						{
+							"foundryId": "drawingAttention"
+						}
+					],
+					"range": {
+						"units": "ft",
+						"value": 30
+					},
+					"save": {
+						"ability": [
+							"wis"
+						],
+						"dc": {
+							"calculation": "spellcasting"
+						}
+					},
+					"target": {
+						"affects": {
+							"special": "that is fixated on you",
+							"type": "creature"
+						}
+					},
+					"type": "save"
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "drawingAttention",
+					"changes": [],
+					"duration": {
+						"rounds": 1
+					}
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/bodyguard.webp"
+		},
+		{
+			"name": "Sacrifice",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Bodyguard",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 18,
+			"activities": [
+				{
+					"activation": {
+						"type": "reaction"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": true,
+							"max": "@scale.ruffian.grit-points-maximum"
+						},
+						"targets": [
+							{
+								"scaling": {
+									"mode": "amount",
+									"formula": 10
+								},
+								"target": "attributes.hp.value",
+								"type": "attribute",
+								"value": 10
+							}
+						]
+					},
+					"healing": {
+						"custom": {
+							"enabled": true,
+							"formula": 10
+						},
+						"scaling": {
+							"formula": 10,
+							"mode": "whole"
+						},
+						"types": [
+							"healing"
+						]
+					},
+					"range": {
+						"units": "touch"
+					},
+					"target": {
+						"affects": {
+							"count": 1,
+							"special": "that has been reduced to 0 Hit Points",
+							"type": "creature"
+						}
+					},
+					"type": "heal"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/bodyguard.webp"
+		},
+		{
+			"name": "Inspiring Toughness",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Sentry",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 3,
+			"activities": [
+				{
+					"activation": {
+						"condition": "whenever you expend Grit Points",
+						"type": "special"
+					},
+					"effects": [
+						{
+							"foundryId": "inspToughness"
+						}
+					],
+					"range": {
+						"units": "ft",
+						"value": 30
+					},
+					"target": {
+						"affects": {
+							"count": 1,
+							"type": "creature"
+						}
+					},
+					"type": "utility"
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "inspToughness",
+					"changes": [],
+					"duration": {
+						"rounds": 1
+					}
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/wounded.webp"
+		},
+		{
+			"name": "Not Done Yet",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Sentry",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 3,
+			"activities": [
+				{
+					"activation": {
+						"condition": "each time you make a Death Saving Throw",
+						"type": "special"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": true,
+							"max": "@scale.ruffian.grit-points-maximum"
+						},
+						"targets": [
+							{
+								"scaling": {
+									"mode": "amount"
+								},
+								"target": {
+									"consumes": {
+										"name": "Grit"
+									}
+								},
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"range": {
+						"units": "self"
+					},
+					"roll": {
+						"formula": "1d20 + @bonuses.abilities.save + @scaling",
+						"name": "Death Saving Throw",
+						"prompt": true
+					},
+					"target": {
+						"affects": {
+							"type": "self"
+						}
+					},
+					"type": "utility"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/wounded.webp"
+		},
+		{
+			"name": "Sympathetic Counter",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Sentry",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 6,
+			"activities": [
+				{
+					"activation": {
+						"condition": "when a creature that you can see or hear is hit by an Attack Roll and takes damage",
+						"type": "reaction"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"target": {
+									"consumes": {
+										"name": "Grit"
+									}
+								},
+								"type": "itemUses",
+								"value": "3"
+							}
+						]
+					},
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"type": "self"
+						}
+					},
+					"type": "utility"
+				}
+			],
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/wounded.webp"
+		},
+		{
+			"name": "Inspiring Toughness Improvement",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Sentry",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 10,
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/wounded.webp"
+		},
+		{
+			"name": "Inspiring Entrance",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Sentry",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 14,
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/wounded.webp"
+		},
+		{
+			"name": "Unbreakable Allies",
+			"source": "TheBasterTheRuffian",
+			"className": "Ruffian",
+			"classSource": "TheBasterTheRuffian",
+			"subclassShortName": "Sentry",
+			"subclassSource": "TheBasterTheRuffian",
+			"level": 18,
+			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/TheBasterTheRuffian/wounded.webp"
 		}
 	],
 	"item": [
