@@ -19,7 +19,7 @@
 			}
 		],
 		"optionalFeatureTypes": {
-			"HuntTactic": "Hunter Tactics"
+			"MV:G": "Maneuver, Gunslinger"
 		},
 		"dateAdded": 1749673328,
 		"dateLastModified": 1749673328,
@@ -260,6 +260,36 @@
 						}
 					},
 					"title": "Critical Shot"
+				},
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "risk-dice",
+						"type": "dice",
+						"scale": {
+							"3": {
+								"number": 4,
+								"faces": 8
+							},
+							"6": {
+								"number": 5,
+								"faces": 8
+							},
+							"10": {
+								"number": 5,
+								"faces": 10
+							},
+							"14": {
+								"number": 6,
+								"faces": 10
+							},
+							"18": {
+								"number": 6,
+								"faces": 12
+							}
+						}
+					},
+					"title": "Risk Dice"
 				}
             ],
 			"classFeatures": [
@@ -401,6 +431,41 @@
                             "name": "Saving Throws",
                             "entries": [
                                 "If a maneuver requires a saving throw, the DC equals 8 plus your Dexterity modifier and {@variantrule Proficiency|XPHB|Proficiency Bonus}."
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Maneuver Options",
+                    "entries": [
+                        {
+                            "type": "options",
+                            "entries": [
+                                {
+                                    "type": "refOptionalfeature",
+                                    "optionalfeature": "Bite the Bullet|ValdaGunslinger"
+                                },
+                                {
+                                    "type": "refOptionalfeature",
+                                    "optionalfeature": "Blindfire|ValdaGunslinger"
+                                },
+                                {
+                                    "type": "refOptionalfeature",
+                                    "optionalfeature": "Dodge Roll|ValdaGunslinger"
+                                },
+                                {
+                                    "type": "refOptionalfeature",
+                                    "optionalfeature": "Grazing Shot|ValdaGunslinger"
+                                },
+                                {
+                                    "type": "refOptionalfeature",
+                                    "optionalfeature": "Maverick Spirit|ValdaGunslinger"
+                                },
+                                {
+                                    "type": "refOptionalfeature",
+                                    "optionalfeature": "Skin of Your Teeth|ValdaGunslinger"
+                                }
                             ]
                         }
                     ]
@@ -550,7 +615,7 @@
 			"page": 0,
 			"level": 15,
 			"entries": [
-				"Whenever you roll {@variantrule Initiative|XPHB} or score a {@variantrule Critical Hit|XPHB}, you regain one expended Risk Die."
+				"Whenever you roll {@variantrule Initiative|XPHB} or score a {@variantrule Critical Hit|XPHB}, you regain one expended {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die}."
 			]
 		},
 		{
@@ -595,7 +660,7 @@
 			"level": 20,
 			"entries": [
 				"When you score a {@variantrule Critical Hit|XPHB} against a creature using a Ranged weapon, you can choose for it to be a Headshot. If the creature has less than 100 {@variantrule Hit Points|XPHB}, it dies. Otherwise, it takes an extra {@damage 10d10} damage of the weapon's type.",
-                "Once you use this feature, you can't use it again until you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}. You can also restore your use of it by expending three Risk Dice (no action required)."
+                "Once you use this feature, you can't use it again until you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}. You can also restore your use of it by expending three {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Dice} (no action required)."
 			]
 		}
 	],
@@ -621,6 +686,18 @@
                 }
             ]
         },
+		{
+			"name": "Risk",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"level": 2,
+			"system": {
+				"uses": {
+					"max": "@scale.gunslinger.risk-charge"
+				}
+			}
+		},
         {
 			"name": "Critical Shot",
 			"source": "ValdaGunslinger",
@@ -719,7 +796,7 @@
 			"level": 3,
 			"header": 1,
 			"entries": [
-				"Once per turn when you miss with a ranged attack roll, you can expend one Risk Die and add it to the attack roll, potentially causing the attack to hit."
+				"Once per turn when you miss with a ranged attack roll, you can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} and add it to the attack roll, potentially causing the attack to hit."
 			]
 		},
 		{
@@ -870,7 +947,7 @@
 			"level": 3,
 			"header": 1,
 			"entries": [
-				"When you make a damage roll with a Ranged weapon, you can expend one Risk Die as a {@variantrule Bonus Action|XPHB} and declare it to be a hidden roll. Roll the damage in secret and declare any total you wish. The GM has the option to call your bluff, in which case you reveal the damage dice you rolled. This has different consequences based on whether or not you lied.",
+				"When you make a damage roll with a Ranged weapon, you can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} as a {@variantrule Bonus Action|XPHB} and declare it to be a hidden roll. Roll the damage in secret and declare any total you wish. The GM has the option to call your bluff, in which case you reveal the damage dice you rolled. This has different consequences based on whether or not you lied.",
                 {
                     "type": "entries",
                     "name": "The GM Calls Your Bluff; You Lied",
@@ -887,7 +964,7 @@
                 },
                 {
                     "type": "entries",
-                    "name": "The GM Doesnt Call Your Bluff",
+                    "name": "The GM Doesn't Call Your Bluff",
                     "entries": [
                         "Use the total damage you declared, even if you rolled a different total."
                     ]
@@ -905,7 +982,7 @@
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"Once per turn when you make an attack roll against an enemy and the roll doesn't have {@variantrule Disadvantage|XPHB}, you can choose to make the roll with {@variantrule Disadvantage|XPHB}. When you do, you regain one expended Risk Die."
+				"Once per turn when you make an attack roll against an enemy and the roll doesn't have {@variantrule Disadvantage|XPHB}, you can choose to make the roll with {@variantrule Disadvantage|XPHB}. When you do, you regain one expended {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die}."
 			]
 		},
 		{
@@ -919,7 +996,7 @@
 			"level": 10,
 			"header": 2,
 			"entries": [
-				"You can use your Maverick Spirit and Skin of Your Teeth maneuvers without expending a Risk Die. When you do so, roll a {@dice d6} instead of a Risk Die."
+				"You can use your {@optfeature Maverick Spirit|ValdaGunslinger} and {@optfeature Skin of Your Teeth|ValdaGunslinger} maneuvers without expending a {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die}. When you do so, roll a {@dice d6} instead of a {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die}."
 			]
 		},
 		{
@@ -1024,7 +1101,7 @@
 			"level": 3,
 			"header": 1,
 			"entries": [
-				"When you take the {@action Dash|XPHB}, {@action Disengage|XPHB}, or {@action Dodge|XPHB} action on your turn, you can expend one Risk Die to make a ranged attack using a weapon as a {@variantrule Bonus Action|XPHB}. Add the Risk Die to the damage roll on a hit."
+				"When you take the {@action Dash|XPHB}, {@action Disengage|XPHB}, or {@action Dodge|XPHB} action on your turn, you can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to make a ranged attack using a weapon as a {@variantrule Bonus Action|XPHB}. Add the {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to the damage roll on a hit."
 			]
 		},
 		{
@@ -1067,7 +1144,7 @@
 			"header": 2,
 			"entries": [
 				"When you take damage, you can take a {@variantrule Reaction|XPHB} to evade further harm. You have the {@condition Invisible|XPHB} condition until the start of your next turn, and you can immediately move up to 10 feet.",
-                "Once you use this feature, you can't use it again until you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}. You can also restore your use of it by expending one Risk Die (no action required)."
+                "Once you use this feature, you can't use it again until you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}. You can also restore your use of it by expending one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} (no action required)."
 			]
 		},
 		{
@@ -1081,7 +1158,7 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"Whenever you deal damage with a Ranged weapon, you can expend either one or two Risk Dice and add them to the damage roll. If you roll the highest number on a Risk Die, you can roll the die again and add it to the damage without expending it, rolling again if it is the highest number again, and so on. The maximum number of Risk Dice you can add to the damage equals your {@variantrule Proficiency|XPHB|Proficiency Bonus}."
+				"Whenever you deal damage with a Ranged weapon, you can expend either one or two {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Dice} and add them to the damage roll. If you roll the highest number on a {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die}, you can roll the die again and add it to the damage without expending it, rolling again if it is the highest number again, and so on. The maximum number of {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Dice} you can add to the damage equals your {@variantrule Proficiency|XPHB|Proficiency Bonus}."
 			]
 		},
         {
@@ -1181,7 +1258,7 @@
                     "type": "entries",
                     "name": "Arcane Shot",
                     "entries": [
-                        "When you hit a target with a {@spell Finger Guns|ValdaGunslinger} attack, you can expend one Risk Die as a {@variantrule Bonus Action|XPHB} and add it to the damage roll."
+                        "When you hit a target with a {@spell Finger Guns|ValdaGunslinger} attack, you can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} as a {@variantrule Bonus Action|XPHB} and add it to the damage roll."
                     ]
                 }
 			]
@@ -1246,7 +1323,7 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"When you make a spell attack roll, you can expend one Risk Die as a {@variantrule Bonus Action|XPHB} to substitute the spell attack with a ranged attack using a weapon. Add the Risk Die to the attack roll. On a hit, the attack deals the weapon's normal damage, in addition to the effects of the spell attack roll."
+				"When you make a spell attack roll, you can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} as a {@variantrule Bonus Action|XPHB} to substitute the spell attack with a ranged attack using a weapon. Add the {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to the attack roll. On a hit, the attack deals the weapon's normal damage, in addition to the effects of the spell attack roll."
 			]
 		},
         {
@@ -1296,7 +1373,7 @@
 			"level": 3,
 			"header": 1,
 			"entries": [
-				"When you miss with a ranged attack using a weapon, you can take a {@variantrule Bonus Action|XPHB} and expend one Risk Die to reroll the attack and add the Risk Die to the roll. You must use the new roll."
+				"When you miss with a ranged attack using a weapon, you can take a {@variantrule Bonus Action|XPHB} and expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to reroll the attack and add the {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to the roll. You must use the new roll."
 			]
 		},
 		{
@@ -1315,7 +1392,7 @@
                     "type": "entries",
                     "name": "Gun Spinning",
                     "entries": [
-                        "Once per turn when you make a Charisma ({@skill Performance|XPHB}) check or a Dexterity ({@skill Sleight of Hand|XPHB}) check using one of your Ranged weapons, you can roll a Risk Die and add it to the ability check without expending it."
+                        "Once per turn when you make a Charisma ({@skill Performance|XPHB}) check or a Dexterity ({@skill Sleight of Hand|XPHB}) check using one of your Ranged weapons, you can roll a {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} and add it to the ability check without expending it."
                     ]
                 },
                 {
@@ -1338,7 +1415,7 @@
 			"level": 10,
 			"header": 2,
 			"entries": [
-				"You can shoot projectiles out of the air. When an ally within 30 feet of you is hit by an attack, you can take a {@variantrule Reaction|XPHB} and expend one Risk Die to grant that ally the benefit of the Skin of Your Teeth maneuver against that attack. You must be holding a Ranged weapon to use this maneuver."
+				"You can shoot projectiles out of the air. When an ally within 30 feet of you is hit by an attack, you can take a {@variantrule Reaction|XPHB} and expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to grant that ally the benefit of the {@optfeature Skin of Your Teeth|ValdaGunslinger} maneuver against that attack. You must be holding a Ranged weapon to use this maneuver."
 			]
 		},
 		{
@@ -1353,7 +1430,7 @@
 			"header": 2,
 			"entries": [
 				"Once on each of your turns when you hit a creature with a ranged attack using a weapon, you can deflect the projectile at additional targets. Choose a different target within 30 feet of the first and make an attack roll against it. On a hit, you can repeat this attack against a new target within 30 feet until you miss or make a total of five attacks. You can't target the same creature with more than one attack each time you use this feature.",
-                "Once you use this feature, you can't use it again until you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}. You can also restore your use of it by expending two Risk Dice (no action required)."
+                "Once you use this feature, you can't use it again until you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}. You can also restore your use of it by expending two {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Dice} (no action required)."
 			]
 		},
         {
@@ -1389,7 +1466,7 @@
 			"level": 3,
 			"header": 1,
 			"entries": [
-				"You can take a {@variantrule Bonus Action|XPHB} and expend one Risk Die to keep an eye out for dangers that threaten your companions. Choose an ally that you can see within 60 feet of you. That ally gains {@variantrule Temporary Hit Points|XPHB} equal to the number rolled on the Risk Die. Until the start of your next turn, if the ally is hit by an attack, you can take a {@variantrule Reaction|XPHB} to make a ranged attack using a weapon against the attacker."
+				"You can take a {@variantrule Bonus Action|XPHB} and expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to keep an eye out for dangers that threaten your companions. Choose an ally that you can see within 60 feet of you. That ally gains {@variantrule Temporary Hit Points|XPHB} equal to the number rolled on the {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die}. Until the start of your next turn, if the ally is hit by an attack, you can take a {@variantrule Reaction|XPHB} to make a ranged attack using a weapon against the attacker."
 			]
 		},
 		{
@@ -1403,7 +1480,7 @@
 			"level": 3,
 			"header": 1,
 			"entries": [
-				"An aura of stoic confidence radiates from you in a 10-foot Emanantion. You and allies within the Emanantion have {@variantrule Advantage|XPHB} on saving throws made to avoid or end the {@condition Frightened|XPHB} condition. The aura is inactive while you have the {@condition Incapacitated|XPHB} condition."
+				"An aura of stoic confidence radiates from you in a 10-foot {@variantrule Emanation [Area of Effect]|XPHB|Emanation}. You and allies within the {@variantrule Emanation [Area of Effect]|XPHB|Emanation} have {@variantrule Advantage|XPHB} on saving throws made to avoid or end the {@condition Frightened|XPHB} condition. The aura is inactive while you have the {@condition Incapacitated|XPHB} condition."
 			]
 		},
 		{
@@ -1978,49 +2055,70 @@
 	],
 	"optionalfeature": [
 		{
-			"name": "Lash Out",
+			"name": "Bite the Bullet",
 			"source": "ValdaGunslinger",
-			"page": 11,
 			"featureType": [
-				"HuntTactic"
+				"MV:G"
 			],
 			"entries": [
-				"As a {@variantrule Reaction|XPHB} when you take damage from a creature within 30 feet of you, you can move up to your Speed and make a melee spell attack with your {@subclassFeature Crimson Gift|Gunslinger|ValdaGunslinger|Claw|ValdaGunslinger|3} feature against the triggering creature. Alternatively, your {@creature Allied Hunter|ValdaGunslinger} (or familiar transformed by your Concealed Position feature) can make a Hunter's Strike attack against the creature."
-			]
+				"As a {@variantrule Bonus Action|XPHB}, you can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to gain {@variantrule Temporary Hit Points|XPHB} equal to the number rolled on the die plus your Gunslinger level."
+			],
+            "foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
 		},
 		{
-			"name": "Lurk",
+			"name": "Blindfire",
 			"source": "ValdaGunslinger",
-			"page": 11,
 			"featureType": [
-				"HuntTactic"
+				"MV:G"
 			],
 			"entries": [
-				"As a {@variantrule Bonus Action|XPHB}, you gain the {@condition Invisible|XPHB} condition until the end of your next turn, you deal any damage, or you force a creature to make a {@variantrule Saving Throw|XPHB|saving throw}. If you hit with an attack while {@condition Invisible|XPHB}, you deal an extra {@damage 4d6} damage. You can use this feature once, and regain the use of it when you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}, or expend a 2+ level spell slot as a {@variantrule Bonus Action|XPHB}."
-			]
+				"You can take a {@variantrule Bonus Action|XPHB} and expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to gain {@sense Blindsight|XPHB} with a range of 30 feet until the end of the current turn."
+			],
+            "foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
 		},
 		{
-			"name": "Red in Tooth and Claw",
+			"name": "Dodge Roll",
 			"source": "ValdaGunslinger",
-			"page": 11,
 			"featureType": [
-				"HuntTactic"
+				"MV:G"
 			],
 			"entries": [
-				"When you damage a {@subclassFeature Curse of the Claw|Gunslinger|ValdaGunslinger|Claw|ValdaGunslinger|3} target that isn't an Undead or a Construct with a melee spell attack, you inflict a wound that causes it to lose 5 {@variantrule Hit Points|XPHB} at the start of each of its turns. The first time on subsequent turns you hit a target wounded with this feature, the {@variantrule Hit Points|XPHB} it loses at the start of each turn increase by 5. This damage ends if the creature is no longer affected by your {@subclassFeature Curse of the Claw|Gunslinger|ValdaGunslinger|Claw|ValdaGunslinger|3}; you can also choose to end the effect at any time. A creature can take an action to stanch the wound with a successful Wisdom ({@skill Medicine}) check (the DC of this check equals your spell save DC)."
-			]
+				"You can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} as a {@variantrule Bonus Action|XPHB} to move up to 15 feet and reload any Ranged weapon you are holding. This movement doesn't provoke {@action Opportunity Attack|XPHB|Opportunity Attacks} and is unaffected by {@variantrule Difficult Terrain|XPHB}."
+			],
+            "foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
 		},
 		{
-			"name": "Steady Will",
+			"name": "Grazing Shot",
 			"source": "ValdaGunslinger",
-			"page": 11,
 			"featureType": [
-				"HuntTactic"
+				"MV:G"
 			],
 			"entries": [
-				"You can't lose {@condition Concentration} on curse spells as a result of taking damage. Additionally, you have {@variantrule Advantage|XPHB} on {@variantrule Saving Throw|XPHB|saving throws} to avoid or end the {@condition Charmed|XPHB}, {@condition Frightened|XPHB}, and {@condition Stunned|XPHB} conditions on yourself.",
-				"Whenever you gain a Witch level, you can replace the chosen option with another one."
-			]
+				"When you miss with a ranged attack roll using a weapon, you can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} (no action required) to deal damage to that creature equal to a roll of the die plus your Dexterity modifier (minimum of 1). This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier. You can only use this maneuver once per turn."
+			],
+            "foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
+		},
+        {
+			"name": "Maverick Spirit",
+			"source": "ValdaGunslinger",
+			"featureType": [
+				"MV:G"
+			],
+			"entries": [
+				"When you fail an Intelligence, Wisdom, or Charisma ability check or saving throw, you can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to add it to the roll, potentially turning it into a success. You can only use this maneuver once per turn."
+			],
+            "foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
+		},
+        {
+			"name": "Skin of Your Teeth",
+			"source": "ValdaGunslinger",
+			"featureType": [
+				"MV:G"
+			],
+			"entries": [
+				"When a creature you can see hits you with an attack roll, you can take a {@variantrule Reaction|XPHB} and expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to dodge out of harm's way. Roll the die and add the number rolled to your AC against this attack, potentially causing it to miss."
+			],
+            "foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
 		}
 	],
     "feat": [
