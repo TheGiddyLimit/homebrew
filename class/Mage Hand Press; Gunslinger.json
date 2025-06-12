@@ -241,6 +241,27 @@
 					]
 				}
 			],
+            "foundryAdvancement": [
+                {
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "critical-shot",
+						"type": "number",
+						"scale": {
+							"3": {
+								"value": 19
+							},
+							"9": {
+								"value": 18
+							},
+							"17": {
+								"value": 17
+							}
+						}
+					},
+					"title": "Critical Shot"
+				}
+            ],
 			"classFeatures": [
 				"Fighting Style|Gunslinger|ValdaGunslinger|1",
 				"Quick Draw|Gunslinger|ValdaGunslinger|1",
@@ -333,7 +354,7 @@
 			"page": 0,
 			"level": 1,
 			"entries": [
-				"Your training with weapons allows you to use the mastery properties of two kinds of Simple or Martial Ranged weapons of your choice. Whenever you finish a {@variantrule Long Rest|XPHB}, you can practice weapon drills and change one of those weapon choices.",
+				"Your training with weapons allows you to use the mastery properties of two kinds of Simple or {@filter Martial Ranged weapons|items|type=ranged weapon} of your choice. Whenever you finish a {@variantrule Long Rest|XPHB}, you can practice weapon drills and change one of those weapon choices.",
                 "When you reach certain Gunslinger levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Gunslinger Features table."
 			]
 		},
@@ -578,6 +599,50 @@
 			]
 		}
 	],
+    "foundryClassFeature": [
+        {
+			"name": "Quick Draw",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"level": 1,
+            "effects": [
+                {
+                    "name": "Quick Draw: Initiative",
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "flags.dnd5e.initiativeAdv",
+                            "mode": 5,
+                            "value": "true",
+                            "priority": 20
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+			"name": "Critical Shot",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"level": 2,
+            "effects": [
+                {
+                    "name": "Critical Shot",
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "flags.dnd5e.weaponCriticalThreshold",
+                            "mode": 3,
+                            "value": "@scale.gunslinger.critical-shot",
+                            "priority": 20
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
 	"classFluff": [
 		{
 			"name": "Gunslinger",
