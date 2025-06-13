@@ -733,6 +733,269 @@
 			"classSource": "ValdaGunslinger",
 			"level": 17,
 			"isIgnored": true
+		},
+		{
+			"name": "Gut Shot",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"level": 5,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "whenever you score a Critical Hit against a Large or smaller creature with a ranged attack using a weapon"
+					},
+					"effects": [
+						{
+							"foundryId": "XJZaOTPuJtRH5qAG"
+						}
+					]
+				}
+			],
+			"effects": [
+				{
+					"name": "Gut Shot",
+					"foundryId": "XJZaOTPuJtRH5qAG",
+					"changes": [],
+					"duration": {
+						"seconds": 60
+					}
+				}
+			]
+		},
+		{
+			"name": "Overkill",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"level": 11,
+			"activities": [
+				{
+					"name": "Enchant (Firearm)",
+					"type": "enchant",
+					"activation": {
+						"type": "special"
+					},
+					"duration": {
+						"units": "perm",
+						"concentration": false,
+						"override": false
+					},
+					"effects": [
+						{
+							"foundryId": "QD9d1gE6zl6wsy96"
+						}
+					],
+					"restrictions": {
+						"categories": [
+							"simpleR",
+							"martialR"
+						],
+						"type": "weapon"
+					}
+				},
+				{
+					"name": "Enchant (Non-Firearm)",
+					"type": "enchant",
+					"activation": {
+						"type": "special"
+					},
+					"duration": {
+						"units": "perm",
+						"concentration": false,
+						"override": false
+					},
+					"effects": [
+						{
+							"foundryId": "jtcPhE5HSLpbxj9V"
+						}
+					],
+					"restrictions": {
+						"categories": [
+							"simpleR",
+							"martialR"
+						],
+						"type": "weapon"
+					}
+				}
+			],
+			"effects": [
+				{
+					"type": "enchantment",
+					"name": "Overkill",
+					"foundryId": "QD9d1gE6zl6wsy96",
+					"changes": [
+						{
+							"key": "system.damage.base.bonus",
+							"mode": 2,
+							"value": "@abilities.dex.mod"
+						}
+					]
+				},
+				{
+					"type": "enchantment",
+					"name": "Overkill",
+					"foundryId": "jtcPhE5HSLpbxj9V",
+					"changes": [
+						{
+							"key": "system.damage.base.bonus",
+							"mode": 2,
+							"value": "1d8"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cheat Death",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"level": 13,
+			"activities": [
+				{
+					"type": "heal",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Cheat Death"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"units": "self",
+						"override": false,
+						"special": ""
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self",
+							"special": ""
+						}
+					},
+					"healing": {
+						"denomination": 0,
+						"types": [
+							"healing"
+						],
+						"custom": {
+							"enabled": true,
+							"formula": "@classes.gunslinger.levels + 1"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Dire Gambit",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"level": 15,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "whenever you roll Initiative or score a Critical Hit"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "-1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Headshot",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"level": 20,
+			"activities": [
+				{
+					"type": "damage",
+					"activation": {
+						"type": "special",
+						"condition": "when you score a Critical Hit against a creature using a Ranged weapon, you can choose for it to be a Headshot"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Headshot"
+									}
+								}
+							}
+						]
+					},
+					"damage": {
+						"parts": [
+							{
+								"number": 10,
+								"denomination": 10
+							}
+						]
+					}
+				},
+				{
+					"type": "utility",
+					"name": "Restore Use",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "-1",
+								"target": {
+									"consumes": {
+										"name": "Headshot"
+									}
+								}
+							},
+							{
+								"type": "itemUses",
+								"value": "3",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
 		}
     ],
 	"classFluff": [
@@ -768,21 +1031,21 @@
 					"type": "image",
 					"href": {
 						"type": "external",
-						"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-002.the-gunslinger.webp"
 					}
 				},
 				{
 					"type": "image",
 					"href": {
 						"type": "external",
-						"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/refs/heads/gunslinger/img/ValdaGunslinger/00-004.gunshot-holes.webp"
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-004.gunshot-holes.webp"
 					}
 				},
 				{
 					"type": "image",
 					"href": {
 						"type": "external",
-						"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/refs/heads/gunslinger/img/ValdaGunslinger/00-003.revolver.webp"
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-003.revolver.webp"
 					}
 				}
 			]
@@ -2552,7 +2815,7 @@
 					"type": "image",
 					"href": {
 						"type": "external",
-						"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-005.deadeye.webp"
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-005.deadeye.webp"
 					}
 				}
 			]
@@ -2568,7 +2831,7 @@
 					"type": "image",
 					"href": {
 						"type": "external",
-						"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-006.high-roller.webp"
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-006.high-roller.webp"
 					}
 				}
 			]
@@ -2584,7 +2847,7 @@
 					"type": "image",
 					"href": {
 						"type": "external",
-						"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-008.secret-agent.webp"
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-008.secret-agent.webp"
 					}
 				}
 			]
@@ -2600,7 +2863,7 @@
 					"type": "image",
 					"href": {
 						"type": "external",
-						"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-009.spellslinger.webp"
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-009.spellslinger.webp"
 					}
 				}
 			]
@@ -2616,7 +2879,7 @@
 					"type": "image",
 					"href": {
 						"type": "external",
-						"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-010.trick-shot.webp"
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-010.trick-shot.webp"
 					}
 				}
 			]
@@ -2632,7 +2895,7 @@
 					"type": "image",
 					"href": {
 						"type": "external",
-						"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-011.white-hat.webp"
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-011.white-hat.webp"
 					}
 				}
 			]
@@ -2648,7 +2911,7 @@
 			"entries": [
 				"As a {@variantrule Bonus Action|XPHB}, you can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to gain {@variantrule Temporary Hit Points|XPHB} equal to the number rolled on the die plus your Gunslinger level."
 			],
-            "foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
+            "foundryImg": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-002.the-gunslinger.webp"
 		},
 		{
 			"name": "Blindfire",
@@ -2659,7 +2922,7 @@
 			"entries": [
 				"You can take a {@variantrule Bonus Action|XPHB} and expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to gain {@sense Blindsight|XPHB} with a range of 30 feet until the end of the current turn."
 			],
-            "foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
+            "foundryImg": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-002.the-gunslinger.webp"
 		},
 		{
 			"name": "Dodge Roll",
@@ -2670,7 +2933,7 @@
 			"entries": [
 				"You can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} as a {@variantrule Bonus Action|XPHB} to move up to 15 feet and reload any Ranged weapon you are holding. This movement doesn't provoke {@action Opportunity Attack|XPHB|Opportunity Attacks} and is unaffected by {@variantrule Difficult Terrain|XPHB}."
 			],
-            "foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
+            "foundryImg": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-002.the-gunslinger.webp"
 		},
 		{
 			"name": "Grazing Shot",
@@ -2681,7 +2944,7 @@
 			"entries": [
 				"When you miss with a ranged attack roll using a weapon, you can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} (no action required) to deal damage to that creature equal to a roll of the die plus your Dexterity modifier (minimum of 1). This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier. You can only use this maneuver once per turn."
 			],
-            "foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
+            "foundryImg": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-002.the-gunslinger.webp"
 		},
         {
 			"name": "Maverick Spirit",
@@ -2692,7 +2955,7 @@
 			"entries": [
 				"When you fail an Intelligence, Wisdom, or Charisma ability check or saving throw, you can expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to add it to the roll, potentially turning it into a success. You can only use this maneuver once per turn."
 			],
-            "foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
+            "foundryImg": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-002.the-gunslinger.webp"
 		},
         {
 			"name": "Skin of Your Teeth",
@@ -2703,7 +2966,200 @@
 			"entries": [
 				"When a creature you can see hits you with an attack roll, you can take a {@variantrule Reaction|XPHB} and expend one {@classFeature Risk|Gunslinger|ValdaGunslinger|2|ValdaGunslinger|Risk Die} to dodge out of harm's way. Roll the die and add the number rolled to your AC against this attack, potentially causing it to miss."
 			],
-            "foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
+            "foundryImg": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-002.the-gunslinger.webp"
+		}
+	],
+	"foundryOptionalfeature": [
+		{
+			"name": "Bite the Bullet",
+			"source": "ValdaGunslinger",
+			"activities": [
+				{
+					"type": "heal",
+					"activation": {
+						"type": "bonus"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self",
+							"special": ""
+						}
+					},
+					"healing": {
+						"denomination": 0,
+						"types": [
+							"temphp"
+						],
+						"custom": {
+							"enabled": true,
+							"formula": "@scale.gunslinger.risk-dice.die + @classes.gunslinger.levels"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Blindfire",
+			"source": "ValdaGunslinger",
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Dodge Roll",
+			"source": "ValdaGunslinger",
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Grazing Shot",
+			"source": "ValdaGunslinger",
+			"activities": [
+				{
+					"type": "damage",
+					"activation": {
+						"type": "special",
+						"condition": "when you miss with a ranged attack roll using a weapon"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					},
+					"damage": {
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "@scale.gunslinger.risk-dice.die + @abilities.dex.mod"
+								},
+								"denomination": 0
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+
+			"name": "Maverick Spirit",
+			"source": "ValdaGunslinger",
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "when you fail an Intelligence, Wisdom, or Charisma ability check or saving throw"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					},
+					"roll": {
+						"formula": "@scale.gunslinger.risk-dice.die"
+					}
+				}
+			]
+		},
+		{
+			"name": "Skin of Your Teeth",
+			"source": "ValdaGunslinger",
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "reaction",
+						"value": 1,
+						"condition": "when a creature you can see hits you with an attack roll"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
 		}
 	],
     "feat": [
@@ -2944,7 +3400,7 @@
 						"type": "image",
 						"href": {
 							"type": "external",
-							"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/refs/heads/gunslinger/img/ValdaGunslinger/00-015.explosion.webp"
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-015.explosion.webp"
 						}
 					}
 				]
@@ -3384,6 +3840,7 @@
             "reload": 20,
 			"dmg1": "2d6",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "bullet|ValdaGunslinger",
@@ -3417,6 +3874,7 @@
             "reload": 8,
 			"dmg1": "2d8",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "shell|ValdaGunslinger",
@@ -3447,6 +3905,7 @@
             "range": "100/400",
 			"dmg1": "2d8",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "bullet|ValdaGunslinger",
@@ -3477,6 +3936,7 @@
             "reload": 16,
 			"dmg1": "2d4",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "bullet|ValdaGunslinger",
@@ -3505,6 +3965,7 @@
             "range": "30/120",
 			"dmg1": "2d6",
 			"dmgType": "F",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "flare|ValdaGunslinger",
@@ -3535,6 +3996,7 @@
 			"reload": 10,
 			"dmg1": "2d4",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "bullet|ValdaGunslinger",
@@ -3566,6 +4028,7 @@
 			"reload": 6,
 			"dmg1": "2d8",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "bullet|ValdaGunslinger",
@@ -3597,6 +4060,7 @@
 			"reload": 40,
 			"dmg1": "2d6",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "bullet|ValdaGunslinger",
@@ -3627,6 +4091,7 @@
             "range": "100/400",
 			"dmg1": "2d8",
 			"dmgType": "F",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "cannonball|ValdaGunslinger",
@@ -3657,6 +4122,7 @@
 			"reload": 2,
 			"dmg1": "2d4",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "bullet|ValdaGunslinger",
@@ -3687,6 +4153,7 @@
 			"reload": 4,
 			"dmg1": "2d6",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "bullet|ValdaGunslinger",
@@ -3718,6 +4185,7 @@
 			"reload": 2,
 			"dmg1": "2d6",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "shell|ValdaGunslinger",
@@ -3745,6 +4213,7 @@
             "range": "30/90",
 			"dmg1": "1d10",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "bullet|ValdaGunslinger",
@@ -3773,6 +4242,7 @@
             "range": "40/120",
 			"dmg1": "1d12",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "bullet|ValdaGunslinger"
@@ -3799,6 +4269,7 @@
             "range": "20/60",
 			"dmg1": "1d12",
 			"dmgType": "P",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
             "firearm": true,
 			"weapon": true,
             "ammoType": "shot|ValdaGunslinger",
@@ -3829,7 +4300,7 @@
 			"reload": 6,
 			"dmg1": "2d6",
 			"dmgType": "P",
-			"bonusWeaponDamage": "-@mod",
+			"bonusWeaponDamage": "-@abilities.dex.mod",
 			"firearm": true,
 			"weapon": true,
 			"ammoType": "bullet|ValdaGunslinger",
@@ -3853,7 +4324,7 @@
             "miscTags": [
                 "CNS"
             ],
-			"foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-014.firearm-ammunition.webp"
+			"foundryImg": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-014.firearm-ammunition.webp"
         },
         {
             "name": "Cannonball",
@@ -3870,7 +4341,7 @@
             "miscTags": [
                 "CNS"
             ],
-			"foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-014.firearm-ammunition.webp"
+			"foundryImg": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-014.firearm-ammunition.webp"
         },
         {
             "name": "Flare",
@@ -3887,7 +4358,7 @@
             "miscTags": [
                 "CNS"
             ],
-			"foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-014.firearm-ammunition.webp"
+			"foundryImg": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-014.firearm-ammunition.webp"
         },
         {
             "name": "Shell",
@@ -3904,7 +4375,7 @@
             "miscTags": [
                 "CNS"
             ],
-			"foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-014.firearm-ammunition.webp"
+			"foundryImg": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-014.firearm-ammunition.webp"
         },
         {
             "name": "Shot",
@@ -3921,7 +4392,7 @@
             "miscTags": [
                 "CNS"
             ],
-			"foundryImg": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-014.firearm-ammunition.webp"
+			"foundryImg": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-014.firearm-ammunition.webp"
         }
     ],
 	"itemFluff": [
@@ -3933,7 +4404,7 @@
 					"type": "image",
 					"href": {
 						"type": "external",
-						"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-012.assault-rifle.webp"
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-012.assault-rifle.webp"
 					}
 				}
 			]
@@ -3946,7 +4417,7 @@
 					"type": "image",
 					"href": {
 						"type": "external",
-						"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-003.revolver.webp"
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-003.revolver.webp"
 					}
 				}
 			]
@@ -4035,7 +4506,7 @@
 			"group": "supplement-alt",
 			"cover": {
 				"type": "external",
-				"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/refs/heads/gunslinger/img/ValdaGunslinger/cover.webp"
+				"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/cover.webp"
 			},
 			"published": "2025-06-10",
 			"author": "Mage Hand Press",
@@ -4088,7 +4559,7 @@
 									"type": "image",
 									"href": {
 										"type": "external",
-										"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/refs/heads/gunslinger/img/ValdaGunslinger/00-001.gunslinger-cover.webp"
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-001.gunslinger-cover.webp"
 									},
 									"credit": "Martin Kirby-Jackson"
 								}
@@ -4108,7 +4579,7 @@
 									"type": "image",
 									"href": {
 										"type": "external",
-										"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-002.the-gunslinger.webp"
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-002.the-gunslinger.webp"
 									},
 									"title": "{@class Gunslinger|ValdaGunslinger}"
 								}
@@ -4129,7 +4600,7 @@
 									"type": "image",
 									"href": {
 										"type": "external",
-										"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-005.deadeye.webp"
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-005.deadeye.webp"
 									},
 									"title": "{@subclass Deadeye|Gunslinger|ValdaGunslinger|ValdaGunslinger}"
 								},
@@ -4137,7 +4608,7 @@
 									"type": "image",
 									"href": {
 										"type": "external",
-										"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-006.high-roller.webp"
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-006.high-roller.webp"
 									},
 									"title": "{@subclass High Roller|Gunslinger|ValdaGunslinger|ValdaGunslinger}"
 								},
@@ -4145,7 +4616,7 @@
 									"type": "image",
 									"href": {
 										"type": "external",
-										"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-008.secret-agent.webp"
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-008.secret-agent.webp"
 									},
 									"title": "{@subclass Secret Agent|Gunslinger|ValdaGunslinger|ValdaGunslinger}"
 								},
@@ -4153,7 +4624,7 @@
 									"type": "image",
 									"href": {
 										"type": "external",
-										"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-009.spellslinger.webp"
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-009.spellslinger.webp"
 									},
 									"title": "{@subclass Spellslinger|Gunslinger|ValdaGunslinger|ValdaGunslinger}"
 								},
@@ -4161,7 +4632,7 @@
 									"type": "image",
 									"href": {
 										"type": "external",
-										"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-010.trick-shot.webp"
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-010.trick-shot.webp"
 									},
 									"title": "{@subclass Trick Shot|Gunslinger|ValdaGunslinger|ValdaGunslinger}"
 								},
@@ -4169,7 +4640,7 @@
 									"type": "image",
 									"href": {
 										"type": "external",
-										"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-011.white-hat.webp"
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-011.white-hat.webp"
 									},
 									"title": "{@subclass White Hat|Gunslinger|ValdaGunslinger|ValdaGunslinger}"
 								}
@@ -4179,7 +4650,7 @@
 							"type": "image",
 							"href": {
 								"type": "external",
-								"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/refs/heads/gunslinger/img/ValdaGunslinger/00-007.hand-of-cards.webp"
+								"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-007.hand-of-cards.webp"
 							},
 							"maxHeight": 200
 						},
@@ -4491,7 +4962,7 @@
 									"type": "image",
 									"href": {
 										"type": "external",
-										"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-016.shooting-large-gun.webp"
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-016.shooting-large-gun.webp"
 									}
 								}
 							]
@@ -4540,7 +5011,7 @@
 									"type": "image",
 									"href": {
 										"type": "external",
-										"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/refs/heads/gunslinger/img/ValdaGunslinger/00-012.assault-rifle.webp"
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-012.assault-rifle.webp"
 									},
 									"maxHeight": 250
 								}
@@ -4576,7 +5047,7 @@
 									"type": "image",
 									"href": {
 										"type": "external",
-										"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/refs/heads/gunslinger/img/ValdaGunslinger/00-014.firearm-ammunition.webp"
+										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-014.firearm-ammunition.webp"
 									},
 									"maxHeight": 250
 								}
@@ -4648,7 +5119,7 @@
 							"type": "image",
 							"href": {
 								"type": "external",
-								"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/gunslinger/img/ValdaGunslinger/00-013.gear-table.webp"
+								"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ValdaGunslinger/00-013.gear-table.webp"
 							}
 						},
 						"This section offers a collection of new feats, which are special features not tied to a character class. A feat represents a talent or an area of expertise that gives a character special capabilities. It embodies training, experience, and abilities beyond what a class provides.",
