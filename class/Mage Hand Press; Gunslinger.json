@@ -266,7 +266,7 @@
 						"identifier": "risk-dice",
 						"type": "dice",
 						"scale": {
-							"3": {
+							"2": {
 								"number": 4,
 								"faces": 8
 							},
@@ -382,7 +382,7 @@
 			"classSource": "ValdaGunslinger",
 			"level": 1,
 			"entries": [
-				"Your training with weapons allows you to use the mastery properties of two kinds of Simple or {@filter Martial Ranged weapons|items|type=ranged weapon} of your choice. Whenever you finish a {@variantrule Long Rest|XPHB}, you can practice weapon drills and change one of those weapon choices.",
+				"Your training with weapons allows you to use the mastery properties of two kinds of {@filter Simple|items|type=simple weapon} or {@filter Martial Ranged weapons|items|type=ranged weapon} of your choice. Whenever you finish a {@variantrule Long Rest|XPHB}, you can practice weapon drills and change one of those weapon choices.",
                 "When you reach certain Gunslinger levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Gunslinger Features table."
 			]
 		},
@@ -693,7 +693,7 @@
 			"level": 2,
 			"system": {
 				"uses": {
-					"max": "@scale.gunslinger.risk-charge"
+					"max": "@scale.gunslinger.risk-dice.number"
 				}
 			}
 		},
@@ -911,23 +911,6 @@
 			"subclassSource": "ValdaGunslinger",
 			"subclassShortName": "High Roller",
 			"level": 3,
-            "toolProficiencies": [
-                {
-                    "gaming set": true
-                }
-            ],
-            "skillProficiencies": [
-                {
-                    "choose": {
-						"from": [
-							"deception",
-							"insight",
-                            "perception"
-						],
-						"count": 1
-					}
-                }
-            ],
 			"entries": [
                 "{@i Gamble with Life and Death}",
 				"Fortune is a fickle thing—unless you're a High Roller. These Gunslingers are master card sharps and dice throwers that mix their love of risk with their talent for gunplay. High Rollers push their luck until it runs out, then push harder. Why settle for a win when you could bet it all and win big?",
@@ -950,6 +933,27 @@
 			"subclassShortName": "High Roller",
 			"level": 3,
 			"header": 1,
+			"toolProficiencies": [
+                {
+                    "gaming set": true,
+					"dice set": true,
+					"dragonchess set": true,
+					"playing card set": true,
+					"three-dragon ante set": true
+                }
+            ],
+			"skillProficiencies": [
+                {
+                    "choose": {
+						"from": [
+							"deception",
+							"insight",
+                            "perception"
+						],
+						"count": 1
+					}
+                }
+            ],
 			"entries": [
 				"You gain proficiency with all {@item Gaming Set|XPHB|Gaming Sets} and in one of the following skills of your choice: {@skill Deception|XPHB}, {@skill Insight|XPHB}, or {@skill Perception|XPHB}."
 			]
@@ -1534,6 +1538,603 @@
                         "When a creature fails its saving throw against your {@subclassFeature Reach for the Skies|Gunslinger|ValdaGunslinger|White Hat|ValdaGunslinger|6} feature, it has the {@condition Stunned|XPHB} condition instead of the {@condition Incapacitated|XPHB} condition."
                     ]
                 }
+			]
+		}
+	],
+	"foundrySubclassFeature": [
+		{
+			"name": "Eagle Eye [Maneuver]",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "Deadeye",
+			"level": 3,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "when you miss with a ranged attack roll"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					},
+					"roll": {
+						"formula": "1@scale.gunslinger.risk-dice.die",
+						"name": "Add to Attack Roll"
+					}
+				}
+			]
+		},
+		{
+			"name": "Liar's Dice [Maneuver]",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "High Roller",
+			"level": 3,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1,
+						"condition": "when you make a damage roll with a Ranged weapon"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Risky Business",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassShortName": "High Roller",
+			"subclassSource": "ValdaGunslinger",
+			"level": 6,
+			"activities": [
+				{
+					"name": "Regain Risk Die",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "-1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Double or Nothing",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "High Roller",
+			"level": 14,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "when you score a Critical Hit using a Ranged weapon"
+					},
+					"roll": {
+						"formula": "1d20"
+					}
+				}
+			]
+		},
+		{
+			"name": "Parting Shot [Maneuver]",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "Secret Agent",
+			"level": 3,
+			"activities": [
+				{
+					"type": "damage",
+					"activation": {
+						"type": "bonus",
+						"condition": "when you take the {@action Dash|XPHB}, {@action Disengage|XPHB}, or {@action Dodge|XPHB} action on your turn"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					},
+					"damage": {
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "1@scale.gunslinger.risk-dice.die"
+								},
+								"denomination": 0,
+								"types": [
+									"piercing"
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Exit Strategy",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "Secret Agent",
+			"level": 10,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "reaction",
+						"value": 1,
+						"condition": "when you take damage"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Exit Strategy"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"type": "utility",
+					"name": "Restore Use",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "-1",
+								"target": {
+									"consumes": {
+										"name": "Exit Strategy"
+									}
+								}
+							},
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "License to Kill",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "Secret Agent",
+			"level": 14,
+			"activities": [
+				{
+					"type": "damage",
+					"activation": {
+						"type": "special",
+						"condition": "whenever you deal damage with a Ranged weapon"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": true,
+							"max": "2"
+						},
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "@scaling",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					},
+					"damage": {
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "@scaling@scale.gunslinger.risk-dice.die"
+								},
+								"denomination": 0,
+								"types": [
+									"piercing"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Bang, You're Dead!",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "Spellslinger",
+			"level": 3,
+			"activities": [
+				{
+					"type": "damage",
+					"name": "Arcane Shot",
+					"activation": {
+						"type": "bonus",
+						"condition": "when you hit a target with a Finger Guns attack"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					},
+					"damage": {
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "1@scale.gunslinger.risk-dice.die"
+								},
+								"denomination": 0,
+								"types": [
+									"piercing"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Counter-Mage",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "Spellslinger",
+			"level": 10,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "reaction",
+						"value": 1,
+						"condition": "When you fail a saving throw against a spell or magical effect"
+					},
+					"roll": {
+						"formula": "1d6"
+					}
+				}
+			]
+		},
+		{
+			"name": "Magic Bullet [Maneuver]",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "Spellslinger",
+			"level": 14,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					},
+					"roll": {
+						"formula": "1@scale.gunslinger.risk-dice.die"
+					}
+				}
+			]
+		},
+		{
+			"name": "Ricochet [Maneuver]",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "Trick Shot",
+			"level": 3,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					},
+					"roll": {
+						"formula": "1@scale.gunslinger.risk-dice.die"
+					}
+				}
+			]
+		},
+		{
+			"name": "Fancy Gunplay",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassShortName": "Trick Shot",
+			"subclassSource": "ValdaGunslinger",
+			"level": 6,
+			"activities": [
+				{
+					"name": "Gun Spinning",
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"value": 1
+					},
+					"roll": {
+						"formula": "1@scale.gunslinger.risk-dice.die"
+					}
+				}
+			]
+		},
+		{
+			"name": "Deft Deflection [Maneuver]",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "Trick Shot",
+			"level": 10,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "reaction",
+						"value": 1,
+						"condition": "when an ally within 30 feet of you is hit by an attack"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"units": "ft",
+						"value": "30"
+					},
+					"target": {
+						"affects": {
+							"count": "1",
+							"type": "ally"
+						},
+						"prompt": true
+					},
+					"roll": {
+						"formula": "1@scale.gunslinger.risk-dice.die"
+					}
+				}
+			]
+		},
+		{
+			"name": "Pinball Shot",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "Trick Shot",
+			"level": 14,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Pinball Shot"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"type": "utility",
+					"name": "Restore Use",
+					"activation": {
+						"type": "",
+						"value": null
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							},
+							{
+								"type": "itemUses",
+								"value": "-1",
+								"target": {
+									"consumes": {
+										"name": "Pinball Shot"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Lay Down the Law [Maneuver]",
+			"source": "ValdaGunslinger",
+			"className": "Gunslinger",
+			"classSource": "ValdaGunslinger",
+			"subclassSource": "ValdaGunslinger",
+			"subclassShortName": "White Hat",
+			"level": 3,
+			"activities": [
+				{
+					"name": "Use",
+					"type": "heal",
+					"activation": {
+						"type": "bonus"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Risk"
+									}
+								}
+							}
+						]
+					},
+					"range": {
+						"units": "ft",
+						"value": "60"
+					},
+					"target": {
+						"affects": {
+							"count": "1",
+							"type": "ally"
+						}
+					},
+					"healing": {
+						"denomination": 0,
+						"types": [
+							"temphp"
+						],
+						"custom": {
+							"enabled": true,
+							"formula": "1@scale.gunslinger.risk-dice.die"
+						}
+					}
+				}
 			]
 		}
 	],
@@ -2685,7 +3286,7 @@
                 }
             ],
             "entries": [
-                "One Ranged weapon you touch becomes enchanted to reload itself automatically. If the weapon has the Loading or Reload property, you ignore the property for the duration. When the weapon's ammunition is depleted, ammunition you are carrying teleports into the weapon."
+                "One Ranged weapon you touch becomes enchanted to reload itself automatically. If the weapon has the {@itemProperty LD|XPHB|Loading} or {@itemProperty RLD|XDMG|Reload} property, you ignore the property for the duration. When the weapon's ammunition is depleted, ammunition you are carrying teleports into the weapon."
             ],
             "classes": {
                 "fromClassList": [
