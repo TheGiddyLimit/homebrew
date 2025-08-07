@@ -19354,7 +19354,7 @@
                                     "type": "item",
                                     "name": "Acid Burn",
                                     "entries": [
-                                        "{@actSave dex} {@dc 16}. {@actSaveFail} 10 ({@damage 3d6}) Acid damage, and the target has the {@hazard Burning|XPHB} condition ({@dice 3d6} Acid). {@actSaveSuccess} Half damage only."
+                                        "{@actSave dex} {@dc 16}. {@actSaveFail} 10 ({@damage 3d6}) Acid damage, and the target has the {@condition Burning|MonstersOfDrakkenheim} condition ({@dice 3d6} Acid). {@actSaveSuccess} Half damage only."
                                     ]
                                 },
                                 {
@@ -28461,6 +28461,405 @@
             "page": 0,
             "entries": [
                 "You can't cast spells, except for cantrips with a casting time of 1 action."
+            ]
+        },
+        {
+			"name": "Bleeding",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "You're losing blood to an open wound.",
+                {
+                    "type": "entries",
+                    "entries": [
+                        {
+                            "type": "entries",
+                            "name": "Ongoing Damage",
+                            "entries": [
+                                "At the end of each of your turns, you lose {@variantrule Hit Points|XPHB}. The number of {@variantrule Hit Points|XPHB} lost is indicated by the condition, such as \"Bleeding {@dice 2d4}.\""
+                            ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "Regaining Hit Points",
+                            "entries": [
+                                "The condition ends if you regain any {@variantrule Hit Points|XPHB}."
+                            ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "Medical Treatment",
+                            "entries": [
+                                "You or another creature within 5 feet of you can spend an action and use a healer's kit to staunch the bleeding (no check required), ending the condition."
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+			"name": "Burning",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "You're on fire or covered in acid:",
+                {
+                    "type": "entries",
+                    "entries": [
+                        {
+                            "type": "entries",
+                            "name": "Ongoing Damage",
+                            "entries": [
+                                "At the end of each of your turns, you take damage. The damage type and amount are indicated by the condition, such as \"{@hazard Burning|XPHB} ({@dice 4d6} Fire)\" or \"{@hazard Burning|XPHB} ({@dice 2d4} Acid).\""
+                            ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "Ending the Condition",
+                            "entries": [
+                                "The condition ends if you or another creature within 5 feet of you can spend an action to extinguish the flames or scrape off the acid, or if some other effect douses the flames (such as being submerged in water)."
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+			"name": "Clumsy",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "You have {@variantrule Disadvantage|XPHB} on Dexterity attack rolls, ability checks, and saving throws."
+            ]
+        },
+        {
+			"name": "Contamination",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "While you have Contamination, you experience the following effects.",
+                {
+                    "type": "entries",
+                    "entries": [
+                        {
+                            "type": "entries",
+                            "name": "Contamination Levels",
+                            "entries": [
+                                "This condition is cumulative. Each time you receive it, you gain one or more levels of Contamination. You undergo a Monstrous Transformation if your Contamination level reaches 6."
+                            ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "Contamination Symptoms",
+                            "entries": [
+                                "A Contaminated creature suffers the symptoms from its current level as well as all lower levels. Conditions gained from Contamination end when those Contamination levels end. There is no other way to remove conditions caused by symptoms of Contamination.",
+                                {
+                                    "type": "table",
+                                    "caption": "Contamination Symptoms",
+                                    "colLabels": [
+                                        "Level",
+                                        "Symptoms"
+                                    ],
+                                    "colStyles": [
+                                        "col-1 text-center",
+                                        "col-11"
+                                    ],
+                                    "rows": [
+                                        [
+                                            "1",
+                                            "None"
+                                        ],
+                                        [
+                                            "2",
+                                            "Halve the {@variantrule Hit Points|XPHB} you regain when you expend {@variantrule Hit Point Dice|XPHB|Hit Dice} during a {@variantrule Short Rest|XPHB}"
+                                        ],
+                                        [
+                                            "3",
+                                            "You do not regain {@variantrule Hit Points|XPHB} when you finish a {@variantrule Long Rest|XPHB}."
+                                        ],
+                                        [
+                                            "4",
+                                            "You have the {@condition Weakened|MonstersOfDrakkenheim} condition."
+                                        ],
+                                        [
+                                            "5",
+                                            "You have the {@condition Dazed|MonstersOfDrakkenheim} condition."
+                                        ],
+                                        [
+                                            "6",
+                                            "Monstrous Transformation!"
+                                        ]
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "Mutations",
+                            "entries": [
+                                "Each time you gain a Contamination level, roll {@dice 1d6}. If the result is equal to or lower than your current Contamination level, you gain a randomly determined mutation by rolling on the Mutations Table. The effects of the mutation remain while you have Contamination levels. Unless otherwise specified, a creature can't gain the same mutation more than once. If a duplicate result is rolled, the GM chooses a different one or rolls again."
+                            ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "Long Rests",
+                            "entries": [
+                                "Each time you finish a {@variantrule Long Rest|XPHB} while you have 1 or more Contamination levels, roll {@dice 1d20}. On a 1, you gain a Contamination level."
+                            ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "Removing Contamination Levels",
+                            "entries": [
+                                "Only specific magic can remove Contamination levels:",
+                                {
+                                    "type": "list",
+                                    "items": [
+                                        "The {@spell Purge Contamination|MonstersOfDrakkenheim} spell",
+                                        "{@spell Heal|XPHB} removes all Contamination levels and mutations in addition to its other effects.",
+                                        "Contamination is not a curse, poison, or disease. Spells such as {@spell Lesser Restoration|XPHB}, {@spell Protection from Poison|XPHB}, and {@spell Remove Curse|XPHB} do not remove Contamination levels.",
+                                        "Being raised from the dead reduces a creature's Contamination level by 1."
+                                    ]
+                                }, 
+                                "When your Contamination level reaches 0, the condition ends, as well as the effects of all mutations.",
+                                "Skin, hair, fingernails, and toenails lost to mutations regrow normally once Contamination is removed. However, a {@spell Regenerate|XPHB} spell or similar magic is needed to restore any other body parts (such as teeth, limbs, or eyes) lost due to Contamination. Appendages or limbs that develop as a result of mutations wither and fall off when Contamination is removed, and other warped body parts are restored to their original form."
+                            ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "Dying with Contamination Levels",
+                            "entries": [
+                                "If you die while you have one or more Contamination levels, your corpse reanimates as a {@creature Haze Husk|MonstersOfDrakkenheim} 24 hours later. A creature with six or more class levels or hit dice rises as a {@creature Haze Wight|MonstersOfDrakkenheim} instead."
+                            ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "Monstrous Transformation!",
+                            "entries": [
+                                "If you end your turn with six or more Contamination Levels, you permanently transform into a horrific monster controlled by the Game Master.",
+                                {
+                                    "type": "list",
+                                    "items": [
+                                        "The Game Master chooses the new form, which is most often an Aberration or Monstrosity of some kind such as a {@creature Gibbering Mouther|XMM}, {@creature Delerium Dreg|MonstersOfDrakkenheim}, or {@creature Pyknic Maunder|MonstersOfDrakkenheim}.",
+                                        "Your game statistics are entirely replaced by those of the chosen monster, including the new form's {@variantrule Hit Points|XPHB} and {@variantrule Hit Point Dice|XPHB|Hit Dice}.",
+                                        "All Contamination levels are removed, though the GM may grant additional traits to the new form similar to any beneficial mutations gained from Contamination Levels.",
+                                        "The Game Master determines what remains of the original creature's personality and memories, if anything. Regardless, the creature falls under the Game Master's control."
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "entries",
+                            "name": "Reversing the Transformation",
+                            "entries": [
+                                "A {@spell Wish|XPHB} spell or similar magic can restore a single transformed creature to its previous form, removing all Contamination and restoring the original creature's personality and memories. This is considered a stressful use of the {@spell Wish|XPHB} spell, and thus there is a {@chance 33} chance that the caster will be unable to cast {@spell Wish|XPHB} ever again if they use the spell in this manner.",
+                                "Note that the means of reversing a monstrous transformation are completely unknown at the outset of the campaign. A Monstrous Transformation is widely regarded as permanent."
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+			"name": "Dazed",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "You can move or take an action on your turn, not both. You can't take {@variantrule Bonus Action|XPHB|Bonus Actions}."
+            ]
+        },
+        {
+			"name": "Defenseless",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "Attack rolls against you have {@variantrule Advantage|XPHB}."
+            ]
+        },
+        {
+			"name": "Distracted",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "You can't take {@variantrule Reaction|XPHB|Reactions}."
+            ]
+        },
+        {
+			"name": "Drakkenheim Madness",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "A character with Drakkenheim Madness gains one of the following traits:",
+                {
+                    "type": "list",
+                    "style": "list-decimal",
+                    "items": [
+                        "\"I wish I didn't have all these useless organs inside me.\"",
+                        "\"The contamination is a blessing which will transform me into a wondrous creature.\"",
+                        "\"The monsters are civilians trying to live a peaceful life! We need to protect them!\"",
+                        "\"I must wear a flesh-coat made from my slain enemies to gain their strength!\"",
+                        "\"My companions died in the ruins. I'm sorry friends, you are merely ghosts haunting me, you aren't real. Stop trying to talk to other people.\"",
+                        "\"I need to eat everything I can find. It's probably going to be my last meal.\"",
+                        "\"Drakkenheim is so beautiful at night. I could spend forever wandering the streets by moonlight. We should go tonight! Let's go every night!\"",
+                        "\"Don't you fools get it?! If you die in Drakkenheim, you die IN REAL LIFE!!!!\"",
+                        "\"A sinister cabal of disembodied hands is plotting against me.\"",
+                        "\"I must go into the ruins and kill. Rip and tear, until it is done.\""
+                    ]
+                }
+            ]
+        },
+        {
+			"name": "Enfeebled",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "You have {@variantrule Disadvantage|XPHB} on Strength attack rolls, ability checks, and saving throws."
+            ]
+        },
+        {
+			"name": "Frozen",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "You're partially encased in ice:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You're {@condition Immobilized|MonstersOfDrakkenheim} and {@condition Defenseless|MonstersOfDrakkenheim}.",
+                        "You're {@condition Helpless|MonstersOfDrakkenheim} against attacks made with a weapon that deals Bludgeoning damage.",
+                        "You or another creature take an action to break the ice away. To do so, you must succeed on a Strength ({@skill Athletics|XPHB}) check. On a successful check, the condition ends. The DC is indicated by the condition, such as Frozen (DC 15).",
+                        "This condition ends on you if you take 20 Bludgeoning or Fire damage."
+                    ]
+                }
+            ]
+        },
+        {
+			"name": "Helpless",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "Any attack that hits you is a {@variantrule Critical Hit|XPHB}."
+            ]
+        },
+        {
+			"name": "Immobilized",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                {
+                    "type": "list",
+                    "items": [
+                        "Your {@variantrule Speed|XPHB} becomes 0, and you can't benefit from any bonuses to your {@variantrule Speed|XPHB}.",
+                        "If you're flying when you become {@condition Immobilized|MonstersOfDrakkenheim}, you fall."
+                    ]
+                }
+            ]
+        },
+        {
+			"name": "Jinxed",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "Roll the die indicated by the condition, such as \"Jinxed {@dice 1d4}\" each time you make an attack roll or saving throw. Subtract the value on the die from the result."
+            ]
+        },
+        {
+			"name": "Shocked",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                {
+                    "type": "list",
+                    "items": [
+                        "You're {@condition Dazed|MonstersOfDrakkenheim} and {@condition Defenseless|MonstersOfDrakkenheim}.",
+                        "You drop whatever you're holding in your hands.",
+                        "You must spend an action to draw, stow, or pick up an object."
+                    ]
+                }
+            ]
+        },
+        {
+			"name": "Sickened",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "You have {@variantrule Disadvantage|XPHB} on Constitution saving throws."
+            ]
+        },
+        {
+			"name": "Slowed",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "Your {@variantrule Speed|XPHB} is halved."
+            ]
+        },
+        {
+			"name": "Staggered",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "You can't make more than one weapon attack during your turn, regardless of your class features, spells, or magic items."
+            ]
+        },
+        {
+			"name": "Valor",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "Add a die to your attack rolls and saving throws. The die rolled is specified by the condition, such as Valor ({@dice 1d4})"
+            ]
+        },
+        {
+			"name": "Weakened",
+			"source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "entries": [
+                "You deal half damage with weapon attacks and spells."
+            ]
+        }
+    ],
+    "spell": [
+        {
+            "name": "Bacterial Barrage",
+            "source": "MonstersOfDrakkenheim",
+            "page": 0,
+            "level": 0,
+            "school": "N",
+            "time": [
+                {
+                    "number": 1,
+                    "unit": "action"
+                }
+            ],
+            "range": {
+                "type": "point",
+                "distance": {
+                    "type": "feet",
+                    "amount": 30
+                }
+            },
+            "components": {
+                "v": true,
+                "s": true
+            },
+            "duration": [
+                {
+                    "type": "instant"
+                }
+            ],
+            "entries": [
+                "You attack a creature in range with a quick spreading infection that takes advantage of existing conditions. Make a ranged spell attack against a target, on a hit the infection does {@damage 1d8} necrotic damage to the target. If the target is suffering from the {@condition poisoned} condition or a disease, it instead takes {@damage 1d12} necrotic damage.",
+                "The spell's damage increases by one die when you reach 5th level ({@dice 2d8} or {@dice 2d12}), 11th level ({@dice 3d8} or {@dice 3d12}), and 17th level ({@dice 4d8} or {@dice 4d12})."
+            ],
+            "damageInflict": [
+                "necrotic"
+            ],
+            "spellAttack": [
+                "R"
+            ],
+            "miscTags": [
+                "SCL"
             ]
         }
     ]
