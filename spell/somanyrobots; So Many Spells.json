@@ -1877,7 +1877,7 @@
 					"colStyles": [
 						"col-2 text-center",
 						"col-2 text-center",
-						"col-8"
+						"col-10"
 					],
 					"rows": [
 						[
@@ -7668,6 +7668,32 @@
 					"concentration": true
 				}
 			],
+			"classes": {
+
+
+				"fromClassListVariant": [
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "SoManySpells"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "SoManySpells"
+					},
+					{
+						"name": "Warlock",
+						"source": "XPHB",
+						"definedInSource": "SoManySpells"
+					},
+					{
+						"name": "Wizard",
+						"source": "XPHB",
+						"definedInSource": "SoManySpells"
+					}
+				]
+		},
 			"entries": [
 				"You lay your hand on a bone and reshape it into a deadly weapon. You can form the bone into any melee weapon of your choice. On a hit, it deals the weapon's normal damage plus {@damage 1d4} necrotic damage. If the weapon has the thrown property, it can be thrown normally.",
 				"As a reaction after a creature hits with an attack with the bone weapon, you can shatter it. When the weapon shatters, the attack's target immediately takes {@damage 2d6} necrotic damage and can't receive healing until the end of your next turn."
@@ -7815,6 +7841,606 @@
 			],
 			"damageInflict": [
 				"psychic"
+			]
+		},
+		{
+			"name": "Plague of Rats",
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10,
+						"upTo": true
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "XPHB"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "SoManySpells"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "SoManySpells"
+					},
+					{
+						"name": "Warlock",
+						"source": "XPHB",
+						"definedInSource": "SoManySpells"
+					},
+					{
+						"name": "Wizard",
+						"source": "XPHB",
+						"definedInSource": "SoManySpells"
+					}
+				]
+			},
+			"entries": [
+				"You summon a horde of deadly rats, which attack any creature entering their area. The rats appear on the ground in a 30-foot radius around a point you can see. Any creature starting its turn within the rats or entering the area on its turn must make a Constitution saving throw. On a failure, it takes {@damage 8d4} piercing damage and is {@condition poisoned} until the end of its next turn. On a success, it takes half as much damage and is not {@condition poisoned}.",
+				"As a bonus action, you can direct the rat swarm to move up to 15 feet in a direction of your choice. If the rats are hit with an area-of-effect spell that deals at least 25 points of damage, they disperse. You can reform them as an action in the same location."
+			],
+			"source": "SoManySpells",
+			"page": 16,
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a small piece of cheese"
+			},
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 6th level or higher, the rat swarm deals {@scaledamage 8d4|6-9|1d4} additional damage and can withstand 5 additional points of damage for each slot level above 5th."
+					]
+				}
+			],
+			"areaTags": [
+				"R"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"damageInflict": [
+				"piercing"
+			],
+			"miscTags": [
+				"UBA"
+			]
+		},
+		{
+			"name": "Prismatic Shield",
+			"source": "SoManySpells",
+			"page": 16,
+			"level": 5,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10,
+						"upTo": true
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"You cloak yourself in swirling, chaotic energies. At the start of each of your turns, roll {@dice 1d6} to determine the shield’s dominant energy.",
+				"You gain resistance to all five damage types, and immunity to damage of the shield’s dominant damage type. When a creature damages you with a melee attack, it is subject to the following effect, determined by the shield’s dominant type:",
+				{
+					"type": "table",
+					"colLabels": [
+						"{@dice d6}",
+						"Damage Type",
+						"Effect"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
+							"Acid",
+							"It takes {@damage 2d4} acid damage, and the next attack against it is made with advantage."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 2
+								}
+							},
+							"Cold",
+							"It must make a Constitution saving throw or become {@condition restrained} until the start of its next turn."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 3
+								}
+							},
+							"Fire",
+							"It takes {@damage 1d6} fire damage."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 4
+								}
+							},
+							"Lightning",
+							"It takes {@damage 1d12} lightning damage and becomes {@condition shocked|KT-CLL} until the end of its next turn, halving its speed and taking away its reaction."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"Poison",
+							"It must succeed on a Constitution saving throw or become {@condition poisoned} until the end of its next turn."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
+							"Choose one of 1-5",
+							"—"
+						]
+					]
+				}
+			],
+			"damageInflict": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison"
+			],
+			"miscTags": [
+				"SGT",
+				"RO"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "XPHB"
+					}
+				]
+			},
+			"areaTags": [
+				"ST"
+			]
+		},
+		{
+			"name": "Quicksand",
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1,
+						"upTo": true
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "XPHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "XPHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "XPHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Bard",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "College of Lore",
+							"shortName": "Lore",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Fighter",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "Eldritch Knight",
+							"shortName": "Eldritch Knight",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Rogue",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "Arcane Trickster",
+							"shortName": "Arcane Trickster",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Fighter",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Eldritch Knight",
+							"shortName": "Eldritch Knight",
+							"source": "PHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Rogue",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Arcane Trickster",
+							"shortName": "Arcane Trickster",
+							"source": "PHB"
+						}
+					}
+				]
+			},
+			"entries": [
+				"You point at a 15-foot square patch of ground and cause it to liquefy. The area is difficult terrain for the duration. When a creature enters the spell’s area or starts its turn there, it must make a Strength saving throw. On a failure, the creature’s speed is reduced to 0 until the start of its next turn. If a creature fails a saving throw for this spell three times in a row, it becomes {@condition restrained} until it succeeds."
+			],
+			"source": "SoManySpells",
+			"page": 16,
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, the square’s dimensions increase by 5 feet for each 2 slot levels above 1st."
+					]
+				}
+			],
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"savingThrow": [
+				"strength"
+			],
+			"conditionInflict": [
+				"restrained"
+			],
+			"areaTags": [
+				"Q"
+			],
+			"miscTags": [
+				"DFT"
+			],
+			"feats": [
+				{
+					"name": "Aberrant Dragonmark",
+					"source": "ERLW"
+				},
+				{
+					"name": "Divinely Favored",
+					"source": "DSotDQ"
+				},
+				{
+					"name": "Magic Initiate",
+					"source": "PHB"
+				},
+				{
+					"name": "Magic Initiate",
+					"source": "XPHB"
+				},
+				{
+					"name": "Strixhaven Initiate",
+					"source": "SCC"
+				}
+			]
+		},
+		{
+			"name": "Quicksilver Lash",
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "XPHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "XPHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Bard",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "College of Lore",
+							"shortName": "Lore",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Fighter",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "Eldritch Knight",
+							"shortName": "Eldritch Knight",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Rogue",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "Arcane Trickster",
+							"shortName": "Arcane Trickster",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Fighter",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Eldritch Knight",
+							"shortName": "Eldritch Knight",
+							"source": "PHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Rogue",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Arcane Trickster",
+							"shortName": "Arcane Trickster",
+							"source": "PHB"
+						}
+					}
+				]
+			},
+			"entries": [
+				"You transform a few drops of quicksilver into a massive whip, striking out at your enemies. Make a melee spell attack against a creature within range. On a hit, the target takes {@damage 6d8} slashing damage, and a Large or smaller target must make a Strength saving throw. On a failed save, you can pull them toward you up to 30 feet and knock them {@condition prone}."
+			],
+			"source": "SoManySpells",
+			"page": 16,
+			"subschools": [
+				"ferromancy"
+			],
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "several droplets of mercury"
+			},
+			"damageInflict": [
+				"slashing"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"spellAttack": [
+				"M"
+			],
+			"savingThrow": [
+				"strength"
+			]
+		},
+		{
+			"name": "Rain of Ooze",
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1,
+						"upTo": true
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "XPHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "XPHB"
+					}
+				]
+			},
+			"entries": [
+				"You summon a downpour of sticky sludge, coating your enemies in a storm of slime. The storm occurs in a 30-foot radius, 100-foot high cylinder at a point you can see within range. Any creature starting its turn in the area or entering it on its turn must succeed on a Dexterity saving throw or be pounded by the slime rain. On a failure, a creature takes {@damage 8d4} bludgeoning damage and is coated in slime, reducing its speed by 10 feet. A creature flying in the area makes its save at disadvantage.",
+				"If a creature is coated with slime three times, it becomes {@condition restrained} for the duration. A creature coated in slime is slowed until the spell ends or a creature within 5 feet of it spends an action to clear off the slime."
+			],
+			"source": "SoManySpells",
+			"page": 16,
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a vial of ooze"
+			},
+			"damageInflict": [
+				"bludgeoning"
+			],
+			"conditionInflict": [
+				"restrained"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"areaTags": [
+				"Y"
+			],
+			"miscTags": [
+				"SGT"
 			]
 		},
 		{
