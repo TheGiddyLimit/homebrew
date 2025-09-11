@@ -197,7 +197,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 6th level or higher, the initial damage increases by {@dice 2d4} for each slot level above 5th."
+						"When you cast this spell using a spell slot of 6th level or higher, the initial damage increases by {@scaledamage 12d4|6-9|2d4} for each slot level above 5th."
 					]
 				}
 			],
@@ -512,7 +512,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 6th level or higher, the damage increases by {@dice 1d8} for each slot level above 5th."
+						"When you cast this spell using a spell slot of 6th level or higher, the damage increases by {@scaledamage 10d8|6-9|1d8} for each slot level above 5th."
 					]
 				}
 			],
@@ -913,7 +913,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by {@dice 1d8} for each slot level above 4th."
+						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by {@scaledamage 8d8|5-9|1d8} for each slot level above 4th."
 					]
 				}
 			],
@@ -1597,7 +1597,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher, the piercing and necrotic damage both increase by {@dice 1d8} for every two slot levels above 2nd."
+						"When you cast this spell using a spell slot of 4th level or higher, the piercing and necrotic damage both increase by {@scaledamage 2d8:2d8|4,6,8|1d8} for every two slot levels above 2nd."
 					]
 				}
 			],
@@ -1735,7 +1735,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by {@damage 1d8} for each slot level above 4th."
+						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by {@scaledamage 5d8|4-9|1d8} for each slot level above 4th."
 					]
 				}
 			],
@@ -3947,7 +3947,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the initial fire damage dealt increases by {@dice 2d4} for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the initial fire damage dealt increases by {@scaledamage 2d4|2-9|2d4} for each slot level above 1st."
 					]
 				}
 			],
@@ -4333,7 +4333,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 5th level or higher, the bonus damage increases by {@dice 1d12} for every two slot levels above 4th."
+						"When you cast this spell using a spell slot of 5th level or higher, the bonus damage increases by {@scaledamage 1d12|6,8|1d12} for every two slot levels above 4th."
 					]
 				}
 			],
@@ -4570,7 +4570,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@dice 2d4} per slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@scaledamage 5d4|2-9|2d4} per slot level above 1st."
 					]
 				}
 			],
@@ -5120,7 +5120,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, the cold damage increases by {@dice 1d4} for each slot level above 2nd."
+						"When you cast this spell using a spell slot of 3rd level or higher, the cold damage increases by {@scaledamage 2d4|3-9|1d4} for each slot level above 2nd."
 					]
 				}
 			],
@@ -6278,6 +6278,559 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Lich's Mantle",
+			"level": 7,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10,
+						"upTo": true
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "SoManySpells"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "SoManySpells"
+					},
+					{
+						"name": "Warlock",
+						"source": "XPHB",
+						"definedInSource": "SoManySpells"
+					},
+					{
+						"name": "Wizard",
+						"source": "XPHB",
+						"definedInSource": "SoManySpells"
+					}
+				]
+			},
+			"entries": [
+				"You wreathe yourself in a cloak of unholy power, temporarily acquiring the trappings of lichdom. For the duration, you gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain resistance to cold, lightning, and necrotic damage and resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.",
+						"You are immune to the {@condition exhaustion}, {@condition paralyzed}, and {@condition poisoned} conditions.",
+						"You can use your spellcasting ability modifier in place of Strength when making unarmed attacks. On a hit, your unarmed attacks deal necrotic damage equal to {@dice 2d8} + your spellcasting ability modifier, and once per turn you can force a target to make a Constitution saving throw. On a failure, it becomes {@condition paralyzed|SRD} for 1 minute, repeating the save at the end of each of its turns to end the effect.",
+						"Once per turn when you deal necrotic damage, you can choose for one target to suffer {@damage 3d6} additional necrotic damage, and you gain temporary hit points equal to half that amount."
+					]
+				}
+			],
+			"source": "SoManySpells",
+			"page": 13,
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"damageInflict": [
+				"necrotic"
+			],
+			"spellAttack": [
+				"M"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"THP",
+				"AAD"
+			]
+		},
+		{
+			"name": "Lightfoot",
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "XPHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "XPHB"
+					},
+					{
+						"name": "Inventor",
+						"source": "KibbleInventor"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Bard",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "College of Lore",
+							"shortName": "Lore",
+							"source": "XPHB"
+						}
+					}
+				]
+			},
+			"entries": [
+				"You magically increase the stamina on up to four creatures you can see within range, giving them the ability to withstand rugged travel. For the duration, an affected creature can move at a faster travel pace without suffering negative effects. For example, a creature can move at a Fast pace without a penalty to its {@sense passive Perception}, or move stealthily at a Normal pace. A creature can also choose to move at a Very Fast pace, traveling 500 feet per minute, 5 miles per hour, or 36 miles per day. If it does so, it suffers a -10 penalty to its {@sense passive Perception}."
+			],
+			"source": "SoManySpells",
+			"page": 13,
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gold horseshoe worth at least 50 gp, which is consumed",
+					"consume": true,
+					"cost": 5000
+				}
+			},
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, you can target an additional two creatures for each slot level above 2nd."
+					]
+				}
+			],
+			"feats": [
+				{
+					"name": "Adept of the Red Robes",
+					"source": "DSotDQ"
+				}
+			]
+		},
+		{
+			"name": "Lightning Spike",
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1,
+						"upTo": true
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "XPHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "XPHB"
+					},
+					{
+						"name": "Inventor",
+						"source": "KibbleInventor"
+					},
+					{
+						"name": "Spellblade",
+						"source": "KT-CLL"
+					},
+					{
+						"name": "Spellblade",
+						"source": "KSB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Bard",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "College of Lore",
+							"shortName": "Lore",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Fighter",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "Eldritch Knight",
+							"shortName": "Eldritch Knight",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Rogue",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "Arcane Trickster",
+							"shortName": "Arcane Trickster",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Fighter",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Eldritch Knight",
+							"shortName": "Eldritch Knight",
+							"source": "PHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Rogue",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Arcane Trickster",
+							"shortName": "Arcane Trickster",
+							"source": "PHB"
+						}
+					}
+				]
+			},
+			"entries": [
+				"You create an iron rod, charged with electricity, and hurl it at a creature you can see within range. Make a spell attack roll. On a hit, the target takes {@damage 1d8} piercing damage and {@damage 1d12} lightning damage, and is impaled by the rod. On a miss, the target takes {@damage 1d12} lightning damage.",
+				"While a creature has a lightning rod embedded in them, you can use your bonus action on subsequent turns to send a pulse of electricity through its body. The target takes {@damage 1d12} lightning damage, and one creature of your choice within 15 feet must succeed on a Dexterity saving throw or take the same amount of damage as an arc of electricity leaps to them.",
+				"Any creature within 5 feet of an impaled target can remove the shard by succeeding on a Strength ({@skill Athletics}) check against your spell save DC."
+			],
+			"source": "SoManySpells",
+			"page": 13,
+			"subschools": [
+				"ferromancy"
+			],
+			"miscTags": [
+				"SGT",
+				"UBA"
+			],
+			"spellAttack": [
+				"R"
+			],
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a steel or iron needle"
+			},
+			"damageInflict": [
+				"lightning",
+				"piercing"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"abilityCheck": [
+				"strength"
+			],
+			"areaTags": [
+				"ST"
+			]
+		},
+		{
+			"name": "Liquid Armor",
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10,
+						"upTo": true
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "XPHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "XPHB"
+					},
+					{
+						"name": "Inventor",
+						"source": "KibbleInventor"
+					},
+					{
+						"name": "Spellblade",
+						"source": "KT-CLL"
+					},
+					{
+						"name": "Spellblade",
+						"source": "KSB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Bard",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "College of Lore",
+							"shortName": "Lore",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Fighter",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "Eldritch Knight",
+							"shortName": "Eldritch Knight",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Rogue",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "Arcane Trickster",
+							"shortName": "Arcane Trickster",
+							"source": "XPHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Fighter",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Eldritch Knight",
+							"shortName": "Eldritch Knight",
+							"source": "PHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Rogue",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Arcane Trickster",
+							"shortName": "Arcane Trickster",
+							"source": "PHB"
+						}
+					}
+				]
+			},
+			"entries": [
+				"You touch a willing creature, and immediately create a flowing layer of steel over its skin. The target's AC can't be less than 16, and it has resistance to the next 3 instances of bludgeoning, piercing, or slashing damage it suffers. Once all these instances are spent, the spell ends."
+			],
+			"source": "SoManySpells",
+			"page": 13,
+			"subschools": [
+				"ferromancy"
+			],
+			"miscTags": [
+				"MAC"
+			],
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a small steel plate"
+			},
+			"areaTags": [
+				"ST"
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, the target is resistant to 1 more instance of damage for each slot level above 2nd."
+					]
+				}
+			]
+		},
+		{
+			"name": "Magma Spike",
+			"level": 3,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "XPHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "XPHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Bard",
+							"source": "XPHB"
+						},
+						"subclass": {
+							"name": "College of Lore",
+							"shortName": "Lore",
+							"source": "XPHB"
+						}
+					}
+				]
+			},
+			"entries": [
+				"You haul a spike of red-hot magma up from the ground, impaling a creature you can see within range. The target must make a Dexterity saving throw. On a failure, it takes {@damage 2d6} fire and {@damage 2d6} piercing damage, and is impaled and {@condition restrained} if it is Large or smaller. On a success, it takes half as much damage and suffers no other effects.",
+				"An impaled target takes {@damage 1d6} fire damage at the end of each of its turns. The target can repeat its saving throw at the end of each of its turns, freeing itself on a success."
+			],
+			"source": "SoManySpells",
+			"page": 13,
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"damageInflict": [
+				"fire",
+				"piercing"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"miscTags": [
+				"SGT"
+			]
 		}
 	],
 	"monster": [
@@ -6348,7 +6901,7 @@
 				{
 					"name": "Shriek (Vargouille Only, {@recharge 5-6})",
 					"entries": [
-						"At the end of its turn in combat, the vargouille shrieks. Each humanoid and beast within 30 feet of the vargouille and able to hear it must succeed on a Wisdom saving throw against your spell save DC be {@condition frightened|srd} until the end of the vargouille's next turn."
+						"At the end of its turn in combat, the vargouille shrieks. Each humanoid and beast within 30 feet of the vargouille and able to hear it must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened|srd} until the end of the vargouille's next turn."
 					]
 				},
 				{
