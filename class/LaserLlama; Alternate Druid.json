@@ -1483,6 +1483,10 @@
 			"name": "Natural Ward",
 			"source": "LLADru",
 			"page": 7,
+			"consumes": {
+				"name": "Primal Surge",
+				"amount": 1
+			},
 			"foundryImg": "icons/magic/defensive/shield-barrier-flaming-diamond-blue.webp",
 			"className": "Alternate Druid",
 			"classSource": "LLADru",
@@ -2091,8 +2095,40 @@
 			"level": 2,
 			"system": {
 				"uses.per": "lr",
-				"uses.max": "@scale.alternate-druid.primal-surge"
+				"uses.max": "@scale.alternate-druid.primal-surge",
+				"uses.recovery": [
+					{
+						"period": "lr",
+						"type": "recoverAll"
+					}
+				]
 			}
+		},
+		{
+			"name": "Archdruid",
+			"source": "LLADru",
+			"className": "Alternate Druid",
+			"classSource": "LLADru",
+			"level": 20,
+			"activities": [
+				{
+					"name": "Free primal surge",
+					"type": "utility",
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "-1",
+								"target": {
+									"consumes": {
+										"name": "Primal Surge"
+									}
+ }
+							}
+						]
+					}
+				}
+			]
 		}
 	],
 	"foundrySubclassFeature": [
@@ -2106,7 +2142,7 @@
 			"level": 3,
 			"activities": [
 				{
-					"name": "Fungal Shell",
+					"name": "Fungal Shell and the initial transformation",
 					"type": "heal",
 					"activation": {
 						"type": "bonus"
@@ -2172,6 +2208,39 @@
 			]
 		},
 		{
+			"name": "Natural Regeneration",
+			"source": "LLADru",
+			"className": "Alternate Druid",
+			"classSource": "LLADru",
+			"subclassShortName": "Land",
+			"subclassSource": "LLADru",
+			"level": 3,
+			"system": {
+				"uses.per": "sr",
+				"uses.max": "1",
+				"uses.recovery": [
+					{
+						"period": "sr",
+						"type": "recoverAll"
+					}
+				]
+			},
+			"activities": [
+				{
+					"name": "Natural Regeneration",
+					"type": "utility",
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Symbiotic Thrall",
 			"source": "LLADru",
 			"className": "Alternate Druid",
@@ -2216,6 +2285,19 @@
 						"value": 15,
 						"units": "ft",
 						"type": "cube"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Primal Surge"
+									}
+								}
+							}
+						]
 					},
 					"damage": {
 						"parts": [
@@ -2282,10 +2364,10 @@
 			"level": 10,
 			"activities": [
 				{
-					"name": "Fungal Shell",
+					"name": "Waters of Life",
 					"type": "heal",
 					"activation": {
-						"type": "bonus"
+						"type": "special"
 					},
 					"healing": {
 						"bonus": "@classes.alternate-druid.levels + @abilities.wis.mod",
