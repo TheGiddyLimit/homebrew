@@ -17,9 +17,8 @@
 			}
 		],
 		"dateAdded": 1584380044,
-		"dateLastModified": 1734655188,
-		"edition": "classic",
-		"_dateLastModifiedHash": "846885735f"
+		"dateLastModified": 1759251292,
+		"edition": "classic"
 	},
 	"class": [
 		{
@@ -542,7 +541,7 @@
 			],
 			"entries": [
 				"You count as one size larger for the purposes of determining which creatures you can grapple.",
-				"Additionally you can use your action to try to pin a creature grappled by you. To do so, make another grapple check. If you succeed, the creature is {@condition restrained} and your movement speed is reduced to 0 until the grapple ends."
+				"Additionally you can use your action to try to pin a creature grappled by you. To do so, make another grapple check. If you succeed, the creature is {@condition restrained} until the grapple ends."
 			],
 			"featureType": [
 				"Totem Power"
@@ -570,8 +569,10 @@
 				"Wererabbit: sixteen {@creature rabbit|FoxfireLycan|rabbits}",
 				"Wererat: eight {@creature giant rat|MM|giant rats}",
 				"Wereraven: four {@creature swarm of ravens|MM|swarms of ravens}",
+				"Werestag: sixteen {@creature deer|FoxfireLycan|deer}",
 				"Weretiger: one {@creature tiger|MM}",
 				"Werewolf: four {@creature wolf|MM|wolves}",
+				"Were-Ape: two {@creature ape|MM|apes}",
 				"Were-Dragon: eight {@creature kobold|MM|kobolds}",
 				"The summoned creatures are friendly to you and your allies. Roll initiative for the summoned creatures as a group. The summoned creatures share a place in initiative and take their turn at the same time. They obey any verbal command given to them by you that isn't outright suicidal. Giving verbal commands to the summoned creatures is a free action. If you don't issue any commands to them, they defend themselves from hostile creatures, but otherwise take no actions. You must finish a long rest before you can use this feature again."
 			],
@@ -914,7 +915,7 @@
 				}
 			],
 			"entries": [
-				"While in your hybrid or animal form, if you do not move on your turn you can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+				"While in your hybrid or animal form, if you do not move on your turn you can attempt to {@action Hide} even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
 			],
 			"featureType": [
 				"Totem Power"
@@ -1229,6 +1230,48 @@
 			],
 			"entries": [
 				"You can attempt to {@action hide} even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena; when you do so you gain a +10 bonus to the Dexterity ({@skill Stealth}) check you make. You are still automatically detected if any effect or action causes you to no longer be hidden."
+			],
+			"featureType": [
+				"Totem Power"
+			]
+		},
+		{
+			"name": "Ingenuity",
+			"source": "FoxfireLycan",
+			"prerequisite": [
+				{
+					"feature": [
+						"Were-Ape Lycanthrope Origin"
+					]
+				}
+			],
+			"entries": [
+				"You gain proficiency in one tool of your choice. Whenever you finish a long rest, you can change your chosen tool proficiency for a different one.",
+				"Additionally you gain proficiency with improvised weapons and when you hit a creature with an unarmed strike or an improvised weapon on your turn, you can use a bonus action to attempt to {@action grapple} the target."
+			],
+			"featureType": [
+				"Totem Power"
+			]
+		},
+		{
+			"name": "Shockwave Clap",
+			"source": "FoxfireLycan",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 8,
+						"class": {
+							"name": "Lycanthrope"
+						}
+					},
+					"feature": [
+						"Were-Ape Lycanthrope Origin"
+					]
+				}
+			],
+			"entries": [
+				"As an action you clap your hands together and create a burst of thunderous sound that can be heard up to 100 feet away. Each creature within 15 feet, other than you, must make a Constitution saving throw; taking {@damage 4d6} thunder damage and being deafened until the end of their next turn on a failed save or taking half as much damge and not being deafened on a successful one. At 14th level the thunder damage increases to {@damage 5d6}, and it increases to {@damage 6d6} at 18th level.",
+				"You can use this feature twice and regain all expended uses when you finish a long rest."
 			],
 			"featureType": [
 				"Totem Power"
@@ -3026,6 +3069,13 @@
 					],
 					"rows": [
 						[
+							"Ape",
+							"{@subclassFeature Ape-Hybrid Form|Lycanthrope|FoxfireLycan|Were-Ape|FoxfireLycan|1}",
+							"{@subclassFeature Simian Strength|Lycanthrope|FoxfireLycan|Were-Ape|FoxfireLycan|6}",
+							"{@subclassFeature Aggression|Lycanthrope|FoxfireLycan|Were-Ape|FoxfireLycan|14}",
+							"{@subclassFeature Primal Scream|Lycanthrope|FoxfireLycan|Were-Ape|FoxfireLycan|18}"
+						],
+						[
 							"Bat",
 							"{@subclassFeature Bat-Hybrid Form|Lycanthrope|FoxfireLycan|Werebat|FoxfireLycan|1}",
 							"{@subclassFeature Echolocation|Lycanthrope|FoxfireLycan|Werebat|FoxfireLycan|6}",
@@ -3180,6 +3230,96 @@
 			"entries": [
 				"At 18th level you may choose another origin from the Chimeric Traits table.",
 				"However you can't choose the same origin more than once."
+			]
+		},
+		{
+			"name": "Were-Ape",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Were-Ape",
+			"subclassSource": "FoxfireLycan",
+			"level": 1,
+			"entries": [
+				"An uncommon breed, these secretive simians are often mistaken for a gangly gorilla when in their hybrid forms but are nevertheless just as dangerous as any other. Able to strike with their thick skulls, hurl their enemies away without trouble, and move with terrifying speed.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Ape-Hybrid Form|Lycanthrope|FoxfireLycan|Were-Ape|FoxfireLycan|1"
+				}
+			]
+		},
+		{
+			"name": "Ape-Hybrid Form",
+			"entries": [
+				"When choosing this origin at 1st level your hybrid form takes the shape of an ape-humanoid and your head becomes a natural weapon you are proficient with whilst in that form.",
+				"When making a melee attack with your head, you have a reach of 5 feet and deal {@damage 1d10} bludgeoning damage on a hit. You add your Strength modifier to the attack and damage rolls.",
+				"A creature hit by your head must succeed on a Constitution saving throw with a DC of 8 + your proficiency bonus + your Constitution modifier or be cursed with were-ape lycanthropy.",
+				"Additionally, while in your hybrid form you gain a climbing speed equal to your movement speed and your predatory strikes deal bludgeoning damage instead of slashing damage."
+			],
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Were-Ape",
+			"subclassSource": "FoxfireLycan",
+			"level": 1,
+			"header": 1
+		},
+		{
+			"name": "Simian Strength",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Were-Ape",
+			"subclassSource": "FoxfireLycan",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Starting at 6th level you gain the might of a gorilla. Your carrying capacity (including maximum load and maximum lift) is doubled, and you have advantage on Strength checks made to push, pull, lift, or break objects.",
+				"Additionally when you grapple another creature, its speed becomes 0 until it escapes the grapple. When you take the Attack action on your turn while grappling a creature you may replace one of your attacks with throwing the creature up to 20 feet away, ending the grapple."
+			]
+		},
+		{
+			"name": "Ape Form",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Were-Ape",
+			"subclassSource": "FoxfireLycan",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Starting at 10th level you can transform into an {@creature ape|MM} instead of your hybrid form when using your Hybrid Form feature. You retain the benefits granted by the hybrid form feature. Any equipment you are wearing or carrying isn't transformed and you can't wear any armor unless it is made to fit your animal form.",
+				"Your statistics other than your AC and size remain the same in your animal form. Your AC when in your animal form is 12 + your Dexterity modifier + your Constitution modifier (you still get the bonus AC from your Resilient Hide feature in situations when it would apply) and your size becomes Medium.",
+				"To discern that you aren't a normal animal of your type, a creature can use its action to inspect your appearance and must make an Intelligence ({@skill Investigation}) check contested by your Charisma ({@skill deception}) check.",
+				"Transforming this way counts as a use of your hybrid form feature."
+			]
+		},
+		{
+			"name": "Aggression",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Were-Ape",
+			"subclassSource": "FoxfireLycan",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"At 14th level, you can move with surprising speed and ferocity. As a bonus action, you can move up to your speed toward a hostile creature you can see. If you attack the same creature after moving this way, your first attack against it deals an extra {@damage 1d10} bludgeoning damage."
+			]
+		},
+		{
+			"name": "Primal Scream",
+			"source": "FoxfireLycan",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan",
+			"subclassShortName": "Were-Ape",
+			"subclassSource": "FoxfireLycan",
+			"level": 18,
+			"header": 2,
+			"entries": [
+				"At 18th level you can use your action to beat your chest and roar at any number of creatures of your choice within 30 feet, chilling their blood and causing them to flee with fear. Any of the targeted creatures that can hear you must succeed on a Wisdom saving throw with a DC equal to 8 + your proficiency bonus + your Charisma modifier or become {@condition frightened} of you until the end of your next turn.",
+				"If a creature fails this saving throw by 5 or more, it must immediately use its reaction, if available, to move as far as its speed allows away from you. The creature doesn't move into obviously dangerous ground, such as a fire or a pit. A creature that succeeds on this saving throw is immune to this feature for the next 24 hours.",
+				"You may use this feature a number of times equal to your Charisma modifier (minimum of 1) and you regain all expended uses when you finish a long rest."
 			]
 		}
 	],
@@ -3707,6 +3847,20 @@
 			],
 			"source": "FoxfireLycan",
 			"shortName": "Were-Chimera",
+			"className": "Lycanthrope",
+			"classSource": "FoxfireLycan"
+		},
+		{
+			"name": "Were-Ape",
+			"subclassFeatures": [
+				"Were-Ape|Lycanthrope|FoxfireLycan|Were-Ape|FoxfireLycan|1",
+				"Simian Strength|Lycanthrope|FoxfireLycan|Were-Ape|FoxfireLycan|6",
+				"Ape Form|Lycanthrope|FoxfireLycan|Were-Ape|FoxfireLycan|10",
+				"Aggression|Lycanthrope|FoxfireLycan|Were-Ape|FoxfireLycan|14",
+				"Primal Scream|Lycanthrope|FoxfireLycan|Were-Ape|FoxfireLycan|18"
+			],
+			"source": "FoxfireLycan",
+			"shortName": "Were-Ape",
 			"className": "Lycanthrope",
 			"classSource": "FoxfireLycan"
 		}
