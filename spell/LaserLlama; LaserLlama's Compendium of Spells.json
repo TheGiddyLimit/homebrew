@@ -831,14 +831,14 @@
 				}
 			],
 			"entries": [
-				"You channel necrotic spiritual power to your hand, changing it into a withered specter of itself. Make a melee spell attack against a creature within your reach. On hit, the creature takes {@damage 1d8} necrotic damage, and you gain {@dice 1d4} temporary hit points which last for the duration of your concentration."
+				"You channel necrotic spiritual power to your hand, changing it into a withered specter of itself. Make a melee spell attack against one creature within your reach. On hit, it takes 1d8 necrotic damage, and you can choose to gain temporary hit points equal to half the necrotic damage dealt."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"The damage of this spell, and the temporary hit points you gain, increase by 1d8 and 1d4 respectively when you reach 5th level ({@damage 2d8} and {@dice 2d4}), 11th level ({@damage 3d8} and {@dice 3d4}), and 17th level ({@damage 4d8} and {@dice 4d4})."
+						"The damage of this spell increases by 1d8 when you reach 5th level ({@damage 2d8}), 11th level ({@damage 3d8}), and 17th level ({@damage 4d8})."
 					]
 				}
 			],
@@ -861,15 +861,6 @@
 						"11": "3d8",
 						"17": "4d8"
 					}
-				},
-				{
-					"label": "temporary hit points",
-					"scaling": {
-						"1": "1d4",
-						"5": "2d4",
-						"11": "3d4",
-						"17": "4d4"
-					}
 				}
 			],
 			"spellAttack": [
@@ -880,10 +871,6 @@
 					[
 						"(floor((@details.level + 7) / 6))d8",
 						"necrotic"
-					],
-					[
-						"(floor((@details.level + 7) / 6))d4",
-						"temphp"
 					]
 				],
 				"scaling": {
@@ -1937,7 +1924,7 @@
 			"school": "N",
 			"time": [
 				{
-					"number": 1,
+					"number": 10,
 					"unit": "minute"
 				}
 			],
@@ -1959,7 +1946,7 @@
 				}
 			],
 			"entries": [
-				"This spell can only be cast at night. You spill your blood onto the corpse as part of a sinister ritual, reducing your maximum hit points by 1 and creating a Skeleton or Zombie under your control. Undead created by this spell use the rules below:",
+				"This spell can only be cast at night. You spill your blood onto the corpse as part of a sinister ritual, reducing your maximum hit points by 2 and creating a Skeleton or Zombie under your control. Undead created by this spell use the rules below:",
 				{
 					"type": "list",
 					"style": "list-hang-notitle",
@@ -1968,15 +1955,22 @@
 							"type": "item",
 							"name": "Control",
 							"entries": [
-								"As a bonus action, you can mentally command the Undead you created with this spell, so long as they are within 60 feet. You determine how they act or set a general course of action (defend the door). Undead follow commands until they are complete. If you order the Undead to attack, it can make a single attack (even if it could make more than one in life), and it uses your Spellcasting ability for attack and damage rolls.",
-								"However, if you do not issue your Undead any commands, they remain in their space and act only defend themselves."
+								"Undead follow your commands without quesion. If not given a command, an Undead won't move and will only act to defend itself. In combat, any Undead you created share your initiative and act during your turn.",
+								"As a bonus action, you can mentally command any number of Undead you created with within 120 feet. You can issue an individual command to each, determining exactly how it will act, or setting a general course of action ('defend this hall'). So long as they remain under your control, your Undead will follow commands until completed."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Spellcasting",
+							"entries": [
+								"If it can cast spells, you can command it to do so, but it uses your spell slots to fuel its spellcasting, even if it would normally be able to cast without spell slots."
 							]
 						},
 						{
 							"type": "item",
 							"name": "Undead Bond",
 							"entries": [
-								"While an Undead is under your control you can't regain the maximum hit points expended in its creation. However, when you finish a long rest, you can release control over your Undead to regain the maximum hit points spent to create it. When released, your Undead becomes hostile to all living things, the spellcaster that created it in particular."
+								"While an Undead is under your control, you cannot regain the maximum hit points you spent to create it. However, when you finish a long rest, you can release control over any Undead that you created to regain the maximum hit points you spent to create them. When freed, Undead become hostil to all living things, the spellcaster in particular."
 							]
 						}
 					]
@@ -1984,6 +1978,10 @@
 			],
 			"classes": {
 				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
 					{
 						"name": "Wizard",
 						"source": "PHB"
@@ -2016,27 +2014,27 @@
 								[
 									"5th",
 									"2",
-									"Ghoul"
+									"{@creature Ghoul}"
 								],
 								[
 									"6th",
 									"4",
-									"Ghast"
+									"{@creature Ghast}"
 								],
 								[
 									"7th",
 									"6",
-									"Mummy, Wight"
+									"{@creature Mummy}, {@creature Wight}"
 								],
 								[
 									"8th",
 									"8",
-									"Flameskull"
+									"{@creature Flameskull}"
 								],
 								[
 									"9th",
 									"10",
-									"Revenant, Vampire Spawn"
+									"{@creature Revenant}, {@creature Vampire Spawn}"
 								]
 							]
 						}
@@ -2066,7 +2064,7 @@
 			"components": {
 				"v": true,
 				"s": true,
-				"m": "(the scale of an Ancient Dragon, inlaid with gems worth at last 500 gold, willingly gifted to you"
+				"m": "the scale of an Ancient Dragon, inlaid with gems worth at last 500 gold, willingly gifted to you"
 			},
 			"duration": [
 				{
@@ -2088,7 +2086,7 @@
 							"type": "item",
 							"name": "Statistics",
 							"entries": [
-								"The draconic essence manifests in the form of a Dragon of CR 5 or lower, which must match the color of the scale used as the material component for the spell. It appears in an unoccupied space of your choice within range."
+								"The draconic essence manifests in the form of a {@filter Dragon|bestiary|type=Dragon|challenge rating=[&0;&5]} of CR 5 or lower, which must match the color of the scale used as the material component for the spell. It appears in an unoccupied space of your choice within range."
 							]
 						},
 						{
@@ -2159,7 +2157,7 @@
 			"components": {
 				"v": true,
 				"s": true,
-				"m": "(a Celestial's true name)"
+				"m": "a Celestial's true name"
 			},
 			"duration": [
 				{
@@ -2172,7 +2170,7 @@
 				}
 			],
 			"entries": [
-				"Speaking its true name, you conjure a Celestial of CR 5 or lower to aid you. This Celestial is Friendly to you and your allies, obeys your commands, and uses the rules below:",
+				"Speaking its true name, you conjure a {@filter Celestial|bestiary|type=Celestial|challenge rating=[&0;&5]} of CR 5 or lower to aid you. This Celestial is Friendly to you and your allies, obeys your commands, and uses the rules below:",
 				{
 					"type": "list",
 					"style": "list-hang-notitle",
@@ -3169,19 +3167,30 @@
 				}
 			],
 			"entries": [
-				"You conjure a spirit in an unoccupied space within range that assumes the form of a supernaturally intelligent, strong, and loyal steed, which is instantly bonded to you. The Steed takes on the form of one Medium or Large quadrupedal Beast you have seen before with a CR of 1/2 or lower that does not have a climbing, flying, or swimming speed. Example Steeds: stag, camel, giant goat, wolf, hunting dog, pony, and horse.",
-				"Your Steed uses the stat block of the form chosen for it, but its creature type reflects your alignment: Celestial (good), Fey (neutral), or Fiend (evil). The Steed's Intelligence becomes 6 if it was lower, and it understands one language you speak.",
-				"In combat, the Steed shares your initiative and acts during your turn. You control the Steed and choose how it acts, both in and out of combat. While mounted on it, you can make any spell you cast that targets only you also target your steed.",
-				"While you and your Steed are within 1 mile of one another, you can use a special form of telepathy to communicate.",
-				"If your Steed is reduced to 0 hit points it disappears. You can also use a bonus action to dismiss your Steed, causing it to disappear. Should you cast this spell again you can choose to either conjure the same Steed, and it reappears in range at its maximum hit points, or to conjure a new Steed, releasing your previous Steed from its bond in the process."
+			"You conjure a spirit in an unoccupied space within range that assumes the form of a supernaturally intelligent, strong, and loyal steed, which is instantly bonded to you. The Steed takes on the form of a Medium or Large quadrupedal (four-legged) {@filter Beast|bestiary|type=Beast|challenge rating=[&0;&1/2]|source=LLCompendiumOfBeasts} of CR ½ or lower without a flying speed. You must have seen a living specimen of this Beast before.",
+			{
+					"type": "entries",
+					"name": "Statistics",
+					"entries": [
+						"Your Steed uses the stat block of the creature you chose for it, but its creature type changes to reflect your alignment: Celestial (good), Fey (neutral), or Fiend (evil). The Steed's Intelligence score becomes 6 (if it was lower), and it can understand one language that you speak."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Control",
+					"entries": [
+						"You control your Steed and decide how it acts, both in and out of combat In combat, it shares your initiative and acts during your turn. While riding it, you can make any spell you cast that targets only you also target your Steed.",
+						"While you and your Steed are within 1 mile of one another, you can use a special form of Telepathy to communicate.",
+						"If your Steed is reduced to 0 hit points it disappears. You can also use a bonus action to dismiss your Steed, causing it to disappear. Should you cast this spell again you can choose to either conjure the same Steed, and it reappears in range at its maximum hit points, or to conjure a new Steed, releasing your previous Steed from its bond in the process."
+					]
+				}
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell with a slot of 4th-level or higher, your Steed can take on the form of any Medium or Large quadrupedal or winged Beast, Celestial, or Monstrosity you have seen before of CR of 2 or lower.",
-						"Example Steeds: dire wolf, griffon, pegasus, peryton, polar bear, giant stag, or giant boar."
+						"When you cast this spell with a slot of 4th-level or higher, you can choose for your Steed to take the form of a Medium or Large Beast, Celestial, or Monstrosity of CR 2 or lower that you have seen before. The form the Steed takes must be quadrupedal or winged."
 					]
 				}
 			],
@@ -4284,7 +4293,7 @@
 							"type": "item",
 							"name": "Statistics",
 							"entries": [
-								"The spirit appears in an unoccupied space of your choice that you can see in range. The Fey spirit takes on the statistics and appearance of one Beast of CR 1 or lower, choosing from among the Beasts you have seen before."
+								"The spirit appears in an unoccupied space of your choice that you can see in range. The Fey spirit takes on the statistics and appearance of one {@filter Beast|bestiary|type=Beast|challenge rating=[&0;&1]|source=LLCompendiumOfBeasts} of CR 1 or lower, choosing from among the Beasts you have seen before."
 							]
 						},
 						{
@@ -4314,7 +4323,7 @@
 					"type": "entries",
 					"name": "Using a Higher-Level Spell Slot",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, the CR of the Beast this spirit can take on increases by 1 for each slot level above 2nd."
+						"When you cast this spell using a spell slot of 3rd level or higher, the CR of the {@filter 1|bestiary|type=Beast|source=LLCompendiumOfBeasts} this spirit can take on increases by 1 for each slot level above 2nd."
 					]
 				}
 			]
@@ -4357,22 +4366,30 @@
 							"type": "item",
 							"name": "Statistics",
 							"entries": [
-								"Your Undead Thrall is a shambling corpse with no memory of any abilities it had in life, though it retains its Armor Class, ability scores, movement speed, and attacks. If commanded to attack, it can only make one attack (even if it could make more in life), and it uses your Spellcasting ability for attack and damage rolls. It's creature type is Undead, and it has hit points equal to 7 times the level of the spell slot."
+								"The Undead Thrall is a shambling corpse with no memory of any abilities it had in life. It uses the same stat block, but its creature type becomes Undead, it has hit points equal to 7 times the level of the spell slot you spent to create it, and it uses your Spellcasting ability for attack and damage rolls. If commanded to attack, it only makes a single attack, even if it could have made more attacks in life.",
+								"Thralls cannot benefit from short or long rests or regain hit points. They are immune to the Exhaustion condition. If it is destroyed, it cannot be raised as an Undead Thrall again."
 							]
 						},
 						{
 							"type": "item",
 							"name": "Control",
 							"entries": [
-								"In combat, your Thrall shares your initiative and acts during your turn. However, unless you give it a command, it remains in its space and will only act to defend itself.",
-								"As a bonus action, you can Telepahtically command to any Thralls within 60 ft. You determine how they will act on their turn, or set a general course of action for them (ie: defend the door). Thralls follow commands until they are complete."
+								"Undead Thralls follow your commands without quesion. If not given commands, a Thrall will not move and will only act to defend itself. In combat, all Undead Thralls share your initiative and act during your turn.",
+								"As a bonus action, you can mentally command any number of Thralls created with this spell so long as they are all within 120 feet. You can issue an individual command to each where you determine exactly how it acts, or you set a general course of action for it ('defend this hall'). So long as it is under your control, Thralls will follow commands until completed."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Spellcasting",
+							"entries": [
+								"If it can cast spells, you can command it to do so, but it uses your spell slots to fuel its spellcasting, even if it would normally be able to cast without spell slots."
 							]
 						},
 						{
 							"type": "item",
 							"name": "Undead Bond",
 							"entries": [
-								"While a Thrall is under your control, you can't regain the spell slot expended in its creation. However, When you finish a long rest, you can end your control over a Thrall to regain the slot. If you do so, that Thrall is freed and is hostile to all living things, the spellcaster in particular."
+								"While a Thrall is under your control, you cannot regain the spell slot you spent to create it. However, when you finish a long rest, you can end your control over a Thrall to regain the slot. If you do so, that Thrall is freed and is hostile to all living things, the spellcaster in particular."
 							]
 						}
 					]
@@ -4395,7 +4412,7 @@
 					"type": "entries",
 					"name": "Using a Higher-Level Spell Slot",
 					"entries": [
-						"If you cast this spell with a spell slot of 4th level or higher, the CR of creature you can raise as your Undead Thrall increases by 1 for each slot level above 3rd."
+						"If you cast this spell with a spell slot of 4th level or higher, the CR of the creatures you can raise as Undead Thralls increases by 1 for each slot level above 3rd."
 					]
 				}
 			]
@@ -5298,12 +5315,12 @@
 				}
 			],
 			"entries": [
-				"You attempt to transform a creature you can see within range into a Beast using the rules below. An unwilling target makes a Charisma saving throw to resist this effect. Shapechangers automatically succeed on this saving throw.",
+				"You attempt to transform a creature you can see within range into a {@filter Beast|bestiary|type=Beast|source=LLCompendiumOfBeasts} using the rules below. An unwilling target makes a Charisma saving throw to resist this effect. Shapechangers automatically succeed on this saving throw.",
 				{
 					"type": "entries",
 					"name": "Form",
 					"entries": [
-						"The new form can be any living Beast you have seen before. Creatures can only be transformed into a Beast with a CR equal to (or lower then) half its level or CR."
+						"The new form can be any living Beast you have seen before. Creatures can only be transformed into a {@filter Beast|bestiary|type=Beast|source=LLCompendiumOfBeasts} with a CR equal to (or lower then) half its level or CR."
 					]
 				},
 				{
@@ -6338,8 +6355,7 @@
 				}
 			],
 			"entries": [
-				"You force a creature that can hear you within range to make",
-				"a Wisdom saving throw. On a failure, it begins a comic dance in place: shuffling, tapping feet, and capering for the duration. Creatures that can't be {@condition charmed} are immune to this spell.",
+				"You force a creature that can hear you within range to make a Wisdom saving throw. On a failure, it begins a comic dance in place: shuffling, tapping feet, and capering for the duration. Creatures that can't be {@condition charmed} are immune to this spell.",
 				"This creature must use all its movement to dance without leaving its space and has disadvantage on Dexterity saving throws and attack rolls. While the target is affected by this spell, creatures have advantage on attack rolls against it. As an action, a dancing creature makes a Wisdom saving throw to regain control of itself, ending the spell on a success."
 			],
 			"savingThrow": [
@@ -7472,11 +7488,10 @@
 				"MT"
 			],
 			"classes": {
-				"fromClassListVariant": [
+				"fromClassList": [
 					{
 						"name": "Druid",
-						"source": "PHB",
-						"definedInSource": "XGE"
+						"source": "PHB"
 					}
 				]
 			}
@@ -7872,35 +7887,35 @@
 					"rows": [
 						[
 							"2nd",
-							"Oblex Spawn"
+							"{@creature Oblex Spawn}"
 						],					
 						[
 							"3rd",
-							"Gray Ooze"
+							"{@creature Gray Ooze}"
 						],
 						[
 							"4th",
-							"Psychic Gray Ooze"
+							"{@creature Psychic Gray Ooze}"
 						],
 						[
 							"5th",
-							"Ochre Jelly"
+							"{@creature Ochre Jelly}"
 						],
 						[
 							"6th",
-							"Gelatinous Cube"
+							"{@creature Gelatinous Cube}"
 						],
 						[
 							"7th",
-							"Slithering Tracker"
+							"{@creature Slithering Tracker}"
 						],
 						[
 							"8th",
-							"Black Pudding"
+							"{@creature Black Pudding}"
 						],
 						[
 							"9th",
-							"Adult Oblex"
+							"{@creature Adult Oblex}"
 						]
 							]
 							}
@@ -8004,12 +8019,12 @@
 			"col-2-2"
 			],
 			"rows": [
-			["1", "Flumph"],
-			["2", "Spectator"],
-			["3", "Chuul"],
-			["4", "Red Slaad"],
-			["5", "Blue Slaad"],
-			["6+", "Mind Flayer"]
+			["1", "{@creature Flumph}"],
+			["2", "{@creature Spectator}"],
+			["3", "{@creature Chuul}"],
+			["4", "{@creature Red Slaad}"],
+			["5", "{@creature Blue Slaad}"],
+			["6+", "{@creature Mind Flayer}"]
 			]
 			}
 			]
@@ -8110,19 +8125,19 @@
 			"rows": [
  			[
 				"6th",
-				"Stone Giant"
+				"{@creature Stone Giant}"
 				],
 				[
 				"7th",
-				"Frost Giant"
+				"{@creature Frost Giant}"
 				],
 				[
 				"8th",
-				 "Fire Giant"
+				 "{@creature Fire Giant}"
 				],
 				[
 					"9th",
-				"Cloud Giant"
+				"{@creature Cloud Giant}"
 				]
 				]
 				}
@@ -8239,7 +8254,7 @@
 				}
 			],
 			"entries": [
-				"You spill your blood onto the corpses binding them together into a new form, reducing your maximum hit points by 5 and creating a Hippogriff, Griffon, or Peryton under your control. Monstrosities created by this spell use the rules below:",
+		"You spill your blood onto the corpses binding them together into a new form, reducing your maximum hit points by 5 and creating a {@creature Hippogriff}, {@creature Griffon}, or {@creature Peryton} under your control. Monstrosities created by this spell use the rules below:",
 				{
 					"type": "entries",
 					"name": "Control",
@@ -8277,20 +8292,83 @@
 						[
 							"7th",
 							"8",
-							"Manticore, Owlbear"
+							"{@creature Manticore}, {@creature Owlbear}"
 						],
 						[
 							"8th",
 							"10",
-							"Bulette, Girallon"
+							"{@creature Bulette}, {@creature Girallon|MPMM}"
 						],
 						[
 							"9th",
 							"15",
-							"Chimera"
+							"{@creature Chimera}"
 						]
 					]
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Create Homunculus",
+			"source": "llspell",
+			"foundryImg": "icons/environment/creatures/gargoyle-grey-blue.webp",
+			"level": 6,
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"distance": {
+					"type": "touch"
+				},
+				"type": "point"
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "clay, a sapphire worth 500 gold, and blood from the spellcaster, all of which are consumed"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"While muttering incantations, you spill your blood onto the sapphire and place it at the heart of the clay, which you shape into your {@creature Homunculus|llspell}. Your maximum hit points are reduced by 2d4 (this can't be lessened in any way), and a Homunculus comes to life under your control using the rules below:",
+				{
+					"type": "entries",
+					"name": "Statistics",
+					"entries": [
+						"The {@creature Homunculus|llspell} uses the stat block below. It uses your Spellcasting Ability, the Spell Slot spent to cast this spell, your Spell Attack Modifier, and Proficiency Bonus (PB) in several places throughout the stat block."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Control",
+					"entries": [
+						"Your {@creature Homunculus|llspell} is absolutely loyal to you as its creator. It acts independently of you, but you can choose how it acts. In combat, it shares your initiative and your turn."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Lifeblood Bond",
+					"entries": [
+						"While your Homunculus lives, you cannot regain the maximum hit points spent in its creation. Casting this spell again instantly destroys any previous Homunculus.",
+						"The Homunculus cannot benefit from healing spells, short, or long rests. However, whenever you regain hit points (from a spell or rest), you can forgo regaining any number of those hit points and cause the Homunculus to regain them in your stead, so long as you are on the same plane of existence.",
+						"Finally, if you should die, the Homunculus dies instantly."
 					]
 				}
 			]
@@ -8564,7 +8642,7 @@
 					"type": "entries",
 					"name": "Form",
 					"entries": [
-						"Each creature is transformed into a Beast of CR 4 or lower that you have seen before. Youu can choose different form for each target. On subsequent turns, you can use your action to transform one target of this spell within 30 feet into another Beast, using the same restrictions."
+						"Each creature is transformed into a {@filter Beast|bestiary|type=Beast|challenge rating=[&0;&4]|source=LLCompendiumOfBeasts} of CR 4 or lower that you have seen before. Youu can choose different form for each target. On subsequent turns, you can use your action to transform one target of this spell within 30 feet into another Beast, using the same restrictions."
 					]
 				},
 				{
@@ -8924,6 +9002,72 @@
 					"name": "Slam",
 					"entries": [
 						"{@atk mw} Melee Weapon Attack: your Spell Attack Mod to hit, reach 5 ft., one target. Hit: (2d6 +PB) bludgeoning, piercing, or slashing damage plus (2d6) force damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Homunculus",
+			"source": "llspell",
+			"page": 3,
+			"size": [
+				"T"
+			],
+			"type": "construct",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"special": "Your spellcasting ability"
+				}
+			],
+			"hp": {
+				"special": "The amount its creator's maximum hit points were reduced by when casting the spell to create it "
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 30
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"str": 4,
+			"dex": 15,
+			"con": 11,
+			"int": 10,
+			"wis": 10,
+			"cha": 7,
+			"resist": [
+					"poison",
+					{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"poisoned"
+			],
+			"trait": [
+				{
+					"name": "Blood Bond",
+					"entries": [
+						"While on the same plane of existence, the Homunculus and its creator can speak Telepathically, and it can magically shares anything it senses with its creator."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Slam",
+					"entries": [
+						"{@atk mw} Melee Weapon Attack: your Spell Attack Mod to hit, reach 5 ft., one target. Hit: (1d4 +PB) piercing damage."
 					]
 				}
 			]
