@@ -8,20 +8,20 @@ const TIME_TAG = "\tRun duration";
 console.time(TIME_TAG);
 
 async function main () {
-	const ClazzDataTesters = [
-		BraceCheck,
-		EscapeCharacterCheck,
-		ImageUrlCheck,
-		CopySourceCheck,
+	const dataTesters = [
+		new BraceCheck(),
+		new EscapeCharacterCheck(),
+		new ImageUrlCheck(),
+		new CopySourceCheck(),
 	];
-	DataTester.register({ClazzDataTesters});
+	DataTester.register({dataTesters});
 
 	await Uf.pRunOnDirs(
 		async (dir) => {
 			console.log(`Running on directory "${dir}"...`);
 			await DataTester.pRun(
 				dir,
-				ClazzDataTesters,
+				dataTesters,
 			);
 		},
 		{
@@ -29,7 +29,7 @@ async function main () {
 		},
 	);
 
-	const outMessage = DataTester.getLogReport(ClazzDataTesters);
+	const outMessage = DataTester.getLogReport(dataTesters);
 
 	if (outMessage) fs.writeFileSync("./_test/test-data.error.log", outMessage, "utf-8");
 
