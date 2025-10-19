@@ -31,11 +31,21 @@ export class BrewCleanerHtml {
 		delete fileData._meta;
 		delete fileData._test;
 
+		const keyStack = [];
+		const objectStack = [];
+
+		const isInFoundryDescriptionEffect = () => {
+			if (objectStack.at(-1)?.key !== "system.description") return false;
+			return keyStack.at(-1) === "changes" && ["effects", "foundryEffects"].includes(keyStack.at(-2));
+		};
+
 		const fileOut = ObjectWalker.walk({
 			obj: fileData,
 			filePath: file,
 			primitiveHandlers: {
-				string: (str, {filePath}) => {
+				string: (str, {filePath, lastKey}) => {
+					if (lastKey === "value" && isInFoundryDescriptionEffect()) return str;
+
 					const clean = he.unescape(
 						sanitizeHtml(
 							str,
@@ -50,7 +60,11 @@ export class BrewCleanerHtml {
 					}
 
 					return clean;
-				}
+				},
+				preObject: (obj) => objectStack.push(obj),
+				postObject: () => objectStack.pop(),
+				preArray: (_, {lastKey}) => keyStack.push(lastKey),
+				postArray: () => keyStack.pop(),
 			},
 			isModify: true,
 		});
