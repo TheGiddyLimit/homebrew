@@ -54,7 +54,7 @@ export class BrewCleanerHtml {
 					);
 
 					if (clean !== str) {
-						const msg = `Sanitized:\n${str}\n${clean}`;
+						const msg = `Sanitized ${keyStack.map(k => `"${k}"`).join(" -> ")}:\n${str}\n${clean}`;
 						messages.push(msg);
 						Um.info(this._LOG_TAG, msg);
 					}
@@ -83,8 +83,6 @@ export class BrewCleanerHtml {
 			.forEach(file => {
 				const {messages, out} = this._getCleanFileMeta({file})
 				if (!messages?.length) return;
-
-				messages.forEach(msg => Um.info(this._LOG_TAG, msg));
 
 				fs.writeFileSync(file, getCleanJson(out));
 			});
