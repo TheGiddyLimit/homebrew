@@ -31,11 +31,21 @@ export class BrewCleanerHtml {
 		delete fileData._meta;
 		delete fileData._test;
 
+		const keyStack = [];
+		const objectStack = [];
+
+		const isInFoundryDescriptionEffect = () => {
+			if (objectStack.at(-1)?.key !== "system.description.value") return false;
+			return keyStack.at(-1) === "changes" && ["effects", "foundryEffects"].includes(keyStack.at(-2));
+		};
+
 		const fileOut = ObjectWalker.walk({
 			obj: fileData,
 			filePath: file,
 			primitiveHandlers: {
-				string: (str, {filePath}) => {
+				string: (str, {filePath, lastKey}) => {
+					if (lastKey === "value" && isInFoundryDescriptionEffect()) return str;
+
 					const clean = he.unescape(
 						sanitizeHtml(
 							str,
@@ -44,13 +54,17 @@ export class BrewCleanerHtml {
 					);
 
 					if (clean !== str) {
-						const msg = `Sanitized:\n${str}\n${clean}`;
+						const msg = `Sanitized ${keyStack.map(k => `"${k}"`).join(" -> ")}:\n${str}\n${clean}`;
 						messages.push(msg);
 						Um.info(this._LOG_TAG, msg);
 					}
 
 					return clean;
-				}
+				},
+				preObject: (obj) => objectStack.push(obj),
+				postObject: () => objectStack.pop(),
+				preArray: (_, {lastKey}) => keyStack.push(lastKey),
+				postArray: () => keyStack.pop(),
 			},
 			isModify: true,
 		});
@@ -69,8 +83,6 @@ export class BrewCleanerHtml {
 			.forEach(file => {
 				const {messages, out} = this._getCleanFileMeta({file})
 				if (!messages?.length) return;
-
-				messages.forEach(msg => Um.info(this._LOG_TAG, msg));
 
 				fs.writeFileSync(file, getCleanJson(out));
 			});
