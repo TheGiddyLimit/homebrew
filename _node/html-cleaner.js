@@ -35,7 +35,7 @@ export class BrewCleanerHtml {
 		const objectStack = [];
 
 		const isInFoundryDescriptionEffect = () => {
-			if (objectStack.at(-1)?.key !== "system.description") return false;
+			if (objectStack.at(-1)?.key !== "system.description.value") return false;
 			return keyStack.at(-1) === "changes" && ["effects", "foundryEffects"].includes(keyStack.at(-2));
 		};
 
