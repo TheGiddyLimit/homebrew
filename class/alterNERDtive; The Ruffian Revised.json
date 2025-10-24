@@ -22,7 +22,7 @@
 		"edition": "one",
 		"status": "wip",
 		"dateAdded": 1742746781,
-		"dateLastModified": 1760907293,
+		"dateLastModified": 1761339137,
 		"_dateLastModifiedHash": "bfdec6a0fe"
 	},
 	"class": [
@@ -1403,24 +1403,21 @@
 			]
 		},
 		{
-			"name": "Intimidating Presence",
+			"name": "Intimidating Physique",
 			"source": "alterNERDtiveTheRuffianRevised",
 			"className": "Ruffian",
 			"classSource": "alterNERDtiveTheRuffianRevised",
 			"level": 1,
-			"advancement": [
-				{
-					"configuration": {
-						"grants": [
-							"skills:itm"
-						],
-						"mode": "default"
-					},
-					"type": "Trait"
-				}
-			],
+			"advice": {
+				"type": "section",
+				"entries": [
+					"Use the \"Automated Conditions 5e\" module to automate advantage on Opportunity Attacks.",
+					"Since there is no way to check for Opportunity Attack, it will give you advantage on attacks against a target on the target's own turn. Manually adjust the roll mode as needed."
+				]
+			},
 			"effects": [
 				{
+					"name": "Intimidating Presence",
 					"changes": [
 						{
 							"key": "system.skills.itm.value",
@@ -1431,6 +1428,17 @@
 							"key": "system.skills.itm.bonuses.check",
 							"mode": "ADD",
 							"value": "@abilities.str.mod"
+						}
+					],
+					"transfer": true
+				},
+				{
+					"name": "Quick Reflexes",
+					"changes": [
+						{
+							"key": "flags.ac5e.attack.advantage",
+							"mode": "OVERRIDE",
+							"value": "isOpponentTurn"
 						}
 					],
 					"transfer": true
@@ -1457,28 +1465,6 @@
 						"type": "longRest"
 					},
 					"type": "utility"
-				}
-			],
-			"advancement": [
-				{
-					"configuration": {
-						"choices": [
-							{
-								"count": 2,
-								"pool": [
-									"weapon:*"
-								]
-							}
-						],
-						"mode": "mastery"
-					},
-					"value": {
-						"chosen": [
-							"weapon:mar:longbow",
-							"weapon:mar:shortsword"
-						]
-					},
-					"type": "Trait"
 				}
 			],
 			"effects": [
@@ -3492,7 +3478,9 @@
 			"advice": {
 				"type": "section",
 				"entries": [
-					"Use this feature to enchant your Unarmed Strike."
+					"Use this feature to enchant your Unarmed Strike.",
+					"Use the \"Automated Conditions 5e\" module to automate disadvantage for your target on Opportunity Attacks with Unarmed Strike.",
+					"Since there is no way to check for Opportunity Attack, it will give disadvantage to any target of your Unarmed Strikes on the target's own turn. Manually adjust the roll mode as needed."
 				]
 			},
 			"activities": [
@@ -3554,6 +3542,17 @@
 					"disabled": true,
 					"transfer": true,
 					"type": "enchantment"
+				},
+				{
+					"name": "Iron Grip",
+					"changes": [
+						{
+							"key": "flags.ac5e.grants.save.disadvantage",
+							"mode": "OVERRIDE",
+							"value": "isOpponentTurn && item.identifier == \"unarmed-strike\""
+						}
+					],
+					"transfer": true
 				}
 			],
 			"img": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/alterNERDtiveTheRuffianRevised/brawler.webp"
