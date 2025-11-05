@@ -12,7 +12,7 @@
 					"Crazy Ivan#3242",
 					"hakr14"
 				],
-				"version": "1.1.0",
+				"version": "2.1.1",
 				"color": "940101",
 				"url": "https://www.gmbinder.com/share/-NLlETPNSzqxgQ92pnd-"
 			}
@@ -23,15 +23,16 @@
 		},
 		"dependencies": {
 			"optionalfeature": [
-				"LLAF"
+				"LLExploits"
 			],
 			"spell": [
 				"llspell"
 			]
 		},
 		"dateAdded": 1657295680,
-		"dateLastModified": 1715291226,
-		"_dateLastModifiedHash": "350e8a1340"
+		"dateLastModified": 1749920663,
+		"_dateLastModifiedHash": "529612836b",
+		"edition": "classic"
 	},
 	"class": [
 		{
@@ -39,22 +40,22 @@
 			"source": "LLABH",
 			"classFeatures": [
 				"Hunter's Bane|Alternate Blood Hunter|LLABH|1|LLABH",
-				"Blood Rites|Alternate Blood Hunter|LLABH|1|LLABH",
+				"Fighting Style|Alternate Blood Hunter|LLABH|1|LLABH",
+				"Blood Rites|Alternate Blood Hunter|LLABH|2|LLABH",
 				"Crimson Offering|Alternate Blood Hunter|LLABH|2|LLABH",
-				"Fighting Style|Alternate Blood Hunter|LLABH|2|LLABH",
 				{
 					"classFeature": "Occult Order|Alternate Blood Hunter|LLABH|3|LLABH",
 					"gainSubclassFeature": true
 				},
 				"Ability Score Improvement|Alternate Blood Hunter|LLABH|4|LLABH",
 				"Extra Attack|Alternate Blood Hunter|LLABH|5|LLABH",
+				"Grim Psychometry|Alternate Blood Hunter|LLABH|5|LLABH",
 				"Crimson Brand|Alternate Blood Hunter|LLABH|6|LLABH",
 				{
 					"classFeature": "Occult Order|Alternate Blood Hunter|LLABH|7|LLABH",
 					"gainSubclassFeature": true
 				},
 				"Ability Score Improvement|Alternate Blood Hunter|LLABH|8|LLABH",
-				"Grim Psychometry|Alternate Blood Hunter|LLABH|9|LLABH",
 				"Dark Augmentation|Alternate Blood Hunter|LLABH|10|LLABH",
 				"Improved Crimson Offering|Alternate Blood Hunter|LLABH|11|LLABH",
 				"Vital Control|Alternate Blood Hunter|LLABH|11|LLABH",
@@ -89,7 +90,7 @@
 				"armor": [
 					"light",
 					"medium",
-					"{@item shield|phb|shields}"
+					"shield"
 				],
 				"tools": [
 					"{@item alchemist's supplies|phb}"
@@ -178,9 +179,9 @@
 					"armor": [
 						"light",
 						"medium",
-						"{@item shield|phb|shields}"
+						"shield"
 					],
-					"weapon": [
+					"weapons": [
 						"simple",
 						"martial"
 					],
@@ -339,8 +340,10 @@
 				{
 					"name": "Grim Psychometry (Ritual Only)",
 					"innate": {
+						"5": [
+							"identify"
+						],
 						"9": [
-							"identify",
 							"legend lore"
 						]
 					}
@@ -355,12 +358,9 @@
 			"source": "LLABH",
 			"className": "Alternate Blood Hunter",
 			"classSource": "LLABH",
+			"foundryImg": "icons/consumables/potions/potion-tube-corked-bat-gold-red.webp",
 			"page": 2,
 			"level": 1,
-			"entries": [
-				"You have survived the Hunter's Bane, a dark alchemical ritual that suffuses your blood with sinister magic, granting you an enhanced knowledge and awareness of evil. At 1st level, you gain proficiency in either {@skill Nature}, {@skill Religion}, or {@skill Survival}.",
-				"Whenever you make an Intelligence ({@skill Nature}), Intelligence ({@skill Religion}), or Wisdom ({@skill Survival}) check related to fey, fiends, or undead you treat a roll of 7 or lower on the {@dice d20} as an 8."
-			],
 			"skillProficiencies": [
 				{
 					"choose": {
@@ -372,7 +372,85 @@
 					}
 				}
 			],
-			"foundryImg": "icons/consumables/potions/potion-tube-corked-bat-gold-red.webp"
+			"entries": [
+				"You have survived the Hunter's Bane, a dark alchemical ritual that suffuses your blood with sinister magic, granting you an enhanced knowledge and awareness of evil. At 1st level, you gain proficiency in either Arcana, Nature, or Religion.",
+				"As a bonus action, you can use this dark insight to analyze a creature you can see within 30 feet, making a Constitution ability check using the corresponding skill (DC = 8 + its CR):",
+				{
+					"type": "table",
+					"caption": "Knowledge of the Hunt",
+					"colLabels": [
+						"Skill",
+						"Creature Type"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"Arcana",
+							"Aberrations, Dragons, Monstrosities"
+						],
+						[
+							"Nature",
+							"Beasts, Elementals, Oozes, Plants"
+						],
+						[
+							"Religion",
+							"Celestials, Fey, Fiends, Undead"
+						]
+					]
+				},
+				"On a success, you learn one characteristic of your choice from the following list: its highest ability score, lowest ability score, damage vulnerabilities, damage immunities, damage resistances, condition immunities, or another weakness (like a troll's Regeneration being stopped by taking fire damage).",
+				"If your choice doesn't apply to that creature, your DM will reveal another relevant characteristic of their choice to you."
+			]
+		},
+		{
+			"name": "Fighting Style",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"page": 3,
+			"foundryImg": "icons/skills/melee/weapons-crossed-swords-black.webp",
+			"level": 1,
+			"entries": [
+				"At 1st level, you adopt a Fighting Style that best reflects your training. You cannot select a Fighting Style more than once, even if a feature allows you to select another Fighting Style.",
+				"When you gain a level in this class, you can replace your Fighting Style with another option from the list below.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Archery|LLExploits"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dual Wielding|LLExploits"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Balanced Fighting|LLExploits"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Featherweight Fighting|LLExploits"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Great Weapon Fighting|LLExploits"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Hurler|LLExploits"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Versatile Fighting|LLExploits"
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Blood Rites",
@@ -381,16 +459,16 @@
 			"classSource": "LLABH",
 			"foundryImg": "icons/magic/death/skull-horned-goat-pentagram-red.webp",
 			"page": 2,
-			"level": 1,
+			"level": 2,
 			"entries": [
-				"At 1st level, you learn to draw upon the sinister power within your bloodstream to invoke the dark magic of {@filter Blood Rites|optionalfeatures|feature type=LLABH:BR}:",
+				"At 2nd level, you learn to draw upon the sinister power within your bloodstream to invoke the dark magic of {@filter Blood Rites|optionalfeatures|feature type=LLABH:BR}:",
 				{
 					"type": "entries",
 					"name": "Blood Rites Known",
 					"page": 2,
 					"entries": [
-						"At 1st level, you learn two such Blood Rite, from the list at the end of the class. At certain levels you learn more Blood Rites, as indicated in the Rites Known column of the table above.",
-						"Once you invoke a Blood Rite you must finish a short or long rest before you can invoke that Blood Rite again. When you have no uses of a Blood Rite remaining, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1} (detailed below) to use that Rite again.",
+						"At 2nd level, you learn two such Blood Rite, from the list at the end of the class. At certain levels you learn more Blood Rites, as indicated in the Rites Known column of the table above.",
+						"Once you invoke a Blood Rite you must finish a short or long rest before you can invoke that Blood Rite again. When you have no uses of a Blood Rite remaining, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} (detailed below) to use that Rite again.",
 						"Blood Rites can only be used against creatures with blood. However, when you make a Vital Sacrifice to empower a Rite, you can target any creature, regardless if it has blood or not."
 					]
 				},
@@ -404,7 +482,7 @@
 				},
 				{
 					"type": "refClassFeature",
-					"classFeature": "Vital Sacrifice|Alternate Blood Hunter|LLABH|1|LLABH"
+					"classFeature": "Vital Sacrifice|Alternate Blood Hunter|LLABH|2|LLABH"
 				},
 				{
 					"type": "entries",
@@ -437,9 +515,9 @@
 			"className": "Alternate Blood Hunter",
 			"classSource": "LLABH",
 			"page": 2,
-			"level": 1,
+			"level": 2,
 			"entries": [
-				"Some Blood Rites and Blood Hunter features allow you to sacrifice your own life to fuel additional effects. When you make a Vital Sacrifice, you reduce both your maximum and current hit points by one roll of your Rite Die. This reduction to your hit points cannot be lessened in any way.",
+				"Some {@classFeature Blood Rites|Alternate Blood Hunter|LLABH|2} and Blood Hunter features allow you to sacrifice your own life to fuel additional effects. When you make a Vital Sacrifice, you reduce both your maximum and current hit points by one roll of your Rite Die. This reduction to your hit points cannot be lessened in any way.",
 				"If you have temporary hit points, you can reduce these in place of reducing your current hit points. You always reduce your maximum hit points when making a Vital Sacrifice.",
 				"At the end of your next long rest, any reduction to your maximum hit points from this feature returns to normal."
 			],
@@ -450,57 +528,6 @@
 			"foundryImg": "icons/skills/wounds/blood-drip-droplet-red.webp"
 		},
 		{
-			"name": "Fighting Style",
-			"source": "LLABH",
-			"className": "Alternate Blood Hunter",
-			"classSource": "LLABH",
-			"page": 3,
-			"level": 2,
-			"entries": [
-				"Your skill in battle surpasses that of most warriors. At 2nd level, you gain a Fighting Style of your choice from the list below. You can't learn a Fighting Style more than once, even if another feature allows you to learn another Fighting Style.",
-				"When you gain a level in this class, you can replace your Fighting Style with another option from the list below.",
-				{
-					"type": "options",
-					"count": 1,
-					"entries": [
-						{
-							"type": "refOptionalfeature",
-							"optionalfeature": "Archery"
-						},
-						{
-							"type": "refOptionalfeature",
-							"optionalfeature": "Dual Wielding|LLAF"
-						},
-						{
-							"type": "refOptionalfeature",
-							"optionalfeature": "Dueling"
-						},
-						{
-							"type": "refOptionalfeature",
-							"optionalfeature": "Featherweight Fighting|LLAF"
-						},
-						{
-							"type": "refOptionalfeature",
-							"optionalfeature": "Great Weapon Fighting"
-						},
-						{
-							"type": "refOptionalfeature",
-							"optionalfeature": "Melee Marksman|LLAF"
-						},
-						{
-							"type": "refOptionalfeature",
-							"optionalfeature": "Thrown Weapon Fighting|TCE"
-						},
-						{
-							"type": "refOptionalfeature",
-							"optionalfeature": "Versatile Fighting|LLAF"
-						}
-					]
-				}
-			],
-			"foundryImg": "icons/skills/melee/weapons-crossed-swords-black.webp"
-		},
-		{
 			"name": "Crimson Offering",
 			"source": "LLABH",
 			"className": "Alternate Blood Hunter",
@@ -509,8 +536,7 @@
 			"page": 3,
 			"level": 2,
 			"entries": [
-				"Starting at 2nd level, you can infuse weapons with dark blood magic. As a bonus action, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1} to empower one melee weapon you are holding for 1 hour.",
-				"When you do so, choose either acid, cold, fire, lightning, or poison damage. When you hit a creature with an attack with the empowered weapon, the creature takes bonus damage of the type you selected equal to one roll of your Rite Die."
+				"Also starting at 2nd level, you can use a bonus action on your turn to make a Vital Sacrifice and empower one weapon you are holding with blood magic. Choose acid, cold, fire, lighting, or poison, and for 1 hour, your attacks with that weapon deal bonus damage of that type equal to one roll of your Rite Die."
 			],
 			"foundrySystem": {
 				"damage.parts": [
@@ -556,6 +582,19 @@
 			]
 		},
 		{
+			"name": "Grim Psychometry",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"page": 4,
+			"level": 5,
+			"entries": [
+				"Your familiarity with dark magic allows you to decipher the influence of similar effects. Also at 5th level, you can use alchemist's supplies to cast {@spell identify} as a ritual. When you do so, you also learn if the object is cursed.",
+				"At 9th level, you can use this feature to cast {@spell legend lore}, targeting an object or creature you touch, or your current location. When you do so, the target can have an evil, violent, or cursed history instead of legendary importance. You make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} in place of expending a spell slot, and your alchemist's supplies replace the material components."
+			],
+			"foundryImg": "icons/magic/defensive/illusion-evasion-echo-purple.webp"
+		},
+		{
 			"name": "Crimson Brand",
 			"source": "LLABH",
 			"className": "Alternate Blood Hunter",
@@ -564,16 +603,17 @@
 			"page": 4,
 			"level": 6,
 			"entries": [
-				"You can sear your foes with blood magic. Starting at 6th level, when you damage a creature with {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2}, you can Brand it with blood magic as part of your attack. While this Crimson Brand lasts, you gain the following benefits:",
+				"Your affinity with blood magic has grown. Beginning at 6th level, you can make a {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2} once between each short or long rest without making a Vital Sacrifice.",
+				"Moreover, when you damage a creature with a Crimson Offering weapon attack, you can sear it with blood magic to place a Crimson Brand upon it. While this Crimson Brand lasts, you gain the following benefits against that creature:",
 				{
 					"type": "list",
 					"items": [
-						"You always know the exact direction of the creature, so long as you are both on the same plane of existence.",
-						"When the creature damages you or a friendly creature that you can see within 5 feet of you, it takes damage of your Crimson Offering type equal to your Rite Die."
+						"You know its exact direction while on the same plane.",
+						"Whenever it damages you, or a friendly creature that you can see within 15 feet of you, it takes {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2} damage equal to one roll of your Rite Die."
 					]
 				},
 				"The Crimson Brand lasts until the creature is slain, or until you mark another creature with this feature. The effect of your Crimson brand can be dispelled by {@spell remove curse}.",
-				"Once you use this feature you must complete a short or long rest before you can use it again. If you have no uses left you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1} to use this feature again."
+				"Once you use this feature you must complete a short or long rest before you can use it again. If you have no uses left you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to use this feature again."
 			],
 			"foundrySystem": {
 				"activation.condition": "When you damage a creature with Crimson Offering",
@@ -608,19 +648,6 @@
 			]
 		},
 		{
-			"name": "Grim Psychometry",
-			"source": "LLABH",
-			"className": "Alternate Blood Hunter",
-			"classSource": "LLABH",
-			"page": 4,
-			"level": 9,
-			"entries": [
-				"Your familiarity with dark magic allows you to decipher the influence of similar effects. Starting at 9th level, you can use {@item alchemist's supplies|phb} to cast {@spell identify} as a ritual spell. Also, when you cast identify you also learn if the object is cursed.",
-				"You also learn to cast {@spell legend lore} as a ritual, targeting one creature or object you touch, or your current location. The target can have a sinister, violent, or cursed history in place of being a target of legendary importance. When you cast it this way, you use alchemist's supplies and make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1} to replace the normal material components of the spell."
-			],
-			"foundryImg": "icons/magic/defensive/illusion-evasion-echo-purple.webp"
-		},
-		{
 			"name": "Dark Augmentation",
 			"source": "LLABH",
 			"className": "Alternate Blood Hunter",
@@ -628,7 +655,7 @@
 			"page": 4,
 			"level": 10,
 			"entries": [
-				"You can draw on the magic of your blood to enhance your physical abilities. Starting at 10th level, whenever you make an ability check or saving throw that uses Strength, Dexterity, or Constitution, you add a roll of your Rite Die to the result."
+				"The dark magic of the Hunter's Bane enhances your physical abilities. Starting at 10th level, whenever you make an ability check or saving throw that uses your Strength, Dexterity, or Constitution, you add one roll of your Rite Die to the result."
 			],
 			"foundryImg": "icons/magic/defensive/shield-barrier-flaming-diamond-red.webp"
 		},
@@ -640,12 +667,8 @@
 			"page": 4,
 			"level": 11,
 			"entries": [
-				"You are a master of combining blood magic with martial skill. Starting at 11th level, when you use {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2}, you can choose for the bonus damage to be necrotic, psychic, or thunder, along with the other damage type options",
-				"Also, you can use Crimson Offering without making a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1}. Once you do so, you must finish a short or long rest before you can use it again without making a Vital Sacrifice."
+				"You are a master of combining blood magic with martial skill. Beginning at 11th level, you can choose for the bonus damage of {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2} to also be necrotic, psychic, or thunder."
 			],
-			"foundrySystem": {
-				"activation.condition": "You can use Crimson Offering without making a Vital Sacrifice"
-			},
 			"foundryImg": "icons/magic/fire/dagger-rune-enchant-flame-strong-red.webp"
 		},
 		{
@@ -656,8 +679,8 @@
 			"page": 4,
 			"level": 11,
 			"entries": [
-				"Also at 11th level, you gain a greater measure of control over your blood magic. Whenever you make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1}, you can roll your Rite Die twice and choose which result to use.",
-				"In addition, when you invoke a Blood Rite you know, you can choose to empower it without making a Vital Sacrifice. Once you do so, you must finish a long rest before you can empower any Blood Rite you know in this way again."
+				"Also at 11th level, you gain a greater measure of control over your blood magic. Whenever you make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2}, you can roll your Rite Die twice and choose which result to use.",
+				"Also, once between each long rest, you can empower one Blood Rite you know without making a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2}."
 			],
 			"foundrySystem": {
 				"activation.condition": "When you invoke a Blood Rite you know"
@@ -694,8 +717,8 @@
 			"page": 4,
 			"level": 14,
 			"entries": [
-				"Your blood is warded by powerful abjuration magic. Starting at 14th level, when you mark a creature with {@classFeature Crimson Brand|Alternate Blood Hunter|LLABH|6}, the damage it takes when it attacks you or a friendly creature within 5 feet of you increases to two rolls of your Rite Die.",
-				"Finally, if a creature marked by Crimson Brand attempts to teleport or leave the current plane with a spell or feature, it must succeed on a Wisdom saving throw against your Rite save DC or take damage of your {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2} type equal to four rolls of your Rite Die and have its spell or feature fail."
+				"Your Crimson Brand is infused with potent abjuration magic. Starting at 14th level, in order for a creature marked by your {@classFeature Crimson Brand|Alternate Blood Hunter|LLABH|6} to teleport or to leave your current plane, it must succeed on a Charisma saving throw against your Rite save DC. On a failure, that feature fails and it takes {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2} damage equal to four rolls of your Rite Die.",
+				"Also, the damage of Crimson Brand increases to two rolls of your Rite Die if the Branded target damages you or an ally."
 			],
 			"foundrySystem": {
 				"activation": {
@@ -713,17 +736,6 @@
 			"foundryImg": "icons/magic/control/debuff-chains-ropes-red.webp"
 		},
 		{
-			"name": "Occult Order",
-			"source": "LLABH",
-			"className": "Alternate Blood Hunter",
-			"classSource": "LLABH",
-			"page": 3,
-			"level": 18,
-			"entries": [
-				"At 18th level, you gain a feature from your Occult Order."
-			]
-		},
-		{
 			"name": "Hardened Soul",
 			"source": "LLABH",
 			"className": "Alternate Blood Hunter",
@@ -731,7 +743,7 @@
 			"page": 4,
 			"level": 15,
 			"entries": [
-				"Your experiences have hardened you against all but the most esoteric attacks. Beginning at 15th level, whenever you are forced to make an Intelligence, Wisdom, or Charisma saving throw you gain a bonus to your roll equal to your Rite Die."
+				"Your experiences have hardened your mind against all but the most esoteric attacks. Beginning at 15th level, whenever you make an Intelligence, Wisdom, or Charisma saving throw you gain a bonus to your roll equal to one roll of your Rite Die."
 			],
 			"foundryImg": "icons/magic/defensive/shield-barrier-flaming-diamond-magenta.webp"
 		},
@@ -744,6 +756,17 @@
 			"level": 16,
 			"entries": [
 				"When you reach 16th level you can increase one ability score of your choice by 2, or two ability scores by 1. As normal, you can't increase one of your ability scores above 20 using this feature."
+			]
+		},
+		{
+			"name": "Occult Order",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"page": 3,
+			"level": 18,
+			"entries": [
+				"At 18th level, you gain a feature from your Occult Order."
 			]
 		},
 		{
@@ -765,8 +788,8 @@
 			"page": 4,
 			"level": 20,
 			"entries": [
-				"You have gained unparalleled mastery over the dark power of blood magic, improving its potency while minimizing the sacrifices you must make. At 20th level, whenever you roll a Rite Die for one of your Blood Hunter abilities, you can roll the Rite Die twice and choose which result to use.",
-				"Also, whenever you make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1}, you subtract your Constitution modifier (minimum of 1) from your Vital Sacrifice roll before you reduce your maximum and current hit points. This cannot reduce your Vital Sacrifice below 1."
+				"You have gained unparalleled mastery over the dark power of your blood magic, improving its potency while minimizing the sacrifices required. At 20th level, whenever you roll a Rite Die for another Blood Rite or a Blood Hunter ability, you roll your Rite Die twice and choose which result to use.",
+				"Finally, whenever you make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2}, you subtract your Constitution modifier (minimum of 1) from your {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} roll before you reduce your maximum and current hit points. This cannot reduce your {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} below 1."
 			],
 			"foundryImg": "icons/skills/wounds/blood-cells-vessel-red-orange.webp"
 		}
@@ -878,7 +901,7 @@
 			],
 			"optionalfeatureProgression": [
 				{
-					"name": "Passive Mutagens",
+					"name": "Latent Mutagens",
 					"featureType": [
 						"LLABH:M"
 					],
@@ -902,7 +925,7 @@
 				"Order of the Pale Moon|Alternate Blood Hunter|LLABH|Pale Moon|LLABH|3|LLABH",
 				"Lycan Warrior|Alternate Blood Hunter|LLABH|Pale Moon|LLABH|7|LLABH",
 				"Feral Prowess|Alternate Blood Hunter|LLABH|Pale Moon|LLABH|13|LLABH",
-				"Transformation Mastery|Alternate Blood Hunter|LLABH|Pale Moon|LLABH|18|LLABH"
+				"Lycanthropic Mastery|Alternate Blood Hunter|LLABH|Pale Moon|LLABH|18|LLABH"
 			],
 			"foundryImg": "icons/environment/settlement/watchtower-castle-night.webp"
 		},
@@ -920,6 +943,20 @@
 				"Spectral Mastery|Alternate Blood Hunter|LLABH|Salt & Iron|LLABH|18|LLABH"
 			],
 			"foundryImg": "icons/commodities/metal/chain-silver.webp"
+		},
+		{
+			"name": "Order of Heretics",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"shortName": "Heretic",
+			"subclassFeatures": [
+				"Order of Heretics|Alternate Blood Hunter|LLABH|Heretic|LLABH|3|LLABH",
+				"Unholy Restoration|Alternate Blood Hunter|LLABH|Heretic|LLABH|7|LLABH",
+				"Divine Anathema|Alternate Blood Hunter|LLABH|Heretic|LLABH|13|LLABH",
+				"Utmost Transgression|Alternate Blood Hunter|LLABH|Heretic|LLABH|18|LLABH"
+			],
+			"foundryImg": "icons/magic/holy/angel-wings-gray.webp"
 		},
 		{
 			"name": "Order of Undying Thirst",
@@ -1023,7 +1060,7 @@
 			],
 			"spellcastingAbility": "int",
 			"subclassSpells": [
-				"blade ward",
+				"blade ward (alternate)|llspell",
 				"booming blade (alternate)|llspell",
 				"chill touch",
 				"control flames|xge",
@@ -1036,12 +1073,12 @@
 				"magic stone|xge",
 				"mind sliver|tce",
 				"minor illusion",
-				"poison spray",
+				"poison spray (alternate)|llspell",
 				"prestidigitation",
-				"resistence",
+				"resistance (alternate)|llspell",
 				"shocking grasp",
 				"spare the dying",
-				"sword burst|tce",
+				"sword burst (alternate)|llspell",
 				"toll the dead|xge",
 				"true strike (alternate)|llspell",
 				"absorb elements|xge",
@@ -1081,17 +1118,17 @@
 				"spider climb",
 				"suggestion",
 				"blinding smite (alternate)|llspell",
-				"counterspell",
+				"counterspell (alternate)|llspell",
 				"dispel magic",
 				"enemies abound|xge",
 				"fear",
 				"hunder of hadar",
-				"hypnotic pattern",
+				"hypnotic pattern (alternate)|llspell",
 				"intellect fortress|tce",
 				"magic circle",
 				"major image",
 				"remove curse",
-				"spirit shroud (alternate)|llspell",
+				"spirit shroud|tce",
 				"vampiric touch",
 				"banishment",
 				"blight",
@@ -1330,6 +1367,10 @@
 					"subclassFeature": "Aberrant Alchemy|Alternate Blood Hunter|LLABH|Alchemist|LLABH|3|LLABH"
 				},
 				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Monstrous Awareness|Alternate Blood Hunter|LLABH|Alchemist|LLABH|3|LLABH"
+				},
+				{
 					"type": "inset",
 					"name": "Alchemists & Experimentation",
 					"entries": [
@@ -1349,23 +1390,22 @@
 			"level": 3,
 			"header": 2,
 			"entries": [
-				"You have a deep knowledge of the sinister side of alchemy. Whenever you make an ability check that uses {@item alchemist's supplies|phb} you can treat a {@dice d20} roll of 7 or lower as an 8.",
-				"This dark alchemical knowledge allows you to inoculate yourself with Mutagens, which lay dormant in your blood until your draw upon their power to radically Mutate.",
+				"You knowledge of dark alchemy allows you to inoculate your blood with {@filter Mutagens|optionalfeatures|feature type=LLABH:M}, granting you the following benefits:",
 				{
 					"type": "entries",
 					"entries": [
 						{
 							"type": "entries",
-							"name": "Passive Mutagens",
+							"name": "Latent Mutagens",
 							"entries": [
-								"You have inoculated your blood with three experimental Mutagens of your choice from the list of {@filter Mutagens|optionalfeatures|feature type=LLABH:M} at the end of this Occult Order's description. You do not gain the benefits of these Mutagens until you Mutate.",
-								"During a long rest, you can use alchemist's supplies and spend 1 hour to replacing of the Passive Mutagens in your bloodstream with another Mutagen of your choice.",
-								"You gain two additional Passive Mutagens of your choice when you reach 7th level, and again at 13th and 18th levels."
+								"You inoculate your bloodstream with three {@filter Mutagens|optionalfeatures|feature type=LLABH:M} of your choice from the list at the end of this Occult Order description. You don't gain the benefits of these Latent Mutagens until you use a bonus action to Mutate.",
+								"During a long rest, you can spend 1 hour using alchemist's supplies to perform an alchemical procedure to replace one Latent Mutagen in your blood with another of your choice.",
+								"You gain two additional Latent Mutagens of your choice when you reach 7th level, and again at 13th and 18th level."
 							]
 						},
 						{
 							"type": "refSubclassFeature",
-							"subclassFeature": "Mutate|Alternate Blood Hunter|LLABH|Alchemist|LLABH|3|LLABH"
+							"subclassFeature": "Mutation|Alternate Blood Hunter|LLABH|Alchemist|LLABH|3|LLABH"
 						}
 					]
 				}
@@ -1373,7 +1413,7 @@
 			"foundryImg": "icons/skills/toxins/bottle-open-vapors-pink.webp"
 		},
 		{
-			"name": "Mutate",
+			"name": "Mutation",
 			"source": "LLABH",
 			"className": "Alternate Blood Hunter",
 			"classSource": "LLABH",
@@ -1381,8 +1421,8 @@
 			"subclassSource": "LLABH",
 			"level": 3,
 			"entries": [
-				"As a bonus action, you can Mutate to gain the benefits of a number of your Passive Mutagens equal to your Constitution modifier (minimum of 1) for 10 minutes.",
-				"Once you Mutate you must complete a short or long rest before you can Mutate again. If you have no uses remaining, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1} to Mutate again."
+				"As a bonus action you can Mutate, radically changing your physical form and gaining the benefits from a number of your Latent Mutagens equal to your Constitution modifier (minimum of 1 Mutagen) for the next 10 minutes, or until you use a bonus action to revert to your normal form.",
+				"You can Mutate once between each short or long rest at no cost, after which, you make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to Mutate again."
 			],
 			"foundrySystem": {
 				"ability": "con",
@@ -1397,6 +1437,21 @@
 			"foundryImg": "icons/skills/wounds/injury-stapled-flesh-tan.webp"
 		},
 		{
+			"name": "Monstrous Awareness",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"page": 5,
+			"subclassShortName": "Alchemist",
+			"subclassSource": "LLABH",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"The unnatural power of the Mutagens in your blood also empowers your blood magic. When you make an ability check that uses alchemist's supplies, or use Hunter's                 Bane to analyze an Aberration, Monstrosity, or Ooze you can add one roll of your Rite Die to your roll."
+			],
+			"foundryImg": "icons/magic/perception/hand-eye-fire-blue.webp"
+		},
+		{
 			"name": "Enduring Mutation",
 			"source": "LLABH",
 			"className": "Alternate Blood Hunter",
@@ -1407,8 +1462,8 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"The potency of your sinister alchemical experiments has grown. At the end of each long rest, you choose one of your Passive Mutagens. You gain the benefits of that Mutagen, as if you were Mutated, until the end of your next long rest.",
-				"However, when you Mutate, this Enduring Mutagen counts as one of the Mutagens that you gain the benefits of."
+				"The potency of your dark alchemical experiments has grown. During a long rest, you can spend 1 hour using alchemist's supplies to make the effects of a single Latent Mutagen permanent, even when you aren't Mutated. When you Mutate, this Enduring Mutagen always counts as one of the Latent Mutagens that you gain the benefits of.",
+				"You can replace this Enduring Mutagen with another one of your Latent Mutagens during a subsequent long rest."
 			],
 			"foundryImg": "icons/magic/control/silhouette-hold-change-green.webp"
 		},
@@ -1423,8 +1478,9 @@
 			"level": 13,
 			"header": 2,
 			"entries": [
-				"You can weaponize the strange toxins in your blood to afflict your enemies. Once per turn when you hit a creature with a melee attack, you can use a bonus action on that turn to force it to make a Constitution saving throw against your Rite save DC. On a failure, it is {@condition blinded} and {@condition stunned} for 1 minute.",
-				"The creature can repeat its saving throw at the end of each of its turns and each time it takes damage, ending the effects on a success. Any creature that succeeds on its saving throw against this ability is immune to this effect for 24 hours."
+				"You can weaponize the strange toxins in your blood to afflict your enemies. Once per turn when you hit a creature with a melee attack, you can force it to make a Constitution saving throw against your Rite save DC. On a failure, it takes acid damage equal to four rolls of your Rite Die and is blinded or stunned (your choice) for 1 minute. On a successful save, it takes half as much damage and suffers no other effects.",
+				"A blinded or stunned creature repeats this saving throw each time it takes damage, ending this effect on a success.",
+				"You can use this feature a number of times equal to your Constitution modifier (minimum of once), and you regain all expended uses when you finish a long rest. When you have no uses left you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to use it again."
 			],
 			"foundrySystem": {
 				"save.scaling": "con"
@@ -1442,7 +1498,7 @@
 			"level": 18,
 			"header": 2,
 			"entries": [
-				"You have gained mastery over your body's mutability. While you are {@subclassFeature Mutate|Alternate Blood Hunter|LLABH|Alchemist|LLABH|3||Mutated}, you can use a bonus action to switch one of your active Mutagens for one of your Passive Mutagens."
+				"You have gained mastery over your body's mutability. While you are {@subclassFeature Mutation|Alternate Blood Hunter|LLABH|Alchemist|LLABH|3||Mutated}, you can use a bonus action to switch one of your active Mutagens for one of your Latent Mutagens."
 			],
 			"foundryImg": "icons/skills/wounds/bone-broken-tooth-fang-red.webp"
 		},
@@ -1483,11 +1539,17 @@
 			"level": 3,
 			"header": 2,
 			"entries": [
-				"You can control your lycanthropy, allowing you to shift your form . Choose a {@filter beast of CR 1 or lower, without a flying or swimming speed|bestiary|Challenge Rating=[&0;&1]|type=beast|speed type=!fly;!swim}, to be the Beast Form of the animal that your lycanthropy is based upon. Common Beast Forms include {@creature boar||boars}, {@creature brown bear||brown bears}, {@creature dire wolf||dire wolves}, {@creature tiger||tigers}, and {@creature rat||rats}.",
-				"As an action, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1} to transform into your Beast Form. When you transform into your Beast Form, you follow all the rules of {@classFeature Wild Shape|Druid||2} from the Druid class, as found in Chapter 3 of the Player's Handbook.",
-				"If you make a Vital Sacrifice in Beast Form, you reduce the maximum hit points of both the Beast Form and normal form, but only the current hit points of your Beast Form.",
-				"Your Beast Form transformation lasts for up to 1 hour. You revert to your normal form early if you are reduced to 0 hit points or you use a bonus action on your turn to do so.",
-				"Once you transform into your Beast Form you must finish a short or long rest before you can transform again."
+				"You can control your lycanthropy, allowing you to shift your form. Choose {@filter beast of CR 1 or lower, without a flying or swimming speed|bestiary|Challenge Rating=[&0;&1]|type=beast|speed type=!fly;!swim}, to be the Beast Form of the animal your lycanthropic curse is based on. Common Beast Forms are boars, brown bears, dire wolves, tigers, and rats.",
+				"As a bonus action, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to shift into the Beast Form chosen above, following all the rules of Wild Shape from the Druid class, as found in Chapter 3 of the Player's Handbook, except for the following changes:",
+				{
+					"type": "list",
+					"items": [
+						"You retain your current and maximum hit points.",
+						"You gain temporary hit points equal to twice your level.",
+						"Your Beast Form's natural weapons use your Rite Die as their damage die, unless their damage die is higher."
+					]
+				},
+				"You remain in your Beast Form for 1 hour. You revert to your normal form if you are incapacitated or if you use your bonus action to revert. At the end of the hour, you can make another {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to remain in Beast Form for 1 hour."
 			],
 			"foundrySystem": {
 				"actionType": "utiL",
@@ -1516,11 +1578,11 @@
 					"items": [
 						"Your walking speed increases by 10 feet.",
 						"You gain temporary hit points equal to your level.",
-						"Your hands and teeth become claws and fangs that count as simple weapons. They use your Strength modifier for attack and damage rolls, and on hit, they deal slashing damage equal to two rolls of your Rite Die."
+						"You manifest claws and fangs that count as simple weapons with the Light property. On hit, they deal slashing damage equal to one roll of your Rite Die + your Strength modifier."
 					]
 				},
-				"Your Hybrid Form transformation lasts for 1 minute. You revert to your normal form early if you are reduced to 0 hit points or you use a bonus action on your turn to do so.",
-				"Once you transform into your Hybrid Form you must finish a short or long rest before you can transform again. If you have no uses left, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1} to transform into your Hybrid Form again."
+				"You remain in your Hybrid Form for 1 minute. You revert to your normal form early if you are incapacitated or if you use your bonus action to revert. At the end of the transformation you can make a Vital Sacrifice to extend it by 1 minute.",
+				"Once you transform into your Hybrid Form you must finish a short or long rest before you can transform again. If you have no uses left, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to transform into your Hybrid Form again."
 			],
 			"foundrySystem": {
 				"actionType": "util",
@@ -1545,7 +1607,8 @@
 			"level": 3,
 			"header": 2,
 			"entries": [
-				"Your lycanthropy heightens your primal senses. When you make a Wisdom ({@skill Perception}) or Wisdom ({@skill Survival}) check that is based on your sense of hearing, sight, or smell, you gain a bonus to your roll equal to one roll of your Rite Die."
+				"Your lycanthropy heightens your primal senses. When you make a Wisdom (Perception) or Wisdom (Survival) check that is based on your sense of hearing, sight, or smell, you gain a bonus to your roll equal to one roll of your Rite Die.",
+				"Also, whenever you use {@classFeature Hunter's Bane|Alternate Blood Hunter|LLABH|1} to analyze a beast, monstrosity, or a shapeshifter of any kind, you gain a bonus to your ability check equal to one roll of your Rite Die."
 			],
 			"foundryImg": "icons/magic/perception/eye-ringed-glow-angry-red.webp"
 		},
@@ -1564,9 +1627,9 @@
 				{
 					"type": "list",
 					"items": [
-						"The weapon attacks of your Beast and Hybrid Forms count as magical for the sake of overcoming resistance and immunities to nonmagical attacks and damage.",
-						"You gain resistance to bludgeoning, piercing, and slashing damage from nonmagical and non-silvered attacks.",
-						"If you are holding a {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2} weapon, you can transfer the effect to the weapons of your Form. The effect returns to your weapon at the end of your transformation."
+						"Your Form's attacks count as magical for overcoming resistances and immunities to nonmagical damage.",
+						"You gain resistance to bludgeoning, piercing, and slashing damage from non-magical and non-silvered attacks.",
+						"If you are holding a {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2} weapon when you shift, the effect transfers to one of your Form's weapons."
 					]
 				}
 			],
@@ -1603,7 +1666,7 @@
 			"foundryImg": "icons/creatures/mammals/wolf-shadow-black.webp"
 		},
 		{
-			"name": "Transformation Mastery",
+			"name": "Lycanthropic Mastery",
 			"source": "LLABH",
 			"className": "Alternate Blood Hunter",
 			"classSource": "LLABH",
@@ -1613,7 +1676,7 @@
 			"level": 18,
 			"header": 2,
 			"entries": [
-				"You have achieved total mastery over the lycanthropic curse that flows in your blood. You can transform into your {@subclassFeature Beast Form|Alternate Blood Hunter|LLABH|Pale Moon|LLABH|3} or your {@subclassFeature Hybrid Form|Alternate Blood Hunter|LLABH|Pale Moon|LLABH|3} at will, without needing to make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1} to do so. Moreover, your Beast Form and Hybrid transformations last indefinitely.",
+				"You have achieved total mastery over the lycanthropic curse that flows in your blood. You can transform into your {@subclassFeature Beast Form|Alternate Blood Hunter|LLABH|Pale Moon|LLABH|3} or your {@subclassFeature Hybrid Form|Alternate Blood Hunter|LLABH|Pale Moon|LLABH|3} at will, without needing to make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to do so. Moreover, your Beast Form and Hybrid transformations last indefinitely.",
 				"Finally, you can take the {@action Dash} action as a bonus action on your turn, so long as you end this movement closer to a hostile creature you can see."
 			],
 			"foundryImg": "icons/creatures/mammals/wolf-howl-moon-forest-blue.webp"
@@ -1659,13 +1722,18 @@
 			"header": 2,
 			"entries": [
 				"You have tainted your soul with ghastly power. You require half the amount of sleep, food, and drink for the average member of your race.",
-				"Also, you can use a bonus action to enter a temporary Spectral State, which lasts until the end of your current turn. While in this state, you are resistant to all bludgeoning, piercing, and slashing damage from non-magical attacks, and you can move through solid objects and creatures as if they were difficult terrain. If you end your turn inside a creature or object, you are instantly shunted to the nearest unoccupied space and take {@damage 1d10} force damage for every 5 feet you were forced to travel.",
-				"Once you use this feature you must complete a short or long rest before you can use it again. When you have no uses of this feature remaining, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1} as a bonus action to use it again.",
-				"As your reach certain levels in this class, the duration of this Spectral State increases: at 7th-level it lasts for 1 minute, at 13th-level for 1 hour, and at 18th level you remain in this Spectral State until you use a bonus action to end it."
+				"Also, you can use a bonus action to enter a temporary Spectral State, which lasts until the end of your current turn. While in this state, you are resistant to all bludgeoning, piercing, and slashing damage from non-magical and non-silvered attacks, and you can move through solid objects and creatures as if they were difficult terrain. If you end your movement inside a creature or object, you are instantly shunted to the nearest unoccupied space, taking 1d10 force damage for every 5 feet you were shunted.",
+				"You can use this feature a number of times equal to your Constitution modifier (minimum of once), and you regain all uses when you finish a long rest. You can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to use this feautre again.",
+				"At certain levels in this class, the duration of this Spectral State increases: at 7th-level (1 minute), 13th-level (1 hour), and at 18th level (indefinite). You can end this state as a bonus action."
 			],
 			"foundrySystem": {
 				"duration.units": null,
-				"range.units": "self"
+				"range.units": "self",
+				"uses": {
+					"value": "@abilities.con.mod",
+					"max": "@abilities.con.mod",
+					"per": "lr"
+				}
 			},
 			"foundryImg": "icons/magic/light/projectile-smoke-blue.webp"
 		},
@@ -1680,13 +1748,14 @@
 			"level": 3,
 			"header": 2,
 			"entries": [
-				"Your blood magic is especially potent when used against the undead. When you use {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2} you can empower the weapon with the signature radiant magic of your Order, granting it the following additional benefits for the duration:",
+				"Your blood magic is especially potent when used against the undead. whenever you use Hunter's Rite to analyze Undead, you can add one roll of your Rite Die to your ability check.",
+				"Also, when you use {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2}, you can choose to empower your Crimson Offering with the signature magicks of your Order, granting you the following additional benefits:",
 				{
 					"type": "list",
 					"items": [
 						"The bonus damage of Crimson Offering is radiant.",
 						"You gain resistance to necrotic damage.",
-						"The weapon sheds bright light in a 20-foot radius, and dim light an additional 20 feet beyond that."
+						"The weapon sheds bright light in a 30-foot radius, and dim light an additional 20 feet beyond that."
 					]
 				}
 			],
@@ -1709,8 +1778,8 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"Your knowledge and experience with undead enhances the power of your blood magic. You can target any creature with your Blood Rites, even if they do not have blood in their veins.",
-				"In addition, at the end of each long rest you can choose one Blood Rite you know. You can invoke that Rite one additional time before you must make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1} to use it again."
+				"Your knowledge and experience with undead enhances the power of your blood magic. You can target any creature with your {@classFeature Blood Rites|Alternate Blood Hunter|LLABH|2}, even if they do not have blood in their veins.",
+				"In addition, at the end of each long rest you can choose one Blood Rite you know. You can invoke that Rite one additional time before you must make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to use it again."
 			],
 			"foundryImg": "icons/skills/toxins/poison-skull-herbs-bottle-pink.webp"
 		},
@@ -1727,7 +1796,7 @@
 			"entries": [
 				"You use the power of blood magic to drive out the influence of extraplanar creatures. As a bonus action on your turn, you can choose one willing creature within 30 feet that can hear you that is currently {@condition charmed}, {@condition frightened}, or being magically controlled, and instantly end one of the above effects on it.",
 				"If the creature that inflicted this condition on the target is also within 30 feet of you, it must succeed on a Wisdom saving throw against your Rite Save DC or it takes radiant damage equal to three rolls of your Rite Die.",
-				"Once you use this feature you must finish a short or long rest before you can use it again. When you have no uses left, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1} to use this feature again."
+				"Once you use this feature you must finish a short or long rest before you can use it again. When you have no uses left, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to use this feature again."
 			],
 			"foundrySystem": {
 				"damages.parts": [
@@ -1833,7 +1902,8 @@
 							"type": "entries",
 							"name": "Sunlight Sensitivity",
 							"entries": [
-								"You have disadvantage on attack rolls and Wisdom ({@skill Perception}) checks that rely on sight when you, the target of your attack, or whatever you are trying to see is in direct sunlight."
+								"You have disadvantage on attack rolls and Wisdom ({@skill Perception}) checks that rely on sight when you, the target of your attack, or whatever you are trying to see is in direct sunlight.",
+								"If you already have this trait from another source then you gain vulnerability to radiant damage."
 							]
 						}
 					]
@@ -1851,9 +1921,9 @@
 			"level": 3,
 			"header": 2,
 			"entries": [
-				"Your curse grants you increased control over your blood magic. You learn one additional Blood Rite, but it doesn't count against your total number of Blood Rites Known.",
-				"Also, when you roll a Rite Die for the purposes of a Blood Rite, you use a {@dice d6} instead of a {@dice d4}. At certain levels, the Rite Die you roll for Blood Rites increases again: at 5th level ({@dice d8}), 11th level ({@dice d10}), and 17th level ({@dice d12}).",
-				"Finally, when you use {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2}, you can choose for the additional damage to be necrotic."
+				"Your curse grants you increased control over your blood magic. You learn one additional Blood Rite, but it doesn't count against your total number of {@classFeature Blood Rites|Alternate Blood Hunter|LLABH|2} Known.",
+				"Also, your affinity for blood magic increases the size of your Rite Die to a d6. At certain Blood Hunter levels, your Rite Die increases again: at 5th level it becomes a {@dice d8}, at 11th level a {@dice d10}, and finally a {@dice d12} at 17th level.",
+				"Finally, whenever you use {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2}, you can choose for its bonus damage to be necrotic damage."
 			],
 			"foundryImg": "icons/skills/wounds/blood-cells-vessel-red.webp"
 		},
@@ -1868,7 +1938,8 @@
 			"level": 3,
 			"header": 2,
 			"entries": [
-				"The ancient disease of your Order has irreparably changed your physiology. Your teeth elongate into fangs which count as natural weapons for you. These fangs use your Strength modifier for attack and damage rolls, and on hit, they deal piercing damage equal to one roll of your Rite Die."
+				"The ancient disease of your Order has irreparably changed your physiology. Your teeth elongate into fangs which you can use for unarmed strikes. On hit, they deal piercing damage equal to one roll of your Rite Die + your Strength modifier.",
+				"Moreover, whenever you use Hunter's Bane to analyze an Undead, you can add one roll of your Rite Die to the check."
 			],
 			"foundryImg": "icons/creatures/abilities/fang-tooth-blood-red.webp"
 		},
@@ -1883,7 +1954,7 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"You can drain the very life-essence from your foes. When you hit a creature with a fang attack, you can restore a number of your maximum hit points equal to the piercing damage dealt.",
+				"You can drain the very life-essence from your foes. When you hit a creature with a fang attack, you can restore a number of your maximum hit points equal to the piercing damage dealt. Piercing damage from your fang attacks ignores resistances and immunities to non-magical damage.",
 				"Once you use this feature to restore maximum hit points must finish a short or long rest before you can use it again."
 			],
 			"foundrySystem": {
@@ -1903,9 +1974,9 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"Your vampiric power waxes in the darkness and wanes in the light of the sun. When you deal necrotic damage to a creature with a Blood Rite or another Blood Hunter feature, you gain temporary hit points equal to the necrotic damage dealt.",
-				"While you have temporary hit points from this feature, you are resistant to necrotic, poison, and bludgeoning, piercing, and slashing damage from nonmagical and non-silvered attacks, and you are immune to the {@condition poisoned} condition.",
-				"However, if you take radiant damage, all of your temporary hit points from this feature are immediately dispelled, and the radiant damage is then applied to your normal hit points."
+				"When you deal necrotic damage to a creature with a Blood Rite or another Blood Hunter feature, you can choose to gain temporary hit points equal to half the necrotic damage dealt.",
+				"While these temporary hit points last, you are resistant to necrotic, poison, and all bludgeoning, piercing, and slashing damage from all non-magical and non-silvered attacks.",
+				"However, if you take radiant damage, all of your temporary hit points from this feature are immediately dispelled, and the total radiant damage is applied to your normal hit points."
 			],
 			"foundrySystem": {
 				"actionType": "heal",
@@ -1927,8 +1998,8 @@
 			"level": 13,
 			"header": 2,
 			"entries": [
-				"Your sinister power allows you to evade your foes. When a creature you can see hits you with an attack, you can use your reaction to turn into a cloud of swirling mist. The triggering attack automatically misses, and you instantly reappear in an unoccupied space you can see within 30 feet.",
-				"Once you use this reaction you must finish a short or long rest before you can use it again. When you have no uses left, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|1} to use this reaction again."
+				"When a creature you can see hits you with an attack, you can use your reaction to turn into a cloud of swirling mist, and the triggering attack automatically misses. You instantly reappear in an unoccupied space you can see within 30 feet.",
+				"Once you use this reaction you must finish a short or long rest before you can use it again. When you have no uses left, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to use this reaction again."
 			],
 			"foundrySystem": {
 				"activation.condition": "When a creature you can see hits you with an attack",
@@ -1955,7 +2026,7 @@
 					"type": "list",
 					"items": [
 						"You gain a flying speed equal to your walking speed.",
-						"When you damage a creature with a fang attack, it has disadvantage on its saving throws to resist the effects of your Blood Rites until the end of your next turn.",
+						"When you damage a creature with a fang attack, it has disadvantage on its saving throws to resist the effects of your {@classFeature Blood Rites|Alternate Blood Hunter|LLABH|2} until the end of your next turn.",
 						"For every 10 years that pass, your body only ages 1 year."
 					]
 				}
@@ -2095,8 +2166,8 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"You can seamlessly weave minor spells with weapon attacks. When you take the {@action Attack} action on your turn, you can cast a Witch Knight cantrip in place of one of your attacks.",
-				"Moreover, when you cast a Witch Knight spell while you are holding a weapon empowered by {@classFeature Crimson Offering|Alternate Blood Hunter|LLABH|2}, you can cause the spell to deal the damage type of your Crimson Offering in place of the normal damage of that spell."
+				"You seamlessly weave minor spells with weapon attacks. If you use your action to cast a Witch Knight spell, or activate a spell you are concentrating on (such as witch bolt), you can make a weapon attack as a bonus action on that turn.",
+				"Moreover, when you cast a Witch Knight spell while you are holding a weapon empowered by Crimson Offering, you can cause the spell to deal the damage type of your Crimson Offering in place of the normal damage of that spell."
 			],
 			"foundryImg": "icons/magic/unholy/projectile-helix-blood-red.webp"
 		},
@@ -2126,7 +2197,7 @@
 			"level": 18,
 			"header": 2,
 			"entries": [
-				"You can offer the death of your foes to your Eldritch Power for enhanced abilities. When a creature dies within 30 feet of you, you can use a reaction to regain one expended Pact Magic spell slot, or gain temporary hit points equal to one roll of your Rite Die + your Intelligence modifier.",
+				"You can offer the death of your foes to your Eldritch Power for enhanced magicks. If a hostile creature dies within 30 feet of you, you can use your reaction to regain one Pact Magic spell slot, or gain temporary hit points equal to one roll of your Rite Die + your Intelligence modifier.",
 				"Once you use this feature you must finish a short or long rest before you can use it again."
 			],
 			"foundrySystem": {
@@ -2134,7 +2205,7 @@
 				"activation": {
 					"cost": 1,
 					"type": "reaction",
-					"condition": "When a creature dies within 30 feet of you"
+					"condition": "When a hostile creature dies within 30 feet of you"
 				},
 				"damage.parts": [
 					[
@@ -2144,6 +2215,143 @@
 				]
 			},
 			"foundryImg": "icons/magic/unholy/strike-body-explode-disintegrate.webp"
+		},
+		{
+			"name": "Order of Heretics",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"page": 5,
+			"subclassShortName": "Heretic",
+			"subclassSource": "LLABH",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Blood Hunters that join this Order make use of alchemy and dark transmutation magic to mutate their physical form. The sinister power in their blood triggers massive physiological changes thanks to experimental Mutagens. These mutants are often striving to evolve into an ultimate physical form.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Blasphemous Prayer|Alternate Blood Hunter|LLABH|Heretic|LLABH|3|LLABH"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Heretical Knowledge|Alternate Blood Hunter|LLABH|Heretic|LLABH|3|LLABH"
+				}
+			]
+		},
+		{
+			"name": "Blasphemous Prayer",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"page": 5,
+			"subclassShortName": "Heretic",
+			"subclassSource": "LLABH",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"You are able to channel divine energies despite your status as a heretic. You gain two Channel Divinity options: Censure the Divine, which is detailed below, and one Channel Divinity of your choice from those available to Cleric Divine Domains at 2nd level. For the second, you use your Blood Hunter level in place of Cleric level and your Rite save DC. You can only use one Channel Divinity per turn.",
+				"You can use each of your Channel Divinities once, and you regain the ability to do so when you finish a long rest. When you have no uses left, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to use either of your Channel Divinity options again.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Censure the Divine|Alternate Blood Hunter|LLABH|Heretic|LLABH|3|LLABH"
+						}
+					]
+				}
+			],
+			"foundryImg": "icons/magic/lightning/bolt-strike-smoke-yellow.webp"
+		},
+		{
+			"name": "Censure the Divine",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"foundryImg": "icons/skills/wounds/injury-stapled-flesh-tan.webp",
+			"subclassShortName": "Heretic",
+			"subclassSource": "LLABH",
+			"level": 3,
+			"entries": [
+				"You utter blasphemies painful for divine entities to hear. Any Celestials, Fiends, or other creatures capable of divine magic (such as Clerics or Paladins) of your choice within 30 feet of you must succeed a Charisma saving throw against your Rite save DC or be incapacitated and restrained for 1 minute.",
+				"Creatures repeat this saving throw at the end of their turns and when they take damage, ending this effect on a success."
+			]
+		},
+		{
+			"name": "Heretical Knowledge",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"page": 5,
+			"subclassShortName": "Heretic",
+			"subclassSource": "LLABH",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Despite your beliefs, you understand the traditional religious practices, rites, and prayers. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain proficiency in Religion. If already proficient, you add double your proficiency bonus to all Religion checks.",
+						"You learn two Cantrips of your choice from the Cleric spell list. Constitution is your spellcasting modifier.",
+						"If you use Hunter's Bane to analyze a Celestial, Fiend, or Undead, you add one roll of your Rite Die to your ability check."
+					]
+				}
+			],
+			"foundryImg": "icons/sundries/books/book-embossed-clasp-gold-brown.webp"
+		},
+		{
+			"name": "Unholy Restoration",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"page": 5,
+			"subclassShortName": "Heretic",
+			"subclassSource": "LLABH",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"You can draw life from one creature and transfer it to another in a dark mockery of the divine. As an action, you can force a creature you can see within 30 feet to make a Constitution saving throw against your Rite save DC. On a failure, it takes necrotic damage equal to four rolls of your Rite Die, and half as much necrotic damage on a success. It has disadvantage on its saving throw if you touch it as part of this action.",
+				"As part of the action, a creature you can see within 30 feet regains hit points equal to half the necrotic damage dealt.",
+				"You can use this feature a number of times equal to your Constitution modifier (minimum of once), and you regain all uses when you finish a long rest. When you have no uses left, you can make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to use this feature again."
+			],
+			"foundryImg": "icons/magic/control/silhouette-hold-change-green.webp"
+		},
+		{
+			"name": "Divine Anathema",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"page": 5,
+			"subclassShortName": "Heretic",
+			"subclassSource": "LLABH",
+			"level": 13,
+			"header": 2,
+			"entries": [
+				"When you use Censure the Divine you can empower it with a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2}, forcing creatures of your choice within 30 feet must make on a Constitution saving throw against your Rite save DC, in place of its normal effects. On a failed save, creatures have their speed reduced by 10 feet.",
+				"Creatures repeat this saving throw at the end of each of their turns. On a failure, their speed is further reduced by 10 feet, and on a success they regain 10 feet of speed. This effect ends when a creature's speed returns to normal, or when the speed reduction from this feature equals the creature's total speed, at which point it is Petrified.",
+				"Celestials and Fiends have disadvantage on saving throws to resist this feature. Once a creature succeeds against this feature it is immune to its effect until the following dawn."
+			],
+			"foundrySystem": {
+				"save.scaling": "con"
+			},
+			"foundryImg": "icons/magic/earth/strike-body-stone-crumble.webp"
+		},
+		{
+			"name": "Utmost Transgression",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"page": 5,
+			"subclassShortName": "Heretic",
+			"subclassSource": "LLABH",
+			"level": 18,
+			"header": 2,
+			"entries": [
+				"You use your occult knowledge to bind denizens of heaven. As an action, you can cast {@spell summon celestial|tce}, at 5th-level, using Constitution as its spellcasting modifier. The Celestial is bound against its will by unholy blood magic, allowing you to ignore the material component of the spell, but the duration of the spell is reduced to 1 minute.",
+				"Once you cast this spell you must finish a short or long rest before you can cast it this way again."
+			],
+			"foundryImg": "icons/skills/wounds/bone-broken-tooth-fang-red.webp"
 		}
 	],
 	"foundrySubclassFeature": [
@@ -2175,12 +2383,17 @@
 						"name": "Natural Weapons (Hybrid Form Only)",
 						"type": "M",
 						"weaponCategory": "simple",
+						"property": [
+							"L"
+						],
+						"rarity": "none",
+						"source": "LLABH",
 						"foundrySystem": {
 							"ability": "str",
 							"equipped": true,
 							"damage.parts": [
 								[
-									"2@scale.alternate-blood-hunter.rite-die + @mod",
+									"@scale.alternate-blood-hunter.rite-die + @mod",
 									"slashing"
 								]
 							]
@@ -2335,6 +2548,8 @@
 					{
 						"name": "Vampiric Fangs",
 						"type": "M",
+						"rarity": "none",
+						"source": "LLABH",
 						"foundrySystem": {
 							"type.value": "natural",
 							"ability": "str",
@@ -2389,11 +2604,6 @@
 							"key": "system.traits.dr.bypasses",
 							"mode": "CUSTOM",
 							"value": "sil"
-						},
-						{
-							"key": "system.traits.ci.value",
-							"mode": "ADD",
-							"value": "poisoned"
 						}
 					]
 				}
@@ -2459,7 +2669,7 @@
 				"LLABH:M"
 			],
 			"entries": [
-				"You sprout eldritch eye stalks or manifest additional eyes. You gain {@sense darkvision} out to a 60-foot radius. If you already have darkvision its range increases by 60 feet. Within this radius, you can also see through magical darkness."
+				"Your eyes become voids of inky darkness, You gain darkvision out to a 60-foot radius. If you have darkvision from your race or another feature its range increases by 60 feet. Within this radius, you can also see through magical darkness."
 			],
 			"foundryEffects": [
 				{
@@ -2503,7 +2713,7 @@
 			]
 		},
 		{
-			"name": "Deviant Glide",
+			"name": "Monstrous Glide",
 			"source": "LLABH",
 			"page": 6,
 			"foundryImg": "icons/commodities/biological/wing-lizard-pink-purple.webp",
@@ -2511,81 +2721,7 @@
 				"LLABH:M"
 			],
 			"entries": [
-				"You grow bat-like skin flaps that you use to glide. When you fall at least 5 feet and are not {@condition incapacitated}, you can subtract up to 100 feet from your fall when you calculate fall damage, and you can move horizontally 2 feet for every 1 foot you fall."
-			]
-		},
-		{
-			"name": "Elemental Resistance",
-			"source": "LLABH",
-			"foundryImg": "icons/magic/symbols/elements-air-earth-fire-water.webp",
-			"page": 6,
-			"featureType": [
-				"LLABH:M"
-			],
-			"entries": [
-				"Your experiments grant you an increased resistance to the elements. You gain resistance to either acid, cold, fire, poison, or lightning damage (your choice when you Mutate)."
-			],
-			"foundryEffects": [
-				{
-					"name": "Acid Resistance",
-					"transfer": true,
-					"disabled": true,
-					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": "ADD",
-							"value": "acid"
-						}
-					]
-				},
-				{
-					"name": "Cold Resistance",
-					"transfer": true,
-					"disabled": true,
-					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": "ADD",
-							"value": "cold"
-						}
-					]
-				},
-				{
-					"name": "Fire Resistance",
-					"transfer": true,
-					"disabled": true,
-					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": "ADD",
-							"value": "fire"
-						}
-					]
-				},
-				{
-					"name": "Poison Resistance",
-					"transfer": true,
-					"disabled": true,
-					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": "ADD",
-							"value": "poison"
-						}
-					]
-				},
-				{
-					"name": "Lightning Resistance",
-					"transfer": true,
-					"disabled": true,
-					"changes": [
-						{
-							"key": "system.traits.dr.value",
-							"mode": "ADD",
-							"value": "lightning"
-						}
-					]
-				}
+				"You grow bat-like skin flaps that you use to glide. When you fall at least 10 feet and aren't incapacitated, you can subtract up to 100 feet from your fall when you calculate fall damage, and you can move horizontally 2 feet for every 1 foot you fall."
 			]
 		},
 		{
@@ -2597,21 +2733,20 @@
 				"LLABH:M"
 			],
 			"entries": [
-				"Your legs grow unnaturally thick or powerful. Your walking speed increases by a total number of feet equal to 5 times your Constitution modifier (minimum of 5 feet)."
+				"Your legs grow unnaturally thick and powerful, but become grotesque to look upon. You can take the Dash action as a bonus action on each of your turns."
+			]
+		},
+		{
+			"name": "Knotted Flesh",
+			"source": "LLABH",
+			"page": 6,
+			"foundryImg": "icons/commodities/leather/leather-bolt-worn-tan.webp",
+			"featureType": [
+				"LLABH:M"
 			],
-			"foundryEffects": [
-				{
-					"name": "Walking Speed Bonus",
-					"transfer": true,
-					"disabled": true,
-					"changes": [
-						{
-							"key": "system.attributes.movement.walk",
-							"mode": "ADD",
-							"value": "+5*max(1, @abilities.con.mod)"
-						}
-					]
-				}
+			"entries": [
+				"Your skin becomes hard and knotted like that of a tree or a great beast. You can use your Constitution modifier in place of Dexterity when calculating your Armor Class in armor.",
+				"Moreover, so long as you are not wearing any armor, your Armor Class is equal to 13 + your Constitution modifier."
 			]
 		},
 		{
@@ -2623,7 +2758,8 @@
 				"LLABH:M"
 			],
 			"entries": [
-				"Your body becomes slimy and pliable. As a bonus action, you can transform into (or revert from) an ooze-like state which allows you to squeeze through gaps as narrow as 1-inch, though you cannot attack."
+				"Your body can become slimy and pliable. As a bonus action, you can morph into (or revert from) an ooze-like state which allows you to squeeze through gaps as narrow as 1-inch.",
+				"Your ooze-like state has no effect on your weapons, armor, clothing, or objects, and you cannot attack while you are in it."
 			]
 		},
 		{
@@ -2686,7 +2822,7 @@
 			]
 		},
 		{
-			"name": "Corrosive Secretions",
+			"name": "Corrosive Blood",
 			"source": "LLABH",
 			"page": 6,
 			"foundryImg": "icons/magic/acid/projectiles-trio-salvo.webp",
@@ -2699,7 +2835,7 @@
 				}
 			],
 			"entries": [
-				"Your wounds expel a corrosive acid. When you are hit by an attack and your attacker is within 30 feet, you can use your reaction to deal acid damage to the attacker equal to one roll of your Rite Die + your Constitution modifier."
+				"Your wounds expel a corrosive acid. Whenever you are hit by an attack and the attacker is within 30 feet, you can use your reaction to deal acid damage to the attacker equal to one roll of your Rite Die + your Constitution modifier."
 			],
 			"foundrySystem": {
 				"ability": "con",
@@ -2710,6 +2846,59 @@
 					]
 				]
 			}
+		},
+		{
+			"name": "Dislocated Reach",
+			"source": "LLABH",
+			"page": 6,
+			"foundryImg": "icons/creatures/tentacles/tentacle-earth-green.webp",
+			"featureType": [
+				"LLABH:M"
+			],
+			"prerequisite": [
+				{
+					"level": 7
+				}
+			],
+			"entries": [
+				"Your strange experiments allow your joints to unnaturally stretch, crack, and expand. The length of your arms doubles, and the reach of your melee attacks increases by 5 feet."
+			]
+		},
+		{
+			"name": "Engorged Physique",
+			"source": "LLABH",
+			"page": 6,
+			"foundryImg": "icons/creatures/mammals/ox-buffalo-horned-green.webp",
+			"featureType": [
+				"LLABH:M"
+			],
+			"prerequisite": [
+				{
+					"level": 7
+				}
+			],
+			"entries": [
+				"Chemicals forcefully enlarge your body, giving you a hideous physique. You grow by one size (for example, from Medium to Large), your reach increases by 5 feet, your weight multiplies by eight, and your melee weapon attacks deal bonus damage equal to one roll of your Rite Die on hit.",
+				"If there is not room for you to grow in size, you grow to the maximum size allowed by your current surroundings."
+			]
+		},
+		{
+			"name": "Toxic Symbiosis",
+			"source": "LLABH",
+			"page": 6,
+			"foundryImg": "icons/creatures/slimes/slime-movment-dripping-green.webp",
+			"featureType": [
+				"LLABH:M"
+			],
+			"prerequisite": [
+				{
+					"level": 7
+				}
+			],
+			"entries": [
+				"When you hit a creature with a melee attack, you can use a bonus action on that turn to suck the life from its wound and gain temporary hit points equal to your Constitution modifier.",
+				"This feature cannot be used against Constructs or Undead."
+			]
 		},
 		{
 			"name": "Inoculated Vigor",
@@ -2725,7 +2914,7 @@
 				}
 			],
 			"entries": [
-				"You gain immunity to acid and poison damage, and you have advantage on saving throws to resist the {@condition poisoned} condition."
+				"You inoculate yourself against all but the worst poisons. You gain immunity to both acid and poison damage, and you gain immunity to all disease and to the poisoned condition."
 			],
 			"foundryEffects": [
 				{
@@ -2742,37 +2931,15 @@
 							"key": "system.traits.di.value",
 							"mode": "ADD",
 							"value": "poison"
+						},
+						{
+							"key": "system.traits.ci.value",
+							"mode": "ADD",
+							"value": "poisoned"
 						}
 					]
 				}
 			]
-		},
-		{
-			"name": "Toxic Vitality",
-			"source": "LLABH",
-			"page": 6,
-			"foundryImg": "icons/magic/life/heart-cross-strong-green.webp",
-			"featureType": [
-				"LLABH:M"
-			],
-			"prerequisite": [
-				{
-					"level": 7
-				}
-			],
-			"entries": [
-				"Your body mends itself as you fight. At the start of each of your turns while you are Mutated, you gain temporary hit points equal to your Constitution modifier (minimum of 1)."
-			],
-			"foundrySystem": {
-				"ability": "con",
-				"actionType": "heal",
-				"damage.parts": [
-					[
-						"max(1, @mod)",
-						"temphp"
-					]
-				]
-			}
 		},
 		{
 			"name": "Viscous Grip",
@@ -2788,7 +2955,8 @@
 				}
 			],
 			"entries": [
-				"Your hands and feet secrete a sticky substance. You gain a climbing speed equal to your walking speed, and you can climb difficult surfaces without making an ability check."
+				"Your hands and feet secrete a sticky substance. You gain a climbing speed equal to your walking speed, you can climb difficult surfaces without needing making an ability check.",
+				"Also, creatures have disadvantage on ability checks or saving throws they maketo escape being grappled by you."
 			],
 			"foundryEffects": [
 				{
@@ -2806,10 +2974,10 @@
 			]
 		},
 		{
-			"name": "Grappling Appendages",
+			"name": "Accelerated Physiology",
 			"source": "LLABH",
 			"page": 6,
-			"foundryImg": "icons/creatures/tentacles/tentacles-octopus-black-pink.webp",
+			"foundryImg": "icons/creatures/abilities/tail-strike-bone-orange.webp",
 			"featureType": [
 				"LLABH:M"
 			],
@@ -2819,7 +2987,56 @@
 				}
 			],
 			"entries": [
-				"You grow two appendages alongside your arms that resemble tentacles. They are natural weapons, which deal bludgeoning damage equal to your Rite Die on hit. If you hit a creature with a melee attack, you can attempt to {@action grapple} it with these appendages as a bonus action. These appendages are not dexterous enough to use weapons or specialized tools."
+				"Chemicals enhance your physical ability and increase your aggression. When you take the Attack action on your turn, you can make three attacks instead of the normal two.",
+				"However, if you end your turn and you have not attacked another creature since the end of your previous turn, then you take necrotic damage equal to one roll of your Rite Die."
+			]
+		},
+		{
+			"name": "Alchemical Intellect",
+			"source": "LLABH",
+			"page": 6,
+			"foundryImg": "icons/commodities/biological/organ-brain-pink-purple.webp",
+			"featureType": [
+				"LLABH:M"
+			],
+			"prerequisite": [
+				{
+					"level": 13
+				}
+			],
+			"entries": [
+				"Strange chemicals enhance your mind at the expense of the body. You have advantage on all Intelligence, Wisdom, and Charisma saving throws, but you have disadvantage on all Strength, Dexterity, and Constitution saving throws."
+			]
+		},
+		{
+			"name": "Hideous Regeneration",
+			"source": "LLABH",
+			"page": 6,
+			"foundryImg": "icons/commodities/biological/organ-heart-black.webp",
+			"featureType": [
+				"LLABH:M"
+			],
+			"prerequisite": [
+				{
+					"level": 13
+				}
+			],
+			"entries": [
+				"If you begin your turn with less than half of your hit points remaining, but at least 1 hit point, you instantly regain hit points equal to your Constitution modifier (minimum of 1)."
+			]
+		},
+		{
+			"name": "Grappling Appendage",
+			"source": "LLABH",
+			"page": 6,
+			"foundryImg": "icons/creatures/tentacles/tentacles-octopus-black-pink.webp",
+			"featureType": [
+				"LLABH:M"
+			],
+			"entries": [
+				"You grow an extra appendage from your back that resembles a tentacle. This appendage has a reach of 10 feet and can be used to make unarmed strikes, shove, and grapple. On hit, it deals bludgeoning damage equal to one roll of your Rite Die.",
+				"This appendage can be used for simple tasks, but it cannot wield weapons or shields, or manipulate objects or tools.",
+				"Starting at 13th level, this Mutagen grows two appendages."
 			],
 			"foundrySystem": {
 				"actionType": "mwak",
@@ -2845,7 +3062,7 @@
 				}
 			],
 			"entries": [
-				"Your skin hardens resembling that of an terrible insectoid or reptilian creature. You gain a bonus to your Armor Class equal to half your Constitution modifier (rounded down)."
+				"Your skin hardens resembling that of an terrible insectoid creature. You gain a +2 bonus to your Armor Class, and you gain resistance to all bludgeoning, piercing, and slashing damage from non-magical and non-silvered attacks."
 			],
 			"foundryEffects": [
 				{
@@ -2856,14 +3073,39 @@
 						{
 							"key": "system.attributes.ac.bonus",
 							"mode": "ADD",
-							"value": "+floor(@abilities.con.mod / 2)"
+							"value": "2"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "bludgeoning"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "piercing"
+						},
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "slashing"
+						},
+						{
+							"key": "system.traits.dr.bypasses",
+							"mode": "CUSTOM",
+							"value": "mgc"
+						},
+						{
+							"key": "system.traits.dr.bypasses",
+							"mode": "CUSTOM",
+							"value": "sil"
 						}
 					]
 				}
 			]
 		},
 		{
-			"name": "Perverted Flight",
+			"name": "Monstrous Flight",
 			"source": "LLABH",
 			"page": 6,
 			"foundryImg": "icons/creatures/birds/corvid-flying-wings-purple.webp",
@@ -2872,7 +3114,7 @@
 			],
 			"prerequisite": [
 				{
-					"level": 14
+					"level": 13
 				}
 			],
 			"entries": [
@@ -2902,8 +3144,19 @@
 				"LLABH:BR"
 			],
 			"entries": [
-				"As a bonus action, you can invoke this Rite to force a creature that you can see within 30 feet to make a Constitution saving throw. On a failed save, until the end of your next turn it has disadvantage on Strength and Dexterity ability checks and saving throws and takes necrotic damage equal to one roll of your Rite Die each time it makes a weapon attack.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do so, the effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on a success."
+				"As a bonus action, you invoke this Rite and force one creature that you can see within 30 feet to make a Constitution saving throw. On a failed save, it has disadvantage on Strength and Dexterity ability checks and saving throws, and each time it makes an attack it takes necrotic damage equal to one roll of your Rite Die. These effects end at the end of your next turn.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Agony",
+							"entries": [
+								"The effects of this Blood Rite last for 1 minute. The creature repeats this saving throw at the end of each of its turns, ending the effect early on a success."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"damage.parts": [
@@ -2924,8 +3177,19 @@
 				"LLABH:BR"
 			],
 			"entries": [
-				"As a bonus action, you can invoke this Rite and curse one creature you can see within 30 feet, making it susceptible to outside influence. For the next minute, creatures of your choice that attempt to influence it with a Charisma check gain a bonus to their rolls equal to one roll of your Rite Die.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do so, the creature has disadvantage on the next Intelligence, Wisdom, or Charisma saving throw it is forced to make before the end of your next turn."
+				"As a bonus action, you invoke this Rite and curse a creature you can see within 30 feet, making it susceptible to outside influence. For 1 minute, creatures of your choice who make a Charisma check to influence the target can add one roll of your Rite Die to the result of their ability check.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Anxiety",
+							"entries": [
+								"The creature also has disadvantage on the first Intelligence, Wisdom, or Charisma saving throw it is forced to make before the end of your next turn."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"formula": "1@scale.alternate-blood-hunter.rite-die",
@@ -2944,8 +3208,19 @@
 				"LLABH:BR"
 			],
 			"entries": [
-				"As a bonus action, you can invoke this Rite and force a Large or smaller creature that you can see within 30 feet to make a Strength saving throw. On a failed save, its speed is reduced to 0 and it can't use reactions until the end of your next turn.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do so, you can target a creature of any size, and the effects of this Rite last for 1 minute. The target can repeat this saving throw at the end of each of its turns, ending the effects of this Rite on a success."
+				"As a bonus action, you invoke this Rite and force a Large or smaller creature that you can see within 30 feet to make a Strength saving throw. On a failed save, its speed is reduced to 0 and it can't use reactions until the end of your next turn.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Binding",
+							"entries": [
+								"You can target a creature of any size with this Rite, and it lasts for 1 minute. Creatures can repeat this saving throw at the end end each of their turns, ending the effects on a success."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"save.scaling": "con"
@@ -2960,8 +3235,19 @@
 				"LLABH:BR"
 			],
 			"entries": [
-				"As a bonus action, you can invoke this Rite and curse one creature you can see within 30 feet that is {@status concentration||concentrating}. It must subtract a roll of your Rite Die from every Constitution saving throw it makes before the start of your next turn.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do so, the target must subtract one roll of your Rite Die from every Constitution saving throw that it makes to maintain its concentration on its current spell."
+				"As a bonus action, you invoke this Rite to curse one creature you can see within 30 feet that is concentrating on a spell. It must succeed a Wisdom saving throw or lose concentration.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Confusion",
+							"entries": [
+								"The creature must subtract one roll of your Rite Die from its saving throw to resist this Rite."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"formula": "1@scale.alternate-blood-hunter.rite-die"
@@ -2976,12 +3262,35 @@
 				"LLABH:BR"
 			],
 			"entries": [
-				"When a creature you can see within 30 feet makes an attack roll, you can use your reaction to invoke this Rite. The target must subtract one roll of your Rite Die from its attack roll. You can invoke this Rite after the creature rolls, but before you know if its attack hits or misses its target.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do, it must subtract one roll of your Rite Die from all attack rolls before the start of your next turn."
+				"When a creature that you can see within 30 feet hits another creature you can see with an attack, you can use a reaction to invoke this Rite. The attacker subtracts one roll of your Rite Die from its attack roll, potentially turning a hit into a miss.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Blindness",
+							"entries": [
+								"The creature must also subtract one roll of your Rite Die from every weapon and spell attack roll it makes until the end of that creature's following turn."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"formula": "1@scale.alternate-blood-hunter.rite-die"
 			}
+		},
+		{
+			"name": "Rite of Knowledge",
+			"source": "LLABH",
+			"page": 12,
+			"foundryImg": "icons/sundries/scrolls/scroll-plain-red.webp",
+			"featureType": [
+				"LLABH:BR"
+			],
+			"entries": [
+				"When you learn this Rite you learn four ritual spells of 3rd-level or lower from any spell list. You can only cast them as rituals, and to do so you must make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2}."
+			]
 		},
 		{
 			"name": "Rite of Revelation",
@@ -2992,8 +3301,20 @@
 				"LLABH:BR"
 			],
 			"entries": [
-				"As a bonus action, you can invoke this Rite and choose one creature you can see within 30 feet. You immediately learn of one damage resistance, immunity, or vulnerability that creature has. If it has none of the traits above, the DM must instead reveal one of the creature's abilities of their choice.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do, you can choose one immunity the creature has and turn it into resistance, or one resistance the creature has and dispel it. This effect lasts for 1 minute."
+				"When you use your Hunter's Bane to analyze a creature you can see, you can invoke this Rite to automatically succeed on your ability check against that creature.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Revelation",
+							"entries": [
+								"Choose one damage immunity the creature has and turn it into resistance, or one damage resistance it has and dispel it. This effect lasts for 1 minute.",
+								"If the creature has no damage immunities or resistances, you learn three Hunter's Bane characteristics of your choice."
+							]
+						}
+					]
+				}
 			]
 		},
 		{
@@ -3005,8 +3326,19 @@
 				"LLABH:BR"
 			],
 			"entries": [
-				"As an action, you can invoke this Rite and force one creature you touch to make a Charisma saving throw. On a failure, it takes necrotic damage equal to two rolls of your Rite Die, and you gain temporary hit points equal to the necrotic damage taken by the creature.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do so, the creature takes the maximum possible necrotic damage."
+				"As an action, you can invoke this Rite and force one creature you touch to make a Charisma saving throw. On a failed save, the creature takes necrotic damage equal to two rolls of your Rite Die, and you gain temporary hit points equal to the necrotic damage taken by the creature.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Siphoning",
+							"entries": [
+								"The necrotic damage from this Rite is treated as the maximum possible amount instead of rolling."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"damage.parts": [
@@ -3017,6 +3349,68 @@
 				],
 				"save.scaling": "con"
 			}
+		},
+		{
+			"name": "Rite of the Beast",
+			"source": "LLABH",
+			"page": 13,
+			"foundryImg": "icons/creatures/mammals/dog-husky-white-blue.webp",
+			"featureType": [
+				"LLABH:BR"
+			],
+			"prerequisite": [
+				{
+					"level": 5
+				}
+			],
+			"entries": [
+				"As an action, you invoke this Rite as you touch a living beast, smearing a drop of your blood on its face. It must succeed on a Charisma saving throw or become enthralled by you for 1 hour, or until it is reduced to 0 hit points.",
+				"An enthralled beast is friendly to you and your allies and obeys your orders completely. In combat you share initiative and it acts during your turn. It can move and use its reaction on its own, but it only takes the Dodge action unless you use your bonus action to command it to take an action from its stat block or another action. If you can ride the beast then it counts as a trained mount for the duration of this Rite.",
+				"You can only have one creature enthralled by a Blood Rite at a time. Attempting to enthrall another creature with a Rite instantly frees any other creatures you have enthralled.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Beast",
+							"entries": [
+								"The beast remains enthralled by this Blood Rite until the end of your next long rest."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Rite of Bonding",
+			"source": "LLABH",
+			"page": 13,
+			"foundryImg": "icons/tools/fasteners/chain-steel-blue.webp",
+			"featureType": [
+				"LLABH:BR"
+			],
+			"prerequisite": [
+				{
+					"level": 5
+				}
+			],
+			"entries": [
+				"As an action, you invoke this Rite as you combine a drop of your blood with a drop of blood from a willing creature you touch, forging a dark bond. While the other creature is within 60 feet of your, it is resistant to all damage. However, if this bonded creature takes damage, you take the same amount.",
+				"The effects of this Rite last for 1 hour, but it ends early if either you or the other creature are reduced to 0 hit points, or if you are more than 60 feet apart for more then 1 minute.",
+				"You can only enter into one such bond at a time. Using this Rite with another creature instantly ends the previous bond.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Bonding",
+							"entries": [
+								"The effects of this Blood Rite last for 8 hours, and only end early if either of you is reduced to 0 hit points or is more than 1 mile apart for more than 1 hour."
+							]
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Rite of Corrosion",
@@ -3032,8 +3426,19 @@
 				}
 			],
 			"entries": [
-				"As a bonus action on your turn, you can invoke this Rite and force one creature that you can see within 30 feet to make a Constitution saving throw. On a failed save, it is {@condition poisoned} for 1 minute. The creature can repeat this saving throw at the end of each of its turns, ending the effect on a success.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do so, the creature remains poisoned until it succeeds on its saving throw, and each time it fails it takes necrotic damage equal to two rolls of your Rite Die."
+				"As a bonus action , you invoke this Rite to force one creature that you can see within 30 feet to make a Constitution saving throw. On a failed save, the creature is poisoned for 1 minute. It can repeat this Constitution saving throw at the end of each of its turns, ending the effect on a success.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Corrosion",
+							"entries": [
+								"The effects of this Blood Rite last until the creature succeeds on the Constitution saving throw. Moreover, whenever it fails this Constitution saving throw, it takes necrotic damage equal to two rolls of your Rite Die."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"damage.parts": [
@@ -3059,8 +3464,19 @@
 				}
 			],
 			"entries": [
-				"As a bonus action on your turn, you can invoke this Rite and curse one creature you can see within 30 feet. Until the end of your next turn, any damage that creature takes ignores any damage resistances that creature may have.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. When you do so, any damage that creature takes until the end of your next turn also treats any damage immunities it may have as damage resistances."
+				"As a bonus action, you invoke this Rite to curse one creature you can see within 30 feet. Any damage dealt to it before the end of your next turn ignores all of its damage resistances.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Exposure",
+							"entries": [
+								"Any damage it takes before the end of your next turn treats damage immunity as resistance."
+							]
+						}
+					]
+				}
 			]
 		},
 		{
@@ -3077,8 +3493,19 @@
 				}
 			],
 			"entries": [
-				"As a bonus action, you can invoke this Rite and mark a target you can see within 30 feet. Until the end of your next turn, you have advantage on all attack rolls against that target.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. When you do so, any weapon attacks you make against that target score a critical hit on a roll of 19 or 20 on the {@dice d20} until the end of your next turn."
+				"As a bonus action, you invoke this Rite and mark a creature you can see within 30 feet. Until the end of your next turn, you have advantage on all attack rolls against that target.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Marking",
+							"entries": [
+								"You add one roll of your Rite Die to weapon attack rolls against it until the end of your next turn."
+							]
+						}
+					]
+				}
 			]
 		},
 		{
@@ -3095,15 +3522,53 @@
 				}
 			],
 			"entries": [
-				"When a creature you can see within 30 feet is reduced to 0 hit points, you can use your reaction to invoke this Rite and have the creature stand up and make a single weapon attack against a creature of your choice within its reach.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. When you do so, the creature can move up to its full walking speed before it makes its attack, and the creature gains a bonus to both its weapon attack roll and its damage roll equal to one roll of your Rite Die."
+				"When a creature you can see within 30 feet is slain, you can use your reaction to invoke this Rite to cause the creature to stand up, move up to its walking speed, and make a weapon attack against a creature of your choice within its reach.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Puppet",
+							"entries": [
+								"The creature adds one roll of your Rite Die to both the attack and damage roll it makes as part of this Rite."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"formula": "1@scale.alternate-blood-hunter.rite-die"
 			}
 		},
 		{
-			"name": "Rite of Fear",
+			"name": "Rite of Aggression",
+			"source": "LLABH",
+			"page": 13,
+			"foundryImg": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+			"featureType": [
+				"LLABH:BR"
+			],
+			"prerequisite": [
+				{
+					"level": 9
+				}
+			],
+			"entries": [
+				"As an action, you invoke this Rite and touch a willing creature radically increasing its aggression. For 1 minute, or until it is incapacitated, it gains the benefits and drawbacks below:",
+				{
+					"type": "list",
+					"items": [
+						"It can make one additional attack whenever it takes the Attack action or when it uses the Multiattack feature.",
+						"It can take the Dash action as a bonus action on its turns.",
+						"It gains a +2 bonus to its AC and Dexterity saving throws.",
+						"If it ends its turn and has not dealt damage to a hostile creature since the end of its previous turn, the creature takes necrotic damage equal to one roll of your Rite Die."
+					]
+				},
+				"When this Rite's effects end, the creature must succeed on a Constitution saving throw or suffer one level of exhaustion."
+			]
+		},
+		{
+			"name": "Rite of Dread",
 			"source": "LLABH",
 			"page": 13,
 			"foundryImg": "icons/commodities/materials/feather-white-glowing-beams.webp",
@@ -3116,8 +3581,53 @@
 				}
 			],
 			"entries": [
-				"As a bonus action, you can invoke this Rite and force one creature that can see or hear you within 30 feet to make a Wisdom saving throw. On a failed save, it is {@condition frightened} of you for 1 minute. While frightened in this way, the creature must take the {@action Dash} action and move away from you by the safest available route on each of its turns, unless there is nowhere to move. If it ends its turn in a location where it doesn't have line of sight to you, it can repeat its saving throw, ending the effects of this Rite on a success.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do so, a creature that fails its saving throw is {@condition stunned} for the duration of this Rite, so long as it has line of sight to you. If it takes any damage, it can repeat its saving throw, ending the effect on a success."
+				"As a bonus action, you invoke this Rite to force one creature that can see or hear you within 30 feet to make a Wisdom saving throw. On a failure, it is frightened of you for 1 minute.",
+				"While frightened in this way, a creature must do all it can to move as far away from you as possible by the safest route that it can. If it cannot move it can take the Dodge action. If it can end its turn where it cannot see you, it can repeat this saving throw, ending the effects of this Rite on a success.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Dread",
+							"entries": [
+								"On a failure, the creature is stunned for the duration, so long as it can see you. If it takes damage, it can repeat the saving throw, ending the effect on a success."
+							]
+						}
+					]
+				}
+			],
+			"foundrySystem": {
+				"save.scaling": "con"
+			}
+		},
+		{
+			"name": "Rite of the Open Grave",
+			"source": "LLABH",
+			"page": 13,
+			"foundryImg": "icons/magic/death/hand-dirt-undead-zombie.webp",
+			"featureType": [
+				"LLABH:BR"
+			],
+			"prerequisite": [
+				{
+					"level": 9
+				}
+			],
+			"entries": [
+				"As an action, you can touch a creature that has died within the last minute, snatching its soul back from the grave, and returning it to life with 1 hit point. However, when a creature is brought back to life by this Rite it gains a permanent death saving throw failure. This side effect can only be removed by greater resoration or a spell of similar, or greater, power.",
+				"This Rite cannot return a creature to life that died of old age, and it cannot restore a creature's missing body parts.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Open Grave",
+							"entries": [
+								"The creature does not gain a permanent death saving throw failure, but instead suffers a single level of exhaustion, which is healed by a long rest."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"save.scaling": "con"
@@ -3137,8 +3647,19 @@
 				}
 			],
 			"entries": [
-				"As a bonus action, you can invoke this Rite and force one creature you can see within 30 feet to make a Constitution saving throw. On a failed save, it is {@condition blinded}, {@condition deafened}, and cannot speak or make any sounds for 1 minute. At the end of each of its turns, the target can repeat this saving throw, ending the effect and regaining its senses on a success.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do so, in addition to the normal effects, the creature cannot move while under the effects of this Rite."
+				"As a bonus action, you invoke this Rite to force one creature that you can see within 30 feet to make a Constitution saving throw. On a failure, it is blinded, deafened, and cannot speak or make any sound for 1 minute. It repeats this saving throw at the end of each of its turns, ending the effect on a success.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Senseless",
+							"entries": [
+								"The creature's speed is reduced to 0 for the duration along with the other effects of this Rite."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"save.scaling": "con"
@@ -3158,9 +3679,19 @@
 				}
 			],
 			"entries": [
-				"As an action, you can invoke this Rite and force a creature you can see within 30 feet to make a Constitution saving throw as you corrupt the blood in its veins. On a failed save, it takes necrotic damage equal to four rolls of your Rite Die, its speed is halved, and it cannot take reactions.",
-				"As an action on its turn, the creature can repeat its saving throw. On a success, the effects of this Rite end. On a failed save, the creature takes additional damage equal to two rolls of your Rite Die and it suffers one level of exhaustion.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do so, this Rite ignores resistance to necrotic damage and treats immunity to necrotic damage as resistance. Finally, a creature killed by the necrotic damage from this Rite is turning into a pile of fine flesh-colored dust."
+				"As an action, you invoke this Rite to force a creature you can see within 30 feet to make a Constitution saving throw as you corrupt its blood. On a failure, it takes necrotic damage equal to four rolls of your Rite Die, its speed is halved, and it cannot take reactions. It can repeat this Constitution saving throw as an action. On a success, the effects of this Rite end, but on a failure, it takes additional necrotic damage equal to two rolls of your Rite Die and suffers one level of exhaustion.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Decay",
+							"entries": [
+								"This Rite ignores necrotic resistance and treats necrotic immunity as resistance. Also, any creature killed by this Rite is reduced to a pile of flesh-colored dust."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"damage.parts": [
@@ -3186,8 +3717,20 @@
 				}
 			],
 			"entries": [
-				"As an action, you can invoke this Rite and force a creature you can see within 30 feet to make a Wisdom saving throw as you infect its mind with nightmarish phantasms. On a failed save, the creature takes psychic damage equal to two rolls of your Rite Die and is {@condition frightened} of you for 1 minute. At the end of each of the creature's turns before this Rite ends, it must succeed on a Wisdom saving throw or take psychic damage equal to four rolls of your Rite Die. On a successful save, the nightmarish effects of this Rite end.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do so, the creature is {@condition incapacitated} and has a speed of 0 for the duration of the effects of this Rite."
+				"As an action, you invoke this Rite to force a creature you can see within 30 feet to make a Wisdom saving throw, infecting its mind with nightmarish phantasms. On a failed save, the creature takes psychic damage equal to four rolls of your Rite Die and is frightened of you for 1 minute.",
+				"The creature repeats this Wisdom saving throw at the end of each of its turns. On a successful save, the effects of this Rite end, but on a failed save, the creature takes additional psychic damage equal to two rolls of your Rite Die.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Nightmares",
+							"entries": [
+								"The creature is incapacitated and has a speed of 0 for the duration of this Rite's effects."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"damage": {
@@ -3203,6 +3746,37 @@
 			}
 		},
 		{
+			"name": "Rite of Thralldom",
+			"source": "LLABH",
+			"page": 13,
+			"foundryImg": "icons/magic/control/hypnosis-mesmerism-watch.webp",
+			"featureType": [
+				"LLABH:BR"
+			],
+			"prerequisite": [
+				{
+					"level": 13
+				}
+			],
+			"entries": [
+				"As an action, you invoke this Rite and touch a live humanoid, smearing a drop of your blood on its face. It must succeed on a Charisma saving throw or become enthralled by you for 1 minute, or until it is reduced to 0 hit points.",
+				"An enthralled humanoid is friendly to you and obeys your orders completely. In combat it shares your initiative and acts during your turn. It can move and use its reaction on its own, but it only takes the Dodge action on its turn unless you use your bonus action to command it to take one of the actions from its stat block or another action.",
+				"You can only have one creature enthralled by a Blood Rite at a time. Attempting to enthrall another creature with a Rite instantly frees any other creatures you have enthralled.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Thralldom",
+							"entries": [
+								"The humanoid is enthralled by this Blood Rite for up to 1 hour."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Rite of Exsanguination",
 			"source": "LLABH",
 			"page": 13,
@@ -3216,9 +3790,21 @@
 				}
 			],
 			"entries": [
-				"As an action, you can invoke this most powerful and ancient Rite to force one creature you can see within 30 feet to make a Constitution saving throw as you attempt to drain its body of all blood. It takes necrotic damage equal to twelve rolls of your Rite Die on a failed save, and half as much on a success. A creature that you have dealt damage to since the start of your previous turn that is not at its maximum hit points has disadvantage on its Constitution saving throw.",
-				"When you invoke this Rite you can make a Vital Sacrifice to empower it. If you do so, this Rite ignores resistance to necrotic damage and treats immunity to necrotic damage as resistance. Finally, a creature killed by the necrotic damage from this Rite is turning into a pile of fine flesh-colored dust.",
-				"Once you invoke this Rite you must finish a short or long rest before you can invoke it again. You cannot make a Vital Sacrifice to circumvent this restriction."
+				"As an action, you invoke this most powerful and ancient Rite and force one creature you can see within 30 feet to make a Constitution saving throw, as you attempt to drain its body of all blood. On a failed save, it takes necrotic damage equal to twelve rolls of your Rite Die, and half as much on a success.",
+				"Any creature that you have dealt damage to since the start of your previous turn has disadvantage on this saving throw.",
+				"Once your invoke this Blood Rite you must finish a short or long rest before you can invoke it again. You cannot make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to circumvent this once per rest restriction.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Exsanguination",
+							"entries": [
+								"This Rite ignores necrotic resistance and treats immunity as resistance. Any creatures killed by this Rite are reduced to a pile of flesh-colored dust."
+							]
+						}
+					]
+				}
 			],
 			"foundrySystem": {
 				"damage.parts": [
@@ -3234,6 +3820,70 @@
 					"per": "sr"
 				}
 			}
+		},
+		{
+			"name": "Rite of Reaping",
+			"source": "LLABH",
+			"page": 13,
+			"foundryImg": "icons/magic/death/weapon-scythe-rune-green.webp",
+			"featureType": [
+				"LLABH:BR"
+			],
+			"prerequisite": [
+				{
+					"level": 17
+				}
+			],
+			"entries": [
+				"As an action, you invoke this most powerful and ancient Rite and force creatures of your choice within 60 feet to make a Constitution saving throw as you draw all blood toward you.",
+				"Creatures take necrotic damage equal to five rolls of your Rite Die on a failed save, and half as much on a success.",
+				"Any creature that you have dealt damage to since the start of your previous turn has disadvantage on this saving throw.",
+				"Once your invoke this Blood Rite you must finish a short or long rest before you can invoke it again. You cannot make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to circumvent this once per rest restriction.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Empowered Reaping",
+							"entries": [
+								"This Blood Rite ignores necrotic resistance and treats immunity as resistance. Any creatures killed by this Rite are reduced to a pile of flesh-colored dust."
+							]
+						}
+					]
+				}
+			],
+			"foundrySystem": {
+				"damage.parts": [
+					[
+						"5@scale.alternate-blood-hunter.rite-die",
+						"necrotic"
+					]
+				],
+				"save.scaling": "con",
+				"uses": {
+					"value": 1,
+					"max": 1,
+					"per": "sr"
+				}
+			}
+		},
+		{
+			"name": "Rite of Rejuvenation",
+			"source": "LLABH",
+			"page": 13,
+			"foundryImg": "icons/magic/death/undead-mammal-fire-breath-pink.webp",
+			"featureType": [
+				"LLABH:BR"
+			],
+			"prerequisite": [
+				{
+					"level": 17
+				}
+			],
+			"entries": [
+				"As an action, you invoke this most powerful and ancient Rite and touch one living willing creature, granting it an increase in stamina at the cost of its overall health. It instantly gains all the benefits of a short rest, including the ability to expend its Hit Dice to regain hit points. However, the maximum life span of the creature is permanently reduced by 1 year and 1 day, and it suffers 1 level of exhaustion.",
+				"Once your invoke this Blood Rite you must finish a short or long rest before you can invoke it again. You cannot make a {@classFeature Vital Sacrifice|Alternate Blood Hunter|LLABH|2} to circumvent this once per rest restriction."
+			]
 		}
 	],
 	"classFluff": [

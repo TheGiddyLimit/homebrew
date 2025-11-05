@@ -5,35 +5,43 @@ export class ImageUrlCheck extends DataTesterBase {
 	static _URL_PREFIX_HOMEBREW_IMG = `https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/`;
 	static _RE_HOMEBREW_IMG_PATH = /^(?<type>img|pdf)\/(?<source>[^/]+)\//;
 
-	static registerParsedFileCheckers (parsedJsonChecker) {
+	static _FileState = class {
+		sources;
+
+		constructor (
+			{
+				contents,
+			}
+		) {
+			this.sources = new Set(
+				[
+					...(contents._meta?.sources?.map(src => src?.json) || [])
+						.filter(Boolean)
+						.map(srcJson => srcJson.replace(/:/g, "")),
+					...(contents._test?.additionalImageSources || [])
+						.map(srcJson => srcJson.replace(/:/g, "")),
+				],
+			);
+		}
+	}
+
+	registerParsedFileCheckers (parsedJsonChecker) {
 		parsedJsonChecker.registerFileHandler(this);
 	}
 
-	static handleFile (file, contents) {
-		const checker = new this({contents});
+	handleFile (file, contents) {
+		const fileState = new this.constructor._FileState({contents});
 
-		checker._walk({file, contents});
-	}
-
-	constructor ({contents}) {
-		super();
-		this._sources = new Set(
-			(contents._meta?.sources?.map(src => src?.json) || [])
-				.filter(Boolean),
-		);
-	}
-
-	_walk ({file, contents}) {
 		ObjectWalker.walk({
 			obj: contents,
 			filePath: file,
 			primitiveHandlers: {
-				object: this._checkObject.bind(this),
+				object: this._checkObject.bind(this, {fileState}),
 			},
 		});
 	}
 
-	_checkObject (obj, {filePath}) {
+	_checkObject ({fileState}, obj, {filePath}) {
 		if (obj.type !== "image" || obj.href?.type !== "external" || !obj.href?.url) return;
 
 		const {url} = obj.href;
@@ -41,13 +49,13 @@ export class ImageUrlCheck extends DataTesterBase {
 
 		const mPath = this.constructor._RE_HOMEBREW_IMG_PATH.exec(url.slice(this.constructor._URL_PREFIX_HOMEBREW_IMG.length));
 		if (!mPath) {
-			this.constructor._addMessage(`Unknown "homebrew-img" URL pattern in file "${filePath}": "${url}"\n`);
+			this._addMessage(`Unknown "homebrew-img" URL pattern in file "${filePath}": "${url}"\n`);
 			return;
 		}
 
 		const {source, type} = mPath.groups;
-		if (this._sources.has(source)) return;
+		if (fileState.sources.has(source)) return;
 
-		this.constructor._addMessage(`Image source part "${source}" in "homebrew-img" ${type} URL did not match sources found in file "_meta" in file "${filePath}": "${url}"\n`);
+		this._addMessage(`Image source part "${source}" in "homebrew-img" ${type} URL did not match sources found in file "_meta" or "_test" in file "${filePath}": "${url}"\n`);
 	}
 }
