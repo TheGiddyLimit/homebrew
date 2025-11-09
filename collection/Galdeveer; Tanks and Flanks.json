@@ -42,34 +42,41 @@
 			],
 			"ac": [
 				{
-					"special": "10 + 2 (Land only) + 1 per spell level"
+					"special": "10 + 2 (Quadraped only) + 1 per halved spell level rounded up"
 				}
 			],
 			"hp": {
 				"special": "2 + 2 per spell level (the familiar has a number of Hit Dice [d4s] equal to the spell's level)"
 			},
 			"speed": {
-				"walk": 30,
-				"climb": {
+				"walk": {
 					"number": 30,
-					"condition": "(Land only)"
+					"condition": "(-15ft if bird)"
 				},
 				"fly": {
 					"number": 30,
-					"condition": "(Air only)"
+					"condition": "(Bird only)"
 				},
 				"swim": {
 					"number": 30,
-					"condition": "(Water only)"
+					"condition": "(Fish only)"
+				},
+				"climb": {
+					"number": 30,
+					"condition": "(insect only)"
 				}
 			},
-			"str": 3,
-			"dex": 14,
-			"con": 10,
+			"skill": {
+				"perception": "+3 + PB Bonus",
+				"stealth": "+1 + PB Bonus"
+			},
+			"str": 4,
+			"dex": 12,
+			"con": 8,
 			"int": 10,
-			"wis": 14,
+			"wis": 16,
 			"cha": 8,
-			"passive": 12,
+			"passive": 13,
 			"page": "Revised Spells",
 			"pbNote": "Equals your bonus",
 			"languages": [
@@ -78,9 +85,21 @@
 			"familiar": true,
 			"trait": [
 				{
-					"name": "Adaptive (Water Only)",
+					"name": "Adaptive (Fish Only)",
 					"entries": [
-						"The familiar can breathe air and water. It has one tolerance to one damage type of your choice."
+						"The familiar can breathe air and water. You can choose to make it so it cannot breathe air. If you do, it has one tolerance to one damage type of your choice."
+					]
+				},
+				{
+					"name": "Miniscule (Insect Only)",
+					"entries": [
+						"Decrease the familiar's size by 1."
+					]
+				},
+				{
+					"name": "Enhanced Abilities",
+					"entries": [
+						"Whenever the otherworldly familiar makes a dexterity or wisdom ability check or saving throw, it can add half the spell’s level rounded down."
 					]
 				}
 			],
@@ -208,66 +227,64 @@
 			],
 			"ac": [
 				{
-					"special": "10 + 1 per spell level"
+					"special": "10 + 1 per half spell level rounded down"
 				}
 			],
 			"hp": {
-				"special": "5 + 10 per spell level (the steed has a number of Hit Dice [d10s] equal to the spell's level)"
+				"special": "2 + 4 per spell level (the steed has a number of Hit Dice [d8s] equal to the spell's level)"
 			},
 			"speed": {
-				"walk": 60,
+				"walk": {
+					"number": 60,
+					"condition": "(-30ft if Air)"
+				},
 				"fly": {
 					"number": 60,
-					"condition": "(requires 4+ spell)"
+					"condition": "(Air only)"
+				},
+				"swim": {
+					"number": 60,
+					"condition": "(Water only)"
 				}
 			},
-			"str": 18,
-			"dex": 12,
-			"con": 14,
+			"str": 14,
+			"dex": 10,
+			"con": 10,
 			"int": 6,
-			"wis": 12,
-			"cha": 8,
-			"passive": 11,
+			"wis": 8,
+			"cha": 10,
+			"passive": 7,
 			"shortName": "the Steed",
 			"page": "Revised Spells",
 			"pbNote": "equals your bonus",
 			"languages": [
 				"Telepathy 120 ft (works only with you)"
 			],
+			"trait": [
+				{
+					"name": "Ability Growth",
+					"entries": [
+						"Whenever the otherworldly Steed makes a strength or constitution ability check or saving throw, it can add half the spell’s level rounded down."
+					]
+				},
+				{
+					"name": "Adaptive (Water Only)",
+					"entries": [
+						"The Steed can breathe air and water. You can choose to make it so it cannot breathe air. If you do, it has one tolerance to two damage types of your choice."
+					]
+				}
+			],
 			"action": [
 				{
 					"name": "Otherworldly Maul",
 					"entries": [
-						"{@atk m} Bonus equals your spell attack modifier, reach 5 ft. {@h}{@dice 1d8} + the spell's level of Radiant (Celestial), Psychic (Fey), or Necrotic (Fiend) damage."
+						"{@atk m} Bonus equals half your spell attack modifier, reach 5 ft. {@h} 1 + twice the spell's level of Radiant (Celestial), Psychic (Fey), or Necrotic (Fiend) damage."
 					]
 				}
 			],
 			"miscTags": [
 				"MA",
 				"MLW"
-			],
-			"bonus": [
-				{
-					"name": "Idyllic Step (Idyllic Only; Recharges after a Long Rest)",
-					"entries": [
-						"The steed teleports, along with its rider, to an unoccupied space of your choice up to 60 feet away."
-					]
-				},
-				{
-					"name": "Biblical Glare (Biblical Only; Recharges after a Long Rest)",
-					"entries": [
-						"{@actSave wis} DC equals your spell save DC, one creature within 60 feet the steed can see. {@actSaveFail} The target has the {@condition Frightened|XPHB} condition until the end of your next turn."
-					]
-				},
-				{
-					"name": "Exalted Touch (Exalted Only; Recharges after a Long Rest)",
-					"entries": [
-						"The steed touches another creature and restores a number of Hit Points to it equal to {@dice 2d8} + the spell's level."
-					]
-				}
-			],
-			"conditionInflict": [
-				"frightened"
 			],
 			"cr": {
 				"cr": "spell level"
@@ -2018,7 +2035,7 @@
 				}
 			],
 			"entries": [
-				"You touch creature that has been dead for no longer than 10 days and wasn't Undead when it died. It must make a DC 10 death saving throw.",
+				"You touch a creature that has been dead for no longer than 10 days and wasn't Undead when it died. It must make a DC 10 death saving throw.",
 				"On a success, it is revived with 1 Hit Point. If its also a natural 20, the spell does not consume its material component. On a failure, this spell cannot be used to revive this creature. This restriction ends if the creature is revived through other means. If its also a natural 1, it can never be revived.",
 				"Any poisons that affected the revived creature at its time of death are neutralized. All mortal wounds on the revived creature are closed, but it doesn't restore missing body parts. If the creature is lacking body parts or organs integral for its survival—its head, for instance—the spell has no effect.",
 				"Coming back from the dead is an ordeal. The revived creature takes 2 levels of {@condition exhaustion}."
@@ -13337,8 +13354,8 @@
 				{
 					"type": "timed",
 					"duration": {
-						"type": "day",
-						"amount": 1
+						"type": "hour",
+						"amount": 8
 					}
 				}
 			],
@@ -13347,13 +13364,13 @@
 				"s": true
 			},
 			"entries": [
-				"You summon an otherworldly being that appears as a loyal steed in an unoccupied space you can see within range. The steed resembles a Large, rideable animal of your choice, such as a horse, a camel, a dire wolf, or an elk. If you already have a steed from this spell, it is replaced by the new one.",
-				"When you prepare this spell, choose the steed's creature type\u2014Celestial, Fey, or Fiend. It can choose to also be treated as a beast by specific effects. This creature uses the {@creature Otherworldly Steed|GaldeveerTanksAndFlanks} stat block. When you cast the spell, choose the steed's mythology\u2014Idyllic, Biblical, or Exalted\u2014which determines certain traits in the stat block. The steed is your ally and obeys all of your commands.",
+				"You summon an otherworldly spirit to act as your Steed. It manifests as a large animal in an unoccupied space you can see within range. This creature uses the {@creature Otherworldly Steed|GaldeveerTanksAndFlanks} stat block. If you already have a Steed from this spell you can make it disappear. If you don’t, instead of summoning a new Steed you extend the duration of the current find Steed spell by 1 day and change its spell level to match the most recent casting. The duration cannot exceed two days.",
+				"Choose the Steed's creature type when you prepare this spell: Celestial, Fey, or Fiend. Choose the one of the following: Air, Water, Land. The Steed resembles a Tiny animal of your choice—such as an owl, a cat, or a frog—that is native to the chosen environment. Both choices determine certain traits in the stat block. The Steed is your ally and obeys all of your commands.",
 				{
 					"type": "entries",
 					"name": "Disappearance of the Steed",
 					"entries": [
-						"The steed disappears if it drops to 0 {@variantrule Hit Points|XPHB} or if you die. When it disappears, it leaves behind anything it was wearing or carrying. If you cast this spell again, you decide whether you summon the steed that disappeared or a different one."
+						"The Steed disappears if it drops to 0 hit points or if you die. When it does, it leaves behind anything it was wearing or carrying. If you cast this spell again, you decide whether you summon the Steed that disappeared or a different one. The Steed cannot be dispelled."
 					]
 				}
 			],
@@ -13362,7 +13379,7 @@
 					"type": "entries",
 					"name": "Using a Higher-Level Spell Slot",
 					"entries": [
-						"Use the spell slot's level for the spell's level in the stat block."
+						"Special."
 					]
 				}
 			],
@@ -13377,16 +13394,170 @@
 						"source": "XPHB"
 					},
 					{
-						"name": "Ranger",
+						"name": "Cleric",
 						"source": "XPHB"
 					}
 				]
 			}
 		},
 		{
-			"name": "Find Familiar",
+			"name": "Awaken Steed",
 			"source": "GaldeveerTanksandFlanks",
-			"page": "Revised Spells",
+			"page": "New Spells",
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "day",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Choose a large beast you can see within 10 ft that has a CR of zero. It becomes your Steed. At any time you or the Steed can end this spell.",
+				{
+					"type": "entries",
+					"name": "Mind",
+					"entries": [
+						"They are as intelligent as a person and know any languages that you know. Add 4 to their intelligence score. They have telepathy with you while you are within 120ft of them. They are your ally and generally obey your commands."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Stats",
+					"entries": [
+						"Your Steed uses your proficiency bonus instead of its own. Add half the level of this spell to your Steed’s AC. Add quadruple this spell’s level to their hit point maximum. Add half of this spell’s level rounded up whenever they make a strength or constitution ability check or saving throw."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Attacking",
+					"entries": [
+						"When your Steed attacks, it uses half of your spellcasting attack modifier. Whenever they hit with an attack, they deal extra damage equal to twice this spell’s level. The damage type is thunder, lightning, fire, cold or acid. You can change it whenever you level up."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Deliver Spell",
+					"entries": [
+						"When you cast a spell with a range of touch, the familiar can spend their reaction to deliver the spell with its touch. They must be within 120 feet of you to do so."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spell Slot",
+					"entries": [
+						"When you cast this spell, you give up the spell slot you used to cast it. You cannot unprepare this spell until you get the spell slot back. You do not get the spell slot back until this spell ends. When you receive the spell slot back, the spell slot is already expended.",
+						"If you casted this spell by expending a charge of a feature instead of a spell slot, you give up that charge instead. If the level that the charge would cast this spell at changes, change the level of this spell to match. The rules that would apply to a spell slot apply to the charge in the same way."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Recasting",
+					"entries": [
+						"If you cast this spell without a target, you automatically cast it on your current Steed. If you cast this spell on your current Steed, the previous spell ends and it is replaced by this new spell. If you gain a new Steed or your current Steed dies, this spell ends and you gain a stress. The Steed cannot be dispelled."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Higher CR",
+					"entries": [
+						"If their CR is greater than zero, divide their hit point maximum, any damage they deal, and any hit points they recover from hit dice by the corresponding value below. Additionally, any time this spell refers to spell level, reduce it by the corresponding value.",
+						"CR ⅛:  5, 1 level",
+						"CR ¼:  6, 2 levels",
+ 						"CR ½:  7, 3 levels",
+						"CR 1: 13, 4 levels"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"If you choose a creature that is not large, subtract 1 from their AC for each size greater or smaller than large."
+					]
+				}
+				
+			],
+			"miscTags": [
+				"PRM",
+				"SMN"
+			],
+			"hasFluffImages": true,
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Paladin",
+						"source": "XPHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "XPHB"
+					}
+				]
+			},
+			"feats": [
+				{
+					"name": "Magic Initiate",
+					"source": "PHB"
+				},
+				{
+					"name": "Ritual Caster",
+					"source": "PHB"
+				},
+				{
+					"name": "Magic Initiate",
+					"source": "XPHB"
+				},
+				{
+					"name": "Ritual Caster",
+					"source": "XPHB"
+				},
+				{
+					"name": "Quicksmithing",
+					"source": "PSK"
+				},
+				{
+					"name": "Servo Crafting",
+					"source": "PSK"
+				},
+				{
+					"name": "Strixhaven Initiate",
+					"source": "SCC"
+				}
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Special"
+					]
+				}
+			]
+		},
+		{
+			"name": "Awaken Familiar",
+			"source": "GaldeveerTanksandFlanks",
+			"page": "New Spells",
 			"level": 1,
 			"school": "C",
 			"time": [
@@ -13416,20 +13587,163 @@
 				}
 			],
 			"entries": [
-				"You gain the service of a familiar, an otherworldly spirit which manifests as a little animal in an unoccupied space you can see within range. This creature uses the {@creature Otherworldly Familiar|GaldeveerTanksAndFlanks} stat block. If you already have a familiar from this spell, it is replaced by the new one.",
-				"When you prepare the spell, choose the familiar's creature type: Celestial, Fey, or Fiend. It can choose to also be treated as a beast by specific effects. Whenever you cast the spell, choose the familiar's environment: Air, Land, or Water. The familiar resembles a Tiny animal of your choice\u2014such as an owl, a cat, or a frog\u2014that is native to the chosen environment. Both choices\u2014creature type and environment\u2014determine certain traits in the stat block. The familiar is your ally and obeys all of your commands.",
+				"Choose a tiny beast you can see within 10 ft that has a CR of zero. It becomes your familiar. At any time you or the familiar can end this spell.",
 				{
 					"type": "entries",
-					"name": "Disappearance of the familiar",
+					"name": "Mind",
 					"entries": [
-						"The familiar disappears if it drops to 0 hit points or if you die. When it does, it leaves behind anything it was wearing or carrying. If you cast this spell again, you decide whether you summon the familiar that disappeared or a different one."
+						"They are as intelligent as a person and know any languages that you know. Add 4 to their intelligence score. They have telepathy with you while you are within 120ft of them. They are your ally and generally obey your commands."
 					]
 				},
 				{
 					"type": "entries",
-					"name": "Remote Scouting",
+					"name": "Stats",
 					"entries": [
-						"As a Bonus Action, you can see through the familiar's eyes and hear what it hears while it is within 120 ft of you until the start of your next turn, gaining the benefits of any special senses it has."
+						"Your familiar uses your proficiency bonus instead of its own. Add half the level of this spell to your familiar’s AC. Add twice this spell’s level to their hit point maximum. Choose two skills and saving throws. Add half of this spell’s level rounded up whenever they make an ability check or saving throw of that type. You can change these abilities whenever you level up."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Attacking",
+					"entries": [
+						"When your familiar attacks, it uses your spellcasting attack modifier. Whenever they hit with an attack, they deal extra damage equal to this spell’s level. The damage type is thunder, lightning, fire, cold or acid. You can change it whenever you level up."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Deliver Spell",
+					"entries": [
+						"When you cast a spell with a range of touch, the familiar can spend their reaction to deliver the spell with its touch. They must be within 120 feet of you to do so."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spell Slot",
+					"entries": [
+						"When you cast this spell, you give up the spell slot you used to cast it. You cannot unprepare this spell until you get the spell slot back. You do not get the spell slot back until this spell ends. When you receive the spell slot back, the spell slot is already expended.",
+						"If you casted this spell by expending a charge of a feature instead of a spell slot, you give up that charge instead. If the level that the charge would cast this spell at changes, change the level of this spell to match. The rules that would apply to a spell slot apply to the charge in the same way."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Recasting",
+					"entries": [
+						"If you cast this spell without a target, you automatically cast it on your current familiar. If you cast this spell on your current familiar, the previous spell ends and it is replaced by this new spell. If you gain a new familiar or your current familiar dies, this spell ends and you gain a stress. The familiar cannot be dispelled."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Higher CR",
+					"entries": [
+						"If their CR is greater than zero, divide their hit point maximum, any damage they deal, and any hit points they recover from hit dice by the corresponding value below. Additionally, any time this spell refers to spell level, reduce it by the corresponding value.",
+						"CR ⅛:  5, 1 level",
+						"CR ¼:  6, 2 levels",
+ 						"CR ½:  7, 3 levels",
+						"CR 1: 13, 4 levels"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"If you choose a creature that is not tiny, subtract 1 from their AC for each size greater or smaller than tiny."
+					]
+				}
+				
+			],
+			"miscTags": [
+				"PRM",
+				"SMN"
+			],
+			"hasFluffImages": true,
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "XPHB"
+					}
+				]
+			},
+			"feats": [
+				{
+					"name": "Magic Initiate",
+					"source": "PHB"
+				},
+				{
+					"name": "Ritual Caster",
+					"source": "PHB"
+				},
+				{
+					"name": "Magic Initiate",
+					"source": "XPHB"
+				},
+				{
+					"name": "Ritual Caster",
+					"source": "XPHB"
+				},
+				{
+					"name": "Quicksmithing",
+					"source": "PSK"
+				},
+				{
+					"name": "Servo Crafting",
+					"source": "PSK"
+				},
+				{
+					"name": "Strixhaven Initiate",
+					"source": "SCC"
+				}
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Special"
+					]
+				}
+			]
+		},
+		{
+			"name": "Find Familiar",
+			"source": "GaldeveerTanksandFlanks",
+			"page": "Revised Spells",
+			"level": 1,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"You summon an otherworldly spirit to act as your familiar. It manifests as a little animal in an unoccupied space you can see within range. This creature uses the Otherworldly Familiar stat block. If you already have a familiar from this spell you can make it disappear. If you don’t, instead of summoning a new familiar you extend the duration of the current find familiar spell by 1 day and change its spell level to match the most recent casting. The duration cannot exceed two days.",
+				"Choose the familiar's creature type when you prepare this spell: Celestial, Fey, or Fiend. Choose the one of the following: Bird, Fish, Quadraped, Insect. The familiar resembles a Tiny animal of your choice—such as an owl, a cat, or a frog—that is native to the chosen environment. Both choices determine certain traits in the stat block. The familiar is your ally and obeys all of your commands.",
+				{
+					"type": "entries",
+					"name": "Disappearance of the familiar",
+					"entries": [
+						"The familiar disappears if it drops to 0 hit points or if you die. When it does, it leaves behind anything it was wearing or carrying. If you cast this spell again, you decide whether you summon the familiar that disappeared or a different one. The familiar cannot be dispelled."
 					]
 				}
 			],
@@ -13442,10 +13756,6 @@
 				"fromClassList": [
 					{
 						"name": "Wizard",
-						"source": "XPHB"
-					},
-					{
-						"name": "Ranger",
 						"source": "XPHB"
 					}
 				],
@@ -13576,7 +13886,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"Use the spell slot's level for the spell's level in the stat block."
+						"Special"
 					]
 				}
 			]
