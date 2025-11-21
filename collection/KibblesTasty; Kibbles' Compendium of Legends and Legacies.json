@@ -21615,11 +21615,6 @@
 		{
 			"name": "Hemomancer",
 			"source": "KT-CLL",
-			"otherSources": [
-				{
-					"source": "KT-BMS"
-				}
-			],
 			"page": 289,
 			"prerequisite": [
 				{
@@ -41317,14 +41312,11 @@
 			"name": "Blood Bolt",
 			"source": "KT-CLL",
 			"page": 56,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 56
-				}
-			],
 			"level": 0,
 			"school": "T",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -41391,15 +41383,12 @@
 		{
 			"name": "Bloody Burst",
 			"source": "KT-CLL",
-			"page": 56,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 56
-				}
-			],
+			"page": 291,
 			"level": 2,
 			"school": "N",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -41467,17 +41456,75 @@
 			]
 		},
 		{
-			"name": "Blood Divination",
+			"name": "Blood Diagnosis",
 			"source": "KT-CLL",
-			"page": 56,
-			"otherSources": [
+			"page": 291,
+			"level": 1,
+			"school": "D",
+			"subschools": [
+				"Blood Magic"
+			],
+			"time": [
 				{
-					"source": "KT-BMS",
-					"page": 56
+					"number": 1,
+					"unit": "minute"
 				}
 			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You spill a drop of your blood and mix it with a sample of any creature's blood. You learn the following information about the sample:",
+				{
+					"type": "list",
+					"items": [
+						"The type of creature it came form",
+						"If that creature was {@condition Poisoned} or diseased when the blood sample was given",
+						"Any medical information related to the creature's blood (blood type, general health, malnutrition, etc.)",
+						"If the creature is a blood relative of any other creature whose blood you've previously cast this spell on"
+					]
+				}
+			],
+			"components": {
+				"s": true,
+				"m": {
+					"text": "a drop of your blood worth at least 1 hit point and a drop of any creature's blood, both of which the spell consumes",
+					"consume": true
+				}
+			},
+			"meta": {
+				"ritual": true
+			}
+		},
+		{
+			"name": "Blood Divination",
+			"source": "KT-CLL",
+			"page": 291,
 			"level": 2,
 			"school": "D",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -41498,6 +41545,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
 						"name": "Sorcerer",
 						"source": "PHB"
 					},
@@ -41512,8 +41563,8 @@
 				]
 			},
 			"entries": [
-				"You can drop a single drop of your blood into a bloodstain or sample of another creature's blood while casting this spell to created a magical resonance. This tells you the creature's current condition (if it is alive, wounded, or dead), its creature type, its general distance from you (nearby, distant, or far away), and its general direction.",
-				"If the blood is more than 24 hours old, the spell becomes more difficult, and you must pass DC 10 spellcasting check to gain any information, with the DC increasing to 15 if the blood is more than a week old, and 20 if the DC is more than a month old."
+				"You mix a drop of your blood into a bloodstain or blood sample from another creature and create a magical resonance. You learn the creature's current condition (alive, wounded, or dead), its creature type, its general distance from you (nearby, distant, or very far), and its general direction.",
+				"If the blood is more than 24 hours old, the spell becomes more difficult, and you must succeed on a DC 10 spellcasting check to gain any information. The DC increases to 15 if the blood is more than a week old, and 20 if the blood is more than a month old."
 			],
 			"components": {
 				"s": true,
@@ -41524,17 +41575,88 @@
 			}
 		},
 		{
-			"name": "Blood Explosion",
+			"name": "Blood Frenzy",
 			"source": "KT-CLL",
-			"page": 56,
-			"otherSources": [
+			"page": 291,
+			"level": 4,
+			"school": "E",
+			"subschools": [
+				"Blood Magic"
+			],
+			"time": [
 				{
-					"source": "KT-BMS",
-					"page": 56
+					"number": 1,
+					"unit": "action"
 				}
 			],
-			"level": 3,
-			"school": "N",
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1,
+						"upTo": true
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You touch a willing creature, launching them into an empowered frenzy. For the duration, all attacks against the target creature have advantage, but the target gains the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"    The target is immune to the {@condition charmed} and {@condition frightened} conditions.",
+						"    The target has advantage on melee weapon attack rolls.",
+						"    When taking damage would reduce the creature to 0 hit points, they must make a Constitution saving throw with the DC equal to half of the damage taken. On success, they are reduced to 1 hit point instead. If you are the target of this spell, you automatically pass saving throws to maintain {@status concentration} on it as a result of taking damage."
+					]
+				}
+			],
+			"components": {
+				"s": true,
+				"m": {
+					"text": "a splash of your blood worth at least 4 hit points, which the spell consumes",
+					"consume": true
+				}
+			},
+			"conditionInflict": [
+				"charmed",
+				"frightened"
+			],
+			"areaTags": [
+				"ST"
+			]
+		},
+		{
+			"name": "Blood Slash",
+			"source": "KT-CLL",
+			"page": 291,
+			"level": 1,
+			"school": "T",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -41570,12 +41692,12 @@
 				]
 			},
 			"entries": [
-				"Targeting a Medium or larger corpse of a creature that had blood that has been slain within the last minute, you seize control of the blood within it causing it to explode into piercing crimson lances. Make a ranged spell attack against up to 4 creatures of your choice within 30 feet of the corpse. On hit, creatures take {@damage 3d8} piercing damage and {@damage 3d8} necrotic damage. A corpse cannot be targeted with this spell again."
+				"You create a blade of blood and fling it at a creature you can see within range. Make a ranged spell attack. On a hit, the creature takes {@damage 2d6} slashing damage and {@damage 2d6} necrotic damage"
 			],
 			"components": {
 				"s": true,
 				"m": {
-					"text": "a splash of your blood worth at least 3 hit points, which the spell consumes",
+					"text": "a splash of your blood worth at least 2 hit points, which the spell consumes",
 					"consume": true
 				}
 			},
@@ -41584,37 +41706,99 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each spell slot level above 3rd."
+						"When you cast this spell using a spell slot of 2nd level or higher, the slashing damage increases by {@dice 1d6} for each slot above 1st"
 					]
 				}
 			],
 			"damageInflict": [
-				"necrotic",
-				"piercing"
-			],
-			"spellAttack": [
-				"R"
+				"slashing",
+				"necrotic"
 			],
 			"areaTags": [
-				"MT",
+				"ST"
+			]
+		},
+		{
+			"name": "Blood Storm",
+			"source": "KT-CLL",
+			"page": 292,
+			"level": 2,
+			"school": "T",
+			"subschools": [
+				"Blood Magic"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You create a slicing vortex of swirling blood in a 15-foot radius around you or a point you choose within range. Each creature in the area must make a Dexterity saving throw. On a failure, it takes {@damage 3d8} slashing damage. On a success, it takes half as much damage. If you center the spell on yourself, you are immune to its effects."
+			],
+			"components": {
+				"s": true,
+				"m": {
+					"text": "a splash of your blood worth at least 2 hit points, which the spell consumes",
+					"consume": true
+				}
+			},
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher; the damage increases by {@dice 1d8} for each slot level above 2nd."
+					]
+				}
+			],
+			"damageInflict": [
+				"slashing"
+			],
+			"areaTags": [
 				"S"
 			],
 			"miscTags": [
 				"SCL"
 			]
 		},
-		{
-			"name": "Blood Frenzy",
-			"source": "KT-CLL",
-			"page": 57,
-			"otherSources": [
 				{
-					"source": "KT-BMS",
-					"page": 57
-				}
+			"name": "Blood Transfusion",
+			"source": "KT-CLL",
+			"page": 292,
+			"level": 1,
+			"school": "N",
+			"subschools": [
+				"Blood Magic"
 			],
-			"level": 4,
-			"school": "E",
 			"time": [
 				{
 					"number": 1,
@@ -41629,19 +41813,21 @@
 			},
 			"duration": [
 				{
-					"type": "timed",
-					"duration": {
-						"type": "minute",
-						"amount": 1,
-						"upTo": true
-					},
-					"concentration": true
+					"type": "instant"
 				}
 			],
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Druid",
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
 						"source": "PHB"
 					},
 					{
@@ -41651,41 +41837,36 @@
 				]
 			},
 			"entries": [
-				"You touch a willing creature, launching them into an empowered frenzy. For the duration, all attacks against the target creature have advantage, but the target gains the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"    The target is immune to the {@condition charmed} and {@condition frightened} conditions.",
-						"    The target has advantage on melee weapon attack rolls.",
-						"    When taking damage would reduce the creature to 0 hit points, they must make a Constitution saving throw with the DC equal to half of the damage taken. On success, they are reduced to 1 hit point instead. If you are the target of this spell, you automatically pass saving throws to maintain {@status concentration} on it as a result of taking damage."
-					]
-				}
+				"You infuse a creature you touch with life divested from the blood used in the material component of the spell, causing the target to regain twice the hit points expended."
 			],
 			"components": {
 				"s": true,
 				"m": {
-					"text": "a splash of your blood worth at least 4 hit points, which the spell consumes",
+					"text": "a splash of your blood worth 5 hit points, which the spell consumes",
 					"consume": true
 				}
 			},
-			"conditionInflict": [
-				"charmed",
-				"frightened"
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 2nd level or higher, the amount of hit points consumed by the spell increases by 5 (and the amount of hit points restored increases by a corresponding amount)."
+					]
+				}
 			],
 			"areaTags": [
 				"ST"
+			],
+			"miscTags": [
+				"HL",
+				"SCL"
 			]
 		},
 		{
 			"name": "Blood Wave",
 			"source": "KT-CLL",
-			"page": 57,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 57
-				}
-			],
+			"page": 292,
 			"level": 2,
 			"school": "T",
 			"time": [
@@ -41763,12 +41944,6 @@
 			"name": "Compelled Convulsion",
 			"source": "KT-CLL",
 			"page": 57,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 57
-				}
-			],
 			"level": 2,
 			"school": "N",
 			"time": [
@@ -41831,17 +42006,90 @@
 			]
 		},
 		{
-			"name": "Crimson Poison",
+			"name": "Corpse Explosion",
 			"source": "KT-CLL",
-			"page": 57,
-			"otherSources": [
+			"page": 56,
+			"level": 3,
+			"school": "N",
+			"subschools": [
+				"Blood Magic"
+			],
+			"time": [
 				{
-					"source": "KT-BMS",
-					"page": 57
+					"number": 1,
+					"unit": "action"
 				}
 			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You cause an eruption of blood from the corpse of a Small or larger creature taht had blood and was slain within the last minute. Each creature within 15 feet of the corpse must make a Dexterity saving throw. On a failure, it takes {@dice 3d8} necrotic damage and {@dice 3d8} thunder damage. On a success, it takes half as much damage."
+			],
+			"components": {
+				"s": true,
+				"m": {
+					"text": "a splash of your blood worth at least 3 hit points, which the spell consumes",
+					"consume": true
+				}
+			},
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 4th level or higher, you can target one additional corpse for each slot level above 3rd. A creature affected by multiple corpse explosions make its saving throw at disadvantage, but only takes damage once."
+					]
+				}
+			],
+			"damageInflict": [
+				"necrotic",
+				"thunder"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"areaTags": [
+				"S"
+			],
+			"miscTags": [
+				"SCL"
+			]
+		},
+		{
+			"name": "Crimson Poison",
+			"source": "KT-CLL",
+			"page": 293,
 			"level": 1,
 			"school": "T",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -41910,14 +42158,11 @@
 			"name": "Crimson Tide",
 			"source": "KT-CLL",
 			"page": 57,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 57
-				}
-			],
 			"level": 3,
 			"school": "C",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -41943,6 +42188,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
 						"name": "Wizard",
 						"source": "PHB"
 					}
@@ -41960,6 +42209,7 @@
 				}
 			},
 			"miscTags": [
+				"HL",
 				"DFT"
 			],
 			"damageInflict": [
@@ -41975,15 +42225,12 @@
 		{
 			"name": "Devouring Mist",
 			"source": "KT-CLL",
-			"page": 58,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 58
-				}
-			],
+			"page": 293,
 			"level": 7,
 			"school": "N",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -42009,6 +42256,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
 						"name": "Warlock",
 						"source": "PHB"
 					},
@@ -42019,9 +42270,18 @@
 				]
 			},
 			"entries": [
-				"You transform into a 15-foot radius swirling cloud of blood mist. While in this form, you have a 60-foot flying speed and you have resistance to all damage besides radiant, force, and psychic damage, but cannot take any actions.",
-				"The first time a creature is engulfed within the blood mist (including from your movement while transformed), it must make a Constitution saving throw. On failure, they take {@damage 6d8} necrotic damage, and you regain 10 hit points. On a success, they take half as much damage, and you regain only 5 hit points. You can regain a total of 50 hit points, after which you do not regain additional hit points from this effect.",
-				"At the start of your next turn, you reform into your previous form."
+				"You transform into a swirling mist of blood with a 15-foot radius. While in this form, you cannot take any actions, but you gain the following benefits.",
+				{
+					"type": "list",
+					"items": [
+						"You have a flying speed of 60 feet, with hover.",
+						"You can enter and occupy other creatures' spaces, and do not treat them as difficult terrain.",
+						"You can pass through small gaps and cracks without squeezing.",
+						"You have resistance to all damage except radiant, force, and psychic damage."
+					]
+				},
+				"The first time you move into a creature's space, it must succeed on a Constitution saving throw. On a failure, it takes {@damage 6d8} necrotic damage and you regain 10 hit points. On a success, it takes half as much damage, and you regain only 5 hit points. You can regain a total of 50 hit points through this spell, after which you no longer regain hit points from this spell, after which you no longer regain hit points from this effect.",
+				"At the start of your next turn, you return to your previous form. You fall if still aloft unless you have a way to stop your fall."
 			],
 			"components": {
 				"s": true,
@@ -42046,15 +42306,12 @@
 		{
 			"name": "Explode Heart",
 			"source": "KT-CLL",
-			"page": 58,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 58
-				}
-			],
+			"page": 293,
 			"level": 5,
 			"school": "N",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -42075,6 +42332,10 @@
 			],
 			"classes": {
 				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
 					{
 						"name": "Sorcerer",
 						"source": "PHB"
@@ -42111,17 +42372,96 @@
 			]
 		},
 		{
-			"name": "Exsanguinate",
+			"name": "Expunge Poison",
 			"source": "KT-CLL",
-			"page": 58,
+			"page": 294,
 			"otherSources": [
 				{
 					"source": "KT-BMS",
-					"page": 58
+					"page": 294
+				}
+			],
+			"level": 1,
+			"school": "T",
+			"subschools": [
+				"Blood Magic"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "which you can take when a creature within range fails a saving throw against becoming poisoned."
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You point at a willing creature that has just become {@condition Poisoned}, and expel its tainted blood. The target takes {@damage 5} necrotic damage and is no longer {@condition Poisoned}"
+			],
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a splash of your blood worth at least 1 hit points, which the spell consumes",
+					"consume": true
+				}
+			},
+			"damageInflict": [
+				"necrotic"
+			],
+			"areaTags": [
+				"ST"
+			]
+		},
+		{
+			"name": "Exsanguinate",
+			"source": "KT-CLL",
+			"page": 294,
+			"otherSources": [
+				{
+					"source": "KT-BMS",
+					"page": 294
 				}
 			],
 			"level": 4,
-			"school": "I",
+			"school": "N",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -42142,6 +42482,10 @@
 			],
 			"classes": {
 				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
 					{
 						"name": "Sorcerer",
 						"source": "PHB"
@@ -42189,15 +42533,182 @@
 			]
 		},
 		{
-			"name": "Ichorous Blood",
+			"name": "Gory Doom",
 			"source": "KT-CLL",
-			"page": 58,
+			"page": 294,
 			"otherSources": [
 				{
 					"source": "KT-BMS",
-					"page": 58
+					"page": 294
 				}
 			],
+			"level": 2,
+			"school": "N",
+			"subschools": [
+				"Blood Magic"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "which you take when a creature is reduced to 0 hit points within 60 feet of you."
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"When a creature that has flesh, blood, or bone that you can see is reduced to 0 hit points, you can attempt to make it explode in a shower of gore. If the target is still alive and merely {@condition Unconscious}, it must make a Constitution saving throw. On a success, it does not explode, but suffers one death saving throw failure if applicable.",
+				"If the target is dead or fails its saving throw, it violently explodes in shards of flesh, blood, and bone. Each creature within 10 feet must make a Dexterity saving throw. A creature takes {@damage 3d6} necrotic damage on a failure or half as much on a success."
+			],
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a splash of your blood worth at least 2 hit points, which the spell consumes",
+					"consume": true
+				}
+			},
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by {@dice 1d6} for each level above 2nd."
+					]
+				}
+			],
+			"savingThrow": [
+				"constitution",
+				"dexterity"
+			],
+			"areaTags": [
+				"S"
+			],
+			"miscTags": [
+				"SGT",
+				"SCL"
+			]
+		},
+				{
+			"name": "Hungry Blood",
+			"source": "KT-CLL",
+			"page": 294,
+			"otherSources": [
+				{
+					"source": "KT-BMS",
+					"page": 294
+				}
+			],
+			"level": 2,
+			"school": "N",
+			"subschools": [
+				"Blood Magic"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You animate a stream of blood, which forms into a fanged maw and bites a creature of your choice within range. Make a melee spell attack. On a hit, the target takes {@damage 2d6} piercing damage and {@damage 2d6} necrotic damage, and you regain {@dice 2d6} hit points"
+			],
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a splash of your blood worth at least 2 hit points, which the spell consumes",
+					"consume": true
+				}
+			},
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, the necrotic damage and hit points regained both increase by {@dice 1d6}"
+					]
+				}
+			],
+			"damageInflict": [
+				"piercing",
+				"necrotic"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"miscTags": [
+				"HL",
+				"SGT",
+				"SCL"
+			]
+		},
+		{
+			"name": "Ichorous Blood",
+			"source": "KT-CLL",
+			"page": 295,
 			"level": 4,
 			"school": "N",
 			"time": [
@@ -42223,6 +42734,10 @@
 			],
 			"classes": {
 				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
 					{
 						"name": "Sorcerer",
 						"source": "PHB"
@@ -42267,13 +42782,7 @@
 		{
 			"name": "Life Link",
 			"source": "KT-CLL",
-			"page": 58,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 58
-				}
-			],
+			"page": 295,
 			"level": 5,
 			"school": "A",
 			"time": [
@@ -42307,6 +42816,10 @@
 						"source": "PHB"
 					},
 					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
 						"name": "Warlock",
 						"source": "PHB"
 					},
@@ -42317,15 +42830,15 @@
 				]
 			},
 			"entries": [
-				"You link the life of two creatures you can see within range for the duration of the spell, selecting either an life link or inverse life link, with the following effects based on which option you select:",
+				"You link the life of two creatures you can see within range. Choose either a Life Link or an Inverse Life Link when you cast this spell.",
 				{
 					"type": "list",
 					"items": [
-						"{@bold Life Link.} When one target regains hit points so does the other target, and one target takes damage, the other target takes an equal amount of damage as necrotic damage.",
-						"{@bold Inverse Life Link.} When one target loses hit points the other gains and equal number of hit points, when one target regains hit points (other than from this effect), the other takes an equal amount of necrotic damage."
+						"{@bold Life Link.} When either target regains hit points, the other target regains the same amount. When either target takes damage, the other target takes an equal amount of necrotic damage.",
+						"{@bold Inverse Life Link.} When either target loses hit points, the other is healed for an equal number of hit points. When either target regains hit points, the other takes an equal emount of necrotic damage."
 					]
 				},
-				"Regardless of the option, the link lasts until the spell ends, or the link has transfered 40 hit points of healing or damage to the other target."
+				"Damage or healing inflicted by this spell does not trigger the link's effect. The link lasts until the spell ends or it has inflicted 40 hit points of healing or damage"
 			],
 			"components": {
 				"s": true,
@@ -42356,15 +42869,12 @@
 		{
 			"name": "Life Support",
 			"source": "KT-CLL",
-			"page": 58,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 58
-				}
-			],
+			"page": 295,
 			"level": 5,
 			"school": "N",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -42397,14 +42907,17 @@
 						"source": "PHB"
 					},
 					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
 						"name": "Wizard",
 						"source": "PHB"
 					}
 				]
 			},
 			"entries": [
-				"When a creature is reduced to 0 hit points, you can forge a link to them, bolstering their life force with your own. For the duration of the spell, they do not fall {@condition unconscious} from being at 0 hit points and can act normally, and any damage they take is instead transferred to you.",
-				"If a creature regains hit points and is no longer at 0 hit points, the spell ends."
+				"When a creature is reduced to 0 hit points, you can sacrifice your own vitality to bolster its life force. For the duration, the target can continue acting while at 0 hit points and does not fall {@condition Unconscious}. Any damage it take is  transferred to you. If the target is healed above 0 hit points, the spell ends."
 			],
 			"components": {
 				"s": true,
@@ -42419,15 +42932,12 @@
 		{
 			"name": "Macabre Marionette",
 			"source": "KT-CLL",
-			"page": 59,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 59
-				}
-			],
+			"page": 295,
 			"level": 4,
 			"school": "N",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -42455,6 +42965,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
 						"name": "Sorcerer",
 						"source": "PHB"
 					},
@@ -42469,8 +42983,8 @@
 				]
 			},
 			"entries": [
-				"You attempt to control a creature's movements by using the blood to marionette them to your commands. The target must make a Wisdom saving throw. If the target fails their saving throw, for the duration of the spell you can use your bonus action force them to spend their reaction to move up to 20 feet (or their movement speed, whichever is less) and make a single weapon attack.",
-				"Until the target breaks free of the spell, they cannot use their own reaction. At the end of each of the target's turns, they can repeat the saving throw against the spell, ending it on success."
+				"You attempt to control a creature's movements by using its blood to manipulate it like a puppet. The target must succeed on a Wisdom saving throw or become partially controlled. For the duration, you can use your bonus action to force the target to spend its reaction to move up to 20 feet (or their movement speed, whichever is less) and make a single weapon attack against a target of your choice.",
+				"Until the target breaks free of the spell, it cannot take reactions normally. At the end of each of the target's turns, it can repeat the saving throw, ending the spell on success."
 			],
 			"components": {
 				"s": true,
@@ -42493,15 +43007,12 @@
 		{
 			"name": "Morbid Puppet",
 			"source": "KT-CLL",
-			"page": 59,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 59
-				}
-			],
+			"page": 296,
 			"level": 2,
 			"school": "T",
+			"subschools":[
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -42527,6 +43038,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
 						"name": "Sorcerer",
 						"source": "PHB"
 					},
@@ -42541,8 +43056,8 @@
 				]
 			},
 			"entries": [
-				"You can seize control of the blood within a freshly (within the last minute) deceased Medium or smaller sized corpse or {@condition unconscious} creature. For the duration, as a bonus action you can make the corpse or creature move up to 20 feet, and make a single melee attack, using your spell casting modifier for the attack roll. If the corpse is carrying a weapon or has a natural weapon, it deals the weapon's damage (not gaining any special modifiers to that damage the living creature may have had with that weapon). Otherwise it makes a slam attack dealing {@dice 1d6} (or 1 for a Tiny sized creature) + your spellcasting modifier damage.",
-				"If a creature that was {@condition unconscious} regains consciousness during the duration of the spell, they can make a Charisma saving throw at the end of each of their turns to regain control of their body. You can end this spell at any time (no action required)."
+				"You seize control of the blood within a freshly slain corpse or unconscious creature. The target must be Medium or smaller, and cannot have died more than 1 minute ago. For the duration, you can use your bonus action to make the target move up to 20 feet and make a single melee attack. It uses your spellcasting modifier for the attack roll. If the corpse is carrying a weapon or has a natural weapon, the attack deals the weapon's damage (without any bonuses from the target's features). Otherwise, it makes a Slam attack which deal {@dice 1d6} (or 1 for a Tiny target) + your spellcasting modifier damage.",
+				"If an {@condition Unconscious} target regains consciousness within the spell's duration, it can make a Charisma saving throw at the end of each of its turns to regain control of its body. You can end this spell at any time (no action required)."
 			],
 			"components": {
 				"s": true,
@@ -42556,7 +43071,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell with a 4th or higher level spell slot, you can target a Large sized corpse."
+						"When you cast this spell with a spell slot of 4th level or higher, the target can be Large."
 					]
 				}
 			],
@@ -42571,13 +43086,7 @@
 		{
 			"name": "Sanguine Doom",
 			"source": "KT-CLL",
-			"page": 60,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 60
-				}
-			],
+			"page": 296,
 			"level": 6,
 			"school": "N",
 			"time": [
@@ -42605,6 +43114,10 @@
 						"source": "PHB"
 					},
 					{
+						"name": "Occcultist",
+						"source": "KT-CLL"
+					},
+					{
 						"name": "Sorcerer",
 						"source": "PHB"
 					},
@@ -42619,8 +43132,7 @@
 				]
 			},
 			"entries": [
-				"You target a point within range. Darkness washes over an a 30 foot radius area extinguishing all lights (including lights caused by magical effects of a lower level spell) as blood rains down from above over the area. Creatures and objects that are not being worn or carried within the area take {@damage 4d6} acid damage, and creatures must make a Wisdom saving throw against being cursed with doom.",
-				"On failure, the creature gains the doomed curse, and the next time they are hit with an attack roll, that attack becomes a critical hit. On success, they suffer no further effect."
+				"You summon a shower of blood at a point you can see within range. Darkness washes over a 30-foot radius around the point, extinguishing all lights (including light from lower-level spells), and a rain of blood falls upon the area. Creatures and objects that are not being worn or carried within the area take {@damage 4d6} acid damage, and creatures must succeed on a Wisdom saving throw or suffer a doom curse. The next time a cursed creature is hit with an attack, it attack becomes a critical hit, after which the curse ends."
 			],
 			"components": {
 				"s": true,
@@ -42633,7 +43145,8 @@
 				"acid"
 			],
 			"miscTags": [
-				"OBJ"
+				"OBJ",
+				"OBS"
 			],
 			"areaTags": [
 				"S"
@@ -42645,15 +43158,12 @@
 		{
 			"name": "Sanguine Spears",
 			"source": "KT-CLL",
-			"page": 60,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 60
-				}
-			],
+			"page": 296,
 			"level": 3,
 			"school": "T",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -42669,11 +43179,19 @@
 			},
 			"duration": [
 				{
-					"type": "instant"
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					}
 				}
 			],
 			"classes": {
 				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
 					{
 						"name": "Sorcerer",
 						"source": "PHB"
@@ -42689,7 +43207,7 @@
 				]
 			},
 			"entries": [
-				"You transform some of your blood into three floating spears of crimson power. While you have one or more spear remaining, you can use an action or bonus action to launch one of the spears at a creature within range making a range spell attack. On hit, the target takes {@damage 2d6} piercing damage and {@damage 2d6} necrotic damage, and you regain 5 hit points."
+				"You crystallize some of your blood into three floating spears, which orbit you for the duration. You can use your action or your bonus action to launch one of the spears at a creature within range, making a ranged spell attack. On a hit, the target takes {@damage 2d6} piercing damage and {@damage 2d6} necrotic damage, and you regain 5 hit points. Once you've launched all the spears, the spell ends."
 			],
 			"components": {
 				"s": true,
@@ -42703,7 +43221,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher, for each spell slot level above 3rd, you can sacrifice 2 additional hit points to create an additional spear."
+						"When you cast this spell using a spell slot of 4th level or higher, you can expend 2 additional hit points to create 1 more spear for each slot level above 3rd."
 					]
 				}
 			],
@@ -42726,15 +43244,12 @@
 		{
 			"name": "Sense Blood",
 			"source": "KT-CLL",
-			"page": 60,
-			"otherSources": [
-				{
-					"source": "KT-BMS",
-					"page": 60
-				}
-			],
+			"page": 296,
 			"level": 1,
 			"school": "D",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -42761,6 +43276,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
 						"name": "Sorcerer",
 						"source": "PHB"
 					},
@@ -42775,7 +43294,7 @@
 				]
 			},
 			"entries": [
-				"You gain the ability to sense the blood of other creatures. For the duration, you gain advantage on your Wisdom (Perception) and Wisdom (Insight) ability checks against living creatures with blood."
+				"You gain the ability to sense the blood of other creatures. For the duration, you gain advantage on your Wisdom ({@skill Perception}) and Wisdom ({@skill Insight}) ability checks against living creatures with blood."
 			],
 			"components": {
 				"s": true,
@@ -42800,14 +43319,12 @@
 		{
 			"name": "Stirge Swarm",
 			"source": "KT-CLL",
-			"page": 60,
-			"otherSources": [
-				{
-					"source": "KT-BMS"
-				}
-			],
+			"page": 296,
 			"level": 6,
 			"school": "C",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -42835,6 +43352,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
 						"name": "Warlock",
 						"source": "PHB"
 					},
@@ -42845,8 +43366,8 @@
 				]
 			},
 			"entries": [
-				"You conjure a swirling swarm of magical Stirges that swirl around within 20 foot radius of the target point. Creatures with blood other than the caster that start their turn within the area or enter it for the first time during a turn must make a Dexterity saving throw. On failure, they are drained of their blood by the swirling storm of Stirges, reducing their hit points by {@damage 4d4 + 12} damage and restoring 4 hit points to the caster. On a successful save, they half as much damage and restore 2 hit points to caster.",
-				"As a bonus action on each of their turns for the duration of the spell, the caster and move the swirling swarm of Stirges up to 30 feet in any direction."
+				"You conjure a swirling swarm of magical Stirges that hover in a 20-foot radius of a point you can see within range. A creature starting its turn in the area or entering it for the first time on a turn must make a Dexterity saving throw. On a failure, the stirges drain its blood, reducing its hit points by {@dice 4d4 + 12} and restoring 4 hit points to you. On a successful save, a creature takes half as much damage and you regain 2 hit points. The swarm ignores you and any creatures without blood.",
+				"You can move the swarm up to 30 feet in any direction as a bonus action. When the spell ends, the stirges disappear."
 			],
 			"components": {
 				"s": true,
@@ -42867,16 +43388,14 @@
 			]
 		},
 		{
-			"name": "Transfuse Life",
+			"name": "Vampiric Brand",
 			"source": "KT-CLL",
-			"page": 60,
-			"otherSources": [
-				{
-					"source": "KT-BMS"
-				}
-			],
-			"level": 1,
+			"page": 297,
+			"level": 5,
 			"school": "N",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -42886,19 +43405,26 @@
 			"range": {
 				"type": "point",
 				"distance": {
-					"type": "touch"
+					"type": "feet",
+					"amount": 30
 				}
 			},
 			"duration": [
 				{
-					"type": "instant"
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1,
+						"upTo": true
+					},
+					"concentration": true
 				}
 			],
 			"classes": {
 				"fromClassList": [
 					{
-						"name": "Sorcerer",
-						"source": "PHB"
+						"name": "Occultist",
+						"source": "KT-CLL"
 					},
 					{
 						"name": "Warlock",
@@ -42911,43 +43437,35 @@
 				]
 			},
 			"entries": [
-				"You infuse a creature you touch with life divested from the blood used in the material component of the spell, causing the target to regain twice the hit points expended."
+				"You force a creature within range to make a Wisdom saving throw. On a failure, a vampiric brand appears on its flesh. Until the spell ends, any time the target takes damage, it takes an additional {@damage 2d6} necrotic damage, and you regain hit points equal to half the necrotic damage dealt. Any time the branded creature regains hit points, you regain half as much.",
+				"The branded creature can repeat its saving throw at the end of each of its turns, ending the spell on a success."
 			],
 			"components": {
 				"s": true,
 				"m": {
-					"text": "a splash of your blood worth 5 hit points, which the spell consumes",
+					"text": "a splash of your blood worth at least 5 hit points, which the spell consumes",
 					"consume": true
 				}
 			},
-			"entriesHigherLevel": [
-				{
-					"type": "entries",
-					"name": "At Higher Levels",
-					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the amount of hit points consumed by the spell increases by 5 (and the amount of hit points restored increases by a corresponding amount)."
-					]
-				}
+			"savingThrow": [
+				"wisdom"
 			],
-			"areaTags": [
-				"ST"
+			"damageInflict": [
+				"necrotic"
 			],
 			"miscTags": [
-				"HL",
-				"SCL"
+				"HL"
 			]
 		},
 		{
 			"name": "Vampiric Blade",
 			"source": "KT-CLL",
-			"page": 60,
-			"otherSources": [
-				{
-					"source": "KT-BMS"
-				}
-			],
+			"page": 297,
 			"level": 3,
 			"school": "N",
+			"subschools": [
+				"Blood Magic"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -42972,6 +43490,10 @@
 			"classes": {
 				"fromClassList": [
 					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
 						"name": "Sorcerer",
 						"source": "PHB"
 					},
@@ -42986,7 +43508,7 @@
 				]
 			},
 			"entries": [
-				"You drain your own life essence to empower the weapon used in the casing of the spell with life drinking power. You sacrifice up to 10 hit points (included in the material components). When you do so, your weapon attacks deal an additional {@damage 1d8} necrotic damage, and you regain hit points equal to the necrotic damage dealt, until you have dealt necrotic damage equal to twice the hit points invested."
+				"You drain your own life essence to empower the weapon used in the casting of the spell. When you hit with the weapon, you deal an additional {@damage 1d8} necrotic damage and regain hit points equal to the necrotic damage dealt. The spell ends when it has dealt necrotic damage equal to twice the hit points expended to cast the spell."
 			],
 			"components": {
 				"s": true,
@@ -43001,6 +43523,135 @@
 			"miscTags": [
 				"HL",
 				"AAD"
+			]
+		},
+		{
+			"name": "Vampiric Mosquito",
+			"source": "KT-CLL",
+			"page": 297,
+			"level": 1,
+			"school": "C",
+			"subschools": [
+				"Blood Magic"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					}
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Occultist",
+						"source": "KT-CLL"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You create a buzzing mosquito, formed of your blood. At the end of each of your turns for the duration, it bites a random hostile creature within 30 feet of you, dealing {@damage 1d4} necrotic damage. When the spell ends, the blood mosquito returns to you and gives you the stolen blood. You regain 1 hit point for each time the mosquito did damage, up to a maximum of 10 hit points. You can end the spell early as an action."
+			],
+			"components": {
+				"s": true,
+				"m": {
+					"text": "a drop of your blood worth at least 1 hit point, which the spell consumes",
+					"consume": true
+				}
+			},
+			"damageInflict": [
+				"necrotic"
+			],
+			"miscTags": [
+				"HL"
+			]
+		},
+		{
+			"name": "Wall of Blood",
+			"source": "KT-CLL",
+			"page": 297,
+			"level": 4,
+			"school": "C",
+			"subschools": [
+				"Blood Magic"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10,
+						"upTo": true
+					},
+					"concentration": true
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"entries": [
+				"You manifest some of your blood into a barrier on a solid surface you can see within range. You can make the wall up to 60 feet long, 20 feet high, and 5 feet thick, or in a ring up to 20 feet in diameter, 20 feet high, and 5 feet thick. The wall is opaque and lasts for the duration. Moving through the wall costs 3 feet of movement for each foot traveled. Any creature entering the wall must make a Constitution saving throw, suffering {@damage 3d8} necrotic damage on a failure or half as much on a success. When a creature enters the wall, you can expend 2 hit points to increase the necrotic damage it would take by {@dice 2d8}."
+			],
+			"components": {
+				"s": true,
+				"m": {
+					"text": "a drop of your blood worth at least 1 hit point, which the spell consumes",
+					"consume": true
+				}
+			},
+			"savingThrow": [
+				"constitution"
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"miscTags": [
+				"DFT"
 			]
 		},
 		{
