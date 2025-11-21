@@ -1814,6 +1814,16 @@
 			"className": "Alternate Rogue",
 			"classSource": "LLARo",
 			"page": 3,
+			"foundrySystem": {
+				"uses.per": "sr",
+				"uses.max": "@scale.alternate-rogue.exploit-dice",
+				"uses.recovery": [
+					{
+						"period": "sr",
+						"type": "recoverAll"
+					}
+				]
+			},
 			"level": 2,
 			"entries": [
 				"The Rogue table shows the number of Exploit Dice you have to perform Exploits you know. Most require you to expend Exploit Dice in order to use them. You can only use one Exploit per weapon attack, ability check, or saving throw, and you regain all of your expended Exploit Dice when you finish a short or long rest.",
@@ -3403,7 +3413,7 @@
 					"rows": [
 						[
 							"3rd",
-							"{@optfeature parry|LLExploits}, {@optfeature commanding presence|LLExploits}"
+							"{@optfeature parry|LLExploits}, {@optfeature imposing presence|LLExploits}"
 						],
 						[
 							"5th",
@@ -3421,7 +3431,7 @@
 					"entries": [
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "commanding presence|LLExploits"
+							"optionalfeature": "imposing presence|LLExploits"
 						},
 						{
 							"type": "refOptionalfeature",
@@ -4042,7 +4052,7 @@
 					"rows": [
 						[
 							"3rd",
-							"{@optfeature commanding presence|LLExploits}, {@optfeature precision strike|LLExploits}"
+							"{@optfeature imposing presence|LLExploits}, {@optfeature precision strike|LLExploits}"
 						],
 						[
 							"5th",
@@ -4060,7 +4070,7 @@
 					"entries": [
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "commanding presence|LLExploits"
+							"optionalfeature": "imposing presence|LLExploits"
 						},
 						{
 							"type": "refOptionalfeature",
@@ -6632,15 +6642,29 @@
 			"className": "Alternate Rogue",
 			"classSource": "LLARo",
 			"level": 2,
-			"system": {
-				"uses.per": "sr",
-				"uses.max": "@scale.alternate-rogue.exploit-dice",
-				"damage.parts": [
-					[
-						"@scale.alternate-rogue.exploit-dice-roll"
-					]
-				]
-			}
+			"activities": [
+				{
+					"name": "Roll the Exploit Die",
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"value": 0
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"roll": {
+						"formula": "@scale.alternate-rogue.exploit-dice-roll",
+						"name": "Exploit Die",
+						"visible": true
+					}
+				}
+			]
 		},
 		{
 			"name": "Sneak Attack",
