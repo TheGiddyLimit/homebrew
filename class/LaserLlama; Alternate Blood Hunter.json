@@ -33,8 +33,8 @@
 			]
 		},
 		"dateAdded": 1657295680,
-		"dateLastModified": 1762697438,
-		"_dateLastModifiedHash": "3f6c0e03b9",
+		"dateLastModified": 1763973105,
+		"_dateLastModifiedHash": "f4718a0dfb",
 		"edition": "classic"
 	},
 	"class": [
@@ -2406,6 +2406,21 @@
 		{
 			"name": "Blasphemous Prayer",
 			"source": "LLABH",
+			"foundrySystem": {
+				"activation": {
+					"cost": 1,
+					"type": "special"
+				},
+				"uses": {
+					"max": "1",
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			},
 			"className": "Alternate Blood Hunter",
 			"classSource": "LLABH",
 			"page": 5,
@@ -2438,7 +2453,7 @@
 			"subclassSource": "LLABH",
 			"level": 3,
 			"entries": [
-				"You utter blasphemies painful for divine entities to hear. Any Celestials, Fiends, or other creatures capable of divine magic (such as Clerics or Paladins) of your choice within 30 feet of you must succeed a Charisma saving throw against your Rite save DC or be incapacitated and restrained for 1 minute.",
+				"As an action, you utter blasphemies painful to divine entities. Celestials, Fiends, or other creatures capable of divine magic (such as Clerics or Paladins) of your choice within 30 feet of you must succeed a Charisma saving throw or be Restrained and Incapacitated for 1 minute.",
 				"Creatures repeat this saving throw at the end of their turns and when they take damage, ending this effect on a success."
 			]
 		},
@@ -2851,6 +2866,44 @@
 							"value": "@scale.order-of-witch-knights.slots"
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Censure the Divine",
+			"source": "LLABH",
+			"className": "Alternate Blood Hunter",
+			"classSource": "LLABH",
+			"subclassShortName": "Heretic",
+			"subclassSource": "LLABH",
+			"level": 3,
+			"activities": [
+				{
+					"type": "save",
+					"activation": {
+						"type": "action"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Blasphemous Prayer"
+									}
+								}
+							}
+						]
+					},
+					"save": {
+						"ability": [
+							"cha"
+						],
+						"dc": {
+							"calculation": "con"
+						}
+					}
 				}
 			]
 		}
@@ -3570,16 +3623,7 @@
 			"foundrySystem": {
 				"activation": {
 					"cost": 1,
-					"type": "action"
-				},
-				"uses": {
-					"max": "1",
-					"recovery": [
-						{
-							"period": "sr",
-							"type": "recoverAll"
-						}
-					]
+					"type": "special"
 				}
 			},
 			"foundryImg": "icons/sundries/scrolls/scroll-plain-red.webp",
@@ -4999,6 +5043,26 @@
 							}
 						],
 						"onSave": "half"
+					}
+				}
+			]
+		},
+		{
+			"name": "Rite of Revelation",
+			"source": "LLABH",
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
 					}
 				}
 			]
