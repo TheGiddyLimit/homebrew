@@ -4,8 +4,8 @@
 		"sources": [
 			{
 				"json": "LLAW",
-				"abbreviation": "LLAW",
-				"full": "Warlord",
+				"abbreviation": "LLWar",
+				"full": "LaserLlama: Warlord",
 				"authors": [
 					"LaserLlama"
 				],
@@ -18,8 +18,8 @@
 			},
 			{
 				"json": "LLAW:E",
-				"abbreviation": "LLAW:E",
-				"full": "Warlord: Expanded",
+				"abbreviation": "LLAWarE",
+				"full": "LaserLlama: Warlord Expanded",
 				"authors": [
 					"LaserLlama"
 				],
@@ -46,8 +46,8 @@
 			]
 		},
 		"dateAdded": 1657295680,
-		"dateLastModified": 1752143300,
-		"_dateLastModifiedHash": "38dfde0c99",
+		"dateLastModified": 1763973004,
+		"_dateLastModifiedHash": "ab22fa5691",
 		"edition": "classic"
 	},
 	"class": [
@@ -1617,6 +1617,16 @@
 			"className": "Warlord",
 			"classSource": "LLAW",
 			"page": 3,
+			"foundrySystem": {
+				"uses.per": "sr",
+				"uses.max": "@scale.warlord.exploit-dice",
+				"uses.recovery": [
+					{
+						"period": "sr",
+						"type": "recoverAll"
+					}
+				]
+			},
 			"level": 2,
 			"entries": [
 				"The Warlord table shows the number of Exploit Dice you have to perform the Exploits that you know. Many Exploits require you to spend Exploit Dice to use them. You can only use one Exploit per attack, ability check, or saving throw. You regain all your Exploit Dice when you finish a short or long rest.",
@@ -1988,7 +1998,7 @@
 					"rows": [
 						[
 							"3rd",
-							"{@optfeature commanding presence|LLExploits}, {@optfeature attack order|LLExploits}"
+							"{@optfeature imposing presence|LLExploits}, {@optfeature attack order|LLExploits}"
 						],
 						[
 							"5th",
@@ -2006,7 +2016,7 @@
 					"entries": [
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "commanding presence|LLExploits"
+							"optionalfeature": "imposing presence|LLExploits"
 						},
 						{
 							"type": "refOptionalfeature",
@@ -2257,7 +2267,7 @@
 					"rows": [
 						[
 							"3rd",
-							"{@optfeature attack order|LLExploits}, {@optfeature commanding presence|LLExploits}"
+							"{@optfeature attack order|LLExploits}, {@optfeature imposing presence|LLExploits}"
 						],
 						[
 							"5th",
@@ -2279,7 +2289,7 @@
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "commanding presence|LLExploits"
+							"optionalfeature": "imposing presence|LLExploits"
 						}
 					]
 				}
@@ -3085,7 +3095,7 @@
 					"rows": [
 						[
 							"3rd",
-							"{@optfeature attack order|LLExploits}, {@optfeature commanding presence|LLExploits}"
+							"{@optfeature attack order|LLExploits}, {@optfeature imposing presence|LLExploits}"
 						],
 						[
 							"5th",
@@ -3107,7 +3117,7 @@
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "commanding presence|LLExploits"
+							"optionalfeature": "imposing presence|LLExploits"
 						}
 					]
 				}
@@ -3290,7 +3300,7 @@
 					"rows": [
 						[
 							"3rd",
-							"{@optfeature attack order|LLExploits}, {@optfeature commanding presence|LLExploits}"
+							"{@optfeature attack order|LLExploits}, {@optfeature imposing presence|LLExploits}"
 						],
 						[
 							"5th",
@@ -3312,7 +3322,7 @@
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "commanding presence|LLExploits"
+							"optionalfeature": "imposing presence|LLExploits"
 						}
 					]
 				}
@@ -4812,15 +4822,29 @@
 			"className": "Warlord",
 			"classSource": "LLAW",
 			"level": 2,
-			"system": {
-				"uses.per": "sr",
-				"uses.max": "@scale.warlord.exploit-dice",
-				"damage.parts": [
-					[
-						"@scale.warlord.exploit-dice-roll"
-					]
-				]
-			}
+			"activities": [
+				{
+					"name": "Roll the Exploit Die",
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"value": 0
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"roll": {
+						"formula": "@scale.warlord.exploit-dice-roll",
+						"name": "Exploit Die",
+						"visible": true
+					}
+				}
+			]
 		},
 		{
 			"name": "Inspiring Word",
