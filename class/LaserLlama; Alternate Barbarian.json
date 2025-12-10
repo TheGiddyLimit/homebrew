@@ -48,8 +48,8 @@
 			]
 		},
 		"dateAdded": 1657295680,
-		"dateLastModified": 1748813944,
-		"_dateLastModifiedHash": "2c8d0117f4",
+		"dateLastModified": 1764951347,
+		"_dateLastModifiedHash": "83a791ce14",
 		"edition": "classic"
 	},
 	"class": [
@@ -384,7 +384,7 @@
 				{
 					"colLabels": [
 						"Rages",
-						"Exploits Known",
+						"{@filter Exploits Known|optionalfeatures|feature type=LL:SE}",
 						"Exploit Die",
 						"Exploit Dice"
 					],
@@ -763,6 +763,16 @@
 			"className": "Alternate Barbarian",
 			"classSource": "LLAB",
 			"page": 3,
+			"foundrySystem": {
+				"uses.per": "sr",
+				"uses.max": "@scale.alternate-barbarian.exploit-dice",
+				"uses.recovery": [
+					{
+						"period": "sr",
+						"type": "recoverAll"
+					}
+				]
+			},
 			"level": 2,
 			"entries": [
 				"The Barbarian table shows how many Exploit Dice you have to perform any Exploits you know. Most Exploits require you to expend these Dice in order to use them. You can only use one Exploit per attack, ability check, or saving throw, and you regain all Exploit Dice when you finish a short or long rest.",
@@ -1512,7 +1522,7 @@
 					"rows": [
 						[
 							"3rd",
-							"{@optfeature commanding presence|LLExploits}, {@optfeature savage rebuke|LLExploits}"
+							"{@optfeature imposing presence|LLExploits}, {@optfeature savage rebuke|LLExploits}"
 						],
 						[
 							"5th",
@@ -1530,7 +1540,7 @@
 					"entries": [
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "commanding presence|LLExploits"
+							"optionalfeature": "imposing presence|LLExploits"
 						},
 						{
 							"type": "refOptionalfeature",
@@ -1706,7 +1716,7 @@
 					"rows": [
 						[
 							"3rd",
-							"{@optfeature commanding presence|LLExploits}, {@optfeature crushing grip|LLExploits}"
+							"{@optfeature imposing presence|LLExploits}, {@optfeature crushing grip|LLExploits}"
 						],
 						[
 							"5th",
@@ -1724,7 +1734,7 @@
 					"entries": [
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "commanding presence|LLExploits"
+							"optionalfeature": "imposing presence|LLExploits"
 						},
 						{
 							"type": "refOptionalfeature",
@@ -4257,7 +4267,7 @@
 					"rows": [
 						[
 							"3rd",
-							"{@optfeature commanding presence|LLExploits}, {@optfeature mighty leap|LLExploits}"
+							"{@optfeature imposing presence|LLExploits}, {@optfeature mighty leap|LLExploits}"
 						],
 						[
 							"5th",
@@ -4275,7 +4285,7 @@
 					"entries": [
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "commanding presence|LLExploits"
+							"optionalfeature": "imposing presence|LLExploits"
 						},
 						{
 							"type": "refOptionalfeature",
@@ -5544,7 +5554,7 @@
 					"rows": [
 						[
 							"3rd",
-							"{@optfeature commanding presence|LLExploits}, {@optfeature ruthless strike|LLExploits}"
+							"{@optfeature imposing presence|LLExploits}, {@optfeature ruthless strike|LLExploits}"
 						],
 						[
 							"5th",
@@ -5562,7 +5572,7 @@
 					"entries": [
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "commanding presence|LLExploits"
+							"optionalfeature": "imposing presence|LLExploits"
 						},
 						{
 							"type": "refOptionalfeature",
@@ -6770,15 +6780,29 @@
 			"className": "Alternate Barbarian",
 			"classSource": "LLAB",
 			"level": 2,
-			"system": {
-				"uses.per": "sr",
-				"uses.max": "@scale.alternate-barbarian.exploit-dice",
-				"damage.parts": [
-					[
-						"@scale.alternate-barbarian.exploit-dice-roll"
-					]
-				]
-			}
+			"activities": [
+				{
+					"name": "Roll the Exploit Die",
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"value": 0
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"roll": {
+						"formula": "@scale.alternate-barbarian.exploit-dice-roll",
+						"name": "Exploit Die",
+						"visible": true
+					}
+				}
+			]
 		},
 		{
 			"name": "Rage",
