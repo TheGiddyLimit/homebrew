@@ -14984,79 +14984,90 @@
     ],
     "monster": [
 		{
-			"name": "Wild Spirit",
-			"source": "ObojimaTallGrass24",
-			"page": 269,
-			"size": [
-				"M"
-			],
-			"type": "spirit",
-			"alignment": [
-				"U"
-			],
-			"ac": [
-				{
-					"ac": 15
-				}
-			],
-			"hp": {
-				"special": "2 + three times your druid level"
-			},
-			"speed": {
-				"walk": 40,
-				"fly": 20,
-				"canHover": true
-			},
-			"str": 15,
-			"dex": 15,
-			"con": 15,
-			"int": 9,
-			"wis": 12,
-			"cha": 9,
-			"skill": {
-				"intimidation": "-1 plus PB",
-				"perception": "+1 plsu PB",
+            "name": "Wild Spirit",
+            "source": "ObojimaTallGrass24",
+            "page": 175,
+            "summonedByClass": "Druid|XPHB",
+            "size": [
+                "M"
+            ],
+            "type": "Spirit",
+            "alignment": [
+                "U"
+            ],
+            "ac": [
+                15
+            ],
+            "hp": {
+                "special": "2 + three times your Druid level"
+            },
+            "speed": {
+                "walk": 40,
+                "fly": {
+                    "number": 20,
+                    "condition": "(hover)"
+                },
+                "canHover": true
+            },
+            "initiative": {
+                        "proficiency": 1
+                    },
+            "str": 15,
+            "dex": 15,
+            "con": 15,
+            "int": 9,
+            "wis": 12,
+            "cha": 9,
+            "skill": {
+                "intimidation": "-1 plus PB",
+                "perception": "+1 plus PB",
                 "stealth": "+2 plus PB"
-			},
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": "11 plus PB",
-			"cr": "0",
-			"trait": [
-				{
-					"name": "Like the Wind",
-					"entries": [
-                        "The Wild Spirit can move through other creatures' spaces as if they were {@variantrule Difficult Terrain|XPHB}."
-					]
-				},
+            },
+            "passive": "11 + PB",
+            "languages": [
+                "understands the languages you know"
+            ],
+            "pbNote": "equals your Proficiency Bonus",
+            "trait": [
                 {
-					"name": "Promising Threat",
-					"entries": [
-                        "The Wild Spirit has {@variantrule Advantage|XPHB} on Charisma ({@skill Intimidation|XPHB}) checks if the target has seen it hit a creature with its Chomp attack in the past minute"
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Chomp",
-					"entries": [
-						"{@atk mw} {@hit spell attack modifier} to hit, reach 5 ft., one target. {@h} ({@damage 2d6 + 2}) piercing damage,and the target has the {@condition Prone|XPHB} if it is Large or smaller."
-					]
-				}
-			],
+                    "name": "Like the Wind",
+                    "entries": [
+                        "The Wild Spirit can move through other creatures' spaces as if they were {@variantrule Difficult Terrain|XPHB}."
+                    ]
+                },
+                {
+                    "name": "Promising Threat",
+                    "entries": [
+                        "The Wild Spirit has {@variantrule Advantage|XPHB} on Charisma ({@skill Intimidation|XPHB}) checks if the target has seen it hit a creature with its Chomp attack in the past minute."
+                    ]
+                }
+            ],
+            "action": [
+                {
+                    "name": "Chomp",
+                    "entries": [
+                        "{@atkr m} {@hitYourSpellAttack Bonus equals your spell attack modifier}, reach 5 ft. {@h}{@damage 2d6 + 2} Piercing damage, and the target has the {@condition Prone|XPHB} condition if it is Large or smaller."
+                    ]
+                }
+            ],
             "reaction": [
-				{
-					"name": "Thought Shield",
-					"entries": [
-						"{@actTrigger} The Wild Spirit reduces a creature to o {@variantrule Hit Points|XPHB}. {@actResponse} The Wild Spirit regains {@dice 1d10} {@variantrule Hit Points|XPHB}."
-					]
-				}
-			],
-			"damageTags": [
-				"P"
-			]
-		},
+                {
+                    "name": "Devour",
+                    "entries": [
+                        "{@actTrigger} The Wild Spirit reduces a creature to 0 {@variantrule Hit Points|XPHB}. {@actResponse} The Wild Spirit regains {@dice 1d10} {@variantrule Hit Points|XPHB}."
+                    ]
+                }
+            ],
+            "damageTags": [
+                "P"
+            ],
+            "miscTags": [
+                "MA"
+            ],
+            "conditionInflict": [
+                "prone"
+            ]
+        },
         {
 			"name": "Acorn Crab",
 			"source": "ObojimaTallGrass24",
@@ -15379,6 +15390,103 @@
             "tokenHref": {
 				"type": "external",
 				"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/refs/heads/main/img/ObojimaTallGrass/Tokens/Bearracuda.webp"
+			},
+			"hasFluff": true,
+			"hasFluffImages": true
+        },
+        {
+            "name": "Cat of Prodigious Size",
+            "source": "ObojimaTallGrass24",
+            "page": 316,
+            "size": [
+                "H"
+            ],
+            "type": "beast",
+            "alignment": [
+                "N"
+            ],
+            "ac": [
+                15
+            ],
+            "hp": {
+                "average": 157,
+                "formula": "15d12 + 60"
+            },
+            "speed": {
+                "walk": 50,
+                "climb": 40
+            },
+            "initiative": {
+                "proficiency": 1
+            },
+            "str": 22,
+            "dex": 16,
+            "con": 19,
+            "int": 7,
+            "wis": 12,
+            "cha": 12,
+            "skill": {
+                "perception": "+7",
+                "stealth": "+6"
+            },
+            "passive": 14,
+            "cr": "8",
+            "trait": [
+                {
+                    "name": "Light on Its Feet",
+                    "entries": [
+                        "When the cat falls falls and doesn't have the {@condition Incapacitated|XPHB} condition, it can subtract up to 200 feet when calculating damage from the fall."
+                    ]
+                }
+            ],
+            "action": [
+                {
+                    "name": "Multiattack",
+                    "entries": [
+                        "The cat makes one Chomp attack and one Claw attack."
+                    ]
+                },
+                {
+                    "name": "Chomp",
+                    "entries": [
+                        "{@atkr m} {@hit 9}, reach 10 ft. {@h}25 ({@damage 3d12 + 6}) Piercing damage. If the target is a Medium or smaller creature, it has the {@condition Grappled|XPHB} condition (escape {@dc 16}). Until the grapple ends, the target has the {@condition Restrained|XPHB} condition, and the cat can't can't Chomp another target."
+                    ]
+                },
+                {
+                    "name": "Claw",
+                    "entries": [
+                        "{@atkr m} {@hit 9}, reach 10 ft. {@h}22 ({@damage 3d10 + 6}) Slashing damage."
+                    ]
+                },
+                {
+                    "name": "Leaping Strike",
+                    "entries": [
+                        "The cat jumps jumps up to 100 feet vertically; it can make one Claw attack while in the air. {@actSave str} {@dc 17}, each creature other than the cat within within 20 feet of where it lands. {@actSaveFail} The target has the {@condition Prone|XPHB} condition."
+                    ]
+                }
+            ],
+            "actionTags": [
+                "Multiattack"
+            ],
+            "damageTags": [
+                "P",
+                "S"
+            ],
+            "miscTags": [
+                "MA",
+                "RCH"
+            ],
+            "conditionInflict": [
+                "grappled",
+                "prone",
+                "restrained"
+            ],
+            "savingThrowForced": [
+                "strength"
+            ],
+            "tokenHref": {
+				"type": "external",
+				"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/refs/heads/main/img/ObojimaTallGrass/Tokens/Cat%20Of%20Prodigious%20Size.webp"
 			},
 			"hasFluff": true,
 			"hasFluffImages": true
