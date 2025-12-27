@@ -1825,7 +1825,7 @@
 						],
 						"7": [
 							"Intensify Gravity|DarkMatter24",
-							"Zero Gravity|DarkMatter24",
+							"Zero Gravity|ValdaSpire24",
 							"Eldritch Rift|DarkMatter24"
 						],
 						"9": [
@@ -1848,7 +1848,7 @@
 				"Gravity Well|DarkMatter24",
 				"Protection from Energy|XPHB",
 				"Intensify Gravity|DarkMatter24",
-				"Zero Gravity|DarkMatter24",
+				"Zero Gravity|ValdaSpire24",
 				"Telekinesis|XPHB",
 				"Teleportation Circle|XPHB",
 				"Conjure Asteroid|DarkMatter24",
@@ -2022,6 +2022,11 @@
 			"subclassSource": "DarkMatter24",
 			"level": 3,
 			"header": 1,
+			"skillProficiencies": [
+				{
+					"medicine": true
+				}
+			],
 			"entries": [
 				"You gain proficiency in the {@skill Medicine|XPHB} skill, if you didn't already have it. Additionally, you gain a bonus to checks using this skill equal to your Intelligence modifier (minimum bonus of +1)."
 			]
@@ -5008,7 +5013,7 @@
 			"level": 11,
 			"header": 2,
 			"entries": [
-				"You can expend 3 Focus Points to cast {@spell Intensify Gravity|DarkMatter24} or {@spell Zero Gravity|DarkMatter24} without a spell slot. Wisdom is your spellcasting ability for these spells. You can choose to be unaffected by either spell."
+				"You can expend 3 Focus Points to cast {@spell Intensify Gravity|DarkMatter24} or {@spell Zero Gravity|ValdaSpire24} without a spell slot. Wisdom is your spellcasting ability for these spells. You can choose to be unaffected by either spell."
 			]
 		},
 		{
@@ -8174,7 +8179,7 @@
 						],
 						[
 							"7",
-							"{@spell Intensify Gravity|DarkMatter24}, {@spell Zero Gravity|DarkMatter24}",
+							"{@spell Intensify Gravity|DarkMatter24}, {@spell Zero Gravity|ValdaSpire24}",
 							"{@spell Eldritch Rift|DarkMatter24}"
 						],
 						[
@@ -8236,7 +8241,7 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"You always have the {@spell Reverse Gravity|XPHB} spell prepared and you can cast it once without a spell slot. You regain the ability to cast it in this way when you finish a {@variantrule Long Rest|XPHB}. As a {@action Magic|XPHB} action, you can change the effect of the spell to that of the {@spell Intensify Gravity|DarkMatter24} or {@spell Zero Gravity|DarkMatter24} spell, or back to {@spell Reverse Gravity|XPHB}. The area affected by the spell doesn't change."
+				"You always have the {@spell Reverse Gravity|XPHB} spell prepared and you can cast it once without a spell slot. You regain the ability to cast it in this way when you finish a {@variantrule Long Rest|XPHB}. As a {@action Magic|XPHB} action, you can change the effect of the spell to that of the {@spell Intensify Gravity|DarkMatter24} or {@spell Zero Gravity|ValdaSpire24} spell, or back to {@spell Reverse Gravity|XPHB}. The area affected by the spell doesn't change."
 			]
 		},
 		{
@@ -8250,6 +8255,31 @@
 			"header": 2,
 			"entries": [
 				"When you cast a spell using a spell slot, you can create a number of motes of stardust equal to half the level of the spell slot expended (round down), which orbit around you for 1 minute. You can have a maximum of 10 motes orbiting you at one time. You can expend orbiting motes instead of Sorcery Points to use your Metamagic options."
+			]
+		}
+	],
+	"foundrySubclassFeature": [
+		{
+			"name": "Skilled Surgeon",
+			"source": "DarkMatter24",
+			"page": 0,
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"subclassShortName": "Cyber Surgeon",
+			"subclassSource": "DarkMatter24",
+			"level": 3,
+			"effects": [
+				{
+					"name": "Skilled Surgeon (Medicine Int Bonus)",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.skills.med.bonuses.check",
+							"mode": 2,
+							"value": "@abilities.int.mod"
+						}
+					]
+				}
 			]
 		}
 	],
@@ -10100,6 +10130,19 @@
 			],
 			"entries": [
 				"While you wear these boots, you can move up, down, and across vertical surfaces and along ceilings, while leaving your hands free. You have a {@variantrule Climb Speed|XPHB} equal to your {@variantrule Speed|XPHB}. Additionally, in a Zero-Gravity environment, you can attract yourself to any surface within 100 feet of yourself as if it had normal gravity."
+			],
+			"foundryEffects": [
+				{
+					"name": "Magnet Boots",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.climb",
+							"mode": 4,
+							"value": "@attributes.movement.walk"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -10514,7 +10557,7 @@
 			]
 		},
 		{
-			"name": "Micro Missiles",
+			"name": "Micro-Missiles",
 			"source": "DarkMatter24",
 			"activities": [
 				{
@@ -10889,6 +10932,184 @@
 							"calculation": "int"
 						}
 					}
+				}
+			]
+		},
+		{
+			"name": "Version 1812 Multirocket Launcher",
+			"source": "DarkMatter24",
+			"activities": [
+				{
+					"name": "Save",
+					"type": "save",
+					"activation": {
+						"type": "action"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": "",
+								"scaling": {}
+							}
+						]
+					},
+					"range": {
+						"units": "self",
+						"override": false
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"count": "",
+							"type": "radius",
+							"size": "30"
+						},
+						"affects": {
+							"choice": true,
+							"count": "",
+							"type": "creature",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					},
+					"damage": {
+						"onSave": "half",
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"custom": {
+									"enabled": false,
+									"formula": ""
+								},
+								"number": 12,
+								"denomination": 6,
+								"types": [
+									"fire"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Spectrum Visor",
+			"source": "DarkMatter24",
+			"activities": [
+				{
+					"name": "Aurasight",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"effects": [
+						{
+							"foundryId": "Tjqvi2LwsZqtqiQg"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						},
+						"override": false,
+						"prompt": true
+					}
+				},
+				{
+					"name": "Darkvision",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"effects": [
+						{
+							"foundryId": "2r8Niaay71FNJgIM"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						},
+						"override": false,
+						"prompt": true
+					}
+				},
+				{
+					"name": "Thermalsight",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"effects": [
+						{
+							"foundryId": "5bP8zle6xFkrmAyc"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						},
+						"override": false,
+						"prompt": true
+					}
+				}
+			],
+			"effects": [
+				{
+					"name": "Spectrum Visor (Darkvision)",
+					"foundryId": "2r8Niaay71FNJgIM",
+					"changes": [
+						{
+							"key": "system.attributes.senses.darkvision",
+							"mode": 2,
+							"value": "60"
+						}
+					]
+				},
+				{
+					"name": "Spectrum Visor (Thermalsight)",
+					"foundryId": "5bP8zle6xFkrmAyc",
+					"changes": [
+						{
+							"key": "system.attributes.senses.special",
+							"mode": 2,
+							"value": "Thermalsight 60"
+						}
+					]
+				},
+				{
+					"name": "Spectrum Visor (Aurasight)",
+					"foundryId": "Tjqvi2LwsZqtqiQg",
+					"changes": []
 				}
 			]
 		}
