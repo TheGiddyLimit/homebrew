@@ -86,11 +86,11 @@
 				"Unconscious"
 			],
 			"entries": [
-				"{@note Created by the {@optfeature Sentry Turret|DarkMatter24} Gadgeteer Gadget}"
+				"{@note Created by the {@optfeature Sentry Turret|DarkMatter24} Gadgeteer Gadget}",
+				"As a {@action Utilize|XPHB} action, you can deploy this collapsible device in an unoccupied space you can see within 10 feet of yourself, where it unfolds into a Small, stationary blaster turret. You can recover the turret as a {@action Utilize|XPHB} action.",
+				"The turret has AC 15 and {@variantrule Hit Points|XPHB} equal to three times your Gadgeteer level, and it has {@variantrule Immunity|XPHB} to Poison and Psychic damage. Reducing the turret to 0 {@variantrule Hit Points|XPHB} destroys it."
 			],
 			"actionEntries": [
-				"As a {@action Utilize|XPHB} action, you can deploy this collapsible device in an unoccupied space you can see within 10 feet of yourself, where it unfolds into a Small, stationary blaster turret. You can recover the turret as a {@action Utilize|XPHB} action.",
-				"The turret has AC 15 and {@variantrule Hit Points|XPHB} equal to three times your Gadgeteer level, and it has {@variantrule Immunity|XPHB} to Poison and Psychic damage. Reducing the turret to 0 {@variantrule Hit Points|XPHB} destroys it.",
 				"When an enemy moves within 60 feet of the turret, you can take a {@variantrule Reaction|XPHB} to command the turret to fire. Make a ranged attack roll using your Intelligence. On a hit, the target takes {@damage 2d6} Radiant damage."
 			],
 			"hasToken": true,
@@ -8963,6 +8963,103 @@
 				"Epic Boon|Gadgeteer|DarkMatter24|19",
 				"Gadget Matrix|Gadgeteer|DarkMatter24|20"
 			],
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "overcharge",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 2
+							},
+							"5": {
+								"value": 3
+							},
+							"9": {
+								"value": 4
+							},
+							"13": {
+								"value": 5
+							},
+							"17": {
+								"value": 6
+							}
+						}
+					},
+					"title": "Overcharge"
+				},
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "mastery-mod",
+						"type": "number",
+						"scale": {
+							"11": {
+								"value": 1
+							},
+							"17": {
+								"value": 2
+							}
+						}
+					},
+					"title": "Mastery Mod"
+				},
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "gadget-upgrade-d4",
+						"type": "dice",
+						"scale": {
+							"11": {
+								"number": 1,
+								"faces": 4
+							},
+							"17": {
+								"number": 2,
+								"faces": 4
+							}
+						}
+					},
+					"title": "Gadget Upgrade (d4)"
+				},
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "gadget-upgrade-d6",
+						"type": "dice",
+						"scale": {
+							"11": {
+								"number": 1,
+								"faces": 6
+							},
+							"17": {
+								"number": 2,
+								"faces": 6
+							}
+						}
+					},
+					"title": "Gadget Upgrade (d6)"
+				},
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "gadget-upgrade-d8",
+						"type": "dice",
+						"scale": {
+							"11": {
+								"number": 1,
+								"faces": 8
+							},
+							"17": {
+								"number": 2,
+								"faces": 8
+							}
+						}
+					},
+					"title": "Gadget Upgrade (d8)"
+				}
+			],
 			"subclassTitle": "Subclass Feature",
 			"hasFluff": true,
 			"hasFluffImages": true
@@ -9237,6 +9334,367 @@
 			"level": 20,
 			"entries": [
 				"You can reconfigure your Gadgets on the fly. As a {@action Magic|XPHB} action, you can replace one of your Gadgets with another one for which you qualify."
+			]
+		}
+	],
+	"foundryClassFeature": [
+		{
+			"name": "AI Companion",
+			"source": "DarkMatter24",
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"level": 1,
+			"activities": [
+				{
+					"name": "Arcana",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"effects": [
+						{
+							"foundryId": "ROWY6ZBsNgEYVrn1"
+						}
+					],
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						}
+					}
+				},
+				{
+					"name": "Data",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"effects": [
+						{
+							"foundryId": "ROWY6ZBsNgEYVrn2"
+						}
+					],
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						}
+					}
+				},
+				{
+					"name": "History",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"effects": [
+						{
+							"foundryId": "ROWY6ZBsNgEYVrn3"
+						}
+					],
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						}
+					}
+				},
+				{
+					"name": "Investigation",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"effects": [
+						{
+							"foundryId": "ROWY6ZBsNgEYVrn4"
+						}
+					],
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						}
+					}
+				},
+				{
+					"name": "Nature",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"effects": [
+						{
+							"foundryId": "ROWY6ZBsNgEYVrn5"
+						}
+					],
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						}
+					}
+				},
+				{
+					"name": "Religion",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"effects": [
+						{
+							"foundryId": "ROWY6ZBsNgEYVrn6"
+						}
+					],
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						}
+					}
+				},
+				{
+					"name": "Technology",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"effects": [
+						{
+							"foundryId": "ROWY6ZBsNgEYVrn7"
+						}
+					],
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						}
+					}
+				}
+			],
+			"effects": [
+				{
+					"name": "AI Companion (Arcana)",
+					"foundryId": "ROWY6ZBsNgEYVrn1",
+					"changes": [
+						{
+							"key": "system.skills.arc.roll.min",
+							"mode": 2,
+							"value": 10
+						}
+					]
+				},
+				{
+					"name": "AI Companion (Data)",
+					"foundryId": "ROWY6ZBsNgEYVrn2",
+					"changes": []
+				},
+				{
+					"name": "AI Companion (History)",
+					"foundryId": "ROWY6ZBsNgEYVrn3",
+					"changes": [
+						{
+							"key": "system.skills.his.roll.min",
+							"mode": 2,
+							"value": 10
+						}
+					]
+				},
+				{
+					"name": "AI Companion (Investigation)",
+					"foundryId": "ROWY6ZBsNgEYVrn4",
+					"changes": [
+						{
+							"key": "system.skills.inv.roll.min",
+							"mode": 2,
+							"value": 10
+						}
+					]
+				},
+				{
+					"name": "AI Companion (Nature)",
+					"foundryId": "ROWY6ZBsNgEYVrn5",
+					"changes": [
+						{
+							"key": "system.skills.nat.roll.min",
+							"mode": 2,
+							"value": 10
+						}
+					]
+				},
+				{
+					"name": "AI Companion (Religion)",
+					"foundryId": "ROWY6ZBsNgEYVrn6",
+					"changes": [
+						{
+							"key": "system.skills.rel.roll.min",
+							"mode": 2,
+							"value": 10
+						}
+					]
+				},
+				{
+					"name": "AI Companion (Technology)",
+					"foundryId": "ROWY6ZBsNgEYVrn7",
+					"changes": []
+				}
+			]
+		},
+		{
+			"name": "Overcharge",
+			"source": "DarkMatter24",
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"level": 2,
+			"advice": {
+				"type": "section",
+				"entries": [
+					"Use the Enchant activity to add the Overcharge Damage activity to your weapons/gadgets."
+				]
+			},
+			"activities": [
+				{
+					"name": "Enchant",
+					"type": "enchant",
+					"foundryId": "4cGWNpjvGZvSEjn6",
+					"activation": {
+						"type": "special"
+					},
+					"effects": [
+						{
+							"foundryId": "KU02DX6K9h6ZUwfo",
+							"riders": {
+								"activity": [
+									"SoZu9Lq1lYSRJg8z"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Overcharge Damage",
+					"type": "damage",
+					"foundryId": "SoZu9Lq1lYSRJg8z",
+					"activation": {
+						"type": "special"
+					},
+					"range": {
+						"units": "any"
+					},
+					"damage": {
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "@scale.gadgeteer.overcharge"
+								},
+								"types": [
+									"lightning"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					}
+				}
+			],
+			"effects": [
+				{
+					"type": "enchantment",
+					"name": "Overcharge",
+					"foundryId": "KU02DX6K9h6ZUwfo",
+					"changes": []
+				}
+			]
+		},
+		{
+			"name": "Mastery Mods",
+			"source": "DarkMatter24",
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"level": 11,
+			"activities": [
+				{
+					"name": "1d4",
+					"type": "enchant",
+					"activation": {
+						"type": "action"
+					},
+					"effects": [
+						{
+							"foundryId": "jHDKOyRfwUn2lVTX"
+						}
+					]
+				},
+				{
+					"name": "1d6",
+					"type": "enchant",
+					"activation": {
+						"type": "action"
+					},
+					"effects": [
+						{
+							"foundryId": "jHDKOyRfwUn2lVT1"
+						}
+					]
+				},
+				{
+					"name": "1d8",
+					"type": "enchant",
+					"activation": {
+						"type": "action"
+					},
+					"effects": [
+						{
+							"foundryId": "jHDKOyRfwUn2lVT2"
+						}
+					]
+				}
+			],
+			"effects": [
+				{
+					"type": "enchantment",
+					"name": "Mastery Mods (1d4)",
+					"foundryId": "jHDKOyRfwUn2lVTX",
+					"changes": [
+						{
+							"key": "system.damageBonus",
+							"mode": 2,
+							"value": "(@scale.gadgeteer.mastery-mod)d4",
+							"priority": 20
+						}
+					]
+				},
+				{
+					"type": "enchantment",
+					"name": "Mastery Mods (1d6)",
+					"foundryId": "jHDKOyRfwUn2lVT1",
+					"changes": [
+						{
+							"key": "system.damageBonus",
+							"mode": 2,
+							"value": "(@scale.gadgeteer.mastery-mod)d6",
+							"priority": 20
+						}
+					]
+				},
+				{
+					"type": "enchantment",
+					"name": "Mastery Mods (1d8)",
+					"foundryId": "jHDKOyRfwUn2lVT2",
+					"changes": [
+						{
+							"key": "system.damageBonus",
+							"mode": 2,
+							"value": "(@scale.gadgeteer.mastery-mod)d8",
+							"priority": 20
+						}
+					]
+				}
 			]
 		}
 	],
@@ -9908,6 +10366,533 @@
 			]
 		}
 	],
+	"foundryOptionalfeature": [
+		{
+			"name": "M.A.C.",
+			"source": "DarkMatter24",
+			"activities": [
+				{
+					"name": "Build",
+					"type": "summon",
+					"activation": {
+						"type": "special"
+					},
+					"effects": [
+						{
+							"foundryId": "ROWY6ZBsNgEYVzdc"
+						}
+					],
+					"profiles": [
+						{
+							"uuid": "@creature[M.A.C.|DarkMatter24]"
+						}
+					],
+					"bonuses": {
+						"hd": "@classes.gadgeteer.levels",
+						"hp": "@classes.gadgeteer.levels * 5",
+						"attackDamage": "@abilities.int.mod"
+					},
+					"match": {
+						"proficiency": true,
+						"attacks": true,
+						"ability": "int"
+					}
+				}
+			],
+			"effects": [
+				{
+					"name": "Heavy Duty",
+					"foundryId": "ROWY6ZBsNgEYVzdc",
+					"changes": [
+						{
+							"key": "flags.dnd5e.powerfulBuild",
+							"mode": 2,
+							"value": "1"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Flux Cannon",
+			"source": "DarkMatter24",
+			"activities": [
+				{
+					"name": "Freeze",
+					"type": "save",
+					"activation": {
+						"type": "special",
+						"override": false,
+						"condition": "When you take the Attack action, you can replace one of your attacks with activating this device, targeting a Large or smaller creature or object or a 5-foot Cube area you can see within 30 feet of yourself. Choose Freeze or Heat."
+					},
+					"range": {
+						"units": "ft",
+						"override": false,
+						"value": "30"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"count": "1",
+							"type": "creatureOrObject"
+						},
+						"override": false,
+						"prompt": true
+					},
+					"save": {
+						"ability": [
+							"con"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					},
+					"damage": {
+						"onSave": "half",
+						"parts": [
+							{
+								"number": 2,
+								"denomination": 8,
+								"bonus": "@scale.gadgeteer.gadget-upgrade-d8",
+								"types": [
+									"cold"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"name": "Heat",
+					"type": "save",
+					"activation": {
+						"type": "special",
+						"override": false,
+						"condition": "When you take the Attack action, you can replace one of your attacks with activating this device, targeting a Large or smaller creature or object or a 5-foot Cube area you can see within 30 feet of yourself. Choose Freeze or Heat."
+					},
+					"range": {
+						"units": "ft",
+						"override": false,
+						"value": "30"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"count": "1",
+							"type": "creatureOrObject"
+						},
+						"override": false,
+						"prompt": true
+					},
+					"save": {
+						"ability": [
+							"con"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					},
+					"damage": {
+						"onSave": "half",
+						"parts": [
+							{
+								"number": 2,
+								"denomination": 8,
+								"bonus": "@scale.gadgeteer.gadget-upgrade-d8",
+								"types": [
+									"fire"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Micro Missiles",
+			"source": "DarkMatter24",
+			"activities": [
+				{
+					"name": "Save",
+					"type": "save",
+					"activation": {
+						"type": "special",
+						"override": false,
+						"condition": "When you take the Attack action, you can replace one of your attacks with a barrage of micro-missiles. Each creature you choose in a 10-foot Emanation originating from you makes a Dexterity saving throw, taking 2d4 Force damage on a failed save or half as much damage on a successful one."
+					},
+					"range": {
+						"units": "self",
+						"override": false,
+						"value": "10",
+						"special": ""
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"count": "",
+							"type": "radius",
+							"size": "10"
+						},
+						"affects": {
+							"choice": true,
+							"count": "",
+							"type": "creature"
+						},
+						"override": false,
+						"prompt": true
+					},
+					"damage": {
+						"onSave": "half",
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"number": 2,
+								"denomination": 4,
+								"bonus": "@scale.gadgeteer.gadget-upgrade-d4",
+								"types": [
+									"force"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Psionic Ray",
+			"source": "DarkMatter24",
+			"activities": [
+				{
+					"name": "Save",
+					"type": "save",
+					"activation": {
+						"type": "special",
+						"override": false,
+						"condition": "When you take the Attack action, you can replace one of your attacks with targeting a creature you can see within 120 feet of yourself with the device. The target makes a Wisdom saving throw, taking 2d6 Psychic damage on a failed save or half as much damage on a successful one."
+					},
+					"range": {
+						"units": "ft",
+						"override": false,
+						"value": "120"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"count": "1",
+							"type": "creature",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					},
+					"damage": {
+						"onSave": "half",
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"number": 2,
+								"denomination": 6,
+								"bonus": "@scale.gadgeteer.gadget-upgrade-d6",
+								"types": [
+									"psychic"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					},
+					"save": {
+						"ability": [
+							"wis"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Rocket Fists",
+			"source": "DarkMatter24",
+			"activities": [
+				{
+					"name": "Save",
+					"type": "save",
+					"activation": {
+						"type": "special",
+						"override": false,
+						"condition": "When you take the Attack action, you can replace one of your attacks with launching the gauntlets, choosing Remote Control or Rocket Punch. The gauntlets return to you at the end of your turn."
+					},
+					"range": {
+						"units": "ft",
+						"override": false,
+						"value": "30"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"count": "1",
+							"type": "creature",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					},
+					"damage": {
+						"onSave": "half",
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"number": 2,
+								"denomination": 6,
+								"bonus": "@scale.gadgeteer.gadget-upgrade-d6",
+								"types": [
+									"bludgeoning"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Omni-Grenade",
+			"source": "DarkMatter24",
+			"activities": [
+				{
+					"name": "Fire",
+					"type": "save",
+					"activation": {
+						"type": "special",
+						"override": false,
+						"condition": "When you take the Attack action, you can replace one of your attacks with throwing this explosive device up to 30 feet, which detonates in a 10-foot-radius Sphere."
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"scaling": {}
+							}
+						]
+					},
+					"range": {
+						"units": "ft",
+						"value": "30"
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"count": "",
+							"type": "sphere",
+							"size": "10"
+						},
+						"affects": {
+							"choice": false,
+							"count": "",
+							"type": "creature"
+						},
+						"override": false,
+						"prompt": true
+					},
+					"damage": {
+						"onSave": "half",
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"number": 4,
+								"denomination": 8,
+								"bonus": "@scale.gadgeteer.gadget-upgrade-d8",
+								"types": [
+									"fire"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					}
+				},
+				{
+					"name": "Ice",
+					"type": "save",
+					"activation": {
+						"type": "special",
+						"override": false,
+						"condition": "When you take the Attack action, you can replace one of your attacks with throwing this explosive device up to 30 feet, which detonates in a 10-foot-radius Sphere."
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"scaling": {}
+							}
+						]
+					},
+					"range": {
+						"units": "ft",
+						"value": "30"
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"count": "",
+							"type": "sphere",
+							"size": "10"
+						},
+						"affects": {
+							"choice": false,
+							"count": "",
+							"type": "creature"
+						},
+						"override": false,
+						"prompt": true
+					},
+					"damage": {
+						"onSave": "half",
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"number": 4,
+								"denomination": 8,
+								"bonus": "@scale.gadgeteer.gadget-upgrade-d8",
+								"types": [
+									"cold"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					}
+				},
+				{
+					"name": "Lightning",
+					"type": "save",
+					"activation": {
+						"type": "special",
+						"override": false,
+						"condition": "When you take the Attack action, you can replace one of your attacks with throwing this explosive device up to 30 feet, which detonates in a 10-foot-radius Sphere."
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"scaling": {}
+							}
+						]
+					},
+					"range": {
+						"units": "ft",
+						"value": "30"
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"count": "",
+							"type": "sphere",
+							"size": "10"
+						},
+						"affects": {
+							"choice": false,
+							"count": "",
+							"type": "creature"
+						},
+						"override": false,
+						"prompt": true
+					},
+					"damage": {
+						"onSave": "half",
+						"critical": {
+							"allow": false
+						},
+						"parts": [
+							{
+								"number": 4,
+								"denomination": 8,
+								"bonus": "@scale.gadgeteer.gadget-upgrade-d8",
+								"types": [
+									"lightning"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					}
+				}
+			]
+		}
+	],
 	"language": [
 		{
 			"name": "Machine Code",
@@ -9993,7 +10978,7 @@
 				{
 					"name": "Integrated Mace",
 					"entries": [
-						"{@atkr m} Bonus equals your Intelligence modifier plus your {@variantrule Proficiency|XPHB|Proficiency Bonus}, reach 5 ft. {@h}{@dice 1d6 + 2} plus your Intelligence modifier Bludgeoning damage."
+						"{@atkr m} Bonus equals your Intelligence modifier plus your {@variantrule Proficiency|XPHB|Proficiency Bonus}, reach 5 ft. {@h}{@damage 1d6 + 2} plus your Intelligence modifier Bludgeoning damage."
 					]
 				},
 				{
@@ -14033,6 +15018,9 @@
 			"wondrous": true,
 			"entries": [
 				"As a {@action Utilize|XPHB} action, you can throw this spherical device up to 30 feet, which detonates in a shimmering 30-foot-radius {@variantrule Sphere [Area of Effect]|XPHB|Sphere} on impact. Each creature and object that isn't being worn or carried within the {@variantrule Sphere [Area of Effect]|XPHB|Sphere} has the {@condition Invisible|XPHB} condition until the start of your next turn. The condition ends early immediately for a creature after it makes an attack roll, deals damage, or casts a spell."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -14084,6 +15072,9 @@
 			],
 			"attachedSpells": [
 				"levitate|xphb"
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -14484,6 +15475,9 @@
 			"value": 5000,
 			"entries": [
 				"This small metallic disk hums with gravitational energy. When you take the {@action Attack|XPHB} action on your turn, you can replace one of your attacks with throwing the mine to a space you can see within 30 feet of you. The mine firmly attaches to any surface it touches. If a creature other than you enters the 5-foot {@variantrule Cube [Area of Effect]|XPHB|Cube} area originating at the top of the mine or starts its turn there, it must succeed on a DC 13 Strength saving throw or have its {@variantrule Speed|XPHB} reduced to 0 until the start of its next turn. After 10 minutes, the mine burns out and becomes nonmagical."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -14698,6 +15692,9 @@
 			"entries": [
 				"A bolt of magic lightning surges around inside this glass canister, casting {@variantrule Bright Light|XPHB} in a 10-foot radius and {@variantrule Dim Light|XPHB} for an additional 10 feet.",
 				"When you take the {@action Attack|XPHB} action on your turn, you can replace one of your attacks with throwing the Bottled Lightning. Target one creature or object you can see within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and {@variantrule Proficiency|XPHB|Proficiency Bonus}) or take {@damage 2d8} Lightning damage and be unable to make {@action Opportunity Attack|XPHB|Opportunity Attacks} until the start of its next turn."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -14822,6 +15819,9 @@
 						"If you have proficiency in Martial weapons, this item grows in power as you do. The item's save DC increases when you reach level 5 (DC 15), 11 (DC 17), and 17 (DC 18)."
 					]
 				}
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -14831,6 +15831,9 @@
 			"wondrous": true,
 			"entries": [
 				"Activating this egg-shaped device as an action creates a dome of force centered on the projector as if you had cast the {@spell Geodesic Shield|DarkMatter24} spell. When the spell ends, the projector burns out and becomes nonmagical."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -14841,6 +15844,9 @@
 			"entries": [
 				"By grasping the two handles on this foot-wide steering wheel, you can cast the {@spell Speedcycle|DarkMatter24} spell. The motorcycle materializes beneath you and attaches to the steering wheel.",
 				"Once you use this item to cast the {@spell Speedcycle|DarkMatter24} spell, it can't be used again until the following dawn."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -14902,6 +15908,9 @@
 						"If you have proficiency in Martial weapons, this item grows in power as you do. The item's save DC increases when you reach level 5 (DC 15), 11 (DC 17), and 17 (DC 18)."
 					]
 				}
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -14951,6 +15960,9 @@
 			"value": 5000,
 			"entries": [
 				"You can attach this fist-sized device to an object weighing less than 2,000 pounds as a {@action Magic|XPHB} action, nullifying the object's mass as if it were targeted by the {@spell Levitate|XPHB} spell. The nullifier functions for 10 minutes, after which it burns out and permanently ceases to function. If the object is still aloft, it gently floats to the ground."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -14973,6 +15985,9 @@
 			"wondrous": true,
 			"entries": [
 				"When the button set into the top of this small, faceted orb is pressed as a {@action Magic|XPHB} action, holo-emitters generate a translucent humanoid figure, which the orb floats inside. This figure functions identically to the {@spell Unseen Servant|XPHB} spell, though it is visible (with an appearance determined by the creator)."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -14995,6 +16010,9 @@
 			"entries": [
 				"This 3-foot-long metal board produces a low hum and curiously hovers over any surface. You can ride the board or dismount it as a {@variantrule Bonus Action|XPHB}. While riding the board, your {@variantrule Speed|XPHB} increases by 10 feet, you ignore {@variantrule Difficult Terrain|XPHB}, and can move above the surface of liquids without sinking. The board can't scale an incline greater than 45 degrees unless it is in a zero-gravity environment.",
 				"You can use your choice of a Dexterity ({@skill Acrobatics|XPHB}) check or a Charisma ({@skill Performance|XPHB}) check to perform tricks on the board."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -15029,6 +16047,9 @@
 			"wondrous": true,
 			"entries": [
 				"This device is a miniature version of the impulse engines used in starships, and has been fitted with straps and a small handheld controller. It has 4 charges and regains {@dice 1d4} expended charges daily at dawn. While wearing it on your back, you can take a {@action Magic|XPHB} action and expend 1 charge, gaining a {@variantrule Fly Speed|XPHB} equal to your {@variantrule Speed|XPHB} for 10 minutes."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -15049,6 +16070,9 @@
 			"wondrous": true,
 			"entries": [
 				"This scanner bears an illuminated screen on one side. While holding it, you can determine the location of any creatures or objects within 60 feet of you that have moved since the end of your last turn, even if they have the {@condition Invisible|XPHB} condition or have {@variantrule Cover|XPHB|Total Cover} from you. A creature that has the {@action Hide|XPHB} action's {@condition Invisible|XPHB} condition, however, avoids detection by the tracker."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -15141,6 +16165,9 @@
 			"charges": 3,
 			"entries": [
 				"This device, worn over one eye, has 3 charges and regains all expended charges daily at dawn. As a {@variantrule Bonus Action|XPHB}, you can press a button on the device and expend 1 charge to analyze a creature you can see within 60 feet. You learn two of the following pieces of information: the target's {@variantrule Armor Class|XPHB}, current {@variantrule Hit Points|XPHB}, its {@variantrule Immunity|XPHB|Immunities}, its {@variantrule Resistance|XPHB|Resistances}, its {@variantrule Vulnerability|XPHB|Vulnerabilities}, or  any spells that currently affect the target."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -15151,6 +16178,9 @@
 			"wondrous": true,
 			"entries": [
 				"This device emits a shimmering field of magical force around you, protecting you from a single blow. You can activate this device as a {@variantrule Bonus Action|XPHB}. The next attack made against you within the next hour has a -10 penalty to hit. Then, the emitter must recharge and can't be used again until the next dawn."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -15163,6 +16193,9 @@
 			"entries": [
 				"This apparatus is worn on the back and produces a shoulder-mounted cannon above your left shoulder when you speak the command word as a {@action Magic|XPHB} action. Once activated, the cannon makes an attack at the start of each of your turns (no action required) against the nearest enemy it can see within 60 feet of you. The cannon has a +9 attack bonus and deals {@damage 3d8} Force damage on a hit. The cannon has {@sense Darkvision|XPHB} and {@sense Thermalsight|DarkMatter24} with a range of 120 feet, and can see {@condition Invisible|XPHB} creatures.",
 				"The cannon remains active for 1 minute. If you are {@condition Incapacitated|XPHB} or die, the cannon remains active until the end of its duration. Once activated, the cannon can't be activated again until the next dawn."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -15184,6 +16217,9 @@
 			"wondrous": true,
 			"entries": [
 				"This black keycard, emblazoned with a white skull, is imbued with magic that can unlock any door. As a {@action Magic|XPHB} action, you can use this keycard on any door which could be hacked, such as those on a ship, even if such a door doesn't have a keycard reader. The door becomes unlocked, as if targeted by the {@spell Knock|XPHB} spell, and opens."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -15228,7 +16264,10 @@
 			"rarity": "common",
 			"wondrous": true,
 			"entries": [
-				"When you throw this oblong metal container as a {@action Magic|XPHB} action, it unfolds into a Mechanical Spider (see Monsters chapter for statistics). Your spider acts independently of you, but it always obeys your commands. In combat, it takes its turn immediately before or after your turn each round (your choice). If the spider drops to 0 {@variantrule Hit Points|XPHB}, it can't be repaired. You can collapse the spider back down into its pod as a {@action Magic|XPHB} action. You can only have 3 spiders under your control at any time."
+				"When you throw this oblong metal container as a {@action Magic|XPHB} action, it unfolds into a {@creature Mechanical Spider|DarkMatter24} (see Monsters chapter for statistics). Your spider acts independently of you, but it always obeys your commands. In combat, it takes its turn immediately before or after your turn each round (your choice). If the spider drops to 0 {@variantrule Hit Points|XPHB}, it can't be repaired. You can collapse the spider back down into its pod as a {@action Magic|XPHB} action. You can only have 3 spiders under your control at any time."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -15247,6 +16286,9 @@
 			"wondrous": true,
 			"entries": [
 				"This handheld device, a necessity for distant voyages, translates any spoken language. While holding it, you can understand any spoken language you hear. Moreover, when you communicate by speaking or signing, any creature that knows at least one language and can hear the speech or see the signing can understand you."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -15266,6 +16308,9 @@
 			"entries": [
 				"This device, a bracer with an affixed rotary dial and several buttons lining its circumference, is connected to nine small extradimensional spaces. While wearing this bracer, you can use a {@action Magic|XPHB} action to deposit any weapon or object you are holding that weighs no more than 100 pounds and can fit into a 10-foot cube into one of the extradimensional spaces, linking that item to the wheel. The wheel can be linked to up to 9 items at a time, one in each extradimensional space. You can use a {@action Magic|XPHB} action to unlink an item from the wheel.",
 				"Once on each of your turns (no action required), you can teleport one of the wheel's linked items to your hand. Doing so also causes any other items linked to the wheel to return their extradimensional spaces."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -16015,7 +17060,10 @@
 						"disintegrate|xphb"
 					]
 				}
-			}
+			},
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
+			]
 		},
 		{
 			"name": "Double Laser Sword",
@@ -16307,6 +17355,9 @@
 			"value": 12500,
 			"entries": [
 				"As a {@action Utilize|XPHB} action, you can throw this spherical device up to 30 feet, which detonates in a 10-foot-radius {@variantrule Sphere [Area of Effect]|XPHB|Sphere} a moment after impact. Each creature within the {@variantrule Sphere [Area of Effect]|XPHB|Sphere} must succeed on a DC 13 Constitution saving throw or have the {@condition Blinded|XPHB} and {@condition Deafened|XPHB} conditions until the start of your next turn. A creature that shields its eyes and ears automatically succeeds on this saving throw."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -16328,6 +17379,9 @@
 			"charges": 5,
 			"entries": [
 				"This elaborate mod contains an integrated Construct that can adjust your aim on the fly. This mod has 5 charges and regains {@dice 1d4 + 1} charges daily at dawn. When you make a ranged attack using this blaster, you can expend 1 charge for the Aimbot to attack on your behalf; you forgo rolling the {@dice d20} to get a 10 on the die. If the roll has {@variantrule Advantage|XPHB} or {@variantrule Disadvantage|XPHB}, the 10 replaces only one of the two dice, and you roll the other {@dice d20} as normal."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -16346,6 +17400,9 @@
 			"wondrous": true,
 			"entries": [
 				"When you make a ranged attack with this blaster, you can activate the Beam Module on the weapon's barrel to focus the shot into a 5-foot wide {@variantrule Line [Area of Effect]|XPHB|Line} that extends out to the weapon's normal range. Each creature in that {@variantrule Line [Area of Effect]|XPHB|Line} makes a DC 15 Dexterity saving throw. On a failed save, a creature takes the weapon's normal damage plus an extra {@damage 2d6} Radiant damage, or half as much damage on a successful one. The blaster then Overheats; an overheated weapon can't be used again to make an attack until the end of your next turn. Once you use this mod, you can't use it again until the next dawn."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -16364,6 +17421,9 @@
 			"wondrous": true,
 			"entries": [
 				"This barrel-mounted module emits sparks of lighting into the blaster's aperture. While it is installed, this blaster deals Lightning damage instead of its normal damage type and it gains the {@itemMastery Jolt|DarkMatter24} mastery property in addition to its normal mastery property. You can only use one mastery property on each attack. You can use the {@itemMastery Jolt|DarkMatter24} property of the blaster, even if you don't have the Weapon Mastery feature, and it doesn't count against the number of weapons you can use."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -16374,6 +17434,9 @@
 			"bonusWeapon": "+1",
 			"entries": [
 				"This arcane battery surges with magical energy. While it is installed, you have a +1 bonus to ranged attack and damage rolls made with this blaster, which is a magic weapon. The bonus is determined by the battery's rarity and doesn't apply to magic weapons that already have a bonus to attack and damage rolls."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -16384,6 +17447,9 @@
 			"bonusWeapon": "+2",
 			"entries": [
 				"This arcane battery surges with magical energy. While it is installed, you have a +2 bonus to ranged attack and damage rolls made with this blaster, which is a magic weapon. The bonus is determined by the battery's rarity and doesn't apply to magic weapons that already have a bonus to attack and damage rolls."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -16394,6 +17460,9 @@
 			"bonusWeapon": "+3",
 			"entries": [
 				"This arcane battery surges with magical energy. While it is installed, you have a +3 bonus to ranged attack and damage rolls made with this blaster, which is a magic weapon. The bonus is determined by the battery's rarity and doesn't apply to magic weapons that already have a bonus to attack and damage rolls."
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
@@ -16495,6 +17564,9 @@
 						"The Deck of Holding can hold up to 2,000 pounds, not exceeding a volume of 256 cubic feet."
 					]
 				}
+			],
+			"optionalfeatures": [
+				"Magic Item|DarkMatter24"
 			]
 		},
 		{
