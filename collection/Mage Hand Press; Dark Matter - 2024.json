@@ -8387,7 +8387,6 @@
 		{
 			"name": "Biotech Field",
 			"source": "DarkMatter24",
-			"page": 0,
 			"className": "Gadgeteer",
 			"classSource": "DarkMatter24",
 			"subclassShortName": "Cyber Surgeon",
@@ -8521,6 +8520,463 @@
 						{
 							"name": "Omega",
 							"uuid": "@creature[Personal Drone (Omega)|DarkMatter24]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Slip Gate",
+			"source": "DarkMatter24",
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"subclassShortName": "Jumper",
+			"subclassSource": "DarkMatter24",
+			"level": 3,
+			"activities": [
+				{
+					"name": "Portals",
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"range": {
+						"units": "ft",
+						"value": "30"
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"type": "cube",
+							"size": "5",
+							"count": "2"
+						},
+						"affects": {
+							"count": "2"
+						},
+						"override": false,
+						"prompt": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Dimensional Pit",
+			"source": "DarkMatter24",
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"subclassShortName": "Jumper",
+			"subclassSource": "DarkMatter24",
+			"level": 6,
+			"advice": {
+				"type": "section",
+				"entries": [
+					"Place one cube on the creature and then the second on an adjacent empty space to symbolize the portal."
+				]
+			},
+			"activities": [
+				{
+					"name": "Save",
+					"type": "save",
+					"activation": {
+						"type": "action"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"effects": [
+						{
+							"foundryId": "KGEftKevBm16gJmK",
+							"onSave": false
+						}
+					],
+					"range": {
+						"units": "ft",
+						"value": "60"
+					},
+					"target": {
+						"template": {
+							"contiguous": true,
+							"units": "ft",
+							"type": "cube",
+							"size": "5",
+							"count": "2"
+						},
+						"affects": {
+							"choice": false,
+							"type": "creature",
+							"count": "1",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					}
+				}
+			],
+			"effects": [
+				{
+					"name": "Dimensional Pit",
+					"foundryId": "KGEftKevBm16gJmK",
+					"changes": [],
+					"duration": {
+						"seconds": 60
+					}
+				}
+			]
+		},
+		{
+			"name": "Improved Slip Gate",
+			"source": "DarkMatter24",
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"subclassShortName": "Jumper",
+			"subclassSource": "DarkMatter24",
+			"level": 10,
+			"activities": [
+				{
+					"name": "Shield Gate",
+					"type": "heal",
+					"activation": {
+						"type": "special",
+						"condition": "When you or an ally goes through one of your Slip Gate portals"
+					},
+					"range": {
+						"units": "any"
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"type": ""
+						},
+						"affects": {
+							"choice": false,
+							"type": "creature",
+							"count": "1",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					},
+					"healing": {
+						"types": [
+							"temphp"
+						],
+						"custom": {
+							"enabled": true,
+							"formula": "@classes.gadgeteer.levels + @abilities.int.mod"
+						},
+						"scaling": {
+							"number": 1
+						}
+					}
+				},
+				{
+					"name": "Tele-Frag",
+					"type": "save",
+					"activation": {
+						"type": "special",
+						"condition": "When you or an ally goes through one of your Slip Gate portals"
+					},
+					"range": {
+						"units": "any"
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"type": "cube",
+							"size": "15",
+							"count": ""
+						},
+						"affects": {
+							"type": "space"
+						},
+						"override": false,
+						"prompt": true
+					},
+					"damage": {
+						"onSave": "half",
+						"parts": [
+							{
+								"number": 4,
+								"denomination": 6,
+								"types": [
+									"force"
+								],
+								"scaling": {
+									"number": 1
+								}
+							}
+						]
+					},
+					"save": {
+						"ability": [
+							"dex"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Displacement",
+			"source": "DarkMatter24",
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"subclassShortName": "Jumper",
+			"subclassSource": "DarkMatter24",
+			"level": 14,
+			"activities": [
+				{
+					"name": "Save",
+					"type": "save",
+					"activation": {
+						"type": "special",
+						"condition": "When you take the Attack action, you can replace one of your attacks with attempting to teleport an enemy you can see within 60 feet of yourself"
+					},
+					"range": {
+						"units": "ft",
+						"value": "60"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "creature",
+							"count": "1",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					},
+					"save": {
+						"ability": [
+							"cha"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					},
+					"damage": {
+						"onSave": "none"
+					}
+				}
+			]
+		},
+		{
+			"name": "Reconfigure",
+			"source": "DarkMatter24",
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"subclassShortName": "Mastermaker",
+			"subclassSource": "DarkMatter24",
+			"level": 3,
+			"activities:": [
+				{
+					"name": "Strength",
+					"type": "utility",
+					"activation": {
+						"type": "shortRest"
+					},
+					"effects": [
+						{
+							"foundryId": "IiYbgnaoFDVy5Zx9"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						},
+						"override": false,
+						"prompt": true
+					}
+				},
+				{
+					"name": "Dexterity",
+					"type": "utility",
+					"activation": {
+						"type": "shortRest"
+					},
+					"effects": [
+						{
+							"foundryId": "WOLe2P7F4iQWYYR1"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						},
+						"override": false,
+						"prompt": true
+					}
+				},
+				{
+					"name": "Charisma",
+					"type": "utility",
+					"activation": {
+						"type": "shortRest"
+					},
+					"effects": [
+						{
+							"foundryId": "WOLe2P7F4iQWYYR2"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						},
+						"override": false,
+						"prompt": true
+					}
+				},
+				{
+					"name": "Wisdom",
+					"type": "utility",
+					"activation": {
+						"type": "shortRest"
+					},
+					"effects": [
+						{
+							"foundryId": "WOLe2P7F4iQWYYR3"
+						}
+					],
+					"range": {
+						"units": "self"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "self"
+						},
+						"override": false,
+						"prompt": true
+					}
+				},
+			],
+			"effects": [
+				{
+					"name": "Reconfigure (Strength)",
+					"foundryId": "IiYbgnaoFDVy5Zx9",
+					"changes": [
+						{
+							"key": "system.abilities.str.value",
+							"mode": 2,
+							"value": "2"
+						}
+					]
+				},
+				{
+					"name": "Reconfigure (Dexterity)",
+					"foundryId": "WOLe2P7F4iQWYYR1",
+					"changes": [
+						{
+							"key": "system.abilities.dex.value",
+							"mode": 2,
+							"value": "2"
+						}
+					]
+				},
+				{
+					"name": "Reconfigure (Charisma)",
+					"foundryId": "WOLe2P7F4iQWYYR2",
+					"changes": [
+						{
+							"key": "system.abilities.cha.value",
+							"mode": 2,
+							"value": "2"
+						}
+					]
+				},
+				{
+					"name": "Reconfigure (Wisdom)",
+					"foundryId": "WOLe2P7F4iQWYYR3",
+					"changes": [
+						{
+							"key": "system.abilities.wis.value",
+							"mode": 2,
+							"value": "2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Construct Perfection",
+			"source": "DarkMatter24",
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"subclassShortName": "Mastermaker",
+			"subclassSource": "DarkMatter24",
+			"level": 14,
+			"effects": [
+				{
+					"name": "Construct Perfection",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.abilities.int.value",
+							"mode": 2,
+							"value": "2",
+							"priority": 20
+						},
+						{
+							"key": "system.traits.di.value",
+							"mode": 2,
+							"value": "poison",
+							"priority": 20
+						},
+						{
+							"key": "system.traits.di.value",
+							"mode": 2,
+							"value": "psychic",
+							"priority": 20
+						},
+						{
+							"key": "system.traits.ci.value",
+							"mode": 2,
+							"value": "charmed",
+							"priority": 20
+						},
+						{
+							"key": "system.traits.ci.value",
+							"mode": 2,
+							"value": "frightened",
+							"priority": 20
+						},
+						{
+							"key": "system.traits.ci.value",
+							"mode": 2,
+							"value": "poisoned",
+							"priority": 20
 						}
 					]
 				}
@@ -11532,7 +11988,7 @@
 			"source": "DarkMatter24",
 			"tokenHref": {
 				"type": "external",
-				"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/refs/heads/main/img/DarkMatter24/Token/Personal Drone.webp"
+				"url": "https://raw.githubusercontent.com/unknown117343/homebrew-img/refs/heads/mhpupdates3/img/DarkMatter24/Token/Personal Drone.webp"
 			},
 			"page": 0,
 			"size": [
@@ -11622,6 +12078,8 @@
 			"miscTags": [
 				"RA"
 			],
+			"hasToken": true,
+			"hasFluffImages": true,
 			"_versions": [
 				{
 					"name": "Personal Drone (Assault)",
@@ -12521,6 +12979,19 @@
 					"href": {
 						"type": "external",
 						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/refs/heads/main/img/DarkMatter24/Feature/MAC.webp"
+					}
+				}
+			]
+		},
+		{
+			"name": "Personal Drone",
+			"source": "DarkMatter24",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "external",
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/refs/heads/main/img/DarkMatter24/Subclass/Drone Jockey.webp"
 					}
 				}
 			]
