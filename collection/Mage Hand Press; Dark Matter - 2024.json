@@ -8280,6 +8280,238 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Lazarus Bolt",
+			"source": "DarkMatter24",
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"subclassShortName": "Cyber Surgeon",
+			"subclassSource": "DarkMatter24",
+			"level": 6,
+			"activities": [
+				{
+					"name": "Heal",
+					"type": "heal",
+					"activation": {
+						"type": "action"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					},
+					"range": {
+						"units": "ft",
+						"value": "5"
+					},
+					"target": {
+						"affects": {
+							"choice": false,
+							"type": "creature",
+							"count": "1",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					},
+					"uses": {
+						"recovery": [
+							{
+								"period": "lr",
+								"type": "recoverAll"
+							}
+						]
+					},
+					"healing": {
+						"types": [
+							"temphp"
+						],
+						"custom": {
+							"enabled": true,
+							"formula": "(@classes.gadgeteer.levels) * 2"
+						},
+						"scaling": {
+							"number": 1
+						}
+					}
+				},
+				{
+					"name": "Expend Bio-Serum to Regain Use",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "2",
+								"target": "4CHqCedOSfZ7kRdG",
+								"scaling": {}
+							},
+							{
+								"type": "itemUses",
+								"value": "-1",
+								"target": "",
+								"scaling": {}
+							}
+						]
+					},
+					"range": {
+						"units": "self"
+					}
+				}
+			]
+		},
+		{
+			"name": "Biotech Field",
+			"source": "DarkMatter24",
+			"page": 0,
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"subclassShortName": "Cyber Surgeon",
+			"subclassSource": "DarkMatter24",
+			"level": 14,
+			"activities": [
+				{
+					"name": "Heal",
+					"type": "heal",
+					"activation": {
+						"type": "action",
+						"value": 1
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": true,
+							"max": "@activity.uses.value"
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": "",
+								"scaling": {
+									"mode": ""
+								}
+							},
+							{
+								"type": "activityUses",
+								"value": "1",
+								"scaling": {
+									"mode": "amount",
+									"formula": ""
+								}
+							}
+						]
+					},
+					"range": {
+						"units": "self",
+						"override": false,
+						"special": ""
+					},
+					"target": {
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"type": "radius",
+							"size": "30",
+							"count": ""
+						},
+						"affects": {
+							"choice": false,
+							"type": "creature",
+							"count": "",
+							"special": ""
+						},
+						"override": false,
+						"prompt": true
+					},
+					"uses": {
+						"recovery": [
+							{
+								"period": "lr",
+								"type": "recoverAll"
+							}
+						],
+						"max": "100"
+					},
+					"healing": {
+						"types": [
+							"healing"
+						],
+						"custom": {
+							"enabled": true,
+							"formula": "@scaling"
+						},
+						"scaling": {
+							"number": 1
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Drone Commander",
+			"source": "DarkMatter24",
+			"className": "Gadgeteer",
+			"classSource": "DarkMatter24",
+			"subclassShortName": "Drone Jockey",
+			"subclassSource": "DarkMatter24",
+			"level": 3,
+			"advice": {
+				"type": "section",
+				"entries": [
+					"When creating a Drone, use the Omni option until level 14 where you gain {@subclassFeature Omega Upgrade|Gadgeteer|DarkMatter24|Drone Jockey|DarkMatter24|14}."
+				]
+			},
+			"activities": [
+				{
+					"name": "Swift Command",
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"value": 1
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					}
+				},
+				{
+					"name": "Create Drone",
+					"type": "summon",
+					"activation": {
+						"type": "special"
+					},
+					"match": {
+						"attacks": true,
+						"ability": "int"
+					},
+					"profiles": [
+						{
+							"name": "Omni",
+							"uuid": "@creature[Personal Drone (Omni)|DarkMatter24]"
+						},
+						{
+							"name": "Omega",
+							"uuid": "@creature[Personal Drone (Omega)|DarkMatter24]"
+						}
+					]
+				}
+			]
 		}
 	],
 	"spell": [
@@ -11311,6 +11543,150 @@
 			],
 			"miscTags": [
 				"RA"
+			],
+			"_versions": [
+				{
+					"name": "Personal Drone (Assault)",
+					"source": "DarkMatter24",
+					"_mod": {
+						"action": [
+							{
+								"mode": "renameArr",
+								"renames": {
+									"rename": "Integrated Blaster (Assault Only)",
+									"with": "Integrated Blaster"
+								}
+							},
+							{
+								"mode": "removeArr",
+								"names": "Revival Protocol (Medical Only, 1/Day)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Shield Projector (Shield Only)",
+								"force": true
+							}
+						]
+					}
+				},
+				{
+					"name": "Personal Drone (Medical)",
+					"source": "DarkMatter24",
+					"_mod": {
+						"action": [
+							{
+								"mode": "renameArr",
+								"renames": {
+									"rename": "Revival Protocol (Medical Only, 1/Day)",
+									"with": "Revival Protocol (1/Day)"
+								}
+							},
+							{
+								"mode": "removeArr",
+								"names": "Integrated Blaster (Assault Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Shield Projector (Shield Only)",
+								"force": true
+							}
+						]
+					}
+				},
+				{
+					"name": "Personal Drone (Shield)",
+					"source": "DarkMatter24",
+					"_mod": {
+						"action": [
+							{
+								"mode": "renameArr",
+								"renames": {
+									"rename": "Shield Projector (Shield Only)",
+									"with": "Shield Projector"
+								}
+							},
+							{
+								"mode": "removeArr",
+								"names": "Integrated Blaster (Assault Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Revival Protocol (Medical Only, 1/Day)",
+								"force": true
+							}
+						]
+					}
+				},
+				{
+					"name": "Personal Drone (Omni)",
+					"source": "DarkMatter24",
+					"_mod": {
+						"action": [
+							{
+								"mode": "renameArr",
+								"renames": {
+									"rename": "Integrated Blaster (Assault Only)",
+									"with": "Integrated Blaster"
+								}
+							},
+							{
+								"mode": "renameArr",
+								"renames": {
+									"rename": "Revival Protocol (Medical Only, 1/Day)",
+									"with": "Revival Protocol (1/Day)"
+								}
+							},
+							{
+								"mode": "renameArr",
+								"renames": {
+									"rename": "Shield Projector (Shield Only)",
+									"with": "Shield Projector"
+								}
+							}
+						]
+					}
+				},
+				{
+					"name": "Personal Drone (Omega)",
+					"source": "DarkMatter24",
+					"_mod": {
+						"action": [
+							{
+								"mode": "replaceArr",
+								"replace": "Integrated Blaster (Assault Only)",
+								"items": {
+									"name": "Integrated Blaster",
+									"entries": [
+										"{@atkr r} {@hit 5}, range 30/120 ft. {@h}5 ({@damage 2d6}) Radiant damage."
+									]
+								}
+							},
+							{
+								"mode": "replaceArr",
+								"replace": "Revival Protocol (Medical Only, 1/Day)",
+								"items": {
+									"name": "Revival Protocol (1/Day)",
+									"entries": [
+										"The drone restores 18 ({@dice 4d8}) {@variantrule Hit Points|XPHB} to a creature within 5 feet of it."
+									]
+								}
+							},
+							{
+								"mode": "replaceArr",
+								"replace": "Shield Projector (Shield Only)",
+								"items": {
+									"name": "Shield Projector",
+									"entries": [
+										"The drone projects a shield around a creature within 5 feet of it. The next time that the creature is hit by an attack roll before the start of the drone's next turn, roll a {@dice d8} and add it to the creature's AC, potentially causing the attack to miss."
+									]
+								}
+							}
+						]
+					}
+				}
 			]
 		},
 		{
