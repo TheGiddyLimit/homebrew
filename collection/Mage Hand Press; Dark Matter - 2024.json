@@ -9045,7 +9045,101 @@
 			"subclassShortName": "Configuration",
 			"subclassSource": "DarkMatter24",
 			"level": 3,
-			"activities": []
+			"activities": [
+				{
+					"name": "Juggernaut",
+					"type": "transform",
+					"activation": {
+						"type": "bonus",
+						"override": false,
+						"condition": ""
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Wild Shape"
+									}
+								}
+							}
+						]
+					},
+					"profiles": [
+						{
+							"name": "Level 3+",
+							"uuid": "@creature[Juggernaut (Level 3+)|DarkMatter24]"
+						},
+						{
+							"name": "Level 5+",
+							"uuid": "@creature[Juggernaut (Level 5+)|DarkMatter24]"
+						},
+						{
+							"name": "Level 10+",
+							"uuid": "@creature[Juggernaut (Level 10+)|DarkMatter24]"
+						},
+						{
+							"name": "Level 14+",
+							"uuid": "@creature[Juggernaut (Level 14+)|DarkMatter24]"
+						},
+						{
+							"name": "Level 17+",
+							"uuid": "@creature[Juggernaut (Level 17+)|DarkMatter24]"
+						}
+					],
+					"settings": {
+						"effects": [
+							"origin",
+							"otherOrigin",
+							"background",
+							"class",
+							"feat",
+							"spell"
+						],
+						"keep": [
+							"mental",
+							"languages",
+							"class",
+							"feats",
+							"bio",
+							"type",
+							"hp",
+							"tempHP"
+						],
+						"merge": [
+							"saves",
+							"skills"
+						],
+						"tempFormula": "max(@classes.druid.levels * 3)",
+						"transformTokens": true
+					},
+					"transform": {
+						"customize": true,
+						"mode": "",
+						"preset": ""
+					},
+					"target": {
+						"prompt": true,
+						"template": {
+							"contiguous": false,
+							"units": "ft",
+							"type": ""
+						},
+						"affects": {
+							"choice": false,
+							"type": "self"
+						},
+						"override": false
+					},
+					"range": {
+						"units": "self",
+						"override": false,
+						"special": ""
+					}
+				}
+			]
 		}
 	],
 	"spell": [
@@ -12416,7 +12510,124 @@
 			"hasFluffImages": true,
 			"_versions": [
 				{
-					"name": "Construct Form (Juggernaut)",
+					"name": "Juggernaut (Level 3+)",
+					"source": "DarkMatter24",
+					"_mod": {
+						"trait": [
+							{
+								"mode": "removeArr",
+								"names": "Mettle (Level 10, Juggernaut Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Fortified (Level 14, Juggernaut Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Evasion (Level 10, Mobile Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Tenacity (Level 10, Turret Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Flight (Level 14, Mobile Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Laser Targeting (Level 14, Turret Only)",
+								"force": true
+							}
+						],
+						"action": [
+							{
+								"mode": "removeArr",
+								"names": "Multiattack (Level 5)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Photon Cannon (Turret Only)",
+								"force": true
+							}
+						]
+					},
+					"ac": [
+						18
+					],
+					"speed": {
+						"walk": 30
+					}
+				},
+				{
+					"name": "Juggernaut (Level 5+)",
+					"source": "DarkMatter24",
+					"_mod": {
+						"trait": [
+							{
+								"mode": "removeArr",
+								"names": "Mettle (Level 10, Juggernaut Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Fortified (Level 14, Juggernaut Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Evasion (Level 10, Mobile Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Tenacity (Level 10, Turret Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Flight (Level 14, Mobile Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Laser Targeting (Level 14, Turret Only)",
+								"force": true
+							}
+						],
+						"action": [
+							{
+								"mode": "replaceArr",
+								"replace": "Multiattack (Level 5)",
+								"items": {
+									"name": "Multiattack",
+									"entries": [
+										"The construct makes an additional attack in any combination."
+									]
+								}
+							},
+							{
+								"mode": "removeArr",
+								"names": "Photon Cannon (Turret Only)",
+								"force": true
+							}
+						]
+					},
+					"ac": [
+						18
+					],
+					"speed": {
+						"walk": 30
+					}
+				},
+				{
+					"name": "Juggernaut (Level 10+)",
 					"source": "DarkMatter24",
 					"_mod": {
 						"trait": [
@@ -12424,14 +12635,140 @@
 								"mode": "renameArr",
 								"renames": {
 									"rename": "Mettle (Level 10, Juggernaut Only)",
-									"with": "Mettle (Level 10)"
+									"with": "Mettle"
+								}
+							},
+							{
+								"mode": "removeArr",
+								"names": "Fortified (Level 14, Juggernaut Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Evasion (Level 10, Mobile Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Tenacity (Level 10, Turret Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Flight (Level 14, Mobile Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Laser Targeting (Level 14, Turret Only)",
+								"force": true
+							}
+						],
+						"action": [
+							{
+								"mode": "replaceArr",
+								"replace": "Multiattack (Level 5)",
+								"items": {
+									"name": "Multiattack",
+									"entries": [
+										"The construct makes an additional attack in any combination."
+									]
+								}
+							},
+							{
+								"mode": "removeArr",
+								"names": "Photon Cannon (Turret Only)",
+								"force": true
+							}
+						]
+					},
+					"ac": [
+						18
+					],
+					"speed": {
+						"walk": 30
+					}
+				},
+				{
+					"name": "Juggernaut (Level 11+)",
+					"source": "DarkMatter24",
+					"_mod": {
+						"trait": [
+							{
+								"mode": "renameArr",
+								"renames": {
+									"rename": "Mettle (Level 10, Juggernaut Only)",
+									"with": "Mettle"
+								}
+							},
+							{
+								"mode": "removeArr",
+								"names": "Fortified (Level 14, Juggernaut Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Evasion (Level 10, Mobile Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Tenacity (Level 10, Turret Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Flight (Level 14, Mobile Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Laser Targeting (Level 14, Turret Only)",
+								"force": true
+							}
+						],
+						"action": [
+							{
+								"mode": "replaceArr",
+								"replace": "Multiattack (Level 5)",
+								"items": {
+									"name": "Multiattack",
+									"entries": [
+										"The construct makes 2 additional attacks in any combination."
+									]
+								}
+							},
+							{
+								"mode": "removeArr",
+								"names": "Photon Cannon (Turret Only)",
+								"force": true
+							}
+						]
+					},
+					"ac": [
+						18
+					],
+					"speed": {
+						"walk": 30
+					}
+				},
+				{
+					"name": "Juggernaut (Level 14+)",
+					"source": "DarkMatter24",
+					"_mod": {
+						"trait": [
+							{
+								"mode": "renameArr",
+								"renames": {
+									"rename": "Mettle (Level 10, Juggernaut Only)",
+									"with": "Mettle"
 								}
 							},
 							{
 								"mode": "renameArr",
 								"renames": {
 									"rename": "Fortified (Level 14, Juggernaut Only)",
-									"with": "Fortified (Level 14)"
+									"with": "Fortified"
 								}
 							},
 							{
@@ -12456,6 +12793,81 @@
 							}
 						],
 						"action": [
+							{
+								"mode": "replaceArr",
+								"replace": "Multiattack (Level 5)",
+								"items": {
+									"name": "Multiattack",
+									"entries": [
+										"The construct makes 2 additional attacks in any combination."
+									]
+								}
+							},
+							{
+								"mode": "removeArr",
+								"names": "Photon Cannon (Turret Only)",
+								"force": true
+							}
+						]
+					},
+					"ac": [
+						18
+					],
+					"speed": {
+						"walk": 30
+					}
+				},
+				{
+					"name": "Juggernaut (Level 17+)",
+					"source": "DarkMatter24",
+					"_mod": {
+						"trait": [
+							{
+								"mode": "renameArr",
+								"renames": {
+									"rename": "Mettle (Level 10, Juggernaut Only)",
+									"with": "Mettle"
+								}
+							},
+							{
+								"mode": "renameArr",
+								"renames": {
+									"rename": "Fortified (Level 14, Juggernaut Only)",
+									"with": "Fortified"
+								}
+							},
+							{
+								"mode": "removeArr",
+								"names": "Evasion (Level 10, Mobile Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Tenacity (Level 10, Turret Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Flight (Level 14, Mobile Only)",
+								"force": true
+							},
+							{
+								"mode": "removeArr",
+								"names": "Laser Targeting (Level 14, Turret Only)",
+								"force": true
+							}
+						],
+						"action": [
+							{
+								"mode": "replaceArr",
+								"replace": "Multiattack (Level 5)",
+								"items": {
+									"name": "Multiattack",
+									"entries": [
+										"The construct makes 3 additional attacks in any combination."
+									]
+								}
+							},
 							{
 								"mode": "removeArr",
 								"names": "Photon Cannon (Turret Only)",
