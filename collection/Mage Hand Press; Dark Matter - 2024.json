@@ -6486,7 +6486,62 @@
 				},
 				"You have a +1 bonus to attack and damage rolls with your Cyber Katana. This bonus increases when you reach Rogue levels 9 (+2) and 17 (+3).",
 				"If the Cyber Katana is lost, you can build a new one for 100 CR over the course of 8 hours, which can be done during a {@variantrule Long Rest|XPHB}."
-			]
+			],
+			"subEntities": {
+				"item": [
+					{
+						"name": "Cyber Katana",
+						"source": "DarkMatter24",
+						"type": "M|XPHB",
+						"edition": "one",
+						"rarity": "none",
+						"weaponCategory": "martial",
+						"property": [
+							"F|XPHB",
+							"V|XPHB"
+						],
+						"mastery": [
+							"Vex|XPHB"
+						],
+						"dmg1": "1d8",
+						"dmgType": "S",
+						"dmg2": "1d10",
+						"weapon": true,
+						"entries": [
+							"An elegant weapon for a more enlightened age, the Laser Sword which projects a fixed-length laser from a metal hilt when activated. Its weightless blade makes for an agile weapon, capable of slicing through many materials. It could even stop a blaster bolt, but alas, one would need superhuman reflexes to intercept incoming plasma."
+						],
+						"foundrySystem": {
+							"equipped": true
+						},
+						"foundryActivities": [
+							{
+								"foundryId": "cyberKatana",
+								"name": "Attack",
+								"type": "attack",
+								"activation": {
+									"type": "action",
+									"value": 1
+								},
+								"target": {
+									"affects": {
+										"count": "1",
+										"type": "creature"
+									}
+								},
+								"damage": {
+									"parts": [
+										{
+											"types": [
+												"lightning"
+											]
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			}
 		},
 		{
 			"name": "Ninja Agility",
@@ -10410,6 +10465,12 @@
 			"className": "Gadgeteer",
 			"classSource": "DarkMatter24",
 			"level": 11,
+			"advice": {
+				"type": "section",
+				"entries": [
+					"Use the appropriate activity that matches the damage die of the weapon/gadget you are enchanting."
+				]
+			},
 			"activities": [
 				{
 					"name": "1d4",
@@ -18360,6 +18421,34 @@
 					"name": "Drone Combat",
 					"entries": [
 						"While attuned to the controller, you can use a {@variantrule Bonus Action|XPHB} to issue commands to the drone. Your drone takes its turn immediately before or after your turn each round (your choice). If you issue no commands, the drone doesn't take any actions. Once given an order, the drone continues to follow it until its task is complete."
+					]
+				}
+			],
+			"foundryActivities": [
+				{
+					"foundryId": "droneController",
+					"name": "Create Drone",
+					"type": "summon",
+					"activation": {
+						"type": "special"
+					},
+					"match": {
+						"attacks": true,
+						"ability": "int"
+					},
+					"profiles": [
+						{
+							"name": "Assault",
+							"uuid": "@creature[Personal Drone (Assault)|DarkMatter24]"
+						},
+						{
+							"name": "Medical",
+							"uuid": "@creature[Personal Drone (Medical)|DarkMatter24]"
+						},
+						{
+							"name": "Shield",
+							"uuid": "@creature[Personal Drone (Shield)|DarkMatter24]"
+						}
 					]
 				}
 			]
