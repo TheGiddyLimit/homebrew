@@ -1036,8 +1036,8 @@
 			"page": 6,
 			"level": 5,
 			"entries": [
-				"You are always prepared for a brawl. When you roll initiative, you gain {@classFeature Grit|Ruffian|alterNERDtiveTheRuffianRevised|1|alterNERDtiveTheRuffianRevised|Grit Points} until you have one third of your maximum, rounded up.",
-				"Once you use this feature, you cannot use it again until you complete a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}."
+				"You are always prepared for a brawl. Instead of losing all your {@classFeature Grit|Ruffian|alterNERDtiveTheRuffianRevised|1|alterNERDtiveTheRuffianRevised|Grit Points} on a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}, you retain one third of your maximum, rounded up.",
+				"If you have fewer than that remaining, you regain Grit Points until you have one third of your maximum, rounded up."
 			],
 			"foundrySystem": {
 				"uses": {
@@ -1359,6 +1359,47 @@
 						}
 					},
 					"type": "heal"
+				},
+				{
+					"name": "Combat Readiness",
+					"activation": {
+						"type": "none"
+					},
+					"effects": [
+						{
+							"foundryId": "combatReadiness"
+						}
+					],
+					"restrictions": {
+						"type": "feat"
+					},
+					"type": "enchant",
+					"enchant.self": true,
+					"visibility": {
+						"identifier": "ruffian",
+						"level.min": 5
+					},
+					"foundryId": "combatReadiness"
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "combatReadiness",
+					"changes": [
+						{
+							"key": "system.uses.recovery",
+							"mode": "OVERRIDE",
+							"value": "{ \"period\": \"sr\", \"type\": \"formula\", \"formula\": \"ceil(@item.uses.max / 3) - @item.uses.value\" }"
+						},
+						{
+							"key": "system.activities.combatReadiness0.name",
+							"mode": "OVERRIDE",
+							"value": "{} (enabled)"
+						}
+					],
+					"disabled": true,
+					"transfer": true,
+					"type": "enchantment"
 				}
 			]
 		},
@@ -1608,59 +1649,9 @@
 			"advice": {
 				"type": "section",
 				"entries": [
-					"If you have some points available when you use this feature, use the appropriate activity and set the scaling manually to a value that will result in having one third of your Grit Points (rounded up) available."
+					"Use the provided enchantment activity on the Grit class feature that has become active at level 5; it will override the recovery settings to retain/regain the appropriate amount of Grit Points."
 				]
-			},
-			"activities": [
-				{
-					"name": "Restore Grit Points (none remaining)",
-					"activation": {
-						"type": "encounter"
-					},
-					"consumption": {
-						"targets": [
-							{
-								"type": "itemUses",
-								"target": {
-									"consumes": {
-										"name": "Grit"
-									}
-								},
-								"value": "- ceil(@scale.ruffian.grit-points-maximum / 3)"
-							}
-						]
-					},
-					"type": "utility"
-				},
-				{
-					"name": "Restore Grit Points (some remaining)",
-					"activation": {
-						"type": "encounter"
-					},
-					"consumption": {
-						"scaling": {
-							"allowed": true,
-							"max": "ceil(@scale.ruffian.grit-points-maximum / 3)"
-						},
-						"targets": [
-							{
-								"type": "itemUses",
-								"scaling": {
-									"formula": -1,
-									"mode": "amount"
-								},
-								"target": {
-									"consumes": {
-										"name": "Grit"
-									}
-								},
-								"value": "- 1"
-							}
-						]
-					},
-					"type": "utility"
-				}
-			]
+			}
 		},
 		{
 			"name": "Resistance",
@@ -4478,7 +4469,7 @@
 				},
 				{
 					"foundryId": "twistShove",
-					"name": "Twist the Knife (Grapple)",
+					"name": "Twist the Knife (Shove)",
 					"activation": {
 						"type": "special",
 						"condition": "When you deal Below the Belt damage"
@@ -5605,6 +5596,18 @@
 										{
 											"type": "list",
 											"items": [
+												{
+													"type": "item",
+													"name": "v1.1",
+													"entries": [
+														{
+															"type": "list",
+															"items": [
+																"reworked Combat Readiness to trigger after a rest"
+															]
+														}
+													]
+												},
 												{
 													"type": "item",
 													"name": "v1.0",
