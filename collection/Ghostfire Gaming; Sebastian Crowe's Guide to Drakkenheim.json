@@ -2200,7 +2200,8 @@
 			],
 			"subclassSpells": [
 				"purge contamination|GuideDrakkenheim",
-                "contact other plane"
+                "contact other plane",
+                "gaseous form"
 			],
             "foundryAdvancement": [
                 {
@@ -2347,16 +2348,15 @@
                 "horrific transformation|GuideDrakkenheim",
                 "poison wave|GuideDrakkenheim",
                 "acid rain|GuideDrakkenheim",
-                "toxic barrage|GuideDrakkenheim"
+                "toxic barrage|GuideDrakkenheim",
+                "summon delerium elemental|GuideDrakkenheim"
             ],
             "additionalSpells": [
                 {
                     "prepared": {
                         "2": [
-                            "Chill Touch|PHB",
-                            "poison needle|GuideDrakkenheim",
-                            "False Life|PHB",
-                            "Sleep|PHB"
+                            "Chill Touch",
+                            "poison needle|GuideDrakkenheim"
                         ],
                         "3": [
                             "biohazard|GuideDrakkenheim",
@@ -2373,6 +2373,9 @@
                         "9": [
                             "acid rain|GuideDrakkenheim",
                             "toxic barrage|GuideDrakkenheim"
+                        ],
+                        "10": [
+                            "summon delerium elemental|GuideDrakkenheim"
                         ]
                     }
                 }
@@ -2865,7 +2868,9 @@
                 "fire shield",
                 "wall of fire",
                 "flame strike",
-                "greater restoration"
+                "greater restoration",
+                "eldritch blast",
+                "augury"
             ],
             "additionalSpells": [
                 {
@@ -2875,7 +2880,42 @@
                             "guidance"
                         ]
                     }
-                }
+                },
+                {
+                    "innate": {
+						"1": {
+							"daily": {
+								"1e": [
+									"augury"
+								]
+							}
+						}
+					}
+                },
+                {
+					"expanded": {
+						"s1": [
+							"magic missile",
+                            "faerie fire"
+						],
+						"s2": [
+							"moonbeam",
+                            "scorching ray"
+						],
+						"s3": [
+							"blink",
+                            "spirit guardians"
+						],
+						"s4": [
+							"fire shield",
+                            "wall of fire"
+						],
+						"s5": [
+							"flame strike",
+                            "greater restoration"
+						]
+					}
+				}
             ],
             "hasFluff": true,
             "hasFluffImages": true
@@ -5399,7 +5439,7 @@
             "level": 14,
             "header": 2,
             "entries": [
-                "You can cast {@spell gaseous form|PHB} on yourself. You can do so a number of times equal to your proficiency bonus. You regain all expended uses of this feature when you finish a long rest."
+                "You can cast {@spell gaseous form} on yourself. You can do so a number of times equal to your proficiency bonus. You regain all expended uses of this feature when you finish a long rest."
             ],
             "foundrySystem": {
                 "activation.type": "action",
@@ -5634,8 +5674,13 @@
             "subclassShortName": "Doomsayers",
             "subclassSource": "GuideDrakkenheim",
             "level": 3,
+            "skillProficiencies": [
+                {
+                    "intimidation": true
+                }
+            ],
             "entries": [
-                "Your words strike fear into the hearts of those who bear witness to your doomsaying. Whenever you make a Charisma (Intimidation) check, you may treat any roll of 9 or lower as if you had rolled a 10."
+                "Your words strike fear into the hearts of those who bear witness to your doomsaying. Whenever you make a Charisma ({@skill Intimidation}) check, you may treat any roll of 9 or lower as if you had rolled a 10."
             ]
         },
         {
@@ -5649,17 +5694,7 @@
             "level": 3,
             "entries": [
                 "As a bonus action, you can expend one use of your Bardic Inspiration and choose one creature you can see within 60 feet of you. The target takes psychic damage equal to the roll of your Bardic inspiration die and must make a Wisdom saving throw against your spell save DC. On a failed saving throw, the target becomes frightened of you until the start of your next turn."
-            ],
-            "foundrySystem": {
-                "activation": {
-                    "type": "bonus",
-                    "cost": 1
-                },
-                "save": {
-                    "ability": "wis",
-                    "scaling": "cha"
-                }
-            }
+            ]
         },
         {
             "name": "Prophetic Foresight",
@@ -5686,7 +5721,7 @@
             "level": 6,
             "header": 2,
             "entries": [
-                "As a bonus action, you can expend one use of your Bardic Inspiration and choose one creature you can see within 60 feet of you. The target takes psychic damage equal to the roll of your Bardic inspiration die and must make a Wisdom saving throw against your spell save DC. On a failed saving throw, the target becomes frightened of you until the start of your next turn."
+                "As a bonus action, you can expend one use of your Bardic Inspiration and choose one creature you can see within 60 feet of you. The target takes psychic damage equal to the roll of your Bardic inspiration die and must make a Wisdom saving throw against your spell save DC. On a failed saving throw, the target becomes {@condition frightened} of you until the start of your next turn."
             ]
         },
         {
@@ -5846,22 +5881,7 @@
                 "You can twist shadow around other creatures to pull them through space.",
                 "As an action, you can target one creature you can see within 60 feet of you that is in dim light or darkness. You teleport that creature up to 60 feet to an unoccupied space of your choice you can see that is also in dim light or darkness. The chosen space must be on a surface or in a liquid that can support the target without the target having to squeeze. An unwilling creature that succeeds on a Wisdom saving throw against your spell save DC is unaffected.",
                 "You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses of it when you finish a long rest."
-            ],
-            "foundrySystem": {
-                "activation": {
-                    "type": "bonus",
-                    "cost": 1
-                },
-                "save": {
-                    "ability": "cha",
-                    "scaling": "cha"
-                },
-                "uses": {
-                    "max": "@prof",
-                    "per": "lr",
-                    "prompt": true
-                }
-            }
+            ]
         },
         {
             "name": "Potent Spellcasting",
@@ -6017,13 +6037,7 @@
             "header": 2,
             "entries": [
                 "You gain the ability to draw contamination into yourself to empower your magic. Once per turn as a bonus action, you can gain one Contamination Level. If you do, you regain one use of your Wild Shape feature."
-            ],
-            "foundrySystem": {
-                "activation": {
-                    "type": "bonus",
-                    "cost": 1
-                }
-            }
+            ]
         },
         {
             "name": "Defile Elements",
@@ -6037,18 +6051,7 @@
             "header": 2,
             "entries": [
                 "You learn the {@spell summon delerium elemental|GuideDrakkenheim} spell, and always have this spell prepared (it doesn't count against the number of druid spells you can prepare). You can cast it once without a spell slot, material component, or gaining a contamination level, and you regain the ability to do so when you finish a long rest. When you cast the spell, you can modify it so that it doesn't require concentration. When you do, the spell's duration for that casting changes to 1 minute."
-            ],
-            "foundrySystem": {
-                "activation": {
-                    "type": "action",
-                    "cost": 1
-                },
-                "uses": {
-                    "max": "1",
-                    "per": "lr",
-                    "prompt": true
-                }
-            }
+            ]
         },
         {
             "name": "Haze Aura",
@@ -6061,20 +6064,9 @@
             "level": 14,
             "header": 2,
             "entries": [
-                "You have become such a locus for contamination that you project the Haze around your body. The aura persists so long as you are not incapacitated. Creatures of your choice which start their turn within 10 feet of you must make a Constitution saving throw against your spell save DC. Those who fail the save take 3d6 necrotic damage. A creature who fails this saving throw by 5 or more gains one Contamination Level.",
+                "You have become such a locus for contamination that you project the Haze around your body. The aura persists so long as you are not incapacitated. Creatures of your choice which start their turn within 10 feet of you must make a Constitution saving throw against your spell save DC. Those who fail the save take {@damage 3d6} necrotic damage. A creature who fails this saving throw by 5 or more gains one Contamination Level.",
                 "A creature which makes a successful saving throw against your Haze Aura is immune to its effects for 24 hours."
-            ],
-            "foundrySystem": {
-                "activation": {
-                    "type": "action",
-                    "cost": 1
-                },
-                "uses": {
-                    "max": "1",
-                    "per": "lr",
-                    "prompt": true
-                }
-            }
+            ]
         },
         {
             "name": "Commander",
@@ -6106,8 +6098,14 @@
             "subclassShortName": "Commander",
             "subclassSource": "GuideDrakkenheim",
             "level": 3,
+            "skillProficiencies": [
+                {
+                    "history": true,
+                    "persuasion": true
+                }
+            ],
             "entries": [
-                "You gain proficiency in the History and Persuasion skills if you don't already have it. Your proficiency bonus is doubled for any ability check you make that uses either of those proficiencies."
+                "You gain proficiency in the {@skill History} and {@skill Persuasion} skills if you don't already have it. Your proficiency bonus is doubled for any ability check you make that uses either of those proficiencies."
             ]
         },
         {
@@ -6124,10 +6122,10 @@
                 {
                     "type": "list",
                     "items": [
-                        "{@bold Fight On!} The target regains a number of hit points equal to 1d10 + your fighter level. The creature can't regain hit points from this command again until it finishes a short or long rest.",
+                        "{@bold Fight On!} The target regains a number of hit points equal to {@dice 1d10} + your fighter level. The creature can't regain hit points from this command again until it finishes a short or long rest.",
                         "{@bold For Glory!} The target can use their reaction to make a melee or ranged weapon attack.",
                         "{@bold Move It!} The target can use their reaction to move up to their speed without provoking opportunity attacks.",
-                        "{@bold Never Falter!} The target recovers from one charmed or frightened condition. Once a creature benefits from this command, it can't do so again until it finishes a short or long rest."
+                        "{@bold Never Falter!} The target recovers from one {@condition charmed} or {@condition frightened} condition. Once a creature benefits from this command, it can't do so again until it finishes a short or long rest."
                     ]
                 }
             ],
@@ -6149,7 +6147,7 @@
             "level": 7,
             "header": 2,
             "entries": [
-                "You gain proficiency in Wisdom saving throws, and you have advantage on saving throws against effects which charm or frighten you."
+                "You gain proficiency in Wisdom saving throws, and you have advantage on saving throws against effects which {@condition charmed||charm} or {@condition frightened||frighten} you."
             ]
         },
         {
@@ -6228,8 +6226,13 @@
             "subclassShortName": "Arcane Hand",
             "subclassSource": "GuideDrakkenheim",
             "level": 3,
+            "skillProficiencies": [
+                {
+                    "arcana": true
+                }
+            ],
             "entries": [
-                "You gain proficiency in the Arcana skill. Whenever you make an Intelligence ability check, you gain a bonus to the check equal to your Wisdom modifier (minimum of +1)"
+                "You gain proficiency in the {@skill Arcana} skill. Whenever you make an Intelligence ability check, you gain a bonus to the check equal to your Wisdom modifier (minimum of +1)"
             ]
         },
         {
@@ -6262,7 +6265,7 @@
                     "name": "Spell Slots",
                     "entries": [
                         "The Way of the Arcane Hand Spellcasting table shows how many spell slots you have to cast your wizard spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
-                        "For example, if you know the 1st-level spell thunderwave and have a 1st-level and a 2nd-level spell slot available, you can cast thunderwave using either slot."
+                        "For example, if you know the 1st-level spell {@spell thunderwave} and have a 1st-level and a 2nd-level spell slot available, you can cast {@spell thunderwave} using either slot."
                     ]
                 },
                 {
@@ -6279,8 +6282,20 @@
                     "name": "Spellcasting Ability",
                     "entries": [
                         "Wisdom is your spellcasting ability for your wizard spells, since you learn your spells through contemplation and meditation. You use your Wisdom whenever a spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.",
-                        "{@bold Spell save DC} = 8 + your proficiency bonus + your Wisdom modifier",
-                        "{@bold Spell attack modifier} = your proficiency bonus + your Wisdom modifier"
+                        {
+                            "type": "abilityDc",
+                            "name": "Spell",
+                            "attributes": [
+                                "wis"
+                            ]
+                        },
+                        {
+                            "type": "abilityAttackMod",
+                            "name": "Spell",
+                            "attributes": [
+                                "wis"
+                            ]
+                        }
                     ]
                 }
             ]
@@ -6324,8 +6339,8 @@
             "level": 11,
             "header": 2,
             "entries": [
-                "When you cast a spell, you can expend ki points to increase the level of the spell as if you'd cast the spell using a higherlevel spell slot. You must use a spell slot as normal to cast the spell, then expend 1 ki point for each level you increase the spell in this way. You can increase the spell's level higher than your highest-level spell slot to a maximum level equal to your proficiency bonus.",
-                "For example, if you're an 11th-level Way of the Arcane Hand monk, when you cast the spell scorching ray using a 2nd-level spell slot, you could expend 2 ki points to cast the spell as 4th-level spell."
+                "When you cast a spell, you can expend ki points to increase the level of the spell as if you'd cast the spell using a higher-level spell slot. You must use a spell slot as normal to cast the spell, then expend 1 ki point for each level you increase the spell in this way. You can increase the spell's level higher than your highest-level spell slot to a maximum level equal to your proficiency bonus.",
+                "For example, if you're an 11th-level Way of the Arcane Hand monk, when you cast the spell {@spell scorching ray} using a 2nd-level spell slot, you could expend 2 ki points to cast the spell as 4th-level spell."
             ]
         },
         {
@@ -6387,8 +6402,8 @@
             "subclassSource": "GuideDrakkenheim",
             "level": 3,
             "entries": [
-                "You gain proficiency with the glaive, halberd, pike, trident, and similar spears and polearms. These weapons count as monk weapons for you, even if they have the heavy or two-handed properties. Furthermore, your grace and mastery of these weapons does not limit your ability to make unarmed strikes while wielding a two-handed weapon.",
-                "While wielding a quarterstaff, spear, or trident in two hands, that weapon gains the Reach property."
+                "You gain proficiency with the {@item glaive}, {@item halberd}, {@item pike}, {@item trident}, and similar spears and polearms. These weapons count as monk weapons for you, even if they have the {@itemProperty H||heavy} or {@itemProperty 2H||two-handed} properties. Furthermore, your grace and mastery of these weapons does not limit your ability to make unarmed strikes while wielding a {@itemProperty 2H||two-handed} weapon.",
+                "While wielding a {@item quarterstaff}, {@item spear}, or {@item trident} in two hands, that weapon gains the {@itemProperty R||Reach} property."
             ]
         },
         {
@@ -6401,8 +6416,8 @@
             "subclassSource": "GuideDrakkenheim",
             "level": 3,
             "entries": [
-                "You can use polearm weapons to vault into the air. While you are wielding a weapon with the Reach property, your jump distance is doubled.",
-                "While wielding a weapon with the Reach property, when you expend a ki point to use your Step of the Wind feature, your jump distance is instead tripled for the turn, and you gain advantage on your next melee weapon attack you make this turn."
+                "You can use polearm weapons to vault into the air. While you are wielding a weapon with the {@itemProperty R||Reach} property, your jump distance is doubled.",
+                "While wielding a weapon with the {@itemProperty R||Reach} property, when you expend a ki point to use your Step of the Wind feature, your jump distance is instead tripled for the turn, and you gain advantage on your next melee weapon attack you make this turn."
             ]
         },
         {
@@ -6422,7 +6437,7 @@
                     "items": [
                         "{@bold Cobra Strike} When a creature you can see moves into your reach, you can use your reaction to make one attack against that creature.",
                         "{@bold Python Strike} When you hit a creature with an opportunity attack, you can also use your Stunning Strike on that attack without expending a ki point.",
-                        "{@bold Viper Strike} Once on your turn when you hit a creature with a melee weapon attack, you can expend 1 or more ki points, up to a number equal to your proficiency bonus. The attack deals 1d6 poison damage, plus 1d6 additional poison damage per ki point spent, and the target is poisoned until the end of your next turn."
+                        "{@bold Viper Strike} Once on your turn when you hit a creature with a melee weapon attack, you can expend 1 or more ki points, up to a number equal to your proficiency bonus. The attack deals {@damage 1d6} poison damage, plus {@damage 1d6} additional poison damage per ki point spent, and the target is poisoned until the end of your next turn."
                     ]
                 }
             ]
@@ -6438,7 +6453,7 @@
             "level": 11,
             "header": 2,
             "entries": [
-                "At the start of your turn, you can adopt a serpent stance (no action required). When you do, choose one of the following serpent stances, which last until you are incapacitated or use this feature again.",
+                "At the start of your turn, you can adopt a serpent stance (no action required). When you do, choose one of the following serpent stances, which last until you are {@condition incapacitated} or use this feature again.",
                 {
                     "type": "list",
                     "items": [
@@ -6559,77 +6574,8 @@
                         "{@bold Curse of Hexes} As an action, you curse one creature you can see within 30 feet of you. When you curse a target, choose an ability score. The chosen creature has disadvantage on attack rolls, saving throws, and ability checks using that ability score for one minute or until it drops to 0 hit points or falls unconscious. At the end of each of the cursed creature's turns, it can make a Charisma saving throw against your spell save DC. On a successful save, the curse ends.",
                         "{@bold Curse of Torment} As a bonus action, you curse one creature you can see within 30 feet of you. Searing pain wracks the target for one minute. While suffering this pain, it takes necrotic damage equal to your paladin level at the start of each of its turns. Each time it takes this damage, it can make a Wisdom saving throw against your spell save DC. On a successful save, the pain ends."
                     ]
-                },
-                {
-                    "type": "refSubclassFeature",
-                    "subclassFeature": "Curse of Hexes|Paladin|PHB|Hexes|GuideDrakkenheim|3|GuideDrakkenheim"
-                },
-                {
-                    "type": "refSubclassFeature",
-                    "subclassFeature": "Curse of Torment|Paladin|PHB|Hexes|GuideDrakkenheim|3|GuideDrakkenheim"
                 }
-            ],
-            "foundrySystem": {
-                "activation": {
-                    "type": "bonus",
-                    "cost": 1
-                },
-                "save": {
-                    "ability": "cha",
-                    "scaling": "cha"
-                },
-                "uses": {
-                    "max": "@prof",
-                    "per": "lr",
-                    "prompt": true
-                }
-            }
-        },
-        {
-            "name": "Curse of Hexes",
-            "source": "GuideDrakkenheim",
-            "page": 165,
-            "className": "Paladin",
-            "classSource": "PHB",
-            "subclassShortName": "Hexes",
-            "subclassSource": "GuideDrakkenheim",
-            "level": 3,
-            "entries": [
-                "As an action, you curse one creature you can see within 30 feet of you. When you curse a target, choose an ability score. The chosen creature has disadvantage on attack rolls, saving throws, and ability checks using that ability score for one minute or until it drops to 0 hit points or falls unconscious. At the end of each of the cursed creature's turns, it can make a Charisma saving throw against your spell save DC. On a successful save, the curse ends."
-            ],
-            "foundrySystem": {
-                "activation": {
-                    "type": "action",
-                    "cost": 1
-                },
-                "save": {
-                    "ability": "cha",
-                    "scaling": "cha"
-                }
-            }
-        },
-        {
-            "name": "Curse of Torment",
-            "source": "GuideDrakkenheim",
-            "page": 165,
-            "className": "Paladin",
-            "classSource": "PHB",
-            "subclassShortName": "Hexes",
-            "subclassSource": "GuideDrakkenheim",
-            "level": 3,
-            "entries": [
-                "As a bonus action, you curse one creature you can see within 30 feet of you. Searing pain wracks the target for one minute. While suffering this pain, it takes necrotic damage equal to your paladin level at the start of each of its turns. Each time it takes this damage, it can make a Wisdom saving throw against your spell save DC. On a successful save, the pain ends."
-            ],
-            "foundrySystem": {
-                "activation": {
-                    "type": "bonus",
-                    "cost": 1
-                },
-                "save": {
-                    "ability": "wis",
-                    "scaling": "cha"
-                }
-            }
+            ]
         },
         {
             "name": "Bewitching Aura",
@@ -6644,16 +6590,7 @@
             "entries": [
                 "You emit an eldritch aura out to a range of 10 feet. When an enemy hits you or a creature within 10 feet of you with an attack, you can use your reaction to force that enemy to make a Charisma saving throw against your spell save DC. On a failed save, you can magically redirect the attack to another creature of your choice within 10 feet of you and within range of the attack. The new target is hit by the attack and suffers all damage and effects.",
                 "At 18th level, the range of this aura increases to 30 feet."
-            ],
-            "foundrySystem": {
-                "activation": {
-                    "type": "none"
-                },
-                "save": {
-                    "ability": "cha",
-                    "scaling": "cha"
-                }
-            }
+            ]
         },
         {
             "name": "Reversal of Fortune",
@@ -6764,9 +6701,15 @@
             "subclassShortName": "Urban",
             "subclassSource": "GuideDrakkenheim",
             "level": 3,
+            "skillProficiencies": [
+                {
+                    "athletics": true,
+                    "acrobatic": true
+                }
+            ],
             "entries": [
-                "You gain a climb speed equal to your walking speed, and proficiency in the Athletics and Acrobatic skills if you don't already have it. Your proficiency bonus is doubled for any ability check you make that uses either of those proficiencies.",
-                "In addition, when you take the Dash action on your turn, you can move through other creature's spaces without penalty (but not stop there). When you do, your movement doesn't provoke opportunity attacks."
+                "You gain a climb speed equal to your walking speed, and proficiency in the {@skill Athletics} and {@skill Acrobatic} skills if you don't already have it. Your proficiency bonus is doubled for any ability check you make that uses either of those proficiencies.",
+                "In addition, when you take the {@action Dash} action on your turn, you can move through other creature's spaces without penalty (but not stop there). When you do, your movement doesn't provoke opportunity attacks."
             ]
         },
         {
@@ -6793,7 +6736,7 @@
             "level": 7,
             "header": 2,
             "entries": [
-                "Your movement speed increases by 10 feet, and you can take the Dash action as a bonus action on your turn. In addition, you have mastered the means to propel yourself forwards and upwards when you move and climb. When you take the Dash action on your turn, your jumping distance increases to match your movement speed."
+                "Your movement speed increases by 10 feet, and you can take the {@action Dash} action as a bonus action on your turn. In addition, you have mastered the means to propel yourself forwards and upwards when you move and climb. When you take the {@action Dash} action on your turn, your jumping distance increases to match your movement speed."
             ]
         },
         {
@@ -6807,7 +6750,7 @@
             "level": 11,
             "header": 2,
             "entries": [
-                "When you attack a creature with the benefits of your Vantage Point feature, you deal an additional 2d6 damage to the target, and score a critical hit on a d20 roll of 19–20."
+                "When you attack a creature with the benefits of your Vantage Point feature, you deal an additional {@damage 2d6} damage to the target, and score a critical hit on a d20 roll of 19-20."
             ]
         },
         {
@@ -6862,19 +6805,7 @@
                 "Provided you have your hands free, you can retrieve and stow handheld items or weapons on your person as part of the action you use them (including the {@action Attack} action).",
                 "You have accumulated a collection of miscellaneous gear, which you conceal on your person for emergencies. This gear is kept in a bag, jacket, or backpack that you carry with you. You can retrieve any nonmagical, inanimate item detailed in the Adventuring Gear section of the Core Rules with a value of 25 gp or less and weighing less than 10 pounds. You may use this feature to retrieve a number of items equal to your proficiency bonus, and you regain all expended uses of it when you finish a long rest.",
                 "Though otherwise functional, objects retrieved using this feature are visibly worthless junk."
-            ],
-            "foundrySystem": {
-                "activation": {
-                    "type": "special",
-                    "cost": 1,
-                    "condition": "as part of the action to use them"
-                },
-                "uses": {
-                    "max": "@prof",
-                    "per": "lr",
-                    "prompt": true
-                }
-            }
+            ]
         },
         {
             "name": "Tricks of the Trade",
@@ -6885,6 +6816,13 @@
             "subclassShortName": "Smuggler",
             "subclassSource": "GuideDrakkenheim",
             "level": 3,
+            "toolProficiencies": [
+                {
+                    "disguise kit": true,
+                    "land vehicles": true,
+                    "water vehicles": true
+                }
+            ],
             "entries": [
                 "You gain proficiency with the disguise kit, land vehicles, and water vehicles.",
                 "Whenever you make an ability check related to smuggling or concealing objects you add double your proficiency bonus to the check.",
@@ -6915,7 +6853,7 @@
             "level": 9,
             "header": 2,
             "entries": [
-                "You can move through another creature's space, including hostile creatures, without penalty when you take the Dash or Disengage action on your turn.",
+                "You can move through another creature's space, including hostile creatures, without penalty when you take the {@action Dash} or {@action Disengage} action on your turn.",
                 "When you do so, you gain advantage on attack rolls against any creature whose space you moved through this turn."
             ]
         },
@@ -6947,7 +6885,7 @@
             "entries": [
                 "Beginning at 17th level, you can store spells cast by other creatures in your bag. Your bag can store up to 6 levels worth of spells at a time.",
                 "Any creature can cast a spell of 1st through 5th level into your bag by touching the bag as the spell is cast. The spell has no effect, other than to be stored in your bag. If your bag can't hold the spell, the spell is expended without effect. The level of the slot used to cast the spell determines how much space it uses.",
-                "Alternatively, you can place a spell scroll in the bag. The spell is cast and stored in your bag and the spell scroll is destroyed. You can cast any spell stored in your bag. The spell uses the slot level, spell save DC, spell attack bonus, and spellcasting ability of the original caster, but is otherwise treated as if you cast the spell. The spell cast from the bag is no longer stored in it, freeing up space."
+                "Alternatively, you can place a {@item spell scroll} in the bag. The spell is cast and stored in your bag and the spell scroll is destroyed. You can cast any spell stored in your bag. The spell uses the slot level, spell save DC, spell attack bonus, and spellcasting ability of the original caster, but is otherwise treated as if you cast the spell. The spell cast from the bag is no longer stored in it, freeing up space."
             ]
         },
         {
@@ -7128,23 +7066,23 @@
                     "rows": [
                         [
                             "1st",
-                            "{@spell jump|PHB}, {@spell shield|PHB}"
+                            "{@spell magic missile}, {@spell faerie fire}"
                         ],
                         [
                             "2nd",
-                            "{@spell enhance ability|PHB}, {@spell enlarge/reduce|PHB}"
+                            "{@spell moonbeam}, {@spell scorching ray}"
                         ],
                         [
                             "3rd",
-                            "{@spell haste|PHB}, {@spell slow|PHB}"
+                            "{@spell blink}, {@spell spirit guardian}"
                         ],
                         [
                             "4th",
-                            "{@spell Evard's black tentacles|PHB}, {@spell polymorph|PHB}"
+                            "{@spell fire shield}, {@spell wall of fire}"
                         ],
                         [
                             "5th",
-                            "{@spell greater restoration|PHB}, {@spell reincarnate|PHB}"
+                            "{@spell flame strike}, {@spell greater restoration}"
                         ]
                     ]
                 }
@@ -7162,14 +7100,40 @@
             "entries": [
                 "You take on an otherworldly cosmic appearance or essence. Choose one or more of the attributes listed below, decide your own, or roll randomly to determine how the cosmic powers bestowed into you take form.",
                 {
-                    "type": "list",
-                    "items": [
-                        "Your eyes become pools of inky black with small galaxies floating within them. To look into them is as if floating through the cosmos lost in the void of space.",
-                        "Your touch becomes cold as ice and your skin becomes pale. Some might think you undead or sickly. You appear as if you had died in the cold of space.",
-                        "Your voice has a slight echoing nature to it. As if there is more than one entity speaking through you. Your own voice is most prominent but when listening carefully one can make out a chorus of celestial voices speaking through you.",
-                        "You give off a faint smell of ozone — acrid and sulfuric, as if lightning had just struck nearby. It seems unnatural and otherworldly.",
-                        "You develop a third eye in the middle of your forehead that is unblinking, and seems to pierce into people's minds as it stares upon them.",
-                        "Your veins glow with a soft radiant light, giving you the appearance of a walking constellation of stars and cosmic energy."
+                    "type": "table",
+                    "colLabels": [
+                        "1d6",
+                        ""
+                    ],
+                    "colStyles": [
+                        "col-2 text-center",
+                        "col-10"
+                    ],
+                    "rows": [
+                        [
+                            1,
+                            "Your eyes become pools of inky black with small galaxies floating within them. To look into them is as if floating through the cosmos lost in the void of space."
+                        ],
+                        [
+                            2,
+                            "Your touch becomes cold as ice and your skin becomes pale. Some might think you undead or sickly. You appear as if you had died in the cold of space."
+                        ],
+                        [
+                            3,
+                            "Your voice has a slight echoing nature to it. As if there is more than one entity speaking through you. Your own voice is most prominent but when listening carefully one can make out a chorus of celestial voices speaking through you.",
+                        ],
+                        [
+                            4,
+                            "You give off a faint smell of ozone — acrid and sulfuric, as if lightning had just struck nearby. It seems unnatural and otherworldly."
+                        ],
+                        [
+                            5,
+                            "You develop a third eye in the middle of your forehead that is unblinking, and seems to pierce into people's minds as it stares upon them."
+                        ],
+                        [
+                            6,
+                            "Your veins glow with a soft radiant light, giving you the appearance of a walking constellation of stars and cosmic energy."
+                        ]
                     ]
                 }
             ]
@@ -7196,20 +7160,15 @@
             "subclassShortName": "Cosmic",
             "subclassSource": "GuideDrakkenheim",
             "level": 1,
+            "languageProficiencies": [
+				{
+					"celestial": true,
+                    "deep speech": true
+				}
+			],
             "entries": [
                 "You can speak, read, and write Celestial and Deep Speech. In addition, you learn the {@spell guidance} cantrip. It doesn't count against the number of warlock cantrips you know. Additionally, you may cast the spell {@spell augury} once without expending a spell slot. You can't do so again until you finish a long rest."
-            ],
-            "foundrySystem": {
-                "activation": {
-                    "type": "action",
-                    "cost": 1
-                },
-                "uses": {
-                    "max": "1",
-                    "per": "lr",
-                    "prompt": true
-                }
-            }
+            ]
         },
         {
             "name": "Orbit",
@@ -7222,11 +7181,11 @@
             "level": 6,
             "header": 2,
             "entries": [
-                "Once per turn when you miss a creature with eldritch blast, the beam returns to you as an orbiting comet around your head. While you have an orbiting comet, you can absorb its energy to do the following:",
+                "Once per turn when you miss a creature with {@spell eldritch blast}, the beam returns to you as an orbiting comet around your head. While you have an orbiting comet, you can absorb its energy to do the following:",
                 {
                     "type": "list",
                     "items": [
-                        "{@bold Cosmic Power.} Once on your turn when you cast eldritch blast, you can consume one orbiting comet to fire an additional beam.",
+                        "{@bold Cosmic Power.} Once on your turn when you cast {@spell eldritch blast}, you can consume one orbiting comet to fire an additional beam.",
                         "{@bold Interception.} You can use your reaction to intercept a melee or ranged attack, gaining resistance to the damage from that attack.",
                         "{@bold Lightspeed.} As a bonus action, you can consume a comet to teleport 30 feet to an unoccupied space you can see."
                     ]
@@ -7258,18 +7217,9 @@
             "level": 10,
             "header": 2,
             "entries": [
-                "Once per turn when you hit a creature with eldritch blast, you can cause the beam to explode. Each creature within 10 feet of the target must succeed on a Dexterity saving throw or take [[/roll 3d6]] fire damage.",
-                "The damage increases to [[/roll 4d6]] damage at 14th level, and to [[/roll 5d6]] damage at 17th level."
-            ],
-            "foundrySystem": {
-                "activation": {
-                    "type": "none"
-                },
-                "save": {
-                    "ability": "dex",
-                    "scaling": "cha"
-                }
-            }
+                "Once per turn when you hit a creature with {@spell eldritch blast}, you can cause the beam to explode. Each creature within 10 feet of the target must succeed on a Dexterity saving throw or take {@damage 3d6} fire damage.",
+                "The damage increases to {@damage 4d6} damage at 14th level, and to {@damage 5d6} damage at 17th level."
+            ]
         },
         {
             "name": "Supernova",
@@ -7342,23 +7292,23 @@
                     "rows": [
                         [
                             "1st",
-                            "{@spell jump|PHB}, {@spell shield|PHB}"
+                            "{@spell jump}, {@spell shield}"
                         ],
                         [
                             "2nd",
-                            "{@spell enhance ability|PHB}, {@spell enlarge/reduce|PHB}"
+                            "{@spell enhance ability}, {@spell enlarge/reduce}"
                         ],
                         [
                             "3rd",
-                            "{@spell haste|PHB}, {@spell slow|PHB}"
+                            "{@spell haste}, {@spell slow}"
                         ],
                         [
                             "4th",
-                            "{@spell Evard's black tentacles|PHB}, {@spell polymorph|PHB}"
+                            "{@spell Evard's black tentacles||black tentacles}, {@spell polymorph}"
                         ],
                         [
                             "5th",
-                            "{@spell greater restoration|PHB}, {@spell reincarnate|PHB}"
+                            "{@spell greater restoration}, {@spell reincarnate}"
                         ]
                     ]
                 }
@@ -7393,7 +7343,7 @@
                     "items": [
                         "{@bold Inverse Kneecaps.} Your legs become more powerful, and your knees now bend the opposite direction. While in this form, you increase your walking speed by 10 feet, and you can double your long and high jump distance.",
                         "{@bold Aquatic Attributes.} You grow gills and your skin becomes slimy, the flesh between your fingers and toes becomes webbed. While in this form, you can breathe underwater, and gain a swimming speed equal to your walking speed.",
-                        "{@bold Natural Weapons.} You grow claws, fangs, spines, horns, or a different natural weapon of your choice. Your unarmed strikes deal 1d6 bludgeoning, piercing, or slashing damage, as appropriate to the natural weapon you chose, and you are proficient with your unarmed strikes. You can use your Charisma modifier for attack and damage rolls. The damage of your unarmed strikes increases as you gain levels in this class: 2d6 damage beginning at 10th level, and 3d6 damage at 14th level."
+                        "{@bold Natural Weapons.} You grow claws, fangs, spines, horns, or a different natural weapon of your choice. Your unarmed strikes deal 1d6 bludgeoning, piercing, or slashing damage, as appropriate to the natural weapon you chose, and you are proficient with your unarmed strikes. You can use your Charisma modifier for attack and damage rolls. The damage of your unarmed strikes increases as you gain levels in this class: {@damage 2d6} damage beginning at 10th level, and {@damage 3d6} damage at 14th level."
                     ]
                 }
             ]
@@ -7409,11 +7359,12 @@
             "level": 6,
             "header": 2,
             "entries": [
-                "When you choose your reshaped form, you can choose any two options available to you. You gain the following additional options when you take on a reshaped form:",
+                "When you choose your reshaped form, you can choose any two options available to you.",
+                "You gain the following additional options when you take on a reshaped form:",
                 {
                     "type": "list",
                     "items": [
-                        "{@bold Gelatin Bones.} Your skin looks loose and saggy as you struggle to maintain your structure. You can now fit into spaces as small as one inch in diameter and gain advantage on Stealth checks.",
+                        "{@bold Gelatin Bones.} Your skin looks loose and saggy as you struggle to maintain your structure. You can now fit into spaces as small as one inch in diameter and gain advantage on {@skill Stealth} checks.",
                         "{@bold Change Appearance.} You transform your appearance. You decide what you look like, including your height, weight, facial features, sound of your voice, hair length, coloration, and distinguishing characteristics, if any. You can make yourself appear as a member of another race, though none of your statistics change. You can't appear as a creature of a different size than you, and your basic shape stays the same. For example, if you're bipedal, you can't use this spell to become quadrupedal.",
                         "{@bold Combat Instincts.} You can attack twice, instead of once, when you take the {@action Attack} action on your turn. In addition, your natural weapons and unarmed strikes are considered magical for the purposes of overcoming resistance to bludgeoning, piercing, and slashing damage.",
                         "{@bold Spider Claws.} Your hands and feet grow strange mucus-slicked insectoid features that allow you to climb surfaces. You gain a climb speed equal to your walk speed and can stick to ceilings as well without needing to make an ability check."
@@ -7437,7 +7388,7 @@
                     "type": "list",
                     "items": [
                         "{@bold Aerial Adaptation.} Feathered or batlike wings rip out of your back, you gain a flying speed equal to your walking speed.",
-                        "{@bold Toxic Fumes.} A cloud of noxious gas seeps from your pores, you appear sickly, and green slime oozes from your pores. You have disadvantage on Charisma checks while in this form, but any creature that starts its turn within 10 feet of you takes 2d6 poison damage and has disadvantage on attack rolls against you.",
+                        "{@bold Toxic Fumes.} A cloud of noxious gas seeps from your pores, you appear sickly, and green slime oozes from your pores. You have disadvantage on Charisma checks while in this form, but any creature that starts its turn within 10 feet of you takes {@damage 2d6} poison damage and has disadvantage on attack rolls against you.",
                         "{@bold Hardened Skin.} You gain resistance to bludgeoning, piercing, and slashing damage from non-magical weapons."
                     ]
                 }
@@ -7531,8 +7482,15 @@
             "subclassSource": "GuideDrakkenheim",
             "level": 6,
             "header": 2,
+            "resist": [
+                "necrotic"
+            ],
             "entries": [
-                "Your dedicated long-term exposure to eldritch contamination has inured your body to its effects, and you can withstand a greater accumulation of contamination. You gain proficiency in Constitution saving throws and resistance to necrotic damage. When determining which Symptoms apply to you as a result of gaining Eldritch Contamination, you are treated as having a number of Contamination Levels equal to half your current Contamination Level instead, rounded down. For example, if you gained 5 Contamination Levels, you would only suffer the Symptoms of Contamination Level 2. Thus, you would need to gain 12 Contamination Levels to undergo a Monstrous Transformation, instead of 6. In the same manner, when checking to see if you develop a mutation when you gain a new Contamination Level, you are treated as having a number of Contamination Levels equal to half your current Contamination Level instead, rounded down. For example, if you gained 4 Contamination Levels, you would only develop a new mutation if the result of the 1d6 roll is 2 or lower. Note that if you have six or more contamination levels, being subject to the {@spell purge contamination|GuideDrakkenheim} spell will cause you to gain six (or more) levels of exhaustion, and you'll die as a result."
+                "Your dedicated long-term exposure to eldritch contamination has inured your body to its effects, and you can withstand a greater accumulation of contamination.",
+                "You gain proficiency in Constitution saving throws and resistance to necrotic damage.",
+                "When determining which Symptoms apply to you as a result of gaining Eldritch Contamination, you are treated as having a number of Contamination Levels equal to half your current Contamination Level instead, rounded down. For example, if you gained 5 Contamination Levels, you would only suffer the Symptoms of Contamination Level 2. Thus, you would need to gain 12 Contamination Levels to undergo a Monstrous Transformation, instead of 6.",
+                "In the same manner, when checking to see if you develop a mutation when you gain a new Contamination Level, you are treated as having a number of Contamination Levels equal to half your current Contamination Level instead, rounded down. For example, if you gained 4 Contamination Levels, you would only develop a new mutation if the result of the {@dice 1d6} roll is 2 or lower.",
+                "Note that if you have six or more contamination levels, being subject to the {@spell purge contamination|GuideDrakkenheim} spell will cause you to gain six (or more) levels of exhaustion, and you'll die as a result."
             ]
         },
         {
@@ -7547,9 +7505,6 @@
             "header": 2,
             "entries": [
                 "You've discovered an arcane method to safely discharge eldritch pollutants from your own body. Whenever you finish a long rest, you can reduce your Contamination Level by an amount equal to half your proficiency bonus (rounded down)."
-            ],
-            "resist": [
-                "necrotic"
             ]
         },
         {
@@ -21868,18 +21823,13 @@
                             "type": "entries",
                             "name": "Apothecaries in Drakkenheim",
                             "entries": [
-                                "A magic-adjacent term broadly used on the continent to describe many professions and forms.",
-                                "The term is found throughout the continent, and the vast array of possible fields of study is ever expanding.",
-                                "The Amethyst Academy has departments of apothecaries managing their labs and research centers.",
-                                "Within their many schools and strongholds, they teach advanced sciences and using magic to better understand the body and mind, and the various modern medical practices that can be combined with magic to save lives — or end them.",
-                                "Not all apothecaries are mageborn. The broad term has been used to describe several practices that combine herbal ingredients, chemicals, and poisons with biological study to induce outcomes similar to the effects of evocation or necromantic magic.",
-                                "Pathogenists working in distant labs perform studies to create new powerful strains of disease and poison. Chemists find ways to surpass the potency of mageborn spellcasting with the right dose of chemicals for their explosive and destructive results.",
-                                "Other Mutagenists working with the mutating effects of delirium seek to control and isolate the elements of mutation and apply them in a more controlled manner.",
-                                "There are even reports of apothecaries who are studying techniques to unlock the potential of the mind. These Alienists have caused a stir amongst nobles, mages, and clergy for their ability to tap into mental capabilities that mirror magic, without requiring a mageborn's lineage.",
-                                "Secretive reanimators pursue grisly studies into the realms of death and undeath, mimicking necromantic magic using little more than new science and invention.",
-                                "There are apothecaries working under the Sacred Flame as exorcists, channeling their occult knowledge and research into helping rid holy sites of undead, dispatch unwanted spirits, and remove terrible curses.",
-                                "Apothecaries are found on every continent; whether mage-born or not, many are skilled academics who have a keen mind for pushing the boundaries of science.",
-                                "These researchers have found themselves on the path of the apothecary, lending their aid to cities and towns throughout the continent, and occasionally bringing unique chemical warfare to the battlefield of great wars."
+                                "Apothecaries can be found throughout the continent in many forms. The term is broadly used to describe many magic-adjacent professions found on the continent and the vast array of possible fields of study is ever expanding.",
+                                "The Amethyst Academy has departments of apothecaries managing their labs and research centers. Within their many schools and strongholds, they teach advanced sciences and using magic to better understand the body and mind, and the various modern medical practices that can be combined with magic to save lives\u2014or end them.",
+                                "Not all apothecaries are mageborn. The broad term has been used to describe several practices that combine herbal ingredients, chemicals, and poisons with biological study to induce outcomes similar to the effects of evocation or necromantic magic. Pathogenists working in distant labs perform studies to create new powerful strains of disease and poison. Chemists find ways to surpass the potency of mageborn spellcasting with the right dose of chemicals for their explosive and destructive results. Other",
+                                "Mutagenists working with the mutating effects of delerium seek to control and isolate the elements of mutation and apply them in a more controlled manner. There are even reports of apothecaries who are studying techniques to unlock the potential of the mind.",
+                                "These Alienists have caused a stir amongst nobles, mages, and clergy for their ability to tap into mental capabilities that mirror magic, without requiring a mageborn's lineage.",
+                                "Secretive reanimators pursue grisly studies into the realms of death and undeath, mimicking necromantic magic using little more than new science and invention. There are apothecaries working under the Sacred Flame as exorcists, channeling their occult knowledge and research into helping rid holy sites of undead, dispatch unwanted spirits, and remove terrible curses.",
+                                "Apothecaries are found on every continent; whether mageborn or not, many are skilled academics who have a keen mind for pushing the boundaries of science. These researchers have found themselves on the path of the apothecary, lending their aid to cities and towns throughout the continent, and occasionally bringing unique chemical warfare to the battlefield of great wars."
                             ]
                         }
                     ]
