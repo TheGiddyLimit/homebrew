@@ -417,7 +417,7 @@
 					"type": "entries",
 					"name": "Silk Dice",
 					"entries": [
-						"Your Silk Dice are a number of d8s that increase as you gain levels in this class, as shown in the Weaver table. These dice determine the damage of your Silk Skills."
+						"Your Silk Dice are a number of d8s that increase as you gain levels in this class, as shown in the Weaver table. These dice determine the Hit Points restored by {@classFeature Bind|Weaver|Weaver|1|Weaver} and the damage of your {@filter Silk Skills|optionalfeatures|feature type=SS|source=Weaver}."
 					]
 				},
 				{
@@ -453,7 +453,7 @@
 			"entries": [
 				"As an action, you can spend 9 Silk points to rapidly heal your wounds. When you do so, any other creature can use its reaction to make a single meelee attack against you if it is close enough to reach you. (This is similar to an {@action Opportunity Attack|XPHB}, but it can take place even if an effect such as the {@action Disengage|XPHB} action would normally prevent such an attack.)",
 				"If you use Bind while airborne, you hover in place until it completes.",
-				"If you take damage during this action, you immediately lose all your Silk points and fail to recover any Hit Points. Otherwise, roll a number of d6s equal to half your Weaver level (rounded up), and for each die rolled, add your Constitution modifier. You recover Hit Points equal to the result.",
+				"If you take damage during this action, you immediately lose all your Silk points and fail to recover any Hit Points. Otherwise, roll your {@classFeature Silk|Weaver|Weaver|1|Weaver|Silk Dice} and recover Hit Points equal to the result.",
 				"This is similar to spending {@variantrule Hit Point Dice|XPHB|Hit Dice} during a short rest, but your Hit Dice are not consumed. For example, if a level 7 Weaver with a +2 Constitution modifier uses Bind successfully, they will recover 4d6 + 8 Hit Points."
 			]
 		},
@@ -495,7 +495,6 @@
 					"name": "Red Tools",
 					"entries": [
 						"You may use up to two different {@filter Red Tools|optionalfeatures|feature type=WT:R|source=Weaver} with a single action (or bonus action, if both have the Quick property).",
-						"If you are hiding, using a tool with the Hidden property will not reveal your location.",
 						"Unless stated otherwise, a tool's DC for checks or saving throws is calculated as 8 + your Proficiency Bonus + your Strength or Dexterity modifier (whichever is higher)."
 					]
 				},
@@ -1305,7 +1304,7 @@
 					"items": [
 						"Your attack rolls are made with advantage.",
 						"You can make a single attack as a {@variantrule Bonus Action|XPHB}.",
-						"When you deal damage, you can recover 1d6 Hit Points. This recovery increases to 2d6 at 5th level, 3d6 at 11th level, and 4d6 at 17th level. For every d6 you roll, add your Constitution modifier to the amount of Hit Points you recover. Similar to damage dice, these recovery dice are doubled when you land a Critical Hit (but your Constitution modifier is not added to the extra dice)."
+						"When you deal damage, you can recover {@dice 1d8} Hit Points. This recovery increases to {@dice 2d8} at 5th level, {@dice 3d8} at 11th level, and {@dice 4d8} at 17th level. Similar to damage dice, these recovery dice are doubled when you land a Critical Hit."
 					]
 				},
 				"These effects last for 1 minute or until you take damage.",
@@ -1322,7 +1321,7 @@
 			"page": 9,
 			"level": 11,
 			"entries": [
-				"When you make a d20 roll with advantage during your Beast Bind, roll three d20s instead of two and use the highest result."
+				"When you roll a {@variantrule D20 Test|XPHB} with advantage during your Beast Bind, roll three d20s instead of two and use the highest result."
 			]
 		},
 		{
@@ -1414,7 +1413,7 @@
 			"level": 3,
 			"entries": [
 				"When you choose this subclass, the DM determines whether you are cursed by secretly rolling a d20 (they choose how to interpret the result).",
-				"If you are cursed, your Silk Point maximum is reduced to 3, and you cannot equip any Tools. This can be cured with a {@spell Remove Curse|XPHB} spell or by receiving an operation from a skilled surgeon."
+				"If you are cursed, your Silk point maximum is reduced to 3, and you cannot equip any Tools. This can be cured with a {@spell Remove Curse|XPHB} spell or by receiving an operation from a skilled surgeon."
 			]
 		},
 		{
@@ -1540,7 +1539,7 @@
 			"page": 10,
 			"level": 3,
 			"entries": [
-				"You gain proficiency with one type of Artisan's Tools, such as Tinker's Tools."
+				"You gain proficiency with {@item Tinker's Tools|XPHB}. If you already have this proficiency, you gain proficiency with one other type of {@item Artisan's Tools|XPHB} of your choice."
 			]
 		},
 		{
@@ -1557,7 +1556,7 @@
 				"As an action, you can spend 9 Silk points to craft extra copies of your Red Tools. These copies can be given to other friendly humanoid creatures, and they can use the Red Tools in the same manner that you do. Additionally, any of your Red Tools with the Limited property have all of their uses restored.",
 				"Craft Bind can be interrupted by attacks in the same way that your normal Bind can.",
 				"Each Red Tool is copied once, and each copy can be given to a single ally. The copies are usable until you complete a long rest or until you use Craft Bind again.",
-				"You always use your own Proficiency Bonus and character level as it refers to Red Tools; {@optfeature Cogfly|Weaver} and {@optfeature Pollip Pouch|Weaver} function using your abilities. All other effects are calculated based on whoever is currently wielding the tool."
+				"You use your own character level when determining a tool's damage dice and your Proficiency Bonus for a Limited tool's number of uses. {@optfeature Cogfly|Weaver} functions using your abilities, but for all other tools, the saving throw DC or bonus to attack/damage rolls is determined by whoever is wielding it."
 			]
 		},
 		{
@@ -1668,7 +1667,7 @@
 			"page": 11,
 			"level": 3,
 			"entries": [
-				"You can have three {@filter Silk Skills|optionalfeatures|feature type=SS|source=Weaver} prepared at a time, and your {@classFeature Silk|Weaver|Weaver|2|Weaver|Silk Dice} are d10s rather than d8s."
+				"You can have up to three {@filter Silk Skills|optionalfeatures|feature type=SS|source=Weaver} prepared at a time, and your {@classFeature Silk|Weaver|Weaver|1|Weaver|Silk Dice} are d10s rather than d8s."
 			]
 		},
 		{
@@ -1728,7 +1727,8 @@
 				}
 			],
 			"entries": [
-				"As an action, you throw your Needle at a target within 30 feet, with force amplified by coiled Silk. Make a ranged attack roll with your Needle. On a hit, deal damage for your Needle and extra Radiant damage equal to your {@classFeature Silk|Weaver|Weaver|2|Weaver|Silk Dice}."
+				"As an action, you throw your Needle at a target within 30 feet, with force amplified by coiled Silk. Make a ranged attack roll with your Needle. On a hit, deal damage for your Needle and extra Radiant damage equal to your {@classFeature Silk|Weaver|Weaver|1|Weaver|Silk Dice}.",
+				"Having a foe nearby does not impose disadvantage on the ranged attack roll. You resume holding your Needle when this attack ends."
 			]
 		},
 		{
@@ -1751,7 +1751,7 @@
 				}
 			],
 			"entries": [
-				"As an action, you surround yourself in a whirl of Silk. Each creature within 15 feet of you must make a Dexterity saving throw, taking Radiant damage equal to your {@classFeature Silk|Weaver|Weaver|2|Weaver|Silk Dice} on a failed save or half as much damage on a success.",
+				"As an action, you surround yourself in a whirl of Silk. Each creature within 15 feet of you must make a Dexterity saving throw, taking Radiant damage equal to your {@classFeature Silk|Weaver|Weaver|1|Weaver|Silk Dice} on a failed save or half as much damage on a success.",
 				"During the Thread Storm, you can use a bonus action to deal extra damage without spending additional Silk. Roll your Silk Dice another time, but with a -2 penalty to the die size (e.g. d8s become d6s)."
 			]
 		},
@@ -1775,7 +1775,7 @@
 				}
 			],
 			"entries": [
-				"As a {@variantrule Bonus Action|XPHB}, you can teleport up to 30 feet to a location you can see. All creatures in a line between your original position and your destination must succeed on a Dexterity saving throw or take Radiant damage equal to your {@classFeature Silk|Weaver|Weaver|2|Weaver|Silk Dice}."
+				"As a {@variantrule Bonus Action|XPHB}, you can teleport up to 30 feet to a location you can see. All creatures in a line between your original position and your destination must succeed on a Dexterity saving throw or take Radiant damage equal to your {@classFeature Silk|Weaver|Weaver|1|Weaver|Silk Dice}."
 			]
 		},
 		{
@@ -1798,7 +1798,7 @@
 				}
 			],
 			"entries": [
-				"As an action, you can sew rending runes upon a number of enemies that you can see equal to your proficiency bonus. Each target must make a Constitution saving throw, taking Radiant damage equal to your {@classFeature Silk|Weaver|Weaver|2|Weaver|Silk Dice} on a failed save or half as much damage on a success."
+				"As an action, you can sew rending runes upon a number of enemies that you can see equal to your proficiency bonus. Each target must make a Constitution saving throw, taking Radiant damage equal to your {@classFeature Silk|Weaver|Weaver|1|Weaver|Silk Dice} on a failed save or half as much damage on a success."
 			]
 		},
 		{
@@ -1821,8 +1821,7 @@
 				}
 			],
 			"entries": [
-				"As a bonus action, you can ready yourself to counter another creature's attack. The first time another creature damages you before the start of your next turn, you ignore the damage entirely, and if that creature is within 15 feet of you, it must make a Dexterity saving throw, taking Radiant damage equal to your {@classFeature Silk|Weaver|Weaver|2|Weaver|Silk Dice} on a failed save or half as much damage on a success.",
-				"Starting at 17th level, this skill can be used as a reaction immediately before you take damage."
+				"As a reaction immediately before you take damage from another creature, you can counter the attack. You ignore the damage entirely, and if the attacker is within 15 feet of you, it must make a Dexterity saving throw, taking Radiant damage equal to your {@classFeature Silk|Weaver|Weaver|1|Weaver|Silk Dice} on a failed save or half as much damage on a success."
 			]
 		},
 		{
@@ -1845,7 +1844,7 @@
 				}
 			],
 			"entries": [
-				"As a bonus action, you conjure three nails and send them flying to one or more targets within 120 feet. Each nail deals Radiant damage equal to your {@classFeature Silk|Weaver|Weaver|2|Weaver|Silk Dice}, but with a -4 penalty to the die size (e.g. d8s become d4s). Similar to {@spell Magic Missile|XPHB} this damage is automatic unless the {@spell Shield|XPHB} spell is cast."
+				"As an action, you conjure three nails and send them flying to one or more targets within 120 feet. Each one deals Radiant damage equal to your {@classFeature Silk|Weaver|Weaver|1|Weaver|Silk Dice}, but with a -4 penalty to the die size (e.g. d8s become d4s). Similar to {@spell Magic Missile|XPHB}, this damage is automatic unless the {@spell Shield|XPHB} spell is cast."
 			]
 		},
 		{
@@ -1953,7 +1952,7 @@
 					"type": "entries",
 					"name": "Hidden",
 					"entries": [
-						"Other creatures will only notice the tool if their Passive Perception or Investigation is high enough to meet a DC of 8 + your Proficiency Bonus + your Strength or Dexterity modifier (your choice). If a creature can see you as you use the tool, they immediately make a check by rolling a d20 instead of using their passive ability.",
+						"Other creatures will only notice the tool if their Passive Perception or Investigation is high enough to meet a DC of 8 + your Proficiency Bonus + your Strength or Dexterity modifier (your choice). If a creature can see you as you use the tool, they immediately make a check by rolling a d20 instead of using their passive ability. If you are hiding, using the tool only reveals your location to creatures who notice it.",
 						"When you take a long rest, you can spend a few minutes showing your tools to your travel companions. This allows them to automatically succeed any check required to notice the tool."
 					]
 				}
@@ -2068,7 +2067,7 @@
 					"type": "entries",
 					"name": "Hidden",
 					"entries": [
-						"Other creatures will only notice the tool if their Passive Perception or Investigation is high enough to meet a DC of 8 + your Proficiency Bonus + your Strength or Dexterity modifier (your choice). If a creature can see you as you use the tool, they immediately make a check by rolling a d20 instead of using their passive ability.",
+						"Other creatures will only notice the tool if their Passive Perception or Investigation is high enough to meet a DC of 8 + your Proficiency Bonus + your Strength or Dexterity modifier (your choice). If a creature can see you as you use the tool, they immediately make a check by rolling a d20 instead of using their passive ability. If you are hiding, using the tool only reveals your location to creatures who notice it.",
 						"When you take a long rest, you can spend a few minutes showing your tools to your travel companions. This allows them to automatically succeed any check required to notice the tool."
 					]
 				}
@@ -2591,7 +2590,7 @@
 				}
 			],
 			"entries": [
-				"When you use this tool, you place a rune on the ground where you are standing. Creatures must succeed on an Investigation check (using your Silk save DC) to see the rune.",
+				"When you use this tool, you place a rune on the ground where you are standing. This must be at least 10 feet away from any other runes you currently have set. Creatures must succeed on an Investigation check (using your Silk save DC) to see the rune.",
 				"The first time a hostile creature enters a space within 10 feet of the rune, it explodes and deals damage to all creatures in a 15-foot radius. Creatures make a Constitution saving throw, taking 10d8 Radiant damage on a failed save or half as much damage on a success.",
 				"This tool's damage increases to 10d10 when you reach 17th level.",
 				{
@@ -2612,7 +2611,7 @@
 					"type": "entries",
 					"name": "Hidden",
 					"entries": [
-						"Other creatures will only notice the tool if their Passive Perception or Investigation is high enough to meet a DC of 8 + your Proficiency Bonus + your Strength or Dexterity modifier (your choice). If a creature can see you as you use the tool, they immediately make a check by rolling a d20 instead of using their passive ability.",
+						"Other creatures will only notice the tool if their Passive Perception or Investigation is high enough to meet a DC of 8 + your Proficiency Bonus + your Strength or Dexterity modifier (your choice). If a creature can see you as you use the tool, they immediately make a check by rolling a d20 instead of using their passive ability. If you are hiding, using the tool only reveals your location to creatures who notice it.",
 						"When you take a long rest, you can spend a few minutes showing your tools to your travel companions. This allows them to automatically succeed any check required to notice the tool."
 					]
 				}
@@ -2811,8 +2810,8 @@
 				}
 			],
 			"entries": [
-				"You cannot use Bind if you have used any of your movement since the start of your turn. When you Bind, your Speed becomes 0 and cannot be increased.",
-				"When you regain Hit Points from your Bind, you use d10s instead of d6s. If your Bind is interrupted, you still recover Hit Points equal to half of an uninterrupted Bind."
+				"You cannot use {@classFeature Bind|Weaver|Weaver|1|Weaver} if you have used any of your movement since the start of your turn. When you Bind, your Speed becomes 0 and cannot be increased.",
+				"When you recover Hit Points from your Bind, your Silk Dice are d12s instead of d8s. If your Bind is interrupted, you still recover Hit Points equal to half of an uninterrupted Bind."
 			]
 		},
 		{
@@ -2836,7 +2835,7 @@
 				}
 			],
 			"entries": [
-				"When your {@classFeature Bind|Weaver|Weaver|1|Weaver} completes, all other creatures within 10 feet must make a Constitution saving throw (using your Silk save DC), taking 1d12 Radiant damage on a failed save or half as much damage on a success.",
+				"When your {@classFeature Bind|Weaver|Weaver|1|Weaver} completes, all other creatures within 10 feet must make a Constitution saving throw (using your Silk save DC), taking {@damage 2d6} Radiant damage on a failed save or half as much damage on a success.",
 				"If Multibinder is also equipped, this tool activates twice: once when the Bind begins and again when it completes.",
 				"Once {@optfeature Claw Mirrors|Weaver} is unlocked, this tool can no longer be equipped."
 			]
@@ -2862,8 +2861,9 @@
 				}
 			],
 			"entries": [
-				"As an action, you can perform a special melee attack called a Needle Strike. You cannot use your Relentless Strikes feature during this attack.",
-				"The Needle Strike's effects depend on your Crest:",
+				"As an action, you can perform a special melee attack called a Needle Strike.",
+				"Alternatively, you can charge a Needle Strike and release it on your turn as a bonus action. You cannot perform this bonus action if you took damage or took a reaction since the end of your last turn, or if you've already taken an action this turn.",
+				"You cannot use your Relentless Strikes feature during this attack. The Needle Strike's effects depend on your Crest:",
 				{
 					"type": "entries",
 					"name": "Hunter Crest",
@@ -2911,7 +2911,7 @@
 					"type": "entries",
 					"name": "Shaman Crest",
 					"entries": [
-						"You make a single Needle attack with advantage on the attack roll and deal extra damage equal to your Silk modifier. This Needle Strike can be performed as a bonus action."
+						"You make a single Needle attack with advantage on the attack roll and deal extra damage equal to your Silk modifier."
 					]
 				}
 			]
@@ -3036,7 +3036,7 @@
 				}
 			],
 			"entries": [
-				"Your {@classFeature Silk|Weaver|Weaver|2|Weaver|Silk Dice} are d10s rather than d8s, and any Radiant damage dealt by {@filter Silk Skills|optionalfeatures|feature type=SS|source=Weaver} is changed to Electric.",
+				"Your {@classFeature Silk|Weaver|Weaver|1|Weaver|Silk Dice} are d10s rather than d8s, and any Radiant damage dealt by {@filter Silk Skills|optionalfeatures|feature type=SS|source=Weaver} is changed to Electric.",
 				"If you have the {@class Weaver|Weaver|Shaman Crest|Shaman}, your Silk Dice become d12s."
 			]
 		},
@@ -3136,7 +3136,7 @@
 				}
 			],
 			"entries": [
-				"You can use Bind (or a similar feature such as Beast Bind or Craft Bind) without spending Silk.",
+				"You can use {@classFeature Bind|Weaver|Weaver|1|Weaver} (or a similar feature such as {@subclassFeature Beast Bind|Weaver|Weaver|Beast|Weaver|3|Weaver} or {@subclassFeature Craft Bind|Weaver|Weaver|Architect|Weaver|3|Weaver}) without spending Silk.",
 				"After you use this feature, you must complete a long rest before you can use it again."
 			]
 		},
@@ -3211,7 +3211,7 @@
 			],
 			"entries": [
 				"This tool is magical and only deals damage to hostile creatures.",
-				"When you take damage, a crystal forms at your location. At the end of your next turn, the crystal arms itself. If there is a hostile creature within 5 feet of the crystal, it activates immediately; otherwise it activates the first time an enemy is within 5 feet of it.",
+				"When you take damage from a hostile creature, a crystal forms at your location. At the end of your next turn, the crystal arms itself. If there is a hostile creature within 5 feet of the crystal, it activates immediately; otherwise it activates the first time an enemy is within 5 feet of it.",
 				"When the crystal activates, enemies within 10 feet of it must make a Dexterity saving throw (using your Silk save DC), taking {@damage 3d8} piercing damage and {@damage 3d6} cold damage on a failed save, or half as much damage on a success. The Piercing damage is considered magical for the purpose of bypassing damage resistance.",
 				"In order to notice a crystal, a creature must have a Passive Perception ability that meets or exceeds your Silk save DC."
 			]
@@ -3261,7 +3261,7 @@
 				}
 			],
 			"entries": [
-				"When your {@classFeature Bind|Weaver|Weaver|1|Weaver} completes, all other creatures within 10 feet must make a Constitution saving throw (using your Silk save DC), taking {@damage 1d12} Radiant damage and {@damage 1d12} Necrotic damage on a failed save or half as much damage on a success.",
+				"When your {@classFeature Bind|Weaver|Weaver|1|Weaver} completes, all other creatures within 10 feet must make a Constitution saving throw (using your Silk save DC), taking {@damage 2d6} Radiant damage and {@damage 2d6} Necrotic damage on a failed save or half as much damage on a success.",
 				"If {@optfeature Multibinder|Weaver} is also equipped, this tool activates twice: once when the Bind begins and again when it completes."
 			]
 		},
@@ -3714,7 +3714,7 @@
 			],
 			"entries": [
 				"You gain proficiency in Constitution saving throws. If you already have this proficiency, your Constitution score increases by 1, to a maximum of 20.",
-				"When a feature such as {@classFeature Bind|Weaver|Weaver|1|Weaver} or the Hunter's {@subclassFeature Focus|Weaver|Weaver|Hunter|Weaver|3} is interrupted as a result of taking damage, you can make a DC 10 Constitution saving throw. If you succeed, the damage you took does not interrupt any Weaver features.",
+				"When a Weaver feature (such as {@classFeature Bind|Weaver|Weaver|1|Weaver}, {@optfeature Pin Badge|Weaver|Needle Strike}, or the Hunter's {@subclassFeature Focus|Weaver|Weaver|Hunter|Weaver|3}) is interrupted as a result of taking damage, you can make a DC 10 Constitution saving throw. If you succeed, the damage you took does not interrupt any Weaver features.",
 				"Each time you use this feature after the first, the DC increases by 5. When you finish a short or long rest, the DC resets to 10."
 			]
 		}
@@ -3742,6 +3742,13 @@
 				},
 				{
 					"type": "entries",
+					"name": "Nimble Limbs",
+					"entries": [
+						"The damage die of your Unarmed Strikes is {@damage 1d4}, and you can use your Strength or Dexterity modifier for the attack and damage rolls."
+					]
+				},
+				{
+					"type": "entries",
 					"name": "Arthropod Leap",
 					"entries": [
 						"You can jump up to 15 feet into the air; when you do so, you can move a horizontal distance less than or equal to the height of your jump by the time you hit the ground. This extra distance costs movement as normal.",
@@ -3750,23 +3757,9 @@
 				},
 				{
 					"type": "entries",
-					"name": "Martial Arts Training",
+					"name": "Spider Sense",
 					"entries": [
-						"The damage die of your Unarmed Strikes is {@damage 1d4}, and you can use your Strength or Dexterity modifier for the attack and damage rolls."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Prone to Frailty",
-					"entries": [
-						"If your Initiative roll is a natural 1, then once combat ends (i.e. when you stop acting in Initiative order) you immediately gain {@dice 1d4-1} levels of exhaustion. The exhaustion lasts until you complete a short or long rest."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Languages",
-					"entries": [
-						"You can speak, read, and write Common and one other language that you and your DM agree is appropriate for your character."
+						"You have proficiency in the {@skill Survival|XPHB} skill. When you make a Wisdom (Survival) check to track a creature, you do so with advantage."
 					]
 				}
 			]
