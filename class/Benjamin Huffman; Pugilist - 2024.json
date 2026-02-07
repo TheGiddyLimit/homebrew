@@ -3473,11 +3473,19 @@
                 {
                     "changes": [
                         {
-                            "key": "data.attributes.ac.value",
-                            "mode": "OVERRIDE",
-                            "value": "12 + @abilities.con.mod"
+                            "key": "system.attributes.ac.calc",
+                            "mode": 5,
+                            "value": "custom",
+                            "priority": 20
+                        },
+                        {
+                            "key": "system.attributes.ac.formula",
+                            "mode": 5,
+                            "value": "12 + @abilities.con.mod",
+                            "priority": 20
                         }
-                    ]
+                    ],
+                    "transfer": true
                 }
             ]
         },
@@ -3494,7 +3502,6 @@
                         "source": "Pugilist2024",
                         "type": "M|XPHB",
                         "rarity": "none",
-                        "weaponCategory": "simple",
                         "foundrySystem": {
                             "equipped": true,
                             "damage.parts": [
@@ -3503,11 +3510,475 @@
                                     "bludgeoning"
                                 ]
                             ],
+                            "type": {
+                                "value": "natural"
+                            },
                             "ability": "str"
-                        }
+                        },
+                        "foundryActivities": [
+                            {
+                                "type": "attack",
+                                "activation": {
+                                    "type": "action",
+                                    "value": 1
+                                },
+                                "range": {
+                                    "units": "self",
+                                    "override": false
+                                },
+                                "target": {
+                                    "template": {
+                                        "contiguous": false,
+                                        "units": "ft"
+                                    },
+                                    "affects": {
+                                        "choice": false
+                                    },
+                                    "override": false,
+                                    "prompt": true
+                                },
+                                "uses": {
+                                    "spent": 0,
+                                    "recovery": []
+                                },
+                                "attack": {
+                                    "critical": {
+                                        "threshold": null
+                                    },
+                                    "flat": false,
+                                    "type": {
+                                        "value": "melee",
+                                        "classification": "unarmed"
+                                    }
+                                },
+                                "damage": {
+                                    "critical": {
+                                        "bonus": ""
+                                    },
+                                    "includeBase": true
+                                }
+                            },
+                            {
+                                "name": "Bonus Action Attack",
+                                "type": "attack",
+                                "activation": {
+                                    "type": "bonus",
+                                    "value": 1
+                                },
+                                "range": {
+                                    "units": "self",
+                                    "override": false
+                                },
+                                "target": {
+                                    "template": {
+                                        "contiguous": false,
+                                        "units": "ft"
+                                    },
+                                    "affects": {
+                                        "choice": false
+                                    },
+                                    "override": false,
+                                    "prompt": true
+                                },
+                                "uses": {
+                                    "spent": 0,
+                                    "recovery": []
+                                },
+                                "attack": {
+                                    "critical": {
+                                        "threshold": null
+                                    },
+                                    "flat": false,
+                                    "type": {
+                                        "value": "melee",
+                                        "classification": "unarmed"
+                                    }
+                                },
+                                "damage": {
+                                    "critical": {
+                                        "bonus": ""
+                                    },
+                                    "includeBase": true
+                                }
+                            },
+                            {
+                                "type": "save",
+                                "name": "Grapple - Strength",
+                                "activation": {
+                                    "type": "special"
+                                },
+                                "effects": [
+                                    {
+                                        "foundryId": "Xy7PqR9Nz2LmB4kW",
+                                        "onSave": false
+                                    }
+                                ],
+                                "range": {
+                                    "override": false,
+                                    "units": "self"
+                                },
+                                "target": {
+                                    "template": {
+                                        "contiguous": false,
+                                        "units": "ft",
+                                        "type": ""
+                                    },
+                                    "affects": {
+                                        "choice": false,
+                                        "count": "1",
+                                        "type": "creature",
+                                        "special": ""
+                                    },
+                                    "override": false,
+                                    "prompt": false
+                                },
+                                "damage": {
+                                    "parts": [],
+                                    "onSave": "half",
+                                    "critical": {
+                                        "allow": false
+                                    }
+                                },
+                                "save": {
+                                    "ability": [
+                                        "str"
+                                    ],
+                                    "dc": {
+                                        "calculation": "",
+                                        "formula": "max(@abilities.str.dc)"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "save",
+                                "name": "Grapple - Dexterity",
+                                "activation": {
+                                    "type": "special"
+                                },
+                                "effects": [
+                                    {
+                                        "foundryId": "Xy7PqR9Nz2LmB4kW",
+                                        "onSave": false
+                                    }
+                                ],
+                                "range": {
+                                    "override": false,
+                                    "units": "self"
+                                },
+                                "target": {
+                                    "template": {
+                                        "contiguous": false,
+                                        "units": "ft",
+                                        "type": ""
+                                    },
+                                    "affects": {
+                                        "choice": false,
+                                        "count": "1",
+                                        "type": "creature",
+                                        "special": ""
+                                    },
+                                    "override": false,
+                                    "prompt": false
+                                },
+                                "damage": {
+                                    "parts": [],
+                                    "onSave": "half",
+                                    "critical": {
+                                        "allow": false
+                                    }
+                                },
+                                "save": {
+                                    "ability": [
+                                        "dex"
+                                    ],
+                                    "dc": {
+                                        "calculation": "",
+                                        "formula": "max(@abilities.dex.dc)"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "save",
+                                "name": "Shove (Prone) - Strength",
+                                "activation": {
+                                    "type": "special"
+                                },
+                                "effects": [
+                                    {
+                                        "foundryId": "H7x9N2mP8L0bKjQa",
+                                        "onSave": false
+                                    }
+                                ],
+                                "range": {
+                                    "override": false,
+                                    "units": "self"
+                                },
+                                "target": {
+                                    "template": {
+                                        "contiguous": false,
+                                        "units": "ft",
+                                        "type": ""
+                                    },
+                                    "affects": {
+                                        "choice": false,
+                                        "count": "1",
+                                        "type": "creature",
+                                        "special": ""
+                                    },
+                                    "override": false,
+                                    "prompt": false
+                                },
+                                "damage": {
+                                    "parts": [],
+                                    "onSave": "half",
+                                    "critical": {
+                                        "allow": false
+                                    }
+                                },
+                                "save": {
+                                    "ability": [
+                                        "str"
+                                    ],
+                                    "dc": {
+                                        "calculation": "",
+                                        "formula": "max(@abilities.str.dc)"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "save",
+                                "name": "Shove (Prone) - Dexterity",
+                                "activation": {
+                                    "type": "special"
+                                },
+                                "effects": [
+                                    {
+                                        "foundryId": "H7x9N2mP8L0bKjQa",
+                                        "onSave": false
+                                    }
+                                ],
+                                "range": {
+                                    "override": false,
+                                    "units": "self"
+                                },
+                                "target": {
+                                    "template": {
+                                        "contiguous": false,
+                                        "units": "ft",
+                                        "type": ""
+                                    },
+                                    "affects": {
+                                        "choice": false,
+                                        "count": "1",
+                                        "type": "creature",
+                                        "special": ""
+                                    },
+                                    "override": false,
+                                    "prompt": false
+                                },
+                                "damage": {
+                                    "parts": [],
+                                    "onSave": "half",
+                                    "critical": {
+                                        "allow": false
+                                    }
+                                },
+                                "save": {
+                                    "ability": [
+                                        "dex"
+                                    ],
+                                    "dc": {
+                                        "calculation": "",
+                                        "formula": "max(@abilities.dex.dc)"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "save",
+                                "name": "Shove (Push) - Strength",
+                                "activation": {
+                                    "type": "special"
+                                },
+                                "range": {
+                                    "override": false,
+                                    "units": "self"
+                                },
+                                "target": {
+                                    "template": {
+                                        "contiguous": false,
+                                        "units": "ft",
+                                        "type": ""
+                                    },
+                                    "affects": {
+                                        "choice": false,
+                                        "count": "1",
+                                        "type": "creature",
+                                        "special": ""
+                                    },
+                                    "override": false,
+                                    "prompt": false
+                                },
+                                "damage": {
+                                    "parts": [],
+                                    "onSave": "half",
+                                    "critical": {
+                                        "allow": false
+                                    }
+                                },
+                                "save": {
+                                    "ability": [
+                                        "str"
+                                    ],
+                                    "dc": {
+                                        "calculation": "",
+                                        "formula": "max(@abilities.str.dc)"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "save",
+                                "name": "Shove (Push) - Dexterity",
+                                "activation": {
+                                    "type": "special"
+                                },
+                                "range": {
+                                    "override": false,
+                                    "units": "self"
+                                },
+                                "target": {
+                                    "template": {
+                                        "contiguous": false,
+                                        "units": "ft",
+                                        "type": ""
+                                    },
+                                    "affects": {
+                                        "choice": false,
+                                        "count": "1",
+                                        "type": "creature",
+                                        "special": ""
+                                    },
+                                    "override": false,
+                                    "prompt": false
+                                },
+                                "damage": {
+                                    "parts": [],
+                                    "onSave": "half",
+                                    "critical": {
+                                        "allow": false
+                                    }
+                                },
+                                "save": {
+                                    "ability": [
+                                        "dex"
+                                    ],
+                                    "dc": {
+                                        "calculation": "",
+                                        "formula": "max(@abilities.dex.dc)"
+                                    }
+                                }
+                            }
+                        ],
+                        "foundryEffects": [
+                            {
+                                "name": "Grappled",
+                                "img": "systems/dnd5e/icons/svg/statuses/grappled.svg",
+                                "foundryId": "Xy7PqR9Nz2LmB4kW",
+                                "changes": [],
+                                "statuses": [
+                                    "grappled"
+                                ]
+                            },
+                            {
+                                "name": "Prone",
+                                "img": "systems/dnd5e/icons/svg/statuses/prone.svg",
+                                "foundryId": "H7x9N2mP8L0bKjQa",
+                                "changes": [],
+                                "statuses": [
+                                    "prone"
+                                ]
+                            }
+                        ]
                     }
                 ]
-            }
+            },
+            "activities": [
+                {
+                    "name": "Pugilist Weapon",
+                    "type": "enchant",
+                    "activation": {
+                        "type": "special"
+                    },
+                    "effects": [
+                        {
+                            "foundryId": "N7PKmMsJLF7FqRX5"
+                        }
+                    ]
+                },
+                {
+                    "name": "Improvised Pugilist Weapon",
+                    "type": "enchant",
+                    "activation": {
+                        "type": "special"
+                    },
+                    "effects": [
+                        {
+                            "foundryId": "pjd4XApchJBoASDF"
+                        }
+                    ]
+                }
+            ],
+            "effects": [
+                {
+                    "type": "enchantment",
+                    "name": "Pugilist Weapon",
+                    "foundryId": "N7PKmMsJLF7FqRX5",
+                    "changes": [
+                        {
+                            "key": "system.damage.base.custom.enabled",
+                            "mode": 5,
+                            "value": "true",
+                            "priority": 20
+                        },
+                        {
+                            "key": "system.damage.base.custom.formula",
+                            "mode": 5,
+                            "value": "@scale.pugilist.fisticuffs + @mod",
+                            "priority": 20
+                        },
+                        {
+                            "key": "name",
+                            "mode": 5,
+                            "value": "{} (Pugilist Weapon)",
+                            "priority": 20
+                        }
+                    ]
+                },
+                {
+                    "type": "enchantment",
+                    "name": "Improvised Pugilist Weapon",
+                    "foundryId": "pjd4XApchJBoASDF",
+                    "changes": [
+                        {
+                            "key": "system.damage.base.custom.enabled",
+                            "mode": 5,
+                            "value": "true",
+                            "priority": 20
+                        },
+                        {
+                            "key": "system.damage.base.custom.formula",
+                            "mode": 5,
+                            "value": "@scale.pugilist.fisticuffs + @mod",
+                            "priority": 20
+                        },
+                        {
+                            "key": "name",
+                            "mode": 5,
+                            "value": "{} (Improvised Pugilist Weapon)",
+                            "priority": 20
+                        }
+                    ]
+                }
+            ]
         },
         {
             "name": "Moxie",
