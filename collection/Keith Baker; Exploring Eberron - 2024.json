@@ -13,12 +13,17 @@
                 ],
                 "version": "1.0.0",
                 "url": "https://marketplace.dndbeyond.com/category/8XTUXUM?pid=DB8XTUXUM",
-                "color": "946C60"
+                "color": "498AE8"
             }
         ],
 		"internalCopies": [
 			"race"
 		],
+		"dependencies": {
+			"race": [
+				"XPHB"
+			]
+		},
         "edition": "one",
         "dateAdded": 1770431298,
         "dateLastModified": 1770431298
@@ -407,6 +412,12 @@
             "classSource": "XPHB",
             "subclassShortName": "Dirge Singer",
             "subclassSource": "ExploringEberron24",
+			"skillProficiencies": [
+				{
+					"history": true,
+					"performance": true
+				}
+			],
             "level": 3,
             "entries": [
                 "You gain proficiency in the {@skill History|XPHB} and {@skill Performance|XPHB} skills. If you already have these proficiencies, you instead gain {@variantrule Expertise|XPHB}."
@@ -864,6 +875,11 @@
             "subclassShortName": "Forge Adept",
             "subclassSource": "ExploringEberron24",
             "level": 3,
+			"weaponProficiencies": [
+				{
+					"martial": true
+				}
+			],
             "entries": [
                 "Your combat training and your experiments with magic have paid off in two ways:",
 				{
@@ -891,7 +907,7 @@
             "subclassSource": "ExploringEberron24",
             "level": 3,
             "entries": [
-                "You can imbue a weapon with a fraction of your spirit, creating what the Dhakaani daashors call a ghaal'shaarat, Goblin for \"mighty blade.\" As a Magic action while you have {@item Smith's Tools|XPHB} in hand, you can turn a Simple or Martial Melee weapon into a Ghaal'Shaarat. The weapon continues to be a Ghaal'Shaarat until you imbue a different weapon or you die.",
+                "You can imbue a weapon with a fraction of your spirit, creating what the Dhakaani daashors call a ghaal'shaarat, Goblin for \"mighty blade.\" As a {@action Magic|XPHB} action while you have {@item Smith's Tools|XPHB} in hand, you can turn a Simple or Martial Melee weapon into a Ghaal'Shaarat. The weapon continues to be a Ghaal'Shaarat until you imbue a different weapon or you die.",
 				"The weapon gains the following benefits while you wield it.",
 				{
 					"type": "entries",
@@ -958,6 +974,13 @@
             "subclassSource": "ExploringEberron24",
             "level": 15,
 			"header": 2,
+			"resist": [
+				"psychic"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened"
+			],
             "entries": [
                 "The connection of your spirit to your weapon has been perfected. You gain the following benefits while wielding your Ghaal'Shaarat.",
 				{
@@ -3095,7 +3118,7 @@
 					"type": "entries",
 					"name": "Discipline",
 					"entries": [
-						"You have {@variantrule Advantage|XPHB} on saving throws you make to avoid or end the Charmed condition."
+						"You have {@variantrule Advantage|XPHB} on saving throws you make to avoid or end the {@condition Charmed|XPHB} condition."
 					]
 				},
 				{
@@ -4980,7 +5003,316 @@
 			}
 		}
 	],
+	"magicvariant": [
+		{
+			"name": "Resistance Breaker",
+			"type": "GV|XDMG",
+			"requires": [
+				{
+					"type": "M|XPHB"
+				}
+			],
+			"inherits": {
+				"namePrefix": "Resistance Breaker ",
+				"source": "ExploringEberron24",
+				"page": 0,
+				"rarity": "rare",
+				"recharge": "dawn",
+				"rechargeAmount": "{@dice 1d4 + 1}",
+				"charges": 5,
+				"entries": [
+					"This magic weapon has 5 charges. When you hit a creature with it, you can expend 1 of the weapon's charges to negate all of the creature's Resistances to damage until the end of your next turn. The weapon regains {@dice 1d4 + 1} expended charges daily at dawn."
+				]
+			}
+		},
+		{
+			"name": "Silent Weapon",
+			"type": "GV|XDMG",
+			"requires": [
+				{
+					"type": "R|XPHB"
+				}
+			],
+			"inherits": {
+				"namePrefix": "Silent ",
+				"source": "ExploringEberron24",
+				"page": 0,
+				"rarity": "uncommon",
+				"bonusWeapon": "+1",
+				"entries": [
+					"This magic weapon grants a {=bonusWeapon} bonus to attack and damage rolls made with it. When you are hidden from a creature and miss it with a Ranged weapon attack made with this weapon, making the attack doesn't reveal your position."
+				]
+			}
+		},
+		{
+			"name": "+1 Tools of the Master",
+			"type": "AT|XPHB",
+			"requires": [
+				{
+					"type": "AT|XPHB"
+				}
+			],
+			"inherits": {
+				"namePrefix": "+1 Master ",
+				"source": "ExploringEberron24",
+				"page": 0,
+				"rarity": "uncommon",
+				"reqAttune": "by a Character Proficient with the Tool",
+				"bonusSpellAttack": "+1",
+				"entries": [
+					"While using this tool as a {@variantrule Spellcasting Focus|XPHB}, you gain a +1 bonus to spell attack rolls. In addition, you can add this bonus to any ability check you make using this tool."
+				]
+			}
+		},
+		{
+			"name": "+2 Tools of the Master",
+			"type": "AT|XPHB",
+			"requires": [
+				{
+					"type": "AT|XPHB"
+				}
+			],
+			"inherits": {
+				"namePrefix": "+2 Master ",
+				"source": "ExploringEberron24",
+				"page": 0,
+				"rarity": "rare",
+				"reqAttune": "by a Character Proficient with the Tool",
+				"bonusSpellAttack": "+2",
+				"entries": [
+					"While using this tool as a {@variantrule Spellcasting Focus|XPHB}, you gain a +2 bonus to spell attack rolls. In addition, you can add this bonus to any ability check you make using this tool."
+				]
+			}
+		},
+		{
+			"name": "+3 Tools of the Master",
+			"type": "AT|XPHB",
+			"requires": [
+				{
+					"type": "AT|XPHB"
+				}
+			],
+			"inherits": {
+				"namePrefix": "+3 Master ",
+				"source": "ExploringEberron24",
+				"page": 0,
+				"rarity": "very rare",
+				"reqAttune": "by a Character Proficient with the Tool",
+				"bonusSpellAttack": "+3",
+				"entries": [
+					"While using this tool as a {@variantrule Spellcasting Focus|XPHB}, you gain a +3 bonus to spell attack rolls. In addition, you can add this bonus to any ability check you make using this tool."
+				]
+			}
+		},
+		{
+			"name": "Bane Weapon",
+			"type": "GV|XDMG",
+			"requires": [
+				{
+					"type": "M|XPHB"
+				}
+			],
+			"inherits": {
+				"namePrefix": "Bane ",
+				"source": "ExploringEberron24",
+				"page": 0,
+				"rarity": "rare",
+				"reqAttune": true,
+				"bonusWeapon": "+1",
+				"recharge": "dawn",
+				"rechargeAmount": "{@dice 1d4}",
+				"charges": 4,
+				"entries": [
+					"This magic weapon grants a {=bonusWeapon} bonus to attack and damage rolls made with it. Whenever you finish a {@variantrule Long Rest|XPHB}, choose one of the following creature types: Aberration, Beast, Celestial, Dragon, Fiend, Giant, or Undead.",
+					"The weapon has 4 charges. If you hit a creature of the chosen type with the weapon, you can expend 1 charge and inflict an additional {@damage 2d6} damage of the weapon's type with the attack. The weapon regains {@dice 1d4} expended charges daily at dawn."
+				]
+			}
+		},
+		{
+			"name": "Hungry Weapon",
+			"type": "GV|XDMG",
+			"requires": [
+				{
+					"type": "M|XPHB"
+				}
+			],
+			"inherits": {
+				"namePrefix": "Hungry ",
+				"source": "ExploringEberron24",
+				"page": 0,
+				"rarity": "uncommon",
+				"reqAttune": true,
+				"entries": [
+					"A creation of the daelkyr, this weapon is formed from muscle and bone. It may moan, growl, or wail, and it twists in your grip if it doesn't like you. If any creature attempts to wield this weapon while not attuned to it, it has {@variantrule Disadvantage|XPHB} on attack rolls made using the weapon. Additionally, if you are attuned to this weapon when another creature tries to wield it, the weapon's hilt extrudes sharp thorns and that creature takes {@damage 1d4} Piercing damage each turn.",
+					"While attuned to and wielding this weapon, you can take a {@variantrule Bonus Action|XPHB} to bond to it, causing tendrils from the hilt of the weapon to burrow into your flesh. You can end the weapon's bond as a {@action Magic|XPHB} action, causing the tendrils to retract so you can release the weapon. You can remain attuned to the weapon regardless of whether you're bonded to it. While bonded to it, you gain the following benefits:",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							{
+								"type": "item",
+								"name": "Secure Grip",
+								"entries": [
+									"The weapon is bound to your hand and can't be removed from your grasp, voluntarily or involuntarily. If it's a Two-Handed weapon, only one of your hands is bound to the weapon."
+								]
+							},
+							{
+								"type": "item",
+								"name": "Drain Life",
+								"entries": [
+									"When you hit a creature with this weapon, you can choose to expend one Hit Die to deal additional damage with the attack, and as you do, drain the life from your foes. Roll the Hit Die and add your Constitution modifier; the attack deals extra Necrotic damage equal to the result, and you regain an equal number of {@variantrule Hit Points|XPHB}."
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	],
+	"itemType": [
+		{
+			"name": "Dragonmark Focus",
+			"abbreviation": "DF",
+			"source": "ExploringEberron24",
+			"page": 278
+		}
+	],
+	"itemGroup": [
+		{
+			"name": "Dragonmark Channel",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"reqAttune": "by a Creature with a Specific Dragonmark",
+			"wondrous": true,
+			"typeAlt": "DF",
+			"items": [
+				"Detection Dragonmark Channel|ExploringEberron24",
+				"Finding Dragonmark Channel|ExploringEberron24",
+				"Handling Dragonmark Channel|ExploringEberron24",
+				"Healing Dragonmark Channel|ExploringEberron24",
+				"Hospitality Dragonmark Channel|ExploringEberron24",
+				"Making Dragonmark Channel|ExploringEberron24",
+				"Passage Dragonmark Channel|ExploringEberron24",
+				"Scribing Dragonmark Channel|ExploringEberron24",
+				"Sentinel Dragonmark Channel|ExploringEberron24",
+				"Shadow Dragonmark Channel|ExploringEberron24",
+				"Storm Dragonmark Channel|ExploringEberron24",
+				"Warding Dragonmark Channel|ExploringEberron24"
+			],
+			"entries": [
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house. Each Dragonmark Channel is tied to a specific dragonmark, such as the {@feat Mark of Healing|EFA} or the {@feat Mark of Making|EFA}, and you can only attune to it if you possess that dragonmark.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your Spells of the Mark list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			]
+		},
+		{
+			"name": "Dragonmark Reservoir",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Creature with a Specific Dragonmark",
+			"wondrous": true,
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"items": [
+				"Detection Dragonmark Reservoir|ExploringEberron24",
+				"Finding Dragonmark Reservoir|ExploringEberron24",
+				"Handling Dragonmark Reservoir|ExploringEberron24",
+				"Healing Dragonmark Reservoir|ExploringEberron24",
+				"Hospitality Dragonmark Reservoir|ExploringEberron24",
+				"Making Dragonmark Reservoir|ExploringEberron24",
+				"Passage Dragonmark Reservoir|ExploringEberron24",
+				"Scribing Dragonmark Reservoir|ExploringEberron24",
+				"Sentinel Dragonmark Reservoir|ExploringEberron24",
+				"Shadow Dragonmark Reservoir|ExploringEberron24",
+				"Storm Dragonmark Reservoir|ExploringEberron24",
+				"Warding Dragonmark Reservoir|ExploringEberron24"
+			],
+			"entries": [
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest. Each reservoir is tied to a specific dragonmark, such as the {@feat Mark of Healing|EFA} or the {@feat Mark of Making|EFA}, and you can only attune to it if you possess that dragonmark.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your Spells of the Mark list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			]
+		},
+		{
+			"name": "Channeling Wand",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"type": "WD|XDMG",
+			"rarity": "rare",
+			"reqAttune": "by a Creature with a Specific Dragonmark",
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"items": [
+				"Detection Channeling Wand|ExploringEberron24",
+				"Finding Channeling Wand|ExploringEberron24",
+				"Handling Channeling Wand|ExploringEberron24",
+				"Healing Channeling Wand|ExploringEberron24",
+				"Hospitality Channeling Wand|ExploringEberron24",
+				"Making Channeling Wand|ExploringEberron24",
+				"Passage Channeling Wand|ExploringEberron24",
+				"Scribing Channeling Wand|ExploringEberron24",
+				"Sentinel Channeling Wand|ExploringEberron24",
+				"Shadow Channeling Wand|ExploringEberron24",
+				"Storm Channeling Wand|ExploringEberron24",
+				"Warding Channeling Wand|ExploringEberron24"
+			],
+			"entries": [
+				"This short metal wand is tipped with a Siberys dragonshard. Each Channeling Wand is tied to a specific dragonmark, such as the {@feat Mark of Healing|EFA} or the {@feat Mark of Making|EFA}, and you can only attune to it if you possess that dragonmark.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your Spells of the Mark list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Casting Time",
+							"entries": [
+								"You expend 2 charges to change a spell that normally has a casting time of 1 {@action Magic|XPHB} action to instead be cast as a {@variantrule Bonus Action|XPHB}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Duration",
+							"entries": [
+								"You expend 1 charge to double the duration of the spell, to a maximum of 24 hours."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Range",
+							"entries": [
+								"You expend 1 charge to double the range of the spell. If the spell normally has a range of Touch, you can cast it with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regaining Charges",
+							"entries": [
+								"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll {@dice 1d20}. On a 1, the wand crumbles into ashes and is destroyed."
+							]
+						}
+					]
+				}
+			]
+		}
+	],
     "item": [
+		{
+			"name": "Breath of Siberys",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"wondrous": true,
+			"entries": [
+				"Arcane artillery requires a powerful surge of magical energy to fuel the attack. Wizards and other spellcasters can prime arcane artillery by expending a spell slot, but bombardiers don't have spell slots. Instead, a bombardier charges the weapon by using the Breath of Siberys\u2014a small globe containing a highly refined solution of dragonshards held in a suspended state. While priming arcane artillery, the operator crushes the Breath of Siberys against an engraved brass plate; the sphere dissolves and the weapon is charged.",
+				"House Cannith has been developing traditional staffs that can be charged using Breath of Siberys. It takes a {@action Magic|XPHB} action to dissolve the breath on the charging plate, restoring {@dice 1d4} charges to the {@item staff|XPHB}. Cannith artificers are working to adapt other charged items to use Breath of Siberys."
+			]
+		},
         {
             "name": "Battle Rod",
             "source": "ExploringEberron24",
@@ -5223,18 +5555,19 @@
 			]
 		},
 		{
-			"name": "Channeling Wand",
+			"name": "Detection Channeling Wand",
 			"source": "ExploringEberron24",
 			"page": 0,
 			"type": "WD|XDMG",
 			"rarity": "rare",
-			"reqAttune": "by a Creature with a Specific Dragonmark",
+			"reqAttune": "by a Creature with the Mark of Detection",
 			"recharge": "dawn",
 			"rechargeAmount": "{@dice 1d6 + 1}",
 			"charges": 7,
+			"typeAlt": "DF",
 			"entries": [
-				"This short metal wand is tipped with a Siberys dragonshard. Each Channeling Wand is tied to a specific dragonmark, such as the Mark of {@variantrule Healing|XPHB} or the Mark of Making, and you can only attune to it if you possess that dragonmark.",
-				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your Spells of the Mark list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				"This short metal wand is tipped with a Siberys dragonshard.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your {@feat Mark of Detection|EFA|Spells of the Mark} list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
 				{
 					"type": "list",
 					"style": "list-hang-notitle",
@@ -5269,22 +5602,1169 @@
 						}
 					]
 				}
-			]
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Detect Evil and Good|XPHB", 
+						"Identify|XPHB"
+					],
+					"2": [
+						"Detect Thoughts|XPHB",
+						"Find Traps|XPHB"
+					],
+					"3": [
+						"Clairvoyance|XPHB",
+						"Nondetection|XPHB"
+					],
+					"4": [
+						"Arcane Eye|XPHB",
+						"Divination|XPHB"
+					],
+					"5": [
+						"Legend Lore|XPHB"
+					]
+				}
+			}
 		},
 		{
-			"name": "Dragonmark Reservoir",
+			"name": "Finding Channeling Wand",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"type": "WD|XDMG",
+			"rarity": "rare",
+			"reqAttune": "by a Creature with the Mark of Finding",
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"This short metal wand is tipped with a Siberys dragonshard.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your {@feat Mark of Finding|EFA|Spells of the Mark} list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Casting Time",
+							"entries": [
+								"You expend 2 charges to change a spell that normally has a casting time of 1 {@action Magic|XPHB} action to instead be cast as a {@variantrule Bonus Action|XPHB}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Duration",
+							"entries": [
+								"You expend 1 charge to double the duration of the spell, to a maximum of 24 hours."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Range",
+							"entries": [
+								"You expend 1 charge to double the range of the spell. If the spell normally has a range of Touch, you can cast it with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regaining Charges",
+							"entries": [
+								"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll {@dice 1d20}. On a 1, the wand crumbles into ashes and is destroyed."
+							]
+						}
+					]
+				}
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Faerie Fire|XPHB",
+						"Longstrider|XPHB"
+					],
+					"2": [
+						"Locate Animals or Plants|XPHB",
+						"Mind Spike|XPHB"
+					],
+					"3": [
+						"Clairvoyance|XPHB",
+						"Speak with Plants|XPHB"
+					],
+					"4": [
+						"Divination|XPHB",
+						"Locate Creature|XPHB"
+					],
+					"5": [
+						"Commune with Nature|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Handling Channeling Wand",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"type": "WD|XDMG",
+			"rarity": "rare",
+			"reqAttune": "by a Creature with the Mark of Handling",
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"This short metal wand is tipped with a Siberys dragonshard.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your {@feat Mark of Handling|EFA|Spells of the Mark} list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Casting Time",
+							"entries": [
+								"You expend 2 charges to change a spell that normally has a casting time of 1 {@action Magic|XPHB} action to instead be cast as a {@variantrule Bonus Action|XPHB}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Duration",
+							"entries": [
+								"You expend 1 charge to double the duration of the spell, to a maximum of 24 hours."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Range",
+							"entries": [
+								"You expend 1 charge to double the range of the spell. If the spell normally has a range of Touch, you can cast it with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regaining Charges",
+							"entries": [
+								"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll {@dice 1d20}. On a 1, the wand crumbles into ashes and is destroyed."
+							]
+						}
+					]
+				}
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Command|XPHB",
+						"Find Familiar|XPHB"
+					],
+					"2": [
+						"Beast Sense|XPHB",
+						"Calm Emotions|XPHB"
+					],
+					"3": [
+						"Beacon of Hope|XPHB",
+						"Conjure Animals|XPHB"
+					],
+					"4": [
+						"Aura of Life|XPHB",
+						"Dominate Beast|XPHB"
+					],
+					"5": [
+						"Awaken|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Healing Channeling Wand",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"type": "WD|XDMG",
+			"rarity": "rare",
+			"reqAttune": "by a Creature with the Mark of Healing",
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"This short metal wand is tipped with a Siberys dragonshard.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your {@feat Mark of Healing|EFA|Spells of the Mark} list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Casting Time",
+							"entries": [
+								"You expend 2 charges to change a spell that normally has a casting time of 1 {@action Magic|XPHB} action to instead be cast as a {@variantrule Bonus Action|XPHB}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Duration",
+							"entries": [
+								"You expend 1 charge to double the duration of the spell, to a maximum of 24 hours."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Range",
+							"entries": [
+								"You expend 1 charge to double the range of the spell. If the spell normally has a range of Touch, you can cast it with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regaining Charges",
+							"entries": [
+								"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll {@dice 1d20}. On a 1, the wand crumbles into ashes and is destroyed."
+							]
+						}
+					]
+				}
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"False Life|XPHB",
+						"Healing Word|XPHB"
+					],
+					"2": [
+						"Arcane Vigor|XPHB",
+						"Prayer of Healing|XPHB"
+					],
+					"3": [
+						"Aura of Vitality|XPHB",
+						"Mass Healing Word|XPHB"
+					],
+					"4": [
+						"Aura of Life|XPHB",
+						"Aura of Purity|XPHB"
+					],
+					"5": [
+						"Greater Restoration|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Hospitality Channeling Wand",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"type": "WD|XDMG",
+			"rarity": "rare",
+			"reqAttune": "by a Creature with the Mark of Hospitality",
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"This short metal wand is tipped with a Siberys dragonshard.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your {@feat Mark of Hospitality|EFA|Spells of the Mark} list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Casting Time",
+							"entries": [
+								"You expend 2 charges to change a spell that normally has a casting time of 1 {@action Magic|XPHB} action to instead be cast as a {@variantrule Bonus Action|XPHB}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Duration",
+							"entries": [
+								"You expend 1 charge to double the duration of the spell, to a maximum of 24 hours."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Range",
+							"entries": [
+								"You expend 1 charge to double the range of the spell. If the spell normally has a range of Touch, you can cast it with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regaining Charges",
+							"entries": [
+								"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll {@dice 1d20}. On a 1, the wand crumbles into ashes and is destroyed."
+							]
+						}
+					]
+				}
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Goodberry|XPHB",
+						"Sleep|XPHB"
+					],
+					"2": [
+						"Aid|XPHB",
+						"Enhance Ability|XPHB"
+					],
+					"3": [
+						"Create Food and Water|XPHB",
+						"Leomund's Tiny Hut|XPHB"
+					],
+					"4": [
+						"Aura of Purity|XPHB",
+						"Mordenkainen's Private Sanctum|XPHB"
+					],
+					"5": [
+						"Hallow|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Making Channeling Wand",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"type": "WD|XDMG",
+			"rarity": "rare",
+			"reqAttune": "by a Creature with the Mark of Making",
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"This short metal wand is tipped with a Siberys dragonshard.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your {@feat Mark of Making|EFA|Spells of the Mark} list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Casting Time",
+							"entries": [
+								"You expend 2 charges to change a spell that normally has a casting time of 1 {@action Magic|XPHB} action to instead be cast as a {@variantrule Bonus Action|XPHB}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Duration",
+							"entries": [
+								"You expend 1 charge to double the duration of the spell, to a maximum of 24 hours."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Range",
+							"entries": [
+								"You expend 1 charge to double the range of the spell. If the spell normally has a range of Touch, you can cast it with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regaining Charges",
+							"entries": [
+								"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll {@dice 1d20}. On a 1, the wand crumbles into ashes and is destroyed."
+							]
+						}
+					]
+				}
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Identify|XPHB",
+						"Tenser's Floating Disk|XPHB"
+					],
+					"2": [
+						"Continual Flame|XPHB",
+						"Spiritual Weapon|XPHB"
+					],
+					"3": [
+						"Conjure Barrage|XPHB",
+						"Elemental Weapon|XPHB"
+					],
+					"4": [
+						"Fabricate|XPHB",
+						"Stone Shape|XPHB"
+					],
+					"5": [
+						"Creation|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Passage Channeling Wand",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"type": "WD|XDMG",
+			"rarity": "rare",
+			"reqAttune": "by a Creature with the Mark of Passage",
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"This short metal wand is tipped with a Siberys dragonshard.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your {@feat Mark of Passage|EFA|Spells of the Mark} list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Casting Time",
+							"entries": [
+								"You expend 2 charges to change a spell that normally has a casting time of 1 {@action Magic|XPHB} action to instead be cast as a {@variantrule Bonus Action|XPHB}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Duration",
+							"entries": [
+								"You expend 1 charge to double the duration of the spell, to a maximum of 24 hours."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Range",
+							"entries": [
+								"You expend 1 charge to double the range of the spell. If the spell normally has a range of Touch, you can cast it with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regaining Charges",
+							"entries": [
+								"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll {@dice 1d20}. On a 1, the wand crumbles into ashes and is destroyed."
+							]
+						}
+					]
+				}
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Expeditious Retreat|XPHB",
+						"Jump|XPHB"
+					],
+					"2": [
+						"Find Steed|XPHB",
+						"Pass without Trace|XPHB"
+					],
+					"3": [
+						"Blink|XPHB",
+						"Phantom Steed|XPHB"
+					],
+					"4": [
+						"Dimension Door|XPHB",
+						"Freedom of Movement|XPHB"
+					],
+					"5": [
+						"Teleportation Circle|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Scribing Channeling Wand",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"type": "WD|XDMG",
+			"rarity": "rare",
+			"reqAttune": "by a Creature with the Mark of Scribing",
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"This short metal wand is tipped with a Siberys dragonshard.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your {@feat Mark of Scribing|EFA|Spells of the Mark} list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Casting Time",
+							"entries": [
+								"You expend 2 charges to change a spell that normally has a casting time of 1 {@action Magic|XPHB} action to instead be cast as a {@variantrule Bonus Action|XPHB}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Duration",
+							"entries": [
+								"You expend 1 charge to double the duration of the spell, to a maximum of 24 hours."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Range",
+							"entries": [
+								"You expend 1 charge to double the range of the spell. If the spell normally has a range of Touch, you can cast it with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regaining Charges",
+							"entries": [
+								"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll {@dice 1d20}. On a 1, the wand crumbles into ashes and is destroyed."
+							]
+						}
+					]
+				}
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Command|XPHB",
+						"Illusory Script|XPHB"
+					],
+					"2": [
+						"Animal Messenger|XPHB",
+						"Silence|XPHB"
+					],
+					"3": [
+						"Sending|XPHB",
+						"Tongues|XPHB"
+					],
+					"4": [
+						"Arcane Eye|XPHB",
+						"Confusion|XPHB"
+					],
+					"5": [
+						"Dream|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Sentinel Channeling Wand",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"type": "WD|XDMG",
+			"rarity": "rare",
+			"reqAttune": "by a Creature with the Mark of Sentinel",
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"This short metal wand is tipped with a Siberys dragonshard.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your {@feat Mark of Sentinel|EFA|Spells of the Mark} list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Casting Time",
+							"entries": [
+								"You expend 2 charges to change a spell that normally has a casting time of 1 {@action Magic|XPHB} action to instead be cast as a {@variantrule Bonus Action|XPHB}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Duration",
+							"entries": [
+								"You expend 1 charge to double the duration of the spell, to a maximum of 24 hours."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Range",
+							"entries": [
+								"You expend 1 charge to double the range of the spell. If the spell normally has a range of Touch, you can cast it with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regaining Charges",
+							"entries": [
+								"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll {@dice 1d20}. On a 1, the wand crumbles into ashes and is destroyed."
+							]
+						}
+					]
+				}
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Compelled Duel|XPHB",
+						"Shield of Faith|XPHB"
+					],
+					"2": [
+						"Warding Bond|XPHB",
+						"Zone of Truth|XPHB"
+					],
+					"3": [
+						"Counterspell|XPHB",
+						"Protection from Energy|XPHB"
+					],
+					"4": [
+						"Death Ward|XPHB",
+						"Guardian of Faith|XPHB"
+					],
+					"5": [
+						"Bigby's Hand|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Shadow Channeling Wand",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"type": "WD|XDMG",
+			"rarity": "rare",
+			"reqAttune": "by a Creature with the Mark of Shadow",
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"This short metal wand is tipped with a Siberys dragonshard.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your {@feat Mark of Shadow|EFA|Spells of the Mark} list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Casting Time",
+							"entries": [
+								"You expend 2 charges to change a spell that normally has a casting time of 1 {@action Magic|XPHB} action to instead be cast as a {@variantrule Bonus Action|XPHB}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Duration",
+							"entries": [
+								"You expend 1 charge to double the duration of the spell, to a maximum of 24 hours."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Range",
+							"entries": [
+								"You expend 1 charge to double the range of the spell. If the spell normally has a range of Touch, you can cast it with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regaining Charges",
+							"entries": [
+								"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll {@dice 1d20}. On a 1, the wand crumbles into ashes and is destroyed."
+							]
+						}
+					]
+				}
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Disguise Self|XPHB",
+						"Silent Image|XPHB"
+					],
+					"2": [
+						"Darkness|XPHB",
+						"Pass without Trace|XPHB"
+					],
+					"3": [
+						"Clairvoyance|XPHB",
+						"Major Image|XPHB"
+					],
+					"4": [
+						"Greater Invisibility|XPHB",
+						"Hallucinatory Terrain|XPHB"
+					],
+					"5": [
+						"Mislead|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Storm Channeling Wand",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"type": "WD|XDMG",
+			"rarity": "rare",
+			"reqAttune": "by a Creature with the Mark of Storm",
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"This short metal wand is tipped with a Siberys dragonshard.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your {@feat Mark of Storm|EFA|Spells of the Mark} list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Casting Time",
+							"entries": [
+								"You expend 2 charges to change a spell that normally has a casting time of 1 {@action Magic|XPHB} action to instead be cast as a {@variantrule Bonus Action|XPHB}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Duration",
+							"entries": [
+								"You expend 1 charge to double the duration of the spell, to a maximum of 24 hours."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Range",
+							"entries": [
+								"You expend 1 charge to double the range of the spell. If the spell normally has a range of Touch, you can cast it with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regaining Charges",
+							"entries": [
+								"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll {@dice 1d20}. On a 1, the wand crumbles into ashes and is destroyed."
+							]
+						}
+					]
+				}
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Feather Fall|XPHB",
+						"Fog Cloud|XPHB"
+					],
+					"2": [
+						"Levitate|XPHB",
+						"Shatter|XPHB"
+					],
+					"3": [
+						"Sleet Storm|XPHB",
+						"Wind Wall|XPHB"
+					],
+					"4": [
+						"Conjure Minor Elementals|XPHB",
+						"Control Water|XPHB"
+					],
+					"5": [
+						"Conjure Elemental|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Warding Channeling Wand",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"type": "WD|XDMG",
+			"rarity": "rare",
+			"reqAttune": "by a Creature with the Mark of Warding",
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"This short metal wand is tipped with a Siberys dragonshard.",
+				"A Channeling Wand has 7 charges. While holding it, you can cast any spell on your {@feat Mark of Warding|EFA|Spells of the Mark} list, expending a number of charges equal to the level of the spell you cast. Your spellcasting ability for this spell is the same as the spellcasting ability for the other spells you can cast using your Dragonmark feat. You can expend additional charges to enhance the spell, choosing one of the following effects:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Casting Time",
+							"entries": [
+								"You expend 2 charges to change a spell that normally has a casting time of 1 {@action Magic|XPHB} action to instead be cast as a {@variantrule Bonus Action|XPHB}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Duration",
+							"entries": [
+								"You expend 1 charge to double the duration of the spell, to a maximum of 24 hours."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Range",
+							"entries": [
+								"You expend 1 charge to double the range of the spell. If the spell normally has a range of Touch, you can cast it with a range of 30 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Regaining Charges",
+							"entries": [
+								"The wand regains {@dice 1d6 + 1} expended charges daily at dawn. If you expend the wand's last charge, roll {@dice 1d20}. On a 1, the wand crumbles into ashes and is destroyed."
+							]
+						}
+					]
+				}
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Armor of Agathys|XPHB",
+						"Sanctuary|XPHB"
+					],
+					"2": [
+						"Knock|XPHB",
+						"Nystul's Magic Aura|XPHB"
+					],
+					"3": [
+						"Glyph of Warding|XPHB",
+						"Magic Circle|XPHB"
+					],
+					"4": [
+						"Leomund's Secret Chest|XPHB",
+						"Mordenkainen's Faithful Hound|XPHB"
+					],
+					"5": [
+						"Antilife Shell|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Detection Dragonmark Reservoir",
 			"source": "ExploringEberron24",
 			"page": 0,
 			"rarity": "uncommon",
-			"reqAttune": "by a Creature with a Specific Dragonmark",
+			"reqAttune": "by a Creature with the Mark of Detection",
 			"wondrous": true,
 			"recharge": "dawn",
 			"rechargeAmount": "{@dice 1d6 + 1}",
 			"charges": 7,
+			"typeAlt": "DF",
 			"entries": [
-				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest. Each reservoir is tied to a specific dragonmark, such as the Mark of {@variantrule Healing|XPHB} or the Mark of Making, and you can only attune to it if you possess that dragonmark.",
-				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your Spells of the Mark list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
-			]
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your {@feat Mark of Detection|EFA|Spells of the Mark} list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Detect Evil and Good|XPHB", 
+						"Identify|XPHB"
+					],
+					"2": [
+						"Detect Thoughts|XPHB",
+						"Find Traps|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Finding Dragonmark Reservoir",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Creature with the Mark of Finding",
+			"wondrous": true,
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your {@feat Mark of Finding|EFA|Spells of the Mark} list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Faerie Fire|XPHB",
+						"Longstrider|XPHB"
+					],
+					"2": [
+						"Locate Animals or Plants|XPHB",
+						"Mind Spike|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Handling Dragonmark Reservoir",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Creature with the Mark of Handling",
+			"wondrous": true,
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your {@feat Mark of Handling|EFA|Spells of the Mark} list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Command|XPHB",
+						"Find Familiar|XPHB"
+					],
+					"2": [
+						"Beast Sense|XPHB",
+						"Calm Emotions|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Healing Dragonmark Reservoir",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Creature with the Mark of Healing",
+			"wondrous": true,
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your {@feat Mark of Healing|EFA|Spells of the Mark} list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"False Life|XPHB",
+						"Healing Word|XPHB"
+					],
+					"2": [
+						"Prayer of Healing|XPHB",
+						"Wither and Bloom|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Hospitality Dragonmark Reservoir",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Creature with the Mark of Hospitality",
+			"wondrous": true,
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your {@feat Mark of Hospitality|EFA|Spells of the Mark} list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Goodberry|XPHB",
+						"Sleep|XPHB"
+					],
+					"2": [
+						"Aid|XPHB",
+						"Enhance Ability|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Making Dragonmark Reservoir",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Creature with the Mark of Making",
+			"wondrous": true,
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your {@feat Mark of Making|EFA|Spells of the Mark} list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Identify|XPHB",
+						"Tenser's Floating Disk|XPHB"
+					],
+					"2": [
+						"Continual Flame|XPHB",
+						"Spiritual Weapon|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Passage Dragonmark Reservoir",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Creature with the Mark of Passage",
+			"wondrous": true,
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your {@feat Mark of Passage|EFA|Spells of the Mark} list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Expeditious Retreat|XPHB",
+						"Jump|XPHB"
+					],
+					"2": [
+						"Find Steed|XPHB",
+						"Pass without Trace|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Scribing Dragonmark Reservoir",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Creature with the Mark of Scribing",
+			"wondrous": true,
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your {@feat Mark of Scribing|EFA|Spells of the Mark} list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Command|XPHB",
+						"Illusory Script|XPHB"
+					],
+					"2": [
+						"Animal Messenger|XPHB",
+						"Silence|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Sentinel Dragonmark Reservoir",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Creature with the Mark of Sentinel",
+			"wondrous": true,
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your {@feat Mark of Sentinel|EFA|Spells of the Mark} list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Compelled Duel|XPHB",
+						"Shield of Faith|XPHB"
+					],
+					"2": [
+						"Warding Bond|XPHB",
+						"Zone of Truth|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Shadow Dragonmark Reservoir",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Creature with the Mark of Shadow",
+			"wondrous": true,
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your {@feat Mark of Shadow|EFA|Spells of the Mark} list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Disguise Self|XPHB",
+						"Silent Image|XPHB"
+					],
+					"2": [
+						"Darkness|XPHB",
+						"Pass without Trace|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Storm Dragonmark Reservoir",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Creature with the Mark of Storm",
+			"wondrous": true,
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your {@feat Mark of Storm|EFA|Spells of the Mark} list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Feather Fall|XPHB",
+						"Fog Cloud|XPHB"
+					],
+					"2": [
+						"Levitate|XPHB",
+						"Shatter|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Warding Dragonmark Reservoir",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Creature with the Mark of Warding",
+			"wondrous": true,
+			"recharge": "dawn",
+			"rechargeAmount": "{@dice 1d6 + 1}",
+			"charges": 7,
+			"typeAlt": "DF",
+			"entries": [
+				"Dragonmark Reservoirs are always embedded with a Siberys dragonshard, but come in many forms, most commonly an amulet or bracelet bearing the design of the house crest.",
+				"A Dragonmark Reservoir has 7 charges. While wearing it, you can use it to cast any spell on your {@feat Mark of Warding|EFA|Spells of the Mark} list at 1st or 2nd level, expending a number of charges equal to the level of the spell you cast. The reservoir regains {@dice 1d6 + 1} expended charges daily at dawn. Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Armor of Agathys|XPHB",
+						"Sanctuary|XPHB"
+					],
+					"2": [
+						"Knock|XPHB",
+						"Nystul's Magic Aura|XPHB"
+					]
+				}
+			}
 		},
 		{
 			"name": "Ghallanda Cauldron",
@@ -5294,10 +6774,13 @@
 			"reqAttune": "by a Creature with the Mark of Hospitality",
 			"reqAttuneTags": [
 				{
-					"race": "halfling (mark of hospitality)|erlw"
+					"feat": [
+						"mark of Hospitality|efa"
+					]
 				}
 			],
 			"wondrous": true,
+			"typeAlt": "DF",
 			"entries": [
 				"Engraved with arcane sigils and imbued with ground Siberys shards, this cauldron allows you to prepare food in the blink of an eye. While you have to provide the raw materials, a Ghallanda",
 				"Cauldron can mystically heat, chill, or flavor contents, allowing precise control over temperature and replicating the flavor of spices or herbs you don't possess. While cooking food in the cauldron, you can reduce its cooking time by 90%, and you gain {@variantrule Advantage|XPHB} on ability checks made using {@item Cook's Utensils|XPHB}."
@@ -5311,20 +6794,23 @@
 			"reqAttune": "by a Creature with the Mark of Sentinel",
 			"reqAttuneTags": [
 				{
-					"race": "human (mark of sentinel)|erlw"
+					"feat": [
+						"mark of sentinel|efa"
+					]
 				}
 			],
 			"wondrous": true,
 			"recharge": "dawn",
 			"rechargeAmount": 3,
 			"charges": 3,
+			"typeAlt": "DF",
 			"entries": [
 				"This helm has 3 charges. While wearing it, you can use any of its properties. It regains all expended charges daily at dawn.",
 				{
 					"type": "entries",
 					"name": "Counterspell",
 					"entries": [
-						"You can take a {@action Magic|XPHB} action to expend 1 charge and establish a defensive ward with a contingent Counterspell. The next time you can see an unfriendly creature within 60 feet of you casting any spell that either targets you or causes you to make a saving throw, the Counterspell immediately takes effect whether or not you want it to, as if you had cast it using your {@variantrule Reaction|XPHB}. Wisdom is your spellcasting ability for this spell. The ward ends immediately after Counterspell takes effect or at the next dawn."
+						"You can take a {@action Magic|XPHB} action to expend 1 charge and establish a defensive ward with a contingent {@spell Counterspell|XPHB}. The next time you can see an unfriendly creature within 60 feet of you casting any spell that either targets you or causes you to make a saving throw, the {@spell Counterspell|XPHB} immediately takes effect whether or not you want it to, as if you had cast it using your {@variantrule Reaction|XPHB}. Wisdom is your spellcasting ability for this spell. The ward ends immediately after {@spell Counterspell|XPHB} takes effect or at the next dawn."
 					]
 				},
 				{
@@ -5338,27 +6824,319 @@
 					"type": "entries",
 					"name": "Deflection Field",
 					"entries": [
-						"You can take a {@variantrule Bonus Action|XPHB} to expend 1 charge and cast {@spell Shield|XPHB} of Faith on yourself."
+						"You can take a {@variantrule Bonus Action|XPHB} to expend 1 charge and cast {@spell Shield of Faith|XPHB} on yourself."
 					]
 				}
 			],
-			"attachedSpells": [
-				"protection from energy|xphb",
-				"shield|xphb"
-			]
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"protection from energy|xphb",
+						"shield of faith|xphb",
+						"counterspell|XPHB"
+					]
+				}
+			}
 		},
 		{
-			"name": "Dragonmark Channel",
+			"name": "Detection Dragonmark Channel",
 			"source": "ExploringEberron24",
 			"page": 0,
 			"rarity": "common",
-			"reqAttune": "by a Creature with a Specific Dragonmark",
+			"reqAttune": "by a Creature with the Mark of Detection",
 			"wondrous": true,
+			"recharge": "restLong",
+			"rechargeAmount": 1,
+			"charges": 1,
+			"typeAlt": "DF",
 			"entries": [
-				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house. Each Dragonmark Channel is tied to a specific dragonmark, such as the Mark of {@variantrule Healing|XPHB} or the Mark of Making, and you can only attune to it if you possess that dragonmark.",
-				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your Spells of the Mark list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your {@feat Mark of Detection|EFA|Spells of the Mark} list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
 				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
-			]
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Detect Evil and Good|XPHB", 
+						"Identify|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Finding Dragonmark Channel",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"reqAttune": "by a Creature with the Mark of Finding",
+			"wondrous": true,
+			"recharge": "restLong",
+			"rechargeAmount": 1,
+			"charges": 1,
+			"typeAlt": "DF",
+			"entries": [
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your {@feat Mark of Finding|EFA|Spells of the Mark} list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Faerie Fire|XPHB",
+						"Longstrider|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Handling Dragonmark Channel",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"reqAttune": "by a Creature with the Mark of Handling",
+			"wondrous": true,
+			"recharge": "restLong",
+			"rechargeAmount": 1,
+			"charges": 1,
+			"typeAlt": "DF",
+			"entries": [
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your {@feat Mark of Handling|EFA|Spells of the Mark} list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Command|XPHB",
+						"Find Familiar|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Healing Dragonmark Channel",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"reqAttune": "by a Creature with the Mark of Healing",
+			"wondrous": true,
+			"recharge": "restLong",
+			"rechargeAmount": 1,
+			"charges": 1,
+			"typeAlt": "DF",
+			"entries": [
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your {@feat Mark of Healing|EFA|Spells of the Mark} list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"False Life|XPHB",
+						"Healing Word|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Hospitality Dragonmark Channel",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"reqAttune": "by a Creature with the Mark of Hospitality",
+			"wondrous": true,
+			"recharge": "restLong",
+			"rechargeAmount": 1,
+			"charges": 1,
+			"typeAlt": "DF",
+			"entries": [
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your {@feat Mark of Hospitality|EFA|Spells of the Mark} list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Goodberry|XPHB",
+						"Sleep|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Making Dragonmark Channel",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"reqAttune": "by a Creature with the Mark of Making",
+			"wondrous": true,
+			"recharge": "restLong",
+			"rechargeAmount": 1,
+			"charges": 1,
+			"typeAlt": "DF",
+			"entries": [
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your {@feat Mark of Making|EFA|Spells of the Mark} list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Identify|XPHB",
+						"Tenser's Floating Disk|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Passage Dragonmark Channel",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"reqAttune": "by a Creature with the Mark of Passage",
+			"wondrous": true,
+			"recharge": "restLong",
+			"rechargeAmount": 1,
+			"charges": 1,
+			"typeAlt": "DF",
+			"entries": [
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your {@feat Mark of Passage|EFA|Spells of the Mark} list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Expeditious Retreat|XPHB",
+						"Jump|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Scribing Dragonmark Channel",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"reqAttune": "by a Creature with the Mark of Scribing",
+			"wondrous": true,
+			"recharge": "restLong",
+			"rechargeAmount": 1,
+			"charges": 1,
+			"typeAlt": "DF",
+			"entries": [
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your {@feat Mark of Scribing|EFA|Spells of the Mark} list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Command|XPHB",
+						"Illusory Script|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Sentinel Dragonmark Channel",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"reqAttune": "by a Creature with the Mark of Sentinel",
+			"wondrous": true,
+			"recharge": "restLong",
+			"rechargeAmount": 1,
+			"charges": 1,
+			"typeAlt": "DF",
+			"entries": [
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your {@feat Mark of Sentinel|EFA|Spells of the Mark} list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Compelled Duel|XPHB",
+						"Shield of Faith|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Shadow Dragonmark Channel",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"reqAttune": "by a Creature with the Mark of Shadow",
+			"wondrous": true,
+			"recharge": "restLong",
+			"rechargeAmount": 1,
+			"charges": 1,
+			"typeAlt": "DF",
+			"entries": [
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your {@feat Mark of Shadow|EFA|Spells of the Mark} list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Disguise Self|XPHB",
+						"Silent Image|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Storm Dragonmark Channel",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"reqAttune": "by a Creature with the Mark of Storm",
+			"wondrous": true,
+			"recharge": "restLong",
+			"rechargeAmount": 1,
+			"charges": 1,
+			"typeAlt": "DF",
+			"entries": [
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your {@feat Mark of Storm|EFA|Spells of the Mark} list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Feather Fall|XPHB",
+						"Fog Cloud|XPHB"
+					]
+				}
+			}
+		},
+		{
+			"name": "Warding Dragonmark Channel",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"reqAttune": "by a Creature with the Mark of Warding",
+			"wondrous": true,
+			"recharge": "restLong",
+			"rechargeAmount": 1,
+			"charges": 1,
+			"typeAlt": "DF",
+			"entries": [
+				"This brooch is embedded with a small Siberys dragonshard, usually depicting the crest of its dragonmarked house.",
+				"While wearing a Dragonmark Channel, you can use it to cast any level 1 spell on your {@feat Mark of Warding|EFA|Spells of the Mark} list. Once you use the channel, it can't be used again until you finish a {@variantrule Long Rest|XPHB}.",
+				"Your spellcasting ability for this spell is the same as the spellcasting ability for the spells you can cast with your Dragonmark feat."
+			],
+			"attachedSpells": {
+				"charges": {
+					"1": [
+						"Armor of Agathys|XPHB",
+						"Sanctuary|XPHB"
+					]
+				}
+			}
 		},
 		{
 			"name": "Manor Key",
@@ -5368,12 +7146,15 @@
 			"reqAttune": "by a Creature the Mark of Hospitality",
 			"reqAttuneTags": [
 				{
-					"race": "halfling (mark of hospitality)|erlw"
+					"feat": [
+						"mark of Hospitality|efa"
+					]
 				}
 			],
 			"wondrous": true,
+			"typeAlt": "DF",
 			"entries": [
-				"This long key, studded with tiny Siberys dragonshards, can only be used by a creature with the Mark of Hospitality. You can take a {@action Magic|XPHB} action to trace the outline of a door in the air with the key and cast {@spell Mordenkainen's Magnificent Mansion|XPHB} without requiring Material components. The spell ends after 24 hours or when you use the key to lock the door and dismiss the effect; at that time, any creatures within the mansion are expelled into an open space near its entrance. Once used, the key cannot be used again until the next dawn."
+				"This long key, studded with tiny Siberys dragonshards, can only be used by a creature with the {@feat Mark of Hospitality|EFA}. You can take a {@action Magic|XPHB} action to trace the outline of a door in the air with the key and cast {@spell Mordenkainen's Magnificent Mansion|XPHB} without requiring Material components. The spell ends after 24 hours or when you use the key to lock the door and dismiss the effect; at that time, any creatures within the mansion are expelled into an open space near its entrance. Once used, the key cannot be used again until the next dawn."
 			],
 			"attachedSpells": {
 				"daily": {
@@ -5392,17 +7173,17 @@
 			"reqAttune": "by a Creature with the Mark of Finding",
 			"reqAttuneTags": [
 				{
-					"race": "half-orc (variant; mark of finding)|erlw"
-				},
-				{
-					"race": "human (variant; mark of finding)|erlw"
+					"feat": [
+						"mark of finding|efa"
+					]
 				}
 			],
 			"recharge": "dawn",
 			"rechargeAmount": "{@dice 1d4 + 1}",
 			"charges": 5,
+			"typeAlt": "DF",
 			"entries": [
-				"This Y-shaped wand, bearing the emblem of the Mark of Finding, has 5 charges. While holding the wand, you can use any of its properties:",
+				"This Y-shaped wand, bearing the emblem of the {@feat Mark of Finding|EFA}, has 5 charges. While holding the wand, you can use any of its properties:",
 				{
 					"type": "entries",
 					"name": "Finding",
@@ -5455,9 +7236,12 @@
 			"reqAttune": "by a Creature with the Mark of Handling",
 			"reqAttuneTags": [
 				{
-					"race": "human (mark of handling)|erlw"
+					"feat": [
+						"mark of handling|efa"
+					]
 				}
 			],
+			"typeAlt": "DF",
 			"entries": [
 				"This rod of varnished oak is capped at both ends with a Siberys dragonshard. While holding the rod, you can use any of its properties:",
 				{
@@ -5488,9 +7272,403 @@
 						"dominate beast|xphb"
 					]
 				},
-				"other": [
+				"will": [
 					"speak with animals|xphb"
 				]
+			}
+		},
+		{
+			"name": "Aereni Mask",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": "by a Worthy Bearer",
+			"wondrous": true,
+			"entries": [
+				"This mask's intricate design links it to one of the Aereni noble lines, and the guidance it offers comes from spirits of that line. You can't attune to the mask unless those spirits judge you worthy to wear it.",
+				"An Aereni Mask is imbued with two skills when it is created. While wearing the mask, when you make an ability check using either of those skills, you can roll {@dice 1d4} and add the number rolled to the ability check."
+			]
+		},
+		{
+			"name": "Final Messenger",
+			"source": "ExploringEberron24",
+			"reqAttuneTags": [
+				{
+					"race": "Warforged"
+				}
+			],
+			"page": 0,
+			"rarity": "uncommon",
+			"wondrous": true,
+			"entries": [
+				"A delicate winged creature, this homunculus was designed to facilitate communication between warforged soldiers during the Last War. A Final Messenger is a Tiny Construct with an AC of 20, 6 {@variantrule Hit Points|XPHB}, and a {@variantrule Fly Speed|XPHB} of 60 feet. It has {@variantrule Immunity|XPHB} to Poison damage and Psychic damage, and all conditions other than Unconsciousness. If it is forced to make an ability check or a saving throw, treat all its ability scores as 10 (+0). It has {@sense Darkvision|XPHB} with a range of 60 feet. It has no limbs and the only action it can take on its turn is the {@action Dash|XPHB} action.",
+				"If you are a warforged, you can take a {@action Magic|XPHB} action to integrate a Final Messenger into your body. While it is part of your body, the messenger cannot be targeted by any attack. You can only have one messenger attached to your body at a time. A messenger can only remain active for 8 hours after it detaches from a warforged body, after which time its energy dissipates and it gains the {@condition Unconscious|XPHB} condition. An {@condition Unconscious|XPHB} messenger must complete a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB} while attached to a warforged, after which it regains its energy, as well as regaining all lost {@variantrule Hit Points|XPHB}.",
+				"A Final Messenger holds four pieces of data, accessible only to the warforged it is attached to. While the messenger is attached to you, you can take a {@action Magic|XPHB} action to review the data currently stored within the messenger, and if you choose to, change any or all of these data points.",
+				"A destination for the messenger. This can be very specific (a particular apartment in Sharn) or more general (an open marketplace).",
+				"A target individual. This could be a specific person or a category (\"Any Karrnathi warforged\").",
+				"A single image recorded through the eyes of a warforged attached to the messenger.",
+				"A message of up to 25 words.",
+				"You can release the messenger as a {@variantrule Bonus Action|XPHB}, at which point it flies to its destination by the most direct route possible. Once it reaches the destination it seeks the target individual; if no target has been set, it approaches the nearest warforged.",
+				"If you are reduced to 0 {@variantrule Hit Points|XPHB} while a Final Messenger is attached to you, it immediately detaches and seeks out its target. It retains its stored message, but replaces its stored image with the last thing you saw before dropping to 0 {@variantrule Hit Points|XPHB}."
+			]
+		},
+		{
+			"name": "Gloves of Storing",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"wondrous": true,
+			"entries": [
+				"These gloves come in pairs, each one tied to a small pocket dimension. The gloves' weight is negligible, regardless of their contents. While wearing the gloves, and holding an object that weighs no more than 20 pounds and can be held in one hand, you can take a {@variantrule Bonus Action|XPHB} to store that object inside the glove's extradimensional space. When an object is stored inside the extradimensional space, you can take a {@variantrule Bonus Action|XPHB} to summon it back into your empty hand. You can only store a single object in each glove's extradimensional space, for a total of two items between the pair.",
+				"If a glove is pierced or torn, it is destroyed, and its contents are scattered in the Astral Plane.",
+				"Placing the gloves inside an extradimensional space created by a {@item Bag of Holding|XDMG}, {@item Portable Hole|XDMG}, or similar item instantly destroys both items and opens a gate to the Astral Plane. The gate originates where the one item was placed inside the other. Any creature within 10 feet of the gate and not behind {@variantrule Cover|XPHB|Total Cover} is sucked through it to a random location on the Astral Plane. The gate then closes. The gate is one-way only and can't be reopened."
+			]
+		},
+		{
+			"name": "Quiver of Energy",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"wondrous": true,
+			"entries": [
+				"Whenever you finish a long rest, choose one of the following damage types: Cold, Fire, Lightning, or Poison. The first time each turn that you hit a target with a weapon attack using ammunition drawn from this quiver, the attack deals an extra {@damage 1d6} damage of the chosen type."
+			]
+		},
+		{
+			"name": "Soarsled",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"wondrous": true,
+			"entries": [
+				"A soarsled is a crystalline disk 5 feet in diameter. It can carry a passenger through the air, using the same principles as the buttresses that sustain the towers of Sharn.",
+				"While within Sharn or another Syranian manifest zone, you can stand on the sled and take a {@action Magic|XPHB} action to mentally activate it, causing it to hover beneath you. Once per turn, you can mentally command the hovering sled to move up to 30 feet in any direction. The sled can carry up to 400 pounds, and stops hovering when you step off it.",
+				"Each turn, you can take a {@action Magic|XPHB} action to make a DC 12 Dexterity ({@skill Acrobatics|XPHB}) check, moving the sled up to an additional 60 feet on a success.",
+				"While outside a Syranian manifest zone, the plane's energies rapidly fade, and the Soarsled can only be activated once, by taking a {@action Magic|XPHB} action. When it has been used to fly for a total of 10 minutes, or when you deactivate it by stepping off it, it loses its energy and can't be used again until it spends at least 8 hours in a Syranian manifest zone."
+			]
+		},
+		{
+			"name": "Crawling Gauntlet",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": true,
+			"wondrous": true,
+			"entries": [
+				"Crafted by the daelkyr, this gauntlet appears to be the forearm of a monstrous humanoid. When you attune to it, it surrounds your hand and forearm, fusing to your flesh.",
+				"When you make an {@variantrule Unarmed Strike|XPHB}, you can slash with the talons on the gauntlet. On a hit, you can deal Slashing damage equal to {@damage 1d6} + your Strength modifier instead of the normal damage of an {@variantrule Unarmed Strike|XPHB}. Additionally, you can project an ectoplasmic duplicate of the gauntlet, allowing you to manipulate objects at a distance. While wearing this gauntlet, you can take a {@action Magic|XPHB} action to cast {@spell Mage Hand|XPHB} from it.",
+				{
+					"type": "entries",
+					"name": "Symbiotic Nature",
+					"entries": [
+						"Once you attune to this symbiote, you can't remove it unless you are targeted by a {@spell Remove Curse|XPHB} spell or similar magic."
+					]
+				}
+			],
+			"attachedSpells": [
+				"mage hand|xphb"
+			]
+		},
+		{
+			"name": "Shadow Sibling",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "rare",
+			"reqAttune": true,
+			"wondrous": true,
+			"entries": [
+				"Crafted by Dyrrn the Corruptor, this black jewel-like object fuses to the center of your forehead when you attune to it. As a {@variantrule Bonus Action|XPHB}, you can cause the sibling to exude or retract an ectoplasmic shadow that surrounds your body and conceals you from prying eyes. While the shadow is active, Wisdom ({@skill Perception|XPHB}) checks made to see you have {@variantrule Disadvantage|XPHB}, and you have {@variantrule Advantage|XPHB} on Dexterity ({@skill Stealth|XPHB}) checks made to {@action Hide|XPHB}.",
+				"In addition, when you are hit by an attack, you can take a {@variantrule Reaction|XPHB} to expend one Hit Die to shield yourself. Roll the die and add the result to your AC, including against the triggering attack. This bonus lasts until the end of your next turn.",
+				{
+					"type": "entries",
+					"name": "Symbiotic Nature",
+					"entries": [
+						"Once you attune to this symbiote, you can't remove it unless you are targeted by a {@spell Remove Curse|XPHB} spell or similar magic."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spellburrow",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": true,
+			"wondrous": true,
+			"entries": [
+				"These scarab-like symbionts, bred by the daelkyr Valaara, have brilliant, iridescent shells. To attune to it, you must place it on your head; during the process of {@variantrule Attunement|XPHB}, it burrows through your skull, establishing a psychic connection with you. While it lacks human consciousness, it possesses a strange alien sentience that responds to your desires. There are tales of rare Spellburrows that possess greater knowledge and sentience; such stories sometimes end with the Spellburrow consuming the brain of the wizard who pushed it too far\u2014but these are surely just fanciful stories!",
+				"A Spellburrow knows one cantrip of the DM's choice drawn from the Sorcerer or Warlock spell list, and you can cast this cantrip as if you know it. In addition, a Spellburrow knows one level 1 spell and one level 2 spell from the same spell list its cantrip is from. If you have the Spellcasting or Pact Magic class feature, you can cast these spells as if you had prepared them, and they don't count against the number of spells you can prepare. You can choose to use either your Intelligence modifier, or a spellcasting ability modifier you have gained from another source, for these spells.",
+				{
+					"type": "entries",
+					"name": "Symbiotic Nature",
+					"entries": [
+						"Once you attune to this symbiote, you can't remove it unless you are targeted by a {@spell Remove Curse|XPHB} spell or similar magic."
+					]
+				}
+			]
+		},
+		{
+			"name": "Throwing Scarab",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": true,
+			"wondrous": true,
+			"entries": [
+				"Bred by the daelkyr Valaara, this bizarre symbiont burrows into the palm of its host, secreting razor-sharp chitin blades that can also be used as throwing weapons. When you attune to the scarab, it fuses with one of your hands, visible only as an iridescent, chitinous growth on your palm.",
+				"For every attack you make as part of the {@action Attack|XPHB} action on your turn, you can extrude a shard of razor-sharp chitin from the symbiont into your empty hand, using it for the attack. The shard counts as a magical Simple Melee weapon with which you are proficient. It has the Finesse, Light, and Thrown properties with a normal range of 20 feet and a long range of 60 feet. On a hit, it deals {@damage 1d4} Piercing damage and {@damage 1d4} Acid damage. The shard dissolves as soon as it hits or misses its target.",
+				{
+					"type": "entries",
+					"name": "Symbiotic Nature",
+					"entries": [
+						"Once you attune to this symbiote, you can't remove it unless you are targeted by a {@spell Remove Curse|XPHB} spell or similar magic."
+					]
+				}
+			]
+		},
+		{
+			"name": "Tongueworm",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": true,
+			"wondrous": true,
+			"entries": [
+				"This coil of muscle terminates in a sharp barb. When you attune to it, this daelkyr-bred worm attaches to your throat and nestles under your tongue. You can take a {@variantrule Bonus Action|XPHB} to make an {@variantrule Unarmed Strike|XPHB} with the worm, using your choice of Strength or Dexterity for the attack. On a hit, you deal Piercing damage equal to {@dice 1d4} + your Strength or Dexterity modifier (your choice), instead of the normal damage of an {@variantrule Unarmed Strike|XPHB}. In addition, the target must succeed on a DC 13 Constitution saving throw or have the {@condition Poisoned|XPHB} condition until the start of your next turn.",
+				{
+					"type": "entries",
+					"name": "Symbiotic Nature",
+					"entries": [
+						"Once you attune to this symbiote, you can't remove it unless you are targeted by a {@spell Remove Curse|XPHB} spell or similar magic."
+					]
+				}
+			]
+		},
+		{
+			"name": "Wandering Eye",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"reqAttune": true,
+			"wondrous": true,
+			"entries": [
+				"This disturbing daelkyr-made symbiont is a leathery tentacle with one end terminating in a single bulbous eye, and the other sporting a barb designed to burrow into flesh. When you attune to the eye, it burrows into one of your shoulders, then rises up from it, studying the world and projecting insights into your mind. The eye may occasionally take an interest in some random element of your current environment; in this case, the DM may draw your attention to this object or person.",
+				"While the eye is uncovered, you gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Always Vigilant",
+					"entries": [
+						"The eye remains watchful while you sleep. When you take a {@variantrule Long Rest|XPHB}, the eye remains active, allowing you to use your Passive Wisdom ({@skill Perception|XPHB}) score to notice threats even while asleep. If the eye spots danger, it sends you a mental alarm in the form of a nightmare that immediately wakes you up."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Periscopic Vision",
+					"entries": [
+						"The eye can stretch up to 18 inches and can be used to peer around corners or over cover. When extended and used in this way, the eye has an AC of 20 and 6 {@variantrule Hit Points|XPHB}. If it is forced to make an ability check or a saving throw, it uses your statistics. If it is reduced to 0 {@variantrule Hit Points|XPHB}, you cannot benefit from any of the eye's properties until you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}, after which it regains all lost {@variantrule Hit Points|XPHB}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Third Eye",
+					"entries": [
+						"When you make a Wisdom ({@skill Perception|XPHB}) or Intelligence ({@skill Investigation|XPHB}) check involving sight, you can roll {@dice 1d4} and add the number rolled to the ability check."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Symbiotic Nature",
+					"entries": [
+						"Once you attune to this symbiote, you can't remove it unless you are targeted by a {@spell Remove Curse|XPHB} spell or similar magic."
+					]
+				}
+			]
+		},
+		{
+			"name": "Cannith's Marvelous Miniatures",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Quaal's Feather Token, Bird",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Cloak of Passage",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Cape of the Mountebank",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Cloak of Shadows",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Cloak of Elvenkind",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Ghallan Jug",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Alchemy Jug",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Deni Shield",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Sentinel Shield",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Eyes of the Dragonne",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Eyes of the Eagle",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Kundar Chains",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Dimensional Shackles",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Jora Charm",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Periapt of Wound Closure",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Medani Dowser",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Wand of Secrets",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Medi Spectacles",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Eyes of Minute Seeing",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Ori Boots",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Boots of Speed",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Serpentine Mirror",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "rare",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Crystal Ball",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Storm's Embrace",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Ring of Feather Falling",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Thuranni Cloak",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Cloak of Displacement",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Vadalis Band",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "uncommon",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Ring of Animal Influence",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Warding Brooch",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Brooch of Shielding",
+				"source": "XDMG"
+			}
+		},
+		{
+			"name": "Wind Stones",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"rarity": "common",
+			"typeAlt": "DF",
+			"_copy": {
+				"name": "Sending Stones",
+				"source": "XDMG"
 			}
 		}
     ]
