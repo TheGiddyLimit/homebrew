@@ -22,6 +22,9 @@
 		"dependencies": {
 			"race": [
 				"XPHB"
+			],
+			"item": [
+				"XDMG"
 			]
 		},
         "edition": "one",
@@ -191,7 +194,8 @@
 				"Forge Adept|Artificer|EFA|Forge Adept|ExploringEberron24|3",
                 "Extra Attack|Artificer|EFA|Forge Adept|ExploringEberron24|5",
                 "Runes of War|Artificer|EFA|Forge Adept|ExploringEberron24|9",
-                "Perfect Weapon|Artificer|EFA|Forge Adept|ExploringEberron24|15"
+                "Perfect Weapon|Artificer|EFA|Forge Adept|ExploringEberron24|15",
+				"Variant Capstone: Weapon of Legend|Artificer|EFA|Forge Adept|ExploringEberron24|20"
             ]
         },
 		{
@@ -204,7 +208,8 @@
                 "Maverick|Artificer|EFA|Maverick|ExploringEberron24|3",
                 "Fine Tuning|Artificer|EFA|Maverick|ExploringEberron24|5",
                 "Work in Progress|Artificer|EFA|Maverick|ExploringEberron24|9",
-                "Final Breakthrough|Artificer|EFA|Maverick|ExploringEberron24|15"
+                "Final Breakthrough|Artificer|EFA|Maverick|ExploringEberron24|15",
+				"Variant Capstone: Improved Genius|Artificer|EFA|Maverick|ExploringEberron24|20"
             ]
         }
     ],
@@ -1007,6 +1012,53 @@
             ]
         },
 		{
+            "name": "Variant Capstone: Weapon of Legend",
+            "source": "ExploringEberron24",
+            "className": "Artificer",
+            "classSource": "EFA",
+            "subclassShortName": "Forge Adept",
+            "subclassSource": "ExploringEberron24",
+            "level": 20,
+			"header": 2,
+			"resist": [
+				"psychic"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened"
+			],
+            "entries": [
+				{
+					"type": "inset",
+					"entries": [
+						"The {@classFeature Soul of Artifice|Artificer|EFA|20} feature an Artificer gains at 20th level allows them to cheat death\u2014sacrificing their creations to regain {@variantrule Hit Points|XPHB} when they drop to 0 {@variantrule Hit Points|XPHB}\u2014and to regain uses of {@classFeature Flash of Genius|Artificer|EFA|7} after completing a {@variantrule Short Rest|XPHB}. While these are useful, they are also passive abilities that don't capture the flavor of a particular subclass. With the DM's permission, an Artificer who reaches level 20 can choose an alternative feature associated with their subclass instead of Soul of Artifice."
+					]
+				},
+                "You are able to connect your spirit to your allies, making them living weapons. You gain the following benefits while wielding your Ghaal'Shaarat.",
+				{
+					"type": "entries",
+					"name": "Constant Aura",
+					"entries": [
+						"Your Aura of War is always active, and you can take a {@variantrule Bonus Action|XPHB} to change its damage type."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Retributive Aura",
+					"entries": [
+						"Whenever an enemy starts its turn in your Aura of War, that creature takes damage equal to the extra damage provided by the aura."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Empower Aura",
+					"entries": [
+						"As a {@variantrule Bonus Action|XPHB}, you can increase the extra damage provided by your Aura of War to {@dice 2d6}. This increase lasts for 1 minute. You can use this feature a number of times equal to your Intelligence modifier (minimum of once). You regain all expended uses when you finish a {@variantrule Long Rest|XPHB}."
+					]
+				}
+            ]
+        },
+		{
             "name": "Maverick",
             "source": "ExploringEberron24",
             "className": "Artificer",
@@ -1182,6 +1234,25 @@
             "entries": [
                 "Whenever you finish a {@variantrule Short Rest|XPHB}, you can swap a spell contained in your Prototype for another spell of the same level, chosen from the Artificer, Cleric, or Wizard spell list.",
 				"In addition, you ignore all class, species, spell, and level requirements on attuning to or using a magic item."
+            ]
+        },
+		{
+            "name": "Variant Capstone: Improved Genius",
+            "source": "ExploringEberron24",
+            "className": "Artificer",
+            "classSource": "EFA",
+            "subclassShortName": "Maverick",
+            "subclassSource": "ExploringEberron24",
+            "level": 20,
+            "header": 2,
+            "entries": [
+				{
+					"type": "inset",
+					"entries": [
+						"The {@classFeature Soul of Artifice|Artificer|EFA|20} feature an Artificer gains at 20th level allows them to cheat death\u2014sacrificing their creations to regain {@variantrule Hit Points|XPHB} when they drop to 0 {@variantrule Hit Points|XPHB}\u2014and to regain uses of {@classFeature Flash of Genius|Artificer|EFA|7} after completing a {@variantrule Short Rest|XPHB}. While these are useful, they are also passive abilities that don't capture the flavor of a particular subclass. With the DM's permission, an Artificer who reaches level 20 can choose an alternative feature associated with their subclass instead of Soul of Artifice."
+					]
+				},
+                "You can take a {@action Magic|XPHB} action to cast any spell of level 8 or lower. This takes the place of the usual casting time of the spell, and you don't need to meet any requirements to cast the spell, including costly components; the spell simply takes effect. Once you cast a spell with this feature, you can't do so again until you finish a {@variantrule Long Rest|XPHB}."
             ]
         }
     ],
@@ -2750,9 +2821,10 @@
 				}
 			],
 			"range": {
-				"type": "point",
+				"type": "emanation",
 				"distance": {
-					"type": "self"
+					"type": "feet",
+					"amount": 5
 				}
 			},
 			"components": {
@@ -5169,12 +5241,609 @@
 			}
 		}
 	],
+	"reward": [
+		{
+			"name": "Siberys Mark of Detection",
+			"source": "ExploringEberron24",
+			"type": "Blessing",
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"_": {
+							"daily": {
+								"1e": [
+									"True Seeing|XPHB"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Perfect Intuition",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Intelligence ({@skill Investigation|XPHB}) checks."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Truest Sight",
+					"entries": [
+						"You always have the {@spell True Seeing|XPHB} spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way after you finish a {@variantrule Long Rest|XPHB}. You can also cast it using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for this spell (choose when you receive this gift)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Siberys Mark of Finding",
+			"source": "ExploringEberron24",
+			"type": "Blessing",
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"_": {
+							"rest": {
+								"1e": [
+									"Commune with Nature|XPHB",
+									"Find the Path|XPHB"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Perfect Intuition",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Wisdom ({@skill Perception|XPHB}) checks."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Finder's Focus",
+					"entries": [
+						"You always have the {@spell Commune with Nature|XPHB} and {@spell Find the Path|XPHB} spells prepared. You can cast each spell once without a spell slot, and you regain the ability to cast it in that way after you finish a {@variantrule Short Rest|XPHB}. You can also cast these spells using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells (choose when you receive this gift)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Siberys Mark of Handling",
+			"source": "ExploringEberron24",
+			"type": "Blessing",
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"_": {
+							"daily": {
+								"1e": [
+									"Dominate Beast|XPHB"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Perfect Intuition",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Wisdom ({@skill Animal Handling|XPHB}) checks."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Powerful Influence",
+					"entries": [
+						"You always have the {@spell Dominate Beast|XPHB} spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast it using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for this spell (choose when you receive this gift).",
+						"In addition, when you cast the {@spell Dominate Beast|XPHB} spell, you have {@variantrule Advantage|XPHB} on {@status Concentration|XPHB} checks you make to maintain the spell and you can maintain {@status Concentration|XPHB} on the spell for up to 8 hours, as if you had used a level 7 spell slot. You can also maintain the spell while sleeping; if you take damage while sleeping, you must make a {@status Concentration|XPHB} check with {@variantrule Disadvantage|XPHB} to maintain the spell."
+					]
+				}
+			]
+		},
+		{
+			"name": "Siberys Mark of Healing",
+			"source": "ExploringEberron24",
+			"type": "Blessing",
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"_": {
+							"daily": {
+								"1e": [
+									"Heal|XPHB"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Perfect Intuition",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Wisdom ({@skill Medicine|XPHB}) checks."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Miracle Worker",
+					"entries": [
+						"You always have the {@spell Heal|XPHB} spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast it using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for this spell (choose when you receive this gift)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Siberys Mark of Hospitality",
+			"source": "ExploringEberron24",
+			"type": "Blessing",
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"_": {
+							"daily": {
+								"1e": [
+									"Mordenkainen's Magnificent Mansion|XPHB"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Perfect Intuition",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Charisma ({@skill Persuasion|XPHB}) checks."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Home Away From Home",
+					"entries": [
+						"You always have the {@spell Mordenkainen's Magnificent Mansion|XPHB} spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast it using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for this spell (choose when you receive this gift)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Siberys Mark of Making",
+			"source": "ExploringEberron24",
+			"type": "Blessing",
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"_": {
+							"rest": {
+								"1e": [
+									"Fabricate|XPHB"
+								]
+							},
+							"daily": {
+								"1e": [
+									"Create Homunculus|XGE"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Perfect Intuition",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Intelligence ({@skill Investigation|XPHB}) checks."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Master Crafter",
+					"entries": [
+						"You always have the {@spell Fabricate|XPHB} spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Short Rest|XPHB}. You can also cast it using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells (choose when you receive this gift)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Making Friends",
+					"entries": [
+						"You always have the {@spell Create Homunculus|XGE} spell ({@book Xanathar's Guide to Everything|XGE}) prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast it using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for this spell (choose when you receive this gift)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Siberys Mark of Passage",
+			"source": "ExploringEberron24",
+			"type": "Blessing",
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"_": {
+							"daily": {
+								"1e": [
+									"Teleport|XPHB"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Perfect Intuition",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Dexterity ({@skill Acrobatics|XPHB}) checks."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Instant Messenger",
+					"entries": [
+						"You always have the {@spell Teleport|XPHB} spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast it using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for this spell (choose when you receive this gift)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Siberys Mark of Scribing",
+			"source": "ExploringEberron24",
+			"type": "Blessing",
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"_": {
+							"daily": {
+								"1e": [
+									"Symbol|XPHB"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Perfect Intuition",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Wisdom ({@skill Insight|XPHB}) checks and on ability checks using {@item Calligrapher's Supplies|XPHB}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Symbologist",
+					"entries": [
+						"You always have the {@spell Symbol|XPHB} spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast it using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for this spell (choose when you receive this gift)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Siberys Mark of Sentinel",
+			"source": "ExploringEberron24",
+			"type": "Blessing",
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"_": {
+							"daily": {
+								"1e": [
+									"Globe of Invulnerability|XPHB"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Perfect Intuition",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Wisdom ({@skill Perception|XPHB}) checks."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sentinel's Shield",
+					"entries": [
+						"You always have the {@spell Globe of Invulnerability|XPHB} spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast it using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for this spell (choose when you receive this gift)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Siberys Mark of Shadow",
+			"source": "ExploringEberron24",
+			"type": "Blessing",
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"_": {
+							"daily": {
+								"1e": [
+									"Project Image|XPHB"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Perfect Intuition",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Dexterity ({@skill Stealth|XPHB}) checks."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Shadow Weaver",
+					"entries": [
+						"You always have the {@spell Project Image|XPHB} spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast it using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for this spell (choose when you receive this gift)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Siberys Mark of Storm",
+			"source": "ExploringEberron24",
+			"type": "Blessing",
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"_": {
+							"daily": {
+								"1e": [
+									"Control Weather|XPHB"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Perfect Intuition",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Dexterity ({@skill Acrobatics|XPHB}) checks and on ability checks made using {@item Navigator's Tools|XPHB}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Storm Caller",
+					"entries": [
+						"You always have the {@spell Control Weather|XPHB} spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast it using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for this spell (choose when you receive this gift)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Siberys Mark of Warding",
+			"source": "ExploringEberron24",
+			"type": "Blessing",
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"_": {
+							"daily": {
+								"1e": [
+									"Forbiddance|XPHB"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Perfect Intuition",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Intelligence ({@skill Investigation|XPHB}) checks and on ability checks using {@item Thieves' Tools|XPHB}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "You Shall Not Pass",
+					"entries": [
+						"You always have the {@spell Forbiddance|XPHB} spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast it using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for this spell (choose when you receive this gift)."
+					]
+				}
+			]
+		}
+	],
+	"object": [
+		{
+			"name": "Siege Staff",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"size": [
+				"H"
+			],
+			"objectType": "SW",
+			"ac": 15,
+			"hp": 120,
+			"entries": [
+				"{@note Requires Attunement by a Spellcaster}",
+				"Siege Staffs, the primary form of arcane artillery, are made of wood\u2014typically around fifteen feet long\u2014engraved with mystic sigils and inlaid with dragonshards.",
+				"Activating a Siege Staff takes 3 {@action Magic|XPHB} actions: one to prime the {@item staff|XPHB}; one to aim it; and one to release the spell.",
+				"There are several basic models of Siege Staff, each of which serves a different purpose. When activated, it produces one of the following effects, determined by its model:",
+				{
+					"type": "list",
+					"items": [
+						"{@object Siege Staff (Blast)|ExploringEberron24|Blast}",
+						"{@object Siege Staff (Force)|ExploringEberron24|Force}",
+						"{@object Siege Staff (Focus)|ExploringEberron24|Focus}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Siege Staff (Blast)",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"size": [
+				"H"
+			],
+			"objectType": "SW",
+			"ac": 15,
+			"hp": 120,
+			"entries": [
+				"{@note Requires Attunement by a Spellcaster}",
+				"Siege Staffs, the primary form of arcane artillery, are made of wood\u2014typically around fifteen feet long\u2014engraved with mystic sigils and inlaid with dragonshards.",
+				"Activating a Siege Staff takes 3 {@action Magic|XPHB} actions: one to prime the staff; one to aim it; and one to release the spell.",
+				"This model was typically used to bombard massed troops or villages, unleashing a wide burst of energy. It has a normal range of 300 feet and a long range of 1,200 feet. It targets all creatures within a 60-foot-radius {@variantrule Sphere [Area of Effect]|XPHB|Sphere}. Targets must make a Dexterity saving throw, taking {@damage 2d8} Force damage on a failed save or half as much damage on a successful one."
+			]
+		},
+		{
+			"name": "Siege Staff (Force)",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"size": [
+				"H"
+			],
+			"objectType": "SW",
+			"ac": 15,
+			"hp": 120,
+			"entries": [
+				"{@note Requires Attunement by a Spellcaster}",
+				"Siege Staffs, the primary form of arcane artillery, are made of wood\u2014typically around fifteen feet long\u2014engraved with mystic sigils and inlaid with dragonshards.",
+				"Activating a Siege Staff takes 3 {@action Magic|XPHB} actions: one to prime the staff; one to aim it; and one to release the spell.",
+				"This model releases focused blasts of pure energy. Developed late in the war, these were primarily used to target fortifications, warforged titans, and airships. It has a normal range of 600 feet and a long range of 2,400 feet. A target takes 44 ({@damage 8d10}) Force damage."
+			]
+		},
+		{
+			"name": "Siege Staff (Focus)",
+			"source": "ExploringEberron24",
+			"page": 0,
+			"size": [
+				"H"
+			],
+			"objectType": "SW",
+			"ac": 15,
+			"hp": 120,
+			"entries": [
+				"{@note Requires Attunement by a Spellcaster}",
+				"Siege Staffs, the primary form of arcane artillery, are made of wood\u2014typically around fifteen feet long\u2014engraved with mystic sigils and inlaid with dragonshards.",
+				"Activating a Siege Staff takes 3 {@action Magic|XPHB} actions: one to prime the staff; one to aim it; and one to release the spell.",
+				"This model amplifies the spells cast by an attuned spellcaster. Any spell that requires an attack roll or saving throw can be cast through this model of Siege Staff. The range is magnified by a factor of 5, with a long range of up to 10 times the spell's standard range\u2014so a {@spell Fire Bolt|XPHB} cast through a Focus Staff has a normal range of 600 feet and a long range of 1,200 feet. The spell's area of effect is doubled. If the spell normally affects a single target, it instead affects a 20-foot-radius {@variantrule Sphere [Area of Effect]|XPHB|Sphere}; if the spell normally requires an attack roll, targets must instead make a Dexterity saving throw. On a successful save, the target takes half damage and suffers no other effect."
+			]
+		}
+	],
 	"itemType": [
 		{
 			"name": "Dragonmark Focus",
 			"abbreviation": "DF",
-			"source": "ExploringEberron24",
-			"page": 278
+			"source": "ExploringEberron24"
 		}
 	],
 	"itemGroup": [
@@ -5240,7 +5909,7 @@
 			"name": "Channeling Wand",
 			"source": "ExploringEberron24",
 			"page": 0,
-			"type": "WD|XDMG",
+			"type": "GV|XDMG",
 			"rarity": "rare",
 			"reqAttune": "by a Creature with a Specific Dragonmark",
 			"recharge": "dawn",
@@ -6782,8 +7451,7 @@
 			"wondrous": true,
 			"typeAlt": "DF",
 			"entries": [
-				"Engraved with arcane sigils and imbued with ground Siberys shards, this cauldron allows you to prepare food in the blink of an eye. While you have to provide the raw materials, a Ghallanda",
-				"Cauldron can mystically heat, chill, or flavor contents, allowing precise control over temperature and replicating the flavor of spices or herbs you don't possess. While cooking food in the cauldron, you can reduce its cooking time by 90%, and you gain {@variantrule Advantage|XPHB} on ability checks made using {@item Cook's Utensils|XPHB}."
+				"Engraved with arcane sigils and imbued with ground Siberys shards, this cauldron allows you to prepare food in the blink of an eye. While you have to provide the raw materials, a Ghallanda Cauldron can mystically heat, chill, or flavor contents, allowing precise control over temperature and replicating the flavor of spices or herbs you don't possess. While cooking food in the cauldron, you can reduce its cooking time by 90%, and you gain {@variantrule Advantage|XPHB} on ability checks made using {@item Cook's Utensils|XPHB}."
 			]
 		},
 		{
@@ -7143,17 +7811,10 @@
 			"source": "ExploringEberron24",
 			"page": 0,
 			"rarity": "rare",
-			"reqAttune": "by a Creature the Mark of Hospitality",
-			"reqAttuneTags": [
-				{
-					"feat": [
-						"mark of Hospitality|efa"
-					]
-				}
-			],
 			"wondrous": true,
 			"typeAlt": "DF",
 			"entries": [
+				"{@note Requires the {@feat Mark of Hospitality|EFA}}",
 				"This long key, studded with tiny Siberys dragonshards, can only be used by a creature with the {@feat Mark of Hospitality|EFA}. You can take a {@action Magic|XPHB} action to trace the outline of a door in the air with the key and cast {@spell Mordenkainen's Magnificent Mansion|XPHB} without requiring Material components. The spell ends after 24 hours or when you use the key to lock the door and dismiss the effect; at that time, any creatures within the mansion are expelled into an open space near its entrance. Once used, the key cannot be used again until the next dawn."
 			],
 			"attachedSpells": {
@@ -7416,7 +8077,7 @@
 			"wondrous": true,
 			"entries": [
 				"Bred by the daelkyr Valaara, this bizarre symbiont burrows into the palm of its host, secreting razor-sharp chitin blades that can also be used as throwing weapons. When you attune to the scarab, it fuses with one of your hands, visible only as an iridescent, chitinous growth on your palm.",
-				"For every attack you make as part of the {@action Attack|XPHB} action on your turn, you can extrude a shard of razor-sharp chitin from the symbiont into your empty hand, using it for the attack. The shard counts as a magical Simple Melee weapon with which you are proficient. It has the Finesse, Light, and Thrown properties with a normal range of 20 feet and a long range of 60 feet. On a hit, it deals {@damage 1d4} Piercing damage and {@damage 1d4} Acid damage. The shard dissolves as soon as it hits or misses its target.",
+				"For every attack you make as part of the {@action Attack|XPHB} action on your turn, you can extrude a shard of razor-sharp chitin from the symbiont into your empty hand, using it for the attack. The shard counts as a magical Simple Melee weapon with which you are proficient. It has the {@itemProperty F|XPHB|Finesse}, {@itemProperty L|XPHB|Light}, and {@itemProperty T|XPHB|Thrown} properties with a normal range of 20 feet and a long range of 60 feet. On a hit, it deals {@damage 1d4} Piercing damage and {@damage 1d4} Acid damage. The shard dissolves as soon as it hits or misses its target.",
 				{
 					"type": "entries",
 					"name": "Symbiotic Nature",
@@ -7490,9 +8151,20 @@
 			"page": 0,
 			"rarity": "uncommon",
 			"typeAlt": "DF",
+			"additionalEntries": [
+				"{@note Duplicated from {@item Quaal's Feather Token, Bird|XDMG}}"
+			],
 			"_copy": {
 				"name": "Quaal's Feather Token, Bird",
-				"source": "XDMG"
+				"source": "XDMG",
+				"_mod": {
+					"entries": {
+						"mode": "prependArr",
+						"items": [
+							"{@note Requires the {@feat Mark of Making|EFA}}"
+						]
+					}
+				}
 			}
 		},
 		{
@@ -7501,9 +8173,20 @@
 			"page": 0,
 			"rarity": "uncommon",
 			"typeAlt": "DF",
+			"additionalEntries": [
+				"{@note Duplicated from {@item Cape of the Mountebank|XDMG}}"
+			],
 			"_copy": {
 				"name": "Cape of the Mountebank",
-				"source": "XDMG"
+				"source": "XDMG",
+				"_mod": {
+					"entries": {
+						"mode": "prependArr",
+						"items": [
+							"{@note Requires the {@feat Mark of Passage|EFA}}"
+						]
+					}
+				}
 			}
 		},
 		{
@@ -7512,6 +8195,10 @@
 			"page": 0,
 			"rarity": "common",
 			"typeAlt": "DF",
+			"reqAttune": "by a Creature with the Mark of Shadow",
+			"additionalEntries": [
+				"{@note Duplicated from {@item Cloak of Elvenkind|XDMG}}"
+			],
 			"_copy": {
 				"name": "Cloak of Elvenkind",
 				"source": "XDMG"
@@ -7523,9 +8210,20 @@
 			"page": 0,
 			"rarity": "common",
 			"typeAlt": "DF",
+			"additionalEntries": [
+				"{@note Duplicated from {@item Alchemy Jug|XDMG}}"
+			],
 			"_copy": {
 				"name": "Alchemy Jug",
-				"source": "XDMG"
+				"source": "XDMG",
+				"_mod": {
+					"entries": {
+						"mode": "prependArr",
+						"items": [
+							"{@note Requires the {@feat Mark of Hospitality|EFA}}"
+						]
+					}
+				}
 			}
 		},
 		{
@@ -7534,9 +8232,20 @@
 			"page": 0,
 			"rarity": "common",
 			"typeAlt": "DF",
+			"additionalEntries": [
+				"{@note Duplicated from {@item Sentinel Shield|XDMG}}"
+			],
 			"_copy": {
 				"name": "Sentinel Shield",
-				"source": "XDMG"
+				"source": "XDMG",
+				"_mod": {
+					"entries": {
+						"mode": "prependArr",
+						"items": [
+							"{@note Requires the {@feat Mark of Sentinel|EFA}}"
+						]
+					}
+				}
 			}
 		},
 		{
@@ -7545,9 +8254,20 @@
 			"page": 0,
 			"rarity": "common",
 			"typeAlt": "DF",
+			"additionalEntries": [
+				"{@note Duplicated from {@item Eyes of the Eagle|XDMG}}"
+			],
 			"_copy": {
 				"name": "Eyes of the Eagle",
-				"source": "XDMG"
+				"source": "XDMG",
+				"_mod": {
+					"entries": {
+						"mode": "prependArr",
+						"items": [
+							"{@note Requires the {@feat Mark of Finding|EFA}}"
+						]
+					}
+				}
 			}
 		},
 		{
@@ -7556,9 +8276,20 @@
 			"page": 0,
 			"rarity": "uncommon",
 			"typeAlt": "DF",
+			"additionalEntries": [
+				"{@note Duplicated from {@item Dimensional Shackles|XDMG}}"
+			],
 			"_copy": {
 				"name": "Dimensional Shackles",
-				"source": "XDMG"
+				"source": "XDMG",
+				"_mod": {
+					"entries": {
+						"mode": "prependArr",
+						"items": [
+							"{@note Requires the {@feat Mark of Warding|EFA}}"
+						]
+					}
+				}
 			}
 		},
 		{
@@ -7567,6 +8298,15 @@
 			"page": 0,
 			"rarity": "common",
 			"typeAlt": "DF",
+			"reqAttune": "by a Creature with the Mark of Healing",
+			"reqAttuneTags": [
+				{
+					"feat": "Mark of Healing|EFA"
+				}
+			],
+			"additionalEntries": [
+				"{@note Duplicated from {@item Periapt of Wound Closure|XDMG}}"
+			],
 			"_copy": {
 				"name": "Periapt of Wound Closure",
 				"source": "XDMG"
@@ -7578,9 +8318,20 @@
 			"page": 0,
 			"rarity": "common",
 			"typeAlt": "DF",
+			"additionalEntries": [
+				"{@note Duplicated from {@item Wand of Secrets|XDMG}}"
+			],
 			"_copy": {
 				"name": "Wand of Secrets",
-				"source": "XDMG"
+				"source": "XDMG",
+				"_mod": {
+					"entries": {
+						"mode": "prependArr",
+						"items": [
+							"{@note Requires the {@feat Mark of Detection|EFA}}"
+						]
+					}
+				}
 			}
 		},
 		{
@@ -7589,9 +8340,20 @@
 			"page": 0,
 			"rarity": "common",
 			"typeAlt": "DF",
+			"additionalEntries": [
+				"{@note Duplicated from {@item Eyes of Minute Seeing|XDMG}}"
+			],
 			"_copy": {
 				"name": "Eyes of Minute Seeing",
-				"source": "XDMG"
+				"source": "XDMG",
+				"_mod": {
+					"entries": {
+						"mode": "prependArr",
+						"items": [
+							"{@note Requires the {@feat Mark of Detection|EFA}}"
+						]
+					}
+				}
 			}
 		},
 		{
@@ -7600,6 +8362,15 @@
 			"page": 0,
 			"rarity": "uncommon",
 			"typeAlt": "DF",
+			"reqAttune": "by a Creature with the Mark of Passage",
+			"reqAttuneTags": [
+				{
+					"feat": "Mark of Passage|EFA"
+				}
+			],
+			"additionalEntries": [
+				"{@note Duplicated from {@item Boots of Speed|XDMG}}"
+			],
 			"_copy": {
 				"name": "Boots of Speed",
 				"source": "XDMG"
@@ -7611,6 +8382,15 @@
 			"page": 0,
 			"rarity": "rare",
 			"typeAlt": "DF",
+			"reqAttune": "by a Creature with the Mark of Shadow",
+			"reqAttuneTags": [
+				{
+					"feat": "Mark of Shadow|EFA"
+				}
+			],
+			"additionalEntries": [
+				"{@note Duplicated from {@item Crystal Ball|XDMG}}"
+			],
 			"_copy": {
 				"name": "Crystal Ball",
 				"source": "XDMG"
@@ -7622,6 +8402,15 @@
 			"page": 0,
 			"rarity": "uncommon",
 			"typeAlt": "DF",
+			"reqAttune": "by a Creature with the Mark of Storm",
+			"reqAttuneTags": [
+				{
+					"feat": "Mark of Storm|EFA"
+				}
+			],
+			"additionalEntries": [
+				"{@note Duplicated from {@item Ring of Feather Falling|XDMG}}"
+			],
 			"_copy": {
 				"name": "Ring of Feather Falling",
 				"source": "XDMG"
@@ -7633,6 +8422,15 @@
 			"page": 0,
 			"rarity": "uncommon",
 			"typeAlt": "DF",
+			"reqAttune": "by a Creature with the Mark of Shadow",
+			"reqAttuneTags": [
+				{
+					"feat": "Mark of Shadow|EFA"
+				}
+			],
+			"additionalEntries": [
+				"{@note Duplicated from {@item Cloak of Displacement|XDMG}}"
+			],
 			"_copy": {
 				"name": "Cloak of Displacement",
 				"source": "XDMG"
@@ -7644,9 +8442,20 @@
 			"page": 0,
 			"rarity": "uncommon",
 			"typeAlt": "DF",
+			"additionalEntries": [
+				"{@note Duplicated from {@item Ring of Animal Influence|XDMG}}"
+			],
 			"_copy": {
 				"name": "Ring of Animal Influence",
-				"source": "XDMG"
+				"source": "XDMG",
+				"_mod": {
+					"entries": {
+						"mode": "prependArr",
+						"items": [
+							"{@note Requires the {@feat Mark of Handling|EFA}}"
+						]
+					}
+				}
 			}
 		},
 		{
@@ -7655,6 +8464,15 @@
 			"page": 0,
 			"rarity": "common",
 			"typeAlt": "DF",
+			"reqAttune": "by a Creature with the Mark of Warding",
+			"reqAttuneTags": [
+				{
+					"feat": "Mark of Warding|EFA"
+				}
+			],
+			"additionalEntries": [
+				"{@note Duplicated from {@item Brooch of Shielding|XDMG}}"
+			],
 			"_copy": {
 				"name": "Brooch of Shielding",
 				"source": "XDMG"
@@ -7666,9 +8484,20 @@
 			"page": 0,
 			"rarity": "common",
 			"typeAlt": "DF",
+			"additionalEntries": [
+				"{@note Duplicated from {@item Sending Stones|XDMG}}"
+			],
 			"_copy": {
 				"name": "Sending Stones",
-				"source": "XDMG"
+				"source": "XDMG",
+				"_mod": {
+					"entries": {
+						"mode": "prependArr",
+						"items": [
+							"{@note Requires the {@feat Mark of Scribing|EFA}}"
+						]
+					}
+				}
 			}
 		}
     ]
