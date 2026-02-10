@@ -17837,6 +17837,20 @@
 						"You have advantage on any skill check or saving throw to escape falling natural rocks (i.e. from cliffs, caves, tunnels, etc., but not from traps or buildings)."
 					]
 				}
+			],
+			"foundryEffects": [
+				{
+					"foundryId": "DDDDFeatMinerTS",
+					"name": "Familiar Rumble",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.senses.tremorsense",
+							"mode": "UPGRADE",
+							"value": 30
+						}
+					]
+				}
 			]
 		},
 		{
@@ -17881,6 +17895,42 @@
 					"name": "Whisper Back",
 					"entries": [
 						"You have a {@sense tremorsense} of 10 ft."
+					]
+				}
+			],
+			"foundryActivities": [
+				{
+					"name": "Stone Shape",
+					"type": "cast",
+					"spell.uuid": "@spell[stone shape]",
+					"consumption.targets": [
+						{
+							"type": "activityUses",
+							"value": 1
+						}
+					],
+					"uses": {
+						"max": "1 + 2 * floor(max(0, @details.level - 5) / 5)",
+						"recovery": [
+							{
+								"period": "dawn",
+								"type": "recoverAll"
+							}
+						]
+					}
+				}
+			],
+			"foundryEffects": [
+				{
+					"foundryId": "DDDDFeatSWTS",
+					"name": "Whisper Back",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.senses.tremorsense",
+							"mode": "UPGRADE",
+							"value": 10
+						}
 					]
 				}
 			]
@@ -17998,6 +18048,20 @@
 						"If you can see a volcano, you may take 10 minutes to assess it. If you do, you are able to determine whether it is likely to erupt in either the next >100 years, 10 years, 1 year, 30 days, 7 days, or 24 hours. If the volcano is going to erupt in the next 7 days or less, you are able to determine the minimum safe distance from it."
 					]
 				}
+			],
+			"foundryEffects": [
+				{
+					"foundryId": "DDDDFeatVolcFR",
+					"name": "Heat Handler",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.traits.dr.value",
+							"mode": "ADD",
+							"value": "fire"
+						}
+					]
+				}
 			]
 		},
 		{
@@ -18030,6 +18094,44 @@
 						"The first time you fail an Athletics check each day, you may choose to succeed it instead."
 					]
 				}
+			],
+			"foundryActivities": [
+				{
+					"name": "Catch Jaws",
+					"type": "utility",
+					"activation": {
+						"type": "reaction",
+						"condition": "When you take damage from a bite or maw attack"
+					},
+					"roll": {
+						"name": "Damage Reduction",
+						"formula": "1d10 + @details.level",
+						"visible": true
+					}
+				},
+				{
+					"name": "Heroic Moment",
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "First failed Athletics check each day"
+					},
+					"uses": {
+						"max": 1,
+						"recovery": [
+							{
+								"period": "dawn",
+								"type": "recoverAll"
+							}
+						]
+					},
+					"consumption.targets": [
+						{
+							"type": "activityUses",
+							"value": 1
+						}
+					]
+				}
 			]
 		},
 		{
@@ -18059,6 +18161,19 @@
 						}
 					]
 				}
+			],
+			"foundryActivities": [
+				{
+					"name": "Enchant",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"duration": {
+						"value": 1,
+						"units": "minute"
+					}
+				}
 			]
 		}
 	],
@@ -18080,6 +18195,43 @@
 				"Special Shot Improvement|Ranger||Big Game Hunter|DrDhrolinsDictionaryofDinosaurs|11",
 				"Apex Predator|Ranger||Big Game Hunter|DrDhrolinsDictionaryofDinosaurs|15",
 				"Finish the Hunt|Ranger||Big Game Hunter|DrDhrolinsDictionaryofDinosaurs|17"
+			],
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"title": "Special Shot Charges",
+					"configuration": {
+						"identifier": "special-shot-charges",
+						"type": "number",
+						"scale": {
+							"5": {
+								"value": "@prof"
+							},
+							"11": {
+								"value": "2 * @prof"
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Favoured Enemy Size",
+					"configuration": {
+						"identifier": "favoured-enemy-size",
+						"type": "string",
+						"scale": {
+							"3": {
+								"value": "Large"
+							},
+							"6": {
+								"value": "Huge"
+							},
+							"14": {
+								"value": "Gargantuan"
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -18128,6 +18280,43 @@
 				"Master Crafter|Artificer|TCE|Bonesculptor|DrDhrolinsDictionaryofDinosaurs|15",
 				"Body Modification|Artificer|TCE|Bonesculptor|DrDhrolinsDictionaryofDinosaurs|15",
 				"Minion Master|Artificer|TCE|Bonesculptor|DrDhrolinsDictionaryofDinosaurs|15"
+			],
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"title": "Crafting Bonus",
+					"configuration": {
+						"identifier": "crafting-bonus",
+						"type": "number",
+						"scale": {
+							"5": {
+								"value": 1
+							},
+							"9": {
+								"value": 2
+							},
+							"15": {
+								"value": 3
+							}
+						}
+					}
+				},
+				{
+					"type": "ScaleValue",
+					"title": "Construct Bonus HP",
+					"configuration": {
+						"identifier": "construct-bonus-hp",
+						"type": "number",
+						"scale": {
+							"5": {
+								"value": 0
+							},
+							"15": {
+								"value": 60
+							}
+						}
+					}
+				}
 			]
 		},
 		{
@@ -18177,6 +18366,27 @@
 				"Commune with Future|Druid||Cycles|DrDhrolinsDictionaryofDinosaurs|10",
 				"Guided Evolution|Druid||Cycles|DrDhrolinsDictionaryofDinosaurs|14",
 				"Future Sight|Druid||Cycles|DrDhrolinsDictionaryofDinosaurs|17"
+			],
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"title": "Adaptive Characteristics",
+					"configuration": {
+						"identifier": "adaptive-characteristics",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 1
+							},
+							"8": {
+								"value": 2
+							},
+							"14": {
+								"value": 3
+							}
+						}
+					}
+				}
 			]
 		}
 	],
@@ -18247,7 +18457,18 @@
 			"header": 1,
 			"entries": [
 				"When making a ranged attack against a target creature of size Large or larger, on a hit, you may wrap a bolas around the creature, reducing its speed to 0 instead of dealing damage. On its turn, the creature may attempt to break the bolas using its bonus action. To do so, it must succeed a Strength check with a DC equal to 8 + your Dexterity modifier + your proficiency bonus. You may remove the bolas as an action if you are within 5 ft. of the creature. You may use this ability a number of times equal to your proficiency bonus, then require a short or long rest to regain all expended uses."
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": "@prof",
+					"recovery": [
+						{
+							"period": "sr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
 		},
 		{
 			"name": "Special Shot",
@@ -18269,7 +18490,18 @@
 						"{@bold Power Shot:} Do not roll damage for this attack. Instead you cause the maximum damage you could roll on a successful hit. If you critically hit the creature, you still roll the additional damage dice."
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": "@prof",
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
 		},
 		{
 			"name": "The Hunt Continues",
@@ -18325,7 +18557,18 @@
 			"header": 2,
 			"entries": [
 				"You have a number of charges of Special Shot equal to twice your proficiency bonus, rather than just equal to your proficiency bonus."
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": "2 * @prof",
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
 		},
 		{
 			"name": "Apex Predator",
@@ -18354,7 +18597,18 @@
 			"entries": [
 				"As an action, you can declare that you are attempting to finish a target off. Select a creature that you can see, is within 60 ft., unobscured, and your Favoured Enemy. You make a single ranged attack against the creature that automatically hits so long as your character (and you) say a quip or one-liner, such as \"This one's mine!\", \"I've got you now…\", or \"Hasta la vista.\". If you do not provide a quip or one-liner, the attack misses.",
 				"If a creature hit by this attack has less than 100 hit points remaining, it dies instantly. If it has 100 or more hit points, it instead takes {@damage 10d10 + 30} piercing damage. Once you use this ability, you can't do so again until you finish a long rest."
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": 1,
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
 		},
 		{
 			"name": "Bonesculptor",
@@ -18917,7 +19171,18 @@
 						"{@bold Planetary Alignment:} For the next minute, you and any allies within 15 ft. of you gain proficiency in all saving throws."
 					]
 				}
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": 1,
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
 		},
 		{
 			"name": "Deep Hibernation",
@@ -19093,6 +19358,44 @@
 				"{@i Heavy sculpted armour with a horned helm and shoulders in the visage of a large ceratopsian.}",
 				"+1 or +2 armour. If you move at least 20 ft. in a straight line towards a creature and end your movement within 5 ft. of it, you may use your bonus action to strike the creature, dealing bludgeoning damage equal to your proficiency bonus and piercing damage equal to your proficiency bonus to it.",
 				"You and the creature must then make contested Strength checks. If you win, the struck creature is also knocked {@condition prone}."
+			],
+			"foundryActivities": [
+				{
+					"name": "Charge",
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"condition": "After moving 20+ feet in a straight line toward a creature"
+					},
+					"damage.parts": [
+						{
+							"custom": {
+								"enabled": true,
+								"formula": "@prof"
+							},
+							"types": [
+								"bludgeoning"
+							]
+						},
+						{
+							"custom": {
+								"enabled": true,
+								"formula": "@prof"
+							},
+							"types": [
+								"piercing"
+							]
+						}
+					],
+					"range": {
+						"value": 5,
+						"units": "ft"
+					},
+					"target.affects": {
+						"count": 1,
+						"type": "creature"
+					}
+				}
 			]
 		},
 		{
@@ -19106,6 +19409,19 @@
 				"{@i Armour (any leather armour), rare (+1) or very rare (+2). Requires attunement.}",
 				"{@i A thick coat of feathers lined with leather on the inside.}",
 				"+1 or +2 armour. While attuned to this item, you have resistance to falling damage. When taking falling damage, you may use your reaction to instead gain immunity to falling damage until the end of your turn."
+			],
+			"foundryActivities": [
+				{
+					"name": "Controlled Descent",
+					"type": "utility",
+					"activation": {
+						"type": "reaction",
+						"condition": "When you are falling"
+					},
+					"duration": {
+						"units": "turn"
+					}
+				}
 			]
 		},
 		{
@@ -19131,6 +19447,19 @@
 				"{@i Wondrous item (cape).}",
 				"{@i This large cape is dull on the back, but the inside is patterned and coloured with two huge eyes. When held up from either side, it gives the wearer the superficial image of a huge bestial head with glaring eyes.}",
 				"While wearing this cape, as a bonus action you can give yourself advantage on {@skill Intimidation} checks until the end of your turn against any creature with an Intelligence score of 5 or lower."
+			],
+			"foundryActivities": [
+				{
+					"name": "Display",
+					"type": "utility",
+					"activation": {
+						"type": "bonus",
+						"condition": "Gain advantage on Intimidation checks against creatures with INT 5 or lower"
+					},
+					"duration": {
+						"units": "turn"
+					}
+				}
 			]
 		},
 		{
@@ -19168,6 +19497,26 @@
 				"{@i Weapon (dagger or knife). Requires attunement.}",
 				"{@i This slender weapon has a wavy oscillating blade engraved with strange symbols.}",
 				"+3 weapon. A creature hit by an attack with this weapon must succeed a {@dc 10} Constitution saving throw or be reduced by one size category and have the damage from its attacks reduced by {@dice 1d4} for 1 minute. While reduced in size, it cannot be reduced in size again by another attack or similar spell/ability."
+			],
+			"foundryActivities": [
+				{
+					"name": "Size Reduction",
+					"type": "save",
+					"activation": {
+						"type": "special",
+						"condition": "When you hit a creature with this weapon"
+					},
+					"save": {
+						"ability": [
+							"con"
+						],
+						"dc.formula": "10"
+					},
+					"duration": {
+						"value": 1,
+						"units": "minute"
+					}
+				}
 			]
 		},
 		{
@@ -19329,6 +19678,35 @@
 				"{@i A simple, wooden wand bound with twine and a small feather embedded in its tip.}",
 				"This wand has 3 charges. While holding it, you can use an action to expend 1 of its charges and a beast you can see within 40 ft. of you must make a {@dc 12} Wisdom saving throw. On a failed save, select a Behaviour Table (pages 214–217). You may then roll two dice for a behaviour and select whichever option of the two you prefer. The creature then behaves in that manner.",
 				"This wand regains all expended charges every day at dawn."
+			],
+			"foundryActivities": [
+				{
+					"name": "Confuse Beast",
+					"type": "save",
+					"activation": {
+						"type": "action"
+					},
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"save": {
+						"ability": [
+							"wis"
+						],
+						"dc.formula": "12"
+					},
+					"range": {
+						"value": 40,
+						"units": "ft"
+					},
+					"target.affects": {
+						"count": 1,
+						"type": "creature"
+					}
+				}
 			]
 		},
 		{
@@ -19368,7 +19746,49 @@
 						"color spray"
 					]
 				}
-			}
+			},
+			"foundryActivities": [
+				{
+					"name": "Light",
+					"type": "cast",
+					"spell.uuid": "@spell[light]",
+					"consumption.targets": [
+						{
+							"type": "activityUses",
+							"value": 1
+						}
+					],
+					"uses": {
+						"max": "@prof",
+						"recovery": [
+							{
+								"period": "dawn",
+								"type": "recoverAll"
+							}
+						]
+					}
+				},
+				{
+					"name": "Colour Spray",
+					"type": "cast",
+					"spell.uuid": "@spell[color spray]",
+					"consumption.targets": [
+						{
+							"type": "activityUses",
+							"value": 1
+						}
+					],
+					"uses": {
+						"max": 1,
+						"recovery": [
+							{
+								"period": "dawn",
+								"type": "recoverAll"
+							}
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Ancient Horn",
@@ -19383,6 +19803,32 @@
 				"{@i Wondrous item (instrument).}",
 				"{@i A curved and polished bone horn made from the skull of a large hadrosaur.}",
 				"This instrument can be used as a spell focus by a bard. Once per day, as an action, the horn can be blown to alert allies. When used in this way, it cannot be heard by anyone except the bearer and their allies, who can hear it regardless of where they are in the multiverse. The sound itself does not convey specific information, and is simply a deep note."
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": 1,
+					"recovery": [
+						{
+							"period": "dawn",
+							"type": "recoverAll"
+						}
+					]
+				}
+			},
+			"foundryActivities": [
+				{
+					"name": "Sound the Horn",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					]
+				}
 			]
 		},
 		{
@@ -19405,7 +19851,29 @@
 						"bless"
 					]
 				}
-			}
+			},
+			"foundryActivities": [
+				{
+					"name": "Bless",
+					"type": "cast",
+					"spell.uuid": "@spell[bless]",
+					"consumption.targets": [
+						{
+							"type": "activityUses",
+							"value": 1
+						}
+					],
+					"uses": {
+						"max": 1,
+						"recovery": [
+							{
+								"period": "dawn",
+								"type": "recoverAll"
+							}
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Staff of Time Sight",
@@ -19434,6 +19902,22 @@
 				"{@i Weapon (quarterstaff). Requires attunement.}",
 				"{@i This wooden and brass staff is topped by a large, spinning brass sphere. This sphere is orbited by several smaller brass spheres that are not physically connected to the staff, yet cannot be removed from their orbit.}",
 				"This +2 staff can be used as a spell focus by a druid, wizard, or sorcerer. This staff has two charges. While wielding this staff, at the end of your turn in combat, you may choose to expend 1 of its charges. If you do, undo your entire turn (all actions, movement, and damage dealt/received) and re-take your turn. The staff regains 1 charge each day at dawn."
+			],
+			"foundryActivities": [
+				{
+					"name": "Undo Turn",
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "During combat, undo your entire turn and retake it"
+					},
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					]
+				}
 			]
 		},
 		{
@@ -19621,6 +20105,605 @@
 							"Tyrannosaurus",
 							"600 gp"
 						]
+					]
+				}
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": 1,
+					"recovery": [
+						{
+							"period": "dawn",
+							"type": "recoverAll"
+						}
+					]
+				}
+			},
+			"foundryActivities": [
+				{
+					"name": "Roll the Dice",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"roll": {
+						"name": "Dinosaur Summoned",
+						"formula": "1d6",
+						"visible": true
+					}
+				}
+			]
+		}
+	],
+	"foundrySubclassFeature": [
+		{
+			"name": "Bolas",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Big Game Hunter",
+			"subclassSource": "DrDhrolinsDictionaryofDinosaurs",
+			"level": 3,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "On a hit with a ranged attack against a Large or larger creature"
+					},
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"range": {
+						"value": 30,
+						"units": "ft"
+					},
+					"target.affects": {
+						"count": 1,
+						"type": "creature"
+					}
+				}
+			]
+		},
+		{
+			"name": "Special Shot",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Big Game Hunter",
+			"subclassSource": "DrDhrolinsDictionaryofDinosaurs",
+			"level": 5,
+			"activities": [
+				{
+					"name": "Drill Shot",
+					"type": "utility",
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"activation": {
+						"type": "special",
+						"condition": "When you make a ranged weapon attack"
+					}
+				},
+				{
+					"name": "Trick Shot",
+					"type": "utility",
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"activation": {
+						"type": "special",
+						"condition": "When you make a ranged weapon attack"
+					}
+				},
+				{
+					"name": "Power Shot",
+					"type": "utility",
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"activation": {
+						"type": "special",
+						"condition": "When you make a ranged weapon attack"
+					}
+				}
+			]
+		},
+		{
+			"name": "The Hunt Continues",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Big Game Hunter",
+			"subclassSource": "DrDhrolinsDictionaryofDinosaurs",
+			"level": 7,
+			"activities": [
+				{
+					"type": "heal",
+					"activation": {
+						"type": "special",
+						"condition": "When you reduce a Favoured Enemy to 0 hit points"
+					},
+					"healing": {
+						"custom": {
+							"enabled": true,
+							"formula": "2 * @prof"
+						},
+						"types": [
+							"temphp"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Finish the Hunt",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Big Game Hunter",
+			"subclassSource": "DrDhrolinsDictionaryofDinosaurs",
+			"level": 17,
+			"activities": [
+				{
+					"type": "damage",
+					"activation": {
+						"type": "action"
+					},
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"range": {
+						"value": 60,
+						"units": "ft"
+					},
+					"damage.parts": [
+						{
+							"number": 10,
+							"denomination": 10,
+							"bonus": "30",
+							"types": [
+								"piercing"
+							]
+						}
+					],
+					"target.affects": {
+						"count": 1,
+						"type": "creature"
+					}
+				}
+			]
+		},
+		{
+			"name": "Construct of Flesh",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"className": "Artificer",
+			"classSource": "TCE",
+			"subclassShortName": "Bonesculptor",
+			"subclassSource": "DrDhrolinsDictionaryofDinosaurs",
+			"level": 5,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "During a long rest, using harvested bones"
+					}
+				}
+			]
+		},
+		{
+			"name": "Circle of Cycles",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Cycles",
+			"subclassSource": "DrDhrolinsDictionaryofDinosaurs",
+			"level": 2,
+			"activities": [
+				{
+					"name": "Touch of Time",
+					"type": "utility",
+					"activation": {
+						"type": "special",
+						"condition": "When you deal damage, you may change one damage die to necrotic"
+					}
+				}
+			]
+		},
+		{
+			"name": "Celestial Alignment",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Cycles",
+			"subclassSource": "DrDhrolinsDictionaryofDinosaurs",
+			"level": 5,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"duration": {
+						"value": 1,
+						"units": "minute"
+					}
+				}
+			]
+		},
+		{
+			"name": "Glimpse Future",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Cycles",
+			"subclassSource": "DrDhrolinsDictionaryofDinosaurs",
+			"level": 6,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "reaction",
+						"condition": "When an ally within 30 feet makes a Dexterity saving throw"
+					},
+					"range": {
+						"value": 30,
+						"units": "ft"
+					},
+					"target.affects": {
+						"count": 1,
+						"type": "ally"
+					}
+				}
+			]
+		}
+	],
+	"foundryRaceFeature": [
+		{
+			"name": "Razormaw",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"raceName": "Pluvenn",
+			"raceSource": "DrDhrolinsDictionaryofDinosaurs",
+			"activities": [
+				{
+					"type": "attack",
+					"damage.parts": [
+						{
+							"number": 1,
+							"denomination": 4,
+							"bonus": "@mod",
+							"types": [
+								"piercing"
+							]
+						}
+					],
+					"range": {
+						"value": 5,
+						"units": "ft"
+					},
+					"attack": {
+						"ability": "str",
+						"type": {
+							"value": "melee",
+							"classification": "unarmed"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Grappleclaws",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"raceName": "Pluvenn",
+			"raceSource": "DrDhrolinsDictionaryofDinosaurs",
+			"activities": [
+				{
+					"type": "attack",
+					"activation": {
+						"type": "bonus",
+						"condition": "While you have a creature grappled"
+					},
+					"damage.parts": [
+						{
+							"number": 1,
+							"denomination": 4,
+							"bonus": "@prof",
+							"types": [
+								"piercing"
+							]
+						}
+					],
+					"range": {
+						"value": 5,
+						"units": "ft"
+					},
+					"attack": {
+						"ability": "str",
+						"type": {
+							"value": "melee",
+							"classification": "unarmed"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Head Crest",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"raceName": "Manyhorn",
+			"raceSource": "DrDhrolinsDictionaryofDinosaurs",
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "bonus"
+					},
+					"duration": {
+						"value": 1,
+						"units": "minute"
+					}
+				}
+			]
+		},
+		{
+			"name": "Horned Repose",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"raceName": "Manyhorn",
+			"raceSource": "DrDhrolinsDictionaryofDinosaurs",
+			"activities": [
+				{
+					"type": "attack",
+					"activation": {
+						"type": "reaction",
+						"condition": "When a creature moves within 5 feet of you while you are sleeping or resting"
+					},
+					"damage.parts": [
+						{
+							"number": 1,
+							"denomination": 6,
+							"bonus": "@mod",
+							"types": [
+								"piercing"
+							]
+						}
+					],
+					"range": {
+						"value": 5,
+						"units": "ft"
+					},
+					"attack": {
+						"ability": "str",
+						"type": {
+							"value": "melee",
+							"classification": "unarmed"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Power of Persuasion",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"raceName": "Jeholrak",
+			"raceSource": "DrDhrolinsDictionaryofDinosaurs",
+			"activities": [
+				{
+					"name": "Charm Person",
+					"type": "cast",
+					"spell.uuid": "@spell[charm person]",
+					"consumption.targets": [
+						{
+							"type": "activityUses",
+							"value": 1
+						}
+					],
+					"uses": {
+						"max": 1,
+						"recovery": [
+							{
+								"period": "lr",
+								"type": "recoverAll"
+							}
+						]
+					}
+				},
+				{
+					"name": "Suggestion",
+					"type": "cast",
+					"spell.uuid": "@spell[suggestion]",
+					"consumption.targets": [
+						{
+							"type": "activityUses",
+							"value": 1
+						}
+					],
+					"uses": {
+						"max": 1,
+						"recovery": [
+							{
+								"period": "lr",
+								"type": "recoverAll"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Subdue Beast",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"raceName": "Jeholrak",
+			"raceSource": "DrDhrolinsDictionaryofDinosaurs",
+			"system": {
+				"uses": {
+					"max": "@prof",
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			},
+			"activities": [
+				{
+					"name": "Animal Friendship",
+					"type": "cast",
+					"spell.uuid": "@spell[animal friendship]",
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Clubbed Tail",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"raceName": "Ankylier",
+			"raceSource": "DrDhrolinsDictionaryofDinosaurs",
+			"activities": [
+				{
+					"type": "attack",
+					"damage.parts": [
+						{
+							"number": 1,
+							"denomination": 6,
+							"bonus": "@mod",
+							"types": [
+								"bludgeoning"
+							]
+						}
+					],
+					"range": {
+						"value": 5,
+						"units": "ft"
+					},
+					"attack": {
+						"ability": "str",
+						"type": {
+							"value": "melee",
+							"classification": "unarmed"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Osteoderms",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"raceName": "Ankylier",
+			"raceSource": "DrDhrolinsDictionaryofDinosaurs",
+			"effects": [
+				{
+					"foundryId": "DDDDAnkOsteo",
+					"name": "Osteoderms",
+					"changes": [
+						{
+							"key": "system.attributes.ac.calc",
+							"mode": "OVERRIDE",
+							"value": "flat"
+						},
+						{
+							"key": "system.attributes.ac.flat",
+							"mode": "OVERRIDE",
+							"value": 17
+						}
+					]
+				}
+			],
+			"activities": []
+		},
+		{
+			"name": "Envenomed Weapons",
+			"source": "DrDhrolinsDictionaryofDinosaurs",
+			"raceName": "Limukin",
+			"raceSource": "DrDhrolinsDictionaryofDinosaurs",
+			"system": {
+				"uses": {
+					"max": 1,
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			},
+			"activities": [
+				{
+					"type": "save",
+					"activation": {
+						"type": "special",
+						"condition": "When you hit a creature with a weapon attack"
+					},
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"save": {
+						"ability": [
+							"con"
+						],
+						"dc.formula": "10 + @prof"
+					},
+					"damage.parts": [
+						{
+							"number": 2,
+							"denomination": 4,
+							"types": [
+								"poison"
+							]
+						}
+					],
+					"effects": [
+						{
+							"foundryId": "DDDDLimEnven"
+						}
+					]
+				}
+			],
+			"effects": [
+				{
+					"foundryId": "DDDDLimEnven",
+					"name": "Poisoned",
+					"duration": {
+						"seconds": 60
+					},
+					"statuses": [
+						"poisoned"
 					]
 				}
 			]
