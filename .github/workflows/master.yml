@@ -1,25 +1,62 @@
 name: Lint/Test
 
 on:
-  pull_request:
+   pull_request:
 
 concurrency:
-  group: ${{ github.head_ref }}
-  cancel-in-progress: true
+   group: ${{ github.head_ref }}
+   cancel-in-progress: true
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+   test:
+      runs-on: ubuntu-latest
+      permissions:
+         contents: read
 
-    strategy:
-      matrix:
-        node-version: [ latest ]
+      strategy:
+         matrix:
+            node-version: [ latest ]
 
-    steps:
-      - uses: actions/checkout@master
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@master
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm test
+      steps:
+         -  uses: actions/checkout@master
+            with:
+               fetch-depth: 1
+               filter: blob:none
+               sparse-checkout-cone-mode: false
+               sparse-checkout: |
+                  /*
+                  !/_img/**
+
+         -  id: list_img_changes
+            uses: tj-actions/changed-files@v44
+            with:
+               files: |
+                  _img/**
+               separator: "\n"
+
+         -  run: |
+               set -euo pipefail
+
+               changed="${{ steps.list_img_changes.outputs.all_changed_files }}"
+
+               if [[ -z "${changed// }" ]]; then
+                   echo "No files to checkout under _img."
+                   exit 0
+               fi
+
+               while IFS= read -r p; do
+                   [[ -z "$p" ]] && continue
+                   echo "Including: $p"
+                   git sparse-checkout add -- "$p"
+               done <<< "$changed"
+
+               git checkout -- .
+
+         -  name: Use Node.js ${{ matrix.node-version }}
+            uses: actions/setup-node@master
+            with:
+               node-version: ${{ matrix.node-version }}
+
+         -  run: |
+               npm ci
+               npm test
