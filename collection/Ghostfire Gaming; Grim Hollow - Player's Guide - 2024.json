@@ -9231,7 +9231,7 @@
 			"header": 1,
 			"entries": [
 				"The spells listed below can be added to your spellbook for no cost when you reach the associated level.",
-				"Each time you finish a Long Rest, choose whether you are siphoning power from Arch Daemons or Arch Seraphs. You can prepare the spells listed for your Wizard level and lower, but not those from the opposite faction.",
+				"Each time you finish a {@variantrule Long Rest|XPHB}, choose whether you are siphoning power from Arch Daemons or Arch Seraphs. You can prepare the spells listed for your Wizard level and lower, but not those from the opposite faction.",
 				{
 					"type": "table",
 					"caption": "Arch Daemon",
@@ -9584,7 +9584,23 @@
 			"header": 1,
 			"entries": [
 				"You draw magic from blood. It is represented by your Sangromancy Dice, which fuel powers you have from this subclass. You have a pool of d12s that you can expend instead of a {@variantrule Hit Point Dice|XPHB|Hit Die} when you cast {@filter Sangromancy spells|spells|subschool=sangromancy}. The number of dice in the pool equals 1 plus your Wizard level. You regain one expended Sangromancy Die when you finish a {@variantrule Short Rest|XPHB}, and you regain all expended Sangromancy Dice when you finish a {@variantrule Long Rest|XPHB}."
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"recovery": [
+						{
+							"period": "sr",
+							"type": "formula",
+							"formula": "1"
+						},
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					],
+					"max": "1 + @classes.wizard.levels"
+				}
+			}
 		},
 		{
 			"name": "Sangromancy Savant",
@@ -9642,7 +9658,18 @@
 			"entries": [
 				"When you finish a {@variantrule Short Rest|XPHB}, you regain expended {@variantrule Hit Point Dice|XPHB} and Sangromancy Dice equal to half your Wizard level.",
 				"Once you use this feature, you can't use it again until you finish a {@variantrule Long Rest|XPHB}."
-			]
+			],
+			"foundrySystem": {
+				"uses": {
+					"max": "1",
+					"recovery": [
+						{
+							"period": "lr",
+							"type": "recoverAll"
+						}
+					]
+				}
+			}
 		}
 	],
 	"foundryClassFeature": [
@@ -9675,6 +9702,74 @@
 		}
 	],
 	"foundrySubclassFeature": [
+		{
+			"name": "Sanguine Vigor",
+			"source": "GrimHollowPG24",
+			"className": "Wizard",
+			"classSource": "XPHB",
+			"subclassShortName": "Sangromancer",
+			"subclassSource": "GrimHollowPG24",
+			"level": 6,
+			"effects": [
+				{
+					"name": "Sanguine Vigor",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.hp.bonuses.overall",
+							"mode": 2,
+							"value": "@classes.wizard.levels",
+							"priority": 20
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Red Renewal",
+			"source": "GrimHollowPG24",
+			"className": "Wizard",
+			"classSource": "XPHB",
+			"subclassShortName": "Sangromancer",
+			"subclassSource": "GrimHollowPG24",
+			"level": 14,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "shortRest"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": "",
+								"scaling": {}
+							},
+							{
+								"type": "hitDice",
+								"value": "-@classes.wizard.levels/2",
+								"target": "smallest"
+							},
+							{
+								"type": "itemUses",
+								"value": "-@classes.wizard.levels/2",
+								"target": {
+									"consumes": {
+										"name": "Full-Blooded"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
 		{
 			"name": "Primal Companion",
 			"source": "GrimHollowPG24",
@@ -26304,7 +26399,7 @@
 			"level": 3,
 			"school": "E",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -26366,7 +26461,7 @@
 			"level": 1,
 			"school": "T",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -26424,7 +26519,7 @@
 			"level": 6,
 			"school": "C",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -26495,7 +26590,7 @@
 			"level": 2,
 			"school": "V",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -26564,7 +26659,7 @@
 			"level": 1,
 			"school": "T",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -26693,7 +26788,7 @@
 			"level": 1,
 			"school": "T",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -26756,7 +26851,7 @@
 			"level": 7,
 			"school": "C",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -27046,7 +27141,7 @@
 			"level": 4,
 			"school": "V",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -27233,7 +27328,7 @@
 			"level": 1,
 			"school": "V",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -27306,7 +27401,7 @@
 			"level": 8,
 			"school": "N",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -27430,7 +27525,7 @@
 			"level": 1,
 			"school": "C",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -27558,7 +27653,7 @@
 			"level": 6,
 			"school": "E",
 			"subschools": [
-				"Shadowsteel Curse"
+				"shadowsteel curse"
 			],
 			"time": [
 				{
@@ -27646,7 +27741,7 @@
 			"level": 6,
 			"school": "E",
 			"subschools": [
-				"Shadowsteel Curse"
+				"shadowsteel curse"
 			],
 			"time": [
 				{
@@ -27741,7 +27836,7 @@
 			"level": 4,
 			"school": "N",
 			"subschools": [
-				"Shadowsteel Curse"
+				"shadowsteel curse"
 			],
 			"time": [
 				{
@@ -27840,7 +27935,7 @@
 			"level": 3,
 			"school": "E",
 			"subschools": [
-				"Shadowsteel Curse"
+				"shadowsteel curse"
 			],
 			"time": [
 				{
@@ -27932,7 +28027,7 @@
 			"level": 4,
 			"school": "N",
 			"subschools": [
-				"Shadowsteel Curse"
+				"shadowsteel curse"
 			],
 			"time": [
 				{
@@ -28020,7 +28115,7 @@
 			"level": 5,
 			"school": "D",
 			"subschools": [
-				"Shadowsteel Curse"
+				"shadowsteel curse"
 			],
 			"time": [
 				{
@@ -28118,7 +28213,7 @@
 			"level": 5,
 			"school": "E",
 			"subschools": [
-				"Shadowsteel Curse"
+				"shadowsteel curse"
 			],
 			"time": [
 				{
@@ -28206,7 +28301,7 @@
 			"level": 4,
 			"school": "E",
 			"subschools": [
-				"Shadowsteel Curse"
+				"shadowsteel curse"
 			],
 			"time": [
 				{
@@ -28305,7 +28400,7 @@
 			"level": 3,
 			"school": "E",
 			"subschools": [
-				"Shadowsteel Curse"
+				"shadowsteel curse"
 			],
 			"time": [
 				{
@@ -28403,7 +28498,7 @@
 			"level": 6,
 			"school": "E",
 			"subschools": [
-				"Shadowsteel Curse"
+				"shadowsteel curse"
 			],
 			"time": [
 				{
@@ -28498,7 +28593,7 @@
 			"level": 4,
 			"school": "V",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -28979,7 +29074,7 @@
 			"level": 3,
 			"school": "T",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -29506,7 +29601,7 @@
 			"level": 6,
 			"school": "V",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -30387,7 +30482,7 @@
 			"level": 5,
 			"school": "T",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -30961,7 +31056,7 @@
 			"level": 3,
 			"school": "V",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -31014,7 +31109,7 @@
 			"level": 8,
 			"school": "C",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -31141,7 +31236,7 @@
 			"level": 7,
 			"school": "V",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -31210,7 +31305,7 @@
 			"level": 3,
 			"school": "T",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -31284,7 +31379,7 @@
 			"level": 2,
 			"school": "A",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -31414,7 +31509,7 @@
 			"level": 2,
 			"school": "D",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -31610,7 +31705,7 @@
 			"level": 1,
 			"school": "I",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -31684,7 +31779,7 @@
 			"level": 1,
 			"school": "E",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -31812,7 +31907,7 @@
 			"level": 5,
 			"school": "A",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -31863,7 +31958,7 @@
 			"level": 9,
 			"school": "T",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -32206,7 +32301,7 @@
 			"level": 2,
 			"school": "T",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -32527,7 +32622,7 @@
 			"level": 1,
 			"school": "V",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -32601,7 +32696,7 @@
 			"level": 4,
 			"school": "N",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -32815,7 +32910,7 @@
 			"level": 2,
 			"school": "T",
 			"subschools": [
-				"Sangromancy"
+				"sangromancy"
 			],
 			"time": [
 				{
@@ -33264,7 +33359,6 @@
 				"rarity": "none",
 				"type": "AdvEq",
 				"page": 126,
-				"value": "50000",
 				"valueExpression": "[[baseItem.value]] + 50000",
 				"entries": [
 					"Hunter's Armor is a favorite of monster hunters across the length and breadth of Etharis. Any type of armor can be constructed as Hunter's Armor by paying the listed extra cost. This reinforces the most vital areas with adamantine and mithral threads to turn devastating hits into normal wounds.",
@@ -33287,7 +33381,6 @@
 				"rarity": "none",
 				"type": "AdvEq",
 				"page": 127,
-				"value": "25000",
 				"valueExpression": "[[baseItem.value]] + 25000",
 				"entries": [
 					"These musical instruments are not just the work of the finest luthiers and artisans in Etharis, they have secret embellishments and innovations that can add to a musical performance.",
@@ -35349,7 +35442,7 @@
 					"type": "entries",
 					"name": "Double",
 					"entries": [
-						"A Double weapon functions as two Light weapons, one in each hand, for the purposes of two-weapon fighting. If a Double weapon has {@itemProperty R|XPHB|Reach}, you can use only one of these properties per turn."
+						"A Double weapon functions as two {@item L|XPHB|Light} weapons, one in each hand, for the purposes of two-weapon fighting. If a Double weapon has {@itemProperty R|XPHB|Reach}, you can use only one of these properties per turn."
 					]
 				}
 			]
@@ -35470,7 +35563,7 @@
 			"source": "GrimHollowPG24",
 			"page": 123,
 			"entries": [
-				"A Brutal weapon is designed for maximum damage. Brutal weapons score Critical Hits on a natural roll of 19 or 20. If your Critical Range is already increased, instead increase it by 1 point (such as from 19-20 to 18-20).",
+				"A Brutal weapon is designed for maximum damage. Brutal weapons score {@variantrule Critical Hit|XPHB|Critical Hits} on a natural roll of 19 or 20. If your Critical Range is already increased, instead increase it by 1 point (such as from 19-20 to 18-20).",
 				"When you score a {@variantrule Critical Hit|XPHB} with a Brutal weapon against a creature, the weapon deals one additional die of damage."
 			]
 		},
