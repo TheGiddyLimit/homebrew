@@ -9,15 +9,17 @@
 		"build:index": "node _node/generate-index.js",
 		"build:clean": "npm run build:clean:base",
 		"build:clean:base": "node _node/clean-and-test.js",
-		"build:clean:html": "node _node/clean-html.js",
+		"build:clean:html": "clean-html",
 		"test:json": "test-json-brew",
-		"test:file-contents": "node _test/test-file-contents.js",
+		"test:clean": "npm run build:clean:base -- --dry",
+		"test:file-contents": "test-file-contents --img-repo-name homebrew-img --url-prefix-expected https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/",
 		"test:file-locations": "test-file-locations",
 		"test:file-names": "test-file-names",
 		"test:file-props": "test-file-props",
+		"test:edition-sources": "test-edition-sources",
 		"test:img-directories": "node _test/test-img-dir.js",
 		"test:html": "node _test/test-html.js",
-		"test": "npm run build:clean && npm run test:json && npm run test:file-locations && npm run test:file-names && npm run test:file-props && npm run test:img-directories && npm run test:file-contents && npm run test:html"
+		"test": "npm run test:clean && npm run test:json && npm run test:file-locations && npm run test:file-names && npm run test:file-props && npm run test:img-directories && npm run test:file-contents && npm run test:edition-sources && npm run test:html"
 	},
 	"repository": {
 		"type": "git",
@@ -30,9 +32,7 @@
 	},
 	"homepage": "https://github.com/TheGiddyLimit/homebrew#readme",
 	"devDependencies": {
-		"5etools-utils": "^0.14.35",
-		"commander": "^9.4.1",
-		"he": "^1.2.0",
-		"sanitize-html": "^2.12.1"
+		"5etools-utils": "^0.15.12",
+		"commander": "^14.0.3"
 	}
 }
