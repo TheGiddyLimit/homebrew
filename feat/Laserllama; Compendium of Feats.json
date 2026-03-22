@@ -1,0 +1,2555 @@
+{
+    "$schema": "https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew-fast/homebrew.json",
+    "_meta": {
+        "sources": [
+            {
+                "json": "llfeat",
+                "abbreviation": "LLCF",
+                "full": "Laserllama Compendium of Feats",
+                "authors": [
+                    "Laserllama"
+                ],
+                "convertedBy": [
+                    "hakr14"
+                ],
+                "url": "https://www.gmbinder.com/share/-Nyc8nVrY3XqX-rBslYv",
+                "color": "071c78",
+                "version": ""
+            }
+        ],
+        "dependencies": {
+            "optionalfeature": [
+                "LLExploits",
+                "LLAART",
+                "LLAART:E",
+                "LLASorc",
+                "LLASorcorc:E",
+                "LLAM",
+                "LLAM:E",
+                "LLSav",
+                "LLSavE",
+                "LLAR",
+                "LLAR:E",
+                "LLSH",
+                "LLSH:E"
+            ],
+            "spell": [
+                "llspell"
+            ]
+        },
+        "edition": "classic",
+        "dateAdded": 0,
+        "dateLastModified": 0
+    },
+    "feat": [
+        {
+            "name": "Classical Artist",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLSavE",
+                    "page": 5
+                }
+            ],
+            "entries": [
+                "Your great intellect has allowed you to master what many would consider the fine arts. You gain the following benefits:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You gain proficiency with both {@item mason's tools|PHB} and {@item painter's supplies|PHB}. Whenever you make an ability check with either tool, you can treat a roll of 9 or lower on the d20 as a 10.",
+                        "You can use mason's tools or painter's supplies and the appropriate materials to create a work of fine art worth 50 gp for each 8-hour workday you spend working on it.",
+                        "You have advantage on checks to assess the value of art."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "int": 1
+                }
+            ],
+            "toolProficiencies": [
+                {
+                    "mason's tools": true,
+                    "painter's supplies": true
+                }
+            ],
+            "foundryEffects": [
+                {
+                    "name": "Mason & Painter's Minimum",
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.tools.mason.roll.min",
+                            "mode": "UPGRADE",
+                            "value": 10
+                        },
+                        {
+                            "key": "system.tools.painter.roll.min",
+                            "mode": "UPGRADE",
+                            "value": 10
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/tools/hand/brush-paint-pink.webp"
+        },
+        {
+            "name": "Crossbow Expert (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "PHB",
+                    "page": 165
+                },
+                {
+                    "source": "LLAR:E"
+                }
+            ],
+            "entries": [
+                "You have trained extensively with the crossbow and can use it more efficiently than most. You gain the following benefits:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You can ignore the loading property of all crossbows.",
+                        "You can load a crossbow with a hand that is holding a one-handed weapon, {@item shield|phb}, or another Tiny object.",
+                        "Being within 5 feet of a hostile creature does not impose disadvantage on your ranged attack rolls with crossbows.",
+                        "When you take the {@action Attack} action and make an attack with a one-handed melee weapon, you can use a bonus action on that turn to make an attack with a {@item hand crossbow|PHB}."
+                    ]
+                }
+            ],
+            "foundryImg": "icons/weapons/crossbows/crossbow-blue.webp"
+        },
+        {
+            "name": "Defensive Duelist (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "PHB",
+                    "page": 165
+                },
+                {
+                    "source": "LLAF:E",
+                    "page": 5
+                }
+            ],
+            "prerequisite": [
+                {
+                    "ability": [
+                        {
+                            "dex": 13
+                        }
+                    ]
+                }
+            ],
+            "entries": [
+                "When a creature you can see hits you with a melee attack while you are wielding a finesse or light melee weapon you are proficient with, you can use your reaction to add your Dexterity modifier to your Armor Class against that attack.",
+                "When you use this reaction and the attack misses, you can make a single melee weapon attack against your attacker as part of the same reaction."
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Use",
+                    "type": "utility",
+                    "activation": {
+                        "type": "reaction",
+                        "condition": "When a creature you can see hits you with a melee attack while you are wielding a finesse or light melee weapon you are proficient with"
+                    },
+                    "target.affects": {
+                        "count": 1,
+                        "type": "creature"
+                    },
+                    "roll": {
+                        "name": "Bonus",
+                        "formula": "@abilities.dex.mod"
+                    }
+                }
+            ],
+            "foundryImg": "icons/weapons/daggers/dagger-double-brown.webp"
+        },
+        {
+            "name": "Devious Training",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLARoE",
+                    "page": 5
+                }
+            ],
+            "entries": [
+                "You have studied dastardly techniques to perform Devious Exploits. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Devious Exploits Known",
+                    "entries": [
+                        "You learn two {@filter 1st-degree Devious Exploits|optionalfeatures|feature type=ll:1de} from the {@loader Alternate Rogue|class/LaserLlama; Alternate Rogue.json}. If they require a saving throw, the DC equals 8 + your Proficiency Bonus + your Strength or Dexterity modifier (your choice)."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Retraining Exploits",
+                    "entries": [
+                        "Whenever you gain a level, you can replace one of the Devious Exploits you learned through this Feat with another 1st-degree Devious Exploit of your choice."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Exploit Dice",
+                    "entries": [
+                        "You gain two {@dice d4} Exploit Dice to fuel these Exploits, which are expended when you use them. You regain expended Exploit Dice when you finish a short or long rest.",
+                        "If you already have Exploit Dice when you gain this Feat, you instead gain a single Exploit Die equal to your others."
+                    ]
+                }
+            ],
+            "optionalfeatureProgression": [
+                {
+                    "name": "Devious Training",
+                    "featureType": [
+                        "LL:1DE"
+                    ],
+                    "progression": {
+                        "*": 2
+                    }
+                }
+            ],
+            "foundryActivities": [],
+            "foundryEffects": [
+                {
+                    "name": "Devious Training Exploits",
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "flags.ll.exploit.dc",
+                            "mode": "UPGRADE",
+                            "value": "8 + @prof + max(@abilities.str.mod, @abilities.dex.mod)"
+                        },
+                        {
+                            "key": "flags.ll.exploit.faces",
+                            "mode": "UPGRADE",
+                            "value": 4
+                        },
+                        {
+                            "key": "flags.ll.exploit.number",
+                            "mode": "UPGRADE",
+                            "value": 1,
+                            "priority": 1
+                        },
+                        {
+                            "key": "flags.ll.exploit.number",
+                            "mode": "ADD",
+                            "value": 1
+                        }
+                    ]
+                }
+            ],
+            "foundrySystem": {
+                "uses": {
+                    "max": 2,
+                    "recovery": [
+                        {
+                            "period": "sr",
+                            "type": "recoverAll"
+                        }
+                    ]
+                }
+            },
+            "foundryImg": "icons/skills/melee/maneuver-daggers-paired-orange.webp"
+        },
+        {
+            "name": "Dual Wielder (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "PHB",
+                    "page": 165
+                },
+                {
+                    "source": "LLAR:E"
+                }
+            ],
+            "entries": [
+                "You have trained extensively to effectively fight wielding two melee weapons at once. You gain the following benefits:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You gain a +1 bonus to your Armor Class while you are wielding a separate melee weapon in each hand.",
+                        "You can engage in two-weapon fighting even if the one-handed melee weapons you are wielding are not light.",
+                        "You can draw or stow two one-handed weapons when you would normally be able to draw or stow only one.",
+                        "When you make an opportunity attack while engaging in two-weapon fighting you can make an attack against the creature with both melee weapons you are wielding."
+                    ]
+                }
+            ],
+			"foundryEffects": [
+				{
+					"name": "+1 AC Bonus",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.ac.bonus",
+							"mode": "ADD",
+							"value": 1
+						}
+					]
+				}
+			],
+            "foundryImg": "icons/skills/melee/weapons-crossed-swords-yellow.webp"
+        },
+        {
+            "name": "Dungeon Delver (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "PHB",
+                    "page": 166
+                },
+                {
+                    "source": "LLARoE",
+                    "page": 5
+                }
+            ],
+            "entries": [
+                "You are as skilled as one can be at exploring dungeons and disarming deadly traps. You gain the benefits below:",
+                {
+                    "type": "entries",
+                    "name": "Dungeoneer Adept",
+                    "entries": [
+                        "You gain proficiency in {@skill Investigation}, {@skill Perception}, or {@item Thieves' Tools|PHB}, and whenever you you make an ability check with any of the skills listed above, you can treat a roll of 7 or lower on the d20 as an 8."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Thoughtful Steps",
+                    "entries": [
+                        "Traveling at a fast past pace while in a dungeon does not impose a penalty on passive Perception or passive Investigation scores for you."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Trap Sense",
+                    "entries": [
+                        "You have advantage on all saving throws to resist traps and Resistance to all damage dealt by traps."
+                    ]
+                }
+            ],
+            "skillToolLanguageProficiencies": [
+                {
+                    "choose": [
+                        {
+                            "from": [
+                                "investigation",
+                                "perception",
+                                "thieves' tools"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "foundryEffects": [
+                {
+                    "name": "Dungeoneer Adept",
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.skills.inv.roll.min",
+                            "mode": "UPGRADE",
+                            "value": 8
+                        },
+                        {
+                            "key": "system.skills.prc.roll.min",
+                            "mode": "UPGRADE",
+                            "value": 8
+                        },
+                        {
+                            "key": "system.tools.thief.roll.min",
+                            "mode": "UPGRADE",
+                            "value": 8
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/sundries/misc/lock-bronze-reinforced.webp"
+        },
+        {
+            "name": "Fighting Initiate (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "TCE",
+                    "page": 80
+                },
+                {
+                    "source": "LLAF:E",
+                    "page": 5
+                }
+            ],
+            "prerequisite": [
+                {
+                    "proficiency": [
+                        {
+                            "weapon": "martial"
+                        }
+                    ]
+                }
+            ],
+            "entries": [
+                "You have dedicated time to master a specific style of fighting. When you select this Feat you gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Fighting Style",
+                    "entries": [
+                        "You learn one {@filter Fighting Style|optionalfeatures|feature type=fs:af} of your choice from those available to the {@loader Alternate Fighter|class/LaserLlama; Alternate Fighter.json}. You can't learn the same Fighting Style more then once. In order to learn a Fighting Style you must meet any prerequisites it has."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "choose": {
+                        "from": [
+                            "str",
+                            "dex",
+                            "con"
+                        ]
+                    }
+                }
+            ],
+            "optionalfeatureProgression": [
+                {
+                    "name": "Fighting Initiate",
+                    "featureType": [
+                        "FS:AF"
+                    ],
+                    "progression": {
+                        "*": 1
+                    }
+                }
+            ],
+            "foundryImg": "icons/skills/melee/hand-grip-staff-blue.webp"
+        },
+        {
+            "name": "Great Weapon Master (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "PHB",
+                    "page": 167
+                },
+                {
+                    "source": "LLAF:E",
+                    "page": 5
+                }
+            ],
+            "prerequisite": [
+                {
+                    "ability": [
+                        {
+                            "str": 13
+                        }
+                    ]
+                }
+            ],
+            "entries": [
+                "You have honed your skills with massive weapons to overwhelm your foes. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Forceful Strikes",
+                    "entries": [
+                        "Whenever you hit a creature equal to your size or smaller with a Heavy melee weapon attack you can knock it back 5 feet away from you in a line along the ground, so long as the space it would be forced into is unoccupied."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Ruthless Warrior",
+                    "entries": [
+                        "If you reduce a creature to 0 hit points or score a critical hit with a Heavy melee weapon, you can make an attack with that Heavy weapon as your bonus action on that same turn."
+                    ]
+                }
+            ],
+            "foundryImg": "icons/skills/melee/hand-grip-hammer-spiked-blue.webp"
+        },
+        {
+            "name": "Hardy Physique",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLABE"
+                }
+            ],
+            "prerequisite": [
+                {
+                    "ability": [
+                        {
+                            "con": 13
+                        }
+                    ]
+                }
+            ],
+            "entries": [
+                "You have hardened your physical body to absorb hits rather then dodge them. You can use your Constitution, in place of Dexterity, when calculating your Armor Class in armor.",
+                "You also have advantage on saving throws to avoid being moved against your will, {@condition Grappled}, or knocked {@condition Prone}."
+            ],
+            "foundryEffects": [
+                {
+                    "name": "Hardy Physique (Light Armor)",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.attributes.ac.calc",
+                            "mode": "OVERRIDE",
+                            "value": "custom"
+                        },
+                        {
+                            "key": "system.attributes.ac.formula",
+                            "mode": "OVERRIDE",
+                            "value": "@attributes.ac.armor + @abilities.con.mod"
+                        }
+                    ]
+                },
+                {
+                    "name": "Hardy Physique (Medium Armor)",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.attributes.ac.calc",
+                            "mode": "OVERRIDE",
+                            "value": "custom"
+                        },
+                        {
+                            "key": "system.attributes.ac.formula",
+                            "mode": "OVERRIDE",
+                            "value": "@attributes.ac.armor + min(2, @abilities.con.mod)"
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/magic/defensive/barrier-shield-dome-deflect-teal.webp"
+        },
+        {
+            "name": "Helpful Insights",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLSavE",
+                    "page": 5
+                }
+            ],
+            "entries": [
+                "You always seem to have helpful advice for any situation. You gain the benefits below:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You can take the {@action Help} action as a bonus action.",
+                        "If you use a Help action to give advantage on an ability check with a skill or tool you are proficient in, the target can treat a result of 7 or lower on the d20 as an 8."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "choose": {
+                        "from": [
+                            "int",
+                            "wis"
+                        ]
+                    }
+                }
+            ],
+            "foundryImg": "icons/skills/social/diplomacy-handshake-gray.webp"
+        },
+        {
+            "name": "Inspiring Leader (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "PHB",
+                    "page": 167
+                },
+                {
+                    "source": "LLAW:E",
+                    "page": 5
+                }
+            ],
+            "prerequisite": [
+                {
+                    "ability": [
+                        {
+                            "wis": 13
+                        },
+                        {
+                            "cha": 13
+                        }
+                    ]
+                }
+            ],
+            "entries": [
+                "If you do not have a Leadership Ability, choose Wisdom or Charisma to be your Leadership Ability and modifier.",
+                "Over the course of 10 minutes, which can be during a short or long rest, you can inspire allies and shore up their resolve to fight. When you do, creatures equal to 1 + your Leadership modifier that can hear you within 30 feet gain temporary hit points equal to your level + your Leadership modifier.",
+                "A creature can't gain temporary hit points from this feat again until it finishes a short or long rest."
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Heal",
+                    "type": "heal",
+                    "activation": {
+                        "value": 10,
+                        "type": "minute"
+                    },
+                    "range": {
+                        "value": 30,
+                        "units": "ft"
+                    },
+                    "target.affects": {
+                        "count": "1 + @flags.ll.leadership.mod",
+                        "type": "creature"
+                    },
+                    "healing": {
+                        "custom": {
+                            "enabled": true,
+                            "formula": "@details.level + @flags.ll.leadership.mod"
+                        },
+                        "types": [
+                            "temphp"
+                        ]
+                    }
+                }
+            ],
+            "foundryEffects": [
+                {
+                    "name": "Inspiring Leadership",
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "flags.ll.leadership.mod",
+                            "mode": "UPGRADE",
+                            "value": "max(@abilities.wis.mod, @abilities.cha.mod)"
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/sundries/flags/banner-flag-red-white.webp"
+        },
+        {
+            "name": "Intimidating Leader",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLABE",
+                    "page": 5
+                }
+            ],
+            "prerequisite": [
+                {
+                    "otherSummary": {
+                        "entry": "proficiency in {@skill Intimidation}",
+                        "entrySummary": "prof. Intimidation"
+                    }
+                }
+            ],
+            "entries": [
+                "You use fear and intimidation to rally those who follow you into battle. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Fearsome Rally",
+                    "entries": [
+                        "When another creature within 30 feet of you that can also see or hear you fails a saving throw to resist the {@condition Charmed} or {@condition Frightened} condition, you can use a reaction to make an {@skill Intimidation} check against the same save DC. On a success, the creature is not Charmed or Frightened.",
+                        "You can use this reaction a number of times equal to your Proficiency Bonus, and you regain all expended uses of this feature each time you finish a long rest."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "choose": {
+                        "from": [
+                            "str",
+                            "con",
+                            "cha"
+                        ]
+                    }
+                }
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Check",
+                    "type": "check",
+                    "activation": {
+                        "type": "reaction",
+                        "condition": "When another creature within 30 feet of you that can also see or hear you fails a saving throw to resist the Charmed or Frightened condition"
+                    },
+                    "consumption.targets": [
+                        {
+                            "type": "itemUses",
+                            "value": 1
+                        }
+                    ],
+                    "range": {
+                        "value": 30,
+                        "units": "ft"
+                    },
+                    "targets.affects": {
+                        "count": 1,
+                        "type": "creature"
+                    },
+                    "check.associated": [
+                        "itm"
+                    ]
+                }
+            ],
+            "foundryImg": "icons/sundries/flags/banner-standard-tattered-red.webp"
+        },
+        {
+            "name": "Inventive Adept",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLAART",
+                    "page": 5
+                }
+            ],
+            "prerequisite": [
+                {
+                    "ability": [
+                        {
+                            "int": 13
+                        }
+                    ]
+                }
+            ],
+            "entries": [
+                "You have spent many days tinkering with various inventions, tool sets, and arcane forces. You gain the following benefits:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You gain proficiency with {@item tinker's tools|PHB}. If you are already proficient, then whenever you make an ability check with tinker's tools you treat a d20 roll of 9 or lower as a 10.",
+                        "You learn one {@filter Infusion|optionalfeatures|feature type=llaart:inf} of your choice from those available to the {@loader Alternate Artificer|class/LaserLlama; Alternate Artificer.json}. At the end of each long rest, you can infuse this Infusion into one object, following the Infusion rules outlined in the Alternate Artificer class."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "int": 1
+                }
+            ],
+            "toolProficiencies": [
+                {
+                    "tinker's tools": true
+                }
+            ],
+            "optionalfeatureProgression": [
+                {
+                    "name": "Inventive Adept",
+                    "featureType": [
+                        "LLAART:INF"
+                    ],
+                    "progression": {
+                        "*": 1
+                    }
+                }
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Use",
+                    "type": "utility",
+                    "activation.type": "longRest",
+                    "target.affects": {
+                        "count": 1,
+                        "type": "object"
+                    }
+                }
+            ],
+            "foundryEffects": [
+                {
+                    "name": "Tinker's Minimum",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.tools.tinker.roll.min",
+                            "mode": "UPGRADE",
+                            "value": 10
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/commodities/tech/coil-steel-green.webp"
+        },
+        {
+            "name": "Legendary Might",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLABE"
+                }
+            ],
+            "entries": [
+                "You have always found ways to leverage your great might for additional benefits. You gain the benefits on the table below that correspond to your Strength modifier and lower.",
+                "Should your Strength modifier increase, the benefits that you gain from this Feat also increase with your modifier:",
+                {
+                    "type": "table",
+                    "colLabels": [
+                        "Modifier",
+                        "Benefit"
+                    ],
+                    "colStyles": [
+                        "col-2 text-center",
+				        "col-10 text-center"
+                    ],
+                    "rows": [
+                        [
+                            "+1",
+                            "You count as one size larger for the purpose of carrying capacity, the size of creatures you can {@action Grapple}, and the weight you can push, pull, lift, or drag at one time."
+                        ],
+                        [
+                            "+2",
+                            "You can make Strength ({@skill Intimidation}) checks in place of Charisma ({@skill Intimidation}) checks."
+                        ],
+                        [
+                            "+3",
+                            "You gain a climbing speed or a swimming speed equal to your walking speed."
+                        ],
+                        [
+                            "+4",
+                            "Whenever you make an {@skill Athletics} check, you treat a d20 roll of 7 or lower as an 8."
+                        ],
+                        [
+                            "+5",
+                            "When you are forced to make a Constitution saving throw, you can choose to make a Strength saving throw instead."
+                        ]
+                    ]
+                }
+            ],
+            "foundryActivities": [],
+            "foundryEffects": [
+                {
+                    "name": "Strength (Intimidation) (+2)",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.skills.itm.ability",
+                            "mode": "OVERRIDE",
+                            "value": "str"
+                        }
+                    ]
+                },
+                {
+                    "name": "Climbing Speed (+3)",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.attributes.movement.climb",
+                            "mode": "UPGRADE",
+                            "value": "@attributes.movement.walk"
+                        }
+                    ]
+                },
+                {
+                    "name": "Swimming Speed (+3)",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.attributes.movement.swim",
+                            "mode": "UPGRADE",
+                            "value": "@attributes.movement.walk"
+                        }
+                    ]
+                },
+                {
+                    "name": "Athletics Minimum (+4)",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.skills.ath.roll.min",
+                            "mode": "UPGRADE",
+                            "value": 8
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/magic/control/buff-strength-muscle-damage-orange.webp"
+        },
+        {
+            "name": "Lifelong Learner",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLSavE",
+                    "page": 5
+                }
+            ],
+            "entries": [
+                "You have made a vow to never stop learning, no matter how educated you are. You gain the benefits from the table below that correspond to your Intelligence modifier and lower.",
+                "If your Intelligence modifier increases, the benefits you gain from this Feat also increase with your modifier:",
+                {
+                    "type": "table",
+                    "colLabels": [
+                        "Modifier",
+                        "Benefit"
+                    ],
+                    "colStyles": [
+                        "col-2 text-center",
+				        "col-10 text-center"
+                    ],
+                    "rows": [
+                        [
+                            "+1",
+                            "You learn to speak, read, and write one additional language of your choice."
+                        ],
+                        [
+                            "+2",
+                            "You can make Intelligence ({@skill Persuasion}) checks in place of Charisma ({@skill Persuasion}) checks."
+                        ],
+                        [
+                            "+3",
+                            "You gain proficiency in either {@skill Arcana}, {@skill History}, or {@skill Religion}."
+                        ],
+                        [
+                            "+4",
+                            "Whenever you make an Intelligence check to recall your knowledge of something, you treat a d20 roll of 7 or lower as an 8."
+                        ],
+                        [
+                            "+5",
+                            "Whenever you are forced to make a Wisdom saving throw, you can choose to make an Intelligence saving throw instead."
+                        ]
+                    ]
+                }
+            ],
+            "foundryActivities": [],
+            "foundryEffects": [
+                {
+                    "name": "Intelligence (Persuasion) (+2)",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.skills.per.ability",
+                            "mode": "OVERRIDE",
+                            "value": "int"
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/skills/wounds/anatomy-organ-brain-pink-red.webp"
+        },
+        {
+            "name": "Mage Slayer (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "PHB",
+                    "page": 168
+                },
+                {
+                    "source": "LLMC:E"
+                }
+            ],
+            "entries": [
+                "You have trained extensively to counter sinister spellcasters and foil their arcane abilities. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Disrupt Spell",
+                    "entries": [
+                        "When you see or hear a creature within your reach cast a spell, you can use your reaction to make an {@action opportunity attack} against it. On hit, it makes a Constitution saving throw to maintain concentration. On a failure, its spell fails to take effect, and its slot or use of that ability is wasted."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Disrupt Concentration",
+                    "entries": [
+                        "When you damage a creature that is {@status concentration||concentrating} on a spell, it has disadvantage on its saving throw to maintain its concentration on that spell."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Spellguard",
+                    "entries": [
+                        "You have advantage on saving throws to resist spells cast by creatures you can see or hear within 5 feet."
+                    ]
+                }
+            ],
+            "foundryImg": "icons/skills/melee/strike-blade-knife-white-red.webp"
+        },
+        {
+            "name": "Martial Artist",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLAM:E",
+                    "page": 2
+                }
+            ],
+            "entries": [
+                "You have some basic martial arts training, giving you some skill in unarmed combat. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Improved Unarmed Strikes",
+                    "entries": [
+                        "Your unarmed strikes deal {@damage 1d4} damage on hit and you can use Strength or Dexterity for their attack and damage rolls. Moreover, when you take the {@action Attack} action and make only unarmed strikes you can make a single unarmed strike as a bonus action on that turn."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Unarmored Defense",
+                    "entries": [
+                        "So long as you are not wearing any armor or wielding a shield, your Armor Class is equal to 10 + your Strength modifier + your Dexterity modifier."
+                    ]
+                }
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Attack",
+                    "type": "attack",
+                    "attack": {
+                        "type": {
+                            "value": "melee",
+                            "classification": "weapon"
+                        },
+                        "ability": "none",
+                        "bonus": "max(@abilities.str.mod, @abilities.dex.mod)"
+                    },
+                    "range": {
+                        "value": 5,
+                        "units": "ft"
+                    },
+                    "damage.parts": [
+                        {
+                            "number": 1,
+                            "denomination": 4,
+                            "bonus": "max(@abilities.str.mod, @abilities.dex.mod)",
+                            "types": [
+                                "bludgeoning"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "foundryEffects": [
+                {
+                    "name": "Unarmored Defense",
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.attributes.ac.calc",
+                            "mode": "OVERRIDE",
+                            "value": "custom"
+                        },
+                        {
+                            "key": "system.attributes.ac.formula",
+                            "mode": "OVERRIDE",
+                            "value": "10 + @abilities.str.mod + @abilities.dex.mod"
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/skills/melee/unarmed-punch-fist.webp"
+        },
+        {
+            "name": "Martial Training",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLAF:E",
+                    "page": 5
+                }
+            ],
+            "entries": [
+                "You have studied the combat techniques of elite warriors. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Martial Exploits Known",
+                    "entries": [
+                        "You learn two {@filter 1st-degree Martial Exploits|optionalfeatures|feature type=ll:1me} from those available to the {@loader Alternate Fighter|class/LaserLlama; Alternate Fighter.json}. If required, their Exploit save DC equals 8 + your Proficiency Bonus + your Strength or Dexterity modifier (your choice)."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Retraining Exploits",
+                    "entries": [
+                        "Whenever you gain a level, you can replace one of the Martial Exploits you learned through this Feat with another 1st-degree Martial Exploit of your choice."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Exploit Dice",
+                    "entries": [
+                        "You gain two {@dice d4} Exploit Dice to fuel these Exploits, which are expended when you use them. You regain expended Exploit Dice when you finish a short or long rest.",
+                        "If you already have Exploit Dice when you gain this Feat, you instead gain a single Exploit Die equal to your others."
+                    ]
+                }
+            ],
+            "optionalfeatureProgression": [
+                {
+                    "name": "Martial Training",
+                    "featureType": [
+                        "LL:1ME"
+                    ],
+                    "progression": {
+                        "*": 2
+                    }
+                }
+            ],
+            "foundryActivities": [],
+            "foundryEffects": [
+                {
+                    "name": "Martial Training Exploits",
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "flags.ll.exploit.dc",
+                            "mode": "UPGRADE",
+                            "value": "8 + @prof + max(@abilities.str.mod, @abilities.dex.mod)"
+                        },
+                        {
+                            "key": "flags.ll.exploit.faces",
+                            "mode": "UPGRADE",
+                            "value": 4
+                        },
+                        {
+                            "key": "flags.ll.exploit.number",
+                            "mode": "UPGRADE",
+                            "value": 1,
+                            "priority": 1
+                        },
+                        {
+                            "key": "flags.ll.exploit.number",
+                            "mode": "ADD",
+                            "value": 1
+                        }
+                    ]
+                }
+            ],
+            "foundrySystem": {
+                "uses": {
+                    "max": 2,
+                    "recovery": [
+                        {
+                            "period": "sr",
+                            "type": "recoverAll"
+                        }
+                    ]
+                }
+            },
+            "foundryImg": "icons/skills/melee/maneuver-sword-katana-yellow.webp"
+        },
+        {
+            "name": "Mental Acuity",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLSavE",
+                    "page": 5
+                }
+            ],
+            "entries": [
+                "Your mind is a wonderful thing, capable of bursts of insight and mental fortitude. You gain the following benefits:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You gain proficiency in two of the following skills: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Nature}, or {@skill Religion}.",
+                        "Choose any two skills from the list above. Whenever you make an ability check with either of the chosen skills you can treat a roll of 7 or lower on the d20 as an 8."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "int": 1
+                }
+            ],
+            "skillProficiencies": [
+                {
+                    "choose": {
+                        "from": [
+                            "arcana",
+                            "history",
+                            "investigation",
+                            "medicine",
+                            "nature",
+                            "religion"
+                        ],
+                        "count": 2
+                    }
+                }
+            ],
+            "foundryImg": "icons/magic/perception/third-eye-blue-red.webp"
+        },
+        {
+            "name": "Metamagic Adept (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "TCE",
+                    "page": 80
+                },
+                {
+                    "source": "LLASorcorc:E"
+                }
+            ],
+            "prerequisite": [
+                {
+                    "spellcasting": true
+                }
+            ],
+            "entries": [
+                "You have practiced and learned to manipulate your magic in strange and unique ways. You gain the benefits listed below:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You learn a {@filter Metamagic|optionalfeatures|feature type=as:mm} of your choice from those available to the {@loader Alternate Sorcerer|class/LaserLlama; Alternate Sorcerer.json}. You can use this Metamagic once (as if you had spent the minimum number of Sorcery Points) without spending Sorcery Points. You regain the ability to do so when you finish a short or long rest."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "choose": {
+                        "entry": "Increase one ability score that you use as a Spellcasting Ability by 1, up to a maximum of 20.",
+                        "from": [
+                            "int",
+                            "wis",
+                            "cha"
+                        ]
+                    }
+                }
+            ],
+            "optionalfeatureProgression": [
+                {
+                    "name": "Metamagic Adept",
+                    "featureType": [
+                        "AS:MM"
+                    ],
+                    "progression": {
+                        "*": 1
+                    }
+                }
+            ],
+            "foundryImg": "icons/magic/unholy/orb-colllecting-energy-green.webp"
+        },
+        {
+            "name": "Mystic Warrior",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLAM:E",
+                    "page": 2
+                }
+            ],
+            "entries": [
+                "You have mastered Mystical Techniques which allow you to perform supernatural feats. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Mystic Ki",
+                    "entries": [
+                        "You gain a pool of 2 Ki, which you can spend to use the Mystic Techniques you know. You regain all expended Ki when you finish a short or long rest. If you already have Ki from another source, this Ki is added to that pool of Ki."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Techniques Known",
+                    "entries": [
+                        "You learn two {@filter Techniques|optionalfeatures|feature type=llam:t} from the {@loader Alternate Monk|class/LaserLlama; Alternate Monk.json} class. You must meet any prerequisites they have, including Monk level. If a Technique uses a Martial Arts Die, you use a {@dice d4}, unless you have a higher Martial Arts Die."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Saving Throws",
+                    "entries": [
+                        "If a Technique requires a saving throw, its DC = 8 + your Proficiency Bonus + your Wisdom modifeir."
+                    ]
+                }
+            ],
+            "optionalfeatureProgression": [
+                {
+                    "name": "Mystic Warrior",
+                    "featureType": [
+                        "LLAM:T"
+                    ],
+                    "progression": {
+                        "*": 2
+                    }
+                }
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Use",
+                    "type": "utility",
+                    "activation.type": "",
+                    "roll.formula": "d4"
+                }
+            ],
+            "foundrySystem": {
+                "uses": {
+                    "max": 2,
+                    "recovery": [
+                        {
+                            "period": "sr",
+                            "type": "recoverAll"
+                        }
+                    ]
+                }
+            },
+            "foundryImg": "icons/magic/holy/meditation-chi-focus-blue.webp"
+        },
+        {
+            "name": "Natural Magnetism",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLAW:E",
+                    "page": 5
+                }
+            ],
+            "entries": [
+                "Something about your personality and bearing makes others want to be near you. You gain the benefits on the table below that correspond to your Charisma modifier and lower.",
+                "If your Charisma modifier increases, the benefits you gain from this Feat also increase with your Charisma modifier:",
+                {
+                    "type": "table",
+                    "colLabels": [
+                        "Modifier",
+                        "Benefit"
+                    ],
+                    "colStyles": [
+                        "col-2 text-center",
+                        "col-10 text-center"
+                    ],
+                    "rows": [
+                        [
+                            "+1",
+                            "You gain proficiency with one {@item gaming set|PHB} of your choice."
+                        ],
+                        [
+                            "+2",
+                            "The first time you meet a Humanoid, they treat you as Friendly instead of Indifferent."
+                        ],
+                        [
+                            "+3",
+                            "You gain proficiency in your choice of {@skill Performance}, {@skill Persuasion}, or {@skill Intimidation}."
+                        ],
+                        [
+                            "+4",
+                            "Whenever you make a Persuasion check, you treat a d20 roll of 7 or lower as an 8."
+                        ],
+                        [
+                            "+5",
+                            "When you make a Wisdom saving throw, you can make a Charisma saving throw instead."
+                        ]
+                    ]
+                }
+            ],
+            "foundryActivities": [],
+            "foundryEffects": [
+                {
+                    "name": "Persuasion Minimum (+4)",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.skills.per.roll.min",
+                            "mode": "UPGRADE",
+                            "value": 8
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/skills/social/diplomacy-handshake-yellow.webp"
+        },
+        {
+            "name": "Poisoner (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "TCE",
+                    "page": 80
+                },
+                {
+                    "source": "LLARoE",
+                    "page": 5
+                }
+            ],
+            "prerequisite": [
+                {
+                    "ability": [
+                        {
+                            "int": 13
+                        }
+                    ]
+                }
+            ],
+            "entries": [
+                "You are dedicated student of the toxic arts and are able to produce potent poisons. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Adept Poisoner",
+                    "entries": [
+                        "You gain proficiency in {@item Poisoner's Kit|PHB|Poisoner's Kits}. If you are already proficient, add double your Proficiency Bonus to all ability checks you make with Poisoner's Kits."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Potent Poisons",
+                    "entries": [
+                        "Whenever you deal poison damage to a creature, you can deal acid or necrotic damage instead."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Simple Poisons",
+                    "entries": [
+                        "Over the course of a long rest, you can spend 1 hour using a Poisoner's Kit to craft a number of vials of simple poison from the {@optfeature craft simple poison|LLExploits} Exploit, up to your Intelligence modifier."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Swift Application",
+                    "entries": [
+                        "You an apply poisons with a bonus action."
+                    ]
+                }
+            ],
+            "toolProficiencies": [
+                {
+                    "poisoner's kit": true
+                }
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Craft",
+                    "type": "utility",
+                    "activation": {
+                        "value": 1,
+                        "type": "hour",
+                        "condition": "Over the course of a long rest"
+                    },
+                    "consumption": {
+                        "targets": [
+                            {
+                                "type": "itemUses",
+                                "value": -1,
+                                "scaling.mode": "amount"
+                            }
+                        ],
+                        "scaling": {
+                            "allowed": true,
+                            "max": "@abilities.int.mod"
+                        }
+                    }
+                },
+                {
+                    "name": "Strike",
+                    "type": "save",
+                    "activation.type": "bonus",
+                    "consumption.targets": [
+                        {
+                            "type": "itemUses",
+                            "value": 1
+                        }
+                    ],
+                    "save": {
+                        "ability": [
+                            "con"
+                        ],
+                        "dc.formula": "8 + @prof + max(@abilities.str.mod, @abilities.dex.mod)"
+                    }
+                }
+            ],
+            "foundrySystem": {
+                "uses": {
+                    "value": 0,
+                    "max": "@abilities.int.mod",
+                    "recovery": [
+                        {
+                            "period": "lr",
+                            "type": "loseAll"
+                        }
+                    ]
+                }
+            },
+            "foundryImg": "icons/consumables/potions/potion-bottle-skull-label-poison-teal.webp"
+        },
+        {
+            "name": "Roguish Initiate",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLARoE",
+                    "page": 5
+                }
+            ],
+            "entries": [
+                "You have spent time honing talents associated with the criminal underworld. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Cunning Adept",
+                    "entries": [
+                        "Choose one of the following actions: {@action Dash}, {@action Hide}, or {@action Use an Object}. You can take that action as a bonus action on each of your turns."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Thieves' Cant",
+                    "entries": [
+                        "You learn to speak the jargon, write secret symbols of, and decode messages in {@language Thieves' Cant}."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "choose": {
+                        "from": [
+                            "dex",
+                            "int"
+                        ]
+                    }
+                }
+            ],
+            "languageProficiencies": [
+                {
+                    "thieves' cant": true
+                }
+            ],
+            "foundryImg": "icons/skills/melee/strike-sword-stabbed-brown.webp"
+        },
+        {
+            "name": "Savage Attacker (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "PHB",
+                    "page": 169
+                },
+                {
+                    "source": "LLABE"
+                }
+            ],
+            "entries": [
+                "Your savage battle instincts let you exploit even the smallest weakness. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Piercing Critical",
+                    "entries": [
+                        "Whenever you score a critical hit with a melee weapon attack you roll the weapon's damage die three times instead of twice."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Savage Strikes",
+                    "entries": [
+                        "Once per turn when you hit with a melee weapon attack, you can roll all the damage dice that are part of your attack twice, and use the higher total."
+                    ]
+                }
+            ],
+            "foundryEffects": [
+                {
+                    "name": "Extra Melee Weapon Critical Die",
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "flags.dnd5e.meleeCriticalDamageDice",
+                            "mode": "UPGRADE",
+                            "value": 1
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/magic/symbols/mask-metal-silver-white.webp"
+        },
+        {
+            "name": "Savage Training",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLABE"
+                }
+            ],
+            "entries": [
+                "You can draw upon the anger within your soul to perform Savage Exploits. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Savage Exploits Known",
+                    "entries": [
+                        "You learn two {@filter 1st-degree Savage Exploits|optionalfeatures|feature type=ll:1se} from those available to the {@loader Alternate Barbarian|class/LaserLlama; Alternate Barbarian.json}. If required, their Exploit save DC equals 8 + your Proficiency Bonus + your Strength or Dexterity modifier (your choice)."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Retraining Exploits",
+                    "entries": [
+                        "Whenever you gain a level, you can replace one of the Savage Exploits you learned through this Feat with another 1st-degree Savage Exploit of your choice."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Exploit Dice",
+                    "entries": [
+                        "You gain two {@dice d4} Exploit Dice to fuel these Exploits, which are expended when you use them. You regain expended Exploit Dice when you finish a short or long rest.",
+                        "If you already have Exploit Dice when you gain this Feat, you instead gain a single Exploit Die equal to your others."
+                    ]
+                }
+            ],
+            "optionalfeatureProgression": [
+                {
+                    "name": "Savage Training",
+                    "featureType": [
+                        "LL:1SE"
+                    ],
+                    "progression": {
+                        "*": 2
+                    }
+                }
+            ],
+            "foundryActivities": [],
+            "foundryEffects": [
+                {
+                    "name": "Savage Training Exploits",
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "flags.ll.exploit.dc",
+                            "mode": "UPGRADE",
+                            "value": "8 + @prof + max(@abilities.str.mod, @abilities.dex.mod)"
+                        },
+                        {
+                            "key": "flags.ll.exploit.faces",
+                            "mode": "UPGRADE",
+                            "value": 4
+                        },
+                        {
+                            "key": "flags.ll.exploit.number",
+                            "mode": "UPGRADE",
+                            "value": 1,
+                            "priority": 1
+                        },
+                        {
+                            "key": "flags.ll.exploit.number",
+                            "mode": "ADD",
+                            "value": 1
+                        }
+                    ]
+                }
+            ],
+            "foundrySystem": {
+                "uses": {
+                    "max": 2,
+                    "recovery": [
+                        {
+                            "period": "sr",
+                            "type": "recoverAll"
+                        }
+                    ]
+                }
+            },
+            "foundryImg": "icons/skills/melee/maneuver-greatsword-yellow.webp"
+        },
+        {
+            "name": "Scholar of Lore",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLSavE",
+                    "page": 5
+                }
+            ],
+            "entries": [
+                "You have spent time learning everything there is to know about a specific area of study. You gain the following benefits:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You master a {@filter Scholarly Pursuit|optionalfeatures|feature type=ll:sp} of your choice from those available to the {@loader Savant|class/LaserLlama; Savant.json}. If the Pursuit requires an Intellect Die, you use a {@dice d4} unless your Intellect Die is higher."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "int": 1
+                }
+            ],
+            "optionalfeatureProgression": [
+                {
+                    "name": "Scholar of Lore",
+                    "featureType": [
+                        "LL:SP"
+                    ],
+                    "progression": {
+                        "*": 1
+                    }
+                }
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Use",
+                    "type": "utility",
+                    "activation.type": "",
+                    "roll.formula": "d4"
+                }
+            ],
+            "foundryImg": "icons/sundries/books/book-rounded-blue.webp"
+        },
+        {
+            "name": "Sharpshooter (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "PHB",
+                    "page": 170
+                },
+                {
+                    "source": "LLAR:E"
+                }
+            ],
+            "entries": [
+                "You have trained extensively with ranged weapons to become a master marksman. You gain the benefits listed below:",
+                {
+                    "type": "list",
+                    "items": [
+                        "Attacking a target within a ranged weapon's long range does not impose disadvantage on your attack roll.",
+                        "Your attacks with ranged weapons can ignore half-cover, and treat three-quarters cover as half-cover.",
+                        "You can use a bonus action to give yourself advantage on your next ranged weapon attack roll on your current turn."
+                    ]
+                }
+            ],
+            "foundryImg": "icons/skills/targeting/crosshair-pointed-orange.webp"
+        },
+        {
+            "name": "Signature Technique",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLAF:E",
+                    "page": 5
+                }
+            ],
+            "prerequisite": [
+                {
+                    "otherSummary": {
+                        "entry": "At least one Martial Exploit Known",
+                        "entrySummary": "Martial Exploit"
+                    }
+                }
+            ],
+            "entries": [
+                "You have practiced a single technique to the point of mastery. Choose a {@filter 1st-degree Exploits|optionalfeatures|feature type=ll:1me} you know from those available to the {@loader Alternate Fighter|class/LaserLlama; Alternate Fighter.json} that does not restore hit points.",
+                "In combat, you can use this Exploit once per round without expending an Exploit Die, rolling a {@dice d4} for the Exploit Die. You regain this feature at the start of each of your turns."
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Use",
+                    "type": "utility",
+                    "activation.type": "",
+                    "consumption.targets": [
+                        {
+                            "type": "itemUses",
+                            "value": 1
+                        }
+                    ],
+                    "roll.formula": "d4"
+                }
+            ],
+            "foundrySystem": {
+                "uses": {
+                    "max": 1,
+                    "recovery": [
+                        {
+                            "period": "turnStart",
+                            "type": "recoverAll"
+                        }
+                    ]
+                }
+            },
+            "foundryImg": "icons/skills/melee/sword-winged-holy-orange.webp"
+        },
+        {
+            "name": "Skulker (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "PHB",
+                    "page": 170
+                },
+                {
+                    "source": "LLARoE",
+                    "page": 5
+                }
+            ],
+            "prerequisite": [
+                {
+                    "ability": [
+                        {
+                            "dex": 13
+                        }
+                    ]
+                }
+            ],
+            "entries": [
+                "You are an expert at slinking through shadows and staying hidden when you need to. You gain the benefits below:",
+                {
+                    "type": "entries",
+                    "name": "Skuler's Sight",
+                    "entries": [
+                        "Dim light does not impose disadvantage on your ability checks that rely on your sense of sight."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Silent Steps",
+                    "entries": [
+                        "When you are lightly obscured, you can take the {@action Hide} action as a bonus action on your turn."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Silent Shots",
+                    "entries": [
+                        "If you are hidden from a creature and miss with a ranged attack, you do not reveal your position."
+                    ]
+                }
+            ],
+            "foundryImg": "icons/magic/perception/silhouette-stealth-shadow.webp"
+        },
+        {
+            "name": "Sorcerous Spark",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLASorcorc:E"
+                }
+            ],
+            "entries": [
+                "While you may not be a true Sorcerer, within you dwells a small spark of arcane power. You gain the benefits below:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You learn two Cantrips and a single 1st-level spell of your choice from the {@loader Alternate Sorcerer|class/LaserLlama; Alternate Sorcerer.json} spell list. Charisma is your spellcasting modifier for all three spells, unless you already have a spellcasting modifier, then you use it.",
+                        "You gain two Sorcery Points which you can expend to cast any spells that you know, as if you were a Sorcerer. If you already have Sorcery Points, these are added to your pool of Sorcery Points. You regain your Sorcery Points from this feature each time you finish a long rest."
+                    ]
+                }
+            ],
+            "additionalSpells": [
+                {
+                    "ability": "cha",
+                    "known": {
+                        "_": [
+                            {
+                                "choose": "level=0|class=alternate sorcerer (llasorc)",
+                                "count": 2
+                            },
+                            {
+                                "choose": "level=1|class=alternate sorcerer (llasorc)"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "foundrySystem": {
+                "uses": {
+                    "max": 2,
+                    "recovery": [
+                        {
+                            "period": "lr",
+                            "type": "recoverAll"
+                        }
+                    ]
+                }
+            },
+            "foundryImg": "icons/magic/earth/projectiles-magma-stone-orange.webp"
+        },
+        {
+            "name": "Spellsword Adept",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLMC:E"
+                }
+            ],
+            "prerequisite": [
+                {
+                    "proficiency": [
+                        {
+                            "weapon": "martial"
+                        }
+                    ]
+                }
+            ],
+            "entries": [
+                "You have trained to combine your minor magics with close-range weapon attacks. You gain the benefits listed below:",
+                {
+                    "type": "entries",
+                    "name": "Bonus Cantrips",
+                    "entries": [
+                        "You learn two {@filter Cantrips|spells|level=0|class=magus (llmag)} from the {@loader Magus|class/LaserLlama; Magus.json} spell list. One must deal damage. Choose either Intelligence, Wisdom, or Charisma as their spellcasting ability. If you can learn Cantrips from your class, you can instead choose to learn two additional Cantrips from your class spell list."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Spellstrike",
+                    "entries": [
+                        "Once on your turn, when you make a melee weapon attack, you can imbue the magic of one Cantrip you know into your strike. On hit, your weapon attack deals the damage type of the Cantrip, and any of the Cantrip's effects, other than damage, are applied to your target on hit."
+                    ]
+                }
+            ],
+            "additionalSpells": [
+                {
+                    "name": "Intelligence",
+                    "ability": "int",
+                    "known": {
+                        "_": [
+                            {
+                                "choose": "level=0|class=magus (llmag)",
+                                "count": 2
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Wisdom",
+                    "ability": "wis",
+                    "known": {
+                        "_": [
+                            {
+                                "choose": "level=0|class=magus (llmag)",
+                                "count": 2
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Charisma",
+                    "ability": "cha",
+                    "known": {
+                        "_": [
+                            {
+                                "choose": "level=0|class=magus (llmag)",
+                                "count": 2
+                            }
+                        ]
+                    }
+                }
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Use",
+                    "type": "utility",
+                    "activation": {
+                        "type": "special",
+                        "condition": "Once on your turn, when you make a melee weapon attack"
+                    }
+                }
+            ],
+            "foundryImg": "icons/skills/melee/blade-tip-smoke-green.webp"
+        },
+        {
+            "name": "Spell Scrivener",
+            "source": "llfeat",
+            "prerequisite": [
+                {
+                    "otherSummary": {
+                        "entry": "proficiency with a {@item calligrapher's supplies|PHB}",
+                        "entrySummary": "prof. calligrapher's supplies"
+                    },
+                    "spellcasting": true
+                }
+            ],
+            "entries": [
+                "Using {@item calligrapher's supplies|PHB|calligrapher's tools}, you can select one spell you know and spend the corresponding amount of gold and time from the table below to craft one {@item Spell Scroll} of that spell:",
+                {
+                    "type": "table",
+                    "colStyles": [
+                        "text-center col-3",
+                        "text-center col-4-5",
+                        "text-center col-4-5"
+                    ],
+                    "colLabels": [
+                        "Spell Level",
+                        "Gold Cost",
+                        "Time Spent"
+                    ],
+                    "rows": [
+                        [
+                            "1st-2nd",
+                            "50 x level",
+                            "1 hour x level"
+                        ],
+                        [
+                            "3rd-5th",
+                            "100 x level",
+                            "2 hours x level"
+                        ],
+                        [
+                            "6th-9th",
+                            "1,000 x level",
+                            "24 hours x level"
+                        ]
+                    ]
+                },
+                "This gold and time expenditure does not need to happen consecutively. If this spell requires a material component that is consumed in casting, you must expend it in this process. At the end of the process, you must expend a spell slot of a level equal to the spell you are scribing the Spell Scroll for."
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Use",
+                    "type": "utility",
+                    "activation.type": "special",
+                    "consumption": {
+                        "targets": [
+                            {
+                                "type": "attribute",
+                                "target": "currency.gp",
+                                "value": "(450 * floor(@scaling / 6) + 50) * floor((@scaling + 11) / 7) * @scaling"
+                            },
+                            {
+                                "type": "spellSlots",
+                                "target": "1",
+                                "value": 1,
+                                "scaling.mode": "level"
+                            }
+                        ],
+                        "scaling": {
+                            "allowed": true,
+                            "max": 9
+                        }
+                    },
+                    "roll": {
+                        "name": "Hours",
+                        "formula": "(11 * floor(@scaling / 6) +1) * floor((@scaling + 11) / 7) * @scaling"
+                    }
+                }
+            ],
+            "foundryImg": "icons/sundries/documents/document-sealed-white-orange.webp"
+        },
+        {
+            "name": "Spiritual Awakening",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLSH:E"
+                }
+            ],
+            "entries": [
+                "You have spent many quiet hours learning to commune with the invisible world of Spirits. You gain the following benefits:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You learn the {@spell mage hand} and {@spell seance|llspell} Cantrips, but they do not count against your number of Cantrips Known.",
+                        "You learn the {@spell unseen servant} spell, and you can cast it at-will without expending a spell slot. When you do so, Wisdom is your spellcasting modifier, and the servant takes the shape of a local Spirit. you can only have one unseen servant conjured at a time. Should you conjure another, the first servant is instantly dispelled."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "choose": {
+                        "from": [
+                            "wis",
+                            "cha"
+                        ]
+                    }
+                }
+            ],
+            "additionalSpells": [
+                {
+                    "ability": "wis",
+                    "known": {
+                        "_": [
+                            "mage hand",
+                            "seance|llspell"
+                        ]
+                    },
+                    "innate": {
+                        "_": [
+                            "unseen servant"
+                        ]
+                    }
+                }
+            ],
+            "foundryImg": "icons/creatures/magical/spirit-mischief-fire-blue.webp"
+        },
+        {
+            "name": "Strategic Insight",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLAW:E",
+			        "page": 5
+                }
+            ],
+            "prerequisite": [
+                {
+                    "ability": [
+                        {
+                            "int": 13
+                        },
+                        {
+                            "wis": 13
+                        }
+                    ]
+                }
+            ],
+            "entries": [
+                "You have a gift for identifying weaknesses. When you take the {@action Search} action, you can target a creature you can see within 30 feet (DC = 8 + its Challenge Rating). If you can observe it for at least 1 minute, add your level to the roll.",
+                "On a success, you learn one characteristic of your choice from the table below. Once you use this feature on a creature you cannot target it again until you finish a long rest.",
+                {
+                    "type": "table",
+                    "colStyles": [
+                        "text-center col-6",
+                        "text-center col-6"
+                    ],
+                    "rows": [
+                        [
+                            "Armor Class",
+                            "Highest Ability Score"
+                        ],
+                        [
+                            "All Special Senses",
+                            "Lowest Ability Score"
+                        ],
+                        [
+                            "Resistances, Immunities, & Vulnerabilities",
+                            "One Trait or Action from its stat block"
+                        ]
+                    ]
+                }
+            ],
+            "foundrySystem": {
+                "uses": {
+                    "max": "",
+                    "recovery": []
+                }
+            },
+            "foundryImg": "icons/tools/scribal/magnifying-glass.webp"
+        },
+        {
+            "name": "Survivalist Training",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLAR:E",
+	                "page": 5
+                }
+            ],
+            "entries": [
+                "You have been trained to survive, track, and explore in the wild, much like a Ranger. You gain the benefits listed below:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You learn one {@filter Knack|optionalfeatures|feature type=ll:sk} of your choice from those available to the {@loader Alternate Ranger|class/LaserLlama; Alternate Ranger.json}. If the Knack requires a Quarry Die, you use a {@dice d4} unless your Quarry Die is higher. If the Knack forces a saving throw, the DC is equal to 8 + your proficiency bonus + your Wisdom modifier."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "choose": {
+                        "from": [
+                            "str",
+                            "dex",
+                            "con",
+                            "wis"
+                        ]
+                    }
+                }
+            ],
+            "optionalfeatureProgression": [
+                {
+                    "name": "Survivalist Training",
+                    "featureType": [
+                        "LL:SK"
+                    ],
+                    "progression": {
+                        "*": 1
+                    }
+                }
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Use",
+                    "type": "utility",
+                    "activation.type": "",
+                    "roll.formula": "d4"
+                }
+            ],
+            "foundryImg": "icons/environment/wilderness/terrain-forest-gray.webp"
+        },
+        {
+            "name": "Tactical Training",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLAW:E",
+                    "page": 5
+                }
+            ],
+            "entries": [
+                "You have studied greater combat strategies that allow you to perform Tactical Exploits. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Tactical Exploits Known",
+                    "entries": [
+                        "You learn one of the following {@filter Tactical Exploits|optionalfeatures|feature type=ll:tte} of your choice from the {@loader Warlord|class/LaserLlama; Warlord.json} Class:",
+                        {
+                            "type": "table",
+                            "colStyles": [
+                                "text-center col-6",
+                                "text-center col-6"
+                            ],
+                            "rows": [
+                                [
+                                    "{@optfeature attack order|LLExploits}",
+                                    "{@optfeature steadfast order|LLExploits}"
+                                ],
+                                [
+                                    "{@optfeature defensive order|LLExploits}",
+                                    "{@optfeature support order|LLExploits}"
+                                ],
+                                [
+                                    "{@optfeature maneuvering order|LLExploits}",
+                                    "&mdash;"
+                                ]
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Issuing an Order",
+                    "entries": [
+                        "Once per turn, when you take the {@action Attack} action, you can use the Tactical Exploit in place of one attack. You can't use this Exploit more than once per turn unless you learn Tactical Exploits from a source other than this Feat."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Repeatable",
+                    "entries": [
+                        "You can choose this Feat multiple times. Each time you do, raise one of the ability scores above by one, and learn one new Tactical Exploit from the table above."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "choose": {
+                        "from": [
+                            "wis",
+                            "cha",
+                            "int"
+                        ]
+                    }
+                }
+            ],
+            "optionalfeatureProgression": [
+                {
+                    "name": "Tactical Training",
+                    "featureType": [
+                        "LL:TTE"
+                    ],
+                    "progression": {
+                        "*": 1
+                    }
+                }
+            ],
+            "foundryImg": "icons/magic/control/control-influence-crown-gold.webp"
+        },
+        {
+            "name": "Totemic Spirit",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLSH:E"
+                }
+            ],
+            "entries": [
+                "You have formed a connection with one of the minor Spirits bound to the material world. You gain the following benefits:",
+                {
+                    "type": "list",
+                    "items": [
+                        "You gain the benefits of one {@filter Totem Spirit|optionalfeatures|feature type=ll:tts} of your choice from those available to the {@loader Shaman|class/LaserLlama; Shaman.json} class. You must meet all prerequisites in order to learn that Totem Spirit.",
+                        "Whenever you gain a level, you can replace your Totem Spirit with another Totem Spirit of your choice that you also meet all the prerequisites for."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "choose": {
+                        "from": [
+                            "wis",
+                            "cha",
+                            "con"
+                        ]
+                    }
+                }
+            ],
+            "optionalfeatureProgression": [
+                {
+                    "name": "Totemic Spirit",
+                    "featureType": [
+                        "LL:TTS"
+                    ],
+                    "progression": {
+                        "*": 1
+                    }
+                }
+            ],
+            "foundryImg": "icons/creatures/magical/spirit-undead-masked-blue.webp"
+        },
+        {
+            "name": "War Caster (Alternate)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "PHB",
+                    "page": 170
+                },
+                {
+                    "source": "LLMC:E"
+                }
+            ],
+            "prerequisite": [
+                {
+                    "spellcasting": true
+                }
+            ],
+            "entries": [
+                "You have trained to make use of your spells in the chaos of pitched combat. You gain the following benefits:",
+                {
+                    "type": "entries",
+                    "name": "Hardened Focus",
+                    "entries": [
+                        "Whenever you make a saving throw to maintain concentration on a spell, you can make the saving throw with your Spellcasting Ability instead of Constiutiton."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Opportune Magic",
+                    "entries": [
+                        "When you would make an opportunity attack, you can choose to cast a spell instead. It must have a casting time of one action and only target that creature."
+                    ]
+                },
+                {
+                    "type": "entries",
+                    "name": "Warrior Mage",
+                    "entries": [
+                        "You can perform the Somatic components of your spells while wielding a weapon or shield in your hand."
+                    ]
+                }
+            ],
+            "foundryEffects": [
+                {
+                    "name": "Intelligence Concentration",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.attributes.concentration.ability",
+                            "mode": "OVERRIDE",
+                            "value": "int"
+                        }
+                    ]
+                },
+                {
+                    "name": "Wisdom Concentration",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.attributes.concentration.ability",
+                            "mode": "OVERRIDE",
+                            "value": "wis"
+                        }
+                    ]
+                },
+                {
+                    "name": "Charisma Concentration",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.attributes.concentration.ability",
+                            "mode": "OVERRIDE",
+                            "value": "cha"
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/magic/defensive/shield-barrier-flaming-diamond-purple-orange.webp"
+        },
+        {
+            "name": "Weapon Adept",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLAF:E",
+                    "page": 5
+                }
+            ],
+            "entries": [
+                "You have spent many hours honing your skills with the deadly armaments of war. You gain the benefits listed below:",
+                {
+                    "type": "entries",
+                    "name": "Weapon Training",
+                    "entries": [
+                        "You gain proficiency with all simple and martial weapons."
+                    ]
+                }
+            ],
+            "ability": [
+                {
+                    "choose": {
+                        "from": [
+                            "str",
+                            "dex",
+                            "con"
+                        ]
+                    }
+                }
+            ],
+            "weaponProficiencies": [
+                {
+                    "simple": true,
+                    "martial": true
+                }
+            ],
+            "foundryImg": "icons/weapons/swords/swords-short.webp"
+        },
+        {
+            "name": "Weapon Master (Alterante)",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "PHB",
+                    "page": 170
+                },
+                {
+                    "source": "LLAF:E",
+                    "page": 5
+                }
+            ],
+            "prerequisite": [
+                {
+                    "proficiency": [
+                        {
+                            "weaponGroup": "simple"
+                        },
+                        {
+                            "weaponGroup": "martial"
+                        }
+                    ]
+                }
+            ],
+            "entries": [
+                "You wield weapons with a deadly efficiency that is impressive even to most trained warriors. Choose a number of simple or martial weapons equal to your Proficiency Bonus. Whenever you make an attack with those weapons you gain a +1 bonus to both the attack and damage roll.",
+                "As your Proficiency Bonus increases, choose additional weapons to gain this benefit."
+            ],
+            "foundryImg": "icons/skills/melee/hand-grip-sword-red.webp"
+        },
+        {
+            "name": "Wild Companion",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLAR:E"
+                }
+            ],
+            "prerequisite": [
+                {
+                    "ability": [
+                        {
+                            "wis": 13
+                        }
+                    ]
+                }
+            ],
+            "entries": [
+                "You have forged a bond with an animal companion that will adventure by your side. Choose a {@filter beast of CR 1/8 or lower|bestiary|Challenge Rating=[&0;&1/8]|type=beast} to be your Wild Companion. This Companion is friendly to you, and it obeys your commands to the best of its abilities.",
+                "Your Companion uses its normal stat block, but it learns to understand one language of your choice that you speak. You and your Companion can communicate simple ideas to each other using a series of clicks, whistles, and gestures. It gains all the normal benefits of both short and long rests.",
+                "In combat, your Wild Companion acts during your turn. It can move and use its reaction on its own, but it will only take the {@action Dodge} action on its turn unless you use a bonus action to command it to take an action from its stat block or another action. If you are {@condition incapacitated}, your Companion will defend itself to the best of its ability. If you die, your Companion will do everything in its power to flee and return to its home.",
+                "If your Companion dies, you can spend 8 hours tracking and training a new Wild Companion, but only if a suitable beast of CR 1/8 or lower can be found in your local area within an 8-hour period."
+            ],
+            "foundryActivities": [
+                {
+                    "name": "Summon",
+                    "type": "summon",
+                    "activation": {
+                        "value": 8,
+                        "type": "hour"
+                    },
+                    "summon.mode": "cr",
+                    "profiles": [
+                        {
+                            "cr": "1/8",
+                            "types": [
+                                "beast"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/creatures/mammals/deer-movement-leap-green.webp"
+        },
+        {
+            "name": "Wise One",
+            "source": "llfeat",
+            "otherSources": [
+                {
+                    "source": "LLSH:E",
+			        "page": 5
+                }
+            ],
+            "entries": [
+                "You find ways to learn from every experience in life, always growing in wisdom. You gain the benefits on the table below that correspond to your current Wisdom modifier and lower.",
+                "Should your Wisdom modifier increase, the benefits that you gain from this Feat also increase with your modifier:",
+                {
+                    "type": "table",
+                    "colLabels": [
+                        "Modifier",
+                        "Benefit"
+                    ],
+                    "colStyles": [
+                        "col-2 text-center",
+				        "col-10 text-center"
+                    ],
+                    "rows": [
+                        [
+                            "+1",
+                            "You gain proficiency with one set of {@item artisan's tools|PHB} of your choice."
+                        ],
+                        [
+                            "+2",
+                            "You can make Wisdom ({@skill Persuasion}) checks in place of Charisma ({@skill Persuasion}) checks."
+                        ],
+                        [
+                            "+3",
+                            "You gain proficiency in either {@skill Insight}, {@skill Medicine}, or {@skill Perception}."
+                        ],
+                        [
+                            "+4",
+                            "When you make a Wisdom ({@skill Insight}) check, you treat a d20 roll of 7 or lower as an 8."
+                        ],
+                        [
+                            "+5",
+                            "You have advantage on saving throws to resist enchantment and illusion spells."
+                        ]
+                    ]
+                }
+            ],
+            "foundryEffects": [
+                {
+                    "name": "Wisdom (Persuasion) (+2)",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.skills.per.ability",
+                            "mode": "OVERRIDE",
+                            "value": "wis"
+                        }
+                    ]
+                },
+                {
+                    "name": "Insight Minimum (+4)",
+                    "disabled": true,
+                    "transfer": true,
+                    "changes": [
+                        {
+                            "key": "system.skills.ins.roll.min",
+                            "mode": "UPGRADE",
+                            "value": 8
+                        }
+                    ]
+                }
+            ],
+            "foundryImg": "icons/magic/perception/orb-crystal-ball-scrying.webp"
+        }
+    ]
+}
