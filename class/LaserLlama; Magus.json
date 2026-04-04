@@ -39,13 +39,13 @@
 				"llspell"
 			],
 			"optionalfeature": [
-				"LLExploits"
+				"LLExploits",
+				"LLStyles"
 			]
 		},
 		"edition": "classic",
 		"dateAdded": 1647980495,
-		"dateLastModified": 1772404109,
-		"_dateLastModifiedHash": "c270e69edd"
+		"dateLastModified": 0
 	},
 	"class": [
 		{
@@ -1003,7 +1003,7 @@
 					},
 					"required": {
 						"3": [
-							"Brawling|LLExploits"
+							"Brawling|LLStyles"
 						]
 					}
 				}
@@ -1409,18 +1409,21 @@
 			"foundryAdvancement": [
 				{
 					"type": "ScaleValue",
-					"title": "Exploit Die",
+					"title": "Exploit Dice",
 					"configuration": {
-						"identifier": "exploit-die",
+						"identifier": "exploit",
 						"type": "dice",
 						"scale": {
 							"3": {
+								"n": 2,
 								"die": 4
 							},
 							"7": {
+								"n": 3,
 								"die": 6
 							},
 							"15": {
+								"n": 4,
 								"die": 8
 							}
 						}
@@ -1593,67 +1596,67 @@
 					"entries": [
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Arcane Warrior|LLExploits"
+							"optionalfeature": "Arcane Warrior|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Archery|LLExploits"
+							"optionalfeature": "Archery|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Classical Swordplay|LLExploits"
+							"optionalfeature": "Classical Swordplay|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Defensive Fighting|LLExploits"
+							"optionalfeature": "Defensive Fighting|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Dual Wielding|LLExploits"
+							"optionalfeature": "Dual Wielding|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Balanced Fighting|LLExploits"
+							"optionalfeature": "Balanced Fighting|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Protection|LLExploits"
+							"optionalfeature": "Protection|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Shield Warrior|LLExploits"
+							"optionalfeature": "Shield Warrior|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Hurler|LLExploits"
+							"optionalfeature": "Hurler|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Versatile Fighting|LLExploits"
+							"optionalfeature": "Versatile Fighting|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Brawling|LLExploits"
+							"optionalfeature": "Brawling|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Featherweight Fighting|LLExploits"
+							"optionalfeature": "Featherweight Fighting|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Great Weapon Fighting|LLExploits"
+							"optionalfeature": "Great Weapon Fighting|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Heavyweight Fighting|LLExploits"
+							"optionalfeature": "Heavyweight Fighting|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Mounted Warrior|LLExploits"
+							"optionalfeature": "Mounted Warrior|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Polearm Fighting|LLExploits"
+							"optionalfeature": "Polearm Fighting|LLStyles"
 						}
 					]
 				}
@@ -3927,24 +3930,11 @@
 			"subclassShortName": "Spellsword",
 			"subclassSource": "LLMC:E",
 			"level": 3,
-			"resources": [
-				{
-					"name": "Exploit Dice",
-					"type": "dicePool",
-					"count": "floor((<$level$> + 17) / 8)",
-					"number": 1,
-					"faces": "(2 * floor((<$level$> + 17) / 8))",
-					"recharge": "restShort"
-				}
-			],
 			"entries": [
 				"You have studied various martial exploits to augment your Order's magical abilities. You gain the following features:",
 				{
-					"type": "entries",
-					"name": "Exploit Dice",
-					"entries": [
-						"The Spellsword Exploits table shows how many Exploit Dice you have to use your Exploits. To use an Exploit, you expend an Exploit Die, and you regain all your expended Exploit Dice when you finish a short or long rest."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Exploit Dice|Magus|LLMC|Spellsword|LLMC:E|3"
 				},
 				{
 					"type": "entries",
@@ -3969,15 +3959,19 @@
 					]
 				}
 			],
-			"foundrySystem": {
-				"activation.type": null,
-				"uses": {
-					"value": null,
-					"max": null,
-					"per": null
-				}
-			},
 			"foundryImg": "icons/skills/trades/gaming-gambling-dice-gray.webp"
+		},
+		{
+			"name": "Exploit Dice",
+			"source": "LLMC:E",
+			"className": "Magus",
+			"classSource": "LLMC",
+			"subclassShortName": "Spellsword",
+			"subclassSource": "LLMC:E",
+			"level": 3,
+			"entries": [
+				"The Spellsword Exploits table shows how many Exploit Dice you have to use your Exploits. To use an Exploit, you expend an Exploit Die, and you regain all your expended Exploit Dice when you finish a short or long rest."
+			]
 		},
 		{
 			"name": "Order of Spellswords",
@@ -4591,142 +4585,64 @@
 					}
 				}
 			]
-		}
-	],
-	"feat": [
-		{
-			"name": "Alternate Mage Slayer",
-			"source": "LLMC:E",
-			"entries": [
-				"You have trained extensively to counter hostile mages and spellcasters, learning to foil their arcane abilities. You gain the following benefits:",
-				{
-					"type": "entries",
-					"name": "Disrupt Spell",
-					"entries": [
-						"When a creature you can see within your reach casts a spell, you can use a reaction to make an attack of opportunity against it. On hit, the creature must make a Constitution saving throw, as to maintain concentration. On a failure, its spell fails to take effect and any spell slot or feature expended is wasted."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Disrupt Concentration",
-					"entries": [
-						"When you deal damage to a creature that is concentrating on a spell, it makes its saving throw to maintain concentration on that spell with disadvantage."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Spellguard",
-					"entries": [
-						"When a creature you can see within 5 feet of you forces you to make a saving throw to resist the effects of a spell, you have advantage on your roll."
-					]
-				}
-			]
 		},
 		{
-			"name": "Alternate War Caster",
+			"name": "Martial Exploits",
 			"source": "LLMC:E",
-			"prerequisite": [
+			"className": "Magus",
+			"classSource": "LLMC",
+			"subclassShortName": "Spellsword",
+			"subclassSource": "LLMC:E",
+			"level": 3,
+			"effects": [
 				{
-					"spellcasting": true
-				}
-			],
-			"entries": [
-				"You have trained to make use of your spells amidst the chaos of battle. You gain the following benefits:",
-				{
-					"type": "entries",
-					"name": "Opportune Magic",
-					"entries": [
-						"Whenever you would make an opportunity attack, you can cast a spell instead. It must have a casting time of one action and must only target the creature that provoked this reaction."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Resolute Focus",
-					"entries": [
-						"Whenever you are forced to make a saving throw to maintain concentration on a spell, you make your saving throw using your Spellcasting Ability instead of Constitution."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Warrior Mage",
-					"entries": [
-						"You can use a weapon or shield to perform the Somatic components of your spells. You must be proficient with the weapon or shield to do so."
-					]
-				}
-			]
-		},
-		{
-			"name": "Spellsword Adept",
-			"source": "LLMC:E",
-			"prerequisite": [
-				{
-					"proficiency": [
+					"name": "Bounty Hunter Exploits",
+					"transfer": true,
+					"changes": [
 						{
-							"weapon": "martial"
+							"key": "flags.ll.exploit.number",
+							"mode": "UPGRADE",
+							"value": "@scale.order-of-spellswords.exploit.number"
+						},
+						{
+							"key": "flags.ll.exploit.faces",
+							"mode": "UPGRADE",
+							"value": "@scale.order-of-spellswords.exploit.faces"
+						},
+						{
+							"key": "flags.ll.exploit.dc",
+							"mode": "UPGRADE",
+							"value": "8 + @prof + @abilities.int.mod"
 						}
 					]
 				}
-			],
-			"additionalSpells": [
-				{
-					"ability": {
-						"choose": [
-							"int",
-							"wis",
-							"cha"
-						]
-					},
-					"known": {
-						"_": [
-							{
-								"choose": {
-									"from": [
-										"acid splash (alternate)|llspell",
-										"blade ward (alternate)|llspell",
-										"booming blade (alternate)|llspell",
-										"dancing lights",
-										"firebolt",
-										"frostbite|xge",
-										"glitterbeam|llspell",
-										"green-flame blade (alternate)|llspell",
-										"light",
-										"lightning lure|tce",
-										"mage hand",
-										"minor illusion",
-										"poison spray (alternate)|llspell",
-										"prestidigitation",
-										"resistance",
-										"ray of frost",
-										"shocking grasp",
-										"sword burst (alternate)|llspell",
-										"tempestuous blade|llspell",
-										"true strike (alternate)|llspell"
-									]
-								}
-							}
-						]
-					}
-				}
-			],
-			"entries": [
-				"You have trained to channel minor magic through your close-range weapons. You gain the benefits below:",
-				{
-					"type": "entries",
-					"name": "Bonus Cantrips",
-					"entries": [
-						"You learn two additional Cantrips from your class spell list or the Magus spell list. Both must deal damage, but they do not count against your total number of Cantrips Known.",
-						"If you learn a new Magus Cantrip through this Feat, choose either Intelligence, Wisdom, or Charisma as the Spellcasting Ability for these Cantrips."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Spellstrike",
-					"entries": [
-						"Once on your turn, when you make an attack with a melee weapon, you can imbue the magic of one Cantrip you know into your strike. The Cantrip you imbue must deal damage.",
-						"On hit, the damage dealt by your weapon changes to match the damage type of the Cantrip, then any of that Cantrip's additional effects, other than its damage, are applied to the target of your weapon attack."
-					]
-				}
 			]
+		},
+		{
+			"name": "Exploit Dice",
+			"source": "LLMC:E",
+			"className": "Magus",
+			"classSource": "LLMC",
+			"subclassShortName": "Spellsword",
+			"subclassSource": "LLMC:E",
+			"level": 3,
+			"activities": [
+				{
+					"name": "Roll",
+					"type": "utility",
+					"activation.type": "",
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"roll.formula": "d@flags.ll.exploit.faces"
+				}
+			],
+			"system": {
+				"uses.max": "@flags.ll.exploit.number"
+			}
 		}
 	],
 	"monster": [
