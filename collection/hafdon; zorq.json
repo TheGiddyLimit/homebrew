@@ -5,125 +5,19 @@
 				"json": "zorq",
 				"abbreviation": "zorq",
 				"full": "zorq",
+				"url": "https://github.com/hafdon/5etools-homebrew-home/",
+				"version": "2.1.0",
 				"authors": [
 					"hafdon"
 				],
-				"version": "2.1.0",
-				"url": "https://github.com/hafdon/5etools-homebrew-home/",
 				"targetSchema": "1.0.0"
 			}
 		],
+		"edition": "classic",
 		"dateAdded": 1578263517,
-		"dateLastModified": 1750273624,
-		"_dateLastModifiedHash": "3bb0f62f00",
-		"edition": "classic"
+		"dateLastModified": 1775406991,
+		"_dateLastModifiedHash": "6f32efa434"
 	},
-	"action": [
-		{
-			"name": "Hug",
-			"entries": [
-				"When you take the Hug action, you use at least one free hand to embrace a willing creature in a comforting hug. If that creature is {@condition frightened}, and the cause of that condition allows them to make a saving throw to end the effect, that creature may use their reaction to attempt a saving throw.",
-				"This saving throw attempt does not count against any limit on attempts.",
-				"Once a creature has been {@condition hugged|zorq}, that creature cannot benefit again from the effect of a Hug while the cause of their {@condition frightened} condition remains the same."
-			],
-			"source": "zorq",
-			"page": 0,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			]
-		}
-	],
-	"condition": [
-		{
-			"name": "Hugged",
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"A creature who is hugged is much happier than they would be if they were not being hugged.",
-						"The condition ends if the hugger is {@condition incapacitated}.",
-						"The condition also ends if an effect removes the hugged creature from the reach of the hugger or hugging effect, such as when a creature is hurled away by the {@spell thunderwave} spell."
-					]
-				}
-			],
-			"source": "zorq",
-			"page": 0
-		}
-	],
-	"cult": [
-		{
-			"name": "Flower Folk",
-			"goal": {
-				"entry": ""
-			},
-			"cultists": {
-				"entry": "{@creature forl|zorq}, {@creature Tobolux|zorq}, {@creature Snav}"
-			},
-			"signatureSpells": {
-				"entry": ""
-			},
-			"entries": [
-				"Levistus has no cult in the traditional sense. Instead, he offers favors to those who are desperate to escape a seemingly inevitable fate.",
-				"{@creature Drow} are sometimes worshipers of Levistus, as their cruel society often pushes them into situations they feel they can't escape.",
-				"Levistus usually grants those who pledge their souls to him a single chance to escape from danger, but some cunning folk strike a deal with Levistus, pledging their souls to him in return for escape at a future date. This boon takes the form of the Path of Levistus trait.",
-				{
-					"type": "entries",
-					"name": "Path of Levistus",
-					"entries": [
-						"This creature magically teleports to a location of Levistus's choice within 1 mile of its location. Using this ability also restores all of the creature's hit points. This ability can be invoked as an action by the creature or when the creature would die. Once the creature uses it, the creature can't use it again."
-					]
-				}
-			],
-			"source": "zorq"
-		}
-	],
-	"deity": [
-		{
-			"name": "Aule",
-			"alignment": [
-				"L",
-				"G"
-			],
-			"pantheon": "Dwarven",
-			"domains": [
-				"Rock",
-				"Metal",
-				"Substances",
-				"Craft"
-			],
-			"province": "Deity of dwarves",
-			"category": "The Mordinsamman",
-			"symbol": "Hammer",
-			"source": "zorq",
-			"page": 0,
-			"entries": [
-				"A Vala and one of the Aratar, also known as the the Smith and Smith of the Valar, concerned with rock, metal, nature of substances and works of craft."
-			]
-		},
-		{
-			"name": "Ulimara",
-			"alignment": [
-				"L",
-				"G"
-			],
-			"pantheon": "Oceanic",
-			"domains": [
-				"Sea",
-				"Ocean",
-				"Ships"
-			],
-			"province": "Goddess of the Tranquil Sea",
-			"symbol": "",
-			"source": "zorq",
-			"page": 0,
-			"entries": [
-				"One of her messengers is {@creature Dalariel|zorq}."
-			]
-		}
-	],
 	"feat": [
 		{
 			"name": "Sea Legs",
@@ -164,44 +58,99 @@
 			]
 		}
 	],
-	"item": [
+	"spell": [
 		{
-			"name": "Secular Ministrations, penned by Doodril Frogwarts, Burgher and Sublunar Cognoscente",
-			"wondrous": true,
-			"tier": "major",
-			"rarity": "rare",
+			"name": "These Rocks Look Great",
 			"source": "zorq",
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a pebble and a dwarven beard hair"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10,
+						"upTo": true
+					}
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
 			"entries": [
-				"This instructional manual...",
-				"This book contains... ",
+				"This spell wards a willing dwarf you touch and creates a mystic connection between you. Choose one of the following wards; you and the target gain that ward until the spell ends.",
 				{
 					"type": "list",
 					"items": [
-						"1",
-						"1",
-						"2",
-						"2"
+						"You and the target gain a +2 bonus to AC and gain {@dice 2d6} temporary hit points each (roll once for both), which are lost when the spell ends.",
+						"You and the target are immune to being {@condition charmed} and {@condition frightened} and cannot be possessed.",
+						"You and the target are immune to being {@condition petrified}. In addition, you or the target may use an action to cast the {@spell mold earth|phb} cantrip.",
+						"You and the target add +5 to any skill or ability check in which stone is concerned."
 					]
+				},
+				"The spell ends if you or the target drop to 0 hit points. It also ends if the spell is cast again on either of the connected creatures. You can dismiss the spell as a bonus action."
+			],
+			"entriesHigherLevel": [
+				{
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher,  you can target one additional dwarf for each slot level above 2nd."
+					],
+					"type": "entries"
 				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			},
+			"miscTags": [
+				"MAC",
+				"THP",
+				"UBA"
 			]
-		},
+		}
+	],
+	"item": [
 		{
 			"name": "Bahamuschevitz",
+			"source": "zorq",
 			"type": "TG",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"source": "zorq",
 			"entries": [
 				"A sugary fermented beverage with a low ABV associated with followers of {@deity Bahamut|dmg}. Often used during rituals of prayer or invocation."
 			]
 		},
 		{
 			"name": "Cloak of Baphomet's Favor",
-			"wondrous": true,
+			"source": "zorq",
 			"tier": "major",
 			"rarity": "rare",
-			"source": "zorq",
 			"reqAttune": true,
+			"wondrous": true,
+			"curse": true,
+			"bonusAc": "+1",
 			"entries": [
 				"While wearing this armor, you gain a +1 bonus to AC, and you can understand and speak Abyssal.",
 				{
@@ -211,16 +160,14 @@
 						"Once you don this cursed armor, you can't doff it unless you are targeted by the {@spell remove curse} spell or similar magic. While wearing the armor, you have disadvantage on attack rolls against followers of {@creature Baphomet} and on saving throws against their spells and special abilities."
 					]
 				}
-			],
-			"curse": true,
-			"bonusAc": "+1"
+			]
 		},
 		{
 			"name": "Dragon Radish",
-			"rarity": "uncommon",
 			"source": "zorq",
-			"tier": "none",
 			"type": "TG",
+			"tier": "none",
+			"rarity": "uncommon",
 			"entries": [
 				"Spicy radishes.",
 				"If a creature consumes more than one pound of these radishes in a single sitting they must succeed on a {@dc 16} Constitution saving throw or take 5 {@damage 2d4 + 1} fire damage per pound consumed, rounding up.",
@@ -230,26 +177,26 @@
 		},
 		{
 			"name": "Earring of Prevosht",
-			"wondrous": true,
-			"weight": 0.1,
-			"rarity": "rare",
 			"source": "zorq",
 			"tier": "major",
+			"rarity": "rare",
+			"wondrous": true,
+			"weight": 0.1,
+			"recharge": "dawn",
 			"entries": [
 				"This cuff earring is approximately ¼ inch wide and ½ inch in diameter. When applied to the skin, it affixes itself so that it may only be removed by the wearer (requires an Action) or the severing of the surrounding flesh.",
 				"You may take a reaction to pull, tug, rub, or otherwise manipulate the earring. For the next minute, all temporary hit points granted to you will \"stack\" rather than replacing one another. At the end of the minute, you retain any temporary hit points which have not been lost. This ability resets each dawn."
 			],
 			"attachedSpells": [
 				"animal friendship"
-			],
-			"recharge": "dawn"
+			]
 		},
 		{
 			"name": "Figurine of Wondrous Power, Onyx Wolf",
-			"wondrous": true,
+			"source": "zorq",
 			"tier": "major",
 			"rarity": "rare",
-			"source": "zorq",
+			"wondrous": true,
 			"entries": [
 				"A figurine of wondrous power is a statuette of a beast small enough to fit in a pocket. If you use an action to speak the command word and throw the figurine to a point on the ground within 60 feet of you, the figurine becomes a living creature. If the space where the creature would appear is occupied by other creatures or objects, or if there isn't enough space for the creature, the figurine doesn't become a creature.",
 				"The creature is friendly to you and your companions. It understands your languages and obeys your spoken commands. If you issue no commands, the creature defends itself but takes no other actions.",
@@ -260,37 +207,21 @@
 		},
 		{
 			"name": "Forl Oko",
+			"source": "zorq",
 			"type": "TG",
 			"tier": "minor",
 			"rarity": "common",
-			"source": "zorq",
 			"wondrous": true,
 			"entries": [
 				"{@item Oko|zorq} (an intoxicating and stimulating extract) made from {@creature Forl|zorq}... something or others."
 			]
 		},
 		{
-			"name": "Salted Grape Jerky",
-			"rarity": "common",
-			"source": "zorq",
-			"tier": "none",
-			"type": "TG",
-			"entries": [
-				{
-					"type": "quote",
-					"entries": [
-						"It's like drinking a raisin."
-					],
-					"by": "{@creature Fezziwig Hornswoggle|zorq}"
-				}
-			]
-		},
-		{
 			"name": "Gushbonies",
-			"rarity": "uncommon",
 			"source": "zorq",
-			"tier": "none",
 			"type": "TG",
+			"tier": "none",
+			"rarity": "uncommon",
 			"entries": [
 				"A local term for goodberries rolled in bone ash. Particularly prized by gnolls.",
 				{
@@ -305,12 +236,25 @@
 			]
 		},
 		{
-			"name": "Knold Dtuber",
-			"wondrous": true,
-			"rarity": "unknown (magic)",
+			"name": "Immovable Zorbwood Rod",
 			"source": "zorq",
+			"type": "RD|DMG",
 			"tier": "minor",
+			"rarity": "uncommon",
+			"reqAttune": true,
+			"weight": 2,
+			"entries": [
+				"This flat iron rod has a button on one end. You can use an action to press the button, which causes the rod to become magically fixed in place. Until you or another creature uses an action to push the button again, the rod doesn't move, even if it is defying gravity. The rod can hold up to 8,000 pounds of weight. More weight causes the rod to deactivate and fall. A creature can use an action to make a DC 30 Strength check, moving the fixed rod up to 10 feet on a success",
+				"If the rod is examined carefully, or a creature attunes to it, that creature can determine that the rod moves slightly and gradually if it remains 'magically fixed' for more than a day or so, with the degree of movement dependent on the length of time so fixed."
+			]
+		},
+		{
+			"name": "Knold Dtuber",
+			"source": "zorq",
 			"type": "TG",
+			"tier": "minor",
+			"rarity": "unknown (magic)",
+			"wondrous": true,
 			"entries": [
 				"These fuzzy, knobbly root vegetables have thick, dark-green rhizomes and leafy purple shoots.",
 				"Certain cultures consider them to possess metaphorical similarities with gnolls. Literal allocation of such qualities to the dtubers has no small degree of empirical evidence in its favor."
@@ -318,10 +262,10 @@
 		},
 		{
 			"name": "Moghling Slime",
-			"wondrous": true,
+			"source": "zorq",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"source": "zorq",
+			"wondrous": true,
 			"weight": 0.5,
 			"entries": [
 				{
@@ -340,10 +284,10 @@
 		},
 		{
 			"name": "Multicolored Stone Disc",
-			"wondrous": true,
+			"source": "zorq",
 			"tier": "minor",
 			"rarity": "rare",
-			"source": "zorq",
+			"wondrous": true,
 			"entries": [
 				"This wondrous item is a palm-sized multicolored stone disc.",
 				"You may use an action to activate this disc. When you do so, the disc expands into a circular, horizontal plane of force, 3 feet in diameter and 1 inch thick, that floats 3 feet above the ground in an unoccupied space of your choice that you can see within range. The disk remains for 1 hour, and can hold up to 500 pounds. If more weight is placed on it, the disc returns to its original size, and everything on the disk falls to the ground.",
@@ -355,15 +299,15 @@
 		},
 		{
 			"name": "Potion of Pr'lll",
+			"source": "zorq",
+			"type": "P",
 			"resist": [
 				"necrotic",
 				"poison"
 			],
-			"type": "P",
-			"weight": 0.25,
 			"tier": "minor",
 			"rarity": "uncommon",
-			"source": "zorq",
+			"weight": 0.25,
 			"entries": [
 				"This glass vial, 1 inch in diameter, contains a viscous, translucent substance that smells of {@item wraith dew|zorq}.",
 				"When you drink this potion, you gain resistance to poison and necrotic damage for 1 hour.",
@@ -372,10 +316,10 @@
 		},
 		{
 			"name": "Ring of Mind Shielding",
+			"source": "zorq",
 			"type": "RG|DMG",
 			"tier": "major",
 			"rarity": "uncommon",
-			"source": "zorq",
 			"reqAttune": true,
 			"entries": [
 				"While wearing this ring, you are immune to magic that allows other creatures to read your thoughts, determine whether you are lying, know your alignment, or know your creature type. Creatures can telepathically communicate with you only if you allow it.",
@@ -385,10 +329,10 @@
 		},
 		{
 			"name": "Riult's Spellbook",
-			"wondrous": true,
+			"source": "zorq",
 			"tier": "major",
 			"rarity": "unknown (magic)",
-			"source": "zorq",
+			"wondrous": true,
 			"entries": [
 				"This spellbook, along with anything written on its pages, can't be damaged by fire or immersion in water. In addition, the spellbook doesn't deteriorate with age.",
 				"This spellbook contains the following legible spells. There are other markings in the book, but you cannot tell what they are, and {@spell comprehend languages|phb} does not allow you to interpret them.",
@@ -404,11 +348,48 @@
 			]
 		},
 		{
+			"name": "Salted Grape Jerky",
+			"source": "zorq",
+			"type": "TG",
+			"tier": "none",
+			"rarity": "common",
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"It's like drinking a raisin."
+					],
+					"by": "{@creature Fezziwig Hornswoggle|zorq}"
+				}
+			]
+		},
+		{
+			"name": "Secular Ministrations, penned by Doodril Frogwarts, Burgher and Sublunar Cognoscente",
+			"source": "zorq",
+			"tier": "major",
+			"rarity": "rare",
+			"wondrous": true,
+			"entries": [
+				"This instructional manual...",
+				"This book contains... ",
+				{
+					"type": "list",
+					"items": [
+						"1",
+						"1",
+						"2",
+						"2"
+					]
+				}
+			]
+		},
+		{
 			"name": "Three School Mask",
+			"source": "zorq",
+			"rarity": "rare",
 			"wondrous": true,
 			"weight": 1,
-			"rarity": "rare",
-			"source": "zorq",
+			"recharge": "dawn",
 			"entries": [
 				{
 					"name": "Donning the mask",
@@ -420,19 +401,18 @@
 			],
 			"attachedSpells": [
 				"animal friendship"
-			],
-			"recharge": "dawn"
+			]
 		},
 		{
 			"name": "Thunder Blanket",
-			"wondrous": true,
+			"source": "zorq",
 			"type": "G",
 			"tier": "minor",
 			"rarity": "uncommon",
-			"source": "zorq",
+			"reqAttune": true,
+			"wondrous": true,
 			"weight": 15,
 			"recharge": "dawn",
-			"reqAttune": true,
 			"entries": [
 				"You may use an action to wrap a Large or smaller creature in this blanket. While the blanket is on the creature, it suppresses any effect causing the creature to be {@condition charmed} or {@condition frightened}. When this spell ends, any suppressed effect resumes, provided that its duration has not expired in the meantime.",
 				"The blanket may only be used in this way for 10 minutes before it loses its efficacy. The blanket regains its efficacy at the next dawn."
@@ -440,11 +420,11 @@
 		},
 		{
 			"name": "Tobolux's Bottle",
+			"source": "zorq",
+			"tier": "major",
+			"rarity": "rare",
 			"wondrous": true,
 			"weight": 1,
-			"rarity": "rare",
-			"tier": "major",
-			"source": "zorq",
 			"entries": [
 				"This painted brass bottle weighs 1 pound. When you use an action to remove the stopper, a cloud of thick smoke flows out of the bottle. At the end of your turn, the smoke disappears with a flash of harmless fire, and an {@creature Tobolux|zorq} appears in an unoccupied space within 30 feet of you.",
 				"While holding the bottle, you can use an action to order {@creature Tobolux|zorq} to duplicate the effect of the {@spell detect poison and disease} or {@spell protection from poison}. {@creature Tobolux|zorq} returns to the bottle when the spell ends, and the stopper can't be removed for another 24 hours.",
@@ -458,24 +438,24 @@
 		},
 		{
 			"name": "Trollsmilk",
-			"wondrous": true,
-			"rarity": "uncommon",
 			"source": "zorq",
-			"tier": "minor",
 			"type": "TG",
+			"tier": "minor",
+			"rarity": "uncommon",
+			"wondrous": true,
 			"entries": [
 				"Tasty milk extracted from {@creature trollsheep}."
 			]
 		},
 		{
 			"name": "Twisted Cornett",
-			"wondrous": true,
+			"source": "zorq",
 			"type": "INS",
-			"weight": 1,
 			"tier": "major",
 			"rarity": "uncommon",
 			"reqAttune": true,
-			"source": "zorq",
+			"wondrous": true,
+			"weight": 1,
 			"entries": [
 				"You can use an action to play this cornett in the typical manner. The cornett emits sound in a 30-foot cone that is audible 30 feet away. Each creature in the cone must make a {@dc 14} Constitution saving throw or be {@condition stunned} until the end of your next turn. Creatures who succeed on their saving throw have their speed reduced by 10, to a minimum of 0.",
 				"Once you use the cornett in this way, it cannot be used again until the next dawn."
@@ -483,74 +463,106 @@
 		},
 		{
 			"name": "Wraith Dew",
-			"wondrous": true,
 			"source": "zorq",
-			"tier": "minor",
-			"poison": true,
-			"rarity": "unknown (magic)",
 			"type": "TG",
+			"tier": "minor",
+			"rarity": "unknown (magic)",
+			"wondrous": true,
+			"bonusSavingThrow": "+1",
+			"recharge": "dawn",
+			"poison": true,
 			"entries": [
 				"This potent, syrupy liquid smells like earth and {@item black wood resin|zorq}. Many taverns carry proprietary blends.",
 				"A creature subjected to this liquid must succeed on a {@dc 13} Constitution saving throw or become {@condition poisoned} for {@dice 1d4} hours.",
 				"On a successful save, the creature gains +1 to any Charisma ability checks or saving throws and -1 to Perception ability checks or saving throws for {@dice 1d4 hours}."
 			],
-			"recharge": "dawn",
-			"bonusSavingThrow": "+1",
 			"poisonTypes": [
 				"ingested"
 			]
 		},
 		{
 			"name": "Wyrmblood Venom (vial)",
+			"source": "zorq",
 			"type": "TG",
 			"rarity": "none",
 			"value": 10000,
 			"poison": true,
-			"source": "zorq",
 			"entries": [
 				"Vee'gn'och create a reddish liquid, which they smear on their fangs. The freakish red mouths on the tiny skeletons are disturbing, and the toxin is deadly. A bitten creature must succeed on a DC15 Constitution saving throw or become {@condition poisoned} and take {@dice 1d6} Charisma damage. A {@condition poisoned} creature repeats the saving throw every four hours, taking another {@dice 1d6} Charisma damage for each failure, until it has made two consecutive successful saves or survived for 24 hours. If the creature survives, the effect ends and the creature can heal normally. Lost Charisma can be regained with a lesser restoration spell or comparable magic."
 			]
 		},
 		{
+			"name": "Zorbwood",
+			"source": "zorq",
+			"type": "TG",
+			"tier": "minor",
+			"rarity": "uncommon",
+			"wondrous": true,
+			"entries": [
+				"Flavor text."
+			]
+		},
+		{
 			"name": "Zorbwood Resin",
+			"source": "zorq",
+			"type": "TG",
+			"tier": "minor",
+			"rarity": "uncommon",
 			"wondrous": true,
 			"poison": true,
-			"rarity": "uncommon",
-			"source": "zorq",
-			"tier": "minor",
-			"type": "TG",
 			"entries": [
 				"This resin is extracted from living {@item zorbwood|zorq}"
 			]
-		},
+		}
+	],
+	"deity": [
 		{
-			"name": "Immovable Zorbwood Rod",
-			"type": "RD|DMG",
-			"weight": 2,
-			"tier": "minor",
-			"rarity": "uncommon",
+			"name": "Aule",
 			"source": "zorq",
-			"reqAttune": true,
+			"page": 0,
+			"pantheon": "Dwarven",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"category": "The Mordinsamman",
+			"domains": [
+				"Rock",
+				"Metal",
+				"Substances",
+				"Craft"
+			],
+			"province": "Deity of dwarves",
+			"symbol": "Hammer",
 			"entries": [
-				"This flat iron rod has a button on one end. You can use an action to press the button, which causes the rod to become magically fixed in place. Until you or another creature uses an action to push the button again, the rod doesn't move, even if it is defying gravity. The rod can hold up to 8,000 pounds of weight. More weight causes the rod to deactivate and fall. A creature can use an action to make a DC 30 Strength check, moving the fixed rod up to 10 feet on a success",
-				"If the rod is examined carefully, or a creature attunes to it, that creature can determine that the rod moves slightly and gradually if it remains 'magically fixed' for more than a day or so, with the degree of movement dependent on the length of time so fixed."
+				"A Vala and one of the Aratar, also known as the the Smith and Smith of the Valar, concerned with rock, metal, nature of substances and works of craft."
 			]
 		},
 		{
-			"name": "Zorbwood",
-			"wondrous": true,
-			"rarity": "uncommon",
+			"name": "Ulimara",
 			"source": "zorq",
-			"tier": "minor",
-			"type": "TG",
+			"page": 0,
+			"pantheon": "Oceanic",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"domains": [
+				"Sea",
+				"Ocean",
+				"Ships"
+			],
+			"province": "Goddess of the Tranquil Sea",
+			"symbol": "",
 			"entries": [
-				"Flavor text."
+				"One of her messengers is {@creature Dalariel|zorq}."
 			]
 		}
 	],
 	"monster": [
 		{
 			"name": "Angel of Lole'iel",
+			"source": "zorq",
 			"size": [
 				"M"
 			],
@@ -560,7 +572,6 @@
 					"pronouns: she, her, hers"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"G"
@@ -595,6 +606,11 @@
 				"investigation": "+3",
 				"perception": "+6"
 			},
+			"senses": [
+				"darkvision 120 ft.",
+				"truesight 120 ft."
+			],
+			"passive": 16,
 			"resist": [
 				"fire",
 				"radiant"
@@ -604,15 +620,10 @@
 				"exhaustion",
 				"frightened"
 			],
-			"passive": 16,
 			"languages": [
 				"all"
 			],
 			"cr": "5",
-			"senses": [
-				"darkvision 120 ft.",
-				"truesight 120 ft."
-			],
 			"trait": [
 				{
 					"name": "Flyby",
@@ -647,9 +658,20 @@
 					]
 				}
 			],
+			"token": {
+				"name": "Battleforce Angel",
+				"source": "GGR"
+			},
+			"attachedItems": [
+				"longsword|phb"
+			],
 			"traitTags": [
 				"Flyby",
 				"Magic Resistance"
+			],
+			"senseTags": [
+				"SD",
+				"U"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -657,17 +679,13 @@
 			"languageTags": [
 				"XX"
 			],
-			"senseTags": [
-				"SD",
-				"U"
-			],
 			"damageTags": [
-				"S",
-				"R"
+				"R",
+				"S"
 			],
 			"miscTags": [
-				"MW",
-				"MLW"
+				"MLW",
+				"MW"
 			],
 			"fluff": {
 				"name": "Battleforce Angel",
@@ -704,17 +722,12 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Battleforce Angel",
-				"source": "GGR"
-			},
-			"attachedItems": [
-				"longsword|phb"
-			]
+			}
 		},
 		{
 			"name": "Baron von Veen (Uugeet form)",
+			"isNpc": true,
+			"source": "zorq",
 			"size": [
 				"L"
 			],
@@ -724,7 +737,6 @@
 					"fish"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"NX",
@@ -757,6 +769,7 @@
 				"perception": "+5",
 				"athletics": "+6"
 			},
+			"passive": 15,
 			"resist": [
 				{
 					"resist": [
@@ -768,7 +781,6 @@
 					"cond": true
 				}
 			],
-			"passive": 15,
 			"languages": [
 				"Abyssal",
 				"Infernal",
@@ -776,6 +788,32 @@
 				"Common"
 			],
 			"cr": "6",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"Uugeet's spellcasting ability is Intelligence (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell command|phb}",
+						"{@spell create or destroy water|phb}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell control water|phb}",
+							"{@spell darkness|phb}",
+							"{@spell water breathing|phb}",
+							"{@spell water walk|phb}"
+						],
+						"1e": [
+							"{@spell call lightning|phb}",
+							"{@spell evard's black tentacles|phb}"
+						]
+					},
+					"ability": "int"
+				}
+			],
 			"trait": [
 				{
 					"name": "Amphibious",
@@ -798,32 +836,6 @@
 					]
 				}
 			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Uugeet's spellcasting ability is Intelligence (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell command|phb}",
-						"{@spell create or destroy water|phb}"
-					],
-					"daily": {
-						"3e": [
-							"{@spell control water|phb}",
-							"{@spell darkness|phb}",
-							"{@spell water breathing|phb}",
-							"{@spell water walk|phb}"
-						],
-						"1e": [
-							"{@spell call lightning|phb}",
-							"{@spell evard's black tentacles|phb}"
-						]
-					},
-					"ability": "int",
-					"type": "spellcasting"
-				}
-			],
 			"environment": [
 				"coastal",
 				"underwater"
@@ -834,23 +846,22 @@
 			"languageTags": [
 				"X"
 			],
-			"spellcastingTags": [
-				"I"
-			],
 			"damageTags": [
 				"T"
 			],
-			"isNpc": true,
+			"damageTagsSpell": [
+				"B",
+				"L"
+			],
+			"spellcastingTags": [
+				"I"
+			],
 			"conditionInflict": [
 				"frightened"
 			],
 			"conditionInflictSpell": [
 				"prone",
 				"restrained"
-			],
-			"damageTagsSpell": [
-				"B",
-				"L"
 			],
 			"savingThrowForced": [
 				"charisma"
@@ -863,11 +874,12 @@
 		},
 		{
 			"name": "Blue face hag tall",
+			"source": "zorq",
+			"page": 177,
 			"size": [
 				"M"
 			],
 			"type": "fey",
-			"source": "zorq",
 			"alignment": [
 				"N",
 				"E"
@@ -915,6 +927,7 @@
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
+					"type": "spellcasting",
 					"headerEntries": [
 						"The hag's innate spellcasting ability is Charisma (spell save {@dc 12}). She can innately cast the following spells, requiring no material components:"
 					],
@@ -923,11 +936,11 @@
 						"{@spell minor illusion}",
 						"{@spell vicious mockery}"
 					],
-					"ability": "cha",
-					"type": "spellcasting"
+					"ability": "cha"
 				},
 				{
 					"name": "Shared Spellcasting (Coven Only)",
+					"type": "spellcasting",
 					"headerEntries": [
 						"While all three members of a hag coven are within 30 feet of one another, they can each cast the following spells from the wizard's spell list but must share the spell slots among themselves:"
 					],
@@ -978,8 +991,7 @@
 					"footerEntries": [
 						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12 + the hag's Intelligence modifier, and the spell attack bonus is 4 + the hag's Intelligence modifier."
 					],
-					"ability": "int",
-					"type": "spellcasting"
+					"ability": "int"
 				}
 			],
 			"trait": [
@@ -1031,37 +1043,58 @@
 					]
 				}
 			],
-			"page": 177,
 			"environment": [
 				"forest",
 				"hill",
 				"swamp"
 			],
+			"token": {
+				"name": "Green Hag",
+				"source": "MM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/green-hag.mp3"
+				"path": "bestiary/green-hag.opus"
 			},
 			"traitTags": [
 				"Amphibious"
+			],
+			"senseTags": [
+				"D"
 			],
 			"languageTags": [
 				"C",
 				"DR",
 				"S"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"S"
+			],
+			"damageTagsSpell": [
+				"I",
+				"L",
+				"N",
+				"Y"
 			],
 			"spellcastingTags": [
+				"CW",
 				"I",
-				"S",
-				"CW"
-			],
-			"damageTags": [
 				"S"
 			],
 			"miscTags": [
 				"MW"
+			],
+			"conditionInflictSpell": [
+				"frightened",
+				"paralyzed",
+				"poisoned",
+				"unconscious"
+			],
+			"savingThrowForcedSpell": [
+				"constitution",
+				"dexterity",
+				"intelligence",
+				"wisdom"
 			],
 			"fluff": {
 				"name": "Green Hag",
@@ -1183,32 +1216,11 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Green Hag",
-				"source": "MM"
-			},
-			"conditionInflictSpell": [
-				"poisoned",
-				"paralyzed",
-				"frightened",
-				"unconscious"
-			],
-			"damageTagsSpell": [
-				"I",
-				"L",
-				"N",
-				"Y"
-			],
-			"savingThrowForcedSpell": [
-				"constitution",
-				"dexterity",
-				"intelligence",
-				"wisdom"
-			]
+			}
 		},
 		{
 			"name": "Bonfire",
+			"source": "zorq",
 			"size": [
 				"L"
 			],
@@ -1218,7 +1230,6 @@
 					"pronouns: she, her, hers"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"N"
 			],
@@ -1243,6 +1254,13 @@
 			"int": 14,
 			"wis": 8,
 			"cha": 14,
+			"skill": {
+				"athletics": "+7"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 8,
 			"resist": [
 				{
 					"resist": [
@@ -1254,19 +1272,37 @@
 					"cond": true
 				}
 			],
-			"vulnerable": [
-				"cold"
-			],
 			"immune": [
 				"fire"
 			],
-			"senses": [
-				"darkvision 60 ft."
+			"vulnerable": [
+				"cold"
 			],
-			"passive": 8,
 			"languages": [
 				"Salamander",
 				"Common"
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"Bonfire is 1st-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 12}, {@h 4} to hit with spell attacks). She has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt|PHB}, {@spell create bonfire|xge}"
+							]
+						},
+						"1": {
+							"spells": [
+								"{@spell hellish rebuke|phb}"
+							]
+						}
+					},
+					"ability": "int"
+				}
 			],
 			"trait": [
 				{
@@ -1295,51 +1331,26 @@
 			"environment": [
 				"underdark"
 			],
-			"languageTags": [
-				"C"
-			],
 			"senseTags": [
 				"D"
 			],
+			"languageTags": [
+				"C"
+			],
 			"damageTags": [
 				"B",
+				"F"
+			],
+			"damageTagsSpell": [
 				"F"
 			],
 			"miscTags": [
 				"MW",
 				"RCH"
 			],
-			"skill": {
-				"athletics": "+7"
-			},
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Bonfire is 1st-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 12}, {@h 4} to hit with spell attacks). She has the following wizard spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell fire bolt|PHB}, {@spell create bonfire|xge}"
-							]
-						},
-						"1": {
-							"spells": [
-								"{@spell hellish rebuke|phb}"
-							]
-						}
-					},
-					"ability": "int",
-					"type": "spellcasting"
-				}
-			],
 			"conditionInflict": [
 				"grappled",
 				"restrained"
-			],
-			"damageTagsSpell": [
-				"F"
 			],
 			"savingThrowForcedSpell": [
 				"dexterity"
@@ -1347,34 +1358,11 @@
 		},
 		{
 			"name": "Carlos",
+			"shortName": "Carlos",
+			"isNamedCreature": true,
 			"source": "zorq",
-			"action": [
-				{
-					"name": "Warhammer",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@damage 1d8 + 3} bludgeoning damage, or {@damage 1d10 + 3} damage if used with both hands."
-					]
-				}
-			],
-			"alignment": [
-				"L",
-				"G"
-			],
-			"miscTags": [
-				"MW",
-				"MLW"
-			],
-			"damageTags": [
-				"B"
-			],
-			"languageTags": [
-				"C",
-				"D"
-			],
-			"senseTags": [
-				"D"
-			],
 			"page": 78,
+			"level": 4,
 			"size": [
 				"M"
 			],
@@ -1385,6 +1373,10 @@
 					"pronouns: he, him, his"
 				]
 			},
+			"alignment": [
+				"L",
+				"G"
+			],
 			"ac": [
 				{
 					"ac": 15,
@@ -1406,16 +1398,65 @@
 			"int": 15,
 			"wis": 20,
 			"cha": 12,
+			"save": {
+				"wis": "+7",
+				"cha": "+3"
+			},
 			"skill": {
 				"insight": "+7",
 				"medicine": "+7",
 				"persuasion": "+3",
 				"religion": "+4"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 15,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"Common",
 				"Dwarvish"
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"Carlos is a 4th level spellcaster. His spellcasting ability is Wisdom. His spell save DC is 15. His spell attack bonus is +7. He can prepare 4 cantrips and 9 spells. "
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light|PHB}",
+								"{@spell mending|PHB}",
+								"{@spell sacred flame|PHB}",
+								"{@spell spare the dying|PHB}"
+							]
+						},
+						"1": {
+							"spells": [
+								"{@spell command|PHB}",
+								"{@spell detect evil and good|PHB}",
+								"{@spell healing word|PHB}"
+							],
+							"slots": 4
+						},
+						"2": {
+							"spells": [
+								"{@spell calm emotions|PHB}",
+								"{@spell lesser restoration|PHB}",
+								"{@spell prayer of healing|PHB}",
+								"{@spell protection from poison|PHB}",
+								"{@spell spiritual weapon|PHB}",
+								"{@spell these rocks look great|zorq}"
+							],
+							"slots": 3
+						}
+					},
+					"ability": "wis"
+				}
 			],
 			"trait": [
 				{
@@ -1482,83 +1523,53 @@
 					]
 				}
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"level": 4,
-			"save": {
-				"wis": "+7",
-				"cha": "+3"
-			},
-			"resist": [
-				"poison"
-			],
-			"isNamedCreature": true,
-			"spellcasting": [
+			"action": [
 				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Carlos is a 4th level spellcaster. His spellcasting ability is Wisdom. His spell save DC is 15. His spell attack bonus is +7. He can prepare 4 cantrips and 9 spells. "
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell light|PHB}",
-								"{@spell mending|PHB}",
-								"{@spell sacred flame|PHB}",
-								"{@spell spare the dying|PHB}"
-							]
-						},
-						"1": {
-							"spells": [
-								"{@spell command|PHB}",
-								"{@spell detect evil and good|PHB}",
-								"{@spell healing word|PHB}"
-							],
-							"slots": 4
-						},
-						"2": {
-							"spells": [
-								"{@spell calm emotions|PHB}",
-								"{@spell lesser restoration|PHB}",
-								"{@spell prayer of healing|PHB}",
-								"{@spell protection from poison|PHB}",
-								"{@spell spiritual weapon|PHB}",
-								"{@spell these rocks look great|zorq}"
-							],
-							"slots": 3
-						}
-					},
-					"ability": "wis",
-					"type": "spellcasting"
+					"name": "Warhammer",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@damage 1d8 + 3} bludgeoning damage, or {@damage 1d10 + 3} damage if used with both hands."
+					]
 				}
 			],
-			"fluff": {
-				"entries": [
-					"Carlos's deity is {@deity Aule|zorq}. One of his rituals involves spinning in a circle with his warhammer held outstretched."
-				]
-			},
-			"shortName": "Carlos",
+			"attachedItems": [
+				"warhammer|phb"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"D"
+			],
+			"damageTags": [
+				"B"
+			],
 			"damageTagsSpell": [
 				"O",
 				"R"
 			],
-			"attachedItems": [
-				"warhammer|phb"
+			"miscTags": [
+				"MLW",
+				"MW"
 			],
 			"savingThrowForcedSpell": [
 				"charisma",
 				"dexterity",
 				"wisdom"
-			]
+			],
+			"fluff": {
+				"entries": [
+					"Carlos's deity is {@deity Aule|zorq}. One of his rituals involves spinning in a circle with his warhammer held outstretched."
+				]
+			}
 		},
 		{
 			"name": "Cave Fisher (zorq)",
+			"source": "zorq",
 			"size": [
 				"M"
 			],
 			"type": "monstrosity",
-			"source": "zorq",
 			"alignment": [
 				"U"
 			],
@@ -1639,11 +1650,11 @@
 			"traitTags": [
 				"Spider Climb"
 			],
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"B"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"damageTags": [
 				"S"
@@ -1660,11 +1671,14 @@
 		},
 		{
 			"name": "Chad the Griffon",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
+			"page": 174,
 			"size": [
 				"L"
 			],
 			"type": "monstrosity",
-			"source": "zorq",
 			"alignment": [
 				"U"
 			],
@@ -1685,6 +1699,9 @@
 			"int": 14,
 			"wis": 13,
 			"cha": 10,
+			"save": {
+				"int": "+5"
+			},
 			"skill": {
 				"perception": "+4",
 				"athletics": "+7",
@@ -1695,6 +1712,10 @@
 				"darkvision 60 ft."
 			],
 			"passive": 14,
+			"languages": [
+				"Common",
+				"Bird"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -1730,7 +1751,6 @@
 					]
 				}
 			],
-			"page": 174,
 			"environment": [
 				"arctic",
 				"coastal",
@@ -1738,18 +1758,25 @@
 				"hill",
 				"mountain"
 			],
+			"token": {
+				"name": "Griffon",
+				"source": "MM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/griffon.mp3"
+				"path": "bestiary/griffon.opus"
 			},
 			"traitTags": [
 				"Keen Senses"
 			],
+			"senseTags": [
+				"D"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
-			"senseTags": [
-				"D"
+			"languageTags": [
+				"C"
 			],
 			"damageTags": [
 				"P",
@@ -1797,26 +1824,14 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Griffon",
-				"source": "MM"
-			},
-			"save": {
-				"int": "+5"
-			},
-			"languages": [
-				"Common",
-				"Bird"
-			],
-			"languageTags": [
-				"C"
-			],
-			"isNamedCreature": true,
-			"isNpc": true
+			}
 		},
 		{
 			"name": "Cora Gn'Tash",
+			"shortName": "Cora",
+			"isNpc": true,
+			"source": "zorq",
+			"page": 230,
 			"size": [
 				"M"
 			],
@@ -1826,7 +1841,6 @@
 					"gnoll"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"G"
 			],
@@ -1851,6 +1865,10 @@
 			"int": 14,
 			"wis": 10,
 			"cha": 18,
+			"save": {
+				"str": "+4",
+				"con": "+4"
+			},
 			"skill": {
 				"athletics": "+6",
 				"persuasion": "+8",
@@ -1906,10 +1924,9 @@
 					]
 				}
 			],
-			"page": 230,
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB/token/Gnoll%20Havoc%20Runner.png",
-			"actionTags": [
-				"Multiattack"
+			"attachedItems": [
+				"battleaxe|phb"
 			],
 			"traitTags": [
 				"Pack Tactics"
@@ -1917,23 +1934,21 @@
 			"senseTags": [
 				"D"
 			],
+			"actionTags": [
+				"Multiattack"
+			],
 			"languageTags": [
-				"OTH",
-				"C"
+				"C",
+				"OTH"
 			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
-				"MW",
-				"MLW"
+				"MLW",
+				"MW"
 			],
-			"shortName": "Cora",
-			"save": {
-				"str": "+4",
-				"con": "+4"
-			},
 			"fluff": {
 				"entries": [
 					{
@@ -1954,14 +1969,13 @@
 						]
 					}
 				]
-			},
-			"isNpc": true,
-			"attachedItems": [
-				"battleaxe|phb"
-			]
+			}
 		},
 		{
 			"name": "Cpt. Bill Perry",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
 			"size": [
 				"M"
 			],
@@ -1973,7 +1987,6 @@
 					"hybrid"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"N",
 				"G"
@@ -2084,6 +2097,16 @@
 				"underdark",
 				"underwater"
 			],
+			"token": {
+				"name": "Deep Scion",
+				"source": "VGM"
+			},
+			"traitTags": [
+				"Amphibious"
+			],
+			"senseTags": [
+				"SD"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -2091,9 +2114,6 @@
 				"AQ",
 				"C",
 				"TC"
-			],
-			"senseTags": [
-				"SD"
 			],
 			"damageTags": [
 				"P",
@@ -2103,21 +2123,15 @@
 			"miscTags": [
 				"MW"
 			],
-			"token": {
-				"name": "Deep Scion",
-				"source": "VGM"
-			},
-			"traitTags": [
-				"Amphibious"
-			],
-			"isNpc": true,
-			"isNamedCreature": true,
 			"savingThrowForced": [
 				"wisdom"
 			]
 		},
 		{
 			"name": "Cpt. Juna Merrigold",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
 			"size": [
 				"M"
 			],
@@ -2129,7 +2143,6 @@
 					"hybrid"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"N",
 				"G"
@@ -2236,6 +2249,16 @@
 				"underdark",
 				"underwater"
 			],
+			"token": {
+				"name": "Deep Scion",
+				"source": "VGM"
+			},
+			"traitTags": [
+				"Amphibious"
+			],
+			"senseTags": [
+				"SD"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -2243,9 +2266,6 @@
 				"AQ",
 				"C",
 				"TC"
-			],
-			"senseTags": [
-				"SD"
 			],
 			"damageTags": [
 				"P",
@@ -2255,21 +2275,13 @@
 			"miscTags": [
 				"MW"
 			],
-			"token": {
-				"name": "Deep Scion",
-				"source": "VGM"
-			},
-			"traitTags": [
-				"Amphibious"
-			],
-			"isNpc": true,
-			"isNamedCreature": true,
 			"savingThrowForced": [
 				"wisdom"
 			]
 		},
 		{
 			"name": "Dalariel",
+			"source": "zorq",
 			"size": [
 				"M"
 			],
@@ -2279,7 +2291,6 @@
 					"pronouns: she, her, hers"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"G"
@@ -2314,6 +2325,11 @@
 				"investigation": "+3",
 				"perception": "+6"
 			},
+			"senses": [
+				"darkvision 120 ft.",
+				"truesight 120 ft."
+			],
+			"passive": 16,
 			"resist": [
 				"fire",
 				"radiant"
@@ -2323,15 +2339,10 @@
 				"exhaustion",
 				"frightened"
 			],
-			"passive": 16,
 			"languages": [
 				"all"
 			],
 			"cr": "5",
-			"senses": [
-				"darkvision 120 ft.",
-				"truesight 120 ft."
-			],
 			"trait": [
 				{
 					"name": "Flyby",
@@ -2366,9 +2377,20 @@
 					]
 				}
 			],
+			"token": {
+				"name": "Battleforce Angel",
+				"source": "GGR"
+			},
+			"attachedItems": [
+				"longsword|phb"
+			],
 			"traitTags": [
 				"Flyby",
 				"Magic Resistance"
+			],
+			"senseTags": [
+				"SD",
+				"U"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -2376,17 +2398,13 @@
 			"languageTags": [
 				"XX"
 			],
-			"senseTags": [
-				"SD",
-				"U"
-			],
 			"damageTags": [
-				"S",
-				"R"
+				"R",
+				"S"
 			],
 			"miscTags": [
-				"MW",
-				"MLW"
+				"MLW",
+				"MW"
 			],
 			"fluff": {
 				"name": "Battleforce Angel",
@@ -2423,17 +2441,13 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Battleforce Angel",
-				"source": "GGR"
-			},
-			"attachedItems": [
-				"longsword|phb"
-			]
+			}
 		},
 		{
 			"name": "Domonkos",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
 			"size": [
 				"M"
 			],
@@ -2443,7 +2457,6 @@
 					"shapechanger"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"E"
@@ -2478,6 +2491,10 @@
 				"perception": "+5",
 				"stealth": "+5"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 15,
 			"resist": [
 				"necrotic",
 				{
@@ -2490,10 +2507,6 @@
 					"cond": true
 				}
 			],
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"passive": 15,
 			"languages": [
 				"Common",
 				"Undercommon"
@@ -2593,26 +2606,24 @@
 			"senseTags": [
 				"SD"
 			],
-			"damageTags": [
-				"B",
-				"P",
-				"N"
+			"actionTags": [
+				"Multiattack"
 			],
-			"miscTags": [
-				"MW",
-				"HPR"
-			],
-			"isNpc": true,
-			"isNamedCreature": true,
 			"languageTags": [
 				"C",
 				"U"
 			],
+			"damageTags": [
+				"B",
+				"N",
+				"P"
+			],
+			"miscTags": [
+				"HPR",
+				"MW"
+			],
 			"conditionInflict": [
 				"charmed"
-			],
-			"actionTags": [
-				"Multiattack"
 			],
 			"savingThrowForced": [
 				"wisdom"
@@ -2620,11 +2631,14 @@
 		},
 		{
 			"name": "Ecks",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
+			"page": 188,
 			"size": [
 				"T"
 			],
 			"type": "construct",
-			"source": "zorq",
 			"alignment": [
 				"N"
 			],
@@ -2650,6 +2664,15 @@
 			"int": 10,
 			"wis": 10,
 			"cha": 16,
+			"skill": {
+				"acrobatics": "+4",
+				"athletics": "+0",
+				"stealth": "+6"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
 			"immune": [
 				"poison"
 			],
@@ -2657,10 +2680,6 @@
 				"charmed",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 10,
 			"languages": [
 				"understands the languages of its creator but can't speak"
 			],
@@ -2681,19 +2700,30 @@
 					]
 				}
 			],
-			"page": 188,
+			"familiar": true,
+			"token": {
+				"name": "Homunculus",
+				"source": "MM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/homunculus.mp3"
+				"path": "bestiary/homunculus.opus"
 			},
 			"senseTags": [
 				"D"
 			],
+			"damageTags": [
+				"P"
+			],
 			"miscTags": [
 				"MW"
 			],
-			"damageTags": [
-				"P"
+			"conditionInflict": [
+				"poisoned",
+				"unconscious"
+			],
+			"savingThrowForced": [
+				"constitution"
 			],
 			"fluff": {
 				"name": "Homunculus",
@@ -2718,34 +2748,16 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Homunculus",
-				"source": "MM"
-			},
-			"skill": {
-				"acrobatics": "+4",
-				"athletics": "+0",
-				"stealth": "+6"
-			},
-			"isNpc": true,
-			"familiar": true,
-			"isNamedCreature": true,
-			"conditionInflict": [
-				"poisoned",
-				"unconscious"
-			],
-			"savingThrowForced": [
-				"constitution"
-			]
+			}
 		},
 		{
 			"name": "Ethel Three School",
+			"source": "zorq",
+			"page": 209,
 			"size": [
 				"L"
 			],
 			"type": "monstrosity",
-			"source": "zorq",
 			"alignment": [
 				"C",
 				"N"
@@ -2783,7 +2795,6 @@
 			],
 			"passive": 10,
 			"cr": "3",
-			"page": 209,
 			"action": [
 				{
 					"name": "Multiattack",
@@ -2816,24 +2827,34 @@
 				"forest",
 				"hill"
 			],
+			"token": {
+				"name": "Gray Render",
+				"source": "MTF"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/gray-render.mp3"
+				"path": "bestiary/gray-render.opus"
 			},
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"D"
 			],
+			"actionTags": [
+				"Multiattack"
+			],
 			"damageTags": [
+				"B",
 				"P",
-				"S",
-				"B"
+				"S"
 			],
 			"miscTags": [
 				"MW",
 				"RCH"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"savingThrowForced": [
+				"strength"
 			],
 			"fluff": {
 				"name": "Gray Render",
@@ -2941,20 +2962,11 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Gray Render",
-				"source": "MTF"
-			},
-			"conditionInflict": [
-				"prone"
-			],
-			"savingThrowForced": [
-				"strength"
-			]
+			}
 		},
 		{
 			"name": "Fezziwig Hornswoggle",
+			"source": "zorq",
 			"size": [
 				"M"
 			],
@@ -2964,7 +2976,6 @@
 					"halfling"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"G"
@@ -3021,20 +3032,6 @@
 					]
 				}
 			],
-			"damageTags": [
-				"S"
-			],
-			"miscTags": [
-				"MW",
-				"MLW"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
 			"token": {
 				"name": "Pirate First Mate",
 				"source": "GoS"
@@ -3042,13 +3039,215 @@
 			"attachedItems": [
 				"longsword|phb"
 			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MLW",
+				"MW"
+			],
 			"savingThrowForced": [
 				"strength"
 			]
 		},
 		{
+			"name": "Foldorf",
 			"source": "zorq",
+			"page": 164,
+			"size": [
+				"S"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"gnome"
+				]
+			},
+			"alignment": [
+				"N",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item chain shirt|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 16,
+				"formula": "3d6 + 6"
+			},
+			"speed": {
+				"walk": 20
+			},
+			"str": 15,
+			"dex": 14,
+			"con": 14,
+			"int": 12,
+			"wis": 10,
+			"cha": 9,
+			"skill": {
+				"investigation": "+3",
+				"perception": "+2",
+				"stealth": "+4"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 12,
+			"languages": [
+				"Gnomish",
+				"Terran",
+				"Undercommon"
+			],
+			"cr": "1",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"The gnome's innate spellcasting ability is Intelligence (spell save {@dc 11}). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell nondetection} (self only)"
+					],
+					"daily": {
+						"1e": [
+							"{@spell blindness/deafness}",
+							"{@spell blur}",
+							"{@spell disguise self}"
+						]
+					},
+					"ability": "int"
+				}
+			],
+			"trait": [
+				{
+					"name": "Stone Camouflage",
+					"entries": [
+						"The gnome has advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
+					]
+				},
+				{
+					"name": "Gnome Cunning",
+					"entries": [
+						"The gnome has advantage on Intelligence, Wisdom, and Charisma saving throws against magic."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "War Pick",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d8 + 2}) piercing damage."
+					]
+				},
+				{
+					"name": "Poisoned Dart",
+					"entries": [
+						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one creature. {@h}4 ({@damage 1d4 + 2}) piercing damage, and the target must succeed on a {@dc 12} Constitution saving throw or be {@condition poisoned} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success"
+					]
+				}
+			],
+			"environment": [
+				"underdark"
+			],
+			"token": {
+				"name": "Deep Gnome (Svirfneblin)",
+				"source": "MM"
+			},
+			"soundClip": {
+				"type": "internal",
+				"path": "bestiary/svirfneblin.opus"
+			},
+			"attachedItems": [
+				"war pick|phb"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"G",
+				"T",
+				"U"
+			],
+			"damageTags": [
+				"P"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"MLW",
+				"MW",
+				"RW",
+				"THW"
+			],
+			"conditionInflict": [
+				"poisoned"
+			],
+			"conditionInflictSpell": [
+				"blinded",
+				"deafened"
+			],
+			"savingThrowForced": [
+				"constitution"
+			],
+			"savingThrowForcedSpell": [
+				"constitution"
+			],
+			"fluff": {
+				"name": "Deep Gnome (Svirfneblin)",
+				"source": "MM",
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "internal",
+							"path": "bestiary/MM/Deep Gnome (Svirfneblin).webp"
+						}
+					}
+				],
+				"entries": [
+					"Deep gnomes, or svirfneblin, live far below the world's surface in twisting warrens and sculpted caverns. They survive by virtue of their stealth, cleverness, and tenacity. Their gray skin allows them to blend in with surrounding stonework. They are also surprisingly heavy and strong for their size. An average adult weighs 100 to 120 pounds and stands 3 feet tall.",
+					"A typical svirfneblin enclave contains several hundred deep gnomes and is strongly fortified. Secret tunnels lead to and from the settlement, and the deep gnomes use these as evacuation routes when the enclave comes under attack.",
+					{
+						"name": "Established Gender Roles",
+						"type": "entries",
+						"entries": [
+							"Male svirfneblin are bald, while females have stringy gray hair. Traditionally, females run the enclaves while males scour the outskirts in search of enemies and deposits of precious gemstones."
+						]
+					},
+					{
+						"name": "Gemstone Harvesters",
+						"type": "entries",
+						"entries": [
+							"Svirfneblin cherish fine gemstones, especially rubies, which they harvest from mines deep in the Underdark. The hunt for gems often brings them into conflict with beholders, drow, kuo-toa, duergar, and mind flayers. Of all their natural enemies, deep gnomes fear and despise the murderous, demon worshiping drow the most."
+						]
+					},
+					{
+						"name": "Earth Friends",
+						"type": "entries",
+						"entries": [
+							"Deep gnomes are often encountered in the company of creatures from the Elemental Plane of Earth. Some svirfneblin can summon such creatures. Earth creatures guard svirfneblin settlements, especially xorn enticed to service with the promise of gems to feed on."
+						]
+					}
+				]
+			}
+		},
+		{
 			"name": "Forl",
+			"source": "zorq",
+			"page": 211,
 			"size": [
 				"S"
 			],
@@ -3102,7 +3301,6 @@
 					]
 				}
 			],
-			"page": 211,
 			"familiar": true,
 			"traitTags": [
 				"Keen Senses"
@@ -3140,194 +3338,11 @@
 			}
 		},
 		{
-			"name": "Foldorf",
-			"size": [
-				"S"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"gnome"
-				]
-			},
-			"source": "zorq",
-			"alignment": [
-				"N",
-				"G"
-			],
-			"ac": [
-				{
-					"ac": 15,
-					"from": [
-						"{@item chain shirt|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 16,
-				"formula": "3d6 + 6"
-			},
-			"speed": {
-				"walk": 20
-			},
-			"str": 15,
-			"dex": 14,
-			"con": 14,
-			"int": 12,
-			"wis": 10,
-			"cha": 9,
-			"skill": {
-				"investigation": "+3",
-				"perception": "+2",
-				"stealth": "+4"
-			},
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"passive": 12,
-			"languages": [
-				"Gnomish",
-				"Terran",
-				"Undercommon"
-			],
-			"cr": "1",
-			"trait": [
-				{
-					"name": "Stone Camouflage",
-					"entries": [
-						"The gnome has advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
-					]
-				},
-				{
-					"name": "Gnome Cunning",
-					"entries": [
-						"The gnome has advantage on Intelligence, Wisdom, and Charisma saving throws against magic."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "War Pick",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d8 + 2}) piercing damage."
-					]
-				},
-				{
-					"name": "Poisoned Dart",
-					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one creature. {@h}4 ({@damage 1d4 + 2}) piercing damage, and the target must succeed on a {@dc 12} Constitution saving throw or be {@condition poisoned} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success"
-					]
-				}
-			],
-			"page": 164,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The gnome's innate spellcasting ability is Intelligence (spell save {@dc 11}). It can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell nondetection} (self only)"
-					],
-					"daily": {
-						"1e": [
-							"{@spell blindness/deafness}",
-							"{@spell blur}",
-							"{@spell disguise self}"
-						]
-					},
-					"ability": "int",
-					"type": "spellcasting"
-				}
-			],
-			"environment": [
-				"underdark"
-			],
-			"soundClip": {
-				"type": "internal",
-				"path": "bestiary/svirfneblin.mp3"
-			},
-			"languageTags": [
-				"G",
-				"T",
-				"U"
-			],
-			"senseTags": [
-				"SD"
-			],
-			"spellcastingTags": [
-				"I"
-			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"THW",
-				"MLW"
-			],
-			"fluff": {
-				"name": "Deep Gnome (Svirfneblin)",
-				"source": "MM",
-				"images": [
-					{
-						"type": "image",
-						"href": {
-							"type": "internal",
-							"path": "bestiary/MM/Deep Gnome (Svirfneblin).webp"
-						}
-					}
-				],
-				"entries": [
-					"Deep gnomes, or svirfneblin, live far below the world's surface in twisting warrens and sculpted caverns. They survive by virtue of their stealth, cleverness, and tenacity. Their gray skin allows them to blend in with surrounding stonework. They are also surprisingly heavy and strong for their size. An average adult weighs 100 to 120 pounds and stands 3 feet tall.",
-					"A typical svirfneblin enclave contains several hundred deep gnomes and is strongly fortified. Secret tunnels lead to and from the settlement, and the deep gnomes use these as evacuation routes when the enclave comes under attack.",
-					{
-						"name": "Established Gender Roles",
-						"type": "entries",
-						"entries": [
-							"Male svirfneblin are bald, while females have stringy gray hair. Traditionally, females run the enclaves while males scour the outskirts in search of enemies and deposits of precious gemstones."
-						]
-					},
-					{
-						"name": "Gemstone Harvesters",
-						"type": "entries",
-						"entries": [
-							"Svirfneblin cherish fine gemstones, especially rubies, which they harvest from mines deep in the Underdark. The hunt for gems often brings them into conflict with beholders, drow, kuo-toa, duergar, and mind flayers. Of all their natural enemies, deep gnomes fear and despise the murderous, demon worshiping drow the most."
-						]
-					},
-					{
-						"name": "Earth Friends",
-						"type": "entries",
-						"entries": [
-							"Deep gnomes are often encountered in the company of creatures from the Elemental Plane of Earth. Some svirfneblin can summon such creatures. Earth creatures guard svirfneblin settlements, especially xorn enticed to service with the promise of gems to feed on."
-						]
-					}
-				]
-			},
-			"token": {
-				"name": "Deep Gnome (Svirfneblin)",
-				"source": "MM"
-			},
-			"conditionInflict": [
-				"poisoned"
-			],
-			"conditionInflictSpell": [
-				"blinded",
-				"deafened"
-			],
-			"attachedItems": [
-				"war pick|phb"
-			],
-			"savingThrowForced": [
-				"constitution"
-			],
-			"savingThrowForcedSpell": [
-				"constitution"
-			]
-		},
-		{
 			"name": "Galax Belle-mere",
+			"shortName": "Galax",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
 			"size": [
 				"M"
 			],
@@ -3338,7 +3353,6 @@
 					"belle-mere"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"G"
@@ -3381,6 +3395,27 @@
 				"Salamander"
 			],
 			"cr": "1",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"Galax is a 3rd-level spellcaster.  Her spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). She regains her expended spell slots when she finishes a long rest. She knows the following paladin spells:"
+					],
+					"spells": {
+						"1": {
+							"spells": [
+								"{@spell bless|PHB}",
+								"{@spell compelled duel|PHB}",
+								"{@spell cure wounds|PHB}",
+								"{@spell detect evil and good|PHB}"
+							],
+							"slots": 3
+						}
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Hold Breath",
@@ -3435,17 +3470,13 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RCH",
-				"MLW"
-			],
-			"languageTags": [
-				"C",
-				"DR"
+			"token": {
+				"name": "Lizardfolk Scaleshield",
+				"source": "GoS"
+			},
+			"attachedItems": [
+				"lance|phb",
+				"morningstar|phb"
 			],
 			"traitTags": [
 				"Charge",
@@ -3453,6 +3484,21 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MLW",
+				"MW",
+				"RCH"
+			],
+			"savingThrowForcedSpell": [
+				"wisdom"
 			],
 			"fluff": {
 				"entries": [
@@ -3463,45 +3509,13 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Lizardfolk Scaleshield",
-				"source": "GoS"
-			},
-			"shortName": "Galax",
-			"isNamedCreature": true,
-			"isNpc": true,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"ability": "cha",
-					"headerEntries": [
-						"Galax is a 3rd-level spellcaster.  Her spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). She regains her expended spell slots when she finishes a long rest. She knows the following paladin spells:"
-					],
-					"spells": {
-						"1": {
-							"spells": [
-								"{@spell bless|PHB}",
-								"{@spell compelled duel|PHB}",
-								"{@spell cure wounds|PHB}",
-								"{@spell detect evil and good|PHB}"
-							],
-							"slots": 3
-						}
-					},
-					"type": "spellcasting"
-				}
-			],
-			"attachedItems": [
-				"lance|phb",
-				"morningstar|phb"
-			],
-			"savingThrowForcedSpell": [
-				"wisdom"
-			]
+			}
 		},
 		{
 			"name": "Goglocks",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
 			"size": [
 				"L"
 			],
@@ -3511,7 +3525,6 @@
 					"Yeth hound"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"N",
 				"E"
@@ -3542,15 +3555,19 @@
 			"int": 5,
 			"wis": 12,
 			"cha": 7,
+			"save": {
+				"str": "+5",
+				"dex": "+4"
+			},
 			"skill": {
 				"athletics": "+7",
 				"perception": "+5",
 				"stealth": "+4"
 			},
-			"save": {
-				"str": "+5",
-				"dex": "+4"
-			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 15,
 			"resist": [
 				{
 					"resist": [
@@ -3567,16 +3584,28 @@
 				"exhaustion",
 				"frightened"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 15,
 			"languages": [
 				"Common",
 				"Elvish",
 				"and Sylvan"
 			],
 			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"header"
+					],
+					"daily": {
+						"1e": [
+							"{@spell barkskin|PHB}",
+							"{@spell tree stride|PHB}"
+						]
+					},
+					"ability": "wis"
+				}
+			],
 			"trait": [
 				{
 					"name": "Keen Hearing and Smell",
@@ -3622,16 +3651,20 @@
 				"grassland",
 				"hill"
 			],
+			"token": {
+				"name": "Yeth Hound",
+				"source": "VGM"
+			},
 			"traitTags": [
 				"Keen Senses"
+			],
+			"senseTags": [
+				"D"
 			],
 			"languageTags": [
 				"C",
 				"E",
 				"S"
-			],
-			"senseTags": [
-				"D"
 			],
 			"damageTags": [
 				"P",
@@ -3639,28 +3672,6 @@
 			],
 			"miscTags": [
 				"MW"
-			],
-			"token": {
-				"name": "Yeth Hound",
-				"source": "VGM"
-			},
-			"isNpc": true,
-			"isNamedCreature": true,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"header"
-					],
-					"daily": {
-						"1e": [
-							"{@spell barkskin|PHB}",
-							"{@spell tree stride|PHB}"
-						]
-					},
-					"ability": "wis",
-					"type": "spellcasting"
-				}
 			],
 			"conditionInflict": [
 				"frightened"
@@ -3671,6 +3682,7 @@
 		},
 		{
 			"name": "Graal",
+			"source": "zorq",
 			"size": [
 				"L"
 			],
@@ -3681,7 +3693,6 @@
 					"she, her"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"U"
 			],
@@ -3749,18 +3760,22 @@
 			"environment": [
 				"forest"
 			],
+			"token": {
+				"name": "Girallon",
+				"source": "VGM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/girallon.mp3"
+				"path": "bestiary/girallon.opus"
 			},
 			"traitTags": [
 				"Aggressive"
 			],
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"damageTags": [
 				"P",
@@ -3814,22 +3829,18 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Girallon",
-				"source": "VGM"
 			}
 		},
 		{
 			"name": "Hagnar Rezfort (spirit form)",
 			"shortName": "Hagnar",
-			"isNamedCreature": true,
 			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
 			"size": [
 				"M"
 			],
 			"type": "fiend",
-			"source": "zorq",
 			"alignment": [
 				"C",
 				"N"
@@ -3858,17 +3869,33 @@
 				"athletics": "+3",
 				"perception": "+0"
 			},
-			"conditionImmune": [
-				"blinded"
-			],
 			"senses": [
 				"darkvision 120 ft."
 			],
 			"passive": 10,
+			"conditionImmune": [
+				"blinded"
+			],
 			"languages": [
 				"Common"
 			],
 			"cr": "1",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"type": "spellcasting",
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell infestation|XGE}",
+								"{@spell mind sliver|UASorcererAndWarlock}",
+								"{@spell thorn whip|PHB}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
 			"trait": [
 				{
 					"name": "Trackless",
@@ -3892,39 +3919,23 @@
 				"underdark",
 				"urban"
 			],
-			"languageTags": [
-				"C"
-			],
 			"senseTags": [
 				"SD"
 			],
+			"languageTags": [
+				"C"
+			],
 			"damageTags": [
-				"S",
-				"N"
-			],
-			"miscTags": [
-				"MW"
-			],
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell infestation|XGE}",
-								"{@spell mind sliver|UASorcererAndWarlock}",
-								"{@spell thorn whip|PHB}"
-							]
-						}
-					},
-					"ability": "int",
-					"type": "spellcasting"
-				}
+				"N",
+				"S"
 			],
 			"damageTagsSpell": [
 				"I",
 				"P",
 				"Y"
+			],
+			"miscTags": [
+				"MW"
 			],
 			"savingThrowForcedSpell": [
 				"constitution",
@@ -3933,6 +3944,8 @@
 		},
 		{
 			"name": "Juniper Three School",
+			"source": "zorq",
+			"page": 219,
 			"size": [
 				"M"
 			],
@@ -3942,7 +3955,6 @@
 					"any race"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"A"
 			],
@@ -3977,34 +3989,18 @@
 				"nature": "+2",
 				"persuasion": "+6"
 			},
+			"passive": 11,
 			"conditionImmune": [
 				"charmed"
 			],
-			"passive": 11,
 			"languages": [
 				"any two languages (usually Sylvan)"
 			],
 			"cr": "4",
-			"action": [
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Misty Escape (Recharges after a Short or Long Rest)",
-					"entries": [
-						"In response to taking damage, the warlock turns {@condition invisible} and teleports up to 60 feet to an unoccupied space it can see. It remains {@condition invisible} until the start of its next turn or until it attacks, makes a damage roll, or casts a spell."
-					]
-				}
-			],
-			"page": 219,
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
+					"type": "spellcasting",
 					"headerEntries": [
 						"The warlock's innate spellcasting ability is Charisma. It can innately cast the following spells (spell save {@dc 15}), requiring no material components:"
 					],
@@ -4019,11 +4015,11 @@
 							"{@spell conjure fey}"
 						]
 					},
-					"ability": "cha",
-					"type": "spellcasting"
+					"ability": "cha"
 				},
 				{
 					"name": "Spellcasting",
+					"type": "spellcasting",
 					"headerEntries": [
 						"The warlock is an 11th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 14}, {@hit 6} to hit with spell attacks). It regains its expended spell slots when it finishes a short or long rest. It knows the following warlock spells:"
 					],
@@ -4057,8 +4053,23 @@
 							]
 						}
 					},
-					"ability": "cha",
-					"type": "spellcasting"
+					"ability": "cha"
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Misty Escape (Recharges after a Short or Long Rest)",
+					"entries": [
+						"In response to taking damage, the warlock turns {@condition invisible} and teleports up to 60 feet to an unoccupied space it can see. It remains {@condition invisible} until the start of its next turn or until it attacks, makes a damage roll, or casts a spell."
+					]
 				}
 			],
 			"environment": [
@@ -4068,26 +4079,49 @@
 				"swamp",
 				"urban"
 			],
+			"token": {
+				"name": "Warlock of the Archfey",
+				"source": "VGM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/warlock-of-the-archfey.mp3"
+				"path": "bestiary/warlock-of-the-archfey.opus"
 			},
+			"attachedItems": [
+				"dagger|phb"
+			],
 			"languageTags": [
 				"S",
 				"X"
 			],
-			"spellcastingTags": [
-				"I",
-				"CL"
-			],
 			"damageTags": [
 				"P"
 			],
+			"damageTagsSpell": [
+				"O",
+				"Y"
+			],
+			"spellcastingTags": [
+				"CL",
+				"I"
+			],
 			"miscTags": [
-				"RW",
+				"MLW",
 				"MW",
-				"THW",
-				"MLW"
+				"RW",
+				"THW"
+			],
+			"conditionInflictSpell": [
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"unconscious"
+			],
+			"savingThrowForcedSpell": [
+				"charisma",
+				"dexterity",
+				"intelligence",
+				"wisdom"
 			],
 			"fluff": {
 				"name": "Warlock of the Archfey",
@@ -4106,33 +4140,11 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Warlock of the Archfey",
-				"source": "VGM"
-			},
-			"conditionInflictSpell": [
-				"charmed",
-				"frightened",
-				"paralyzed",
-				"unconscious"
-			],
-			"damageTagsSpell": [
-				"O",
-				"Y"
-			],
-			"attachedItems": [
-				"dagger|phb"
-			],
-			"savingThrowForcedSpell": [
-				"charisma",
-				"dexterity",
-				"intelligence",
-				"wisdom"
-			]
+			}
 		},
 		{
 			"name": "Limalay",
+			"source": "zorq",
 			"size": [
 				"L"
 			],
@@ -4144,7 +4156,6 @@
 					"pronouns: she, her, hers"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"G"
@@ -4180,21 +4191,52 @@
 			"skill": {
 				"athletics": "+9"
 			},
+			"senses": [
+				"blindsight 30 ft.",
+				"darkvision 120 ft."
+			],
+			"passive": 13,
 			"resist": [
 				"acid",
 				"cold",
 				"lightning",
 				"radiant"
 			],
-			"senses": [
-				"blindsight 30 ft.",
-				"darkvision 120 ft."
-			],
-			"passive": 13,
 			"languages": [
 				"all"
 			],
 			"cr": "7",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"Dalariel's innate spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks). She can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell create or destroy water}",
+						"{@spell detect evil and good}",
+						"{@spell detect magic}",
+						"{@spell fog cloud}",
+						"{@spell purify food and drink}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell tongues}",
+							"{@spell water breathing}",
+							"{@spell water walk}"
+						],
+						"1e": [
+							"{@spell conjure elemental} (water elemental only)",
+							"{@spell control water}",
+							"{@spell gaseous form}",
+							"{@spell invisibility}",
+							"{@spell plane shift}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"type": "inset",
@@ -4255,36 +4297,8 @@
 					]
 				}
 			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Dalariel's innate spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks). She can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell create or destroy water}",
-						"{@spell detect evil and good}",
-						"{@spell detect magic}",
-						"{@spell fog cloud}",
-						"{@spell purify food and drink}"
-					],
-					"daily": {
-						"3e": [
-							"{@spell tongues}",
-							"{@spell water breathing}",
-							"{@spell water walk}"
-						],
-						"1e": [
-							"{@spell conjure elemental} (water elemental only)",
-							"{@spell control water}",
-							"{@spell gaseous form}",
-							"{@spell invisibility}",
-							"{@spell plane shift}"
-						]
-					},
-					"ability": "cha",
-					"type": "spellcasting"
-				}
+			"attachedItems": [
+				"trident|phb"
 			],
 			"traitTags": [
 				"Amphibious",
@@ -4300,13 +4314,10 @@
 				"B"
 			],
 			"miscTags": [
-				"RW",
+				"MLW",
 				"MW",
-				"THW",
-				"MLW"
-			],
-			"attachedItems": [
-				"trident|phb"
+				"RW",
+				"THW"
 			],
 			"savingThrowForcedSpell": [
 				"charisma",
@@ -4315,6 +4326,8 @@
 		},
 		{
 			"name": "Lole of the Moonlit Sun",
+			"source": "zorq",
+			"page": 189,
 			"size": [
 				"M"
 			],
@@ -4324,7 +4337,6 @@
 					"angel"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"G"
@@ -4359,6 +4371,11 @@
 				"investigation": "+3",
 				"perception": "+6"
 			},
+			"senses": [
+				"darkvision 120 ft.",
+				"truesight 120 ft."
+			],
+			"passive": 16,
 			"resist": [
 				"fire",
 				"radiant"
@@ -4368,16 +4385,10 @@
 				"exhaustion",
 				"frightened"
 			],
-			"passive": 16,
 			"languages": [
 				"all"
 			],
 			"cr": "5",
-			"page": 189,
-			"senses": [
-				"darkvision 120 ft.",
-				"truesight 120 ft."
-			],
 			"trait": [
 				{
 					"name": "Flyby",
@@ -4412,9 +4423,20 @@
 					]
 				}
 			],
+			"token": {
+				"name": "Battleforce Angel",
+				"source": "GGR"
+			},
+			"attachedItems": [
+				"longsword|phb"
+			],
 			"traitTags": [
 				"Flyby",
 				"Magic Resistance"
+			],
+			"senseTags": [
+				"SD",
+				"U"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -4422,17 +4444,13 @@
 			"languageTags": [
 				"XX"
 			],
-			"senseTags": [
-				"SD",
-				"U"
-			],
 			"damageTags": [
-				"S",
-				"R"
+				"R",
+				"S"
 			],
 			"miscTags": [
-				"MW",
-				"MLW"
+				"MLW",
+				"MW"
 			],
 			"fluff": {
 				"name": "Battleforce Angel",
@@ -4469,22 +4487,16 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Battleforce Angel",
-				"source": "GGR"
-			},
-			"attachedItems": [
-				"longsword|phb"
-			]
+			}
 		},
 		{
 			"name": "Munta",
+			"source": "zorq",
+			"page": 223,
 			"size": [
 				"L"
 			],
 			"type": "monstrosity",
-			"source": "zorq",
 			"alignment": [
 				"C",
 				"E"
@@ -4555,31 +4567,40 @@
 					]
 				}
 			],
-			"page": 223,
 			"environment": [
 				"underdark"
 			],
+			"token": {
+				"name": "Minotaur",
+				"source": "MM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/minotaur.mp3"
+				"path": "bestiary/minotaur.opus"
 			},
+			"attachedItems": [
+				"greataxe|phb"
+			],
 			"traitTags": [
 				"Charge",
 				"Reckless"
 			],
-			"languageTags": [
-				"AB"
-			],
 			"senseTags": [
 				"D"
 			],
+			"languageTags": [
+				"AB"
+			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
-				"MW",
-				"MLW"
+				"MLW",
+				"MW"
+			],
+			"savingThrowForced": [
+				"strength"
 			],
 			"fluff": {
 				"name": "Minotaur",
@@ -4615,20 +4636,12 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Minotaur",
-				"source": "MM"
-			},
-			"attachedItems": [
-				"greataxe|phb"
-			],
-			"savingThrowForced": [
-				"strength"
-			]
+			}
 		},
 		{
 			"name": "Naiphaelead (nay-phal-ee-ad)",
+			"source": "zorq",
+			"page": 266,
 			"size": [
 				"L"
 			],
@@ -4639,7 +4652,6 @@
 					"giant salamander"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"C",
 				"N"
@@ -4665,6 +4677,10 @@
 			"int": 11,
 			"wis": 10,
 			"cha": 12,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
 			"resist": [
 				{
 					"resist": [
@@ -4676,16 +4692,12 @@
 					"cond": true
 				}
 			],
-			"vulnerable": [
-				"cold"
-			],
 			"immune": [
 				"fire"
 			],
-			"senses": [
-				"darkvision 60 ft."
+			"vulnerable": [
+				"cold"
 			],
-			"passive": 10,
 			"languages": [
 				"Ignan"
 			],
@@ -4731,34 +4743,44 @@
 					]
 				}
 			],
-			"page": 266,
 			"environment": [
 				"underdark"
 			],
+			"token": {
+				"name": "Salamander",
+				"source": "MM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/salamander.mp3"
+				"path": "bestiary/salamander.opus"
 			},
+			"attachedItems": [
+				"spear|phb"
+			],
+			"senseTags": [
+				"D"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"IG"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
-				"P",
+				"B",
 				"F",
-				"B"
+				"P"
 			],
 			"miscTags": [
-				"RW",
+				"MLW",
 				"MW",
-				"THW",
 				"RCH",
-				"MLW"
+				"RW",
+				"THW"
+			],
+			"conditionInflict": [
+				"grappled",
+				"restrained"
 			],
 			"fluff": {
 				"name": "Salamander",
@@ -4815,26 +4837,17 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Salamander",
-				"source": "MM"
-			},
-			"conditionInflict": [
-				"grappled",
-				"restrained"
-			],
-			"attachedItems": [
-				"spear|phb"
-			]
+			}
 		},
 		{
 			"name": "Nexnag",
+			"isNamedCreature": true,
+			"source": "zorq",
+			"page": 91,
 			"size": [
 				"M"
 			],
 			"type": "dragon",
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"N"
@@ -4872,14 +4885,14 @@
 				"perception": "+4",
 				"stealth": "+2"
 			},
-			"immune": [
-				"lightning"
-			],
 			"senses": [
 				"blindsight 10 ft.",
 				"darkvision 60 ft."
 			],
 			"passive": 14,
+			"immune": [
+				"lightning"
+			],
 			"languages": [
 				"Draconic"
 			],
@@ -4898,25 +4911,34 @@
 					]
 				}
 			],
-			"page": 91,
+			"token": {
+				"name": "Blue Dragon Wyrmling",
+				"source": "MM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/blue-dragon-wyrmling.mp3"
+				"path": "bestiary/blue-dragon-wyrmling.opus"
 			},
-			"languageTags": [
-				"DR"
-			],
 			"senseTags": [
 				"B",
 				"D"
 			],
+			"actionTags": [
+				"Breath Weapon"
+			],
+			"languageTags": [
+				"DR"
+			],
 			"damageTags": [
-				"P",
-				"L"
+				"L",
+				"P"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
+			],
+			"savingThrowForced": [
+				"dexterity"
 			],
 			"fluff": {
 				"name": "Blue Dragon Wyrmling",
@@ -5065,21 +5087,13 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Blue Dragon Wyrmling",
-				"source": "MM"
-			},
-			"isNamedCreature": true,
-			"actionTags": [
-				"Breath Weapon"
-			],
-			"savingThrowForced": [
-				"dexterity"
-			]
+			}
 		},
 		{
 			"name": "Oklmuk",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
 			"size": [
 				"S"
 			],
@@ -5089,7 +5103,6 @@
 					"devil"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"E"
@@ -5128,6 +5141,10 @@
 				"history": "+9",
 				"stealth": "+8"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 9,
 			"resist": [
 				"cold",
 				{
@@ -5147,10 +5164,6 @@
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"passive": 9,
 			"languages": [
 				"Celestial",
 				"Common",
@@ -5158,6 +5171,28 @@
 				"Infernal; telepathy (120 ft.)"
 			],
 			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"The ink devil's spellcasting ability is Charisma (spell save {@dc 14}). The ink devil can cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell illusory script}",
+						"{@spell invisibility}",
+						"{@spell teleport} (self plus 50 lb. of objects only)"
+					],
+					"daily": {
+						"1e": [
+							"{@spell glyph of warding}",
+							"{@spell planar ally} ({@dice 1d4}+1 {@creature lemure|mm|lemures} 40% or 1 ink devil 25%)"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Devil's Sight",
@@ -5204,28 +5239,6 @@
 					]
 				}
 			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The ink devil's spellcasting ability is Charisma (spell save {@dc 14}). The ink devil can cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell detect magic}",
-						"{@spell illusory script}",
-						"{@spell invisibility}",
-						"{@spell teleport} (self plus 50 lb. of objects only)"
-					],
-					"daily": {
-						"1e": [
-							"{@spell glyph of warding}",
-							"{@spell planar ally} ({@dice 1d4}+1 {@creature lemure|mm|lemures} 40% or 1 ink devil 25%)"
-						]
-					},
-					"ability": "cha",
-					"type": "spellcasting"
-				}
-			],
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB/token/Ink%20Devil.png",
 			"traitTags": [
 				"Devil's Sight",
@@ -5235,8 +5248,8 @@
 				"SD"
 			],
 			"languageTags": [
-				"CE",
 				"C",
+				"CE",
 				"DR",
 				"I",
 				"TP"
@@ -5245,20 +5258,18 @@
 				"P",
 				"S"
 			],
-			"miscTags": [
-				"MW"
-			],
-			"spellcastingTags": [
-				"I"
-			],
-			"isNamedCreature": true,
-			"isNpc": true,
 			"damageTagsSpell": [
 				"A",
 				"C",
 				"F",
 				"L",
 				"T"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"MW"
 			],
 			"savingThrowForced": [
 				"intelligence",
@@ -5270,6 +5281,10 @@
 		},
 		{
 			"name": "Oriax",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
+			"page": 122,
 			"size": [
 				"L"
 			],
@@ -5281,7 +5296,6 @@
 					"she, her"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"U"
 			],
@@ -5310,14 +5324,14 @@
 				"athletics": "+8",
 				"stealth": "+7"
 			},
-			"conditionImmune": [
-				"charmed",
-				"frightened"
-			],
 			"senses": [
 				"darkvision 120 ft."
 			],
 			"passive": 12,
+			"conditionImmune": [
+				"charmed",
+				"frightened"
+			],
 			"languages": [
 				"Common and the languages of its creator but can't speak"
 			],
@@ -5369,30 +5383,44 @@
 					]
 				}
 			],
-			"page": 122,
 			"environment": [
 				"urban"
 			],
+			"token": {
+				"name": "Banderhobb",
+				"source": "VGM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/banderhobb.mp3"
+				"path": "bestiary/banderhobb.opus"
 			},
-			"actionTags": [
-				"Swallow"
+			"traitTags": [
+				"Amphibious"
 			],
 			"senseTags": [
 				"SD"
 			],
+			"actionTags": [
+				"Swallow"
+			],
+			"languageTags": [
+				"CS"
+			],
 			"damageTags": [
-				"P",
-				"N"
+				"N",
+				"P"
 			],
 			"miscTags": [
 				"MW",
 				"RCH"
 			],
-			"languageTags": [
-				"CS"
+			"conditionInflict": [
+				"blinded",
+				"grappled",
+				"restrained"
+			],
+			"savingThrowForced": [
+				"strength"
 			],
 			"fluff": {
 				"name": "Banderhobb",
@@ -5436,27 +5464,12 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Banderhobb",
-				"source": "VGM"
-			},
-			"traitTags": [
-				"Amphibious"
-			],
-			"isNamedCreature": true,
-			"isNpc": true,
-			"conditionInflict": [
-				"grappled",
-				"restrained",
-				"blinded"
-			],
-			"savingThrowForced": [
-				"strength"
-			]
+			}
 		},
 		{
 			"name": "Oubriidthe",
+			"isNpc": true,
+			"source": "zorq",
 			"size": [
 				"M"
 			],
@@ -5467,7 +5480,6 @@
 					"\"oo-breeth\""
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"N"
 			],
@@ -5488,13 +5500,13 @@
 			"int": 3,
 			"wis": 10,
 			"cha": 6,
-			"conditionImmune": [
-				"prone"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 10,
+			"conditionImmune": [
+				"prone"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -5533,23 +5545,22 @@
 			"environment": [
 				"underdark"
 			],
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			],
-			"isNpc": true,
 			"conditionInflict": [
-				"prone",
-				"blinded"
+				"blinded",
+				"prone"
 			],
 			"savingThrowForced": [
 				"dexterity",
@@ -5559,6 +5570,11 @@
 		},
 		{
 			"name": "Pennington Applepie",
+			"shortName": "Penny",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
+			"page": 320,
 			"size": [
 				"S"
 			],
@@ -5569,7 +5585,6 @@
 					"she, her"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"G"
@@ -5597,6 +5612,9 @@
 			"int": 14,
 			"wis": 10,
 			"cha": 10,
+			"save": {
+				"int": "+4"
+			},
 			"skill": {
 				"acrobatics": "+6",
 				"perception": "+4",
@@ -5661,8 +5679,11 @@
 					]
 				}
 			],
-			"page": 320,
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB/token/Ratfolk%20Rogue.png",
+			"attachedItems": [
+				"dagger|phb",
+				"light crossbow|phb"
+			],
 			"traitTags": [
 				"Pack Tactics",
 				"Sneak Attack"
@@ -5677,35 +5698,25 @@
 				"P"
 			],
 			"miscTags": [
+				"MLW",
 				"MW",
-				"RW",
 				"RNG",
-				"THW",
-				"MLW"
+				"RW",
+				"THW"
 			],
-			"shortName": "Penny",
-			"save": {
-				"int": "+4"
-			},
-			"isNamedCreature": true,
+			"conditionInflict": [
+				"incapacitated"
+			],
 			"fluff": {
 				"entries": [
 					"Hunting down Ella Loop (or the many manifestations thereof)."
 				]
-			},
-			"isNpc": true,
-			"conditionInflict": [
-				"incapacitated"
-			],
-			"attachedItems": [
-				"dagger|phb",
-				"light crossbow|phb"
-			]
+			}
 		},
 		{
 			"name": "Phoenix Molvraki",
-			"source": "zorq",
 			"shortName": "Phoenix M.",
+			"source": "zorq",
 			"size": [
 				"M"
 			],
@@ -5740,6 +5751,10 @@
 			"int": 12,
 			"wis": 18,
 			"cha": 16,
+			"save": {
+				"int": "+4",
+				"wis": "+7"
+			},
 			"skill": {
 				"acrobatics": "+6",
 				"insight": "+7",
@@ -5832,6 +5847,14 @@
 					]
 				}
 			],
+			"token": {
+				"name": "Kalashtar",
+				"source": "ERLW"
+			},
+			"attachedItems": [
+				"dagger|phb",
+				"spear|phb"
+			],
 			"languageTags": [
 				"C",
 				"TP"
@@ -5841,10 +5864,13 @@
 				"Y"
 			],
 			"miscTags": [
-				"RW",
+				"MLW",
 				"MW",
-				"THW",
-				"MLW"
+				"RW",
+				"THW"
+			],
+			"savingThrowForced": [
+				"wisdom"
 			],
 			"fluff": {
 				"name": "Kalashtar",
@@ -5861,25 +5887,11 @@
 						}
 					}
 				]
-			},
-			"token": {
-				"name": "Kalashtar",
-				"source": "ERLW"
-			},
-			"save": {
-				"int": "+4",
-				"wis": "+7"
-			},
-			"attachedItems": [
-				"dagger|phb",
-				"spear|phb"
-			],
-			"savingThrowForced": [
-				"wisdom"
-			]
+			}
 		},
 		{
 			"name": "Polive Pittlans",
+			"source": "zorq",
 			"size": [
 				"S"
 			],
@@ -5889,7 +5901,6 @@
 					"gnome"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"N",
 				"G"
@@ -5930,6 +5941,26 @@
 				"Undercommon"
 			],
 			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"The gnome's innate spellcasting ability is Intelligence (spell save {@dc 11}). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell nondetection} (self only)"
+					],
+					"daily": {
+						"1e": [
+							"{@spell blindness/deafness}",
+							"{@spell blur}",
+							"{@spell disguise self}"
+						]
+					},
+					"ability": "int"
+				}
+			],
 			"trait": [
 				{
 					"name": "Stone Camouflage",
@@ -5958,52 +5989,52 @@
 					]
 				}
 			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The gnome's innate spellcasting ability is Intelligence (spell save {@dc 11}). It can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell nondetection} (self only)"
-					],
-					"daily": {
-						"1e": [
-							"{@spell blindness/deafness}",
-							"{@spell blur}",
-							"{@spell disguise self}"
-						]
-					},
-					"ability": "int",
-					"type": "spellcasting"
-				}
-			],
 			"environment": [
 				"underdark"
 			],
+			"token": {
+				"name": "Deep Gnome (Svirfneblin)",
+				"source": "MM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/svirfneblin.mp3"
+				"path": "bestiary/svirfneblin.opus"
 			},
+			"attachedItems": [
+				"war pick|phb"
+			],
+			"senseTags": [
+				"SD"
+			],
 			"languageTags": [
 				"G",
 				"T",
 				"U"
 			],
-			"senseTags": [
-				"SD"
+			"damageTags": [
+				"P"
 			],
 			"spellcastingTags": [
 				"I"
 			],
-			"damageTags": [
-				"P"
-			],
 			"miscTags": [
+				"MLW",
 				"MW",
 				"RW",
-				"THW",
-				"MLW"
+				"THW"
+			],
+			"conditionInflict": [
+				"poisoned"
+			],
+			"conditionInflictSpell": [
+				"blinded",
+				"deafened"
+			],
+			"savingThrowForced": [
+				"constitution"
+			],
+			"savingThrowForcedSpell": [
+				"constitution"
 			],
 			"fluff": {
 				"name": "Deep Gnome (Svirfneblin)",
@@ -6042,30 +6073,11 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Deep Gnome (Svirfneblin)",
-				"source": "MM"
-			},
-			"conditionInflict": [
-				"poisoned"
-			],
-			"conditionInflictSpell": [
-				"blinded",
-				"deafened"
-			],
-			"attachedItems": [
-				"war pick|phb"
-			],
-			"savingThrowForced": [
-				"constitution"
-			],
-			"savingThrowForcedSpell": [
-				"constitution"
-			]
+			}
 		},
 		{
 			"name": "Riult",
+			"source": "zorq",
 			"size": [
 				"S"
 			],
@@ -6075,7 +6087,6 @@
 					"gnome"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"N",
 				"G"
@@ -6116,6 +6127,26 @@
 				"Undercommon"
 			],
 			"cr": "1",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"The gnome's innate spellcasting ability is Intelligence (spell save {@dc 11}). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell nondetection} (self only)"
+					],
+					"daily": {
+						"1e": [
+							"{@spell blindness/deafness}",
+							"{@spell blur}",
+							"{@spell disguise self}"
+						]
+					},
+					"ability": "int"
+				}
+			],
 			"trait": [
 				{
 					"name": "Stone Camouflage",
@@ -6144,52 +6175,52 @@
 					]
 				}
 			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The gnome's innate spellcasting ability is Intelligence (spell save {@dc 11}). It can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell nondetection} (self only)"
-					],
-					"daily": {
-						"1e": [
-							"{@spell blindness/deafness}",
-							"{@spell blur}",
-							"{@spell disguise self}"
-						]
-					},
-					"ability": "int",
-					"type": "spellcasting"
-				}
-			],
 			"environment": [
 				"underdark"
 			],
+			"token": {
+				"name": "Deep Gnome (Svirfneblin)",
+				"source": "MM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/svirfneblin.mp3"
+				"path": "bestiary/svirfneblin.opus"
 			},
+			"attachedItems": [
+				"war pick|phb"
+			],
+			"senseTags": [
+				"SD"
+			],
 			"languageTags": [
 				"G",
 				"T",
 				"U"
 			],
-			"senseTags": [
-				"SD"
+			"damageTags": [
+				"P"
 			],
 			"spellcastingTags": [
 				"I"
 			],
-			"damageTags": [
-				"P"
-			],
 			"miscTags": [
+				"MLW",
 				"MW",
 				"RW",
-				"THW",
-				"MLW"
+				"THW"
+			],
+			"conditionInflict": [
+				"poisoned"
+			],
+			"conditionInflictSpell": [
+				"blinded",
+				"deafened"
+			],
+			"savingThrowForced": [
+				"constitution"
+			],
+			"savingThrowForcedSpell": [
+				"constitution"
 			],
 			"fluff": {
 				"name": "Deep Gnome (Svirfneblin)",
@@ -6228,54 +6259,12 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Deep Gnome (Svirfneblin)",
-				"source": "MM"
-			},
-			"conditionInflict": [
-				"poisoned"
-			],
-			"conditionInflictSpell": [
-				"blinded",
-				"deafened"
-			],
-			"attachedItems": [
-				"war pick|phb"
-			],
-			"savingThrowForced": [
-				"constitution"
-			],
-			"savingThrowForcedSpell": [
-				"constitution"
-			]
+			}
 		},
 		{
 			"name": "Sally Farmer",
+			"isNpc": true,
 			"source": "zorq",
-			"action": [
-				{
-					"name": "Warhammer",
-					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}24 ({@damage 5d8 + 2}) bludgeoning damage, or 29 ({@damage 5d10 + 2}) bludgeoning damage if used with two hands."
-					]
-				}
-			],
-			"alignment": [
-				"L",
-				"G"
-			],
-			"miscTags": [
-				"MW",
-				"MLW"
-			],
-			"damageTags": [
-				"B"
-			],
-			"languageTags": [
-				"C",
-				"D"
-			],
 			"page": 78,
 			"size": [
 				"M"
@@ -6286,6 +6275,10 @@
 					"dwarf"
 				]
 			},
+			"alignment": [
+				"L",
+				"G"
+			],
 			"ac": [
 				{
 					"ac": 16,
@@ -6325,10 +6318,32 @@
 					]
 				}
 			],
+			"action": [
+				{
+					"name": "Warhammer",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}24 ({@damage 5d8 + 2}) bludgeoning damage, or 29 ({@damage 5d10 + 2}) bludgeoning damage if used with two hands."
+					]
+				}
+			],
 			"token": {
 				"name": "Shield Dwarf Guard",
 				"source": "SKT"
 			},
+			"attachedItems": [
+				"warhammer|phb"
+			],
+			"languageTags": [
+				"C",
+				"D"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MLW",
+				"MW"
+			],
 			"fluff": {
 				"entries": [
 					"dwarf of the Bloodforge clan",
@@ -6349,14 +6364,13 @@
 					"Norman's sister Felicity (human necromancer) and Maeve were the only ones to help Sally, and now she feels some loyalty to humans",
 					"skeleton attacks, looks the other way, doesn't tell Maeve (and the Robin Hood group) about as many of these as she should"
 				]
-			},
-			"isNpc": true,
-			"attachedItems": [
-				"warhammer|phb"
-			]
+			}
 		},
 		{
 			"name": "Shoemaker Byte",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
 			"size": [
 				"L"
 			],
@@ -6366,7 +6380,6 @@
 					"pronouns: she, her, hers"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"N",
 				"G"
@@ -6400,6 +6413,7 @@
 				"stealth": "+6",
 				"survival": "+7"
 			},
+			"passive": 17,
 			"immune": [
 				{
 					"immune": [
@@ -6411,7 +6425,6 @@
 					"cond": true
 				}
 			],
-			"passive": 17,
 			"languages": [
 				"Common",
 				"Ursine"
@@ -6463,42 +6476,10 @@
 					]
 				}
 			],
-			"environment": [
-				"arctic",
-				"forest",
-				"hill"
-			],
-			"soundClip": {
-				"type": "internal",
-				"path": "bestiary/werebear.mp3"
-			},
-			"traitTags": [
-				"Keen Senses"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C"
-			],
-			"damageTags": [
-				"P",
-				"S"
-			],
-			"miscTags": [
-				"MW",
-				"MLW"
-			],
-			"token": {
-				"name": "Werebear",
-				"source": "MM"
-			},
-			"isNamedCreature": true,
-			"isNpc": true,
-			"legendaryActions": 1,
 			"legendaryHeader": [
 				"As long as Shoemaker Byte is wearing her helmet, and on initiative count 20 (losing all ties) Byte can take 1 legendary action, choosing from the options below. Only one legendary action can be used at a time. Byte regains spent legendary actions at the start of her turn."
 			],
+			"legendaryActions": 1,
 			"legendary": [
 				{
 					"name": "Instill Guilt",
@@ -6519,24 +6500,55 @@
 					]
 				}
 			],
-			"fluff": {
-				"entries": [
-					"Shoemaker Byte is a legit bear. She has paws capable of dextrous object manipulation as well as claw-type enmurderment. She stands 11 ft. tall at the shoulder and weighs half a ton. She {@bold hates} forest fires."
-				]
-			},
-			"conditionInflict": [
-				"prone"
+			"environment": [
+				"arctic",
+				"forest",
+				"hill"
 			],
+			"token": {
+				"name": "Werebear",
+				"source": "MM"
+			},
+			"soundClip": {
+				"type": "internal",
+				"path": "bestiary/werebear.opus"
+			},
 			"attachedItems": [
 				"greataxe|phb"
+			],
+			"traitTags": [
+				"Keen Senses"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MLW",
+				"MW"
+			],
+			"conditionInflict": [
+				"prone"
 			],
 			"savingThrowForced": [
 				"strength",
 				"wisdom"
-			]
+			],
+			"fluff": {
+				"entries": [
+					"Shoemaker Byte is a legit bear. She has paws capable of dextrous object manipulation as well as claw-type enmurderment. She stands 11 ft. tall at the shoulder and weighs half a ton. She {@bold hates} forest fires."
+				]
+			}
 		},
 		{
 			"name": "Sigmurch",
+			"source": "zorq",
 			"size": [
 				"S"
 			],
@@ -6546,7 +6558,6 @@
 					"xvart"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"E"
 			],
@@ -6586,6 +6597,49 @@
 				"Common"
 			],
 			"cr": "1",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"The xvart's innate spellcasting ability is Charisma. it can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell mage armor} (self only)"
+					],
+					"ability": "cha"
+				},
+				{
+					"name": "Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"The xvart is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). It regains its expended spell slots when it finishes a short or long rest. It knows the following warlock spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell eldritch blast}",
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell poison spray}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"2": {
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell expeditious retreat}",
+								"{@spell invisibility}",
+								"{@spell scorching ray}"
+							],
+							"slots": 2,
+							"lower": 1
+						}
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Low Cunning",
@@ -6614,74 +6668,50 @@
 					]
 				}
 			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The xvart's innate spellcasting ability is Charisma. it can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell detect magic}",
-						"{@spell mage armor} (self only)"
-					],
-					"ability": "cha",
-					"type": "spellcasting"
-				},
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"The xvart is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). It regains its expended spell slots when it finishes a short or long rest. It knows the following warlock spells:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell eldritch blast}",
-								"{@spell mage hand}",
-								"{@spell minor illusion}",
-								"{@spell poison spray}",
-								"{@spell prestidigitation}"
-							]
-						},
-						"2": {
-							"spells": [
-								"{@spell burning hands}",
-								"{@spell expeditious retreat}",
-								"{@spell invisibility}",
-								"{@spell scorching ray}"
-							],
-							"slots": 2,
-							"lower": 1
-						}
-					},
-					"ability": "cha",
-					"type": "spellcasting"
-				}
-			],
 			"environment": [
 				"hill",
 				"underdark"
 			],
+			"token": {
+				"name": "Xvart Warlock of Raxivort",
+				"source": "VGM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/xvart-warlock-of-raxivort.mp3"
+				"path": "bestiary/xvart-warlock-of-raxivort.opus"
 			},
-			"languageTags": [
-				"AB",
-				"C"
+			"attachedItems": [
+				"scimitar|phb"
 			],
 			"senseTags": [
 				"D"
 			],
-			"spellcastingTags": [
-				"I",
-				"CL"
+			"languageTags": [
+				"AB",
+				"C"
 			],
 			"damageTags": [
 				"S"
 			],
+			"damageTagsSpell": [
+				"F",
+				"I",
+				"O"
+			],
+			"spellcastingTags": [
+				"CL",
+				"I"
+			],
 			"miscTags": [
-				"MW",
-				"MLW"
+				"MLW",
+				"MW"
+			],
+			"conditionInflictSpell": [
+				"invisible"
+			],
+			"savingThrowForcedSpell": [
+				"constitution",
+				"dexterity"
 			],
 			"fluff": {
 				"name": "Xvart Warlock of Raxivort",
@@ -6738,30 +6768,12 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Xvart Warlock of Raxivort",
-				"source": "VGM"
-			},
-			"conditionInflictSpell": [
-				"invisible"
-			],
-			"damageTagsSpell": [
-				"F",
-				"I",
-				"O"
-			],
-			"attachedItems": [
-				"scimitar|phb"
-			],
-			"savingThrowForcedSpell": [
-				"constitution",
-				"dexterity"
-			]
+			}
 		},
 		{
-			"source": "zorq",
 			"name": "Soul Rock",
+			"isNpc": true,
+			"source": "zorq",
 			"size": [
 				"M"
 			],
@@ -6795,19 +6807,23 @@
 			"int": 12,
 			"wis": 14,
 			"cha": 11,
+			"save": {
+				"str": "+6",
+				"con": "+5"
+			},
 			"skill": {
 				"perception": "+4",
 				"stealth": "+3",
 				"athletics": "+6",
 				"animal handling": "+4"
 			},
-			"resist": [
-				"poison"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 14,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"Common",
 				"Dwarvish"
@@ -6816,6 +6832,7 @@
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
+					"type": "spellcasting",
 					"headerEntries": [
 						"The dwarf's innate spellcasting ability is Wisdom. Their Spell Save DC is 12 and their Spellcasting Ability Modifier is +4. They can innately cast the following spells, requiring no material components:"
 					],
@@ -6830,8 +6847,7 @@
 							"{@spell these rocks look great|0}"
 						]
 					},
-					"ability": "wis",
-					"type": "spellcasting"
+					"ability": "wis"
 				}
 			],
 			"trait": [
@@ -6850,22 +6866,29 @@
 					]
 				}
 			],
-			"languageTags": [
-				"C",
-				"D"
+			"token": {
+				"name": "Albino Dwarf Spirit Warrior",
+				"source": "ToA"
+			},
+			"attachedItems": [
+				"handaxe|phb"
 			],
 			"senseTags": [
 				"D"
 			],
-			"spellcastingTags": [
-				"I"
+			"languageTags": [
+				"C",
+				"D"
 			],
 			"damageTags": [
 				"S"
 			],
+			"spellcastingTags": [
+				"I"
+			],
 			"miscTags": [
-				"MW",
-				"MLW"
+				"MLW",
+				"MW"
 			],
 			"fluff": {
 				"name": "Albino Dwarf Spirit Warrior",
@@ -6894,27 +6917,15 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Albino Dwarf Spirit Warrior",
-				"source": "ToA"
-			},
-			"save": {
-				"str": "+6",
-				"con": "+5"
-			},
-			"isNpc": true,
-			"attachedItems": [
-				"handaxe|phb"
-			]
+			}
 		},
 		{
 			"name": "Spirit of the Twisted Maze",
+			"source": "zorq",
 			"size": [
 				"M"
 			],
 			"type": "fiend",
-			"source": "zorq",
 			"alignment": [
 				"C",
 				"N"
@@ -6943,17 +6954,33 @@
 				"athletics": "+3",
 				"perception": "+0"
 			},
-			"conditionImmune": [
-				"blinded"
-			],
 			"senses": [
 				"darkvision 120 ft."
 			],
 			"passive": 10,
+			"conditionImmune": [
+				"blinded"
+			],
 			"languages": [
 				"Common"
 			],
 			"cr": "1",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"type": "spellcasting",
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell infestation|XGE}",
+								"{@spell mind sliver|UASorcererAndWarlock}",
+								"{@spell thorn whip|PHB}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
 			"trait": [
 				{
 					"name": "Trackless",
@@ -6977,18 +7004,31 @@
 				"underdark",
 				"urban"
 			],
-			"languageTags": [
-				"C"
-			],
+			"token": {
+				"name": "Skulk",
+				"source": "MTF"
+			},
 			"senseTags": [
 				"SD"
 			],
+			"languageTags": [
+				"C"
+			],
 			"damageTags": [
-				"S",
-				"N"
+				"N",
+				"S"
+			],
+			"damageTagsSpell": [
+				"I",
+				"P",
+				"Y"
 			],
 			"miscTags": [
 				"MW"
+			],
+			"savingThrowForcedSpell": [
+				"constitution",
+				"intelligence"
 			],
 			"fluff": {
 				"name": "Skulk",
@@ -7026,44 +7066,18 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Skulk",
-				"source": "MTF"
-			},
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell infestation|XGE}",
-								"{@spell mind sliver|UASorcererAndWarlock}",
-								"{@spell thorn whip|PHB}"
-							]
-						}
-					},
-					"ability": "int",
-					"type": "spellcasting"
-				}
-			],
-			"damageTagsSpell": [
-				"I",
-				"P",
-				"Y"
-			],
-			"savingThrowForcedSpell": [
-				"constitution",
-				"intelligence"
-			]
+			}
 		},
 		{
 			"name": "Stump Three School",
+			"shortName": "Stump",
+			"isNpc": true,
+			"source": "zorq",
+			"page": 387,
 			"size": [
 				"T"
 			],
 			"type": "ooze",
-			"source": "zorq",
 			"alignment": [
 				"U"
 			],
@@ -7125,7 +7139,6 @@
 					]
 				}
 			],
-			"page": 387,
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB/token/Treacle.png",
 			"traitTags": [
 				"Amorphous"
@@ -7135,12 +7148,12 @@
 			],
 			"damageTags": [
 				"N"
-			],
-			"shortName": "Stump",
-			"isNpc": true
+			]
 		},
 		{
 			"name": "Suille",
+			"source": "zorq",
+			"page": 245,
 			"size": [
 				"L"
 			],
@@ -7150,7 +7163,6 @@
 					"Monstrous Peryton"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"C",
 				"E"
@@ -7186,15 +7198,14 @@
 				"perception": "+5",
 				"athletics": "+7"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 15,
 			"languages": [
 				"understands Common and Elvish but can't speak"
 			],
 			"cr": "5",
-			"page": 245,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Flyby",
@@ -7273,6 +7284,26 @@
 					]
 				}
 			],
+			"token": {
+				"name": "Monstrous Peryton",
+				"source": "GoS"
+			},
+			"traitTags": [
+				"Flyby",
+				"Keen Senses",
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"CS",
+				"E"
+			],
 			"damageTags": [
 				"P",
 				"S"
@@ -7280,21 +7311,8 @@
 			"miscTags": [
 				"MW"
 			],
-			"languageTags": [
-				"C",
-				"CS",
-				"E"
-			],
-			"senseTags": [
-				"D"
-			],
-			"traitTags": [
-				"Flyby",
-				"Keen Senses",
-				"Legendary Resistances"
-			],
-			"actionTags": [
-				"Multiattack"
+			"savingThrowForced": [
+				"wisdom"
 			],
 			"fluff": {
 				"name": "Monstrous Peryton",
@@ -7316,17 +7334,11 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Monstrous Peryton",
-				"source": "GoS"
-			},
-			"savingThrowForced": [
-				"wisdom"
-			]
+			}
 		},
 		{
 			"name": "Swarm of Herg Worms",
+			"source": "zorq",
 			"size": [
 				"M"
 			],
@@ -7334,7 +7346,6 @@
 				"type": "beast",
 				"swarmSize": "T"
 			},
-			"source": "zorq",
 			"alignment": [
 				"U"
 			],
@@ -7355,6 +7366,10 @@
 			"int": 1,
 			"wis": 2,
 			"cha": 1,
+			"senses": [
+				"blindsight 10 ft."
+			],
+			"passive": 6,
 			"resist": [
 				"piercing",
 				"slashing"
@@ -7368,10 +7383,6 @@
 				"prone",
 				"restrained"
 			],
-			"senses": [
-				"blindsight 10 ft."
-			],
-			"passive": 6,
 			"cr": "1/2",
 			"trait": [
 				{
@@ -7402,12 +7413,12 @@
 			"senseTags": [
 				"B"
 			],
-			"miscTags": [
-				"MW"
-			],
 			"damageTags": [
 				"F",
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			],
 			"fluff": {
 				"name": "Swarm of Herg Worms",
@@ -7425,6 +7436,7 @@
 		},
 		{
 			"name": "Tobolux",
+			"source": "zorq",
 			"size": [
 				"T"
 			],
@@ -7435,7 +7447,6 @@
 					"genie"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"A"
 			],
@@ -7460,6 +7471,7 @@
 			"int": 10,
 			"wis": 12,
 			"cha": 11,
+			"passive": 11,
 			"resist": [
 				"acid",
 				"fire",
@@ -7491,7 +7503,6 @@
 				"prone",
 				"restrained"
 			],
-			"passive": 11,
 			"languages": [
 				"Common",
 				"Ignan"
@@ -7515,23 +7526,24 @@
 			"traitTags": [
 				"Incorporeal Movement"
 			],
+			"languageTags": [
+				"LF"
+			],
 			"damageTags": [
 				"O"
 			],
 			"miscTags": [
 				"MW"
-			],
-			"languageTags": [
-				"LF"
 			]
 		},
 		{
 			"name": "Toestealer",
+			"source": "zorq",
+			"page": 0,
 			"size": [
 				"T"
 			],
 			"type": "fey",
-			"source": "zorq",
 			"alignment": [
 				"C",
 				"E"
@@ -7557,17 +7569,35 @@
 			"skill": {
 				"stealth": "+5"
 			},
-			"conditionImmune": [
-				"poisoned"
-			],
 			"senses": [
 				"darkvision 120 ft."
 			],
 			"passive": 10,
+			"conditionImmune": [
+				"poisoned"
+			],
 			"languages": [
 				"Common"
 			],
 			"cr": "1/2",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"The gremlin's innate spellcasting ability is Charisma (spell save {@dc 11}). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell prestidigitation}"
+					],
+					"daily": {
+						"3": [
+							"{@spell hex}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Magic Resistance",
@@ -7602,34 +7632,15 @@
 					]
 				}
 			],
-			"page": 0,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The gremlin's innate spellcasting ability is Charisma (spell save {@dc 11}). It can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell prestidigitation}"
-					],
-					"daily": {
-						"3": [
-							"{@spell hex}"
-						]
-					},
-					"ability": "cha",
-					"type": "spellcasting"
-				}
-			],
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB/token/Rum%20Gremlin.png",
-			"actionTags": [
-				"Multiattack"
-			],
 			"traitTags": [
 				"Magic Resistance"
 			],
 			"senseTags": [
 				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"C"
@@ -7638,17 +7649,17 @@
 				"P",
 				"S"
 			],
-			"miscTags": [
-				"MW"
+			"damageTagsSpell": [
+				"N"
 			],
 			"spellcastingTags": [
 				"I"
 			],
+			"miscTags": [
+				"MW"
+			],
 			"conditionInflict": [
 				"poisoned"
-			],
-			"damageTagsSpell": [
-				"N"
 			],
 			"savingThrowForced": [
 				"constitution"
@@ -7656,11 +7667,13 @@
 		},
 		{
 			"name": "Tusternoof, or The Twisted One",
+			"shortName": "Tusternoof",
+			"source": "zorq",
+			"page": 0,
 			"size": [
 				"M"
 			],
 			"type": "fiend",
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"E"
@@ -7699,6 +7712,10 @@
 				"stealth": "+7",
 				"perception": "+3"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
 			"resist": [
 				{
 					"resist": [
@@ -7717,28 +7734,16 @@
 				"exhaustion",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 13,
 			"languages": [
 				"Common",
 				"Underdark",
 				"Abyssal"
 			],
 			"cr": "4",
-			"page": 0,
-			"action": [
-				{
-					"name": "Horned Vine",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h} 6 ({@damage 1d6 + 2}) slashing plus 9 ({@damage 2d6 + 2}) necrotic damage."
-					]
-				}
-			],
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
+					"type": "spellcasting",
 					"headerEntries": [
 						"Tusternoof's innate spellcasting ability is Charisma (spell save {@dc 13}). It can innately cast the following spells, requiring no material components:"
 					],
@@ -7747,11 +7752,11 @@
 						"{@spell disguise self}",
 						"{@spell mage armor}"
 					],
-					"ability": "cha",
-					"type": "spellcasting"
+					"ability": "cha"
 				},
 				{
 					"name": "Spellcasting",
+					"type": "spellcasting",
 					"headerEntries": [
 						"Tusternoof is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It regains its expended spell slots when it finishes a short or long rest. It knows the following warlock spells:"
 					],
@@ -7776,33 +7781,57 @@
 							"lower": 1
 						}
 					},
-					"ability": "cha",
-					"type": "spellcasting"
+					"ability": "cha"
+				}
+			],
+			"action": [
+				{
+					"name": "Horned Vine",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h} 6 ({@damage 1d6 + 2}) slashing plus 9 ({@damage 2d6 + 2}) necrotic damage."
+					]
 				}
 			],
 			"environment": [
 				"urban"
 			],
+			"token": {
+				"name": "Deathlock",
+				"source": "MTF"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/deathlock.mp3"
+				"path": "bestiary/deathlock.opus"
 			},
 			"senseTags": [
 				"D"
 			],
-			"spellcastingTags": [
-				"I",
-				"CL"
+			"languageTags": [
+				"AB",
+				"C"
 			],
 			"damageTags": [
 				"N"
 			],
+			"damageTagsSpell": [
+				"A",
+				"C",
+				"N",
+				"O",
+				"Y"
+			],
+			"spellcastingTags": [
+				"CL",
+				"I"
+			],
 			"miscTags": [
 				"MW"
 			],
-			"languageTags": [
-				"C",
-				"AB"
+			"savingThrowForcedSpell": [
+				"dexterity",
+				"intelligence",
+				"strength",
+				"wisdom"
 			],
 			"fluff": {
 				"name": "Tusternoof",
@@ -7841,33 +7870,19 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Deathlock",
-				"source": "MTF"
-			},
-			"shortName": "Tusternoof",
-			"damageTagsSpell": [
-				"A",
-				"C",
-				"N",
-				"O",
-				"Y"
-			],
-			"savingThrowForcedSpell": [
-				"dexterity",
-				"intelligence",
-				"strength",
-				"wisdom"
-			]
+			}
 		},
 		{
 			"name": "Vee'gn'och",
+			"shortName": "Veenock",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
+			"page": 39,
 			"size": [
 				"M"
 			],
 			"type": "undead",
-			"source": "zorq",
 			"alignment": [
 				"C",
 				"E"
@@ -7904,6 +7919,10 @@
 				"perception": "+2",
 				"stealth": "+8"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 12,
 			"resist": [
 				"bludgeoning",
 				"piercing",
@@ -7917,16 +7936,30 @@
 				"exhaustion",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"passive": 12,
 			"languages": [
 				"Common",
 				"Vee'gn'och",
 				"Undercommon"
 			],
 			"cr": "4",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"The Vee'gn'och's innate spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell chill touch}"
+					],
+					"daily": {
+						"1": [
+							"{@spell animate dead} (up to 5 skeletons or zombies)"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Swarm",
@@ -7979,31 +8012,15 @@
 					]
 				}
 			],
-			"page": 39,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The Vee'gn'och's innate spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell chill touch}"
-					],
-					"daily": {
-						"1": [
-							"{@spell animate dead} (up to 5 skeletons or zombies)"
-						]
-					},
-					"ability": "cha",
-					"type": "spellcasting"
-				}
-			],
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB/token/Bone%20Collective.png",
-			"actionTags": [
-				"Multiattack"
+			"traitTags": [
+				"Rampage"
 			],
 			"senseTags": [
 				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"C",
@@ -8014,29 +8031,24 @@
 				"P",
 				"S"
 			],
-			"miscTags": [
-				"MW"
+			"damageTagsSpell": [
+				"N"
 			],
 			"spellcastingTags": [
 				"I"
 			],
-			"shortName": "Veenock",
-			"isNamedCreature": true,
-			"isNpc": true,
-			"traitTags": [
-				"Rampage"
-			],
-			"damageTagsSpell": [
-				"N"
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "White Boar face hag, 4'6\"",
+			"source": "zorq",
+			"page": 177,
 			"size": [
 				"M"
 			],
 			"type": "fey",
-			"source": "zorq",
 			"alignment": [
 				"N",
 				"E"
@@ -8084,6 +8096,7 @@
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
+					"type": "spellcasting",
 					"headerEntries": [
 						"The hag's innate spellcasting ability is Charisma (spell save {@dc 12}). She can innately cast the following spells, requiring no material components:"
 					],
@@ -8092,11 +8105,11 @@
 						"{@spell minor illusion}",
 						"{@spell vicious mockery}"
 					],
-					"ability": "cha",
-					"type": "spellcasting"
+					"ability": "cha"
 				},
 				{
 					"name": "Shared Spellcasting (Coven Only)",
+					"type": "spellcasting",
 					"headerEntries": [
 						"While all three members of a hag coven are within 30 feet of one another, they can each cast the following spells from the wizard's spell list but must share the spell slots among themselves:"
 					],
@@ -8147,8 +8160,7 @@
 					"footerEntries": [
 						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12 + the hag's Intelligence modifier, and the spell attack bonus is 4 + the hag's Intelligence modifier."
 					],
-					"ability": "int",
-					"type": "spellcasting"
+					"ability": "int"
 				}
 			],
 			"trait": [
@@ -8200,37 +8212,58 @@
 					]
 				}
 			],
-			"page": 177,
 			"environment": [
 				"forest",
 				"hill",
 				"swamp"
 			],
+			"token": {
+				"name": "Green Hag",
+				"source": "MM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/green-hag.mp3"
+				"path": "bestiary/green-hag.opus"
 			},
 			"traitTags": [
 				"Amphibious"
+			],
+			"senseTags": [
+				"D"
 			],
 			"languageTags": [
 				"C",
 				"DR",
 				"S"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"S"
+			],
+			"damageTagsSpell": [
+				"I",
+				"L",
+				"N",
+				"Y"
 			],
 			"spellcastingTags": [
+				"CW",
 				"I",
-				"S",
-				"CW"
-			],
-			"damageTags": [
 				"S"
 			],
 			"miscTags": [
 				"MW"
+			],
+			"conditionInflictSpell": [
+				"frightened",
+				"paralyzed",
+				"poisoned",
+				"unconscious"
+			],
+			"savingThrowForcedSpell": [
+				"constitution",
+				"dexterity",
+				"intelligence",
+				"wisdom"
 			],
 			"fluff": {
 				"name": "Green Hag",
@@ -8352,37 +8385,17 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Green Hag",
-				"source": "MM"
-			},
-			"conditionInflictSpell": [
-				"poisoned",
-				"paralyzed",
-				"frightened",
-				"unconscious"
-			],
-			"damageTagsSpell": [
-				"I",
-				"L",
-				"N",
-				"Y"
-			],
-			"savingThrowForcedSpell": [
-				"constitution",
-				"dexterity",
-				"intelligence",
-				"wisdom"
-			]
+			}
 		},
 		{
 			"name": "Wigglewut",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "zorq",
 			"size": [
 				"L"
 			],
 			"type": "beast",
-			"source": "zorq",
 			"alignment": [
 				"U"
 			],
@@ -8403,6 +8416,16 @@
 			"int": 6,
 			"wis": 12,
 			"cha": 2,
+			"save": {
+				"dex": "+5"
+			},
+			"skill": {
+				"athletics": "+4",
+				"survival": "+3",
+				"stealth": "+7",
+				"nature": "+2",
+				"acrobatics": "+7"
+			},
 			"senses": [
 				"blindsight 60 ft."
 			],
@@ -8448,6 +8471,11 @@
 				"forest",
 				"underdark"
 			],
+			"familiar": true,
+			"token": {
+				"name": "Giant Bat",
+				"source": "MM"
+			},
 			"traitTags": [
 				"Keen Senses"
 			],
@@ -8459,27 +8487,12 @@
 			],
 			"miscTags": [
 				"MW"
-			],
-			"token": {
-				"name": "Giant Bat",
-				"source": "MM"
-			},
-			"isNpc": true,
-			"familiar": true,
-			"isNamedCreature": true,
-			"save": {
-				"dex": "+5"
-			},
-			"skill": {
-				"athletics": "+4",
-				"survival": "+3",
-				"stealth": "+7",
-				"nature": "+2",
-				"acrobatics": "+7"
-			}
+			]
 		},
 		{
 			"name": "Woon",
+			"source": "zorq",
+			"page": 164,
 			"size": [
 				"S"
 			],
@@ -8489,7 +8502,6 @@
 					"gnome"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"N",
 				"G"
@@ -8530,6 +8542,26 @@
 				"Undercommon"
 			],
 			"cr": "1",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"The gnome's innate spellcasting ability is Intelligence (spell save {@dc 11}). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell nondetection} (self only)"
+					],
+					"daily": {
+						"1e": [
+							"{@spell blindness/deafness}",
+							"{@spell blur}",
+							"{@spell disguise self}"
+						]
+					},
+					"ability": "int"
+				}
+			],
 			"trait": [
 				{
 					"name": "Stone Camouflage",
@@ -8558,53 +8590,52 @@
 					]
 				}
 			],
-			"page": 164,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The gnome's innate spellcasting ability is Intelligence (spell save {@dc 11}). It can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell nondetection} (self only)"
-					],
-					"daily": {
-						"1e": [
-							"{@spell blindness/deafness}",
-							"{@spell blur}",
-							"{@spell disguise self}"
-						]
-					},
-					"ability": "int",
-					"type": "spellcasting"
-				}
-			],
 			"environment": [
 				"underdark"
 			],
+			"token": {
+				"name": "Deep Gnome (Svirfneblin)",
+				"source": "MM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/svirfneblin.mp3"
+				"path": "bestiary/svirfneblin.opus"
 			},
+			"attachedItems": [
+				"war pick|phb"
+			],
+			"senseTags": [
+				"SD"
+			],
 			"languageTags": [
 				"G",
 				"T",
 				"U"
 			],
-			"senseTags": [
-				"SD"
+			"damageTags": [
+				"P"
 			],
 			"spellcastingTags": [
 				"I"
 			],
-			"damageTags": [
-				"P"
-			],
 			"miscTags": [
+				"MLW",
 				"MW",
 				"RW",
-				"THW",
-				"MLW"
+				"THW"
+			],
+			"conditionInflict": [
+				"poisoned"
+			],
+			"conditionInflictSpell": [
+				"blinded",
+				"deafened"
+			],
+			"savingThrowForced": [
+				"constitution"
+			],
+			"savingThrowForcedSpell": [
+				"constitution"
 			],
 			"fluff": {
 				"name": "Deep Gnome (Svirfneblin)",
@@ -8643,35 +8674,16 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Deep Gnome (Svirfneblin)",
-				"source": "MM"
-			},
-			"conditionInflict": [
-				"poisoned"
-			],
-			"conditionInflictSpell": [
-				"blinded",
-				"deafened"
-			],
-			"attachedItems": [
-				"war pick|phb"
-			],
-			"savingThrowForced": [
-				"constitution"
-			],
-			"savingThrowForcedSpell": [
-				"constitution"
-			]
+			}
 		},
 		{
 			"name": "Ygatin",
+			"source": "zorq",
+			"page": 127,
 			"size": [
 				"M"
 			],
 			"type": "undead",
-			"source": "zorq",
 			"alignment": [
 				"C",
 				"E"
@@ -8701,6 +8713,10 @@
 				"perception": "+4",
 				"stealth": "+6"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 14,
 			"resist": [
 				"cold",
 				"fire",
@@ -8724,10 +8740,6 @@
 				"frightened",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"passive": 14,
 			"languages": [
 				"Abyssal",
 				"the languages it knew in life"
@@ -8768,33 +8780,42 @@
 					]
 				}
 			],
-			"page": 127,
 			"environment": [
 				"swamp",
 				"underdark",
 				"urban"
 			],
+			"token": {
+				"name": "Bodak",
+				"source": "VGM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/bodak.mp3"
+				"path": "bestiary/bodak.opus"
 			},
 			"traitTags": [
 				"Sunlight Sensitivity"
 			],
-			"languageTags": [
-				"AB"
-			],
 			"senseTags": [
 				"SD"
+			],
+			"languageTags": [
+				"AB"
 			],
 			"damageTags": [
 				"B",
 				"N",
-				"Y",
-				"R"
+				"R",
+				"Y"
 			],
 			"miscTags": [
 				"MW"
+			],
+			"conditionInflict": [
+				"frightened"
+			],
+			"savingThrowForced": [
+				"constitution"
 			],
 			"fluff": {
 				"name": "Bodak",
@@ -8847,20 +8868,13 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Bodak",
-				"source": "VGM"
-			},
-			"conditionInflict": [
-				"frightened"
-			],
-			"savingThrowForced": [
-				"constitution"
-			]
+			}
 		},
 		{
 			"name": "Yuruk the Contumax",
+			"shortName": "Yuruk the page",
+			"source": "zorq",
+			"page": 204,
 			"size": [
 				"M"
 			],
@@ -8871,7 +8885,6 @@
 					"Contumax"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"G"
@@ -8945,15 +8958,21 @@
 					]
 				}
 			],
-			"page": 204,
 			"environment": [
 				"forest",
 				"swamp"
 			],
+			"token": {
+				"name": "Lizardfolk",
+				"source": "MM"
+			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/lizardfolk.mp3"
+				"path": "bestiary/lizardfolk.opus"
 			},
+			"attachedItems": [
+				"javelin|phb"
+			],
 			"traitTags": [
 				"Hold Breath"
 			],
@@ -8961,17 +8980,17 @@
 				"Multiattack"
 			],
 			"languageTags": [
-				"DR",
-				"C"
+				"C",
+				"DR"
 			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
+				"MLW",
 				"MW",
 				"RW",
-				"THW",
-				"MLW"
+				"THW"
 			],
 			"fluff": {
 				"name": "Lizardfolk",
@@ -9028,18 +9047,11 @@
 						]
 					}
 				]
-			},
-			"token": {
-				"name": "Lizardfolk",
-				"source": "MM"
-			},
-			"shortName": "Yuruk the page",
-			"attachedItems": [
-				"javelin|phb"
-			]
+			}
 		},
 		{
 			"name": "Zarachiel",
+			"source": "zorq",
 			"size": [
 				"L"
 			],
@@ -9049,7 +9061,6 @@
 					"ooze"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"C",
 				"E"
@@ -9076,6 +9087,10 @@
 			"int": 10,
 			"wis": 14,
 			"cha": 10,
+			"senses": [
+				"blindsight 90 ft. (blind beyond this radius)"
+			],
+			"passive": 12,
 			"resist": [
 				{
 					"resist": [
@@ -9097,10 +9112,6 @@
 				"frightened",
 				"prone"
 			],
-			"senses": [
-				"blindsight 90 ft. (blind beyond this radius)"
-			],
-			"passive": 12,
 			"languages": [
 				"none in its natural form; knows the same languages as a creature it dominates"
 			],
@@ -9140,19 +9151,19 @@
 				}
 			],
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB/token/Sap%20Demon.png",
-			"actionTags": [
-				"Multiattack"
-			],
 			"traitTags": [
 				"Amorphous"
 			],
 			"senseTags": [
 				"B"
 			],
+			"actionTags": [
+				"Multiattack"
+			],
 			"damageTags": [
 				"B",
-				"F",
-				"C"
+				"C",
+				"F"
 			],
 			"miscTags": [
 				"MW"
@@ -9163,6 +9174,7 @@
 		},
 		{
 			"name": "Zarachiel (Gloucous form)",
+			"source": "zorq",
 			"size": [
 				"L"
 			],
@@ -9173,7 +9185,6 @@
 					"pronouns: they, them, theirs"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"C",
 				"E"
@@ -9200,6 +9211,10 @@
 			"int": 10,
 			"wis": 10,
 			"cha": 4,
+			"senses": [
+				"blindsight 90 ft. (blind beyond this radius)"
+			],
+			"passive": 12,
 			"resist": [
 				{
 					"resist": [
@@ -9223,10 +9238,6 @@
 				"frightened",
 				"prone"
 			],
-			"senses": [
-				"blindsight 90 ft. (blind beyond this radius)"
-			],
-			"passive": 12,
 			"languages": [
 				"Common",
 				"Zorbh",
@@ -9278,19 +9289,19 @@
 				}
 			],
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/ToB/token/Sap%20Demon.png",
-			"actionTags": [
-				"Multiattack"
-			],
 			"traitTags": [
 				"Amorphous"
 			],
 			"senseTags": [
 				"B"
 			],
+			"actionTags": [
+				"Multiattack"
+			],
 			"damageTags": [
 				"B",
-				"F",
-				"C"
+				"C",
+				"F"
 			],
 			"miscTags": [
 				"MW",
@@ -9302,25 +9313,8 @@
 		},
 		{
 			"name": "Zilla (Indagator)",
+			"shortName": "Zilla",
 			"source": "zorq",
-			"alignment": [
-				"N"
-			],
-			"languageTags": [
-				"X",
-				"E"
-			],
-			"senseTags": [
-				"SD"
-			],
-			"traitTags": [
-				"Fey Ancestry",
-				"Sunlight Sensitivity"
-			],
-			"spellcastingTags": [
-				"CC",
-				"I"
-			],
 			"size": [
 				"M"
 			],
@@ -9333,6 +9327,9 @@
 					"cleric"
 				]
 			},
+			"alignment": [
+				"N"
+			],
 			"ac": [
 				{
 					"ac": 13,
@@ -9360,6 +9357,9 @@
 				"religion": "+5",
 				"perception": "+5"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 13,
 			"languages": [
 				"Undercommon",
@@ -9367,6 +9367,64 @@
 				"Elvish"
 			],
 			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"Zilla is a 5th-level spellcaster. Her spellcasting ability is Wisdom (spell save {@dc 13}, {@hit 5} to hit with spell attacks). Zilla has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell cure wounds}",
+								"{@spell guiding bolt}",
+								"{@spell sanctuary}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell lesser restoration}",
+								"{@spell spiritual weapon}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell spirit guardians}"
+							]
+						}
+					},
+					"ability": "wis"
+				},
+				{
+					"name": "Innate Spellcasting",
+					"type": "spellcasting",
+					"headerEntries": [
+						"Zilla's innate spellcasting ability is Charisma (spell save {@dc 11}). Zilla can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dancing lights}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell darkness}",
+							"{@spell faerie fire}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Divine Eminence",
@@ -9403,83 +9461,36 @@
 					]
 				}
 			],
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Zilla is a 5th-level spellcaster. Her spellcasting ability is Wisdom (spell save {@dc 13}, {@hit 5} to hit with spell attacks). Zilla has the following cleric spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell light}",
-								"{@spell sacred flame}",
-								"{@spell thaumaturgy}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell cure wounds}",
-								"{@spell guiding bolt}",
-								"{@spell sanctuary}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell lesser restoration}",
-								"{@spell spiritual weapon}"
-							]
-						},
-						"3": {
-							"slots": 2,
-							"spells": [
-								"{@spell dispel magic}",
-								"{@spell spirit guardians}"
-							]
-						}
-					},
-					"ability": "wis",
-					"type": "spellcasting"
-				},
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Zilla's innate spellcasting ability is Charisma (spell save {@dc 11}). Zilla can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell dancing lights}"
-					],
-					"daily": {
-						"1e": [
-							"{@spell darkness}",
-							"{@spell faerie fire}"
-						]
-					},
-					"ability": "cha",
-					"type": "spellcasting"
-				}
+			"attachedItems": [
+				"mace|phb"
+			],
+			"traitTags": [
+				"Fey Ancestry",
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"E",
+				"X"
 			],
 			"damageTags": [
 				"B",
 				"R"
 			],
-			"miscTags": [
-				"MW",
-				"MLW"
-			],
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"shortName": "Zilla",
 			"damageTagsSpell": [
 				"N",
 				"O",
 				"R"
 			],
-			"attachedItems": [
-				"mace|phb"
+			"spellcastingTags": [
+				"CC",
+				"I"
+			],
+			"miscTags": [
+				"MLW",
+				"MW"
 			],
 			"savingThrowForcedSpell": [
 				"dexterity",
@@ -9488,6 +9499,7 @@
 		},
 		{
 			"name": "Zod",
+			"source": "zorq",
 			"size": [
 				"S"
 			],
@@ -9497,7 +9509,6 @@
 					"kobold"
 				]
 			},
-			"source": "zorq",
 			"alignment": [
 				"L",
 				"E"
@@ -9576,27 +9587,6 @@
 				"underdark",
 				"urban"
 			],
-			"traitTags": [
-				"Pack Tactics",
-				"Sunlight Sensitivity"
-			],
-			"languageTags": [
-				"C",
-				"DR"
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"P",
-				"B"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"RNG",
-				"MLW"
-			],
 			"token": {
 				"name": "Kobold",
 				"source": "MM"
@@ -9604,79 +9594,89 @@
 			"attachedItems": [
 				"dagger|phb",
 				"sling|phb"
+			],
+			"traitTags": [
+				"Pack Tactics",
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"DR"
+			],
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"miscTags": [
+				"MLW",
+				"MW",
+				"RNG",
+				"RW"
 			]
 		}
 	],
-	"spell": [
+	"cult": [
 		{
-			"name": "These Rocks Look Great",
-			"level": 2,
-			"school": "E",
+			"name": "Flower Folk",
+			"source": "zorq",
+			"goal": {
+				"entry": ""
+			},
+			"cultists": {
+				"entry": "{@creature forl|zorq}, {@creature Tobolux|zorq}, {@creature Snav}"
+			},
+			"signatureSpells": {
+				"entry": ""
+			},
+			"entries": [
+				"Levistus has no cult in the traditional sense. Instead, he offers favors to those who are desperate to escape a seemingly inevitable fate.",
+				"{@creature Drow} are sometimes worshipers of Levistus, as their cruel society often pushes them into situations they feel they can't escape.",
+				"Levistus usually grants those who pledge their souls to him a single chance to escape from danger, but some cunning folk strike a deal with Levistus, pledging their souls to him in return for escape at a future date. This boon takes the form of the Path of Levistus trait.",
+				{
+					"type": "entries",
+					"name": "Path of Levistus",
+					"entries": [
+						"This creature magically teleports to a location of Levistus's choice within 1 mile of its location. Using this ability also restores all of the creature's hit points. This ability can be invoked as an action by the creature or when the creature would die. Once the creature uses it, the creature can't use it again."
+					]
+				}
+			]
+		}
+	],
+	"condition": [
+		{
+			"name": "Hugged",
+			"source": "zorq",
+			"page": 0,
+			"entries": [
+				{
+					"type": "list",
+					"items": [
+						"A creature who is hugged is much happier than they would be if they were not being hugged.",
+						"The condition ends if the hugger is {@condition incapacitated}.",
+						"The condition also ends if an effect removes the hugged creature from the reach of the hugger or hugging effect, such as when a creature is hurled away by the {@spell thunderwave} spell."
+					]
+				}
+			]
+		}
+	],
+	"action": [
+		{
+			"name": "Hug",
+			"source": "zorq",
+			"page": 0,
 			"time": [
 				{
 					"number": 1,
 					"unit": "action"
 				}
 			],
-			"range": {
-				"type": "point",
-				"distance": {
-					"type": "touch"
-				}
-			},
-			"duration": [
-				{
-					"type": "timed",
-					"duration": {
-						"type": "minute",
-						"amount": 10,
-						"upTo": true
-					}
-				}
-			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			},
 			"entries": [
-				"This spell wards a willing dwarf you touch and creates a mystic connection between you. Choose one of the following wards; you and the target gain that ward until the spell ends.",
-				{
-					"type": "list",
-					"items": [
-						"You and the target gain a +2 bonus to AC and gain {@dice 2d6} temporary hit points each (roll once for both), which are lost when the spell ends.",
-						"You and the target are immune to being {@condition charmed} and {@condition frightened} and cannot be possessed.",
-						"You and the target are immune to being {@condition petrified}. In addition, you or the target may use an action to cast the {@spell mold earth|phb} cantrip.",
-						"You and the target add +5 to any skill or ability check in which stone is concerned."
-					]
-				},
-				"The spell ends if you or the target drop to 0 hit points. It also ends if the spell is cast again on either of the connected creatures. You can dismiss the spell as a bonus action."
-			],
-			"source": "zorq",
-			"components": {
-				"v": true,
-				"s": true,
-				"m": "a pebble and a dwarven beard hair"
-			},
-			"meta": {
-				"ritual": true
-			},
-			"entriesHigherLevel": [
-				{
-					"name": "At Higher Levels",
-					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher,  you can target one additional dwarf for each slot level above 2nd."
-					],
-					"type": "entries"
-				}
-			],
-			"miscTags": [
-				"MAC",
-				"THP",
-				"UBA"
+				"When you take the Hug action, you use at least one free hand to embrace a willing creature in a comforting hug. If that creature is {@condition frightened}, and the cause of that condition allows them to make a saving throw to end the effect, that creature may use their reaction to attempt a saving throw.",
+				"This saving throw attempt does not count against any limit on attempts.",
+				"Once a creature has been {@condition hugged|zorq}, that creature cannot benefit again from the effect of a Hug while the cause of their {@condition frightened} condition remains the same."
 			]
 		}
 	]
