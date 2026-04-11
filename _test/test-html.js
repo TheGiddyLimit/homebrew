@@ -1,4 +1,4 @@
-import {BrewCleanerHtml} from "../_node/html-cleaner.js";
+import {BrewCleanerHtml} from "5etools-utils";
 import {Um} from "5etools-utils";
 
 const {messages, isUnknownError = false} = await BrewCleanerHtml.pGetErrorsOnDirsWorkers();

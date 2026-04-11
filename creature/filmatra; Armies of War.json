@@ -6,54 +6,326 @@
 				"json": "ArmiesOfWar",
 				"abbreviation": "U_AOW",
 				"full": "Armies of War",
+				"url": "https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G",
+				"version": "3.1.1",
 				"authors": [
 					"u/filmatra"
 				],
 				"convertedBy": [
 					"p4535992"
 				],
-				"version": "3.1.1",
-				"url": "https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G",
 				"targetSchema": "1.7.0"
 			}
 		],
+		"edition": "classic",
 		"dateAdded": 1657961727,
-		"dateLastModified": 1759258955,
-		"_dateLastModifiedHash": "b9380cefc4",
-		"edition": "classic"
+		"dateLastModified": 1772404109,
+		"_dateLastModifiedHash": "180bde6b86"
 	},
-	"legendaryGroup": [
+	"monster": [
 		{
-			"name": "ArmiesOfWarLairActionsCommanderOfWar",
+			"name": "Archer Line",
+			"shortName": "Archer Line",
 			"source": "ArmiesOfWar",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the keep's commander takes a lair action to cause one of the following effects; the commander can't use the same effect two rounds in a row:",
+			"size": [
+				"H"
+			],
+			"type": {
+				"type": "humanoid",
+				"swarmSize": "M",
+				"tags": [
+					"any race",
+					"10-20 members"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
 				{
-					"type": "list",
-					"items": [
-						"Rocks are thrown to a 15 ft. radius point within 30 ft. of the keep's walls. Each creature in the area must make a DC {@dc 15} Dexterity saving throw, taking 7 ({@damage 2d6}) bludgeoning damage on a failed save, or half as much damage on a successful one.",
-						"Boiling oil pours from the keep onto all creatures within a10 ft. radius point along the keep's walls. Each creature in the area must make a DC 15 Dexterity saving throw. On a failed save, a creature takes 10 ({@damage 4d4}) fire damage and 5({@damage 2d4}) additional fire damage at the beginning of each of its turns until it uses its action to clean itself of oil. On a successful save, a creature takes no damage.",
-						"The keep's defenders use its passageways, architecture,and simple machinery to their advantage. Until the end of the round, melee attacks against creatures of the commander's choice are made with disadvantage.",
-						"A {@spell glyph of warding}, cast at the 3rd level, appears at an unoccupied location of the commander's choice somewhere within the keep. One of the commander'sallies may expend a spell slot to store a spell they have prepared within the spell glyph. Otherwise, the glyph is an explosive rune."
+					"ac": 12,
+					"from": [
+						"{@item padded armor|phb}"
 					]
 				}
 			],
-			"regionalEffects": [
-				"The region containing the keep may be altered by the keep's presence, which creates one or more of the following effects:",
+			"hp": {
+				"formula": "8d8 + 24",
+				"average": 60
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 22,
+			"dex": 13,
+			"con": 16,
+			"int": 10,
+			"wis": 11,
+			"cha": 10,
+			"skill": {
+				"athletics": "+8"
+			},
+			"passive": 10,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "3",
+			"trait": [
 				{
-					"type": "list",
-					"items": [
-						"Moats, trenches, and chevaux de frise mar the landscape, making travel exhausting. The area within 1 mile of the keep is difficult terrain",
-						"The keep's guards have illuminated the lands with blazing ires, and thoroughly patrol the lands at all hours.Dexterity (Stealth) checks made within 1 mile of the keep are made with disadvantage.",
-						"The commander's subordinates have been convinced to greatly respect or fear their leader. Charisma (Deception,Intimidation, and Persuasion) checks against the people of the keep are made with disadvantage.",
-						"The lordship burned its lands as it recalled its population into the keep's walls. No rations may be foraged or hunted within one day's travel of the keep."
+					"name": "Army",
+					"entries": [
+						"The unit can occupy another creature's space and vice versa, and the unit can move through any opening large enough for a medium humanoid. The unit can't regain hit points or gain temporary hit points during combat."
 					]
 				},
-				"If the keep is taken, these effects fade over the course of {@dice 1d10} days."
-			]
-		}
-	],
-	"monster": [
+				{
+					"name": "Morale",
+					"entries": [
+						"If the unit becomes {@condition frightened} or when it is reduced to half hit points, it must succeed on a {@dc 13}Wisdom saving throw or take {@damage 2d8} damage as some of its members break away and flee."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Blacken Sky (must be above half hit points)",
+					"entries": [
+						"The unit chooses a point within 600 feet. All creatures within 30 feet of that point must make a {@dc 15} Dexterity saving throw, taking 21 ({@damage 6d6}) piercing damage on a failed save or half as much on a successful one. Creatures wearing heavy armor and carrying a shield make this save with advantage and take no damage instead of half on a successful save."
+					]
+				},
+				{
+					"name": "Shortsword Flurry (swarm has more than half HP)",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}14 ({@damage 4d6}) piercing damage."
+					]
+				},
+				{
+					"name": "Shortsword Flurry (swarm has half HP or less)",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}7 ({@damage 2d6}) piercing damage."
+					]
+				},
+				{
+					"name": "Targeted Fire (swarm has more than half HP)",
+					"entries": [
+						"{@atk rw} {@hit 4} to hit, range 150/600 ft., one target. {@h}18 ({@damage 4d8}) piercing damage."
+					]
+				},
+				{
+					"name": "Targeted Fire (swarm has half HP or less)",
+					"entries": [
+						"{@atk rw} {@hit 4} to hit, range 150/600 ft., one target. {@h}9 ({@damage 2d8}) piercing damage."
+					]
+				}
+			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/4JmSurx.png",
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MLW",
+				"MW",
+				"RW"
+			],
+			"savingThrowForced": [
+				"dexterity"
+			],
+			"fluff": {
+				"entries": [
+					"{@link Archer Line|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/IHGCYYh.jpg"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Army Drummer",
+			"shortName": "Army Drummer",
+			"source": "ArmiesOfWar",
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"any race"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"{@item padded armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"formula": "2d8 + 2",
+				"average": 11
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 11,
+			"dex": 12,
+			"con": 12,
+			"int": 10,
+			"wis": 11,
+			"cha": 12,
+			"skill": {
+				"performance": "+3",
+				"persuasion": "+3",
+				"intimidation": "+3"
+			},
+			"passive": 10,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "1/8",
+			"action": [
+				{
+					"name": "Inspire",
+					"entries": [
+						"One creature of the drummer's choice adds1d4 to the next attack roll, skill check, or saving throw it makes until the end of its next turn."
+					]
+				}
+			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/iS42lIB.png",
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"fluff": {
+				"entries": [
+					"{@link Army Drummer|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/1mOjy6U.jpg"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Camp Followers",
+			"shortName": "Camp Followers",
+			"source": "ArmiesOfWar",
+			"size": [
+				"H"
+			],
+			"type": {
+				"type": "humanoid",
+				"swarmSize": "M",
+				"tags": [
+					"any race",
+					"20-40 members"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				10
+			],
+			"hp": {
+				"formula": "8d8 + 8",
+				"average": 44
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 10,
+			"con": 13,
+			"int": 13,
+			"wis": 14,
+			"cha": 13,
+			"passive": 12,
+			"languages": [
+				"any four languages"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Army",
+					"entries": [
+						"The unit can occupy another creature's space and vice versa, and the unit can move through any opening large enough for a medium humanoid. The unit can't regain hit points or gain temporary hit points during combat."
+					]
+				},
+				{
+					"name": "Comforts of Home",
+					"entries": [
+						"As long as this unit is within 300 ft. of an army for the duration of a rest, that army regains the maximum amount of hit points on any hit dice it spends during each short rest and loses one additional level of exhaustion at the end of each long rest."
+					]
+				},
+				{
+					"name": "Diverse",
+					"entries": [
+						"The unit is comprised of merchants, doctors,artisans, courtesans, and soldiers' families from all walks of life. Whenever the unit makes a skill check, roll {@dice 1d4}.On a 2-3, the unit adds its proficiency bonus (+2) to the check. On a 4, it adds twice its proficiency bonus (+4) to the check."
+					]
+				},
+				{
+					"name": "Weak Morale",
+					"entries": [
+						"If the unit becomes {@condition frightened} or is reduced to half hit points, it immediately takes {@damage 2d8} damage as some of its members break away and flee."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Makeshift Attack (swarm has more than half HP)",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}10 ({@damage 4d4}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Makeshift Attack (swarm has half HP or less)",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}5 ({@damage 2d4}) bludgeoning damage."
+					]
+				}
+			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/wjO79cv.png",
+			"languageTags": [
+				"X"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"fluff": {
+				"entries": [
+					"{@link Camp Followers|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/3oFwjan.jpg"
+						}
+					}
+				]
+			}
+		},
 		{
 			"name": "Commanders of War",
 			"source": "ArmiesOfWar",
@@ -137,12 +409,53 @@
 					]
 				}
 			],
+			"legendaryHeader": [
+				"The commander can take 1 legendary action, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The commander regains spent legendary actions at the start of its turn."
+			],
+			"legendaryActions": 1,
+			"legendary": [
+				{
+					"name": "Advance/Retreat",
+					"entries": [
+						"Each army of your choice moves up to half of its speed."
+					]
+				},
+				{
+					"name": "Commanded Strike (Costs 2 Actions)",
+					"entries": [
+						"One army of your choice makes a single attack targeting another creature of your choice that you can see."
+					]
+				},
+				{
+					"name": "Defensive Command (Costs 2 Actions)",
+					"entries": [
+						"One army of your choice gains the benefits of the Dodge action until the end of its next turn."
+					]
+				},
+				{
+					"name": "Detect",
+					"entries": [
+						"You make a Wisdom (Perception) check."
+					]
+				},
+				{
+					"name": "Inspiring Command",
+					"entries": [
+						"One army of your choice that you control may add a {@dice d10} to its next attack roll, skill check, or saving throw."
+					]
+				}
+			],
 			"legendaryGroup": {
 				"name": "ArmiesOfWarLairActionsCommanderOfWar",
 				"source": "ArmiesOfWar"
 			},
 			"environment": [
 				"urban"
+			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/0xO1MYW.png",
+			"attachedItems": [
+				"greatsword|phb",
+				"shortbow|phb"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -154,13 +467,20 @@
 				"P",
 				"S"
 			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"RNG",
-				"MLW"
+			"damageTagsLegendary": [
+				"A",
+				"B",
+				"C",
+				"F",
+				"L",
+				"T"
 			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/0xO1MYW.png",
+			"miscTags": [
+				"MLW",
+				"MW",
+				"RNG",
+				"RW"
+			],
 			"fluff": {
 				"entries": [
 					"{@link Commander of War|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}",
@@ -210,471 +530,12 @@
 						}
 					}
 				]
-			},
-			"legendaryHeader": [
-				"The commander can take 1 legendary action, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The commander regains spent legendary actions at the start of its turn."
-			],
-			"damageTagsLegendary": [
-				"A",
-				"B",
-				"C",
-				"F",
-				"L",
-				"T"
-			],
-			"legendaryActions": 1,
-			"legendary": [
-				{
-					"name": "Advance/Retreat",
-					"entries": [
-						"Each army of your choice moves up to half of its speed."
-					]
-				},
-				{
-					"name": "Commanded Strike (Costs 2 Actions)",
-					"entries": [
-						"One army of your choice makes a single attack targeting another creature of your choice that you can see."
-					]
-				},
-				{
-					"name": "Defensive Command (Costs 2 Actions)",
-					"entries": [
-						"One army of your choice gains the benefits of the Dodge action until the end of its next turn."
-					]
-				},
-				{
-					"name": "Detect",
-					"entries": [
-						"You make a Wisdom (Perception) check."
-					]
-				},
-				{
-					"name": "Inspiring Command",
-					"entries": [
-						"One army of your choice that you control may add a {@dice d10} to its next attack roll, skill check, or saving throw."
-					]
-				}
-			],
-			"attachedItems": [
-				"greatsword|phb",
-				"shortbow|phb"
-			]
-		},
-		{
-			"name": "Longbowman",
-			"size": [
-				"M"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"any race"
-				]
-			},
-			"source": "ArmiesOfWar",
-			"alignment": [
-				"A"
-			],
-			"ac": [
-				{
-					"ac": 12,
-					"from": [
-						"{@item padded armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"formula": "2d8",
-				"average": 9
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 14,
-			"dex": 13,
-			"con": 10,
-			"int": 10,
-			"wis": 11,
-			"cha": 10,
-			"passive": 10,
-			"cr": "1/4",
-			"shortName": "Longbowman",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
-			"action": [
-				{
-					"name": "Shorsword",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
-					]
-				},
-				{
-					"name": "Longbow",
-					"entries": [
-						"{@atk rw} {@hit 3} to hit, range 150/600 ft., one target. {@h}5 ({@damage 1d8 + 1}) piercing damage."
-					]
-				}
-			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"RNG"
-			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/oTvMW2G.png",
-			"fluff": {
-				"entries": [
-					"{@link Longbowman|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
-				],
-				"images": [
-					{
-						"type": "image",
-						"href": {
-							"type": "external",
-							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/0Z9Zv1S.jpg"
-						}
-					}
-				]
-			},
-			"attachedItems": [
-				"longbow|phb"
-			]
-		},
-		{
-			"name": "Archer Line",
-			"size": [
-				"H"
-			],
-			"type": {
-				"type": "humanoid",
-				"swarmSize": "M",
-				"tags": [
-					"any race",
-					"10-20 members"
-				]
-			},
-			"source": "ArmiesOfWar",
-			"alignment": [
-				"A"
-			],
-			"ac": [
-				{
-					"ac": 12,
-					"from": [
-						"{@item padded armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"formula": "8d8 + 24",
-				"average": 60
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 22,
-			"dex": 13,
-			"con": 16,
-			"int": 10,
-			"wis": 11,
-			"cha": 10,
-			"passive": 10,
-			"cr": "3",
-			"shortName": "Archer Line",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
-			"skill": {
-				"athletics": "+8"
-			},
-			"trait": [
-				{
-					"name": "Army",
-					"entries": [
-						"The unit can occupy another creature's space and vice versa, and the unit can move through any opening large enough for a medium humanoid. The unit can't regain hit points or gain temporary hit points during combat."
-					]
-				},
-				{
-					"name": "Morale",
-					"entries": [
-						"If the unit becomes {@condition frightened} or when it is reduced to half hit points, it must succeed on a {@dc 13}Wisdom saving throw or take {@damage 2d8} damage as some of its members break away and flee."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Blacken Sky (must be above half hit points)",
-					"entries": [
-						"The unit chooses a point within 600 feet. All creatures within 30 feet of that point must make a {@dc 15} Dexterity saving throw, taking 21 ({@damage 6d6}) piercing damage on a failed save or half as much on a successful one. Creatures wearing heavy armor and carrying a shield make this save with advantage and take no damage instead of half on a successful save."
-					]
-				},
-				{
-					"name": "Shortsword Flurry (swarm has more than half HP)",
-					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}14 ({@damage 4d6}) piercing damage."
-					]
-				},
-				{
-					"name": "Shortsword Flurry (swarm has half HP or less)",
-					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}7 ({@damage 2d6}) piercing damage."
-					]
-				},
-				{
-					"name": "Targeted Fire (swarm has more than half HP)",
-					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 150/600 ft., one target. {@h}18 ({@damage 4d8}) piercing damage."
-					]
-				},
-				{
-					"name": "Targeted Fire (swarm has half HP or less)",
-					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 150/600 ft., one target. {@h}9 ({@damage 2d8}) piercing damage."
-					]
-				}
-			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"MLW"
-			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/4JmSurx.png",
-			"fluff": {
-				"entries": [
-					"{@link Archer Line|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
-				],
-				"images": [
-					{
-						"type": "image",
-						"href": {
-							"type": "external",
-							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/IHGCYYh.jpg"
-						}
-					}
-				]
-			},
-			"savingThrowForced": [
-				"dexterity"
-			]
-		},
-		{
-			"name": "Camp Followers",
-			"size": [
-				"H"
-			],
-			"type": {
-				"type": "humanoid",
-				"swarmSize": "M",
-				"tags": [
-					"any race",
-					"20-40 members"
-				]
-			},
-			"source": "ArmiesOfWar",
-			"alignment": [
-				"A"
-			],
-			"ac": [
-				10
-			],
-			"hp": {
-				"formula": "8d8 + 8",
-				"average": 44
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 16,
-			"dex": 10,
-			"con": 13,
-			"int": 13,
-			"wis": 14,
-			"cha": 13,
-			"passive": 12,
-			"cr": "1",
-			"shortName": "Camp Followers",
-			"languages": [
-				"any four languages"
-			],
-			"languageTags": [
-				"X"
-			],
-			"trait": [
-				{
-					"name": "Army",
-					"entries": [
-						"The unit can occupy another creature's space and vice versa, and the unit can move through any opening large enough for a medium humanoid. The unit can't regain hit points or gain temporary hit points during combat."
-					]
-				},
-				{
-					"name": "Comforts of Home",
-					"entries": [
-						"As long as this unit is within 300 ft. of an army for the duration of a rest, that army regains the maximum amount of hit points on any hit dice it spends during each short rest and loses one additional level of exhaustion at the end of each long rest."
-					]
-				},
-				{
-					"name": "Diverse",
-					"entries": [
-						"The unit is comprised of merchants, doctors,artisans, courtesans, and soldiers' families from all walks of life. Whenever the unit makes a skill check, roll {@dice 1d4}.On a 2-3, the unit adds its proficiency bonus (+2) to the check. On a 4, it adds twice its proficiency bonus (+4) to the check."
-					]
-				},
-				{
-					"name": "Weak Morale",
-					"entries": [
-						"If the unit becomes {@condition frightened} or is reduced to half hit points, it immediately takes {@damage 2d8} damage as some of its members break away and flee."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Makeshift Attack (swarm has more than half HP)",
-					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}10 ({@damage 4d4}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Makeshift Attack (swarm has half HP or less)",
-					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}5 ({@damage 2d4}) bludgeoning damage."
-					]
-				}
-			],
-			"damageTags": [
-				"B"
-			],
-			"miscTags": [
-				"MW"
-			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/wjO79cv.png",
-			"fluff": {
-				"entries": [
-					"{@link Camp Followers|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
-				],
-				"images": [
-					{
-						"type": "image",
-						"href": {
-							"type": "external",
-							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/3oFwjan.jpg"
-						}
-					}
-				]
 			}
 		},
 		{
-			"name": "Conscripted Footman",
-			"size": [
-				"M"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"any race"
-				]
-			},
-			"source": "ArmiesOfWar",
-			"alignment": [
-				"A"
-			],
-			"ac": [
-				{
-					"ac": 11,
-					"from": [
-						"{@item padded armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"formula": "2d8 + 2",
-				"average": 11
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 12,
-			"dex": 11,
-			"con": 12,
-			"int": 10,
-			"wis": 9,
-			"cha": 10,
-			"passive": 9,
-			"cr": "1/8",
-			"shortName": "Conscripted Footman",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
-			"trait": [
-				{
-					"name": "Undisciplined",
-					"entries": [
-						"The footman has disadvantage on saving throws against being {@condition frightened}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Spear",
-					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) piercing damage, or 5 ({@damage 1d8 + 1}) piercing damage if used with both hands."
-					]
-				},
-				{
-					"name": "Sling",
-					"entries": [
-						"{@atk rw} {@hit 2} to hit, range 30/120 ft., one target. {@h}3 ({@damage 1d4 +1}) bludgeoning damage."
-					]
-				}
-			],
-			"damageTags": [
-				"B",
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"RNG",
-				"MLW"
-			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/YTPicP5.png",
-			"fluff": {
-				"entries": [
-					"{@link Conscripted Footman|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
-				],
-				"images": [
-					{
-						"type": "image",
-						"href": {
-							"type": "external",
-							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/ywoYQAA.jpg"
-						}
-					}
-				]
-			},
-			"attachedItems": [
-				"sling|phb",
-				"spear|phb"
-			]
-		},
-		{
 			"name": "Conscript Infantry",
+			"shortName": "Conscript Infantry",
+			"source": "ArmiesOfWar",
 			"size": [
 				"H"
 			],
@@ -686,7 +547,6 @@
 					"20-40 members"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"A"
 			],
@@ -711,19 +571,14 @@
 			"int": 10,
 			"wis": 9,
 			"cha": 10,
-			"passive": 9,
-			"cr": "1",
-			"shortName": "Conscript Infantry",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
 			"skill": {
 				"athletics": "+6"
 			},
+			"passive": 9,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "1",
 			"trait": [
 				{
 					"name": "Army",
@@ -788,15 +643,19 @@
 					]
 				}
 			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/TEC9lCs.png",
+			"languageTags": [
+				"C",
+				"X"
+			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
+				"MLW",
 				"MW",
-				"RW",
-				"MLW"
+				"RW"
 			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/TEC9lCs.png",
 			"fluff": {
 				"entries": [
 					"{@link Conscript Infantry|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
@@ -813,7 +672,107 @@
 			}
 		},
 		{
+			"name": "Conscripted Footman",
+			"shortName": "Conscripted Footman",
+			"source": "ArmiesOfWar",
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"any race"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"{@item padded armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"formula": "2d8 + 2",
+				"average": 11
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 12,
+			"dex": 11,
+			"con": 12,
+			"int": 10,
+			"wis": 9,
+			"cha": 10,
+			"passive": 9,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Undisciplined",
+					"entries": [
+						"The footman has disadvantage on saving throws against being {@condition frightened}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Spear",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) piercing damage, or 5 ({@damage 1d8 + 1}) piercing damage if used with both hands."
+					]
+				},
+				{
+					"name": "Sling",
+					"entries": [
+						"{@atk rw} {@hit 2} to hit, range 30/120 ft., one target. {@h}3 ({@damage 1d4 +1}) bludgeoning damage."
+					]
+				}
+			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/YTPicP5.png",
+			"attachedItems": [
+				"sling|phb",
+				"spear|phb"
+			],
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"miscTags": [
+				"MLW",
+				"MW",
+				"RNG",
+				"RW"
+			],
+			"fluff": {
+				"entries": [
+					"{@link Conscripted Footman|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/ywoYQAA.jpg"
+						}
+					}
+				]
+			}
+		},
+		{
 			"name": "Heavy Cavalry",
+			"shortName": "Heavy Cavalry",
+			"source": "ArmiesOfWar",
 			"size": [
 				"G"
 			],
@@ -826,7 +785,6 @@
 					"warhorse"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"A"
 			],
@@ -854,20 +812,15 @@
 			"int": 11,
 			"wis": 11,
 			"cha": 10,
-			"passive": 14,
-			"cr": "12",
-			"shortName": "Heavy Cavalry",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
 			"skill": {
 				"athletics": "+10",
 				"perception": "+4"
 			},
+			"passive": 14,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "12",
 			"trait": [
 				{
 					"name": "Army",
@@ -887,9 +840,6 @@
 						"If the unit becomes {@condition frightened} or when it is reduced to half hit points, it must succeed on a {@dc 13}Wisdom saving throw or take {@damage 2d8} damage as some of its members break away and flee."
 					]
 				}
-			],
-			"conditionInflict": [
-				"prone"
 			],
 			"action": [
 				{
@@ -935,8 +885,13 @@
 					]
 				}
 			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/QFVLrDO.png",
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"X"
 			],
 			"damageTags": [
 				"B",
@@ -944,10 +899,15 @@
 				"S"
 			],
 			"miscTags": [
-				"MW",
-				"MLW"
+				"MLW",
+				"MW"
 			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/QFVLrDO.png",
+			"conditionInflict": [
+				"prone"
+			],
+			"savingThrowForced": [
+				"strength"
+			],
 			"fluff": {
 				"entries": [
 					"{@link Heavy Cavalry|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
@@ -961,100 +921,12 @@
 						}
 					}
 				]
-			},
-			"savingThrowForced": [
-				"strength"
-			]
-		},
-		{
-			"name": "Heavy Crossbowman",
-			"size": [
-				"M"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"any race"
-				]
-			},
-			"source": "ArmiesOfWar",
-			"alignment": [
-				"A"
-			],
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"{@item chain shirt|phb}"
-					]
-				}
-			],
-			"hp": {
-				"formula": "2d8 + 2",
-				"average": 11
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 14,
-			"dex": 13,
-			"con": 13,
-			"int": 10,
-			"wis": 11,
-			"cha": 10,
-			"passive": 10,
-			"cr": "1/2",
-			"shortName": "Heavy Crossbowman",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
-			"action": [
-				{
-					"name": "Crossbow",
-					"entries": [
-						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. {@h}6 ({@damage 1d10 + 1}) piercing damage."
-					]
-				},
-				{
-					"name": "Shortsword",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
-					]
-				}
-			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"RW",
-				"MW",
-				"MLW"
-			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/WLrkqNx.png",
-			"fluff": {
-				"entries": [
-					"{@link Heavy Crossbowman|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
-				],
-				"images": [
-					{
-						"type": "image",
-						"href": {
-							"type": "external",
-							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/szAGSCT.jpg"
-						}
-					}
-				]
-			},
-			"attachedItems": [
-				"shortsword|phb"
-			]
+			}
 		},
 		{
 			"name": "Heavy Crossbow Line",
+			"shortName": "Heavy Crossbow Line",
+			"source": "ArmiesOfWar",
 			"size": [
 				"H"
 			],
@@ -1066,7 +938,6 @@
 					"10-20 members"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"A"
 			],
@@ -1091,19 +962,14 @@
 			"int": 10,
 			"wis": 11,
 			"cha": 10,
-			"passive": 10,
-			"cr": "3",
-			"shortName": "Heavy Crossbow Line",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
 			"skill": {
 				"athletics": "+8"
 			},
+			"passive": 10,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "3",
 			"trait": [
 				{
 					"name": "Army",
@@ -1168,18 +1034,25 @@
 					]
 				}
 			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/LqEkbRn.png",
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"X"
 			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
+				"MLW",
 				"MW",
-				"RW",
-				"MLW"
+				"RW"
 			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/LqEkbRn.png",
+			"savingThrowForced": [
+				"dexterity"
+			],
 			"fluff": {
 				"entries": [
 					"{@link Heavy Crossbow Line|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
@@ -1193,13 +1066,99 @@
 						}
 					}
 				]
+			}
+		},
+		{
+			"name": "Heavy Crossbowman",
+			"shortName": "Heavy Crossbowman",
+			"source": "ArmiesOfWar",
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"any race"
+				]
 			},
-			"savingThrowForced": [
-				"dexterity"
-			]
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item chain shirt|phb}"
+					]
+				}
+			],
+			"hp": {
+				"formula": "2d8 + 2",
+				"average": 11
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 14,
+			"dex": 13,
+			"con": 13,
+			"int": 10,
+			"wis": 11,
+			"cha": 10,
+			"passive": 10,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "1/2",
+			"action": [
+				{
+					"name": "Crossbow",
+					"entries": [
+						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. {@h}6 ({@damage 1d10 + 1}) piercing damage."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				}
+			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/WLrkqNx.png",
+			"attachedItems": [
+				"shortsword|phb"
+			],
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MLW",
+				"MW",
+				"RW"
+			],
+			"fluff": {
+				"entries": [
+					"{@link Heavy Crossbowman|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
+				],
+				"images": [
+					{
+						"type": "image",
+						"href": {
+							"type": "external",
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/szAGSCT.jpg"
+						}
+					}
+				]
+			}
 		},
 		{
 			"name": "Holy Chorus",
+			"shortName": "Holy Chorus",
+			"source": "ArmiesOfWar",
 			"size": [
 				"L"
 			],
@@ -1211,7 +1170,6 @@
 					"5-10 members"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"L",
 				"G",
@@ -1239,44 +1197,20 @@
 			"int": 13,
 			"wis": 16,
 			"cha": 13,
-			"passive": 13,
-			"cr": "7",
-			"shortName": "Holy Chorus",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
 			"skill": {
 				"medicine": "+9",
 				"persuasion": "+4",
 				"religion": "+4"
 			},
-			"trait": [
-				{
-					"name": "Army",
-					"entries": [
-						"The unit can occupy another creature's space and vice versa, and the unit can move through any opening large enough for a medium humanoid. The unit can't regain hit points or gain temporary hit points during combat."
-					]
-				},
-				{
-					"name": "Morale",
-					"entries": [
-						"If the unit becomes {@condition frightened} or when it is reduced to half hit points, it must succeed on a DC13 Wisdom saving throw or take {@damage 2d8} damage as some of its members break away and flee."
-					]
-				},
-				{
-					"name": "War Healer",
-					"entries": [
-						"Spells cast by this unit can cause armies to regain hit points even during combat."
-					]
-				}
+			"passive": 13,
+			"languages": [
+				"any one language (usually Common)"
 			],
+			"cr": "7",
 			"spellcasting": [
 				{
 					"name": "Spellcasting: Convoke",
+					"type": "spellcasting",
 					"headerEntries": [
 						"The unit is a 9th-level spellcaster. Its spellcasting ability is Wisdom (spell save {@dc 14}, +6to hit with spell attacks). If it is reduced to less than half of its hit points, the unit becomes a 5th-level spellcaster (it loses its 4th and 5th level spell slots and one of its 3rd level slots). The unit has the following Cleric spells prepared:"
 					],
@@ -1338,18 +1272,28 @@
 							"slots": 1
 						}
 					},
-					"ability": "wis",
-					"type": "spellcasting"
+					"ability": "wis"
 				}
 			],
-			"spellcastingTags": [
-				"CC"
-			],
-			"damageTagsSpell": [
-				"F",
-				"N",
-				"O",
-				"R"
+			"trait": [
+				{
+					"name": "Army",
+					"entries": [
+						"The unit can occupy another creature's space and vice versa, and the unit can move through any opening large enough for a medium humanoid. The unit can't regain hit points or gain temporary hit points during combat."
+					]
+				},
+				{
+					"name": "Morale",
+					"entries": [
+						"If the unit becomes {@condition frightened} or when it is reduced to half hit points, it must succeed on a DC13 Wisdom saving throw or take {@damage 2d8} damage as some of its members break away and flee."
+					]
+				},
+				{
+					"name": "War Healer",
+					"entries": [
+						"Spells cast by this unit can cause armies to regain hit points even during combat."
+					]
+				}
 			],
 			"action": [
 				{
@@ -1365,17 +1309,35 @@
 					]
 				}
 			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/pcziKy2.png",
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"X"
 			],
 			"damageTags": [
 				"B"
 			],
-			"miscTags": [
-				"MW",
-				"MLW"
+			"damageTagsSpell": [
+				"F",
+				"N",
+				"O",
+				"R"
 			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/pcziKy2.png",
+			"spellcastingTags": [
+				"CC"
+			],
+			"miscTags": [
+				"MLW",
+				"MW"
+			],
+			"savingThrowForcedSpell": [
+				"charisma",
+				"dexterity",
+				"wisdom"
+			],
 			"fluff": {
 				"entries": [
 					"{@link Holy Chorus|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
@@ -1389,15 +1351,12 @@
 						}
 					}
 				]
-			},
-			"savingThrowForcedSpell": [
-				"charisma",
-				"dexterity",
-				"wisdom"
-			]
+			}
 		},
 		{
 			"name": "Knightly Order",
+			"shortName": "Knightly Order",
+			"source": "ArmiesOfWar",
 			"size": [
 				"G"
 			],
@@ -1410,7 +1369,6 @@
 					"warhorse"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"L",
 				"G",
@@ -1441,20 +1399,15 @@
 			"int": 11,
 			"wis": 11,
 			"cha": 15,
-			"passive": 15,
-			"cr": "15",
-			"shortName": "Knightly Order",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
 			"skill": {
 				"athletics": "+11",
 				"perception": "+5"
 			},
+			"passive": 15,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "15",
 			"trait": [
 				{
 					"name": "Army",
@@ -1474,9 +1427,6 @@
 						"The unit has advantage on saving throws against being {@condition frightened}."
 					]
 				}
-			],
-			"conditionInflict": [
-				"prone"
 			],
 			"action": [
 				{
@@ -1540,19 +1490,6 @@
 					]
 				}
 			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"damageTags": [
-				"B",
-				"P",
-				"S"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"MLW"
-			],
 			"reaction": [
 				{
 					"name": "Warding Maneuvers",
@@ -1562,6 +1499,29 @@
 				}
 			],
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/4QalogH.png",
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"damageTags": [
+				"B",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MLW",
+				"MW",
+				"RW"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"savingThrowForced": [
+				"strength"
+			],
 			"fluff": {
 				"entries": [
 					"{@link Knightly Order|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
@@ -1575,13 +1535,12 @@
 						}
 					}
 				]
-			},
-			"savingThrowForced": [
-				"strength"
-			]
+			}
 		},
 		{
 			"name": "Light Cavalry",
+			"shortName": "Light Cavalry",
+			"source": "ArmiesOfWar",
 			"size": [
 				"H"
 			],
@@ -1594,7 +1553,6 @@
 					"warhorse"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"A"
 			],
@@ -1622,20 +1580,15 @@
 			"int": 18,
 			"wis": 11,
 			"cha": 14,
-			"passive": 13,
-			"cr": "7",
-			"shortName": "Light Cavalry",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
 			"skill": {
 				"athletics": "+8",
 				"perception": "+3"
 			},
+			"passive": 13,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "7",
 			"trait": [
 				{
 					"name": "Army",
@@ -1694,19 +1647,6 @@
 					]
 				}
 			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"damageTags": [
-				"B",
-				"P",
-				"S"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"MLW"
-			],
 			"reaction": [
 				{
 					"name": "Warding Maneuvers",
@@ -1716,6 +1656,23 @@
 				}
 			],
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/w5gsPhp.png",
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"damageTags": [
+				"B",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MLW",
+				"MW",
+				"RW"
+			],
 			"fluff": {
 				"entries": [
 					"{@link Light Cavalry|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
@@ -1732,7 +1689,9 @@
 			}
 		},
 		{
-			"name": "Army Drummer",
+			"name": "Longbowman",
+			"shortName": "Longbowman",
+			"source": "ArmiesOfWar",
 			"size": [
 				"M"
 			],
@@ -1742,7 +1701,6 @@
 					"any race"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"A"
 			],
@@ -1755,52 +1713,63 @@
 				}
 			],
 			"hp": {
-				"formula": "2d8 + 2",
-				"average": 11
+				"formula": "2d8",
+				"average": 9
 			},
 			"speed": {
 				"walk": 30
 			},
-			"str": 11,
-			"dex": 12,
-			"con": 12,
+			"str": 14,
+			"dex": 13,
+			"con": 10,
 			"int": 10,
 			"wis": 11,
-			"cha": 12,
+			"cha": 10,
 			"passive": 10,
-			"cr": "1/8",
-			"shortName": "Army Drummer",
 			"languages": [
 				"any one language (usually Common)"
+			],
+			"cr": "1/4",
+			"action": [
+				{
+					"name": "Shorsword",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
+					]
+				},
+				{
+					"name": "Longbow",
+					"entries": [
+						"{@atk rw} {@hit 3} to hit, range 150/600 ft., one target. {@h}5 ({@damage 1d8 + 1}) piercing damage."
+					]
+				}
+			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/oTvMW2G.png",
+			"attachedItems": [
+				"longbow|phb"
 			],
 			"languageTags": [
 				"C",
 				"X"
 			],
-			"skill": {
-				"performance": "+3",
-				"persuasion": "+3",
-				"intimidation": "+3"
-			},
-			"action": [
-				{
-					"name": "Inspire",
-					"entries": [
-						"One creature of the drummer's choice adds1d4 to the next attack roll, skill check, or saving throw it makes until the end of its next turn."
-					]
-				}
+			"damageTags": [
+				"P"
 			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/iS42lIB.png",
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW"
+			],
 			"fluff": {
 				"entries": [
-					"{@link Army Drummer|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
+					"{@link Longbowman|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
 				],
 				"images": [
 					{
 						"type": "image",
 						"href": {
 							"type": "external",
-							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/1mOjy6U.jpg"
+							"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/0Z9Zv1S.jpg"
 						}
 					}
 				]
@@ -1808,6 +1777,8 @@
 		},
 		{
 			"name": "Martial Band",
+			"shortName": "Martial Band",
+			"source": "ArmiesOfWar",
 			"size": [
 				"H"
 			],
@@ -1819,7 +1790,6 @@
 					"20-40 members"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"A"
 			],
@@ -1844,22 +1814,17 @@
 			"int": 10,
 			"wis": 11,
 			"cha": 15,
-			"passive": 10,
-			"cr": "3",
-			"shortName": "Martial Band",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
 			"skill": {
 				"athletics": "+7",
 				"performance": "+5",
 				"persuasion": "+5",
 				"intimidation": "+5"
 			},
+			"passive": 10,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "3",
 			"trait": [
 				{
 					"name": "Army",
@@ -1902,14 +1867,18 @@
 					]
 				}
 			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/5O3RFbZ.png",
+			"languageTags": [
+				"C",
+				"X"
+			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
-				"MW",
-				"MLW"
+				"MLW",
+				"MW"
 			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/5O3RFbZ.png",
 			"fluff": {
 				"entries": [
 					"{@link Martial Band|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
@@ -1927,6 +1896,8 @@
 		},
 		{
 			"name": "Scouting Troop",
+			"shortName": "Scouting Troop",
+			"source": "ArmiesOfWar",
 			"size": [
 				"L"
 			],
@@ -1938,7 +1909,6 @@
 					"5-10 members"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"NX",
 				"NY",
@@ -1965,22 +1935,17 @@
 			"int": 11,
 			"wis": 13,
 			"cha": 11,
-			"passive": 15,
-			"cr": "1",
-			"shortName": "Scouting Troop",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
 			"skill": {
 				"nature": "+4",
 				"perception": "+5",
 				"stealth": "+6",
 				"survival": "+5"
 			},
+			"passive": 15,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "1",
 			"trait": [
 				{
 					"name": "Army",
@@ -2013,9 +1978,6 @@
 					]
 				}
 			],
-			"traitTags": [
-				"Keen Senses"
-			],
 			"action": [
 				{
 					"name": "Shortsword Flurry (swarm has more than half HP)",
@@ -2042,15 +2004,22 @@
 					]
 				}
 			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/IPUbnyL.png",
+			"traitTags": [
+				"Keen Senses"
+			],
+			"languageTags": [
+				"C",
+				"X"
+			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
+				"MLW",
 				"MW",
-				"RW",
-				"MLW"
+				"RW"
 			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/IPUbnyL.png",
 			"fluff": {
 				"entries": [
 					"{@link Scouting Troop|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
@@ -2068,6 +2037,8 @@
 		},
 		{
 			"name": "Skirmishers",
+			"shortName": "Skirmishers",
+			"source": "ArmiesOfWar",
 			"size": [
 				"H"
 			],
@@ -2079,7 +2050,6 @@
 					"20-40 members"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"A"
 			],
@@ -2104,20 +2074,15 @@
 			"int": 10,
 			"wis": 11,
 			"cha": 9,
-			"passive": 10,
-			"cr": "5",
-			"shortName": "Skirmishers",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
 			"skill": {
 				"athletics": "+9",
 				"intimidation": "+2"
 			},
+			"passive": 10,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "5",
 			"trait": [
 				{
 					"name": "Army",
@@ -2149,22 +2114,6 @@
 						"If the unit becomes {@condition frightened} or when it is reduced to half hit points, it must succeed on a {@dc 13}Wisdom saving throw or take {@damage 2d8} damage as some of its members break away and flee."
 					]
 				}
-			],
-			"traitTags": [
-				"Aggressive",
-				"Reckless"
-			],
-			"bonus": [
-				{
-					"name": "Aggressive",
-					"entries": [
-						"The unit can move up to its speed toward a hostile creature that it can see."
-					]
-				}
-			],
-			"damageTags": [
-				"P",
-				"S"
 			],
 			"action": [
 				{
@@ -2210,14 +2159,34 @@
 					]
 				}
 			],
-			"miscTags": [
-				"MW",
-				"MLW"
+			"bonus": [
+				{
+					"name": "Aggressive",
+					"entries": [
+						"The unit can move up to its speed toward a hostile creature that it can see."
+					]
+				}
+			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/1SQSqJj.png",
+			"traitTags": [
+				"Aggressive",
+				"Reckless"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/1SQSqJj.png",
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MLW",
+				"MW"
+			],
 			"fluff": {
 				"entries": [
 					"{@link Skirmishers|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
@@ -2235,6 +2204,8 @@
 		},
 		{
 			"name": "Soldiers-At-Arms",
+			"shortName": "Soldiers-At-Arms",
+			"source": "ArmiesOfWar",
 			"size": [
 				"H"
 			],
@@ -2246,7 +2217,6 @@
 					"20-40 members"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"A"
 			],
@@ -2272,20 +2242,15 @@
 			"int": 11,
 			"wis": 11,
 			"cha": 10,
-			"passive": 14,
-			"cr": "10",
-			"shortName": "Soldiers-At-Arms",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
 			"skill": {
 				"athletics": "+10",
 				"perception": "+4"
 			},
+			"passive": 14,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "10",
 			"trait": [
 				{
 					"name": "Army",
@@ -2305,10 +2270,6 @@
 						"The unit has advantage on saving throws against being {@condition frightened}."
 					]
 				}
-			],
-			"damageTags": [
-				"B",
-				"P"
 			],
 			"action": [
 				{
@@ -2354,12 +2315,6 @@
 					]
 				}
 			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"miscTags": [
-				"MW"
-			],
 			"reaction": [
 				{
 					"name": "Warding Maneuvers",
@@ -2369,6 +2324,23 @@
 				}
 			],
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/bsSYOCK.png",
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"X"
+			],
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"savingThrowForced": [
+				"strength"
+			],
 			"fluff": {
 				"entries": [
 					"{@link Soldiers-At-Arms|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
@@ -2382,13 +2354,12 @@
 						}
 					}
 				]
-			},
-			"savingThrowForced": [
-				"strength"
-			]
+			}
 		},
 		{
 			"name": "Wall of Shields",
+			"shortName": "Wall of Shields",
+			"source": "ArmiesOfWar",
 			"size": [
 				"H"
 			],
@@ -2400,7 +2371,6 @@
 					"20-40 members"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"A"
 			],
@@ -2426,20 +2396,15 @@
 			"int": 11,
 			"wis": 11,
 			"cha": 10,
-			"passive": 14,
-			"cr": "10",
-			"shortName": "Wall of Shields",
-			"languages": [
-				"any one language (usually Common)"
-			],
-			"languageTags": [
-				"C",
-				"X"
-			],
 			"skill": {
 				"athletics": "+10",
 				"perception": "+4"
 			},
+			"passive": 14,
+			"languages": [
+				"any one language (usually Common)"
+			],
+			"cr": "10",
 			"trait": [
 				{
 					"name": "Army",
@@ -2510,18 +2475,22 @@
 					]
 				}
 			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/YMhgxZJ.png",
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"X"
 			],
 			"damageTags": [
 				"B",
 				"P"
 			],
 			"miscTags": [
-				"MW",
-				"MLW"
+				"MLW",
+				"MW"
 			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/YMhgxZJ.png",
 			"fluff": {
 				"entries": [
 					"{@link Wall of Shields|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
@@ -2539,6 +2508,8 @@
 		},
 		{
 			"name": "War Academy Mages",
+			"shortName": "War Academy Mages",
+			"source": "ArmiesOfWar",
 			"size": [
 				"L"
 			],
@@ -2550,7 +2521,6 @@
 					"5-10 members"
 				]
 			},
-			"source": "ArmiesOfWar",
 			"alignment": [
 				"A"
 			],
@@ -2575,42 +2545,19 @@
 			"int": 17,
 			"wis": 12,
 			"cha": 10,
-			"passive": 11,
-			"cr": "9",
-			"shortName": "War Academy Mages",
-			"languages": [
-				"any four languages"
-			],
-			"languageTags": [
-				"X"
-			],
 			"skill": {
 				"arcana": "+7",
 				"history": "+7"
 			},
-			"trait": [
-				{
-					"name": "Army",
-					"entries": [
-						"The unit can occupy another creature's space and vice versa, and the unit can move through any opening large enough for a medium humanoid. The unit can't regain hit points or gain temporary hit points during combat."
-					]
-				},
-				{
-					"name": "Arcane Ward",
-					"entries": [
-						"Creatures of the unit's choice within 30ft. of it (including itself) have advantage on saving throws against spells and other magical effects."
-					]
-				},
-				{
-					"name": "Morale",
-					"entries": [
-						"If the unit becomes {@condition frightened} or when it is reduced to half hit points, it must succeed on a DC13 Wisdom saving throw or take {@damage 2d8} damage as some of its members break away and flee."
-					]
-				}
+			"passive": 11,
+			"languages": [
+				"any four languages"
 			],
+			"cr": "9",
 			"spellcasting": [
 				{
 					"name": "Spellcasting: Convoke",
+					"type": "spellcasting",
 					"headerEntries": [
 						"The unit is a 12th-level spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 15},+7 to hit with spell attacks). If it is reduced to less than half of its hit points, the unit becomes an 8th-level spellcaster (it loses its 5th and 6th level spell slots and one of its 4th level slots). The unit has the following Wizard spells prepared:"
 					],
@@ -2670,20 +2617,28 @@
 							"slots": 1
 						}
 					},
-					"ability": "int",
-					"type": "spellcasting"
+					"ability": "int"
 				}
 			],
-			"spellcastingTags": [
-				"CW"
-			],
-			"damageTagsSpell": [
-				"B",
-				"C",
-				"F",
-				"L",
-				"O",
-				"T"
+			"trait": [
+				{
+					"name": "Army",
+					"entries": [
+						"The unit can occupy another creature's space and vice versa, and the unit can move through any opening large enough for a medium humanoid. The unit can't regain hit points or gain temporary hit points during combat."
+					]
+				},
+				{
+					"name": "Arcane Ward",
+					"entries": [
+						"Creatures of the unit's choice within 30ft. of it (including itself) have advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Morale",
+					"entries": [
+						"If the unit becomes {@condition frightened} or when it is reduced to half hit points, it must succeed on a DC13 Wisdom saving throw or take {@damage 2d8} damage as some of its members break away and flee."
+					]
+				}
 			],
 			"action": [
 				{
@@ -2705,16 +2660,34 @@
 					]
 				}
 			],
+			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/iTXTRd5.png",
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"X"
 			],
 			"damageTags": [
 				"B"
 			],
+			"damageTagsSpell": [
+				"B",
+				"C",
+				"F",
+				"L",
+				"O",
+				"T"
+			],
+			"spellcastingTags": [
+				"CW"
+			],
 			"miscTags": [
 				"MW"
 			],
-			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/ArmiesOfWar/iTXTRd5.png",
+			"savingThrowForcedSpell": [
+				"constitution",
+				"dexterity"
+			],
 			"fluff": {
 				"entries": [
 					"{@link War Academy Mages|https://homebrewery.naturalcrit.com/share/o4qRnnxr0a2G} based on the post from {@link u/filmatra|https://www.reddit.com/r/UnearthedArcana/comments/pnewbv/comment/hcopcks/}"
@@ -2728,10 +2701,37 @@
 						}
 					}
 				]
-			},
-			"savingThrowForcedSpell": [
-				"constitution",
-				"dexterity"
+			}
+		}
+	],
+	"legendaryGroup": [
+		{
+			"name": "ArmiesOfWarLairActionsCommanderOfWar",
+			"source": "ArmiesOfWar",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), the keep's commander takes a lair action to cause one of the following effects; the commander can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"Rocks are thrown to a 15 ft. radius point within 30 ft. of the keep's walls. Each creature in the area must make a DC {@dc 15} Dexterity saving throw, taking 7 ({@damage 2d6}) bludgeoning damage on a failed save, or half as much damage on a successful one.",
+						"Boiling oil pours from the keep onto all creatures within a10 ft. radius point along the keep's walls. Each creature in the area must make a DC 15 Dexterity saving throw. On a failed save, a creature takes 10 ({@damage 4d4}) fire damage and 5({@damage 2d4}) additional fire damage at the beginning of each of its turns until it uses its action to clean itself of oil. On a successful save, a creature takes no damage.",
+						"The keep's defenders use its passageways, architecture,and simple machinery to their advantage. Until the end of the round, melee attacks against creatures of the commander's choice are made with disadvantage.",
+						"A {@spell glyph of warding}, cast at the 3rd level, appears at an unoccupied location of the commander's choice somewhere within the keep. One of the commander'sallies may expend a spell slot to store a spell they have prepared within the spell glyph. Otherwise, the glyph is an explosive rune."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region containing the keep may be altered by the keep's presence, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Moats, trenches, and chevaux de frise mar the landscape, making travel exhausting. The area within 1 mile of the keep is difficult terrain",
+						"The keep's guards have illuminated the lands with blazing ires, and thoroughly patrol the lands at all hours.Dexterity (Stealth) checks made within 1 mile of the keep are made with disadvantage.",
+						"The commander's subordinates have been convinced to greatly respect or fear their leader. Charisma (Deception,Intimidation, and Persuasion) checks against the people of the keep are made with disadvantage.",
+						"The lordship burned its lands as it recalled its population into the keep's walls. No rations may be foraged or hunted within one day's travel of the keep."
+					]
+				},
+				"If the keep is taken, these effects fade over the course of {@dice 1d10} days."
 			]
 		}
 	]
