@@ -1,6 +1,5 @@
-import fs from "fs";
+import {BrewTester} from "5etools-utils";
 
-const _TIME_TAG = "\tRun duration";
 const _ALLOWLIST_DIRS = new Set([
 	"Adventurers League",
 	"AL",
@@ -141,25 +140,6 @@ const _ALLOWLIST_DIRS = new Set([
 	"YARV",
 ]);
 
-async function main () {
-	console.time(_TIME_TAG);
-
-	if (!fs.existsSync("_img")) {
-		console.timeEnd(_TIME_TAG);
-		return;
-	}
-
-	const extraDirs = fs.readdirSync("_img")
-		.filter(dir => !_ALLOWLIST_DIRS.has(dir));
-
-	if (!extraDirs.length) {
-		console.timeEnd(_TIME_TAG);
-		return;
-	}
-
-	console.error(`Extra directories found in "_img":\n${extraDirs.map(d => `\t${d}`).join("\n")}`);
-	console.timeEnd(_TIME_TAG);
-	process.exit(1);
-}
-
-export default main();
+await BrewTester.pTestImgDirectories({
+	dirAllowlist: _ALLOWLIST_DIRS,
+});
