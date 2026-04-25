@@ -65,6 +65,11 @@
 		"dateLastModified": 1777024373,
 		"_dateLastModifiedHash": "ff96aea303"
 	},
+	"_test": {
+		"references": [
+			"GrimHollowCG24"
+		]
+	},
 	"class": [
 		{
 			"name": "Monster Hunter",
@@ -1033,12 +1038,6 @@
 			"subclassSpells": [
 				"Bestow Curse|XPHB"
 			],
-			"subclassFeatures": [
-				"Misfortune Bringer|Rogue|XPHB|Misfortune Bringer|GrimHollowPG24|3",
-				"Steal Luck|Rogue|XPHB|Misfortune Bringer|GrimHollowPG24|9",
-				"Curse Caster|Rogue|XPHB|Misfortune Bringer|GrimHollowPG24|13",
-				"Improved Steal Luck|Rogue|XPHB|Misfortune Bringer|GrimHollowPG24|17"
-			],
 			"optionalfeatureProgression": [
 				{
 					"name": "Misfortune",
@@ -1052,6 +1051,12 @@
 						"17": 5
 					}
 				}
+			],
+			"subclassFeatures": [
+				"Misfortune Bringer|Rogue|XPHB|Misfortune Bringer|GrimHollowPG24|3",
+				"Steal Luck|Rogue|XPHB|Misfortune Bringer|GrimHollowPG24|9",
+				"Curse Caster|Rogue|XPHB|Misfortune Bringer|GrimHollowPG24|13",
+				"Improved Steal Luck|Rogue|XPHB|Misfortune Bringer|GrimHollowPG24|17"
 			],
 			"hasFluff": true,
 			"hasFluffImages": true
@@ -3594,6 +3599,35 @@
 			]
 		}
 	],
+	"foundryClassFeature": [
+		{
+			"name": "Expert Strike",
+			"source": "GrimHollowPG24",
+			"className": "Monster Hunter",
+			"classSource": "GrimHollowPG24",
+			"level": 5,
+			"effects": [
+				{
+					"name": "Expert Strike",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.bonuses.mwak.attack",
+							"mode": 2,
+							"value": "@abilities.int.mod",
+							"priority": 20
+						},
+						{
+							"key": "system.bonuses.mwak.damage",
+							"mode": 2,
+							"value": "@abilities.int.mod",
+							"priority": 20
+						}
+					]
+				}
+			]
+		}
+	],
 	"subclassFeature": [
 		{
 			"name": "Carver Guild",
@@ -5783,7 +5817,7 @@
 				},
 				{
 					"type": "refOptionalfeature",
-					"optionalfeature": "Darkvision|GrimHollowPG24"
+					"optionalfeature": "Darkvision (CM)|GrimHollowPG24"
 				},
 				{
 					"type": "refOptionalfeature",
@@ -9672,104 +9706,7 @@
 			}
 		}
 	],
-	"foundryClassFeature": [
-		{
-			"name": "Expert Strike",
-			"source": "GrimHollowPG24",
-			"className": "Monster Hunter",
-			"classSource": "GrimHollowPG24",
-			"level": 5,
-			"effects": [
-				{
-					"name": "Expert Strike",
-					"transfer": true,
-					"changes": [
-						{
-							"key": "system.bonuses.mwak.attack",
-							"mode": 2,
-							"value": "@abilities.int.mod",
-							"priority": 20
-						},
-						{
-							"key": "system.bonuses.mwak.damage",
-							"mode": 2,
-							"value": "@abilities.int.mod",
-							"priority": 20
-						}
-					]
-				}
-			]
-		}
-	],
 	"foundrySubclassFeature": [
-		{
-			"name": "Sanguine Vigor",
-			"source": "GrimHollowPG24",
-			"className": "Wizard",
-			"classSource": "XPHB",
-			"subclassShortName": "Sangromancer",
-			"subclassSource": "GrimHollowPG24",
-			"level": 6,
-			"effects": [
-				{
-					"name": "Sanguine Vigor",
-					"transfer": true,
-					"changes": [
-						{
-							"key": "system.attributes.hp.bonuses.overall",
-							"mode": 2,
-							"value": "@classes.wizard.levels",
-							"priority": 20
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Red Renewal",
-			"source": "GrimHollowPG24",
-			"className": "Wizard",
-			"classSource": "XPHB",
-			"subclassShortName": "Sangromancer",
-			"subclassSource": "GrimHollowPG24",
-			"level": 14,
-			"activities": [
-				{
-					"type": "utility",
-					"activation": {
-						"type": "shortRest"
-					},
-					"consumption": {
-						"scaling": {
-							"allowed": false
-						},
-						"spellSlot": true,
-						"targets": [
-							{
-								"type": "itemUses",
-								"value": "1",
-								"target": "",
-								"scaling": {}
-							},
-							{
-								"type": "hitDice",
-								"value": "-@classes.wizard.levels/2",
-								"target": "smallest"
-							},
-							{
-								"type": "itemUses",
-								"value": "-@classes.wizard.levels/2",
-								"target": {
-									"consumes": {
-										"name": "Full-Blooded"
-									}
-								}
-							}
-						]
-					}
-				}
-			]
-		},
 		{
 			"name": "Primal Companion",
 			"source": "GrimHollowPG24",
@@ -9927,254 +9864,77 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Sanguine Vigor",
+			"source": "GrimHollowPG24",
+			"className": "Wizard",
+			"classSource": "XPHB",
+			"subclassShortName": "Sangromancer",
+			"subclassSource": "GrimHollowPG24",
+			"level": 6,
+			"effects": [
+				{
+					"name": "Sanguine Vigor",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.hp.bonuses.overall",
+							"mode": 2,
+							"value": "@classes.wizard.levels",
+							"priority": 20
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Red Renewal",
+			"source": "GrimHollowPG24",
+			"className": "Wizard",
+			"classSource": "XPHB",
+			"subclassShortName": "Sangromancer",
+			"subclassSource": "GrimHollowPG24",
+			"level": 14,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "shortRest"
+					},
+					"consumption": {
+						"scaling": {
+							"allowed": false
+						},
+						"spellSlot": true,
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": "",
+								"scaling": {}
+							},
+							{
+								"type": "hitDice",
+								"value": "-@classes.wizard.levels/2",
+								"target": "smallest"
+							},
+							{
+								"type": "itemUses",
+								"value": "-@classes.wizard.levels/2",
+								"target": {
+									"consumes": {
+										"name": "Full-Blooded"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
 		}
 	],
 	"optionalfeature": [
-		{
-			"name": "Aberration",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"choose": {
-						"from": [
-							"deep speech",
-							"undercommon"
-						],
-						"count": 1
-					}
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Aberration creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Aberrations, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Deep Speech} or {@language Undercommon}."
-			]
-		},
-		{
-			"name": "Beast",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"sylvan": true
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Beast creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Beasts, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Sylvan}."
-			]
-		},
-		{
-			"name": "Celestial",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"celestial": true
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Celestial creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Celestials, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Celestial}."
-			]
-		},
-		{
-			"name": "Construct",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"draconic": true
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Construct creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Constructs, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Draconic}."
-			]
-		},
-		{
-			"name": "Dragon",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"draconic": true
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Dragon creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Dragons, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Draconic}."
-			]
-		},
-		{
-			"name": "Elemental",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"primordial": true
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Elemental creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Elementals, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Primordial}."
-			]
-		},
-		{
-			"name": "Fey",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"sylvan": true
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Fey creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Fey, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Sylvan}."
-			]
-		},
-		{
-			"name": "Fiend",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"choose": {
-						"from": [
-							"abyssal",
-							"infernal"
-						],
-						"count": 1
-					}
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Fiend creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Fiends, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Abyssal} or {@language Infernal}."
-			]
-		},
-		{
-			"name": "Giant",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"giant": true
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Giant creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Giants, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Giant}."
-			]
-		},
-		{
-			"name": "Monstrosity",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"deep speech": true
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Monstrosity creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Monstrosities, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Deep Speech}."
-			]
-		},
-		{
-			"name": "Ooze",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"choose": {
-						"from": [
-							"deep speech",
-							"undercommon"
-						],
-						"count": 1
-					}
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Ooze creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Oozes, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Deep Speech} or {@language Undercommon}."
-			]
-		},
-		{
-			"name": "Plant",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"sylvan": true
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Plant creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Plants, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Sylvan}."
-			]
-		},
-		{
-			"name": "Undead",
-			"source": "GrimHollowPG24",
-			"page": 52,
-			"featureType": [
-				"MGS"
-			],
-			"languageProficiencies": [
-				{
-					"choose": {
-						"from": [
-							"abyssal",
-							"infernal"
-						],
-						"count": 1
-					}
-				}
-			],
-			"entries": [
-				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Undead creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Undead, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
-				"When you gain this feature, you also learn {@language Abyssal} or {@language Infernal}."
-			]
-		},
 		{
 			"name": "Aberrant Form",
 			"source": "GrimHollowPG24",
@@ -10234,6 +9994,29 @@
 			]
 		},
 		{
+			"name": "Aberration",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"deep speech",
+							"undercommon"
+						],
+						"count": 1
+					}
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Aberration creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Aberrations, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Deep Speech} or {@language Undercommon}."
+			]
+		},
+		{
 			"name": "Abyssal Resistance",
 			"source": "GrimHollowPG24",
 			"page": 144,
@@ -10246,7 +10029,7 @@
 				}
 			],
 			"entries": [
-				"You gain {@variantrule Immunity|XPHB} to the damage type chosen for {@optfeature Fiendish Soul|GrimHollowPG24}, and you gain {@variantrule Resistance|XPHB} to the other two damage types. Additionally, you have {@variantrule Resistance|XPHB} to damage from nonmagical weapon attacks or {@variantrule Unarmed Strikes|XPHB}."
+				"You gain {@variantrule Immunity|XPHB} to the damage type chosen for {@optfeature Fiendish Soul|GrimHollowPG24}, and you gain {@variantrule Resistance|XPHB} to the other two damage types. Additionally, you have {@variantrule Resistance|XPHB} to damage from nonmagical weapon attacks or {@variantrule Unarmed Strike|XPHB|Unarmed Strikes}."
 			]
 		},
 		{
@@ -10776,6 +10559,23 @@
 			]
 		},
 		{
+			"name": "Beast",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"sylvan": true
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Beast creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Beasts, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Sylvan}."
+			]
+		},
+		{
 			"name": "Beguiler's Charm",
 			"source": "GrimHollowPG24",
 			"page": 180,
@@ -10822,7 +10622,7 @@
 				}
 			],
 			"entries": [
-				"You can compel a creature with a binding curse. As a {@variantrule Bonus Action|XPHB}, choose a creature within 30 feet who can see you. That creature makes a Charisma saving throw against a DC of 12 plus your Transformation Stage. On a failed save it cannot move more than 30 feet away from you for 1 minute. Also, during that time, your weapon attacks and {@variantrule Unarmed Strikes|XPHB} against the creature deal an additional {@dice 2d6} Necrotic damage.",
+				"You can compel a creature with a binding curse. As a {@variantrule Bonus Action|XPHB}, choose a creature within 30 feet who can see you. That creature makes a Charisma saving throw against a DC of 12 plus your Transformation Stage. On a failed save it cannot move more than 30 feet away from you for 1 minute. Also, during that time, your weapon attacks and {@variantrule Unarmed Strike|XPHB|Unarmed Strikes} against the creature deal an additional {@dice 2d6} Necrotic damage.",
 				"You can use this feature three times, regaining all uses after finishing a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}."
 			]
 		},
@@ -11050,6 +10850,23 @@
 			]
 		},
 		{
+			"name": "Celestial",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"celestial": true
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Celestial creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Celestials, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Celestial}."
+			]
+		},
+		{
 			"name": "Celestial Form",
 			"source": "GrimHollowPG24",
 			"page": 167,
@@ -11218,6 +11035,23 @@
 			"entries": [
 				"You gain an additional option for your Writing Tendrils mutation.",
 				"As a {@variantrule Bonus Action|XPHB} while Writhing Tentacles is active, you can attempt to restrain a creature within 5 feet of you with your tendrils. The creature must succeed on a Strength or Dexterity saving throw or gain the {@condition Restrained|XPHB} condition. The DC is 8 plus your {@variantrule Proficiency|XPHB|Proficiency Bonus} plus your Transformation Stage. A {@condition Restrained|XPHB} creature can take an action to make a Strength ({@skill Athletics|XPHB}) check against this DC, ending the condition on itself on a success. The {@condition Restrained|XPHB} condition ends if you are {@condition Incapacitated|XPHB}, you move from your current position, if you retract your tendrils, or if you use your tendrils to perform another ability."
+			]
+		},
+		{
+			"name": "Construct",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"draconic": true
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Construct creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Constructs, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Draconic}."
 			]
 		},
 		{
@@ -11618,7 +11452,7 @@
 			]
 		},
 		{
-			"name": "Darkvision",
+			"name": "Darkvision (CM)",
 			"source": "GrimHollowPG24",
 			"page": 72,
 			"featureType": [
@@ -11626,7 +11460,7 @@
 			],
 			"entries": [
 				"{@b Cost:} {@i 1 Mutation Point}",
-				"You gain {@variantrule Darkvision|XPHB} with a range of 60 feet. If you already have Darkvision, its range increases by 60 feet."
+				"You gain {@sense Darkvision|XPHB} with a range of 60 feet. If you already have Darkvision, its range increases by 60 feet."
 			]
 		},
 		{
@@ -11731,6 +11565,23 @@
 						"If you take this trait twice, when you use Divine Sangromancy, you also regain {@variantrule Hit Points|XPHB} equal to your {@variantrule Hit Point Dice|XPHB|Hit Die} roll."
 					]
 				}
+			]
+		},
+		{
+			"name": "Dragon",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"draconic": true
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Dragon creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Dragons, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Draconic}."
 			]
 		},
 		{
@@ -11976,7 +11827,7 @@
 			],
 			"entries": [
 				"{@b Cost:} {@i 3 Mutation Points}",
-				"You have {@variantrule Blindsight|XPHB} with a range of 30 feet while you don't have the {@condition Deafened|XPHB} condition."
+				"You have {@sense Blindsight|XPHB} with a range of 30 feet while you don't have the {@condition Deafened|XPHB} condition."
 			]
 		},
 		{
@@ -12114,6 +11965,23 @@
 			"entries": [
 				"You have better mastered the magical arts. The number of spells you can learn and can have prepared increases by 4. Additionally, whenever you finish a {@variantrule Short Rest|XPHB} or {@variantrule Long Rest|XPHB} you gain 1 additional spell slot of whichever level you choose.",
 				"If a creature dies as a result of one of your spells, you can instantly draw that soul into your soul vessel without using a {@action Magic|XPHB} action or {@variantrule Reaction|XPHB}."
+			]
+		},
+		{
+			"name": "Elemental",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"primordial": true
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Elemental creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Elementals, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Primordial}."
 			]
 		},
 		{
@@ -12607,6 +12475,23 @@
 			]
 		},
 		{
+			"name": "Fey",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"sylvan": true
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Fey creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Fey, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Sylvan}."
+			]
+		},
+		{
 			"name": "Fey Form",
 			"source": "GrimHollowPG24",
 			"page": 139,
@@ -12621,6 +12506,29 @@
 			"entries": [
 				"Your creature type becomes Fey in addition to any other creature type(s) you have.",
 				"Also, after you finish a {@variantrule Long Rest|XPHB}, pick a damage type from the following list: Acid, Cold, Fire, Lightning, Psychic, or Thunder. You gain {@variantrule Resistance|XPHB} to that damage type until you finish a {@variantrule Long Rest|XPHB}."
+			]
+		},
+		{
+			"name": "Fiend",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"abyssal",
+							"infernal"
+						],
+						"count": 1
+					}
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Fiend creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Fiends, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Abyssal} or {@language Infernal}."
 			]
 		},
 		{
@@ -12798,7 +12706,7 @@
 					"type": "list",
 					"items": [
 						"Your Dexterity score increases by 2 points to a maximum of 20.",
-						"You can summon {@dice 2d4} {@creature Swarms of Rats|XMM}, {@creature Swarms of Bats|XMM}, or {@creature Wolf|XMM|Wolves} as a {@variantrule Bonus Action|XPHB}. They appear at the start of your next turn within 60 feet of you. They follow your verbal or mental commands. They disperse after 1 hour, when you are reduced to 0 {@variantrule Hit Points|XPHB}, or when you dismiss them with a {@variantrule Bonus Action|XPHB}. You regain this ability after finishing a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}.",
+						"You can summon {@dice 2d4} {@creature Swarm of Rats|XMM|Swarms of Rats}, {@creature Swarm of Bats|XMM|Swarms of Bats}, or {@creature Wolf|XMM|Wolves} as a {@variantrule Bonus Action|XPHB}. They appear at the start of your next turn within 60 feet of you. They follow your verbal or mental commands. They disperse after 1 hour, when you are reduced to 0 {@variantrule Hit Points|XPHB}, or when you dismiss them with a {@variantrule Bonus Action|XPHB}. You regain this ability after finishing a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}.",
 						"You can cast the {@spell Misty Step|XPHB} spell up to four times without using a spell slot. You can also cast a spell in this way as a {@variantrule Reaction|XPHB} when you are targeted with a weapon attack. You cast the spell before taking damage. You regain this ability after finishing a {@variantrule Long Rest|XPHB}."
 					]
 				}
@@ -13012,6 +12920,23 @@
 			"entries": [
 				"You can deliver a soul-chilling jolt through your attacks. Once per turn, when you hit a target with a melee attack when you are within 5 feet of the target, you can deal an additional {@damage 1d6} Necrotic damage.",
 				"You can use this feature a number of times equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus} plus your Transformation Stage. You regain all uses of this feature when you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}."
+			]
+		},
+		{
+			"name": "Giant",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"giant": true
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Giant creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Giants, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Giant}."
 			]
 		},
 		{
@@ -14598,7 +14523,7 @@
 				}
 			],
 			"entries": [
-				"While your soul vessel is charged, you gain the following benefits to your weapon attacks or {@variantrule Unarmed Strikes|XPHB}:",
+				"While your soul vessel is charged, you gain the following benefits to your weapon attacks or {@variantrule Unarmed Strike|XPHB|Unarmed Strikes}:",
 				{
 					"type": "list",
 					"items": [
@@ -14721,6 +14646,23 @@
 			],
 			"entries": [
 				"While you aren't wearing armor or wielding a {@item Shield|XPHB}, your base {@variantrule Armor Class|XPHB} equals 10 plus your Dexterity and Charisma modifiers. You can use your Dexterity modifier instead of your Strength modifier for the attack and damage rolls of your {@variantrule Unarmed Strike|XPHB|Unarmed Strikes}, and you can roll {@dice 1d6} in place of the normal damage of your {@variantrule Unarmed Strike|XPHB}. In addition, after you cast a spell that has a casting time of an action or take the {@action Attack|XPHB} action, you can make one attack with an {@variantrule Unarmed Strike|XPHB} as a {@variantrule Bonus Action|XPHB}."
+			]
+		},
+		{
+			"name": "Monstrosity",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"deep speech": true
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Monstrosity creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Monstrosities, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Deep Speech}."
 			]
 		},
 		{
@@ -14956,6 +14898,29 @@
 			]
 		},
 		{
+			"name": "Ooze",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"deep speech",
+							"undercommon"
+						],
+						"count": 1
+					}
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Ooze creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Oozes, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Deep Speech} or {@language Undercommon}."
+			]
+		},
+		{
 			"name": "Ooze Form",
 			"source": "GrimHollowPG24",
 			"page": 159,
@@ -15012,7 +14977,7 @@
 				{
 					"type": "list",
 					"items": [
-						"The creature's {@variantrule Speed|GrimHollowPG24} is halved, and you can move the creature up to 10 feet horizontally on your turn (no action required).",
+						"The creature's {@variantrule Speed|XPHB} is halved, and you can move the creature up to 10 feet horizontally on your turn (no action required).",
 						"The creature has the {@condition Blinded|XPHB} condition. On your turn, you can choose to remove this condition (no action required)."
 					]
 				}
@@ -15232,6 +15197,23 @@
 			],
 			"entries": [
 				"Your body and soul are bound to the higher planes of good. You have {@variantrule Disadvantage|XPHB} on {@variantrule Death Saving Throw|XPHB|Death Saving Throws} as the plane attempts to pull your soul into its place of final reward."
+			]
+		},
+		{
+			"name": "Plant",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"sylvan": true
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Plant creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Plants, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Sylvan}."
 			]
 		},
 		{
@@ -17096,7 +17078,7 @@
 				}
 			],
 			"entries": [
-				"When a creature affected by your {@optfeature Daemonic Brand|GrimHollowPG24} starts its turn, you can use a {@variantrule Reaction|XPHB} to dictate its move and the action it takes. If you do, the creature repeats the initial Wisdom saving throw at the end of its turn. On a success, you can't use this {@action Reaction|XPHB} again while your brand lasts."
+				"When a creature affected by your {@optfeature Daemonic Brand|GrimHollowPG24} starts its turn, you can use a {@variantrule Reaction|XPHB} to dictate its move and the action it takes. If you do, the creature repeats the initial Wisdom saving throw at the end of its turn. On a success, you can't use this {@variantrule Reaction|XPHB} again while your brand lasts."
 			]
 		},
 		{
@@ -17164,6 +17146,29 @@
 						"If you take this trait twice, when you fail a saving throw against being {@condition Restrained|XPHB}, you can use your {@variantrule Reaction|XPHB} to succeed on the save instead. You regain the use of this feature when you finish a {@variantrule Long Rest|XPHB}."
 					]
 				}
+			]
+		},
+		{
+			"name": "Undead",
+			"source": "GrimHollowPG24",
+			"page": 52,
+			"featureType": [
+				"MGS"
+			],
+			"languageProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"abyssal",
+							"infernal"
+						],
+						"count": 1
+					}
+				}
+			],
+			"entries": [
+				"You add your {@variantrule Proficiency|XPHB|Proficiency Bonus} to Intelligence and Wisdom checks you make that relate to the Undead creature type. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to Undead, you add double your {@variantrule Proficiency|XPHB|Proficiency Bonus} instead.",
+				"When you gain this feature, you also learn {@language Abyssal} or {@language Infernal}."
 			]
 		},
 		{
@@ -18417,7 +18422,7 @@
 						{
 							"type": "item",
 							"name": "Equipment:",
-							"entry": "Choose A or B: (A) {@item Dagger|XPHB}, {@item Calligrapher's Supplies|XPHB}, Diplomatic Papers, {@item Fine Clothes|XPHB}, {@item Signet Ring|XPHB}, 10 GP; or (B) 50 GP"
+							"entry": "Choose A or B: (A) {@item Dagger|XPHB}, {@item Calligrapher's Supplies|XPHB}, Diplomatic Papers, {@item Fine Clothes|XPHB}, {@item Signet Ring|PHB}, 10 GP; or (B) 50 GP"
 						}
 					]
 				}
@@ -18611,7 +18616,7 @@
 							"item": "Navigator's Tools|XPHB"
 						},
 						{
-							"item": "Map|PHB"
+							"item": "Map|XPHB"
 						},
 						{
 							"item": "Traveler's Clothes|XPHB"
@@ -19693,7 +19698,10 @@
 							"item": "Mason's Tools|XPHB"
 						},
 						{
-							"item": "Mule and Cart|GrimHollowPG24"
+							"item": "Mule|XPHB"
+						},
+						{
+							"item": "Cart|XPHB"
 						},
 						{
 							"item": "Traveler's Clothes|XPHB"
@@ -19737,7 +19745,7 @@
 						{
 							"type": "item",
 							"name": "Equipment:",
-							"entry": "Choose A or B: (A) {@item Dagger|XPHB}, {@item Carpenter's Tools|XPHB} or {@item Mason's Tools|XPHB} (same as above), Mule and Cart, {@item Traveler's Clothes|XPHB}, 8 GP; or (B) 50 GP"
+							"entry": "Choose A or B: (A) {@item Dagger|XPHB}, {@item Carpenter's Tools|XPHB} or {@item Mason's Tools|XPHB} (same as above), {@item Mule|XPHB} and {@item Cart|XPHB}, {@item Traveler's Clothes|XPHB}, 8 GP; or (B) 50 GP"
 						}
 					]
 				}
@@ -25824,7 +25832,7 @@
 												"Defeat a powerful, ghostly Undead and absorb its power.",
 												"Defeat an Aberration that has powers over space, time, or death.",
 												"Use a ritual that infuses your body with the forces of death or primordial chaos.",
-												"Survive a near-death experience caused by a ghostly Undead creature or an Aberration, especially one in which your {@variantrule Hit Points|XPHB|Hit Point} maximum is reduced, such as by a {@creature Wrath|XMM|Wraith's} Life Drain, or in which you drop to 0 {@variantrule Hit Points|XPHB}. ",
+												"Survive a near-death experience caused by a ghostly Undead creature or an Aberration, especially one in which your {@variantrule Hit Points|XPHB|Hit Point} maximum is reduced, such as by a {@creature Wraith|XMM|Wraith's} Life Drain, or in which you drop to 0 {@variantrule Hit Points|XPHB}. ",
 												"Kill a significant foe with Necrotic or Psychic damage, or by using Necromancy.",
 												"Infuse other willing people with the power that corrupts you.",
 												"Interact with ghosts and similar spirits, or beings of other realities, perhaps as a conduit between them and other mortals.",
@@ -33344,35 +33352,6 @@
 			]
 		}
 	],
-	"magicvariant": [
-		{
-			"name": "Hunter's Armor",
-			"type": "GV|XDMG",
-			"requires": [
-				{
-					"type": "LA|XPHB"
-				},
-				{
-					"type": "MA|XPHB"
-				},
-				{
-					"type": "HA|XPHB"
-				}
-			],
-			"inherits": {
-				"namePrefix": "Hunter's ",
-				"source": "GrimHollowPG24",
-				"rarity": "none",
-				"type": "AdvEq",
-				"page": 126,
-				"valueExpression": "[[baseItem.value]] + 50000",
-				"entries": [
-					"Hunter's Armor is a favorite of monster hunters across the length and breadth of Etharis. Any type of armor can be constructed as Hunter's Armor by paying the listed extra cost. This reinforces the most vital areas with adamantine and mithral threads to turn devastating hits into normal wounds.",
-					"If a blow would cause a {@variantrule Grievous Wounds|GrimHollowCG24|Grievous Wound}, roll a {@dice d20}. On an 11 or higher, the blow does not deliver a {@variantrule Grievous Wounds|GrimHollowCG24|Grievous Wound}."
-				]
-			}
-		}
-	],
 	"baseitem": [
 		{
 			"name": "Arbalest",
@@ -34390,18 +34369,6 @@
 	],
 	"item": [
 		{
-			"name": "Mastercraft Instrument",
-			"source": "GrimHollowPG24",
-			"page": 127,
-			"type": "AdvEq",
-			"rarity": "none",
-			"value": 25000,
-			"entries": [
-				"These musical instruments are not just the work of the finest luthiers and artisans in Etharis, they have secret embellishments and innovations that can add to a musical performance.",
-				"If you are proficient in the instrument and have a {@variantrule Proficiency|XPHB|Proficiency Bonus} of at least +4, all Charisma ({@skill Performance|XPHB}) checks made using a Mastercraft Instrument have {@variantrule Advantage|XPHB}."
-			]
-		},
-		{
 			"name": "Arrow, Acid",
 			"source": "GrimHollowPG24",
 			"page": 129,
@@ -34876,13 +34843,14 @@
 			]
 		},
 		{
-			"name": "Breath of Beleth (Poison)",
+			"name": "Breath of Beleth",
 			"source": "GrimHollowPG24",
 			"page": 126,
 			"type": "AdvEq",
 			"rarity": "none",
 			"weight": 0.25,
 			"value": 15000,
+			"poison": true,
 			"entries": [
 				"Named after the Arch Daemon of Fear, this poison creates an extremely powerful hallucinogenic effect that evokes a victim's worst fears. The poison is airborne, and victims need only breathe it in to suffer its effects. On the rare occasions it has been used, people in crammed rooms have jumped out of windows or even killed each other out of abject fear.",
 				"Rumors say that the poison has been forbidden even by the Ebon Syndicate, deeming it too dangerous, too extravagant, and too conspicuous. Chances are that such a powerful substance wasn't simply abandoned, however, and other rumors say the Ebon Syndicate still uses a milder version during interrogation.",
@@ -34894,6 +34862,9 @@
 						"While {@condition Poisoned|XPHB} in this way, a creature has the {@condition Frightened|XPHB} condition, and it is {@variantrule Hostile [Attitude]|XPHB|Hostile} to all creatures it can see. If a creature moves within 5 feet of a creature {@condition Poisoned|XPHB} in this way, the {@condition Poisoned|XPHB} creature must use the {@action Dash|XPHB} action on its turn to move away. If it cannot move away, it must instead use the {@action Attack|XPHB} action against the adjacent creature."
 					]
 				}
+			],
+			"poisonTypes": [
+				"inhaled"
 			]
 		},
 		{
@@ -34973,6 +34944,18 @@
 			"rarity": "none",
 			"weight": 1,
 			"value": 500
+		},
+		{
+			"name": "Mastercraft Instrument",
+			"source": "GrimHollowPG24",
+			"page": 127,
+			"type": "AdvEq",
+			"rarity": "none",
+			"value": 25000,
+			"entries": [
+				"These musical instruments are not just the work of the finest luthiers and artisans in Etharis, they have secret embellishments and innovations that can add to a musical performance.",
+				"If you are proficient in the instrument and have a {@variantrule Proficiency|XPHB|Proficiency Bonus} of at least +4, all Charisma ({@skill Performance|XPHB}) checks made using a Mastercraft Instrument have {@variantrule Advantage|XPHB}."
+			]
 		},
 		{
 			"name": "Noisemaker",
@@ -35384,54 +35367,33 @@
 			]
 		}
 	],
-	"language": [
+	"magicvariant": [
 		{
-			"name": "Castinellan",
-			"source": "GrimHollowPG24",
-			"page": 217,
-			"entries": [
-				"The dominant language of the Castinellan Provinces{@sup ({@book PG|GrimHollowPG24|8|The Castinellan Provinces}/{@book CG|GrimHollowCG24|6})}. This language is also used for most of Etharis's religious texts. It was until recently considered a crime to translate the teachings of the Seraphs into a language other than Castinellan. Castinellan is also predominantly spoken in Morencia{@sup ({@book PG|GrimHollowPG24|8|The City of Morencia}/{@book CG|GrimHollowCG24|9})}, making it the most common language used in trade."
-			]
-		},
-		{
-			"name": "Charneault",
-			"source": "GrimHollowPG24",
-			"page": 217,
-			"entries": [
-				"The dominant language of the Charneault Kingdom{@sup ({@book PG|GrimHollowPG24|8|The Charneault Kingdom}/{@book CG|GrimHollowCG24|5})}."
-			]
-		},
-		{
-			"name": "Valiki",
-			"source": "GrimHollowPG24",
-			"page": 217,
-			"entries": [
-				"The dominant language of the Valikan Clans{@sup ({@book PG|GrimHollowPG24|8|The Valikan Clans}/{@book CG|GrimHollowCG24|7})}. Each of the clans speaks a slightly different dialect of Valiki, but each dialect is similar enough to make themselves understood."
-			]
-		},
-		{
-			"name": "Ostoy",
-			"source": "GrimHollowPG24",
-			"page": 217,
-			"entries": [
-				"The dominant language of Ostoya{@sup ({@book PG|GrimHollowPG24|8|The Ostoyan Empire}/{@book CG|GrimHollowCG24|4})}."
-			]
-		},
-		{
-			"name": "Low Büräch",
-			"source": "GrimHollowPG24",
-			"page": 217,
-			"entries": [
-				"The commoner's dialect in the Büräch Empire{@sup ({@book PG|GrimHollowPG24|8|The Bürach Empire}/{@book CG|GrimHollowCG24|3})}. It is more heavily accented than High Büräch, making the general population of the nation harder for foreigners to understand."
-			]
-		},
-		{
-			"name": "Higher Büräch",
-			"source": "GrimHollowPG24",
-			"page": 217,
-			"entries": [
-				"The highborn dialect in the Büräch Empire{@sup ({@book PG|GrimHollowPG24|8|The Bürach Empire}/{@book CG|GrimHollowCG24|3})}. Most formal writings are in this dialect as well, such as religious texts, laws, royal decrees, plays and poems, etc. If a foreigner learns Büräch, this is the dialect they learn."
-			]
+			"name": "Hunter's Armor",
+			"type": "GV|XDMG",
+			"requires": [
+				{
+					"type": "LA|XPHB"
+				},
+				{
+					"type": "MA|XPHB"
+				},
+				{
+					"type": "HA|XPHB"
+				}
+			],
+			"inherits": {
+				"namePrefix": "Hunter's ",
+				"source": "GrimHollowPG24",
+				"page": 126,
+				"type": "AdvEq",
+				"rarity": "none",
+				"valueExpression": "[[baseItem.value]] + 50000",
+				"entries": [
+					"Hunter's Armor is a favorite of monster hunters across the length and breadth of Etharis. Any type of armor can be constructed as Hunter's Armor by paying the listed extra cost. This reinforces the most vital areas with adamantine and mithral threads to turn devastating hits into normal wounds.",
+					"If a blow would cause a {@variantrule Grievous Wounds|GrimHollowCG24|Grievous Wound}, roll a {@dice d20}. On an 11 or higher, the blow does not deliver a {@variantrule Grievous Wounds|GrimHollowCG24|Grievous Wound}."
+				]
+			}
 		}
 	],
 	"itemProperty": [
@@ -35490,7 +35452,7 @@
 					"type": "entries",
 					"name": "Double",
 					"entries": [
-						"A Double weapon functions as two {@item L|XPHB|Light} weapons, one in each hand, for the purposes of two-weapon fighting. If a Double weapon has {@itemProperty R|XPHB|Reach}, you can use only one of these properties per turn."
+						"A Double weapon functions as two {@itemProperty L|XPHB|Light} weapons, one in each hand, for the purposes of two-weapon fighting. If a Double weapon has {@itemProperty R|XPHB|Reach}, you can use only one of these properties per turn."
 					]
 				}
 			]
@@ -35679,6 +35641,56 @@
 			"page": 123,
 			"entries": [
 				"Swift weapons help you recover quickly from missed attacks. When you miss with a Swift weapon, you have {@variantrule Advantage|XPHB} on the first attack roll you make with the weapon against the same target before the end of your next turn. If that attack hits, it also deals an extra {@damage 1d4} damage of the weapon's normal damage type."
+			]
+		}
+	],
+	"language": [
+		{
+			"name": "Castinellan",
+			"source": "GrimHollowPG24",
+			"page": 217,
+			"entries": [
+				"The dominant language of the Castinellan Provinces{@sup ({@book PG|GrimHollowPG24|8|The Castinellan Provinces}/{@book CG|GrimHollowCG24|6})}. This language is also used for most of Etharis's religious texts. It was until recently considered a crime to translate the teachings of the Seraphs into a language other than Castinellan. Castinellan is also predominantly spoken in Morencia{@sup ({@book PG|GrimHollowPG24|8|The City of Morencia}/{@book CG|GrimHollowCG24|9})}, making it the most common language used in trade."
+			]
+		},
+		{
+			"name": "Charneault",
+			"source": "GrimHollowPG24",
+			"page": 217,
+			"entries": [
+				"The dominant language of the Charneault Kingdom{@sup ({@book PG|GrimHollowPG24|8|The Charneault Kingdom}/{@book CG|GrimHollowCG24|5})}."
+			]
+		},
+		{
+			"name": "Higher Büräch",
+			"source": "GrimHollowPG24",
+			"page": 217,
+			"entries": [
+				"The highborn dialect in the Büräch Empire{@sup ({@book PG|GrimHollowPG24|8|The Bürach Empire}/{@book CG|GrimHollowCG24|3})}. Most formal writings are in this dialect as well, such as religious texts, laws, royal decrees, plays and poems, etc. If a foreigner learns Büräch, this is the dialect they learn."
+			]
+		},
+		{
+			"name": "Low Büräch",
+			"source": "GrimHollowPG24",
+			"page": 217,
+			"entries": [
+				"The commoner's dialect in the Büräch Empire{@sup ({@book PG|GrimHollowPG24|8|The Bürach Empire}/{@book CG|GrimHollowCG24|3})}. It is more heavily accented than High Büräch, making the general population of the nation harder for foreigners to understand."
+			]
+		},
+		{
+			"name": "Ostoy",
+			"source": "GrimHollowPG24",
+			"page": 217,
+			"entries": [
+				"The dominant language of Ostoya{@sup ({@book PG|GrimHollowPG24|8|The Ostoyan Empire}/{@book CG|GrimHollowCG24|4})}."
+			]
+		},
+		{
+			"name": "Valiki",
+			"source": "GrimHollowPG24",
+			"page": 217,
+			"entries": [
+				"The dominant language of the Valikan Clans{@sup ({@book PG|GrimHollowPG24|8|The Valikan Clans}/{@book CG|GrimHollowCG24|7})}. Each of the clans speaks a slightly different dialect of Valiki, but each dialect is similar enough to make themselves understood."
 			]
 		}
 	],
@@ -37457,7 +37469,7 @@
 											"id": "012",
 											"entries": [
 												"The world of the Grim Hollow campaign setting is a world of endless conflict, fell magic, and dark secrets. The peoples of the world are divided along clear lines of heritage that are often subdivided by culture or region. But no matter your chosen heritage, your character is also defined by upbringing and circumstance. Have you spent your life in relative peace in the heartland, or in a frontier territory where raids and warfare are a constant threat? Have you or your family line been touched by contemporary magic or an ancient curse? Do you consider yourself an exemplar of your people, or do you quietly push against the social and cultural norms that others expect to define you?",
-												"As an adventurer in Etharis, you have even more reason than most to break the expectations that your heritage might hold for you. You might play an Elf who lived among dwarves for years, swapping the default Elf's {@optfeature Shroud of the Wild|GrimHollowPG24} trait for the {@optfeature Toughness} trait. You might play a Grudgel with a magical background, deciding to take the spellcasting granted by {@optfeature Magical Savvy|GrimHollowPG24|2|Magical Savvy (Roleplaying)} and {@optfeature Magical Savant|GrimHollowPG24} traits in place of the Grudgel's suggested {@optfeature Artisanal Focus|GrimHollowPG24} and {@optfeature Crafter's Eye|GrimHollowPG24} traits. You might decide to select four of your suggested traditional traits and take those four traits again, creating a character whose specific focus grants them an edge in the things they're best at. The traditional traits listed for each heritage are only thematic suggestions. How much or how little your heritage's most popular traditions shape your character is up to you.",
+												"As an adventurer in Etharis, you have even more reason than most to break the expectations that your heritage might hold for you. You might play an Elf who lived among dwarves for years, swapping the default Elf's {@optfeature Shroud of the Wild|GrimHollowPG24} trait for the {@optfeature Toughness|GrimHollowPG24} trait. You might play a Grudgel with a magical background, deciding to take the spellcasting granted by {@optfeature Magical Savvy|GrimHollowPG24|2|Magical Savvy (Roleplaying)} and {@optfeature Magical Savvy|GrimHollowPG24|Magical Savant} traits in place of the Grudgel's suggested {@optfeature Artisanal Focus|GrimHollowPG24} and {@optfeature Crafter's Eye|GrimHollowPG24} traits. You might decide to select four of your suggested traditional traits and take those four traits again, creating a character whose specific focus grants them an edge in the things they're best at. The traditional traits listed for each heritage are only thematic suggestions. How much or how little your heritage's most popular traditions shape your character is up to you.",
 												{
 													"type": "inset",
 													"page": 12,
@@ -39052,7 +39064,7 @@
 									"type": "list",
 									"columns": 3,
 									"items": [
-										"{@feat Advanced Weapon Proficiency|GrimHollowPG24}",
+										"{@feat Advanced Weapon Proficiency (FS)|GrimHollowPG24}",
 										"{@feat Close Combat Artillerist|GrimHollowPG24}",
 										"{@feat Dual Shot|GrimHollowPG24}",
 										"{@feat Flurry|GrimHollowPG24}",
@@ -39126,7 +39138,7 @@
 							"page": 122,
 							"id": "4c4",
 							"entries": [
-								"Mastery of Advanced weapons requires military training and skill. To use any of the special properties or the Weapon Mastery properties of an Advanced weapon, you must take the {@feat Advanced Weapon Proficiency|GrimHollowPG24} feat.",
+								"Mastery of Advanced weapons requires military training and skill. To use any of the special properties or the Weapon Mastery properties of an Advanced weapon, you must take the {@feat Advanced Weapon Proficiency (G)|GrimHollowPG24|Advanced Weapon Proficiency} feat.",
 								{
 									"type": "entries",
 									"name": "Advanced Weapon Properties",
@@ -39354,7 +39366,7 @@
 											"height": 706
 										},
 										"{@item Acid|XPHB}, {@item Alchemist's Fire|XPHB}, and {@item Holy Water|XPHB}. When one of these pieces of Alchemical Ammunition hits, it deals the ammunition's normal damage, then applies the effect of the listed item to the target. No saving throw is allowed against this effect.",
-										"{@item War Oil|GrimHollowPG24}. A target hit by a piece of Alchemical Ammunition packed with War Oil takes damage as normal for the ammunition, then becomes coated in War Oil for up to 1 minute. Alternatively, you can target a point, such as the ground or a wall, and on an attack roll against AC 10, cause the War Oil to spill out of the ammunition, creating a circular patch of the viscous substance with a 10-foot radius.",
+										"{@b War Oil}. A target hit by a piece of Alchemical Ammunition packed with War Oil takes damage as normal for the ammunition, then becomes coated in War Oil for up to 1 minute. Alternatively, you can target a point, such as the ground or a wall, and on an attack roll against AC 10, cause the War Oil to spill out of the ammunition, creating a circular patch of the viscous substance with a 10-foot radius.",
 										"War Oil is slick and highly flammable. An area coated in War Oil counts as {@variantrule Difficult Terrain|XPHB}, and a creature that starting its turn in a coated area or enters the coated area for the first time on a turn must succeed a {@dc 10} Dexterity saving throw or gain the {@condition Prone|XPHB} condition and have its {@variantrule Speed|XPHB} reduced to 0 until the end of its turn.",
 										"Additionally, if a creature or area coated with War Oil is exposed to an open flame or some other source of Fire damage, the oil ignites. The ignited oil burns for two rounds, dealing {@damage 2d4} Fire damage to any creature or object who comes in contact with it, and an additional {@damage 2d4} Fire damage to any creature that ends its turn while in contact with it. An ignited creature can douse the flames by using an action.",
 										"After burning for two rounds, being doused, or remaining unlit for 1 minute, War Oil dries up and ceases to be slippery or flammable."

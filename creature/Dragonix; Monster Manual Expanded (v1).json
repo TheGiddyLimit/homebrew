@@ -398,7 +398,7 @@
 						"5": {
 							"slots": 1,
 							"spells": [
-								"{@spell conjure} (air) elemental"
+								"{@spell conjure elemental||conjure (air) elemental}"
 							]
 						}
 					},
@@ -3670,7 +3670,7 @@
 				{
 					"name": "Antimagic Susceptibility",
 					"entries": [
-						"The statue is {@condition incapacitated} while in the area of an antimagic feld. If targeted by {@spell dispel magic}, the statue must succeed on a Constitution saving throw against the caster's spell save DC or fall {@condition unconscious} for 1 minute."
+						"The statue is {@condition incapacitated} while in the area of an antimagic field. If targeted by {@spell dispel magic}, the statue must succeed on a Constitution saving throw against the caster's spell save DC or fall {@condition unconscious} for 1 minute."
 					]
 				},
 				{
@@ -3780,7 +3780,7 @@
 				{
 					"name": "Antimagic Susceptibility",
 					"entries": [
-						"The statue is {@condition incapacitated} while in the area of an antimagic feld. If targeted by {@spell dispel magic}, the statue must succeed on a Constitution saving throw against the caster's spell save DC or fall {@condition unconscious} for 1 minute."
+						"The statue is {@condition incapacitated} while in the area of an antimagic field. If targeted by {@spell dispel magic}, the statue must succeed on a Constitution saving throw against the caster's spell save DC or fall {@condition unconscious} for 1 minute."
 					]
 				},
 				{
@@ -3893,7 +3893,7 @@
 				{
 					"name": "Antimagic Susceptibility",
 					"entries": [
-						"The statue is {@condition incapacitated} while in the area of an antimagic feld. If targeted by {@spell dispel magic}, the statue must succeed on a Constitution saving throw against the caster's spell save DC or fall {@condition unconscious} for 1 minute."
+						"The statue is {@condition incapacitated} while in the area of an antimagic field. If targeted by {@spell dispel magic}, the statue must succeed on a Constitution saving throw against the caster's spell save DC or fall {@condition unconscious} for 1 minute."
 					]
 				},
 				{
@@ -5959,13 +5959,13 @@
 							"slots": 1,
 							"spells": [
 								"{@spell divine word}",
-								"{@spell firestorm}"
+								"{@spell fire storm}"
 							]
 						},
 						"8": {
 							"slots": 1,
 							"spells": [
-								"{@spell antimagic feld}"
+								"{@spell antimagic field}"
 							]
 						},
 						"9": {
@@ -6041,12 +6041,8 @@
 				{
 					"name": "Paralyzing Touch (Costs 2 Actions)",
 					"entries": [
-						"The lich uses its Paralyzing"
+						"The lich uses its Paralyzing Touch."
 					]
-				},
-				{
-					"name": "Touch",
-					"entries": []
 				},
 				{
 					"name": "Painwrack (Costs 2 Actions)",
@@ -7856,7 +7852,7 @@
 						"3e": [
 							"{@spell blight}",
 							"{@spell enervation|XGE}",
-							"{@spell negative energy flood}"
+							"{@spell negative energy flood|XGE}"
 						],
 						"1e": [
 							"{@spell Abi-Dalzim's horrid wilting|XGE}"
@@ -11356,7 +11352,7 @@
 						"{@spell levitate} (self only)",
 						"{@spell mage armor} (self only)",
 						"{@spell silent image}",
-						"{@spell speak with the dead}"
+						"{@spell speak with dead}"
 					],
 					"daily": {
 						"3e": [
@@ -13372,7 +13368,7 @@
 						"2e": [
 							"{@spell dominate person}",
 							"{@spell hold monster}",
-							"{@spell negative energy flood}"
+							"{@spell negative energy flood|XGE}"
 						],
 						"1e": [
 							"{@spell maddening darkness|XGE}",
@@ -13834,7 +13830,7 @@
 							"slots": 3,
 							"spells": [
 								"{@spell branding smite}",
-								"{@spell fnd steed}"
+								"{@spell find steed}"
 							]
 						},
 						"3": {
@@ -13884,12 +13880,8 @@
 				{
 					"name": "Smite (1/Turn)",
 					"entries": [
-						"As a bonus action, when the giant hits a creature with a weapon attack, it can expend a 1st level spell slot to deal {@damage 2d8} radiant or necrotic damage to the target and it must succeed on a {@dc 17} Wisdom saving throw or be {@condition frightened} until the end of its next turn. If the giant expends a spell slot of 2nd level or higher, the extra damage increases by {@dice 1d8} for each level above 1st (maximum 5d8)"
+						"As a bonus action, when the giant hits a creature with a weapon attack, it can expend a 1st level spell slot to deal {@damage 2d8} radiant or necrotic damage to the target and it must succeed on a {@dc 17} Wisdom saving throw or be {@condition frightened} until the end of its next turn. If the giant expends a spell slot of 2nd level or higher, the extra damage increases by {@dice 1d8} for each level above 1st (maximum {@dice 5d8})."
 					]
-				},
-				{
-					"name": "5d8)",
-					"entries": []
 				}
 			],
 			"action": [
@@ -14118,7 +14110,7 @@
 					"spells": {
 						"0": {
 							"spells": [
-								"{@spell fre bolt}",
+								"{@spell fire bolt}",
 								"{@spell friends}",
 								"{@spell light}",
 								"{@spell mage hand}",
@@ -14144,7 +14136,7 @@
 						"3": {
 							"slots": 3,
 							"spells": [
-								"{@spell freball}",
+								"{@spell fireball}",
 								"{@spell haste}"
 							]
 						},
@@ -14189,16 +14181,30 @@
 					"name": "Sorcery Points",
 					"entries": [
 						"The giant has 13 sorcery points. It can spend 1 or more sorcery points as a bonus action to gain one of the following benefits:",
-						"Heightened Spell: When it casts a spell that forces a creature to make a saving throw to resist the spell's effects, the giant can spend 3 sorcery points to give one target of the spell disadvantage on its first saving throw against the spell.",
-						"Quickened Spell: When it casts a spell that has a casting time of 1"
+						{
+							"type": "list",
+							"style": "list-hang-subtrait",
+							"items": [
+								{
+									"type": "item",
+									"name": "Heightened Spell:",
+									"entries": [
+										"When it casts a spell that forces a creature to make a saving throw to resist the spell's effects, the giant can spend 3 sorcery points to give one target of the spell disadvantage on its first saving throw against the spell."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Quickened Spell:",
+									"entries": [
+										"When it casts a spell that has a casting time of 1 action, the giant can spend 2 sorcery points to change the casting time to 1 bonus action for this casting."
+									]
+								}
+							]
+						}
 					]
 				}
 			],
 			"action": [
-				{
-					"name": "time to 1 bonus action for this casting",
-					"entries": []
-				},
 				{
 					"name": "Multiattack",
 					"entries": [
@@ -19498,7 +19504,7 @@
 						"8": {
 							"slots": 1,
 							"spells": [
-								"{@spell antimagic feld}"
+								"{@spell antimagic field}"
 							]
 						},
 						"9": {
@@ -22548,7 +22554,7 @@
 						"1e": [
 							"{@spell barkskin}",
 							"{@spell conjure fey}",
-							"{@spell feedblemind}",
+							"{@spell feeblemind}",
 							"{@spell finger of death}",
 							"{@spell pass without trace}",
 							"{@spell shillelagh}"
@@ -24274,7 +24280,7 @@
 				{
 					"name": "Antimagic Cone",
 					"entries": [
-						"The beholder's central eye creates an area of antimagic, as in the anti magic feld spell, in a 150-foot cone. At the start of each of its turns, the beholder decides which way the cone faces and whether the cone is active. The area works against the beholder's own eye rays."
+						"The beholder's central eye creates an area of antimagic, as in the {@spell antimagic field} spell, in a 150-foot cone. At the start of each of its turns, the beholder decides which way the cone faces and whether the cone is active. The area works against the beholder's own eye rays."
 					]
 				}
 			],
@@ -24704,12 +24710,8 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The scarecrow makes two claw attacks and uses"
+						"The scarecrow makes two claw attacks and uses Horrifying Glare."
 					]
-				},
-				{
-					"name": "Horrifying Glare",
-					"entries": []
 				},
 				{
 					"name": "Claw",
@@ -27546,7 +27548,7 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The giant makes two melee attacks. It can use Battlefeld Cunning in place of one of the melee attacks."
+						"The giant makes two melee attacks. It can use Battlefield Cunning in place of one of the melee attacks."
 					]
 				},
 				{
@@ -27562,7 +27564,7 @@
 					]
 				},
 				{
-					"name": "Battlefeld Cunning {@recharge 4}",
+					"name": "Battlefield Cunning {@recharge 4}",
 					"entries": [
 						"Up to two allies within 60 feet of the giant that can hear it can use their reactions to make one melee attack each."
 					]
@@ -27768,7 +27770,7 @@
 							"slots": 1,
 							"spells": [
 								"{@spell heroes' feast}",
-								"{@spell investiture of flame}"
+								"{@spell investiture of flame|XGE}"
 							]
 						}
 					},
@@ -33253,12 +33255,8 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The gnoll makes three attacks, either with its greataxe or its longbow. She can replace one of those attacks with Battlefeld"
+						"The gnoll makes three attacks, either with its greataxe or its longbow. She can replace one of those attacks with Battlefield Cunning."
 					]
-				},
-				{
-					"name": "Cunning",
-					"entries": []
 				},
 				{
 					"name": "Bite",
@@ -33279,7 +33277,7 @@
 					]
 				},
 				{
-					"name": "Battlefeld Cunning {@recharge 4}",
+					"name": "Battlefield Cunning {@recharge 4}",
 					"entries": [
 						"Up to two allies within 60 feet of the gnoll that can hear it can use their reactions to make one melee attack each."
 					]
@@ -34037,7 +34035,7 @@
 					"spells": {
 						"0": {
 							"spells": [
-								"{@spell eldrtich blast}",
+								"{@spell eldritch blast}",
 								"{@spell infestation|XGE}"
 							]
 						},
@@ -34977,7 +34975,7 @@
 								"{@spell bane}",
 								"{@spell false life}",
 								"{@spell ray of sickness}",
-								"{@spell word of healing}"
+								"{@spell healing word||word of healing}"
 							]
 						},
 						"2": {
@@ -36668,7 +36666,7 @@
 					"will": [
 						"{@spell dancing lights}",
 						"{@spell minor illusion}",
-						"{@spell vicious mockery.}"
+						"{@spell vicious mockery}"
 					],
 					"ability": "cha"
 				},
@@ -39097,7 +39095,7 @@
 								"{@spell friends}",
 								"{@spell mage hand}",
 								"{@spell minor illusion}",
-								"{@spell prestidigation}",
+								"{@spell prestidigitation}",
 								"{@spell vicious mockery}"
 							]
 						},
@@ -39321,7 +39319,7 @@
 								"{@spell friends}",
 								"{@spell mage hand}",
 								"{@spell minor illusion}",
-								"{@spell prestidigation}",
+								"{@spell prestidigitation}",
 								"{@spell vicious mockery}"
 							]
 						},
@@ -39340,7 +39338,7 @@
 								"{@spell hold monster}",
 								"{@spell mind spike|XGE}",
 								"{@spell misty step}",
-								"{@spell negative energy flood}",
+								"{@spell negative energy flood|XGE}",
 								"{@spell phantasmal force}",
 								"{@spell synaptic static|XGE}"
 							]
@@ -53232,12 +53230,8 @@
 					"name": "Pseudopod",
 					"entries": [
 						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) bludgeoning damage plus 7 ({@damage 2d6}) acid damage, and if the target is wearing non magical metal armor, its armor is partly corroded and takes a permanent and cumulative - 1 penalty to the",
-						"AC it offers. The armor is destroyed if the penalty reduces its AC to"
+						"AC it offers. The armor is destroyed if the penalty reduces its AC to 10."
 					]
-				},
-				{
-					"name": "10",
-					"entries": []
 				}
 			],
 			"traitTags": [
@@ -55575,12 +55569,8 @@
 					"name": "Decaying Gaze",
 					"entries": [
 						"When a creature starts its turn within 30 feet of the nothic and is able to see the nothic's eye, the nothic can magically force it to make a {@dc 13} Constitution saving throw, unless the nothic is {@condition incapacitated}.",
-						"On a failed saving throw, the creature takes 21({@dice 6d6}) necrotic damage and its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the creature finishes a long rest. The target dies if this effect reduces its hit point maximum"
+						"On a failed saving throw, the creature takes 21({@dice 6d6}) necrotic damage and its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the creature finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
 					]
-				},
-				{
-					"name": "to 0",
-					"entries": []
 				},
 				{
 					"name": "Keen Sight",
@@ -59612,12 +59602,8 @@
 				{
 					"name": "Paralyzing Touch (Costs 2 Actions)",
 					"entries": [
-						"The lich uses its Paralyzing"
+						"The lich uses its Paralyzing Touch."
 					]
-				},
-				{
-					"name": "Touch",
-					"entries": []
 				},
 				{
 					"name": "Frightening Gaze (Costs 2 Actions)",
@@ -60635,7 +60621,7 @@
 								"{@spell friends}",
 								"{@spell mage hand}",
 								"{@spell minor illusion}",
-								"{@spell prestidigation}",
+								"{@spell prestidigitation}",
 								"{@spell vicious mockery}"
 							]
 						},
@@ -63327,7 +63313,7 @@
 						"5": {
 							"slots": 2,
 							"spells": [
-								"{@spell dispel evil/good}",
+								"{@spell dispel evil and good||dispel evil/good}",
 								"{@spell hold monster}",
 								"{@spell mass cure wounds}"
 							]
@@ -64767,7 +64753,7 @@
 								"{@spell friends}",
 								"{@spell mage hand}",
 								"{@spell minor illusion}",
-								"{@spell prestidigation}",
+								"{@spell prestidigitation}",
 								"{@spell vicious mockery}"
 							]
 						},
@@ -67541,12 +67527,8 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The skeleton makes three melee attacks or uses"
+						"The skeleton makes three melee attacks or uses Lunging Strike."
 					]
-				},
-				{
-					"name": "Lunging Strike",
-					"entries": []
 				},
 				{
 					"name": "Greatsword",
@@ -69538,7 +69520,7 @@
 							"spells": [
 								"{@spell confusion}",
 								"{@spell stone shape}",
-								"{@spell stone skin}"
+								"{@spell stoneskin}"
 							]
 						},
 						"5": {
@@ -71957,7 +71939,7 @@
 						"2": {
 							"slots": 3,
 							"spells": [
-								"{@spell barksin}",
+								"{@spell barkskin}",
 								"{@spell hold person}",
 								"{@spell healing spirit|XGE}",
 								"{@spell moonbeam}",
@@ -71977,7 +71959,7 @@
 						"4": {
 							"slots": 3,
 							"spells": [
-								"{@spell call woodland beings}",
+								"{@spell conjure woodland beings||call woodland beings}",
 								"{@spell divination}",
 								"{@spell freedom of movement}",
 								"{@spell guardian of nature|XGE}",
@@ -72044,12 +72026,8 @@
 				{
 					"name": "Animate Trees (1/Day)",
 					"entries": [
-						"The treant magically animates one or two trees it can see within 60 feet of it. These trees have the same statistics as a treant, except they have Intelligence and Charisma scores of 1, they can't speak, and they have only the Slam action option. An animated tree acts as an ally of the treant. The tree remains animate for 1 day or until it dies; until the treant dies or is more than 120 feet from the tree; or until the treant takes a bonus action."
+						"The treant magically animates one or two trees it can see within 60 feet of it. These trees have the same statistics as a treant, except they have Intelligence and Charisma scores of 1, they can't speak, and they have only the Slam action option. An animated tree acts as an ally of the treant. The tree remains animate for 1 day or until it dies; until the treant dies or is more than 120 feet from the tree; or until the treant takes a bonus action if possible."
 					]
-				},
-				{
-					"name": "if possible",
-					"entries": []
 				}
 			],
 			"tokenUrl": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/_img/mme_v2/token/Treant Keeper of the Grove Token.webp",
@@ -73190,7 +73168,7 @@
 				{
 					"name": "Antimagic Cone",
 					"entries": [
-						"The ultimate tyrant's central eye creates an area of antimagic, as in the anti magic feld spell, in a 150-foot cone. At the start of each of its turns, the ultimate tyrant decides which way the cone faces and whether the cone is active. The area works against the ultimate tyrant's own eye rays."
+						"The ultimate tyrant's central eye creates an area of antimagic, as in the {@spell antimagic field} spell, in a 150-foot cone. At the start of each of its turns, the ultimate tyrant decides which way the cone faces and whether the cone is active. The area works against the ultimate tyrant's own eye rays."
 					]
 				}
 			],
@@ -74233,7 +74211,7 @@
 								"{@spell mage hand}",
 								"{@spell infestation|XGE}",
 								"{@spell ray of frost}",
-								"{@spell toll of the dead}"
+								"{@spell toll the dead|XGE}"
 							]
 						},
 						"1": {
@@ -79378,12 +79356,8 @@
 				{
 					"name": "Lightning Storm (Costs 2 Actions)",
 					"entries": [
-						"The kraken uses Lightning"
+						"The kraken uses Lightning Storm."
 					]
-				},
-				{
-					"name": "Storm",
-					"entries": []
 				},
 				{
 					"name": "Ink Cloud (Costs 3 Actions)",
