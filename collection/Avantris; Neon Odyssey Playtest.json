@@ -28,7 +28,13 @@
 			"abbreviation": "NO:Br",
 			"source": "NeonOdyssey",
 			"entries": [
-				"When making an attack with a Braced weapon, use your Strength modifier for the attack and damage rolls. If the weapon has the {@itemProperty H|XPHB|Heavy} property, use your Strength score to determine if you can use it without {@variantrule Disadvantage|XPHB}."
+				{
+					"name": "Braced",
+					"type": "entries",
+					"entries": [
+						"When making an attack with a Braced weapon, use your Strength modifier for the attack and damage rolls. If the weapon has the {@itemProperty H|XPHB|Heavy} property, use your Strength score to determine if you can use it without {@variantrule Disadvantage|XPHB}."
+					]
+				}
 			]
 		},
 		{
@@ -36,7 +42,13 @@
 			"source": "NeonOdyssey",
 			"abbreviation": "NO:Bu",
 			"entries": [
-				"As an action, you can expend 10 shots of a Burst weapon's ammunition to spray shots in a 10-foot {@variantrule Cube [Area of Effect]|XPHB|Cube} within the weapon's normal range. Each creature in that area must succeed on a DC 15 Dexterity saving throw or take damage. Roll the weapon's damage once, and apply it to each creature that failed the save."
+				{
+					"name": "Burst",
+					"type": "entries",
+					"entries": [
+						"As an action, you can expend 10 shots of a Burst weapon's ammunition to spray shots in a 10-foot {@variantrule Cube [Area of Effect]|XPHB|Cube} within the weapon's normal range. Each creature in that area must succeed on a DC 15 Dexterity saving throw or take damage. Roll the weapon's damage once, and apply it to each creature that failed the save."
+					]
+				}
 			]
 		},
 		{
@@ -44,7 +56,13 @@
 			"source": "NeonOdyssey",
 			"abbreviation": "NO:C",
 			"entries": [
-				"Being within 5 feet of an enemy doesn't impose {@variantrule Disadvantage|XPHB} on your ranged attack rolls with a Close Quarters weapon."
+				{
+					"name": "Close Quarters",
+					"type": "entries",
+					"entries": [
+						"Being within 5 feet of an enemy doesn't impose {@variantrule Disadvantage|XPHB} on your ranged attack rolls with a Close Quarters weapon."
+					]
+				}
 			]
 		},
 		{
@@ -52,28 +70,417 @@
 			"source": "NeonOdyssey",
 			"abbreviation": "NO:P",
 			"entries": [
-				"You can activate a Powered weapon that has a charged {@item Power Cell|NeonOdyssey} when you make an attack with it. On a hit when activated, the weapon's damage die changes to the value noted with the property. If a damage type is also noted, the weapon deals damage of that type when activated. If the weapon has the {@itemProperty V|XPHB|Versatile} property, the Powered property has a second notation for the activated damage when wielded with two hands.",
-				"A fully charged {@item Power Cell|NeonOdyssey} operates the weapon for 25 activated attacks, after which you must replace the cell as an action or a {@variantrule Bonus Action|XPHB}."
-			]
+				{
+					"name": "Powered",
+					"type": "entries",
+					"entries": [
+						"You can activate a Powered weapon that has a charged {@item Power Cell|NeonOdyssey} when you make an attack with it. On a hit when activated, the weapon's damage die changes to the value noted with the property. If a damage type is also noted, the weapon deals damage of that type when activated. If the weapon has the {@itemProperty V|XPHB|Versatile} property, the Powered property has a second notation for the activated damage when wielded with two hands.",
+						"A fully charged {@item Power Cell|NeonOdyssey} operates the weapon for 25 activated attacks, after which you must replace the cell as an action or a {@variantrule Bonus Action|XPHB}."
+					]	
+				}
+			],
+			"template": "{{item.customProperties.powered}}"
 		},
 		{
 			"name": "Reload",
 			"source": "NeonOdyssey",
 			"abbreviation": "NO:R",
 			"entries": [
-				"A Reload weapon's ammunition is held in a magazine or a {@item Power Cell|NeonOdyssey}. After the number of shots noted in the property, you must reload the weapon as an action or a {@variantrule Bonus Action|XPHB}."
-			]
+				{
+					"name": "Reload",
+					"type": "entries",
+					"entries": [
+						"A Reload weapon's ammunition is held in a magazine or a {@item Power Cell|NeonOdyssey}. After the number of shots noted in the property, you must reload the weapon as an action or a {@variantrule Bonus Action|XPHB}."
+					]
+				}
+			],
+			"template": "{{item.customProperties.reload}}"
 		},
 		{
 			"name": "Scatter",
 			"source": "NeonOdyssey",
 			"abbreviation": "NO:S",
 			"entries": [
-				"As an action, you can expend 2 shots from the weapon to fire it in a {@variantrule Cone [Area of Effect]|XPHB|Cone} with the specified area. Each creature in that area must succeed on a DC 15 Dexterity saving throw or take damage. Roll the weapon's damage once, and apply it to each creature that failed the save."
-			]
+				{
+					"name": "Scatter",
+					"type": "entries",
+					"entries": [
+						"As an action, you can expend 2 shots from the weapon to fire it in a {@variantrule Cone [Area of Effect]|XPHB|Cone} within the specified area. Each creature in that area must succeed on a DC 15 Dexterity saving throw or take damage. Roll the weapon's damage once, and apply it to each creature that failed the save."
+					]
+				}
+			],
+			"template": "{{item.customProperties.scatter}}"
+		}
+	],
+	"baseitem": [
+		{
+			"name": "Bullet",
+			"source": "NeonOdyssey",
+			"type": "A|XPHB",
+			"rarity": "none",
+			"weight": 0.05,
+			"value": 5
+		},
+		{
+			"name": "Shell",
+			"source": "NeonOdyssey",
+			"type": "A|XPHB",
+			"rarity": "none",
+			"weight": 0.2,
+			"value": 10
+		},
+		{
+			"name": "Combat Knife",
+			"source": "NeonOdyssey",
+			"type": "M",
+			"rarity": "none",
+			"weaponCategory": "simple",
+			"property": [
+				"F|XPHB",
+				"L|XPHB",
+				"T|XPHB",
+				"NO:P|NeonOdyssey"
+			],
+			"range": "20/60",
+			"dmg1": "1d4",
+			"dmgType": "P",
+			"weight": 1,
+			"value": 100,
+			"mastery": [
+				"Nick|XPHB"
+			],
+			"customProperties": {
+				"powered": "Powered ({@damage 1d6})"
+			}
+		},
+		{
+			"name": "Light Laser Pistol",
+			"source": "NeonOdyssey",
+			"type": "R",
+			"rarity": "none",
+			"weaponCategory": "simple",
+			"property": [
+				"A|XPHB",
+				"L|XPHB",
+				"NO:C|NeonOdyssey",
+				"NO:R|NeonOdyssey"
+			],
+			"range": "80/320",
+			"dmg1": "1d6",
+			"dmgType": "R",
+			"weight": 1,
+			"value": 750,
+			"mastery": [
+				"Vex|XPHB"
+			],
+			"ammoType": "Power Cell|NeonOdyssey",
+			"customProperties": {
+				"reload": "Reload (50 Shots)"
+			}
+		},
+		{
+			"name": "Light Pistol",
+			"source": "NeonOdyssey",
+			"type": "R",
+			"rarity": "none",
+			"weaponCategory": "simple",
+			"property": [
+				"A|XPHB",
+				"L|XPHB",
+				"NO:C|NeonOdyssey",
+				"NO:R|NeonOdyssey"
+			],
+			"range": "80/320",
+			"dmg1": "1d6",
+			"dmgType": "P",
+			"weight": 1,
+			"value": 750,
+			"mastery": [
+				"Nick|XPHB"
+			],
+			"ammoType": "Bullet|NeonOdyssey",
+			"customProperties": {
+				"reload": "Reload (15 Shots)"
+			}
+		},
+		{
+			"name": "Heavy Laser Pistol",
+			"source": "NeonOdyssey",
+			"type": "R",
+			"rarity": "none",
+			"weaponCategory": "simple",
+			"property": [
+				"A|XPHB",
+				"NO:C|NeonOdyssey",
+				"NO:R|NeonOdyssey"
+			],
+			"range": "50/200",
+			"dmg1": "1d8",
+			"dmgType": "R",
+			"weight": 3,
+			"value": 1250,
+			"mastery": [
+				"Push|XPHB"
+			],
+			"ammoType": "Power Cell|NeonOdyssey",
+			"customProperties": {
+				"reload": "Reload (25 Shots)"
+			}
+		},
+		{
+			"name": "Combat Hammer",
+			"source": "NeonOdyssey",
+			"type": "M",
+			"rarity": "none",
+			"weaponCategory": "martial",
+			"property": [
+				"V|XPHB",
+				"NO:P|NeonOdyssey"
+			],
+			"dmg1": "1d8",
+			"dmg2": "1d10",
+			"dmgType": "B",
+			"weight": 5,
+			"value": 750,
+			"mastery": [
+				"Push|XPHB"
+			],
+			"customProperties": {
+				"powered": "Powered ({@damage 1d10}; {@damage 1d12})"
+			}
+		},
+		{
+			"name": "Quickblade",
+			"source": "NeonOdyssey",
+			"type": "M",
+			"rarity": "none",
+			"weaponCategory": "martial",
+			"property": [
+				"F|XPHB",
+				"L|XPHB",
+				"NO:P|NeonOdyssey"
+			],
+			"dmg1": "1d6",
+			"dmgType": "P",
+			"weight": 2,
+			"value": 500,
+			"mastery": [
+				"Vex|XPHB"
+			],
+			"customProperties": {
+				"powered": "Powered ({@damage 1d8})"
+			}
+		},
+		{
+			"name": "Saber",
+			"source": "NeonOdyssey",
+			"type": "M",
+			"rarity": "none",
+			"weaponCategory": "martial",
+			"property": [
+				"F|XPHB",
+				"L|XPHB",
+				"NO:P|NeonOdyssey"
+			],
+			"dmg1": "1d6",
+			"dmgType": "S",
+			"weight": 3,
+			"value": 1250,
+			"mastery": [
+				"Nick|XPHB"
+			],
+			"customProperties": {
+				"powered": "Powered ({@damage 1d8})"
+			}
+		},
+		{
+			"name": "Assault Rifle",
+			"source": "NeonOdyssey",
+			"type": "R",
+			"rarity": "none",
+			"weaponCategory": "martial",
+			"property": [
+				"A|XPHB",
+				"H|XPHB",
+				"2H|XPHB",
+				"NO:R|NeonOdyssey",
+				"NO:Bu|NeonOdyssey"
+			],
+			"range": "200/800",
+			"dmg1": "1d8",
+			"dmgType": "P",
+			"weight": 8,
+			"value": 2500,
+			"mastery": [
+				"Push|XPHB"
+			],
+			"ammoType": "Bullet|NeonOdyssey",
+			"customProperties": {
+				"reload": "Reload (40 Shots)"
+			}
+		},
+		{
+			"name": "Hand Cannon",
+			"source": "NeonOdyssey",
+			"type": "R",
+			"rarity": "none",
+			"weaponCategory": "martial",
+			"property": [
+				"A|XPHB",
+				"H|XPHB",
+				"NO:R|NeonOdyssey",
+				"NO:Br|NeonOdyssey"
+			],
+			"range": "20/80",
+			"dmg1": "1d12",
+			"dmgType": "P",
+			"weight": 5,
+			"value": 2500,
+			"mastery": [
+				"Topple|XPHB"
+			],
+			"ammoType": "Shell|NeonOdyssey",
+			"customProperties": {
+				"reload": "Reload (5 Shots)"
+			}
+		},
+		{
+			"name": "Laser Rifle",
+			"source": "NeonOdyssey",
+			"type": "R",
+			"rarity": "none",
+			"weaponCategory": "martial",
+			"property": [
+				"A|XPHB",
+				"H|XPHB",
+				"2H|XPHB",
+				"NO:R|NeonOdyssey",
+				"NO:Bu|NeonOdyssey"
+			],
+			"range": "200/800",
+			"dmg1": "1d8",
+			"dmgType": "R",
+			"weight": 7,
+			"value": 2500,
+			"mastery": [
+				"Slow|XPHB"
+			],
+			"ammoType": "Power Cell|NeonOdyssey",
+			"customProperties": {
+				"reload": "Reload (25 Shots)"
+			}
+		},
+		{
+			"name": "Plasma Pistol",
+			"source": "NeonOdyssey",
+			"type": "R",
+			"rarity": "none",
+			"weaponCategory": "martial",
+			"property": [
+				"A|XPHB",
+				"NO:R|NeonOdyssey",
+				"NO:C|NeonOdyssey"
+			],
+			"range": "80/320",
+			"dmg1": "1d8",
+			"dmgType": "L",
+			"weight": 4,
+			"value": 2000,
+			"mastery": [
+				"Sap|XPHB"
+			],
+			"ammoType": "Power Cell|NeonOdyssey",
+			"customProperties": {
+				"reload": "Reload (25 Shots)"
+			}
+		},
+		{
+			"name": "Shotgun",
+			"source": "NeonOdyssey",
+			"type": "R",
+			"rarity": "none",
+			"weaponCategory": "martial",
+			"property": [
+				"A|XPHB",
+				"F|XPHB",
+				"NO:R|NeonOdyssey",
+				"NO:C|NeonOdyssey",
+				"NO:S|NeonOdyssey"
+			],
+			"range": "60/240",
+			"dmg1": "1d10",
+			"dmgType": "P",
+			"weight": 5,
+			"value": 2500,
+			"mastery": [
+				"Vex|XPHB"
+			],
+			"ammoType": "Shell|NeonOdyssey",
+			"customProperties": {
+				"reload": "Reload (10 Shots)",
+				"scatter": "Scatter (15 ft.)"
+			}
+		},
+		{
+			"name": "Sniper Rifle",
+			"source": "NeonOdyssey",
+			"type": "R",
+			"rarity": "none",
+			"weaponCategory": "martial",
+			"property": [
+				"A|XPHB",
+				"H|XPHB",
+				"LD|XPHB",
+				"2H|XPHB"
+			],
+			"range": "300/1200",
+			"dmg1": "2d6",
+			"dmgType": "P",
+			"weight": 15,
+			"value": 7500,
+			"mastery": [
+				"Graze|XPHB"
+			],
+			"ammoType": "Bullet|NeonOdyssey"
 		}
 	],
 	"item": [
+		{
+			"name": "Magazine",
+			"source": "NeonOdyssey",
+			"type": "G|XPHB",
+			"rarity": "none",
+			"weight": 1,
+			"value": 100,
+			"entries": [
+				"A {@item Magazine|NeonOdyssey} holds up to 20 {@item Bullet|NeonOdyssey|Bullets}."
+			],
+			"containerCapacity": {
+				"item": [
+					{
+						"Bullet|NeonOdyssey": 20
+					}
+				]
+			}
+		},
+		{
+			"name": "Case",
+			"source": "NeonOdyssey",
+			"type": "G|XPHB",
+			"rarity": "none",
+			"weight": 2,
+			"value": 100,
+			"entries": [
+				"A {@item Case|NeonOdyssey} holds up to 20 {@item Shell|NeonOdyssey|Shells}."
+			],
+			"containerCapacity": {
+				"item": [
+					{
+						"Shell|NeonOdyssey": 10
+					}
+				]
+			}
+		},
 		{
 			"name": "Electronics Tools",
 			"source": "NeonOdyssey",
@@ -505,7 +912,7 @@
 							"type": "item",
 							"name": "Craft:",
 							"entries": [
-								"Disguise"
+								"{@item Disguise|NeonOdyssey}"
 							]
 						}
 					]
@@ -942,7 +1349,7 @@
 			"type": "G|XPHB",
 			"rarity": "none",
 			"entries": [
-				"Ammunition is required by a weapon that has the Ammunition property. A weapon's description specifies the type of ammunition used by the weapon. The Ammunition table lists the different types and the amount you get when you buy them. The table also lists the item that is typically used to store each type; storage must be bought separately.",
+				"Ammunition is required by a weapon that has the {@itemProperty A|XPHB|Ammunition} property. A weapon's description specifies the type of ammunition used by the weapon. The Ammunition table lists the different types and the amount you get when you buy them. The table also lists the item that is typically used to store each type; storage must be bought separately.",
 				{
 					"type": "table",
 					"caption": "Ammunition",
@@ -962,23 +1369,23 @@
 					],
 					"rows": [
 						[
-							"Bullets",
+							"{@item Bullet|NeonOdyssey|Bullets}",
 							20,
-							"Magazine",
+							"{@item Magazine|NeonOdyssey}",
 							"1 lb.",
 							"100 GN"
 						],
 						[
-							"Power Cell",
+							"{@item Power Cell|NeonOdyssey}",
 							1,
 							"—",
 							"1/2 lb.",
 							"100 GN"
 						],
 						[
-							"Shells",
+							"{@item Shell|NeonOdyssey|Shells}",
 							10,
-							"Case",
+							"{@item Case|NeonOdyssey}",
 							"2 lb.",
 							"100 GN"
 						]
@@ -2239,7 +2646,7 @@
                             "type": "entries",
                             "name": "Spellcasting Focus",
                             "entries": [
-                                "You can use a Primal Focus or a Simple or Martial weapon as a {@variantrule Spellcasting Focus|XPHB} for your Tracer spells."
+                                "You can use a {@item Primal Focus|NeonOdyssey} or a Simple or Martial weapon as a {@variantrule Spellcasting Focus|XPHB} for your Tracer spells."
                             ]
                         }
                     ]
@@ -2535,6 +2942,47 @@
 			]
 		}
     ],
+	"foundryClassFeature": [
+		{
+			"name": "Omni-Traversal",
+			"source": "NeonOdyssey",
+			"className": "Tracer",
+			"classSource": "NeonOdyssey",
+			"level": 6,
+			"effects": [
+				{
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.walk",
+							"mode": "ADD",
+							"value": 10
+						}
+					]
+				},
+				{
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.swim",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
+				},
+				{
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.movement.climb",
+							"mode": "UPGRADE",
+							"value": "@attributes.movement.walk"
+						}
+					]
+				}
+			]
+		}
+	],
     "subclassFeature": [
         {
             "name": "Powertech",
@@ -2677,7 +3125,7 @@
                     "type": "entries",
                     "name": "Second Skin",
                     "entries": [
-                        "If the armor normally has a Strength requirement, the Hunter's Armor lacks this requirement for you. Additionally, it doesn't count as Heavy armor for your Omni-Traversal feature."
+                        "If the armor normally has a Strength requirement, the Hunter's Armor lacks this requirement for you. Additionally, it doesn't count as Heavy armor for your {@classFeature Omni-Traversal|Tracer|NeonOdyssey|6} feature."
                     ]
                 },
                 {
@@ -2703,7 +3151,7 @@
                     "type": "entries",
                     "name": "Arm Cannon",
                     "entries": [
-                        "While wearing your Hunter's Armor, you can activate or deactivate the pulse cannon whenever you can draw or stow a weapon. While activated, the gauntlet and forearm of one of the armor's arms transform into the cannon. Your hand inside the cannon can't hold or manipulate other objects.",
+                        "While wearing your {@subclassFeature Hunter's Armor|Tracer|NeonOdyssey|Powertech|NeonOdyssey|3}, you can activate or deactivate the pulse cannon whenever you can draw or stow a weapon. While activated, the gauntlet and forearm of one of the armor's arms transform into the cannon. Your hand inside the cannon can't hold or manipulate other objects.",
                         "While the cannon is active, you can fire it as a {@variantrule Bonus Action|XPHB}. The cannon is a Martial Ranged weapon with a normal range of 100 feet and a long range of 300 feet. On a hit, the target takes {@damage 1d8} Force damage, and you can activate the {@itemMastery Push|XPHB} or {@itemMastery Sap|XPHB} mastery property. You can use this {@variantrule Bonus Action|XPHB} a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}."
                     ]
                 },
@@ -2711,7 +3159,7 @@
                     "type": "entries",
                     "name": "Integrate Weapon",
                     "entries": [
-                        "Using {@item Mechanic's Tools|NeonOdyssey}, when you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}, you can integrate (or remove) a Ranged weapon into the armor, causing the weapon to vanish. The weapon reappears in the armor's space when it is removed or when the armor is no longer your Hunter's Armor.",
+                        "Using {@item Mechanic's Tools|NeonOdyssey}, when you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}, you can integrate (or remove) a Ranged weapon into the armor, causing the weapon to vanish. The weapon reappears in the armor's space when it is removed or when the armor is no longer your {@subclassFeature Hunter's Armor|Tracer|NeonOdyssey|Powertech|NeonOdyssey|3}.",
                         "You can have one weapon integrated into the armor at a time, and you can't drop the integrated weapon. While the cannon is active, you can fire the integrated weapon normally."
                     ]
                 }
@@ -2727,20 +3175,20 @@
             "level": 7,
             "header": 2,
             "entries": [
-                "You make substantive upgrades to your Hunter's Armor designs, gaining the following benefits.",
+                "You make substantive upgrades to your {@subclassFeature Hunter's Armor|Tracer|NeonOdyssey|Powertech|NeonOdyssey|3} designs, gaining the following benefits.",
                 {
                     "type": "entries",
                     "name": "Gear Expansion",
                     "entries": [
                         "You create and install one of the following pieces of adventuring gear into your armor (ignoring its weight): {@item Flamethrower|NeonOdyssey} (refuels when you finish a {@variantrule Long Rest|XPHB}), {@item Communicator, High Power|NeonOdyssey|High Power Communicator} (provides its own power), or {@item Night Vision Goggles|NeonOdyssey} (provides its own power).",
-                        "The gear can't be removed from the armor, but you can change the selection when you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}. The gear vanishes if the armor stops being your Hunter's Armor."
+                        "The gear can't be removed from the armor, but you can change the selection when you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}. The gear vanishes if the armor stops being your {@subclassFeature Hunter's Armor|Tracer|NeonOdyssey|Powertech|NeonOdyssey|3}."
                     ]
                 },
                 {
                     "type": "entries",
                     "name": "Flight Jets",
                     "entries": [
-                        "You build flight systems into your armor. As a {@variantrule Bonus Action|XPHB} while wearing your Hunter's Armor, you gain a {@variantrule Fly Speed|XPHB} equal to your {@variantrule Speed|XPHB} for 1 minute or until you remove the armor.",
+                        "You build flight systems into your armor. As a {@variantrule Bonus Action|XPHB} while wearing your {@subclassFeature Hunter's Armor|Tracer|NeonOdyssey|Powertech|NeonOdyssey|3}, you gain a {@variantrule Fly Speed|XPHB} equal to your {@variantrule Speed|XPHB} for 1 minute or until you remove the armor.",
                         "You can use this {@variantrule Bonus Action|XPHB} a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a {@variantrule Long Rest|XPHB}."
                     ]
                 }
@@ -2756,12 +3204,12 @@
             "level": 11,
             "header": 2,
             "entries": [
-                "You add power reserves to your Hunter's Armor that activate when needed, granting you the following benefits while wearing the armor.",
+                "You add power reserves to your {@subclassFeature Hunter's Armor|Tracer|NeonOdyssey|Powertech|NeonOdyssey|3} that activate when needed, granting you the following benefits while wearing the armor.",
                 {
                     "type": "entries",
                     "name": "Capacitor Spike",
                     "entries": [
-                        "When you roll {@variantrule Initiative|XPHB}, if you have fewer than two uses remaining for the Arm Cannon benefit of your Pulse Cannon feature, you regain uses until you have two."
+                        "When you roll {@variantrule Initiative|XPHB}, if you have fewer than two uses remaining for the Arm Cannon benefit of your {@subclassFeature Pulse Cannon|Tracer|NeonOdyssey|Powertech|NeonOdyssey|3} feature, you regain uses until you have two."
                     ]
                 },
                 {
@@ -2783,20 +3231,20 @@
             "level": 15,
             "header": 2,
             "entries": [
-                "You make a final upgrade to your Hunter's Armor and gain the following benefits.",
+                "You make a final upgrade to your {@subclassFeature Hunter's Armor|Tracer|NeonOdyssey|Powertech|NeonOdyssey|3} and gain the following benefits.",
                 {
                     "type": "entries",
                     "name": "Overcharged Pulse",
                     "entries": [
-                        "On a hit, your Pulse Cannon now deals {@damage 2d8} Force damage, and you can activate the {@itemMastery Topple|XPHB} mastery property."
+                        "On a hit, your {@subclassFeature Pulse Cannon|Tracer|NeonOdyssey|Powertech|NeonOdyssey|3} now deals {@damage 2d8} Force damage, and you can activate the {@itemMastery Topple|XPHB} mastery property."
                     ]
                 },
                 {
                     "type": "entries",
                     "name": "Reinforce Plating",
                     "entries": [
-                        "Your Hunter's Armor provides the Material component when you cast {@spell Stoneskin|XPHB}. You can also cast it once without a spell slot, and you regain the ability to cast it in this way when you finish a {@variantrule Long Rest|XPHB}.",
-                        "Whenever you start casting the spell while wearing your Hunter's Armor, you can modify it so that it doesn't require {@status Concentration|XPHB}. If you do so, the spell's duration becomes 1 minute for that casting, and you gain {@variantrule Resistance|XPHB} to Radiant damage for the duration."
+                        "Your {@subclassFeature Hunter's Armor|Tracer|NeonOdyssey|Powertech|NeonOdyssey|3} provides the Material component when you cast {@spell Stoneskin|XPHB}. You can also cast it once without a spell slot, and you regain the ability to cast it in this way when you finish a {@variantrule Long Rest|XPHB}.",
+                        "Whenever you start casting the spell while wearing your {@subclassFeature Hunter's Armor|Tracer|NeonOdyssey|Powertech|NeonOdyssey|3}, you can modify it so that it doesn't require {@status Concentration|XPHB}. If you do so, the spell's duration becomes 1 minute for that casting, and you gain {@variantrule Resistance|XPHB} to Radiant damage for the duration."
                     ]
                 }
             ]
