@@ -39,7 +39,8 @@
 				"llspell"
 			],
 			"optionalfeature": [
-				"LLExploits"
+				"LLExploits",
+				"LLStyles"
 			]
 		},
 		"optionalFeatureTypes": {
@@ -48,8 +49,7 @@
 		},
 		"edition": "classic",
 		"dateAdded": 1671459763,
-		"dateLastModified": 1772404109,
-		"_dateLastModifiedHash": "a1899cc094"
+		"dateLastModified": 1776040339
 	},
 	"class": [
 		{
@@ -952,16 +952,19 @@
 					"type": "ScaleValue",
 					"title": "Exploit Die",
 					"configuration": {
-						"identifier": "die",
+						"identifier": "exploit",
 						"type": "dice",
 						"scale": {
 							"3": {
+								"n": 2,
 								"die": 4
 							},
 							"7": {
+								"n": 3,
 								"die": 6
 							},
 							"15": {
+								"n": 4,
 								"die": 8
 							}
 						}
@@ -1026,7 +1029,7 @@
 					"required": {
 						"3": [
 							"Aquatic Adept|LLAR",
-							"Mariner|LLExploits"
+							"Mariner|LLStyles"
 						]
 					}
 				}
@@ -2094,59 +2097,59 @@
 					"entries": [
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Archery|LLExploits"
+							"optionalfeature": "Archery|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Defensive Fighting|LLExploits"
+							"optionalfeature": "Defensive Fighting|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Druidic Warrior|LLExploits"
+							"optionalfeature": "Druidic Warrior|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Dual Wielding|LLExploits"
+							"optionalfeature": "Dual Wielding|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Balanced Fighting|LLExploits"
+							"optionalfeature": "Balanced Fighting|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Featherweight Fighting|LLExploits"
+							"optionalfeature": "Featherweight Fighting|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Mariner|LLExploits"
+							"optionalfeature": "Mariner|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Mountaineer|LLExploits"
+							"optionalfeature": "Mountaineer|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Mounted Warrior|LLExploits"
+							"optionalfeature": "Mounted Warrior|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Strongbow|LLExploits"
+							"optionalfeature": "Strongbow|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Hurler|LLExploits"
+							"optionalfeature": "Hurler|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Versatile Fighting|LLExploits"
+							"optionalfeature": "Versatile Fighting|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Brawling|LLExploits"
+							"optionalfeature": "Brawling|LLStyles"
 						},
 						{
 							"type": "refOptionalfeature",
-							"optionalfeature": "Blind Warrior|LLExploits"
+							"optionalfeature": "Blind Warrior|LLStyles"
 						}
 					]
 				}
@@ -4380,25 +4383,12 @@
 			"subclassShortName": "Bounty Hunter",
 			"subclassSource": "LLAR:E",
 			"level": 3,
-			"resources": [
-				{
-					"name": "Exploit Dice",
-					"type": "dicePool",
-					"count": "floor((<$level$> + 13) / 7)",
-					"number": 1,
-					"faces": "(2 * floor((<$level$> + 13) / 7))",
-					"recharge": "restShort"
-				}
-			],
 			"header": 2,
 			"entries": [
 				"You have studied various martial exploits to better counter the humanoids you hunt. You gain the following features:",
 				{
-					"type": "entries",
-					"name": "Exploit Dice",
-					"entries": [
-						"The Bounty Hunter Exploits table shows how many Exploit Dice you have to use Exploits. To use an Exploit, you expend an Exploit Die, and you regain all your expended Exploit Dice when you finish a short or long rest."
-					]
+					"type": "refSubclassFeature",
+					"subclassFeature": "Exploit Dice|Alternate Ranger|LLAR|Bounty Hunter|LLAR:E|3"
 				},
 				{
 					"type": "entries",
@@ -4438,15 +4428,19 @@
 					]
 				}
 			],
-			"foundrySystem": {
-				"activation.type": null,
-				"uses": {
-					"value": null,
-					"max": null,
-					"per": null
-				}
-			},
 			"foundryImg": "icons/skills/trades/gaming-gambling-dice-gray.webp"
+		},
+		{
+			"name": "Exploit Dice",
+			"source": "LLAR:E",
+			"className": "Alternate Ranger",
+			"classSource": "LLAR",
+			"subclassShortName": "Bounty Hunter",
+			"subclassSource": "LLAR:E",
+			"level": 3,
+			"entries": [
+				"The Bounty Hunter Exploits table shows how many Exploit Dice you have to use Exploits. To use an Exploit, you expend an Exploit Die, and you regain all your expended Exploit Dice when you finish a short or long rest."
+			]
 		},
 		{
 			"name": "Cunning Technique",
@@ -4602,7 +4596,7 @@
 				{
 					"type": "list",
 					"items": [
-						"You gain the {@optfeature Mariner|LLExploits} Fighting Style. If you already have this Fighting Style you gain another Fighting Style of your choice from those available to the Ranger class.",
+						"You gain the {@optfeature Mariner|LLStyles} Fighting Style. If you already have this Fighting Style you gain another Fighting Style of your choice from those available to the Ranger class.",
 						"You learn the {@optfeature Aquatic Adept|LLAR} Knack, but it doesn't count against your total Knacks Known. If you already know this Knack you learn another Knack of your choice.",
 						"Whenever you make a Wisdom ({@skill Perception}) check that relies on your sense of sight, you gain a bonus to your roll equal to one roll of your Quarry Die."
 					]
@@ -6271,6 +6265,64 @@
 			]
 		},
 		{
+			"name": "Martial Exploits",
+			"source": "LLAR:E",
+			"className": "Alternate Ranger",
+			"classSource": "LLAR",
+			"subclassShortName": "Bounty Hunter",
+			"subclassSource": "LLAR:E",
+			"level": 3,
+			"effects": [
+				{
+					"name": "Bounty Hunter Exploits",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "flags.ll.exploit.number",
+							"mode": "UPGRADE",
+							"value": "@scale.bounty-hunter.exploit.number"
+						},
+						{
+							"key": "flags.ll.exploit.faces",
+							"mode": "UPGRADE",
+							"value": "@scale.bounty-hunter.exploit.faces"
+						},
+						{
+							"key": "flags.ll.exploit.dc",
+							"mode": "UPGRADE",
+							"value": "8 + @prof + max(@abilities.str.mod, @abilities.dex.mod)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Exploit Dice",
+			"source": "LLAR:E",
+			"className": "Alternate Ranger",
+			"classSource": "LLAR",
+			"subclassShortName": "Bounty Hunter",
+			"subclassSource": "LLAR:E",
+			"level": 3,
+			"activities": [
+				{
+					"name": "Roll",
+					"type": "utility",
+					"activation.type": "",
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"roll.formula": "d@flags.ll.exploit.faces"
+				}
+			],
+			"system": {
+				"uses.max": "@flags.ll.exploit.number"
+			}
+		},
+		{
 			"name": "Warden's Rite",
 			"source": "LLAR:E",
 			"className": "Alternate Ranger",
@@ -6843,13 +6895,13 @@
 					},
 					"required": {
 						"0": [
-							"Mounted Warrior|LLExploits"
+							"Mounted Warrior|LLStyles"
 						]
 					}
 				}
 			],
 			"entries": [
-				"You gain the {@optfeature Mounted Warrior|LLExploits} Fighting Style, and you can ride trained mounts that are equal to you in size or larger.",
+				"You gain the {@optfeature Mounted Warrior|LLStyles} Fighting Style, and you can ride trained mounts that are equal to you in size or larger.",
 				"If you already know the Mounted Warrior Fighting Style you learn another Ranger Fighting Style of your choice."
 			],
 			"foundryImg": "icons/environment/creatures/horse-tan.webp"
@@ -7392,136 +7444,6 @@
 				}
 			],
 			"foundryImg": "icons/skills/trades/woodcutting-logging-axe-stump.webp"
-		}
-	],
-	"feat": [
-		{
-			"name": "Alternate Crossbow Expert",
-			"source": "LLAR:E",
-			"entries": [
-				"You have trained extensively with the crossbow and can use it more efficiently than most. You gain the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"You can ignore the loading property of all crossbows.",
-						"You can load a crossbow with a hand that is holding a one-handed weapon, {@item shield|phb}, or another Tiny object.",
-						"Being within 5 feet of a hostile creature does not impose disadvantage on your ranged attack rolls with crossbows.",
-						"When you take the {@action Attack} action and make an attack with a one-handed melee weapon, you can use a bonus action to make an attack with a {@item hand crossbow|phb} you are holding."
-					]
-				}
-			],
-			"foundrySystem": {
-				"activation.condition": "When you take the Attack action and make an attack with a one-handed melee weapon"
-			}
-		},
-		{
-			"name": "Alternate Dual Wielder",
-			"source": "LLAR:E",
-			"entries": [
-				"You have trained extensively to effectively fight wielding two melee weapons at once. You gain the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"You gain a +1 bonus to your Armor Class while you are wielding a separate melee weapon in each hand.",
-						"You can engage in {@quickref two-weapon fighting||3} even if the one-handed melee weapons you are wielding are not light.",
-						"You can draw or stow two one-handed weapons when you would normally be able to draw or stow only one.",
-						"When you make an opportunity attack while engaging in two-weapon fighting you can make an attack against the creature with both melee weapons you are wielding."
-					]
-				}
-			],
-			"foundryEffects": [
-				{
-					"name": "AC Bonus",
-					"transfer": true,
-					"changes": [
-						{
-							"key": "system.attributes.ac.bonus",
-							"mode": "ADD",
-							"value": "+1"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Alternate Sharpshooter",
-			"source": "LLAR:E",
-			"entries": [
-				"You have trained extensively with ranged weapons to become a master marksman. You gain the benefits listed below:",
-				{
-					"type": "list",
-					"items": [
-						"Attacking a target within a ranged weapon's long range does not impose disadvantage on your attack roll.",
-						"Your attacks with ranged weapons can ignore half-cover, and treat three-quarters cover as half-cover.",
-						"You can use a bonus action to give yourself advantage on your next ranged weapon attack roll on your current turn."
-					]
-				}
-			]
-		},
-		{
-			"name": "Survivalist Training",
-			"source": "LLAR:E",
-			"page": 5,
-			"ability": [
-				{
-					"choose": {
-						"from": [
-							"str",
-							"dex",
-							"con"
-						],
-						"amount": 1
-					}
-				}
-			],
-			"optionalfeatureProgression": [
-				{
-					"name": "Survivalist Training",
-					"featureType": [
-						"LL:SK"
-					],
-					"progression": {
-						"*": 1
-					}
-				}
-			],
-			"entries": [
-				"You have been trained to survive, track, and explore in the wild, much like a Ranger. You gain the benefits listed below:",
-				{
-					"type": "list",
-					"items": [
-						"You learn one Knack of your choice from those available to the Alternate Ranger. If the Knack requires you to roll a Quarry Die, you roll a {@dice d4} unless your Quarry Die is higher. If the Knack forces a saving throw, the DC is equal to 8 + your proficiency bonus + your Wisdom modifier."
-					]
-				}
-			],
-			"foundrySystem": {
-				"formula": "d4"
-			}
-		},
-		{
-			"name": "Wild Companion",
-			"source": "LLAR:E",
-			"prerequisite": [
-				{
-					"ability": [
-						{
-							"wis": 13
-						}
-					]
-				}
-			],
-			"entries": [
-				"You have forged a bond with an animal companion that will adventure by your side. Choose a {@filter beast of CR 1/8 or lower|bestiary|Challenge Rating=[&0;&1/8]|type=beast} to be your Wild Companion. This Companion is friendly to you, and it obeys your commands to the best of its abilities.",
-				"Your Companion uses its normal stat block, but it learns to understand one language of your choice that you speak. You and your Companion can communicate simple ideas to each other using a series of clicks, whistles, and gestures. It gains all the normal benefits of both short and long rests.",
-				"In combat, your Wild Companion acts during your turn. It can move and use its reaction on its own, but it will only take the Dodge action on its turn unless you use a bonus action to command it to take an action from its stat block or another action. If you are incapacitated, your Companion will defend itself to the best of its ability. If you die, your Companion will do everything in its power to flee and return to its home.",
-				"If your Companion dies, you can spend 8 hours tracking and training a new Wild Companion, but only if a suitable beast of CR 1/8 or lower can be found in your local area within an 8-hour period."
-			],
-			"foundrySystem": {
-				"activation": {
-					"cost": null,
-					"type": null
-				}
-			}
 		}
 	],
 	"monster": [

@@ -33,24 +33,16 @@
 		],
 		"dependencies": {
 			"optionalfeature": [
-				"LLExploits"
+				"LLExploits",
+				"LLStyles"
 			]
 		},
 		"optionalFeatureTypes": {
-			"LL:SE": "Savage Exploit",
-			"LL:ME": "Martial Exploit",
-			"LLAB:M": "Mutation",
-			"FS:AB": "Fighting Style; Alternate Barbarian",
-			"LL:1SE": "1st Degree Savage Exploit",
-			"LL:2SE": "2nd Degree Savage Exploit",
-			"LL:3SE": "3rd Degree Savage Exploit",
-			"LL:4SE": "4th Degree Savage Exploit",
-			"LL:5SE": "5th Degree Savage Exploit"
+			"LLAB:M": "Mutation"
 		},
 		"edition": "classic",
 		"dateAdded": 1657295680,
-		"dateLastModified": 1775645737,
-		"_dateLastModifiedHash": "0a69cc72ba"
+		"dateLastModified": 1776040339
 	},
 	"class": [
 		{
@@ -573,96 +565,29 @@
 				},
 				{
 					"type": "ScaleValue",
+					"title": "Exploit Dice",
 					"configuration": {
-						"identifier": "exploit-dice",
-						"type": "number",
-						"scale": {
-							"2": {
-								"value": 2
-							},
-							"3": {
-								"value": 2
-							},
-							"4": {
-								"value": 2
-							},
-							"5": {
-								"value": 3
-							},
-							"6": {
-								"value": 3
-							},
-							"7": {
-								"value": 3
-							},
-							"8": {
-								"value": 3
-							},
-							"9": {
-								"value": 3
-							},
-							"10": {
-								"value": 3
-							},
-							"11": {
-								"value": 4
-							},
-							"12": {
-								"value": 4
-							},
-							"13": {
-								"value": 4
-							},
-							"14": {
-								"value": 4
-							},
-							"15": {
-								"value": 4
-							},
-							"16": {
-								"value": 4
-							},
-							"17": {
-								"value": 5
-							},
-							"18": {
-								"value": 5
-							},
-							"19": {
-								"value": 5
-							},
-							"20": {
-								"value": 5
-							}
-						}
-					},
-					"title": "Exploit Dice"
-				},
-				{
-					"type": "ScaleValue",
-					"configuration": {
-						"identifier": "exploit-dice-roll",
+						"identifier": "exploit",
 						"type": "dice",
 						"scale": {
 							"2": {
-								"n": 1,
+								"n": 2,
 								"die": 4
 							},
 							"5": {
-								"n": 1,
+								"n": 3,
 								"die": 6
 							},
 							"11": {
-								"n": 1,
+								"n": 4,
 								"die": 8
 							},
 							"17": {
-								"n": 1,
+								"n": 5,
 								"die": 10
 							}
 						}
-					},
-					"title": "Exploit Die"
+					}
 				}
 			]
 		}
@@ -1241,16 +1166,6 @@
 					"classFeature": "Savage Skill|Alternate Barbarian|LLAB|2"
 				}
 			],
-			"foundrySystem": {
-				"uses.per": "sr",
-				"uses.max": "@scale.alternate-barbarian.exploit-dice",
-				"uses.recovery": [
-					{
-						"period": "sr",
-						"type": "recoverAll"
-					}
-				]
-			},
 			"foundryImg": "icons/sundries/gaming/dice-pair-white-green.webp"
 		},
 		{
@@ -1551,6 +1466,36 @@
 			}
 		},
 		{
+			"name": "Savage Exploits",
+			"source": "LLAB",
+			"className": "Alternate Barbarian",
+			"classSource": "LLAB",
+			"level": 2,
+			"effects": [
+				{
+					"name": "Barbarian Exploits",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "flags.ll.exploit.number",
+							"mode": "UPGRADE",
+							"value": "@scale.alternate-barbarian.exploit.number"
+						},
+						{
+							"key": "flags.ll.exploit.faces",
+							"mode": "UPGRADE",
+							"value": "@scale.alternate-barbarian.exploit.faces"
+						},
+						{
+							"key": "flags.ll.exploit.dc",
+							"mode": "UPGRADE",
+							"value": "8 + @prof + max(@abilities.str.mod, @abilities.dex.mod)"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Exploit Dice",
 			"source": "LLAB",
 			"className": "Alternate Barbarian",
@@ -1558,40 +1503,21 @@
 			"level": 2,
 			"activities": [
 				{
-					"name": "Expend the Exploit Die",
+					"name": "Roll",
 					"type": "utility",
-					"activation": {
-						"type": "special",
-						"value": 0
-					},
-					"consumption": {
-						"targets": [
-							{
-								"type": "itemUses",
-								"value": "1"
-							}
-						]
-					},
-					"roll": {
-						"formula": "@scale.alternate-barbarian.exploit-dice-roll",
-						"name": "Exploit Die",
-						"visible": true
-					}
-				},
-				{
-					"name": "Roll the Exploit Die",
-					"type": "utility",
-					"activation": {
-						"type": "special",
-						"value": 0
-					},
-					"roll": {
-						"formula": "@scale.alternate-barbarian.exploit-dice-roll",
-						"name": "Exploit Die",
-						"visible": true
-					}
+					"activation.type": "",
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"roll.formula": "d@flags.ll.exploit.faces"
 				}
-			]
+			],
+			"system": {
+				"uses.max": "@flags.ll.exploit.number"
+			}
 		},
 		{
 			"name": "Savage Skill",
@@ -1616,7 +1542,7 @@
 						]
 					},
 					"roll": {
-						"formula": "@scale.alternate-barbarian.exploit-dice-roll",
+						"formula": "d@flags.ll.exploit.faces",
 						"name": "Exploit Die",
 						"visible": true
 					}
@@ -6641,154 +6567,6 @@
 				"Also, creatures have disadvantage on ability checks or saving throws they maketo escape being grappled by you."
 			],
 			"foundryImg": "icons/commodities/biological/suckers-green.webp"
-		}
-	],
-	"feat": [
-		{
-			"name": "Alternate Savage Attacker",
-			"source": "LLABE",
-			"entries": [
-				"Your savage battle instincts let you exploit even the smallest weakness. You gain the following benefits:",
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Piercing Critical",
-							"entry": "Whenever you score a critical hit with a melee weapon attack you roll the weapon's damage die three times instead of twice."
-						},
-						{
-							"type": "item",
-							"name": "Savage Strikes",
-							"entry": "Once per turn when you hit with a melee weapon attack, you can roll all the damage dice that are part of your attack twice, and use the higher total."
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Hardy Physique",
-			"source": "LLABE",
-			"prerequisite": [
-				{
-					"ability": [
-						{
-							"con": 13
-						}
-					]
-				}
-			],
-			"entries": [
-				"You have hardened your physical body to absorb hits rather than dodge them. You can use your Constitution, in place of Dexterity, when calculating your Armor Class in armor.",
-				"You also have advantage on saving throws to avoid being moved against your will, Grappled, or knocked Prone."
-			]
-		},
-		{
-			"name": "Intimidating Leader",
-			"source": "LLABE",
-			"page": 5,
-			"prerequisite": [
-				{
-					"other": "proficiency in Intimidation"
-				}
-			],
-			"ability": [
-				{
-					"choose": {
-						"from": [
-							"str",
-							"con",
-							"cha"
-						],
-						"amount": 1
-					}
-				}
-			],
-			"entries": [
-				"You use fear and intimidation to rally those who follow you into battle. You gain the following benefits:",
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Fearsome Rally",
-							"entry": "When another creature within 30 feet of you that can also see or hear you fails a saving throw to resist the Charmed or Frightened condition, you can use a reaction to make an Intimidation check against the same save DC. On a success, the creature is not Charmed or Frightened. You can use this reaction a number of times equal to your Proficiency Bonus, and you regain all expended uses of this feature each time you finish a long rest."
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Legendary Might",
-			"source": "LLABE",
-			"entries": [
-				"You have always found ways to leverage your great might for additional benefits. You gain the benefits on the table below that correspond to your Strength modifier and lower.",
-				"Should your Strength modifier increase, the benefits that you gain from this Feat also increase with your modifier:",
-				{
-					"type": "table",
-					"name": "Table",
-					"colLabels": [
-						"Modifier",
-						"Benefit"
-					],
-					"colStyles": [
-						"col-2 text-center",
-						"col-10 text-center"
-					],
-					"rows": [
-						[
-							"+1",
-							"You count as one size larger for the purpose of carrying capacity, the size of creatures you can Grapple, and the weight you can push, pull, lift, or drag at one time."
-						],
-						[
-							"+2",
-							"You can make Strength (Intimidation) checks in place of Charisma (Intimidation) checks."
-						],
-						[
-							"+3",
-							"You gain a climbing speed or a swimming speed equal to your walking speed."
-						],
-						[
-							"+4",
-							"Whenever you make an Athletics check, you treat a d20 roll of 7 or lower as an 8."
-						],
-						[
-							"+5",
-							"When you are forced to make a Constitution saving throw, you can choose to make a Strength saving throw instead."
-						]
-					]
-				}
-			]
-		},
-		{
-			"name": "Savage Training",
-			"source": "LLABE",
-			"entries": [
-				"You can draw upon the anger within your soul to perform Savage Exploits. You gain the following benefits:",
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Savage Exploits",
-							"entry": "You learn two 1st-degree Savage Exploits from those available to the Alternate Barbarian. If required, their Exploit save DC equals 8 + your Proficiency Bonus + your Strength or Dexterity modifier (your choice)."
-						},
-						{
-							"type": "item",
-							"name": "Retraining Exploits",
-							"entry": "Whenever you gain a level, you can replace one of the Savage Exploits you learned through this Feat with another 1st-degree Savage Exploit of your choice."
-						},
-						{
-							"type": "item",
-							"name": "Exploit Dice",
-							"entry": "You gain two d4 Exploit Dice to fuel these Exploits, which are expended when you use them. You regain expended Exploit Dice when you finish a short or long rest. If you already have Exploit Dice when you gain this Feat, you instead gain a single Exploit Die equal to your others."
-						}
-					]
-				}
-			]
 		}
 	],
 	"monster": [
