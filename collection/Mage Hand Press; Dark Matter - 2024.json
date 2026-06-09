@@ -64,8 +64,8 @@
 		"edition": "one",
 		"status": "ready",
 		"dateAdded": 1750424330,
-		"dateLastModified": 1780473953,
-		"_dateLastModifiedHash": "02c6beebee"
+		"dateLastModified": 1780953152,
+		"_dateLastModifiedHash": "1d44798194"
 	},
 	"class": [
 		{
@@ -1103,7 +1103,7 @@
 				"Ionizer|Alchemist|ValdaSpire24|Ionizer|DarkMatter24|3",
 				"Heatsink|Alchemist|ValdaSpire24|Ionizer|DarkMatter24|6",
 				"Electromagnetic Shield|Alchemist|ValdaSpire24|Ionizer|DarkMatter24|10",
-				"Energetic Discharge|Alchemist|ValdaSpire24|Ionizer|DarkMatter24|14"
+				"Charged Core|Alchemist|ValdaSpire24|Ionizer|DarkMatter24|14"
 			],
 			"hasFluff": true,
 			"hasFluffImages": true
@@ -1194,6 +1194,18 @@
 			"source": "DarkMatter24",
 			"className": "Craftsman",
 			"classSource": "ValdaSpire24",
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"Hardlight Object|DarkMatter24"
+						]
+					}
+				}
+			],
+			"subclassSpells": [
+				"Hardlight Object|DarkMatter24"
+			],
 			"subclassFeatures": [
 				"Luminaries' Guild|Craftsman|ValdaSpire24|Luminaries|DarkMatter24|3",
 				"Hardlight Wall|Craftsman|ValdaSpire24|Luminaries|DarkMatter24|6",
@@ -4106,7 +4118,7 @@
 			"level": 3,
 			"header": 1,
 			"entries": [
-				"By replacing your {@item Bomb|ValdaSpire24|Bomb's} explosive contents with an ion-fluxer, you can change it into a Plasma Bomb which adheres to a target it directly hits. This Bomb deals Radiant damage instead of Fire damage. If you use the Bomb's Explosive property, all of its damage dice are d6s; otherwise, all of its damage dice are d12s."
+				"By mixing your {@item Bomb|ValdaSpire24|Bomb's} contents with a plasma core, you can change it into a Plasma Bomb. This Bomb deals Radiant damage instead of Fire damage and all of its damage dice are d8s. When you hit a target with this Bomb, each creature other than the target within a 5-foot {@variantrule Emanation [Area of Effect]|XPHB|Emanation} of the target must make a Dexterity saving throw against the {@item Bomb|ValdaSpire24|Bomb's} {@itemMastery Explode|ValdaGunslinger} property. When you use your {@classFeature Prime Bomb|Alchemist|ValdaSpire24|2}., you can increase the radius of the {@variantrule Emanation [Area of Effect]|XPHB|Emanation} as normal."
 			]
 		},
 		{
@@ -4119,19 +4131,19 @@
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"You've learned an alchemical trick to channel heat from one object to another. As a {@variantrule Bonus Action|XPHB}, you can expend 1 Reagent to use Overheat and Supercool.",
+				"You've learned an alchemical trick to channel heat from one object to another. As a {@variantrule Bonus Action|XPHB}, you can expend 1 Reagent to use one of the following benefits.",
 				{
 					"type": "entries",
 					"name": "Overheat",
 					"entries": [
-						"You direct heat toward an enemy or a weapon you can see within 30 feet of you. If you choose a creature, it takes {@damage 2d6} Fire damage. If you choose a weapon, the weapon overheats. An Overheated weapon can't be used again to make an attack until the end of your next turn."
+						"You direct heat toward a weapon you can see within 60 feet of yourself. The weapon Overheats, and if the weapon is held by a creature, that creature takes {@damage 1d12} Fire damage. An Overheated weapon can't be used again to make an attack until the end of your next turn."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Supercool",
 					"entries": [
-						"You direct heat away from a weapon you can see within 30 feet of you, supercooling it. This weapon deals an extra {@damage 2d6} Cold damage on the next attack it makes before the end of your next turn."
+						"You direct heat away from a weapon other than a {@item Bomb|ValdaSpire24} that you can see within 60 feet of yourself. That weapon stops being Overheated, if it was Overheated. The next time the weapon deals damage before the end of your next turn, it deals an extra {@damage 1d12} damage of the weapon's type."
 					]
 				}
 			]
@@ -4150,7 +4162,7 @@
 			]
 		},
 		{
-			"name": "Energetic Discharge",
+			"name": "Charged Core",
 			"source": "DarkMatter24",
 			"className": "Alchemist",
 			"classSource": "ValdaSpire24",
@@ -4159,7 +4171,7 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"You create a fist-sized device that can absorb, store, and redirect small amounts of energy. When you use your Electromagnetic Shield feature, regardless of your roll, your discharge device gains 1 charge, to a maximum of 10. Charges last for 24 hours. As a {@variantrule Bonus Action|XPHB}, you can expend any number of stored charges to force a target within 60 feet of you to make a Dexterity saving throw against your Alchemist save DC. A creature takes {@damage 1d10} Force damage for each charge expended on a failed save, or half as much damage on a successful one."
+				"When you hit a target with your {@subclassFeature Plasma Bomb [Formula]|Alchemist|ValdaSpire24|Ionizer|DarkMatter24|3||Plasma Bomb}, you can choose any number of creatures within the explosion to automatically succeed on saving throws against the {@item Bomb|ValdaSpire24|Bomb's} {@itemMastery Explode|ValdaGunslinger} property and take no damage from it. Instead, each chosen creature gains an energetic charge until the start of your next turn. When a creature deals damage, it can expend its energetic charge to deal an extra {@damage 1d10} Radiant damage to one target."
 			]
 		},
 		{
@@ -4350,20 +4362,18 @@
 			"header": 1,
 			"entries": [
 				"You have a hardlight projector that allows you to conjure equipment out of scintillating hardlight. If your projector is ever lost or damaged, you can repair or replace it over the course of a {@variantrule Long Rest|XPHB} using materials worth 100+ GP.",
-				"As a {@action Magic|XPHB} action, you can use the projector to conjure a Masterwork weapon or suit of Masterwork armor out of hardlight. This object weighs half as much as normal, sheds {@variantrule Bright Light|XPHB} in a 20-foot radius and {@variantrule Dim Light|XPHB} for an additional 20 feet.",
-				"You can have one hardlight suit of armor and one hardlight weapon at a time (or two hardlight weapons, if both weapons have {@itemProperty L|XPHB|Light}). A hardlight object vanishes after 8 hours or when you dismiss it (no action required).",
 				{
 					"type": "entries",
-					"name": "Hardlight Weapon",
+					"name": "Hardlight Weapons and Armor",
 					"entries": [
-						"If you conjure a weapon, you can instantly use Customize Weapon to change its mastery property or give it a second one without material costs. When you reach Craftsman level 11, you can also apply a Weapon Enchantment to your weapon when you conjure it."
+						"As a {@action Magic|XPHB} action, you can use the projector to conjure a Masterwork weapon or suit of Masterwork armor out of hardlight. This object weighs half as much as normal, sheds {@variantrule Bright Light|XPHB} in a 20-foot radius and {@variantrule Dim Light|XPHB} for an additional 20 feet. If you conjure armor, you can conjure it around yourself and don it instantly. When you reach the appropriate Craftsman levels, you can apply your Customize Armor, a Weapon Enchantment, and an Armor Enchantment when you conjure the item."
 					]
 				},
 				{
 					"type": "entries",
-					"name": "Hardlight Armor",
+					"name": "Hardlight Object",
 					"entries": [
-						"If you conjure armor, you can conjure it around yourself and don it instantly. When you reach Craftsman level 13, you can instantly apply an Armor Enchantment to a suit of armor when you conjure it."
+						"While holding your Hardlight Projector, you can cast the {@spell Hardlight Object|DarkMatter24} cantrip. Intelligence is your spellcasting ability for this spell."
 					]
 				}
 			]
@@ -4379,7 +4389,7 @@
 			"header": 1,
 			"entries": [
 				"While you're holding your Hardlight Projector, you can take a {@action Magic|XPHB} action to gain {@variantrule Temporary Hit Points|XPHB} equal to your Craftsman level.",
-				"You can use this feature as a {@variantrule Bonus Action|XPHB} a number of times equal to your Masterwork Bonus. You regain all expended uses when you finish a {@variantrule Long Rest|XPHB}."
+				"You can use this feature as a {@variantrule Bonus Action|XPHB} instead of as a {@action Magic|XPHB} action a number of times equal to your Masterwork Bonus. You regain all expended uses when you finish a {@variantrule Long Rest|XPHB}."
 			]
 		},
 		{
@@ -4481,7 +4491,7 @@
 			"level": 3,
 			"header": 1,
 			"entries": [
-				"When you finish a {@variantrule Long Rest|XPHB}, you can use your Crafting Tools and scrap materials to craft a number of Masterwork scrap weapons equal to your Craftsman level. When you build a scrap weapon, you can use Customize Weapon to change its mastery property or give it a second one without material costs. When you reach Craftsman level 11, you can also apply a Weapon Enchantment to your weapon when you build it. Scrap weapons use the following rules.",
+				"When you finish a {@variantrule Long Rest|XPHB}, you can use your Crafting Tools and scrap materials to craft a number of Masterwork scrap weapons equal to your Craftsman level. When you reach Craftsman level 11, you can also apply a Weapon Enchantment to your weapon when you build it. Scrap weapons use the following rules.",
 				{
 					"type": "entries",
 					"name": "Temporary",
