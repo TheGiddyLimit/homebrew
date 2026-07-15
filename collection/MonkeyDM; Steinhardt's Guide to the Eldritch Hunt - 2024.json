@@ -19,6 +19,10 @@
 				"colorNight": "bdc7c7"
 			}
 		],
+		"internalCopies": [
+			"item",
+			"itemFluff"
+		],
 		"optionalFeatureTypes": {
 			"SGttEH:F": "Finisher",
 			"SGttEH:AA": "Adrenaline Art"
@@ -199,7 +203,7 @@
 					}
 				],
 				"entries": [
-					"{@i Choose A, B, or C:} (A) {@item Handaxe|XPHB}, {@item Cleaver|SGttEH24}, {@item Blunderbuss|SGttEH24}, Pouch of 20 {@item Bullets|SGttEH24}, {@item Scale Mail|XPHB}, {@item Explorer's Pack|XPHB}, and 1 GP; (B) {@item Rapier|XPHB}, {@item Scythe|SGttEH24}, {@item Pistol|SGttEH24}, Pouch of 20 {@item Bullets|SGttEH24}, {@item Leather Armor|XPHB}, {@item Dungeoneer's Pack|XPHB}, and 29 GP; or (C) 115 GP"
+					"{@i Choose A, B, or C:} (A) {@item Handaxe|XPHB}, {@item Cleaver|SGttEH24}, {@item Blunderbuss|SGttEH24}, Pouch of 20 {@item Bullet|SGttEH24|Bullets}, {@item Scale Mail|XPHB}, {@item Explorer's Pack|XPHB}, and 1 GP; (B) {@item Rapier|XPHB}, {@item Scythe|SGttEH24}, {@item Pistol|SGttEH24}, Pouch of 20 {@item Bullet|SGttEH24|Bullets}, {@item Leather Armor|XPHB}, {@item Dungeoneer's Pack|XPHB}, and 29 GP; or (C) 115 GP"
 				]
 			},
 			"multiclassing": {
@@ -549,7 +553,7 @@
 			"classSource": "SGttEH24",
 			"level": 1,
 			"entries": [
-				"You can draw or stow two one-handed weapons when you would normally be able to draw or stow only one, and you can reload weapons with the {@itemProperty LD|XPHB|Loading}, {@itemProperty Re|SGttEH24|Reload}, or {@itemProperty BL|SGttEH24|Barrel} properties without a free hand. Additionally, if you are carrying a one-handed melee weapon in one hand, and a one-handed ranged weapon in the other, you do not have {@variantrule Disadvantage|XPHB} from being within 5 feet of an enemy on attacks made with that ranged weapon."
+				"You can draw or stow two one-handed weapons when you would normally be able to draw or stow only one, and you can reload weapons with the {@itemProperty LD|XPHB|Loading} or {@itemProperty SGttEH:Bar|SGttEH24|Barrel} properties without a free hand. Additionally, if you are carrying a one-handed melee weapon in one hand, and a one-handed ranged weapon in the other, you do not have {@variantrule Disadvantage|XPHB} from being within 5 feet of an enemy on attacks made with that ranged weapon."
 			]
 		},
 		{
@@ -1147,7 +1151,7 @@
 					"type": "entries",
 					"name": "Fast Hands",
 					"entries": [
-						"You can reload weapons with the Barrel property as a {@variantrule Bonus Action|XPHB} even if they do not possess the {@itemProperty L|XPHB|Light} property. If a weapon possesses both the Barrel and {@itemProperty L|XPHB|Light} properties, you can ignore the Barrel property."
+						"You can reload weapons with the {@itemProperty SGttEH:Bar|SGttEH24|Barrel} property as a {@variantrule Bonus Action|XPHB} even if they do not possess the {@itemProperty L|XPHB|Light} property. If a weapon possesses both the {@itemProperty SGttEH:Bar|SGttEH24|Barrel} and {@itemProperty L|XPHB|Light} properties, you can ignore the {@itemProperty SGttEH:Bar|SGttEH24|Barrel} property."
 					]
 				},
 				{
@@ -1185,7 +1189,7 @@
 					"type": "entries",
 					"name": "Empowered Osteomancy",
 					"entries": [
-						"When you cast an Osteomancy spell of level 1 or higher, you can sacrifice your life force to empower it, increasing the level this spell is cast at by one. You then roll a number of d6s equal to half the original spell's level (rounded up, minimum of 1) and take Necrotic damage equal to the number rolled, which can't be reduced or prevented in any way.",
+						"When you cast an {@filter Osteomancy spell of level 1 or higher|spells|level=!0|subschool=osteomancy}, you can sacrifice your life force to empower it, increasing the level this spell is cast at by one. You then roll a number of d6s equal to half the original spell's level (rounded up, minimum of 1) and take Necrotic damage equal to the number rolled, which can't be reduced or prevented in any way.",
 						"The first time you use this benefit after you finish a {@variantrule Long Rest|XPHB}, it doesn't damage you."
 					]
 				}
@@ -1798,7 +1802,7 @@
 			],
 			"toolProficiencies": [
 				{
-					"artisan's tools related to your investigative methods": true
+					"anyArtisansTool": 1
 				}
 			],
 			"startingEquipment": [
@@ -2011,7 +2015,8 @@
 			],
 			"toolProficiencies": [
 				{
-					"tinker's tools; artisan's tools": true
+					"tinker's tools": true,
+					"anyArtisansTool": 1
 				}
 			],
 			"startingEquipment": [
@@ -2556,7 +2561,7 @@
 				}
 			],
 			"entries": [
-				"Choose a creature you can see within range. You infuse them with osteomantic energy, growing sharp claws from their carpal bones. For the duration, the target's Unarmed Strikes deal an extra {@damage 1d4} Slashing damage on a hit."
+				"Choose a creature you can see within range. You infuse them with osteomantic energy, growing sharp claws from their carpal bones. For the duration, the target's {@variantrule Unarmed Strike|XPHB|Unarmed Strikes} deal an extra {@damage 1d4} Slashing damage on a hit."
 			],
 			"entriesHigherLevel": [
 				{
@@ -6604,12 +6609,44 @@
 			"resist": [
 				"necrotic"
 			],
+			"additionalSpells": [
+				{
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"prepared": {
+						"3": {
+							"daily": {
+								"1": [
+									"false life|XPHB"
+								]
+							}
+						},
+						"5": {
+							"daily": {
+								"1": [
+									"mirror image|XPHB"
+								]
+							}
+						}
+					},
+					"known": {
+						"1": [
+							"spare the dying|xphb#c"
+						]
+					}
+				}
+			],
 			"entries": [
 				{
 					"type": "entries",
 					"name": "Blood Moon's Call",
 					"entries": [
-						"If a Blood Moon is out while you are asleep, you have a dream. In this dream, the Black Goat places a compulsion within your mind, ordering you to carry out some activity as a torrent of images and sensations. When you awaken, you are affected by the Suggestion spell (save DC 16) and must carry out the order. On a successful save, you resist the spell."
+						"If a Blood Moon is out while you are asleep, you have a dream. In this dream, the Black Goat places a compulsion within your mind, ordering you to carry out some activity as a torrent of images and sensations. When you awaken, you are affected by the {@spell Suggestion|XPHB} spell (save DC 16) and must carry out the order. On a successful save, you resist the spell."
 					]
 				},
 				{
@@ -6630,7 +6667,27 @@
 					"type": "entries",
 					"name": "Legacy of a Thousand Young",
 					"entries": [
-						"You are the recipient of a legacy that grants you supernatural abilities. You gain the level 1 benefit of the table below. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the species)."
+						"You are the recipient of a legacy that grants you supernatural abilities. You gain the level 1 benefit of the table below. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the species).",
+						{
+							"type": "table",
+							"colLabels": [
+								"Level 1",
+								"Level 3",
+								"Level 5"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-2 text-center",
+								"col-2 text-center"
+							],
+							"rows": [
+								[
+									"{@spell Spare the Dying|XPHB}",
+									"{@spell False Life|XPHB}",
+									"{@spell Mirror Image|XPHB}"
+								]
+							]
+						}
 					]
 				}
 			]
@@ -6663,6 +6720,58 @@
 					"25 feet, {@variantrule Climb Speed|XPHB} equal to your {@variantrule Speed|XPHB}. You can't use your {@variantrule Climb Speed|XPHB} while you wear Medium or Heavy armor."
 				]
 			},
+			"age": {
+				"mature": 5,
+				"max": 100
+			},
+			"additionalSpells": [
+				{
+					"name": "Spirit Twin",
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"known": {
+						"1": [
+							"dancing lights|xphb#c"
+						]
+					}
+				},
+				{
+					"name": "Watchful Twin",
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					},
+					"known": {
+						"1": [
+							"mage hand|xphb#c"
+						]
+					},
+					"prepared": {
+						"3": {
+							"daily": {
+								"1": [
+									"detect magic|xphb"
+								]
+							}
+						},
+						"5": {
+							"daily": {
+								"1": [
+									"see invisibility|xphb"
+								]
+							}
+						}
+					}
+				}
+			],
 			"entries": [
 				{
 					"type": "entries",
@@ -6675,7 +6784,43 @@
 					"type": "entries",
 					"name": "Together Forever",
 					"entries": [
-						"Your dead twin manifests within your stomach in supernatural ways. Choose a Twin Manifestation from the Twin Manifestations table. You gain the level 1 benefit of that manifestation. When you reach character levels 3 and 5, you gain further abilities. If you learn a spell as part of this trait, you always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the twin)."
+						"Your dead twin manifests within your stomach in supernatural ways. Choose a Twin Manifestation from the Twin Manifestations table. You gain the level 1 benefit of that manifestation. When you reach character levels 3 and 5, you gain further abilities. If you learn a spell as part of this trait, you always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a {@variantrule Long Rest|XPHB}. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the twin).",
+						{
+							"type": "table",
+							"caption": "Twin Manifestations",
+							"colLabels": [
+								"Twin",
+								"Level 1",
+								"Level 3",
+								"Level 5"
+							],
+							"colStyles": [
+								"col-2",
+								"col-4",
+								"col-3",
+								"col-3"
+							],
+							"rows": [
+								[
+									"Hungering Twin",
+									"Your stomach is bigger on the inside than on the outside. It can hold up to 250 pounds, not exceeding a volume of 32 cubic feet. If you die, you harmlessly regurgitate all objects devoured. Your stomach holds enough air for a creature to breathe 1 minute inside it. Nonmagical items inside your stomach are destroyed by psychic energies after 24 hours.",
+									"Choose one damage type from among Acid, Cold, Fire, or Poison. Whenever you take damage of that type, you reduce it by an amount equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus}.",
+									"Nonmagical items inside your stomach are no longer destroyed by psychic energies. In addition, your stomach can hold up to 500 pounds and has a maximum volume of 64 cubic feet."
+								],
+								[
+									"Spirit Twin",
+									"You have telepathy with a range of 5 times your character level. A creature without telepathy that receives your telepathic messages can't communicate mentally to you. You also know the {@spell Mage Hand|XPHB} cantrip.",
+									"You can turn a {@variantrule Critical Hit|XPHB} scored against you into a normal hit. Once you use this benefit, you can't do so again until you finish a {@variantrule Short Rest|XPHB}.",
+									"A creature without telepathy that receives your telepathic messages can communicate with you using a language it knows."
+								],
+								[
+									"Watchful Twin",
+									"You have {@sense Darkvision|XPHB} with a range of 120 feet. You also learn the {@spell Cosmic Eye|SGttEH24} cantrip.",
+									"You also learn the {@spell Detect Magic|XPHB} spell.",
+									"You learn the {@spell See Invisibility|XPHB} spell."
+								]
+							]
+						}
 					]
 				},
 				{
@@ -6709,6 +6854,10 @@
 			"resist": [
 				"cold"
 			],
+			"age": {
+				"mature": 10,
+				"max": 60
+			},
 			"entries": [
 				{
 					"type": "entries",
@@ -6761,9 +6910,567 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Scourgeborne",
+			"source": "SGttEH24",
+			"edition": "one",
+			"creatureTypes": [
+				"monstrosity"
+			],
+			"size": [
+				"M"
+			],
+			"sizeEntry": {
+				"type": "item",
+				"name": "Size:",
+				"entries": [
+					"Medium (about 4-7 feet tall)"
+				]
+			},
+			"speed": 30,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Age",
+					"entries": [
+						"Scourgeborne are made not born. This means that they mature at the same rate as the race they originally belonged to."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Born of Madness",
+					"entries": [
+						"Your body is not the one you were born with, but rather the consequence to your exposure to eldritch madness. You have one of the following options based on your alignment:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Good Alignment",
+									"entries": [
+										"Your conviction grants you control over your darkest impulses. You have {@variantrule Advantage|XPHB} on saving throws you make to avoid or end Madness but have {@variantrule Disadvantage|XPHB} on Charisma ({@skill Intimidation|XPHB}) checks."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Neutral Alignment",
+									"entries": [
+										"You do not gain any benefits or penalties from your alignment."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Evil Alignment",
+									"entries": [
+										"You let the depraved monster within you influence you. You gain a bonus to Dexterity saving throws equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus} but have {@variantrule Disadvantage|XPHB} on saving throws you make to avoid or end Madness."
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Eldritch Curse",
+					"entries": [
+						"Your curse is not something mere mortals can undo. You are immune to any spell that would alter your form, such as the Alter Self or Polymorph spells."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Feral Limbs",
+					"entries": [
+						"You can use your horns, claws, or fangs originating from your mutation to make {@variantrule Unarmed Strike|XPHB|Unarmed Strikes}. When you do so, you deal Piercing damage equal to {@dice 1d6} plus your Strength modifier instead of the normal damage for your {@variantrule Unarmed Strike|XPHB}. If your alignment is Evil, your feral side is more dominant, and the die size for your {@variantrule Unarmed Strike|XPHB|Unarmed Strikes} increases to a {@dice d8}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Monstrous Lineage",
+					"entries": [
+						"You are part of a lineage that grants you supernatural abilities. Choose a lineage from the Monstrous Lineages table. You gain the level 1 benefit of that lineage. When you reach character levels 3 and 5, you gain further benefits, as shown on the table.",
+						{
+							"type": "table",
+							"caption": "Lineage",
+							"colLabels": [
+								"Lineage",
+								"Level 1",
+								"Level 3",
+								"Level 5"
+							],
+							"colStyles": [
+								"col-2",
+								"col-4",
+								"col-3",
+								"col-3"
+							],
+							"rows": [
+								[
+									"Aranea",
+									"You have a {@variantrule Climb Speed|XPHB} of 30 feet. While in water, you have {@variantrule Disadvantage|XPHB} on all ability checks and attack rolls.",
+									"You can climb difficult surfaces, including along ceilings, without needing to make an ability check. Once you use this trait for 1 minute, you can't do so again until you finish a {@variantrule Long Rest|XPHB}.",
+									"You can use your Level 3 trait for a number of minutes equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus}, and you regain all expended minutes when you finish a {@variantrule Long Rest|XPHB}."
+								],
+								[
+									"Belua",
+									"You have {@variantrule Advantage|XPHB} on Wisdom ({@skill Perception|XPHB}) checks that rely on hearing or smell. Whenever you cause a creature to become {@status Bloodied|XPHB}, you take {@dice 1d4} Psychic damage as you attempt to retain your sanity.",
+									"As a {@variantrule Bonus Action|XPHB}, you can make an Unarmed Strike to feed off of a creature within reach. On a hit, you regain {@variantrule Hit Points|XPHB} equal to the damage dealt. Once you use this trait, you can't do so again until you finish a {@variantrule Long Rest|XPHB}.",
+									"You can use your Level 3 trait a number of times equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus}, and you regain all expended uses when you finish a {@variantrule Long Rest|XPHB}."
+								],
+								[
+									"Cervus",
+									"Your {@variantrule Speed|XPHB} increases to 40 feet. Standing up from the {@condition Prone|XPHB} condition costs you an additional 5 feet.",
+									"If you move at least 20 feet straight toward a creature and then hit it with a melee attack on the same turn, that target must make a Strength saving throw (DC 8 plus your Strength modifier and your {@variantrule Proficiency|XPHB|Proficiency Bonus}). On a failed save, the target has the {@condition Prone|XPHB} condition, and you can immediately take a {@variantrule Bonus Action|XPHB} to make one melee attack against it. Once you've forced a creature to make this save, you can't do so again until you finish a {@variantrule Long Rest|XPHB}.",
+									"You can use your Level 3 trait a number of times equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus}, and you regain all expended uses when you finish a {@variantrule Long Rest|XPHB}."
+								],
+								[
+									"Vespertilio",
+									"You have {@sense Blindsight|XPHB} with a range of 30 feet. You have {@variantrule Disadvantage|XPHB} on any ability check or attack roll that requires sight beyond this range.",
+									"You can take a {@variantrule Bonus Action|XPHB} to gain a {@variantrule Fly Speed|XPHB} of 30 feet until the end of your turn. If nothing is holding you aloft at the end of your turn, you fall. Once you use this trait, you can't do so again until you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}.",
+									"You can use your Level 3 trait a number of times equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus}, and you regain all expended uses when you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}."
+								]
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Deep One Dwarf",
+			"source": "SGttEH24",
+			"edition": "one",
+			"creatureTypes": [
+				"humanoid"
+			],
+			"size": [
+				"M"
+			],
+			"sizeEntry": {
+				"type": "item",
+				"name": "Size:",
+				"entries": [
+					"Medium (about 4-5 feet tall)"
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 25
+			},
+			"age": {
+				"mature": 10,
+				"max": 50
+			},
+			"traitTags": [
+				"Amphibious",
+				"Natural Weapon",
+				"Skill Proficiency"
+			],
+			"resist": [
+				"cold"
+			],
+			"additionalSpells": [
+				{
+					"ability": "cha",
+					"known": {
+						"1": [
+							"dancing lights#c"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Age",
+					"entries": [
+						"Deep One Dwarves mature much faster than humans, reaching maturity at the age of 10. They cannot die of old age; instead their aging mind progressively loses grip over their body, turning them into brainless servants of He Who Lies Dreaming when they reach 50 years of age."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Amphibious",
+					"entries": [
+						"You can breathe air and water."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Cosmic Knowledge",
+					"entries": [
+						"Whenever you make an Intelligence ({@skill History|XPHB}) check related to the origin of an eldritch item or construction, you are considered to have proficiency and {@variantrule Expertise|XPHB} in the {@skill History|XPHB} skill."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dreamer's Curse",
+					"entries": [
+						"Your mind is clouded by the dreams of the Slumbering One, and you find it hard to discern between reality and dream. You have {@variantrule Disadvantage|XPHB} on ability checks and saving throws to discern illusions."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Guiding Light",
+					"entries": [
+						"You know the {@spell Dancing Lights|XPHB} cantrip. Charisma is your spellcasting ability for it."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Illusory Body",
+					"entries": [
+						"Although your body is covered in tentacles, clams, seashells, and other eldritch appendages, you are covered by an illusion that makes you appear like a typical hill dwarf to others. Other Deep Ones can see through this illusion. You have {@variantrule Advantage|XPHB} on Charisma ({@skill Deception|XPHB}) checks against creatures that can't see through this illusion."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Otherworldly Resistance",
+					"entries": [
+						"You have {@variantrule Resistance|XPHB} to Cold damage. You also have {@variantrule Advantage|XPHB} on saving throws you make to avoid or end the {@condition Poisoned|XPHB} condition."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Slumbering Legacy",
+					"entries": [
+						"You are descended from the Slumbering One and receive a supernatural boon from your ancestry. Choose one of the following benefits.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Coiling Arm",
+									"entries": [
+										"Your arm is nothing but a writhing mass of tentacles that flail in the air. On your turn, immediately after hitting an enemy with a melee attack, you can make an {@variantrule Unarmed Strike|XPHB} using the Grapple option against it as a {@variantrule Bonus Action|XPHB} (normal grappling restrictions apply)."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Brutal Pincers",
+									"entries": [
+										"Your forearm becomes a massive pincer, which you can use to make {@variantrule Unarmed Strike|XPHB|Unarmed Strikes}. If you hit with it, you deal Piercing damage equal to {@dice 1d6} plus your Strength modifier, instead of the Bludgeoning damage normal for an {@variantrule Unarmed Strike|XPHB}. If you hit a creature you are grappling, the damage die becomes a {@dice d10} instead. You can't use this arm to make any precise hand manipulations."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Mucoid Extremities",
+									"entries": [
+										"Your hands and feet are palmed and covered in cups. Your {@variantrule Swim Speed|XPHB} increases to 35 feet, and you gain a {@variantrule Climb Speed|XPHB} of 20 feet."
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "inset",
+					"entries": [
+						"{@i {@b OPTIONAL: Dreamer's Gift.}} Your devotion to the cosmic being that warped your species is rewarded. When you reach character level 5, you gain the following benefits:",
+						{
+							"type": "list",
+							"items": [
+								"Whenever you fail an ability check or saving throw, you can draw upon your master's powers to succeed instead. Once you use this benefit, you can't do so again until the Dreamer has replaced one of your {@variantrule D20 Test|XPHB|D20 Tests} with a 1. The GM decides when this unfortunate moment happens.",
+								"You are immune to the Curse of the Slumbering Moon."
+							]
+						}
+					]
+				}
+			]
 		}
 	],
 	"optionalfeature": [
+		{
+			"name": "Pact of the Trigger",
+			"source": "SGttEH24",
+			"featureType": [
+				"EI"
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"_": [
+							"shocking grasp|xphb#c",
+							"ray of frost|xphb#c"
+						]
+					}
+				}
+			],
+			"entries": [
+				"You can take a {@action Magic|XPHB} action to draw upon the powers of your patron and create a hex gun in your empty hand. Each time you create it, choose either Revolver Form or Sniper Form (detailed below). You can use your hex gun as a {@variantrule Spellcasting Focus|XPHB} for your Warlock spells.",
+				"Your hex gun disappears if it is more than 5 feet away from you for 1 minute. It also disappears if you use this feature again, if you dismiss it (no action required), or if you die.",
+				{
+					"type": "entries",
+					"name": "Cantrips",
+					"entries": [
+						"When you cast cantrips with your hex gun, it channels them as bullets (these still count as spells). Instead of increasing the damage of the cantrip when you reach certain levels, you can cast the cantrip additional times as part of the same action (except for {@spell Eldritch Blast|XPHB}, which is cast as normal). To be cast in this way, the cantrip must deal damage, must make a {@filter spell attack|spells|source=|level=0|class=warlock|damage type=acid;bludgeoning;cold;fire;force;lightning;necrotic;piercing;poison;psychic;radiant;slashing;thunder|spell attack=m;r|range=!self;!self (area)} or require a {@filter saving throw|spells|level=0|class=warlock|damage type=acid;bludgeoning;cold;fire;force;lightning;necrotic;piercing;poison;psychic;radiant;slashing;thunder|saving throw=strength;dexterity;constitution;intelligence;wisdom;charisma|range=!self;!self (area)}, and must have a range other than Self. When you cast a cantrip in this manner, you cast it 2 times at level 5, 3 times at level 11, and 4 times at level 17. The cantrip can deal its damage more than once, but any other effects can't be applied again this turn."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Revolver Form",
+					"entries": [
+						"While holding your hex gun, you know the {@spell Shocking Grasp|XPHB} cantrip. In addition, being within 5 feet of a hostile creature doesn't impose {@variantrule Disadvantage|XPHB} on your ranged spell attack rolls cast through the hex gun."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sniper Form",
+					"entries": [
+						"While holding your hex gun, you know the {@spell Ray of Frost|XPHB} cantrip. In addition, your ranged spell attack rolls cast through the hex gun have their range doubled and ignore {@variantrule Cover|XPHB|Half Cover}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Bullet Hell",
+			"source": "SGttEH24",
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock",
+							"source": "XPHB",
+							"visibleStats": true
+						}
+					},
+					"otherSummary": {
+						"entry": "(Revolver Form)",
+						"entrySummary": "(Revolver Form)"
+					},
+					"optionalfeature": [
+						"pact of the trigger|SGttEH24"
+					]
+				}
+			],
+			"entries": [
+				"As a {@variantrule Bonus Action|XPHB} while holding your hex gun and you have one free hand, you temporarily duplicate your hex gun to unleash a flurry of bullets. Each creature in a 15-foot {@variantrule Cone [Area of Effect]|XPHB|Cone} must succeed a Dexterity saving throw against your spell save DC or take {@damage 2d10} Force damage. This damage increases to {@dice 3d10} at level 11 and {@dice 4d10} at level 17.",
+				"You can use this invocation a number of times equal to twice your Charisma modifier (minimum of twice), and you regain all expended uses when you finish a {@variantrule Long Rest|XPHB}."
+			]
+		},
+		{
+			"name": "Crippling Shot",
+			"source": "SGttEH24",
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 2,
+						"class": {
+							"name": "Warlock",
+							"source": "XPHB",
+							"visibleStats": true
+						}
+					},
+					"otherSummary": {
+						"entry": "(Revolver Form)",
+						"entrySummary": "(Revolver Form)"
+					},
+					"optionalfeature": [
+						"pact of the trigger|SGttEH24"
+					]
+				}
+			],
+			"entries": [
+				"Once on each of your turns when you damage a creature with an attack made using your hex gun, you can force it to make a Strength saving throw against your spell save DC. On a failed save, the target has the {@condition Prone|XPHB} condition and its {@variantrule Speed|XPHB} is reduced to 0 until the start of your next turn.",
+				"You can use this invocation a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a {@variantrule Long Rest|XPHB}."
+			]
+		},
+		{
+			"name": "Dead Eye",
+			"source": "SGttEH24",
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock",
+							"source": "XPHB",
+							"visibleStats": true
+						}
+					},
+					"otherSummary": {
+						"entry": "(Sniper Form)",
+						"entrySummary": "(Sniper Form)"
+					},
+					"optionalfeature": [
+						"pact of the trigger|SGttEH24"
+					]
+				}
+			],
+			"entries": [
+				"If you haven't moved this turn, you can take aim as a {@variantrule Bonus Action|XPHB}, reducing your {@variantrule Speed|XPHB} to 0 and granting you {@variantrule Advantage|XPHB} on attacks you make using your hex gun until the end of your turn."
+			]
+		},
+		{
+			"name": "Headshots",
+			"source": "SGttEH24",
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock",
+							"source": "XPHB",
+							"visibleStats": true
+						}
+					},
+					"otherSummary": {
+						"entry": "(Sniper Form)",
+						"entrySummary": "(Sniper Form)"
+					},
+					"optionalfeature": [
+						"pact of the trigger|SGttEH24"
+					]
+				}
+			],
+			"entries": [
+				"As a {@variantrule Bonus Action|XPHB}, you can enhance your focus to see the weak spots of your foes. For the next minute, attack rolls you make using your hex gun score a {@variantrule Critical Hit|XPHB} on a roll of 19 or 20 on the {@dice d20}. Once you use this invocation, you can't use it again until you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}."
+			]
+		},
+		{
+			"name": "Quickstep",
+			"source": "SGttEH24",
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock",
+							"source": "XPHB",
+							"visibleStats": true
+						}
+					},
+					"optionalfeature": [
+						"pact of the trigger|SGttEH24"
+					]
+				}
+			],
+			"entries": [
+				"Your reflexes are honed. When a creature makes a melee attack roll against you, if your {@variantrule Speed|XPHB} isn't 0, you can take a {@variantrule Reaction|XPHB} to move 5 feet away from the creature without triggering {@action Opportunity Attack|XPHB|Opportunity Attacks}, causing the attack to miss if you leave its reach.",
+				"You can use this invocation a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a {@variantrule Long Rest|XPHB}."
+			]
+		},
+		{
+			"name": "Reckless Fire",
+			"source": "SGttEH24",
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 2,
+						"class": {
+							"name": "Warlock",
+							"source": "XPHB",
+							"visibleStats": true
+						}
+					},
+					"optionalfeature": [
+						"pact of the trigger|SGttEH24"
+					]
+				}
+			],
+			"entries": [
+				"Your shots are a rain of lead. When you roll a 1, 2, or 3 on a damage die for a cantrip you cast with your hex gun, you can reroll the die and must use the new roll, even if the new roll is a 1, 2, or 3."
+			]
+		},
+		{
+			"name": "Repeating Cantrips",
+			"source": "SGttEH24",
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 2,
+						"class": {
+							"name": "Warlock",
+							"source": "XPHB",
+							"visibleStats": true
+						}
+					},
+					"optionalfeature": [
+						"pact of the trigger|SGttEH24"
+					]
+				}
+			],
+			"entries": [
+				"When you cast a cantrip with your hex gun, its nondamaging effects (such as the {@variantrule Speed|XPHB} reduction of {@spell Ray of Frost|XPHB}) can apply multiple times but not more than once per creature on a turn."
+			]
+		},
+		{
+			"name": "Ricochet",
+			"source": "SGttEH24",
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock",
+							"source": "XPHB",
+							"visibleStats": true
+						}
+					},
+					"optionalfeature": [
+						"pact of the trigger|SGttEH24"
+					]
+				}
+			],
+			"entries": [
+				"As a {@variantrule Bonus Action|XPHB}, you enhance your hex gun until the end of your turn. When you hit a creature with an attack roll from a cantrip cast with your hex gun, you can immediately cause the cantrip to wound a second creature within 30 feet of the original target. The second target takes damage (of the type of the cantrip) equal to your Charisma modifier (minimum of 1)."
+			]
+		},
+		{
+			"name": "Riposte",
+			"source": "SGttEH24",
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock",
+							"source": "XPHB",
+							"visibleStats": true
+						}
+					},
+					"otherSummary": {
+						"entry": "(Revolver Form)",
+						"entrySummary": "(Revolver Form)"
+					},
+					"optionalfeature": [
+						"pact of the trigger|SGttEH24"
+					]
+				}
+			],
+			"entries": [
+				"When a creature makes a melee attack roll against you while you are holding your hex gun, you can fire a special bullet to counter the attack. Make a melee or ranged spell attack against the attacker. On a hit, the target takes {@damage 1d10} Force damage, the attack misses, and it has the {@condition Stunned|XPHB} condition until the end of its current turn.",
+				"Once you use this invocation to damage an enemy, you can't use it again until you finish a {@variantrule Short Rest|XPHB} or {@variantrule Long Rest|XPHB}."
+			]
+		},
 		{
 			"name": "Weapon Parry",
 			"source": "SGttEH24",
@@ -6897,7 +7604,7 @@
 					"type": "inset",
 					"name": "Note: Blood Craze",
 					"entries": [
-						"This is a Adrenaline Art, so it works with Always Ready (which grants an additional {@variantrule Reaction|XPHB}), making the Sanguine Chapter fairly difficult to stop at 20th level."
+						"This is a Adrenaline Art, so it works with {@classFeature Always Ready|Jaeger|SGttEH24|20}, (which grants an additional {@variantrule Reaction|XPHB}), making the {@subclass Sanguine|Jaeger|SGttEH24|SGttEH24|Sanguine Chapter} fairly difficult to stop at 20th level."
 					]
 				}
 			]
@@ -7132,6 +7839,656 @@
 				"As a {@variantrule Bonus Action|XPHB} while you are holding a firearm, you can expend all of your Momentum dice to reload and fire a spray of shots at blinding speed. Each creature in a 30 foot {@variantrule Cone [Area of Effect]|XPHB|Cone} must make a Dexterity saving throw (DC = 8 + your Dexterity modifier + your {@variantrule Proficiency|XPHB|Proficiency Bonus}). On a failure, a creature takes Piercing damage equal to the Momentum dice expended.",
 				"If the Finisher damages 2 or more creatures, you regain 1 Adrenaline Point."
 			]
+		}
+	],
+	"item": [
+		{
+			"name": "Scatter Bullets (10)",
+			"source": "SGttEH24",
+			"type": "AF|XDMG",
+			"rarity": "none",
+			"weight": 1,
+			"value": 1500,
+			"entries": [
+				"When you make an attack using a weapon with the {@itemProperty SGttEH:SpFr|SGttEH24|Spread Fire} property, you can choose to use this ammunition. If you do, ignore the {@itemProperty SGttEH:SpFr|SGttEH24|Spread Fire} property and instead make an attack roll. On a hit, the target takes the weapon's normal damage, and the bullet explodes, sending shrapnel flying in a 15-foot {@variantrule Cone [Area of Effect]|XPHB|Cone} originating from the target and extending away from you. Each creature in the area must make a Dexterity saving throw (DC equals 8 plus your Dexterity modifier plus your {@variantrule Proficiency|XPHB|Proficiency Bonus}). On a failed save, a creature takes damage equal to your weapon damage.",
+				"Once it hits a target, the ammunition is destroyed."
+			],
+			"packContents": [
+				{
+					"item": "scatter bullet|SGttEH24",
+					"quantity": 10
+				}
+			]
+		},
+		{
+			"name": "Explosive Bullets (10)",
+			"source": "SGttEH24",
+			"type": "AF|XDMG",
+			"rarity": "none",
+			"weight": 1,
+			"value": 4000,
+			"entries": [
+				"A creature hit by this ammunition takes the weapon's normal damage, and each creature within 5 feet of it must succeed on a Dexterity saving throw (DC 8 plus the ability modifier used to make the attack roll and your {@variantrule Proficiency|XPHB|Proficiency Bonus}) or take {@damage 1d8} Fire damage. On a miss, the ammunition fails to detonate.",
+				"Once it hits a target, the ammunition is destroyed."
+			],
+			"packContents": [
+				{
+					"item": "explosive bullet|SGttEH24",
+					"quantity": 10
+				}
+			]
+		},
+		{
+			"name": "Bullets (10)",
+			"source": "SGttEH24",
+			"type": "AF|XDMG",
+			"rarity": "none",
+			"weight": 1,
+			"value": 200,
+			"packContents": [
+				{
+					"item": "bullet|SGttEH24",
+					"quantity": 10
+				}
+			]
+		},
+		{
+			"name": "Bag of Cannonballs",
+			"source": "SGttEH24",
+			"rarity": "uncommon",
+			"wondrous": true,
+			"entries": [
+				"This bag connects to an extradimensional space that allows it to hold numerous items while never weighing more than 3 pounds. It can hold up to 100 {@item Cannonball|SGttEH24|Cannonballs} or similar objects. You can take out {@item Cannonball|SGttEH24|Cannonballs} as if doing so from a normal sack (no action required)."
+			],
+			"weight": 3,
+			"containerCapacity": {
+				"item": [
+					{
+						"Cannonball|SGttEH24": 100
+					}
+				]
+			}
+		},
+		{
+			"name": "Damascena",
+			"source": "SGttEH24",
+			"rarity": "uncommon",
+			"wondrous": true,
+			"entries": [
+				"This basic technology invented by the Scions sacrifices lead bullets to generate powerful azure flames that scorch the abhorrent. This device is an effort to replicate the magical ability possessed by a select few.",
+				"As a {@action Magic|XPHB} action, you can cause the Damascena to project blue flames in a 15-foot {@variantrule Cone [Area of Effect]|XPHB|Cone}. Each creature in the {@variantrule Cone [Area of Effect]|XPHB|Cone} must make a Dexterity saving throw (DC 11 plus your {@variantrule Proficiency|XPHB|Proficiency Bonus}), taking {@damage 4d4} Fire damage plus a number of d4s equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus} on a failed save or half as much damage on a successful one. Each use of the Damascena consumes 5 {@item Bullet|SGttEH24|Bullets}."
+			]
+		},
+		{
+			"name": "Hand of  Glory",
+			"source": "SGttEH24",
+			"rarity": "very rare",
+			"wondrous": true,
+			"recharge": "dusk",
+			"rechargeAmount": 1,
+			"charges": 5,
+			"entries": [
+				"A hand of glory is crafted from the hand of a hanged scourgeborne after it was covered in corpse wax and left to ferment in a casket.",
+				"While holding the hand, you can attune to one additional magical item. This magical item can only be a ring and must be worn on the Hand of Glory.",
+				"This hand has 5 charges and regains 1 charge daily at dusk. Whenever you expend a charge, a finger from the hand is burnt to a stump. As a {@action Magic|XPHB} action while holding the hand, you can expend 1 charge and set a digit of the hand ablaze to cast the {@spell Invisibility|XPHB} spell targeting yourself. For the duration of the spell, the hand sheds {@variantrule Bright Light|XPHB} in a 10-foot radius that is only visible to the wearer of the hand. The spell ends early if the flame is extinguished by the wearer (no action required).",
+				"In addition, while under the effects of the {@spell Invisibility|XPHB} spell, you can cast the {@spell Knock|XPHB} spell at will on objects within the radius of the {@variantrule Bright Light|XPHB}."
+			],
+			"light": [
+				{
+					"bright": 10
+				}
+			],
+			"attachedSpells": [
+				"invisibility|xphb",
+				"knock|xphb"
+			]
+		},
+		{
+			"name": "Sanctified Cannon",
+			"source": "SGttEH24",
+			"baseItem": "cannon|SGttEH24",
+			"type": "R|XPHB",
+			"rarity": "uncommon",
+			"weight": 90,
+			"weaponCategory": "martial",
+			"property": [
+				"SGttEH:Art",
+				"SGttEH:Boo",
+				"2H|XPHB"
+			],
+			"mastery": [
+				"Push|XPHB"
+			],
+			"range": "120/240",
+			"ammoType": "cannonball|SGttEH24",
+			"dmg1": "3d10",
+			"dmgType": "B",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Charged Shot",
+					"entries": [
+						"Once on each of your turns when you take the {@action Attack|XPHB} action, you can replace one of your Cannon attacks with a charged shot. Instead of a regular attack, you let loose a ball of destruction and death. Each creature in a 120-foot-long, 5-foot-wide {@variantrule Line [Area of Effect]|XPHB|Line} in front of you must succeed on a Dexterity saving throw (DC 8 plus your Strength modifier and your {@variantrule Proficiency|XPHB|Proficiency Bonus}) or take {@damage 3d12} Bludgeoning damage and have the {@condition Prone|XPHB} condition.",
+						"You can use this property only if you haven't moved during your turn, and after you use the property, your {@variantrule Speed|XPHB} is 0 until the end of your turn."
+					]
+				}
+			]
+		},
+		{
+			"name": "Big Bertha",
+			"source": "SGttEH24",
+			"baseItem": "cannon|SGttEH24",
+			"type": "R|XPHB",
+			"rarity": "rare",
+			"weight": 90,
+			"weaponCategory": "martial",
+			"property": [
+				"SGttEH:Art",
+				"SGttEH:Boo",
+				"2H|XPHB"
+			],
+			"mastery": [
+				"Push|XPHB"
+			],
+			"range": "120/240",
+			"ammoType": "cannonball|SGttEH24",
+			"dmg1": "3d10",
+			"dmgType": "B",
+			"bonusWeapon": "+1",
+			"entries": [
+				"This moongold-inlaid Cannon deals an extra {@damage 1d4} Bludgeoning damage to any non-Humanoid creatures it hits. Moongold acts as a guiding light in the darkness; creatures holding or wearing moongold have {@variantrule Advantage|XPHB} on saving throws against the {@condition Frightened|XPHB} condition and against Madness.",
+				"You gain a +1 bonus to attack rolls and damage rolls made with this magic weapon.",
+				"As a {@variantrule Bonus Action|XPHB}, you can rotate the dials on the cannon to infuse your loaded ammo with violent powers. Your next attack gains one of the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						{
+							"type": "item",
+							"name": "Forceful Infusion",
+							"entry": "On a hit, the target takes an extra {@damage 1d6} Bludgeoning damage and must succeed on a DC 15 Strength saving throw or be pushed 15 feet away and have the {@condition Prone|XPHB} condition. Alternatively, if you are standing on a solid surface and instead fire the Cannon directly at your feet, the explosion pushes you into the air, and you land in a space of your choice within 30 feet of the explosion's origin."
+						},
+						{
+							"type": "item",
+							"name": "Incendiary Infusion",
+							"entry": "On a hit, the target takes an extra {@damage 3d4} Fire damage."
+						},
+						{
+							"type": "item",
+							"name": "Unstable Infusion",
+							"entry": "On a hit, the target takes an extra {@damage 1d8} Cold damage, and the terrain in a 10-foot {@variantrule Emanation [Area of Effect]|XPHB|Emanation} originating from the target is covered in arcane mist, becoming {@variantrule Difficult Terrain|XPHB} for the next minute."
+						}
+					]
+				}
+			]
+		}
+	],
+	"itemFluff": [
+		{
+			"name": "Moongold Weapon",
+			"source": "SGttEH24",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "external",
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/SGttEH/SGttEH/05196.webp"
+					},
+					"credit": "Carl Hassler",
+					"width": 1224,
+					"height": 976
+				}
+			]
+		},
+		{
+			"name": "Moongold Ammunition",
+			"source": "SGttEH24",
+			"_copy": {
+				"name": "Moongold Weapon",
+				"source": "SGttEH24"
+			}
+		}
+	],
+	"baseitem": [
+		{
+			"name": "Cleaver",
+			"source": "SGttEH24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 4,
+			"value": 1500,
+			"weaponCategory": "martial",
+			"property": [
+				"H|XPHB",
+				"V|XPHB"
+			],
+			"mastery": [
+				"Graze|XPHB"
+			],
+			"dmg1": "1d8",
+			"dmgType": "S",
+			"dmg2": "1d12",
+			"weapon": true
+		},
+		{
+			"name": "Scythe",
+			"source": "SGttEH24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 6,
+			"value": 2000,
+			"weaponCategory": "martial",
+			"property": [
+				"F|XPHB",
+				"R|XPHB",
+				"2H|XPHB"
+			],
+			"mastery": [
+				"Cleave|XPHB"
+			],
+			"dmg1": "1d10",
+			"dmgType": "S",
+			"weapon": true
+		},
+		{
+			"name": "Blunderbuss",
+			"source": "SGttEH24",
+			"edition": "one",
+			"type": "R|XPHB",
+			"rarity": "none",
+			"weight": 10,
+			"value": 3000,
+			"weaponCategory": "simple",
+			"property": [
+				"A|XPHB",
+				"SGttEH:Bar",
+				"SGttEH:Bla",
+				"SGttEH:SpFr",
+				"SGttEH:TwBar",
+				"2H|XPHB"
+			],
+			"mastery": [
+				"Topple|XPHB"
+			],
+			"range": "20",
+			"customProperties": {
+				"barrel": 2
+			},
+			"ammoType": "bullet|SGttEH24",
+			"dmg1": "2d4",
+			"dmgType": "P",
+			"weapon": true,
+			"firearm": true
+		},
+		{
+			"name": "Flintlock",
+			"source": "SGttEH24",
+			"edition": "one",
+			"type": "R|XPHB",
+			"rarity": "none",
+			"weight": 3,
+			"value": 1000,
+			"weaponCategory": "simple",
+			"property": [
+				"A|XPHB",
+				"SGttEH:Bar",
+				"SGttEH:Bla",
+				"L|XPHB"
+			],
+			"mastery": [
+				"Sap|XPHB"
+			],
+			"range": "100/320",
+			"ammoType": "bullet|SGttEH24",
+			"customProperties": {
+				"barrel": 1
+			},
+			"dmg1": "1d8",
+			"dmgType": "P",
+			"weapon": true,
+			"firearm": true
+		},
+		{
+			"name": "Cannon",
+			"source": "SGttEH24",
+			"edition": "one",
+			"type": "R|XPHB",
+			"rarity": "none",
+			"weight": 90,
+			"value": 50000,
+			"weaponCategory": "martial",
+			"property": [
+				"SGttEH:Art",
+				"SGttEH:Boo",
+				"2H|XPHB"
+			],
+			"mastery": [
+				"Push|XPHB"
+			],
+			"range": "120/240",
+			"ammoType": "cannonball|SGttEH24",
+			"dmg1": "3d10",
+			"dmgType": "B",
+			"weapon": true
+		},
+		{
+			"name": "Pistol",
+			"source": "SGttEH24",
+			"edition": "one",
+			"type": "R|XPHB",
+			"rarity": "none",
+			"weight": 3,
+			"value": 1500,
+			"weaponCategory": "martial",
+			"property": [
+				"A|XPHB",
+				"SGttEH:Bar",
+				"SGttEH:Bla",
+				"SGttEH:FnFr"
+			],
+			"mastery": [
+				"Vex|XPHB"
+			],
+			"range": "40/120",
+			"ammoType": "bullet|SGttEH24",
+			"customProperties": {
+				"barrel": 6
+			},
+			"dmg1": "1d6",
+			"dmgType": "P",
+			"weapon": true,
+			"firearm": true
+		},
+		{
+			"name": "Rifle",
+			"source": "SGttEH24",
+			"edition": "one",
+			"type": "R|XPHB",
+			"rarity": "none",
+			"weight": 8,
+			"value": 2500,
+			"weaponCategory": "martial",
+			"property": [
+				"A|XPHB",
+				"SGttEH:Bar",
+				"SGttEH:Bla",
+				"SGttEH:Sdy",
+				"SGttEH:TwBar",
+				"2H|XPHB"
+			],
+			"mastery": [
+				"Slow|XPHB"
+			],
+			"range": "120/240",
+			"ammoType": "bullet|SGttEH24",
+			"customProperties": {
+				"barrel": 2
+			},
+			"dmg1": "1d10",
+			"dmgType": "P",
+			"weapon": true,
+			"firearm": true
+		},
+		{
+			"name": "Bullet",
+			"source": "SGttEH24",
+			"type": "AF|XDMG",
+			"rarity": "none",
+			"weight": 0.1,
+			"value": 20,
+			"miscTags": [
+				"CNS"
+			]
+		},
+		{
+			"name": "Cannonball",
+			"source": "SGttEH24",
+			"type": "AF|XDMG",
+			"rarity": "none",
+			"weight": 9,
+			"value": 300,
+			"miscTags": [
+				"CNS"
+			]
+		},
+		{
+			"name": "Explosive Bullet",
+			"source": "SGttEH24",
+			"type": "AF|XDMG",
+			"rarity": "none",
+			"weight": 0.1,
+			"value": 400,
+			"entries": [
+				"A creature hit by this ammunition takes the weapon's normal damage, and each creature within 5 feet of it must succeed on a Dexterity saving throw (DC 8 plus the ability modifier used to make the attack roll and your {@variantrule Proficiency|XPHB|Proficiency Bonus}) or take {@damage 1d8} Fire damage. On a miss, the ammunition fails to detonate.",
+				"Once it hits a target, the ammunition is destroyed."
+			],
+			"miscTags": [
+				"CNS"
+			]
+		},
+		{
+			"name": "Explosive Cannonball",
+			"source": "SGttEH24",
+			"type": "AF|XDMG",
+			"rarity": "none",
+			"weight": 12,
+			"value": 3000,
+			"entries": [
+				"A creature hit by this ammunition takes the weapon's normal damage, and each creature within 10 feet of it must succeed on a Dexterity saving throw (DC 8 plus your Strength modifier and your {@variantrule Proficiency|XPHB|Proficiency Bonus}) or take {@damage 2d8} Fire damage. On a miss, the ammunition fails to detonate.",
+				"Once it hits a target, the ammunition is destroyed."
+			],
+			"miscTags": [
+				"CNS"
+			]
+		},
+		{
+			"name": "Scatter Bullet",
+			"source": "SGttEH24",
+			"type": "AF|XDMG",
+			"rarity": "none",
+			"weight": 0.1,
+			"value": 150,
+			"entries": [
+				"When you make an attack using a weapon with the {@itemProperty SGttEH:SpFr|SGttEH24|Spread Fire} property, you can choose to use this ammunition. If you do, ignore the {@itemProperty SGttEH:SpFr|SGttEH24|Spread Fire} property and instead make an attack roll. On a hit, the target takes the weapon's normal damage, and the bullet explodes, sending shrapnel flying in a 15-foot {@variantrule Cone [Area of Effect]|XPHB|Cone} originating from the target and extending away from you. Each creature in the area must make a Dexterity saving throw (DC equals 8 plus your Dexterity modifier plus your {@variantrule Proficiency|XPHB|Proficiency Bonus}). On a failed save, a creature takes damage equal to your weapon damage.",
+				"Once it hits a target, the ammunition is destroyed."
+			],
+			"miscTags": [
+				"CNS"
+			]
+		}
+	],
+	"magicvariant": [
+		{
+			"name": "Moongold Weapon",
+			"type": "GV|XDMG",
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
+			"excludes": {
+				"net": true
+			},
+			"entries": [
+				"Some monsters are resilient to physical damage but they remain susceptible to moongilded weapons, so cautious adventurers invest extra coin to plate their weapons, magical or not, with moongold. Moongold gives a {@damage 1d4} bonus to damage rolls against nonhumanoid creatures. Moongold acts as a guiding light in the darkness; creatures holding or wearing moongold have {@variantrule Advantage|XPHB} on saving throws against the {@condition Frightened|XPHB} condition and Madness.",
+				"You can moongild a single weapon or ten pieces of ammunition for 1000 gp. This cost represents not only the price of the moongold, but the time and expertise needed to add moongold to the weapon without making it less effective. Moongold loses its effectiveness over time; if a moongilded weapon has not been recoated in moongold after 3 months, the coating falls off, ending its effects. Recoating a weapon before it loses its moongilding costs 500 gp and refreshes the duration of the moongold."
+			],
+			"inherits": {
+				"namePrefix": "Moongold ",
+				"source": "SGttEH24",
+				"rarity": "unknown",
+				"valueExpression": "[[baseItem.value]] + 100000",
+				"entries": [
+					{
+						"type": "entries",
+						"name": "Moongold",
+						"entries": [
+							"Moongold gives a {@damage 1d4} bonus to damage rolls against nonhumanoid creatures. Moongold acts as a guiding light in the darkness; creatures holding or wearing moongold have {@variantrule Advantage|XPHB} on saving throws against the {@condition Frightened|XPHB} condition and Madness."
+						]
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Moongold Ammunition",
+			"type": "GV|XDMG",
+			"requires": [
+				{
+					"type": "A"
+				},
+				{
+					"type": "AF|XDMG"
+				}
+			],
+			"excludes": {
+				"name": "Energy Cell"
+			},
+			"ammo": true,
+			"entries": [
+				"Some monsters are resilient to physical damage but they remain susceptible to moongilded weapons, so cautious adventurers invest extra coin to plate their weapons, magical or not, with moongold. Moongold gives a {@damage 1d4} bonus to damage rolls against nonhumanoid creatures. Moongold acts as a guiding light in the darkness; creatures holding or wearing moongold have {@variantrule Advantage|XPHB} on saving throws against the {@condition Frightened|XPHB} condition and Madness.",
+				"You can moongild a single weapon or ten pieces of ammunition for 1000 gp. This cost represents not only the price of the moongold, but the time and expertise needed to add moongold to the weapon without making it less effective. Moongold loses its effectiveness over time; if a moongilded weapon has not been recoated in moongold after 3 months, the coating falls off, ending its effects. Recoating a weapon before it loses its moongilding costs 500 gp and refreshes the duration of the moongold."
+			],
+			"inherits": {
+				"namePrefix": "Moongold ",
+				"source": "SGttEH24",
+				"rarity": "unknown",
+				"valueExpression": "[[baseItem.value]] + 10000",
+				"entries": [
+					{
+						"type": "entries",
+						"name": "Moongold",
+						"entries": [
+							"Moongold gives a {@damage 1d4} bonus to damage rolls against nonhumanoid creatures. Moongold acts as a guiding light in the darkness; creatures holding or wearing moongold have {@variantrule Advantage|XPHB} on saving throws against the {@condition Frightened|XPHB} condition and Madness."
+						]
+					}
+				]
+			},
+			"hasFluffImages": true
+		}
+	],
+	"itemProperty": [
+		{
+			"name": "Artillery",
+			"abbreviation": "SGttEH:Art",
+			"source": "SGttEH24",
+			"template": "Artillery (Range {{item.range}} ft.; {{item.ammoType}})",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Artillery",
+					"entries": [
+						"You must use Strength instead of Dexterity for the attack rolls and damage rolls of a weapon with the Artillery property, and you can use the weapon to make a ranged attack only if you have ammunition to fire from it. The type of ammunition required is specified with the weapon's range. Each attack expends one piece of ammunition. Weapons with the Artillery property must be reloaded with an action. After a fight, you can spend 1 minute to recover half the ammunition (round down) you used in the fight; the rest is lost."
+					]
+				}
+			]
+		},
+		{
+			"name": "Barrel",
+			"abbreviation": "SGttEH:Bar",
+			"source": "SGttEH24",
+			"template": "Barrel {{item.customProperties.barrel}}",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Barrel",
+					"entries": [
+						"A Barrel weapon can be fired a number of times equal to the number of bullets its barrel can hold (written as Barrel X) before it must be reloaded. It can be reloaded as either an action or instead of an attack as part of the {@action Attack|XPHB} action. If the weapon also has the {@itemProperty L|XPHB|Light} property, it can also be reloaded as a {@variantrule Bonus Action|XPHB}. You must have one free hand to reload the weapon."
+					]
+				}
+			]
+		},
+		{
+			"name": "Blaring",
+			"abbreviation": "SGttEH:Bla",
+			"source": "SGttEH24",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Blaring",
+					"entries": [
+						"Firing a Blaring weapon makes a thunderous crack. The sound can be heard from up to 100 feet away. Making a ranged attack using a weapon with this property makes it hard to go undetected; you have {@variantrule Disadvantage|XPHB} on Dexterity ({@skill Stealth|XPHB}) checks made as part of the {@action Hide|XPHB} action until the start of your next turn. In addition, if a creature is within the area of the sound blast, it has {@variantrule Advantage|XPHB} on Wisdom ({@skill Perception|XPHB}) checks made against you as part of the {@action Search|XPHB} action."
+					]
+				}
+			]
+		},
+		{
+			"name": "Booming",
+			"abbreviation": "SGttEH:Boo",
+			"source": "SGttEH24",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Booming",
+					"entries": [
+						"The deflagration from firing a Booming weapon makes a stupendous booming sound. The sound can be heard from up to 500 feet away. Making a ranged attack using a weapon with this property makes it impossible to go undetected; you automatically fail Dexterity ({@skill Stealth|XPHB}) checks made as part of the {@action Hide|XPHB} action until the start of your next turn. In addition, if a creature is within the area of the sound blast, it automatically succeeds on Wisdom ({@skill Perception|XPHB}) checks made against you as part of the {@action Search|XPHB} action."
+					]
+				}
+			]
+		},
+		{
+			"name": "Fan Fire",
+			"abbreviation": "SGttEH:FnFr",
+			"source": "SGttEH24",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Fan Fire",
+					"entries": [
+						"You can quickly fire this weapon by slamming the hammer repeatedly. As an action, you fire a number of bullets in a row equal to your Dexterity modifier (minimum of 2, up to the entirety of the barrel). Each attack after the first suffers a cumulative -3 penalty to the attack roll. You cannot add any modifier to the damage roll of these attacks beyond the first (such as the bonus from your Dexterity modifier or a magic weapon's bonus to damage rolls). When you take this action, your {@variantrule Speed|XPHB} becomes 0 until the end of your turn, and attacks you make using the long range of the weapon automatically miss.",
+						"If you roll a 1 on any of the attack rolls, the weapon jams and can't be used again until it is repaired. You can take an action to make a DC 15 Dexterity ({@skill Sleight of Hand|XPHB}) check, repairing the weapon on a success. Alternatively, you can spend 1 hour mending it to automatically succeed on the check. If your check fails, the weapon is broken and must be mended in a specialist's store at a quarter of the cost of the firearm."
+					]
+				}
+			]
+		},
+		{
+			"name": "Steady",
+			"abbreviation": "SGttEH:Sdy",
+			"source": "SGttEH24",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Steady",
+					"entries": [
+						"A weapon with this property can be stabilized for greater accuracy. As a {@variantrule Bonus Action|XPHB}, you give yourself a bonus to your next attack roll with this weapon this turn equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus}, and attacking at the weapon's long range doesn't impose {@variantrule Disadvantage|XPHB} on the attack roll. You can take this {@variantrule Bonus Action|XPHB} only if you haven't moved during your turn, and after you take the {@variantrule Bonus Action|XPHB}, your {@variantrule Speed|XPHB} is halved until the end of your turn."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spread Fire",
+			"abbreviation": "SGttEH:SpFr",
+			"source": "SGttEH24",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Spread Fire",
+					"entries": [
+						"A weapon that has the Spread Fire property can't make a normal attack. It instead sprays a {@variantrule Cone [Area of Effect]|XPHB|Cone} with a length equal to its range (for example, a {@item Blunderbuss|SGttEH24} with a range of 20 feet will fire in a 20-foot {@variantrule Cone [Area of Effect]|XPHB|Cone}). Each creature in the area must succeed on a Dexterity saving throw (DC equals 8 plus your Dexterity modifier and your {@variantrule Proficiency|XPHB|Proficiency Bonus}) or take the weapon's normal damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Twinned Barrel",
+			"abbreviation": "SGttEH:TwBar",
+			"source": "SGttEH24",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Twinned Barrel",
+					"entries": [
+						"A Twinned Barrel weapon has two barrels that can each hold a {@item Bullet|SGttEH24} and can both be loaded as part of reloading the weapon. You can fire both barrels of a Twinned Barrel weapon as part of an attack, instead of each barrel individually. Doing so empties both barrels of the weapon (as per the {@itemProperty SGttEH:Bar|SGttEH24|Barrel} property) and increases the damage die of the weapon on a hit (from {@dice d4} to {@dice d6} to {@dice d8} to {@dice d10} to {@dice d12})."
+					]
+				}
+			]
+		},
+		{
+			"name": "Trick Weapon",
+			"abbreviation": "TK",
+			"source": "SGttEH24",
+			"template": "{@i Forms: ({{item.customProperties.baseitems}})}"
 		}
 	],
 	"subclass": [
