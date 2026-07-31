@@ -282,7 +282,52 @@
 				"Epic Boon|Kindred|KindredClass24|19",
 				"Ancient Awakening|Kindred|KindredClass24|20"
 			],
-			"subclassTitle": "Subclass Feature"
+			"subclassTitle": "Subclass Feature",
+			"foundryAdvancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "blood",
+						"type": "number",
+						"scale": {
+							"1": {
+								"value": 1
+							},
+							"2": {
+								"value": 2
+							},
+							"4": {
+								"value": 3
+							},
+							"6": {
+								"value": 4
+							},
+							"8": {
+								"value": 5
+							},
+							"10": {
+								"value": 6
+							},
+							"12": {
+								"value": 7
+							},
+							"14": {
+								"value": 8
+							},
+							"16": {
+								"value": 9
+							},
+							"18": {
+								"value": 10
+							},
+							"20": {
+								"value": 11
+							}
+						}
+					},
+					"title": "Blood Points"
+				}
+			]
 		}
 	],
 	"classFeature": [
@@ -340,7 +385,7 @@
 								"At least one {@variantrule Long Rest|XPHB} occurs between each of the three drinks."
 							]
 						},
-						"While Blood Bound to a Kindred, a creature is considered {@condition Charmed|XPHB} by that Kindred and has {@variantrule Advantage|XPHB} on saving throws to avoid being {@condition Charmed|XPHB} or {@condition Frightened|XPHB} by other creatures. This is in addition to the effects from the Kindred Vitae consumable.",
+						"While Blood Bound to a Kindred, a creature is considered {@condition Charmed|XPHB} by that Kindred and has {@variantrule Advantage|XPHB} on saving throws to avoid being {@condition Charmed|XPHB} or {@condition Frightened|XPHB} by other creatures. This is in addition to the effects from the {@item Kindred Vitae|KindredClass24} consumable.",
 						"A Blood Bond can be suppressed for 1 minute if the creature succeeds on a DC 25 Charisma saving throw. The bond is only permanently removed if the creature doesn't drink from that Kindred again for a year, or if the Kindred in question is killed."
 					]
 				}
@@ -376,6 +421,15 @@
 			"className": "Kindred",
 			"classSource": "KindredClass24",
 			"level": 1,
+			"entryData": {
+				"resources": [
+					{
+						"name": "Blood Point",
+						"type": "pointPool",
+						"count": "@scale.monk.focus"
+					}
+				]
+			},
 			"entries": [
 				"You are fueled by blood, represented by Blood Points. Your Kindred level determines the number of points you have, as shown in the Blood Points column of the Kindred Features table. You can expend Blood Points in the following ways:",
 				{
@@ -412,6 +466,10 @@
 			"className": "Kindred",
 			"classSource": "KindredClass24",
 			"level": 1,
+			"vulnerable": [
+				"fire",
+				"radiant"
+			],
 			"entries": [
 				"You are a specific kind of vampire known as a Kindred, which brings physical benefits and drawbacks.",
 				{
@@ -726,6 +784,24 @@
 			]
 		}
 	],
+	"foundryClassFeature": [
+		{
+			"name": "Blood Potency",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"level": 1,
+			"entryData": {
+				"resources": [
+					{
+						"name": "Blood Point",
+						"type": "pointPool",
+						"count": "@scale.monk.focus"
+					}
+				]
+			}
+		}
+	],
 	"subclass": [
 		{
 			"name": "Brujah",
@@ -789,6 +865,38 @@
 				"The Concealing|Kindred|KindredClass24|Nosferatu|KindredClass24|11",
 				"Greater Monstrous Gifts|Kindred|KindredClass24|Nosferatu|KindredClass24|15",
 				"What Goes Bump in the Night|Kindred|KindredClass24|Nosferatu|KindredClass24|18"
+			]
+		},
+		{
+			"name": "Toreador",
+			"shortName": "Toreador",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"edition": "one",
+			"subclassFeatures": [
+				"Toreador|Kindred|KindredClass24|Toreador|KindredClass24|3",
+				"Depth of Feelings|Kindred|KindredClass24|Toreador|KindredClass24|6",
+				"Live Fast, Be a Good Looking Corpse|Kindred|KindredClass24|Toreador|KindredClass24|9",
+				"Visionary|Kindred|KindredClass24|Toreador|KindredClass24|11",
+				"Truly Majestic|Kindred|KindredClass24|Toreador|KindredClass24|15",
+				"Magnum Opus|Kindred|KindredClass24|Toreador|KindredClass24|18"
+			]
+		},
+		{
+			"name": "Ventrue",
+			"shortName": "Ventrue",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"edition": "one",
+			"subclassFeatures": [
+				"Ventrue|Kindred|KindredClass24|Ventrue|KindredClass24|3",
+				"Dare Not Falter|Kindred|KindredClass24|Ventrue|KindredClass24|6",
+				"Domineering Control|Kindred|KindredClass24|Ventrue|KindredClass24|9",
+				"Mass Manipulation|Kindred|KindredClass24|Ventrue|KindredClass24|11",
+				"Sanguine Fortification|Kindred|KindredClass24|Ventrue|KindredClass24|15",
+				"Lordly Power|Kindred|KindredClass24|Ventrue|KindredClass24|18"
 			]
 		}
 	],
@@ -1665,9 +1773,1624 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Toreador",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Toreador",
+			"subclassSource": "KindredClass24",
+			"level": 3,
+			"entries": [
+				"{@i See the World Like No One Else Can}",
+				"Toreador are steeped in art and beauty. They use their superhuman senses to experience aspects of the world no one else can. They feel everything deeply, and, with a glance or a few words, can instill similar feelings in others. If there is awe to be found, a Toreador can find it.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "An Artist's Soul|Kindred|KindredClass24|Toreador|KindredClass24|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Toreador Bane|Kindred|KindredClass24|Toreador|KindredClass24|3"
+				}
+			]
+		},
+		{
+			"name": "An Artist's Soul",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Toreador",
+			"subclassSource": "KindredClass24",
+			"level": 3,
+			"entries": [
+				"You have in you a spark of talent and inspiration that has only been fanned brighter by your vampiric ascension. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Auspicious Senses",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Intelligence ({@skill Investigation|XPHB}) and Wisdom ({@skill Perception|XPHB}) checks. In addition, the range of your {@sense Darkvision|XPHB} increases to 120 feet."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Chosen for Talent",
+					"entries": [
+						"You gain proficiency in two skills and one tool of your choice. If you already have proficiency in the chosen skill, you gain {@variantrule Expertise|XPHB} in it."
+					]
+				}
+			]
+		},
+		{
+			"name": "Toreador Bane",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Toreador",
+			"subclassSource": "KindredClass24",
+			"level": 3,
+			"entries": [
+				"You suffer a great malaise in the absence of beauty. When you roll a 9 or lower on the d20 for an Intelligence ({@skill Investigation|XPHB}) or Wisdom ({@skill Perception|XPHB}) check, you see nothing of immediate beauty and gain the {@condition Restrained|XPHB} condition. At the end of each of your turns, you can make a DC 10 Wisdom saving throw, ending the condition on a success."
+			]
+		},
+		{
+			"name": "Depth of Feelings",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Toreador",
+			"subclassSource": "KindredClass24",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"You can see aspects of the world that others can't, including emotions. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Aura Sight",
+					"entries": [
+						"As a {@action Magic|XPHB} action, you can expend 2 Blood Points to see a creature's aura for 1 minute. You can ask the GM up to two questions that can be answered with yes or no. You must ask your questions before the effect ends. You receive a correct answer for each question. The following are example questions.",
+						{
+							"type": "list",
+							"style": "list-no-bullets",
+							"items": [
+								"Is the creature's creature type X? (Where X is a creature type specified by the player character, such as Monstrosity or Undead)",
+								"Can the creature cast spells?",
+								"Is the creature {@variantrule Hostile [Attitude]|XPHB|Hostile} toward me?",
+								"Does the creature believe what it is saying?"
+							]
+						},
+						"The GM has final say as to whether the question can be answered, but the answers must be truthful."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Entrancement",
+					"entries": [
+						"You can expend 1 Blood Point to cast the {@spell Calm Emotions|XPHB}, {@spell Charm Monster|XPHB}, or {@spell Charm Person|XPHB} spell."
+					]
+				}
+			]
+		},
+		{
+			"name": "Live Fast, Be a Good Looking Corpse",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Toreador",
+			"subclassSource": "KindredClass24",
+			"level": 9,
+			"header": 2,
+			"entries": [
+				"You experience the world, in all its wonders, with vampiric speed. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Ability Score Increase",
+					"entries": [
+						"Your Dexterity score increases by 2, to a maximum of 25."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Rapidity",
+					"entries": [
+						"As a {@variantrule Bonus Action|XPHB}, you can expend 1 Blood Point to gain an additional action on your turns. That action can be used to take only the {@action Attack|XPHB} (one attack only), {@action Dash|XPHB}, {@action Disengage|XPHB}, {@action Hide|XPHB}, or {@action Utilize|XPHB} action. This effects lasts for a number of turns equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Visionary",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Toreador",
+			"subclassSource": "KindredClass24",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"You have honed your skills and your perceptions to a razor's edge. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Practiced Perfection",
+					"entries": [
+						"You gain {@variantrule Expertise|XPHB} in three of your skill proficiencies of your choice."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spirit's Touch",
+					"entries": [
+						"As a {@action Magic|XPHB} action, you can expend 2 Blood Points to touch an object and perceive emotional residues on it for 10 minutes. You can ask the GM a number of questions equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus}, which must be answered truthfully. You must ask your questions before the effect ends. The following are examples of questions that can be asked.",
+						{
+							"type": "list",
+							"style": "list-no-bullets",
+							"items": [
+								"What did the last creature that touched this look like?",
+								"What was the emotional state of the last creature that used the object?",
+								"Is this object magical?",
+								"Is this object cursed?",
+								"Is this object trapped?",
+								"What are any physical details of the object that aren't readily visible?",
+								"How many creatures have touched the object in the last 24 hours?"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Truly Majestic",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Toreador",
+			"subclassSource": "KindredClass24",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"You exude vampiric allure and have learned how to charm others. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Eerily Convincing",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Charisma ({@skill Deception|XPHB} and {@skill Persuasion|XPHB}) checks. In addition, when you cast a spell with your Entrancement feature, a creature has {@variantrule Disadvantage|XPHB} on any saving throw it makes against the spell."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Majesty",
+					"entries": [
+						"You can expend 3 Blood Points to cast the {@spell Sanctuary|XPHB} spell on yourself. When you cast the spell in this way, the spell doesn't end if you make an attack roll, cast a spell, or deal damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Magnum Opus",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Toreador",
+			"subclassSource": "KindredClass24",
+			"level": 18,
+			"header": 2,
+			"entries": [
+				"You have mastered what it means to be one of the greatest vampiric artisans, which defines you as much as you define it. Choose two of the following benefits.",
+				{
+					"type": "entries",
+					"name": "Flicker",
+					"entries": [
+						"As a {@variantrule Bonus Action|XPHB}, you can expend 3 Blood Points to dance between the beats of a mortal's heart. Until the start of your next turn, you have a +3 bonus to AC, your {@variantrule Speed|XPHB} is doubled, your movement doesn't provoke {@action Opportunity Attack|XPHB|Opportunity Attacks}, and you have {@variantrule Advantage|XPHB} on attack rolls."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Clairvoyance",
+					"entries": [
+						"You can expend 2 Blood Points to cast the {@spell Clairvoyance|XPHB} or {@spell Scrying|XPHB} spell. When you cast the spell in this way, the sensor can't be perceived."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Open Mind",
+					"entries": [
+						"You can use a {@action Magic|XPHB} action to expend 1 Blood point to choose any number of creatures you know within 5 miles of yourself or any number of creatures you can see within 120 feet of yourself. You and the chosen creatures can communicate telepathically with each other while the creatures and you are within 5 miles of each other for 8 hours. You and the targets can instantly share words, images, sounds, and other sensory messages with each other through the link, and the targets recognize you as the creature they are communicating with. This effect enables creatures to understand the meaning of your words and any sensory messages you send to them."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Star Magnetism",
+					"entries": [
+						"You can expend 3 Blood Points to cast the {@spell Mass Suggestion|XPHB} spell. When you cast the spell in this way, you can target any creature you can communicate with, you don't need line of sight, the range becomes 1 mile, and you can modify it so that it doesn't require {@condition Concentration|XPHB}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ventrue",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Ventrue",
+			"subclassSource": "KindredClass24",
+			"level": 3,
+			"entries": [
+				"{@i Control Others with Influence and Guile}",
+				"The Ventrue have elevated themselves to be the \"Clan of Kings,\" imposing their will on the clans and standing contemptuously against those who would defy them. After lifetimes of prudent rule, the Ventrue have earned their figurative throne.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Voice of Authority|Kindred|KindredClass24|Ventrue|KindredClass24|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Ventrue Bane|Kindred|KindredClass24|Ventrue|KindredClass24|3"
+				}
+			]
+		},
+		{
+			"name": "Voice of Authority",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Ventrue",
+			"subclassSource": "KindredClass24",
+			"level": 3,
+			"entries": [
+				"You can impose control over others while keeping others from imposing control over you. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Do as I Say",
+					"entries": [
+						"You can cast the {@spell Command|XPHB} and {@spell Suggestion|XPHB} spells. You can cast either spell without expending a spell slot a number of times equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus}, and you regain all expended uses when you finish a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Unshakably Confident",
+					"entries": [
+						"You have {@variantrule Advantage|XPHB} on Wisdom saving throws."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ventrue Bane",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Ventrue",
+			"subclassSource": "KindredClass24",
+			"level": 3,
+			"entries": [
+				"You have an arguably refined palate for blood. Choose a specific physical aspect (such as natural blondes or the elderly) or a social aspect (such as employees, soldiers, or the willing). It cannot be a wide generalization, such as creature type. When you use your Feed feature on a creature that doesn't have your preferred aspect, you roll half the number of Feed Dice."
+			]
+		},
+		{
+			"name": "Dare Not Falter",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Ventrue",
+			"subclassSource": "KindredClass24",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"You effortlessly shrug off harm to your body and mind. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Toughened",
+					"entries": [
+						"Your {@variantrule Hit Points|XPHB|Hit Point} maximum increases by an amount equal to your Kindred level when you gain this feature. Whenever you gain a Kindred level thereafter, your {@variantrule Hit Points|XPHB|Hit Point} maximum increases by an additional 1 {@variantrule Hit Points|XPHB|Hit Point}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Unswayable Mind",
+					"entries": [
+						"If you fail a saving throw to avoid or end the {@condition Charmed|XPHB}, {@condition Frightened|XPHB}, or {@condition Stunned|XPHB} condition, you can reroll it. You must use the new roll."
+					]
+				}
+			]
+		},
+		{
+			"name": "Domineering Control",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Ventrue",
+			"subclassSource": "KindredClass24",
+			"level": 9,
+			"header": 2,
+			"entries": [
+				"With a glance, you can steer the emotions and thoughts of intelligent creatures.",
+				{
+					"type": "entries",
+					"name": "Befuddle",
+					"entries": [
+						"You can expend 1 Blood Point to cast the {@spell Hypnotic Pattern|XPHB} spell. When you cast the spell in this way, a creature with an Intelligence of 3 or lower automatically succeeds on its saving throw against the spell while a creature with an Intelligence of 4 or higher has {@variantrule Disadvantage|XPHB} on the saving throw."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Entrance",
+					"entries": [
+						"As a {@action Magic|XPHB} action, make a Charisma ({@skill Persuasion}) check and expend 2 Blood Points to choose a creature you can see within 30 feet of you. The target must make a Wisdom saving throw with a DC equal to the result of your {@skill Persuasion|XPHB} check. On a failed save, the creature has the {@condition Stunned|XPHB} condition until the end of your next turn. At the end of each of the {@condition Stunned|XPHB} creature's turns, the creature repeats the save, ending the effect on itself on a success. A creature with an Intelligence of 3 or lower automatically succeeds on its saving throw against the effect."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Persuade",
+					"entries": [
+						"You can expend 1 Blood Point to cast the {@spell Charm Monster|XPHB} spell."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Terrify",
+					"entries": [
+						"As a {@action Magic|XPHB} action, make a Charisma ({@skill Intimidation|XPHB}}) check and expend 1 Blood Point to choose a creature you can see within 30 feet of you. The target must make a Wisdom saving throw with a DC equal to the result of your {@skill Intimidation|XPHB} check. On a failed save, the creature has the {@condition Frightened|XPHB} condition for 1 minute. At the end of each of the {@condition Frightened|XPHB} creature's turns, the creature repeats the save, ending the effect on itself on a success. A creature with an Intelligence of 3 or lower automatically succeeds on its saving throw against the effect."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mass Manipulation",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Ventrue",
+			"subclassSource": "KindredClass24",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"Your ability to command and sway others grows to encompass multiple minds at once. You can expend 3 Blood Points to cast the {@spell Mass Suggestion|XPHB} spell. At level 15, you can expend 4 Blood Points to cast the spell as its level 7 version; at level 18, you can expend 5 Blood Points to cast it as its level 8 version; and at level 20, you can expend 6 Blood Points to cast it as its level 9 version."
+			]
+		},
+		{
+			"name": "Sanguine Fortification",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Ventrue",
+			"subclassSource": "KindredClass24",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Your vitae has resilience-enhancing properties. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Draught of Endurance",
+					"entries": [
+						"When a creature within 60 feet of you drinks your vitae, you can take a {@variantrule Reaction|XPHB} and expend 2 Blood Points to grant that creature a number of {@variantrule Temporary Hit Points|XPHB} equal to twice your Kindred level."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Flesh of Marble",
+					"entries": [
+						"When you take damage except Fire and Radiant, you can take a {@variantrule Reaction|XPHB} and expend 2 Blood Points to reduce the damage you take by half (round down) or 4 Blood Points to reduce the damage to 0."
+					]
+				}
+			]
+		},
+		{
+			"name": "Lordly Power",
+			"source": "KindredClass24",
+			"className": "Kindred",
+			"classSource": "KindredClass24",
+			"subclassShortName": "Ventrue",
+			"subclassSource": "KindredClass24",
+			"level": 18,
+			"header": 2,
+			"entries": [
+				"Your will over others becomes ironclad and staggeringly powerful. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Imposing Aura",
+					"entries": [
+						"When a creature within 15 feet of you targets you with an attack roll or a damaging spell, it must succeed on a Wisdom saving throw (DC 8 plus your Strength modifier and {@variantrule Proficiency|XPHB|Proficiency Bonus}) or either choose a new target or lose the attack or spell. On a successful save, the target isn't affected, and it's immune to Imposing Aura for 24 hours."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Penetrating Dominance",
+					"entries": [
+						"Creatures you can see within 60 feet of yourself have {@variantrule Disadvantage|XPHB} on saving throws to avoid or end the {@condition Charmed|XPHB} condition."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Summon",
+					"entries": [
+						"As a {@action Magic|XPHB} action, you can expend 3 Blood Points to urge a Beast, Humanoid, or Undead you have touched and is on the same plane of existence as you to make a Wisdom saving throw (DC 8 plus your Charisma modifier and {@variantrule Proficiency|XPHB|Proficiency Bonus}). On a failed save, the creature is compelled to come to you. The creature must use as much of its movement as possible to move in your direction on its turns, taking the safest route, and stopping only to eat and rest. A compelled creature repeats the save at the end of each day at dusk, ending the effect on itself on a success. You know if the compulsion ends early. You can't have more than one creature under this effect at a time. If you use this feature again, the effect on another creature ends.",
+						"When the creature appears, it is under no compulsion to behave a particular way. You can ask it to perform a service in exchange for payment, but it isn't obliged to do so. The requested task could range from simple (fly us across the chasm, or help us fight a battle) to complex (spy on our enemies, or protect us during our foray into the dungeon). You must be able to communicate with the creature to bargain for its services. Payment can take a variety of forms.",
+						"The GM can adjust these payments based on the circumstances under which you called upon it. If the task is aligned with the creature's ethos, the payment might be halved or even waived. Nonhazardous tasks typically require only half the payment, while especially dangerous tasks might require a greater gift. Creatures rarely accept tasks that seem suicidal.",
+						"A {@spell Remove Curse|XPHB}, {@spell Greater Restoration|XPHB}, or {@spell Wish|XPHB} spell ends this effect."
+					]
+				}
+			]
+		}
+	],
+	"background": [
+		{
+			"name": "Ghoul",
+			"source": "KindredClass24",
+			"edition": "one",
+			"ability": [
+				{
+					"choose": {
+						"weighted": {
+							"from": [
+								"str",
+								"dex",
+								"cha"
+							],
+							"weights": [
+								2,
+								1
+							]
+						}
+					}
+				},
+				{
+					"choose": {
+						"weighted": {
+							"from": [
+								"str",
+								"dex",
+								"cha"
+							],
+							"weights": [
+								1,
+								1,
+								1
+							]
+						}
+					}
+				}
+			],
+			"feats": [
+				{
+					"nocturnal|kindredclass24": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"perception": true,
+					"survival": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"anyArtisansTool": 1
+				}
+			],
+			"startingEquipment": [
+				{
+					"a": [
+						{
+							"equipmentType": "toolArtisan",
+							"displayName": "Artisan's Tools (same as above)"
+						},
+						"dagger|xphb",
+						"Kindred Vitae|KindredClass24",
+						"hooded lantern|xphb",
+						"shortbow|xphb",
+						{
+							"item": "Arrow|xphb",
+							"quantity": 20
+						},
+						"traveler's clothes|xphb",
+						{
+							"value": 1000
+						}
+					],
+					"b": [
+						{
+							"value": 5000
+						}
+					]
+				}
+			],
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Ability Scores:",
+							"entry": "Strength, Dexterity, Charisma"
+						},
+						{
+							"type": "item",
+							"name": "Feat:",
+							"entry": "{@feat Nocturnal|KindredClass24}"
+						},
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Perception|XPHB} and {@skill Survival|XPHB}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiency:",
+							"entry": "Choose one kind of {@item Artisan's Tools|XPHB}"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "Choose A or B: (A) {@item Artisan's Tools|XPHB} (same as above), {@item Dagger|XPHB}, {@item Kindred Vitae|KindredClass24}, {@item Hooded Lantern|XPHB}, {@item Shortbow|XPHB}, 20 {@item Arrow|XPHB|Arrows}, {@item Traveler's Clothes|XPHB}, 10 GP; or (B) 50 GP"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ritualist",
+			"source": "KindredClass24",
+			"edition": "one",
+			"ability": [
+				{
+					"choose": {
+						"weighted": {
+							"from": [
+								"int",
+								"wis",
+								"cha"
+							],
+							"weights": [
+								2,
+								1
+							]
+						}
+					}
+				},
+				{
+					"choose": {
+						"weighted": {
+							"from": [
+								"int",
+								"wis",
+								"cha"
+							],
+							"weights": [
+								1,
+								1,
+								1
+							]
+						}
+					}
+				}
+			],
+			"feats": [
+				{
+					"magic initiate; wizard|xphb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"arcana": true,
+					"history": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"alchemist's supplies": true
+				}
+			],
+			"startingEquipment": [
+				{
+					"a": [
+						"alchemist's supplies|xphb",
+						{
+							"item": "book|xphb",
+							"displayName": "Book (rituals)"
+						},
+						"dagger|xphb",
+						"ink|xphb",
+						"traveler's clothes|xphb",
+						{
+							"value": 900
+						}
+					],
+					"b": [
+						{
+							"value": 5000
+						}
+					]
+				}
+			],
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Ability Scores:",
+							"entry": "Intelligence, Wisdom, Charisma"
+						},
+						{
+							"type": "item",
+							"name": "Feat:",
+							"entry": "{@feat Magic Initiate|XPHB} (Wizard)"
+						},
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Arcana|XPHB} and {@skill History|XPHB}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiency:",
+							"entry": "{@item Alchemist's Supplies|XPHB}"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "Choose A or B: (A) {@item Alchemist's Supplies|XPHB}, {@item Book|XPHB} (rituals), {@item Dagger|XPHB}, {@item Ink|XPHB}, {@item Traveler's Clothes|XPHB}, 9 GP; or (B) 50 GP"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Scholar of the Hunt",
+			"source": "KindredClass24",
+			"edition": "one",
+			"ability": [
+				{
+					"choose": {
+						"weighted": {
+							"from": [
+								"con",
+								"int",
+								"wis"
+							],
+							"weights": [
+								2,
+								1
+							]
+						}
+					}
+				},
+				{
+					"choose": {
+						"weighted": {
+							"from": [
+								"con",
+								"int",
+								"wis"
+							],
+							"weights": [
+								1,
+								1,
+								1
+							]
+						}
+					}
+				}
+			],
+			"feats": [
+				{
+					"well-read|kindredclass24": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"arcana": true,
+					"investigation": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"anyGamingSet": 1
+				}
+			],
+			"startingEquipment": [
+				{
+					"a": [
+						{
+							"equipmentType": "setGaming",
+							"displayName": "Gaming Set (same as above)"
+						},
+						"manacles|xphb",
+						"mirror|xphb",
+						"traveler's clothes|xphb",
+						{
+							"value": 1500
+						}
+					],
+					"b": [
+						{
+							"value": 5000
+						}
+					]
+				}
+			],
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Ability Scores:",
+							"entry": "Constitution, Intelligence, Wisdom"
+						},
+						{
+							"type": "item",
+							"name": "Feat:",
+							"entry": "{@feat Well-Read|KindredClass24}"
+						},
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Arcana|XPHB} and {@skill Investigation|XPHB}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiency:",
+							"entry": "Choose one kind of {@item Gaming Set|XPHB}"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "Choose A or B: (A) {@item Gaming Set|XPHB} (same as above), {@item Manacles|XPHB}, {@item Mirror|XPHB}, {@item Traveler's Clothes|XPHB}, 15 GP; or (B) 50 GP"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Thrall",
+			"source": "KindredClass24",
+			"edition": "one",
+			"ability": [
+				{
+					"choose": {
+						"weighted": {
+							"from": [
+								"con",
+								"wis",
+								"cha"
+							],
+							"weights": [
+								2,
+								1
+							]
+						}
+					}
+				},
+				{
+					"choose": {
+						"weighted": {
+							"from": [
+								"con",
+								"wis",
+								"cha"
+							],
+							"weights": [
+								1,
+								1,
+								1
+							]
+						}
+					}
+				}
+			],
+			"feats": [
+				{
+					"healthy|kindredclass24": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"medicine": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"anyGamingSet",
+							"anyMusicalInstrument"
+						]
+					}
+				}
+			],
+			"startingEquipment": [
+				{
+					"a": [
+						{
+							"equipmentType": "setGaming"
+						},
+						"healer's kit|xphb",
+						"bullseye lantern|xphb",
+						"traveler's clothes|xphb",
+						{
+							"value": 3200
+						}
+					],
+					"b": [
+						{
+							"value": 5000
+						}
+					]
+				}
+			],
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Ability Scores:",
+							"entry": "Constitution, Wisdom, Charisma"
+						},
+						{
+							"type": "item",
+							"name": "Feat:",
+							"entry": "{@feat Healthy|KindredClass24}"
+						},
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Athletics|XPHB} and {@skill Medicine|XPHB}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiency:",
+							"entry": "Choose one kind of {@item Gaming Set|XPHB} or {@item Musical Instrument|XPHB}"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "Choose A or B: (A) {@item Gaming Set|XPHB} or {@item Musical Instrument|XPHB} (same as above), {@item Healer's Kit|XPHB}, {@item Bullseye Lantern|XPHB}, {@item Traveler's Clothes|XPHB}, 32 GP; or (B) 50 GP"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Touchstone",
+			"source": "KindredClass24",
+			"edition": "one",
+			"ability": [
+				{
+					"choose": {
+						"weighted": {
+							"from": [
+								"con",
+								"int",
+								"cha"
+							],
+							"weights": [
+								2,
+								1
+							]
+						}
+					}
+				},
+				{
+					"choose": {
+						"weighted": {
+							"from": [
+								"con",
+								"int",
+								"cha"
+							],
+							"weights": [
+								1,
+								1,
+								1
+							]
+						}
+					}
+				}
+			],
+			"feats": [
+				{
+					"protected|kindredclass24": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"persuasion": true,
+					"survival": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"anyArtisansTool": 1
+				}
+			],
+			"startingEquipment": [
+				{
+					"a": [
+						{
+							"equipmentType": "toolArtisan",
+							"displayName": "Artisan's Tools (same as above)"
+						},
+						"traveler's clothes|xphb",
+						{
+							"value": 1600
+						}
+					],
+					"b": [
+						{
+							"value": 5000
+						}
+					]
+				}
+			],
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Ability Scores:",
+							"entry": "Constitution, Intelligence, Charisma"
+						},
+						{
+							"type": "item",
+							"name": "Feat:",
+							"entry": "{@feat Protected|KindredClass24}"
+						},
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Persuasion|XPHB} and {@skill Survival|XPHB}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiency:",
+							"entry": "Choose one kind of {@item Artisan's Tools|XPHB}"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "Choose A or B: (A) {@item Artisan's Tools|XPHB} (same as above), {@item Traveler's Clothes|XPHB}, 16 GP; or (B) 50 GP"
+						}
+					]
+				}
+			]
+		}
+	],
+	"item": [
+		{
+			"name": "Kindred Vitae",
+			"source": "KindredClass24",
+			"type": "P|XPHB",
+			"rarity": "uncommon",
+			"entries": [
+				"Vitae, blood from within a Kindred, has powerful properties that are passed on when imbibed by a non-Kindred. A single Blood Point can be stored in a drinkable vessel for up to 48 hours without alchemical treatment. When you drink this potion, you gain the following effects.",
+				{
+					"type": "entries",
+					"name": "Increased Strength and Speed:",
+					"entries": [
+						"Your Strength score increases by 2, and your {@variantrule Speed|XPHB} increases by 5 feet for 1 week."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Increased Vitality:",
+					"entries": [
+						"You gain {@dice 2d6} {@variantrule Temporary Hit Points|XPHB}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Reduced Aging:",
+					"entries": [
+						"You physically ignore the next year of natural aging.",
+						"However, mortals who drink this potion are more susceptible to the powers of the Undead. For the period of 1 year, you have {@variantrule Disadvantage|XPHB} on saving throws against being {@condition Charmed|XPHB} or {@condition Frightened|XPHB} by Undead."
+					]
+				}
+			],
+			"miscTags": [
+				"CNS"
+			]
+		}
+	],
+	"baseitem": [
+		{
+			"name": "Dagger, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 1,
+			"value": 250,
+			"weaponCategory": "simple",
+			"property": [
+				"F|XPHB",
+				"L|XPHB",
+				"T|XPHB"
+			],
+			"mastery": [
+				"Nick|XPHB"
+			],
+			"dmg1": "1d4",
+			"dmgType": "P",
+			"range": "20/60",
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Handaxe, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 2,
+			"value": 600,
+			"weaponCategory": "simple",
+			"property": [
+				"L|XPHB",
+				"T|XPHB"
+			],
+			"mastery": [
+				"Vex|XPHB"
+			],
+			"dmg1": "1d6",
+			"dmgType": "S",
+			"range": "20/60",
+			"axe": true,
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Javelin, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 2,
+			"value": 150,
+			"weaponCategory": "simple",
+			"property": [
+				"T|XPHB"
+			],
+			"mastery": [
+				"Slow|XPHB"
+			],
+			"dmg1": "1d6",
+			"dmgType": "P",
+			"range": "30/120",
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Sickle, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 2,
+			"value": 200,
+			"weaponCategory": "simple",
+			"property": [
+				"L|XPHB"
+			],
+			"mastery": [
+				"Nick|XPHB"
+			],
+			"dmg1": "1d4",
+			"dmgType": "S",
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Spear, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 3,
+			"value": 250,
+			"weaponCategory": "simple",
+			"property": [
+				"T|XPHB",
+				"V|XPHB"
+			],
+			"mastery": [
+				"Sap|XPHB"
+			],
+			"dmg1": "1d6",
+			"dmgType": "P",
+			"dmg2": "1d8",
+			"range": "20/60",
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Dart, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "R|XPHB",
+			"rarity": "none",
+			"weight": 0.25,
+			"value": 20,
+			"weaponCategory": "simple",
+			"property": [
+				"F|XPHB",
+				"T|XPHB"
+			],
+			"mastery": [
+				"Vex|XPHB"
+			],
+			"dmg1": "1d4",
+			"dmgType": "P",
+			"range": "20/60",
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Battleaxe, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 4,
+			"value": 1200,
+			"weaponCategory": "martial",
+			"property": [
+				"V|XPHB"
+			],
+			"mastery": [
+				"Topple|XPHB"
+			],
+			"dmg1": "1d8",
+			"dmgType": "S",
+			"dmg2": "1d10",
+			"axe": true,
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Glaive, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 6,
+			"value": 2300,
+			"weaponCategory": "martial",
+			"property": [
+				"H|XPHB",
+				"R|XPHB",
+				"2H|XPHB"
+			],
+			"mastery": [
+				"Graze|XPHB"
+			],
+			"dmg1": "1d10",
+			"dmgType": "S",
+			"polearm": true,
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Greataxe, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 7,
+			"value": 3400,
+			"weaponCategory": "martial",
+			"property": [
+				"H|XPHB",
+				"2H|XPHB"
+			],
+			"mastery": [
+				"Cleave|XPHB"
+			],
+			"dmg1": "1d12",
+			"dmgType": "S",
+			"axe": true,
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Greatsword, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 6,
+			"value": 5300,
+			"weaponCategory": "martial",
+			"property": [
+				"H|XPHB",
+				"2H|XPHB"
+			],
+			"mastery": [
+				"Graze|XPHB"
+			],
+			"dmg1": "2d6",
+			"dmgType": "S",
+			"sword": true,
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Halberd, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 6,
+			"value": 2300,
+			"weaponCategory": "martial",
+			"property": [
+				"H|XPHB",
+				"R|XPHB",
+				"2H|XPHB"
+			],
+			"mastery": [
+				"Cleave|XPHB"
+			],
+			"dmg1": "1d10",
+			"dmgType": "S",
+			"polearm": true,
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Lance, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 6,
+			"value": 2300,
+			"weaponCategory": "martial",
+			"property": [
+				"H|XPHB",
+				"R|XPHB",
+				"2H|XPHB"
+			],
+			"mastery": [
+				"Topple|XPHB"
+			],
+			"dmg1": "1d10",
+			"dmgType": "P",
+			"weapon": true,
+			"entries": [
+				"You can wield this weapon in one hand while mounted."
+			]
+		},
+		{
+			"name": "Longsword, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 3,
+			"value": 1700,
+			"weaponCategory": "martial",
+			"property": [
+				"V|XPHB"
+			],
+			"mastery": [
+				"Sap|XPHB"
+			],
+			"dmg1": "1d8",
+			"dmgType": "S",
+			"dmg2": "1d10",
+			"sword": true,
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Morningstar, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 4,
+			"value": 1700,
+			"weaponCategory": "martial",
+			"mastery": [
+				"Sap|XPHB"
+			],
+			"dmg1": "1d8",
+			"dmgType": "P",
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Pike, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 18,
+			"value": 1400,
+			"weaponCategory": "martial",
+			"property": [
+				"H|XPHB",
+				"R|XPHB",
+				"2H|XPHB"
+			],
+			"mastery": [
+				"Push|XPHB"
+			],
+			"dmg1": "1d10",
+			"dmgType": "P",
+			"polearm": true,
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Rapier, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 2,
+			"value": 2600,
+			"weaponCategory": "martial",
+			"property": [
+				"F|XPHB"
+			],
+			"mastery": [
+				"Vex|XPHB"
+			],
+			"dmg1": "1d8",
+			"dmgType": "P",
+			"sword": true,
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Scimitar, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 3,
+			"value": 2700,
+			"weaponCategory": "martial",
+			"property": [
+				"F|XPHB",
+				"L|XPHB"
+			],
+			"mastery": [
+				"Nick|XPHB"
+			],
+			"dmg1": "1d6",
+			"dmgType": "S",
+			"sword": true,
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Shortsword, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 2,
+			"value": 1100,
+			"weaponCategory": "martial",
+			"property": [
+				"F|XPHB",
+				"L|XPHB"
+			],
+			"mastery": [
+				"Vex|XPHB"
+			],
+			"dmg1": "1d6",
+			"dmgType": "P",
+			"sword": true,
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Trident, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 4,
+			"value": 700,
+			"weaponCategory": "martial",
+			"property": [
+				"T|XPHB",
+				"V|XPHB"
+			],
+			"mastery": [
+				"Topple|XPHB"
+			],
+			"dmg1": "1d8",
+			"dmgType": "P",
+			"dmg2": "1d10",
+			"range": "20/60",
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "War Pick, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"rarity": "none",
+			"weight": 2,
+			"value": 600,
+			"weaponCategory": "martial",
+			"property": [
+				"V|XPHB"
+			],
+			"mastery": [
+				"Sap|XPHB"
+			],
+			"dmg1": "1d8",
+			"dmgType": "P",
+			"dmg2": "1d10",
+			"weapon": true,
+			"entries": []
+		},
+		{
+			"name": "Whip, Silver",
+			"source": "KindredClass24",
+			"edition": "one",
+			"type": "M|XPHB",
+			"typeAlt": "Sil",
+			"rarity": "none",
+			"weight": 3,
+			"value": 350,
+			"weaponCategory": "martial",
+			"property": [
+				"F|XPHB",
+				"R|XPHB"
+			],
+			"mastery": [
+				"Slow|XPHB"
+			],
+			"dmg1": "1d4",
+			"dmgType": "S",
+			"weapon": true
+		}
+	],
+	"itemType": [
+		{
+			"name": "Silver",
+			"abbreviation": "Sil",
+			"source": "KindredClass24"
+		}
+	],
+	"itemTypeAdditionalEntries": [
+		{
+			"name": "Silver",
+			"source": "KindredClass24",
+			"appliesTo": "Sil",
+			"entries": [
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Upkeep",
+							"entries": [
+								"When you make an attack roll with a silver weapon or piece of ammunition, it takes a cumulative -1 penalty to attack rolls. The weapon or piece of ammunition is destroyed if the penalty reaches -5. The penalty can be removed by casting the {@spell Mending|XPHB} spell on the object or by succeeding on a DC 10 Dexterity check using {@item Smith's Tools|XPHB} as part of a {@variantrule Short Rest|XPHB} or {@variantrule Long Rest|XPHB}."
+							]
+						}
+					]
+				}
+			]
 		}
 	],
 	"feat": [
+		{
+			"name": "Protected",
+			"source": "KindredClass24",
+			"category": "O",
+			"entries": [
+				"You have someone or something guarding you for as long as you can remember, even if you don't know why. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Luck Points",
+					"entries": [
+						"You have a number of Luck Points equal to your {@variantrule Proficiency|XPHB|Proficiency Bonus} and can spend the points on the benefits below. You regain your expended Luck Points when you finish a {@variantrule Long Rest|XPHB}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Reroll",
+					"entries": [
+						"Whenever you make a {@variantrule D20 Test|XPHB} and roll 9 or lower on the {@dice d20}, you can spend 1 Luck Point to reroll the {@dice d20}. You must accept the second result."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Stabilize",
+					"entries": [
+						"When you are reduced to 0 {@variantrule Hit Points|XPHB} and not killed outright, you can spend 1 Luck Point to drop to 1 {@variantrule Hit Points|XPHB|Hit Point} instead."
+					]
+				}
+			]
+		},
+		{
+			"name": "Nocturnal",
+			"source": "KindredClass24",
+			"category": "O",
+			"entries": [
+				"You have spent many formative years in the darkness of night. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Darkvision",
+					"entries": [
+						"You have {@spell Darkvision|XPHB} with a range of 60 feet. If you already have {@spell Darkvision|XPHB}, its range increases by 30 feet."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Slink in Shadows",
+					"entries": [
+						"Whenever you make a Dexterity ({@skill Stealth|XPHB}) check while in {@variantrule Dim Light|XPHB} or {@variantrule Darkness|XPHB}, you can treat a roll of 9 or lower on the {@dice d20} as a 10."
+					]
+				}
+			]
+		},
+		{
+			"name": "Healthy",
+			"source": "KindredClass24",
+			"category": "O",
+			"entries": [
+				"You have, for whatever reason, maintained a physically healthy lifestyle. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Hit Die Use",
+					"entries": [
+						"The first time you would spend a {@variantrule Hit Point Dice|XPHB|Hit Point Die} after completing a {@variantrule Short Rest|XPHB|Short} or {@variantrule Long Rest|XPHB}, you gain the benefit of spending the Hit Die but do not spend it."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Saving Throw Proficiency",
+					"entries": [
+						"Choose one ability in which you lack saving throw proficiency. You gain saving throw proficiency with the chosen ability."
+					]
+				}
+			]
+		},
+		{
+			"name": "Well-Read",
+			"source": "KindredClass24",
+			"category": "O",
+			"entries": [
+				"You grew up with your nose buried in books. You gain the following benefits.",
+				{
+					"type": "entries",
+					"name": "Creature Lore",
+					"entries": [
+						"When you roll {@variantrule Initiative|XPHB}, you can recall lore about a creature you can see within 30 feet of yourself; you know one {@variantrule Immunity|XPHB}, {@spell Resistance|XPHB}, {@variantrule Vulnerability|XPHB}, or Trait of that creature. You decide when you use this ability."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Font of Useful Knowledge",
+					"entries": [
+						"When you roll a 1 on an Intelligence ({@skill Arcana|XPHB} or {@skill History|XPHB}) check, you can reroll the die, and you must use the new roll."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Rare Knowledge",
+					"entries": [
+						"If you succeed on an Intelligence ({@skill Arcana|XPHB} or {@skill History|XPHB}) check, you learn additional lore. The GM has final say on what you learn, if anything. The lore might consist of important details, amusing revelations, or even secret lore that has never been widely known. The more information you already know about the thing, the more precise and detailed the information you receive is. That information is accurate but might be couched in figurative language or poetry, as determined by the GM."
+					]
+				}
+			]
+		},
 		{
 			"name": "Alacrity",
 			"source": "KindredClass24",
@@ -2262,7 +3985,7 @@
 					"type": "inset",
 					"name": "The Blood Bond",
 					"entries": [
-						"While Blood Bound to a Kindred, a creature is considered {@condition Charmed|XPHB} by that Kindred and has {@variantrule Advantage|XPHB} on saving throws to avoid being {@condition Charmed|XPHB} or {@condition Frightened|XPHB} by other creatures. This is in addition to the effects from the Kindred Vitae consumable.",
+						"While Blood Bound to a Kindred, a creature is considered {@condition Charmed|XPHB} by that Kindred and has {@variantrule Advantage|XPHB} on saving throws to avoid being {@condition Charmed|XPHB} or {@condition Frightened|XPHB} by other creatures. This is in addition to the effects from the {@item Kindred Vitae|KindredClass24} consumable.",
 						"A Blood Bond can be suppressed for 1 minute if the creature succeeds on a DC 25 Charisma saving throw. The bond is only permanently removed if the creature doesn't drink from that Kindred again for a year, or if the Kindred in question is killed."
 					]
 				}
