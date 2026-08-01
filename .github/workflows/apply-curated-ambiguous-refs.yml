@@ -1,0 +1,51 @@
+name: Finalize curated ambiguous image references
+
+on:
+  push:
+    branches:
+      - update/renaming-images-2026
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout affected JSON
+        uses: actions/checkout@v4
+        with:
+          ref: update/renaming-images-2026
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/workflows
+            book/Mistfactor Press; Van Richten's Encyclopedia of Darklords & Domains Volume 1.json
+          sparse-checkout-cone-mode: false
+
+      - name: Correct no-grid daylight map and remove workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("book/Mistfactor Press; Van Richten's Encyclopedia of Darklords & Domains Volume 1.json")
+          text = path.read_text(encoding='utf-8')
+          wrong = '''"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/Darklords&DomainsVol1/House of Lament/Ground floor/Daylight/Ground Floor - with grid.webp"
+											},
+											"title": "House of Lament - Ground Floor Daylight",'''
+          correct = '''"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/main/img/Darklords&DomainsVol1/House of Lament/Ground floor/Daylight/Ground Flour - without grid.webp"
+											},
+											"title": "House of Lament - Ground Floor Daylight",'''
+          if text.count(wrong) != 1:
+              raise SystemExit(f'Expected one exact daylight block, found {text.count(wrong)}')
+          text = text.replace(wrong, correct, 1)
+          json.loads(text)
+          path.write_text(text, encoding='utf-8')
+          PY
+          git rm .github/workflows/apply-curated-ambiguous-refs.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Correct House of Lament daylight map reference"
+          git push origin HEAD:update/renaming-images-2026
