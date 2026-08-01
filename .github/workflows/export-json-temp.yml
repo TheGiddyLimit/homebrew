@@ -1,0 +1,35 @@
+name: Export JSON temporary
+
+on:
+  pull_request:
+    branches:
+      - update/renaming-images-2026
+    paths:
+      - .github/migration-export-trigger
+      - .github/workflows/export-json-temp.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Pack JSON files
+        run: |
+          find . -type f -name '*.json' \
+            -not -path './.git/*' \
+            -not -path './node_modules/*' \
+            -print0 | tar --null -T - -cf homebrew-json.tar
+      - name: Upload JSON archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: homebrew-json
+          path: homebrew-json.tar
+          compression-level: 0
+          retention-days: 1
+          if-no-files-found: error
