@@ -1,0 +1,88 @@
+name: Apply HOLOLIVE named WebP references
+
+on:
+  pull_request:
+    branches:
+      - update/renaming-images-2026
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout HOLOLIVE JSON
+        uses: actions/checkout@v4
+        with:
+          ref: agent/apply-hololive-refs-20260801
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/workflows
+            creature/Lubyak; Hololive 5e Creature Collection.json
+          sparse-checkout-cone-mode: false
+
+      - name: Apply and validate JSON package
+        shell: bash
+        env:
+          PACKAGE_URL: "https://sdmntpritalynorth.oaiusercontent.com/files/00000000-5f54-8246-8e78-2a8fafa4d07a/raw?se=2026-08-01T14:45:31Z&sp=r&sv=2026-02-06&sr=b&scid=60ba6b4d-594e-5e43-aafe-c63de17fb05f&skoid=061609b8-1cdb-4a5b-9e68-c7ab9a523a8f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-01T10:17:03Z&ske=2026-08-02T10:17:03Z&sks=b&skv=2026-02-06&sig=owyCEmZKaGcUIy5aBI/eBvLT3xgmj6hhSlS4trA2xLA%3D"
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 "$PACKAGE_URL" -o package.zip
+          unzip -q package.zip -d package
+          python - <<'PY'
+          import json
+          import shutil
+          from pathlib import Path
+
+          package = Path('package')
+          report = json.loads((package / 'report.json').read_text(encoding='utf-8'))
+          if report.get('mapping_count') != 36:
+              raise SystemExit(f"Unexpected mapping count: {report.get('mapping_count')}")
+          if report.get('total_replacements') != 36:
+              raise SystemExit(f"Unexpected replacement count: {report.get('total_replacements')}")
+          changes = package / 'changes'
+          sources = list(changes.rglob('*.json'))
+          if len(sources) != 1:
+              raise SystemExit(f'Expected one changed JSON, found {len(sources)}')
+          source = sources[0]
+          destination = Path('.') / source.relative_to(changes)
+          destination.parent.mkdir(parents=True, exist_ok=True)
+          shutil.copy2(source, destination)
+
+          text = destination.read_text(encoding='utf-8')
+          json.loads(text)
+          old_paths = list(report.get('replacement_counts', {}))
+          residual = [old for old in old_paths if old in text]
+          if residual:
+              raise SystemExit(f'Residual old references: {residual}')
+          counts = report.get('replacement_counts', {})
+          if any(count != 1 for count in counts.values()):
+              raise SystemExit(f'Unexpected individual replacement counts: {counts}')
+
+          webp_refs = set()
+          data = json.loads(text)
+          def walk(node):
+              if isinstance(node, dict):
+                  for value in node.values():
+                      walk(value)
+              elif isinstance(node, list):
+                  for value in node:
+                      walk(value)
+              elif isinstance(node, str) and 'img/HOLOLIVE/' in node and node.endswith('.webp'):
+                  webp_refs.add(node[node.index('img/HOLOLIVE/'):])
+          walk(data)
+          if len(webp_refs) != 36:
+              raise SystemExit(f'Expected 36 distinct HOLOLIVE WebP references, found {len(webp_refs)}')
+          if any(' ' in ref.rsplit('/', 1)[-1] for ref in webp_refs):
+              raise SystemExit(f'Non-normalized WebP references: {sorted(webp_refs)}')
+          print(f'Validated {len(webp_refs)} HOLOLIVE WebP references')
+          PY
+          rm -rf package package.zip
+          git rm .github/workflows/apply-hololive-refs.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Update HOLOLIVE references to named WebP assets"
+          git push origin HEAD:agent/apply-hololive-refs-20260801
