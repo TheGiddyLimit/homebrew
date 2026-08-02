@@ -236,15 +236,6 @@
 				"wall of stone"
 			],
 			"startingProficiencies": {
-				"armor": [
-					"light",
-					"medium",
-					"shield"
-				],
-				"weapons": [
-					"simple",
-					"martial"
-				],
 				"skills": [
 					{
 						"choose": {
@@ -260,6 +251,15 @@
 							]
 						}
 					}
+				],
+				"weapons": [
+					"simple",
+					"martial"
+				],
+				"armor": [
+					"light",
+					"medium",
+					"shield"
 				],
 				"armorProficiencies": [
 					{
@@ -333,14 +333,14 @@
 					"int": 13
 				},
 				"proficienciesGained": {
+					"weapons": [
+						"simple",
+						"martial"
+					],
 					"armor": [
 						"light",
 						"medium",
 						"shield"
-					],
-					"weapons": [
-						"simple",
-						"martial"
 					],
 					"armorProficiencies": [
 						{
@@ -3938,6 +3938,18 @@
 			"foundryImg": "icons/magic/unholy/silhouette-robe-evil-glow.webp"
 		},
 		{
+			"name": "Exploit Dice",
+			"source": "LLMC:E",
+			"className": "Magus",
+			"classSource": "LLMC",
+			"subclassShortName": "Spellsword",
+			"subclassSource": "LLMC:E",
+			"level": 3,
+			"entries": [
+				"The Spellsword Exploits table shows how many Exploit Dice you have to use your Exploits. To use an Exploit, you expend an Exploit Die, and you regain all your expended Exploit Dice when you finish a short or long rest."
+			]
+		},
+		{
 			"name": "Martial Exploits",
 			"source": "LLMC:E",
 			"page": 7,
@@ -3976,18 +3988,6 @@
 				}
 			],
 			"foundryImg": "icons/skills/trades/gaming-gambling-dice-gray.webp"
-		},
-		{
-			"name": "Exploit Dice",
-			"source": "LLMC:E",
-			"className": "Magus",
-			"classSource": "LLMC",
-			"subclassShortName": "Spellsword",
-			"subclassSource": "LLMC:E",
-			"level": 3,
-			"entries": [
-				"The Spellsword Exploits table shows how many Exploit Dice you have to use your Exploits. To use an Exploit, you expend an Exploit Die, and you regain all your expended Exploit Dice when you finish a short or long rest."
-			]
 		},
 		{
 			"name": "Order of Spellswords",
@@ -4603,6 +4603,32 @@
 			]
 		},
 		{
+			"name": "Exploit Dice",
+			"source": "LLMC:E",
+			"className": "Magus",
+			"classSource": "LLMC",
+			"subclassShortName": "Spellsword",
+			"subclassSource": "LLMC:E",
+			"level": 3,
+			"system": {
+				"uses.max": "@flags.ll.exploit.number"
+			},
+			"activities": [
+				{
+					"activation.type": "",
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"roll.formula": "d@flags.ll.exploit.faces",
+					"name": "Roll",
+					"type": "utility"
+				}
+			]
+		},
+		{
 			"name": "Martial Exploits",
 			"source": "LLMC:E",
 			"className": "Magus",
@@ -4633,32 +4659,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "Exploit Dice",
-			"source": "LLMC:E",
-			"className": "Magus",
-			"classSource": "LLMC",
-			"subclassShortName": "Spellsword",
-			"subclassSource": "LLMC:E",
-			"level": 3,
-			"activities": [
-				{
-					"name": "Roll",
-					"type": "utility",
-					"activation.type": "",
-					"consumption.targets": [
-						{
-							"type": "itemUses",
-							"value": 1
-						}
-					],
-					"roll.formula": "d@flags.ll.exploit.faces"
-				}
-			],
-			"system": {
-				"uses.max": "@flags.ll.exploit.number"
-			}
 		}
 	],
 	"monster": [
