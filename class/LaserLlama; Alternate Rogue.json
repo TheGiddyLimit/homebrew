@@ -50,8 +50,8 @@
 		},
 		"edition": "classic",
 		"dateAdded": 1657295680,
-		"dateLastModified": 1776040339,
-		"_dateLastModifiedHash": "5ac012a68f"
+		"dateLastModified": 1785698747,
+		"_dateLastModifiedHash": "e1f7e3e846"
 	},
 	"class": [
 		{
@@ -122,21 +122,6 @@
 				}
 			],
 			"startingProficiencies": {
-				"armor": [
-					"light"
-				],
-				"weapons": [
-					"simple",
-					"{@item blowgun|phb|blowguns}",
-					"{@item hand crossbow|phb|hand crossbows}",
-					"{@item scimitar|phb|scimitars}",
-					"{@item rapier|phb|rapiers}",
-					"{@item shortsword|phb|shortswords}",
-					"{@item whip|phb|whips}"
-				],
-				"tools": [
-					"{@item thieves' tools|PHB}"
-				],
 				"skills": [
 					{
 						"choose": {
@@ -155,6 +140,26 @@
 							],
 							"count": 4
 						}
+					}
+				],
+				"weapons": [
+					"simple",
+					"{@item blowgun|phb|blowguns}",
+					"{@item hand crossbow|phb|hand crossbows}",
+					"{@item scimitar|phb|scimitars}",
+					"{@item rapier|phb|rapiers}",
+					"{@item shortsword|phb|shortswords}",
+					"{@item whip|phb|whips}"
+				],
+				"tools": [
+					"{@item thieves' tools|PHB}"
+				],
+				"armor": [
+					"light"
+				],
+				"armorProficiencies": [
+					{
+						"light": true
 					}
 				]
 			},
@@ -213,9 +218,6 @@
 					"dex": 13
 				},
 				"proficienciesGained": {
-					"armor": [
-						"light"
-					],
 					"skills": [
 						{
 							"choose": {
@@ -238,6 +240,14 @@
 					],
 					"tools": [
 						"{@item thieves' tools|PHB}"
+					],
+					"armor": [
+						"light"
+					],
+					"armorProficiencies": [
+						{
+							"light": true
+						}
 					]
 				}
 			},
@@ -2077,36 +2087,6 @@
 			]
 		},
 		{
-			"name": "Devious Skill",
-			"source": "LLARo",
-			"className": "Alternate Rogue",
-			"classSource": "LLARo",
-			"level": 2,
-			"activities": [
-				{
-					"type": "utility",
-					"consumption": {
-						"targets": [
-							{
-								"type": "itemUses",
-								"value": "1",
-								"target": {
-									"consumes": {
-										"name": "Exploit Dice"
-									}
-								}
-							}
-						]
-					},
-					"roll": {
-						"formula": "d@flags.ll.exploit.faces",
-						"name": "Exploit Die",
-						"visible": true
-					}
-				}
-			]
-		},
-		{
 			"name": "Devious Exploits",
 			"source": "LLARo",
 			"className": "Alternate Rogue",
@@ -2137,15 +2117,46 @@
 			]
 		},
 		{
-			"name": "Exploit Dice",
+			"name": "Devious Skill",
 			"source": "LLARo",
 			"className": "Alternate Rogue",
 			"classSource": "LLARo",
 			"level": 2,
 			"activities": [
 				{
-					"name": "Roll",
 					"type": "utility",
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1",
+								"target": {
+									"consumes": {
+										"name": "Exploit Dice"
+									}
+								}
+							}
+						]
+					},
+					"roll": {
+						"formula": "d@flags.ll.exploit.faces",
+						"name": "Exploit Die",
+						"visible": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Exploit Dice",
+			"source": "LLARo",
+			"className": "Alternate Rogue",
+			"classSource": "LLARo",
+			"level": 2,
+			"system": {
+				"uses.max": "@flags.ll.exploit.number"
+			},
+			"activities": [
+				{
 					"activation.type": "",
 					"consumption.targets": [
 						{
@@ -2153,12 +2164,11 @@
 							"value": 1
 						}
 					],
-					"roll.formula": "d@flags.ll.exploit.faces"
+					"roll.formula": "d@flags.ll.exploit.faces",
+					"name": "Roll",
+					"type": "utility"
 				}
-			],
-			"system": {
-				"uses.max": "@flags.ll.exploit.number"
-			}
+			]
 		}
 	],
 	"subclassFeature": [
