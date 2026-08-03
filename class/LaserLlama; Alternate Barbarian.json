@@ -43,8 +43,8 @@
 		},
 		"edition": "classic",
 		"dateAdded": 1657295680,
-		"dateLastModified": 1780953040,
-		"_dateLastModifiedHash": "c7e1d4672c"
+		"dateLastModified": 1785698747,
+		"_dateLastModifiedHash": "a70a41889a"
 	},
 	"class": [
 		{
@@ -89,15 +89,6 @@
 				}
 			],
 			"startingProficiencies": {
-				"armor": [
-					"light",
-					"medium",
-					"shield"
-				],
-				"weapons": [
-					"simple",
-					"martial"
-				],
 				"skills": [
 					{
 						"choose": {
@@ -111,6 +102,22 @@
 							],
 							"count": 2
 						}
+					}
+				],
+				"weapons": [
+					"simple",
+					"martial"
+				],
+				"armor": [
+					"light",
+					"medium",
+					"shield"
+				],
+				"armorProficiencies": [
+					{
+						"light": true,
+						"medium": true,
+						"shield": true
 					}
 				]
 			},
@@ -164,12 +171,17 @@
 					"str": 13
 				},
 				"proficienciesGained": {
-					"armor": [
-						"shield"
-					],
 					"weapons": [
 						"simple",
 						"martial"
+					],
+					"armor": [
+						"shield"
+					],
+					"armorProficiencies": [
+						{
+							"shield": true
+						}
 					]
 				}
 			},
@@ -1468,6 +1480,30 @@
 			}
 		},
 		{
+			"name": "Exploit Dice",
+			"source": "LLAB",
+			"className": "Alternate Barbarian",
+			"classSource": "LLAB",
+			"level": 2,
+			"system": {
+				"uses.max": "@flags.ll.exploit.number"
+			},
+			"activities": [
+				{
+					"activation.type": "",
+					"consumption.targets": [
+						{
+							"type": "itemUses",
+							"value": 1
+						}
+					],
+					"roll.formula": "d@flags.ll.exploit.faces",
+					"name": "Roll",
+					"type": "utility"
+				}
+			]
+		},
+		{
 			"name": "Savage Exploits",
 			"source": "LLAB",
 			"className": "Alternate Barbarian",
@@ -1496,30 +1532,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "Exploit Dice",
-			"source": "LLAB",
-			"className": "Alternate Barbarian",
-			"classSource": "LLAB",
-			"level": 2,
-			"activities": [
-				{
-					"name": "Roll",
-					"type": "utility",
-					"activation.type": "",
-					"consumption.targets": [
-						{
-							"type": "itemUses",
-							"value": 1
-						}
-					],
-					"roll.formula": "d@flags.ll.exploit.faces"
-				}
-			],
-			"system": {
-				"uses.max": "@flags.ll.exploit.number"
-			}
 		},
 		{
 			"name": "Savage Skill",
