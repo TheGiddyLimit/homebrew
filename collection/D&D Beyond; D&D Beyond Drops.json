@@ -214,7 +214,7 @@
 					"type": "entries",
 					"name": "Honeyed Words",
 					"entries": [
-						"When you roll a 5 or lower on the {@dice d20} for a Charisma ({@skill Deception|XPHB}) or Charisma ({@skill Persuasion|XPHB}) check, you can take a {@variantrule Reaction|XPHB} to reroll the check, and you must use the new roll. Once you take this {@variantrule Reaction|XPHB}, you can't use this benefit again until you finish a {@variantrule Long Rest|XPHB}."
+						"When you fail a Charisma ({@skill Deception|XPHB} or {@skill Persuasion|XPHB}) check, you can reroll the check, and you must use the new roll. Once this benefit turns a failure into a success, you can't use it again until you finish a {@variantrule Long Rest|XPHB}."
 					]
 				}
 			]
@@ -429,8 +429,19 @@
 				}
 			],
 			"resist": [
-				"fire",
-				"poison"
+				{
+					"choose": {
+						"from": [
+							"fire",
+							"poison"
+						]
+					}
+				}
+			],
+			"senses": [
+				{
+					"darkvision": 30
+				}
 			],
 			"entries": [
 				"You gain the following benefits.",
@@ -438,14 +449,14 @@
 					"type": "entries",
 					"name": "Infernal Resistance",
 					"entries": [
-						"You have {@variantrule Resistance|XPHB} to Fire damage and Poison damage."
+						"You gain {@variantrule Resistance|XPHB} to Fire damage or Poison damage (choose when you select this feat)."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Infernal Sight",
 					"entries": [
-						"You can see normally in {@variantrule Dim Light|XPHB} and {@variantrule Darkness|XPHB}\u2014both magical and nonmagical\u2014within 60 feet of yourself."
+						"You gain {@sense Darkvision|XPHB} with a range of 30 feet. This {@sense Darkvision|XPHB} is unimpeded by magical {@variantrule Darkness|XPHB}."
 					]
 				},
 				{
@@ -515,7 +526,7 @@
 					"type": "entries",
 					"name": "Domino Strike",
 					"entries": [
-						"When you hit a creature with a weapon and activate the Push mastery property to push that creature into a space occupied by a Large or smaller creature, you can force the creatures to collide. Each creature must succeed on a Constitution saving throw (DC 8 plus the ability modifier of the score increased by this feat and your {@variantrule Proficiency|XPHB|Proficiency Bonus}) or have the {@condition Prone|XPHB} condition."
+						"When you hit a creature with a weapon and activate the Push mastery property to push that creature into a space occupied by a Large or smaller creature, you can force the creatures to collide. Each creature makes a Dexterity saving throw (DC 8 plus the ability modifier of the score increased by this feat and your {@variantrule Proficiency|XPHB|Proficiency Bonus}), taking {@damage 1d10} Bludgeoning damage on a failed save."
 					]
 				},
 				{
@@ -665,7 +676,7 @@
 				}
 			],
 			"entries": [
-				"You channel energy from the Astral Sea to unleash a torrent of magic from you in a 30-foot {@variantrule Cone [Area of Effect]|XPHB|Cone}. Each creature in the {@variantrule Cone [Area of Effect]|XPHB|Cone} must succeed on a Dexterity saving throw or take {@damage 4d10} Cold or Radiant damage (chosen when you cast this spell). Your choice of damage type determines an additional effect:",
+				"You channel energy from the Astral Sea to unleash a torrent of magic from you in a 30-foot {@variantrule Cone [Area of Effect]|XPHB|Cone}. Each creature in the {@variantrule Cone [Area of Effect]|XPHB|Cone} makes a Dexterity saving throw, taking {@damage 4d10} Cold or Radiant damage (chosen when you cast this spell) on a failed save or half as much damage on a successful one. On a failed save, a target also suffers an additional effect determined by your choice of damage type:",
 				{
 					"type": "list",
 					"style": "list-hang-notitle",
@@ -681,7 +692,7 @@
 							"type": "item",
 							"name": "Radiant Damage",
 							"entries": [
-								"The target can see only within 15 feet of itself, and it has the {@condition Blinded|XPHB} condition for everything beyond that distance until the end of your next turn."
+								"The target has the {@condition Blinded|XPHB} condition until the end of your next turn."
 							]
 						}
 					]
@@ -711,6 +722,10 @@
 						"source": "PHB"
 					},
 					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
 						"name": "Wizard",
 						"source": "PHB"
 					},
@@ -724,6 +739,10 @@
 					},
 					{
 						"name": "Sorcerer",
+						"source": "XPHB"
+					},
+					{
+						"name": "Warlock",
 						"source": "XPHB"
 					},
 					{
@@ -1146,7 +1165,7 @@
 				}
 			],
 			"entries": [
-				"You touch a willing creature. Until the spell ends, the target's skin hardens into a tortoise shell, and the target gains a +3 bonus to AC. If the target moves, the bonus becomes +1 instead until the start of its next turn."
+				"You touch a willing creature. Until the spell ends, the target's skin hardens into a tortoise shell while it remains in place, and the target gains a +3 bonus to AC. If the target moves using its action, Bonus Action, Reaction, or movement, the bonus becomes +1 instead until the start of its next turn."
 			],
 			"classes": {
 				"fromClassListVariant": [
@@ -1215,7 +1234,7 @@
 				}
 			],
 			"entries": [
-				"You conjure forth a fragment of a dark star and launch it at one creature that you can see within range. Make a ranged spell attack against the target. On a hit, the target takes {@damage 6d12} Necrotic damage. At the end of the target's next turn, it takes {@damage 3d12} Necrotic damage, and you regain {@variantrule Hit Points|XPHB} equal to the amount of Necrotic damage dealt."
+				"You conjure forth a fragment of a dark star and launch it at one creature that you can see within range. Make a ranged spell attack against the target. On a hit, the target takes {@damage 6d12} Necrotic damage. Hit or miss, the target takes {@damage 3d12} Necrotic damage at the end of its next turn, and you regain {@variantrule Hit Points|XPHB} equal to that damage."
 			],
 			"entriesHigherLevel": [
 				{
@@ -1450,7 +1469,7 @@
 				"reqAttune": true,
 				"bonusAc": "+1",
 				"entries": [
-					"Whenever you regain {@variantrule Hit Points|XPHB} while wearing this armor, it takes on a reddish tint, and you gain a {=bonusAc} bonus to {@variantrule Armor Class|XPHB} until the end of your next turn."
+					"While wearing this armor, you gain a {=bonusAc} bonus to {@variantrule Armor Class|XPHB}. Whenever you regain {@variantrule Hit Points|XPHB}, the armor takes on a reddish tint, and this bonus increases to +2 until the end of your next turn."
 				]
 			}
 		}
@@ -1871,7 +1890,7 @@
 						"The angel casts one of the following spells, requiring no Material components and using Wisdom as the spellcasting ability (spell save {@dc 22}):"
 					],
 					"will": [
-						"{@spell Disguise Self|XPHB} (24-hour duration)"
+						"{@spell Shapechange|XPHB} (Beast or Humanoid form only, no Temporary Hit Points gained from the spell, and no Concentration or Temporary Hit Points required to maintain the spell)"
 					],
 					"daily": {
 						"1e": [
@@ -2047,7 +2066,7 @@
 						"The angel casts one of the following spells, requiring no spell components and using Intelligence as the spellcasting ability (spell save {@dc 15}):"
 					],
 					"will": [
-						"{@spell Disguise Self|XPHB} (24-hour duration)",
+						"{@spell Shapechange|XPHB} (Humanoid form only, no Temporary Hit Points gained from the spell, and no Concentration or Temporary Hit Points required to maintain the spell)",
 						"{@spell Locate Creature|XPHB}"
 					],
 					"daily": {
