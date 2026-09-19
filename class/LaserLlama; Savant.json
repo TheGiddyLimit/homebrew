@@ -300,6 +300,7 @@
 				"Adroit Analysis|Savant|LLSav|1",
 				"Analytical Defense|Savant|LLSav|1",
 				"Scholarly Pursuits|Savant|LLSav|2",
+				"Potent Observation|Savant|LLSav|2",
 				{
 					"classFeature": "Academic Discipline|Savant|LLSav|3",
 					"gainSubclassFeature": true
@@ -680,8 +681,8 @@
 			"spellcastingAbility": "int",
 			"subclassFeatures": [
 				"Archaeologist|Savant|LLSav|Archaeologist|LLSav|3|LLSav",
-				"Adventuring Academic|Savant|LLSav|Archaeologist|LLSav|7||LLSav",
-				"Ancient Insights|Savant|LLSav|Archaeologist|LLSav|7||LLSav",
+				"Adventuring Academic|Savant|LLSav|Archaeologist|LLSav|7|LLSav|",
+				"Ancient Insights|Savant|LLSav|Archaeologist|LLSav|7|LLSav|",
 				"Lore Master|Savant|LLSav|Archaeologist|LLSav|13|LLSav|",
 				"Unearthed Arcana|Savant|LLSav|Archaeologist|LLSav|13|LLSav|",
 				"Master Archaeologist|Savant|LLSav|Archaeologist|LLSav|18|LLSav"
@@ -735,7 +736,7 @@
 				"Illicit Contacts|Savant|LLSav|Investigator|LLSav|7|LLSav",
 				"Underhanded Brawler|Savant|LLSav|Investigator|LLSav|7|LLSav",
 				"Piercing Gaze|Savant|LLSav|Investigator|LLSav|13|LLSav",
-				"Master Investigator|Savant|LLSav|Investigator|LLSav|18||LLSav"
+				"Master Investigator|Savant|LLSav|Investigator|LLSav|18|LLSav"
 			],
 			"foundryImg": "icons/skills/trades/academics-investigation-study-blue.webp"
 		},
@@ -858,9 +859,9 @@
 					],
 					"progression": {
 						"3": 2,
-						"6": 3,
+						"7": 3,
 						"10": 4,
-						"15": 5,
+						"13": 5,
 						"18": 6
 					}
 				}
@@ -991,14 +992,6 @@
 					"classFeature": "Studied Strike|Savant|LLSav|1"
 				}
 			],
-			"foundrySystem": {
-				"damage.parts": [
-					[
-						"1@scale.savant.intellect-die",
-						""
-					]
-				]
-			},
 			"foundryImg": "icons/skills/targeting/crosshair-bars-yellow.webp"
 		},
 		{
@@ -1009,7 +1002,7 @@
 			"level": 1,
 			"entries": [
 				"Whenever you make a weapon attack against your Focus, you can use your Intelligence for your attack and damage rolls.",
-				"Once per turn when hit your Focus with an attack, you deal bonus damage equal to your Intellect Die. You can forgo this damage to learn another Characteristic from Adroit Analysis."
+				"Once per turn when hit your Focus with an attack, you deal bonus damage equal to your Intellect Die. You can forgo this damage to learn another Characteristic from the Adroit Analysis table."
 			],
 			"foundryImg": "icons/skills/trades/construction-mason-stonecutter-sculpture.webp"
 		},
@@ -1276,6 +1269,21 @@
 	],
 	"foundryClassFeature": [
 		{
+			"name": "Adroit Analysis",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"level": 1,
+			"activities": [
+				{
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					}
+				}
+			]
+		},
+		{
 			"name": "Analytical Defense",
 			"source": "LLSav",
 			"className": "Savant",
@@ -1373,6 +1381,71 @@
 							"value": 24
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Studied Strike",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"level": 1,
+			"activities": [
+				{
+					"name": "Studied Strike",
+					"type": "damage",
+					"activation": {
+						"type": "special"
+					},
+					"damage": {
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "@scale.savant.intellect-die"
+								},
+								"bonus": ""
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Potent Observation",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"level": 2,
+			"activities": [
+				{
+					"name": "Potent Observation",
+					"type": "utility",
+					"activation": {
+						"type": "reaction"
+					},
+					"roll": {
+						"formula": "+@scale.savant.intellect-die"
+					}
+				}
+			]
+		},
+		{
+			"name": "Calculated Flourish",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"level": 5,
+			"activities": [
+				{
+					"name": "Calculated Flourish",
+					"type": "utility",
+					"activation": {
+						"type": "reaction"
+					},
+					"roll": {
+						"formula": "+@scale.savant.intellect-die"
+					}
 				}
 			]
 		}
@@ -1484,6 +1557,7 @@
 			"subclassShortName": "Archaeologist",
 			"subclassSource": "LLSav",
 			"level": 7,
+			"header": 2,
 			"entries": [
 				"Your ability to navigate deadly ruins in search of knowledge is without peer. Whenever you make a saving throw to avoid the effects of a trap, you add your Intellect Die to your roll.",
 				"You also gain a climb speed equal to your walking speed."
@@ -1505,6 +1579,7 @@
 			"subclassShortName": "Archaeologist",
 			"subclassSource": "LLSav",
 			"level": 7,
+			"header": 2,
 			"entries": [
 				"You have advanced in your understanding of ancient technologies. You ignore all class, race, and alignment restrictions for the attunement and use of magic items, scrolls, and potions.",
 				"In addition, when you use Eye for Antiquity to unearth a Curio, you can unearth Curios with properties of Common or Uncommon magic items, following all other rules."
@@ -1695,6 +1770,7 @@
 			"classSource": "LLSav",
 			"subclassShortName": "Investigator",
 			"subclassSource": "LLSav",
+			"header": 2,
 			"level": 7,
 			"entries": [
 				"You learned to fight in back alleys, where the only thing that matters is who is left standing at the end of a scrap. You gain the following underhanded benefits:",
@@ -2058,13 +2134,6 @@
 			"entries": [
 				"You touch a creature that has a disease, or is Blinded, Charmed, Deafened, Frightened, or Poisoned, and it can immediately repeat its saving throw to end that effect with a bonus equal to your Intellect Die."
 			],
-			"foundrySystem": {
-				"activation": {
-					"cost": 1,
-					"type": "action"
-				},
-				"formula": "1@scale.savant.intellect-die"
-			},
 			"foundryImg": "icons/magic/symbols/symbol-lightning-bolt.webp"
 		},
 		{
@@ -2078,18 +2147,6 @@
 			"entries": [
 				"You touch a creature that is below its hit point maximum, and it gains temporary hit points equal to your Intellect Die. These temporary hit points can't exceed the number of hit points the creature is missing."
 			],
-			"foundrySystem": {
-				"activation": {
-					"cost": 1,
-					"type": "action"
-				},
-				"damage.parts": [
-					[
-						"1@scale.savant.intellect-die",
-						"temphp"
-					]
-				]
-			},
 			"foundryImg": "icons/commodities/cloth/cloth-roll-gold-green.webp"
 		},
 		{
@@ -2104,13 +2161,6 @@
 				"One creature you touch can immediately expend one of its Hit Dice to regain hit points equal to that Hit Die + its Constitution modifier + your Intellect Die.",
 				"If you use this ability on a living creature at 0 hit points, it is instantly Stabilized even if it does not expend a Hit Die."
 			],
-			"foundrySystem": {
-				"activation": {
-					"cost": 1,
-					"type": "action"
-				},
-				"formula": "1@scale.savant.intellect-die"
-			},
 			"foundryImg": "icons/magic/life/heart-glowing-red.webp"
 		},
 		{
@@ -2416,6 +2466,7 @@
 			"source": "LLSav",
 			"className": "Savant",
 			"classSource": "LLSav",
+			"header": 2,
 			"subclassShortName": "Tactician",
 			"subclassSource": "LLSav",
 			"level": 7,
@@ -2480,7 +2531,7 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"You can attack twice, instead of once, whenever you take the {@action Attack} action on your turn. Moreover, you can take the {@action Dash}, {@action Disengage}, or {@action Help} action in place of one of these attacks."
+				" You can attack twice, instead of once, whenever you take the Attack action on your turn. Moreover, if you use your action to Dash, Dodge, or Disengage, you can make a single attack or issue an Order as a bonus action on that turn."
 			],
 			"foundryImg": "icons/skills/melee/spear-tips-triple-orange.webp"
 		},
@@ -2546,12 +2597,6 @@
 			"entries": [
 				"Until the beginning of your next turn, the creature has Resistance to all damage, and it has advantage on all ability checks, attack rolls, and saving throws."
 			],
-			"foundrySystem": {
-				"activation": {
-					"type": "special",
-					"condition": "When you take the Attack action"
-				}
-			},
 			"foundryImg": "icons/skills/social/diplomacy-peace-alliance.webp"
 		},
 		{
@@ -2566,12 +2611,6 @@
 				"You issue this Order to a creature that died in the past minute. It immediately stands up and regains hit points equal to your level + your Intelligence modifier.",
 				"This Order cannot revive creatures that die of old age."
 			],
-			"foundrySystem": {
-				"activation": {
-					"type": "special",
-					"condition": "When you take the Attack action"
-				}
-			},
 			"foundryImg": "icons/magic/life/ankh-gold-blue.webp"
 		},
 		{
@@ -2740,15 +2779,6 @@
 			"entries": [
 				"Your Recipes invigorate your allies along with their normal benefits. A creature that eats one of your Morsels also gains temporary hit points equal to your Savant level."
 			],
-			"foundrySystem": {
-				"actionType": "heal",
-				"damage.parts": [
-					[
-						"@classes.savant.levels",
-						"temphp"
-					]
-				]
-			},
 			"foundryImg": "icons/consumables/food/bowl-stew-tofu-potato-red.webp"
 		},
 		{
@@ -2771,7 +2801,7 @@
 				},
 				"formula": "1@scale.savant.intellect-die"
 			},
-			"foundryImg": "icons/consumables/food/plate-steak-grilled-brown-green.webp"
+			"foundryImg": "icons/magic/nature/cornucopia-orange.webp"
 		},
 		{
 			"name": "Mentor",
@@ -2805,15 +2835,6 @@
 				"You know just what to say to help others learn from failures. When another creature within 30 feet that can both hear and understand you fails an ability check, attack roll, or a saving throw, you can use a reaction to have it re-roll its d20.",
 				"You can use this reaction a number of times equal to your Intelligence modifier (minimum of once). You regain one use when you finish a short rest, and all uses after a long rest."
 			],
-			"foundrySystem": {
-				"activation": {
-					"cost": 1,
-					"type": "reaction",
-					"condition": "When another creature within 30 feet that can both hear and understand you fails an ability check, attack roll, or a saving throw"
-				},
-				"formula": "1@scale.savant.intellect-die",
-				"uses.max": "max(1, @abilities.int.mod)"
-			},
 			"foundryImg": "icons/skills/social/wave-halt-stop.webp"
 		},
 		{
@@ -3043,8 +3064,7 @@
 			"subclassSource": "LLSavE",
 			"level": 3,
 			"entries": [
-				"When a creature you can see within 30 feet takes damage from a hostile creature, you can use your reaction to grant it temporary hit points equal to one roll of your Intellect Die.",
-				"A creature must have at least 1 hit point remaining after taking damage in order to benefit from this ability."
+				"Immediately after another creature that you can see within 30 feet takes damage, you can use your reaction to grant it temporary hit points equal to your Intellect Die."
 			],
 			"foundrySystem": {
 				"actionType": "heal",
@@ -3192,7 +3212,7 @@
 			"level": 13,
 			"header": 2,
 			"entries": [
-				"You can bend the masses to your will with your words. If you speak to a group of creatures who can hear and understand you for 1 minute, you can choose to inspire or persuade a number of creatures in that crowd equal to your Savant level, as detailed below. Once you do so, you must finish a short or long rest before you can use this ability on a crowd again.",
+				" You can bend the masses to your will with your words. If you speak to a group of creatures that can hear and understand you for 1 minute, you can Inspire or Persuade a number of creatures in that crowd equal to your Savant level, as detailed below. You can use each of these abilities once between each short or long rest:",
 				{
 					"type": "refSubclassFeature",
 					"subclassFeature": "Inspire|Savant|LLSav|Orator|LLSavE|13|LLSavE"
@@ -3212,11 +3232,8 @@
 			"subclassShortName": "Orator",
 			"subclassSource": "LLSavE",
 			"level": 13,
-			"consumes": {
-				"name": "Peerless Rhetoric"
-			},
 			"entries": [
-				"Creatures gain a number of temporary hit points equal to your Savant level, and while the temporary hit points remain, creatures have advantage on saving throws to resist enchantment spells and are immune to being {@condition frightened}."
+				"Creatures gain a number of temporary hit points equal to your Savant level, and while they last, creatures have advantage on saving throws to resist Enchantment spells and gain Immunity to the Frightened condition."
 			],
 			"foundryImg": "icons/skills/social/wave-halt-stop.webp"
 		},
@@ -3228,11 +3245,8 @@
 			"subclassShortName": "Orator",
 			"subclassSource": "LLSavE",
 			"level": 13,
-			"consumes": {
-				"name": "Peerless Rhetoric"
-			},
 			"entries": [
-				"Creatures must succeed on a Wisdom saving throw against your Intellect save DC or be {@condition charmed} by you for up to 24 hours as if by the {@spell mass suggestion} spell."
+				"Creatures must make a Wisdom saving throw or become Charmed by you for up to 24 hours as if by a mass suggestion spell."
 			],
 			"foundryImg": "icons/magic/control/mouth-smile-deception-purple.webp"
 		},
@@ -3475,7 +3489,7 @@
 					]
 				]
 			},
-			"foundryImg": "icons/magic/control/silhouette-hold-beam-blue.webp"
+			"foundryImg": "icons/magic/holy/meditation-chi-focus-blue.webp"
 		},
 		{
 			"name": "Supreme Understanding",
@@ -3529,7 +3543,7 @@
 					"per": "sr"
 				}
 			},
-			"foundryImg": "icons/magic/control/debuff-energy-hold-levitate-teal-blue.webp"
+			"foundryImg": "icons/magic/death/hand-withered-gray.webp"
 		},
 		{
 			"name": "Shunt",
@@ -3569,9 +3583,9 @@
 			"header": 2,
 			"entries": [
 				"Your willpower rivals that of the most powerful extraplanar beings. You are always under the effects of a {@spell protection from evil and good} spell.",
-				"Finally, you learn the most powerful Words of Power. Once per long rest, you can speak a Word of Power that replicates the effects of either {@spell power word: heal} or {@spell power word: kill}."
+				"Finally, you learn the most powerful Words of Power. Once per long rest, you can speak a Word of Power that replicates the effects of either {@spell power word heal} or {@spell power word kill}."
 			],
-			"foundryImg": "icons/magic/defensive/illusion-evasion-echo-purple.webp"
+			"foundryImg": "icons/magic/holy/meditation-chi-focus-blue.webp"
 		},
 		{
 			"name": "Rune Scribe",
@@ -3629,7 +3643,7 @@
 				},
 				{
 					"type": "entries",
-					"name": "Runic Casting Modifier",
+					"name": "Runic Casting",
 					"entries": [
 						"You ignore the Single Minded restriction of Adroit Analysis if you cast and concentrate on spells from Runes. Your Runes use the following when making a spell attack roll:",
 						{
@@ -3881,7 +3895,7 @@
 			"entries": [
 				"When a creature enters or starts its turn under the influence of your Theme, you can use a reaction to force it to make a Constitution saving throw. On a failure, it takes Thunder damage equal to two Intellect Dice."
 			],
-			"foundryImg": "icons/tools/instruments/harp-gold-glowing.webp"
+			"foundryImg": "icons/magic/sonic/bell-alarm-red-purple.webp"
 		},
 		{
 			"name": "Uplifting Melody",
@@ -4075,6 +4089,10 @@
 				{
 					"type": "refSubclassFeature",
 					"subclassFeature": "Inherited Wealth|Savant|LLSav|Aristocrat|LLSavE|3|LLSavE"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Uphold Reputation|Savant|LLSav|Aristocrat|LLSavE|3|LLSavE"
 				}
 			]
 		},
@@ -4186,14 +4204,6 @@
 				"For example, you might secure a rare material component for a spell, the service of an elite mercenary company, access to a forbidden library, or the loyalty of your enemy's servant.",
 				"Once you arrange such a favor, you cannot do so again until you finish a long rest. However, you cannot arrange a favor in that same Settlement until 1d4 days have passed."
 			],
-			"foundrySystem": {
-				"activation.type": null,
-				"uses": {
-					"value": null,
-					"max": null,
-					"per": null
-				}
-			},
 			"foundryImg": "icons/skills/social/diplomacy-handshake.webp"
 		},
 		{
@@ -4407,7 +4417,7 @@
 			],
 			"system": {
 				"uses.per": "sr",
-				"uses.max": "1",
+				"uses.max": 1,
 				"uses.recovery": [
 					{
 						"period": "sr",
@@ -4532,6 +4542,81 @@
 			]
 		},
 		{
+			"name": "Adrenaline Jolt",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Physician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"activities": [
+				{
+					"name": "Adrenaline Jolt",
+					"type": "utility",
+					"activation": {
+						"type": "action"
+					},
+					"target": {
+						"affects": {
+							"count": "1",
+							"type": "creature"
+						}
+					},
+					"roll": {
+						"formula": "+@scale.savant.intellect-die"
+					}
+				}
+			]
+		},
+		{
+			"name": "Dress Wounds",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Physician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"activities": [
+				{
+					"name": "Dress Wounds",
+					"type": "heal",
+					"activation": {
+						"type": "action"
+					},
+					"healing": {
+						"bonus": "+@scale.savant.intellect-die",
+						"types": [
+							"temphp"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Healing Surge",
+			"source": "LLSav",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Physician",
+			"subclassSource": "LLSav",
+			"level": 3,
+			"activities": [
+				{
+					"name": "Healing Surge",
+					"type": "heal",
+					"activation": {
+						"type": "action"
+					},
+					"healing": {
+						"bonus": "+@scale.savant.intellect-die",
+						"types": [
+							"healing"
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Medical Expertise",
 			"source": "LLSav",
 			"className": "Savant",
@@ -4601,7 +4686,7 @@
 			"level": 18,
 			"system": {
 				"uses.per": "sr",
-				"uses.max": "1",
+				"uses.max": 1,
 				"uses.recovery": [
 					{
 						"period": "sr",
@@ -4634,7 +4719,7 @@
 			"level": 18,
 			"system": {
 				"uses.per": "sr",
-				"uses.max": "1",
+				"uses.max": 1,
 				"uses.recovery": [
 					{
 						"period": "sr",
@@ -4700,6 +4785,30 @@
 			]
 		},
 		{
+			"name": "Improved Recipes",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Culinarian",
+			"subclassSource": "LLSavE",
+			"level": 13,
+			"activities": [
+				{
+					"name": "Improved Recipes",
+					"type": "heal",
+					"activation": {
+						"type": "special"
+					},
+					"healing": {
+						"bonus": "@classes.savant.levels",
+						"types": [
+							"temphp"
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Student of Life",
 			"source": "LLSav",
 			"className": "Savant",
@@ -4745,7 +4854,7 @@
 					{
 						"period": "sr",
 						"type": "formula",
-						"formula": "1"
+						"formula": 1
 					}
 				]
 			},
@@ -4892,8 +5001,8 @@
 			"level": 3,
 			"activities": [
 				{
-					"name": "Cutting Retort",
-					"type": "save",
+					"name": "Not actually damage until you get Iron Logic",
+					"type": "damage",
 					"activation": {
 						"type": "reaction"
 					},
@@ -4911,8 +5020,19 @@
 							"calculation": "int"
 						}
 					},
-					"roll": {
-						"name": "+@scale.savant.intellect-die"
+					"damage": {
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "@scale.savant.intellect-die"
+								},
+								"bonus": "",
+								"types": [
+									"psychic"
+								]
+							}
+						]
 					}
 				}
 			]
@@ -4942,16 +5062,62 @@
 			]
 		},
 		{
+			"name": "Iron Logic",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Orator",
+			"subclassSource": "LLSavE",
+			"level": 7,
+			"activities": [
+				{
+					"name": "Cutting Retort",
+					"type": "damage",
+					"activation": {
+						"type": "reaction"
+					},
+					"target": {
+						"affects": {
+							"count": "1",
+							"type": "creature"
+						}
+					},
+					"save": {
+						"ability": [
+							"wis"
+						],
+						"dc": {
+							"calculation": "int"
+						}
+					},
+					"damage": {
+						"parts": [
+							{
+								"custom": {
+									"enabled": true,
+									"formula": "@scale.savant.intellect-die"
+								},
+								"bonus": "",
+								"types": [
+									"psychic"
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Inspire",
 			"source": "LLSavE",
 			"className": "Savant",
 			"classSource": "LLSav",
-			"subclassShortName": "Tactician",
+			"subclassShortName": "Orator",
 			"subclassSource": "LLSavE",
 			"level": 13,
 			"system": {
 				"uses.per": "sr",
-				"uses.max": "1",
+				"uses.max": 1,
 				"uses.recovery": [
 					{
 						"period": "sr",
@@ -4976,7 +5142,7 @@
 						]
 					},
 					"healing": {
-						"bonus": "@classes.savant.levels",
+						"bonus": "+ @classes.savant.levels",
 						"types": [
 							"temphp"
 						]
@@ -4994,7 +5160,7 @@
 			"level": 13,
 			"system": {
 				"uses.per": "sr",
-				"uses.max": "1",
+				"uses.max": 1,
 				"uses.recovery": [
 					{
 						"period": "sr",
@@ -5007,7 +5173,16 @@
 					"name": "Persuade",
 					"type": "save",
 					"activation": {
-						"type": "reaction"
+						"cost": 1,
+						"type": "minute"
+					},
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
 					},
 					"save": {
 						"ability": [
@@ -5360,6 +5535,39 @@
 			]
 		},
 		{
+			"name": "Master Philosopher",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Philosopher",
+			"subclassSource": "LLSavE",
+			"level": 18,
+			"system": {
+				"uses.per": "lr",
+				"uses.max": "1",
+				"uses.recovery": [
+					{
+						"period": "lr",
+						"type": "recoverAll"
+					}
+				]
+			},
+			"activities": [
+				{
+					"name": "Master Philosopher",
+					"type": "utility",
+					"consumption": {
+						"targets": [
+							{
+								"type": "itemUses",
+								"value": "1"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Student of Runes",
 			"source": "LLSavE",
 			"className": "Savant",
@@ -5378,6 +5586,27 @@
 							"value": "+@scale.savant.intellect-die"
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Runic Ward",
+			"source": "LLSavE",
+			"className": "Savant",
+			"classSource": "LLSav",
+			"subclassShortName": "Rune Scribe",
+			"subclassSource": "LLSavE",
+			"level": 13,
+			"activities": [
+				{
+					"name": "Runic Ward",
+					"type": "utility",
+					"activation": {
+						"type": "special"
+					},
+					"roll": {
+						"formula": "+ @abilities.int.mod"
+					}
 				}
 			]
 		},
@@ -5430,7 +5659,7 @@
 						}
 					},
 					"roll": {
-						"name": "+@scale.savant.intellect-die"
+						"formula": "+@scale.savant.intellect-die"
 					}
 				}
 			]
@@ -5457,7 +5686,7 @@
 						}
 					},
 					"roll": {
-						"name": "+@scale.savant.intellect-die"
+						"formula": "+@scale.savant.intellect-die"
 					}
 				}
 			]
@@ -5720,7 +5949,7 @@
 			"level": 13,
 			"system": {
 				"uses.per": "lr",
-				"uses.max": "1",
+				"uses.max": 1,
 				"uses.recovery": [
 					{
 						"period": "lr",
