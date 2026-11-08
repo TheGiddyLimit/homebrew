@@ -34,7 +34,7 @@
 			"page": 5,
 			"type": "M",
 			"rarity": "legendary",
-			"reqAttune": "by an evil creature",
+			"reqAttune": true,
 			"weight": 1,
 			"entries": [
 				"This femur bone is imbued with the malevolent evil of Doresain, the first Ghoul. It requires attunement by an evil creature. It can be wielded as either a +1 magical club or a spell focus, but drives the holder mad with images of death, biting and tearing flesh. Even creatures unlucky enough to be nearby are plagued with headaches and strange visions.",
@@ -43,14 +43,14 @@
 				"The Bone itself has 14 ({@dice 4d6}) hp and AC 10. It is resistant to piercing damage, immune to psychic and poison damage and vulnerable to bludgeoning and radiant damage."
 			],
 			"attachedSpells": [
-				"animate dead"
+				"Animate Dead|XPHB"
 			]
 		},
 		{
 			"name": "Jade Ring of Resistance",
 			"source": "RichardJansenParkesHorrorAtHavelsCross",
 			"page": 6,
-			"type": "RG|DMG",
+			"type": "RG",
 			"rarity": "rare",
 			"reqAttune": true,
 			"entries": [
@@ -81,7 +81,16 @@
 				"E"
 			],
 			"ac": [
-				12
+				{
+					"ac": 15,
+					"from": [
+						"{@spell mage armor}"
+					]
+				},
+				{
+					"ac": 12,
+					"condition": "without {@spell mage armor}"
+				}
 			],
 			"hp": {
 				"average": 37,
@@ -132,23 +141,23 @@
 					"spells": {
 						"0": {
 							"spells": [
-								"{@spell Fire Bolt}",
-								"{@spell Light}"
+								"{@spell fire bolt}",
+								"{@spell light}"
 							]
 						},
 						"1": {
 							"slots": 3,
 							"spells": [
-								"{@spell Mage Armor}",
-								"{@spell Magic Missile}",
-								"{@spell Shield}"
+								"{@spell mage armor}",
+								"{@spell magic missile}",
+								"{@spell shield}"
 							]
 						},
 						"2": {
 							"slots": 1,
 							"spells": [
-								"{@spell Misty Step}",
-								"{@spell Suggestion}"
+								"{@spell misty step}",
+								"{@spell suggestion}"
 							]
 						}
 					},
@@ -177,7 +186,7 @@
 				{
 					"name": "Create Ghoul (1/Day)",
 					"entries": [
-						"Calador creates a {@creature ghoul|XMM} from the body of a dead humanoid within 60 ft. The Ghoul is under Calador's command and will obey simple instructions, but the control is very weak and it will always tend to act on its violent nature. For details, see The {@item Bone of Doresain|RichardJansenParkesHorrorAtHavelsCross}."
+						"Calador creates a {@creature ghoul|XMM} from the body of a dead humanoid within 60 ft. The Ghoul is under Calador's command and will obey simple instructions, but the control is very weak and it will always tend to act on its violent nature. For details, see The Bone of Doresain."
 					]
 				}
 			],
@@ -230,6 +239,9 @@
 				{
 					"name": "Horror at Havel's Cross",
 					"headers": [
+						"What is This Adventure?",
+						"How Do I Play?",
+						"Summary",
 						"Meeting Landy",
 						"A Terrible Scene",
 						"Investigating the Carnage",
@@ -261,6 +273,34 @@
 								"url": "https://github.com/TheGiddyLimit/homebrew-img/blob/main/img/RichardJansenParkesHorrorAtHavelsCross/HHC%20-%20Ghoul.png?raw=true"
 							},
 							"title": "Horror at Havel's Cross"
+						},
+						{
+							"type": "entries",
+							"name": "What is This Adventure?",
+							"id": "00a",
+							"page": 1,
+							"entries": [
+								"This second-level adventure is designed for D&D veterans and complete beginners alike. It only uses rules, items, monsters and concepts found in the free basic ruleset that can be downloaded from the Wizards of the Coast website.",
+								"That means that you and your friends can play this without having to buy anything other than snacks, drinks and maybe some dice - though even these can be replaced by the many free Dice Roller apps available for phones and tablets."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "How Do I Play?",
+							"id": "00b",
+							"page": 1,
+							"entries": [
+								"The basic rules of Dungeons & Dragons 5th Edition can be downloaded at {@link dnd.wizards.com/articles/features/basicrules|dnd.wizards.com}."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Summary",
+							"id": "00c",
+							"page": 1,
+							"entries": [
+								"When a group of archaeologists put out a call for adventurers to help them escort a valuable artefact back to civilization, nobody expects anything out of the ordinary. However, our heroes have more than mere bandits to deal with at Havel's Cross. Will they be able to survive the horrors waiting for them and piece together a ghoulish mystery?"
+							]
 						},
 						{
 							"type": "entries",
@@ -481,6 +521,7 @@
 								"As you look around you become aware of a soft, almost frantic sobbing sound coming from just behind the altar.",
 								"The sobbing noise is coming from Calador, the Elven leader of the team. He is crouched down behind the altar and trying to hide.",
 								"Calador is tall and has long black hair that reaches his shoulders. He wears robes that were once rather fine, but have been stained with all manner of filth, blood and mud. He protectively clutches a long bone that adventurers able to pass a {@dc 10} Wisdom ({@skill Medicine}) check will be able to identify as a femur, probably one that belonged to an Elf.",
+								
 								"The bone is actually an evil artifact that has been imbued with some of the power of Doresain, the first Ghoul. It exerts an evil presence and like other magical items seems to be resistant to decay or staining, leaving it bone-white and gleaming.",
 								"Once found by the adventurers he will sob and wail and thank them for rescuing him from this nightmare. Should they be accompanied by Landy he will hug her tightly.",
 								"If given the chance he will explain that they uncovered this chamber a few days ago, finding the chamber much as it is now - only without the fresh bodies. The bone lay on the altar and seemed to be an object of worship for the ancient cult, making it very important. Some time after, however, his colleagues started acting strangely. Eventually Shatterbone attacked him, but he managed to fight the dwarf off by hitting him with the bone.",
