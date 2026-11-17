@@ -23,8 +23,8 @@
 		],
 		"edition": "one",
 		"dateAdded": 1770431298,
-		"dateLastModified": 1791466799,
-		"_dateLastModifiedHash": "b499b689c4"
+		"dateLastModified": 1791576245,
+		"_dateLastModifiedHash": "31f4e9f7b0"
 	},
 	"class": [
 		{
@@ -537,9 +537,9 @@
 			"source": "Pugilist2024",
 			"entries": [
 				{
+					"type": "section",
 					"name": "Pugilist",
 					"source": "Pugilist2024",
-					"type": "section",
 					"entries": [
 						"{@i A Streetfighter with Swagger to Spare}",
 						"Pugilists live a rough and tumble life that leaves them full of determination and recklessness, either from overconfidence or desperation. In a fight, they channel this strength of character to dig deep and snatch victory from the jaws of defeat, even when outarmed and outnumbered. Even when they ultimately fail, Pugilists go down swinging.",
@@ -1322,9 +1322,9 @@
 									"type": "action",
 									"value": 1
 								},
-								"range": {
-									"units": "self",
-									"override": false
+								"uses": {
+									"spent": 0,
+									"recovery": []
 								},
 								"target": {
 									"template": {
@@ -1337,9 +1337,9 @@
 									"override": false,
 									"prompt": true
 								},
-								"uses": {
-									"spent": 0,
-									"recovery": []
+								"range": {
+									"units": "self",
+									"override": false
 								},
 								"attack": {
 									"critical": {
@@ -1365,9 +1365,9 @@
 									"type": "bonus",
 									"value": 1
 								},
-								"range": {
-									"units": "self",
-									"override": false
+								"uses": {
+									"spent": 0,
+									"recovery": []
 								},
 								"target": {
 									"template": {
@@ -1380,9 +1380,9 @@
 									"override": false,
 									"prompt": true
 								},
-								"uses": {
-									"spent": 0,
-									"recovery": []
+								"range": {
+									"units": "self",
+									"override": false
 								},
 								"attack": {
 									"critical": {
@@ -1402,20 +1402,10 @@
 								}
 							},
 							{
-								"type": "save",
 								"name": "Grapple - Strength",
+								"type": "save",
 								"activation": {
 									"type": "special"
-								},
-								"effects": [
-									{
-										"foundryId": "Xy7PqR9Nz2LmB4kW",
-										"onSave": false
-									}
-								],
-								"range": {
-									"override": false,
-									"units": "self"
 								},
 								"target": {
 									"template": {
@@ -1432,6 +1422,10 @@
 									"override": false,
 									"prompt": false
 								},
+								"range": {
+									"override": false,
+									"units": "self"
+								},
 								"damage": {
 									"parts": [],
 									"onSave": "half",
@@ -1447,71 +1441,67 @@
 										"calculation": "",
 										"formula": "max(@abilities.str.dc)"
 									}
-								}
+								},
+								"effects": [
+									{
+										"foundryId": "Xy7PqR9Nz2LmB4kW",
+										"onSave": false
+									}
+								]
 							},
 							{
-								"type": "save",
 								"name": "Grapple - Dexterity",
+								"type": "save",
 								"activation": {
 									"type": "special"
+								},
+								"target": {
+									"template": {
+										"contiguous": false,
+										"units": "ft",
+										"type": ""
+									},
+									"affects": {
+										"choice": false,
+										"count": "1",
+										"type": "creature",
+										"special": ""
+									},
+									"override": false,
+									"prompt": false
+								},
+								"range": {
+									"override": false,
+									"units": "self"
+								},
+								"damage": {
+									"parts": [],
+									"onSave": "half",
+									"critical": {
+										"allow": false
+									}
+								},
+								"save": {
+									"ability": [
+										"dex"
+									],
+									"dc": {
+										"calculation": "",
+										"formula": "max(@abilities.dex.dc)"
+									}
 								},
 								"effects": [
 									{
 										"foundryId": "Xy7PqR9Nz2LmB4kW",
 										"onSave": false
 									}
-								],
-								"range": {
-									"override": false,
-									"units": "self"
-								},
-								"target": {
-									"template": {
-										"contiguous": false,
-										"units": "ft",
-										"type": ""
-									},
-									"affects": {
-										"choice": false,
-										"count": "1",
-										"type": "creature",
-										"special": ""
-									},
-									"override": false,
-									"prompt": false
-								},
-								"damage": {
-									"parts": [],
-									"onSave": "half",
-									"critical": {
-										"allow": false
-									}
-								},
-								"save": {
-									"ability": [
-										"dex"
-									],
-									"dc": {
-										"calculation": "",
-										"formula": "max(@abilities.dex.dc)"
-									}
-								}
+								]
 							},
 							{
-								"type": "save",
 								"name": "Shove (Prone) - Strength",
+								"type": "save",
 								"activation": {
 									"type": "special"
-								},
-								"effects": [
-									{
-										"foundryId": "H7x9N2mP8L0bKjQa",
-										"onSave": false
-									}
-								],
-								"range": {
-									"override": false,
-									"units": "self"
 								},
 								"target": {
 									"template": {
@@ -1527,6 +1517,10 @@
 									},
 									"override": false,
 									"prompt": false
+								},
+								"range": {
+									"override": false,
+									"units": "self"
 								},
 								"damage": {
 									"parts": [],
@@ -1543,23 +1537,19 @@
 										"calculation": "",
 										"formula": "max(@abilities.str.dc)"
 									}
-								}
-							},
-							{
-								"type": "save",
-								"name": "Shove (Prone) - Dexterity",
-								"activation": {
-									"type": "special"
 								},
 								"effects": [
 									{
 										"foundryId": "H7x9N2mP8L0bKjQa",
 										"onSave": false
 									}
-								],
-								"range": {
-									"override": false,
-									"units": "self"
+								]
+							},
+							{
+								"name": "Shove (Prone) - Dexterity",
+								"type": "save",
+								"activation": {
+									"type": "special"
 								},
 								"target": {
 									"template": {
@@ -1575,6 +1565,10 @@
 									},
 									"override": false,
 									"prompt": false
+								},
+								"range": {
+									"override": false,
+									"units": "self"
 								},
 								"damage": {
 									"parts": [],
@@ -1591,17 +1585,19 @@
 										"calculation": "",
 										"formula": "max(@abilities.dex.dc)"
 									}
-								}
+								},
+								"effects": [
+									{
+										"foundryId": "H7x9N2mP8L0bKjQa",
+										"onSave": false
+									}
+								]
 							},
 							{
-								"type": "save",
 								"name": "Shove (Push) - Strength",
+								"type": "save",
 								"activation": {
 									"type": "special"
-								},
-								"range": {
-									"override": false,
-									"units": "self"
 								},
 								"target": {
 									"template": {
@@ -1617,6 +1613,10 @@
 									},
 									"override": false,
 									"prompt": false
+								},
+								"range": {
+									"override": false,
+									"units": "self"
 								},
 								"damage": {
 									"parts": [],
@@ -1636,14 +1636,10 @@
 								}
 							},
 							{
-								"type": "save",
 								"name": "Shove (Push) - Dexterity",
+								"type": "save",
 								"activation": {
 									"type": "special"
-								},
-								"range": {
-									"override": false,
-									"units": "self"
 								},
 								"target": {
 									"template": {
@@ -1659,6 +1655,10 @@
 									},
 									"override": false,
 									"prompt": false
+								},
+								"range": {
+									"override": false,
+									"units": "self"
 								},
 								"damage": {
 									"parts": [],
@@ -1680,22 +1680,22 @@
 						],
 						"foundryEffects": [
 							{
-								"name": "Grappled",
-								"img": "systems/dnd5e/icons/svg/statuses/grappled.svg",
 								"foundryId": "Xy7PqR9Nz2LmB4kW",
-								"changes": [],
+								"name": "Grappled",
 								"statuses": [
 									"grappled"
-								]
+								],
+								"changes": [],
+								"img": "systems/dnd5e/icons/svg/statuses/grappled.svg"
 							},
 							{
-								"name": "Prone",
-								"img": "systems/dnd5e/icons/svg/statuses/prone.svg",
 								"foundryId": "H7x9N2mP8L0bKjQa",
-								"changes": [],
+								"name": "Prone",
 								"statuses": [
 									"prone"
-								]
+								],
+								"changes": [],
+								"img": "systems/dnd5e/icons/svg/statuses/prone.svg"
 							}
 						]
 					}
@@ -5121,8 +5121,8 @@
 										"type": "external",
 										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/refs/heads/main/img/Pugilist2024/Subclasses/Dog and Hound.webp"
 									},
-									"title": "{@subclass Dog and Hound|Pugilist|Pugilist2024|Pugilist2024}",
 									"maxHeight": 375,
+									"title": "{@subclass Dog and Hound|Pugilist|Pugilist2024|Pugilist2024}",
 									"credit": "Jonathan Reincke"
 								},
 								{
@@ -5131,8 +5131,8 @@
 										"type": "external",
 										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/refs/heads/main/img/Pugilist2024/Subclasses/Hand of Dread.webp"
 									},
-									"title": "{@subclass Hand of Dread|Pugilist|Pugilist2024|Pugilist2024}",
 									"maxHeight": 375,
+									"title": "{@subclass Hand of Dread|Pugilist|Pugilist2024|Pugilist2024}",
 									"credit": "Rick Hershey"
 								},
 								{
@@ -5141,8 +5141,8 @@
 										"type": "external",
 										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/refs/heads/main/img/Pugilist2024/Subclasses/Piss and Vinegar.webp"
 									},
-									"title": "{@subclass Piss and Vinegar|Pugilist|Pugilist2024|Pugilist2024}",
 									"maxHeight": 375,
+									"title": "{@subclass Piss and Vinegar|Pugilist|Pugilist2024|Pugilist2024}",
 									"credit": "Vagelio Kaliva"
 								},
 								{
@@ -5151,8 +5151,8 @@
 										"type": "external",
 										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/refs/heads/main/img/Pugilist2024/Subclasses/Street Saint.webp"
 									},
-									"title": "{@subclass Street Saint|Pugilist|Pugilist2024|Pugilist2024}",
 									"maxHeight": 375,
+									"title": "{@subclass Street Saint|Pugilist|Pugilist2024|Pugilist2024}",
 									"credit": "Vagelio Kaliva"
 								},
 								{
@@ -5161,8 +5161,8 @@
 										"type": "external",
 										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/refs/heads/main/img/Pugilist2024/Subclasses/Squared Circle.webp"
 									},
-									"title": "{@subclass Squared Circle|Pugilist|Pugilist2024|Pugilist2024}",
 									"maxHeight": 375,
+									"title": "{@subclass Squared Circle|Pugilist|Pugilist2024|Pugilist2024}",
 									"credit": "Jonathan Simard"
 								},
 								{
@@ -5171,8 +5171,8 @@
 										"type": "external",
 										"url": "https://raw.githubusercontent.com/TheGiddyLimit/homebrew-img/refs/heads/main/img/Pugilist2024/Subclasses/Sweet Science.webp"
 									},
-									"title": "{@subclass Sweet Science|Pugilist|Pugilist2024|Pugilist2024}",
 									"maxHeight": 375,
+									"title": "{@subclass Sweet Science|Pugilist|Pugilist2024|Pugilist2024}",
 									"credit": "Spelljammer"
 								}
 							]
